@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://tyagihub.in/sitemap.xml
+
+# Block admin/internal paths (when they exist)
+Disallow: /admin/
+Disallow: /api/
+Disallow: /_

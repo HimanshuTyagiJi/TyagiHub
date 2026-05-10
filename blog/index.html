@@ -1,0 +1,73 @@
+---
+layout: default
+title: "Blog — TyagiHub"
+description: "Tech tips, cybersecurity guides, app updates, and tutorials in Hindi and English from Tyagi MultiTech."
+keywords: "TyagiHub blog, tech tips Hindi, cybersecurity blog India, Tyagi MultiTech"
+---
+
+<div style="padding-top:var(--nav-height);">
+  <section style="padding:var(--space-16) 0 var(--space-12); background:var(--clr-bg-2); border-bottom:1px solid var(--clr-border);">
+    <div class="container">
+      <div class="section-label" aria-hidden="true">TyagiHub</div>
+      <h1 style="font-size:clamp(2rem,5vw,3.5rem); font-weight:var(--fw-black); letter-spacing:-0.03em; color:var(--clr-heading); margin-bottom:var(--space-4);">Blog</h1>
+      <p style="font-size:var(--fs-md); color:var(--clr-text-2); max-width:50ch;">
+        Tech guides, app updates, cybersecurity alerts, and tutorials — in Hindi &amp; English.
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      {% if site.posts.size > 0 %}
+      <div class="grid-3" role="list">
+        {% for post in site.posts %}
+        <a href="{{ post.url }}" class="blog-card reveal" role="listitem">
+          <div class="blog-card__thumb" style="background:var(--clr-surface-2);" aria-hidden="true">
+            {{ post.emoji | default: "📝" }}
+          </div>
+          <div class="blog-card__body">
+            {% if post.category %}
+            <span class="blog-card__tag">{{ post.category }}</span>
+            {% endif %}
+            <h2 class="blog-card__title">{{ post.title }}</h2>
+            <div class="blog-card__meta">
+              <span>{{ post.author | default: "Tyagi MultiTech" }}</span>
+              <span>·</span>
+              <span>{{ post.date | date: "%b %d, %Y" }}</span>
+            </div>
+          </div>
+        </a>
+        {% endfor %}
+      </div>
+      {% else %}
+      <!-- Placeholder when no posts yet -->
+      <div class="grid-3" role="list">
+        <a href="/blog/how-to-stay-safe-online/" class="blog-card reveal" role="listitem">
+          <div class="blog-card__thumb" style="background:linear-gradient(135deg,rgba(248,113,113,0.2),rgba(248,113,113,0.05));" aria-hidden="true">🛡️</div>
+          <div class="blog-card__body">
+            <span class="blog-card__tag">Cybersecurity</span>
+            <h2 class="blog-card__title">ऑनलाइन सुरक्षित कैसे रहें — Top 10 Tips</h2>
+            <div class="blog-card__meta"><span>Tyagi MultiTech</span><span>·</span><span>5 min read</span></div>
+          </div>
+        </a>
+        <a href="/blog/free-tools-for-students/" class="blog-card reveal reveal-delay-1" role="listitem">
+          <div class="blog-card__thumb" style="background:linear-gradient(135deg,rgba(245,166,35,0.2),rgba(245,166,35,0.05));" aria-hidden="true">🎓</div>
+          <div class="blog-card__body">
+            <span class="blog-card__tag">Productivity</span>
+            <h2 class="blog-card__title">Students के लिए 10 Free Online Tools</h2>
+            <div class="blog-card__meta"><span>Tyagi MultiTech</span><span>·</span><span>4 min read</span></div>
+          </div>
+        </a>
+        <a href="/blog/android-app-development-guide/" class="blog-card reveal reveal-delay-2" role="listitem">
+          <div class="blog-card__thumb" style="background:linear-gradient(135deg,rgba(96,165,250,0.2),rgba(96,165,250,0.05));" aria-hidden="true">📱</div>
+          <div class="blog-card__body">
+            <span class="blog-card__tag">Development</span>
+            <h2 class="blog-card__title">Android App Development — Beginner's Guide</h2>
+            <div class="blog-card__meta"><span>Tyagi MultiTech</span><span>·</span><span>8 min read</span></div>
+          </div>
+        </a>
+      </div>
+      {% endif %}
+    </div>
+  </section>
+</div>

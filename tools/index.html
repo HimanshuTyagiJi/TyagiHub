@@ -1,0 +1,54 @@
+---
+layout: default
+title: "Free Online Tools — PDF, Image, Convert & More | TyagiHub"
+description: "50+ free online tools — compress PDF, merge PDF, convert images, remove background, generate QR codes, password generator and more. No signup. No watermark."
+keywords: "free online tools, PDF compressor, image converter, QR generator, background remover, word counter, compress PDF online India"
+extra_css:
+  - /assets/css/tools.css
+extra_js:
+  - /assets/js/tools.js
+---
+
+<div class="tools-page">
+
+  <!-- HERO + SEARCH -->
+  <div class="tools-hero">
+    <div class="container">
+      <h1 class="tools-hero__title">Free Online Tools</h1>
+      <p class="tools-hero__sub">50+ tools — PDF, Image, Convert, Text, Security. No signup. No watermark. Works offline.</p>
+
+      <div class="tools-search">
+        <span class="tools-search__icon">🔍</span>
+        <input
+          type="search"
+          id="tools-search-input"
+          class="tools-search__input"
+          placeholder="Search tools... (e.g. compress, merge, resize, QR)"
+          aria-label="Search tools"
+          autocomplete="off"
+        >
+      </div>
+
+      <!-- Category Filter Pills (PDF24 style) -->
+      <div class="tools-catstrip" role="tablist" aria-label="Tool categories">
+        <button class="tools-catstrip__btn active" data-cat="all">🏠 All Tools</button>
+        <button class="tools-catstrip__btn" data-cat="pdf">📄 PDF</button>
+        <button class="tools-catstrip__btn" data-cat="image">🖼️ Image</button>
+        <button class="tools-catstrip__btn" data-cat="convert">🔄 Convert</button>
+        <button class="tools-catstrip__btn" data-cat="text">📝 Text</button>
+        <button class="tools-catstrip__btn" data-cat="security">🔐 Security</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- TOOL SECTIONS (JS renders here) -->
+  <div class="tools-content">
+    <div id="tools-empty" class="tools-empty" style="display:none;">
+      <div class="tools-empty__icon">🔍</div>
+      <div class="tools-empty__title">No tools found</div>
+      <div class="tools-empty__sub">Try a different search term</div>
+    </div>
+    <div id="tools-container"></div>
+  </div>
+
+</div>

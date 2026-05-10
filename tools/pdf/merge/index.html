@@ -1,0 +1,60 @@
+---
+layout: tool-pdf
+title: "Merge PDF Online Free — Combine PDF Files | TyagiHub"
+description: "Merge multiple PDF files into one online for free. Combine PDFs in any order. No signup, no watermark, 100% browser-based."
+keywords: "merge PDF online free, combine PDF files, join PDF, PDF merger, merge PDF without upload"
+tool_name: "Merge PDF"
+tool_emoji: "🔗"
+tool_color: "rgba(245,166,35,0.12)"
+tool_init: "initPDFMerge"
+---
+
+<div class="tool-dropzone" id="tool-dropzone" role="button" tabindex="0">
+  <div class="tool-dropzone__icon">🔗</div>
+  <div class="tool-dropzone__title">Drop PDF files here or click to upload</div>
+  <div class="tool-dropzone__sub">Upload 2 or more PDF files to merge them together</div>
+  <button class="btn btn-primary" type="button"
+          onclick="document.getElementById('tool-file-input').click()">
+    Choose PDF Files
+  </button>
+  <input type="file" id="tool-file-input" accept=".pdf,application/pdf" multiple>
+  <div class="tool-dropzone__formats">
+    <span class="format-tag">PDF</span>
+    <span class="format-tag">Multiple Files</span>
+  </div>
+</div>
+
+<div class="tool-filelist" id="tool-filelist"></div>
+
+<div class="tool-settings" id="tool-settings">
+  <div class="tool-settings__title">⚙️ Merge Settings</div>
+  <div class="tool-setting-row">
+    <div class="tool-setting-label">
+      Merge Order
+      <small>Files will merge in the order shown above</small>
+    </div>
+    <select class="tool-select">
+      <option>Keep upload order</option>
+    </select>
+  </div>
+</div>
+
+<div class="tool-action-bar" id="tool-action-bar" style="display:none;">
+  <span style="font-size:var(--fs-sm);color:var(--clr-text-3);">Upload at least 2 PDFs</span>
+  <button class="btn btn-primary btn-lg" id="tool-process-btn" type="button">🔗 Merge PDFs</button>
+</div>
+
+<div class="tool-progress" id="tool-progress">
+  <div class="tool-progress__bar"><div class="tool-progress__fill" id="tool-progress-fill"></div></div>
+  <div class="tool-progress__label" id="tool-progress-label">Merging...</div>
+</div>
+
+<div class="tool-result" id="tool-result">
+  <div class="tool-result__icon">✅</div>
+  <div class="tool-result__title">Merged Successfully!</div>
+  <div class="tool-result__sub"></div>
+  <div style="display:flex;gap:var(--space-3);justify-content:center;flex-wrap:wrap;">
+    <button class="btn btn-primary" id="download-btn" type="button">⬇️ Download Merged PDF</button>
+    <button class="btn btn-outline" onclick="location.reload()">🔄 Merge Again</button>
+  </div>
+</div>

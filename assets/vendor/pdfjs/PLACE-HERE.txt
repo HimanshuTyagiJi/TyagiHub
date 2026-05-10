@@ -1,0 +1,4 @@
+Download PDF.js from https://github.com/mozilla/pdf.js/releases
+Place these two files here:
+  pdf.min.js
+  pdf.worker.min.js

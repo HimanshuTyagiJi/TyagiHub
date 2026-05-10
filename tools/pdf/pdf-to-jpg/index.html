@@ -1,0 +1,75 @@
+---
+layout: tool-pdf
+title: "PDF to JPG Online Free — Convert PDF Pages to Images | TyagiHub"
+description: "Convert PDF pages to JPG images online for free. High quality PDF to image conversion. No signup required."
+keywords: "PDF to JPG online free, PDF to image, convert PDF pages to pictures, PDF to PNG"
+tool_name: "PDF to JPG"
+tool_emoji: "🖼️"
+tool_color: "rgba(245,166,35,0.12)"
+tool_init: "initPDFtoJPG"
+---
+
+<div class="tool-dropzone" id="tool-dropzone" role="button" tabindex="0">
+  <div class="tool-dropzone__icon">📄</div>
+  <div class="tool-dropzone__title">Drop PDF here to convert to images</div>
+  <div class="tool-dropzone__sub">Each page becomes a separate JPG image</div>
+  <button class="btn btn-primary" type="button"
+          onclick="document.getElementById('tool-file-input').click()">Choose PDF File</button>
+  <input type="file" id="tool-file-input" accept=".pdf,application/pdf">
+  <div class="tool-dropzone__formats"><span class="format-tag">PDF → JPG</span></div>
+</div>
+
+<div class="tool-filelist" id="tool-filelist"></div>
+
+<div class="tool-settings" id="tool-settings">
+  <div class="tool-settings__title">⚙️ Image Settings</div>
+  <div class="tool-setting-row">
+    <div class="tool-setting-label">
+      Output Quality
+      <small>Higher quality = larger file size</small>
+    </div>
+    <select class="tool-select">
+      <option value="0.7">Good (Smaller file)</option>
+      <option value="0.92" selected>High Quality</option>
+      <option value="1.0">Maximum</option>
+    </select>
+  </div>
+  <div class="tool-setting-row">
+    <div class="tool-setting-label">
+      Resolution
+      <small>Scale factor for rendering</small>
+    </div>
+    <select class="tool-select">
+      <option value="1">Normal (72 DPI)</option>
+      <option value="2" selected>High (144 DPI)</option>
+      <option value="3">Ultra (216 DPI)</option>
+    </select>
+  </div>
+</div>
+
+<div style="background:rgba(96,165,250,0.08); border:1px solid rgba(96,165,250,0.2); border-radius:var(--radius-md); padding:var(--space-4); margin-top:var(--space-4); font-size:var(--fs-sm); color:var(--clr-text-2);" id="tool-settings">
+  <strong style="color:var(--clr-apps);">ℹ️ PDF.js Required</strong><br>
+  This tool needs Mozilla PDF.js library (Apache 2.0 License — Free).<br>
+  Download: <code style="background:var(--clr-surface);padding:2px 6px;border-radius:4px;font-size:var(--fs-xs);">github.com/mozilla/pdf.js/releases</code><br>
+  Save as: <code style="background:var(--clr-surface);padding:2px 6px;border-radius:4px;font-size:var(--fs-xs);">/assets/vendor/pdfjs/pdf.min.js</code>
+</div>
+
+<div class="tool-action-bar" id="tool-action-bar" style="display:none;">
+  <span style="font-size:var(--fs-sm);color:var(--clr-text-3);">Each page = one JPG image</span>
+  <button class="btn btn-primary btn-lg" id="tool-process-btn">🖼️ Convert to JPG</button>
+</div>
+
+<div class="tool-progress" id="tool-progress">
+  <div class="tool-progress__bar"><div class="tool-progress__fill" id="tool-progress-fill"></div></div>
+  <div class="tool-progress__label" id="tool-progress-label">Rendering pages...</div>
+</div>
+
+<div class="tool-result" id="tool-result">
+  <div class="tool-result__icon">✅</div>
+  <div class="tool-result__title">Converted!</div>
+  <div class="tool-result__sub"></div>
+  <div style="display:flex;gap:var(--space-3);justify-content:center;flex-wrap:wrap;">
+    <button class="btn btn-primary" id="download-btn">⬇️ Download Images</button>
+    <button class="btn btn-outline" onclick="location.reload()">🔄 Convert Another</button>
+  </div>
+</div>

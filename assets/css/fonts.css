@@ -1,0 +1,115 @@
+/*
+ * TyagiHub — Local Font Declarations
+ * All fonts served from /assets/fonts/ — NO CDN
+ * ============================================================
+ *
+ * Fonts used:
+ *   1. Outfit       — body text (Google Fonts — download locally)
+ *   2. Space Grotesk — display headings
+ *   3. JetBrains Mono — code/mono
+ *
+ * WHY these fonts?
+ *   - Outfit: Clean, modern, highly readable at all sizes
+ *   - Space Grotesk: Technical yet warm — perfect for a tech platform
+ *   - JetBrains Mono: Industry standard for code
+ *
+ * HOW TO ADD REAL FONT FILES:
+ *   1. Download from https://fonts.google.com (use "Download family")
+ *   2. Place .woff2 files in /assets/fonts/
+ *   3. These @font-face declarations will pick them up automatically
+ *
+ * ============================================================
+ */
+
+/* --- Outfit (Body) --- */
+@font-face {
+  font-family: 'Outfit';
+  src: url('../fonts/Outfit-Regular.woff2') format('woff2'),
+       url('../fonts/Outfit-Regular.woff')  format('woff');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Outfit';
+  src: url('../fonts/Outfit-Medium.woff2') format('woff2'),
+       url('../fonts/Outfit-Medium.woff')  format('woff');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Outfit';
+  src: url('../fonts/Outfit-SemiBold.woff2') format('woff2'),
+       url('../fonts/Outfit-SemiBold.woff')  format('woff');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Outfit';
+  src: url('../fonts/Outfit-Bold.woff2') format('woff2'),
+       url('../fonts/Outfit-Bold.woff')  format('woff');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* --- Space Grotesk (Display) --- */
+@font-face {
+  font-family: 'SpaceGrotesk';
+  src: url('../fonts/SpaceGrotesk-Regular.woff2') format('woff2'),
+       url('../fonts/SpaceGrotesk-Regular.woff')  format('woff');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'SpaceGrotesk';
+  src: url('../fonts/SpaceGrotesk-Medium.woff2') format('woff2'),
+       url('../fonts/SpaceGrotesk-Medium.woff')  format('woff');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'SpaceGrotesk';
+  src: url('../fonts/SpaceGrotesk-SemiBold.woff2') format('woff2'),
+       url('../fonts/SpaceGrotesk-SemiBold.woff')  format('woff');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'SpaceGrotesk';
+  src: url('../fonts/SpaceGrotesk-Bold.woff2') format('woff2'),
+       url('../fonts/SpaceGrotesk-Bold.woff')  format('woff');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* --- JetBrains Mono (Code) --- */
+@font-face {
+  font-family: 'JetBrainsMono';
+  src: url('../fonts/JetBrainsMono-Regular.woff2') format('woff2'),
+       url('../fonts/JetBrainsMono-Regular.woff')  format('woff');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'JetBrainsMono';
+  src: url('../fonts/JetBrainsMono-Medium.woff2') format('woff2'),
+       url('../fonts/JetBrainsMono-Medium.woff')  format('woff');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
