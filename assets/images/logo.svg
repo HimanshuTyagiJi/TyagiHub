@@ -1,8 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 48" fill="none">
-  <!-- Icon mark -->
-  <rect width="40" height="40" x="0" y="4" rx="8" fill="#f5a623"/>
-  <text x="20" y="28" font-family="sans-serif" font-weight="900" font-size="20" fill="#000" text-anchor="middle">T</text>
-  <!-- Wordmark -->
-  <text x="52" y="34" font-family="sans-serif" font-weight="800" font-size="26" fill="#f0f2f8" letter-spacing="-1">Tyagi</text>
-  <text x="133" y="34" font-family="sans-serif" font-weight="800" font-size="26" fill="#f5a623" letter-spacing="-1">Hub</text>
-</svg>
