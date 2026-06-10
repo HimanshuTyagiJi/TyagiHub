@@ -1,3 +1,12 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Discussion & Reviews - TyagiHub</title>
+</head>
+<body>
+
 <div id="tc-root">
   <div class="tc-header">
     <div class="tc-header-left">
@@ -10,6 +19,7 @@
         </div>
       </div>
     </div>
+    
     <div id="tc-auth-zone">
       <div id="tc-auth-gate">
         <div id="g_id_onload" 
@@ -65,7 +75,7 @@
   .tc-editor-box { padding:15px 20px; border-bottom:1px solid #eee; }
   textarea { width:100%; height:70px; padding:12px; border:1px solid #ddd; border-radius:8px; resize:none; box-sizing:border-box; font-family:inherit; font-size:14px; outline:none; }
   textarea:focus { border-color:#1a73e8; }
-  .tc-feed { max-height: 500px; overflow: auto; }
+  .tc-feed { max-height: 500px; overflow: auto; background: #fff; }
   .tc-post-btn { background:#1a73e8; color:#fff; border:none; padding:8px 16px; border-radius:6px; cursor:pointer; font-weight:bold; }
   .tc-card { padding:15px 20px; border-bottom:1px solid #f1f1f1; transition:opacity 0.3s; background:#fff; }
   .tc-card.pending { opacity:0.5; border-left:3px solid #f4b400; }
@@ -78,9 +88,8 @@
 
 <script type="module">
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.0/firebase-app.js";
-import { getMessaging, getToken, onMessage } from "https://www.gstatic.com/firebasejs/10.7.0/firebase-messaging.js";
+import { getMessaging, getToken } from "https://www.gstatic.com/firebasejs/10.7.0/firebase-messaging.js";
 
-// VERIFIED FIREBASE CONFIGURATION (TYAGI-HUB)
 const firebaseConfig = {
   apiKey: "AIzaSyBE0uXhh8ePOQH6FBdhRCZrRgRkUTwCWws",
   authDomain: "tyagi-hub.firebaseapp.com",
@@ -91,7 +100,7 @@ const firebaseConfig = {
   measurementId: "G-36X3TG734R"
 };
 
-// LIVE GS WEB APP API EXEC URL
+// LIVE GS WEB APP API EXEC URL BOUND
 const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbx15nyfQy4DxCDfdEDTvlde0f2Vh3mJP0PDyQPFzOuarD2QPnWWpVHYp6s9YjHL5utD/exec";
 const VAPID_KEY = "BD_TF4_Pmc1uUCqtcMF-KF1eBsUyr9cC1MUbT82kIdZ8VJSWQtwLMg738clOiHqOtL55iFs4Xd-y5prBgueUm_E";
 
@@ -110,19 +119,20 @@ try {
       const token = await getToken(messaging, { serviceWorkerRegistration: sw, vapidKey: VAPID_KEY });
       if (token) {
         fetch(SCRIPT_URL, {
-          method: "POST", mode: "no-cors",
+          method: "POST",
           body: JSON.stringify({ action: "fcm_subscribe", fcmToken: token, email: storedUser.e, name: storedUser.n })
         });
-        console.log("FCM Pipeline bound successfully ✅");
+        console.log("FCM Framework Registered ✅");
       }
-    } catch(e) { console.log("Service Worker Registration Log Ignored."); }
+    } catch(e) { console.log("Service Worker Context Isolated."); }
   };
-} catch(err) { console.log("Push notifications system isolated."); }
+} catch(err) { console.log("Push Engine Guard Active."); }
 </script>
 
 <script>
 (function() {
-  const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyP24tvPwS-TvUsXNbkShpe3EMU4WvpBiUHdUOOu6EYTN65l3iU2O6xjV0Y3zFgw9absA/exec";
+  // FINAL PRODUCTION SCRIPT URL FIXED
+  const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbx15nyfQy4DxCDfdEDTvlde0f2Vh3mJP0PDyQPFzOuarD2QPnWWpVHYp6s9YjHL5utD/exec";
 
   let user          = JSON.parse(localStorage.getItem("tc_user")) || null;
   let serverData    = [];
@@ -139,7 +149,7 @@ try {
       setTimeout(function() { if (window._tcInitFCM) window._tcInitFCM(); }, 1500);
     }
     sync();
-    setInterval(function() { if (!isTyping) sync(); }, 5000);
+    setInterval(function() { if (!isTyping) sync(); }, 6000);
   }
 
   window.onGoogleAuth = function(r) {
@@ -155,11 +165,11 @@ try {
   window.resetStar = function()  { paintStars(currentRating); };
   
   window.handleStar = function(n) {
-    if (!user) return alert("System Auth Error: Google verification token required!");
+    if (!user) return alert("Authentication Required to Rate!");
     currentRating = n;
     paintStars(n);
     fetch(SCRIPT_URL, {
-      method: "POST", mode: "no-cors",
+      method: "POST",
       body: JSON.stringify({ url: location.pathname, email: user.e, name: user.n, rating: String(n), comment: "__RATING_ONLY__" })
     });
   };
@@ -168,13 +178,15 @@ try {
     document.querySelectorAll(".tc-s").forEach(function(s, i) { s.classList.toggle("active", i < n); });
   }
 
+  // FIXED FRONTEND PAYLOAD SYNC SYSTEM
   window.handleAction = function(pid, mode, rowId) {
     mode  = mode  || "new";
     rowId = rowId || null;
-    if (!user) return alert("System Session Truncated: Authentication Required!");
+    if (!user) return alert("Session Error: Authentication Required!");
     
     var inputId = mode === "edit" ? "edit-in-" + rowId : (pid === "0" ? "tc-input" : "reply-in-" + pid);
     var inputEl = document.getElementById(inputId);
+    if (!inputEl) return;
     var msg     = inputEl.value.trim();
     if (!msg) return;
 
@@ -189,19 +201,24 @@ try {
     inputEl.value = "";
     isTyping = false;
     
+    // STRICT ALIGNED PAYLOAD CONFIG (Matches Backend Parameters perfectly)
     var payload = { 
       url: location.pathname, 
       name: user.n, 
       email: user.e, 
       pic: user.p, 
-      comment: msg, 
-      parentId: pid, 
+      comment: msg,        // Explicit key sync
+      parentId: String(pid), 
       rating: String(currentRating)
     };
     
     if (mode === "edit") { payload.action = "edit"; payload.rowId = rowId; }
     
-    fetch(SCRIPT_URL, { method: "POST", body: JSON.stringify(payload), mode: "no-cors" });
+    fetch(SCRIPT_URL, { 
+      method: "POST", 
+      body: JSON.stringify(payload) 
+    });
+
     setTimeout(sync, 1500);
   };
 
@@ -216,7 +233,7 @@ try {
       updateRatingUI(data.avgRating, data.totalVotes);
       paintStars(currentRating);
       render();
-    } catch(e) { console.log("Synchronization frame drop skipped."); }
+    } catch(e) { console.log("Frame update dropped."); }
   }
 
   function updateRatingUI(avg, total) {
@@ -230,7 +247,7 @@ try {
   function render() {
     var feed     = document.getElementById("tc-feed");
     var combined = serverData.concat(tempLocal);
-    var mains    = combined.filter(function(c) { return c.parentId == "0" || !c.parentId; }).reverse();
+    var mains    = combined.filter(function(c) { return c.parentId == "0" || !c.parentId; });
     feed.innerHTML = mains.map(function(m) { return renderCard(m, combined); }).join("");
   }
 
@@ -267,7 +284,7 @@ try {
         + '<button onclick="isTyping=false;this.parentElement.parentElement.innerHTML=\'\'" style="background:none;border:none;cursor:pointer;font-size:12px;margin-right:10px;color:#5f6368;">Cancel</button>'
         + '<button class="tc-post-btn" onclick="handleAction(\'' + id + '\')">Reply</button></div>';
     } else {
-      var old = document.getElementById("body-" + id).innerText;
+      var old = document.getElementById("body-' + id + '").innerText;
       box.innerHTML = '<textarea id="edit-in-' + id + '">' + old + '</textarea>'
         + '<div style="text-align:right;margin-top:5px;">'
         + '<button onclick="isTyping=false;this.parentElement.parentElement.innerHTML=\'\'" style="background:none;border:none;cursor:pointer;font-size:12px;margin-right:10px;color:#5f6368;">Cancel</button>'
@@ -278,7 +295,7 @@ try {
 
   window.deleteMsg = async function(id) {
     if (!confirm("Wipe entry permanently from database?")) return;
-    await fetch(SCRIPT_URL, { method: "POST", body: JSON.stringify({ action: "delete", rowId: id, userEmail: user.e }), mode: "no-cors" });
+    await fetch(SCRIPT_URL, { method: "POST", body: JSON.stringify({ action: "delete", rowId: id, userEmail: user.e }) });
     sync();
   };
 
@@ -286,3 +303,5 @@ try {
 })();
 </script>
 <script src="https://accounts.google.com/gsi/client" async defer></script>
+</body>
+</html>
