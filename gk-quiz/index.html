@@ -1,17 +1,18 @@
 ---
 layout: default
-title: "GK Quiz — General Knowledge Questions & Answers | TyagiHub"
+title: "GK Quiz — General Knowledge Questions & Answers"
 description: "Free GK quiz for competitive exams — SSC, Banking, Railway, UPSC. 33 categories with questions in Hindi and English. Practice MCQ with answers and explanations."
 keywords: "GK quiz, general knowledge quiz, सामान्य ज्ञान प्रश्न, SSC quiz, banking exam GK, railway GK quiz, UPSC GK"
+lang_switch: false
 extra_css:
-  - /assets/css/gk-quiz.css
+  - {{ site.url }}/assets/css/gk-quiz.css
 extra_js:
-  - /assets/js/gk-quiz.js
+  - {{ site.url }}/assets/js/gk-quiz.js
 ---
 <!-- hreflang for bilingual SEO -->
-<link rel="alternate" hreflang="en" href="https://tyagihub.in/gk-quiz/">
-<link rel="alternate" hreflang="hi" href="https://tyagihub.in/gk-quiz/hi/">
-<link rel="alternate" hreflang="x-default" href="https://tyagihub.in/gk-quiz/">
+<link rel="alternate" hreflang="en" href="{{ site.url }}/gk-quiz/">
+<link rel="alternate" hreflang="hi" href="{{ site.url }}/gk-quiz/hi/">
+<link rel="alternate" hreflang="x-default" href="{{ site.url }}/gk-quiz/">
 
 <div class="quiz-page">
 
@@ -68,22 +69,22 @@ extra_js:
       <div class="quiz-section">
         <h2 class="quiz-section__title">🏆 Exam Corner</h2>
         <div class="exam-corner">
-          <a href="/gk-quiz/ssc/" class="exam-card">
+          <a href="{{ site.url }}/gk-quiz/ssc/" class="exam-card">
             <div class="exam-card__icon">🎯</div>
             <div class="exam-card__name">SSC Exams</div>
             <div class="exam-card__desc">CGL, CHSL, MTS — practice topic-wise</div>
           </a>
-          <a href="/gk-quiz/banking/" class="exam-card">
+          <a href="{{ site.url }}/gk-quiz/banking/" class="exam-card">
             <div class="exam-card__icon">🏦</div>
             <div class="exam-card__name">Banking</div>
             <div class="exam-card__desc">IBPS PO, Clerk, SBI — curated GK sets</div>
           </a>
-          <a href="/gk-quiz/railway/" class="exam-card">
+          <a href="{{ site.url }}/gk-quiz/railway/" class="exam-card">
             <div class="exam-card__icon">🚆</div>
             <div class="exam-card__name">Railway</div>
             <div class="exam-card__desc">RRB NTPC, Group D — GK practice</div>
           </a>
-          <a href="/gk-quiz/upsc/" class="exam-card">
+          <a href="{{ site.url }}/gk-quiz/upsc/" class="exam-card">
             <div class="exam-card__icon">🏛️</div>
             <div class="exam-card__name">UPSC</div>
             <div class="exam-card__desc">Prelims GK — History, Polity, Economy</div>
@@ -96,7 +97,7 @@ extra_js:
         <h2 class="quiz-section__title">📚 All Quiz Topics</h2>
         <div class="quiz-grid">
 
-          <a href="/gk-quiz/ancient-history/" class="quiz-cat-card" style="--cat-color:#e97c2a;">
+          <a href="{{ site.url }}/gk-quiz/ancient-history/" class="quiz-cat-card" style="--cat-color:#e97c2a;">
             <div class="quiz-cat-card__icon">🏛️</div>
             <div class="quiz-cat-card__content">
               <div class="quiz-cat-card__name">Ancient Indian History</div>
@@ -105,7 +106,7 @@ extra_js:
             <span class="quiz-cat-card__arrow">→</span>
           </a>
 
-          <a href="/gk-quiz/medieval-history/" class="quiz-cat-card" style="--cat-color:#e97c2a;">
+          <a href="{{ site.url }}/gk-quiz/medieval-history/" class="quiz-cat-card" style="--cat-color:#e97c2a;">
             <div class="quiz-cat-card__icon">🕌</div>
             <div class="quiz-cat-card__content">
               <div class="quiz-cat-card__name">Medieval Indian History</div>
@@ -114,7 +115,7 @@ extra_js:
             <span class="quiz-cat-card__arrow">→</span>
           </a>
 
-          <a href="/gk-quiz/modern-history/" class="quiz-cat-card" style="--cat-color:#e97c2a;">
+          <a href="{{ site.url }}/gk-quiz/modern-history/" class="quiz-cat-card" style="--cat-color:#e97c2a;">
             <div class="quiz-cat-card__icon">🇮🇳</div>
             <div class="quiz-cat-card__content">
               <div class="quiz-cat-card__name">Modern Indian History</div>
@@ -123,7 +124,7 @@ extra_js:
             <span class="quiz-cat-card__arrow">→</span>
           </a>
 
-          <a href="/gk-quiz/world-history/" class="quiz-cat-card" style="--cat-color:#e97c2a;">
+          <a href="{{ site.url }}/gk-quiz/world-history/" class="quiz-cat-card" style="--cat-color:#e97c2a;">
             <div class="quiz-cat-card__icon">🌍</div>
             <div class="quiz-cat-card__content">
               <div class="quiz-cat-card__name">World History</div>
@@ -132,7 +133,7 @@ extra_js:
             <span class="quiz-cat-card__arrow">→</span>
           </a>
 
-          <a href="/gk-quiz/indian-constitution/" class="quiz-cat-card" style="--cat-color:#3ecfcf;">
+          <a href="{{ site.url }}/gk-quiz/indian-constitution/" class="quiz-cat-card" style="--cat-color:#3ecfcf;">
             <div class="quiz-cat-card__icon">⚖️</div>
             <div class="quiz-cat-card__content">
               <div class="quiz-cat-card__name">Indian Government & Constitution</div>
@@ -141,7 +142,7 @@ extra_js:
             <span class="quiz-cat-card__arrow">→</span>
           </a>
 
-          <a href="/gk-quiz/indian-economy/" class="quiz-cat-card" style="--cat-color:#3ecfcf;">
+          <a href="{{ site.url }}/gk-quiz/indian-economy/" class="quiz-cat-card" style="--cat-color:#3ecfcf;">
             <div class="quiz-cat-card__icon">💰</div>
             <div class="quiz-cat-card__content">
               <div class="quiz-cat-card__name">Indian Economy</div>
@@ -150,7 +151,7 @@ extra_js:
             <span class="quiz-cat-card__arrow">→</span>
           </a>
 
-          <a href="/gk-quiz/environment/" class="quiz-cat-card" style="--cat-color:#34d399;">
+          <a href="{{ site.url }}/gk-quiz/environment/" class="quiz-cat-card" style="--cat-color:#34d399;">
             <div class="quiz-cat-card__icon">🌿</div>
             <div class="quiz-cat-card__content">
               <div class="quiz-cat-card__name">Environment & Biodiversity</div>
@@ -159,7 +160,7 @@ extra_js:
             <span class="quiz-cat-card__arrow">→</span>
           </a>
 
-          <a href="/gk-quiz/indian-art-culture/" class="quiz-cat-card" style="--cat-color:#a78bfa;">
+          <a href="{{ site.url }}/gk-quiz/indian-art-culture/" class="quiz-cat-card" style="--cat-color:#a78bfa;">
             <div class="quiz-cat-card__icon">🎭</div>
             <div class="quiz-cat-card__content">
               <div class="quiz-cat-card__name">Indian Art & Culture</div>
@@ -168,7 +169,7 @@ extra_js:
             <span class="quiz-cat-card__arrow">→</span>
           </a>
 
-          <a href="/gk-quiz/physics/" class="quiz-cat-card" style="--cat-color:#60a5fa;">
+          <a href="{{ site.url }}/gk-quiz/physics/" class="quiz-cat-card" style="--cat-color:#60a5fa;">
             <div class="quiz-cat-card__icon">⚡</div>
             <div class="quiz-cat-card__content">
               <div class="quiz-cat-card__name">Physics</div>
@@ -177,7 +178,7 @@ extra_js:
             <span class="quiz-cat-card__arrow">→</span>
           </a>
 
-          <a href="/gk-quiz/chemistry/" class="quiz-cat-card" style="--cat-color:#60a5fa;">
+          <a href="{{ site.url }}/gk-quiz/chemistry/" class="quiz-cat-card" style="--cat-color:#60a5fa;">
             <div class="quiz-cat-card__icon">🧪</div>
             <div class="quiz-cat-card__content">
               <div class="quiz-cat-card__name">Chemistry</div>
@@ -186,7 +187,7 @@ extra_js:
             <span class="quiz-cat-card__arrow">→</span>
           </a>
 
-          <a href="/gk-quiz/mathematics/" class="quiz-cat-card" style="--cat-color:#60a5fa;">
+          <a href="{{ site.url }}/gk-quiz/mathematics/" class="quiz-cat-card" style="--cat-color:#60a5fa;">
             <div class="quiz-cat-card__icon">🔢</div>
             <div class="quiz-cat-card__content">
               <div class="quiz-cat-card__name">Mathematics</div>
@@ -195,7 +196,7 @@ extra_js:
             <span class="quiz-cat-card__arrow">→</span>
           </a>
 
-          <a href="/gk-quiz/biology/" class="quiz-cat-card" style="--cat-color:#34d399;">
+          <a href="{{ site.url }}/gk-quiz/biology/" class="quiz-cat-card" style="--cat-color:#34d399;">
             <div class="quiz-cat-card__icon">🧬</div>
             <div class="quiz-cat-card__content">
               <div class="quiz-cat-card__name">Biology</div>
@@ -204,7 +205,7 @@ extra_js:
             <span class="quiz-cat-card__arrow">→</span>
           </a>
 
-          <a href="/gk-quiz/computer/" class="quiz-cat-card" style="--cat-color:#a78bfa;">
+          <a href="{{ site.url }}/gk-quiz/computer/" class="quiz-cat-card" style="--cat-color:#a78bfa;">
             <div class="quiz-cat-card__icon">💻</div>
             <div class="quiz-cat-card__content">
               <div class="quiz-cat-card__name">Computer</div>
@@ -213,7 +214,7 @@ extra_js:
             <span class="quiz-cat-card__arrow">→</span>
           </a>
 
-          <a href="/gk-quiz/sanskrit/" class="quiz-cat-card" style="--cat-color:#f5a623;">
+          <a href="{{ site.url }}/gk-quiz/sanskrit/" class="quiz-cat-card" style="--cat-color:#f5a623;">
             <div class="quiz-cat-card__icon">📜</div>
             <div class="quiz-cat-card__content">
               <div class="quiz-cat-card__name">Sanskrit</div>
@@ -222,7 +223,7 @@ extra_js:
             <span class="quiz-cat-card__arrow">→</span>
           </a>
 
-          <a href="/gk-quiz/science-technology/" class="quiz-cat-card" style="--cat-color:#60a5fa;">
+          <a href="{{ site.url }}/gk-quiz/science-technology/" class="quiz-cat-card" style="--cat-color:#60a5fa;">
             <div class="quiz-cat-card__icon">🔬</div>
             <div class="quiz-cat-card__content">
               <div class="quiz-cat-card__name">Science & Technology</div>
@@ -231,7 +232,7 @@ extra_js:
             <span class="quiz-cat-card__arrow">→</span>
           </a>
 
-          <a href="/gk-quiz/books-authors/" class="quiz-cat-card" style="--cat-color:#fb923c;">
+          <a href="{{ site.url }}/gk-quiz/books-authors/" class="quiz-cat-card" style="--cat-color:#fb923c;">
             <div class="quiz-cat-card__icon">📚</div>
             <div class="quiz-cat-card__content">
               <div class="quiz-cat-card__name">Books & Authors</div>
@@ -240,7 +241,7 @@ extra_js:
             <span class="quiz-cat-card__arrow">→</span>
           </a>
 
-          <a href="/gk-quiz/sports/" class="quiz-cat-card" style="--cat-color:#f5a623;">
+          <a href="{{ site.url }}/gk-quiz/sports/" class="quiz-cat-card" style="--cat-color:#f5a623;">
             <div class="quiz-cat-card__icon">🏆</div>
             <div class="quiz-cat-card__content">
               <div class="quiz-cat-card__name">Sports General Knowledge</div>
@@ -249,7 +250,7 @@ extra_js:
             <span class="quiz-cat-card__arrow">→</span>
           </a>
 
-          <a href="/gk-quiz/famous-personalities/" class="quiz-cat-card" style="--cat-color:#a78bfa;">
+          <a href="{{ site.url }}/gk-quiz/famous-personalities/" class="quiz-cat-card" style="--cat-color:#a78bfa;">
             <div class="quiz-cat-card__icon">👤</div>
             <div class="quiz-cat-card__content">
               <div class="quiz-cat-card__name">Famous Personalities</div>
@@ -258,7 +259,7 @@ extra_js:
             <span class="quiz-cat-card__arrow">→</span>
           </a>
 
-          <a href="/gk-quiz/technology-inventions/" class="quiz-cat-card" style="--cat-color:#60a5fa;">
+          <a href="{{ site.url }}/gk-quiz/technology-inventions/" class="quiz-cat-card" style="--cat-color:#60a5fa;">
             <div class="quiz-cat-card__icon">💡</div>
             <div class="quiz-cat-card__content">
               <div class="quiz-cat-card__name">Technology & Inventions</div>
@@ -267,7 +268,7 @@ extra_js:
             <span class="quiz-cat-card__arrow">→</span>
           </a>
 
-          <a href="/gk-quiz/space-universe/" class="quiz-cat-card" style="--cat-color:#a78bfa;">
+          <a href="{{ site.url }}/gk-quiz/space-universe/" class="quiz-cat-card" style="--cat-color:#a78bfa;">
             <div class="quiz-cat-card__icon">🚀</div>
             <div class="quiz-cat-card__content">
               <div class="quiz-cat-card__name">Space & Universe</div>
@@ -276,7 +277,7 @@ extra_js:
             <span class="quiz-cat-card__arrow">→</span>
           </a>
 
-          <a href="/gk-quiz/indian-geography/" class="quiz-cat-card" style="--cat-color:#34d399;">
+          <a href="{{ site.url }}/gk-quiz/indian-geography/" class="quiz-cat-card" style="--cat-color:#34d399;">
             <div class="quiz-cat-card__icon">🗺️</div>
             <div class="quiz-cat-card__content">
               <div class="quiz-cat-card__name">Indian Geography</div>
@@ -285,7 +286,7 @@ extra_js:
             <span class="quiz-cat-card__arrow">→</span>
           </a>
 
-          <a href="/gk-quiz/world-geography/" class="quiz-cat-card" style="--cat-color:#34d399;">
+          <a href="{{ site.url }}/gk-quiz/world-geography/" class="quiz-cat-card" style="--cat-color:#34d399;">
             <div class="quiz-cat-card__icon">🌐</div>
             <div class="quiz-cat-card__content">
               <div class="quiz-cat-card__name">World Geography</div>
@@ -294,7 +295,7 @@ extra_js:
             <span class="quiz-cat-card__arrow">→</span>
           </a>
 
-          <a href="/gk-quiz/indian-festivals/" class="quiz-cat-card" style="--cat-color:#f5a623;">
+          <a href="{{ site.url }}/gk-quiz/indian-festivals/" class="quiz-cat-card" style="--cat-color:#f5a623;">
             <div class="quiz-cat-card__icon">🪔</div>
             <div class="quiz-cat-card__content">
               <div class="quiz-cat-card__name">Indian Festivals & Traditions</div>
@@ -303,7 +304,7 @@ extra_js:
             <span class="quiz-cat-card__arrow">→</span>
           </a>
 
-          <a href="/gk-quiz/world-organizations/" class="quiz-cat-card" style="--cat-color:#3ecfcf;">
+          <a href="{{ site.url }}/gk-quiz/world-organizations/" class="quiz-cat-card" style="--cat-color:#3ecfcf;">
             <div class="quiz-cat-card__icon">🤝</div>
             <div class="quiz-cat-card__content">
               <div class="quiz-cat-card__name">World Organizations</div>
@@ -312,7 +313,7 @@ extra_js:
             <span class="quiz-cat-card__arrow">→</span>
           </a>
 
-          <a href="/gk-quiz/international-relations/" class="quiz-cat-card" style="--cat-color:#3ecfcf;">
+          <a href="{{ site.url }}/gk-quiz/international-relations/" class="quiz-cat-card" style="--cat-color:#3ecfcf;">
             <div class="quiz-cat-card__icon">🌏</div>
             <div class="quiz-cat-card__content">
               <div class="quiz-cat-card__name">International Relations</div>
@@ -321,7 +322,7 @@ extra_js:
             <span class="quiz-cat-card__arrow">→</span>
           </a>
 
-          <a href="/gk-quiz/awards-honors/" class="quiz-cat-card" style="--cat-color:#f5a623;">
+          <a href="{{ site.url }}/gk-quiz/awards-honors/" class="quiz-cat-card" style="--cat-color:#f5a623;">
             <div class="quiz-cat-card__icon">🏅</div>
             <div class="quiz-cat-card__content">
               <div class="quiz-cat-card__name">Awards & Honors</div>
@@ -330,7 +331,7 @@ extra_js:
             <span class="quiz-cat-card__arrow">→</span>
           </a>
 
-          <a href="/gk-quiz/indian-defense/" class="quiz-cat-card" style="--cat-color:#f87171;">
+          <a href="{{ site.url }}/gk-quiz/indian-defense/" class="quiz-cat-card" style="--cat-color:#f87171;">
             <div class="quiz-cat-card__icon">🛡️</div>
             <div class="quiz-cat-card__content">
               <div class="quiz-cat-card__name">Indian Defense</div>
@@ -339,7 +340,7 @@ extra_js:
             <span class="quiz-cat-card__arrow">→</span>
           </a>
 
-          <a href="/gk-quiz/important-dates/" class="quiz-cat-card" style="--cat-color:#fb923c;">
+          <a href="{{ site.url }}/gk-quiz/important-dates/" class="quiz-cat-card" style="--cat-color:#fb923c;">
             <div class="quiz-cat-card__icon">📅</div>
             <div class="quiz-cat-card__content">
               <div class="quiz-cat-card__name">Important Dates & Events</div>
@@ -348,7 +349,7 @@ extra_js:
             <span class="quiz-cat-card__arrow">→</span>
           </a>
 
-          <a href="/gk-quiz/transport/" class="quiz-cat-card" style="--cat-color:#3ecfcf;">
+          <a href="{{ site.url }}/gk-quiz/transport/" class="quiz-cat-card" style="--cat-color:#3ecfcf;">
             <div class="quiz-cat-card__icon">🚆</div>
             <div class="quiz-cat-card__content">
               <div class="quiz-cat-card__name">Transport & Communication</div>
@@ -357,7 +358,7 @@ extra_js:
             <span class="quiz-cat-card__arrow">→</span>
           </a>
 
-          <a href="/gk-quiz/famous-monuments/" class="quiz-cat-card" style="--cat-color:#e97c2a;">
+          <a href="{{ site.url }}/gk-quiz/famous-monuments/" class="quiz-cat-card" style="--cat-color:#e97c2a;">
             <div class="quiz-cat-card__icon">🏯</div>
             <div class="quiz-cat-card__content">
               <div class="quiz-cat-card__name">Famous Monuments</div>
@@ -366,7 +367,7 @@ extra_js:
             <span class="quiz-cat-card__arrow">→</span>
           </a>
 
-          <a href="/gk-quiz/wildlife/" class="quiz-cat-card" style="--cat-color:#34d399;">
+          <a href="{{ site.url }}/gk-quiz/wildlife/" class="quiz-cat-card" style="--cat-color:#34d399;">
             <div class="quiz-cat-card__icon">🐯</div>
             <div class="quiz-cat-card__content">
               <div class="quiz-cat-card__name">Wildlife & National Parks</div>
@@ -375,7 +376,7 @@ extra_js:
             <span class="quiz-cat-card__arrow">→</span>
           </a>
 
-          <a href="/gk-quiz/rivers/" class="quiz-cat-card" style="--cat-color:#60a5fa;">
+          <a href="{{ site.url }}/gk-quiz/rivers/" class="quiz-cat-card" style="--cat-color:#60a5fa;">
             <div class="quiz-cat-card__icon">🏞️</div>
             <div class="quiz-cat-card__content">
               <div class="quiz-cat-card__name">Rivers & Lakes</div>
@@ -384,7 +385,7 @@ extra_js:
             <span class="quiz-cat-card__arrow">→</span>
           </a>
 
-          <a href="/gk-quiz/disasters/" class="quiz-cat-card" style="--cat-color:#f87171;">
+          <a href="{{ site.url }}/gk-quiz/disasters/" class="quiz-cat-card" style="--cat-color:#f87171;">
             <div class="quiz-cat-card__icon">⚠️</div>
             <div class="quiz-cat-card__content">
               <div class="quiz-cat-card__name">Disasters & Accidents</div>
@@ -406,22 +407,22 @@ extra_js:
       <div class="quiz-section">
         <h2 class="quiz-section__title">🏆 परीक्षा कॉर्नर</h2>
         <div class="exam-corner">
-          <a href="/gk-quiz/hi/ssc/" class="exam-card">
+          <a href="{{ site.url }}/gk-quiz/hi/ssc/" class="exam-card">
             <div class="exam-card__icon">🎯</div>
             <div class="exam-card__name">SSC परीक्षा</div>
             <div class="exam-card__desc">CGL, CHSL, MTS — विषयवार अभ्यास</div>
           </a>
-          <a href="/gk-quiz/hi/banking/" class="exam-card">
+          <a href="{{ site.url }}/gk-quiz/hi/banking/" class="exam-card">
             <div class="exam-card__icon">🏦</div>
             <div class="exam-card__name">बैंकिंग</div>
             <div class="exam-card__desc">IBPS PO, Clerk, SBI — GK प्रश्न</div>
           </a>
-          <a href="/gk-quiz/hi/railway/" class="exam-card">
+          <a href="{{ site.url }}/gk-quiz/hi/railway/" class="exam-card">
             <div class="exam-card__icon">🚆</div>
             <div class="exam-card__name">रेलवे</div>
             <div class="exam-card__desc">RRB NTPC, Group D — GK अभ्यास</div>
           </a>
-          <a href="/gk-quiz/hi/upsc/" class="exam-card">
+          <a href="{{ site.url }}/gk-quiz/hi/upsc/" class="exam-card">
             <div class="exam-card__icon">🏛️</div>
             <div class="exam-card__name">UPSC</div>
             <div class="exam-card__desc">Prelims GK — इतिहास, राजव्यवस्था</div>
@@ -434,7 +435,7 @@ extra_js:
         <h2 class="quiz-section__title">📚 सभी विषय</h2>
         <div class="quiz-grid">
 
-          <a href="/gk-quiz/hi/prachin-itihas/" class="quiz-cat-card" style="--cat-color:#e97c2a;">
+          <a href="{{ site.url }}/gk-quiz/hi/prachin-itihas/" class="quiz-cat-card" style="--cat-color:#e97c2a;">
             <div class="quiz-cat-card__icon">🏛️</div>
             <div class="quiz-cat-card__content">
               <div class="quiz-cat-card__name">प्राचीन भारतीय इतिहास</div>
@@ -443,7 +444,7 @@ extra_js:
             <span class="quiz-cat-card__arrow">→</span>
           </a>
 
-          <a href="/gk-quiz/hi/madhyakalin-itihas/" class="quiz-cat-card" style="--cat-color:#e97c2a;">
+          <a href="{{ site.url }}/gk-quiz/hi/madhyakalin-itihas/" class="quiz-cat-card" style="--cat-color:#e97c2a;">
             <div class="quiz-cat-card__icon">🕌</div>
             <div class="quiz-cat-card__content">
               <div class="quiz-cat-card__name">मध्यकालीन भारतीय इतिहास</div>
@@ -452,7 +453,7 @@ extra_js:
             <span class="quiz-cat-card__arrow">→</span>
           </a>
 
-          <a href="/gk-quiz/hi/aadhunik-itihas/" class="quiz-cat-card" style="--cat-color:#e97c2a;">
+          <a href="{{ site.url }}/gk-quiz/hi/aadhunik-itihas/" class="quiz-cat-card" style="--cat-color:#e97c2a;">
             <div class="quiz-cat-card__icon">🇮🇳</div>
             <div class="quiz-cat-card__content">
               <div class="quiz-cat-card__name">आधुनिक भारतीय इतिहास</div>
@@ -461,7 +462,7 @@ extra_js:
             <span class="quiz-cat-card__arrow">→</span>
           </a>
 
-          <a href="/gk-quiz/hi/vishwa-itihas/" class="quiz-cat-card" style="--cat-color:#e97c2a;">
+          <a href="{{ site.url }}/gk-quiz/hi/vishwa-itihas/" class="quiz-cat-card" style="--cat-color:#e97c2a;">
             <div class="quiz-cat-card__icon">🌍</div>
             <div class="quiz-cat-card__content">
               <div class="quiz-cat-card__name">विश्व इतिहास</div>
@@ -470,7 +471,7 @@ extra_js:
             <span class="quiz-cat-card__arrow">→</span>
           </a>
 
-          <a href="/gk-quiz/hi/samvidhan/" class="quiz-cat-card" style="--cat-color:#3ecfcf;">
+          <a href="{{ site.url }}/gk-quiz/hi/samvidhan/" class="quiz-cat-card" style="--cat-color:#3ecfcf;">
             <div class="quiz-cat-card__icon">⚖️</div>
             <div class="quiz-cat-card__content">
               <div class="quiz-cat-card__name">भारतीय सरकार और संविधान</div>
@@ -479,7 +480,7 @@ extra_js:
             <span class="quiz-cat-card__arrow">→</span>
           </a>
 
-          <a href="/gk-quiz/hi/arthavyavastha/" class="quiz-cat-card" style="--cat-color:#3ecfcf;">
+          <a href="{{ site.url }}/gk-quiz/hi/arthavyavastha/" class="quiz-cat-card" style="--cat-color:#3ecfcf;">
             <div class="quiz-cat-card__icon">💰</div>
             <div class="quiz-cat-card__content">
               <div class="quiz-cat-card__name">भारतीय अर्थव्यवस्था</div>
@@ -488,7 +489,7 @@ extra_js:
             <span class="quiz-cat-card__arrow">→</span>
           </a>
 
-          <a href="/gk-quiz/hi/paryavaran/" class="quiz-cat-card" style="--cat-color:#34d399;">
+          <a href="{{ site.url }}/gk-quiz/hi/paryavaran/" class="quiz-cat-card" style="--cat-color:#34d399;">
             <div class="quiz-cat-card__icon">🌿</div>
             <div class="quiz-cat-card__content">
               <div class="quiz-cat-card__name">पर्यावरण और जैव विविधता</div>
@@ -497,7 +498,7 @@ extra_js:
             <span class="quiz-cat-card__arrow">→</span>
           </a>
 
-          <a href="/gk-quiz/hi/kala-sanskriti/" class="quiz-cat-card" style="--cat-color:#a78bfa;">
+          <a href="{{ site.url }}/gk-quiz/hi/kala-sanskriti/" class="quiz-cat-card" style="--cat-color:#a78bfa;">
             <div class="quiz-cat-card__icon">🎭</div>
             <div class="quiz-cat-card__content">
               <div class="quiz-cat-card__name">भारतीय कला और संस्कृति</div>
@@ -506,7 +507,7 @@ extra_js:
             <span class="quiz-cat-card__arrow">→</span>
           </a>
 
-          <a href="/gk-quiz/hi/bhautiki/" class="quiz-cat-card" style="--cat-color:#60a5fa;">
+          <a href="{{ site.url }}/gk-quiz/hi/bhautiki/" class="quiz-cat-card" style="--cat-color:#60a5fa;">
             <div class="quiz-cat-card__icon">⚡</div>
             <div class="quiz-cat-card__content">
               <div class="quiz-cat-card__name">भौतिकी</div>
@@ -515,7 +516,7 @@ extra_js:
             <span class="quiz-cat-card__arrow">→</span>
           </a>
 
-          <a href="/gk-quiz/hi/rasayan/" class="quiz-cat-card" style="--cat-color:#60a5fa;">
+          <a href="{{ site.url }}/gk-quiz/hi/rasayan/" class="quiz-cat-card" style="--cat-color:#60a5fa;">
             <div class="quiz-cat-card__icon">🧪</div>
             <div class="quiz-cat-card__content">
               <div class="quiz-cat-card__name">रसायन विज्ञान</div>
@@ -524,7 +525,7 @@ extra_js:
             <span class="quiz-cat-card__arrow">→</span>
           </a>
 
-          <a href="/gk-quiz/hi/ganit/" class="quiz-cat-card" style="--cat-color:#60a5fa;">
+          <a href="{{ site.url }}/gk-quiz/hi/ganit/" class="quiz-cat-card" style="--cat-color:#60a5fa;">
             <div class="quiz-cat-card__icon">🔢</div>
             <div class="quiz-cat-card__content">
               <div class="quiz-cat-card__name">गणित</div>
@@ -533,7 +534,7 @@ extra_js:
             <span class="quiz-cat-card__arrow">→</span>
           </a>
 
-          <a href="/gk-quiz/hi/jeev-vigyan/" class="quiz-cat-card" style="--cat-color:#34d399;">
+          <a href="{{ site.url }}/gk-quiz/hi/jeev-vigyan/" class="quiz-cat-card" style="--cat-color:#34d399;">
             <div class="quiz-cat-card__icon">🧬</div>
             <div class="quiz-cat-card__content">
               <div class="quiz-cat-card__name">जीव विज्ञान</div>
@@ -542,7 +543,7 @@ extra_js:
             <span class="quiz-cat-card__arrow">→</span>
           </a>
 
-          <a href="/gk-quiz/hi/computer/" class="quiz-cat-card" style="--cat-color:#a78bfa;">
+          <a href="{{ site.url }}/gk-quiz/hi/computer/" class="quiz-cat-card" style="--cat-color:#a78bfa;">
             <div class="quiz-cat-card__icon">💻</div>
             <div class="quiz-cat-card__content">
               <div class="quiz-cat-card__name">कंप्यूटर</div>
@@ -551,7 +552,7 @@ extra_js:
             <span class="quiz-cat-card__arrow">→</span>
           </a>
 
-          <a href="/gk-quiz/hi/vigyan-taknik/" class="quiz-cat-card" style="--cat-color:#60a5fa;">
+          <a href="{{ site.url }}/gk-quiz/hi/vigyan-taknik/" class="quiz-cat-card" style="--cat-color:#60a5fa;">
             <div class="quiz-cat-card__icon">🔬</div>
             <div class="quiz-cat-card__content">
               <div class="quiz-cat-card__name">विज्ञान और प्रौद्योगिकी</div>
@@ -560,7 +561,7 @@ extra_js:
             <span class="quiz-cat-card__arrow">→</span>
           </a>
 
-          <a href="/gk-quiz/hi/khel/" class="quiz-cat-card" style="--cat-color:#f5a623;">
+          <a href="{{ site.url }}/gk-quiz/hi/khel/" class="quiz-cat-card" style="--cat-color:#f5a623;">
             <div class="quiz-cat-card__icon">🏆</div>
             <div class="quiz-cat-card__content">
               <div class="quiz-cat-card__name">खेल सामान्य ज्ञान</div>
@@ -569,7 +570,7 @@ extra_js:
             <span class="quiz-cat-card__arrow">→</span>
           </a>
 
-          <a href="/gk-quiz/hi/antariksh/" class="quiz-cat-card" style="--cat-color:#a78bfa;">
+          <a href="{{ site.url }}/gk-quiz/hi/antariksh/" class="quiz-cat-card" style="--cat-color:#a78bfa;">
             <div class="quiz-cat-card__icon">🚀</div>
             <div class="quiz-cat-card__content">
               <div class="quiz-cat-card__name">अंतरिक्ष और ब्रह्मांड</div>
@@ -578,7 +579,7 @@ extra_js:
             <span class="quiz-cat-card__arrow">→</span>
           </a>
 
-          <a href="/gk-quiz/hi/bhartiya-bhugol/" class="quiz-cat-card" style="--cat-color:#34d399;">
+          <a href="{{ site.url }}/gk-quiz/hi/bhartiya-bhugol/" class="quiz-cat-card" style="--cat-color:#34d399;">
             <div class="quiz-cat-card__icon">🗺️</div>
             <div class="quiz-cat-card__content">
               <div class="quiz-cat-card__name">भारतीय भूगोल</div>
@@ -587,7 +588,7 @@ extra_js:
             <span class="quiz-cat-card__arrow">→</span>
           </a>
 
-          <a href="/gk-quiz/hi/vishwa-bhugol/" class="quiz-cat-card" style="--cat-color:#34d399;">
+          <a href="{{ site.url }}/gk-quiz/hi/vishwa-bhugol/" class="quiz-cat-card" style="--cat-color:#34d399;">
             <div class="quiz-cat-card__icon">🌐</div>
             <div class="quiz-cat-card__content">
               <div class="quiz-cat-card__name">विश्व भूगोल</div>
@@ -596,7 +597,7 @@ extra_js:
             <span class="quiz-cat-card__arrow">→</span>
           </a>
 
-          <a href="/gk-quiz/hi/tyohar/" class="quiz-cat-card" style="--cat-color:#f5a623;">
+          <a href="{{ site.url }}/gk-quiz/hi/tyohar/" class="quiz-cat-card" style="--cat-color:#f5a623;">
             <div class="quiz-cat-card__icon">🪔</div>
             <div class="quiz-cat-card__content">
               <div class="quiz-cat-card__name">भारतीय त्यौहार और परंपराएँ</div>
@@ -605,7 +606,7 @@ extra_js:
             <span class="quiz-cat-card__arrow">→</span>
           </a>
 
-          <a href="/gk-quiz/hi/puraskaar/" class="quiz-cat-card" style="--cat-color:#f5a623;">
+          <a href="{{ site.url }}/gk-quiz/hi/puraskaar/" class="quiz-cat-card" style="--cat-color:#f5a623;">
             <div class="quiz-cat-card__icon">🏅</div>
             <div class="quiz-cat-card__content">
               <div class="quiz-cat-card__name">पुरस्कार और सम्मान</div>
@@ -614,7 +615,7 @@ extra_js:
             <span class="quiz-cat-card__arrow">→</span>
           </a>
 
-          <a href="/gk-quiz/hi/raksha/" class="quiz-cat-card" style="--cat-color:#f87171;">
+          <a href="{{ site.url }}/gk-quiz/hi/raksha/" class="quiz-cat-card" style="--cat-color:#f87171;">
             <div class="quiz-cat-card__icon">🛡️</div>
             <div class="quiz-cat-card__content">
               <div class="quiz-cat-card__name">भारतीय रक्षा</div>
@@ -623,7 +624,7 @@ extra_js:
             <span class="quiz-cat-card__arrow">→</span>
           </a>
 
-          <a href="/gk-quiz/hi/nadiyan/" class="quiz-cat-card" style="--cat-color:#60a5fa;">
+          <a href="{{ site.url }}/gk-quiz/hi/nadiyan/" class="quiz-cat-card" style="--cat-color:#60a5fa;">
             <div class="quiz-cat-card__icon">🏞️</div>
             <div class="quiz-cat-card__content">
               <div class="quiz-cat-card__name">नदियाँ और झीलें</div>
@@ -632,7 +633,7 @@ extra_js:
             <span class="quiz-cat-card__arrow">→</span>
           </a>
 
-          <a href="/gk-quiz/hi/vanya-jeev/" class="quiz-cat-card" style="--cat-color:#34d399;">
+          <a href="{{ site.url }}/gk-quiz/hi/vanya-jeev/" class="quiz-cat-card" style="--cat-color:#34d399;">
             <div class="quiz-cat-card__icon">🐯</div>
             <div class="quiz-cat-card__content">
               <div class="quiz-cat-card__name">वन्यजीव और राष्ट्रीय उद्यान</div>
@@ -641,7 +642,7 @@ extra_js:
             <span class="quiz-cat-card__arrow">→</span>
           </a>
 
-          <a href="/gk-quiz/hi/aapda/" class="quiz-cat-card" style="--cat-color:#f87171;">
+          <a href="{{ site.url }}/gk-quiz/hi/aapda/" class="quiz-cat-card" style="--cat-color:#f87171;">
             <div class="quiz-cat-card__icon">⚠️</div>
             <div class="quiz-cat-card__content">
               <div class="quiz-cat-card__name">आपदाएँ और दुर्घटनाएँ</div>
