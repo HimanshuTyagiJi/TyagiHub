@@ -4,35 +4,41 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Discussion & Reviews Forum - TyagiHub</title>
-  <meta name="description" content="TyagiHub ki is video series aur development forum par aapka swagat hai. Yahan sabhi important reviews aur discussions live chalte hain.">
-  <meta property="og:description" content="TyagiHub Forums: Join the core community discussion, track mobile applications, and view live user ratings instantly.">
-  <meta property="og:title" content="Discussion Panel - TyagiHub Core Platform">
+  <meta name="description" content="TyagiHub community discussion and live user reviews.">
 </head>
 <body>
 
-<div id="tc-root">
+<!--
+  ╔══════════════════════════════════════════════════════════════════╗
+  ║  USAGE: Paste this block into any Jekyll page.                   ║
+  ║  Set the data-page-url attribute to the REAL path of that page.  ║
+  ║  Example: <div id="tc-root" data-page-url="/tools/pdf-editor">   ║
+  ║                                                                   ║
+  ║  DO NOT use location.pathname — it returns /dashboard on Jekyll. ║
+  ╚══════════════════════════════════════════════════════════════════╝
+-->
+<div id="tc-root" data-page-url="/YOUR-PAGE-PATH-HERE">
+
   <div class="tc-header">
     <div class="tc-header-left">
-      <h2 style="margin:0; font-size:18px; font-weight: bold; color: #202124;">Discussion & Reviews</h2>
-      <div id="tc-rating-summary" class="tc-ps-rating">
+      <h2 style="margin:0;font-size:18px;font-weight:bold;color:#202124;">Discussion & Reviews</h2>
+      <div class="tc-ps-rating">
         <span id="tc-avg-num" class="tc-avg-big">0.0</span>
         <div class="tc-ps-stars-wrap">
-          <div id="tc-avg-stars" class="tc-stars-fs">★★★★★</div>
+          <div id="tc-avg-stars" class="tc-stars-fs">☆☆☆☆☆</div>
           <div id="tc-total-votes" class="tc-total-v">0 reviews</div>
         </div>
       </div>
     </div>
-    
     <div id="tc-auth-zone">
       <div id="tc-auth-gate">
-        <div id="g_id_onload" 
-             data-client_id="1052184634573-pa4qebig69ntj46lfhgkbui319bd91e9.apps.googleusercontent.com" 
-             data-callback="onGoogleAuth">
-        </div>
+        <div id="g_id_onload"
+             data-client_id="1052184634573-pa4qebig69ntj46lfhgkbui319bd91e9.apps.googleusercontent.com"
+             data-callback="onGoogleAuth"></div>
         <div class="g_id_signin" data-type="standard" data-shape="pill"></div>
       </div>
       <div id="tc-user-pill" style="display:none" class="tc-user-pill">
-        <img id="tc-user-pfp" src="" class="tc-pfp-small">
+        <img id="tc-user-pfp" src="" class="tc-pfp-small" alt="">
         <span id="tc-user-name" class="tc-u-name"></span>
         <button onclick="tcLogout()" class="tc-logout-btn">Logout</button>
       </div>
@@ -40,20 +46,20 @@
   </div>
 
   <div class="tc-user-rate-box">
-    <p style="margin:0 0 5px 0; font-size:12px; color:#666;">Tap stars to rate this page:</p>
+    <p style="margin:0 0 5px;font-size:12px;color:#666;">Tap stars to rate this page:</p>
     <div id="tc-star-row" class="tc-stars-input">
-      <span class="tc-s" onclick="handleStar(1)" onmouseover="hoverStar(1)" onmouseout="resetStar()">★</span>
-      <span class="tc-s" onclick="handleStar(2)" onmouseover="hoverStar(2)" onmouseout="resetStar()">★</span>
-      <span class="tc-s" onclick="handleStar(3)" onmouseover="hoverStar(3)" onmouseout="resetStar()">★</span>
-      <span class="tc-s" onclick="handleStar(4)" onmouseover="hoverStar(4)" onmouseout="resetStar()">★</span>
-      <span class="tc-s" onclick="handleStar(5)" onmouseover="hoverStar(5)" onmouseout="resetStar()">★</span>
+      <span class="tc-s" data-val="1">★</span>
+      <span class="tc-s" data-val="2">★</span>
+      <span class="tc-s" data-val="3">★</span>
+      <span class="tc-s" data-val="4">★</span>
+      <span class="tc-s" data-val="5">★</span>
     </div>
   </div>
 
   <div id="tc-main-editor" class="tc-editor-box">
     <textarea id="tc-input" placeholder="Join the discussion..."></textarea>
-    <div style="text-align:right; margin-top:8px;">
-      <button onclick="handleAction('0')" class="tc-post-btn">Post Comment</button>
+    <div style="text-align:right;margin-top:8px;">
+      <button id="tc-post-btn" class="tc-post-btn">Post Comment</button>
     </div>
   </div>
 
@@ -61,241 +67,322 @@
 </div>
 
 <style>
-  #tc-root { max-width:750px; margin:20px auto; border:1px solid #ddd; border-radius:12px; background:#fff; font-family:sans-serif; overflow:hidden; box-shadow:0 4px 12px rgba(0,0,0,0.08); }
-  .tc-header { padding:15px 20px; border-bottom:1px solid #eee; display:flex; justify-content:space-between; align-items:flex-start; background:#fafafa; }
-  .tc-ps-rating { display:flex; align-items:center; gap:10px; margin-top:5px; }
-  .tc-avg-big { font-size:32px; font-weight:bold; color:#202124; }
-  .tc-ps-stars-wrap { display:flex; flex-direction:column; }
-  .tc-stars-fs { color:#f4b400; letter-spacing:2px; font-size:14px; }
-  .tc-total-v { font-size:11px; color:#5f6368; }
-  .tc-user-pill { display:flex; align-items:center; gap:8px; background:#fff; border:1px solid #ddd; padding:4px 10px; border-radius:20px; }
-  .tc-pfp-small { width:24px; height:24px; border-radius:50%; }
-  .tc-u-name { font-size:12px; font-weight:bold; max-width:80px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
-  .tc-logout-btn { border:none; background:none; color:#d93025; font-size:10px; cursor:pointer; font-weight:bold; }
-  .tc-user-rate-box { padding:10px; text-align:center; border-bottom:1px solid #eee; }
-  .tc-stars-input { font-size:28px; color:#ddd; cursor:pointer; user-select:none; }
-  .tc-s.active { color:#f4b400; }
-  .tc-editor-box { padding:15px 20px; border-bottom:1px solid #eee; }
-  textarea { width:100%; height:70px; padding:12px; border:1px solid #ddd; border-radius:8px; resize:none; box-sizing:border-box; font-family:inherit; font-size:14px; outline:none; }
-  textarea:focus { border-color:#1a73e8; }
-  .tc-feed { max-height: 500px; overflow-y: auto; background: #fff; }
-  .tc-post-btn { background:#1a73e8; color:#fff; border:none; padding:8px 16px; border-radius:6px; cursor:pointer; font-weight:bold; }
-  .tc-card { padding:15px 20px; border-bottom:1px solid #f1f1f1; transition:opacity 0.3s; }
-  .tc-card.pending { opacity:0.5; border-left:3px solid #f4b400; }
-  .tc-card.reply { margin-left:45px; border-left:2px solid #ddd; background:#fcfcfc; }
-  .tc-card-pfp { width:32px; height:32px; border-radius:50%; vertical-align:middle; margin-right:10px; }
-  .tc-admin-badge { background:#1a73e8; color:white; font-size:9px; padding:2px 5px; border-radius:3px; margin-left:5px; font-weight:bold; }
-  .tc-actions { margin-left:42px; margin-top:10px; display:flex; gap:15px; font-size:12px; font-weight:bold; color:#1a73e8; cursor:pointer; }
-  .tc-inline-box { margin:10px 0 0 42px; }
+  #tc-root{max-width:750px;margin:20px auto;border:1px solid #ddd;border-radius:12px;background:#fff;font-family:sans-serif;overflow:hidden;box-shadow:0 4px 12px rgba(0,0,0,.08);}
+  .tc-header{padding:15px 20px;border-bottom:1px solid #eee;display:flex;justify-content:space-between;align-items:flex-start;background:#fafafa;}
+  .tc-ps-rating{display:flex;align-items:center;gap:10px;margin-top:5px;}
+  .tc-avg-big{font-size:32px;font-weight:bold;color:#202124;}
+  .tc-ps-stars-wrap{display:flex;flex-direction:column;}
+  .tc-stars-fs{color:#f4b400;letter-spacing:2px;font-size:14px;}
+  .tc-total-v{font-size:11px;color:#5f6368;}
+  .tc-user-pill{display:flex;align-items:center;gap:8px;background:#fff;border:1px solid #ddd;padding:4px 10px;border-radius:20px;}
+  .tc-pfp-small{width:24px;height:24px;border-radius:50%;}
+  .tc-u-name{font-size:12px;font-weight:bold;max-width:80px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+  .tc-logout-btn{border:none;background:none;color:#d93025;font-size:10px;cursor:pointer;font-weight:bold;}
+  .tc-user-rate-box{padding:10px;text-align:center;border-bottom:1px solid #eee;}
+  .tc-stars-input{font-size:28px;color:#ddd;cursor:pointer;user-select:none;}
+  .tc-s{transition:color .15s;}
+  .tc-s.active{color:#f4b400;}
+  .tc-editor-box{padding:15px 20px;border-bottom:1px solid #eee;}
+  textarea{width:100%;height:70px;padding:12px;border:1px solid #ddd;border-radius:8px;resize:none;box-sizing:border-box;font-family:inherit;font-size:14px;outline:none;}
+  textarea:focus{border-color:#1a73e8;}
+  .tc-feed{max-height:500px;overflow-y:auto;background:#fff;}
+  .tc-post-btn{background:#1a73e8;color:#fff;border:none;padding:8px 16px;border-radius:6px;cursor:pointer;font-weight:bold;}
+  .tc-post-btn:disabled{background:#aaa;cursor:not-allowed;}
+  .tc-card{padding:15px 20px;border-bottom:1px solid #f1f1f1;transition:opacity .3s;}
+  .tc-card.pending{opacity:.5;border-left:3px solid #f4b400;}
+  .tc-card.reply{margin-left:45px;border-left:2px solid #ddd;background:#fcfcfc;}
+  .tc-card-pfp{width:32px;height:32px;border-radius:50%;vertical-align:middle;margin-right:10px;}
+  .tc-admin-badge{background:#1a73e8;color:white;font-size:9px;padding:2px 5px;border-radius:3px;margin-left:5px;font-weight:bold;}
+  .tc-actions{margin-left:42px;margin-top:10px;display:flex;gap:15px;font-size:12px;font-weight:bold;color:#1a73e8;cursor:pointer;}
+  .tc-inline-box{margin:10px 0 0 42px;}
+  .tc-empty{padding:30px;text-align:center;color:#999;font-size:14px;}
 </style>
 
+<!-- Firebase Module (ESM) -->
 <script type="module">
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.0/firebase-app.js";
-  import { getMessaging, getToken, onMessage } from "https://www.gstatic.com/firebasejs/10.7.0/firebase-messaging.js";
+  import { initializeApp }                          from "https://www.gstatic.com/firebasejs/10.7.0/firebase-app.js";
+  import { getMessaging, getToken, onMessage }      from "https://www.gstatic.com/firebasejs/10.7.0/firebase-messaging.js";
 
-  // NAYE PROJECT KI FIREBASE CONFIG 100% FIXED HERE
   const firebaseConfig = {
-    apiKey: "AIzaSyBE0uXhh8ePOQH6FBdhRCZrRgRkUTwCWws",
-    authDomain: "tyagi-hub.firebaseapp.com",
-    projectId: "tyagi-hub",
-    storageBucket: "tyagi-hub.firebasestorage.app",
+    apiKey           : "AIzaSyBE0uXhh8ePOQH6FBdhRCZrRgRkUTwCWws",
+    authDomain       : "tyagi-hub.firebaseapp.com",
+    projectId        : "tyagi-hub",
+    storageBucket    : "tyagi-hub.firebasestorage.app",
     messagingSenderId: "1052184634573",
-    appId: "1:1052184634573:web:077135d1bc4f321688b584",
-    measurementId: "G-36X3TG734R"
+    appId            : "1:1052184634573:web:077135d1bc4f321688b584",
+    measurementId    : "G-36X3TG734R"
   };
-
   const VAPID_KEY  = "BPSPa7nCW1nGok9peZQepk25VC1OxeFxFHtWVZsen2TnwVCya3Sq2Dtb4W0sX8u06fRsg-eAqgxEUoW2XP1Oyvo";
-  const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxI12kzkCgXohYz99vL7Xy3672FVIrOXfQ2OQT2IuQsdcidgbI7zpZZSJRB6FMxZvgk/exec";
+  const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzLt6yxrdohBhdhOlxhKwSi1SRL1kr0xEVADmEsHFWyzIaCsuwLyQ4ewFrSE2Bk4Z1l/exec";
 
   const app       = initializeApp(firebaseConfig);
   const messaging = getMessaging(app);
 
-  window._tcInitFCM = async function() {  
-    const storedUser = JSON.parse(localStorage.getItem("tc_user"));  
-    if (!storedUser) return;  
-    try {    
-      const sw = await navigator.serviceWorker.register('./sw.js', { scope: './' });    
-      await navigator.serviceWorker.ready;    
-      const perm = await Notification.requestPermission();    
-      if (perm !== "granted") return;    
-      const token = await getToken(messaging, { vapidKey: VAPID_KEY, serviceWorkerRegistration: sw });    
-      if (token) {      
-        fetch(SCRIPT_URL, {        
-          method: "POST", mode: "no-cors",        
-          body: JSON.stringify({ action: "fcm_subscribe", fcmToken: token, email: storedUser.e, name: storedUser.n })      
-        });      
-        console.log("FCM ready ✅");    
-      }  
+  window._tcInitFCM = async function() {
+    const storedUser = JSON.parse(localStorage.getItem("tc_user"));
+    if (!storedUser || !storedUser.e) return;
+    try {
+      const sw   = await navigator.serviceWorker.register('./sw.js', { scope: './' });
+      await navigator.serviceWorker.ready;
+      const perm = await Notification.requestPermission();
+      if (perm !== "granted") return;
+      const token = await getToken(messaging, { vapidKey: VAPID_KEY, serviceWorkerRegistration: sw });
+      if (token) {
+        fetch(SCRIPT_URL, {
+          method: "POST", mode: "no-cors",
+          body: JSON.stringify({ action:"fcm_subscribe", fcmToken:token, email:storedUser.e, name:storedUser.n })
+        });
+        console.log("FCM ready ✅");
+      }
     } catch(err) { console.log("FCM Error:", err); }
 
-    onMessage(messaging, function(payload) {    
-      var title  = payload.notification ? payload.notification.title : "TyagiHub Core 🔔";    
-      var body   = payload.notification ? payload.notification.body  : "";    
-      var url    = (payload.data && payload.data.url) ? payload.data.url : "https://tyagihub.in";    
+    onMessage(messaging, function(payload) {
+      var title = payload.notification ? payload.notification.title : "TyagiHub 🔔";
+      var body  = payload.notification ? payload.notification.body  : "";
+      var url   = (payload.data && payload.data.url) ? payload.data.url : "https://tyagihub.in";
       if (url.startsWith("/")) url = "https://tyagihub.in" + url;
-
-      navigator.serviceWorker.ready.then(function(reg) {      
-        reg.showNotification(title, {        
-          body   : body,        
-          icon   : "/assets/images/tyagi_core.png",        
-          tag    : "tc-notif",        
-          data   : { url: url },        
-          vibrate: [200, 100, 200]      
-        });    
-      });  
+      navigator.serviceWorker.ready.then(function(reg) {
+        reg.showNotification(title, { body, icon:"/assets/images/tyagi_core.png", tag:"tc-notif", data:{url}, vibrate:[200,100,200] });
+      });
     });
   };
 </script>
 
+<!-- Main Logic -->
 <script>
-(function() {  
-  const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxI12kzkCgXohYz99vL7Xy3672FVIrOXfQ2OQT2IuQsdcidgbI7zpZZSJRB6FMxZvgk/exec";
+(function() {
+  "use strict";
 
-  let user          = JSON.parse(localStorage.getItem("tc_user")) || null;  
-  let serverData    = [];  
-  let tempLocal     = [];  
-  let isTyping      = false;  
+  const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzLt6yxrdohBhdhOlxhKwSi1SRL1kr0xEVADmEsHFWyzIaCsuwLyQ4ewFrSE2Bk4Z1l/exec";
+
+  // ── PAGE URL: Read from data attribute, NEVER use location.pathname ──
+  // Jekyll serves pages at paths like /tools/converter/ but location.pathname
+  // inside an iframe/include can return /dashboard. Always use data-page-url.
+  const ROOT_EL  = document.getElementById("tc-root");
+  const PAGE_URL = (ROOT_EL.getAttribute("data-page-url") || "").trim();
+
+  if (!PAGE_URL || PAGE_URL === "/YOUR-PAGE-PATH-HERE") {
+    console.warn("TyagiHub Comments: Set data-page-url on #tc-root! e.g. data-page-url=\"/tools/pdf-editor\"");
+  }
+
+  let user          = JSON.parse(localStorage.getItem("tc_user")) || null;
+  let serverData    = [];
+  let tempLocal     = [];
+  let isTyping      = false;
   let currentRating = 0;
+  let syncTimer     = null;
 
-  function init() {    
-    if (user) {      
-      document.getElementById("tc-auth-gate").style.display = "none";      
-      document.getElementById("tc-user-pill").style.display = "flex";      
-      document.getElementById("tc-user-name").innerText = user.n;      
-      document.getElementById("tc-user-pfp").src = user.p;      
-      setTimeout(function() { if (window._tcInitFCM) window._tcInitFCM(); }, 1500);    
-    }    
-    sync();    
-    setInterval(function() { if (!isTyping) sync(); }, 5000);  
+  // ── INIT ──
+  function init() {
+    if (user) {
+      document.getElementById("tc-auth-gate").style.display  = "none";
+      document.getElementById("tc-user-pill").style.display  = "flex";
+      document.getElementById("tc-user-name").innerText      = user.n;
+      document.getElementById("tc-user-pfp").src             = user.p;
+      setTimeout(function(){ if (window._tcInitFCM) window._tcInitFCM(); }, 1500);
+    }
+
+    // Star events — use event delegation, not inline onclick
+    document.getElementById("tc-star-row").addEventListener("mouseover", function(e) {
+      if (e.target.classList.contains("tc-s") && currentRating === 0) {
+        paintStars(parseInt(e.target.dataset.val));
+      }
+    });
+    document.getElementById("tc-star-row").addEventListener("mouseout",  function() { paintStars(currentRating); });
+    document.getElementById("tc-star-row").addEventListener("click",     function(e) {
+      if (e.target.classList.contains("tc-s")) handleStar(parseInt(e.target.dataset.val));
+    });
+
+    // Post button
+    document.getElementById("tc-post-btn").addEventListener("click", function() { handleAction("0"); });
+
+    // Detect typing to pause auto-sync
+    document.getElementById("tc-input").addEventListener("input",  function() { isTyping = true; });
+    document.getElementById("tc-input").addEventListener("blur",   function() { isTyping = false; });
+
+    sync();
+    syncTimer = setInterval(function() { if (!isTyping) sync(); }, 5000);
   }
 
-  window.onGoogleAuth = function(r) {    
-    var p = JSON.parse(atob(r.credential.split('.')[1]));    
-    user  = { n: p.name, e: p.email, p: p.picture };    
-    localStorage.setItem("tc_user", JSON.stringify(user));    
-    location.reload();  
+  // ── AUTH ──
+  window.onGoogleAuth = function(r) {
+    var p = JSON.parse(atob(r.credential.split(".")[1]));
+    user  = { n: p.name, e: p.email, p: p.picture };
+    localStorage.setItem("tc_user", JSON.stringify(user));
+    location.reload();
+  };
+  window.tcLogout = function() { localStorage.removeItem("tc_user"); location.reload(); };
+
+  // ── STARS ──
+  function paintStars(n) {
+    document.querySelectorAll(".tc-s").forEach(function(s, i) {
+      s.classList.toggle("active", i < n);
+    });
+  }
+
+  function handleStar(n) {
+    if (!user) { alert("Login required to rate!"); return; }
+    // Guard: don't send rating if page URL is not set
+    if (!PAGE_URL || PAGE_URL === "/YOUR-PAGE-PATH-HERE") {
+      alert("Page URL not configured. Rating not saved.");
+      return;
+    }
+    currentRating = n;
+    paintStars(n);
+    // FIX: Only send __RATING_ONLY__ when user is logged in with a valid email
+    fetch(SCRIPT_URL, {
+      method: "POST", mode: "no-cors",
+      body: JSON.stringify({ url: PAGE_URL, email: user.e, name: user.n, rating: n, comment: "__RATING_ONLY__" })
+    });
+  }
+
+  // ── POST / REPLY / EDIT ──
+  window.handleAction = function(pid, mode, rowId) {
+    mode  = mode  || "new";
+    rowId = rowId || null;
+    if (!user) { alert("Please login first!"); return; }
+    if (!PAGE_URL || PAGE_URL === "/YOUR-PAGE-PATH-HERE") { alert("Page URL not configured."); return; }
+
+    var inputId = mode === "edit" ? "edit-in-" + rowId
+                : (pid === "0"   ? "tc-input"
+                :                  "reply-in-" + pid);
+    var inputEl = document.getElementById(inputId);
+    if (!inputEl) return;
+    var msg = inputEl.value.trim();
+    if (!msg) { inputEl.focus(); return; }
+
+    if (mode === "new") {
+      tempLocal.push({
+        rowId: "temp_"+Date.now(), name: user.n, comment: msg,
+        parentId: pid, pic: user.p, date: "Saving...", pending: true, isAdmin: false, email: user.e
+      });
+    } else {
+      var t = serverData.find(function(c){ return c.rowId == rowId; });
+      if (t) { t.comment = msg; t.date = "Updating..."; }
+    }
+
+    render();
+    inputEl.value = "";
+    isTyping = false;
+
+    var payload = { url: PAGE_URL, name: user.n, email: user.e, pic: user.p, comment: msg, parentId: pid, rating: currentRating };
+    if (mode === "edit") { payload.action = "edit"; payload.rowId = rowId; }
+
+    fetch(SCRIPT_URL, { method: "POST", body: JSON.stringify(payload), mode: "no-cors" });
+    setTimeout(sync, 1800);
   };
 
-  window.tcLogout = function() { localStorage.removeItem("tc_user"); location.reload(); };  
-  window.hoverStar = function(n) { if (!isTyping && currentRating === 0) paintStars(n); };  
-  window.resetStar = function()  { paintStars(currentRating); };  
-  
-  window.handleStar = function(n) {    
-    if (!user) return alert("Login required to rate!");    
-    currentRating = n;    
-    paintStars(n);    
-    fetch(SCRIPT_URL, {      
-      method: "POST", mode: "no-cors",      
-      body: JSON.stringify({ url: location.pathname, email: user.e, rating: n, comment: "__RATING_ONLY__" })    
-    });  
-  };  
-
-  function paintStars(n) {    
-    document.querySelectorAll(".tc-s").forEach(function(s, i) { s.classList.toggle("active", i < n); });  
+  // ── SYNC ──
+  async function sync() {
+    if (!PAGE_URL || PAGE_URL === "/YOUR-PAGE-PATH-HERE") return;
+    try {
+      var emailParam = user ? "&email=" + encodeURIComponent(user.e) : "";
+      var r    = await fetch(SCRIPT_URL + "?url=" + encodeURIComponent(PAGE_URL) + emailParam);
+      var data = await r.json();
+      serverData = data.comments || [];
+      tempLocal  = [];
+      if (user && data.myRating > 0) currentRating = data.myRating;
+      updateRatingUI(data.avgRating || "0.0", data.totalVotes || 0);
+      paintStars(currentRating);
+      render();
+    } catch(e) { console.log("Sync error:", e); }
   }
 
-  window.handleAction = function(pid, mode, rowId) {    
-    mode  = mode  || "new";    
-    rowId = rowId || null;    
-    if (!user) return alert("Please Login!");    
-    var inputId = mode === "edit" ? "edit-in-" + rowId : (pid === "0" ? "tc-input" : "reply-in-" + pid);    
-    var inputEl = document.getElementById(inputId);    
-    var msg     = inputEl.value.trim();    
-    if (!msg) return;    
-    if (mode === "new") {      
-      tempLocal.push({ rowId: "temp_"+Date.now(), name: user.n, comment: msg, parentId: pid, pic: user.p, date: "Saving...", pending: true, isAdmin: false, email: user.e });    
-    } else {      
-      var t = serverData.find(function(c) { return c.rowId == rowId; });      
-      if (t) { t.comment = msg; t.date = "Updating..."; }    
-    }    
-    render();    
-    inputEl.value = "";    
-    isTyping = false;    
-    var payload = { url: location.pathname, name: user.n, email: user.e, pic: user.p, comment: msg, parentId: pid, rating: currentRating };    
-    if (mode === "edit") { payload.action = "edit"; payload.rowId = rowId; }    
-    fetch(SCRIPT_URL, { method: "POST", body: JSON.stringify(payload), mode: "no-cors" });    
-    setTimeout(sync, 1500);  
+  function updateRatingUI(avg, total) {
+    document.getElementById("tc-avg-num").innerText     = avg;
+    document.getElementById("tc-total-votes").innerText = total + " review" + (total !== 1 ? "s" : "");
+    var stars = "", rounded = Math.round(parseFloat(avg));
+    for (var i = 1; i <= 5; i++) stars += i <= rounded ? "★" : "☆";
+    document.getElementById("tc-avg-stars").innerText = stars;
+  }
+
+  // ── RENDER ──
+  function render() {
+    var feed     = document.getElementById("tc-feed");
+    var combined = serverData.concat(tempLocal);
+    var mains    = combined.filter(function(c){ return String(c.parentId) === "0"; });
+    // Server already sends in reverse-chron order. tempLocal new ones go to top.
+    var html = mains.map(function(m){ return renderCard(m, combined); }).join("");
+    feed.innerHTML = html || '<div class="tc-empty">No comments yet. Be the first to share!</div>';
+  }
+
+  function renderCard(c, list) {
+    var canEdit  = user && user.e === c.email;
+    var starStr  = c.userRating > 0
+      ? '<span style="color:#f4b400;font-size:10px;margin-left:8px;">' + "★".repeat(c.userRating) + '</span>' : "";
+    var safeComment = String(c.comment).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/\n/g,"<br>");
+    var safeName    = String(c.name).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
+
+    var html = '<div class="tc-card'+(c.parentId!=="0"?" reply":"")+(c.pending?" pending":"") + '" id="card-'+c.rowId+'">'
+      + '<div>'
+      + '<img src="'+c.pic+'" class="tc-card-pfp" onerror="this.src=\'https://tyagihub.in/assets/images/icon-192.png\'">'
+      + '<span style="font-weight:bold;font-size:14px;">'+safeName+'</span>'
+      + (c.isAdmin ? '<span class="tc-admin-badge">ADMIN ⭐</span>' : '')
+      + starStr
+      + '<small style="float:right;color:#999;font-size:11px;">'+c.date+'</small>'
+      + '</div>'
+      + '<div style="margin:8px 0 0 42px;font-size:14px;color:#333;line-height:1.5;" id="body-'+c.rowId+'">'+safeComment+'</div>'
+      + '<div class="tc-actions">'
+      + '<span onclick="checkAuthAndOpen(\''+c.rowId+'\',\'reply\')">↩ Reply</span>'
+      + (canEdit ? '<span onclick="checkAuthAndOpen(\''+c.rowId+'\',\'edit\')">✏️ Edit</span>' : '')
+      + (canEdit ? '<span style="color:#d93025" onclick="deleteMsg(\''+c.rowId+'\')">🗑 Delete</span>' : '')
+      + '</div>'
+      + '<div id="box-'+c.rowId+'" class="tc-inline-box"></div>'
+      + '</div>';
+
+    // Render nested replies
+    list.filter(function(r){ return String(r.parentId) === String(c.rowId); })
+        .forEach(function(r){ html += renderCard(r, list); });
+    return html;
+  }
+
+  // ── INLINE REPLY / EDIT BOXES ──
+  window.checkAuthAndOpen = function(id, type) {
+    if (!user) { alert("Login to interact!"); return; }
+    isTyping = true;
+    document.querySelectorAll(".tc-inline-box").forEach(function(b){ b.innerHTML=""; });
+    var box = document.getElementById("box-"+id);
+    if (!box) return;
+
+    if (type === "reply") {
+      box.innerHTML = '<textarea id="reply-in-'+id+'" placeholder="Write a reply..."></textarea>'
+        + '<div style="text-align:right;margin-top:5px;">'
+        + '<button onclick="isTyping=false;document.getElementById(\'box-'+id+'\').innerHTML=\'\'" style="background:none;border:none;cursor:pointer;font-size:12px;margin-right:10px;">Cancel</button>'
+        + '<button class="tc-post-btn" onclick="handleAction(\''+id+'\')">Reply</button>'
+        + '</div>';
+    } else {
+      var bodyEl = document.getElementById("body-"+id);
+      var old    = bodyEl ? bodyEl.innerText : "";
+      box.innerHTML = '<textarea id="edit-in-'+id+'">'+old+'</textarea>'
+        + '<div style="text-align:right;margin-top:5px;">'
+        + '<button onclick="isTyping=false;document.getElementById(\'box-'+id+'\').innerHTML=\'\'" style="background:none;border:none;cursor:pointer;font-size:12px;margin-right:10px;">Cancel</button>'
+        + '<button class="tc-post-btn" onclick="handleAction(\'0\',\'edit\',\''+id+'\')">Update</button>'
+        + '</div>';
+    }
+    var ta = box.querySelector("textarea");
+    if (ta) ta.focus();
   };
 
-  async function sync() {    
-    try {      
-      var emailParam = user ? "&email=" + encodeURIComponent(user.e) : "";      
-      var r    = await fetch(SCRIPT_URL + "?url=" + location.pathname + emailParam);      
-      var data = await r.json();      
-      serverData = data.comments;      
-      tempLocal  = [];      
-      if (user && data.myRating > 0) currentRating = data.myRating;      
-      updateRatingUI(data.avgRating, data.totalVotes);      
-      paintStars(currentRating);      
-      render();    
-    } catch(e) {}  
-  }
-
-  function updateRatingUI(avg, total) {    
-    document.getElementById("tc-avg-num").innerText     = avg;    
-    document.getElementById("tc-total-votes").innerText = total + " reviews";    
-    var stars = "", rounded = Math.round(parseFloat(avg));    
-    for (var i = 1; i <= 5; i++) stars += i <= rounded ? "★" : "☆";    
-    document.getElementById("tc-avg-stars").innerText = stars;  
-  }
-
-  function render() {    
-    var feed     = document.getElementById("tc-feed");    
-    var combined = serverData.concat(tempLocal);    
-    var mains    = combined.filter(function(c) { return c.parentId == "0"; }).reverse();    
-    feed.innerHTML = mains.map(function(m) { return renderCard(m, combined); }).join("");  
-  }
-
-  function renderCard(c, list) {    
-    var canEdit = user && (user.e === c.email);    
-    var starStr = c.userRating > 0 ? '<span style="color:#f4b400;font-size:10px;margin-left:8px;">' + "★".repeat(c.userRating) + '</span>' : "";    
-    var html = '<div class="tc-card ' + (c.parentId !== "0" ? "reply " : "") + (c.pending ? "pending" : "") + '">'      
-      + '<div><img src="' + c.pic + '" class="tc-card-pfp">'      
-      + '<span style="font-weight:bold;font-size:14px;">' + c.name + '</span>'      
-      + (c.isAdmin ? '<span class="tc-admin-badge">ADMIN ⭐</span>' : '')      
-      + starStr      
-      + '<small style="float:right;color:#999;">' + c.date + '</small></div>'      
-      + '<div style="margin:8px 0 0 42px;font-size:14px;color:#333;" id="body-' + c.rowId + '">' + c.comment + '</div>'      
-      + '<div class="tc-actions">'      
-      + '<span onclick="checkAuthAndOpen(\'' + c.rowId + '\',\'reply\')">Reply</span>'      
-      + (canEdit ? '<span onclick="checkAuthAndOpen(\'' + c.rowId + '\',\'edit\')">Edit</span>' : '')      
-      + (canEdit ? '<span style="color:#d93025" onclick="deleteMsg(\'' + c.rowId + '\')">Delete</span>' : '')      
-      + '</div><div id="box-' + c.rowId + '" class="tc-inline-box"></div></div>';    
-    
-    list.filter(function(r) { return r.parentId == c.rowId; })        
-        .forEach(function(r) { html += renderCard(r, list); });    
-    return html;  
-  }
-
-  window.checkAuthAndOpen = function(id, type) {    
-    if (!user) return alert("Login to interact!");    
-    isTyping = true;    
-    document.querySelectorAll(".tc-inline-box").forEach(function(b) { b.innerHTML = ""; });    
-    var box = document.getElementById("box-" + id);    
-    if (type === "reply") {      
-      box.innerHTML = '<textarea id="reply-in-' + id + '" placeholder="Write a reply..."></textarea>'        
-        + '<div style="text-align:right;margin-top:5px;">'        
-        + '<button onclick="isTyping=false;this.parentElement.parentElement.innerHTML=\'\'" style="background:none;border:none;cursor:pointer;font-size:12px;margin-right:10px;">Cancel</button>'        
-        + '<button class="tc-post-btn" onclick="handleAction(\'' + id + '\')">Reply</button></div>';    
-    } else {      
-      var old = document.getElementById("body-" + id).innerText;      
-      box.innerHTML = '<textarea id="edit-in-' + id + '">' + old + '</textarea>'        
-        + '<div style="text-align:right;margin-top:5px;">'        
-        + '<button onclick="isTyping=false;this.parentElement.parentElement.innerHTML=\'\'" style="background:none;border:none;cursor:pointer;font-size:12px;margin-right:10px;">Cancel</button>'        
-        + '<button class="tc-post-btn" onclick="handleAction(\'0\',\'edit\',\'' + id + '\')">Update</button></div>';    
-    }    
-    box.querySelector("textarea").focus();  
+  // ── DELETE ──
+  window.deleteMsg = async function(id) {
+    if (!confirm("Delete this comment permanently?")) return;
+    await fetch(SCRIPT_URL, {
+      method:"POST", mode:"no-cors",
+      body: JSON.stringify({ action:"delete", rowId:id, email:user.e })
+    });
+    setTimeout(sync, 800);
   };
 
-  window.deleteMsg = async function(id) {    
-    if (!confirm("Delete permanently?")) return;    
-    await fetch(SCRIPT_URL, { method: "POST", body: JSON.stringify({ action: "delete", rowId: id, userEmail: user.e }), mode: "no-cors" });    
-    sync();  
-  };
+  // ── BOOT ──
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", init);
+  } else {
+    init();
+  }
 
-  init();
 })();
 </script>
+
 <script src="https://accounts.google.com/gsi/client" async defer></script>
 </body>
 </html>
