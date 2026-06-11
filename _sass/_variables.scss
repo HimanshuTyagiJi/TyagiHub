@@ -1,0 +1,100 @@
+// TyagiHub GK Quiz - Variables & Base Styles
+
+// ============================================================
+// COLOR PALETTE
+// ============================================================
+$primary:        #1a56db;
+$primary-dark:   #1240a8;
+$primary-light:  #e8f0fd;
+$accent:         #f97316;
+$accent-dark:    #ea6a00;
+$success:        #16a34a;
+$success-light:  #dcfce7;
+$danger:         #dc2626;
+$danger-light:   #fee2e2;
+$warning:        #d97706;
+$warning-light:  #fef3c7;
+$neutral-50:     #f9fafb;
+$neutral-100:    #f3f4f6;
+$neutral-200:    #e5e7eb;
+$neutral-300:    #d1d5db;
+$neutral-400:    #9ca3af;
+$neutral-500:    #6b7280;
+$neutral-600:    #4b5563;
+$neutral-700:    #374151;
+$neutral-800:    #1f2937;
+$neutral-900:    #111827;
+$white:          #ffffff;
+
+// ============================================================
+// TYPOGRAPHY
+// ============================================================
+$font-body:    'Segoe UI', 'Noto Sans', 'Noto Sans Devanagari', Arial, sans-serif;
+$font-heading: 'Segoe UI', 'Noto Sans', Arial, sans-serif;
+$font-mono:    'Courier New', monospace;
+
+// ============================================================
+// SPACING & LAYOUT
+// ============================================================
+$sidebar-width:        280px;
+$sidebar-width-tablet: 240px;
+$header-height:        64px;
+$border-radius:        8px;
+$border-radius-lg:     12px;
+$border-radius-xl:     16px;
+$shadow-sm:   0 1px 3px rgba(0,0,0,.08), 0 1px 2px rgba(0,0,0,.05);
+$shadow-md:   0 4px 6px rgba(0,0,0,.07), 0 2px 4px rgba(0,0,0,.06);
+$shadow-lg:   0 10px 25px rgba(0,0,0,.1), 0 4px 10px rgba(0,0,0,.08);
+
+// ============================================================
+// MIXINS
+// ============================================================
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+@mixin flex-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+@mixin transition($props: all, $dur: .2s, $ease: ease) {
+  transition: $props $dur $ease;
+}
+@mixin responsive($bp) {
+  @if $bp == 'mobile'  { @media (max-width: 639px)  { @content; } }
+  @if $bp == 'tablet'  { @media (max-width: 1023px) { @content; } }
+  @if $bp == 'desktop' { @media (min-width: 1024px) { @content; } }
+}
+
+// ============================================================
+// BASE RESET
+// ============================================================
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: $font-body;
+  color: $neutral-800;
+  background: $neutral-50;
+  line-height: 1.6;
+  font-size: 16px;
+  @include responsive('mobile') { font-size: 15px; }
+}
+
+a { color: $primary; text-decoration: none; }
+a:hover { color: $primary-dark; text-decoration: underline; }
+
+img { max-width: 100%; height: auto; }
+
+h1,h2,h3,h4,h5,h6 {
+  font-family: $font-heading;
+  font-weight: 700;
+  line-height: 1.3;
+  color: $neutral-900;
+}
