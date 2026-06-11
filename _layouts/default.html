@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="{% if page.lang == 'hi' %}hi{% else %}en{% endif %}" data-theme="dark">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width,initial-scale=1.0">
@@ -9,75 +8,76 @@
   <meta name="keywords" content="{% if page.keywords %}{{ page.keywords }}{% else %}TyagiHub,Tyagi MultiTech,learn,tools,editor,apps,stock,shield{% endif %}">
   <meta name="author" content="{{ site.author.name }}">
   <meta name="robots" content="index,follow">
-
   <link rel="canonical" href="{{ site.url }}{{ page.url }}">
-
   <meta property="og:type" content="{% if page.layout == 'post' %}article{% else %}website{% endif %}">
   <meta property="og:title" content="{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}">
   <meta property="og:description" content="{% if page.description %}{{ page.description }}{% else %}{{ site.description }}{% endif %}">
   <meta property="og:url" content="{{ site.url }}{{ page.url }}">
   <meta property="og:site_name" content="{{ site.title }}">
   <meta property="og:image" content="{{ site.url }}/assets/images/tyagihub.png">
-
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}">
   <meta name="twitter:description" content="{% if page.description %}{{ page.description }}{% else %}{{ site.description }}{% endif %}">
   <meta name="twitter:image" content="{{ site.url }}/assets/images/tyagihub.png">
-  <meta name="twitter:site" content="@TyagiMultiTech">
-
-  <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicon.png">
-  <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/apple-touch-icon.png">
-  <link rel="manifest" href="/site.webmanifest">
+  <meta name="twitter:site" content="@TyagiHub">
+  <link rel="icon" type="image/png" sizes="32x32" href="{{ site.url }}/assets/images/favicon.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="{{ site.url }}/assets/images/apple-touch-icon.png">
+  <link rel="manifest" href="{{ site.url }}/site.webmanifest">
   <meta name="theme-color" content="#f5a623">
-
-  <link rel="stylesheet" href="/assets/css/main.css">
-  <link rel="stylesheet" href="/assets/css/search.css">
-
+  <link rel="stylesheet" href="{{ site.url }}/assets/css/main.css">
+  <link rel="stylesheet" href="{{ site.url }}/assets/css/search.css">
   {% if page.extra_css %}
     {% for css in page.extra_css %}
-      <link rel="stylesheet" href="{{ css }}">
+      <link rel="stylesheet" href="{{ css | absolute_url }}">
     {% endfor %}
   {% endif %}
-
   <script type="application/ld+json">
-    {"@context":"https://schema.org","@type":"Organization","name":"Tyagi MultiTech","url":"https://tyagihub.in","logo":"https://tyagihub.in/assets/images/favicon.png","sameAs":["{{ site.url }}"]}
+  {
+    "@context":"https://schema.org",
+    "@type":"Organization",
+    "name":"Tyagi MultiTech",
+    "url":"https://tyagihub.in",
+    "logo":"https://tyagihub.in/assets/images/favicon.png",
+    "sameAs":["{{ site.url }}"]
+  }
   </script>
-<script>
-  window.onerror = function(message, url, line) {
-    if (message.includes("addEventListener") || message.includes("null") || message.includes("undefined")) {
-      return true; // 🎯 Poori site par obfuscated elements ke collision crash ko block kar dega!
-    }
-    return false;
-  };
-</script>
+  <script>
+    window.onerror = function(message, url, line) {
+      if (
+        message.includes("addEventListener") ||
+        message.includes("null") ||
+        message.includes("undefined")
+      ) {
+        return true;
+      }
+      return false;
+    };
+  </script>
 </head>
-
 <body>
-
   <a href="#main-content" class="sr-only">Skip to main content</a>
-
-  <!-- NAVBAR -->
   {% include navbar.html %}
-
-  <!-- MOBILE NAV -->
   {% include mobile-nav.html %}
-
-  <!-- MAIN CONTENT -->
   <main id="main-content">
     {{ content }}
   </main>
-
-  <!-- Floating Language Switch -->
   <div class="floating-lang-switch">
     {% if page.lang_switch != false %}
       {% if page.lang == "hi" %}
-        <a href="{{ page.url | remove:'/hi' }}" class="floating-lang-btn" aria-label="Switch to English">EN</a>
+        <a href="{{ page.url | remove:'/hi' }}"
+           class="floating-lang-btn"
+           aria-label="Switch to English">
+          EN
+        </a>
       {% else %}
-        <a href="/hi{{ page.url }}" class="floating-lang-btn" aria-label="हिन्दी में बदलें">हिं</a>
+        <a href="/hi{{ page.url }}"
+           class="floating-lang-btn"
+           aria-label="हिन्दी में बदलें">
+          हिं
+        </a>
       {% endif %}
     {% endif %}
   </div>
-
   <style>
     .floating-lang-switch {
       position: fixed;
@@ -85,7 +85,6 @@
       bottom: 84px;
       z-index: 9999;
     }
-
     .floating-lang-btn {
       width: 48px;
       height: 48px;
@@ -103,35 +102,26 @@
       box-shadow: 0 10px 30px rgba(0, 0, 0, .25);
       transition: .25s ease;
     }
-
     .floating-lang-btn:hover {
       transform: translateY(-2px) scale(1.05);
     }
-
     @media (min-width: 901px) {
       .floating-lang-switch {
         display: none;
       }
     }
   </style>
-
-  <!-- FOOTER -->
   {% include footer.html %}
-
-  <!-- LOCAL JS — NO CDN -->
-  <script src="/assets/js/main.js" defer></script>
-  <script src="/assets/js/search.js" defer></script>
-
- {% if page.extra_js %}
-{% for js in page.extra_js %}
-{% if js contains '.mjs' %}
-<script type="module" src="{{ js }}"></script>
-{% else %}
-<script src="{{ js }}"></script>
-{% endif %}
-{% endfor %}
-{% endif %}
-
+  <script src="{{ site.url }}/assets/js/main.js" defer></script>
+  <script src="{{ site.url }}/assets/js/search.js" defer></script>
+  {% if page.extra_js %}
+    {% for js in page.extra_js %}
+      {% if js contains '.mjs' %}
+        <script type="module" src="{{ js | absolute_url }}"></script>
+      {% else %}
+        <script src="{{ js | absolute_url }}"></script>
+      {% endif %}
+    {% endfor %}
+  {% endif %}
 </body>
-
 </html>
