@@ -5,7 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Discussion & Reviews - TyagiHub</title>
   <meta name="description" content="TyagiHub ki is video series aur development forum par aapka swagat hai. Yahan sabhi important reviews aur discussions live chalte hain.">
-<meta property="og:description" content="TyagiHub Forums: Join the core community discussion, track mobile applications, and view live user ratings instantly.">
+  <meta property="og:description" content="TyagiHub Forums: Join the core community discussion, track mobile applications, and view live user ratings instantly.">
+  <meta property="og:title" content="Discussion Panel - TyagiHub Core Platform">
 </head>
 <body>
 
@@ -84,57 +85,23 @@
   .tc-card.reply { margin-left:45px; border-left:2px solid #ddd; background:#fcfcfc; }
   .tc-card-pfp { width:32px; height:32px; border-radius:50%; vertical-align:middle; margin-right:10px; }
   .tc-admin-badge { background:#1a73e8; color:white; font-size:9px; padding:2px 5px; border-radius:3px; margin-left:5px; font-weight:bold; }
-  .tc-actions { margin-left:42px; margin-top:10px; display:flex; gap:15px; font-size:12px; font-weight:bold; color:#1a73e8; cursor:pointer; }
+  
+  /* Actions Row and Like/Dislike Badges Styling */
+  .tc-actions { margin-left:42px; margin-top:10px; display:flex; gap:15px; font-size:12px; font-weight:bold; color:#1a73e8; align-items: center; }
+  .tc-action-btn { cursor:pointer; user-select:none; }
+  .tc-action-btn:hover { text-decoration: underline; }
+  .tc-rx-btn { background: #f1f3f4; padding: 3px 8px; border-radius: 12px; color: #3c4043; font-weight: normal; font-size: 11px; cursor: pointer; }
+  .tc-rx-btn:hover { background: #e8eaed; }
+  .tc-rx-btn.active { background: #e8f0fe; color: #1a73e8; font-weight: bold; }
+  
   .tc-inline-box { margin:10px 0 0 42px; }
 </style>
 
-<script type="module">
-import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.0/firebase-app.js";
-import { getMessaging, getToken } from "https://www.gstatic.com/firebasejs/10.7.0/firebase-messaging.js";
-
-const firebaseConfig = {
-  apiKey: "AIzaSyBE0uXhh8ePOQH6FBdhRCZrRgRkUTwCWws",
-  authDomain: "tyagi-hub.firebaseapp.com",
-  projectId: "tyagi-hub",
-  storageBucket: "tyagi-hub.firebasestorage.app",
-  messagingSenderId: "1052184634573",
-  appId: "1:1052184634573:web:077135d1bc4f321688b584",
-  measurementId: "G-36X3TG734R"
-};
-
-// LIVE GS WEB APP API EXEC URL BOUND
-const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxtP6WgdXXZo5X5h8EwesCtOsAkmWR786Cq9EdOHWhGEWAE2T8QdjrScQR-D60k_6tS2w/exec";
-const VAPID_KEY = "BD_TF4_Pmc1uUCqtcMF-KF1eBsUyr9cC1MUbT82kIdZ8VJSWQtwLMg738clOiHqOtL55iFs4Xd-y5prBgueUm_E";
-
-const app = initializeApp(firebaseConfig);
-
-try {
-  const messaging = getMessaging(app);
-  window._tcInitFCM = async function() {
-    const storedUser = JSON.parse(localStorage.getItem("tc_user"));
-    if (!storedUser) return;
-    try {
-      const sw = await navigator.serviceWorker.register('./sw.js', { scope: './' });
-      await navigator.serviceWorker.ready;
-      const perm = await Notification.requestPermission();
-      if (perm !== "granted") return;
-      const token = await getToken(messaging, { serviceWorkerRegistration: sw, vapidKey: VAPID_KEY });
-      if (token) {
-        fetch(SCRIPT_URL, {
-          method: "POST",
-          body: JSON.stringify({ action: "fcm_subscribe", fcmToken: token, email: storedUser.e, name: storedUser.n })
-        });
-        console.log("FCM Framework Registered ✅");
-      }
-    } catch(e) { console.log("Service Worker Context Isolated."); }
-  };
-} catch(err) { console.log("Push Engine Guard Active."); }
-</script>
-
 <script>
 (function() {
-  // FINAL PRODUCTION SCRIPT URL FIXED
-  const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbx15nyfQy4DxCDfdEDTvlde0f2Vh3mJP0PDyQPFzOuarD2QPnWWpVHYp6s9YjHL5utD/exec";
+  // TERI NAYI API EXEC URL DYNAMICALLY BOUND
+  const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxtP6WgdXXZo5X5h8EwesCtOsAkmWR786Cq9EdOHWhGEWAE2T8QdjrScQR-D60k_6tS2w/exec";
+  const ADMIN_EMAIL = "tyagihub.core@gmail.com";
 
   let user          = JSON.parse(localStorage.getItem("tc_user")) || null;
   let serverData    = [];
@@ -148,7 +115,6 @@ try {
       document.getElementById("tc-user-pill").style.display = "flex";
       document.getElementById("tc-user-name").innerText = user.n;
       document.getElementById("tc-user-pfp").src = user.p;
-      setTimeout(function() { if (window._tcInitFCM) window._tcInitFCM(); }, 1500);
     }
     sync();
     setInterval(function() { if (!isTyping) sync(); }, 6000);
@@ -180,7 +146,7 @@ try {
     document.querySelectorAll(".tc-s").forEach(function(s, i) { s.classList.toggle("active", i < n); });
   }
 
-  // FIXED FRONTEND PAYLOAD SYNC SYSTEM
+  // FRONTEND PAYLOAD SYNC SYSTEM WITH DYNAMIC META DESCRIPTION EXTRACTION
   window.handleAction = function(pid, mode, rowId) {
     mode  = mode  || "new";
     rowId = rowId || null;
@@ -193,7 +159,7 @@ try {
     if (!msg) return;
 
     if (mode === "new") {
-      tempLocal.push({ rowId: "temp_"+Date.now(), name: user.n, comment: msg, parentId: pid, pic: user.p, date: "Sending...", pending: true, isAdmin: false, email: user.e });
+      tempLocal.push({ rowId: "temp_"+Date.now(), name: user.n, comment: msg, parentId: pid, pic: user.p, date: "Sending...", pending: true, isAdmin: (user.e === ADMIN_EMAIL), email: user.e, likes: 0, dislikes: 0, myReaction: "none" });
     } else {
       var t = serverData.find(function(c) { return c.rowId == rowId; });
       if (t) { t.comment = msg; t.date = "Updating..."; }
@@ -203,15 +169,19 @@ try {
     inputEl.value = "";
     isTyping = false;
     
-    // STRICT ALIGNED PAYLOAD CONFIG (Matches Backend Parameters perfectly)
+    // Auto-extracting description tag to pass to Telegram Bot
+    var metaDescEl = document.querySelector('meta[name="description"]') || document.querySelector('meta[property="og:description"]');
+    var pageDesc = metaDescEl ? metaDescEl.getAttribute("content") : "No description set.";
+
     var payload = { 
       url: location.pathname, 
       name: user.n, 
       email: user.e, 
       pic: user.p, 
-      comment: msg,        // Explicit key sync
+      comment: msg,        
       parentId: String(pid), 
-      rating: String(currentRating)
+      rating: String(currentRating),
+      pageDescription: pageDesc
     };
     
     if (mode === "edit") { payload.action = "edit"; payload.rowId = rowId; }
@@ -254,7 +224,12 @@ try {
   }
 
   function renderCard(c, list) {
-    var canEdit = user && (user.e === c.email);
+    // SECURITY RULES IMPLEMENTATION VISUALS
+    // Admin can delete ANYTHING, normal user can only delete their OWN comments
+    var isAdminUser = user && (user.e === ADMIN_EMAIL);
+    var isOwnComment = user && (user.e === c.email);
+    var showDeleteButton = isAdminUser || isOwnComment;
+
     var starStr = c.userRating > 0 ? '<span style="color:#f4b400;font-size:10px;margin-left:8px;">' + "★".repeat(c.userRating) + '</span>' : "";
     
     var html = '<div class="tc-card ' + (c.parentId !== "0" && c.parentId ? "reply " : "") + (c.pending ? "pending" : "") + '">'
@@ -265,9 +240,14 @@ try {
       + '<small style="float:right;color:#999;font-size:11px;">' + c.date + '</small></div>'
       + '<div style="margin:8px 0 0 42px;font-size:14px;color:#333;line-height:1.5;" id="body-' + c.rowId + '">' + c.comment + '</div>'
       + '<div class="tc-actions">'
-      + '<span onclick="checkAuthAndOpen(\'' + c.rowId + '\',\'reply\')">Reply</span>'
-      + (canEdit ? '<span onclick="checkAuthAndOpen(\'' + c.rowId + '\',\'edit\')">Edit</span>' : '')
-      + (canEdit ? '<span style="color:#d93025" onclick="deleteMsg(\'' + c.rowId + '\')">Delete</span>' : '')
+      + '<span class="tc-action-btn" onclick="checkAuthAndOpen(\'' + c.rowId + '\',\'reply\')">Reply</span>'
+      + (isOwnComment || isAdminUser ? '<span class="tc-action-btn" onclick="checkAuthAndOpen(\'' + c.rowId + '\',\'edit\')">Edit</span>' : '')
+      + (showDeleteButton ? '<span class="tc-action-btn" style="color:#d93025" onclick="deleteMsg(\'' + c.rowId + '\')">Delete</span>' : '')
+      
+      // Dynamic Like / Dislike UI Mounting
+      + '<span class="tc-rx-btn ' + (c.myReaction === 'like' ? 'active' : '') + '" onclick="triggerReaction(\'' + c.rowId + '\',\'like\')">👍 ' + (c.likes || 0) + '</span>'
+      + '<span class="tc-rx-btn ' + (c.myReaction === 'dislike' ? 'active' : '') + '" onclick="triggerReaction(\'' + c.rowId + '\',\'dislike\')">👎 ' + (c.dislikes || 0) + '</span>'
+      
       + '</div><div id="box-' + c.rowId + '" class="tc-inline-box"></div></div>';
       
     list.filter(function(r) { return String(r.parentId) === String(c.rowId); })
@@ -286,7 +266,7 @@ try {
         + '<button onclick="isTyping=false;this.parentElement.parentElement.innerHTML=\'\'" style="background:none;border:none;cursor:pointer;font-size:12px;margin-right:10px;color:#5f6368;">Cancel</button>'
         + '<button class="tc-post-btn" onclick="handleAction(\'' + id + '\')">Reply</button></div>';
     } else {
-      var old = document.getElementById("body-' + id + '").innerText;
+      var old = document.getElementById("body-" + id).innerText;
       box.innerHTML = '<textarea id="edit-in-' + id + '">' + old + '</textarea>'
         + '<div style="text-align:right;margin-top:5px;">'
         + '<button onclick="isTyping=false;this.parentElement.parentElement.innerHTML=\'\'" style="background:none;border:none;cursor:pointer;font-size:12px;margin-right:10px;color:#5f6368;">Cancel</button>'
@@ -295,9 +275,22 @@ try {
     box.querySelector("textarea").focus();
   };
 
+  // WEB SIDE DELETE TRIGGER
   window.deleteMsg = async function(id) {
+    if (!user) return alert("Login required!");
     if (!confirm("Wipe entry permanently from database?")) return;
     await fetch(SCRIPT_URL, { method: "POST", body: JSON.stringify({ action: "delete", rowId: id, userEmail: user.e }) });
+    sync();
+  };
+
+  // LIKE / DISLIKE FRONTEND NETWORK ACTION
+  window.triggerReaction = async function(id, type) {
+    if (!user) return alert("Please Login to react on comments!");
+    // Optimistic UI updates feel faster, but sync ensures accurate database state
+    await fetch(SCRIPT_URL, {
+      method: "POST",
+      body: JSON.stringify({ action: "reaction", rowId: id, email: user.e, reactionType: type })
+    });
     sync();
   };
 
