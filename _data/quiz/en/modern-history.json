@@ -1,128 +1,56 @@
-{
-  "title": "Modern Indian History",
-  "title_hi": "आधुनिक भारतीय इतिहास",
-  "icon": "🇮🇳",
-  "slug": "modern-history",
-  "questions": [
-    {
-      "id": 1,
-      "q": "The Indian National Congress was founded in which year?",
-      "opts": [
-        "1857",
-        "1885",
-        "1905",
-        "1920"
-      ],
-      "ans": 1,
-      "exp": "The Indian National Congress (INC) was founded on 28 December 1885 by Allan Octavian Hume, along with Dadabhai Naoroji and Dinshaw Wacha."
-    },
-    {
-      "id": 2,
-      "q": "Who gave the slogan 'Do or Die' during the Quit India Movement?",
-      "opts": [
-        "Jawaharlal Nehru",
-        "Subhas Chandra Bose",
-        "Mahatma Gandhi",
-        "Bal Gangadhar Tilak"
-      ],
-      "ans": 2,
-      "exp": "Mahatma Gandhi gave the slogan 'Do or Die' (Karo ya Maro) during the Quit India Movement on 8 August 1942 at Gowalia Tank Maidan, Bombay."
-    },
-    {
-      "id": 3,
-      "q": "The Partition of Bengal was done in which year?",
-      "opts": [
-        "1899",
-        "1905",
-        "1911",
-        "1919"
-      ],
-      "ans": 1,
-      "exp": "The Partition of Bengal was carried out in 1905 by Lord Curzon. It divided Bengal into East Bengal (Muslim majority) and West Bengal (Hindu majority), leading to widespread protests."
-    },
-    {
-      "id": 4,
-      "q": "Who is known as the 'Iron Man of India'?",
-      "opts": [
-        "Jawaharlal Nehru",
-        "Subhas Chandra Bose",
-        "Sardar Vallabhbhai Patel",
-        "Bhagat Singh"
-      ],
-      "ans": 2,
-      "exp": "Sardar Vallabhbhai Patel is known as the Iron Man of India. He unified 562 princely states into the Indian Union after independence."
-    },
-    {
-      "id": 5,
-      "q": "The Jallianwala Bagh massacre occurred in which year?",
-      "opts": [
-        "1915",
-        "1917",
-        "1919",
-        "1921"
-      ],
-      "ans": 2,
-      "exp": "The Jallianwala Bagh massacre occurred on 13 April 1919 in Amritsar. General Dyer ordered firing on a peaceful gathering, killing hundreds of unarmed civilians."
-    },
-    {
-      "id": 6,
-      "q": "The Dandi March was undertaken to protest against?",
-      "opts": [
-        "Salt Tax",
-        "Land Tax",
-        "Income Tax",
-        "Forced Labour"
-      ],
-      "ans": 0,
-      "exp": "The Dandi March (Salt March) was undertaken by Mahatma Gandhi from 12 March to 6 April 1930 to protest against the British Salt Tax. It covered 388 km from Sabarmati Ashram to Dandi."
-    },
-    {
-      "id": 7,
-      "q": "Who founded the Forward Bloc?",
-      "opts": [
-        "Jawaharlal Nehru",
-        "Subhas Chandra Bose",
-        "Bhagat Singh",
-        "V.D. Savarkar"
-      ],
-      "ans": 1,
-      "exp": "Subhas Chandra Bose founded the All India Forward Bloc on 22 June 1939. He believed in armed struggle against British rule."
-    },
-    {
-      "id": 8,
-      "q": "India got independence on which date?",
-      "opts": [
-        "15 August 1946",
-        "26 January 1947",
-        "15 August 1947",
-        "26 January 1950"
-      ],
-      "ans": 2,
-      "exp": "India got independence on 15 August 1947. Jawaharlal Nehru became the first Prime Minister and Lord Mountbatten was the last Viceroy of British India."
-    },
-    {
-      "id": 9,
-      "q": "The Constitution of India came into force on?",
-      "opts": [
-        "15 August 1947",
-        "26 November 1949",
-        "26 January 1950",
-        "25 January 1950"
-      ],
-      "ans": 2,
-      "exp": "The Constitution of India came into force on 26 January 1950, which is celebrated as Republic Day. It was adopted by the Constituent Assembly on 26 November 1949."
-    },
-    {
-      "id": 10,
-      "q": "Who was the first President of independent India?",
-      "opts": [
-        "Jawaharlal Nehru",
-        "Rajendra Prasad",
-        "Sardar Patel",
-        "B.R. Ambedkar"
-      ],
-      "ans": 1,
-      "exp": "Dr. Rajendra Prasad was the first President of India (1950–1962). He was also the President of the Constituent Assembly that drafted the Indian Constitution."
-    }
-  ]
-}
+[
+  {
+    "question": "The Battle of Plassey was fought in which year?",
+    "option_a": "1747",
+    "option_b": "1757",
+    "option_c": "1767",
+    "option_d": "1777",
+    "correct_answer": "b",
+    "explanation": "The Battle of Plassey was fought on June 23, 1757 between the British East India Company and the Nawab of Bengal, Siraj ud-Daulah. The British victory marked the beginning of British rule in India."
+  },
+  {
+    "question": "Who started the Brahmo Samaj in 1828?",
+    "option_a": "Swami Vivekananda",
+    "option_b": "Dayananda Saraswati",
+    "option_c": "Ram Mohan Roy",
+    "option_d": "Keshab Chandra Sen",
+    "correct_answer": "c",
+    "explanation": "Raja Ram Mohan Roy founded the Brahmo Samaj in 1828 in Calcutta. He was a social reformer who worked against sati, child marriage, and caste discrimination, and advocated for women's rights and education."
+  },
+  {
+    "question": "The Revolt of 1857 began from which place?",
+    "option_a": "Delhi",
+    "option_b": "Kanpur",
+    "option_c": "Meerut",
+    "option_d": "Lucknow",
+    "correct_answer": "c",
+    "explanation": "The Revolt of 1857 (also called India's First War of Independence) began on May 10, 1857 at Meerut when Indian soldiers (sepoys) mutinied against the British East India Company."
+  },
+  {
+    "question": "Who gave the slogan 'Swaraj is my birthright'?",
+    "option_a": "Mahatma Gandhi",
+    "option_b": "Subhas Chandra Bose",
+    "option_c": "Lala Lajpat Rai",
+    "option_d": "Bal Gangadhar Tilak",
+    "correct_answer": "d",
+    "explanation": "Bal Gangadhar Tilak gave the famous slogan 'Swaraj is my birthright and I shall have it.' He was a strong advocate for Indian independence and used his newspapers Kesari and Mahratta to spread nationalist ideas."
+  },
+  {
+    "question": "The Non-Cooperation Movement was launched in which year?",
+    "option_a": "1917",
+    "option_b": "1919",
+    "option_c": "1920",
+    "option_d": "1922",
+    "correct_answer": "c",
+    "explanation": "The Non-Cooperation Movement was launched by Mahatma Gandhi in September 1920. It called upon Indians to withdraw cooperation from the British government by boycotting British goods, schools, and courts."
+  },
+  {
+    "question": "India became independent on which date?",
+    "option_a": "15 August 1945",
+    "option_b": "26 January 1947",
+    "option_c": "15 August 1947",
+    "option_d": "26 January 1950",
+    "correct_answer": "c",
+    "explanation": "India gained independence from British rule on August 15, 1947. Jawaharlal Nehru became the first Prime Minister and delivered his famous 'Tryst with Destiny' speech at midnight on this historic occasion."
+  }
+]
