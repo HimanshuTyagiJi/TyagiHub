@@ -57,6 +57,15 @@
   cursor: pointer;
   transition: all var(--ease-fast);
   font-family: var(--font-body);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+}
+
+.lang-toggle__btn svg{
+  flex-shrink:0;
+  display:block;
 }
 
 .lang-toggle__btn.active {
