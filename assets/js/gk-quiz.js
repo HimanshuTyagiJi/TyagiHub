@@ -1,239 +1,324 @@
 /**
- * TyagiHub GK Quiz - Interactive Quiz JS
- * Handles: option selection, correct/wrong reveal, explanation display,
- *          answer persistence (sessionStorage), lang-sync, mobile sidebar
+ * TyagiHub — GK Quiz JavaScript
+ * File: assets/js/gk-quiz.js
+ * ============================================================
+ * Features:
+ *  1. Language toggle (English/Hindi)
+ *  2. Category search
+ *  3. Quiz player (load JSON, show questions, score)
+ *  4. Keyboard shortcuts (A/B/C/D, Next, Prev)
+ *  5. Results screen
+ * ============================================================
  */
 
-(function () {
-  'use strict';
+'use strict';
 
-  // ------------------------------------------------------------------
-  // CONSTANTS
-  // ------------------------------------------------------------------
-  const STORAGE_KEY_PREFIX = 'tyagihub_quiz_';
-  const CURRENT_PAGE_KEY   = 'tyagihub_current_page';
+/* ============================================================
+   1. LANGUAGE TOGGLE (Hub page)
+   ============================================================ */
+const LangToggle = (() => {
+  const STORAGE_KEY = 'th-quiz-lang';
+  let lang = localStorage.getItem(STORAGE_KEY) || 'en';
 
-  // ------------------------------------------------------------------
-  // UTILS
-  // ------------------------------------------------------------------
-  function getPageId() {
-    // Use the canonical path as the unique page identifier
-    return window.location.pathname;
+  function apply() {
+    document.querySelectorAll('.lang-toggle__btn').forEach(btn => {
+      btn.classList.toggle('active', btn.dataset.lang === lang);
+    });
+
+    // Show/hide language sections
+    document.querySelectorAll('[data-lang-section]').forEach(el => {
+      el.style.display = el.dataset.langSection === lang ? '' : 'none';
+    });
+
+    // Update hreflang canonical hint in URL
+    // (actual hreflang is in page <head>)
   }
 
-  function loadPageAnswers() {
-    try {
-      const raw = sessionStorage.getItem(STORAGE_KEY_PREFIX + getPageId());
-      return raw ? JSON.parse(raw) : {};
-    } catch (e) { return {}; }
-  }
-
-  function savePageAnswers(answers) {
-    try {
-      sessionStorage.setItem(STORAGE_KEY_PREFIX + getPageId(), JSON.stringify(answers));
-    } catch (e) {}
-  }
-
-  // ------------------------------------------------------------------
-  // QUIZ CORE
-  // ------------------------------------------------------------------
-  function initQuiz() {
-    const savedAnswers = loadPageAnswers();
-
-    document.querySelectorAll('.question-card').forEach(function (card) {
-      const qIdx     = card.dataset.qindex;
-      const correct  = card.dataset.correct;
-      const options  = card.querySelectorAll('.option-btn');
-      const expBox   = card.querySelector('.explanation-box');
-
-      // Restore saved state
-      if (savedAnswers[qIdx] !== undefined) {
-        applyAnswer(card, options, expBox, correct, savedAnswers[qIdx], false);
-      }
-
-      // Attach click handlers
-      options.forEach(function (btn) {
-        btn.addEventListener('click', function () {
-          if (card.dataset.answered === 'true') return; // lock once answered
-          const chosen = btn.dataset.option;
-          // save
-          savedAnswers[qIdx] = chosen;
-          savePageAnswers(savedAnswers);
-          applyAnswer(card, options, expBox, correct, chosen, true);
-        });
+  function init() {
+    apply();
+    document.querySelectorAll('.lang-toggle__btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        lang = btn.dataset.lang;
+        localStorage.setItem(STORAGE_KEY, lang);
+        apply();
       });
     });
   }
 
-  function applyAnswer(card, options, expBox, correct, chosen, animate) {
-    card.dataset.answered = 'true';
+  function getLang() { return lang; }
 
-    options.forEach(function (btn) {
-      btn.disabled = true;
-      if (btn.dataset.option === correct) {
-        btn.classList.add('correct');
-      } else if (btn.dataset.option === chosen && chosen !== correct) {
-        btn.classList.add('wrong');
-      }
-    });
-
-    if (expBox) {
-      expBox.classList.add('show');
-      if (animate) {
-        expBox.style.opacity = '0';
-        expBox.style.transform = 'translateY(8px)';
-        requestAnimationFrame(function () {
-          expBox.style.transition = 'opacity .3s ease, transform .3s ease';
-          expBox.style.opacity = '1';
-          expBox.style.transform = 'translateY(0)';
-        });
-      }
-    }
-
-    // Update live score strip if present
-    updateScoreStrip();
-  }
-
-  function updateScoreStrip() {
-    const strip = document.getElementById('score-strip');
-    if (!strip) return;
-
-    const cards   = document.querySelectorAll('.question-card[data-answered="true"]');
-    const correct = document.querySelectorAll('.question-card[data-answered="true"] .option-btn.correct.selected-correct').length;
-
-    // Count correct selections
-    let correctCount = 0;
-    document.querySelectorAll('.question-card').forEach(function (card) {
-      if (card.dataset.answered !== 'true') return;
-      const correctBtn = card.querySelector('.option-btn.correct');
-      // check if user selected correct (correct btn also has 'correct' class only when user selected it OR it's revealed)
-      // We differentiate: if wrong class exists on a DIFFERENT option, user was wrong
-      const hasWrong = card.querySelector('.option-btn.wrong');
-      if (!hasWrong) correctCount++; // no wrong means user picked correct
-    });
-
-    const total    = document.querySelectorAll('.question-card').length;
-    const answered = document.querySelectorAll('.question-card[data-answered="true"]').length;
-
-    strip.querySelector('.score-correct').textContent  = correctCount;
-    strip.querySelector('.score-answered').textContent = answered;
-    strip.querySelector('.score-total').textContent    = total;
-  }
-
-  // ------------------------------------------------------------------
-  // LANGUAGE SYNC
-  // ------------------------------------------------------------------
-  /**
-   * When user switches language, we try to detect which question they
-   * were on and auto-tick the same question index on the equivalent
-   * page in the other language.
-   *
-   * Implementation:
-   * - Each lang-switch link carries data-sync-target (URL of counterpart page)
-   * - On click we write the current page's answers to sessionStorage under
-   *   a SHARED cross-page key so the target page can read it on load.
-   * - When a quiz page loads, it checks if cross-page answers exist for the
-   *   SAME question indices and applies them.
-   *
-   * Answers are stored per question INDEX (position), so Q3 in English maps
-   * to Q3 in Hindi regardless of content difference.
-   *
-   * Data is scoped to sessionStorage → clears on tab close / new tab.
-   * When user navigates to ANY OTHER page (not lang counterpart), old session
-   * data stays but is keyed per page-path so it doesn't bleed.
-   */
-
-  const LANG_SYNC_KEY = 'tyagihub_lang_sync';
-
-  function initLangSync() {
-    // On page load: check if sync data exists from a lang switch
-    try {
-      const syncRaw = sessionStorage.getItem(LANG_SYNC_KEY);
-      if (!syncRaw) return;
-      const sync = JSON.parse(syncRaw);
-      // Only apply once to target page
-      if (sync.target !== getPageId()) return;
-
-      // Merge into this page's answers
-      const myAnswers = loadPageAnswers();
-      let changed = false;
-      Object.keys(sync.answers).forEach(function (idx) {
-        if (myAnswers[idx] === undefined) {
-          myAnswers[idx] = sync.answers[idx];
-          changed = true;
-        }
-      });
-      if (changed) savePageAnswers(myAnswers);
-
-      // Clean up sync key after consuming
-      sessionStorage.removeItem(LANG_SYNC_KEY);
-    } catch (e) {}
-  }
-
-  function bindLangSwitchSync() {
-    // Lang switch links inside sidebar and header
-    document.querySelectorAll('[data-lang-switch]').forEach(function (link) {
-      link.addEventListener('click', function () {
-        const target = link.dataset.langSwitch; // target page path
-        if (!target) return;
-        // Save current answers to sync key
-        const answers = loadPageAnswers();
-        try {
-          sessionStorage.setItem(LANG_SYNC_KEY, JSON.stringify({
-            target: target,
-            answers: answers
-          }));
-        } catch (e) {}
-        // Track current page so we know we came from a lang switch
-        sessionStorage.setItem(CURRENT_PAGE_KEY, getPageId());
-      });
-    });
-  }
-
-  // ------------------------------------------------------------------
-  // MOBILE SIDEBAR
-  // ------------------------------------------------------------------
-  function initMobileSidebar() {
-    const toggle  = document.getElementById('menuToggle');
-    const sidebar = document.getElementById('gkSidebar');
-    const overlay = document.getElementById('sidebarOverlay');
-
-    if (!toggle || !sidebar) return;
-
-    function openSidebar() {
-      sidebar.classList.add('open');
-      if (overlay) overlay.classList.add('active');
-      document.body.style.overflow = 'hidden';
-      toggle.setAttribute('aria-expanded', 'true');
-    }
-
-    function closeSidebar() {
-      sidebar.classList.remove('open');
-      if (overlay) overlay.classList.remove('active');
-      document.body.style.overflow = '';
-      toggle.setAttribute('aria-expanded', 'false');
-    }
-
-    toggle.addEventListener('click', function () {
-      sidebar.classList.contains('open') ? closeSidebar() : openSidebar();
-    });
-
-    if (overlay) overlay.addEventListener('click', closeSidebar);
-
-    // Close on ESC
-    document.addEventListener('keydown', function (e) {
-      if (e.key === 'Escape') closeSidebar();
-    });
-  }
-
-  // ------------------------------------------------------------------
-  // INIT
-  // ------------------------------------------------------------------
-  document.addEventListener('DOMContentLoaded', function () {
-    initLangSync();   // must run before initQuiz so answers are merged
-    initQuiz();
-    bindLangSwitchSync();
-    initMobileSidebar();
-  });
-
+  return { init, getLang };
 })();
+
+/* ============================================================
+   2. CATEGORY SEARCH (Hub page)
+   ============================================================ */
+const QuizSearch = (() => {
+  function init() {
+    const input = document.getElementById('quiz-search-input');
+    if (!input) return;
+
+    input.addEventListener('input', () => {
+      const q = input.value.toLowerCase().trim();
+      document.querySelectorAll('.quiz-cat-card').forEach(card => {
+        const name = card.querySelector('.quiz-cat-card__name')?.textContent.toLowerCase() || '';
+        card.style.display = (!q || name.includes(q)) ? '' : 'none';
+      });
+
+      // Hide section if all cards hidden
+      document.querySelectorAll('[data-lang-section]').forEach(section => {
+        if (section.style.display === 'none') return;
+        const visible = [...section.querySelectorAll('.quiz-cat-card')]
+          .some(c => c.style.display !== 'none');
+        section.closest('.quiz-section').style.display = visible ? '' : 'none';
+      });
+    });
+  }
+
+  return { init };
+})();
+
+/* ============================================================
+   3. QUIZ PLAYER
+   ============================================================ */
+const QuizPlayer = (() => {
+  let questions   = [];
+  let currentIdx  = 0;
+  let answered    = []; // null | 'correct' | 'wrong' | 'skip'
+  let lang        = 'en';
+  let score       = 0;
+
+  // DOM refs
+  const progressFill   = document.getElementById('quiz-progress-fill');
+  const progressLabel  = document.getElementById('quiz-progress-label');
+  const questionNum    = document.getElementById('quiz-question-num');
+  const questionText   = document.getElementById('quiz-question-text');
+  const optionsWrap    = document.getElementById('quiz-options');
+  const explanation    = document.getElementById('quiz-explanation');
+  const explanationTxt = document.getElementById('quiz-explanation-text');
+  const resultScreen   = document.getElementById('quiz-result');
+  const scoreDisplay   = document.getElementById('quiz-score-display');
+  const scoreCorrect   = document.getElementById('score-correct');
+  const scoreWrong     = document.getElementById('score-wrong');
+  const scoreSkip      = document.getElementById('score-skip');
+  const totalDisplay   = document.getElementById('quiz-total');
+  const nextBtn        = document.getElementById('quiz-next-btn');
+  const prevBtn        = document.getElementById('quiz-prev-btn');
+  const skipBtn        = document.getElementById('quiz-skip-btn');
+  const restartBtn     = document.getElementById('quiz-restart-btn');
+
+  /* ---- Load questions from data attribute ---- */
+  async function loadQuestions() {
+    const el = document.getElementById('quiz-data');
+    if (!el) return;
+
+    const dataFile = el.dataset.file; // e.g. "/assets/quiz-data/history.json" but we use _data
+    // Questions are embedded as JSON in the page via Jekyll
+    const raw = el.textContent.trim();
+    if (!raw) return;
+
+    try {
+      const data  = JSON.parse(raw);
+      questions   = data.questions || [];
+      answered    = new Array(questions.length).fill(null);
+      lang        = localStorage.getItem('th-quiz-lang') || 'en';
+      renderQuestion(0);
+    } catch(e) {
+      console.error('Quiz data parse error', e);
+    }
+  }
+
+  /* ---- Render question ---- */
+  function renderQuestion(idx) {
+    if (!questions.length) return;
+    currentIdx = idx;
+    const q = questions[idx];
+    if (!q) return;
+
+    const total = questions.length;
+    const pct   = ((idx) / total) * 100;
+
+    // Progress
+    if (progressFill)  progressFill.style.width = pct + '%';
+    if (progressLabel) {
+      progressLabel.innerHTML = `
+        <span>Question ${idx + 1} of ${total}</span>
+        <span>Score: ${score}/${total}</span>
+      `;
+    }
+
+    // Question
+    if (questionNum)  questionNum.textContent  = `Q${idx + 1}`;
+    if (questionText) questionText.textContent = lang === 'hi' ? q.q_hi : q.q_en;
+
+    // Options
+    if (optionsWrap) {
+      const opts = lang === 'hi' ? q.opts_hi : q.opts_en;
+      const keys = ['A', 'B', 'C', 'D'];
+      optionsWrap.innerHTML = opts.map((opt, i) => `
+        <button class="quiz-option ${getOptionClass(idx, i)}"
+                data-idx="${i}"
+                ${answered[idx] !== null ? 'disabled' : ''}
+                onclick="QuizPlayer.selectOption(${i})">
+          <span class="quiz-option__key">${keys[i]}</span>
+          ${opt}
+        </button>
+      `).join('');
+    }
+
+    // Explanation
+    if (answered[idx] !== null) {
+      const exp = lang === 'hi' ? q.exp_hi : q.exp_en;
+      if (explanation)    explanation.classList.add('visible');
+      if (explanationTxt) explanationTxt.textContent = exp;
+    } else {
+      if (explanation)    explanation.classList.remove('visible');
+    }
+
+    // Buttons
+    if (prevBtn) prevBtn.disabled = idx === 0;
+    if (nextBtn) nextBtn.textContent = idx === total - 1 ? (lang === 'hi' ? 'परिणाम देखें' : 'See Results') : (lang === 'hi' ? 'अगला →' : 'Next →');
+    if (skipBtn) skipBtn.style.display = answered[idx] !== null ? 'none' : '';
+  }
+
+  function getOptionClass(qIdx, optIdx) {
+    if (answered[qIdx] === null) return '';
+    const q = questions[qIdx];
+    if (optIdx === q.answer) return 'correct';
+    if (answered[qIdx] === optIdx) return 'wrong';
+    return '';
+  }
+
+  /* ---- Select option ---- */
+  function selectOption(optIdx) {
+    if (answered[currentIdx] !== null) return;
+    const q = questions[currentIdx];
+    answered[currentIdx] = optIdx;
+
+    if (optIdx === q.answer) {
+      score++;
+    }
+
+    renderQuestion(currentIdx);
+    updateScoreBar();
+  }
+
+  function updateScoreBar() {
+    const correct = answered.filter(a => {
+      if (a === null) return false;
+      return questions[answered.indexOf(a)]?.answer === a;
+    }).length;
+    // Simple count
+    const c = answered.filter((a, i) => a !== null && a === questions[i]?.answer).length;
+    const w = answered.filter((a, i) => a !== null && a !== questions[i]?.answer).length;
+    const s = answered.filter(a => a === 'skip').length;
+    if (scoreCorrect) scoreCorrect.textContent = c;
+    if (scoreWrong)   scoreWrong.textContent   = w;
+    if (scoreSkip)    scoreSkip.textContent     = s;
+  }
+
+  /* ---- Navigation ---- */
+  function nextQuestion() {
+    if (currentIdx >= questions.length - 1) {
+      showResult();
+      return;
+    }
+    renderQuestion(currentIdx + 1);
+  }
+
+  function prevQuestion() {
+    if (currentIdx <= 0) return;
+    renderQuestion(currentIdx - 1);
+  }
+
+  function skipQuestion() {
+    if (answered[currentIdx] === null) {
+      answered[currentIdx] = 'skip';
+    }
+    nextQuestion();
+  }
+
+  /* ---- Result screen ---- */
+  function showResult() {
+    const total   = questions.length;
+    const correct = answered.filter((a, i) => a !== null && a !== 'skip' && a === questions[i]?.answer).length;
+    const wrong   = answered.filter((a, i) => a !== null && a !== 'skip' && a !== questions[i]?.answer).length;
+    const skipped = answered.filter(a => a === 'skip' || a === null).length;
+    const pct     = Math.round((correct / total) * 100);
+
+    const playerArea = document.getElementById('quiz-player-area');
+    if (playerArea) playerArea.style.display = 'none';
+    if (resultScreen) resultScreen.classList.add('visible');
+
+    if (scoreDisplay) scoreDisplay.textContent = `${correct}/${total}`;
+    if (totalDisplay) totalDisplay.textContent = `${pct}%`;
+    if (scoreCorrect) scoreCorrect.textContent = correct;
+    if (scoreWrong)   scoreWrong.textContent   = wrong;
+    if (scoreSkip)    scoreSkip.textContent     = skipped;
+
+    // Emoji based on score
+    const icon = document.getElementById('quiz-result-icon');
+    if (icon) {
+      if (pct >= 80)      icon.textContent = '🏆';
+      else if (pct >= 60) icon.textContent = '👍';
+      else if (pct >= 40) icon.textContent = '📚';
+      else                icon.textContent = '💪';
+    }
+
+    // Message
+    const msg = document.getElementById('quiz-result-msg');
+    if (msg) {
+      if (lang === 'hi') {
+        msg.textContent = pct >= 80 ? 'शानदार! बहुत अच्छा प्रदर्शन।' :
+                          pct >= 60 ? 'अच्छा प्रयास! और अभ्यास करें।' :
+                          'और मेहनत करें। आप कर सकते हैं!';
+      } else {
+        msg.textContent = pct >= 80 ? 'Excellent! Great performance.' :
+                          pct >= 60 ? 'Good attempt! Keep practicing.' :
+                          'Keep trying! You can do better.';
+      }
+    }
+  }
+
+  /* ---- Keyboard shortcuts ---- */
+  function initKeyboard() {
+    document.addEventListener('keydown', e => {
+      if (!questions.length) return;
+      const map = { 'a': 0, 'b': 1, 'c': 2, 'd': 3,
+                    'A': 0, 'B': 1, 'C': 2, 'D': 3 };
+      if (e.key in map && answered[currentIdx] === null) {
+        selectOption(map[e.key]);
+      }
+      if (e.key === 'ArrowRight' || e.key === 'Enter') nextQuestion();
+      if (e.key === 'ArrowLeft')  prevQuestion();
+    });
+  }
+
+  /* ---- Init ---- */
+  function init() {
+    loadQuestions();
+    initKeyboard();
+
+    nextBtn?.addEventListener('click',    nextQuestion);
+    prevBtn?.addEventListener('click',    prevQuestion);
+    skipBtn?.addEventListener('click',    skipQuestion);
+    restartBtn?.addEventListener('click', () => location.reload());
+  }
+
+  return { init, selectOption };
+})();
+
+window.QuizPlayer = QuizPlayer;
+
+/* ============================================================
+   4. INIT
+   ============================================================ */
+document.addEventListener('DOMContentLoaded', () => {
+  LangToggle.init();
+  QuizSearch.init();
+
+  // Only init player if on quiz player page
+  if (document.getElementById('quiz-player-area')) {
+    QuizPlayer.init();
+  }
+});
