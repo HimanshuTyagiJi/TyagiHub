@@ -1,3 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Discussion & Reviews Forum - TyagiHub</title>
+  <meta name="description" content="TyagiHub ki is video series aur development forum par aapka swagat hai. Yahan sabhi important reviews aur discussions live chalte hain.">
+  <meta property="og:description" content="TyagiHub Forums: Join the core community discussion, track mobile applications, and view live user ratings instantly.">
+  <meta property="og:title" content="Discussion Panel - TyagiHub Core Platform">
+</head>
+<body>
+
 <div id="tc-root">
   <div class="tc-header">
     <div class="tc-header-left">
@@ -10,6 +22,7 @@
         </div>
       </div>
     </div>
+    
     <div id="tc-auth-zone">
       <div id="tc-auth-gate">
         <div id="g_id_onload" 
@@ -27,7 +40,7 @@
   </div>
 
   <div class="tc-user-rate-box">
-    <p style="margin:0 0 5px 0; font-size:12px; color:#666;">Tap stars to rate:</p>
+    <p style="margin:0 0 5px 0; font-size:12px; color:#666;">Tap stars to rate this page:</p>
     <div id="tc-star-row" class="tc-stars-input">
       <span class="tc-s" onclick="handleStar(1)" onmouseover="hoverStar(1)" onmouseout="resetStar()">★</span>
       <span class="tc-s" onclick="handleStar(2)" onmouseover="hoverStar(2)" onmouseout="resetStar()">★</span>
@@ -48,7 +61,7 @@
 </div>
 
 <style>
-  #tc-root { max-width:800px; margin:20px auto; border:1px solid #ddd; border-radius:12px; background:#fff; font-family:sans-serif; overflow:hidden; box-shadow:0 4px 12px rgba(0,0,0,0.1); }
+  #tc-root { max-width:750px; margin:20px auto; border:1px solid #ddd; border-radius:12px; background:#fff; font-family:sans-serif; overflow:hidden; box-shadow:0 4px 12px rgba(0,0,0,0.08); }
   .tc-header { padding:15px 20px; border-bottom:1px solid #eee; display:flex; justify-content:space-between; align-items:flex-start; background:#fafafa; }
   .tc-ps-rating { display:flex; align-items:center; gap:10px; margin-top:5px; }
   .tc-avg-big { font-size:32px; font-weight:bold; color:#202124; }
@@ -60,69 +73,39 @@
   .tc-u-name { font-size:12px; font-weight:bold; max-width:80px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
   .tc-logout-btn { border:none; background:none; color:#d93025; font-size:10px; cursor:pointer; font-weight:bold; }
   .tc-user-rate-box { padding:10px; text-align:center; border-bottom:1px solid #eee; }
-  .tc-stars-input { font-size:28px; color:#ddd; cursor:pointer; }
+  .tc-stars-input { font-size:28px; color:#ddd; cursor:pointer; user-select:none; }
   .tc-s.active { color:#f4b400; }
   .tc-editor-box { padding:15px 20px; border-bottom:1px solid #eee; }
   textarea { width:100%; height:70px; padding:12px; border:1px solid #ddd; border-radius:8px; resize:none; box-sizing:border-box; font-family:inherit; font-size:14px; outline:none; }
   textarea:focus { border-color:#1a73e8; }
-  .tc-feed { max-height: 500px; overflow: auto; }
+  .tc-feed { max-height: 600px; overflow-y: auto; background: #fff; }
   .tc-post-btn { background:#1a73e8; color:#fff; border:none; padding:8px 16px; border-radius:6px; cursor:pointer; font-weight:bold; }
+  
+  /* Comments Cards Styles */
   .tc-card { padding:15px 20px; border-bottom:1px solid #f1f1f1; transition:opacity 0.3s; background:#fff; }
   .tc-card.pending { opacity:0.5; border-left:3px solid #f4b400; }
   .tc-card.reply { margin-left:45px; border-left:2px solid #ddd; background:#fcfcfc; }
   .tc-card-pfp { width:32px; height:32px; border-radius:50%; vertical-align:middle; margin-right:10px; }
   .tc-admin-badge { background:#1a73e8; color:white; font-size:9px; padding:2px 5px; border-radius:3px; margin-left:5px; font-weight:bold; }
-  .tc-actions { margin-left:42px; margin-top:10px; display:flex; gap:15px; font-size:12px; font-weight:bold; color:#1a73e8; cursor:pointer; }
+  
+  /* Functional Actions Row */
+  .tc-actions { margin-left:42px; margin-top:10px; display:flex; gap:15px; font-size:12px; font-weight:bold; color:#1a73e8; align-items: center; }
+  .tc-act-btn { cursor:pointer; user-select:none; }
+  .tc-act-btn:hover { text-decoration: underline; }
+  
+  /* Reactive Like / Dislike Badges Styling */
+  .tc-rx-btn { background: #f1f3f4; padding: 3px 8px; border-radius: 12px; color: #3c4043; font-weight: normal; font-size: 11px; cursor: pointer; user-select: none; }
+  .tc-rx-btn:hover { background: #e8eaed; }
+  .tc-rx-btn.active { background: #e8f0fe; color: #1a73e8; font-weight: bold; }
+  
   .tc-inline-box { margin:10px 0 0 42px; }
 </style>
 
-<script type="module">
-import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.0/firebase-app.js";
-import { getMessaging, getToken, onMessage } from "https://www.gstatic.com/firebasejs/10.7.0/firebase-messaging.js";
-
-// VERIFIED FIREBASE CONFIGURATION (TYAGI-HUB)
-const firebaseConfig = {
-  apiKey: "AIzaSyBE0uXhh8ePOQH6FBdhRCZrRgRkUTwCWws",
-  authDomain: "tyagi-hub.firebaseapp.com",
-  projectId: "tyagi-hub",
-  storageBucket: "tyagi-hub.firebasestorage.app",
-  messagingSenderId: "1052184634573",
-  appId: "1:1052184634573:web:077135d1bc4f321688b584",
-  measurementId: "G-36X3TG734R"
-};
-
-// LIVE GS WEB APP API EXEC URL
-const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbx15nyfQy4DxCDfdEDTvlde0f2Vh3mJP0PDyQPFzOuarD2QPnWWpVHYp6s9YjHL5utD/exec";
-const VAPID_KEY = "BD_TF4_Pmc1uUCqtcMF-KF1eBsUyr9cC1MUbT82kIdZ8VJSWQtwLMg738clOiHqOtL55iFs4Xd-y5prBgueUm_E";
-
-const app = initializeApp(firebaseConfig);
-
-try {
-  const messaging = getMessaging(app);
-  window._tcInitFCM = async function() {
-    const storedUser = JSON.parse(localStorage.getItem("tc_user"));
-    if (!storedUser) return;
-    try {
-      const sw = await navigator.serviceWorker.register('./sw.js', { scope: './' });
-      await navigator.serviceWorker.ready;
-      const perm = await Notification.requestPermission();
-      if (perm !== "granted") return;
-      const token = await getToken(messaging, { serviceWorkerRegistration: sw, vapidKey: VAPID_KEY });
-      if (token) {
-        fetch(SCRIPT_URL, {
-          method: "POST", mode: "no-cors",
-          body: JSON.stringify({ action: "fcm_subscribe", fcmToken: token, email: storedUser.e, name: storedUser.n })
-        });
-        console.log("FCM Pipeline bound successfully ✅");
-      }
-    } catch(e) { console.log("Service Worker Registration Log Ignored."); }
-  };
-} catch(err) { console.log("Push notifications system isolated."); }
-</script>
-
 <script>
 (function() {
-  const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyP24tvPwS-TvUsXNbkShpe3EMU4WvpBiUHdUOOu6EYTN65l3iU2O6xjV0Y3zFgw9absA/exec";
+  // TERI APPS SCRIPT v19.2 EXEC URL
+  const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbz0xTOEZiOIlHvtDJkH9s7u0WGC4xCptC-LDVHBT-_VmqHGrkbrRHdjRtaD2erwLvAQDw/exec";
+  const ADMIN_EMAIL = "tyagihub.core@gmail.com";
 
   let user          = JSON.parse(localStorage.getItem("tc_user")) || null;
   let serverData    = [];
@@ -136,10 +119,10 @@ try {
       document.getElementById("tc-user-pill").style.display = "flex";
       document.getElementById("tc-user-name").innerText = user.n;
       document.getElementById("tc-user-pfp").src = user.p;
-      setTimeout(function() { if (window._tcInitFCM) window._tcInitFCM(); }, 1500);
     }
     sync();
-    setInterval(function() { if (!isTyping) sync(); }, 5000);
+    // Background polling update ticks every 7 seconds if user isn't actively writing
+    setInterval(function() { if (!isTyping) sync(); }, 7000);
   }
 
   window.onGoogleAuth = function(r) {
@@ -155,11 +138,11 @@ try {
   window.resetStar = function()  { paintStars(currentRating); };
   
   window.handleStar = function(n) {
-    if (!user) return alert("System Auth Error: Google verification token required!");
+    if (!user) return alert("Authentication Required to Rate!");
     currentRating = n;
     paintStars(n);
     fetch(SCRIPT_URL, {
-      method: "POST", mode: "no-cors",
+      method: "POST",
       body: JSON.stringify({ url: location.pathname, email: user.e, name: user.n, rating: String(n), comment: "__RATING_ONLY__" })
     });
   };
@@ -168,18 +151,20 @@ try {
     document.querySelectorAll(".tc-s").forEach(function(s, i) { s.classList.toggle("active", i < n); });
   }
 
+  // FRONTEND ACTION CONTROLLER (NEW COMMENTS & EDITS DISPATCHER)
   window.handleAction = function(pid, mode, rowId) {
     mode  = mode  || "new";
     rowId = rowId || null;
-    if (!user) return alert("System Session Truncated: Authentication Required!");
+    if (!user) return alert("Session Error: Authentication Required!");
     
     var inputId = mode === "edit" ? "edit-in-" + rowId : (pid === "0" ? "tc-input" : "reply-in-" + pid);
     var inputEl = document.getElementById(inputId);
+    if (!inputEl) return;
     var msg     = inputEl.value.trim();
     if (!msg) return;
 
     if (mode === "new") {
-      tempLocal.push({ rowId: "temp_"+Date.now(), name: user.n, comment: msg, parentId: pid, pic: user.p, date: "Sending...", pending: true, isAdmin: false, email: user.e });
+      tempLocal.push({ rowId: "temp_"+Date.now(), name: user.n, comment: msg, parentId: pid, pic: user.p, date: "Sending...", pending: true, isAdmin: (user.e === ADMIN_EMAIL), email: user.e, likes: 0, dislikes: 0, myReaction: "none" });
     } else {
       var t = serverData.find(function(c) { return c.rowId == rowId; });
       if (t) { t.comment = msg; t.date = "Updating..."; }
@@ -189,19 +174,28 @@ try {
     inputEl.value = "";
     isTyping = false;
     
+    // Automatic page meta description extraction for transmission to Telegram
+    var metaDescEl = document.querySelector('meta[name="description"]') || document.querySelector('meta[property="og:description"]');
+    var pageDesc = metaDescEl ? metaDescEl.getAttribute("content") : "No description set.";
+
     var payload = { 
       url: location.pathname, 
       name: user.n, 
       email: user.e, 
       pic: user.p, 
-      comment: msg, 
-      parentId: pid, 
-      rating: String(currentRating)
+      comment: msg,        
+      parentId: String(pid), 
+      rating: String(currentRating),
+      pageDescription: pageDesc
     };
     
     if (mode === "edit") { payload.action = "edit"; payload.rowId = rowId; }
     
-    fetch(SCRIPT_URL, { method: "POST", body: JSON.stringify(payload), mode: "no-cors" });
+    fetch(SCRIPT_URL, { 
+      method: "POST", 
+      body: JSON.stringify(payload) 
+    });
+
     setTimeout(sync, 1500);
   };
 
@@ -216,7 +210,7 @@ try {
       updateRatingUI(data.avgRating, data.totalVotes);
       paintStars(currentRating);
       render();
-    } catch(e) { console.log("Synchronization frame drop skipped."); }
+    } catch(e) { console.log("Data sync dropped."); }
   }
 
   function updateRatingUI(avg, total) {
@@ -230,12 +224,16 @@ try {
   function render() {
     var feed     = document.getElementById("tc-feed");
     var combined = serverData.concat(tempLocal);
-    var mains    = combined.filter(function(c) { return c.parentId == "0" || !c.parentId; }).reverse();
+    var mains    = combined.filter(function(c) { return c.parentId == "0" || !c.parentId; });
     feed.innerHTML = mains.map(function(m) { return renderCard(m, combined); }).join("");
   }
 
   function renderCard(c, list) {
-    var canEdit = user && (user.e === c.email);
+    // ENFORCING DELETION POWER CONTROLS: Admin can delete everything. User can only delete self row.
+    var isAdminUser = user && (user.e === ADMIN_EMAIL);
+    var isOwnComment = user && (user.e === c.email);
+    var showDeleteButton = isAdminUser || isOwnComment;
+
     var starStr = c.userRating > 0 ? '<span style="color:#f4b400;font-size:10px;margin-left:8px;">' + "★".repeat(c.userRating) + '</span>' : "";
     
     var html = '<div class="tc-card ' + (c.parentId !== "0" && c.parentId ? "reply " : "") + (c.pending ? "pending" : "") + '">'
@@ -246,9 +244,14 @@ try {
       + '<small style="float:right;color:#999;font-size:11px;">' + c.date + '</small></div>'
       + '<div style="margin:8px 0 0 42px;font-size:14px;color:#333;line-height:1.5;" id="body-' + c.rowId + '">' + c.comment + '</div>'
       + '<div class="tc-actions">'
-      + '<span onclick="checkAuthAndOpen(\'' + c.rowId + '\',\'reply\')">Reply</span>'
-      + (canEdit ? '<span onclick="checkAuthAndOpen(\'' + c.rowId + '\',\'edit\')">Edit</span>' : '')
-      + (canEdit ? '<span style="color:#d93025" onclick="deleteMsg(\'' + c.rowId + '\')">Delete</span>' : '')
+      + '<span class="tc-act-btn" onclick="checkAuthAndOpen(\'' + c.rowId + '\',\'reply\')">Reply</span>'
+      + (isOwnComment || isAdminUser ? '<span class="tc-act-btn" onclick="checkAuthAndOpen(\'' + c.rowId + '\',\'edit\')">Edit</span>' : '')
+      + (showDeleteButton ? '<span class="tc-act-btn" style="color:#d93025" onclick="deleteMsg(\'' + c.rowId + '\')">Delete</span>' : '')
+      
+      // Reactive Like/Dislike Badges Injected Inline
+      + '<span class="tc-rx-btn ' + (c.myReaction === 'like' ? 'active' : '') + '" onclick="triggerReaction(\'' + c.rowId + '\',\'like\')">👍 ' + (c.likes || 0) + '</span>'
+      + '<span class="tc-rx-btn ' + (c.myReaction === 'dislike' ? 'active' : '') + '" onclick="triggerReaction(\'' + c.rowId + '\',\'dislike\')">👎 ' + (c.dislikes || 0) + '</span>'
+      
       + '</div><div id="box-' + c.rowId + '" class="tc-inline-box"></div></div>';
       
     list.filter(function(r) { return String(r.parentId) === String(c.rowId); })
@@ -277,8 +280,19 @@ try {
   };
 
   window.deleteMsg = async function(id) {
-    if (!confirm("Wipe entry permanently from database?")) return;
-    await fetch(SCRIPT_URL, { method: "POST", body: JSON.stringify({ action: "delete", rowId: id, userEmail: user.e }), mode: "no-cors" });
+    if (!user) return alert("Authentication required.");
+    if (!confirm("Wipe comment permanently from system database?")) return;
+    await fetch(SCRIPT_URL, { method: "POST", body: JSON.stringify({ action: "delete", rowId: id, userEmail: user.e }) });
+    sync();
+  };
+
+  // LIKE / DISLIKE INTERACTIVE NETWORK TRIGGER
+  window.triggerReaction = async function(id, type) {
+    if (!user) return alert("Please log-in to react to comments!");
+    await fetch(SCRIPT_URL, {
+      method: "POST",
+      body: JSON.stringify({ action: "reaction", rowId: id, email: user.e, reactionType: type })
+    });
     sync();
   };
 
@@ -286,3 +300,5 @@ try {
 })();
 </script>
 <script src="https://accounts.google.com/gsi/client" async defer></script>
+</body>
+</html>
