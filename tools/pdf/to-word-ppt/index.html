@@ -1,0 +1,1288 @@
+---
+layout: default
+title: "PDF to Word & PowerPoint Converter Online Free | TyagiHub"
+description: "Convert PDF files to editable Word DOCX and PowerPoint PPTX online for free. Secure browser-based processing, fast conversion, no file uploads."
+keywords: "pdf to word,pdf to ppt,pdf to powerpoint,pdf converter,docx converter,pptx converter,online pdf tools,tyagihub"
+lang_switch: false
+extra_js:
+- /assets/js/libs/to-word.js
+---
+<!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    
+    <!-- CDNs for Multi-Format Exporters, Offline OCR and Icons -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf-lib/1.17.1/pdf-lib.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.4.120/pdf.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/docx@8.2.4/build/index.umd.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/pptxgenjs@3.12.0/dist/pptxgen.bundle.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                    },
+                    colors: {
+                        brand: {
+                            50: '#f5f3ff',
+                            100: '#ede9fe',
+                            200: '#ddd6fe',
+                            500: '#6366f1',
+                            600: '#4f46e5',
+                            700: '#4338ca',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        :root {
+            /* Default Brand Primary Palette */
+            --clr-primary: #4f46e5;     /* Indigo Brand Main */
+            --clr-primary-hover: #4338ca;
+            --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+
+            /* Light Theme Color Accents (Default State) */
+            --clr-slate-dark: #0f172a;
+            --clr-slate-medium: #475569;
+            --clr-slate-light: #f8fafc;
+            --clr-border: #cbd5e1;
+            --clr-border-light: #e2e8f0;
+
+            /* --- Custom Color Palette --- */
+            --clr-bg: #0a0c10;
+            --clr-bg-2: #0f1219;
+            --clr-bg-3: #161b27;
+            --clr-surface: #1a2030;
+            --clr-surface-2: #212840;
+            --clr-border: #2a3348;
+            --clr-border-2: #3a4560;
+
+            /* Accent — Indian tech identity */
+            --clr-accent: #f5a623;
+            --clr-accent-2: #ff7c3a;
+            --clr-accent-glow: rgba(245, 166, 35, 0.18);
+
+            /* Semantic */
+            --clr-learn: #3ecfcf;
+            --clr-editor: #a78bfa;
+            --clr-tools: #f5a623;
+            --clr-stock: #34d399;
+            --clr-apps: #60a5fa;
+            --clr-shield: #f87171;
+            --clr-blog: #fb923c;
+
+            /* Text */
+            --clr-text: #e8eaf0;
+            --clr-text-2: #a0a8bc;
+            --clr-text-3: #606880;
+            --clr-heading: #f0f2f8;
+        }
+
+        /* Light mode (future toggle) */
+        [data-theme="light"] {
+            --clr-bg: #ffffff;
+            --clr-bg-2: #edf0f7;
+            --clr-bg-3: #e4e8f3;
+            --clr-surface: #ffffff;
+            --clr-surface-2: #f0f3fb;
+            --clr-border: #d8deed;
+            --clr-border-2: #bdc6e0;
+
+            /* Text — dark on light bg */
+            --clr-text: #1a2030;
+            --clr-text-2: #3d4d6a;
+            --clr-text-3: #6b7a9a;
+            --clr-heading: #0d1421;
+
+            /* Accent stays same */
+            --clr-accent: #0000FF;
+            --clr-accent-2: #e8682a;
+            --clr-accent-glow: rgba(224, 152, 32, 0.15);
+        }
+
+        .tyagihubscan * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        .tyagihubscan-body, .tyagihubscan {
+            font-family: var(--font-sans);
+            background-color: var(--clr-bg);
+            color: var(--clr-text);
+            line-height: 1.5;
+            padding: 40px 20px;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+        }
+
+        /* Tool Wrapper Container Grid */
+        .wrapper {
+            width: 100%;
+            max-width: 1200px;
+            background: var(--clr-bg-2);
+            border-radius: 24px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.05), 0 5px 15px rgba(0, 0, 0, 0.02);
+            border: 1px solid var(--clr-border);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Hero banner header */
+        .header-banner {
+            background: linear-gradient(135deg, #1e1b4b 0%, #311042 100%);
+            padding: 32px 40px;
+            color: #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .header-left h1 {
+            font-size: 22px;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            margin-bottom: 4px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .header-left p {
+            font-size: 13px;
+            color: #94a3b8;
+            font-weight: 500;
+        }
+
+        .badge-secure {
+            background: rgba(16, 185, 129, 0.15);
+            border: 1px solid rgba(16, 185, 129, 0.3);
+            color: #34d399;
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: 700;
+            font-family: var(--font-mono);
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .workspace-grid {
+            display: grid;
+            grid-template-columns: 350px 1fr;
+            min-height: 600px;
+        }
+
+        /* Settings and File upload panel */
+        .control-panel {
+            background: var(--clr-bg-3);
+            border-right: 1px solid var(--clr-border);
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        /* Responsive Layout Overrides for Tablets and Mobiles */
+        @media (max-width: 1024px) {
+            .workspace-grid {
+                grid-template-columns: 1fr;
+            }
+            .control-panel {
+                border-right: none;
+                border-bottom: 1px solid var(--clr-border);
+                padding: 24px;
+                gap: 20px;
+            }
+        }
+
+        @media (max-width: 640px) {
+            :root {
+                --preview-padding: 8px;
+                --sheet-padding: 16px;
+                --sheet-max-width: 100%;
+                --sheet-min-height: auto;
+            }
+            .tyagihubscan-body, .tyagihubscan {
+                padding: 12px 6px;
+            }
+            .wrapper {
+                border-radius: 16px;
+            }
+            .header-banner {
+                padding: 20px 16px;
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 12px;
+            }
+            .header-left h1 {
+                font-size: 18px;
+                flex-wrap: wrap;
+                gap: 8px;
+            }
+            .header-left p {
+                font-size: 11px;
+            }
+            .control-panel {
+                padding: 16px;
+                gap: 16px;
+            }
+            .config-card {
+                padding: 12px;
+                border-radius: 10px;
+            }
+            .workspace-main {
+                padding: 12px 8px;
+            }
+            .interactive-sheet {
+                padding: 20px 12px;
+                min-height: auto;
+            }
+            .doc-heading1 {
+                font-size: 18px;
+            }
+            .doc-heading2 {
+                font-size: 13px;
+            }
+            .doc-paragraph, .doc-list, .doc-table {
+                font-size: 11px;
+            }
+        }
+
+        /* Drag-and-drop zone styles */
+        .drop-zone {
+            border: 2px dashed var(--clr-border-2);
+            background: var(--clr-bg-2);
+            border-radius: 16px;
+            padding: 32px 20px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.25s ease;
+            position: relative;
+            outline: none;
+            color: var(--clr-text);
+        }
+
+        .drop-zone:hover, .drop-zone.dragover {
+            border-color: var(--clr-accent);
+            background: rgba(245, 166, 35, 0.05);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(245, 166, 35, 0.05);
+        }
+
+        .drop-zone-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: rgba(245, 166, 35, 0.08);
+            color: var(--clr-accent);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 16px auto;
+        }
+
+        .file-input {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            cursor: pointer;
+        }
+
+        /* Config item elements */
+        .config-card {
+            background: var(--clr-surface);
+            border: 1px solid var(--clr-border-2);
+            border-radius: 14px;
+            padding: 16px;
+            margin-bottom: 12px;
+            color: var(--clr-text);
+        }
+
+        .config-title {
+            font-size: 11px;
+            font-weight: 800;
+            color: var(--clr-text-2);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        /* Mode choice buttons */
+        .choice-btn-group {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px;
+        }
+
+        .choice-btn {
+            background: var(--clr-surface-2);
+            border: 1px solid var(--clr-border);
+            padding: 10px;
+            border-radius: 10px;
+            font-size: 11px;
+            font-weight: 700;
+            color: var(--clr-text);
+            cursor: pointer;
+            transition: all 0.15s ease;
+            text-align: center;
+        }
+
+        .choice-btn:hover {
+            border-color: var(--clr-accent);
+            color: var(--clr-accent);
+        }
+
+        .choice-btn.active {
+            background: var(--clr-accent-glow);
+            border-color: var(--clr-accent);
+            color: var(--clr-accent);
+        }
+
+        /* Custom format pill choice items */
+        .format-selector {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 8px;
+        }
+
+        .format-pill {
+            background: var(--clr-surface-2);
+            border: 1px solid var(--clr-border);
+            padding: 12px 6px;
+            border-radius: 10px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.15s ease;
+            color: var(--clr-text);
+        }
+
+        .format-pill:hover {
+            border-color: var(--clr-accent);
+        }
+
+        .format-pill.active {
+            background: var(--clr-accent-glow);
+            border-color: var(--clr-accent);
+            box-shadow: inset 0 0 0 1px var(--clr-accent);
+        }
+
+        .format-icon {
+            font-size: 20px;
+            margin-bottom: 4px;
+            display: block;
+        }
+
+        .format-label {
+            font-size: 11px;
+            font-weight: 800;
+            display: block;
+            color: var(--clr-text);
+        }
+
+        .format-desc {
+            font-size: 8px;
+            color: var(--clr-text-3);
+            display: block;
+            margin-top: 2px;
+        }
+
+        /* Main Workspace Preview/Processing Area */
+        .workspace-main {
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+            background: var(--clr-bg-2);
+            color: var(--clr-text);
+        }
+
+        .p-status-box {
+            padding: 24px;
+            border-radius: 16px;
+            background: var(--clr-surface);
+            border: 1px solid var(--clr-border);
+            margin-bottom: 24px;
+            color: var(--clr-text);
+        }
+
+        .p-bar-track {
+            height: 8px;
+            background: var(--clr-surface-2);
+            border-radius: 10px;
+            overflow: hidden;
+            margin: 12px 0 6px 0;
+        }
+
+        .p-bar-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--clr-accent) 0%, var(--clr-accent-2) 100%);
+            width: 0%;
+            transition: width 0.3s ease-out;
+        }
+
+        /* Preview elements representations */
+        .document-canvas-preview {
+            background: var(--clr-bg-3);
+            border: 1px solid var(--clr-border);
+            border-radius: 16px;
+            padding: var(--preview-padding, 24px);
+            max-height: 640px;
+            overflow-y: auto;
+            position: relative;
+        }
+
+        .interactive-sheet {
+            background: var(--clr-surface);
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.02);
+            border: 1px solid var(--clr-border-2);
+            padding: var(--sheet-padding, 40px) !important;
+            width: 100%;
+            max-width: var(--sheet-max-width, 800px) !important;
+            margin: 0 auto 20px auto;
+            min-height: var(--sheet-min-height, 500px) !important;
+            position: relative;
+            color: var(--clr-text);
+        }
+
+        /* Virtual outline representations in browser sheet preview */
+        .outline-badge {
+            font-size: 9px;
+            font-family: var(--font-mono);
+            font-weight: 800;
+            padding: 2px 6px;
+            border-radius: 4px;
+            color: #ffffff;
+            vertical-align: middle;
+            margin-right: 6px;
+            display: inline-block;
+        }
+
+        .badge-h1 { background-color: var(--clr-primary); }
+        .badge-h2 { background-color: #8b5cf6; }
+        .badge-p { background-color: #64748b; }
+        .badge-list { background-color: #f59e0b; }
+        .badge-table { background-color: #10b981; }
+
+        .editor-block-item {
+            position: relative;
+            padding: 10px;
+            border: 1px dashed transparent;
+            border-radius: 8px;
+            margin-bottom: 12px;
+            transition: all 0.15s ease;
+        }
+
+        .editor-block-item:hover {
+            border-color: var(--clr-border);
+            background: rgba(241, 245, 249, 0.05);
+        }
+
+        .block-input-field {
+            width: 100%;
+            border: none;
+            background: transparent;
+            font-family: inherit;
+            color: inherit;
+            font-size: inherit;
+            font-weight: inherit;
+            outline: none;
+        }
+
+        .block-input-field:focus {
+            background: var(--clr-surface-2);
+            box-shadow: 0 0 0 2px var(--clr-accent);
+            padding: 4px 8px;
+            border-radius: 4px;
+        }
+
+        .toast-notif {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: var(--clr-surface-2);
+            color: var(--clr-text);
+            padding: 12px 24px;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            font-family: var(--font-sans);
+            font-size: 13px;
+            font-weight: 600;
+            display: none;
+            z-index: 1000;
+            align-items: center;
+            gap: 8px;
+            border-left: 4px solid var(--clr-accent);
+            opacity: 0;
+            transform: translateY(10px);
+            transition: all 0.3s ease;
+        }
+
+        .toast-notif.active {
+            display: flex;
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Preset color theme buttons custom style rules */
+        .color-preset-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 6px;
+        }
+
+        .color-preset-box {
+            background: var(--clr-surface-2);
+            border: 1px solid var(--clr-border);
+            border-radius: 8px;
+            padding: 8px 4px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.15s ease;
+            color: var(--clr-text-2);
+        }
+
+        .color-preset-box:hover {
+            border-color: var(--clr-accent);
+            color: var(--clr-text);
+        }
+
+        .color-preset-box.active {
+            background: var(--clr-accent-glow);
+            border-color: var(--clr-accent);
+            box-shadow: inset 0 0 0 1px var(--clr-accent);
+            color: var(--clr-accent);
+        }
+
+        /* Dynamic whiteboard elements & layout editors */
+        .accent-indigo { --theme-color-hex: #4338ca; --theme-bg-color: #eef2ff; }
+        .accent-blue { --theme-color-hex: #1e40af; --theme-bg-color: #eff6ff; }
+        .accent-green { --theme-color-hex: #065f46; --theme-bg-color: #ecfdf5; }
+        .accent-amber { --theme-color-hex: #b45309; --theme-bg-color: #fef3c7; }
+        .accent-red { --theme-color-hex: #9f1239; --theme-bg-color: #fff1f2; }
+        .accent-slate { --theme-color-hex: #1e293b; --theme-bg-color: #f1f5f9; }
+
+        .preview-block {
+            position: relative;
+            border: 1.5px dashed transparent;
+            padding: 10px;
+            margin-bottom: 6px;
+            border-radius: 8px;
+            transition: all 0.15s ease;
+            cursor: pointer;
+        }
+        .preview-block:hover {
+            border-color: #93c5fd;
+            background-color: rgba(147, 197, 253, 0.1);
+        }
+        .preview-block.active {
+            border-color: var(--theme-color-hex);
+            background-color: rgba(147, 197, 253, 0.15);
+        }
+        .block-pagers-rail {
+            position: absolute;
+            top: -12px;
+            right: 8px;
+            display: none;
+            gap: 4px;
+            background: var(--theme-color-hex);
+            padding: 2px 6px;
+            border-radius: 6px;
+            z-index: 50;
+        }
+        .preview-block:hover .block-pagers-rail, .preview-block.active .block-pagers-rail {
+            display: flex;
+            align-items: center;
+        }
+        .btn-rail {
+            background: none;
+            border: none;
+            color: #ffffff;
+            cursor: pointer !important;
+            font-size: 10px;
+            padding: 2px 4px;
+            font-weight: bold;
+        }
+        .btn-rail:hover {
+            opacity: 0.8;
+        }
+        .doc-heading1 {
+            font-size: 24px;
+            font-weight: 850;
+            color: var(--clr-heading);
+            margin-bottom: 12px;
+            padding-bottom: 3px;
+        }
+        .doc-heading2 {
+            font-size: 15px;
+            font-weight: 700;
+            color: var(--theme-color-hex);
+            margin-top: 12px;
+            margin-bottom: 6px;
+            text-transform: uppercase;
+            letter-spacing: 0.02em;
+        }
+        .doc-paragraph {
+            font-size: 12px;
+            color: var(--clr-text-2);
+            margin-bottom: 8px;
+            white-space: pre-wrap;
+            line-height: 1.55;
+        }
+        .doc-divider {
+            height: 1.5px;
+            background-color: var(--theme-color-hex);
+            margin: 12px 0;
+            opacity: 0.85;
+        }
+        .doc-list {
+            margin-left: 12px;
+            margin-bottom: 10px;
+            font-size: 12px;
+            color: var(--clr-text-2);
+        }
+        .doc-list-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 6px;
+            margin-bottom: 4px;
+        }
+        .doc-list-bullet {
+            width: 4px;
+            height: 4px;
+            background-color: var(--theme-color-hex);
+            border-radius: 50%;
+            margin-top: 6px;
+            flex-shrink: 0;
+        }
+        .doc-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 11px;
+            margin: 12px 0;
+            border: 1px solid var(--clr-border);
+        }
+        .doc-table th {
+            background-color: var(--theme-color-hex);
+            color: #ffffff;
+            font-weight: bold;
+            padding: 8px 10px;
+            text-align: left;
+            border: 1px solid var(--theme-color-hex);
+        }
+        .doc-table td {
+            padding: 8px 10px;
+            border: 1px solid var(--clr-border-2);
+            color: var(--clr-text-2);
+        }
+        .doc-table tr:nth-child(even) {
+            background-color: var(--clr-bg-3);
+        }
+        .doc-stamp-container {
+            margin: 14px 0;
+            display: inline-block;
+        }
+        .doc-stamp-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            border: 3px double #b91c1c;
+            color: #b91c1c;
+            font-family: var(--font-mono);
+            font-size: 12px;
+            font-weight: 800;
+            padding: 8px 16px;
+            background: rgba(185, 28, 28, 0.08);
+            border-radius: 8px;
+            transform: rotate(-1.5deg);
+        }
+        .doc-page-stamp-line {
+            margin-top: auto;
+            border-top: 1px solid var(--clr-border);
+            padding-top: 10px;
+            font-weight: 700;
+            font-size: 9px;
+            color: var(--clr-text-3);
+            display: flex;
+            justify-content: space-between;
+        }
+
+        /* Forms, Copilot & Sidebar UI */
+        .blocks-btn-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 8px;
+        }
+        .btn-add-block {
+            background: var(--clr-surface-2);
+            border: 1px solid var(--clr-border);
+            padding: 10px 4px;
+            border-radius: 10px;
+            font-size: 10px;
+            font-weight: 700;
+            color: var(--clr-text);
+            text-align: center;
+            transition: all 0.15s ease;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.02);
+            cursor: pointer;
+        }
+        .btn-add-block:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            border-color: var(--clr-accent);
+            color: var(--clr-accent);
+        }
+        .btn-span-full {
+            grid-column: span 2;
+        }
+        .block-editor-box {
+            background: var(--clr-surface);
+            border: 1px solid var(--clr-border-2);
+            border-radius: 14px;
+            padding: 16px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-bottom: 12px;
+            color: var(--clr-text);
+        }
+        .block-editor-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px dashed var(--clr-border);
+            padding-bottom: 8px;
+        }
+        .btn-edit-action {
+            font-size: 10.5px;
+            font-weight: 800;
+            padding: 5px 10px;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+        .btn-edit-delete {
+            background: rgba(220, 38, 38, 0.15);
+            color: #f87171;
+            border: 1px solid rgba(220, 38, 38, 0.3);
+        }
+        .textarea-input {
+            width: 100%;
+            height: 80px;
+            border: 1px solid var(--clr-border-2);
+            background: var(--clr-surface-2);
+            color: var(--clr-text);
+            border-radius: 8px;
+            padding: 8px;
+            font-size: 11px;
+            outline: none;
+            resize: vertical;
+        }
+        .textarea-input:focus {
+            border-color: var(--clr-accent);
+        }
+        .align-group {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 4px;
+        }
+        .btn-align {
+            background: var(--clr-surface-2);
+            border: 1px solid var(--clr-border);
+            color: var(--clr-text-2);
+            font-size: 10px;
+            font-weight: 700;
+            padding: 6px;
+            border-radius: 6px;
+            cursor: pointer;
+            text-align: center;
+        }
+        .btn-align.active {
+            background: var(--clr-accent-glow);
+            border-color: var(--clr-accent);
+            color: var(--clr-accent);
+        }
+        .list-edit-row {
+            display: flex;
+            gap: 6px;
+            margin-bottom: 6px;
+            align-items: center;
+        }
+        .table-editor-scroller {
+            max-height: 200px;
+            overflow-y: auto;
+            border: 1px solid var(--clr-border-2);
+            border-radius: 8px;
+            padding: 6px;
+            background: var(--clr-surface-2);
+        }
+        .table-cell-input {
+            width: 100%;
+            border: 1px solid var(--clr-border);
+            background: var(--clr-surface);
+            color: var(--clr-text);
+            border-radius: 4px;
+            font-size: 10px;
+            padding: 4px;
+            outline: none;
+            font-family: var(--font-mono);
+        }
+        .table-cell-input:focus {
+            border-color: var(--clr-accent);
+            background: var(--clr-surface-2);
+        }
+
+        /* Make left panel scrollable nicely */
+        .control-panel {
+            max-height: 100vh;
+            overflow-y: auto;
+        }
+
+        /* Scoped High-Priority CSS Overrides to tie Tailwind's hardcoded colors inside .tyagihubscan directly to CSS variables */
+        .tyagihubscan .text-slate-800,
+        .tyagihubscan .text-slate-700,
+        .tyagihubscan .text-slate-900,
+        .tyagihubscan .text-slate-950,
+        .tyagihubscan .text-indigo-950,
+        .tyagihubscan .text-slate-600 {
+            color: var(--clr-text) !important;
+        }
+
+        .tyagihubscan .text-slate-500,
+        .tyagihubscan .text-slate-400 {
+            color: var(--clr-text-2) !important;
+        }
+
+        .tyagihubscan .bg-white {
+            background-color: var(--clr-surface) !important;
+        }
+
+        .tyagihubscan .bg-slate-50 {
+            background-color: var(--clr-surface-2) !important;
+        }
+
+        .tyagihubscan .border-slate-200,
+        .tyagihubscan .border-slate-100 {
+            border-color: var(--clr-border) !important;
+        }
+
+        .tyagihubscan .border-slate-300 {
+            border-color: var(--clr-border-2) !important;
+        }
+
+        .tyagihubscan button.bg-slate-100 {
+            background-color: var(--clr-surface-2) !important;
+            color: var(--clr-text) !important;
+        }
+        .tyagihubscan button.bg-slate-100:hover {
+            background-color: var(--clr-accent-glow) !important;
+            color: var(--clr-accent) !important;
+        }
+        .tyagihubscan font, .tyagihubscan select {
+            background-color: var(--clr-surface-2) !important;
+            color: var(--clr-text) !important;
+            border-color: var(--clr-border) !important;
+        }
+    </style><br><br><br>
+    <div class="bg-slate-900 text-slate-100 min-h-screen bg-grid-pattern flex flex-col antialiased">
+
+    <!-- CORE WORKSPACE CONTAINER -->
+    <div class="tyagihubscan flex-1 flex w-full justify-center">
+        <div class="wrapper" id="converter-root-box">
+            
+            <!-- MASTER BANNER -->
+            <div class="header-banner">
+                <div class="header-left">
+                    <h1>
+                        <i data-lucide="shuffle" class="w-6 h-6 text-indigo-400"></i>
+                        <span>Fidelity PDF to Word, PowerPoint & Excel Layout Converter</span>
+                    </h1>
+                    <p>Reconstruct styled paragraphs, tabular grids, bullet alignments, and margins into native office documents.</p>
+                </div>
+                <div>
+                    <span class="badge-secure">
+                        <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                        LOCAL VECTOR EXPORTER
+                    </span>
+                </div>
+            </div>
+
+            <div class="workspace-grid text-slate-800">
+                
+                <!-- SIDEBAR LEFT: CONTROLS & PARSING CHOICES -->
+                <div class="control-panel">
+                    
+                    <!-- 1. PDF FILE DRAG-AND-DROP -->
+                    <div class="config-card">
+                        <div class="config-title">
+                            <i data-lucide="file-up" class="w-3.5 h-3.5"></i> <span>A. Upload Vector PDF</span>
+                        </div>
+                        <div class="drop-zone" id="pdf-drop-zone">
+                            <div class="drop-zone-icon">
+                                <i data-lucide="file-type-2" class="w-6 h-6" id="upload-icon-status"></i>
+                            </div>
+                            <p class="text-xs font-bold text-slate-800 mb-1" id="file-main-label">Choose or drag a PDF here</p>
+                            <p class="text-[9px] text-slate-500" id="file-sub-label">Supports multipage or scanned PDFs</p>
+                            <input type="file" class="file-input" id="pdf-file-selector" accept=".pdf" />
+                        </div>
+                        
+                        <!-- Page Info & Stats (hidden by default) -->
+                        <div class="mt-4 p-3 bg-indigo-50 border border-indigo-100/50 rounded-xl hidden" id="staged-file-stats">
+                            <div class="flex items-center justify-between text-[11px] font-bold text-indigo-900 mb-1">
+                                <span id="staged-filename" class="truncate max-w-[180px]">document.pdf</span>
+                                <span class="font-mono" id="staged-pagecount">0 Pages</span>
+                            </div>
+                            <div class="text-[9px] text-indigo-700/80 font-medium" id="staged-filesize">
+                                Size: 0.0 MB
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- TEST DRIVES: INSTANT SAMPLE LOADER PRESETS -->
+                    <div class="config-card">
+                        <div class="config-title text-indigo-600">
+                            <i data-lucide="sparkles" class="w-3.5 h-3.5"></i> <span>B. Instant Test Presets (No Upload Required)</span>
+                        </div>
+                        <p class="text-[10px] text-slate-500 mb-3 leading-tight">Click to stage and preview pre-parsed layouts instantly to try formatting editors & MS Office exporters:</p>
+                        <div class="grid grid-cols-3 gap-1.5">
+                            <button onclick="loadSamplePresetData('invoice')" class="py-2.5 px-1 rounded-lg text-[10px] font-bold bg-indigo-50 hover:bg-indigo-100 border border-indigo-100 text-indigo-950 transition">🧾 Invoice</button>
+                            <button onclick="loadSamplePresetData('book')" class="py-2.5 px-1 rounded-lg text-[10px] font-bold bg-purple-50 hover:bg-purple-100 border border-purple-100 text-purple-950 transition">🎓 Book</button>
+                            <button onclick="loadSamplePresetData('report')" class="py-2.5 px-1 rounded-lg text-[10px] font-bold bg-emerald-50 hover:bg-emerald-100 border border-emerald-100 text-emerald-950 transition">📊 Report</button>
+                        </div>
+                    </div>
+
+                    <!-- 2. RECONSTRUCTION STRATEGY ENGINE -->
+                    <div class="config-card">
+                        <div class="config-title">
+                            <i data-lucide="cpu" class="w-3.5 h-3.5"></i> <span>C. Reconstruction Engine</span>
+                        </div>
+                        <div class="choice-btn-group">
+                            <button class="choice-btn active" id="engine-offline" onclick="setEngineMode('offline')">
+                                <span class="block text-xs">🚀 100% Offline</span>
+                                <span class="block text-[8px] text-slate-500 font-normal mt-0.5 font-sans">Precise text tracking</span>
+                            </button>
+                            <button class="choice-btn" id="engine-ai" onclick="setEngineMode('ai')">
+                                <span class="block text-xs">✨ AI Deep Scan</span>
+                                <span class="block text-[8px] text-slate-500 font-normal mt-0.5 font-sans">Gemini 3.5 layout reconstruction</span>
+                            </button>
+                        </div>
+                        <div class="text-[9px] text-slate-500 leading-relaxed mt-2" id="engine-help-text">
+                            Offline mode maps character coordinates, font dimensions, alignments, and structured matrices privately with absolute speed. No token limits!
+                        </div>
+                    </div>
+
+                    <!-- 3. TARGET EXPORT FORMAT SELECTION -->
+                    <div class="config-card">
+                        <div class="config-title">
+                            <i data-lucide="target" class="w-3.5 h-3.5"></i> <span>D. Default Output Stream</span>
+                        </div>
+                        <div class="format-selector">
+                            <div class="format-pill active" id="pill-docx" onclick="setTargetFormat('docx')">
+                                <span class="format-icon">📘</span>
+                                <span class="format-label">MS Word</span>
+                                <span class="format-desc">Flowing .docx</span>
+                            </div>
+                            <div class="format-pill" id="pill-pptx" onclick="setTargetFormat('pptx')">
+                                <span class="format-icon">📙</span>
+                                <span class="format-label">MS PPT</span>
+                                <span class="format-desc">Visual Slides</span>
+                            </div>
+                            <div class="format-pill" id="pill-xlsx" onclick="setTargetFormat('xlsx')">
+                                <span class="format-icon">🟢</span>
+                                <span class="format-label">MS Excel</span>
+                                <span class="format-desc">Grids & Tables</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 4. COLOR ACCENTS & STYLE THEMES -->
+                    <div class="config-card">
+                        <div class="config-title">
+                            <i data-lucide="palette" class="w-3.5 h-3.5"></i> <span>E. Document Typography & Accent Theme</span>
+                        </div>
+                        <div class="color-preset-grid mb-3">
+                            <div class="color-preset-box active" id="preset-original" onclick="applyStylePreset('original')">
+                                <span class="block text-[10px] font-bold">🎨 Original</span>
+                            </div>
+                            <div class="color-preset-box" id="preset-corporate" onclick="applyStylePreset('corporate')">
+                                <span class="block text-[10px] font-bold text-blue-900">🔷 Corporate</span>
+                            </div>
+                            <div class="color-preset-box" id="preset-slate" onclick="applyStylePreset('slate')">
+                                <span class="block text-[10px] font-bold text-slate-800">🌑 Slate</span>
+                            </div>
+                            <div class="color-preset-box" id="preset-editorial" onclick="applyStylePreset('editorial')">
+                                <span class="block text-[10px] font-bold text-rose-900">🍷 Editorial</span>
+                            </div>
+                            <div class="color-preset-box" id="preset-emerald" onclick="applyStylePreset('emerald')">
+                                <span class="block text-[10px] font-bold text-emerald-900">🌲 Emerald</span>
+                            </div>
+                        </div>
+
+                        <!-- Expanded Layout Aesthetics -->
+                        <div class="space-y-2 mt-2 pt-2 border-t border-slate-100">
+                            <div>
+                                <label class="block text-[9px] font-bold text-slate-500 uppercase tracking-wider mb-1">Font Family Customization</label>
+                                <select id="cfg-font-family" onchange="changeWorkspaceFont(this.value)" class="w-full text-xs font-semibold bg-slate-50 border border-slate-200 rounded-lg p-2 focus:outline-none focus:ring-1 focus:ring-indigo-500">
+                                    <option value="sans">Inter (Modern Clean Sans)</option>
+                                    <option value="serif">Space Grotesk (Tech Editorial)</option>
+                                    <option value="mono">Fira Code (Brutalist Technical)</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block text-[9px] font-bold text-slate-500 uppercase tracking-wider mb-1">Page Margin Level</label>
+                                <select id="cfg-page-margins" onchange="changeWorkspaceMargins(this.value)" class="w-full text-xs font-semibold bg-slate-50 border border-slate-200 rounded-lg p-2 focus:outline-none focus:ring-1 focus:ring-indigo-500">
+                                    <option value="normal">Normal (Standard 1 inch padding)</option>
+                                    <option value="compact">Compact (Ultra tight 0.4 inch padding)</option>
+                                    <option value="wide">Wide (Spacious 1.5 inch padding)</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block text-[9px] font-bold text-slate-500 uppercase tracking-wider mb-1">Custom Header Line</label>
+                                <input type="text" id="cfg-header-text" oninput="changeWorkspaceHeaderText(this.value)" value="RESTORED PDF DOCUMENT OUTLINE" class="w-full text-xs bg-slate-50 border border-slate-200 rounded-lg p-2 focus:outline-none focus:ring-1 focus:ring-indigo-500" />
+                            </div>
+                            <div>
+                                <label class="block text-[9px] font-bold text-slate-500 uppercase tracking-wider mb-1">Watermark Overlay Text</label>
+                                <input type="text" id="cfg-watermark" oninput="changeWorkspaceWatermark(this.value)" placeholder="e.g. APPROVED, INTERNAL USE ONLY" class="w-full text-xs bg-slate-50 border border-slate-200 rounded-lg p-2 focus:outline-none focus:ring-1 focus:ring-indigo-500" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- INJECT MANUAL BLOCKS -->
+                    <div class="config-card">
+                        <div class="config-title">
+                            <i data-lucide="plus-square" class="w-3.5 h-3.5"></i> <span>F. Inject Manual Blocks</span>
+                        </div>
+                        <p class="text-[10px] text-slate-500 mb-3 leading-tight">Manually overlay or correct layout elements:</p>
+                        <div class="blocks-btn-grid text-slate-800">
+                            <button class="btn-add-block" onclick="insertManualBlock('heading1')">➕ Main Title (H1)</button>
+                            <button class="btn-add-block" onclick="insertManualBlock('heading2')">➕ Sub Heading (H2)</button>
+                            <button class="btn-add-block" onclick="insertManualBlock('paragraph')">➕ Body Text (P)</button>
+                            <button class="btn-add-block" onclick="insertManualBlock('list')">➕ Bullet List</button>
+                            <button class="btn-add-block" onclick="insertManualBlock('table')">➕ Spreadsheet</button>
+                            <button class="btn-add-block" onclick="insertManualBlock('stamp')">➕ Authenticity Stamp</button>
+                            <button class="btn-add-block btn-span-full" onclick="insertManualBlock('divider')">➕ Draw Horizontal Separator</button>
+                        </div>
+                    </div>
+
+                    <!-- ACTIVE BLOCK EDITOR PANEL -->
+                    <div class="block-editor-box hidden" id="dynamic-editor-panel">
+                        <div class="block-editor-header">
+                            <span class="text-[11px] font-extrabold text-indigo-950 uppercase tracking-wider flex items-center gap-1">
+                                <i data-lucide="edit-3" class="w-3 h-3 text-indigo-600"></i> Active Block Editor
+                            </span>
+                            <button class="btn-edit-action btn-edit-delete" onclick="deleteActiveBlockFromPanel()" title="Delete Block">Delete Block ✕</button>
+                        </div>
+
+                        <!-- Editable Content Textarea -->
+                        <div id="editor-field-group-standard">
+                            <label class="block text-[9px] font-bold text-slate-500 uppercase tracking-wider mb-1">Item Raw Text Content</label>
+                            <textarea id="editor-main-text" oninput="syncActiveBlockText(this.value)" class="textarea-input"></textarea>
+                        </div>
+
+                        <!-- Text alignments -->
+                        <div id="editor-field-group-align">
+                            <label class="block text-[9px] font-bold text-slate-500 uppercase tracking-wider mb-1">Alignment Orientation</label>
+                            <div class="align-group">
+                                <button class="btn-align" id="btn-align-left" onclick="syncActiveBlockAlignment('left')">Left Align</button>
+                                <button class="btn-align" id="btn-align-center" onclick="syncActiveBlockAlignment('center')">Center</button>
+                                <button class="btn-align" id="btn-align-right" onclick="syncActiveBlockAlignment('right')">Right Align</button>
+                            </div>
+                        </div>
+
+                        <!-- Sub-items list rows wrapper -->
+                        <div id="editor-field-group-list" class="hidden">
+                            <label class="block text-[9px] font-bold text-slate-500 uppercase tracking-wider mb-1">List Bullet points rows</label>
+                            <div id="list-rows-editor-container" class="space-y-1.5">
+                                <!-- Dynamic bullet rows go here -->
+                            </div>
+                            <button class="w-full mt-2 py-1.5 px-3 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-800 text-[10px] font-extrabold transition" onclick="addListRowToActiveBlock()">➕ Add Bullet Row</button>
+                        </div>
+
+                        <!-- Table cell grid editor -->
+                        <div id="editor-field-group-table" class="hidden">
+                            <label class="block text-[9px] font-bold text-slate-500 uppercase tracking-wider mb-1">Matrix Spreadsheet Grid Cell Data</label>
+                            <div class="table-editor-scroller" id="table-cells-editor-container">
+                                <!-- Dynamic grid cells inputs go here -->
+                            </div>
+                            <div class="grid grid-cols-2 gap-1.5 mt-2">
+                                <button class="py-1 px-2 bg-indigo-50 border border-indigo-100 hover:bg-indigo-100 text-indigo-950 font-bold text-[9px] rounded-lg transition" onclick="addTableRowToActiveBlock()">+ Add Row</button>
+                                <button class="py-1 px-2 bg-indigo-50 border border-indigo-100 hover:bg-indigo-100 text-indigo-950 font-bold text-[9px] rounded-lg transition" onclick="addColumnToActiveBlock()">+ Add Column</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- PASSWORD PANEL KEY (IF SECURED) -->
+                    <div class="config-card hidden" id="password-form-wrapper">
+                        <div class="config-title">
+                            <i data-lucide="lock" class="w-3.5 h-3.5 text-rose-500"></i> <span class="text-rose-600 font-bold">PDF is Locked</span>
+                        </div>
+                        <div class="relative">
+                            <input type="password" id="pdf-security-password" class="w-full text-xs font-bold border border-rose-300 rounded-lg p-2.5 pr-8 focus:outline-none focus:ring-2 focus:ring-rose-500 bg-rose-50/50" placeholder="Enter Decryption Password..." />
+                            <i data-lucide="unlock" class="w-4 h-4 text-rose-600 absolute right-2.5 top-3 cursor-pointer" onclick="handlePasswordReRun()"></i>
+                        </div>
+                    </div>
+
+                    <!-- CONVERT PROCESS MAIN TRIGGER CALL -->
+                    <button class="w-full py-4 px-6 bg-indigo-600 hover:bg-indigo-500 active:bg-indigo-700 disabled:bg-slate-300 disabled:cursor-not-allowed text-white font-bold text-sm tracking-tight rounded-xl transition-all shadow-lg shadow-indigo-600/25 flex items-center justify-center gap-2" id="btn-master-trigger" onclick="runConversionEngine()" disabled>
+                        <i data-lucide="shuffle" class="w-4 h-4"></i>
+                        <span>Start Layout Reconstruction</span>
+                    </button>
+
+                </div>
+
+                <!-- RIGHT MAIN CONTENT PREVIEW & EXPORT ACTIONS -->
+                <div class="workspace-main">
+                    
+                    <!-- CRITICAL NOTIFICATION ALERT BOX -->
+                    <div class="p-status-box hidden" id="processing-status-wrapper">
+                        <div class="flex items-center gap-3">
+                            <div class="w-8 h-8 rounded-full bg-indigo-100 text-indigo-600 animate-spin flex items-center justify-center">
+                                <i data-lucide="refresh-cw" class="w-4 h-4"></i>
+                            </div>
+                            <div class="flex-1">
+                                <h4 class="text-xs font-extrabold text-slate-800" id="progress-m-label">Parsing geometry characters offline...</h4>
+                                <div class="p-bar-track">
+                                    <div class="p-bar-fill" id="progress-m-bar" style="width: 5%;"></div>
+                                </div>
+                                <div class="flex items-center justify-between text-[9px] text-slate-500 font-bold">
+                                    <span id="progress-m-sub">Calling character baseline pathways...</span>
+                                    <span id="progress-m-pct" class="font-mono">5%</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- EXPORT ACTIONS AND FILE GENERATED AREA -->
+                    <div class="mb-6 p-5 border border-slate-200 bg-white shadow-sm rounded-2xl flex flex-col gap-4 text-slate-800">
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs font-bold text-slate-700 tracking-tight">Export Reconstructed PDF elements instantly:</span>
+                            <button class="py-1 px-3 text-[10px] bg-slate-100 hover:bg-slate-200 text-slate-800 rounded-lg transition font-extrabold" onclick="clearActiveWorkspaceElementsRef()">Clear Canvas Slate</button>
+                        </div>
+                        <div class="grid grid-cols-2 sm:grid-cols-5 gap-2.5">
+                            <button class="flex flex-col items-center justify-center border border-slate-200 bg-white rounded-xl p-3 text-center transition hover:border-indigo-500 hover:bg-indigo-50/20 shadow-sm cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed" onclick="exportToWordDocx()" id="btn-exp-docx" disabled>
+                                <span class="text-xl mb-1">📘</span>
+                                <span class="text-[10px] font-black text-slate-900">Microsoft Word</span>
+                                <span class="text-[8px] text-slate-400 mt-0.5">Flowing .docx</span>
+                            </button>
+                            <button class="flex flex-col items-center justify-center border border-slate-200 bg-white rounded-xl p-3 text-center transition hover:border-indigo-500 hover:bg-indigo-50/20 shadow-sm cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed" onclick="exportToPowerPointPptx()" id="btn-exp-pptx" disabled>
+                                <span class="text-xl mb-1">📙</span>
+                                <span class="text-[10px] font-black text-slate-900">PowerPoint PPT</span>
+                                <span class="text-[8px] text-slate-400 mt-0.5">Presentation .pptx</span>
+                            </button>
+                            <button class="flex flex-col items-center justify-center border border-slate-200 bg-white rounded-xl p-3 text-center transition hover:border-indigo-500 hover:bg-indigo-50/20 shadow-sm cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed" onclick="exportToExcelXlsx()" id="btn-exp-xlsx" disabled>
+                                <span class="text-xl mb-1">🟢</span>
+                                <span class="text-[10px] font-black text-slate-900">Microsoft Excel</span>
+                                <span class="text-[8px] text-slate-400 mt-0.5">Workbook .xlsx</span>
+                            </button>
+                            <button class="flex flex-col items-center justify-center border border-slate-200 bg-white rounded-xl p-3 text-center transition hover:border-indigo-500 hover:bg-indigo-50/20 shadow-sm cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed" onclick="exportToPdf()" id="btn-exp-pdf" disabled>
+                                <span class="text-xl mb-1">📕</span>
+                                <span class="text-[10px] font-black text-slate-900">Standard PDF</span>
+                                <span class="text-[8px] text-slate-400 mt-0.5">Adobe Output .pdf</span>
+                            </button>
+                            <button class="flex flex-col items-center justify-center border border-slate-200 bg-white rounded-xl p-3 text-center transition hover:border-indigo-500 hover:bg-indigo-50/20 shadow-sm cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed" onclick="exportToInteractiveHTML()" id="btn-exp-html" disabled>
+                                <span class="text-xl mb-1">🌐</span>
+                                <span class="text-[10px] font-black text-slate-900">Active Web Page</span>
+                                <span class="text-[8px] text-slate-400 mt-0.5">HTML Document</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- SHEET PREVIEW & INTERACTIVE WORKSPACE GRID -->
+                    <div class="flex-1 flex flex-col">
+                        <div class="flex items-center justify-between mb-3 text-slate-500 font-bold">
+                            <div class="flex items-center gap-2">
+                                <i data-lucide="eye" class="w-4 h-4 text-indigo-500"></i>
+                                <span class="text-xs uppercase tracking-wider font-extrabold text-slate-600">Document Layout & Alignments Virtual Preview</span>
+                            </div>
+                            <span class="text-[10px] font-mono text-slate-400 bg-slate-100 border border-slate-200 px-2.2 py-0.5 rounded" id="preview-page-indicator">No File Loaded</span>
+                        </div>
+
+                        <div class="document-canvas-preview flex-1 border border-slate-300 rounded-2xl min-h-[480px]">
+                            <!-- EMPTY CANVAS MESSAGE STATUS -->
+                            <div class="absolute inset-0 flex flex-col items-center justify-center p-8 text-center" id="empty-canvas-fallback">
+                                <div class="w-16 h-16 rounded-2xl bg-indigo-50 text-indigo-400 flex items-center justify-center mb-4">
+                                    <i data-lucide="file-type-2" class="w-8 h-8"></i>
+                                </div>
+                                <h4 class="font-display font-extrabold text-slate-700 text-sm mb-1">No Document Uploaded Yet</h4>
+                                <p class="max-w-md text-xs text-slate-500 leading-relaxed font-medium">To edit elements, align bullet grids, or extract lists dynamically, load a vector PDF file inside the left panel and click reconstruct.</p>
+                            </div>
+
+                            <!-- INTERACTIVE DRAW SHEET -->
+                            <div id="virtual-page-canvas" class="interactive-sheet hidden">
+                                <div class="flex items-center justify-between mb-3 border-b border-indigo-50 pb-2">
+                                    <span id="preview-format-badge" class="px-2.5 py-1 text-[10px] font-black rounded-lg uppercase tracking-wider flex items-center gap-1 bg-indigo-50 text-indigo-700 border border-indigo-100">📝 Word Doc (.docx) Mockup</span>
+                                    <span class="text-[9px] text-slate-400 font-mono tracking-wider uppercase">TyagiHub WYSIWYG Office Draft</span>
+                                </div>
+                                <div class="border-b border-indigo-100/60 pb-4 mb-6">
+                                    <input type="text" id="virtual-doc-title" class="text-xl font-black text-slate-900 border-none outline-none w-full focus:bg-indigo-50 focus:p-1 rounded" value="OFFLINE RECONSTRUCTED SHEET SUMMARY" onchange="updateTitleFromInput(this.value)" />
+                                    <input type="text" id="virtual-doc-subtitle" class="text-xs text-slate-500 font-medium border-none outline-none w-full focus:bg-indigo-50 focus:p-1 rounded mt-1" value="Preserving tabular alignment geometry boundaries" onchange="updateSubtitleFromInput(this.value)" />
+                                </div>
+
+                                <!-- Page Navigation Bar -->
+                                <div id="page-nav-bar-container" class="mb-5 py-2 px-3 bg-slate-50 border border-slate-200/60 rounded-xl flex items-center justify-between">
+                                    <button class="bg-white hover:bg-slate-100 text-slate-700 font-bold text-xs py-1.5 px-3 rounded-lg border border-slate-200 transition disabled:opacity-40 disabled:cursor-not-allowed" id="btn-page-prev" onclick="handlePreviewPageChange(-1)" disabled>
+                                        ◀ Prev Page
+                                    </button>
+                                    <span class="text-xs font-black text-slate-700" id="preview-page-lbl">Page 1 of 1</span>
+                                    <button class="bg-indigo-600 hover:bg-indigo-500 text-white font-bold text-xs py-1.5 px-3 rounded-lg shadow-sm border border-indigo-500 transition disabled:opacity-40 disabled:cursor-not-allowed" id="btn-page-next" onclick="handlePreviewPageChange(1)" disabled>
+                                        Next Page ▶
+                                    </button>
+                                </div>
+
+                                <!-- Sequential blocks rendered inside the page dynamic list -->
+                                <div class="space-y-4" id="virtual-elements-list-container">
+                                    <!-- Populated automatically dynamically -->
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- EXPLAINER CAPABILITIES BOX -->
+                        <div class="mt-4 p-4 border border-indigo-50 bg-indigo-50/35 rounded-xl flex items-start gap-3">
+                            <i data-lucide="info" class="w-4.5 h-4.5 text-indigo-600 mt-0.5"></i>
+                            <div>
+                                <h5 class="text-xs font-black text-indigo-900">How Layout Copy Alignment Works</h5>
+                                <p class="text-[10px] text-indigo-800/80 leading-relaxed font-semibold mt-0.5">
+                                    Word presentations (.docx) auto-organize into standard paragraphs flowing naturally, PowerPoint (.pptx) leverages absolute geometric position percentages (left, top, height) mapping exactly, and Excel (.xlsx) formats multiple discovered matrix grids into dedicated spreadsheet collection sheets.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+    <!-- TOAST ALERT PANEL -->
+    <div class="toast-notif" id="toast-notify-alert">
+        <span id="toast-text-lbl">Document updated successfully.</span>
+    </div>
+
+    <!-- INTERACTION LOGIC & PDF CONVERT SCRIPTS -->
+    <script>
+
+    </script>
+</div>

@@ -1,0 +1,395 @@
+---
+layout: default
+title: "Create PDF Online Free — Standalone Vector PDF Creator | TyagiHub"
+description: "Create custom PDF documents online free. Add rich text layout layers, vectors, and pages safely. 100% offline sandbox security, no server uploads."
+keywords: "create pdf online, free pdf creator, standalone pdf maker, offline pdf compiler, TyagiHub pdf tools"
+lang_switch: false
+extra_js:
+ - "https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"
+ - "/assets/js/libs/create.js"
+---
+
+<style>
+    :root {
+        --clr-primary: #f43f5e;
+        --clr-primary-hover: #e11d48;
+        --clr-slate-dark: #0f172a;
+        --clr-slate-medium: #475569;
+        --clr-slate-light: #f8fafc;
+        --clr-border: #cbd5e1;
+        --clr-border-light: #e2e8f0;
+        --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+        --font-mono: 'JetBrains Mono', monospace;
+    }
+
+    .main-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        padding: 20px 10px;
+    }
+
+    .wrapper {
+        width: 100%;
+        max-width: 1200px;
+        background: #ffffff;
+        border-radius: 24px;
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.05), 0 5px 15px rgba(0, 0, 0, 0.02);
+        border: 1px solid var(--clr-border-light);
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .header-banner {
+        background: linear-gradient(135deg, #6366f1 0%, #4f46e5 50%, #4338ca 100%);
+        color: #ffffff;
+        padding: 30px;
+        text-align: left;
+        position: relative;
+    }
+
+    .header-banner h1 {
+        font-size: 24px;
+        font-weight: 900;
+        letter-spacing: -0.025em;
+        margin: 0 0 6px 0;
+    }
+
+    .header-banner p {
+        font-size: 13px;
+        color: #e0e7ff;
+        font-weight: 500;
+        margin: 0;
+    }
+
+    .offline-badge {
+        background-color: #eab308;
+        color: #0f172a;
+        font-size: 10px;
+        font-weight: 800;
+        padding: 3px 8px;
+        border-radius: 9999px;
+        display: inline-block;
+        margin-bottom: 10px;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+    }
+
+    .workspace {
+        padding: 20px;
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 24px;
+    }
+
+    @media (min-width: 992px) {
+        .workspace { grid-template-columns: 440px 1fr; padding: 30px; gap: 30px; }
+    }
+
+    .sidebar { display: flex; flex-direction: column; gap: 20px; }
+    .panel-card { background-color: var(--clr-slate-light); border: 1px solid var(--clr-border-light); border-radius: 16px; padding: 20px; display: flex; flex-direction: column; gap: 14px; text-align: left; }
+    .panel-title { font-size: 12px; font-weight: 900; text-transform: uppercase; letter-spacing: 0.05em; color: var(--clr-slate-medium); border-bottom: 1px dashed var(--clr-border); padding-bottom: 8px; display: flex; align-items: center; gap: 6px; font-family: var(--font-mono); }
+    .panel-info { font-size: 11px; color: var(--clr-slate-medium); line-height: 1.4; font-weight: 500; margin: 0; }
+    .templates-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+    
+    .btn-template { background-color: #ffffff; border: 1px solid var(--clr-border); border-radius: 10px; padding: 10px 12px; font-size: 11.5px; font-weight: 700; text-align: left; display: flex; align-items: center; gap: 8px; transition: all 0.15s ease; color: var(--clr-slate-dark); cursor: pointer; }
+    .btn-template:hover { border-color: #4f46e5; background-color: #f5f3ff; color: #4f46e5; }
+    .btn-template.active { border-color: #4f46e5; background-color: #e0e7ff; color: #4338ca; }
+
+    .settings-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    .setting-col { display: flex; flex-direction: column; gap: 4px; }
+    .setting-label { font-size: 10px; font-weight: 800; color: var(--clr-slate-medium); text-transform: uppercase; letter-spacing: 0.03em; }
+    .select-input, .text-input { width: 100%; padding: 8px 12px; font-size: 12px; font-weight: 650; border-radius: 8px; border: 1px solid var(--clr-border); background: #ffffff; color: var(--clr-slate-dark); outline: none; box-sizing: border-box; }
+    .select-input:focus, .text-input:focus { border-color: #4f46e5; box-shadow: 0 0 0 2px rgba(79, 70, 229, 0.1); }
+
+    .blocks-btn-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+    .btn-add-block { background: #ffffff; border: 1px solid var(--clr-border-light); padding: 10px 6px; border-radius: 10px; font-size: 10px; font-weight: 800; color: var(--clr-slate-dark); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px; transition: all 0.15s ease; box-shadow: 0 1px 3px rgba(0,0,0,0.02); cursor: pointer; }
+    .btn-add-block:hover { transform: translateY(-2px); box-shadow: 0 4px 6px rgba(0,0,0,0.05); border-color: #4f46e5; color: #4f46e5; }
+    .btn-add-block svg { width: 16px; height: 16px; stroke-width: 2.2; }
+    .btn-full-width { grid-column: span 3; flex-direction: row; padding: 8px 16px; font-size: 11px; gap: 8px; }
+
+    .block-editor-box { background-color: #eff6ff; border: 1px solid #bfdbfe; border-radius: 14px; padding: 16px; display: flex; flex-direction: column; gap: 12px; }
+    .block-editor-header { display: flex; align-items: center; justify-content: space-between; font-size: 11px; font-weight: 800; color: #1e3a8a; text-transform: uppercase; }
+    .textarea-input { width: 100%; height: 80px; padding: 10px; font-size: 12.5px; border-radius: 8px; border: 1px solid #93c5fd; resize: vertical; outline: none; font-family: inherit; box-sizing: border-box; }
+    .textarea-input:focus { border-color: #1d4ed8; box-shadow: 0 0 0 2px rgba(29, 78, 216, 0.1); }
+
+    .align-group { display: flex; border: 1px solid #cbd5e1; border-radius: 8px; background: #ffffff; overflow: hidden; width: fit-content; }
+    .btn-align { padding: 6px 12px; font-size: 11px; font-weight: 700; border: none; background: none; color: var(--clr-slate-medium); cursor: pointer; }
+    .btn-align.active { background-color: #2563eb; color: #ffffff; }
+
+    .list-manager-container { display: flex; flex-direction: column; gap: 6px; }
+    .list-edit-row { display: flex; gap: 6px; align-items: center; width: 100%; }
+    .btn-icon { padding: 6px 10px; border: none; border-radius: 6px; display: inline-flex; align-items: center; justify-content: center; background-color: #ef4444; color: #ffffff; font-size: 11px; font-weight: 700; cursor: pointer; gap: 4px; }
+    .btn-icon:hover { background-color: #dc2626; }
+
+    .table-editor-scroller { max-height: 200px; overflow-y: auto; border: 1px solid #93c5fd; border-radius: 8px; background-color: #ffffff; width: 100%; }
+    .table-editor-grid { display: flex; flex-direction: column; width: 100%; padding: 6px; box-sizing: border-box; gap: 4px; }
+    .table-editor-row { display: flex; gap: 4px; width: 100%; align-items: center; }
+    .table-editor-header-row { background-color: #f1f5f9; padding: 4px; border-radius: 4px; }
+    .table-editor-cell { flex: 1; }
+
+    .preview-pane { display: flex; flex-direction: column; gap: 16px; width: 100%; }
+    .sheet-container { background-color: #64748b; padding: 16px; border-radius: 18px; border: 1px solid #475569; box-shadow: inset 0 2px 8px rgba(0,0,0,0.12); display: flex; justify-content: center; width: 100%; box-sizing: border-box; }
+    @media (min-width: 768px) { .sheet-container { padding: 24px; } }
+
+    .sheet-whiteboard { background-color: #ffffff; box-shadow: 0 10px 30px rgba(0,0,0,0.2); border-radius: 6px; width: 100%; max-width: 650px; min-height: 720px; padding: 45px; position: relative; display: flex; flex-direction: column; color: #334155; box-sizing: border-box; transition: padding 0.2s ease; }
+    .sheet-margin-standard { padding: 45px; }
+    .sheet-margin-narrow { padding: 25px; }
+    .sheet-margin-wide { padding: 60px; }
+
+    .accent-indigo { --theme-color-hex: #4338ca; }
+    .accent-blue { --theme-color-hex: #1e40af; }
+    .accent-green { --theme-color-hex: #065f46; }
+    .accent-amber { --theme-color-hex: #b45309; }
+    .accent-red { --theme-color-hex: #9f1239; }
+    .accent-slate { --theme-color-hex: #334155; }
+
+    .preview-block { position: relative; border: 1.5px dashed transparent; padding: 8px; margin-bottom: 4px; border-radius: 8px; transition: all 0.15s ease; cursor: pointer; }
+    .preview-block:hover { border-color: #93c5fd; background-color: #eff6ff; }
+    .preview-block.active { border-color: #4f46e5; background-color: #e0e7ff; }
+
+    .block-pagers-rail { position: absolute; top: -12px; right: 8px; display: none; gap: 4px; background: #4f46e5; padding: 2px 6px; border-radius: 6px; z-index: 50; }
+    .preview-block:hover .block-pagers-rail, .preview-block.active .block-pagers-rail { display: flex; align-items: center; }
+    .btn-rail { background: none; border: none; color: #ffffff; cursor: pointer; font-size: 10px; font-weight: bold; display: flex; align-items: center; justify-content: center; width: 14px; height: 14px; }
+
+    .doc-heading1 { font-size: 20px; font-weight: 800; color: #0f172a; margin: 0 0 10px 0; }
+    .doc-heading2 { font-size: 12px; font-weight: 700; color: var(--theme-color-hex); margin: 10px 0 6px 0; text-transform: uppercase; letter-spacing: 0.02em; }
+    .doc-paragraph { font-size: 10.5px; color: #475569; margin: 0 0 8px 0; white-space: pre-wrap; line-height: 1.5; }
+    .doc-divider { height: 1.5px; background-color: var(--theme-color-hex); margin: 12px 0; opacity: 0.85; }
+    .doc-list { margin-left: 12px; margin-bottom: 10px; font-size: 10.5px; color: #475569; display: flex; flex-direction: column; gap: 3px; }
+    .doc-list-item { display: flex; align-items: flex-start; gap: 6px; }
+    .doc-list-bullet { width: 4px; height: 4px; background-color: var(--theme-color-hex); border-radius: 50%; margin-top: 6px; flex-shrink: 0; }
+
+    .doc-table { width: 100%; border-collapse: collapse; font-size: 10px; margin: 10px 0; border: 1px solid var(--clr-border-light); }
+    .doc-table th { background-color: var(--theme-color-hex); color: #ffffff; font-weight: bold; padding: 6px 8px; text-align: left; border: 1px solid var(--theme-color-hex); }
+    .doc-table td { padding: 6px 8px; border: 1px solid var(--clr-border-light); color: #334155; }
+    .doc-table tr:nth-child(even) { background-color: #f8fafc; }
+
+    .doc-signature { margin-top: 14px; display: flex; flex-direction: column; width: 100%; }
+    .signature-line-under { width: 160px; height: 1px; background-color: var(--theme-color-hex); margin-top: 15px; margin-bottom: 4px; }
+    .signature-scribble { font-family: 'Times New Roman', Times, serif; font-style: italic; font-size: 14px; color: #1d4ed8; letter-spacing: 0.05em; padding-left: 8px; }
+    .signature-label { font-size: 9px; color: #64748b; }
+    .doc-pagebreak { border: 1.5px dashed #f43f5e; background-color: #fff1f2; padding: 8px; text-align: center; font-size: 10px; font-weight: bold; color: #e11d48; margin: 15px 0; border-radius: 6px; letter-spacing: 0.05em; }
+    .doc-page-stamp { margin-top: auto; border-top: 1px solid #e2e8f0; padding-top: 10px; font-weight: 700; font-size: 8px; color: #94a3b8; display: flex; justify-content: space-between; width: 100%; }
+
+    button, .btn, .btn-template, .btn-add-block, .btn-icon, .btn-align { cursor: pointer !important; user-select: none; }
+    button, .btn { font-size: 12.5px; font-weight: 700; border-radius: 10px; border: none; transition: all 0.15s ease; display: inline-flex; align-items: center; justify-content: center; gap: 6px; padding: 10px 16px; }
+    .btn-primary { background-color: #4f46e5; color: #ffffff; }
+    .btn-primary:hover:not(:disabled) { background-color: #4338ca; }
+    .btn-outline { background-color: #ffffff; border: 1px solid var(--clr-border); color: var(--clr-slate-dark); }
+    .btn-outline:hover:not(:disabled) { background-color: var(--clr-slate-light); }
+    button:disabled, .btn:disabled { opacity: 0.45; cursor: not-allowed !allowed !important; }
+
+    .progress-box { background-color: var(--clr-slate-light); border: 1px solid var(--clr-border-light); border-radius: 16px; padding: 20px; text-align: left; display: flex; flex-direction: column; gap: 10px; width: 100%; box-sizing: border-box; }
+    .progress-title { font-size: 12px; font-weight: 700; color: var(--clr-slate-dark); display: flex; justify-content: space-between; }
+    .progress-track { width: 100%; height: 8px; background: #cbd5e1; border-radius: 4px; overflow: hidden; }
+    .progress-fill { height: 100%; width: 0%; border-radius: 4px; background: linear-gradient(to right, #4f46e5, #6366f1); transition: width 0.2s ease; }
+    .toast-notif { position: fixed; bottom: 30px; right: 30px; background: #0f172a; color: #fff; padding: 12px 18px; border-radius: 12px; font-weight: 700; font-size: 12px; z-index: 9999; box-shadow: 0 10px 25px rgba(0,0,0,0.15); display: none; align-items: center; gap: 8px; }
+
+    @media (prefers-color-scheme: dark) {
+        .wrapper { background: #0f172a !important; border-color: #334155 !important; }
+        .panel-card, .progress-box { background-color: #111827 !important; border-color: #334155 !important; }
+        .btn-template, .btn-add-block, .select-input, .text-input, .textarea-input, .table-cell-input, .align-group { background: #1f2937 !important; color: #f8fafc !important; border-color: #475569 !important; }
+        .btn-template:hover, .btn-add-block:hover { border-color: #6366f1; color: #818cf8; }
+        .panel-title, .setting-label { color: #94a3b8 !important; }
+        .block-editor-box { background-color: #1e3a8a33 !important; border-color: #2563eb66 !important; }
+        .block-editor-header { color: #93c5fd !important; }
+        .btn-align { color: #94a3b8; }
+        .sheet-container { background-color: #020617 !important; border-color: #1e293b !important; }
+        #compiler-status-label { color: #cbd5e1; }
+    }
+</style><br><br><br>
+
+<div class="main-container">
+    <div class="wrapper" id="pdf-creator-root">
+        
+        <div class="header-banner">
+            <span class="offline-badge">⚡ 100% Client-Side Engine</span>
+            <h1>Interactive Vector PDF Suite (HD Compiler)</h1>
+            <p>Assemble professional company publications, formal invoices, letterheads, or candidate resumes securely offline inside your local sandbox.</p>
+        </div>
+
+        <div class="workspace">
+            
+            <div class="sidebar">
+                <div class="panel-card">
+                    <span class="panel-title">📋 Document Templates</span>
+                    <p class="panel-info">Select a pre-designed layout preset below to load styled block groups instantly.</p>
+                    <div class="templates-grid">
+                        <button class="btn-template active" id="tpl-memorandum" onclick="window.loadUserDocumentPreset('memorandum')">💼 Memo Form</button>
+                        <button class="btn-template" id="tpl-invoice" onclick="window.loadUserDocumentPreset('invoice')">🧾 Commercial Invoice</button>
+                        <button class="btn-template" id="tpl-resume" onclick="window.loadUserDocumentPreset('resume')">🎓 Candidate CV</button>
+                        <button class="btn-template" id="tpl-letterhead" onclick="window.loadUserDocumentPreset('letterhead')">✉️ Official Letter</button>
+                    </div>
+                </div>
+
+                <div class="panel-card">
+                    <span class="panel-title">🎨 Typography & Page Aesthetics</span>
+                    <div class="settings-grid">
+                        <div class="setting-col">
+                            <span class="setting-label">Accent Palette</span>
+                            <select id="cfg-theme" class="select-input" onchange="window.applyAestheticsConfig()">
+                                <option value="indigo">Indigo Royal</option>
+                                <option value="blue">Corporate Blue</option>
+                                <option value="green">Clean Emerald</option>
+                                <option value="amber">Warm Amber</option>
+                                <option value="red">Sunset Ruby</option>
+                                <option value="slate">Minimalist Slate</option>
+                            </select>
+                        </div>
+                        <div class="setting-col">
+                            <span class="setting-label">Global Font</span>
+                            <select id="cfg-font" class="select-input" onchange="window.applyAestheticsConfig()">
+                                <option value="Helvetica">Helvetica (Modern)</option>
+                                <option value="Times">Times Roman (Serif)</option>
+                                <option value="Courier">Courier New (Mono)</option>
+                            </select>
+                        </div>
+                        <div class="setting-col">
+                            <span class="setting-label">Page Metric</span>
+                            <select id="cfg-pagesize" class="select-input" onchange="window.applyAestheticsConfig()">
+                                <option value="a4">A4 Standard</option>
+                                <option value="letter">Letter Dimensions</option>
+                            </select>
+                        </div>
+                        <div class="setting-col">
+                            <span class="setting-label">Margin Padding</span>
+                            <select id="cfg-margins" class="select-input" onchange="window.applyMarginsConfig()">
+                                <option value="standard">Standard (0.75in)</option>
+                                <option value="narrow">Narrow (0.50in)</option>
+                                <option value="wide">Wide (1.00in)</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="panel-card">
+                    <span class="panel-title">➕ Insert New Blocks</span>
+                    <div class="blocks-btn-grid">
+                        <button class="btn-add-block" onclick="window.createNewBlock('heading1')">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12h16M4 18h16M4 6h16"/></svg>
+                            Title Block
+                        </button>
+                        <button class="btn-add-block" onclick="window.createNewBlock('heading2')">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12h12M4 18h10M4 6h14"/></svg>
+                            Subtitle
+                        </button>
+                        <button class="btn-add-block" onclick="window.createNewBlock('paragraph')">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h11"/></svg>
+                            Paragraph
+                        </button>
+                        <button class="btn-add-block" onclick="window.createNewBlock('list')">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01"/></svg>
+                            Bullet List
+                        </button>
+                        <button class="btn-add-block" onclick="window.createNewBlock('table')">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3h18v18H3zm15 0v18M3 9h18M3 14h18M10 3v18"/></svg>
+                            Data Table
+                        </button>
+                        <button class="btn-add-block" onclick="window.createNewBlock('signature')">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+                            Signature Form
+                        </button>
+                        <button class="btn-add-block btn-full-width" onclick="window.createNewBlock('divider')">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/></svg>
+                            Add Horizontal Segment Separator Line
+                        </button>
+                        <button class="btn-add-block btn-full-width" style="color: #ef4444; border-color: #fecaca; background-color: #fef2f2;" onclick="window.createNewBlock('pagebreak')">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16M4 20h16M12 4v16M8 12h8"/></svg>
+                            Force Next Page Segment Break
+                        </button>
+                    </div>
+                </div>
+
+                <div class="block-editor-box" id="block-editor-panel" style="display: none;">
+                    <div class="block-editor-header">
+                        <span id="editor-block-title">Block Modification Form</span>
+                        <button class="btn-icon" onclick="window.deleteActiveBlock()" title="Wipe block out completely">✕ Remove</button>
+                    </div>
+                    
+                    <div id="editor-main-input-field">
+                        <span class="setting-label" style="display: block; margin-bottom: 6px;">Main Text Value</span>
+                        <textarea id="editor-textarea" class="textarea-input" oninput="window.onActiveBlockKeyup()"></textarea>
+                    </div>
+
+                    <div id="editor-alignment-container">
+                        <span class="setting-label" style="display: block; margin-bottom: 6px;">Item Direction Alignment</span>
+                        <div class="align-group">
+                            <button id="align-left" class="btn-align active" onclick="window.updateAlignment('left')">Left Align</button>
+                            <button id="align-center" class="btn-align" onclick="window.updateAlignment('center')">Center</button>
+                            <button id="align-right" class="btn-align" onclick="window.updateAlignment('right')">Right</button>
+                        </div>
+                    </div>
+
+                    <div id="editor-list-manager" class="list-manager-container" style="display: none;">
+                        <span class="setting-label">Step List Items Manager</span>
+                        <div id="list-inputs-box" style="display: flex; flex-direction: column; gap: 6px;"></div>
+                        <button class="btn btn-outline" style="font-size: 11px; padding: 6px 12px; margin-top: 4px;" onclick="window.addListItemToActiveBlock()">
+                            ➕ Add Row Item
+                        </button>
+                    </div>
+
+                    <div id="editor-table-manager" style="display: none; flex-direction: column; gap: 8px;">
+                        <span class="setting-label">Table Grid Values Editor</span>
+                        <div class="table-editor-scroller">
+                            <div class="table-editor-grid" id="table-editor-grid-container"></div>
+                        </div>
+                        <div style="display: flex; gap: 6px;">
+                            <button class="btn btn-outline" style="font-size: 10px; padding: 6px 8px; flex: 1;" onclick="window.addActiveTableRow()">➕ Add Row</button>
+                            <button class="btn btn-outline" style="font-size: 10px; padding: 6px 8px; flex: 1;" onclick="window.addActiveTableCol()">➕ Add Column</button>
+                        </div>
+                    </div>
+
+                    <div id="editor-sig-manager" class="settings-grid" style="display: none;">
+                        <div class="setting-col" style="grid-column: span 2;">
+                            <span class="setting-label">Signatory Name (Handwritten text)</span>
+                            <input type="text" id="editor-sig-name" class="text-input" oninput="window.onSignatureFieldsChange()">
+                        </div>
+                        <div class="setting-col" style="grid-column: span 2;">
+                            <span class="setting-label">Role Title / Designation</span>
+                            <input type="text" id="editor-sig-title" class="text-input" oninput="window.onSignatureFieldsChange()">
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="preview-pane">
+                <div class="sheet-container">
+                    <div class="sheet-whiteboard sheet-margin-standard accent-indigo" id="doc-active-whiteboard">
+                        <div id="blocks-visual-container" style="display: flex; flex-direction: column; width: 100%;"></div>
+                        <div class="doc-page-stamp" id="doc-stamp-line-box">
+                            <span>TYAGIHUB COMPILER CONTEXT</span>
+                            <span id="footer-doc-stamp-title">UNTITLED DOCUMENT</span>
+                            <span>PAGE 1 OF 1</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="progress-box">
+                    <div class="progress-title">
+                        <span id="compiler-status-label">Standby. Blocks coordinates validation healthy.</span>
+                        <span id="compiler-pct-label"></span>
+                    </div>
+                    <div class="progress-track" id="compiler-progress-bar" style="display: none;">
+                        <div class="progress-fill" id="compiler-progress-pct"></div>
+                    </div>
+                    <div style="display: flex; gap: 10px; margin-top: 6px;">
+                        <button class="btn btn-outline" style="flex: 1;" onclick="window.wipeCleanCanvas()">Clear Slate</button>
+                        <button class="btn btn-primary" style="flex: 2.5; padding: 12px 18px;" onclick="window.compileDocumentBytesToLocalPDF()" id="btn-compiler-trigger">
+                            Compile Standalone PDF 🛡️
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="toast-notif" id="toast-message-notif">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:16px; height: 16px; color: #10b981;"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+        <span id="toast-text-label">Layout updated successfully.</span>
+    </div>
+</div>

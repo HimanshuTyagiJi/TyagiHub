@@ -1,0 +1,128 @@
+{
+  "title": "Ancient Indian History",
+  "title_hi": "प्राचीन भारतीय इतिहास",
+  "icon": "🏛️",
+  "slug": "ancient-history",
+  "questions": [
+    {
+      "id": 1,
+      "q": "Who founded the Maurya Empire?",
+      "opts": [
+        "Ashoka",
+        "Chandragupta Maurya",
+        "Bindusara",
+        "Bimbisara"
+      ],
+      "ans": 1,
+      "exp": "Chandragupta Maurya founded the Maurya Empire around 321 BCE with the help of Chanakya. It became one of the largest empires in ancient India."
+    },
+    {
+      "id": 2,
+      "q": "The Indus Valley Civilization was discovered in which year?",
+      "opts": [
+        "1901",
+        "1921",
+        "1935",
+        "1947"
+      ],
+      "ans": 1,
+      "exp": "The Indus Valley Civilization was discovered in 1921 by Daya Ram Sahni at Harappa and R.D. Banerji at Mohenjo-daro."
+    },
+    {
+      "id": 3,
+      "q": "Who wrote the Arthashastra?",
+      "opts": [
+        "Kalidasa",
+        "Chanakya",
+        "Vatsyayana",
+        "Patanjali"
+      ],
+      "ans": 1,
+      "exp": "The Arthashastra was written by Chanakya (Kautilya), adviser to Chandragupta Maurya. It is a treatise on statecraft and economic policy."
+    },
+    {
+      "id": 4,
+      "q": "The Battle of Kalinga was fought in which year?",
+      "opts": [
+        "261 BCE",
+        "273 BCE",
+        "232 BCE",
+        "185 BCE"
+      ],
+      "ans": 0,
+      "exp": "The Battle of Kalinga was fought in 261 BCE. After witnessing its bloodshed, Emperor Ashoka converted to Buddhism and adopted a policy of non-violence."
+    },
+    {
+      "id": 5,
+      "q": "Which Gupta ruler is known as 'Vikramaditya'?",
+      "opts": [
+        "Chandragupta I",
+        "Samudragupta",
+        "Chandragupta II",
+        "Kumaragupta"
+      ],
+      "ans": 2,
+      "exp": "Chandragupta II, also known as Vikramaditya, was the most powerful Gupta emperor. His reign is called the golden age of ancient India."
+    },
+    {
+      "id": 6,
+      "q": "The Ajanta Caves were built during which dynasty?",
+      "opts": [
+        "Maurya",
+        "Gupta",
+        "Satavahana",
+        "Vakataka"
+      ],
+      "ans": 3,
+      "exp": "The Ajanta Caves were primarily built during the Vakataka period (5th–6th century CE). They contain remarkable Buddhist paintings and sculptures."
+    },
+    {
+      "id": 7,
+      "q": "Who was the last ruler of the Maurya Empire?",
+      "opts": [
+        "Ashoka",
+        "Bindusara",
+        "Brihadratha",
+        "Dasharatha"
+      ],
+      "ans": 2,
+      "exp": "Brihadratha was the last ruler of the Maurya Empire. He was assassinated by his general Pushyamitra Shunga around 185 BCE."
+    },
+    {
+      "id": 8,
+      "q": "The city of Mohenjo-daro is located in present-day which country?",
+      "opts": [
+        "India",
+        "Bangladesh",
+        "Pakistan",
+        "Afghanistan"
+      ],
+      "ans": 2,
+      "exp": "Mohenjo-daro is located in present-day Pakistan, in the Sindh province. It was one of the largest settlements of the ancient Indus Valley Civilization."
+    },
+    {
+      "id": 9,
+      "q": "Which ancient Indian university attracted scholars from across Asia?",
+      "opts": [
+        "Vikramashila",
+        "Nalanda",
+        "Takshashila",
+        "Vallabhi"
+      ],
+      "ans": 1,
+      "exp": "Nalanda University (5th–12th century CE) was one of the greatest centers of learning in the ancient world, attracting students from China, Korea, Japan, and beyond."
+    },
+    {
+      "id": 10,
+      "q": "The Rig Veda is the oldest of the four Vedas. How many hymns does it contain approximately?",
+      "opts": [
+        "500",
+        "1028",
+        "2000",
+        "3000"
+      ],
+      "ans": 1,
+      "exp": "The Rig Veda contains 1028 hymns organized into 10 mandalas (books). It is the oldest known Vedic text and is considered one of the oldest religious texts in the world."
+    }
+  ]
+}

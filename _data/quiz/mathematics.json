@@ -1,0 +1,128 @@
+{
+  "title": "Mathematics",
+  "title_hi": "गणित",
+  "icon": "🔢",
+  "slug": "mathematics",
+  "questions": [
+    {
+      "id": 1,
+      "q": "The value of π (pi) is approximately?",
+      "opts": [
+        "3.14159",
+        "3.14152",
+        "3.14169",
+        "3.14199"
+      ],
+      "ans": 0,
+      "exp": "The value of π (pi) is approximately 3.14159. It is the ratio of a circle's circumference to its diameter. Pi is an irrational and transcendental number."
+    },
+    {
+      "id": 2,
+      "q": "What is the square root of 144?",
+      "opts": [
+        "11",
+        "12",
+        "13",
+        "14"
+      ],
+      "ans": 1,
+      "exp": "The square root of 144 is 12, because 12 × 12 = 144. The square root is the inverse operation of squaring a number."
+    },
+    {
+      "id": 3,
+      "q": "Which number is neither prime nor composite?",
+      "opts": [
+        "0",
+        "1",
+        "2",
+        "4"
+      ],
+      "ans": 1,
+      "exp": "1 is neither prime nor composite. A prime number has exactly 2 factors (1 and itself), while a composite number has more than 2 factors. 1 has only 1 factor."
+    },
+    {
+      "id": 4,
+      "q": "A triangle with all three sides equal is called?",
+      "opts": [
+        "Scalene",
+        "Isosceles",
+        "Equilateral",
+        "Right-angled"
+      ],
+      "ans": 2,
+      "exp": "A triangle with all three sides equal is called an equilateral triangle. All angles in an equilateral triangle are also equal, each measuring 60°."
+    },
+    {
+      "id": 5,
+      "q": "The sum of angles in a triangle is?",
+      "opts": [
+        "90°",
+        "180°",
+        "270°",
+        "360°"
+      ],
+      "ans": 1,
+      "exp": "The sum of all interior angles in a triangle is always 180°. This is a fundamental theorem of Euclidean geometry."
+    },
+    {
+      "id": 6,
+      "q": "What is the LCM of 4 and 6?",
+      "opts": [
+        "2",
+        "8",
+        "12",
+        "24"
+      ],
+      "ans": 2,
+      "exp": "The Least Common Multiple (LCM) of 4 and 6 is 12. LCM is the smallest positive integer that is divisible by both numbers."
+    },
+    {
+      "id": 7,
+      "q": "The formula for the area of a circle is?",
+      "opts": [
+        "2πr",
+        "πr²",
+        "πd",
+        "2πr²"
+      ],
+      "ans": 1,
+      "exp": "The area of a circle is πr², where r is the radius and π is approximately 3.14159. The circumference of a circle is 2πr."
+    },
+    {
+      "id": 8,
+      "q": "How many sides does a pentagon have?",
+      "opts": [
+        "4",
+        "5",
+        "6",
+        "7"
+      ],
+      "ans": 1,
+      "exp": "A pentagon has 5 sides and 5 angles. The sum of interior angles of a pentagon is 540°. A regular pentagon has all sides and angles equal."
+    },
+    {
+      "id": 9,
+      "q": "What is 15% of 200?",
+      "opts": [
+        "20",
+        "25",
+        "30",
+        "35"
+      ],
+      "ans": 2,
+      "exp": "15% of 200 = (15/100) × 200 = 30. Percentage calculations are fundamental in everyday mathematics and competitive exams."
+    },
+    {
+      "id": 10,
+      "q": "The Pythagoras theorem states: In a right triangle, a² + b² = ?",
+      "opts": [
+        "c",
+        "c²",
+        "2c",
+        "c³"
+      ],
+      "ans": 1,
+      "exp": "The Pythagoras theorem states that in a right-angled triangle, the square of the hypotenuse (c) equals the sum of squares of the other two sides: a² + b² = c²."
+    }
+  ]
+}

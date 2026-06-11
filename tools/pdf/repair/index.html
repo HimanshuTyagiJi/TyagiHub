@@ -1,0 +1,183 @@
+---
+layout: default
+title: "Repair Corrupt PDF Online Free — Fix Damaged PDF Files | TyagiHub"
+description: "Repair damaged, broken or corrupt PDF files online. Rebuild invalid cross-reference tables (XREF) and metadata structures safely. 100% private and client-side secure."
+keywords: "repair pdf, fix corrupt pdf, repair damaged pdf, recover pdf file, restore pdf pages, free offline pdf repair, TyagiHub pdf tools"
+lang_switch: false
+extra_css:
+ - /assets/css/tyagihub-pdf.min.css
+extra_js:
+- /assets/js/libs/pdf-lib.min.js
+- /assets/js/libs/pdf.min.mjs
+- /assets/js/libs/all.pdf.js
+---
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "SoftwareApplication",
+      "name": "TyagiHub Repair PDF",
+      "operatingSystem": "All",
+      "applicationCategory": "WebApplication",
+      "description": "An advanced client-side offline PDF repair utility that diagnoses and restores corrupted PDF documents and structural tables.",
+      "url": "https://tyagihub.in/tools/pdf/repair-pdf/",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "INR"
+      },
+      "creator": {
+        "@type": "Organization",
+        "name": "TyagiHub",
+        "url": "https://tyagihub.in"
+      }
+    }
+  ]
+}
+</script>
+
+<div class="pdf-tool-page tyagihub-repair hind-regular">
+
+  <!-- MAIN HEADER & BREADCRUMBS -->
+  <div class="pdf-tool-header">
+    <nav class="pdf-tool-header__breadcrumb" aria-label="Breadcrumb">
+      <a href="/">Home</a>
+      <span aria-hidden="true"> / </span>
+      <a href="/tools/">Tools</a>
+      <span aria-hidden="true"> / </span>
+      <a href="/tools/pdf/">PDF Tools</a>
+      <span aria-hidden="true"> / </span>
+      <span aria-current="page">Repair PDF</span>
+    </nav>
+    <div class="container pdf-tool-header__inner">
+      <div class="pdf-tool-header__icon" aria-hidden="true" style="background: var(--clr-bg-active);">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:32px;height:32px;color:var(--clr-accent);">
+          <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z" />
+        </svg>
+      </div>
+      <div class="pdf-tool-header__text">
+        <h1 class="pdf-tool-header__title" style="font-family:'Hind'; font-weight:700;">Repair Corrupt PDF Online Free</h1>
+        <p class="pdf-tool-header__desc">
+          Restore accessibility of unopenable, truncated, or broken PDF documents.
+          Diagnose file headers and rebuild invalid Cross-Reference Tables (XREF) and trailers safely.
+          Executed entirely on your computer for absolute security.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="pdf-tool-workspace">
+
+    <!-- UPLOAD DROPZONE -->
+    <div class="pdf-dropzone" id="repair-drop" role="button" aria-label="Upload PDF file to perform Repair" tabindex="0">
+      <div class="pdf-dropzone__icon" aria-hidden="true" style="transition: transform 0.3s ease-in-out;"
+        onmouseover="this.style.transform='translateY(-5px)'" onmouseout="this.style.transform='translateY(0)'">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+          <polyline points="14 2 14 8 20 8" />
+          <path d="M14.5 16h-5M12 13.5v5" />
+        </svg>
+      </div>
+      <div class="pdf-dropzone__title" style="font-family:'Hind'; font-weight:700;">Drag your broken or unopenable PDF right here</div>
+      <div class="pdf-dropzone__sub">Automatically scans trailer objects, EOF markers & offsets · 100% Secure Web Sandbox</div>
+      
+      <button class="pdf-dropzone__btn" type="button" aria-label="Select local PDF document">
+        <svg viewBox="0 0 24 24" aria-hidden="true" style="width:24px;height:24px;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;fill:none;overflow:visible;">
+          <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+          <g style="animation:uploadBounce 1.5s ease-in-out infinite;transform-origin:12px 9px;transform-box:fill-box;">
+            <polyline points="17 8 12 3 7 8" />
+            <line x1="12" y1="3" x2="12" y2="15" />
+          </g>
+        </svg>
+        Choose PDF Document
+      </button>
+      <input type="file" class="pdf-dropzone__input" id="repair-file-input" accept=".pdf,application/pdf" aria-label="Upload input trigger">
+    </div>
+
+    <!-- PASSWORD UNLOCK MODAL -->
+    <div id="repair-unlock-modal-overlay" class="th-modal-overlay" style="display:none;">
+      <div class="th-modal-card">
+        <div class="th-modal-card__icon">🔒</div>
+        <h3 class="th-modal-card__title">Security Access Needed</h3>
+        <p class="th-modal-card__desc">This document contains security keys that must be supplied to index the internal PDF stream objects.</p>
+        <input type="password" id="repair-popup-password-field" class="th-modal-card__input" autocomplete="off" placeholder="Enter file password to continue...">
+        <div class="th-modal-card__actions">
+          <button type="button" id="repair-popup-submit-btn" class="btn btn-primary" style="background-color: var(--clr-accent); border: none;">Unlock and Fix</button>
+          <button type="button" id="repair-popup-cancel-btn" class="btn btn-outline">Cancel</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- REPAIR CONFIG PANEL -->
+    <div class="pdf-settings" id="repair-settings" aria-label="PDF Repair Configuration" hidden>
+      <div class="pdf-settings__title" style="font-family:'Hind'; font-weight:700; border-bottom: 2px solid var(--clr-border-2); padding-bottom: 12px; margin-bottom: 16px;">
+        ⚙️ Repair Strategy settings
+      </div>
+
+      <!-- Live diagnosis output card -->
+      <div id="repair-diagnostics-card" style="margin-bottom: 20px;"></div>
+
+      <div style="background: var(--clr-surface-2); border: 1px solid var(--clr-border-2); padding: 16px; border-radius: 12px; margin-bottom: 24px;">
+        <label for="repair-mode-select" style="display:block; font-size:14px; font-weight:bold; color:var(--clr-text-1); margin-bottom: 6px;">
+          🔨 Reconstruction Mechanism
+        </label>
+        <select id="repair-mode-select" style="width:100%; height:44px; padding:8px 12px; border-radius:8px; border:1px solid var(--clr-border-2); background:var(--clr-bg); color:var(--clr-text-1); font-size:13.5px; outline:none;">
+          <option value="structural_rewrite">Structural Rebuild (Clean corrupt index headers, trailers & references) ✨ Fastest</option>
+          <option value="fallback_raster">Deep Stream Extract (Extract pages to high resolution raster canvas and re-generate stream) Fallback</option>
+        </select>
+        <p style="margin: 8px 0 0 0; font-size:11.5px; line-height:1.5; color:var(--clr-text-2);">
+          Try Structural Rebuild first. If elements remain scrambled or unopenable, choose Deep Fallback Raster to rebuild page by page elements from raw pixels completely.
+        </p>
+      </div>
+
+      <!-- Action Footer Buttons -->
+      <div style="display: flex; gap: 12px; align-items: center; justify-content: flex-end; border-top: 1px solid var(--clr-border-2); padding-top: 16px;">
+        <button type="button" id="repair-reset-btn" class="pdf-dropzone__btn hover-accent-shadow" style="background:#ea580c; border:none; padding: 10px 20px; font-weight: 600; font-size: 13.5px;">
+          Reset Selection
+        </button>
+        <button type="button" id="repair-trigger-btn" class="pdf-dropzone__btn hover-accent-shadow" style="background:var(--clr-accent); border:none; padding:10px 24px; font-weight: 700; font-size: 14px;">
+          Execute Stream Repair 🩹
+        </button>
+      </div>
+    </div>
+
+    <!-- PROGRESS LOADER SUBPANEL -->
+    <div id="repair-progress" style="background: var(--clr-surface-2); border: 1px solid var(--clr-border-2); border-radius:12px; padding:24px; text-align:center; max-width: 500px; margin: 40px auto;" hidden>
+      <div style="font-size:32px; margin-bottom: 8px; animation: pulseSize 1.5s ease-in-out infinite;">🛠️</div>
+      <div style="font-weight:700; font-size:15px; color:var(--clr-text-1); margin-bottom: 12px;" id="repair-progress-label">0% — Initiating structural scan...</div>
+      
+      <div style="width:100%; height:8px; background:var(--clr-border-2); border-radius:10px; overflow:hidden;">
+        <div id="repair-progress-fill" style="width:0%; height:100%; background:var(--clr-accent); border-radius:10px; transition: width 0.3s ease;"></div>
+      </div>
+      <p style="margin: 12px 0 0 0; font-size:11.5px; color:var(--clr-text-2); line-height: 1.5;">
+        Using native sandboxed file stream recovery. No data is sent to outer networks during repair.
+      </p>
+    </div>
+
+    <!-- RESULTS DOWNLOAD CARD -->
+    <div id="repair-result-box" class="pdf-settings" style="border: 2px solid var(--clr-accent); background: rgba(16, 185, 129, 0.03); margin-top:20px;" hidden>
+      <div id="repair-result-meta" style="margin-bottom: 16px;"></div>
+      
+      <div style="display: flex; gap: 12px; justify-content: flex-end; align-items: center; border-top: 1px solid var(--clr-border-2); padding-top: 16px;">
+        <button type="button" id="repair-return-btn" class="pdf-dropzone__btn" style="background: #475569; border:none; padding: 10px 20px;">
+          Reset Workspace
+        </button>
+        <a id="repair-download-btn" class="pdf-dropzone__btn hover-accent-shadow" style="background:var(--clr-accent); border:none; text-decoration: none; padding: 10px 24px; font-weight:700;" href="#">
+          Download Repaired PDF 📥
+        </a>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+
+<style>
+  @keyframes pulseSize {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.15); }
+    100% { transform: scale(1); }
+  }
+</style>

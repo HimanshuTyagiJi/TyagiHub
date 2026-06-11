@@ -1,0 +1,128 @@
+{
+  "title": "Awards & Honors",
+  "title_hi": "पुरस्कार और सम्मान",
+  "icon": "🏅",
+  "slug": "awards-honors",
+  "questions": [
+    {
+      "id": 1,
+      "q": "The Nobel Peace Prize is awarded in which city?",
+      "opts": [
+        "Stockholm",
+        "Oslo",
+        "Geneva",
+        "Copenhagen"
+      ],
+      "ans": 1,
+      "exp": "The Nobel Peace Prize is awarded in Oslo, Norway. All other Nobel Prizes (Physics, Chemistry, Medicine, Literature, Economics) are awarded in Stockholm, Sweden."
+    },
+    {
+      "id": 2,
+      "q": "Mother Teresa received the Nobel Peace Prize in?",
+      "opts": [
+        "1975",
+        "1979",
+        "1982",
+        "1985"
+      ],
+      "ans": 1,
+      "exp": "Mother Teresa received the Nobel Peace Prize in 1979 for her work with the poor and destitute in Calcutta (Kolkata), India. She founded the Missionaries of Charity in 1950."
+    },
+    {
+      "id": 3,
+      "q": "The Bharat Ratna is awarded for?",
+      "opts": [
+        "Military service",
+        "Exceptional service or performance of the highest order",
+        "Excellence in sports",
+        "Excellence in arts"
+      ],
+      "ans": 1,
+      "exp": "The Bharat Ratna is India's highest civilian award. It is awarded for exceptional service/performance of the highest order, without distinction of race, occupation, position, or sex."
+    },
+    {
+      "id": 4,
+      "q": "The first recipient of the Bharat Ratna was?",
+      "opts": [
+        "Jawaharlal Nehru",
+        "C. Rajagopalachari",
+        "M. Visvesvaraya",
+        "B.R. Ambedkar"
+      ],
+      "ans": 1,
+      "exp": "C. Rajagopalachari (Rajaji) was one of the first recipients of Bharat Ratna in 1954, along with C.V. Raman and S. Radhakrishnan. He was also the first and last Indian Governor-General."
+    },
+    {
+      "id": 5,
+      "q": "The Man Booker Prize is awarded for?",
+      "opts": [
+        "Science",
+        "Economics",
+        "Literature",
+        "Peace"
+      ],
+      "ans": 2,
+      "exp": "The Booker Prize (formerly Man Booker Prize) is a prestigious literary prize awarded annually for the best original novel written in English and published in the UK or Ireland."
+    },
+    {
+      "id": 6,
+      "q": "The Arjuna Award is given for?",
+      "opts": [
+        "Outstanding performance in sports",
+        "Excellence in academics",
+        "Contribution to literature",
+        "Services to the nation"
+      ],
+      "ans": 0,
+      "exp": "The Arjuna Award is given by the Government of India to recognize outstanding achievement in sports. It was instituted in 1961. Recipients get a statuette of Arjuna, a certificate, and a cash prize."
+    },
+    {
+      "id": 7,
+      "q": "The Oscar Award is officially known as?",
+      "opts": [
+        "Grammy Award",
+        "Academy Award",
+        "Golden Globe",
+        "BAFTA Award"
+      ],
+      "ans": 1,
+      "exp": "The Oscar Award is officially known as the Academy Award of Merit, presented by the Academy of Motion Picture Arts and Sciences (AMPAS) since 1929."
+    },
+    {
+      "id": 8,
+      "q": "The Pulitzer Prize is awarded in the field of?",
+      "opts": [
+        "Science",
+        "Journalism and Literature",
+        "Economics",
+        "Peace"
+      ],
+      "ans": 1,
+      "exp": "The Pulitzer Prize is awarded annually for excellence in journalism, literary achievements, and musical composition in the United States. It was established in 1917."
+    },
+    {
+      "id": 9,
+      "q": "Which Indian won the Nobel Prize in Economics in 2019?",
+      "opts": [
+        "Amartya Sen",
+        "Raghuram Rajan",
+        "Abhijit Banerjee",
+        "Manmohan Singh"
+      ],
+      "ans": 2,
+      "exp": "Abhijit Banerjee (along with Esther Duflo and Michael Kremer) won the Nobel Prize in Economics in 2019 for their experimental approach to alleviating global poverty."
+    },
+    {
+      "id": 10,
+      "q": "The Dronacharya Award is given to?",
+      "opts": [
+        "Outstanding athletes",
+        "Sports coaches",
+        "Sports journalists",
+        "Sports administrators"
+      ],
+      "ans": 1,
+      "exp": "The Dronacharya Award is given by the Government of India to eminent coaches who have successfully trained sportspersons or teams and enabled them to achieve outstanding results in international competitions."
+    }
+  ]
+}

@@ -1,0 +1,301 @@
+---
+layout: default
+title: "Search & Redact PDF (Offline & Secure) — TyagiHub"
+description: "Sanitize documents locally inside your browser engine. Search keywords or freely draw blackout frames to wipe matching vectors forever. 100% secure and offline."
+keywords: "redact pdf, search and redact pdf, blackout pdf text, hide sensitive data pdf, free offline pdf sanitizer, TyagiHub pdf tools"
+lang_switch: false
+extra_css:
+  - "/assets/css/tyagihub-pdf.min.css"
+extra_js:
+  - "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.4.120/pdf.min.js"
+  - "https://cdnjs.cloudflare.com/ajax/libs/pdf-lib/1.17.1/pdf-lib.min.js"
+  - "https://cdn.jsdelivr.net/npm/tesseract.js@4/dist/tesseract.min.js"
+  - "/assets/js/libs/all.pdf.js"
+---
+
+{% raw %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "SoftwareApplication",
+      "name": "TyagiHub Search & Redact PDF",
+      "operatingSystem": "All",
+      "applicationCategory": "WebApplication",
+      "description": "An advanced client-side offline PDF redaction and text wiping tool using local canvas matrices and smart OCR tracking layers.",
+      "url": "https://tyagihub.in/tools/pdf/search-redact-pdf/",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "INR"
+      },
+      "creator": {
+        "@type": "Organization",
+        "name": "TyagiHub",
+        "url": "https://tyagihub.in"
+      }
+    }
+  ]
+}
+</script>
+{% endraw %}
+<br><br><Br>
+<div class="wrapper redact-tool-root-skin" id="redact-tool-root">
+    
+    <div class="header-banner">
+        <h1 id="tyagihub-main-title">Offline Search & Redact PDF (HD Compiler)</h1>
+        <p>Sanitize documents locally inside your browser engine. Search keywords or freely draw blackout frames to wipe matching vectors forever.</p>
+    </div>
+
+    <div class="main-container">
+        
+        <div class="dropzone" id="upload-dropzone" role="button" aria-label="Upload PDF file for redaction sanitization" tabindex="0">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="3" width="18" height="18" rx="2" ry="2" />
+                <line x1="9" y1="9" x2="15" y2="15" />
+                <line x1="15" y1="9" x2="9" y2="15" />
+            </svg>
+            <h3>Drag & Drop confidential PDF here</h3>
+            <p>Or click to browse local files. 100% Client-Side. No network uploads.</p>
+            <input type="file" id="file-uploader" class="hidden-file-input" accept="application/pdf">
+        </div>
+
+        <div class="workspace" id="main-workspace" style="display: none;">
+            
+            <div class="sidebar">
+                
+                <div class="panel-card">
+                    <span class="panel-title">🔎 Smart Keyword Scraper</span>
+                    <p class="panel-info">Search for sensitive keywords (e.g. names, mobile numbers, corporate secrets) to stage redact boxes automatically across all coordinate matrices on click.</p>
+                    
+                    <div class="input-group">
+                        <input type="text" id="keyword-search-field" class="text-input" placeholder="Type confidential words..." autocomplete="off">
+                        <button id="btn-keyword-trigger" class="btn btn-primary">Search Match</button>
+                    </div>
+                </div>
+
+                <div class="panel-card" id="ocr-trigger-sidebar-card">
+                    <span class="panel-title">📷 Local OCR Laser Scanned PDF</span>
+                    <p class="panel-info">Convert image/scanned documents into searchable vector fields using client-side OCR instantly.</p>
+                    <button id="btn-ocr-current-page" class="btn btn-outline-ocr">
+                        📷 Scan Page OCR Characters
+                    </button>
+                </div>
+
+                <div class="panel-card">
+                    <span class="panel-title">📝 Staged Redactions List</span>
+                    <div class="tag-list-box" id="redactions-scroller">
+                        </div>
+                    <button id="btn-clear-all" class="btn btn-outline-danger">Clear All Blocks</button>
+                </div>
+
+                <div class="panel-card">
+                    <span class="panel-title">✏️ Manual Framing Guides</span>
+                    <p class="panel-info">Perfect for masking un-parseable scanned lines, electronic seals, avatars, or bank invoices:</p>
+                    <ul class="instructions-list">
+                        <li>Choose Draw Rectangle Mode directly.</li>
+                        <li>Left-click and drag diagonally right over any canvas region.</li>
+                        <li>Hover directly on any black overlay box and click ✕ to remove.</li>
+                    </ul>
+                </div>
+
+            </div>
+
+            <div class="preview-pane">
+                
+                <div class="pager-row">
+                    <button id="btn-prev-page" class="btn btn-outline" disabled>◀ Previous Sheet</button>
+                    <span class="page-indicator-badge" id="pager-text">PAGE 1 OF 1</span>
+                    <button id="btn-next-page" class="btn btn-outline" disabled>Next Sheet ▶</button>
+                </div>
+
+                <div class="ocr-banner" id="scanned-image-warning-banner" style="display: none;">
+                    <span class="ocr-banner-info">⚠️ Scanned/Image PDF page detected! Redaction scraper matches won't find text until scanned:</span>
+                    <button class="ocr-banner-btn" id="banner-ocr-trigger-btn">Run OCR Scanner</button>
+                </div>
+
+                <div class="canvas-container">
+                    <div class="canvas-wrapper-aspect" id="active-aspect-box">
+                        <canvas id="pdf-preview-canvas" class="preview-canvas"></canvas>
+                        
+                        <div class="text-selection-layer" id="pdf-text-selection-layer"></div>
+
+                        <div class="drawing-overlay" id="drawing-mouse-zone"></div>
+                    </div>
+                </div>
+                
+                <div class="progress-box">
+                    <div class="progress-title">
+                        <span id="compiler-status-label">Staged elements validation ready. Click Apply to sanitize.</span>
+                        <span id="compiler-pct-label"></span>
+                    </div>
+                    <div class="progress-track" id="compiler-progress-bar" style="display: none;">
+                        <div class="progress-fill" id="compiler-progress-pct"></div>
+                    </div>
+                    
+                    <div class="th-action-btn-row">
+                        <button id="btn-reset-tool" class="btn btn-outline th-flex-1">New Document</button>
+                        <button id="btn-compile-apply" class="btn btn-secondary th-flex-2" disabled>Wipe & Redact PDF 🛡️</button>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<div class="modal-overlay" id="password-modal-overlay" style="display: none;">
+    <div class="modal-card">
+        <h3>🔒 Encrypted Lock Warning</h3>
+        <p>This document requires authorization credentials before loading characters or rendering pages. Provide protection keys:</p>
+        <input type="password" id="modal-password-input" class="text-input" placeholder="Type document password...">
+        <div class="th-action-btn-row">
+            <button id="btn-password-cancel" class="btn btn-outline th-flex-1">Cancel</button>
+            <button id="btn-password-submit" class="btn btn-primary th-flex-1">Decrypt & Load</button>
+        </div>
+    </div>
+</div>
+
+<style>
+    /* Symmetrical Theme Bridge Maps targeting global layout colors seamlessly */
+    .wrapper.redact-tool-root-skin {
+        width: 100%;
+        max-width: 1100px;
+        background: var(--clr-surface-1, #ffffff);
+        border-radius: 24px;
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.05), 0 5px 15px rgba(0, 0, 0, 0.02);
+        border: 1px solid var(--clr-border-2, #e2e8f0);
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        margin: 0 auto;
+        text-align: left;
+    }
+    
+    .header-banner {
+        background: linear-gradient(135deg, #e11d48 0%, #db2777 50%, #ea580c 100%);
+        color: #ffffff;
+        padding: 30px;
+        position: relative;
+    }
+    .header-banner h1 { font-family: 'Hind', sans-serif; font-size: 24px; font-weight: 900; letter-spacing: -0.025em; margin-bottom: 6px; }
+    .header-banner p { font-size: 13px; color: #ffe4e6; font-weight: 500; }
+    .main-container { padding: 30px; display: flex; flex-direction: column; gap: 24px; background: var(--clr-bg, #f1f5f9); }
+    
+    .dropzone {
+        border: 3px dashed var(--clr-border, #cbd5e1);
+        border-radius: 20px;
+        padding: 55px 30px;
+        text-align: center;
+        background-color: var(--clr-surface-2, #f8fafc);
+        cursor: pointer !important;
+        transition: all 0.25s ease;
+        position: relative;
+    }
+    .dropzone:hover { border: 3px dashed var(--clr-accent, #f43f5e); background-color: rgba(244, 63, 94, 0.04); }
+    .dropzone svg { width: 56px; height: 56px; color: var(--clr-accent, #f43f5e); margin-bottom: 16px; pointer-events: none; }
+    .dropzone h3 { font-family: 'Hind', sans-serif; font-size: 16px; font-weight: 700; color: var(--clr-text-1, #0f172a); margin-bottom: 6px; pointer-events: none; }
+    .dropzone p { font-size: 12px; color: var(--clr-text-3, #475569); font-weight: 500; pointer-events: none; }
+    .hidden-file-input { display: none; }
+
+    .workspace { display: grid; grid-template-columns: 1fr; gap: 30px; width: 100%; }
+    @media (min-width: 850px) { .workspace { grid-template-columns: 380px 1fr; } }
+    .sidebar { display: flex; flex-direction: column; gap: 20px; }
+    
+    .panel-card { background-color: var(--clr-surface-2, #f8fafc); border: 1px solid var(--clr-border-2, #e2e8f0); border-radius: 16px; padding: 20px; display: flex; flex-direction: column; gap: 14px; text-align: left; }
+    .panel-title { font-size: 12.5px; font-weight: 900; text-transform: uppercase; letter-spacing: 0.05em; color: var(--clr-text-2, #475569); border-bottom: 1px dashed var(--clr-border, #cbd5e1); padding-bottom: 8px; display: flex; align-items: center; gap: 6px; font-family: 'JetBrains Mono', monospace; }
+    .panel-info { font-size: 11px; color: var(--clr-text-3, #475569); line-height: 1.4; font-weight: 500; }
+    
+    .input-group { display: flex; gap: 8px; width: 100%; }
+    .text-input { flex: 1; padding: 10px 14px; font-size: 13px; border-radius: 10px; border: 1px solid var(--clr-border, #cbd5e1); background: var(--clr-surface-1, #ffffff); color: var(--clr-text-1, #0f172a); outline: none; transition: border-color 0.15s ease; }
+    .text-input:focus { border-color: var(--clr-accent, #f43f5e); }
+    
+    button, .btn {  font-size: 12.5px; font-weight: 700; border-radius: 10px; border: none; transition: all 0.15s ease; display: inline-flex; align-items: center; justify-content: center; gap: 6px; user-select: none; cursor: pointer !important; }
+    .btn-primary { background-color: var(--clr-accent, #f43f5e); color: #ffffff; }
+    .btn-primary:hover:not(:disabled) { opacity: 0.9; }
+    .btn-secondary { background-color: var(--clr-text-1, #0f172a); color: var(--clr-surface-1, #ffffff); }
+    .btn-secondary:hover:not(:disabled) { opacity: 0.85; }
+    .btn-outline { background-color: var(--clr-surface-1, #ffffff); color: var(--clr-text-2, #475569); border: 1px solid var(--clr-border, #cbd5e1); }
+    .btn-outline:hover:not(:disabled) { background-color: var(--clr-surface-2, #f8fafc); color: var(--clr-text-1, #0f172a); }
+    .btn-outline-ocr { background-color: var(--clr-surface-1, #ffffff); border: 1px solid #2563eb; color: #2563eb; width: 100%; font-weight: 700; border-radius: 8px; }
+    .btn-outline-ocr:hover:not(:disabled) { background-color: rgba(37, 99, 235, 0.05); }
+    .btn-outline-danger { background-color: var(--clr-surface-1, #ffffff); border: 1px solid #fca5a5; color: #ef4444; width: 100%; display: none; }
+    .btn-outline-danger:hover:not(:disabled) { background-color: #fef2f2; }
+    button:disabled, .btn:disabled { opacity: 0.45; cursor: not-allowed !important; }
+
+    .tag-list-box { display: flex; flex-direction: column; gap: 8px; max-height: 220px; overflow-y: auto; padding-right: 2px; }
+    .empty-tag-view { text-align: center; padding: 24px 10px; font-size: 11px; color: var(--clr-text-3, #475569); border: 1.5px dashed var(--clr-border-2, #e2e8f0); border-radius: 12px; background: var(--clr-surface-1, #ffffff); font-weight: 500; }
+    .qa-pill { display: flex; align-items: center; justify-content: space-between; padding: 8px 12px; background: var(--clr-surface-1, #ffffff); border: 1px solid var(--clr-border-2, #e2e8f0); border-radius: 8px; box-shadow: 0 1px 3px rgba(0,0,0,0.02); font-size: 11px; color: var(--clr-text-1, #0f172a); }
+    .qa-pill-meta { display: flex; flex-direction: column; gap: 2px; }
+    .qa-pill-title { font-weight: 700; color: var(--clr-text-1, #0f172a); display: flex; align-items: center; gap: 4px; }
+    .qa-pill-subtitle { font-family: 'JetBrains Mono', monospace; color: var(--clr-text-3, #475569); font-size: 9.5px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 180px; }
+    .indicator-dot { width: 6px; height: 6px; border-radius: 50%; display: inline-block; }
+    .indicator-manual { background: #eab308; }
+    .indicator-search { background: #ec4899; }
+    .indicator-ocr { background: #2563eb; }
+    .btn-tag-delete { background: none; border: none; color: #ef4444; font-size: 15px; padding: 2px 4px; transition: transform 0.15s ease; cursor: pointer !important; }
+    .btn-tag-delete:hover { transform: scale(1.2); }
+
+    .preview-pane { display: flex; flex-direction: column; gap: 16px; }
+    .pager-row { display: flex; justify-content: space-between; align-items: center; background-color: var(--clr-surface-2, #f8fafc); padding: 10px 16px; border-radius: 14px; border: 1px solid var(--clr-border-2, #e2e8f0); }
+    .page-indicator-badge { font-family: 'JetBrains Mono', monospace; font-size: 12px; font-weight: 700; color: var(--clr-text-2, #475569); }
+    
+    .canvas-container { background-color: #64748b; padding: 14px; border-radius: 18px; border: 1px solid #475569; box-shadow: inset 0 2px 8px rgba(0,0,0,0.12); position: relative; display: flex; justify-content: center; width: 100%; }
+    .canvas-wrapper-aspect { position: relative; background-color: #ffffff; box-shadow: 0 10px 30px rgba(0,0,0,0.2); border-radius: 4px; overflow: hidden; width: 100%; max-width: 650px; }
+    .preview-canvas { display: block; width: 100%; height: 100%; user-select: none; -webkit-user-select: none; }
+    
+    .text-selection-layer { position: absolute; inset: 0; overflow: hidden; z-index: 22; opacity: 0.85; pointer-events: auto; }
+    .text-selection-span { position: absolute; color: transparent; background: transparent; cursor: text !important; white-space: pre; transform-origin: 0% 0%; user-select: text !important; -webkit-user-select: text !important; }
+    .drawing-overlay { position: absolute; inset: 0; cursor: crosshair; z-index: 24; user-select: none; -webkit-user-select: none; }
+    
+    .staged-blackout-box { position: absolute; background-color: #0c0f17; border: 1.5px solid var(--clr-accent, #f43f5e); box-shadow: 0 0 12px rgba(0,0,0,0.5); z-index: 25; display: flex; align-items: center; justify-content: center; color: rgba(255, 255, 255, 0.45); font-family: 'JetBrains Mono', monospace; font-size: 7.5px; user-select: none; }
+    .active-drag-preview { position: absolute; background-color: rgba(244, 63, 94, 0.4); border: 1.5px dashed var(--clr-accent, #f43f5e); pointer-events: none; z-index: 30; }
+
+    .ocr-banner { background-color: #eff6ff; border: 1px solid #bfdbfe; border-radius: 12px; padding: 12px 16px; display: flex; align-items: center; justify-content: space-between; gap: 12px; text-align: left; }
+    .ocr-banner-info { font-size: 11.5px; color: #1e40af; font-weight: 500; }
+    .ocr-banner-btn { background-color: #2563eb; color: #ffffff; font-size: 11px; padding: 6px 12px; border-radius: 6px; font-weight: 700; white-space: nowrap; cursor: pointer !important; }
+    .progress-box { background-color: var(--clr-surface-2, #f8fafc); border: 1px solid var(--clr-border-2, #e2e8f0); border-radius: 16px; padding: 20px; text-align: left; display: flex; flex-direction: column; gap: 10px; }
+    .progress-title { font-size: 12px; font-weight: 700; color: var(--clr-text-1, #0f172a); display: flex; justify-content: space-between; }
+    .progress-track { width: 100%; height: 8px; background: var(--clr-border-2, #e2e8f0); border-radius: 4px; overflow: hidden; }
+    .progress-fill { height: 100%; width: 0%; border-radius: 4px; background: linear-gradient(to right, var(--clr-accent, #f43f5e), #db2777); transition: width 0.2s ease; }
+    .instructions-list { margin-top: 15px; text-align: left; display: flex; flex-direction: column; gap: 6px; font-size: 11px; color: var(--clr-text-2, #475569); font-weight: 500; }
+    .instructions-list li { list-style-type: none; display: flex; align-items: flex-start; gap: 6px; }
+    .instructions-list li::before { content: "•"; color: var(--clr-accent, #f43f5e); font-weight: bold; }
+    
+    .modal-overlay { position: fixed; inset: 0; background-color: rgba(15, 23, 42, 0.7); backdrop-filter: blur(6px); z-index: 999; display: flex; align-items: center; justify-content: center; padding: 20px; }
+    .modal-card { background-color: var(--clr-surface-1, #ffffff); border-radius: 20px; padding: 30px; width: 100%; max-width: 440px; border: 1px solid var(--clr-border-2, #e2e8f0); box-shadow: 0 20px 40px rgba(0,0,0,0.15); text-align: center; display: flex; flex-direction: column; gap: 16px; color: var(--clr-text-1, #0f172a); }
+    .modal-card h3 { font-family: 'Hind', sans-serif; font-size: 18px; font-weight: 800; }
+    .modal-card p { font-size: 12px; color: var(--clr-text-2, #475569); }
+    
+    .th-action-btn-row { display: flex; gap: 10px; margin-top: 6px; width: 100%; }
+    .th-flex-1 { flex: 1; }
+    .th-flex-2 { flex: 2; padding: 12px 18px; }
+
+    /* 🌙 TYAGIHUB CORE DARK MODE INTERCEPT FOR HARDCODED OVERLAYS */
+    @media (prefers-color-scheme: dark) {
+        .canvas-container { background-color: #1e293b !important; border-color: #334155 !important; }
+        .ocr-banner { background-color: #1e3a8a !important; border-color: #2563eb !important; }
+        .ocr-banner-info { color: #93c5fd !important; }
+    }.dropzone {
+    /* ... teri purani baaki styling ... */
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;    /* ✨ Isse saare elements horizontally center ho jayenge */
+    justify-content: center; /* ✨ Isse saare elements vertically center ho jayenge */
+    text-align: center;
+}
+
+/* 🎯 Optional: Agar SVG ka size block element ki wajah se stretch ho raha ho, toh ise bhi add karle */
+.dropzone svg {
+    display: block;
+    margin: 0 auto 16px auto; /* Center align + niche 16px ka gap */
+    width: 56px;
+    height: 56px;
+}
+</style>
+

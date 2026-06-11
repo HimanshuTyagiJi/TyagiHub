@@ -1,0 +1,591 @@
+---
+layout: default
+title: "TyagiStudio — All-in-One Creator Toolkit | TyagiHub"
+description: "TyagiStudio is a powerful all-in-one creator toolkit with PDF tools, image editing, video utilities, QR generator, file conversion, compression, and smart productivity features — all in one free app."
+keywords: "TyagiStudio, PDF editor app, image editor India, QR code generator, video tools app, file converter, free creator app"
+extra_css:
+  - /assets/css/tyagi-studio.css
+---
+
+<div class="ts-page">
+
+  <!-- ═══════════════════════════════
+       HERO
+  ═══════════════════════════════ -->
+  <section class="ts-hero">
+    <div class="ts-hero__bg" aria-hidden="true">
+      <div class="ts-orb ts-orb--1"></div>
+      <div class="ts-orb ts-orb--2"></div>
+      <div class="ts-orb ts-orb--3"></div>
+      <div class="ts-grid-lines"></div>
+    </div>
+
+    <div class="container ts-hero__inner">
+
+      <!-- Badge -->
+      <div class="ts-badge" aria-label="New App">
+        <span class="ts-badge__dot"></span>
+        All-in-One Creator Toolkit
+      </div>
+
+      <!-- App icon + name -->
+      <div class="ts-hero__brand">
+        <!-- Animated SVG App Icon -->
+        <div class="ts-app-icon" aria-hidden="true">
+          <svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg" class="ts-icon-svg">
+            <defs>
+              <linearGradient id="iconGrad" x1="0" y1="0" x2="80" y2="80" gradientUnits="userSpaceOnUse">
+                <stop offset="0%" stop-color="#f5a623"/>
+                <stop offset="50%" stop-color="#ff7c3a"/>
+                <stop offset="100%" stop-color="#a78bfa"/>
+              </linearGradient>
+              <filter id="glow">
+                <feGaussianBlur stdDeviation="3" result="blur"/>
+                <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+              </filter>
+            </defs>
+            <!-- Background rounded square -->
+            <rect x="4" y="4" width="72" height="72" rx="20" fill="url(#iconGrad)" opacity="0.15"/>
+            <rect x="4" y="4" width="72" height="72" rx="20" stroke="url(#iconGrad)" stroke-width="1.5"/>
+            <!-- T letter stylized -->
+            <text x="40" y="52" text-anchor="middle" font-family="Arial Black, sans-serif" font-size="36" font-weight="900" fill="url(#iconGrad)" filter="url(#glow)">T</text>
+            <!-- Orbit dots -->
+            <circle cx="40" cy="12" r="3" fill="#f5a623" class="ts-dot-orbit" opacity="0.9"/>
+            <circle cx="68" cy="40" r="2.5" fill="#a78bfa" class="ts-dot-orbit" style="animation-delay:.5s" opacity="0.8"/>
+            <circle cx="40" cy="68" r="2" fill="#ff7c3a" class="ts-dot-orbit" style="animation-delay:1s" opacity="0.7"/>
+            <circle cx="12" cy="40" r="2.5" fill="#3ecfcf" class="ts-dot-orbit" style="animation-delay:1.5s" opacity="0.8"/>
+          </svg>
+        </div>
+
+        <div class="ts-hero__title-wrap">
+          <h1 class="ts-hero__title">
+            Tyagi<span class="ts-accent">Studio</span>
+          </h1>
+          <p class="ts-hero__tagline">Create. Edit. Convert. Export. Repeat.</p>
+        </div>
+      </div>
+
+      <!-- Description -->
+      <p class="ts-hero__desc">
+        A powerful all-in-one creative toolkit built for India. Edit PDFs, images, and videos. Generate QR codes, convert files, compress media, scan documents — everything in one beautifully designed app. <strong>Free forever.</strong>
+      </p>
+
+      <!-- CTA buttons -->
+      <div class="ts-hero__ctas">
+        <a href="#download" class="btn-ts btn-ts--primary">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M12 16l-4-4h3V4h2v8h3l-4 4z"/>
+            <path d="M20 20H4"/>
+          </svg>
+          Download Free
+        </a>
+        <a href="#features" class="btn-ts btn-ts--outline">
+          Explore Features
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <polyline points="6 9 12 15 18 9"/>
+          </svg>
+        </a>
+      </div>
+
+      <!-- Stats row -->
+      <div class="ts-hero__stats" aria-label="App statistics">
+        <div class="ts-stat">
+          <span class="ts-stat__num">12+</span>
+          <span class="ts-stat__label">Tool Categories</span>
+        </div>
+        <div class="ts-stat__sep" aria-hidden="true"></div>
+        <div class="ts-stat">
+          <span class="ts-stat__num">50+</span>
+          <span class="ts-stat__label">Built-in Tools</span>
+        </div>
+        <div class="ts-stat__sep" aria-hidden="true"></div>
+        <div class="ts-stat">
+          <span class="ts-stat__num">100%</span>
+          <span class="ts-stat__label">Free & Offline</span>
+        </div>
+        <div class="ts-stat__sep" aria-hidden="true"></div>
+        <div class="ts-stat">
+          <span class="ts-stat__num">0</span>
+          <span class="ts-stat__label">Ads or Tracking</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════
+       TOOL CATEGORIES — Animated Cards
+  ═══════════════════════════════ -->
+  <section class="ts-section" id="features" aria-labelledby="features-heading">
+    <div class="container">
+
+      <div class="ts-section__header">
+        <div class="ts-label">Everything in One Place</div>
+        <h2 class="ts-section__title" id="features-heading">
+          Every Tool You Need,<br>All in One App
+        </h2>
+        <p class="ts-section__sub">
+          No switching between five different apps. TyagiStudio brings your entire creative workflow under one roof.
+        </p>
+      </div>
+
+      <div class="ts-tools-grid" role="list">
+
+        <!-- PDF Tools -->
+        <article class="ts-tool-card" role="listitem" style="--card-color:#f5a623; --card-bg:rgba(245,166,35,0.08);">
+          <div class="ts-tool-card__icon" aria-hidden="true">
+            <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="6" y="2" width="28" height="38" rx="4" stroke="currentColor" stroke-width="2.5" fill="rgba(245,166,35,0.12)"/>
+              <path d="M28 2v10h10" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+              <path d="M12 20h18M12 26h18M12 32h12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              <circle cx="36" cy="36" r="10" fill="rgba(245,166,35,0.15)" stroke="currentColor" stroke-width="2"/>
+              <path d="M33 36l2 2 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <h3 class="ts-tool-card__title">PDF Tools</h3>
+          <p class="ts-tool-card__desc">Edit, compress, merge, split, rotate, unlock, protect, convert, and sign PDF files with ease.</p>
+          <ul class="ts-tool-card__list" aria-label="PDF tools included">
+            <li>Compress & Merge PDFs</li>
+            <li>PDF to Image / Word</li>
+            <li>Sign & Protect</li>
+            <li>Edit & Annotate</li>
+          </ul>
+          <div class="ts-tool-card__count">24 PDF Tools</div>
+        </article>
+
+        <!-- Image Editor -->
+        <article class="ts-tool-card" role="listitem" style="--card-color:#a78bfa; --card-bg:rgba(167,139,250,0.08);">
+          <div class="ts-tool-card__icon" aria-hidden="true">
+            <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="4" y="8" width="36" height="28" rx="4" stroke="currentColor" stroke-width="2.5" fill="rgba(167,139,250,0.12)"/>
+              <circle cx="14" cy="18" r="4" stroke="currentColor" stroke-width="2"/>
+              <path d="M4 28l10-8 8 6 6-4 10 8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M36 38v6M30 41h12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <h3 class="ts-tool-card__title">Image Editor</h3>
+          <p class="ts-tool-card__desc">Crop, resize, filter, compress, convert, remove background, add watermarks and more.</p>
+          <ul class="ts-tool-card__list" aria-label="Image tools included">
+            <li>Background Remover</li>
+            <li>Filters & Effects</li>
+            <li>Resize & Compress</li>
+            <li>Format Converter</li>
+          </ul>
+          <div class="ts-tool-card__count">18 Image Tools</div>
+        </article>
+
+        <!-- Video Tools -->
+        <article class="ts-tool-card" role="listitem" style="--card-color:#60a5fa; --card-bg:rgba(96,165,250,0.08);">
+          <div class="ts-tool-card__icon" aria-hidden="true">
+            <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="4" y="10" width="28" height="22" rx="4" stroke="currentColor" stroke-width="2.5" fill="rgba(96,165,250,0.12)"/>
+              <path d="M32 18l10-6v20l-10-6V18z" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round"/>
+              <path d="M14 36l-4 6M28 36l4 6M10 42h24" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              <circle cx="18" cy="21" r="4" fill="rgba(96,165,250,0.3)" stroke="currentColor" stroke-width="2"/>
+              <path d="M16 21l4-2.5v5L16 21z" fill="currentColor"/>
+            </svg>
+          </div>
+          <h3 class="ts-tool-card__title">Video Utilities</h3>
+          <p class="ts-tool-card__desc">Trim, compress, convert, extract audio, merge clips, and create GIFs from your videos.</p>
+          <ul class="ts-tool-card__list" aria-label="Video tools included">
+            <li>Video Compressor</li>
+            <li>Trim & Merge</li>
+            <li>Video to GIF</li>
+            <li>Extract Audio</li>
+          </ul>
+          <div class="ts-tool-card__count">10 Video Tools</div>
+        </article>
+
+        <!-- QR Generator -->
+        <article class="ts-tool-card" role="listitem" style="--card-color:#34d399; --card-bg:rgba(52,211,153,0.08);">
+          <div class="ts-tool-card__icon" aria-hidden="true">
+            <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="4" y="4" width="16" height="16" rx="3" stroke="currentColor" stroke-width="2.5" fill="rgba(52,211,153,0.12)"/>
+              <rect x="28" y="4" width="16" height="16" rx="3" stroke="currentColor" stroke-width="2.5" fill="rgba(52,211,153,0.12)"/>
+              <rect x="4" y="28" width="16" height="16" rx="3" stroke="currentColor" stroke-width="2.5" fill="rgba(52,211,153,0.12)"/>
+              <rect x="8" y="8" width="8" height="8" rx="1" fill="currentColor"/>
+              <rect x="32" y="8" width="8" height="8" rx="1" fill="currentColor"/>
+              <rect x="8" y="32" width="8" height="8" rx="1" fill="currentColor"/>
+              <rect x="28" y="28" width="4" height="4" fill="currentColor"/>
+              <rect x="36" y="28" width="4" height="4" fill="currentColor"/>
+              <rect x="28" y="36" width="4" height="4" fill="currentColor"/>
+              <rect x="36" y="36" width="4" height="4" fill="currentColor"/>
+            </svg>
+          </div>
+          <h3 class="ts-tool-card__title">QR Generator</h3>
+          <p class="ts-tool-card__desc">Generate QR codes for URLs, contacts, WiFi, text, email, location, and UPI payments instantly.</p>
+          <ul class="ts-tool-card__list" aria-label="QR tools included">
+            <li>Custom Colors & Logo</li>
+            <li>UPI Payment QR</li>
+            <li>WiFi QR Codes</li>
+            <li>Bulk Generator</li>
+          </ul>
+          <div class="ts-tool-card__count">8 QR Tools</div>
+        </article>
+
+        <!-- File Converter -->
+        <article class="ts-tool-card" role="listitem" style="--card-color:#3ecfcf; --card-bg:rgba(62,207,207,0.08);">
+          <div class="ts-tool-card__icon" aria-hidden="true">
+            <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M8 24c0-8.84 7.16-16 16-16" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+              <path d="M40 24c0 8.84-7.16 16-16 16" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+              <path d="M24 4l-6 6 6 6M24 44l6-6-6-6" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+              <rect x="18" y="20" width="12" height="8" rx="2" fill="rgba(62,207,207,0.2)" stroke="currentColor" stroke-width="2"/>
+            </svg>
+          </div>
+          <h3 class="ts-tool-card__title">File Converter</h3>
+          <p class="ts-tool-card__desc">Convert between 50+ file formats — images, documents, audio, and video — in seconds.</p>
+          <ul class="ts-tool-card__list" aria-label="Converter tools included">
+            <li>Word ↔ PDF</li>
+            <li>JPG ↔ PNG ↔ WebP</li>
+            <li>MP4 ↔ MP3</li>
+            <li>SVG → PNG</li>
+          </ul>
+          <div class="ts-tool-card__count">15 Converters</div>
+        </article>
+
+        <!-- Document Scanner -->
+        <article class="ts-tool-card" role="listitem" style="--card-color:#fb923c; --card-bg:rgba(251,146,60,0.08);">
+          <div class="ts-tool-card__icon" aria-hidden="true">
+            <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="10" y="14" width="28" height="20" rx="2" stroke="currentColor" stroke-width="2.5" fill="rgba(251,146,60,0.12)"/>
+              <path d="M4 20h6M38 20h6M4 28h6M38 28h6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              <path d="M18 22l3 3 6-6" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+              <rect x="20" y="4" width="8" height="6" rx="2" fill="rgba(251,146,60,0.2)" stroke="currentColor" stroke-width="2"/>
+              <path d="M24 10v4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              <path d="M14 38h20" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              <path d="M18 38v4M30 38v4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <h3 class="ts-tool-card__title">Document Scanner</h3>
+          <p class="ts-tool-card__desc">Scan documents using your phone camera. Auto edge detection, OCR, and instant PDF export.</p>
+          <ul class="ts-tool-card__list" aria-label="Scanner tools included">
+            <li>Auto Edge Detection</li>
+            <li>OCR Text Extraction</li>
+            <li>Multi-page Scan</li>
+            <li>Smart Enhance</li>
+          </ul>
+          <div class="ts-tool-card__count">6 Scanner Tools</div>
+        </article>
+
+        <!-- Audio Tools -->
+        <article class="ts-tool-card" role="listitem" style="--card-color:#f472b6; --card-bg:rgba(244,114,182,0.08);">
+          <div class="ts-tool-card__icon" aria-hidden="true">
+            <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M8 30V18" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+              <path d="M14 34V14" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+              <path d="M20 38V10" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+              <path d="M26 34V14" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+              <path d="M32 30V18" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+              <path d="M38 28V20" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+              <circle cx="38" cy="36" r="6" fill="rgba(244,114,182,0.15)" stroke="currentColor" stroke-width="2"/>
+              <path d="M36 36l2 2 3-3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <h3 class="ts-tool-card__title">Audio Tools</h3>
+          <p class="ts-tool-card__desc">Trim, merge, convert, boost volume, and extract audio tracks from any media file.</p>
+          <ul class="ts-tool-card__list" aria-label="Audio tools included">
+            <li>Audio Trimmer</li>
+            <li>Volume Booster</li>
+            <li>Format Converter</li>
+            <li>Merge Audio Files</li>
+          </ul>
+          <div class="ts-tool-card__count">8 Audio Tools</div>
+        </article>
+
+        <!-- Productivity -->
+        <article class="ts-tool-card" role="listitem" style="--card-color:#818cf8; --card-bg:rgba(129,140,248,0.08);">
+          <div class="ts-tool-card__icon" aria-hidden="true">
+            <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="6" y="6" width="16" height="16" rx="4" stroke="currentColor" stroke-width="2.5" fill="rgba(129,140,248,0.12)"/>
+              <rect x="26" y="6" width="16" height="16" rx="4" stroke="currentColor" stroke-width="2.5" fill="rgba(129,140,248,0.12)"/>
+              <rect x="6" y="26" width="16" height="16" rx="4" stroke="currentColor" stroke-width="2.5" fill="rgba(129,140,248,0.12)"/>
+              <rect x="26" y="26" width="16" height="16" rx="4" stroke="currentColor" stroke-width="2.5" fill="rgba(129,140,248,0.12)"/>
+              <path d="M10 14h8M10 18h5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+              <path d="M30 14h8M30 18h5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+              <path d="M10 34h8M10 38h5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+              <path d="M34 30v8M30 34h8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <h3 class="ts-tool-card__title">Productivity Suite</h3>
+          <p class="ts-tool-card__desc">Password generator, hash tools, URL encoder, Base64, color picker, word counter and more utility tools.</p>
+          <ul class="ts-tool-card__list" aria-label="Productivity tools included">
+            <li>Password Generator</li>
+            <li>Hash Generator</li>
+            <li>Word Counter</li>
+            <li>Base64 Encoder</li>
+          </ul>
+          <div class="ts-tool-card__count">12 Utility Tools</div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════
+       FEATURE HIGHLIGHTS
+  ═══════════════════════════════ -->
+  <section class="ts-section ts-highlights" aria-labelledby="highlights-heading">
+    <div class="container">
+
+      <div class="ts-section__header">
+        <div class="ts-label">Why TyagiStudio</div>
+        <h2 class="ts-section__title" id="highlights-heading">Built Different. Built for India.</h2>
+      </div>
+
+      <div class="ts-highlights__grid">
+
+        <div class="ts-highlight-card">
+          <div class="ts-highlight-card__icon" aria-hidden="true">
+            <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M16 2l2.4 7.4H26l-6.2 4.5 2.4 7.4L16 17l-6.2 4.3 2.4-7.4L6 9.4h7.6z"/>
+              <circle cx="16" cy="26" r="4" stroke-dasharray="3 2"/>
+            </svg>
+          </div>
+          <h3 class="ts-highlight-card__title">100% Free</h3>
+          <p class="ts-highlight-card__desc">No subscriptions, no hidden charges, no paywalls. Every feature is free to use forever.</p>
+        </div>
+
+        <div class="ts-highlight-card">
+          <div class="ts-highlight-card__icon" aria-hidden="true">
+            <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M16 2v6M16 24v6M2 16h6M24 16h6"/>
+              <circle cx="16" cy="16" r="8"/>
+              <circle cx="16" cy="16" r="3" fill="currentColor" stroke="none"/>
+            </svg>
+          </div>
+          <h3 class="ts-highlight-card__title">Works Offline</h3>
+          <p class="ts-highlight-card__desc">All tools work without internet. Process your files privately on your device.</p>
+        </div>
+
+        <div class="ts-highlight-card">
+          <div class="ts-highlight-card__icon" aria-hidden="true">
+            <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="4" y="6" width="10" height="20" rx="2"/>
+              <rect x="18" y="10" width="10" height="16" rx="2"/>
+              <path d="M9 26v2M23 26v2M6 28h8M20 28h8"/>
+            </svg>
+          </div>
+          <h3 class="ts-highlight-card__title">Mobile First</h3>
+          <p class="ts-highlight-card__desc">Optimized for Android phones. Touch-friendly UI, gesture support, and smooth performance.</p>
+        </div>
+
+        <div class="ts-highlight-card">
+          <div class="ts-highlight-card__icon" aria-hidden="true">
+            <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M16 4l-12 6v8c0 5.5 5.1 10.7 12 13 6.9-2.3 12-7.5 12-13V10L16 4z"/>
+              <path d="M11 16l3 3 7-7"/>
+            </svg>
+          </div>
+          <h3 class="ts-highlight-card__title">Privacy First</h3>
+          <p class="ts-highlight-card__desc">Your files never leave your device. Zero tracking, zero data collection, zero ads.</p>
+        </div>
+
+        <div class="ts-highlight-card">
+          <div class="ts-highlight-card__icon" aria-hidden="true">
+            <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="16" cy="16" r="12"/>
+              <path d="M16 8v8l5 5"/>
+            </svg>
+          </div>
+          <h3 class="ts-highlight-card__title">Lightning Fast</h3>
+          <p class="ts-highlight-card__desc">Processes files in milliseconds. No waiting for uploads. No cloud delays. Instant results.</p>
+        </div>
+
+        <div class="ts-highlight-card">
+          <div class="ts-highlight-card__icon" aria-hidden="true">
+            <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M4 16c0-6.6 5.4-12 12-12s12 5.4 12 12-5.4 12-12 12"/>
+              <path d="M2 22l4-4-4-4"/>
+              <path d="M12 22l-4-4 4-4"/>
+            </svg>
+          </div>
+          <h3 class="ts-highlight-card__title">Regular Updates</h3>
+          <p class="ts-highlight-card__desc">New tools added every month. Built by Tyagi MultiTech based on real user feedback from India.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════
+       SCREENSHOT / PREVIEW STRIP
+  ═══════════════════════════════ -->
+  <section class="ts-section ts-preview" aria-labelledby="preview-heading">
+    <div class="container">
+      <div class="ts-section__header">
+        <div class="ts-label">App Preview</div>
+        <h2 class="ts-section__title" id="preview-heading">Clean. Fast. Powerful.</h2>
+        <p class="ts-section__sub">Designed with a modern dark interface that works perfectly in low-light environments.</p>
+      </div>
+
+      <!-- Animated App Mockup -->
+      <div class="ts-mockup" aria-hidden="true">
+        <div class="ts-mockup__phone">
+          <div class="ts-mockup__screen">
+            <!-- Simulated app UI -->
+            <div class="ts-mock-nav">
+              <span class="ts-mock-logo">T</span>
+              <span class="ts-mock-title">TyagiStudio</span>
+              <span class="ts-mock-menu">⋯</span>
+            </div>
+            <div class="ts-mock-tools">
+              <div class="ts-mock-tool" style="--mt-color:#f5a623">
+                <span>📄</span><small>PDF</small>
+              </div>
+              <div class="ts-mock-tool" style="--mt-color:#a78bfa">
+                <span>🖼</span><small>Image</small>
+              </div>
+              <div class="ts-mock-tool" style="--mt-color:#60a5fa">
+                <span>🎬</span><small>Video</small>
+              </div>
+              <div class="ts-mock-tool" style="--mt-color:#34d399">
+                <span>⬛</span><small>QR</small>
+              </div>
+              <div class="ts-mock-tool" style="--mt-color:#3ecfcf">
+                <span>🔄</span><small>Convert</small>
+              </div>
+              <div class="ts-mock-tool" style="--mt-color:#fb923c">
+                <span>📷</span><small>Scan</small>
+              </div>
+            </div>
+            <div class="ts-mock-recent">
+              <div class="ts-mock-file">
+                <span class="ts-mock-file__icon">📄</span>
+                <span class="ts-mock-file__name">report.pdf</span>
+                <span class="ts-mock-file__size">2.4 MB</span>
+              </div>
+              <div class="ts-mock-file">
+                <span class="ts-mock-file__icon">🖼</span>
+                <span class="ts-mock-file__name">photo.jpg</span>
+                <span class="ts-mock-file__size">1.1 MB</span>
+              </div>
+              <div class="ts-mock-file">
+                <span class="ts-mock-file__icon">🎬</span>
+                <span class="ts-mock-file__name">clip.mp4</span>
+                <span class="ts-mock-file__size">18 MB</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Floating feature badges -->
+        <div class="ts-mockup__badge ts-mockup__badge--1">
+          <span>⚡</span> Offline Support
+        </div>
+        <div class="ts-mockup__badge ts-mockup__badge--2">
+          <span>🔒</span> Privacy First
+        </div>
+        <div class="ts-mockup__badge ts-mockup__badge--3">
+          <span>🆓</span> 100% Free
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════
+       DOWNLOAD SECTION
+  ═══════════════════════════════ -->
+  <section class="ts-section ts-download" id="download" aria-labelledby="download-heading">
+    <div class="ts-download__bg" aria-hidden="true">
+      <div class="ts-orb ts-orb--4"></div>
+      <div class="ts-orb ts-orb--5"></div>
+    </div>
+    <div class="container ts-download__inner">
+
+      <div class="ts-section__header" style="margin-bottom: var(--space-8);">
+        <div class="ts-label">Get the App</div>
+        <h2 class="ts-section__title" id="download-heading">Download TyagiStudio</h2>
+        <p class="ts-section__sub">Free for Android. More platforms coming soon.</p>
+      </div>
+
+      <div class="ts-download__options">
+
+        <!-- Android APK -->
+        <a href="#" class="ts-download-card ts-download-card--primary" aria-label="Download TyagiStudio APK for Android">
+          <div class="ts-download-card__icon" aria-hidden="true">
+            <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M6 36c0 2.2 1.8 4 4 4h28c2.2 0 4-1.8 4-4V20H6v16z" fill="rgba(52,211,153,0.15)"/>
+              <path d="M6 20V16c0-2.2 1.8-4 4-4h28c2.2 0 4 1.8 4 4v4"/>
+              <path d="M16 8l-4-6M32 8l4-6"/>
+              <circle cx="18" cy="28" r="2" fill="currentColor" stroke="none"/>
+              <circle cx="30" cy="28" r="2" fill="currentColor" stroke="none"/>
+              <path d="M18 34h12"/>
+            </svg>
+          </div>
+          <div class="ts-download-card__info">
+            <div class="ts-download-card__platform">Android</div>
+            <div class="ts-download-card__title">Download APK</div>
+            <div class="ts-download-card__sub">Version 1.0 · ~24 MB · Android 8+</div>
+          </div>
+          <div class="ts-download-card__arrow" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <path d="M12 16l-4-4h3V4h2v8h3l-4 4z"/>
+              <path d="M20 20H4"/>
+            </svg>
+          </div>
+        </a>
+
+        <!-- Play Store (Coming Soon) -->
+        <div class="ts-download-card ts-download-card--soon" aria-label="Google Play Store - Coming Soon">
+          <div class="ts-download-card__icon" aria-hidden="true">
+            <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M8 6l32 18-32 18V6z" fill="rgba(96,165,250,0.15)"/>
+              <path d="M8 6l18 18M8 42l18-18"/>
+            </svg>
+          </div>
+          <div class="ts-download-card__info">
+            <div class="ts-download-card__platform">Google Play</div>
+            <div class="ts-download-card__title">Coming Soon</div>
+            <div class="ts-download-card__sub">Play Store listing in progress</div>
+          </div>
+          <span class="ts-soon-badge">Soon</span>
+        </div>
+
+        <!-- Web App -->
+        <a href="/tools/" class="ts-download-card" aria-label="Use TyagiStudio tools online">
+          <div class="ts-download-card__icon" aria-hidden="true">
+            <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="24" cy="24" r="18" fill="rgba(167,139,250,0.12)"/>
+              <path d="M24 6c-5 5-8 11-8 18s3 13 8 18"/>
+              <path d="M24 6c5 5 8 11 8 18s-3 13-8 18"/>
+              <path d="M6 24h36"/>
+              <path d="M8 16h32M8 32h32"/>
+            </svg>
+          </div>
+          <div class="ts-download-card__info">
+            <div class="ts-download-card__platform">Web Browser</div>
+            <div class="ts-download-card__title">Use Online Free</div>
+            <div class="ts-download-card__sub">No install needed — works in browser</div>
+          </div>
+          <div class="ts-download-card__arrow" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <polyline points="9 18 15 12 9 6"/>
+            </svg>
+          </div>
+        </a>
+
+      </div>
+
+      <!-- Requirements note -->
+      <div class="ts-requirements">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <circle cx="12" cy="12" r="10"/>
+          <line x1="12" y1="8" x2="12" y2="12"/>
+          <line x1="12" y1="16" x2="12.01" y2="16"/>
+        </svg>
+        Requires Android 8.0 or higher · No root required · Works on all brands including Redmi, Realme, Samsung, and more
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════
+       BACK LINK
+  ═══════════════════════════════ -->
+  <div class="ts-back" style="padding: var(--space-8) 0 var(--space-12); text-align:center;">
+    <a href="/apps/" class="btn btn-ghost">
+      ← All Apps
+    </a>
+  </div>
+
+</div>

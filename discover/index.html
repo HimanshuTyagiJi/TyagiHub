@@ -1,0 +1,195 @@
+---
+layout: discover
+title: "Discover — TyagiHub"
+description: "Technology, AI, cybersecurity, education, current affairs, digital updates, online safety, apps, tutorials
+& future innovation — all in one Discover feed by TyagiHub."
+permalink: /discover/
+image: /assets/images/tyagihub.png
+author: "Himanshu Tyagi"
+lang: en
+robots: "index, follow"
+keywords: "TyagiHub, AI tools, cybersecurity, education, current affairs, apps, tutorials, technology news, digital
+updates, online safety"
+---
+
+<div style="padding-top:var(--nav-height);">
+
+  <section
+    style="padding:var(--space-16) 0 var(--space-12);background:var(--clr-bg-2);border-bottom:1px solid var(--clr-border);">
+
+    <div class="container">
+
+      <div class="section-label" aria-hidden="true">
+
+        TyagiHub
+
+      </div>
+
+      <h1>
+        Discover The Future Of Technology
+
+      </h1>
+
+      <p style="font-size:var(--fs-md);line-height:1.9;color:var(--clr-text-2);max-width:60ch;">
+
+        Technology, AI, Cybersecurity, Education, Current Affairs, Digital Tools, Apps, Tutorials, Online Safety &
+        Future Innovation — all in one powerful Discover feed by TyagiHub.
+
+      </p>
+
+    </div>
+
+  </section>
+
+  <section style="padding:22px 0;border-bottom:1px solid var(--clr-border);background:var(--clr-bg);">
+
+    <div class="container">
+
+      <div class="discover-categories">
+
+        {% if page.lang == "hi" %}
+
+  {% assign all_posts = site.posts_hi %}
+
+{% else %}
+
+  {% assign all_posts = site.posts %}
+
+{% endif %}
+
+<button class="discover-cat-btn active" onclick="filterCategory('all',this)">
+
+          All
+
+          <span>
+            ({{ all_posts.size }})
+          </span>
+
+        </button>
+
+        {% assign categories = site.categories | sort %}
+
+        {% for category in categories %}
+
+        {% unless category[0] == "discover" %}
+
+        <button class="discover-cat-btn" onclick="filterCategory('{{ category[0] | downcase }}',this)">
+
+          {{ category[0] }}
+
+          <span>
+            ({{ category[1].size }})
+          </span>
+
+        </button>
+
+        {% endunless %}
+
+        {% endfor %}
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <section class="section">
+
+
+
+    <div id="posts">
+
+      <div id="post-wrapper">
+
+        {% if page.lang == "hi" %}
+
+  {% assign sorted = site.posts_hi | sort: "date" | reverse %}
+
+{% else %}
+
+  {% assign sorted = site.posts | sort: "date" | reverse %}
+
+{% endif %}
+        {% for p in sorted %}
+<div class="horizontal-post-card js-post"
+  data-lang="{{ p.lang }}"
+  data-categories="{% for cat in p.categories %}{{ cat | downcase }} {% endfor %}">
+          <div class="post-img">
+
+            <span class="post-category">
+
+              {{ p.categories[0] | default: "Technology" }}
+
+            </span>
+
+            <div class="post-date">
+
+              <i class="fa-regular fa-calendar"></i>
+
+              {{ p.date | date: "%d %b %Y" }}
+
+            </div>
+
+            <img src="{{ p.image | default: '/assets/images/default-thumb.png' }}" alt="{{ p.title }} - TyagiHub"
+              loading="lazy" width="260" height="188">
+
+          </div>
+
+          <div class="post-info">
+
+            <div class="post-top-meta">
+
+              <h2>
+
+                <a href="{{ p.url | relative_url }}">
+
+                  {{ p.title }}
+
+                </a>
+
+              </h2>
+
+              <p>
+
+                {{ p.description | default:p.excerpt | strip_html | truncate:110 }}
+
+              </p>
+
+            </div>
+
+            <div class="post-footer">
+
+              <button class="native-share-btn"
+                onclick="nativeShare('{{ p.title | escape }}','{{ p.url | absolute_url }}')">
+
+                <i class="fa-solid fa-share-nodes"></i>
+
+                Share
+
+              </button>
+
+              <a href="{{ p.url | relative_url }}" class="read-link">
+
+                Read More →
+
+              </a>
+
+            </div>
+
+          </div>
+
+        </div>
+
+        {% endfor %}
+
+      </div>
+
+      <nav id="pagination-nav" class="pagination-center" aria-label="Pagination Navigation">
+
+            </nav>
+
+    </div>
+
+  </section>
+
+</div>

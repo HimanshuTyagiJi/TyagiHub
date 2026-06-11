@@ -1,0 +1,128 @@
+{
+  "title": "Important Dates & Events",
+  "title_hi": "महत्वपूर्ण तिथियाँ और घटनाएँ",
+  "icon": "📅",
+  "slug": "important-dates",
+  "questions": [
+    {
+      "id": 1,
+      "q": "India's Independence Day is celebrated on?",
+      "opts": [
+        "15 August",
+        "26 January",
+        "2 October",
+        "14 November"
+      ],
+      "ans": 0,
+      "exp": "India's Independence Day is celebrated on 15 August every year. India gained independence from British rule on 15 August 1947. The Prime Minister hoists the national flag at Red Fort, New Delhi."
+    },
+    {
+      "id": 2,
+      "q": "Republic Day of India is celebrated on?",
+      "opts": [
+        "15 August",
+        "26 November",
+        "26 January",
+        "2 October"
+      ],
+      "ans": 2,
+      "exp": "Republic Day is celebrated on 26 January every year. On this day in 1950, the Constitution of India came into force, replacing the Government of India Act as the governing document of India."
+    },
+    {
+      "id": 3,
+      "q": "Gandhi Jayanti is celebrated on?",
+      "opts": [
+        "28 September",
+        "2 October",
+        "14 November",
+        "30 January"
+      ],
+      "ans": 1,
+      "exp": "Gandhi Jayanti is celebrated on 2 October to mark the birthday of Mahatma Gandhi. It is a national holiday in India. The United Nations observes 2 October as the International Day of Non-Violence."
+    },
+    {
+      "id": 4,
+      "q": "World AIDS Day is observed on?",
+      "opts": [
+        "1 December",
+        "1 November",
+        "10 December",
+        "5 June"
+      ],
+      "ans": 0,
+      "exp": "World AIDS Day is observed on 1 December every year since 1988. It is dedicated to raising awareness about HIV/AIDS, mourning those who have died, and fighting prejudice."
+    },
+    {
+      "id": 5,
+      "q": "International Women's Day is celebrated on?",
+      "opts": [
+        "7 March",
+        "8 March",
+        "15 March",
+        "21 March"
+      ],
+      "ans": 1,
+      "exp": "International Women's Day is celebrated on 8 March every year. It celebrates the social, economic, cultural, and political achievements of women and calls for gender equality."
+    },
+    {
+      "id": 6,
+      "q": "United Nations Day is celebrated on?",
+      "opts": [
+        "24 October",
+        "10 December",
+        "1 January",
+        "5 June"
+      ],
+      "ans": 0,
+      "exp": "United Nations Day is celebrated on 24 October to mark the anniversary of the entry into force of the UN Charter in 1945. It is a day for celebrating the goals and achievements of the UN."
+    },
+    {
+      "id": 7,
+      "q": "National Science Day in India is celebrated on?",
+      "opts": [
+        "11 February",
+        "28 February",
+        "15 August",
+        "26 January"
+      ],
+      "ans": 1,
+      "exp": "National Science Day is celebrated on 28 February to mark the discovery of the Raman Effect by C.V. Raman on 28 February 1928. This discovery earned Raman the Nobel Prize in Physics in 1930."
+    },
+    {
+      "id": 8,
+      "q": "World Environment Day is observed on?",
+      "opts": [
+        "22 April",
+        "5 June",
+        "16 September",
+        "22 March"
+      ],
+      "ans": 1,
+      "exp": "World Environment Day is celebrated on 5 June every year since 1974. Established by the United Nations, it is the largest global platform for environmental public outreach."
+    },
+    {
+      "id": 9,
+      "q": "Teachers' Day in India is celebrated on?",
+      "opts": [
+        "1 September",
+        "5 September",
+        "15 September",
+        "October 5"
+      ],
+      "ans": 1,
+      "exp": "Teachers' Day in India is celebrated on 5 September to honor Dr. Sarvepalli Radhakrishnan, the first Vice-President and second President of India, on his birthday. He was a great teacher and philosopher."
+    },
+    {
+      "id": 10,
+      "q": "The first World War II memorial day is known as?",
+      "opts": [
+        "Armistice Day",
+        "Victory Day",
+        "Liberation Day",
+        "Remembrance Day"
+      ],
+      "ans": 0,
+      "exp": "Armistice Day (11 November 1918) marks the end of World War I when the Armistice was signed at 11 am. It is now called Remembrance Day in Commonwealth countries and Veterans Day in the USA."
+    }
+  ]
+}

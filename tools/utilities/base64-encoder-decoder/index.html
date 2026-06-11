@@ -1,0 +1,749 @@
+---
+layout: default
+title: "Base64 Encoder & Decoder — Free Online Tool | TyagiHub"
+description: "Encode and decode Base64 instantly with this free online Base64 Encoder & Decoder tool by TyagiHub. Works completely in your browser with no data upload."
+keywords: "base64 encoder, base64 decoder, online base64 tool, encode decode base64, TyagiHub"
+lang: en
+lang_switch: false
+permalink: /tools/utilities/base64-encoder-decoder/
+---
+
+<style>
+:root {
+  --b-accent:  #f5a623;
+  --b-accent2: #e8431a;
+  --b-green:   #34d399;
+  --b-blue:    #60a5fa;
+  --b-red:     #f87171;
+  --b-surface: var(--clr-surface,  #1a1d2e);
+  --b-surf2:   var(--clr-surface-2,#242740);
+  --b-border:  var(--clr-border,   rgba(255,255,255,0.08));
+  --b-bord2:   rgba(255,255,255,0.12);
+  --b-text:    var(--clr-text,     #c8cde0);
+  --b-head:    var(--clr-heading,  #eef0fa);
+  --b-muted:   var(--clr-text-3,   #5a6080);
+  --b-bg:      var(--clr-bg,       #0f1117);
+  --b-radius:  14px;
+  --b-font:    var(--font-body,'Segoe UI',system-ui,sans-serif);
+  --b-mono:    'Courier New','Consolas',monospace;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+.b64-wrap {
+  max-width: 900px;
+  margin: 0 auto;
+margin-top40px;
+  padding: 2.5rem 1.25rem 5rem;
+  font-family: var(--b-font);
+}
+
+/* ── Badge ── */
+.b64-badge {
+  display: inline-flex; align-items: center; gap: 6px;
+  background: rgba(245,166,35,0.12); border: 1px solid rgba(245,166,35,0.28);
+  color: var(--b-accent); font-size: 0.72rem; font-weight: 700;
+  padding: 4px 14px; border-radius: 100px; margin-bottom: 1rem;
+  letter-spacing: 0.08em; text-transform: uppercase;
+}
+
+/* ── Heading ── */
+.b64-wrap h1 {
+  font-size: clamp(1.7rem,4vw,2.4rem); font-weight: 800;
+  color: var(--b-head); letter-spacing: -0.03em;
+  margin-bottom: 0.5rem; line-height: 1.15;
+}
+.b64-wrap h1 em {
+  font-style: normal;
+  background: linear-gradient(135deg,var(--b-accent),var(--b-accent2));
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+}
+.b64-intro-p {
+  color: var(--b-text); font-size: 0.93rem; line-height: 1.8;
+  max-width: 700px; margin-bottom: 2rem;
+}
+
+/* ── Card ── */
+.b64-card {
+  background: var(--b-surface); border: 1px solid var(--b-border);
+  border-radius: var(--b-radius); padding: 1.4rem; margin-bottom: 1.25rem;
+  transition: border-color 0.2s;
+}
+.b64-card-title {
+  font-size: 0.72rem; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 0.1em; color: var(--b-muted); margin-bottom: 1.1rem;
+  display: flex; align-items: center; gap: 8px;
+}
+.b64-card-title::before {
+  content: ''; width: 3px; height: 13px;
+  background: linear-gradient(180deg,var(--b-accent),var(--b-accent2));
+  border-radius: 99px; flex-shrink: 0;
+}
+
+/* ── Mode Tabs ── */
+.b64-mode-tabs {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem;
+  margin-bottom: 1.4rem;
+}
+.b64-mode-btn {
+  padding: 11px 8px; border-radius: 10px;
+  border: 1px solid var(--b-border);
+  background: var(--b-surf2); color: var(--b-text);
+  font-family: var(--b-font); font-size: 0.85rem; font-weight: 600;
+  cursor: pointer; transition: all 0.18s; text-align: center;
+  display: flex; flex-direction: column; align-items: center; gap: 4px;
+}
+.b64-mode-btn .mode-sub {
+  font-size: 0.68rem; color: var(--b-muted); font-weight: 500;
+}
+.b64-mode-btn:hover { border-color: var(--b-accent); color: var(--b-accent); }
+.b64-mode-btn.active {
+  border-color: rgba(245,166,35,0.5);
+  background: rgba(245,166,35,0.1);
+  color: var(--b-accent);
+}
+.b64-mode-btn.active .mode-sub { color: rgba(245,166,35,0.7); }
+
+/* ── IO Grid ── */
+.b64-io-grid {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: 1rem;
+  align-items: start;
+}
+@media (max-width: 680px) {
+  .b64-io-grid { grid-template-columns: 1fr; }
+  .b64-swap-col { display: flex; justify-content: center; }
+  .b64-mode-tabs { grid-template-columns: 1fr 1fr; }
+}
+
+.b64-io-label {
+  font-size: 0.78rem; font-weight: 700; color: var(--b-text);
+  margin-bottom: 6px;
+  display: flex; align-items: center; justify-content: space-between;
+  flex-wrap: wrap; gap: 4px;
+}
+.b64-io-label span { font-size: 0.7rem; color: var(--b-muted); font-weight: 500; }
+
+.b64-textarea {
+  width: 100%;
+  background: var(--b-surf2); border: 1px solid var(--b-bord2);
+  border-radius: 10px; padding: 12px 13px;
+  font-family: var(--b-mono); font-size: 0.85rem; color: var(--b-head);
+  outline: none; resize: vertical; min-height: 170px; line-height: 1.65;
+  transition: border-color 0.18s, box-shadow 0.18s;
+  word-break: break-all;
+}
+.b64-textarea:focus {
+  border-color: var(--b-accent);
+  box-shadow: 0 0 0 3px rgba(245,166,35,0.1);
+}
+.b64-textarea::placeholder { color: var(--b-muted); font-family: var(--b-font); font-size: 0.83rem; }
+.b64-textarea[readonly] { color: var(--b-green); cursor: text; }
+.b64-textarea.error-state {
+  border-color: rgba(248,113,113,0.5);
+  box-shadow: 0 0 0 3px rgba(248,113,113,0.08);
+  color: var(--b-red);
+}
+
+/* ── Swap ── */
+.b64-swap-col {
+  display: flex; align-items: center; padding-top: 28px;
+}
+.b64-swap-btn {
+  width: 42px; height: 42px; border-radius: 50%;
+  border: 1px solid var(--b-bord2);
+  background: var(--b-surf2); color: var(--b-text);
+  cursor: pointer; display: flex; align-items: center; justify-content: center;
+  transition: all 0.22s; flex-shrink: 0;
+}
+.b64-swap-btn:hover {
+  border-color: var(--b-accent); color: var(--b-accent);
+  transform: rotate(180deg);
+}
+.b64-swap-btn svg {
+  width: 18px; height: 18px; stroke: currentColor; fill: none;
+  stroke-width: 2; stroke-linecap: round; stroke-linejoin: round;
+}
+
+/* ── Buttons ── */
+.b64-action-row {
+  display: flex; gap: 0.6rem; margin-top: 1rem; flex-wrap: wrap;
+}
+.b64-btn {
+  padding: 10px 18px; border-radius: 10px; border: none;
+  cursor: pointer; font-family: var(--b-font); font-size: 0.86rem; font-weight: 700;
+  display: flex; align-items: center; gap: 7px; transition: all 0.2s;
+  text-decoration: none;
+}
+.b64-btn svg {
+  width: 15px; height: 15px; stroke: currentColor; fill: none;
+  stroke-width: 2; stroke-linecap: round; stroke-linejoin: round;
+  flex-shrink: 0;
+}
+.b64-btn.primary {
+  background: linear-gradient(135deg,var(--b-accent),var(--b-accent2));
+  color: #000; box-shadow: 0 4px 16px rgba(245,166,35,0.22);
+}
+.b64-btn.primary:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 24px rgba(245,166,35,0.35);
+}
+.b64-btn.primary svg { stroke: #000; }
+.b64-btn.secondary {
+  background: var(--b-surf2); border: 1px solid var(--b-bord2); color: var(--b-text);
+}
+.b64-btn.secondary:hover { border-color: var(--b-accent); color: var(--b-accent); }
+.b64-btn.success {
+  background: rgba(52,211,153,0.1); border: 1px solid rgba(52,211,153,0.25); color: var(--b-green);
+}
+.b64-btn.success:hover { background: rgba(52,211,153,0.18); }
+.b64-btn.danger {
+  background: var(--b-surf2); border: 1px solid var(--b-bord2); color: var(--b-muted);
+}
+.b64-btn.danger:hover { border-color: var(--b-red); color: var(--b-red); }
+
+/* ── Stats ── */
+.b64-stats {
+  display: flex; gap: 1.5rem; flex-wrap: wrap;
+  margin-top: 0.75rem; font-size: 0.75rem; color: var(--b-muted);
+}
+.b64-stat { display: flex; align-items: center; gap: 5px; }
+.b64-stat strong { color: var(--b-accent); font-family: var(--b-mono); }
+
+/* ── Error Card ── */
+.b64-error-card {
+  display: none;
+  background: rgba(248,113,113,0.07); border: 1px solid rgba(248,113,113,0.25);
+  border-radius: 10px; padding: 0.9rem 1.1rem; margin-top: 0.9rem;
+  font-size: 0.82rem; color: var(--b-red); line-height: 1.65;
+  animation: fadeSlideIn 0.2s ease;
+}
+.b64-error-card.visible { display: flex; align-items: flex-start; gap: 10px; }
+.b64-error-card svg { flex-shrink: 0; margin-top: 1px; }
+
+/* ── Sections ── */
+.b64-section { display: none; }
+.b64-section.active { display: block; }
+
+/* ── Info Grid ── */
+.b64-info-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px,1fr));
+  gap: 0.75rem;
+  margin-top: 0.5rem;
+}
+.b64-info-item {
+  background: var(--b-surf2); border: 1px solid var(--b-border);
+  border-radius: 10px; padding: 1rem 1.1rem;
+}
+.b64-info-item h4 {
+  font-size: 0.82rem; font-weight: 700; color: var(--b-head);
+  margin: 0 0 6px; display: flex; align-items: center; gap: 7px;
+}
+.b64-info-item p {
+  font-size: 0.79rem; color: var(--b-text); line-height: 1.7; margin: 0;
+}
+
+/* ── Warning notice ── */
+.b64-warning {
+  background: rgba(248,113,113,0.06); border: 1px solid rgba(248,113,113,0.2);
+  border-radius: var(--b-radius); padding: 0.9rem 1.1rem;
+  font-size: 0.82rem; color: var(--b-text); line-height: 1.8; margin-bottom: 1.25rem;
+}
+.b64-warning strong { color: var(--b-red); display: block; margin-bottom: 4px; }
+
+/* ── Notice (green) ── */
+.b64-notice {
+  background: rgba(52,211,153,0.06); border: 1px solid rgba(52,211,153,0.18);
+  border-radius: var(--b-radius); padding: 0.9rem 1.1rem;
+  font-size: 0.83rem; color: var(--b-text); line-height: 1.8; margin-top: 1.25rem;
+}
+.b64-notice strong { color: var(--b-green); display: block; margin-bottom: 4px; }
+
+/* ── Educational prose ── */
+.b64-edu-prose {
+  font-size: 0.86rem; color: var(--b-text); line-height: 1.85;
+  margin: 0 0 1rem;
+}
+.b64-edu-prose strong { color: var(--b-head); }
+.b64-edu-prose code {
+  font-family: var(--b-mono); font-size: 0.82rem;
+  color: var(--b-accent); background: rgba(245,166,35,0.08);
+  padding: 1px 5px; border-radius: 4px;
+}
+.b64-edu-h3 {
+  font-size: 0.82rem; font-weight: 700; color: var(--b-head);
+  text-transform: uppercase; letter-spacing: 0.07em;
+  margin: 1.4rem 0 0.5rem; display: flex; align-items: center; gap: 7px;
+}
+
+/* ── Toast ── */
+.b64-toast {
+  position: fixed; bottom: 2rem; left: 50%;
+  transform: translateX(-50%) translateY(80px);
+  background: #1e2235; border: 1px solid var(--b-accent);
+  color: var(--b-head); font-size: 0.85rem; font-weight: 600;
+  padding: 10px 22px; border-radius: 100px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+  transition: transform 0.3s cubic-bezier(.4,0,.2,1);
+  z-index: 9999; white-space: nowrap; pointer-events: none;
+}
+.b64-toast.show { transform: translateX(-50%) translateY(0); }
+
+/* ── Animations ── */
+@keyframes fadeSlideIn {
+  from { opacity: 0; transform: translateY(-6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── Light theme compat ── */
+[data-theme="light"] .b64-card { background: #fff; border-color: #d8deed; }
+[data-theme="light"] .b64-textarea { background: #f5f7fa; border-color: #d0d7e6; color: #1a2030; }
+[data-theme="light"] .b64-textarea[readonly] { color: #059669; }
+[data-theme="light"] .b64-mode-btn,
+[data-theme="light"] .b64-info-item { background: #f5f7fa; border-color: #d0d7e6; color: #1a2030; }
+[data-theme="light"] .b64-swap-btn { background: #f5f7fa; border-color: #d0d7e6; }
+[data-theme="light"] .b64-btn.secondary { background: #f5f7fa; border-color: #d0d7e6; }
+</style>
+
+<div class="b64-wrap">
+
+  <!-- ── Intro ── -->
+  <div class="b64-badge">
+    <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/><line x1="12" y1="12" x2="12" y2="16"/><line x1="10" y1="14" x2="14" y2="14"/></svg>
+    Utilities Tool
+  </div>
+
+  <h1>Base64 Encoder <em>&amp; Decoder</em></h1>
+
+  <p class="b64-intro-p">
+    Base64 is a binary-to-text encoding scheme that represents binary data using 64 printable ASCII characters. It is widely used to embed images in HTML or CSS, transmit data over email (MIME), store binary content in JSON, and pass data through APIs that only accept text. This tool lets you encode any text — including Unicode, emoji, and multiline content — to Base64, and decode Base64 strings back to their original form, entirely inside your browser with no data sent to any server.
+  </p>
+
+  <!-- ── Main Tool Card ── -->
+  <div class="b64-card">
+    <div class="b64-card-title">Select a Mode</div>
+
+    <div class="b64-mode-tabs">
+      <button class="b64-mode-btn active" onclick="setMode('encode', this)" aria-label="Switch to Encode mode">
+        🔒 Encode
+        <span class="mode-sub">Text → Base64</span>
+      </button>
+      <button class="b64-mode-btn" onclick="setMode('decode', this)" aria-label="Switch to Decode mode">
+        🔓 Decode
+        <span class="mode-sub">Base64 → Text</span>
+      </button>
+    </div>
+
+    <!-- ── Encode Section ── -->
+    <div class="b64-section active" id="sec-encode">
+      <div class="b64-io-grid">
+
+        <div>
+          <div class="b64-io-label">
+            <label for="encode-input">Input — Plain Text</label>
+            <span id="enc-in-counter">0 chars · 0 bytes</span>
+          </div>
+          <textarea
+            class="b64-textarea"
+            id="encode-input"
+            aria-label="Plain text input for encoding"
+            placeholder="Type or paste any text here...&#10;&#10;Supports:&#10;• Unicode & non-Latin scripts&#10;• Emojis 🎉&#10;• Multiline content&#10;• Special characters"
+            oninput="liveEncode()"
+          ></textarea>
+        </div>
+
+        <div class="b64-swap-col">
+          <button class="b64-swap-btn" onclick="swapEncode()" title="Move output back to input" aria-label="Swap encode input and output">
+            <svg viewBox="0 0 24 24"><polyline points="17 1 21 5 17 9"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><polyline points="7 23 3 19 7 15"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/></svg>
+          </button>
+        </div>
+
+        <div>
+          <div class="b64-io-label">
+            <label for="encode-output">Output — Base64 Encoded</label>
+            <span id="enc-out-counter">0 chars</span>
+          </div>
+          <textarea
+            class="b64-textarea"
+            id="encode-output"
+            readonly
+            aria-label="Base64 encoded output"
+            placeholder="Your encoded Base64 string will appear here..."
+          ></textarea>
+        </div>
+
+      </div>
+
+      <div class="b64-stats" id="encode-stats"></div>
+
+      <div class="b64-action-row">
+        <button class="b64-btn primary" onclick="liveEncode()" aria-label="Encode to Base64">
+          <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          Encode
+        </button>
+        <button class="b64-btn secondary" onclick="copyOutput('encode-output')" aria-label="Copy encoded output">
+          <svg viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+          Copy Result
+        </button>
+        <button class="b64-btn success" onclick="downloadOutput('encode-output','encoded')" aria-label="Download encoded output as .txt file">
+          <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          Download .txt
+        </button>
+        <button class="b64-btn danger" onclick="clearSection('encode')" aria-label="Clear all fields">
+          <svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+          Clear
+        </button>
+      </div>
+    </div>
+
+    <!-- ── Decode Section ── -->
+    <div class="b64-section" id="sec-decode">
+      <div class="b64-io-grid">
+
+        <div>
+          <div class="b64-io-label">
+            <label for="decode-input">Input — Base64 String</label>
+            <span id="dec-in-counter">0 chars</span>
+          </div>
+          <textarea
+            class="b64-textarea"
+            id="decode-input"
+            aria-label="Base64 string input for decoding"
+            placeholder="Paste your Base64 string here...&#10;&#10;Example:&#10;SGVsbG8sIFdvcmxkISA8Mg=="
+            oninput="liveDecode()"
+          ></textarea>
+        </div>
+
+        <div class="b64-swap-col">
+          <button class="b64-swap-btn" onclick="swapDecode()" title="Move output back to input" aria-label="Swap decode input and output">
+            <svg viewBox="0 0 24 24"><polyline points="17 1 21 5 17 9"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><polyline points="7 23 3 19 7 15"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/></svg>
+          </button>
+        </div>
+
+        <div>
+          <div class="b64-io-label">
+            <label for="decode-output">Output — Decoded Text</label>
+            <span id="dec-out-counter">0 chars</span>
+          </div>
+          <textarea
+            class="b64-textarea"
+            id="decode-output"
+            readonly
+            aria-label="Decoded text output"
+            placeholder="Your decoded text will appear here..."
+          ></textarea>
+        </div>
+
+      </div>
+
+      <div class="b64-error-card" id="decode-error" role="alert" aria-live="assertive">
+        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+        <span id="decode-error-msg">Invalid Base64 input.</span>
+      </div>
+
+      <div class="b64-stats" id="decode-stats"></div>
+
+      <div class="b64-action-row">
+        <button class="b64-btn primary" onclick="liveDecode()" aria-label="Decode from Base64">
+          <svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 9.9-1"/></svg>
+          Decode
+        </button>
+        <button class="b64-btn secondary" onclick="copyOutput('decode-output')" aria-label="Copy decoded output">
+          <svg viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+          Copy Result
+        </button>
+        <button class="b64-btn success" onclick="downloadOutput('decode-output','decoded')" aria-label="Download decoded output as .txt file">
+          <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          Download .txt
+        </button>
+        <button class="b64-btn danger" onclick="clearSection('decode')" aria-label="Clear all fields">
+          <svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+          Clear
+        </button>
+      </div>
+    </div>
+  </div><!-- /b64-card -->
+
+  <!-- ── Security Warning ── -->
+  <div class="b64-warning" role="note">
+    <strong>⚠️ Base64 is NOT Encryption</strong>
+    Base64 is a plain encoding scheme — it is <strong>completely reversible</strong> and offers <strong>zero security</strong>. Anyone who receives a Base64 string can decode it instantly. Never use Base64 to protect passwords, API secrets, personal information, or any sensitive data. For secure storage of passwords use bcrypt or Argon2; for encrypting data use AES or RSA. Base64 should only be used to safely transport binary data across text-based systems.
+  </div>
+
+  <!-- ── Educational Section ── -->
+  <div class="b64-card">
+    <div class="b64-card-title">What is Base64 &amp; How Does It Work?</div>
+
+    <p class="b64-edu-prose">
+      Base64 is a <strong>binary-to-text encoding scheme</strong> defined in <strong>RFC 4648</strong>. It works by taking 3 bytes of binary data at a time (24 bits) and splitting them into 4 groups of 6 bits each. Each 6-bit group maps to one of 64 printable ASCII characters: <code>A–Z</code>, <code>a–z</code>, <code>0–9</code>, <code>+</code>, and <code>/</code>. The <code>=</code> character is used as padding when the input length is not a multiple of 3. The result is always about <strong>33% larger</strong> than the original binary data.
+    </p>
+
+    <p class="b64-edu-prose">
+      For Unicode text (like emoji or non-Latin scripts), the text is first converted to its <strong>UTF-8 byte sequence</strong>, and those bytes are then Base64-encoded. This is why this tool handles all languages correctly — it encodes the underlying bytes, not raw character codes.
+    </p>
+
+    <div class="b64-edu-h3">🌍 Real-World Use Cases</div>
+
+    <div class="b64-info-grid">
+      <div class="b64-info-item">
+        <h4>🖼️ Embedding Images</h4>
+        <p>Images can be embedded directly in HTML or CSS as <code>data:image/png;base64,...</code> URIs, eliminating the need for a separate network request. Used in email templates, SVG files, and inline HTML.</p>
+      </div>
+      <div class="b64-info-item">
+        <h4>📧 Email (MIME)</h4>
+        <p>The MIME standard uses Base64 to encode binary email attachments — images, PDFs, and documents — so they can be safely transmitted over protocols that only handle 7-bit ASCII text.</p>
+      </div>
+      <div class="b64-info-item">
+        <h4>🔑 API Authentication</h4>
+        <p>HTTP Basic Auth sends credentials as <code>Authorization: Basic &lt;base64(user:password)&gt;</code>. JSON Web Tokens (JWTs) also use URL-safe Base64 to encode their header and payload sections.</p>
+      </div>
+      <div class="b64-info-item">
+        <h4>📦 JSON &amp; APIs</h4>
+        <p>When a REST or GraphQL API needs to return binary data — such as a file, a certificate, or a generated image — it encodes it as a Base64 string so it fits cleanly inside a JSON field.</p>
+      </div>
+      <div class="b64-info-item">
+        <h4>🗄️ Data URIs</h4>
+        <p>Fonts, audio clips, and small binary files can be inlined into web pages using Base64 data URIs, useful for single-file HTML exports, offline apps, and email-safe HTML.</p>
+      </div>
+      <div class="b64-info-item">
+        <h4>🔐 Cryptographic Keys</h4>
+        <p>PEM-format TLS certificates and SSH public keys are stored as Base64-encoded blocks between <code>-----BEGIN-----</code> and <code>-----END-----</code> headers — a standard you see every day in HTTPS.</p>
+      </div>
+    </div>
+
+    <div class="b64-edu-h3">⚖️ Encoding vs Encryption — Key Difference</div>
+    <p class="b64-edu-prose">
+      <strong>Encoding</strong> transforms data into a different format for compatibility — it is public, standardized, and fully reversible without any key. <strong>Encryption</strong> scrambles data so that only someone with the correct secret key can read it. Base64 is encoding, not encryption. The two are fundamentally different: encoding is about format, encryption is about secrecy.
+    </p>
+
+    <div class="b64-edu-h3">🧮 Size Impact</div>
+    <p class="b64-edu-prose">
+      Every 3 bytes of input produce 4 Base64 characters — a size increase of approximately <strong>33%</strong>. For example, a 1 MB image becomes roughly 1.37 MB when Base64-encoded. Padding characters (<code>=</code>) are added to make the output length a multiple of 4. This overhead is worth it in contexts where binary data cannot be transmitted directly, but should be considered when embedding large assets inline.
+    </p>
+  </div>
+
+  <!-- ── Privacy Notice ── -->
+  <div class="b64-notice">
+    <strong>🔒 Fully Browser-Based Processing</strong>
+    This tool runs entirely inside your browser using the Web Crypto API and native JavaScript. Your text and Base64 data are never transmitted to any server, stored in a database, or logged anywhere. You can verify this by opening your browser's network inspector — no outbound requests are made when you encode or decode.
+  </div>
+
+</div><!-- /b64-wrap -->
+
+<div class="b64-toast" id="b64-toast" role="status" aria-live="polite"></div>
+
+<script>
+/* ──────────────────────────────────────────────
+   UTF-8 Safe Base64 Encode / Decode
+   Uses TextEncoder/TextDecoder for full Unicode support
+────────────────────────────────────────────── */
+
+function encodeBase64(str) {
+  const bytes  = new TextEncoder().encode(str);
+  let binary   = '';
+  bytes.forEach(b => binary += String.fromCharCode(b));
+  return btoa(binary);
+}
+
+function decodeBase64(b64) {
+  const binary = atob(b64);
+  const bytes  = new Uint8Array(binary.length);
+  for (let i = 0; i < binary.length; i++) bytes[i] = binary.charCodeAt(i);
+  return new TextDecoder().decode(bytes);
+}
+
+function byteCount(str) {
+  return new TextEncoder().encode(str).length;
+}
+
+/* ──────────────────────────────────────────────
+   Mode switching
+────────────────────────────────────────────── */
+function setMode(mode, btn) {
+  document.querySelectorAll('.b64-mode-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('.b64-section').forEach(s => s.classList.remove('active'));
+  document.getElementById('sec-' + mode).classList.add('active');
+}
+
+/* ──────────────────────────────────────────────
+   Live Encode
+────────────────────────────────────────────── */
+function liveEncode() {
+  const inp = document.getElementById('encode-input').value;
+  const inCounter  = document.getElementById('enc-in-counter');
+  const outCounter = document.getElementById('enc-out-counter');
+  const statsEl    = document.getElementById('encode-stats');
+  const outEl      = document.getElementById('encode-output');
+
+  const chars = inp.length;
+  const bytes = byteCount(inp);
+  inCounter.textContent = `${chars} chars · ${bytes} bytes`;
+
+  if (!inp) {
+    outEl.value = '';
+    outCounter.textContent = '0 chars';
+    statsEl.innerHTML = '';
+    return;
+  }
+
+  try {
+    const out = encodeBase64(inp);
+    outEl.value = out;
+    outCounter.textContent = out.length + ' chars';
+    const ratio = ((out.length / bytes) * 100).toFixed(0);
+    statsEl.innerHTML = `
+      <div class="b64-stat">Input bytes: <strong>${bytes}</strong></div>
+      <div class="b64-stat">Output chars: <strong>${out.length}</strong></div>
+      <div class="b64-stat">Size increase: <strong>${ratio}%</strong></div>
+      <div class="b64-stat">Padding chars: <strong>${(out.match(/=/g)||[]).length}</strong></div>
+    `;
+  } catch(e) {
+    outEl.value = '';
+    statsEl.innerHTML = '';
+  }
+}
+
+/* ──────────────────────────────────────────────
+   Live Decode
+────────────────────────────────────────────── */
+function liveDecode() {
+  const inp      = document.getElementById('decode-input').value.trim();
+  const inEl     = document.getElementById('decode-input');
+  const outEl    = document.getElementById('decode-output');
+  const errCard  = document.getElementById('decode-error');
+  const errMsg   = document.getElementById('decode-error-msg');
+  const inCtr    = document.getElementById('dec-in-counter');
+  const outCtr   = document.getElementById('dec-out-counter');
+  const statsEl  = document.getElementById('decode-stats');
+
+  inCtr.textContent = inp.length + ' chars';
+
+  // Reset error state
+  inEl.classList.remove('error-state');
+  errCard.classList.remove('visible');
+
+  if (!inp) {
+    outEl.value = '';
+    outCtr.textContent = '0 chars';
+    statsEl.innerHTML = '';
+    return;
+  }
+
+  // Validate: Base64 chars only (with optional whitespace stripped)
+  const cleaned = inp.replace(/\s/g, '');
+  const b64re   = /^[A-Za-z0-9+/]*={0,2}$/;
+  if (!b64re.test(cleaned) || cleaned.length % 4 !== 0) {
+    inEl.classList.add('error-state');
+    errMsg.textContent = cleaned.length % 4 !== 0
+      ? `Invalid Base64 — length must be a multiple of 4 (got ${cleaned.length} chars). Check for missing padding characters (=).`
+      : 'Invalid Base64 — the input contains characters not in the Base64 alphabet. Only A–Z, a–z, 0–9, +, /, and = are allowed.';
+    errCard.classList.add('visible');
+    outEl.value = '';
+    outCtr.textContent = '0 chars';
+    statsEl.innerHTML = '';
+    return;
+  }
+
+  try {
+    const out   = decodeBase64(cleaned);
+    const bytes = byteCount(out);
+    outEl.value = out;
+    outCtr.textContent = `${out.length} chars · ${bytes} bytes`;
+    statsEl.innerHTML = `
+      <div class="b64-stat">Input chars: <strong>${cleaned.length}</strong></div>
+      <div class="b64-stat">Decoded bytes: <strong>${bytes}</strong></div>
+      <div class="b64-stat">Padding stripped: <strong>${(cleaned.match(/=/g)||[]).length}</strong></div>
+    `;
+  } catch(e) {
+    inEl.classList.add('error-state');
+    errMsg.textContent = 'Decoding failed — ' + e.message;
+    errCard.classList.add('visible');
+    outEl.value = '';
+    statsEl.innerHTML = '';
+  }
+}
+
+/* ──────────────────────────────────────────────
+   Swap
+────────────────────────────────────────────── */
+function swapEncode() {
+  const out = document.getElementById('encode-output').value;
+  if (!out) { b64Toast('⚠️ Nothing to swap yet!'); return; }
+  document.getElementById('encode-input').value = out;
+  liveEncode();
+  b64Toast('↕️ Swapped!');
+}
+
+function swapDecode() {
+  const out = document.getElementById('decode-output').value;
+  if (!out) { b64Toast('⚠️ Nothing to swap yet!'); return; }
+  document.getElementById('decode-input').value = out;
+  liveDecode();
+  b64Toast('↕️ Swapped!');
+}
+
+/* ──────────────────────────────────────────────
+   Copy
+────────────────────────────────────────────── */
+function copyOutput(id) {
+  const val = document.getElementById(id).value;
+  if (!val) { b64Toast('⚠️ Nothing to copy yet!'); return; }
+  navigator.clipboard.writeText(val)
+    .then(() => b64Toast('✅ Copied to clipboard!'))
+    .catch(() => b64Toast('❌ Copy failed — try manually selecting the text.'));
+}
+
+/* ──────────────────────────────────────────────
+   Download
+────────────────────────────────────────────── */
+function downloadOutput(id, label) {
+  const val = document.getElementById(id).value;
+  if (!val) { b64Toast('⚠️ Nothing to download yet!'); return; }
+  const blob = new Blob([val], { type: 'text/plain;charset=utf-8' });
+  const url  = URL.createObjectURL(blob);
+  const a    = document.createElement('a');
+  a.href     = url;
+  a.download = `base64-${label}-${Date.now()}.txt`;
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  URL.revokeObjectURL(url);
+  b64Toast('⬇️ Download started!');
+}
+
+/* ──────────────────────────────────────────────
+   Clear
+────────────────────────────────────────────── */
+function clearSection(mode) {
+  if (mode === 'encode') {
+    document.getElementById('encode-input').value  = '';
+    document.getElementById('encode-output').value = '';
+    document.getElementById('encode-stats').innerHTML = '';
+    document.getElementById('enc-in-counter').textContent  = '0 chars · 0 bytes';
+    document.getElementById('enc-out-counter').textContent = '0 chars';
+  } else {
+    document.getElementById('decode-input').value  = '';
+    document.getElementById('decode-output').value = '';
+    document.getElementById('decode-stats').innerHTML = '';
+    document.getElementById('dec-in-counter').textContent  = '0 chars';
+    document.getElementById('dec-out-counter').textContent = '0 chars';
+    document.getElementById('decode-input').classList.remove('error-state');
+    document.getElementById('decode-error').classList.remove('visible');
+  }
+}
+
+/* ──────────────────────────────────────────────
+   Toast
+────────────────────────────────────────────── */
+let toastTimer;
+function b64Toast(msg) {
+  const t = document.getElementById('b64-toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => t.classList.remove('show'), 3000);
+}
+</script>

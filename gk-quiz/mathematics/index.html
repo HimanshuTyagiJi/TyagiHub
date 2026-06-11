@@ -1,0 +1,117 @@
+---
+layout: quiz-player
+title: "Mathematics GK Quiz — Free MCQ Questions | TyagiHub"
+description: "Free Mathematics GK quiz with 10 MCQ questions for SSC, Banking, Railway, UPSC exam preparation. With answers and explanations."
+keywords: "Mathematics quiz, Mathematics MCQ, Mathematics general knowledge, mathematics quiz questions"
+category_title: "Mathematics"
+slug: "mathematics"
+slug_hi: "ganit"
+quiz_data: {{ site.data.quiz.mathematics }}
+---
+
+<div class="quiz-header">
+  <div class="quiz-header__top">
+    <span class="quiz-header__icon">🔢</span>
+    <div>
+      <h1 class="quiz-header__title">Mathematics</h1>
+      <div class="quiz-header__meta">
+        <span>📝 10 Questions</span>
+        <span>⏱️ ~10 Minutes</span>
+        <span>🎯 SSC · Banking · Railway · UPSC</span>
+        <span>🌐 English</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Score bar -->
+  <div class="quiz-score-bar">
+    <div class="quiz-score-item">
+      <span class="quiz-score-item__dot dot-correct"></span>
+      Correct: <strong id="score-correct">0</strong>
+    </div>
+    <div class="quiz-score-item">
+      <span class="quiz-score-item__dot dot-wrong"></span>
+      Wrong: <strong id="score-wrong">0</strong>
+    </div>
+    <div class="quiz-score-item">
+      <span class="quiz-score-item__dot dot-skip"></span>
+      Skipped: <strong id="score-skip">0</strong>
+    </div>
+  </div>
+</div>
+
+<div id="quiz-player-area">
+
+  <!-- Progress -->
+  <div class="quiz-progress">
+    <div class="quiz-progress__bar">
+      <div class="quiz-progress__fill" id="quiz-progress-fill" style="width:2%"></div>
+    </div>
+    <div class="quiz-progress__labels" id="quiz-progress-label">
+      <span>Q1 of 10</span>
+      <span>Page 1/1</span>
+    </div>
+  </div>
+
+  <!-- Question Card -->
+  <div class="quiz-question-card">
+    <div class="quiz-question-num" id="question-num">Q1</div>
+    <div class="quiz-question-text" id="question-text">Loading...</div>
+    <div class="quiz-options" id="quiz-options"></div>
+
+    <!-- Explanation -->
+    <div class="quiz-explanation" id="quiz-explanation">
+      <div class="quiz-explanation__title">💡 Explanation</div>
+      <div class="quiz-explanation__text" id="explanation-text"></div>
+    </div>
+  </div>
+
+  <!-- Navigation -->
+  <div class="quiz-nav">
+    <button class="btn btn-outline" id="btn-prev" disabled>← Prev</button>
+    <div class="quiz-nav__center">
+      <button class="btn btn-ghost btn-sm" id="btn-skip">Skip →</button>
+    </div>
+    <button class="btn btn-primary" id="btn-next">Next →</button>
+  </div>
+
+</div>
+
+<!-- Pagination (auto-shown when questions > 25) -->
+<div id="quiz-pagination" class="quiz-pagination"></div>
+
+<!-- Result Screen -->
+<div class="quiz-result" id="quiz-result">
+  <div class="quiz-result__icon" id="result-icon">🏆</div>
+  <div class="quiz-result__title" id="result-title">Quiz Complete!</div>
+  <div class="quiz-result__score" id="result-score">0/10</div>
+  <div class="quiz-result__pct"  id="result-pct">0%</div>
+  <div class="quiz-result__msg"  id="result-msg"></div>
+  <div class="quiz-result__stats">
+    <div class="quiz-result-stat">
+      <div class="quiz-result-stat__num" style="color:var(--clr-stock);" id="result-correct">0</div>
+      <div class="quiz-result-stat__label">Correct</div>
+    </div>
+    <div class="quiz-result-stat">
+      <div class="quiz-result-stat__num" style="color:var(--clr-shield);" id="result-wrong">0</div>
+      <div class="quiz-result-stat__label">Wrong</div>
+    </div>
+    <div class="quiz-result-stat">
+      <div class="quiz-result-stat__num" style="color:var(--clr-text-3);" id="result-skip">0</div>
+      <div class="quiz-result-stat__label">Skipped</div>
+    </div>
+  </div>
+  <div style="display:flex;gap:var(--space-3);justify-content:center;flex-wrap:wrap;">
+    <button class="btn btn-primary btn-lg" id="btn-restart">🔄 Try Again</button>
+    <button class="btn btn-outline" id="btn-all-topics">📚 All Topics</button>
+  </div>
+</div>
+
+<!-- Keyboard hint -->
+<div style="margin-top:var(--space-6);padding:var(--space-4);background:var(--clr-surface);border:1px solid var(--clr-border);border-radius:var(--radius-md);font-size:var(--fs-xs);color:var(--clr-text-3);display:flex;gap:var(--space-4);flex-wrap:wrap;">
+  <span>⌨️ Keyboard:</span>
+  <span><kbd style="background:var(--clr-surface-2);border:1px solid var(--clr-border-2);padding:1px 5px;border-radius:3px;font-family:monospace;">A B C D</kbd> Select option</span>
+  <span><kbd style="background:var(--clr-surface-2);border:1px solid var(--clr-border-2);padding:1px 5px;border-radius:3px;font-family:monospace;">→</kbd> Next</span>
+  <span><kbd style="background:var(--clr-surface-2);border:1px solid var(--clr-border-2);padding:1px 5px;border-radius:3px;font-family:monospace;">←</kbd> Prev</span>
+  <span><kbd style="background:var(--clr-surface-2);border:1px solid var(--clr-border-2);padding:1px 5px;border-radius:3px;font-family:monospace;">S</kbd> Skip</span>
+</div>

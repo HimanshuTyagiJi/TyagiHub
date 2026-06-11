@@ -1,0 +1,128 @@
+{
+  "title": "Modern Indian History",
+  "title_hi": "आधुनिक भारतीय इतिहास",
+  "icon": "🇮🇳",
+  "slug": "modern-history",
+  "questions": [
+    {
+      "id": 1,
+      "q": "The Indian National Congress was founded in which year?",
+      "opts": [
+        "1857",
+        "1885",
+        "1905",
+        "1920"
+      ],
+      "ans": 1,
+      "exp": "The Indian National Congress (INC) was founded on 28 December 1885 by Allan Octavian Hume, along with Dadabhai Naoroji and Dinshaw Wacha."
+    },
+    {
+      "id": 2,
+      "q": "Who gave the slogan 'Do or Die' during the Quit India Movement?",
+      "opts": [
+        "Jawaharlal Nehru",
+        "Subhas Chandra Bose",
+        "Mahatma Gandhi",
+        "Bal Gangadhar Tilak"
+      ],
+      "ans": 2,
+      "exp": "Mahatma Gandhi gave the slogan 'Do or Die' (Karo ya Maro) during the Quit India Movement on 8 August 1942 at Gowalia Tank Maidan, Bombay."
+    },
+    {
+      "id": 3,
+      "q": "The Partition of Bengal was done in which year?",
+      "opts": [
+        "1899",
+        "1905",
+        "1911",
+        "1919"
+      ],
+      "ans": 1,
+      "exp": "The Partition of Bengal was carried out in 1905 by Lord Curzon. It divided Bengal into East Bengal (Muslim majority) and West Bengal (Hindu majority), leading to widespread protests."
+    },
+    {
+      "id": 4,
+      "q": "Who is known as the 'Iron Man of India'?",
+      "opts": [
+        "Jawaharlal Nehru",
+        "Subhas Chandra Bose",
+        "Sardar Vallabhbhai Patel",
+        "Bhagat Singh"
+      ],
+      "ans": 2,
+      "exp": "Sardar Vallabhbhai Patel is known as the Iron Man of India. He unified 562 princely states into the Indian Union after independence."
+    },
+    {
+      "id": 5,
+      "q": "The Jallianwala Bagh massacre occurred in which year?",
+      "opts": [
+        "1915",
+        "1917",
+        "1919",
+        "1921"
+      ],
+      "ans": 2,
+      "exp": "The Jallianwala Bagh massacre occurred on 13 April 1919 in Amritsar. General Dyer ordered firing on a peaceful gathering, killing hundreds of unarmed civilians."
+    },
+    {
+      "id": 6,
+      "q": "The Dandi March was undertaken to protest against?",
+      "opts": [
+        "Salt Tax",
+        "Land Tax",
+        "Income Tax",
+        "Forced Labour"
+      ],
+      "ans": 0,
+      "exp": "The Dandi March (Salt March) was undertaken by Mahatma Gandhi from 12 March to 6 April 1930 to protest against the British Salt Tax. It covered 388 km from Sabarmati Ashram to Dandi."
+    },
+    {
+      "id": 7,
+      "q": "Who founded the Forward Bloc?",
+      "opts": [
+        "Jawaharlal Nehru",
+        "Subhas Chandra Bose",
+        "Bhagat Singh",
+        "V.D. Savarkar"
+      ],
+      "ans": 1,
+      "exp": "Subhas Chandra Bose founded the All India Forward Bloc on 22 June 1939. He believed in armed struggle against British rule."
+    },
+    {
+      "id": 8,
+      "q": "India got independence on which date?",
+      "opts": [
+        "15 August 1946",
+        "26 January 1947",
+        "15 August 1947",
+        "26 January 1950"
+      ],
+      "ans": 2,
+      "exp": "India got independence on 15 August 1947. Jawaharlal Nehru became the first Prime Minister and Lord Mountbatten was the last Viceroy of British India."
+    },
+    {
+      "id": 9,
+      "q": "The Constitution of India came into force on?",
+      "opts": [
+        "15 August 1947",
+        "26 November 1949",
+        "26 January 1950",
+        "25 January 1950"
+      ],
+      "ans": 2,
+      "exp": "The Constitution of India came into force on 26 January 1950, which is celebrated as Republic Day. It was adopted by the Constituent Assembly on 26 November 1949."
+    },
+    {
+      "id": 10,
+      "q": "Who was the first President of independent India?",
+      "opts": [
+        "Jawaharlal Nehru",
+        "Rajendra Prasad",
+        "Sardar Patel",
+        "B.R. Ambedkar"
+      ],
+      "ans": 1,
+      "exp": "Dr. Rajendra Prasad was the first President of India (1950–1962). He was also the President of the Constituent Assembly that drafted the Indian Constitution."
+    }
+  ]
+}

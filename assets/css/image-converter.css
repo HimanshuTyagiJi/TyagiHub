@@ -1,0 +1,517 @@
+/* ============================================================
+   🎯 TYAGIHUB PREMIUM IMAGE CONVERTER CORE STYLESHEET
+   ============================================================ */
+
+/* 1. Base Utility Adjustments */
+.img-converter-page {
+    width: 100%;
+    color: var(--clr-text-1, #1e293b);
+    background-color: var(--clr-bg, #ffffff);
+    box-sizing: border-box;
+}
+
+/* 2. Header and Banner Section */
+.img-converter-header {
+    background: linear-gradient(135deg, #4f46e5 0%, #4338ca 100%);
+    color: #ffffff;
+    padding: 40px 0;
+    text-align: left;
+    width: 100%;
+}
+.img-converter-header__breadcrumb {
+    font-size: 13px;
+    margin-bottom: 16px;
+    opacity: 0.85;
+}
+.img-converter-header__breadcrumb a {
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: 500;
+}
+.img-converter-header__breadcrumb a:hover {
+    text-decoration: underline;
+}
+.img-converter-header__inner {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+.img-converter-header__icon {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 14px;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+.img-converter-header__icon svg {
+    width: 36px;
+    height: 36px;
+    color: #f5a623;
+}
+.img-converter-header__title {
+    font-size: 26px;
+    margin: 0 0 6px 0;
+    letter-spacing: -0.02em;
+}
+.img-converter-header__desc {
+    font-size: 14px;
+    line-height: 1.6;
+    color: #e0e7ff;
+    margin: 0;
+    max-width: 850px;
+}
+
+/* 3. Dropzone Component Architecture */
+.img-dropzone {
+    width: 100%;
+    background: var(--clr-surface-1, #ffffff);
+    border: 2.5px dashed var(--clr-border, #cbd5e1);
+    border-radius: 20px;
+    padding: 50px 30px;
+    margin-top: 30px;
+    box-sizing: border-box;
+    text-align: center;
+    transition: all 0.2s ease-in-out;
+    outline: none;
+}
+.img-dropzone:hover, .img-dropzone:focus {
+    border-color: #4f46e5;
+    background-color: var(--clr-surface-2, #f8fafc);
+}
+.img-dropzone__icon-stack {
+    position: relative;
+    display: inline-block;
+    margin-bottom: 16px;
+}
+.img-dropzone__icon-stack .icon-main {
+    width: 64px;
+    height: 64px;
+    color: var(--clr-slate-medium, #475569);
+    stroke: currentColor;
+    fill: none;
+}
+.img-dropzone__icon-stack .icon-badge-zip {
+    position: absolute;
+    bottom: -4px;
+    right: -8px;
+    background: #eab308;
+    color: #0f172a;
+    font-size: 10px;
+    font-weight: 900;
+    padding: 2px 6px;
+    border-radius: 6px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+.img-dropzone__title {
+    font-size: 18px;
+    color: var(--clr-slate-dark, #0f172a);
+    margin: 0 0 8px 0;
+}
+.img-dropzone__sub {
+    font-size: 12.5px;
+    color: var(--clr-slate-medium, #475569);
+    margin: 0 0 24px 0;
+}
+.img-dropzone__actions {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+}
+
+/* 4. Global UI Buttons Stack */
+.img-ui-btn {
+    font-size: 13.5px;
+    font-weight: 700;
+    padding: 10px 22px;
+    border-radius: 10px;
+    border: 1px solid transparent;
+    transition: all 0.15s ease;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+.img-ui-btn--primary {
+    background-color: #4f46e5;
+    color: #ffffff;
+}
+.img-ui-btn--primary:hover {
+    background-color: #4338ca;
+}
+.img-ui-btn--outline {
+    background-color: transparent;
+    border-color: var(--clr-border, #cbd5e1);
+    color: var(--clr-text-1, #1e293b);
+}
+.img-ui-btn--outline:hover {
+    background-color: var(--clr-surface-2, #f8fafc);
+}
+.img-ui-btn--success {
+    background-color: #16a34a;
+    color: #ffffff;
+}
+.img-ui-btn--success:hover {
+    background-color: #15803d;
+}
+
+/* 5. Configuration Deck Module */
+.img-config-card {
+    background: var(--clr-surface-1, #ffffff);
+    border: 1px solid var(--clr-border-light, #e2e8f0);
+    border-radius: 18px;
+    padding: 24px;
+    margin-top: 24px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.02);
+    text-align: left;
+}
+.img-config-card__title {
+    font-size: 16px;
+    color: var(--clr-slate-dark, #0f172a);
+    margin: 0 0 4px 0;
+}
+.img-config-card__desc {
+    font-size: 12px;
+    color: var(--clr-slate-medium, #475569);
+    margin: 0 20px 20px 0;
+}
+.img-config-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+}
+.img-config-cell {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+.img-config-cell label {
+    font-size: 11.5px;
+    font-weight: 800;
+    color: var(--clr-slate-medium, #475569);
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+}
+.img-config-cell__row-lbl {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.img-ui-select, .img-ui-input {
+    width: 100%;
+    height: 40px;
+    padding: 0 12px;
+    font-size: 13px;
+    font-weight: 600;
+    border-radius: 8px;
+    border: 1px solid var(--clr-border, #cbd5e1);
+    background: var(--clr-bg, #ffffff);
+    color: var(--clr-text-1, #1e293b);
+    outline: none;
+    box-sizing: border-box;
+}
+.img-ui-select:focus, .img-ui-input:focus {
+    border-color: #4f46e5;
+}
+.img-ui-slider {
+    width: 100%;
+    height: 40px;
+    margin: 0;
+    cursor: pointer;
+}
+.img-ui-badge {
+    background: #e0e7ff;
+    color: #4338ca;
+    font-size: 10px;
+    font-weight: 900;
+    padding: 2px 6px;
+    border-radius: 4px;
+}
+
+/* 6. Monitors Deck (Single Preview vs Bulk List Ledger) */
+.img-monitor-deck {
+    margin-top: 24px;
+    width: 100%;
+}
+.img-monitor-panel-title {
+    font-size: 15px;
+    color: var(--clr-text-1, #1e293b);
+    margin: 0 0 12px 0;
+    text-align: left;
+    border-left: 3px solid #4f46e5;
+    padding-left: 8px;
+}
+
+/* Case A: Single File UI */
+.img-single-preview-hull {
+    width: 100%;
+}
+.img-single-preview-hull__wrapper {
+    background: var(--clr-surface-1, #ffffff);
+    border: 1px solid var(--clr-border-light, #e2e8f0);
+    border-radius: 16px;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+}
+.img-single-preview-hull__media-box {
+    max-width: 100%;
+    max-height: 400px;
+    border-radius: 8px;
+    overflow: hidden;
+    background: #f1f5f9;
+    border: 1px solid var(--clr-border-light, #e2e8f0);
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.img-single-preview-hull__media-box img {
+    max-width: 100%;
+    max-height: 380px;
+    object-fit: contain;
+    display: block;
+}
+.img-single-preview-hull__meta-data {
+    font-size: 12.5px;
+    color: var(--clr-slate-medium, #475569);
+    line-height: 1.5;
+    text-align: center;
+}
+
+/* Case B: Bulk File Spreadsheet List System */
+.img-bulk-list-hull {
+    width: 100%;
+}
+.img-bulk-list-hull__scroll-wrap {
+    width: 100%;
+    overflow-x: hidden; /* Strict no horizontal scroll */
+    border: 1px solid var(--clr-border-light, #e2e8f0);
+    border-radius: 14px;
+    background: var(--clr-surface-1, #ffffff);
+}
+.img-bulk-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+    text-align: left;
+}
+.img-bulk-table th {
+    background: var(--clr-surface-2, #f8fafc);
+    color: var(--clr-slate-medium, #475569);
+    font-weight: 800;
+    padding: 12px 16px;
+    border-bottom: 1px solid var(--clr-border-light, #e2e8f0);
+}
+.img-bulk-table td {
+    padding: 14px 16px;
+    border-bottom: 1px solid var(--clr-border-light, #e2e8f0);
+    color: var(--clr-text-1, #1e293b);
+    vertical-align: middle;
+}
+.img-bulk-table tbody tr:last-child td {
+    border-bottom: none;
+}
+.img-bulk-table tbody tr:nth-child(even) {
+    background: rgba(248, 250, 252, 0.4);
+}
+.img-bulk-table__thumb-box {
+    width: 44px;
+    height: 44px;
+    border-radius: 6px;
+    overflow: hidden;
+    background: #f1f5f9;
+    border: 1px solid var(--clr-border-light, #e2e8f0);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.img-bulk-table__thumb-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.img-bulk-table__name-lbl {
+    font-weight: 600;
+    word-break: break-all;
+    max-width: 320px;
+    display: block;
+}
+
+/* 7. Live Core Progress Box */
+.img-progress-card {
+    background: var(--clr-surface-1, #ffffff);
+    border: 1px solid var(--clr-border-light, #e2e8f0);
+    border-radius: 14px;
+    padding: 16px 20px;
+    width: 100%;
+    box-sizing: border-box;
+}
+.img-progress-card__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+}
+.img-progress-card__track {
+    width: 100%;
+    height: 7px;
+    background: var(--clr-border-light, #e2e8f0);
+    border-radius: 10px;
+    overflow: hidden;
+}
+.img-progress-card__fill {
+    height: 100%;
+    background: linear-gradient(90deg, #4f46e5, #6366f1);
+    border-radius: 10px;
+    transition: width 0.15s linear;
+}
+
+/* ============================================================
+   📱 RESPONSIVE MEDIA HOOK CONSTRAINTS OVERRIDES
+   ============================================================ */
+
+/* Medium Screens (Tablets / Small Laptops) */
+@media (max-width: 992px) {
+    .img-config-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 14px;
+    }
+}
+
+/* Mobile Screens Optimization (Cards grid wraps into perfect 2 columns) */
+@media (max-width: 768px) {
+    .img-converter-header {
+        padding: 24px 0;
+    }
+    .img-converter-header__inner {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+    }
+    .img-converter-header__title {
+        font-size: 22px;
+    }
+    .img-dropzone {
+        padding: 35px 16px;
+    }
+    .img-dropzone__title {
+        font-size: 15.5px;
+    }
+    .img-dropzone__actions {
+        flex-direction: column;
+        width: 100%;
+        gap: 8px;
+    }
+    .img-dropzone__actions .img-ui-btn {
+        width: 100%;
+    }
+    .img-config-card {
+        padding: 16px;
+    }
+    .img-config-grid {
+        grid-template-columns: 1fr; /* Full width fields stack on mobile */
+        gap: 12px;
+    }
+    
+    /* Responsive Table Conversion: Flat 2-Cards Grid Block Layout */
+    .img-bulk-table thead {
+        display: none; /* Hide standard headers on mobile viewport */
+    }
+    .img-bulk-table, .img-bulk-table tbody, .img-bulk-table tr {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr) !important; /* Perfect 2 cards per line */
+        gap: 12px;
+        width: 100%;
+        box-sizing: border-box;
+    }
+    .img-bulk-table tr {
+        padding: 12px;
+        border-bottom: 1px solid var(--clr-border-light, #e2e8f0);
+        background: var(--clr-surface-1, #ffffff);
+    }
+    .img-bulk-table td {
+        display: flex;
+        flex-direction: column;
+        padding: 0 !important;
+        border: none !important;
+        width: 100% !important;
+        justify-content: center;
+    }
+    
+    /* Make specific cell allocations span blocks full lines */
+    .img-bulk-table td:nth-child(1) {
+        grid-column: span 1;
+        align-items: flex-start;
+    }
+    .img-bulk-table td:nth-child(2) {
+        grid-column: span 1;
+        align-items: flex-start;
+        justify-content: center;
+    }
+    .img-bulk-table td:nth-child(3), .img-bulk-table td:nth-child(4), .img-bulk-table td:nth-child(5) {
+        grid-column: span 2; /* Span full line rows below thumbnails */
+        margin-top: 4px;
+    }
+    .img-bulk-table__name-lbl {
+        font-size: 12px;
+        max-width: 100%;
+        text-align: left;
+    }
+    .img-action-foot-row {
+        flex-direction: column-reverse;
+        width: 100%;
+        gap: 10px;
+    }
+    .img-action-foot-row .img-ui-btn {
+        width: 100%;
+    }
+}
+
+/* 🌙 HIGH CONTRAST DARK MODE OVERRIDES RULES */
+@media (prefers-color-scheme: dark) {
+    .img-dropzone, .img-config-card, .img-single-preview-hull__wrapper, .img-bulk-list-hull__scroll-wrap, .img-progress-card {
+        background-color: #111827 !important;
+        border-color: #334155 !important;
+    }
+    .img-dropzone:hover {
+        background-color: #1f2937 !important;
+    }
+    .img-ui-select, .img-ui-input, .table-cell-input {
+        background: #0f172a !important;
+        color: #f8fafc !important;
+        border-color: #475569 !important;
+    }
+    .img-bulk-table th {
+        background: #1f2937 !important;
+        color: #94a3b8 !important;
+        border-color: #334155 !important;
+    }
+    .img-bulk-table tr, .img-bulk-table td {
+        color: #e2e8f0 !important;
+        border-color: #1f2937 !important;
+    }
+    .img-bulk-table tbody tr:nth-child(even) {
+        background: rgba(31, 41, 55, 0.3) !important;
+    }
+    .img-bulk-table__thumb-box, .img-single-preview-hull__media-box {
+        background: #0f172a !important;
+        border-color: #334155 !important;
+    }
+    .img-dropzone__title {
+        color: #f8fafc !important;
+    }
+    #img-compiler-status-txt {
+        color: #cbd5e1 !important;
+    }
+}
+
+/* Keyframe animations */
+@keyframes pulseSpin {
+    0% { transform: rotate(0deg); scale: 1; }
+    50% { scale: 1.08; }
+    100% { transform: rotate(360deg); scale: 1; }
+}

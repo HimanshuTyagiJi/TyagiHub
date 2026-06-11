@@ -1,0 +1,279 @@
+---
+layout: default
+title: "OCR PDF Online Free — Make Scanned PDF Text Selectable | TyagiHub"
+description: "Run offline OCR on scanned PDF pages. Convert non-selectable image-based documents into searchable, copyable PDF files with hidden transparent text layers safely. 100% free and private."
+keywords: "ocr pdf, searchable pdf, scan to text, scanned pdf to selectable, extract pdf text, free offline ocr, TyagiHub pdf tools"
+lang_switch: false
+extra_css:
+ - /assets/css/tyagihub-pdf.min.css
+extra_js:
+ - "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.4.120/pdf.min.js"
+ - /assets/js/libs/pdf-lib.min.js
+ - /assets/js/libs/combine.js
+ - /assets/js/libs/tesseract.min.js
+---
+
+{% raw %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "SoftwareApplication",
+      "name": "TyagiHub OCR PDF",
+      "operatingSystem": "All",
+      "applicationCategory": "WebApplication",
+      "description": "An advanced client-side offline PDF OCR utility that converts scanned document images into text selectable searchable PDFs.",
+      "url": "https://tyagihub.in/tools/pdf/ocr-pdf/",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "INR"
+      },
+      "creator": {
+        "@type": "Organization",
+        "name": "TyagiHub",
+        "url": "https://tyagihub.in"
+      }
+    }
+  ]
+}
+</script>
+{% endraw %}
+
+<script>
+  (() => {
+    // Force map window configuration properties exactly to match 3.4.120 build pipeline
+    const pdfjs = window['pdfjs-dist/build/pdf'] || window.pdfjsLib;
+    if (pdfjs) {
+      pdfjs.GlobalWorkerOptions.workerSrc = "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.4.120/pdf.worker.min.js";
+    } else {
+      window.pdfjsOptions = {
+        workerSrc: "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.4.120/pdf.worker.min.js"
+      };
+    }
+  })();
+</script>
+
+<div class="pdf-tool-page tyagihub-ocr hind-regular">
+
+  <div class="pdf-tool-header">
+    <nav class="pdf-tool-header__breadcrumb" aria-label="Breadcrumb">
+      <a href="/">Home</a>
+      <span aria-hidden="true"> / </span>
+      <a href="/tools/">Tools</a>
+      <span aria-hidden="true"> / </span>
+      <a href="/tools/pdf/">PDF Tools</a>
+      <span aria-hidden="true"> / </span>
+      <span aria-current="page">OCR PDF</span>
+    </nav>
+    <div class="container pdf-tool-header__inner">
+      <div class="pdf-tool-header__icon" aria-hidden="true" style="background: var(--clr-bg-active);">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:32px;height:32px;color:var(--clr-accent);">
+          <path d="M4 7V4a2 2 0 0 1 2-2h3" />
+          <path d="M9 22H6a2 2 0 0 1-2-2v-3" />
+          <path d="M15 2h3a2 2 0 0 1 2 2v3" />
+          <path d="M20 15v3a2 2 0 0 1-2 2h-3" />
+          <line x1="12" y1="6" x2="12" y2="18" />
+          <line x1="8" y1="10" x2="16" y2="10" />
+          <line x1="8" y1="14" x2="16" y2="14" />
+        </svg>
+      </div>
+      <div class="pdf-tool-header__text">
+        <h1 class="pdf-tool-header__title" style="font-family:'Hind'; font-weight:700;">OCR PDF Online Free</h1>
+        <p class="pdf-tool-header__desc">
+          Convert scanned PDF files & image-based documents into fully text searchable and selectable PDF records. 
+          Our AI spatial map scans individual text lines and overlays hidden interactive characters. Done 100% locally in your browser.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="pdf-tool-workspace">
+
+    <div class="pdf-dropzone" id="ocr-drop" role="button" aria-label="Upload PDF file to perform OCR" tabindex="0" style="cursor: pointer; display: flex; flex-direction: column; align-items: center; justify-content: center;">
+      <div class="pdf-dropzone__icon" aria-hidden="true" style="transition: transform 0.3s ease-in-out; margin-bottom: 16px;">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width: 56px; height: 56px; color: var(--clr-accent);">
+          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+          <polyline points="14 2 14 8 20 8" />
+          <line x1="12" y1="18" x2="12" y2="12" />
+          <polyline points="9 15 12 12 15 15" />
+        </svg>
+      </div>
+      <div class="pdf-dropzone__title" style="font-family:'Hind'; font-weight:700; font-size: 16px; margin-bottom: 6px;">Drag your scanned PDF right here or browse files</div>
+      <div class="pdf-dropzone__sub" style="font-size: 12px; color: var(--clr-text-3);">Renders PDF pages to local canvases before scanning · Privacy Secured Offline File Handling</div>
+      
+      <div style="margin-top:16px;">
+        <button class="pdf-dropzone__btn" type="button" id="ocr-browse-btn" aria-label="Select local PDF document">
+          Choose PDF Document
+        </button>
+      </div>
+      <input type="file" class="pdf-dropzone__input" id="ocr-file-input" accept=".pdf,application/pdf" style="display: none;" aria-label="Upload input trigger">
+    </div>
+
+    <div id="ocr-unlock-modal-overlay" class="th-modal-overlay" style="display:none;">
+      <div class="th-modal-card">
+        <div class="th-modal-icon" style="font-size: 32px; margin-bottom: 8px;">🔒</div>
+        <h3 class="th-modal-card__title" style="font-family:'Hind'; font-weight:700; color:var(--clr-text-1);">Password Secured Document</h3>
+        <p class="th-modal-card__desc" style="color:var(--clr-text-2); font-size:13px;">This document requires an access key sequence prior to computing OCR spatial boundaries offline.</p>
+        <input type="password" id="ocr-popup-password-field" class="th-modal-card__input" autocomplete="off" placeholder="Enter file password to continue..." style="width:100%; margin: 12px 0; padding:10px; border:1px solid var(--clr-border); border-radius:6px; background:var(--clr-surface-1); color:var(--clr-text-1);">
+        <div class="th-modal-card__actions" style="display:flex; gap:10px;">
+          <button type="button" id="ocr-popup-submit-btn" class="btn btn-primary" style="background-color: var(--clr-accent); border: none; flex:1;">Unlock Document</button>
+          <button type="button" id="ocr-popup-cancel-btn" class="btn btn-outline" style="flex:1;">Cancel</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="pdf-settings" id="ocr-settings" aria-label="PDF OCR Configuration" hidden>
+      <div class="pdf-settings__title" style="font-family:'Hind'; font-weight:700; font-size:16px; border-bottom: 2px solid var(--clr-border-2); padding-bottom: 12px; margin-bottom: 16px; text-align: left; color:var(--clr-text-1);">
+        ⚙️ OCR Page Segment settings
+      </div>
+
+      <div id="ocr-file-details-card" style="margin-bottom: 16px;"></div>
+
+      <div style="display: grid; grid-template-columns: 1fr; gap: 20px; margin-bottom: 24px; text-align: left;">
+        
+        <div style="background: var(--clr-surface-2); border: 1px solid var(--clr-border-2); padding: 16px; border-radius: 12px;">
+          <label for="ocr-mode-select" style="display:block; font-size:13px; font-weight:bold; color:var(--clr-text-1); margin-bottom: 6px;">
+            🛠️ Target Reconstruction Format
+          </label>
+          <select id="ocr-mode-select" style="width:100%; height:40px; padding:6px 12px; border-radius:8px; border:1px solid var(--clr-border-2); background:var(--clr-surface-1); color:var(--clr-text-1); font-size:13px; outline:none;">
+            <option value="searchable_layer">Searchable PDF (Keep scanned page, overlay transparent select layer) ✨ Recommended</option>
+            <option value="plain_typeset">Plain Page Document (Replace scan image with clean typed Times/Helvetica page)</option>
+          </select>
+          <p style="margin: 8px 0 0 0; font-size:11.5px; line-height:1.5; color:var(--clr-text-2);">
+            Transparent option draws an invisible interactive overlay matched exactly to scanning coordinates, making the graphics crisp and copyable.
+          </p>
+        </div>
+
+        <div style="background: var(--clr-surface-2); border: 1px solid var(--clr-border-2); padding: 16px; border-radius: 12px;">
+          <label for="ocr-lang-select" style="display:block; font-size:13px; font-weight:bold; color:var(--clr-text-1); margin-bottom: 6px;">
+            🌐 Recognition Language
+          </label>
+          <select id="ocr-lang-select" style="width:100%; height:40px; padding:6px 12px; border-radius:8px; border:1px solid var(--clr-border-2); background:var(--clr-surface-1); color:var(--clr-text-1); font-size:13px; outline:none;">
+            <option value="eng">English (eng)</option>
+            <option value="hin">Hindi (hin)</option>
+            <option value="eng+hin">English + Hindi (eng+hin)</option>
+            <option value="spa">Spanish (spa)</option>
+            <option value="fra">French (fra)</option>
+            <option value="deu">German (deu)</option>
+          </select>
+          <p style="margin: 8px 0 0 0; font-size:11.5px; line-height:1.5; color:var(--clr-text-2);">
+            Choose the language matching the source document. Language profiles are fetched in real-time and run 100% offline in browser memory.
+          </p>
+        </div>
+
+        <div style="background: var(--clr-surface-2); border: 1px solid var(--clr-border-2); padding: 16px; border-radius: 12px;">
+          <label for="ocr-range-input" style="display:block; font-size:13px; font-weight:bold; color:var(--clr-text-1); margin-bottom: 6px;">
+            📑 Page Range Segment
+          </label>
+          <input type="text" id="ocr-range-input" placeholder="e.g. 1-5 or 1,3,5" style="width:100%; height:40px; padding:6px 12px; border-radius:8px; border:1px solid var(--clr-border-2); background:var(--clr-surface-1); color:var(--clr-text-1); font-size:13px; outline:none;">
+          <p style="margin: 8px 0 0 0; font-size:11.5px; line-height:1.5; color:var(--clr-text-2);">
+            Leave as is to scan the entire document, or specify ranges. Processing individual pages optimizes processing speed.
+          </p>
+        </div>
+
+      </div>
+
+      <div style="display: flex; gap: 12px; align-items: center; justify-content: flex-end; border-top: 1px solid var(--clr-border-2); padding-top: 16px;">
+        <button type="button" id="ocr-reset-btn" class="pdf-dropzone__btn hover-accent-shadow" style="background:#ea580c; border:none; padding: 10px 20px; font-weight: 600; font-size: 13.5px; color:#fff; border-radius:8px; cursor:pointer;">
+          Reset File
+        </button>
+        <button type="button" id="ocr-trigger-btn" class="pdf-dropzone__btn hover-accent-shadow" style="background:var(--clr-accent); border:none; padding:10px 24px; font-weight: 700; font-size: 14px; color:#fff; border-radius:8px; cursor:pointer;">
+          Start Live OCR Analyze ✨
+        </button>
+      </div>
+    </div>
+
+    <div id="ocr-progress" style="background: var(--clr-surface-2); border: 1px solid var(--clr-border-2); border-radius:12px; padding:24px; text-align:center; max-width: 500px; margin: 40px auto;" hidden>
+      <div style="font-size:32px; margin-bottom: 8px; display:inline-block; animation: spinInfinite 2s linear infinite;">⏳</div>
+      <div style="font-weight:700; font-size:15px; color:var(--clr-text-1); margin-bottom: 12px;" id="ocr-progress-label">0% — Initiating spatial maps...</div>
+      
+      <div style="width:100%; height:8px; background:var(--clr-border-2); border-radius:10px; overflow:hidden;">
+        <div id="ocr-progress-fill" style="width:0%; height:100%; background:var(--clr-accent); border-radius:10px; transition: width 0.3s ease;"></div>
+      </div>
+      <p style="margin: 12px 0 0 0; font-size:11.5px; color:var(--clr-text-2); line-height: 1.5;">
+        Using native local client-side Tesseract OCR engine. All language matrices are processed in your browser sandbox with 100% data confidentiality.
+      </p>
+    </div>
+
+    <div style="display: flex; flex-direction: column; gap: 20px; margin-top:20px;">
+      
+      <div id="ocr-result-box" class="pdf-settings" style="border: 2px solid var(--clr-accent); background: rgba(16, 185, 129, 0.03);" hidden>
+        <div id="ocr-result-meta" style="margin-bottom: 16px; text-align: left; color:var(--clr-text-1); font-weight:700;"></div>
+        
+        <div style="display: flex; gap: 12px; justify-content: flex-end; align-items: center; border-top: 1px solid var(--clr-border-2); padding-top: 16px;">
+          <button type="button" id="ocr-return-btn" class="pdf-dropzone__btn" style="background: #475569; border:none; padding: 10px 20px; color:#fff; border-radius:8px; cursor:pointer;">
+            Back to Workspace
+          </button>
+          <a id="ocr-download-btn" class="pdf-dropzone__btn hover-accent-shadow" style="background:var(--clr-accent); border:none; text-decoration: none; padding: 10px 24px; font-weight:700; color:#fff; border-radius:8px; display:inline-block;" href="#">
+            Download Searchable PDF 📥
+          </a>
+        </div>
+      </div>
+
+      <div id="ocr-text-panel" class="pdf-settings" style="border: 1px solid var(--clr-border-2); text-align: left;" hidden>
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 12px; border-bottom: 1px solid var(--clr-border-2); padding-bottom: 8px;">
+          <h3 style="margin:0; font-size:14.5px; font-weight:bold; color:var(--clr-accent); display: flex; align-items: center; gap: 6px;">
+            📝 Scans Transcript Panel
+          </h3>
+          <button type="button" id="ocr-copy-text-btn" class="pdf-dropzone__btn" style="background:var(--clr-accent); border:none; padding: 6px 14px; font-size:12px; font-weight:600; color:#fff; border-radius:6px; cursor:pointer;">
+            📋 Copy Extracted Text
+          </button>
+        </div>
+        
+        <textarea id="ocr-text-output" readonly style="width:100%; height:280px; padding:12px; border-radius:8px; border:1px solid var(--clr-border-2); background:var(--clr-surface-1); color:var(--clr-text-1); font-family:var(--font-mono); font-size:12px; line-height:1.6; outline:none; resize:vertical;" placeholder="Extracting OCR plain text..."></textarea>
+        <p style="margin: 8px 0 0 0; font-size:11.5px; color:var(--clr-text-2); line-height:1.4;">
+          The transcript shows standard unicode outputs. Perfect for translating or editing in Microsoft Word.
+        </p>
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+<style>
+  @keyframes spinInfinite { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+  @keyframes uploadBounce { 0%, 60%, 100% { transform: translateY(0px); } 30% { transform: translateY(-3px); } 80% { transform: translateY(-1.5px); } }
+  
+  @media (prefers-color-scheme: dark) {
+    .pdf-settings, #ocr-progress { background-color: #111827 !important; border-color: #334155 !important; }
+    #ocr-mode-select, #ocr-lang-select, #ocr-range-input, #ocr-text-output { background-color: #0f172a !important; color: #f8fafc !important; border-color: #475569 !important; }
+    #ocr-progress-label { color: #f8fafc !important; }
+  }
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    // Inject worker tracking variables into custom combine loop pipeline
+    const pdfjs = window['pdfjs-dist/build/pdf'] || window.pdfjsLib;
+    if (pdfjs) {
+        pdfjs.GlobalWorkerOptions.workerSrc = "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.4.120/pdf.worker.min.js";
+    }
+
+    const dropzone = document.getElementById('ocr-drop');
+    const fileInput = document.getElementById('ocr-file-input');
+    const browseBtn = document.getElementById('ocr-browse-btn');
+
+    if (dropzone && fileInput) {
+        const triggerBtnEl = browseBtn || dropzone;
+        triggerBtnEl.onclick = (e) => { e.preventDefault(); fileInput.click(); };
+        fileInput.onclick = (e) => e.stopPropagation();
+        
+        // Connect to your main background engine inside combine.js / scan.js
+        fileInput.onchange = (e) => {
+            if (e.target.files && e.target.files[0]) {
+                if (window.TyagiHubOcrController) {
+                    new window.TyagiHubOcrController(e.target.files[0]);
+                } else if (typeof window.initFileProcessing === 'function') {
+                    window.initFileProcessing(e.target.files[0]);
+                } else {
+                    console.log("File loaded. Main OCR engine binding still initializing...");
+                }
+            }
+        };
+    }
+});
+</script>

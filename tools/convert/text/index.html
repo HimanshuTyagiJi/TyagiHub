@@ -1,0 +1,343 @@
+---
+layout: default
+title: "All-In-One Universal Text Converter — Free & Fast | TyagiHub"
+description: "Professional multi-format live text converter. Input your text once to instantly get UPPERCASE, lowercase, Base64, Binary, Hex, Slug, and real-time word count details on a single dashboard."
+keywords: "text converter, base64 encoder, text to binary, slug generator, string manipulation, case converter, TyagiHub tools"
+lang: en
+lang_switch: false
+---
+
+<style>
+:root {
+  --tx-accent:    #3ecfcf;
+  --tx-accent2:   #00b4d8;
+  --tx-green:     #34d399;
+  --tx-surface:   var(--clr-surface,  #1a1d2e);
+  --tx-surf2:     var(--clr-surface-2,#242740);
+  --tx-surf3:     #2d3154;
+  --tx-border:    var(--clr-border,   rgba(255,255,255,0.08));
+  --tx-bord2:     rgba(255,255,255,0.12);
+  --tx-text:      var(--clr-text,     #c8cde0);
+  --tx-head:      var(--clr-heading,  #eef0fa);
+  --tx-muted:     var(--clr-text-3,   #5a6080);
+  --tx-radius:    14px;
+  --tx-font:      var(--font-body, 'Segoe UI', system-ui, sans-serif);
+  --tx-mono:      'Courier New', 'Consolas', monospace;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+.tx-wrap {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2.5rem 1.25rem 5rem;
+  font-family: var(--tx-font);
+  color: var(--tx-text);
+}
+
+/* ── Hero Banner ── */
+.tx-badge {
+  display: inline-flex; align-items: center; gap: 6px;
+  background: rgba(62,207,207,0.12); border: 1px solid rgba(62,207,207,0.28);
+  color: var(--tx-accent); font-size: 0.72rem; font-weight: 700;
+  padding: 4px 14px; border-radius: 100px; margin-bottom: 1rem;
+  letter-spacing: 0.08em; text-transform: uppercase;
+}
+.tx-wrap h1 {
+  font-size: clamp(1.7rem, 4vw, 2.4rem); font-weight: 800;
+  color: var(--tx-head); letter-spacing: -0.03em; margin-bottom: 0.5rem; line-height: 1.15;
+}
+.tx-wrap h1 em {
+  font-style: normal;
+  background: linear-gradient(135deg, var(--tx-accent), var(--tx-accent2));
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+}
+.tx-hero-sub { color: var(--tx-text); font-size: 0.93rem; line-height: 1.8; margin-bottom: 2rem; }
+
+/* ── Split Split Layout Grid ── */
+.tx-workspace-grid {
+  display: grid;
+  grid-template-columns: 420px 1fr;
+  gap: 1.5rem;
+  align-items: start;
+}
+@media(max-width: 960px) {
+  .tx-workspace-grid { grid-template-columns: 1fr; }
+}
+
+/* ── Left Input Panel Card ── */
+.tx-input-card {
+  background: var(--tx-surface); border: 1px solid var(--tx-border);
+  border-radius: var(--tx-radius); padding: 1.5rem;
+  position: sticky; top: 20px;
+}
+.tx-card-title {
+  font-size: 0.95rem; font-weight: 800; color: var(--tx-head); margin-bottom: 1.25rem;
+  display: flex; align-items: center; gap: 8px; text-transform: uppercase; letter-spacing: 0.05em;
+}
+.tx-card-title::before {
+  content: ''; width: 3px; height: 14px; background: var(--tx-accent); border-radius: 9px;
+}
+
+.tx-textarea-node {
+  width: 100%; min-height: 280px; background: var(--tx-surf2); border: 1px solid var(--tx-bord2);
+  border-radius: 8px; padding: 1rem; color: var(--tx-head); font-family: var(--tx-font);
+  font-size: 0.95rem; line-height: 1.6; outline: none; resize: vertical; transition: border-color 0.18s;
+}
+.tx-textarea-node:focus { border-color: var(--tx-accent); }
+
+/* Text Stats Panel Ledger */
+.tx-stats-panel {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-top: 12px;
+}
+.tx-stat-box {
+  background: var(--tx-surf2); border: 1px solid var(--tx-border); border-radius: 6px; padding: 8px; text-align: center;
+}
+.tx-stat-num { font-size: 1.1rem; font-weight: 700; color: var(--tx-accent); font-family: var(--tx-mono); }
+.tx-stat-lbl { font-size: 0.65rem; color: var(--tx-muted); text-transform: uppercase; margin-top: 2px; }
+
+/* ── Right Outputs Container Layout ── */
+.tx-outputs-grid {
+  display: grid; grid-template-columns: 1fr; gap: 1rem;
+}
+
+.tx-output-row-card {
+  background: var(--tx-surface); border: 1px solid var(--tx-border);
+  border-radius: 10px; padding: 1.25rem; display: flex; flex-direction: column; gap: 10px;
+}
+.tx-row-top { display: flex; justify-content: space-between; align-items: center; }
+.tx-row-label { font-size: 0.76rem; font-weight: 700; color: var(--tx-muted); text-transform: uppercase; letter-spacing: 0.06em; }
+
+.tx-input-group { display: flex; width: 100%; gap: 8px; }
+.tx-output-field {
+  flex: 1; background: var(--tx-surf2); border: 1px solid var(--tx-bord2);
+  border-radius: 6px; padding: 11px 12px; color: var(--tx-green); font-family: var(--tx-mono);
+  font-size: 0.95rem; outline: none; transition: border-color 0.15s;
+}
+.tx-output-field:focus { border-color: var(--tx-accent); color: var(--tx-head); }
+
+.tx-copy-btn {
+  background: var(--tx-surf2); border: 1px solid var(--tx-border); color: var(--tx-text);
+  width: 38px; height: 38px; border-radius: 6px; display: flex; align-items: center; justify-content: center;
+  cursor: pointer; transition: all 0.15s; flex-shrink: 0;
+}
+.tx-copy-btn:hover { color: var(--tx-accent); background: var(--tx-surf3); border-color: var(--tx-accent); }
+.tx-copy-btn svg { width: 15px; height: 15px; fill: none; stroke: currentColor; stroke-width: 2; }
+
+/* Toast Notification Layer */
+.tx-toast {
+  position: fixed; bottom: 2rem; left: 50%; transform: translateX(-50%) translateY(80px);
+  background: #ffffff !important; border: 2px solid var(--tx-accent) !important; color: #111827 !important;
+  font-size: 0.88rem; font-weight: 800; padding: 12px 26px; border-radius: 100px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5); transition: transform 0.25s ease; z-index: 99999;
+  pointer-events: none; white-space: nowrap; display: none;
+}
+.tx-toast.show { display: block; transform: translateX(-50%) translateY(0); }
+
+/* Light Theme Sync */
+[data-theme="light"] {
+  --tx-surface: #ffffff;
+  --tx-surf2: #f5f7fa;
+  --tx-surf3: #edf0f7;
+  --tx-border: rgba(0,0,0,0.08);
+  --tx-bord2: rgba(0,0,0,0.12);
+  --tx-text: #4a5270;
+  --tx-head: #1a2030;
+  --tx-muted: #8892aa;
+  --tx-bg: #f0f2f8;
+}
+[data-theme="light"] .tx-textarea-node, [data-theme="light"] .tx-output-field, [data-theme="light"] .tx-copy-btn { background: #ffffff; }
+</style>
+
+<div class="tx-wrap">
+
+  <div class="tx-hero">
+    <div class="tx-badge"> Universal String Studio — TyagiHub </div>
+    <h1>Universal Multi-Format <em>Text Converter</em></h1>
+    <p class="tx-hero-sub">
+      Type or paste your text once into the source block. Explore and extract multiple encoder formats, programming syntax, and letter case modifications simultaneously in real-time.
+    </p>
+  </div>
+
+  <div class="tx-workspace-grid">
+    
+    <div class="tx-input-card">
+      <div class="tx-card-title">Input Source Text</div>
+      <textarea id="tx-master-input" class="tx-textarea-node" placeholder="Type or paste your content here to start live parsing arrays..." spellcheck="false" oninput="executeUniversalTextTransformationPipeline()"></textarea>
+      
+      <div class="tx-stats-panel">
+        <div class="tx-stat-box">
+          <div class="tx-stat-num" id="stat-words">0</div>
+          <div class="tx-stat-lbl">Words</div>
+        </div>
+        <div class="tx-stat-box">
+          <div class="tx-stat-num" id="stat-chars">0</div>
+          <div class="tx-stat-lbl">Characters</div>
+        </div>
+        <div class="tx-stat-box">
+          <div class="tx-stat-num" id="stat-lines">0</div>
+          <div class="tx-stat-lbl">Lines</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="tx-outputs-grid">
+      
+      <div class="tx-output-row-card">
+        <div class="tx-row-top">
+          <span class="tx-row-label">Capital Letters (UPPERCASE)</span>
+        </div>
+        <div class="tx-input-group">
+          <input type="text" id="tx-out-upper" class="tx-output-field" readonly placeholder="Calculated tracking string...">
+          <button class="tx-copy-btn" onclick="copyFieldToClipboard('tx-out-upper')" title="Copy Answer"><svg viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button>
+        </div>
+      </div>
+
+      <div class="tx-output-row-card">
+        <div class="tx-row-top">
+          <span class="tx-row-label">Small Letters (lowercase)</span>
+        </div>
+        <div class="tx-input-group">
+          <input type="text" id="tx-out-lower" class="tx-output-field" readonly placeholder="Calculated tracking string...">
+          <button class="tx-copy-btn" onclick="copyFieldToClipboard('tx-out-lower')" title="Copy Answer"><svg viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button>
+        </div>
+      </div>
+
+      <div class="tx-output-row-card">
+        <div class="tx-row-top">
+          <span class="tx-row-label">URL Friendly Slug (SEO formatting)</span>
+        </div>
+        <div class="tx-input-group">
+          <input type="text" id="tx-out-slug" class="tx-output-field" readonly placeholder="url-slug-format-profile">
+          <button class="tx-copy-btn" onclick="copyFieldToClipboard('tx-out-slug')" title="Copy Answer"><svg viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button>
+        </div>
+      </div>
+
+      <div class="tx-output-row-card">
+        <div class="tx-row-top">
+          <span class="tx-row-label">Base64 Encoded Payload String</span>
+        </div>
+        <div class="tx-input-group">
+          <input type="text" id="tx-out-base64" class="tx-output-field" readonly placeholder="ZGVjb2RlX2RhdGFfbWF0cml4...">
+          <button class="tx-copy-btn" onclick="copyFieldToClipboard('tx-out-base64')" title="Copy Answer"><svg viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button>
+        </div>
+      </div>
+
+      <div class="tx-output-row-card">
+        <div class="tx-row-top">
+          <span class="tx-row-label">Binary Bits Machine Sequence (0101)</span>
+        </div>
+        <div class="tx-input-group">
+          <input type="text" id="tx-out-binary" class="tx-output-field" readonly placeholder="01010100 01011001 01000001...">
+          <button class="tx-copy-btn" onclick="copyFieldToClipboard('tx-out-binary')" title="Copy Answer"><svg viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button>
+        </div>
+      </div>
+
+      <div class="tx-output-row-card">
+        <div class="tx-row-top">
+          <span class="tx-row-label">Hexadecimal Code Output Matrix</span>
+        </div>
+        <div class="tx-input-group">
+          <input type="text" id="tx-out-hex" class="tx-output-field" readonly placeholder="54 79 61 67 69 48 75 62...">
+          <button class="tx-copy-btn" onclick="copyFieldToClipboard('tx-out-hex')" title="Copy Answer"><svg viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+<div class="tx-toast" id="tx-toast" role="status" aria-live="polite"></div>
+
+<script>
+/* ============================================================
+   🎯 THE UNIVERSAL TEXT TRANSFORMATIONS CORE LOGIC ENGINE
+   ============================================================ */
+
+function executeUniversalTextTransformationPipeline() {
+  const inputStringText = document.getElementById('tx-master-input').value;
+  
+  // Real-time HUD Dashboard Statistics update routines
+  updateLiveTextDashboardCounters(inputStringText);
+
+  if (!inputStringText) {
+    // If input is blank, gracefully wipe out outputs strings fields
+    clearAllTransformationFields(); return;
+  }
+
+  // 1. Compute Letter Cases Styles Structures
+  document.getElementById('tx-out-upper').value = inputStringText.toUpperCase();
+  document.getElementById('tx-out-lower').value = inputStringText.toLowerCase();
+
+  // 2. Compute Clean URL Friendly Slug
+  document.getElementById('tx-out-slug').value = inputStringText
+    .toLowerCase()
+    .replace(/[^a-z0-9\s-]/g, '') // Strips out special characters blocks
+    .replace(/\s+/g, '-')         // Collapses spaces arrays straight to dashes
+    .replace(/-+/g, '-')          // Prevents trailing adjacent dashes anomalies
+    .trim();
+
+  // 3. Compute Base64 Data Encryption Streams (UTF-8 safe calculation)
+  try {
+    const utf8BytesEncodedString = unescape(encodeURIComponent(inputStringText));
+    document.getElementById('tx-out-base64').value = btoa(utf8BytesEncodedString);
+  } catch(e) {
+    document.getElementById('tx-out-base64').value = "❌ String encryption fault profiles.";
+  }
+
+  // 4. Compute Binary Code Sequence arrays
+  let computedBinaryArray = [];
+  let computedHexArray = [];
+
+  for (let i = 0; i < inputStringText.length; i++) {
+    const activeCharCodeChar = inputStringText.charCodeAt(i);
+    
+    // Build 8-bit binary padding chunks strings references
+    computedBinaryArray.push(activeCharCodeChar.toString(2).padStart(8, '0'));
+    
+    // Build Hex code structures strings references
+    computedHexArray.push(activeCharCodeChar.toString(16).toUpperCase().padStart(2, '0'));
+  }
+
+  document.getElementById('tx-out-binary').value = computedBinaryArray.join(' ');
+  document.getElementById('tx-out-hex').value = computedHexArray.join(' ');
+}
+
+function updateLiveTextDashboardCounters(text) {
+  if (!text) {
+    document.getElementById('stat-words').innerText = '0';
+    document.getElementById('stat-chars').innerText = '0';
+    document.getElementById('stat-lines').innerText = '0';
+    return;
+  }
+
+  const matchesWordsArray = text.trim().match(/\s+/);
+  const totalWordsCalculated = text.trim() === '' ? 0 : text.trim().split(/\s+/).length;
+  
+  document.getElementById('stat-words').innerText = totalWordsCalculated;
+  document.getElementById('stat-chars').innerText = text.length;
+  document.getElementById('stat-lines').innerText = text.split('\n').length;
+}
+
+function clearAllTransformationFields() {
+  ['tx-out-upper', 'tx-out-lower', 'tx-out-slug', 'tx-out-base64', 'tx-out-binary', 'tx-out-hex'].forEach(id => {
+    document.getElementById(id).value = '';
+  });
+}
+
+window.copyFieldToClipboard = function(elementFieldIdNode) {
+  const targetFieldInput = document.getElementById(elementFieldIdNode);
+  if (!targetFieldInput || !targetFieldInput.value) return;
+
+  navigator.clipboard.writeText(targetFieldInput.value).then(() => {
+    const toast = document.getElementById('tx-toast');
+    if (toast) {
+      toast.textContent = `📋 Output Copied: ${targetFieldInput.value.substring(0, 20)}${targetFieldInput.value.length > 20 ? '...' : ''}`;
+      toast.classList.add('show');
+      setTimeout(() => toast.classList.remove('show'), 2600);
+    }
+  });
+};
+</script>

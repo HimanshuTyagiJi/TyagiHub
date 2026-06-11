@@ -1,0 +1,128 @@
+{
+  "title": "Indian Defense",
+  "title_hi": "भारतीय रक्षा",
+  "icon": "🛡️",
+  "slug": "indian-defense",
+  "questions": [
+    {
+      "id": 1,
+      "q": "The Indian Army was established in?",
+      "opts": [
+        "1776",
+        "1895",
+        "1947",
+        "1950"
+      ],
+      "ans": 1,
+      "exp": "The Indian Army traces its origins to 1895 with the establishment of the Indian Army under British India. After independence in 1947, it became the Indian Army under the Republic of India."
+    },
+    {
+      "id": 2,
+      "q": "India's first indigenously built aircraft carrier is?",
+      "opts": [
+        "INS Vikrant",
+        "INS Vikramaditya",
+        "INS Vishal",
+        "INS Viraat"
+      ],
+      "ans": 0,
+      "exp": "INS Vikrant (IAC-1) is India's first indigenously designed and built aircraft carrier. It was commissioned into the Indian Navy on 2 September 2022."
+    },
+    {
+      "id": 3,
+      "q": "The highest military honor in India is?",
+      "opts": [
+        "Vir Chakra",
+        "Mahavir Chakra",
+        "Param Vir Chakra",
+        "Ashoka Chakra"
+      ],
+      "ans": 2,
+      "exp": "Param Vir Chakra is the highest wartime military decoration in India. It is awarded for the most conspicuous acts of bravery in the presence of the enemy. 21 Param Vir Chakras have been awarded."
+    },
+    {
+      "id": 4,
+      "q": "DRDO stands for?",
+      "opts": [
+        "Defence Research and Development Organisation",
+        "Defence Research and Development Office",
+        "Direct Research and Development Organisation",
+        "Defence Rocket Development Organisation"
+      ],
+      "ans": 0,
+      "exp": "DRDO stands for Defence Research and Development Organisation. It is the R&D wing of India's Ministry of Defence. It has developed missiles like Agni, Prithvi, and BrahMos."
+    },
+    {
+      "id": 5,
+      "q": "Operation Vijay (1999) was related to?",
+      "opts": [
+        "1971 War",
+        "Kargil War",
+        "Operation Blue Star",
+        "Sri Lanka operations"
+      ],
+      "ans": 1,
+      "exp": "Operation Vijay was the Indian military operation to recapture the heights in Kargil, Dras, and Batalik sectors that were occupied by Pakistani intruders in 1999. India successfully recaptured all positions."
+    },
+    {
+      "id": 6,
+      "q": "The BrahMos missile is a joint venture between India and?",
+      "opts": [
+        "USA",
+        "Israel",
+        "Russia",
+        "France"
+      ],
+      "ans": 2,
+      "exp": "BrahMos is a supersonic cruise missile developed jointly by India and Russia. The name 'BrahMos' is derived from the Brahmaputra (India) and Moskva (Russia) rivers."
+    },
+    {
+      "id": 7,
+      "q": "National Defence Academy (NDA) is located in?",
+      "opts": [
+        "Dehradun",
+        "Pune",
+        "New Delhi",
+        "Khadakwasla"
+      ],
+      "ans": 3,
+      "exp": "The National Defence Academy (NDA) is located in Khadakwasla near Pune, Maharashtra. It is a joint service academy of the Indian Armed Forces where cadets of all three services train together."
+    },
+    {
+      "id": 8,
+      "q": "Agni-V is what type of missile?",
+      "opts": [
+        "Surface-to-air",
+        "Anti-ship",
+        "Intercontinental ballistic missile",
+        "Anti-tank"
+      ],
+      "ans": 2,
+      "exp": "Agni-V is India's intercontinental ballistic missile (ICBM) with a range of over 5,000 km. It is capable of reaching targets throughout Asia and parts of Europe and Africa."
+    },
+    {
+      "id": 9,
+      "q": "The first Chief of Defence Staff (CDS) of India was?",
+      "opts": [
+        "General Bipin Rawat",
+        "General V.K. Singh",
+        "General Dalbir Singh",
+        "Admiral R.K. Dhowan"
+      ],
+      "ans": 0,
+      "exp": "General Bipin Rawat became India's first Chief of Defence Staff (CDS) on 1 January 2020. He tragically died in a helicopter crash on 8 December 2021."
+    },
+    {
+      "id": 10,
+      "q": "India conducted its first nuclear test (Pokhran I) in?",
+      "opts": [
+        "1972",
+        "1974",
+        "1976",
+        "1980"
+      ],
+      "ans": 1,
+      "exp": "India conducted its first nuclear test, codenamed 'Smiling Buddha' (Pokhran I), on 18 May 1974 in Pokhran, Rajasthan. India's second nuclear test was Pokhran II (Operation Shakti) in 1998."
+    }
+  ]
+}

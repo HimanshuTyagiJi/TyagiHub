@@ -1,0 +1,128 @@
+{
+  "title": "Indian Geography",
+  "title_hi": "भारतीय भूगोल",
+  "icon": "🗺️",
+  "slug": "indian-geography",
+  "questions": [
+    {
+      "id": 1,
+      "q": "Which is the longest river in India?",
+      "opts": [
+        "Brahmaputra",
+        "Yamuna",
+        "Ganga",
+        "Godavari"
+      ],
+      "ans": 2,
+      "exp": "The Ganga (Ganges) is the longest river in India, with a total length of about 2,525 km. It originates from the Gangotri Glacier in Uttarakhand and flows into the Bay of Bengal."
+    },
+    {
+      "id": 2,
+      "q": "Which state has the longest coastline in India?",
+      "opts": [
+        "Kerala",
+        "Tamil Nadu",
+        "Andhra Pradesh",
+        "Gujarat"
+      ],
+      "ans": 3,
+      "exp": "Gujarat has the longest coastline in India, approximately 1,600 km. It is followed by Andhra Pradesh. India's total coastline is about 7,516 km."
+    },
+    {
+      "id": 3,
+      "q": "The Thar Desert is located in which state?",
+      "opts": [
+        "Gujarat",
+        "Rajasthan",
+        "Punjab",
+        "Haryana"
+      ],
+      "ans": 1,
+      "exp": "The Thar Desert (Great Indian Desert) is primarily located in Rajasthan. It extends into parts of Gujarat, Punjab, and Haryana in India, and into Pakistan."
+    },
+    {
+      "id": 4,
+      "q": "Which is the smallest state of India by area?",
+      "opts": [
+        "Sikkim",
+        "Goa",
+        "Tripura",
+        "Manipur"
+      ],
+      "ans": 1,
+      "exp": "Goa is the smallest state of India by area, covering about 3,702 sq km. It is located on the western coast of India and is known for its beaches and Portuguese heritage."
+    },
+    {
+      "id": 5,
+      "q": "Mount K2 is located on which mountain range?",
+      "opts": [
+        "Himalayas",
+        "Karakoram",
+        "Hindu Kush",
+        "Vindhyas"
+      ],
+      "ans": 1,
+      "exp": "K2 (8,611 m) is located in the Karakoram Range on the border of Pakistan and China. It is the second highest mountain in the world after Mount Everest (8,849 m)."
+    },
+    {
+      "id": 6,
+      "q": "Which river is known as the 'Sorrow of Bihar'?",
+      "opts": [
+        "Ganga",
+        "Kosi",
+        "Gandak",
+        "Mahananda"
+      ],
+      "ans": 1,
+      "exp": "The Kosi River is known as the 'Sorrow of Bihar' because of its frequent floods that cause widespread devastation in Bihar. It is a tributary of the Ganga."
+    },
+    {
+      "id": 7,
+      "q": "The Chilika Lake is located in which state?",
+      "opts": [
+        "West Bengal",
+        "Andhra Pradesh",
+        "Odisha",
+        "Tamil Nadu"
+      ],
+      "ans": 2,
+      "exp": "Chilika Lake is located in Odisha. It is the largest coastal lagoon in India and the second largest in the world. It is home to the Irrawaddy dolphin and millions of migratory birds."
+    },
+    {
+      "id": 8,
+      "q": "The Tropic of Cancer passes through how many states of India?",
+      "opts": [
+        "6",
+        "7",
+        "8",
+        "9"
+      ],
+      "ans": 2,
+      "exp": "The Tropic of Cancer passes through 8 Indian states: Gujarat, Rajasthan, Madhya Pradesh, Chhattisgarh, Jharkhand, West Bengal, Tripura, and Mizoram."
+    },
+    {
+      "id": 9,
+      "q": "Which city is known as the 'Pink City' of India?",
+      "opts": [
+        "Jaipur",
+        "Jodhpur",
+        "Jaisalmer",
+        "Udaipur"
+      ],
+      "ans": 0,
+      "exp": "Jaipur is known as the 'Pink City' because many of its buildings are painted pink. Maharaja Ram Singh ordered the city painted pink to welcome the Prince of Wales in 1876."
+    },
+    {
+      "id": 10,
+      "q": "The Sundarbans mangrove forest is shared between India and?",
+      "opts": [
+        "Nepal",
+        "Sri Lanka",
+        "Bangladesh",
+        "Myanmar"
+      ],
+      "ans": 2,
+      "exp": "The Sundarbans, the world's largest mangrove forest, is shared between India (West Bengal) and Bangladesh. It is a UNESCO World Heritage Site and home to the Royal Bengal Tiger."
+    }
+  ]
+}

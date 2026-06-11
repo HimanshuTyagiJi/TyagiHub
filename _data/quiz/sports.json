@@ -1,0 +1,128 @@
+{
+  "title": "Sports General Knowledge",
+  "title_hi": "खेल सामान्य ज्ञान",
+  "icon": "🏆",
+  "slug": "sports",
+  "questions": [
+    {
+      "id": 1,
+      "q": "The FIFA World Cup is held every how many years?",
+      "opts": [
+        "2",
+        "3",
+        "4",
+        "5"
+      ],
+      "ans": 2,
+      "exp": "The FIFA World Cup is held every 4 years. It is the world's most prestigious football (soccer) tournament. Brazil has won it the most times (5 times)."
+    },
+    {
+      "id": 2,
+      "q": "How many players are there in a cricket team?",
+      "opts": [
+        "9",
+        "10",
+        "11",
+        "12"
+      ],
+      "ans": 2,
+      "exp": "A cricket team consists of 11 players. The team bats and fields with 11 players. A substitute fielder can field but cannot bat or bowl."
+    },
+    {
+      "id": 3,
+      "q": "The Olympic Games are held every how many years?",
+      "opts": [
+        "2",
+        "3",
+        "4",
+        "5"
+      ],
+      "ans": 2,
+      "exp": "The Summer Olympic Games are held every 4 years. The Winter Olympics are also held every 4 years, staggered 2 years apart from the Summer Olympics."
+    },
+    {
+      "id": 4,
+      "q": "Sachin Tendulkar's jersey number in ODI cricket was?",
+      "opts": [
+        "8",
+        "9",
+        "10",
+        "12"
+      ],
+      "ans": 2,
+      "exp": "Sachin Tendulkar wore jersey number 10 in ODI cricket. He is the highest run-scorer in both Test and ODI cricket and the first player to score 100 international centuries."
+    },
+    {
+      "id": 5,
+      "q": "Which country has won the most Olympic gold medals in history?",
+      "opts": [
+        "China",
+        "Russia",
+        "UK",
+        "USA"
+      ],
+      "ans": 3,
+      "exp": "The United States has won the most Olympic gold medals in history. As of 2024, the USA has won over 1,000 gold medals at the Summer Olympics."
+    },
+    {
+      "id": 6,
+      "q": "The Wimbledon Championship is associated with which sport?",
+      "opts": [
+        "Cricket",
+        "Badminton",
+        "Tennis",
+        "Golf"
+      ],
+      "ans": 2,
+      "exp": "Wimbledon is the oldest and most prestigious tennis tournament in the world. It has been held at the All England Club in London since 1877 and is played on grass courts."
+    },
+    {
+      "id": 7,
+      "q": "Abhinav Bindra won a gold medal in which sport at the 2008 Olympics?",
+      "opts": [
+        "Archery",
+        "Shooting",
+        "Boxing",
+        "Wrestling"
+      ],
+      "ans": 1,
+      "exp": "Abhinav Bindra won India's first-ever individual Olympic gold medal in the 10m Air Rifle event at the 2008 Beijing Olympics. He is the only Indian to win an individual Olympic gold medal."
+    },
+    {
+      "id": 8,
+      "q": "The term 'Googly' is associated with which sport?",
+      "opts": [
+        "Cricket",
+        "Football",
+        "Tennis",
+        "Badminton"
+      ],
+      "ans": 0,
+      "exp": "A 'Googly' is a type of delivery in cricket bowled by a right-arm leg-spin bowler that turns the opposite way to a leg-break. It is designed to deceive the batsman."
+    },
+    {
+      "id": 9,
+      "q": "How many holes are there in a standard golf course?",
+      "opts": [
+        "9",
+        "12",
+        "18",
+        "24"
+      ],
+      "ans": 2,
+      "exp": "A standard golf course has 18 holes. Each hole has a tee area, fairway, rough, and a green with a cup. The objective is to get the ball into the cup with as few strokes as possible."
+    },
+    {
+      "id": 10,
+      "q": "The Durand Cup is related to which sport?",
+      "opts": [
+        "Hockey",
+        "Cricket",
+        "Football",
+        "Polo"
+      ],
+      "ans": 2,
+      "exp": "The Durand Cup is India's oldest and Asia's third oldest football tournament. It was established in 1888 by Sir Mortimer Durand, the then Foreign Secretary of India."
+    }
+  ]
+}

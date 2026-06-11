@@ -1,0 +1,338 @@
+---
+layout: default
+title: "Text Compare — Side-by-Side Diff Tool | TyagiHub"
+description: "Free online text comparison tool. Compare two texts side-by-side, highlight differences, find added and removed lines. Perfect for code review, document editing."
+keywords: "text compare, text diff, compare two texts, find differences, text comparison tool, TyagiHub"
+permalink: /tools/text/text-compare/
+lang_switch: false
+---
+
+<style>
+:root{--accent:#f5a623;--accent2:#e8431a;--green:#34d399;--red:#f87171;--blue:#60a5fa;--surface:var(--clr-surface,#1a1d2e);--surface2:var(--clr-surface-2,#242740);--border:var(--clr-border,rgba(255,255,255,0.08));--border2:rgba(255,255,255,0.12);--text:var(--clr-text,#c8cde0);--heading:var(--clr-heading,#eef0fa);--muted:var(--clr-text-3,#5a6080);--bg:var(--clr-bg,#0f1117);--radius:14px;--radius-sm:10px;--font:var(--font-body,'Segoe UI',system-ui,sans-serif);--mono:'Courier New','Consolas',monospace}
+.tt-wrap{max-width:1100px;margin:0 auto;padding:2.5rem 1.25rem 5rem;font-family:var(--font)}
+.tt-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(245,166,35,.12);border:1px solid rgba(245,166,35,.28);color:var(--accent);font-size:.72rem;font-weight:700;padding:4px 14px;border-radius:100px;margin-bottom:1rem;letter-spacing:.08em;text-transform:uppercase}
+.tt-badge svg{width:12px;height:12px;stroke:currentColor;fill:none;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}
+.tt-hero{margin-bottom:2rem}
+.tt-hero h1{font-size:clamp(1.7rem,4vw,2.4rem);font-weight:800;color:var(--heading);letter-spacing:-.03em;margin-bottom:.5rem;line-height:1.15}
+.tt-hero h1 em{font-style:normal;background:linear-gradient(135deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.tt-hero p{color:var(--text);font-size:.93rem;line-height:1.75;max-width:640px}
+.tt-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:1.4rem;margin-bottom:1.25rem}
+.tt-card-title{font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin-bottom:1.1rem;display:flex;align-items:center;gap:8px}
+.tt-card-title::before{content:'';width:3px;height:13px;background:linear-gradient(180deg,var(--accent),var(--accent2));border-radius:99px;flex-shrink:0}
+
+/* Input grid */
+.tc-input-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem}
+@media(max-width:700px){.tc-input-grid{grid-template-columns:1fr}}
+.tc-pane-label{font-size:.78rem;font-weight:700;margin-bottom:6px;display:flex;align-items:center;gap:6px}
+.tc-pane-label .dot{width:10px;height:10px;border-radius:50%;flex-shrink:0}
+.tc-pane-label .dot.red{background:var(--red)}
+.tc-pane-label .dot.green{background:var(--green)}
+.tt-textarea{width:100%;box-sizing:border-box;background:var(--surface2);border:1px solid var(--border2);border-radius:var(--radius-sm);padding:14px 16px;font-family:var(--mono);font-size:.85rem;color:var(--heading);outline:none;resize:vertical;min-height:180px;line-height:1.7;transition:border-color .18s,box-shadow .18s}
+.tt-textarea:focus{border-color:var(--accent);box-shadow:0 0 0 3px rgba(245,166,35,.1)}
+.tt-textarea::placeholder{color:var(--muted);font-family:var(--font);font-size:.85rem}
+
+/* Action row */
+.tc-actions{display:flex;gap:.55rem;flex-wrap:wrap;margin-bottom:1.25rem;align-items:center}
+.tt-btn{display:inline-flex;align-items:center;justify-content:center;gap:7px;padding:9px 18px;border:none;border-radius:var(--radius-sm);font-family:var(--font);font-size:.87rem;font-weight:700;cursor:pointer;transition:all .2s;white-space:nowrap}
+.tt-btn svg{width:15px;height:15px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.tt-btn-primary{background:linear-gradient(135deg,var(--accent),var(--accent2));color:#000;box-shadow:0 4px 16px rgba(245,166,35,.25)}
+.tt-btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(245,166,35,.38)}
+.tt-btn-primary svg{stroke:#000}
+.tt-btn-secondary{background:var(--surface2);border:1px solid var(--border2);color:var(--text)}
+.tt-btn-secondary:hover{border-color:var(--accent);color:var(--accent)}
+.tt-btn-ghost{background:transparent;border:1px solid var(--border);color:var(--muted);font-size:.78rem;padding:7px 13px}
+.tt-btn-ghost:hover{border-color:var(--accent);color:var(--accent)}
+
+/* Stats bar */
+.tc-stats{display:flex;gap:.6rem;flex-wrap:wrap;margin-bottom:1.1rem}
+.tc-stat{display:flex;align-items:center;gap:6px;background:var(--surface2);border:1px solid var(--border);border-radius:8px;padding:6px 12px;font-size:.78rem;color:var(--text)}
+.tc-stat strong{font-family:var(--mono);color:var(--accent);font-weight:800}
+.tc-stat.added strong{color:var(--green)}
+.tc-stat.removed strong{color:var(--red)}
+.tc-stat.changed strong{color:var(--blue)}
+
+/* Diff output */
+.tc-diff-wrap{display:grid;grid-template-columns:1fr 1fr;gap:0;border:1px solid var(--border);border-radius:var(--radius-sm);overflow:hidden;font-family:var(--mono);font-size:.83rem;line-height:1.65}
+@media(max-width:700px){.tc-diff-wrap{grid-template-columns:1fr}}
+.tc-diff-panel{overflow-x:auto}
+.tc-diff-header{padding:8px 14px;font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:6px}
+.tc-diff-header.left{background:rgba(248,113,113,.07);color:var(--red);border-right:1px solid var(--border)}
+.tc-diff-header.right{background:rgba(52,211,153,.07);color:var(--green)}
+.tc-diff-body{padding:0}
+.tc-line{display:flex;align-items:flex-start;min-height:24px}
+.tc-line:nth-child(even){background:rgba(255,255,255,.01)}
+.tc-line-num{min-width:38px;padding:3px 8px;text-align:right;color:var(--muted);font-size:.72rem;user-select:none;flex-shrink:0;border-right:1px solid var(--border);background:rgba(0,0,0,.15)}
+.tc-line-text{padding:3px 10px;flex:1;white-space:pre-wrap;word-break:break-word}
+.tc-line.added{background:rgba(52,211,153,.1)}
+.tc-line.added .tc-line-num{background:rgba(52,211,153,.12);color:var(--green)}
+.tc-line.removed{background:rgba(248,113,113,.1)}
+.tc-line.removed .tc-line-num{background:rgba(248,113,113,.12);color:var(--red)}
+.tc-line.changed{background:rgba(96,165,250,.08)}
+.tc-line.changed .tc-line-num{background:rgba(96,165,250,.12);color:var(--blue)}
+.tc-inline-add{background:rgba(52,211,153,.25);border-radius:3px;padding:0 2px}
+.tc-inline-del{background:rgba(248,113,113,.25);border-radius:3px;padding:0 2px;text-decoration:line-through}
+
+/* Options */
+.tc-options{display:flex;gap:.75rem;flex-wrap:wrap;align-items:center;margin-bottom:1rem;padding:.75rem 1rem;background:var(--surface2);border:1px solid var(--border);border-radius:var(--radius-sm)}
+.tc-opt-label{font-size:.78rem;font-weight:600;color:var(--text);white-space:nowrap}
+.tc-option{display:flex;align-items:center;gap:5px;font-size:.78rem;color:var(--text);cursor:pointer;user-select:none}
+.tc-option input{accent-color:var(--accent)}
+
+/* Legend */
+.tc-legend{display:flex;gap:.75rem;flex-wrap:wrap;margin-bottom:1rem}
+.tc-leg-item{display:flex;align-items:center;gap:5px;font-size:.75rem;color:var(--text)}
+.tc-leg-dot{width:12px;height:12px;border-radius:3px;flex-shrink:0}
+
+/* Empty */
+.tc-empty{text-align:center;padding:3rem 1rem;color:var(--muted)}
+.tc-empty svg{width:52px;height:52px;stroke:var(--surface2);fill:none;stroke-width:1.2;margin-bottom:.75rem}
+
+.tt-toast{position:fixed;bottom:2rem;left:50%;transform:translateX(-50%) translateY(80px);background:#1e2235;border:1px solid var(--accent);color:var(--heading);font-size:.85rem;font-weight:600;padding:10px 22px;border-radius:100px;box-shadow:0 8px 32px rgba(0,0,0,.4);transition:transform .3s cubic-bezier(.4,0,.2,1);z-index:9999;white-space:nowrap;pointer-events:none}
+.tt-toast.show{transform:translateX(-50%) translateY(0)}
+[data-theme="light"] .tt-card{background:#fff;border-color:#d8deed}
+[data-theme="light"] .tt-textarea,.tc-options{background:#f5f7fa;border-color:#d0d7e6}
+[data-theme="light"] .tt-textarea{color:#1a2030}
+</style>
+
+<div class="tt-wrap">
+  <div class="tt-hero">
+    <div class="tt-badge">
+      <svg viewBox="0 0 24 24"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+      Text Tool
+    </div>
+    <h1>Text <em>Compare</em></h1>
+    <p>Compare two texts side-by-side and instantly highlight every difference — added lines, removed lines, and inline character changes. Perfect for reviewing edits, comparing document versions, and spotting changes in code or content.</p>
+  </div>
+
+  <!-- Inputs -->
+  <div class="tt-card">
+    <div class="tt-card-title">Enter Texts to Compare</div>
+    <div class="tc-input-grid">
+      <div>
+        <div class="tc-pane-label" style="color:var(--red)">
+          <div class="dot red"></div> Original Text
+        </div>
+        <textarea class="tt-textarea" id="tc-left" placeholder="Paste your original text here..." rows="8" oninput="liveCompare()"></textarea>
+      </div>
+      <div>
+        <div class="tc-pane-label" style="color:var(--green)">
+          <div class="dot green"></div> Modified Text
+        </div>
+        <textarea class="tt-textarea" id="tc-right" placeholder="Paste the modified text here..." rows="8" oninput="liveCompare()"></textarea>
+      </div>
+    </div>
+
+    <!-- Options -->
+    <div class="tc-options">
+      <span class="tc-opt-label">Options:</span>
+      <label class="tc-option"><input type="checkbox" id="opt-ignore-case" onchange="liveCompare()"> Ignore case</label>
+      <label class="tc-option"><input type="checkbox" id="opt-ignore-space" onchange="liveCompare()"> Ignore whitespace</label>
+      <label class="tc-option"><input type="checkbox" id="opt-inline" checked onchange="liveCompare()"> Inline diff</label>
+    </div>
+
+    <div class="tc-actions">
+      <button class="tt-btn tt-btn-primary" onclick="liveCompare()">
+        <svg viewBox="0 0 24 24"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+        Compare Now
+      </button>
+      <button class="tt-btn tt-btn-secondary" onclick="swapTexts()">
+        <svg viewBox="0 0 24 24"><polyline points="17 1 21 5 17 9"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><polyline points="7 23 3 19 7 15"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/></svg>
+        Swap Texts
+      </button>
+      <button class="tt-btn tt-btn-ghost" onclick="copyDiff()">
+        <svg viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+        Copy Diff
+      </button>
+      <button class="tt-btn tt-btn-ghost" onclick="clearAll()">
+        <svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        Clear All
+      </button>
+    </div>
+  </div>
+
+  <!-- Result -->
+  <div class="tt-card">
+    <div class="tt-card-title">Comparison Result</div>
+    <div class="tc-stats" id="tc-stats" style="display:none">
+      <div class="tc-stat"><span>Total Lines:</span><strong id="stat-total">0</strong></div>
+      <div class="tc-stat added"><span>Added:</span><strong id="stat-added">0</strong></div>
+      <div class="tc-stat removed"><span>Removed:</span><strong id="stat-removed">0</strong></div>
+      <div class="tc-stat changed"><span>Changed:</span><strong id="stat-changed">0</strong></div>
+    </div>
+    <div class="tc-legend">
+      <div class="tc-leg-item"><div class="tc-leg-dot" style="background:rgba(52,211,153,.35)"></div> Added</div>
+      <div class="tc-leg-item"><div class="tc-leg-dot" style="background:rgba(248,113,113,.35)"></div> Removed</div>
+      <div class="tc-leg-item"><div class="tc-leg-dot" style="background:rgba(96,165,250,.25)"></div> Changed</div>
+    </div>
+    <div id="tc-result">
+      <div class="tc-empty">
+        <svg viewBox="0 0 24 24"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+        <strong>No comparison yet</strong>
+        <p>Enter two texts above and click Compare Now</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="tt-toast" id="tt-toast"></div>
+
+<script>
+let diffResult = [];
+
+function normalize(text) {
+  const ignoreCase  = document.getElementById('opt-ignore-case').checked;
+  const ignoreSpace = document.getElementById('opt-ignore-space').checked;
+  let t = text;
+  if (ignoreCase)  t = t.toLowerCase();
+  if (ignoreSpace) t = t.replace(/\s+/g,' ').trim();
+  return t;
+}
+
+// LCS-based line diff
+function diffLines(a, b) {
+  const aLines = a.split('\n');
+  const bLines = b.split('\n');
+  const la = aLines.length, lb = bLines.length;
+  // Build LCS matrix
+  const dp = Array.from({length:la+1},()=>new Array(lb+1).fill(0));
+  for (let i=1;i<=la;i++) for (let j=1;j<=lb;j++) {
+    const an = normalize(aLines[i-1]), bn = normalize(bLines[j-1]);
+    dp[i][j] = an===bn ? dp[i-1][j-1]+1 : Math.max(dp[i-1][j],dp[i][j-1]);
+  }
+  // Backtrack
+  const result = [];
+  let i=la, j=lb;
+  while (i>0 || j>0) {
+    const an = i>0?normalize(aLines[i-1]):'', bn = j>0?normalize(bLines[j-1]):'';
+    if (i>0 && j>0 && an===bn) {
+      result.unshift({type:'same',left:aLines[i-1],right:bLines[j-1],li:i,ri:j});
+      i--; j--;
+    } else if (j>0 && (i===0 || dp[i][j-1]>=dp[i-1][j])) {
+      result.unshift({type:'added',right:bLines[j-1],ri:j});
+      j--;
+    } else {
+      result.unshift({type:'removed',left:aLines[i-1],li:i});
+      i--;
+    }
+  }
+  // Merge adjacent removed+added as changed
+  const merged = [];
+  for (let k=0;k<result.length;k++) {
+    if (result[k].type==='removed' && k+1<result.length && result[k+1].type==='added') {
+      merged.push({type:'changed',left:result[k].left,right:result[k+1].right,li:result[k].li,ri:result[k+1].ri});
+      k++;
+    } else merged.push(result[k]);
+  }
+  return merged;
+}
+
+// Inline char diff
+function inlineDiff(a, b) {
+  if (!a || !b) return {left:a||'',right:b||''};
+  const la=a.length, lb=b.length;
+  const dp=Array.from({length:la+1},()=>new Array(lb+1).fill(0));
+  for(let i=1;i<=la;i++) for(let j=1;j<=lb;j++)
+    dp[i][j]=a[i-1]===b[j-1]?dp[i-1][j-1]+1:Math.max(dp[i-1][j],dp[i][j-1]);
+  let i=la,j=lb,leftOut='',rightOut='';
+  while(i>0||j>0){
+    if(i>0&&j>0&&a[i-1]===b[j-1]){leftOut=a[i-1]+leftOut;rightOut=b[j-1]+rightOut;i--;j--;}
+    else if(j>0&&(i===0||dp[i][j-1]>=dp[i-1][j])){rightOut=`<span class="tc-inline-add">${esc(b[j-1])}</span>`+rightOut;j--;}
+    else{leftOut=`<span class="tc-inline-del">${esc(a[i-1])}</span>`+leftOut;i--;}
+  }
+  return {left:leftOut,right:rightOut};
+}
+
+function esc(s){return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')}
+
+function liveCompare() {
+  const left  = document.getElementById('tc-left').value;
+  const right = document.getElementById('tc-right').value;
+  if (!left && !right) { resetResult(); return; }
+  diffResult = diffLines(left, right);
+  renderDiff(diffResult);
+}
+
+function renderDiff(diff) {
+  const inline = document.getElementById('opt-inline').checked;
+  let added=0,removed=0,changed=0,total=0;
+  let leftRows='', rightRows='';
+  let lNum=0, rNum=0;
+
+  diff.forEach(d=>{
+    total++;
+    if(d.type==='same'){
+      lNum++; rNum++;
+      leftRows+=`<div class="tc-line"><span class="tc-line-num">${lNum}</span><span class="tc-line-text">${esc(d.left)}</span></div>`;
+      rightRows+=`<div class="tc-line"><span class="tc-line-num">${rNum}</span><span class="tc-line-text">${esc(d.right)}</span></div>`;
+    } else if(d.type==='added'){
+      rNum++; added++;
+      leftRows+=`<div class="tc-line"><span class="tc-line-num"></span><span class="tc-line-text"></span></div>`;
+      rightRows+=`<div class="tc-line added"><span class="tc-line-num">${rNum}</span><span class="tc-line-text">+ ${esc(d.right)}</span></div>`;
+    } else if(d.type==='removed'){
+      lNum++; removed++;
+      leftRows+=`<div class="tc-line removed"><span class="tc-line-num">${lNum}</span><span class="tc-line-text">- ${esc(d.left)}</span></div>`;
+      rightRows+=`<div class="tc-line"><span class="tc-line-num"></span><span class="tc-line-text"></span></div>`;
+    } else if(d.type==='changed'){
+      lNum++; rNum++; changed++;
+      if(inline){
+        const {left:lh,right:rh}=inlineDiff(d.left,d.right);
+        leftRows+=`<div class="tc-line changed"><span class="tc-line-num">${lNum}</span><span class="tc-line-text">${lh}</span></div>`;
+        rightRows+=`<div class="tc-line changed"><span class="tc-line-num">${rNum}</span><span class="tc-line-text">${rh}</span></div>`;
+      } else {
+        leftRows+=`<div class="tc-line changed"><span class="tc-line-num">${lNum}</span><span class="tc-line-text">${esc(d.left)}</span></div>`;
+        rightRows+=`<div class="tc-line changed"><span class="tc-line-num">${rNum}</span><span class="tc-line-text">${esc(d.right)}</span></div>`;
+      }
+    }
+  });
+
+  document.getElementById('stat-total').textContent   = total;
+  document.getElementById('stat-added').textContent   = added;
+  document.getElementById('stat-removed').textContent = removed;
+  document.getElementById('stat-changed').textContent = changed;
+  document.getElementById('tc-stats').style.display   = 'flex';
+
+  document.getElementById('tc-result').innerHTML = `
+    <div class="tc-diff-wrap">
+      <div class="tc-diff-panel">
+        <div class="tc-diff-header left"><svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg> Original</div>
+        <div class="tc-diff-body">${leftRows||'<div class="tc-line"><span class="tc-line-text" style="color:var(--muted);padding:1rem;">Empty</span></div>'}</div>
+      </div>
+      <div class="tc-diff-panel" style="border-left:1px solid var(--border)">
+        <div class="tc-diff-header right"><svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Modified</div>
+        <div class="tc-diff-body">${rightRows||'<div class="tc-line"><span class="tc-line-text" style="color:var(--muted);padding:1rem;">Empty</span></div>'}</div>
+      </div>
+    </div>`;
+}
+
+function resetResult() {
+  document.getElementById('tc-result').innerHTML=`<div class="tc-empty"><svg viewBox="0 0 24 24"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg><strong>No comparison yet</strong><p>Enter two texts above and click Compare Now</p></div>`;
+  document.getElementById('tc-stats').style.display='none';
+}
+
+function swapTexts() {
+  const l=document.getElementById('tc-left').value;
+  const r=document.getElementById('tc-right').value;
+  document.getElementById('tc-left').value=r;
+  document.getElementById('tc-right').value=l;
+  liveCompare();
+}
+
+function clearAll() {
+  document.getElementById('tc-left').value='';
+  document.getElementById('tc-right').value='';
+  resetResult();
+}
+
+function copyDiff() {
+  if(!diffResult.length){showToast('Nothing to copy.');return;}
+  const txt=diffResult.map(d=>{
+    if(d.type==='same')    return `  ${d.left}`;
+    if(d.type==='added')   return `+ ${d.right}`;
+    if(d.type==='removed') return `- ${d.left}`;
+    if(d.type==='changed') return `- ${d.left}\n+ ${d.right}`;
+  }).join('\n');
+  navigator.clipboard.writeText(txt).then(()=>showToast('✅ Diff copied!'));
+}
+
+function showToast(msg){const t=document.getElementById('tt-toast');t.textContent=msg;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2800)}
+</script>

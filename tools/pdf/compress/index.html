@@ -1,0 +1,409 @@
+---
+layout: default
+title: "Compress PDF — Reduce PDF File Size Online Free "
+description: "Shrink and optimize your PDF documents online without losing formatting. Select quick compression presets or use quality control strength engine. 100% secure and offline."
+keywords: "compress pdf, reduce pdf size, shrink pdf online, minimize pdf mb, free offline compressor, TyagiHub tools"
+lang_switch: false
+extra_css:
+  - /assets/css/tyagihub-pdf.min.css
+extra_js:
+- /assets/js/libs/pdf.min.mjs
+- /assets/js/libs/pdf-lib.min.js
+- /assets/js/libs/all.pdf.js
+---
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "SoftwareApplication",
+      "name": "TyagiHub Compress PDF",
+      "operatingSystem": "All",
+      "applicationCategory": "WebApplication",
+      "description": "An advanced client-side offline PDF compression asset tool that allows users to shrink and downsample layouts instantly.",
+      "url": "https://tyagihub.in/tools/pdf/compress-pdf/",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "INR"
+      },
+      "creator": {
+        "@type": "Organization",
+        "name": "TyagiHub",
+        "url": "https://tyagihub.in"
+      }
+    }
+  ]
+}
+</script>
+
+<div class="pdf-tool-page tyagihub-compress">
+
+  <div class="pdf-tool-header">
+
+    <nav class="pdf-tool-header__breadcrumb" aria-label="Breadcrumb">
+      <a href="/">Home</a>
+      <span aria-hidden="true"> / </span>
+      <a href="/tools/">Tools</a>
+      <span aria-hidden="true"> / </span>
+      <a href="/tools/pdf/">PDF Tools</a>
+      <span aria-hidden="true"> / </span>
+      <span aria-current="page">Compress PDF</span>
+    </nav>
+
+    <div class="container pdf-tool-header__inner">
+      <div class="pdf-tool-header__icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M4 14h16M4 10h16M12 4v16M9 7l3-3 3 3M9 17l3 3 3-3"/>
+        </svg>
+      </div>
+      <div class="pdf-tool-header__text">
+        <h1 class="pdf-tool-header__title">Compress PDF File Size</h1>
+        <p class="pdf-tool-header__desc">
+          Optimize, shrink, and decrease the byte weight of your large documents instantly.
+          Use our specialized quality strength sliders to keep text crisp and readable.
+          Everything runs locally within your browser tab cache memory.
+        </p>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="pdf-tool-workspace">
+
+    <!-- DROP ZONE -->
+    <div class="pdf-dropzone" id="compress-drop" role="button" aria-label="Upload PDF file for size optimization" tabindex="0">
+
+      <div
+        class="pdf-dropzone__icon"
+        aria-hidden="true"
+        style="transition: transform 0.3s ease-in-out;"
+        onmouseover="this.style.transform='translateY(-5px)'"
+        onmouseout="this.style.transform='translateY(0)'"
+      >
+        <svg viewBox="0 0 24 24">
+          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+          <polyline points="14 2 14 8 20 8"/>
+          <path d="M12 18v-6M9 15l3 3 3-3"/>
+        </svg>
+      </div>
+
+      <div class="pdf-dropzone__title">Drag your oversized PDF here or browse files</div>
+      <div class="pdf-dropzone__sub">Supports advanced optimization mapping · Up to 100 MB maximum size</div>
+
+      <button class="pdf-dropzone__btn" type="button" aria-label="Select local PDF document">
+        <svg
+          viewBox="0 0 24 24"
+          aria-hidden="true"
+          style="width:24px;height:24px;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;fill:none;overflow:visible;"
+        >
+          <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+          <g style="animation:uploadBounce 1.5s ease-in-out infinite;transform-origin:12px 9px;transform-box:fill-box;">
+            <polyline points="17 8 12 3 7 8"/>
+            <line x1="12" y1="3" x2="12" y2="15"/>
+          </g>
+          <style>
+            @keyframes uploadBounce {
+              0%, 60%, 100% { transform: translateY(0px); }
+              30%           { transform: translateY(-3px); }
+              80%           { transform: translateY(-1.5px); }
+            }
+          </style>
+        </svg>
+        Choose PDF Document
+      </button>
+
+      <input
+        type="file"
+        class="pdf-dropzone__input"
+        id="compress-file-input"
+        accept=".pdf,application/pdf"
+        aria-label="Upload input trigger"
+      >
+
+    </div>
+
+    <!-- UNLOCK MODAL -->
+    <div id="tyagihub-unlock-modal-overlay" class="th-modal-overlay" style="display:none;">
+      <div class="th-modal-card">
+        <div class="th-modal-card__icon">🔒</div>
+        <h3 class="th-modal-card__title">Encrypted Document Detected</h3>
+        <p class="th-modal-card__desc">
+          This file requires standard decryption parameters prior to running structural data resizing arrays templates.
+        </p>
+        <input
+          type="password"
+          id="th-popup-password-field"
+          class="th-modal-card__input"
+          placeholder="Enter file access password..."
+        >
+        <div class="th-modal-card__actions">
+          <button type="button" id="th-popup-submit-btn" class="btn btn-primary">Unlock & Load</button>
+          <button type="button" id="th-popup-cancel-btn" class="btn btn-outline">Cancel Process</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- SETTINGS -->
+    <div class="pdf-settings" id="compress-settings" aria-label="Compression Workspace Parameters" hidden>
+
+      <div class="pdf-settings__title">Compression Settings Dashboard</div>
+
+      <div id="compress-file-details" class="pdf-merge-list" style="margin-bottom: var(--space-4);"></div>
+
+      <!-- PRESETS GRID -->
+      <div
+        class="pdf-compression-presets-grid"
+        style="display:grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap:var(--space-4); margin-bottom:var(--space-4);"
+      >
+        <div
+          class="preset-card"
+          data-preset="low"
+          id="preset-extreme"
+          style="border:1px solid var(--clr-border); padding:var(--space-4); border-radius:var(--radius-md); cursor:pointer;"
+        >
+          <div class="preset-card__title" style="font-weight:var(--fw-bold); font-size:var(--fs-sm);">Extreme Compression</div>
+          <div class="preset-card__desc" style="font-size:var(--fs-xs); color:var(--clr-text-3); margin-top:2px;">Maximum space optimization. Lower image resolution bounds.</div>
+        </div>
+
+        <div
+          class="preset-card active"
+          data-preset="medium"
+          id="preset-recommended"
+          style="border:2px solid var(--clr-accent); padding:var(--space-4); border-radius:var(--radius-md); cursor:pointer;"
+        >
+          <div class="preset-card__title" style="font-weight:var(--fw-bold); font-size:var(--fs-sm);">Recommended Settings</div>
+          <div class="preset-card__desc" style="font-size:var(--fs-xs); color:var(--clr-text-3); margin-top:2px;">Balanced performance tier. Preserves text and graphic textures perfectly.</div>
+        </div>
+
+        <div
+          class="preset-card"
+          data-preset="high"
+          id="preset-high"
+          style="border:1px solid var(--clr-border); padding:var(--space-4); border-radius:var(--radius-md); cursor:pointer;"
+        >
+          <div class="preset-card__title" style="font-weight:var(--fw-bold); font-size:var(--fs-sm);">High Definition Mode</div>
+          <div class="preset-card__desc" style="font-size:var(--fs-xs); color:var(--clr-text-3); margin-top:2px;">Lightweight metadata optimization. Embedded images remain crystal clear.</div>
+        </div>
+      </div>
+
+      <!-- SLIDER -->
+      <div class="pdf-tool-input-group" id="slider-input-wrapper-container" style="margin-bottom: var(--space-4);">
+        <div class="pdf-slider-header" style="display:flex; justify-content:space-between; margin-bottom:var(--space-1);">
+          <label for="compress-slider-input" style="font-size:var(--fs-xs); color:var(--clr-text-2);">Manual Compression Bound Strength</label>
+          <span id="compress-percentage-badge" class="pdf-page-count-badge">45% Quality Target</span>
+        </div>
+        <input type="range" id="compress-slider-input" min="10" max="90" value="45" style="width:100%;">
+      </div>
+
+      <!-- ESTIMATED SIZE -->
+      <div style="padding:var(--space-3) var(--space-4); background:var(--clr-surface-2); border-radius:var(--radius-md); border:1px solid var(--clr-border); font-size:var(--fs-xs); display:flex; justify-content:space-between; align-items:center;">
+        <span style="color:var(--clr-text-2); font-weight:var(--fw-medium);">Expected Target Output Size:</span>
+        <strong id="live-estimated-size-badge" style="color:var(--clr-accent); font-family:var(--font-mono); font-size:var(--fs-sm);">Calculating...</strong>
+      </div>
+
+    </div>
+
+    <!-- ACTION BAR -->
+    <div class="pdf-action-bar" id="compress-action" style="display:none;" aria-label="Action controls">
+      <div class="pdf-secure-badge">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+        </svg>
+        Sandbox Local Environment Safe
+      </div>
+      <button class="btn btn-primary" id="compress-trigger-btn" type="button">Optimize File Size</button>
+    </div>
+
+    <!-- PROGRESS BAR -->
+    <div class="pdf-progress" id="compress-progress" role="progressbar" hidden>
+      <div class="pdf-progress__bar">
+        <div class="pdf-progress__fill" id="compress-progress-fill"></div>
+      </div>
+      <div class="pdf-progress__label" id="compress-progress-label">Processing Document Arrays…</div>
+    </div>
+
+    <!-- RESULT BOX -->
+    <div class="pdf-result" id="pdf-result-box" role="region" hidden>
+
+      <div class="pdf-result__icon" aria-hidden="true">
+        <svg width="100" height="100" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+
+          <!-- Background circle -->
+          <circle class="check-bg" cx="50" cy="50" r="46"/>
+
+          <!-- Animated border circle -->
+          <circle class="check-circle" cx="50" cy="50" r="45"/>
+
+          <!-- Animated checkmark -->
+          <polyline class="check-mark" points="28,52 43,67 72,35"/>
+
+          <style>
+            .check-circle {
+              stroke: #22c55e;
+              stroke-width: 4;
+              stroke-linecap: round;
+              fill: none;
+              stroke-dasharray: 283;
+              stroke-dashoffset: 283;
+              animation: drawCircle 0.6s ease forwards;
+              transform-origin: center;
+              transform: rotate(-90deg);
+            }
+
+            .check-mark {
+              stroke: #22c55e;
+              stroke-width: 5;
+              stroke-linecap: round;
+              stroke-linejoin: round;
+              fill: none;
+              stroke-dasharray: 60;
+              stroke-dashoffset: 60;
+              animation: drawCheck 0.4s ease forwards 0.5s;
+            }
+
+            .check-bg {
+              fill: #dcfce7;
+              opacity: 0;
+              animation: fadeInBg 0.3s ease forwards 0.2s;
+            }
+
+            .pdf-result__icon {
+              display: flex;
+              align-items: center;
+              justify-content: center;
+            }
+
+            @keyframes drawCircle {
+              to { stroke-dashoffset: 0; }
+            }
+
+            @keyframes drawCheck {
+              to { stroke-dashoffset: 0; }
+            }
+
+            @keyframes fadeInBg {
+              to { opacity: 1; }
+            }
+          </style>
+
+        </svg>
+      </div>
+
+      <div class="pdf-result__title">Document Optimization Finished!</div>
+
+      <!-- METRICS PANEL -->
+      <div
+        class="pdf-compression-metrics"
+        id="pdf-metrics-panel"
+        style="display:flex; justify-content:space-around; background:var(--clr-surface-2); padding:var(--space-4); border:1px solid var(--clr-border-2); border-radius:var(--radius-md); margin:var(--space-4) 0;"
+      >
+        <div class="metric-item" style="text-align:center; flex:1;">
+          <div class="metric-item__label" style="font-size:var(--fs-xs); color:var(--clr-text-3);">Initial Weight</div>
+          <div id="metric-old-size" class="metric-item__val" style="font-weight:var(--fw-bold); font-family:var(--font-mono);">0.00 MB</div>
+        </div>
+        <div class="metric-item divider" style="text-align:center; flex:1; border-left:1px solid var(--clr-border); padding-left:var(--space-3);">
+          <div class="metric-item__label" style="font-size:var(--fs-xs); color:var(--clr-text-3);">Compressed Weight</div>
+          <div id="metric-new-size" class="metric-item__val status-green" style="font-weight:var(--fw-bold); font-family:var(--font-mono); color:#22c55e;">0.00 MB</div>
+        </div>
+        <div class="metric-item divider" style="text-align:center; flex:1; border-left:1px solid var(--clr-border); padding-left:var(--space-3);">
+          <div class="metric-item__label" style="font-size:var(--fs-xs); color:var(--clr-text-3);">Data Savings Ratio</div>
+          <div id="metric-saved-ratio" class="metric-item__val status-accent" style="font-weight:var(--fw-bold); font-family:var(--font-mono); color:var(--clr-accent);">0%</div>
+        </div>
+      </div>
+
+      <div class="pdf-result__meta" id="pdf-result-meta">—</div>
+
+      <div class="pdf-result__actions">
+        <button class="btn btn-primary" id="result-download-btn" type="button">Download Compressed PDF</button>
+        <button class="btn btn-outline" id="compress-reset-btn" type="button">Optimize Another File</button>
+        <a href="/tools/pdf/" class="btn btn-outline">More PDF Tools</a>
+      </div>
+
+    </div>
+
+    <!-- INFO BOX -->
+    <div
+      class="pdf-info-box"
+      role="note"
+      style="background: rgba(var(--clr-accent-rgb), 0.03); border-left: 4px solid var(--clr-accent); margin-top: var(--space-6); font-size: var(--space-3); color: var(--clr-text-2); padding: 12px; border-radius: 4px;"
+    >
+      <strong>🛡️ TyagiHub Security Note:</strong>
+      If your uploaded input file is password-protected, the interface will automatically prompt you with a secure centered dialog block window to authorize decryption parameters. Everything executes offline in the client sandbox layout environment.
+    </div>
+
+    <hr style="border: 0; border-top: 1px solid var(--clr-border); margin: var(--space-16) 0;">
+
+    <!-- SEO SECTION 1 -->
+    <section style="margin-bottom: var(--space-10);" aria-labelledby="seo-compress-tech-heading">
+      <h2
+        id="seo-compress-tech-heading"
+        style="color: var(--clr-heading); font-size: var(--fs-xl); font-weight: var(--fw-bold); margin-bottom: var(--space-4);"
+      >
+        How Client-Side PDF Compression Tightly Squeezes Document Weight
+      </h2>
+      <p style="color: var(--clr-text-2); font-size: var(--fs-sm); line-height: 1.6; margin-bottom: var(--space-3);">
+        When files are uploaded to conventional cloud compressors, your personal financial reports or sensitive data grids traverse external routes. TyagiHub bypasses this risk loop through deep client-side sandboxed operations. The optimization engine runs instantly within your browser tab memory, ensuring files never leave your system checkpoint.
+      </p>
+      <p style="color: var(--clr-text-2); font-size: var(--fs-sm); line-height: 1.6;">
+        Our compression engine scans the internal PDF cross-reference directory table to optimize heavy vector paths, uncompressed metadata bloat, and repeated font configurations. High-density raster items like photo attachments are downsampled using crisp browser canvas scaling matrices. This drops file weight tightly into standard lower bounds while keeping embedded text parameters clean, sharp, and 100% searchable.
+      </p>
+    </section>
+
+    <!-- SEO SECTION 2 -->
+    <section style="margin-bottom: var(--space-10);" aria-labelledby="seo-compress-presets-heading">
+      <h2
+        id="seo-compress-presets-heading"
+        style="color: var(--clr-heading); font-size: var(--fs-xl); font-weight: var(--fw-bold); margin-bottom: var(--space-4);"
+      >
+        Choosing the Ideal Preset Level for Your Document Layout
+      </h2>
+      <p style="color: var(--clr-text-2); font-size: var(--fs-sm); line-height: 1.6; margin-bottom: var(--space-3);">
+        Different documents demand varying levels of optimization balance depending on their end requirements. For university entry forms or government applications with explicit size caps (like below 100 KB or 500 KB), picking the matching strategy profile makes job execution direct:
+      </p>
+      <ul style="color: var(--clr-text-2); font-size: var(--fs-sm); line-height: 1.6; list-style-type: disc; padding-left: var(--space-5); margin-bottom: var(--space-4);">
+        <li><strong>Extreme Compression:</strong> Aggressively downsamples graphical matrices for minimum storage footprints. Perfect for heavily illustrated text manuals or raw attachments.</li>
+        <li><strong>Recommended Settings:</strong> Provides a perfect golden median, trimming document metadata paths smoothly while retaining crisp presentation balance.</li>
+        <li><strong>High Definition Mode:</strong> Focuses only on trimming redundant cross-reference tables and spacing flags. Embedded design elements remain absolutely pixel-perfect.</li>
+      </ul>
+    </section>
+
+    <!-- FAQ -->
+    <section aria-labelledby="seo-faq-heading">
+      <h2
+        id="seo-faq-heading"
+        style="color: var(--clr-heading); font-size: var(--fs-xl); font-weight: var(--fw-bold); margin-bottom: var(--space-5);"
+      >
+        Frequently Asked Questions (FAQ)
+      </h2>
+
+      <details class="tyagihub-faq">
+        <summary>Is there an upper file limit threshold for merging?</summary>
+        <div class="faq-content">
+          No limits are imposed. The pipeline safely processes extensive high-density byte arrays up to 100MB per file
+          record directly inside local browser environments.
+        </div>
+      </details>
+
+      <details class="tyagihub-faq">
+        <summary>Can I safely merge password-encrypted documents?</summary>
+        <div class="faq-content">
+          Yes. Our decentralized unlock layer safely flags secure items, enabling users to enter credentials via
+          localized modals before starting processing tracks.
+        </div>
+      </details>
+
+      <details class="tyagihub-faq">
+        <summary>Does this application store historical copies of my documents?</summary>
+        <div class="faq-content">
+          Never. Processing relies entirely on local execution runtimes. Once the browser instance is terminated, all
+          transient data pointers are wiped automatically.
+        </div>
+      </details>
+
+    </section>
+
+  </div>
+
+</div>

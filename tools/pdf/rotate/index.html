@@ -1,0 +1,388 @@
+---
+layout: default
+title: "Rotate PDF Pages Online Free — Flip and Permanent Save | TyagiHub"
+description: "Rotate PDF pages individually or in batch layout grids online. Use interactive clockwise buttons or reset multi-angle coordinates easily. 100% secure and offline."
+keywords: "rotate pdf, rotate pdf pages, flip pdf document, change pdf orientation, free offline pdf rotator, TyagiHub pdf tools"
+lang_switch: false
+extra_css:
+  - /assets/css/tyagihub-pdf.min.css
+extra_js:
+  - https://unpkg.com/pdf-lib@1.17.1/dist/pdf-lib.min.js
+  - https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.4.120/pdf.min.js
+  - /assets/js/rotate-pdf.js
+---
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "SoftwareApplication",
+      "name": "TyagiHub Rotate PDF",
+      "operatingSystem": "All",
+      "applicationCategory": "WebApplication",
+      "description": "An advanced client-side offline PDF rotation utility that allows users to re-orient, spin, and align multi-angle document sheet models instantly.",
+      "url": "https://tyagihub.in/tools/pdf/rotate-pdf/",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "INR"
+      },
+      "creator": {
+        "@type": "Organization",
+        "name": "TyagiHub",
+        "url": "https://tyagihub.in"
+      }
+    }
+  ]
+}
+</script>
+
+<div class="pdf-tool-page tyagihub-rotate">
+
+  <div class="pdf-tool-header">
+
+    <nav class="pdf-tool-header__breadcrumb" aria-label="Breadcrumb" data-loader="Learn">
+      <a href="/">Home</a>
+      <span aria-hidden="true"> / </span>
+      <a href="/tools/">Tools</a>
+      <span aria-hidden="true"> / </span>
+      <a href="/tools/pdf/">PDF Tools</a>
+      <span aria-hidden="true"> / </span>
+      <span aria-current="page">Rotate PDF</span>
+    </nav>
+
+    <div class="container pdf-tool-header__inner">
+      <div class="pdf-tool-header__icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"/>
+        </svg>
+      </div>
+      <div class="pdf-tool-header__text">
+        <h1 class="pdf-tool-header__title">Rotate PDF Pages Online Free</h1>
+        <p class="pdf-tool-header__desc">
+          Change document alignment, flip misaligned layouts, or re-orient structural maps globally. 
+          Perform bulk batch operations or spin individual pages using quick circular triggers.
+          Processes entirely locally inside your browser memory cache array bounds.
+        </p>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="pdf-tool-workspace">
+
+    <div class="pdf-dropzone" id="rotate-drop" role="button" aria-label="Upload PDF file for page re-orientation" tabindex="0">
+
+      <div
+        class="pdf-dropzone__icon"
+        aria-hidden="true"
+        style="transition: transform 0.3s ease-in-out;"
+        onmouseover="this.style.transform='translateY(-5px)'"
+        onmouseout="this.style.transform='translateY(0)'"
+      >
+        <svg viewBox="0 0 24 24">
+          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+          <polyline points="14 2 14 8 20 8" />
+          <path d="M20 14l-4 4-4-4M16 18V12" />
+        </svg>
+      </div>
+
+      <div class="pdf-dropzone__title">Drag your PDF document right here or browse files</div>
+      <div class="pdf-dropzone__sub">Decrypted and compiled completely offline · Supports up to 100 MB</div>
+
+      <button class="pdf-dropzone__btn" type="button" aria-label="Select local PDF document">
+        <svg
+          viewBox="0 0 24 24"
+          aria-hidden="true"
+          style="width:24px;height:24px;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;fill:none;overflow:visible;"
+        >
+          <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+          <g style="animation:uploadBounce 1.5s ease-in-out infinite;transform-origin:12px 9px;transform-box:fill-box;">
+            <polyline points="17 8 12 3 7 8"/>
+            <line x1="12" y1="3" x2="12" y2="15"/>
+          </g>
+          <style>
+            @keyframes uploadBounce {
+              0%, 60%, 100% { transform: translateY(0px); }
+              30%           { transform: translateY(-3px); }
+              80%           { transform: translateY(-1.5px); }
+            }
+          </style>
+        </svg>
+        Choose PDF Document
+      </button>
+
+      <input
+        type="file"
+        class="pdf-dropzone__input"
+        id="rotate-file-input"
+        accept=".pdf,application/pdf"
+        aria-label="Upload input trigger"
+      >
+
+    </div>
+
+    <div id="tyagihub-unlock-modal-overlay" class="th-modal-overlay" style="display:none;">
+      <div class="th-modal-card">
+        <div class="th-modal-card__icon">🔒</div>
+        <h3 class="th-modal-card__title">Encrypted Document Detected</h3>
+        <p class="th-modal-card__desc">
+          This file requires standard decryption parameters prior to running structural data resizing arrays templates.
+        </p>
+        <input
+          type="password"
+          id="th-popup-password-field"
+          class="th-modal-card__input"
+          placeholder="Enter file access password..."
+        >
+        <div class="th-modal-card__actions">
+          <button type="button" id="th-popup-submit-btn" class="btn btn-primary">Unlock & Load</button>
+          <button type="button" id="th-popup-cancel-btn" class="btn btn-outline">Cancel Process</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="pdf-settings" id="rotate-settings" aria-label="PDF Rotation workspace parameters" hidden>
+
+      <div class="pdf-settings__title">Rotation Workspace Configuration</div>
+
+      <div id="rotate-file-details" class="pdf-merge-list" style="margin-bottom: var(--space-4);"></div>
+
+      <div style="display:flex; gap:12px; margin-bottom:var(--space-5); justify-content: flex-start; flex-wrap: wrap;">
+        <button class="btn btn-outline" id="btn-batch-rotate-all" type="button" style="padding: 8px 16px; font-size: 12.5px;">
+          🔄 Rotate All Pages (+90°)
+        </button>
+        <button class="btn btn-outline danger" id="btn-batch-reset-all" type="button" style="padding: 8px 16px; font-size: 12.5px; border-color:#fca5a5; color:#ef4444;">
+          ⚠️ Reset All Alignments
+        </button>
+      </div>
+
+      <div class="th-visual-rotate-grid" id="th-visual-rotate-grid-target"></div>
+
+    </div>
+
+    <div class="pdf-action-bar" id="rotate-action" style="display:none;" aria-label="Action controls">
+      <div class="pdf-secure-badge">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+        </svg>
+        Sandbox Local Environment Safe
+      </div>
+      <button class="btn btn-primary" id="rotate-trigger-btn" type="button">Save Orientation Offsets</button>
+    </div>
+
+    <div class="pdf-progress" id="rotate-progress" role="progressbar" hidden>
+      <div class="pdf-progress__bar">
+        <div class="pdf-progress__fill" id="rotate-progress-fill"></div>
+      </div>
+      <div class="pdf-progress__label" id="rotate-progress-label">Re-indexing internal document catalog coordinate maps…</div>
+    </div>
+
+    <div class="pdf-result" id="pdf-result-box" role="region" hidden>
+
+      <div class="pdf-result__icon" aria-hidden="true">
+        <svg width="100" height="100" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle class="check-bg" cx="50" cy="50" r="46"/>
+          <circle class="check-circle" cx="50" cy="50" r="45"/>
+          <polyline class="check-mark" points="28,52 43,67 72,35"/>
+          <style>
+            .check-circle { stroke: #22c55e; stroke-width: 4; stroke-linecap: round; fill: none; stroke-dasharray: 283; stroke-dashoffset: 283; animation: drawCircle 0.6s ease forwards; transform-origin: center; transform: rotate(-90deg); }
+            .check-mark { stroke: #22c55e; stroke-width: 5; stroke-linecap: round; stroke-linejoin: round; fill: none; stroke-dasharray: 60; stroke-dashoffset: 60; animation: drawCheck 0.4s ease forwards 0.5s; }
+            .check-bg { fill: #dcfce7; opacity: 0; animation: fadeInBg 0.3s ease forwards 0.2s; }
+            .pdf-result__icon { display: flex; align-items: center; justify-content: center; }
+            @keyframes drawCircle { to { stroke-dashoffset: 0; } }
+            @keyframes drawCheck { to { stroke-dashoffset: 0; } }
+            @keyframes fadeInBg { to { opacity: 1; } }
+          </style>
+        </svg>
+      </div>
+
+      <div class="pdf-result__title">Orientation Alignment Applied!</div>
+
+      <div
+        class="pdf-compression-metrics"
+        style="display:flex; justify-content:space-around; background:var(--clr-surface-2); padding:var(--space-4); border:1px solid var(--clr-border-2); border-radius:var(--radius-md); margin:var(--space-4) 0;"
+      >
+        <div class="metric-item" style="text-align:center; flex:1;">
+          <div class="metric-item__label" style="font-size:var(--fs-xs); color:var(--clr-text-3);">Execution Target</div>
+          <div class="metric-item__val" style="font-weight:var(--fw-bold); font-family:var(--font-mono);">PDF Pages</div>
+        </div>
+        <div class="metric-item divider" style="text-align:center; flex:1; border-left:1px solid var(--clr-border); padding-left:var(--space-3);">
+          <div class="metric-item__label" style="font-size:var(--fs-xs); color:var(--clr-text-3);">Vector Status</div>
+          <div id="pdf-result-meta" class="metric-item__val status-green" style="font-weight:var(--fw-bold); font-family:var(--font-mono); color:#22c55e;">Mmapped Successfully</div>
+        </div>
+      </div>
+
+      <div class="pdf-result__actions">
+        <button class="btn btn-primary" id="result-download-btn" type="button">Download Rotated PDF</button>
+        <button class="btn btn-outline" id="rotate-reset-btn" type="button">Rotate Another File</button>
+        <a href="/tools/pdf/" class="btn btn-outline">More PDF Tools</a>
+      </div>
+
+    </div>
+
+    <div
+      class="pdf-info-box"
+      role="note"
+      style="background: rgba(var(--clr-accent-rgb), 0.03); border-left: 4px solid var(--clr-accent); margin-top: var(--space-6); font-size: var(--space-3); color: var(--clr-text-2); padding: 12px; border-radius: 4px;"
+    >
+      <strong>🛡️ TyagiHub Security Note:</strong>
+      All catalog rotation operations rewrite raw bounding matrices strictly offline inside client sandbox sand structures. Files are never dispatched onto remote data ports.
+    </div>
+
+    <hr style="border: 0; border-top: 1px solid var(--clr-border); margin: var(--space-16) 0;">
+
+    <section style="margin-bottom: var(--space-10);" aria-labelledby="seo-rotate-tech-heading">
+      <h2
+        id="seo-rotate-tech-heading"
+        style="color: var(--clr-heading); font-size: var(--fs-xl); font-weight: var(--fw-bold); margin-bottom: var(--space-4);"
+      >
+        How Client-Side Rotation Rewrites Document Orientation Losslessly
+      </h2>
+      <p style="color: var(--clr-text-2); font-size: var(--fs-sm); line-height: 1.6; margin-bottom: var(--space-3);">
+        When documents containing blueprints, bank forms, or wide table presentations are parsed by standard online servers, layout structures leave your workspace bounds. TyagiHub isolates execution logic strictly inside local machine instances. Byte modification layers apply securely inside standard tab cache pools.
+      </p>
+      <p style="color: var(--clr-text-2); font-size: var(--fs-sm); line-height: 1.6;">
+        Instead of decoding and re-compressing structural streams (which degrades embedded images or fonts crispness), our utility targets raw document vectors. By updating page specific dictionary orientation values ($0^\circ, 90^\circ, 180^\circ, 270^\circ$) inside memory buffers, layouts adjust immediately. Graphic assets remain uncompressed, crystal clear, and completely vector-sharp.
+      </p>
+    </section>
+
+    <section style="margin-bottom: var(--space-10);" aria-labelledby="seo-rotate-batch-heading">
+      <h2
+        id="seo-rotate-batch-heading"
+        style="color: var(--clr-heading); font-size: var(--fs-xl); font-weight: var(--fw-bold); margin-bottom: var(--space-4);"
+      >
+        Utilizing the Multi-Card Workspace Catalog for Quick Structural Fixes
+      </h2>
+      <p style="color: var(--clr-text-2); font-size: var(--fs-sm); line-height: 1.6;">
+        Scanned bundles or documentation packets often suffer from mismatched orientation indices due to automated hardware feeding tracks. Fixing multi-page arrays file rows manually through cloud services introduces severe tracking leaks. Our responsive layout system builds an offline micro thumbnail grid map instantly. Users can trigger custom incremental angle shifts across targeted specific page indices or click global batch modifiers to balance whole sheets symmetrically in under two seconds.
+      </p>
+    </section>
+
+    <section aria-labelledby="seo-faq-heading">
+      <h2
+        id="seo-faq-heading"
+        style="color: var(--clr-heading); font-size: var(--fs-xl); font-weight: var(--fw-bold); margin-bottom: var(--space-5);"
+      >
+        Frequently Asked Questions (FAQ)
+      </h2>
+
+      <details class="tyagihub-faq">
+        <summary>Will rotating pages reduce the image layout resolutions?</summary>
+        <div class="faq-content">
+          No, not at all! TyagiHub updates the document dictionary rotation state flags natively. It never performs destructive conversion loops or flattening parameters, meaning text and vector nodes retain original source metrics.
+        </div>
+      </details>
+
+      <details class="tyagihub-faq">
+        <summary>Can I safely decrypt password protected documents inside the workspace?</summary>
+        <div class="faq-content">
+          Yes. A programmatic secure modal layer detects encrypted records locally, allowing you to feed credential strings into localized tab memory prior to allocating visualization grids templates.
+        </div>
+      </details>
+
+      <details class="tyagihub-faq">
+        <summary>Are structural file records compiled on external network engines?</summary>
+        <div class="faq-content">
+          Never. All array operations require compiled WebAssembly nodes functioning offline locally within client sandboxes. When you exit or close the workspace, active memory variables are cleared immediately.
+        </div>
+      </details>
+    </section>
+
+  </div>
+</div>
+
+<style>
+  /* High Performance Multi-Page Visual Grid Matrix */
+  .th-visual-rotate-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: var(--space-4);
+    margin-top: var(--space-4);
+    width: 100%;
+  }
+  @media(min-width: 768px) {
+    .th-visual-rotate-grid {
+      grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+    }
+  }
+
+  /* Bento Grid Component Cards Styling Layout */
+  .th-rotate-card {
+    background: #ffffff;
+    border: 1px solid var(--clr-border);
+    border-radius: 10px;
+    padding: 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.02);
+    transition: transform 0.2s, border-color 0.2s;
+  }
+  .th-rotate-card:hover {
+    transform: translateY(-2px);
+    border-color: var(--clr-accent);
+  }
+
+  .th-canvas-wrapper {
+    width: 100%;
+    height: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--clr-surface-2);
+    border-radius: 6px;
+    border: 1px solid var(--clr-border-2);
+    overflow: hidden;
+    margin-bottom: 10px;
+  }
+
+  .th-canvas-wrapper canvas {
+    transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+  }
+
+  /* Core Precision 90-Degree Angle Steps Rotation System Mapping Classes */
+  .th-canvas-wrapper canvas.rot-0   { transform: rotate(0deg); }
+  .th-canvas-wrapper canvas.rot-90  { transform: rotate(90deg); }
+  .th-canvas-wrapper canvas.rot-180 { transform: rotate(180deg); }
+  .th-canvas-wrapper canvas.rot-270 { transform: rotate(270deg); }
+
+  .th-page-number-badge {
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--clr-text-3);
+    background: var(--clr-surface-2);
+    padding: 2px 8px;
+    border-radius: 10px;
+  }
+
+  .th-card-action-bar {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: auto;
+  }
+
+  .th-rotate-btn-round {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: 1px solid var(--clr-border-2);
+    background: #ffffff;
+    cursor: pointer;
+    font-size: 13px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.15s;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.04);
+  }
+  .th-rotate-btn-round:hover {
+    background: var(--clr-accent);
+    color: #ffffff;
+    border-color: var(--clr-accent);
+    transform: scale(1.08);
+  }
+</style>

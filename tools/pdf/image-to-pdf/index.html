@@ -1,0 +1,169 @@
+---
+layout: default
+title: "Convert Image to PDF Online Free — HD Quality Generator | TyagiHub"
+description: "Convert JPG, PNG, WEBP images to PDF online for free in high-definition quality. Maintain uncompressed pixel crispness and original sharpness natively."
+keywords: "image to pdf hd, convert jpg to pdf high quality, multiple images to multi page pdf, free image to pdf converter, client-side safe converter TyagiHub"
+lang_switch: false
+extra_css:
+- /assets/css/tyagihub-pdf.min.css
+extra_js:
+- /assets/js/libs/pdf-lib.min.js
+- /assets/js/libs/pdf.min.mjs
+- /assets/js/libs/all.pdf.js
+---
+
+
+<div class="pdf-tool-page tyagihub-image-to-pdf hind-regular">
+
+  <div class="pdf-tool-header">
+ <nav class="pdf-tool-header__breadcrumb" aria-label="Breadcrumb">
+      <a href="/">Home</a>
+      <span aria-hidden="true"> / </span>
+      <a href="/tools/">Tools</a>
+      <span aria-hidden="true"> / </span>
+      <a href="/tools/pdf/">PDF Tools</a>
+      <span aria-hidden="true"> / </span>
+      <span aria-current="page">Image to PDF</span>
+    </nav>
+    <div class="container pdf-tool-header__inner">
+      <div class="pdf-tool-header__text">
+        <h1 class="pdf-tool-header__title" style="font-family:'Hind'; font-weight:700;">Loss-less Image to PDF HD Engine</h1>
+        <p class="pdf-tool-header__desc">
+          Convert high-resolution graphics, text documents photos, sheets screenshots into pure vector document layers. Zero quality compression · 100% Client-side sandbox isolation.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="pdf-tool-workspace">
+
+    <div class="pdf-dropzone" id="img-drop" style="cursor: pointer; position: relative;">
+      <div class="pdf-dropzone__title" style="font-family:'Hind'; font-weight:700;">Drag your images here or click to browse storage items</div>
+      <div class="pdf-dropzone__sub">Supports high-res JPG, PNG, and modern WEBP formats · Unlimited sheets package</div>
+      <button class="pdf-dropzone__btn" type="button" id="meta-browse-btn">Choose Image Files</button>
+      <input type="file" id="img-file-input" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; cursor: pointer; display: block;" accept="image/jpeg, image/png, image/webp" multiple>
+    </div>
+
+    <div class="pdf-settings" id="img-workspace" hidden>
+      
+      <div style="background:var(--clr-surface-2); padding:12px; border-radius:10px; font-size:12px; border:1px solid var(--clr-border); margin-bottom:14px; display:flex; justify-content:space-between; align-items:center;">
+        <span>💡 <strong>Pro-Tip:</strong> Drag and drop individual thumbnails cards to adjust page sequencing order manually.</span>
+        <button class="btn btn-outline" type="button" id="img-add-more-btn" style="font-size:11px; padding:6px 12px;">+ Add More Images</button>
+      </div>
+
+      <div class="th-image-grid" id="img-render-grid"></div>
+
+      <div class="th-img-control-box">
+        <h3 class="th-sidebar-heading" style="font-size:14px; margin-bottom:14px; border-bottom:1px solid var(--clr-border-2); padding-bottom:6px;">⚙️ Configure Page Parameters Output</h3>
+        
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px;">
+          <div class="meta-input-group">
+            <label for="img-page-size">Page Dimension Mode</label>
+            <select id="img-page-size" style="padding:8px; font-size:12px; border:1px solid var(--clr-border-2); border-radius:6px; background:var(--clr-bg); color:var(--clr-heading); width:100%;">
+              <option value="original">Match Original Image Sizes (Max Sharpness)</option>
+              <option value="a4">Standard A4 Layout Page</option>
+              <option value="letter">US Letter Standard Document Layout</option>
+            </select>
+          </div>
+
+          <div class="meta-input-group">
+            <label for="img-page-margin">Page Boundaries Margins (pt)</label>
+            <input type="number" id="img-page-margin" value="0" min="0" max="72" style="padding:8px; font-size:12px; border:1px solid var(--clr-border-2); border-radius:6px; background:var(--clr-bg); color:var(--clr-heading); width:100%;">
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="pdf-action-bar" id="img-action" style="display:none; margin-top:20px;">
+      <div class="pdf-secure-badge">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" /></svg>
+        Uncompressed Loss-less Processing Engine Active
+      </div>
+      <div style="display:flex; gap:10px;">
+        <button class="btn btn-outline" id="img-reset-btn" type="button">Reset Queue</button>
+        <button class="btn btn-primary" id="img-compile-btn" type="button">Generate HD PDF Document</button>
+      </div>
+    </div>
+
+    <div class="pdf-progress" id="img-progress" role="progressbar" hidden style="margin-top:20px;">
+      <div class="pdf-progress__bar">
+        <div class="pdf-progress__fill" id="img-progress-fill"></div>
+      </div>
+      <div class="pdf-progress__label" id="img-progress-label">Processing layout structures...</div>
+    </div>
+
+    <div class="pdf-result" id="img-result-box" role="region" hidden style="margin-top:24px;">
+      <div class="pdf-result__icon" aria-hidden="true">
+          <svg width="100" height="100" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+
+          <!-- Background circle -->
+          <circle class="check-bg" cx="50" cy="50" r="46"/>
+
+          <!-- Animated border circle -->
+          <circle class="check-circle" cx="50" cy="50" r="45"/>
+
+          <!-- Animated checkmark -->
+          <polyline class="check-mark" points="28,52 43,67 72,35"/>
+
+          <style>
+            .check-circle {
+              stroke: #22c55e;
+              stroke-width: 4;
+              stroke-linecap: round;
+              fill: none;
+              stroke-dasharray: 283;
+              stroke-dashoffset: 283;
+              animation: drawCircle 0.6s ease forwards;
+              transform-origin: center;
+              transform: rotate(-90deg);
+            }
+
+            .check-mark {
+              stroke: #22c55e;
+              stroke-width: 5;
+              stroke-linecap: round;
+              stroke-linejoin: round;
+              fill: none;
+              stroke-dasharray: 60;
+              stroke-dashoffset: 60;
+              animation: drawCheck 0.4s ease forwards 0.5s;
+            }
+
+            .check-bg {
+              fill: #dcfce7;
+              opacity: 0;
+              animation: fadeInBg 0.3s ease forwards 0.2s;
+            }
+
+            .pdf-result__icon {
+              display: flex;
+              align-items: center;
+              justify-content: center;
+            }
+
+            @keyframes drawCircle {
+              to { stroke-dashoffset: 0; }
+            }
+
+            @keyframes drawCheck {
+              to { stroke-dashoffset: 0; }
+            }
+
+            @keyframes fadeInBg {
+              to { opacity: 1; }
+            }
+          </style>
+
+        </svg>
+      </div>
+      <div class="pdf-result__title" style="font-family:'Hind'; font-weight:700;">PDF Document Successfully Packed!</div>
+      <div class="pdf-result__meta" id="img-result-meta">—</div>
+      <div class="pdf-result__actions">
+        <button class="btn btn-primary" id="img-download-btn" type="button">Download Vector PDF</button>
+        <button class="btn btn-outline" onclick="location.reload()" type="button">Clear Workspaces</button>
+      </div>
+    </div>
+
+  </div>
+</div>

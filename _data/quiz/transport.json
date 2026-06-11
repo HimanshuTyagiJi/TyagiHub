@@ -1,0 +1,128 @@
+{
+  "title": "Transport & Communication",
+  "title_hi": "परिवहन और संचार",
+  "icon": "🚆",
+  "slug": "transport",
+  "questions": [
+    {
+      "id": 1,
+      "q": "The first railway line in India was inaugurated in?",
+      "opts": [
+        "1847",
+        "1853",
+        "1860",
+        "1870"
+      ],
+      "ans": 1,
+      "exp": "The first railway line in India was inaugurated on 16 April 1853 between Bori Bunder (Mumbai) and Thane, covering 34 km. It was operated by the Great Indian Peninsula Railway."
+    },
+    {
+      "id": 2,
+      "q": "The longest national highway in India is?",
+      "opts": [
+        "NH 44",
+        "NH 48",
+        "NH 27",
+        "NH 52"
+      ],
+      "ans": 0,
+      "exp": "NH 44 is the longest national highway in India, stretching 3,745 km from Srinagar in the north to Kanyakumari in the south. It passes through multiple states and major cities."
+    },
+    {
+      "id": 3,
+      "q": "India's first metro rail was started in which city?",
+      "opts": [
+        "Mumbai",
+        "New Delhi",
+        "Chennai",
+        "Kolkata"
+      ],
+      "ans": 3,
+      "exp": "Kolkata Metro, inaugurated on 24 October 1984, was India's first metro rail system. It runs between Dum Dum and Tollygunge. Delhi Metro (2002) is now India's largest metro network."
+    },
+    {
+      "id": 4,
+      "q": "The world's first commercial airline flight took place in?",
+      "opts": [
+        "1900",
+        "1914",
+        "1920",
+        "1927"
+      ],
+      "ans": 1,
+      "exp": "The world's first commercial airline flight was on 1 January 1914 between St. Petersburg and Tampa, Florida, USA. It was operated by the St. Petersburg-Tampa Airboat Line."
+    },
+    {
+      "id": 5,
+      "q": "BSNL stands for?",
+      "opts": [
+        "Bharat Sanchar Network Limited",
+        "Bharat Sanchar Nigam Limited",
+        "Bharat Satellite Network Limited",
+        "Bharat Software Network Limited"
+      ],
+      "ans": 1,
+      "exp": "BSNL stands for Bharat Sanchar Nigam Limited. It is a public sector telecommunications company owned by the Government of India, providing telephone, broadband, and mobile services."
+    },
+    {
+      "id": 6,
+      "q": "The Grand Trunk Road was built by?",
+      "opts": [
+        "Ashoka",
+        "Akbar",
+        "Sher Shah Suri",
+        "Shah Jahan"
+      ],
+      "ans": 2,
+      "exp": "The Grand Trunk Road (GT Road) was built by Sher Shah Suri in the 16th century. It runs from Kabul (Afghanistan) to Chittagong (Bangladesh), passing through major cities of the Indian subcontinent."
+    },
+    {
+      "id": 7,
+      "q": "India's first satellite communication was through?",
+      "opts": [
+        "INSAT-1B",
+        "ARYABHATA",
+        "APPLE",
+        "INSAT-1A"
+      ],
+      "ans": 2,
+      "exp": "APPLE (Ariane Passenger Payload Experiment), launched in 1981, was India's first experimental geostationary communication satellite. INSAT-1B (1983) was India's first operational communication satellite."
+    },
+    {
+      "id": 8,
+      "q": "The Rajdhani Express connects Delhi to?",
+      "opts": [
+        "Only Mumbai",
+        "Only Kolkata",
+        "State capitals across India",
+        "Only Chennai"
+      ],
+      "ans": 2,
+      "exp": "The Rajdhani Express is a series of fast passenger trains connecting New Delhi with various state capitals and major cities across India. The first Rajdhani Express ran between Delhi and Howrah in 1969."
+    },
+    {
+      "id": 9,
+      "q": "5G technology was first commercially launched in India in?",
+      "opts": [
+        "2020",
+        "2021",
+        "2022",
+        "2023"
+      ],
+      "ans": 2,
+      "exp": "5G technology was commercially launched in India on 1 October 2022 by Prime Minister Narendra Modi at the India Mobile Congress. Reliance Jio and Airtel were the first operators to launch 5G services."
+    },
+    {
+      "id": 10,
+      "q": "The Panama Canal connects which two oceans?",
+      "opts": [
+        "Atlantic and Indian",
+        "Pacific and Indian",
+        "Atlantic and Pacific",
+        "Pacific and Arctic"
+      ],
+      "ans": 2,
+      "exp": "The Panama Canal connects the Atlantic Ocean and the Pacific Ocean, cutting through Panama. It was opened in 1914 and is one of the most important waterways in the world, saving ships thousands of miles."
+    }
+  ]
+}

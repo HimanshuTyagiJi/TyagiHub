@@ -1,0 +1,128 @@
+{
+  "title": "Books & Authors",
+  "title_hi": "पुस्तकें और लेखक",
+  "icon": "📚",
+  "slug": "books-authors",
+  "questions": [
+    {
+      "id": 1,
+      "q": "Who wrote 'Discovery of India'?",
+      "opts": [
+        "Mahatma Gandhi",
+        "Subhas Chandra Bose",
+        "Jawaharlal Nehru",
+        "Rabindranath Tagore"
+      ],
+      "ans": 2,
+      "exp": "'Discovery of India' was written by Jawaharlal Nehru while he was imprisoned in Ahmednagar Fort (1942–1946). It traces India's history from ancient times to the modern era."
+    },
+    {
+      "id": 2,
+      "q": "The book 'Wings of Fire' is the autobiography of?",
+      "opts": [
+        "Manmohan Singh",
+        "APJ Abdul Kalam",
+        "Atal Bihari Vajpayee",
+        "Narendra Modi"
+      ],
+      "ans": 1,
+      "exp": "'Wings of Fire' is the autobiography of Dr. APJ Abdul Kalam, written with Arun Tiwari. It covers his early life, career at ISRO and DRDO, and his role in India's missile development program."
+    },
+    {
+      "id": 3,
+      "q": "Who wrote 'Gitanjali'?",
+      "opts": [
+        "Bankim Chandra Chattopadhyay",
+        "Rabindranath Tagore",
+        "Subramania Bharati",
+        "Michael Madhusudan Datta"
+      ],
+      "ans": 1,
+      "exp": "'Gitanjali' (Song Offerings) was written by Rabindranath Tagore. Its English translation won him the Nobel Prize in Literature in 1913, making him the first non-European Nobel laureate in literature."
+    },
+    {
+      "id": 4,
+      "q": "'Arthashastra' deals with which subject?",
+      "opts": [
+        "Philosophy",
+        "Statecraft and Economics",
+        "Mathematics",
+        "Astronomy"
+      ],
+      "ans": 1,
+      "exp": "The Arthashastra, written by Chanakya (Kautilya), deals with statecraft, economic policy, and military strategy. It covers taxation, law, foreign policy, and war."
+    },
+    {
+      "id": 5,
+      "q": "Who wrote 'My Country My Life'?",
+      "opts": [
+        "Narendra Modi",
+        "Atal Bihari Vajpayee",
+        "L.K. Advani",
+        "Murli Manohar Joshi"
+      ],
+      "ans": 2,
+      "exp": "'My Country My Life' is the autobiography of L.K. Advani, written in 2008. It covers his political journey, the Jana Sangh, the Emergency period, and the Ram Mandir movement."
+    },
+    {
+      "id": 6,
+      "q": "The book 'Midnight's Children' was written by?",
+      "opts": [
+        "Arundhati Roy",
+        "Salman Rushdie",
+        "Vikram Seth",
+        "Amitav Ghosh"
+      ],
+      "ans": 1,
+      "exp": "'Midnight's Children' was written by Salman Rushdie in 1981. It won the Booker Prize and the Booker of Bookers. The story follows children born at the moment of India's independence."
+    },
+    {
+      "id": 7,
+      "q": "Who wrote 'The God of Small Things'?",
+      "opts": [
+        "Kiran Desai",
+        "Jhumpa Lahiri",
+        "Arundhati Roy",
+        "Anita Desai"
+      ],
+      "ans": 2,
+      "exp": "'The God of Small Things' was written by Arundhati Roy in 1997. It won the Booker Prize that year. Set in Kerala, it explores the lives of fraternal twins affected by the caste system."
+    },
+    {
+      "id": 8,
+      "q": "'Panchatantra' was written by?",
+      "opts": [
+        "Valmiki",
+        "Vishnu Sharma",
+        "Chanakya",
+        "Kalidasa"
+      ],
+      "ans": 1,
+      "exp": "The Panchatantra was written by Vishnu Sharma (c. 300 BCE). It is a collection of fables in Sanskrit that teaches principles of statecraft and human conduct through animal stories."
+    },
+    {
+      "id": 9,
+      "q": "Who wrote the play 'Andha Yug'?",
+      "opts": [
+        "Mohan Rakesh",
+        "Dharamvir Bharati",
+        "Bhisham Sahni",
+        "Mahadevi Verma"
+      ],
+      "ans": 1,
+      "exp": "'Andha Yug' (The Blind Age) is a Hindi verse play written by Dharamvir Bharati in 1954. It is based on the last day of the Kurukshetra War and explores themes of war, destruction, and moral decay."
+    },
+    {
+      "id": 10,
+      "q": "'Ignited Minds' was written by?",
+      "opts": [
+        "Narendra Modi",
+        "APJ Abdul Kalam",
+        "Manmohan Singh",
+        "Amartya Sen"
+      ],
+      "ans": 1,
+      "exp": "'Ignited Minds: Unleashing the Power Within India' was written by APJ Abdul Kalam in 2002. It envisions a developed India by 2020 and calls upon the youth to work toward this goal."
+    }
+  ]
+}

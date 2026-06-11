@@ -1,0 +1,128 @@
+{
+  "title": "Indian Festivals & Traditions",
+  "title_hi": "भारतीय त्यौहार और परंपराएँ",
+  "icon": "🪔",
+  "slug": "indian-festivals",
+  "questions": [
+    {
+      "id": 1,
+      "q": "Diwali is also known as?",
+      "opts": [
+        "Festival of Colors",
+        "Festival of Lights",
+        "Festival of Harvest",
+        "Festival of Water"
+      ],
+      "ans": 1,
+      "exp": "Diwali is known as the Festival of Lights. It is celebrated to commemorate Lord Rama's return to Ayodhya after 14 years of exile. It is one of India's most important festivals."
+    },
+    {
+      "id": 2,
+      "q": "Holi is primarily associated with which season?",
+      "opts": [
+        "Monsoon",
+        "Winter",
+        "Spring",
+        "Summer"
+      ],
+      "ans": 2,
+      "exp": "Holi is a spring festival, celebrated on the full moon day (Purnima) in the Hindu month of Phalgun (February-March). It celebrates the arrival of spring and the victory of good over evil."
+    },
+    {
+      "id": 3,
+      "q": "Pongal is the harvest festival of which state?",
+      "opts": [
+        "Kerala",
+        "Karnataka",
+        "Tamil Nadu",
+        "Andhra Pradesh"
+      ],
+      "ans": 2,
+      "exp": "Pongal is the harvest festival of Tamil Nadu, celebrated in January. It is a 4-day festival to thank the Sun God and nature for a good harvest. The word 'Pongal' means 'to boil over' (symbolizing abundance)."
+    },
+    {
+      "id": 4,
+      "q": "Eid-ul-Fitr marks the end of which Islamic month?",
+      "opts": [
+        "Muharram",
+        "Ramadan",
+        "Shawwal",
+        "Dhul Hijjah"
+      ],
+      "ans": 1,
+      "exp": "Eid-ul-Fitr marks the end of Ramadan, the Islamic holy month of fasting. It is a day of celebration, prayers, and feasting. Muslims break their month-long fast and celebrate with family and friends."
+    },
+    {
+      "id": 5,
+      "q": "Bihu is the festival of which state?",
+      "opts": [
+        "West Bengal",
+        "Manipur",
+        "Assam",
+        "Meghalaya"
+      ],
+      "ans": 2,
+      "exp": "Bihu is the festival of Assam, celebrated three times a year: Rongali Bihu (spring harvest), Kongali Bihu (autumn), and Bhogali Bihu (winter harvest). It features traditional dance and music."
+    },
+    {
+      "id": 6,
+      "q": "Christmas is celebrated on which date?",
+      "opts": [
+        "24 December",
+        "25 December",
+        "26 December",
+        "1 January"
+      ],
+      "ans": 1,
+      "exp": "Christmas is celebrated on 25 December to commemorate the birth of Jesus Christ. It is observed by billions of Christians worldwide with church services, gift-giving, and family gatherings."
+    },
+    {
+      "id": 7,
+      "q": "Onam is the harvest festival of which state?",
+      "opts": [
+        "Tamil Nadu",
+        "Karnataka",
+        "Andhra Pradesh",
+        "Kerala"
+      ],
+      "ans": 3,
+      "exp": "Onam is Kerala's most important festival, celebrated in August-September. It commemorates the annual visit of mythical King Mahabali. Famous for Pookkalam (flower carpet), Onam Sadya (feast), and Vallamkali (boat race)."
+    },
+    {
+      "id": 8,
+      "q": "Durga Puja is mainly celebrated in which state?",
+      "opts": [
+        "Maharashtra",
+        "Punjab",
+        "West Bengal",
+        "Gujarat"
+      ],
+      "ans": 2,
+      "exp": "Durga Puja is the biggest festival of West Bengal and is celebrated in October. It commemorates the victory of Goddess Durga over the demon Mahishasura. It is a 10-day festival with elaborate pandals and cultural programs."
+    },
+    {
+      "id": 9,
+      "q": "Baisakhi is celebrated primarily by which community?",
+      "opts": [
+        "Hindus",
+        "Sikhs",
+        "Muslims",
+        "Christians"
+      ],
+      "ans": 1,
+      "exp": "Baisakhi is primarily celebrated by Sikhs on 13 or 14 April. It commemorates the formation of the Khalsa Panth by Guru Gobind Singh in 1699. It is also a harvest festival in Punjab."
+    },
+    {
+      "id": 10,
+      "q": "The Kumbh Mela is held at which river confluence in Prayagraj?",
+      "opts": [
+        "Ganga-Yamuna",
+        "Ganga-Brahmaputra",
+        "Ganga-Yamuna-Saraswati",
+        "Ganga-Godavari"
+      ],
+      "ans": 2,
+      "exp": "In Prayagraj (Allahabad), the Kumbh Mela is held at the Triveni Sangam — the confluence of the Ganga, Yamuna, and the mythical underground Saraswati rivers. It is considered the most sacred bathing spot."
+    }
+  ]
+}

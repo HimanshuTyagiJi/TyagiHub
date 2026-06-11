@@ -1,0 +1,128 @@
+{
+  "title": "World Geography",
+  "title_hi": "विश्व भूगोल",
+  "icon": "🌐",
+  "slug": "world-geography",
+  "questions": [
+    {
+      "id": 1,
+      "q": "The largest ocean in the world is?",
+      "opts": [
+        "Atlantic Ocean",
+        "Indian Ocean",
+        "Arctic Ocean",
+        "Pacific Ocean"
+      ],
+      "ans": 3,
+      "exp": "The Pacific Ocean is the largest and deepest ocean, covering about 165 million sq km (46% of Earth's water surface). It is larger than all of Earth's landmasses combined."
+    },
+    {
+      "id": 2,
+      "q": "The longest river in the world is?",
+      "opts": [
+        "Amazon",
+        "Nile",
+        "Yangtze",
+        "Mississippi"
+      ],
+      "ans": 1,
+      "exp": "The Nile River (6,650 km) is generally considered the longest river in the world, though some measurements put the Amazon River at a similar or slightly greater length. The Nile flows through 11 countries in northeastern Africa."
+    },
+    {
+      "id": 3,
+      "q": "Mount Everest is located in?",
+      "opts": [
+        "India",
+        "China",
+        "Nepal",
+        "Tibet"
+      ],
+      "ans": 2,
+      "exp": "Mount Everest is located on the border of Nepal and China (Tibet). At 8,849 m, it is the highest mountain in the world. It was first summited by Sir Edmund Hillary and Tenzing Norgay on 29 May 1953."
+    },
+    {
+      "id": 4,
+      "q": "The Sahara Desert is located in which continent?",
+      "opts": [
+        "Asia",
+        "South America",
+        "Australia",
+        "Africa"
+      ],
+      "ans": 3,
+      "exp": "The Sahara Desert is located in North Africa. It is the world's largest hot desert, covering about 9.2 million sq km. It spans 11 countries including Algeria, Libya, Egypt, and Sudan."
+    },
+    {
+      "id": 5,
+      "q": "The Amazon Rainforest is located in?",
+      "opts": [
+        "Africa",
+        "Asia",
+        "South America",
+        "Australia"
+      ],
+      "ans": 2,
+      "exp": "The Amazon Rainforest is located in South America, primarily in Brazil. It covers about 5.5 million sq km and contains 10% of all species on Earth. It is often called the 'lungs of the Earth'."
+    },
+    {
+      "id": 6,
+      "q": "The smallest country in the world is?",
+      "opts": [
+        "Monaco",
+        "Liechtenstein",
+        "San Marino",
+        "Vatican City"
+      ],
+      "ans": 3,
+      "exp": "Vatican City is the world's smallest country by both area (0.44 sq km) and population. It is an independent city-state within Rome, Italy, and serves as the headquarters of the Roman Catholic Church."
+    },
+    {
+      "id": 7,
+      "q": "Which country has the most natural lakes?",
+      "opts": [
+        "USA",
+        "Russia",
+        "Finland",
+        "Canada"
+      ],
+      "ans": 3,
+      "exp": "Canada has the most natural lakes in the world, containing about 60% of the world's fresh lakes (over 879,000 lakes). This is due to glaciation during the last ice age."
+    },
+    {
+      "id": 8,
+      "q": "The Dead Sea is the lowest point on Earth's surface, located between?",
+      "opts": [
+        "Egypt and Libya",
+        "Jordan and Israel",
+        "Syria and Lebanon",
+        "Turkey and Greece"
+      ],
+      "ans": 1,
+      "exp": "The Dead Sea, located between Jordan and Israel, is the Earth's lowest point at about 430 m below sea level. It is called 'Dead' because its high salt concentration (about 34%) makes it impossible for most life to survive."
+    },
+    {
+      "id": 9,
+      "q": "The Great Barrier Reef is located in?",
+      "opts": [
+        "Caribbean Sea",
+        "Red Sea",
+        "Coral Sea (Australia)",
+        "South China Sea"
+      ],
+      "ans": 2,
+      "exp": "The Great Barrier Reef, the world's largest coral reef system, is located in the Coral Sea off the coast of Queensland, Australia. It covers about 344,400 sq km and is a UNESCO World Heritage Site."
+    },
+    {
+      "id": 10,
+      "q": "The continent with the most countries is?",
+      "opts": [
+        "Asia",
+        "North America",
+        "Europe",
+        "Africa"
+      ],
+      "ans": 3,
+      "exp": "Africa has the most countries of any continent with 54 recognized sovereign states. Nigeria is Africa's most populous country, while Algeria is the largest by area."
+    }
+  ]
+}

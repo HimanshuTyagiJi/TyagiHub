@@ -1,0 +1,128 @@
+{
+  "title": "Science & Technology",
+  "title_hi": "विज्ञान और प्रौद्योगिकी",
+  "icon": "🔬",
+  "slug": "science-technology",
+  "questions": [
+    {
+      "id": 1,
+      "q": "Who invented the telephone?",
+      "opts": [
+        "Thomas Edison",
+        "Alexander Graham Bell",
+        "Nikola Tesla",
+        "Guglielmo Marconi"
+      ],
+      "ans": 1,
+      "exp": "Alexander Graham Bell is credited with inventing the telephone and patenting it in 1876. However, Antonio Meucci is also credited with developing the first voice communication device in 1854."
+    },
+    {
+      "id": 2,
+      "q": "The first antibiotic discovered was?",
+      "opts": [
+        "Penicillin",
+        "Streptomycin",
+        "Tetracycline",
+        "Erythromycin"
+      ],
+      "ans": 0,
+      "exp": "Penicillin, the first antibiotic, was discovered by Alexander Fleming in 1928 when he noticed that mold (Penicillium notatum) was killing bacteria in a petri dish."
+    },
+    {
+      "id": 3,
+      "q": "GPS stands for?",
+      "opts": [
+        "General Positioning System",
+        "Global Positioning System",
+        "Geographic Positioning System",
+        "Global Position Satellite"
+      ],
+      "ans": 1,
+      "exp": "GPS stands for Global Positioning System. It is a satellite-based navigation system owned by the US government. It provides location and time information anywhere on or near the Earth."
+    },
+    {
+      "id": 4,
+      "q": "The World Wide Web was invented by?",
+      "opts": [
+        "Bill Gates",
+        "Steve Jobs",
+        "Tim Berners-Lee",
+        "Vint Cerf"
+      ],
+      "ans": 2,
+      "exp": "Tim Berners-Lee invented the World Wide Web (WWW) in 1989 while working at CERN. He also developed the first web browser (WorldWideWeb) and the HTTP protocol."
+    },
+    {
+      "id": 5,
+      "q": "Which country launched the world's first artificial satellite?",
+      "opts": [
+        "USA",
+        "UK",
+        "China",
+        "USSR"
+      ],
+      "ans": 3,
+      "exp": "The Soviet Union (USSR) launched the world's first artificial satellite, Sputnik 1, on 4 October 1957. This event marked the beginning of the Space Age."
+    },
+    {
+      "id": 6,
+      "q": "The full form of AI in technology is?",
+      "opts": [
+        "Automatic Intelligence",
+        "Artificial Intelligence",
+        "Advanced Intelligence",
+        "Applied Intelligence"
+      ],
+      "ans": 1,
+      "exp": "AI stands for Artificial Intelligence. It refers to the simulation of human intelligence processes by computer systems, including learning, reasoning, and self-correction."
+    },
+    {
+      "id": 7,
+      "q": "Wi-Fi technology uses which type of waves?",
+      "opts": [
+        "Infrared waves",
+        "Radio waves",
+        "Ultrasonic waves",
+        "Microwave"
+      ],
+      "ans": 1,
+      "exp": "Wi-Fi uses radio waves (typically 2.4 GHz and 5 GHz frequencies) to transmit data wirelessly. It is based on the IEEE 802.11 standards and allows devices to connect to the internet wirelessly."
+    },
+    {
+      "id": 8,
+      "q": "The silicon chip was invented by?",
+      "opts": [
+        "Jack Kilby",
+        "Robert Noyce",
+        "Gordon Moore",
+        "Andy Grove"
+      ],
+      "ans": 0,
+      "exp": "Jack Kilby of Texas Instruments invented the integrated circuit (silicon chip) in 1958. He was awarded the Nobel Prize in Physics in 2000 for this invention."
+    },
+    {
+      "id": 9,
+      "q": "The first successful heart transplant was performed by?",
+      "opts": [
+        "Dr. Charles Drew",
+        "Dr. Christiaan Barnard",
+        "Dr. Joseph Murray",
+        "Dr. Michael DeBakey"
+      ],
+      "ans": 1,
+      "exp": "Dr. Christiaan Barnard performed the world's first successful human heart transplant on 3 December 1967 at Groote Schuur Hospital in Cape Town, South Africa."
+    },
+    {
+      "id": 10,
+      "q": "5G technology primarily uses which frequency band?",
+      "opts": [
+        "700 MHz",
+        "2.4 GHz",
+        "Sub-6 GHz and mmWave",
+        "3.5 GHz only"
+      ],
+      "ans": 2,
+      "exp": "5G technology uses multiple frequency bands including Sub-6 GHz (for wider coverage) and millimeter wave (mmWave) bands (24-100 GHz, for extremely high speeds). It offers speeds up to 100 times faster than 4G."
+    }
+  ]
+}

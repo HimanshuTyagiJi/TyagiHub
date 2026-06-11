@@ -1,0 +1,128 @@
+{
+  "title": "International Relations",
+  "title_hi": "अंतरराष्ट्रीय संबंध",
+  "icon": "🌏",
+  "slug": "international-relations",
+  "questions": [
+    {
+      "id": 1,
+      "q": "India's foreign policy is based on the principle of?",
+      "opts": [
+        "Non-violence",
+        "Panchsheel",
+        "Democracy",
+        "Secularism"
+      ],
+      "ans": 1,
+      "exp": "India's foreign policy is based on Panchsheel (Five Principles of Peaceful Coexistence), articulated by PM Nehru and China's Zhou Enlai in 1954: mutual respect, non-aggression, non-interference, equality, and peaceful coexistence."
+    },
+    {
+      "id": 2,
+      "q": "BRICS is a grouping of which countries?",
+      "opts": [
+        "Brazil, Russia, India, China, South Africa",
+        "Britain, Russia, Italy, Canada, Spain",
+        "Brazil, Romania, India, China, Sudan",
+        "Bangladesh, Russia, India, China, South Africa"
+      ],
+      "ans": 0,
+      "exp": "BRICS is a grouping of Brazil, Russia, India, China, and South Africa. These are major emerging economies. In 2024, BRICS expanded to include Egypt, Ethiopia, Iran, Saudi Arabia, and UAE."
+    },
+    {
+      "id": 3,
+      "q": "The term 'Cold War' refers to?",
+      "opts": [
+        "War fought in cold regions",
+        "Political tension without direct military conflict",
+        "Economic sanctions",
+        "Cultural warfare"
+      ],
+      "ans": 1,
+      "exp": "The Cold War (1947–1991) was a geopolitical tension between the USA and Soviet Union, involving political, economic, and military rivalry without direct armed conflict between the two superpowers."
+    },
+    {
+      "id": 4,
+      "q": "The Non-Aligned Movement was founded in?",
+      "opts": [
+        "1954",
+        "1961",
+        "1965",
+        "1971"
+      ],
+      "ans": 1,
+      "exp": "The Non-Aligned Movement was founded in 1961 in Belgrade. India's PM Nehru, Egypt's Nasser, and Yugoslavia's Tito were key founders. It allowed developing nations to avoid aligning with either the USA or USSR during the Cold War."
+    },
+    {
+      "id": 5,
+      "q": "India became a permanent observer at the Arctic Council in?",
+      "opts": [
+        "2009",
+        "2012",
+        "2013",
+        "2015"
+      ],
+      "ans": 2,
+      "exp": "India became an observer state at the Arctic Council in 2013. The Arctic Council is an intergovernmental forum promoting cooperation in the Arctic region."
+    },
+    {
+      "id": 6,
+      "q": "The Indus Waters Treaty was signed between India and?",
+      "opts": [
+        "Bangladesh",
+        "Nepal",
+        "Pakistan",
+        "China"
+      ],
+      "ans": 2,
+      "exp": "The Indus Waters Treaty was signed on 19 September 1960 between India and Pakistan, brokered by the World Bank. It allocates 3 eastern rivers to India and 3 western rivers to Pakistan."
+    },
+    {
+      "id": 7,
+      "q": "India's 'Act East Policy' focuses on engagement with?",
+      "opts": [
+        "Middle East",
+        "Southeast Asia and East Asia",
+        "Africa",
+        "Europe"
+      ],
+      "ans": 1,
+      "exp": "India's 'Act East Policy' (formerly Look East Policy) focuses on economic, strategic, and cultural engagement with Southeast Asian and East Asian countries. It was revived and renamed by PM Modi in 2014."
+    },
+    {
+      "id": 8,
+      "q": "The Simla Agreement (1972) was signed between India and?",
+      "opts": [
+        "China",
+        "Nepal",
+        "Bangladesh",
+        "Pakistan"
+      ],
+      "ans": 3,
+      "exp": "The Simla Agreement was signed on 2 July 1972 between Indian PM Indira Gandhi and Pakistani PM Zulfikar Ali Bhutto, following the 1971 war. It established the Line of Control in Jammu & Kashmir."
+    },
+    {
+      "id": 9,
+      "q": "India is a founding member of which organization?",
+      "opts": [
+        "WTO",
+        "SAARC",
+        "NAM",
+        "G7"
+      ],
+      "ans": 2,
+      "exp": "India is a founding member of the Non-Aligned Movement (NAM), established in 1961. India played a key role in articulating the philosophy of non-alignment through PM Nehru."
+    },
+    {
+      "id": 10,
+      "q": "The Quad (Quadrilateral Security Dialogue) comprises?",
+      "opts": [
+        "USA, India, Australia, Japan",
+        "USA, UK, Australia, Canada",
+        "USA, India, China, Japan",
+        "USA, India, Australia, South Korea"
+      ],
+      "ans": 0,
+      "exp": "The Quad comprises the United States, India, Australia, and Japan. It is an informal strategic dialogue focused on maintaining a free and open Indo-Pacific region, particularly in response to China's growing influence."
+    }
+  ]
+}

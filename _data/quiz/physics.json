@@ -1,0 +1,128 @@
+{
+  "title": "Physics",
+  "title_hi": "भौतिकी",
+  "icon": "⚡",
+  "slug": "physics",
+  "questions": [
+    {
+      "id": 1,
+      "q": "What is the SI unit of force?",
+      "opts": [
+        "Watt",
+        "Joule",
+        "Newton",
+        "Pascal"
+      ],
+      "ans": 2,
+      "exp": "The SI unit of force is Newton (N), named after Sir Isaac Newton. 1 Newton is the force needed to accelerate a 1 kg mass at 1 m/s²."
+    },
+    {
+      "id": 2,
+      "q": "The speed of light in vacuum is approximately?",
+      "opts": [
+        "3 × 10⁶ m/s",
+        "3 × 10⁸ m/s",
+        "3 × 10¹⁰ m/s",
+        "3 × 10¹² m/s"
+      ],
+      "ans": 1,
+      "exp": "The speed of light in vacuum is approximately 3 × 10⁸ m/s (299,792,458 m/s exactly). It is denoted by 'c' and is a fundamental constant of nature."
+    },
+    {
+      "id": 3,
+      "q": "Who proposed the theory of relativity?",
+      "opts": [
+        "Isaac Newton",
+        "Niels Bohr",
+        "Albert Einstein",
+        "Max Planck"
+      ],
+      "ans": 2,
+      "exp": "Albert Einstein proposed the Special Theory of Relativity in 1905 and the General Theory of Relativity in 1915. These theories revolutionized our understanding of space, time, and gravity."
+    },
+    {
+      "id": 4,
+      "q": "The unit of electrical resistance is?",
+      "opts": [
+        "Ampere",
+        "Volt",
+        "Watt",
+        "Ohm"
+      ],
+      "ans": 3,
+      "exp": "The SI unit of electrical resistance is the Ohm (Ω), named after German physicist Georg Ohm. Ohm's Law states that V = IR, where V is voltage, I is current, and R is resistance."
+    },
+    {
+      "id": 5,
+      "q": "Which law states 'For every action there is an equal and opposite reaction'?",
+      "opts": [
+        "Newton's First Law",
+        "Newton's Second Law",
+        "Newton's Third Law",
+        "Law of Gravitation"
+      ],
+      "ans": 2,
+      "exp": "Newton's Third Law of Motion states that for every action, there is an equal and opposite reaction. This is why rockets propel forward when gases are expelled backward."
+    },
+    {
+      "id": 6,
+      "q": "What is the unit of power?",
+      "opts": [
+        "Joule",
+        "Newton",
+        "Watt",
+        "Pascal"
+      ],
+      "ans": 2,
+      "exp": "The SI unit of power is the Watt (W), named after James Watt. Power is the rate at which work is done. 1 Watt = 1 Joule per second."
+    },
+    {
+      "id": 7,
+      "q": "Sonar uses which type of waves?",
+      "opts": [
+        "Light waves",
+        "Radio waves",
+        "Ultrasonic waves",
+        "Infrared waves"
+      ],
+      "ans": 2,
+      "exp": "Sonar (Sound Navigation and Ranging) uses ultrasonic waves (sound waves with frequency above 20,000 Hz) to detect underwater objects. It is used in submarines and by marine animals like dolphins and bats."
+    },
+    {
+      "id": 8,
+      "q": "The phenomenon of light bending around obstacles is called?",
+      "opts": [
+        "Refraction",
+        "Reflection",
+        "Diffraction",
+        "Dispersion"
+      ],
+      "ans": 2,
+      "exp": "Diffraction is the bending of light waves around the edges of an obstacle or through a slit. It demonstrates the wave nature of light."
+    },
+    {
+      "id": 9,
+      "q": "Which physicist discovered the electron?",
+      "opts": [
+        "Rutherford",
+        "J.J. Thomson",
+        "Bohr",
+        "Chadwick"
+      ],
+      "ans": 1,
+      "exp": "J.J. Thomson discovered the electron in 1897 through his cathode ray tube experiments. He received the Nobel Prize in Physics in 1906 for this discovery."
+    },
+    {
+      "id": 10,
+      "q": "The freezing point of water in Kelvin scale is?",
+      "opts": [
+        "0 K",
+        "100 K",
+        "273 K",
+        "373 K"
+      ],
+      "ans": 2,
+      "exp": "The freezing point of water is 273.15 K (approximately 273 K) on the Kelvin scale. The Kelvin scale starts at absolute zero (0 K = -273.15°C), where all molecular motion stops."
+    }
+  ]
+}

@@ -1,0 +1,128 @@
+{
+  "title": "Sanskrit",
+  "title_hi": "संस्कृत",
+  "icon": "📜",
+  "slug": "sanskrit",
+  "questions": [
+    {
+      "id": 1,
+      "q": "Sanskrit belongs to which language family?",
+      "opts": [
+        "Dravidian",
+        "Indo-European",
+        "Sino-Tibetan",
+        "Austroasiatic"
+      ],
+      "ans": 1,
+      "exp": "Sanskrit belongs to the Indo-European language family, specifically the Indo-Iranian branch. It is one of the oldest Indo-European languages and the liturgical language of Hinduism, Buddhism, and Jainism."
+    },
+    {
+      "id": 2,
+      "q": "The oldest text written in Sanskrit is?",
+      "opts": [
+        "Mahabharata",
+        "Ramayana",
+        "Rig Veda",
+        "Upanishads"
+      ],
+      "ans": 2,
+      "exp": "The Rig Veda is the oldest text written in Sanskrit, dating back to approximately 1500–1200 BCE. It contains 1028 hymns dedicated to various deities."
+    },
+    {
+      "id": 3,
+      "q": "'Satyameva Jayate' is taken from which Sanskrit text?",
+      "opts": [
+        "Rig Veda",
+        "Mundaka Upanishad",
+        "Bhagavad Gita",
+        "Arthashastra"
+      ],
+      "ans": 1,
+      "exp": "'Satyameva Jayate' (Truth alone triumphs) is taken from the Mundaka Upanishad. It is the national motto of India and is inscribed on the national emblem."
+    },
+    {
+      "id": 4,
+      "q": "Who is considered the greatest Sanskrit grammarian?",
+      "opts": [
+        "Kalidasa",
+        "Valmiki",
+        "Panini",
+        "Patanjali"
+      ],
+      "ans": 2,
+      "exp": "Panini (c. 4th century BCE) is considered the greatest Sanskrit grammarian. His work Ashtadhyayi contains 3,959 rules of Sanskrit morphology, syntax, and semantics."
+    },
+    {
+      "id": 5,
+      "q": "The Bhagavad Gita is part of which epic?",
+      "opts": [
+        "Ramayana",
+        "Mahabharata",
+        "Rigveda",
+        "Puranas"
+      ],
+      "ans": 1,
+      "exp": "The Bhagavad Gita is part of the Mahabharata, specifically the Bhishma Parva (chapters 23–40). It contains the conversation between Prince Arjuna and Lord Krishna before the Kurukshetra War."
+    },
+    {
+      "id": 6,
+      "q": "What does the Sanskrit word 'Yoga' mean?",
+      "opts": [
+        "Exercise",
+        "Union",
+        "Meditation",
+        "Breathing"
+      ],
+      "ans": 1,
+      "exp": "The Sanskrit word 'Yoga' means 'union' or 'to yoke'. It refers to the union of individual consciousness with universal consciousness. It encompasses physical, mental, and spiritual practices."
+    },
+    {
+      "id": 7,
+      "q": "Which Sanskrit poet wrote 'Meghaduta' and 'Shakuntala'?",
+      "opts": [
+        "Valmiki",
+        "Vyasa",
+        "Kalidasa",
+        "Bhavabhuti"
+      ],
+      "ans": 2,
+      "exp": "Kalidasa is considered the greatest poet and playwright in Sanskrit literature. His famous works include Meghaduta (cloud messenger), Shakuntala (a play), and Raghuvamsha (an epic poem)."
+    },
+    {
+      "id": 8,
+      "q": "The word 'Namaste' in Sanskrit means?",
+      "opts": [
+        "Hello",
+        "I bow to the divine in you",
+        "Goodbye",
+        "Thank you"
+      ],
+      "ans": 1,
+      "exp": "'Namaste' is derived from Sanskrit: 'Namas' (bow, obeisance) + 'Te' (to you). It means 'I bow to the divine in you' or 'The divine in me recognizes the divine in you'."
+    },
+    {
+      "id": 9,
+      "q": "How many letters are in the Sanskrit alphabet?",
+      "opts": [
+        "26",
+        "36",
+        "48",
+        "52"
+      ],
+      "ans": 2,
+      "exp": "The Sanskrit alphabet (Devanagari) has 48 letters (some sources say 46 or 52). It consists of 13 vowels and 35 consonants, arranged scientifically according to phonetics."
+    },
+    {
+      "id": 10,
+      "q": "The word 'Veda' in Sanskrit means?",
+      "opts": [
+        "Prayer",
+        "Knowledge",
+        "Wisdom",
+        "God"
+      ],
+      "ans": 1,
+      "exp": "The word 'Veda' comes from the Sanskrit root 'vid' meaning 'to know'. Thus, Veda means 'knowledge' or 'wisdom'. The four Vedas (Rig, Sama, Yajur, Atharva) are considered revealed scriptures."
+    }
+  ]
+}

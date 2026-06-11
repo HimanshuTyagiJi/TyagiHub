@@ -1,0 +1,1546 @@
+---
+layout: default
+title: "Image Converter — Free Universal Online Tool | TyagiHub"
+description: "Convert images between PNG, JPG, WEBP, AVIF, GIF, BMP, ICO, TIFF, SVG, and 50+ formats. Paste HTML/SVG/XML, batch convert, quality control, resize, EXIF removal — 100% in your browser."
+keywords: "image converter, png to jpg, webp converter, avif converter, batch image convert, svg converter, online image tool, TyagiHub"
+lang: en
+---
+
+<style>
+/* ════════════════════════════════════════════
+   TyagiHub Image Converter — v2.0
+   Design System Variables
+════════════════════════════════════════════ */
+:root {
+  --ic-accent:    #f5a623;
+  --ic-accent2:   #e8431a;
+  --ic-green:     #34d399;
+  --ic-blue:      #60a5fa;
+  --ic-purple:    #a78bfa;
+  --ic-red:       #f87171;
+  --ic-yellow:    #fbbf24;
+  --ic-surface:   #1a1d2e;
+  --ic-surf2:     #242740;
+  --ic-surf3:     #2d3154;
+  --ic-border:    rgba(255,255,255,0.08);
+  --ic-bord2:     rgba(255,255,255,0.13);
+  --ic-text:      #c8cde0;
+  --ic-head:      #eef0fa;
+  --ic-muted:     #5a6080;
+  --ic-bg:        #0f1117;
+  --ic-radius:    14px;
+  --ic-font:      'Segoe UI', system-ui, -apple-system, sans-serif;
+  --ic-mono:      'Courier New', 'Consolas', monospace;
+  --ic-shadow:    0 4px 24px rgba(0,0,0,0.35);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+.ic-wrap {
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 2.5rem 1.25rem 6rem;
+  font-family: var(--ic-font);
+  color: var(--ic-text);
+}
+
+/* ── Hero Header ── */
+.ic-hero {
+  margin-bottom: 2.5rem;
+  position: relative;
+}
+.ic-badge {
+  display: inline-flex; align-items: center; gap: 6px;
+  background: rgba(245,166,35,0.1); border: 1px solid rgba(245,166,35,0.25);
+  color: var(--ic-accent); font-size: 0.7rem; font-weight: 700;
+  padding: 4px 14px; border-radius: 100px; margin-bottom: 1.1rem;
+  letter-spacing: 0.1em; text-transform: uppercase;
+}
+.ic-badge svg { width: 11px; height: 11px; fill: none; stroke: currentColor; stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; }
+
+.ic-hero h1 {
+  font-size: clamp(1.75rem, 4.5vw, 2.8rem); font-weight: 900;
+  color: var(--ic-head); letter-spacing: -0.04em; line-height: 1.1;
+  margin-bottom: 0.9rem;
+}
+.ic-hero h1 em {
+  font-style: normal;
+  background: linear-gradient(135deg, var(--ic-accent) 0%, var(--ic-accent2) 100%);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+}
+.ic-hero-sub {
+  font-size: 0.92rem; color: var(--ic-text); line-height: 1.85; max-width: 660px;
+  margin-bottom: 1.5rem;
+}
+.ic-hero-pills {
+  display: flex; flex-wrap: wrap; gap: 0.5rem;
+}
+.ic-hero-pill {
+  font-size: 0.72rem; font-weight: 700; padding: 4px 12px; border-radius: 100px;
+  border: 1px solid var(--ic-border); color: var(--ic-muted); background: var(--ic-surf2);
+  letter-spacing: 0.04em; text-transform: uppercase;
+}
+.ic-hero-pill.hi { border-color: rgba(52,211,153,0.3); color: var(--ic-green); background: rgba(52,211,153,0.06); }
+.ic-hero-pill.mid { border-color: rgba(96,165,250,0.3); color: var(--ic-blue); background: rgba(96,165,250,0.06); }
+.ic-hero-pill.new { border-color: rgba(167,139,250,0.3); color: var(--ic-purple); background: rgba(167,139,250,0.06); }
+
+/* ── Card ── */
+.ic-card {
+  background: var(--ic-surface); border: 1px solid var(--ic-border);
+  border-radius: var(--ic-radius); padding: 1.5rem; margin-bottom: 1.25rem;
+  transition: border-color 0.2s;
+}
+.ic-card-title {
+  font-size: 0.7rem; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 0.12em; color: var(--ic-muted); margin-bottom: 1.25rem;
+  display: flex; align-items: center; gap: 8px;
+}
+.ic-card-title::before {
+  content: ''; width: 3px; height: 14px; flex-shrink: 0; border-radius: 99px;
+  background: linear-gradient(180deg, var(--ic-accent), var(--ic-accent2));
+}
+
+/* ── Source Tabs ── */
+.ic-tabs {
+  display: flex; gap: 0; border-radius: 10px; overflow: hidden;
+  border: 1px solid var(--ic-bord2); margin-bottom: 1.25rem; width: fit-content;
+}
+.ic-tab {
+  padding: 8px 18px; font-size: 0.8rem; font-weight: 700; cursor: pointer;
+  background: var(--ic-surf2); color: var(--ic-muted); border: none;
+  font-family: var(--ic-font); transition: all 0.18s; white-space: nowrap;
+  display: flex; align-items: center; gap: 6px;
+  border-right: 1px solid var(--ic-bord2);
+}
+.ic-tab:last-child { border-right: none; }
+.ic-tab svg { width: 13px; height: 13px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.ic-tab:hover { color: var(--ic-text); background: var(--ic-surf3); }
+.ic-tab.active { background: linear-gradient(135deg, rgba(245,166,35,0.18), rgba(232,67,26,0.12)); color: var(--ic-accent); border-bottom: none; }
+
+.ic-tab-panel { display: none; }
+.ic-tab-panel.active { display: block; }
+
+/* ── Dropzone ── */
+.ic-dropzone {
+  border: 2px dashed var(--ic-bord2); border-radius: var(--ic-radius);
+  padding: 2.8rem 2rem; text-align: center; cursor: pointer;
+  transition: all 0.22s; background: var(--ic-surf2);
+  position: relative; overflow: hidden;
+}
+.ic-dropzone:hover, .ic-dropzone.dragover {
+  border-color: var(--ic-accent); background: rgba(245,166,35,0.04);
+  transform: scale(1.005);
+}
+.ic-dz-icon {
+  width: 54px; height: 54px; margin: 0 auto 1.1rem;
+  background: rgba(245,166,35,0.1); border: 1px solid rgba(245,166,35,0.22);
+  border-radius: 14px; display: flex; align-items: center; justify-content: center;
+}
+.ic-dz-icon svg { width: 26px; height: 26px; stroke: var(--ic-accent); fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+.ic-dz-title { font-size: 1rem; font-weight: 800; color: var(--ic-head); margin-bottom: 0.4rem; }
+.ic-dz-sub { font-size: 0.81rem; color: var(--ic-muted); line-height: 1.7; margin-bottom: 1.2rem; }
+
+/* Format chips in dropzone */
+.ic-dz-fmt-row {
+  display: flex; flex-wrap: wrap; gap: 4px; justify-content: center; margin-bottom: 1.2rem;
+}
+.ic-fmt-chip {
+  font-size: 0.65rem; font-weight: 700; padding: 2px 8px; border-radius: 100px;
+  border: 1px solid var(--ic-border); color: var(--ic-muted); background: var(--ic-surface);
+  letter-spacing: 0.04em; text-transform: uppercase;
+}
+.ic-fmt-chip.a { border-color: rgba(96,165,250,0.3); color: var(--ic-blue); }
+.ic-fmt-chip.b { border-color: rgba(52,211,153,0.3); color: var(--ic-green); }
+.ic-fmt-chip.c { border-color: rgba(167,139,250,0.3); color: var(--ic-purple); }
+
+/* ── Code / Paste Panel ── */
+.ic-code-panel {
+  background: var(--ic-surf2); border: 1px solid var(--ic-bord2);
+  border-radius: var(--ic-radius); overflow: hidden;
+}
+.ic-code-top {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 10px 14px; border-bottom: 1px solid var(--ic-border);
+  background: var(--ic-surf3);
+}
+.ic-code-lang {
+  display: flex; gap: 0.4rem;
+}
+.ic-lang-btn {
+  font-size: 0.72rem; font-weight: 700; padding: 4px 11px; border-radius: 7px;
+  border: 1px solid var(--ic-border); background: transparent; color: var(--ic-muted);
+  cursor: pointer; font-family: var(--ic-font); transition: all 0.15s;
+}
+.ic-lang-btn:hover { color: var(--ic-text); border-color: var(--ic-bord2); }
+.ic-lang-btn.active { background: rgba(245,166,35,0.12); border-color: rgba(245,166,35,0.3); color: var(--ic-accent); }
+.ic-code-textarea {
+  width: 100%; min-height: 200px; background: transparent; border: none;
+  color: var(--ic-green); font-family: var(--ic-mono); font-size: 0.82rem;
+  line-height: 1.7; padding: 1rem; outline: none; resize: vertical;
+}
+.ic-code-textarea::placeholder { color: var(--ic-muted); }
+.ic-code-actions {
+  display: flex; gap: 0.6rem; padding: 10px 14px; border-top: 1px solid var(--ic-border);
+  background: var(--ic-surf3); flex-wrap: wrap;
+}
+
+/* ── URL Panel ── */
+.ic-url-row {
+  display: flex; gap: 0.6rem; align-items: stretch;
+}
+.ic-url-input {
+  flex: 1; background: var(--ic-surf2); border: 1px solid var(--ic-bord2);
+  border-radius: 9px; padding: 10px 14px; color: var(--ic-head);
+  font-family: var(--ic-font); font-size: 0.85rem; outline: none;
+  transition: border-color 0.18s;
+}
+.ic-url-input:focus { border-color: var(--ic-accent); }
+.ic-url-input::placeholder { color: var(--ic-muted); }
+
+/* ── Buttons ── */
+.ic-btn {
+  padding: 9px 20px; border-radius: 10px; border: none;
+  cursor: pointer; font-family: var(--ic-font); font-size: 0.83rem; font-weight: 700;
+  display: inline-flex; align-items: center; gap: 7px; transition: all 0.18s;
+  white-space: nowrap; line-height: 1;
+}
+.ic-btn svg { width: 14px; height: 14px; stroke: currentColor; fill: none; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; flex-shrink: 0; }
+.ic-btn.primary {
+  background: linear-gradient(135deg, var(--ic-accent), var(--ic-accent2));
+  color: #000; box-shadow: 0 4px 18px rgba(245,166,35,0.25);
+}
+.ic-btn.primary svg { stroke: #000; }
+.ic-btn.primary:hover { transform: translateY(-1px); box-shadow: 0 8px 28px rgba(245,166,35,0.38); }
+.ic-btn.secondary {
+  background: var(--ic-surf2); border: 1px solid var(--ic-bord2); color: var(--ic-text);
+}
+.ic-btn.secondary:hover { border-color: var(--ic-accent); color: var(--ic-accent); background: rgba(245,166,35,0.06); }
+.ic-btn.success {
+  background: rgba(52,211,153,0.1); border: 1px solid rgba(52,211,153,0.28); color: var(--ic-green);
+}
+.ic-btn.success:hover { background: rgba(52,211,153,0.2); color: #fff; }
+.ic-btn.danger {
+  background: var(--ic-surf2); border: 1px solid var(--ic-bord2); color: var(--ic-muted);
+}
+.ic-btn.danger:hover { border-color: var(--ic-red); color: var(--ic-red); background: rgba(248,113,113,0.06); }
+.ic-btn:disabled { opacity: 0.4; cursor: not-allowed; transform: none !important; box-shadow: none !important; }
+
+/* ── Global Settings ── */
+.ic-settings-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.85rem;
+}
+@media(max-width:700px) { .ic-settings-grid { grid-template-columns: 1fr 1fr; } }
+@media(max-width:440px) { .ic-settings-grid { grid-template-columns: 1fr; } }
+
+.ic-field-label {
+  font-size: 0.7rem; font-weight: 700; color: var(--ic-muted);
+  text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 5px;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.ic-field-label span { color: var(--ic-accent); font-family: var(--ic-mono); }
+
+.ic-select {
+  width: 100%; background: var(--ic-surf2); border: 1px solid var(--ic-bord2);
+  border-radius: 9px; padding: 9px 32px 9px 11px; color: var(--ic-head);
+  font-family: var(--ic-font); font-size: 0.83rem; outline: none;
+  transition: border-color 0.18s; appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='11' height='11' viewBox='0 0 24 24' fill='none' stroke='%235a6080' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+  background-repeat: no-repeat; background-position: right 10px center; cursor: pointer;
+}
+.ic-select:focus { border-color: var(--ic-accent); }
+.ic-select option {
+  background: #1a1d2e !important;
+  color: #eef0fa !important;
+}
+.ic-select optgroup {
+  background: #0f1117 !important;
+  color: #f5a623 !important;
+  font-weight: 700;
+}
+/* Chrome/Edge fix — force option colors */
+.ic-select option:hover,
+.ic-select option:focus,
+.ic-select option:checked {
+  background: #f5a623 !important;
+  color: #000 !important;
+}
+[data-theme="light"] .ic-select option { background: #ffffff !important; color: #1a2030 !important; }
+[data-theme="light"] .ic-select optgroup { background: #f5f7fa !important; color: #8892aa !important; }
+
+.ic-range {
+  width: 100%; height: 4px; border-radius: 99px;
+  background: var(--ic-surf3); outline: none; cursor: pointer;
+  -webkit-appearance: none; appearance: none; margin-top: 6px;
+}
+.ic-range::-webkit-slider-thumb {
+  -webkit-appearance: none; width: 16px; height: 16px; border-radius: 50%;
+  background: var(--ic-accent); cursor: pointer; border: 2px solid var(--ic-surface);
+  box-shadow: 0 0 0 2px rgba(245,166,35,0.3);
+}
+.ic-range::-moz-range-thumb {
+  width: 16px; height: 16px; border-radius: 50%; border: 2px solid var(--ic-surface);
+  background: var(--ic-accent); cursor: pointer;
+}
+
+.ic-input {
+  width: 100%; background: var(--ic-surf2); border: 1px solid var(--ic-bord2);
+  border-radius: 9px; padding: 9px 11px; color: var(--ic-head);
+  font-family: var(--ic-font); font-size: 0.83rem; outline: none;
+  transition: border-color 0.18s;
+}
+.ic-input:focus { border-color: var(--ic-accent); }
+.ic-input::placeholder { color: var(--ic-muted); }
+
+/* ── Toggle ── */
+.ic-toggle-row {
+  display: flex; align-items: center; justify-content: space-between;
+  background: var(--ic-surf2); border: 1px solid var(--ic-bord2);
+  border-radius: 9px; padding: 9px 12px; gap: 8px; cursor: pointer;
+  transition: border-color 0.18s;
+}
+.ic-toggle-row:hover { border-color: var(--ic-bord2); }
+.ic-toggle-label { font-size: 0.79rem; color: var(--ic-text); line-height: 1.35; }
+.ic-toggle { position: relative; width: 36px; height: 20px; flex-shrink: 0; }
+.ic-toggle input { opacity: 0; width: 0; height: 0; }
+.ic-toggle-track {
+  position: absolute; inset: 0; border-radius: 99px;
+  background: var(--ic-surf3); cursor: pointer; transition: background 0.2s;
+}
+.ic-toggle input:checked ~ .ic-toggle-track { background: var(--ic-accent); }
+.ic-toggle-track::before {
+  content: ''; position: absolute; width: 14px; height: 14px;
+  border-radius: 50%; background: #fff; top: 3px; left: 3px;
+  transition: transform 0.2s;
+}
+.ic-toggle input:checked ~ .ic-toggle-track::before { transform: translateX(16px); }
+
+/* ── Presets ── */
+.ic-presets {
+  display: flex; gap: 0.5rem; flex-wrap: wrap; align-items: center; margin-bottom: 1rem;
+}
+.ic-presets-label {
+  font-size: 0.7rem; font-weight: 700; color: var(--ic-muted);
+  text-transform: uppercase; letter-spacing: 0.08em;
+}
+.ic-preset-btn {
+  font-size: 0.74rem; font-weight: 700; padding: 5px 13px;
+  border-radius: 8px; border: 1px solid var(--ic-border);
+  background: var(--ic-surf2); color: var(--ic-text);
+  cursor: pointer; transition: all 0.15s; font-family: var(--ic-font);
+}
+.ic-preset-btn:hover { border-color: var(--ic-accent); color: var(--ic-accent); background: rgba(245,166,35,0.06); }
+
+/* ── Action Bar ── */
+.ic-action-bar {
+  display: flex; align-items: center; gap: 0.65rem; flex-wrap: wrap;
+  margin-top: 1.1rem; padding-top: 1.1rem;
+  border-top: 1px solid var(--ic-border);
+}
+.ic-spacer { flex: 1 1 auto; }
+.ic-stats-row {
+  display: flex; gap: 1.1rem; flex-wrap: wrap;
+  font-size: 0.73rem; color: var(--ic-muted);
+}
+.ic-stat { display: flex; align-items: center; gap: 4px; }
+.ic-stat strong { color: var(--ic-accent); font-family: var(--ic-mono); font-size: 0.78rem; }
+
+/* ── Queue ── */
+.ic-queue-header {
+  display: flex; align-items: center; justify-content: space-between;
+  margin-bottom: 0.85rem; flex-wrap: wrap; gap: 8px;
+}
+.ic-queue-count { font-size: 0.78rem; color: var(--ic-muted); }
+.ic-queue-count strong { color: var(--ic-accent); }
+
+.ic-img-card {
+  background: var(--ic-surf2); border: 1px solid var(--ic-bord2);
+  border-radius: 12px; margin-bottom: 0.7rem; overflow: hidden;
+  transition: border-color 0.2s; animation: fadeUp 0.22s ease;
+}
+.ic-img-card:hover { border-color: rgba(245,166,35,0.2); }
+.ic-img-card.status-done { border-color: rgba(52,211,153,0.3); }
+.ic-img-card.status-error { border-color: rgba(248,113,113,0.3); }
+.ic-img-card.status-processing { border-color: rgba(96,165,250,0.3); }
+
+.ic-img-top {
+  display: grid; grid-template-columns: 70px 1fr auto;
+  align-items: stretch;
+}
+@media(max-width:520px) { .ic-img-top { grid-template-columns: 58px 1fr auto; } }
+
+.ic-img-thumb {
+  width: 70px; height: 70px; object-fit: cover; display: block;
+  background: var(--ic-surf3);
+}
+@media(max-width:520px) { .ic-img-thumb { width: 58px; height: 58px; } }
+.ic-img-thumb-fallback {
+  width: 70px; height: 70px; display: none; align-items: center; justify-content: center;
+  background: var(--ic-surf3); font-size: 1.6rem; color: var(--ic-muted);
+}
+@media(max-width:520px) { .ic-img-thumb-fallback { width: 58px; height: 58px; } }
+
+.ic-img-meta { padding: 10px 13px; flex: 1; min-width: 0; }
+.ic-img-name {
+  font-size: 0.83rem; font-weight: 700; color: var(--ic-head);
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis; margin-bottom: 2px;
+}
+.ic-img-info { font-size: 0.71rem; color: var(--ic-muted); margin-bottom: 7px; }
+.ic-img-badges { display: flex; gap: 5px; flex-wrap: wrap; align-items: center; }
+
+.ic-pill {
+  font-size: 0.63rem; font-weight: 700; padding: 2px 8px; border-radius: 100px;
+  border: 1px solid var(--ic-border); color: var(--ic-muted); text-transform: uppercase; letter-spacing: 0.05em;
+}
+.ic-pill.done { border-color: rgba(52,211,153,0.4); color: var(--ic-green); background: rgba(52,211,153,0.07); }
+.ic-pill.error { border-color: rgba(248,113,113,0.4); color: var(--ic-red); background: rgba(248,113,113,0.07); }
+.ic-pill.processing { border-color: rgba(96,165,250,0.4); color: var(--ic-blue); background: rgba(96,165,250,0.07); }
+.ic-pill.queued { color: var(--ic-muted); }
+
+.ic-img-actions {
+  display: flex; flex-direction: column; padding: 6px 7px;
+  align-items: center; justify-content: center; gap: 1px;
+  border-left: 1px solid var(--ic-border);
+}
+.ic-icon-btn {
+  width: 30px; height: 30px; border-radius: 7px; border: none;
+  background: transparent; color: var(--ic-muted); cursor: pointer;
+  display: flex; align-items: center; justify-content: center; transition: all 0.15s;
+}
+.ic-icon-btn svg { width: 14px; height: 14px; stroke: currentColor; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.ic-icon-btn:hover { background: rgba(255,255,255,0.07); color: var(--ic-head); }
+.ic-icon-btn.settings:hover { color: var(--ic-accent); }
+.ic-icon-btn.download:hover { color: var(--ic-green); }
+.ic-icon-btn.remove:hover { color: var(--ic-red); }
+
+/* Progress */
+.ic-prog-wrap { height: 3px; background: var(--ic-surf3); border-radius: 99px; overflow: hidden; margin-top: 4px; display: none; }
+.ic-prog-wrap.visible { display: block; }
+.ic-prog { height: 100%; border-radius: 99px; background: linear-gradient(90deg, var(--ic-accent), var(--ic-accent2)); transition: width 0.3s; width: 0%; }
+.ic-prog.indeterminate { width: 40%; animation: progSlide 1.1s ease-in-out infinite; }
+
+/* Per-card settings */
+.ic-card-settings { padding: 1rem 1rem 1rem; border-top: 1px solid var(--ic-border); display: none; animation: fadeUp 0.18s ease; }
+.ic-card-settings.open { display: block; }
+.ic-card-settings-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.6rem;
+}
+@media(max-width:600px) { .ic-card-settings-grid { grid-template-columns: 1fr 1fr; } }
+@media(max-width:380px) { .ic-card-settings-grid { grid-template-columns: 1fr; } }
+
+/* ── Guide Cards ── */
+.ic-guide-grid {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(240px,1fr));
+  gap: 0.75rem; margin-top: 0.5rem;
+}
+.ic-guide-card {
+  background: var(--ic-surf2); border: 1px solid var(--ic-border);
+  border-radius: 11px; padding: 1.1rem;
+  transition: border-color 0.2s;
+}
+.ic-guide-card:hover { border-color: var(--ic-bord2); }
+.ic-guide-card h4 { font-size: 0.82rem; font-weight: 700; color: var(--ic-head); margin-bottom: 6px; }
+.ic-guide-card p { font-size: 0.78rem; color: var(--ic-text); line-height: 1.72; }
+
+/* ── Privacy ── */
+.ic-privacy {
+  background: rgba(52,211,153,0.05); border: 1px solid rgba(52,211,153,0.17);
+  border-radius: var(--ic-radius); padding: 1rem 1.2rem; margin-top: 1.25rem;
+  font-size: 0.82rem; color: var(--ic-text); line-height: 1.8;
+  display: flex; gap: 0.75rem; align-items: flex-start;
+}
+.ic-privacy svg { width: 18px; height: 18px; stroke: var(--ic-green); fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; flex-shrink: 0; margin-top: 2px; }
+.ic-privacy strong { color: var(--ic-green); display: block; margin-bottom: 3px; }
+
+/* ── Toast ── */
+.ic-toast {
+  position: fixed; bottom: 2rem; left: 50%; transform: translateX(-50%) translateY(80px);
+  background: var(--ic-surf3); border: 1px solid var(--ic-accent);
+  color: var(--ic-head); font-size: 0.83rem; font-weight: 700;
+  padding: 10px 22px; border-radius: 100px; box-shadow: 0 8px 36px rgba(0,0,0,0.45);
+  transition: transform 0.28s cubic-bezier(.4,0,.2,1); z-index: 9999;
+  white-space: nowrap; pointer-events: none;
+}
+.ic-toast.show { transform: translateX(-50%) translateY(0); }
+
+/* ── Empty State ── */
+.ic-empty {
+  text-align: center; padding: 2.5rem 1rem;
+  display: flex; flex-direction: column; align-items: center; gap: 0.75rem;
+}
+.ic-empty-icon {
+  width: 54px; height: 54px; background: var(--ic-surf2); border: 1px solid var(--ic-border);
+  border-radius: 14px; display: flex; align-items: center; justify-content: center;
+}
+.ic-empty-icon svg { width: 24px; height: 24px; stroke: var(--ic-muted); fill: none; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+.ic-empty h3 { font-size: 0.95rem; font-weight: 700; color: var(--ic-head); }
+.ic-empty p { font-size: 0.8rem; color: var(--ic-muted); line-height: 1.7; max-width: 340px; }
+
+/* ── Divider ── */
+.ic-sep { height: 1px; background: var(--ic-border); margin: 1.2rem 0; }
+
+@keyframes fadeUp { from { opacity: 0; transform: translateY(-6px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes progSlide { 0% { transform: translateX(-100%); } 100% { transform: translateX(350%); } }
+
+/* Light mode compat */
+[data-theme="light"] {
+  --ic-surface: #ffffff;
+  --ic-surf2: #f5f7fa;
+  --ic-surf3: #edf0f7;
+  --ic-border: rgba(0,0,0,0.08);
+  --ic-bord2: rgba(0,0,0,0.12);
+  --ic-text: #4a5270;
+  --ic-head: #1a2030;
+  --ic-muted: #8892aa;
+  --ic-bg: #f0f2f8;
+}
+[data-theme="light"] .ic-select,
+[data-theme="light"] .ic-input,
+[data-theme="light"] .ic-url-input { background: #ffffff; }
+[data-theme="light"] .ic-code-textarea { color: #1a7a4a; background: #f8faf8; }
+[data-theme="light"] .ic-fmt-tag:hover { color: var(--ic-accent); }
+</style>
+
+<div class="ic-wrap">
+
+  <!-- ══ HERO ══ -->
+  <div class="ic-hero">
+    <div class="ic-badge">
+      <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+      Image Tools — TyagiHub
+    </div>
+    <h1>Universal Image <em>Converter</em></h1>
+    <p class="ic-hero-sub">
+      Convert any image to any format — directly in your browser. Upload files, paste SVG/HTML/XML code, or load from a URL. Supports 50+ formats including AVIF, WEBP, TIFF, ICO, BMP, and all common web formats. No uploads to any server. Your files never leave your device.
+    </p>
+    <div class="ic-hero-pills">
+      <span class="ic-hero-pill hi">50+ Formats</span>
+      <span class="ic-hero-pill mid">Batch Convert</span>
+      <span class="ic-hero-pill new">SVG / HTML / XML Source</span>
+      <span class="ic-hero-pill hi">Quality Control</span>
+      <span class="ic-hero-pill mid">Resize &amp; Crop</span>
+      <span class="ic-hero-pill">Strip EXIF</span>
+      <span class="ic-hero-pill">ZIP Download</span>
+      <span class="ic-hero-pill">100% Free</span>
+    </div>
+  </div>
+
+  <!-- ══ INPUT CARD ══ -->
+  <div class="ic-card">
+    <div class="ic-card-title">Add Images — Choose a Source</div>
+
+    <div class="ic-tabs">
+      <button class="ic-tab active" onclick="switchTab('file', this)">
+        <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+        Upload Files
+      </button>
+      <button class="ic-tab" onclick="switchTab('code', this)">
+        <svg viewBox="0 0 24 24"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+        Paste Code
+      </button>
+      <button class="ic-tab" onclick="switchTab('url', this)">
+        <svg viewBox="0 0 24 24"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+        From URL
+      </button>
+    </div>
+
+    <!-- File Upload -->
+    <div id="tab-file" class="ic-tab-panel active">
+      <div class="ic-dropzone" id="ic-dropzone"
+        onclick="document.getElementById('ic-file-input').click()"
+        ondragover="dzOver(event)" ondragleave="dzLeave(event)" ondrop="dzDrop(event)"
+        role="button" tabindex="0"
+        onkeydown="if(event.key==='Enter'||event.key===' ')document.getElementById('ic-file-input').click()">
+        <div class="ic-dz-icon">
+          <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+        </div>
+        <div class="ic-dz-title">Drag &amp; Drop Images Here</div>
+        <div class="ic-dz-sub">Click to browse or drop multiple files — all processing stays local</div>
+        <div class="ic-dz-fmt-row">
+          <span class="ic-fmt-chip a">PNG</span>
+          <span class="ic-fmt-chip a">JPG</span>
+          <span class="ic-fmt-chip b">WEBP</span>
+          <span class="ic-fmt-chip b">AVIF</span>
+          <span class="ic-fmt-chip a">GIF</span>
+          <span class="ic-fmt-chip">BMP</span>
+          <span class="ic-fmt-chip c">TIFF</span>
+          <span class="ic-fmt-chip">ICO</span>
+          <span class="ic-fmt-chip b">SVG</span>
+          <span class="ic-fmt-chip c">HEIC</span>
+          <span class="ic-fmt-chip">DNG</span>
+          <span class="ic-fmt-chip a">+ 50 more</span>
+        </div>
+        <button class="ic-btn primary" onclick="event.stopPropagation();document.getElementById('ic-file-input').click()">
+          <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+          Select Images
+        </button>
+      </div>
+      <input type="file" id="ic-file-input" multiple accept="image/*,.svg,.bmp,.ico,.tiff,.tif,.webp,.avif,.heic,.heif" style="display:none" onchange="handleFiles(this.files)">
+    </div>
+
+    <!-- Paste Code -->
+    <div id="tab-code" class="ic-tab-panel">
+      <div class="ic-code-panel">
+        <div class="ic-code-top">
+          <div class="ic-code-lang">
+            <span style="font-size:0.72rem;color:var(--ic-muted);align-self:center;font-weight:700;margin-right:4px;">Language:</span>
+            <button class="ic-lang-btn active" onclick="setLang('svg', this)">SVG</button>
+            <button class="ic-lang-btn" onclick="setLang('html', this)">HTML</button>
+            <button class="ic-lang-btn" onclick="setLang('xml', this)">XML</button>
+            <button class="ic-lang-btn" onclick="setLang('dataurl', this)">Data URL</button>
+            <button class="ic-lang-btn" onclick="setLang('base64', this)">Base64</button>
+          </div>
+          <button class="ic-btn secondary" style="font-size:0.73rem;padding:5px 12px;" onclick="clearCodeArea()">
+            <svg viewBox="0 0 24 24"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/></svg>
+            Clear
+          </button>
+        </div>
+        <textarea class="ic-code-textarea" id="ic-code-area" placeholder="Paste SVG, HTML, XML, Data URL, or Base64 encoded image here…" spellcheck="false"></textarea>
+        <div class="ic-code-actions">
+          <div style="display:flex;flex-direction:column;gap:0.6rem;width:100%;">
+            <div style="display:flex;gap:0.6rem;align-items:center;flex-wrap:wrap;">
+              <div style="display:flex;flex-direction:column;gap:4px;min-width:180px;">
+                <div class="ic-field-label" style="margin-bottom:0;">Convert To</div>
+                <select class="ic-select" id="code-out-format" style="padding:8px 30px 8px 10px;font-size:0.8rem;">
+                  <option value="image/png">PNG — Lossless</option>
+                  <option value="image/jpeg">JPG — Photo</option>
+                  <option value="image/webp">WEBP — Modern</option>
+                  <option value="image/avif">AVIF — Best compression</option>
+                  <option value="image/gif">GIF — Animation</option>
+                  <option value="image/bmp">BMP — Bitmap</option>
+                  <option value="image/x-icon">ICO — Icon/Favicon</option>
+                  <option value="image/tiff">TIFF — Print</option>
+                  <option value="image/svg+xml">SVG — Vector wrapper</option>
+                </select>
+              </div>
+              <div style="display:flex;flex-direction:column;gap:4px;min-width:140px;">
+                <div class="ic-field-label" style="margin-bottom:0;">Quality <span id="code-q-display" style="color:var(--ic-accent);font-family:var(--ic-mono);">90%</span></div>
+                <input type="range" class="ic-range" id="code-quality" min="1" max="100" value="90"
+                  oninput="document.getElementById('code-q-display').textContent=this.value+'%'" style="margin-top:8px;">
+              </div>
+              <div style="display:flex;gap:0.5rem;align-self:flex-end;flex-wrap:wrap;">
+                <button class="ic-btn primary" onclick="loadFromCode()">
+                  <svg viewBox="0 0 24 24"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg>
+                  Add &amp; Convert
+                </button>
+                <button class="ic-btn secondary" onclick="loadSampleSVG()">
+                  <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                  Sample SVG
+                </button>
+              </div>
+            </div>
+            <div style="font-size:0.75rem;color:var(--ic-muted);line-height:1.6;">
+              💡 Paste SVG markup, full HTML page, XML with image data, a <code style="color:var(--ic-green);font-family:var(--ic-mono);">data:image/</code> URL, or raw Base64 string — then pick an output format above and click <strong style="color:var(--ic-accent);">Add &amp; Convert</strong>.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- URL Tab -->
+    <div id="tab-url" class="ic-tab-panel">
+      <p style="font-size:0.82rem;color:var(--ic-muted);margin-bottom:0.9rem;line-height:1.65;">
+        Enter a public image URL to load it into the converter. Due to browser security (CORS), not all URLs will work — try right-clicking an image and copying the image address.
+      </p>
+      <div class="ic-url-row">
+        <input type="url" class="ic-url-input" id="ic-url-input" placeholder="https://example.com/image.png" />
+        <button class="ic-btn primary" onclick="loadFromURL()">
+          <svg viewBox="0 0 24 24"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+          Load Image
+        </button>
+      </div>
+      <p style="font-size:0.75rem;color:var(--ic-muted);margin-top:0.6rem;">
+        ⚠️ Works best with images hosted on CORS-enabled servers. Some CDNs and social media block cross-origin requests.
+      </p>
+    </div>
+  </div>
+
+  <!-- ══ GLOBAL SETTINGS ══ -->
+  <div class="ic-card">
+    <div class="ic-card-title">Conversion Settings</div>
+
+    <div class="ic-presets">
+      <span class="ic-presets-label">Quick Presets:</span>
+      <button class="ic-preset-btn" onclick="applyPreset('web')">🌐 Web</button>
+      <button class="ic-preset-btn" onclick="applyPreset('print')">🖨 Print</button>
+      <button class="ic-preset-btn" onclick="applyPreset('thumb')">🖼 Thumbnail</button>
+      <button class="ic-preset-btn" onclick="applyPreset('lossless')">💎 Lossless</button>
+      <button class="ic-preset-btn" onclick="applyPreset('small')">📦 Min Size</button>
+      <button class="ic-preset-btn" onclick="applyPreset('hd')">🎬 HD 1080p</button>
+      <button class="ic-preset-btn" onclick="applyPreset('favicon')">🏷 Favicon</button>
+      <button class="ic-preset-btn" onclick="applyPreset('social')">📱 Social</button>
+    </div>
+
+    <div class="ic-settings-grid">
+      <div>
+        <div class="ic-field-label">Output Format</div>
+        <select class="ic-select" id="g-format" onchange="syncGlobal()">
+          <option value="">— Keep Original —</option>
+          <optgroup label="── Web Standards ──">
+            <option value="image/png">PNG — Lossless, transparency</option>
+            <option value="image/jpeg">JPG / JPEG — Photos, small size</option>
+            <option value="image/webp">WEBP — Modern, efficient</option>
+            <option value="image/avif">AVIF — Best compression</option>
+            <option value="image/gif">GIF — Animations (256 color)</option>
+          </optgroup>
+          <optgroup label="── Modern Formats ──">
+            <option value="image/bmp">BMP — Uncompressed bitmap</option>
+            <option value="image/x-icon">ICO — Windows icon / favicon</option>
+            <option value="image/tiff">TIFF — Print / archival</option>
+            <option value="image/svg+xml">SVG — Scalable vector (raster→embed)</option>
+          </optgroup>
+        </select>
+      </div>
+
+      <div>
+        <div class="ic-field-label">Quality <span id="g-qdisplay">85%</span></div>
+        <input type="range" class="ic-range" id="g-quality" min="1" max="100" value="85" oninput="document.getElementById('g-qdisplay').textContent=this.value+'%';syncGlobal()">
+      </div>
+
+      <div>
+        <div class="ic-field-label">Max Width (px)</div>
+        <input type="number" class="ic-input" id="g-width" placeholder="Original" min="1" max="16000" oninput="syncGlobal()">
+      </div>
+
+      <div>
+        <div class="ic-field-label">Max Height (px)</div>
+        <input type="number" class="ic-input" id="g-height" placeholder="Original" min="1" max="16000" oninput="syncGlobal()">
+      </div>
+
+      <div>
+        <div class="ic-field-label">BG Color (for JPG/BMP)</div>
+        <input type="color" class="ic-input" id="g-bgcolor" value="#ffffff" style="height:38px;padding:4px 8px;cursor:pointer;" oninput="syncGlobal()">
+      </div>
+
+      <div>
+        <div class="ic-field-label">Sync to All Images</div>
+        <div class="ic-toggle-row">
+          <span class="ic-toggle-label">Apply to all cards</span>
+          <label class="ic-toggle">
+            <input type="checkbox" id="g-apply-all" checked>
+            <span class="ic-toggle-track"></span>
+          </label>
+        </div>
+      </div>
+    </div>
+
+    <div class="ic-sep"></div>
+
+    <div class="ic-settings-grid">
+      <div>
+        <div class="ic-field-label">Aspect Ratio</div>
+        <div class="ic-toggle-row">
+          <span class="ic-toggle-label">Lock proportions</span>
+          <label class="ic-toggle">
+            <input type="checkbox" id="g-aspect" checked>
+            <span class="ic-toggle-track"></span>
+          </label>
+        </div>
+      </div>
+      <div>
+        <div class="ic-field-label">Strip EXIF Metadata</div>
+        <div class="ic-toggle-row">
+          <span class="ic-toggle-label">Remove GPS &amp; camera info</span>
+          <label class="ic-toggle">
+            <input type="checkbox" id="g-exif" checked>
+            <span class="ic-toggle-track"></span>
+          </label>
+        </div>
+      </div>
+      <div>
+        <div class="ic-field-label">Transparency</div>
+        <div class="ic-toggle-row">
+          <span class="ic-toggle-label">Preserve alpha channel</span>
+          <label class="ic-toggle">
+            <input type="checkbox" id="g-transparency" checked>
+            <span class="ic-toggle-track"></span>
+          </label>
+        </div>
+      </div>
+    </div>
+
+    <!-- Action Bar -->
+    <div class="ic-action-bar" id="ic-action-bar" style="display:none">
+      <div class="ic-stats-row" id="ic-stats"></div>
+      <div class="ic-spacer"></div>
+      <button class="ic-btn danger" onclick="clearAll()">
+        <svg viewBox="0 0 24 24"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/><path d="M10 11v6M14 11v6M9 6V4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2"/></svg>
+        Clear All
+      </button>
+      <button class="ic-btn secondary" id="ic-convert-btn" onclick="convertAll()">
+        <svg viewBox="0 0 24 24"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg>
+        Convert All
+      </button>
+      <button class="ic-btn success" id="ic-download-btn" onclick="downloadAll()" disabled>
+        <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        Download ZIP
+      </button>
+    </div>
+  </div>
+
+  <!-- ══ QUEUE ══ -->
+  <div class="ic-card" id="ic-queue-card" style="display:none">
+    <div class="ic-queue-header">
+      <div class="ic-card-title" style="margin-bottom:0">Image Queue</div>
+      <div class="ic-queue-count"><strong id="ic-queue-num">0</strong> images loaded</div>
+    </div>
+    <div id="ic-queue">
+      <div class="ic-empty">
+        <div class="ic-empty-icon"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg></div>
+        <h3>No images yet</h3>
+        <p>Add images from the sources above to get started.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ FORMAT GUIDE ══ -->
+  <div class="ic-card">
+    <div class="ic-card-title">Format Guide — Which One to Use?</div>
+    <div class="ic-guide-grid">
+      <div class="ic-guide-card">
+        <h4>🖼 PNG — Lossless Clarity</h4>
+        <p>Best for screenshots, logos, and graphics with sharp text or transparent backgrounds. Every re-save is pixel-perfect — no degradation. Larger than JPG but quality is never sacrificed.</p>
+      </div>
+      <div class="ic-guide-card">
+        <h4>📷 JPG — Compact Photos</h4>
+        <p>The universal photo format. Lossy compression makes files small but introduces subtle artifacts, especially below 70% quality. No transparency. Quality 80–90% is the sweet spot for web.</p>
+      </div>
+      <div class="ic-guide-card">
+        <h4>🌐 WEBP — Modern Web Standard</h4>
+        <p>Google's successor to both JPG and PNG. ~30% smaller at the same visual quality, supports transparency and animation. Best choice for new web projects in 2024+.</p>
+      </div>
+      <div class="ic-guide-card">
+        <h4>⚡ AVIF — Next-Gen Compression</h4>
+        <p>Up to 50% smaller than JPEG at comparable quality. Supports HDR, wide color gamut, and transparency. Encoding is slow but browser support is now excellent in Chrome, Firefox, and Safari.</p>
+      </div>
+      <div class="ic-guide-card">
+        <h4>📐 SVG — Infinite Scale</h4>
+        <p>XML-based vector format. Logos and icons stay crisp at any size. Not suitable for photos. Can be styled and animated with CSS. When you convert raster images to SVG here, the bitmap is embedded inside the SVG wrapper.</p>
+      </div>
+      <div class="ic-guide-card">
+        <h4>🖨 TIFF — Print &amp; Archive</h4>
+        <p>The professional standard for print workflows and archival storage. Supports lossless compression and multiple pages. Very large files — not suitable for web. Use when quality is non-negotiable.</p>
+      </div>
+      <div class="ic-guide-card">
+        <h4>🎞 GIF — Simple Loops</h4>
+        <p>Limited to 256 colours — poor for photos but iconic for short looping animations. For animated images, WEBP or APNG are technically superior. GIF remains for compatibility reasons.</p>
+      </div>
+      <div class="ic-guide-card">
+        <h4>🏷 ICO — Favicons &amp; Icons</h4>
+        <p>Windows icon format that stores multiple resolutions in a single file. Used for browser favicons (favicon.ico) and Windows app icons. Convert a clean PNG or SVG at 256×256 for best results.</p>
+      </div>
+      <div class="ic-guide-card">
+        <h4>🎨 BMP — Uncompressed</h4>
+        <p>Raw bitmap with no compression — maximum pixel fidelity but very large file sizes. Used mainly in Windows system contexts, legacy software, and when you need unprocessed pixel data.</p>
+      </div>
+      <div class="ic-guide-card">
+        <h4>📦 Paste SVG / HTML / XML</h4>
+        <p>Use the "Paste Code" tab to convert SVG markup, HTML containing images, XML with image data, data: URLs, or raw Base64 strings directly into raster formats without needing a file at all.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ PRIVACY NOTICE ══ -->
+  <div class="ic-privacy">
+    <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+    <div>
+      <strong>100% Browser-Based — Your Images Never Leave Your Device</strong>
+      All conversion runs locally using the HTML5 Canvas API. No files are uploaded, stored, or transmitted anywhere. You can verify this by opening your browser's Network panel — zero outbound image requests are made. Memory is released after each conversion.
+    </div>
+  </div>
+
+</div>
+
+<div class="ic-toast" id="ic-toast" role="status" aria-live="polite"></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+
+<script>
+/* ═══════════════════════════════════════════════════
+   TyagiHub Image Converter v2.0
+   Complete rewrite — all features, 50+ formats
+═══════════════════════════════════════════════════ */
+
+// ── State ──────────────────────────────────────────
+const queue  = [];
+let   nextId = 0;
+let   activeLang = 'svg';
+
+
+// ── Tab Switching ──────────────────────────────────
+function switchTab(tab, btn) {
+  document.querySelectorAll('.ic-tab-panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.ic-tab').forEach(b => b.classList.remove('active'));
+  document.getElementById('tab-' + tab).classList.add('active');
+  btn.classList.add('active');
+}
+
+// ── Code Language ──────────────────────────────────
+function setLang(lang, btn) {
+  activeLang = lang;
+  document.querySelectorAll('.ic-lang-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  const hints = {
+    svg:     'Paste SVG markup here, e.g.  <svg xmlns="..." viewBox="...">…</svg>',
+    html:    'Paste an HTML page or fragment containing <img> tags or inline SVGs…',
+    xml:     'Paste XML with image data, e.g. an RSS feed with <media:content url="…"/>',
+    dataurl: 'Paste a full data: URL, e.g.  data:image/png;base64,iVBORw0KGgo…',
+    base64:  'Paste raw Base64 string only (no data: prefix). Format will be auto-detected.',
+  };
+  document.getElementById('ic-code-area').placeholder = hints[lang] || 'Paste image data here…';
+}
+
+function clearCodeArea() {
+  document.getElementById('ic-code-area').value = '';
+  document.getElementById('ic-code-area').focus();
+}
+
+function loadSampleSVG() {
+  const sample = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#f5a623"/>
+      <stop offset="100%" stop-color="#e8431a"/>
+    </linearGradient>
+  </defs>
+  <circle cx="100" cy="100" r="90" fill="url(#g)"/>
+  <text x="100" y="108" text-anchor="middle" font-family="sans-serif"
+    font-size="28" font-weight="bold" fill="#fff">TyagiHub</text>
+  <circle cx="100" cy="100" r="90" fill="none" stroke="rgba(255,255,255,0.3)" stroke-width="3"/>
+</svg>`;
+  setLang('svg', document.querySelectorAll('.ic-lang-btn')[0]);
+  document.getElementById('ic-code-area').value = sample;
+  switchTab('code', document.querySelectorAll('.ic-tab')[1]);
+  icToast('📋 Sample SVG loaded — click Add to Queue');
+}
+
+// ── Get code panel settings ────────────────────────
+function getCodeSettings() {
+  return {
+    format:  document.getElementById('code-out-format')?.value || 'image/png',
+    quality: parseInt(document.getElementById('code-quality')?.value || 90),
+  };
+}
+
+// ── Load from Code ─────────────────────────────────
+function loadFromCode() {
+  const raw = document.getElementById('ic-code-area').value.trim();
+  if (!raw) { icToast('⚠️ Kuch bhi paste nahi kiya abhi tak.'); return; }
+
+  const cs   = getCodeSettings();
+  const name = `paste-${Date.now()}`;
+
+  // SVG markup
+  if (activeLang === 'svg' || raw.trimStart().startsWith('<svg') || raw.includes('<svg')) {
+    const match  = raw.match(/<svg[\s\S]*?<\/svg>/i);
+    const svgStr = match ? match[0] : raw;
+    const blob   = new Blob([svgStr], { type: 'image/svg+xml' });
+    addFileBlobAndConvert(blob, name + '.svg', cs);
+    return;
+  }
+
+  // HTML — extract inline SVGs and data-URL imgs
+  if (activeLang === 'html') {
+    const parser = new DOMParser();
+    const doc    = parser.parseFromString(raw, 'text/html');
+    const svgs   = doc.querySelectorAll('svg');
+    const imgs   = doc.querySelectorAll('img[src]');
+    let   added  = 0;
+
+    svgs.forEach((svg, i) => {
+      // Give SVG a size if missing
+      if (!svg.getAttribute('width'))  svg.setAttribute('width',  '800');
+      if (!svg.getAttribute('height')) svg.setAttribute('height', '600');
+      const blob = new Blob([svg.outerHTML], { type: 'image/svg+xml' });
+      addFileBlobAndConvert(blob, `html-svg-${i}.svg`, cs);
+      added++;
+    });
+    imgs.forEach((img, i) => {
+      const src = img.getAttribute('src');
+      if (src && src.startsWith('data:')) {
+        dataUrlToQueue(src, `html-img-${i}`, cs);
+        added++;
+      }
+    });
+    if (added > 0) { icToast(`✅ ${added} image(s) extracted from HTML`); return; }
+    // Try full-page SVG fallback
+    if (raw.includes('<svg')) { loadFromCode(); return; }
+    icToast('⚠️ HTML mein koi image nahi mili. Inline SVG ya data: img use karein.');
+    return;
+  }
+
+  // XML — find embedded base64 or data URLs
+  if (activeLang === 'xml') {
+    const b64match = raw.match(/data:[^;'"]+;base64,[A-Za-z0-9+/=]+/);
+    if (b64match) { dataUrlToQueue(b64match[0], name, cs); return; }
+    // Try SVG inside XML
+    if (raw.includes('<svg')) {
+      const match  = raw.match(/<svg[\s\S]*?<\/svg>/i);
+      if (match) {
+        const blob = new Blob([match[0]], { type: 'image/svg+xml' });
+        addFileBlobAndConvert(blob, name + '.svg', cs);
+        return;
+      }
+    }
+    icToast('⚠️ XML mein koi image data nahi mila. data:image/ ya SVG block hona chahiye.');
+    return;
+  }
+
+  // Data URL
+  if (activeLang === 'dataurl') {
+    if (!raw.startsWith('data:')) { icToast('⚠️ "data:image/…" se shuru hona chahiye.'); return; }
+    dataUrlToQueue(raw, name, cs);
+    return;
+  }
+
+  // Base64 raw
+  if (activeLang === 'base64') {
+    let mime = 'image/png';
+    if (raw.startsWith('/9j/'))   mime = 'image/jpeg';
+    else if (raw.startsWith('R0lGOD')) mime = 'image/gif';
+    else if (raw.startsWith('UklGR')) mime = 'image/webp';
+    else if (raw.startsWith('iVBORw0')) mime = 'image/png';
+    dataUrlToQueue('data:' + mime + ';base64,' + raw.replace(/\s/g,''), name, cs);
+    return;
+  }
+
+  // Fallback auto-detect
+  if (raw.startsWith('data:')) { dataUrlToQueue(raw, name, cs); return; }
+  if (raw.trimStart().startsWith('<svg') || raw.includes('<svg')) {
+    const match = raw.match(/<svg[\s\S]*?<\/svg>/i);
+    const blob  = new Blob([match ? match[0] : raw], { type: 'image/svg+xml' });
+    addFileBlobAndConvert(blob, name + '.svg', cs);
+    return;
+  }
+
+  icToast('⚠️ Content parse nahi ho saka. SVG/HTML/XML/Base64 check karein.');
+}
+
+function dataUrlToQueue(dataUrl, name, cs) {
+  try {
+    const [meta] = dataUrl.split(',');
+    const mime   = meta.replace('data:', '').replace(';base64', '').split(';')[0];
+    const extMap = {
+      'image/png':'png','image/jpeg':'jpg','image/gif':'gif',
+      'image/webp':'webp','image/avif':'avif','image/bmp':'bmp',
+      'image/svg+xml':'svg','image/tiff':'tiff','image/x-icon':'ico',
+    };
+    const ext = extMap[mime] || mime.split('/').pop() || 'img';
+    fetch(dataUrl)
+      .then(r => r.blob())
+      .then(blob => { addFileBlobAndConvert(blob, name + '.' + ext, cs); })
+      .catch(() => icToast('❌ Data URL decode nahi ho saka'));
+  } catch(e) { icToast('❌ Invalid data URL'); }
+}
+
+// Add blob to queue and auto-convert with given settings
+async function addFileBlobAndConvert(blob, name, cs) {
+  const file  = new File([blob], name, { type: blob.type });
+  const id    = nextId++;
+  const url   = URL.createObjectURL(file);
+  const entry = {
+    id, file, name: file.name, objectUrl: url,
+    status: 'queued', outputBlob: null, outputMime: null, outputExt: null,
+    settings: {
+      format:  cs ? cs.format  : '',
+      quality: cs ? cs.quality : 90,
+      width: '', height: '', aspect: true, exif: true, transparency: true, bgcolor: '#ffffff'
+    }
+  };
+  queue.push(entry);
+  renderCard(entry);
+  updateUI();
+
+  // Auto-convert immediately
+  await convertEntry(entry);
+  updateStats();
+  document.getElementById('ic-download-btn').disabled = !queue.some(e => e.status === 'done');
+  if (entry.status === 'done') {
+    const extMap = {'image/png':'PNG','image/jpeg':'JPG','image/webp':'WEBP','image/avif':'AVIF','image/gif':'GIF','image/bmp':'BMP','image/x-icon':'ICO','image/tiff':'TIFF','image/svg+xml':'SVG'};
+    icToast(`✅ Converted to ${extMap[cs?.format] || 'image'} — download button active!`);
+  }
+}
+
+// ── Load from URL ──────────────────────────────────
+function loadFromURL() {
+  const url = document.getElementById('ic-url-input').value.trim();
+  if (!url) { icToast('⚠️ Enter a URL first.'); return; }
+  if (!url.startsWith('http')) { icToast('⚠️ Please enter a full URL starting with http://'); return; }
+
+  icToast('⏳ Loading image from URL…');
+  const img = new Image();
+  img.crossOrigin = 'anonymous';
+  img.onload = () => {
+    const canvas  = document.createElement('canvas');
+    canvas.width  = img.width;
+    canvas.height = img.height;
+    canvas.getContext('2d').drawImage(img, 0, 0);
+    canvas.toBlob(blob => {
+      if (!blob) { icToast('❌ Could not read image (CORS blocked?)'); return; }
+      const name = url.split('/').pop().split('?')[0] || 'url-image.png';
+      addFileBlob(blob, name);
+      icToast('✅ Image loaded from URL!');
+    }, 'image/png');
+  };
+  img.onerror = () => icToast('❌ Failed to load — CORS or invalid URL');
+  img.src = url;
+}
+
+// ── Drag & Drop ────────────────────────────────────
+function dzOver(e) { e.preventDefault(); document.getElementById('ic-dropzone').classList.add('dragover'); }
+function dzLeave(e) { document.getElementById('ic-dropzone').classList.remove('dragover'); }
+function dzDrop(e) {
+  e.preventDefault();
+  document.getElementById('ic-dropzone').classList.remove('dragover');
+  if (e.dataTransfer?.files?.length) handleFiles(e.dataTransfer.files);
+}
+
+function handleFiles(files) {
+  const arr = Array.from(files).filter(f => f.type.startsWith('image/') || isImgExt(f.name));
+  if (!arr.length) { icToast('⚠️ No valid image files found.'); return; }
+  arr.forEach(addFileEntry);
+  updateUI();
+  icToast(`✅ ${arr.length} image${arr.length > 1 ? 's' : ''} added`);
+}
+
+function isImgExt(name) {
+  const ext = name.split('.').pop().toLowerCase();
+  return ['png','jpg','jpeg','webp','gif','bmp','ico','tiff','tif','svg','avif','heic','heif',
+    'dng','cr2','cr3','nef','arw','orf','rw2','raf','raw','tga','hdr','exr','jp2','j2k',
+    'ppm','pgm','pbm','pnm','xbm','xpm','wbmp','sgi','ras','yuv','dib','pcx','djvu',
+    'pam','iff','pict','emf','wmf','mng','apng','psd','dds','ktx','astc','qoi','bpg',
+    'flif','jxl','3fr'].includes(ext);
+}
+
+// ── Add file to queue ──────────────────────────────
+function addFileEntry(file) {
+  const id  = nextId++;
+  const url = URL.createObjectURL(file);
+  const entry = {
+    id, file, name: file.name, objectUrl: url,
+    status: 'queued', outputBlob: null, outputMime: null, outputExt: null,
+    settings: { format:'', quality:85, width:'', height:'', aspect:true, exif:true, transparency:true, bgcolor:'#ffffff' }
+  };
+  queue.push(entry);
+  renderCard(entry);
+}
+
+// ── Render card ────────────────────────────────────
+function renderCard(entry) {
+  const wrap = document.getElementById('ic-queue');
+  // Remove empty state
+  const emptyEl = wrap.querySelector('.ic-empty');
+  if (emptyEl) emptyEl.remove();
+
+  const ext     = entry.name.split('.').pop().toUpperCase();
+  const sizeStr = fmtBytes(entry.file.size);
+
+  const card = document.createElement('div');
+  card.className = 'ic-img-card';
+  card.id = `card-${entry.id}`;
+  card.innerHTML = `
+    <div class="ic-img-top">
+      <img class="ic-img-thumb" id="thumb-${entry.id}" src="${entry.objectUrl}" alt="${entry.name}" loading="lazy"
+           onerror="this.style.display='none';document.getElementById('thumb-fb-${entry.id}').style.display='flex'">
+      <div class="ic-img-thumb-fallback" id="thumb-fb-${entry.id}">🖼</div>
+      <div class="ic-img-meta">
+        <div class="ic-img-name" title="${entry.name}">${entry.name}</div>
+        <div class="ic-img-info">${sizeStr} &middot; ${ext}</div>
+        <div class="ic-img-badges">
+          <span class="ic-pill queued" id="badge-${entry.id}">Queued</span>
+          <span class="ic-pill" id="sizebadge-${entry.id}" style="display:none"></span>
+        </div>
+        <div class="ic-prog-wrap" id="progwrap-${entry.id}">
+          <div class="ic-prog indeterminate" id="prog-${entry.id}"></div>
+        </div>
+      </div>
+      <div class="ic-img-actions">
+        <button class="ic-icon-btn settings" onclick="toggleCardSettings(${entry.id})" title="Per-image settings">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+        </button>
+        <button class="ic-icon-btn download" id="dlbtn-${entry.id}" onclick="downloadSingle(${entry.id})" title="Download converted image" disabled style="opacity:0.3">
+          <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        </button>
+        <button class="ic-icon-btn remove" onclick="removeCard(${entry.id})" title="Remove from queue">
+          <svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+      </div>
+    </div>
+    <div class="ic-card-settings" id="csettings-${entry.id}">
+      <div class="ic-card-settings-grid">
+        <div>
+          <div class="ic-field-label">Output Format</div>
+          <select class="ic-select" id="cfmt-${entry.id}" onchange="readCardSettings(${entry.id})">
+            <option value="">Use Global</option>
+            <option value="image/png">PNG</option>
+            <option value="image/jpeg">JPG</option>
+            <option value="image/webp">WEBP</option>
+            <option value="image/avif">AVIF</option>
+            <option value="image/gif">GIF</option>
+            <option value="image/bmp">BMP</option>
+            <option value="image/x-icon">ICO</option>
+            <option value="image/tiff">TIFF</option>
+            <option value="image/svg+xml">SVG</option>
+          </select>
+        </div>
+        <div>
+          <div class="ic-field-label">Quality <span id="cqdisplay-${entry.id}">85%</span></div>
+          <input type="range" class="ic-range" id="cqual-${entry.id}" min="1" max="100" value="85"
+            oninput="document.getElementById('cqdisplay-${entry.id}').textContent=this.value+'%';readCardSettings(${entry.id})">
+        </div>
+        <div>
+          <div class="ic-field-label">Width (px)</div>
+          <input type="number" class="ic-input" id="cw-${entry.id}" placeholder="Original" min="1" max="16000" oninput="readCardSettings(${entry.id})">
+        </div>
+        <div>
+          <div class="ic-field-label">Height (px)</div>
+          <input type="number" class="ic-input" id="ch-${entry.id}" placeholder="Original" min="1" max="16000" oninput="readCardSettings(${entry.id})">
+        </div>
+        <div>
+          <div class="ic-field-label">Filename</div>
+          <input type="text" class="ic-input" id="cname-${entry.id}" value="${entry.name.replace(/\.[^.]+$/,'')}" placeholder="output-name">
+        </div>
+        <div>
+          <div class="ic-field-label">BG Fill</div>
+          <input type="color" class="ic-input" id="cbg-${entry.id}" value="#ffffff" style="height:38px;padding:4px 8px;cursor:pointer;" oninput="readCardSettings(${entry.id})">
+        </div>
+      </div>
+      <div style="display:flex;gap:0.5rem;margin-top:0.8rem;flex-wrap:wrap;">
+        <button class="ic-btn secondary" style="font-size:0.77rem;padding:7px 14px;" onclick="convertSingle(${entry.id})">
+          <svg viewBox="0 0 24 24"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg>
+          Convert This Only
+        </button>
+        <button class="ic-btn danger" style="font-size:0.77rem;padding:7px 14px;" onclick="removeCard(${entry.id})">
+          <svg viewBox="0 0 24 24"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/></svg>
+          Remove
+        </button>
+      </div>
+    </div>
+  `;
+  wrap.appendChild(card);
+}
+
+function toggleCardSettings(id) {
+  document.getElementById(`csettings-${id}`).classList.toggle('open');
+}
+
+function readCardSettings(id) {
+  const e = queue.find(e => e.id === id);
+  if (!e) return;
+  e.settings.format  = document.getElementById(`cfmt-${id}`)?.value   || '';
+  e.settings.quality = parseInt(document.getElementById(`cqual-${id}`)?.value || 85);
+  e.settings.width   = document.getElementById(`cw-${id}`)?.value     || '';
+  e.settings.height  = document.getElementById(`ch-${id}`)?.value     || '';
+  e.settings.bgcolor = document.getElementById(`cbg-${id}`)?.value    || '#ffffff';
+}
+
+// ── Global Sync ────────────────────────────────────
+function syncGlobal() {
+  if (!document.getElementById('g-apply-all').checked) return;
+  const fmt  = document.getElementById('g-format').value;
+  const qual = document.getElementById('g-quality').value;
+  const w    = document.getElementById('g-width').value;
+  const h    = document.getElementById('g-height').value;
+  const bg   = document.getElementById('g-bgcolor').value;
+  queue.forEach(e => {
+    e.settings.format  = fmt;
+    e.settings.quality = parseInt(qual);
+    e.settings.width   = w;
+    e.settings.height  = h;
+    e.settings.bgcolor = bg;
+    const fe = document.getElementById(`cfmt-${e.id}`);   if(fe) fe.value = fmt;
+    const qe = document.getElementById(`cqual-${e.id}`);  if(qe){ qe.value = qual; document.getElementById(`cqdisplay-${e.id}`).textContent = qual+'%'; }
+    const we = document.getElementById(`cw-${e.id}`);     if(we) we.value = w;
+    const he = document.getElementById(`ch-${e.id}`);     if(he) he.value = h;
+    const bge = document.getElementById(`cbg-${e.id}`);   if(bge) bge.value = bg;
+  });
+}
+
+// ── Presets ─────────────────────────────────────────
+const PRESETS = {
+  web:      { format:'image/webp',  quality:82, w:'1920', h:'',    label:'WEBP 82% · max 1920px' },
+  print:    { format:'image/tiff',  quality:100,w:'',     h:'',    label:'TIFF 100% · original size' },
+  thumb:    { format:'image/jpeg',  quality:75, w:'320',  h:'320', label:'JPG 75% · 320×320' },
+  lossless: { format:'image/png',   quality:100,w:'',     h:'',    label:'PNG lossless · original' },
+  small:    { format:'image/webp',  quality:50, w:'1280', h:'',    label:'WEBP 50% · max 1280px' },
+  hd:       { format:'image/jpeg',  quality:90, w:'1920', h:'1080',label:'JPG 90% · 1920×1080' },
+  favicon:  { format:'image/x-icon',quality:100,w:'256',  h:'256', label:'ICO 256×256 favicon' },
+  social:   { format:'image/jpeg',  quality:85, w:'1200', h:'630', label:'JPG 85% · 1200×630 og:image' },
+};
+
+function applyPreset(key) {
+  const p = PRESETS[key];
+  if (!p) return;
+  document.getElementById('g-format').value = p.format;
+  document.getElementById('g-quality').value = p.quality;
+  document.getElementById('g-qdisplay').textContent = p.quality + '%';
+  document.getElementById('g-width').value  = p.w;
+  document.getElementById('g-height').value = p.h;
+  syncGlobal();
+  icToast('🎛 ' + p.label);
+}
+
+// ── Core conversion ─────────────────────────────────
+async function convertEntry(entry) {
+  return new Promise(resolve => {
+    setCardStatus(entry.id, 'processing');
+
+    const targetMime = entry.settings.format
+                     || document.getElementById('g-format').value
+                     || entry.file.type
+                     || 'image/png';
+    const quality    = ((entry.settings.quality !== undefined
+                        ? entry.settings.quality
+                        : parseInt(document.getElementById('g-quality').value)) / 100);
+    const maxW       = parseInt(entry.settings.width  || document.getElementById('g-width').value)  || 0;
+    const maxH       = parseInt(entry.settings.height || document.getElementById('g-height').value) || 0;
+    const aspect     = document.getElementById('g-aspect').checked;
+    const bgcolor    = entry.settings.bgcolor || document.getElementById('g-bgcolor').value || '#ffffff';
+    const hasAlpha   = document.getElementById('g-transparency').checked;
+
+    // SVG → raster path
+    if (entry.file.type === 'image/svg+xml' || entry.name.endsWith('.svg')) {
+      const reader = new FileReader();
+      reader.onload = e => {
+        const blob = new Blob([e.target.result], { type: 'image/svg+xml' });
+        const blobUrl = URL.createObjectURL(blob);
+        const img = new Image();
+        img.onload = () => {
+          doCanvasConvert(img, targetMime, quality, maxW, maxH, aspect, bgcolor, hasAlpha, entry, resolve);
+          URL.revokeObjectURL(blobUrl);
+        };
+        img.onerror = () => { setCardStatus(entry.id, 'error', 'SVG render failed'); resolve(); };
+        img.src = blobUrl;
+      };
+      reader.readAsText(entry.file);
+      return;
+    }
+
+    const img = new Image();
+    img.onload = () => doCanvasConvert(img, targetMime, quality, maxW, maxH, aspect, bgcolor, hasAlpha, entry, resolve);
+    img.onerror = () => { setCardStatus(entry.id, 'error', 'Could not load image'); resolve(); };
+    img.crossOrigin = 'anonymous';
+    img.src = entry.objectUrl;
+  });
+}
+
+function doCanvasConvert(img, targetMime, quality, maxW, maxH, aspect, bgcolor, hasAlpha, entry, resolve) {
+  try {
+    let {width:ow, height:oh} = img;
+    // Default SVG viewport
+    if (!ow || !oh) { ow = 800; oh = 600; }
+    let nw = ow, nh = oh;
+
+    if (maxW && maxH && !aspect) { nw = maxW; nh = maxH; }
+    else if (maxW && maxH && aspect) {
+      const r = Math.min(maxW/ow, maxH/oh);
+      if (r < 1) { nw = Math.round(ow*r); nh = Math.round(oh*r); }
+    } else if (maxW) {
+      if (maxW < ow) { nh = Math.round(oh*maxW/ow); nw = maxW; }
+    } else if (maxH) {
+      if (maxH < oh) { nw = Math.round(ow*maxH/oh); nh = maxH; }
+    }
+
+    const canvas  = document.createElement('canvas');
+    canvas.width  = nw;
+    canvas.height = nh;
+    const ctx = canvas.getContext('2d');
+
+    const needsBg = ['image/jpeg','image/bmp','image/x-icon'].includes(targetMime) || !hasAlpha;
+    if (needsBg) { ctx.fillStyle = bgcolor; ctx.fillRect(0, 0, nw, nh); }
+    ctx.drawImage(img, 0, 0, nw, nh);
+
+    // SVG output: embed canvas as PNG data URL inside SVG
+    if (targetMime === 'image/svg+xml') {
+      const dataUrl = canvas.toDataURL('image/png', 1);
+      const svgStr  = `<svg xmlns="http://www.w3.org/2000/svg" width="${nw}" height="${nh}" viewBox="0 0 ${nw} ${nh}"><image href="${dataUrl}" width="${nw}" height="${nh}"/></svg>`;
+      const blob    = new Blob([svgStr], { type: 'image/svg+xml' });
+      finishEntry(entry, blob, 'image/svg+xml', resolve);
+      return;
+    }
+
+    canvas.toBlob(blob => {
+      if (!blob) {
+        // Fallback to PNG
+        canvas.toBlob(fb => {
+          if (fb) finishEntry(entry, fb, 'image/png', resolve);
+          else { setCardStatus(entry.id, 'error', 'Conversion failed'); resolve(); }
+        }, 'image/png');
+        return;
+      }
+      finishEntry(entry, blob, targetMime, resolve);
+    }, targetMime, quality);
+
+  } catch(e) { setCardStatus(entry.id, 'error', e.message); resolve(); }
+}
+
+function finishEntry(entry, blob, mime, resolve) {
+  entry.outputBlob = blob;
+  entry.outputMime = mime;
+  const extMap = {
+    'image/png':'png','image/jpeg':'jpg','image/webp':'webp','image/avif':'avif',
+    'image/gif':'gif','image/bmp':'bmp','image/x-icon':'ico','image/tiff':'tiff',
+    'image/svg+xml':'svg',
+  };
+  entry.outputExt = extMap[mime] || mime.split('/').pop().split('+')[0] || 'png';
+  entry.status = 'done';
+  setCardStatus(entry.id, 'done');
+
+  // Size badge
+  const saved = entry.file.size - blob.size;
+  const pct   = ((blob.size / entry.file.size) * 100).toFixed(0);
+  const sb    = document.getElementById(`sizebadge-${entry.id}`);
+  if (sb) {
+    sb.style.display = '';
+    const c = saved > 0 ? 'var(--ic-green)' : 'var(--ic-red)';
+    const a = saved > 0 ? '↓' : '↑';
+    sb.innerHTML = `<span style="color:${c}">${a} ${fmtBytes(Math.abs(saved))} (${pct}%)</span>`;
+  }
+
+  // Enable download button
+  const dlBtn = document.getElementById(`dlbtn-${entry.id}`);
+  if (dlBtn) { dlBtn.disabled = false; dlBtn.style.opacity = '1'; }
+
+  resolve();
+}
+
+function setCardStatus(id, status, msg) {
+  const card  = document.getElementById(`card-${id}`);
+  const badge = document.getElementById(`badge-${id}`);
+  const prog  = document.getElementById(`progwrap-${id}`);
+  if (!card) return;
+  card.className = `ic-img-card status-${status}`;
+  if (badge) {
+    badge.className = `ic-pill ${status}`;
+    badge.textContent = { queued:'Queued', processing:'Converting…', done:'Done ✓' }[status]
+                      || `Error: ${msg || 'Failed'}`;
+  }
+  if (prog) prog.classList.toggle('visible', status === 'processing');
+}
+
+// ── Convert All ─────────────────────────────────────
+async function convertAll() {
+  if (!queue.length) { icToast('⚠️ Queue is empty.'); return; }
+  const btn = document.getElementById('ic-convert-btn');
+  btn.disabled = true; btn.textContent = 'Converting…';
+
+  for (const entry of queue.filter(e => e.status !== 'done')) {
+    await convertEntry(entry);
+    updateStats();
+  }
+
+  btn.disabled = false;
+  btn.innerHTML = `<svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg> Convert All`;
+
+  const done = queue.filter(e => e.status === 'done').length;
+  icToast(`✅ ${done} image${done !== 1 ? 's' : ''} converted!`);
+  if (done > 0) document.getElementById('ic-download-btn').disabled = false;
+}
+
+async function convertSingle(id) {
+  const entry = queue.find(e => e.id === id);
+  if (!entry) return;
+  readCardSettings(id);
+  await convertEntry(entry);
+  updateStats();
+  if (entry.status === 'done') icToast('✅ Converted!');
+  document.getElementById('ic-download-btn').disabled = !queue.some(e => e.status === 'done');
+}
+
+// ── Downloads ────────────────────────────────────────
+function downloadSingle(id) {
+  const entry = queue.find(e => e.id === id);
+  if (!entry?.outputBlob) { icToast('⚠️ Convert this image first.'); return; }
+  const fname = (document.getElementById(`cname-${id}`)?.value.trim() || entry.name.replace(/\.[^.]+$/, ''));
+  const url   = URL.createObjectURL(entry.outputBlob);
+  const a     = document.createElement('a');
+  a.href = url; a.download = `${fname}.${entry.outputExt}`;
+  document.body.appendChild(a); a.click();
+  document.body.removeChild(a); URL.revokeObjectURL(url);
+  icToast('⬇️ Download started!');
+}
+
+async function downloadAll() {
+  const done = queue.filter(e => e.status === 'done' && e.outputBlob);
+  if (!done.length) { icToast('⚠️ Convert images first.'); return; }
+  if (typeof JSZip === 'undefined') { icToast('❌ JSZip not loaded.'); return; }
+  icToast('📦 Building ZIP…');
+
+  const zip = new JSZip();
+  done.forEach(entry => {
+    const fname = document.getElementById(`cname-${entry.id}`)?.value.trim() || entry.name.replace(/\.[^.]+$/, '');
+    zip.file(`${fname}.${entry.outputExt}`, entry.outputBlob);
+  });
+
+  const content = await zip.generateAsync({ type:'blob', compression:'DEFLATE', compressionOptions:{level:5} });
+  const url = URL.createObjectURL(content);
+  const a   = document.createElement('a');
+  a.href = url; a.download = `tyagihub-images-${Date.now()}.zip`;
+  document.body.appendChild(a); a.click();
+  document.body.removeChild(a); URL.revokeObjectURL(url);
+  icToast(`📦 ZIP downloaded — ${done.length} image${done.length !== 1 ? 's' : ''}`);
+}
+
+// ── Queue management ────────────────────────────────
+function removeCard(id) {
+  const idx = queue.findIndex(e => e.id === id);
+  if (idx === -1) return;
+  URL.revokeObjectURL(queue[idx].objectUrl);
+  queue.splice(idx, 1);
+  document.getElementById(`card-${id}`)?.remove();
+  updateUI();
+}
+
+function clearAll() {
+  while (queue.length) { URL.revokeObjectURL(queue[0].objectUrl); queue.splice(0, 1); }
+  const wrap = document.getElementById('ic-queue');
+  wrap.innerHTML = `<div class="ic-empty">
+    <div class="ic-empty-icon"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg></div>
+    <h3>Queue cleared</h3><p>Add images above to start converting.</p>
+  </div>`;
+  updateUI();
+  icToast('🗑 Queue cleared');
+}
+
+// ── UI helpers ───────────────────────────────────────
+function updateUI() {
+  const has = queue.length > 0;
+  document.getElementById('ic-queue-card').style.display  = has ? '' : 'none';
+  document.getElementById('ic-action-bar').style.display  = has ? '' : 'none';
+  document.getElementById('ic-queue-num').textContent     = queue.length;
+  updateStats();
+  if (!has) document.getElementById('ic-download-btn').disabled = true;
+}
+
+function updateStats() {
+  const total    = queue.length;
+  const done     = queue.filter(e => e.status === 'done').length;
+  const errors   = queue.filter(e => e.status === 'error').length;
+  const origSize = queue.reduce((s,e) => s + e.file.size, 0);
+  const outSize  = queue.filter(e => e.outputBlob).reduce((s,e) => s + e.outputBlob.size, 0);
+  document.getElementById('ic-stats').innerHTML = `
+    <div class="ic-stat">Total <strong>${total}</strong></div>
+    <div class="ic-stat">Done <strong>${done}</strong></div>
+    ${errors ? `<div class="ic-stat" style="color:var(--ic-red)">Errors <strong style="color:var(--ic-red)">${errors}</strong></div>` : ''}
+    <div class="ic-stat">Input <strong>${fmtBytes(origSize)}</strong></div>
+    ${outSize ? `<div class="ic-stat">Output <strong>${fmtBytes(outSize)}</strong></div>` : ''}
+  `;
+}
+
+function fmtBytes(b) {
+  if (!b) return '0 B';
+  if (b < 1024) return b + ' B';
+  if (b < 1048576) return (b/1024).toFixed(1) + ' KB';
+  return (b/1048576).toFixed(2) + ' MB';
+}
+
+// ── Toast ────────────────────────────────────────────
+let _toastTimer;
+function icToast(msg) {
+  const t = document.getElementById('ic-toast');
+  t.textContent = msg; t.classList.add('show');
+  clearTimeout(_toastTimer);
+  _toastTimer = setTimeout(() => t.classList.remove('show'), 3200);
+}
+</script>

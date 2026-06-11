@@ -1,0 +1,1766 @@
+---
+layout: default
+title: "TyagiHub PWA Ecosystem — Installable Creator Platform"
+description: "TyagiHub is a futuristic modular ecosystem featuring online tools, AI utilities, PDF systems, cybersecurity tools, learning platforms, editors, GK quizzes, stock assets, and installable PWAs."
+keywords: "TyagiHub, online tools, PDF editor, AI tools, PWA ecosystem, image converter, cybersecurity tools, creator platform"
+lang: en
+lang_switch: false
+
+---
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&family=DM+Mono:wght@400;500&display=swap');
+
+/* ══════════════════════════════════════════
+   TOKENS
+══════════════════════════════════════════ */
+:root {
+  --bg:       #04040a;
+  --bg2:      #08080f;
+  --bg3:      #0d0d1a;
+  --surface:  #111124;
+  --surface2: #16162e;
+  --border:   rgba(255,255,255,0.06);
+  --border2:  rgba(255,255,255,0.10);
+  --t1:       #f0f0ff;
+  --t2:       #a8a8cc;
+  --t3:       #5a5a88;
+  --t4:       #2e2e50;
+  --a1:       #6366f1;
+  --a2:       #8b5cf6;
+  --a3:       #06b6d4;
+  --a4:       #10b981;
+  --a5:       #f59e0b;
+  --a6:       #ef4444;
+  --a7:       #ec4899;
+  --glow1:    rgba(99,102,241,0.3);
+  --glow2:    rgba(139,92,246,0.25);
+  --glow3:    rgba(6,182,212,0.25);
+  --r:        16px;
+  --r2:       24px;
+  --font:     'DM Sans', system-ui, sans-serif;
+  --display:  'Syne', system-ui, sans-serif;
+  --mono:     'DM Mono', monospace;
+}
+[data-theme="light"] {
+  --bg:       #f4f4fc;
+  --bg2:      #ececf8;
+  --bg3:      #e5e5f5;
+  --surface:  #ffffff;
+  --surface2: #f8f8ff;
+  --border:   rgba(0,0,0,0.07);
+  --border2:  rgba(0,0,0,0.12);
+  --t1:       #0a0a1a;
+  --t2:       #3a3a5c;
+  --t3:       #7a7a9a;
+  --t4:       #c0c0dc;
+  --glow1:    rgba(99,102,241,0.12);
+  --glow2:    rgba(139,92,246,0.10);
+  --glow3:    rgba(6,182,212,0.10);
+}
+
+/* ══════════════════════════════════════════
+   BASE
+══════════════════════════════════════════ */
+*,*::before,*::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--font);
+  background: var(--bg);
+  color: var(--t2);
+  line-height: 1.65;
+  overflow-x: hidden;
+}
+
+/* ══════════════════════════════════════════
+   CANVAS BG — animated particle field
+══════════════════════════════════════════ */
+#pwa-bg-canvas {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.4;
+}
+
+/* ══════════════════════════════════════════
+   PAGE WRAPPER
+══════════════════════════════════════════ */
+.pwa-page {
+  position: relative;
+  z-index: 1;
+}
+
+/* ══════════════════════════════════════════
+   THEME TOGGLE
+══════════════════════════════════════════ */
+.pwa-theme-btn {
+  position: fixed;
+  top: 1.1rem;
+  right: 1.25rem;
+  z-index: 1000;
+  width: 40px; height: 40px;
+  border-radius: 50%;
+  background: var(--surface);
+  border: 1px solid var(--border2);
+  color: var(--t2);
+  cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  transition: all .2s;
+  backdrop-filter: blur(10px);
+}
+.pwa-theme-btn:hover { border-color: var(--a1); color: var(--a1); }
+.pwa-theme-btn svg { width: 18px; height: 18px; stroke: currentColor; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+
+/* ══════════════════════════════════════════
+   SECTION WRAPPER
+══════════════════════════════════════════ */
+.pwa-section {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 6rem 1.5rem;
+}
+.pwa-section-full {
+  padding: 6rem 1.5rem;
+  position: relative;
+}
+
+/* ══════════════════════════════════════════
+   SECTION LABELS
+══════════════════════════════════════════ */
+.pwa-label {
+  display: inline-flex; align-items: center; gap: 7px;
+  font-family: var(--mono);
+  font-size: .7rem; font-weight: 500; letter-spacing: .12em; text-transform: uppercase;
+  color: var(--a1); padding: 5px 14px;
+  background: rgba(99,102,241,0.1); border: 1px solid rgba(99,102,241,0.25);
+  border-radius: 100px; margin-bottom: 1.25rem;
+}
+.pwa-label svg { width: 12px; height: 12px; stroke: currentColor; fill: none; stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; }
+
+/* ══════════════════════════════════════════
+   HEADINGS
+══════════════════════════════════════════ */
+.pwa-h1 {
+  font-family: var(--display);
+  font-size: clamp(2.6rem, 6vw, 5.2rem);
+  font-weight: 800;
+  color: var(--t1);
+  letter-spacing: -.04em;
+  line-height: 1.06;
+  margin-bottom: 1.5rem;
+}
+.pwa-h2 {
+  font-family: var(--display);
+  font-size: clamp(1.8rem, 4vw, 3.2rem);
+  font-weight: 800;
+  color: var(--t1);
+  letter-spacing: -.03em;
+  line-height: 1.1;
+  margin-bottom: 1rem;
+}
+.pwa-h3 {
+  font-family: var(--display);
+  font-size: 1.25rem; font-weight: 700;
+  color: var(--t1); line-height: 1.25;
+  margin-bottom: .6rem;
+}
+.grad-text {
+  background: linear-gradient(135deg, var(--a1) 0%, var(--a2) 40%, var(--a3) 100%);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+}
+.grad-text-2 {
+  background: linear-gradient(135deg, var(--a3) 0%, var(--a4) 100%);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+}
+.grad-text-3 {
+  background: linear-gradient(135deg, var(--a5) 0%, var(--a6) 100%);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+}
+.grad-text-4 {
+  background: linear-gradient(135deg, var(--a7) 0%, var(--a2) 100%);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+}
+
+/* ══════════════════════════════════════════
+   HERO
+══════════════════════════════════════════ */
+.pwa-hero {
+  min-height: 100vh;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  text-align: center;
+  padding: 8rem 1.5rem 4rem;
+  position: relative;
+}
+.pwa-hero::before {
+  content: '';
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(ellipse 80% 50% at 50% -10%, rgba(99,102,241,0.18) 0%, transparent 60%),
+    radial-gradient(ellipse 50% 30% at 80% 50%, rgba(139,92,246,0.1) 0%, transparent 50%),
+    radial-gradient(ellipse 40% 30% at 20% 60%, rgba(6,182,212,0.08) 0%, transparent 50%);
+  pointer-events: none;
+}
+.pwa-hero-badge {
+  display: inline-flex; align-items: center; gap: 8px;
+  border: 1px solid var(--border2);
+  background: rgba(255,255,255,0.04);
+  border-radius: 100px; padding: 6px 18px;
+  font-size: .78rem; font-weight: 500; color: var(--t2);
+  margin-bottom: 2rem; backdrop-filter: blur(10px);
+  animation: fadeUp .8s ease both;
+}
+.pwa-hero-badge span {
+  display: inline-block; width: 7px; height: 7px;
+  background: var(--a4); border-radius: 50%;
+  animation: pulse 2s ease-in-out infinite;
+}
+@keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.5;transform:scale(.8)} }
+@keyframes fadeUp { from{opacity:0;transform:translateY(24px)} to{opacity:1;transform:translateY(0)} }
+@keyframes fadeIn { from{opacity:0} to{opacity:1} }
+@keyframes slideRight { from{opacity:0;transform:translateX(-20px)} to{opacity:1;transform:translateX(0)} }
+@keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-12px)} }
+@keyframes glowPulse { 0%,100%{opacity:.5} 50%{opacity:1} }
+@keyframes rotate { from{transform:rotate(0)} to{transform:rotate(360deg)} }
+@keyframes dash { to{stroke-dashoffset:0} }
+
+.pwa-hero h1 { animation: fadeUp .9s .1s ease both; }
+.pwa-hero .pwa-hero-sub { animation: fadeUp .9s .2s ease both; }
+.pwa-hero-actions { animation: fadeUp .9s .35s ease both; }
+
+.pwa-hero-sub {
+  font-size: clamp(1rem, 2vw, 1.2rem);
+  color: var(--t2); max-width: 680px; line-height: 1.7;
+  margin: 0 auto 2.5rem;
+}
+.pwa-hero-actions {
+  display: flex; align-items: center; gap: 1rem; flex-wrap: wrap; justify-content: center;
+}
+
+/* ══════════════════════════════════════════
+   BUTTONS
+══════════════════════════════════════════ */
+.btn-glow {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: .8rem 2rem; border-radius: 50px; border: none;
+  background: linear-gradient(135deg, var(--a1), var(--a2));
+  color: #fff; font-family: var(--font); font-size: .95rem; font-weight: 600;
+  cursor: pointer; transition: all .25s;
+  box-shadow: 0 0 0 0 var(--glow1);
+  text-decoration: none;
+  position: relative; overflow: hidden;
+}
+.btn-glow::before {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(135deg, var(--a2), var(--a3));
+  opacity: 0; transition: opacity .25s;
+}
+.btn-glow:hover { transform: translateY(-2px); box-shadow: 0 8px 32px var(--glow1); }
+.btn-glow:hover::before { opacity: 1; }
+.btn-glow svg { width: 16px; height: 16px; stroke: currentColor; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; position: relative; z-index: 1; }
+.btn-glow span { position: relative; z-index: 1; }
+
+.btn-outline {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: .8rem 2rem; border-radius: 50px;
+  border: 1px solid var(--border2);
+  background: rgba(255,255,255,0.04);
+  color: var(--t1); font-family: var(--font); font-size: .95rem; font-weight: 600;
+  cursor: pointer; transition: all .2s; text-decoration: none;
+  backdrop-filter: blur(10px);
+}
+.btn-outline:hover { border-color: var(--a1); color: var(--a1); background: rgba(99,102,241,0.06); }
+.btn-outline svg { width: 16px; height: 16px; stroke: currentColor; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+
+.btn-install {
+  display: inline-flex; align-items: center; gap: 7px;
+  padding: .65rem 1.4rem; border-radius: 10px;
+  border: 1px solid rgba(99,102,241,0.3);
+  background: rgba(99,102,241,0.08);
+  color: var(--a1); font-family: var(--font); font-size: .83rem; font-weight: 700;
+  cursor: pointer; transition: all .2s; letter-spacing: .01em;
+}
+.btn-install:hover { background: rgba(99,102,241,0.16); border-color: var(--a1); transform: translateY(-1px); }
+.btn-install svg { width: 14px; height: 14px; stroke: currentColor; fill: none; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
+
+/* ══════════════════════════════════════════
+   STATS ROW
+══════════════════════════════════════════ */
+.pwa-stats {
+  display: flex; align-items: center; justify-content: center;
+  gap: 3rem; flex-wrap: wrap;
+  padding: 3rem 1.5rem;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  position: relative; overflow: hidden;
+}
+.pwa-stats::before {
+  content: '';
+  position: absolute; top: 0; left: 50%; transform: translateX(-50%);
+  width: 60%; height: 1px;
+  background: linear-gradient(90deg, transparent, var(--a1), transparent);
+}
+.stat-item { text-align: center; }
+.stat-num {
+  font-family: var(--display);
+  font-size: 2.4rem; font-weight: 800; line-height: 1;
+  color: var(--t1); letter-spacing: -.03em; display: block; margin-bottom: .25rem;
+}
+.stat-lbl { font-size: .8rem; color: var(--t3); text-transform: uppercase; letter-spacing: .08em; font-family: var(--mono); }
+.stat-divider { width: 1px; height: 44px; background: var(--border2); }
+
+/* ══════════════════════════════════════════
+   ECOSYSTEM GRID — hero showcase
+══════════════════════════════════════════ */
+.eco-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: .75rem;
+  max-width: 900px; margin: 4rem auto 0;
+  animation: fadeUp 1s .5s ease both;
+}
+@media (max-width: 700px) { .eco-grid { grid-template-columns: repeat(2, 1fr); } }
+
+.eco-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 14px; padding: 1.2rem 1rem;
+  display: flex; flex-direction: column; align-items: flex-start;
+  transition: all .25s; cursor: default;
+  position: relative; overflow: hidden;
+}
+.eco-card::before {
+  content: ''; position: absolute;
+  top: 0; left: 0; right: 0; height: 1px;
+  background: linear-gradient(90deg, transparent, var(--card-accent), transparent);
+  opacity: 0; transition: opacity .25s;
+}
+.eco-card:hover { transform: translateY(-3px); border-color: var(--card-accent); box-shadow: 0 8px 32px rgba(0,0,0,.3); }
+.eco-card:hover::before { opacity: 1; }
+.eco-icon {
+  width: 36px; height: 36px; border-radius: 9px;
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: .75rem; flex-shrink: 0;
+}
+.eco-icon svg { width: 20px; height: 20px; stroke: currentColor; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.eco-card h4 { font-family: var(--display); font-size: .88rem; font-weight: 700; color: var(--t1); margin-bottom: .2rem; }
+.eco-card p { font-size: .74rem; color: var(--t3); line-height: 1.4; }
+
+/* ══════════════════════════════════════════
+   SECTION DIVIDERS
+══════════════════════════════════════════ */
+.pwa-divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent 0%, var(--border2) 30%, var(--border2) 70%, transparent 100%);
+}
+
+/* ══════════════════════════════════════════
+   FEATURE SECTIONS — alternating layout
+══════════════════════════════════════════ */
+.feat-section {
+  max-width: 1200px; margin: 0 auto;
+  padding: 5rem 1.5rem;
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 5rem; align-items: center;
+}
+.feat-section.rev { direction: rtl; }
+.feat-section.rev > * { direction: ltr; }
+@media (max-width: 860px) {
+  .feat-section { grid-template-columns: 1fr; gap: 2.5rem; }
+  .feat-section.rev { direction: ltr; }
+}
+.feat-text {}
+.feat-desc {
+  font-size: .95rem; color: var(--t2); line-height: 1.85;
+  margin-bottom: 1.5rem;
+}
+.feat-list {
+  list-style: none; display: flex; flex-direction: column; gap: .65rem;
+  margin-bottom: 1.75rem;
+}
+.feat-list li {
+  display: flex; align-items: flex-start; gap: .65rem;
+  font-size: .88rem; color: var(--t2); line-height: 1.5;
+}
+.feat-list li svg {
+  flex-shrink: 0; margin-top: 2px;
+  width: 15px; height: 15px;
+  stroke: var(--a4); fill: none; stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round;
+}
+
+/* ══════════════════════════════════════════
+   VISUAL PANELS (right-side graphics)
+══════════════════════════════════════════ */
+.feat-visual {
+  position: relative; border-radius: 20px; overflow: hidden;
+  background: var(--surface);
+  border: 1px solid var(--border2);
+  padding: 2rem;
+  min-height: 360px;
+  display: flex; align-items: center; justify-content: center;
+}
+.feat-visual::before {
+  content: ''; position: absolute; inset: 0;
+  background: radial-gradient(ellipse 80% 60% at 50% 50%, var(--v-glow, var(--glow1)) 0%, transparent 70%);
+  pointer-events: none;
+}
+.feat-visual svg.main-svg {
+  width: 100%; max-width: 340px; height: auto;
+  filter: drop-shadow(0 0 20px var(--v-glow, var(--glow1)));
+  animation: float 4s ease-in-out infinite;
+}
+
+/* ══════════════════════════════════════════
+   PILL TAGS
+══════════════════════════════════════════ */
+.pill-group { display: flex; flex-wrap: wrap; gap: .4rem; margin-bottom: 1.25rem; }
+.pill {
+  font-size: .72rem; font-weight: 600; padding: 3px 11px; border-radius: 100px;
+  border: 1px solid; letter-spacing: .02em;
+}
+.pill-indigo  { color: #818cf8; border-color: rgba(129,140,248,.3); background: rgba(129,140,248,.08); }
+.pill-cyan    { color: #22d3ee; border-color: rgba(34,211,238,.3);  background: rgba(34,211,238,.08); }
+.pill-green   { color: #34d399; border-color: rgba(52,211,153,.3);  background: rgba(52,211,153,.08); }
+.pill-amber   { color: #fbbf24; border-color: rgba(251,191,36,.3);  background: rgba(251,191,36,.08); }
+.pill-rose    { color: #fb7185; border-color: rgba(251,113,133,.3); background: rgba(251,113,133,.08); }
+.pill-violet  { color: #c084fc; border-color: rgba(192,132,252,.3); background: rgba(192,132,252,.08); }
+
+/* ══════════════════════════════════════════
+   APP CARDS GRID (install cards)
+══════════════════════════════════════════ */
+.app-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.25rem;
+}
+.app-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r2);
+  padding: 1.75rem;
+  transition: all .25s;
+  position: relative; overflow: hidden;
+  display: flex; flex-direction: column;
+}
+.app-card::after {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0; height: 1px;
+  background: linear-gradient(90deg, transparent, var(--card-top, var(--a1)), transparent);
+}
+.app-card:hover { transform: translateY(-4px); border-color: var(--card-top, var(--a1)); box-shadow: 0 12px 40px rgba(0,0,0,.25); }
+.app-card-icon {
+  width: 52px; height: 52px; border-radius: 14px;
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 1.1rem; flex-shrink: 0;
+}
+.app-card-icon svg { width: 26px; height: 26px; stroke: currentColor; fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+.app-card h3 { font-family: var(--display); font-size: 1.15rem; font-weight: 700; color: var(--t1); margin-bottom: .5rem; }
+.app-card p { font-size: .86rem; color: var(--t2); line-height: 1.7; flex: 1; margin-bottom: 1.25rem; }
+.app-card-footer { display: flex; align-items: center; justify-content: space-between; }
+.app-card-meta { font-size: .74rem; color: var(--t3); font-family: var(--mono); }
+
+/* ══════════════════════════════════════════
+   FULL-BLEED SECTION BACKGROUNDS
+══════════════════════════════════════════ */
+.bg-accent-section {
+  background: linear-gradient(180deg, var(--bg) 0%, var(--bg3) 50%, var(--bg) 100%);
+  position: relative;
+}
+.bg-accent-section::before {
+  content: ''; position: absolute; inset: 0;
+  background: radial-gradient(ellipse 70% 50% at 50% 50%, rgba(99,102,241,.06) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+/* ══════════════════════════════════════════
+   SHIELD SECTION SPECIAL
+══════════════════════════════════════════ */
+.shield-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 1rem; margin-top: 2rem;
+}
+.shield-card {
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  border-radius: 14px; padding: 1.25rem;
+  transition: all .2s;
+  position: relative; overflow: hidden;
+}
+.shield-card::before {
+  content: '';
+  position: absolute; bottom: 0; left: 0; right: 0; height: 2px;
+  background: linear-gradient(90deg, transparent, var(--s-color, #6366f1), transparent);
+  opacity: 0; transition: opacity .2s;
+}
+.shield-card:hover { transform: translateY(-2px); border-color: var(--border2); }
+.shield-card:hover::before { opacity: 1; }
+.shield-card-icon {
+  width: 40px; height: 40px; border-radius: 10px;
+  display: flex; align-items: center; justify-content: center; margin-bottom: .85rem;
+}
+.shield-card-icon svg { width: 20px; height: 20px; stroke: currentColor; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.shield-card h4 { font-family: var(--display); font-size: .9rem; font-weight: 700; color: var(--t1); margin-bottom: .35rem; }
+.shield-card p { font-size: .79rem; color: var(--t3); line-height: 1.55; }
+
+/* ══════════════════════════════════════════
+   GK QUIZ SECTION
+══════════════════════════════════════════ */
+.quiz-showcase {
+  background: var(--surface);
+  border: 1px solid var(--border2);
+  border-radius: 20px; padding: 2rem;
+  max-width: 480px; width: 100%;
+  position: relative;
+}
+.quiz-q { font-size: .92rem; font-weight: 600; color: var(--t1); margin-bottom: 1rem; line-height: 1.5; }
+.quiz-opts { display: flex; flex-direction: column; gap: .5rem; }
+.quiz-opt {
+  padding: .7rem 1rem; border-radius: 10px;
+  border: 1px solid var(--border2);
+  font-size: .84rem; color: var(--t2);
+  cursor: default; transition: all .15s;
+  position: relative; overflow: hidden;
+}
+.quiz-opt.correct { border-color: rgba(52,211,153,.5); background: rgba(52,211,153,.08); color: #34d399; }
+.quiz-opt.wrong   { border-color: rgba(239,68,68,.5);  background: rgba(239,68,68,.08);  color: #f87171; }
+.quiz-opt.neutral:hover { border-color: var(--a1); }
+.quiz-bar {
+  margin-top: 1.25rem;
+  display: flex; align-items: center; gap: .75rem;
+  font-size: .78rem; color: var(--t3);
+}
+.quiz-progress { flex: 1; height: 5px; background: var(--border2); border-radius: 99px; overflow: hidden; }
+.quiz-progress-fill { height: 100%; border-radius: 99px; background: linear-gradient(90deg, var(--a1), var(--a2)); transition: width .6s ease; }
+
+/* ══════════════════════════════════════════
+   DISCOVER SECTION
+══════════════════════════════════════════ */
+.discover-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  grid-template-rows: auto auto;
+  gap: 1rem;
+}
+@media (max-width: 860px) { .discover-grid { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 560px) { .discover-grid { grid-template-columns: 1fr; } }
+.disc-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 16px; padding: 1.5rem;
+  transition: all .2s; cursor: default; overflow: hidden; position: relative;
+}
+.disc-card:hover { border-color: var(--border2); transform: translateY(-2px); }
+.disc-card.big { grid-row: 1 / span 2; display: flex; flex-direction: column; justify-content: space-between; }
+.disc-tag {
+  display: inline-block; font-size: .68rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .08em; font-family: var(--mono);
+  color: var(--t3); margin-bottom: .75rem;
+}
+.disc-title { font-family: var(--display); font-size: 1.05rem; font-weight: 700; color: var(--t1); margin-bottom: .5rem; line-height: 1.3; }
+.disc-body { font-size: .81rem; color: var(--t3); line-height: 1.6; }
+.disc-card .disc-footer { margin-top: auto; padding-top: 1rem; display: flex; align-items: center; gap: .5rem; }
+.disc-avatar {
+  width: 28px; height: 28px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: .7rem; font-weight: 700; color: #fff;
+}
+.disc-meta { font-size: .74rem; color: var(--t3); }
+
+/* ══════════════════════════════════════════
+   STOCK SECTION
+══════════════════════════════════════════ */
+.stock-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: .85rem;
+}
+.stock-item {
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  border-radius: 12px; overflow: hidden;
+  transition: all .2s; cursor: default;
+}
+.stock-item:hover { border-color: var(--border2); transform: translateY(-2px); }
+.stock-thumb {
+  height: 110px; background: var(--bg3);
+  display: flex; align-items: center; justify-content: center;
+  overflow: hidden;
+}
+.stock-thumb svg { width: 48px; height: 48px; opacity: .5; }
+.stock-info { padding: .65rem .75rem; }
+.stock-title { font-size: .78rem; font-weight: 600; color: var(--t1); margin-bottom: .15rem; }
+.stock-meta  { font-size: .68rem; color: var(--t3); font-family: var(--mono); }
+
+/* ══════════════════════════════════════════
+   PWA INSTALL SECTION
+══════════════════════════════════════════ */
+.pwa-install-row {
+  display: flex; gap: 1rem; flex-wrap: wrap;
+}
+.pwa-install-card {
+  flex: 1 1 180px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 16px; padding: 1.25rem;
+  display: flex; flex-direction: column; align-items: center; text-align: center;
+  gap: .5rem; transition: all .2s;
+}
+.pwa-install-card:hover { border-color: var(--border2); transform: translateY(-2px); }
+.pwa-install-card svg { width: 28px; height: 28px; stroke: currentColor; fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+.pwa-install-card span { font-size: .8rem; font-weight: 600; color: var(--t1); }
+.pwa-install-card small { font-size: .7rem; color: var(--t3); }
+
+/* ══════════════════════════════════════════
+   FOOTER
+══════════════════════════════════════════ */
+.pwa-footer {
+  border-top: 1px solid var(--border);
+  padding: 3rem 1.5rem;
+  max-width: 1200px; margin: 0 auto;
+  display: grid; grid-template-columns: 2fr repeat(3, 1fr);
+  gap: 3rem;
+}
+@media (max-width: 760px) {
+  .pwa-footer { grid-template-columns: 1fr 1fr; gap: 2rem; }
+}
+@media (max-width: 480px) {
+  .pwa-footer { grid-template-columns: 1fr; }
+}
+.footer-brand { }
+.footer-logo {
+  font-family: var(--display); font-size: 1.3rem; font-weight: 800;
+  color: var(--t1); letter-spacing: -.03em; margin-bottom: .6rem; display: block;
+}
+.footer-tagline { font-size: .84rem; color: var(--t3); line-height: 1.65; max-width: 280px; }
+.footer-links h5 {
+  font-family: var(--display); font-size: .8rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .1em; color: var(--t1);
+  margin-bottom: .85rem;
+}
+.footer-links ul { list-style: none; display: flex; flex-direction: column; gap: .45rem; }
+.footer-links li a {
+  font-size: .84rem; color: var(--t3); text-decoration: none; transition: color .15s;
+}
+.footer-links li a:hover { color: var(--a1); }
+.footer-bottom {
+  border-top: 1px solid var(--border);
+  padding: 1.25rem 1.5rem;
+  max-width: 1200px; margin: 0 auto;
+  display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: .5rem;
+  font-size: .78rem; color: var(--t3);
+}
+.footer-bottom a { color: var(--a1); text-decoration: none; }
+
+/* ══════════════════════════════════════════
+   SCROLL REVEAL
+══════════════════════════════════════════ */
+.reveal {
+  opacity: 0; transform: translateY(32px);
+  transition: opacity .7s ease, transform .7s ease;
+}
+.reveal.visible { opacity: 1; transform: translateY(0); }
+.reveal-l {
+  opacity: 0; transform: translateX(-24px);
+  transition: opacity .7s ease, transform .7s ease;
+}
+.reveal-l.visible { opacity: 1; transform: translateX(0); }
+.reveal-r {
+  opacity: 0; transform: translateX(24px);
+  transition: opacity .7s ease, transform .7s ease;
+}
+.reveal-r.visible { opacity: 1; transform: translateX(0); }
+
+/* ══════════════════════════════════════════
+   GLOWING BORDER
+══════════════════════════════════════════ */
+.glow-border {
+  position: relative;
+}
+.glow-border::before {
+  content: '';
+  position: absolute; inset: -1px;
+  border-radius: inherit;
+  background: linear-gradient(135deg, var(--a1), var(--a2), var(--a3));
+  z-index: -1; opacity: .5;
+  animation: glowPulse 3s ease-in-out infinite;
+}
+
+/* ══════════════════════════════════════════
+   MOBILE HELPERS
+══════════════════════════════════════════ */
+@media (max-width: 640px) {
+  .pwa-section { padding: 4rem 1.25rem; }
+  .feat-section { padding: 3.5rem 1.25rem; }
+  .pwa-stats { gap: 1.75rem; }
+  .stat-divider { display: none; }
+  .pwa-hero { padding: 7rem 1.25rem 3rem; }
+}
+
+/* ══════════════════════════════════════════
+   TOAST
+══════════════════════════════════════════ */
+.pwa-toast {
+  position: fixed; bottom: 1.5rem; left: 50%;
+  transform: translateX(-50%) translateY(80px);
+  background: var(--surface); border: 1px solid var(--border2);
+  color: var(--t1); font-size: .84rem; font-weight: 600;
+  padding: .6rem 1.5rem; border-radius: 100px;
+  box-shadow: 0 8px 32px rgba(0,0,0,.4);
+  transition: transform .3s cubic-bezier(.34,1.56,.64,1);
+  z-index: 9999; white-space: nowrap; pointer-events: none;
+  font-family: var(--font);
+}
+.pwa-toast.show { transform: translateX(-50%) translateY(0); }
+
+/* ── section heading center util ── */
+.tc { text-align: center; }
+.tc .pwa-label { justify-content: center; }
+</style>
+
+<!-- ══ THEME TOGGLE ══ -->
+<button class="pwa-theme-btn" id="pwa-theme-btn" aria-label="Toggle theme">
+  <svg id="theme-icon-dark" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+  <svg id="theme-icon-light" style="display:none" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+</button>
+
+<!-- ══ PARTICLE CANVAS ══ -->
+<canvas id="pwa-bg-canvas"></canvas>
+
+<div class="pwa-page">
+
+<!-- ══════════════════════════════════════════
+     HERO SECTION
+══════════════════════════════════════════ -->
+<section class="pwa-hero" id="hero">
+  <div class="pwa-hero-badge">
+    <span></span>
+    TyagiHub Ecosystem v2.0 — Now with PWA support
+  </div>
+
+  <h1 class="pwa-h1">
+    The <span class="grad-text">Digital Operating System</span><br>
+    for Modern Creators
+  </h1>
+
+  <p class="pwa-hero-sub">
+    TyagiHub isn't a website — it's a modular, installable digital ecosystem. PDF systems, AI utilities, security tools, editors, learning platforms, stock libraries, and knowledge quizzes — all converging into a unified, browser-native creative universe. Install any module as a standalone app. Work offline. No subscriptions.
+  </p>
+
+  <div class="pwa-hero-actions">
+    <a href="/tools/" class="btn-glow">
+      <svg viewBox="0 0 24 24"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg>
+      <span>Explore Ecosystem</span>
+    </a>
+    <button class="btn-outline" id="pwa-install-btn">
+      <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+      Install Platform
+    </button>
+  </div>
+
+  <!-- Ecosystem mini-cards -->
+  <div class="eco-grid">
+    <div class="eco-card" style="--card-accent:#6366f1">
+      <div class="eco-icon" style="background:rgba(99,102,241,.12)">
+        <svg viewBox="0 0 24 24" style="stroke:#6366f1"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+      </div>
+      <h4>PDF Tools</h4>
+      <p>Edit, merge, sign, annotate</p>
+    </div>
+    <div class="eco-card" style="--card-accent:#06b6d4">
+      <div class="eco-icon" style="background:rgba(6,182,212,.12)">
+        <svg viewBox="0 0 24 24" style="stroke:#06b6d4"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+      </div>
+      <h4>Image Studio</h4>
+      <p>Convert, edit, optimize</p>
+    </div>
+    <div class="eco-card" style="--card-accent:#10b981">
+      <div class="eco-icon" style="background:rgba(16,185,129,.12)">
+        <svg viewBox="0 0 24 24" style="stroke:#10b981"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      </div>
+      <h4>Shield</h4>
+      <p>Security & privacy tools</p>
+    </div>
+    <div class="eco-card" style="--card-accent:#f59e0b">
+      <div class="eco-icon" style="background:rgba(245,158,11,.12)">
+        <svg viewBox="0 0 24 24" style="stroke:#f59e0b"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+      </div>
+      <h4>Learn</h4>
+      <p>Courses & revision system</p>
+    </div>
+    <div class="eco-card" style="--card-accent:#8b5cf6">
+      <div class="eco-icon" style="background:rgba(139,92,246,.12)">
+        <svg viewBox="0 0 24 24" style="stroke:#8b5cf6"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+      </div>
+      <h4>GK Quiz</h4>
+      <p>Daily knowledge challenges</p>
+    </div>
+    <div class="eco-card" style="--card-accent:#ec4899">
+      <div class="eco-icon" style="background:rgba(236,72,153,.12)">
+        <svg viewBox="0 0 24 24" style="stroke:#ec4899"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+      </div>
+      <h4>Editor</h4>
+      <p>Canvas-style creative suite</p>
+    </div>
+    <div class="eco-card" style="--card-accent:#06b6d4">
+      <div class="eco-icon" style="background:rgba(6,182,212,.12)">
+        <svg viewBox="0 0 24 24" style="stroke:#06b6d4"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      </div>
+      <h4>Discover</h4>
+      <p>Curated tools & content</p>
+    </div>
+    <div class="eco-card" style="--card-accent:#f59e0b">
+      <div class="eco-icon" style="background:rgba(245,158,11,.12)">
+        <svg viewBox="0 0 24 24" style="stroke:#f59e0b"><path d="M5 3l14 9-7 1-4 7z"/></svg>
+      </div>
+      <h4>Stock</h4>
+      <p>Assets, fonts, SVGs, icons</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══ STATS ══ -->
+<div class="pwa-stats reveal">
+  <div class="stat-item">
+    <span class="stat-num" data-count="80">0</span>
+    <span class="stat-lbl">Tools Available</span>
+  </div>
+  <div class="stat-divider"></div>
+  <div class="stat-item">
+    <span class="stat-num" data-count="8">0</span>
+    <span class="stat-lbl">Ecosystem Apps</span>
+  </div>
+  <div class="stat-divider"></div>
+  <div class="stat-item">
+    <span class="stat-num" data-count="70">0</span>
+    <span class="stat-lbl">Image Formats</span>
+  </div>
+  <div class="stat-divider"></div>
+  <div class="stat-item">
+    <span class="stat-num" data-count="0">0</span>
+    <span class="stat-lbl">Data Uploaded</span>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     TOOLS SECTION
+══════════════════════════════════════════ -->
+<section id="tools" class="bg-accent-section">
+  <div class="feat-section">
+    <div class="feat-text reveal-l">
+      <div class="pwa-label">
+        <svg viewBox="0 0 24 24"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg>
+        Tools Ecosystem
+      </div>
+      <h2 class="pwa-h2">Your entire <span class="grad-text">creative toolkit</span> — in the browser</h2>
+      <div class="pill-group">
+        <span class="pill pill-indigo">PDF Editor</span>
+        <span class="pill pill-cyan">Image Converter</span>
+        <span class="pill pill-green">OCR Engine</span>
+        <span class="pill pill-amber">QR Generator</span>
+        <span class="pill pill-violet">Encoders</span>
+        <span class="pill pill-rose">AI Utilities</span>
+      </div>
+      <p class="feat-desc">
+        TyagiHub Tools is the most comprehensive browser-native utility ecosystem ever assembled in a single platform. From professional-grade PDF editing — featuring real-time annotation layers, signature embedding, page management, watermarking, form filling, and flattened export using html2canvas and pdf-lib — to a universal image converter supporting over 70 input and output formats including PNG, WEBP, AVIF, HEIC, TIFF, TGA, EXR, and dozens of legacy and modern formats. Every operation executes entirely client-side using the Web APIs, Canvas API, and WebAssembly — nothing leaves your device, nothing is transmitted to any server. The privacy architecture is absolute. Beyond PDF and image tools, the ecosystem spans QR code generation, barcode creation, Base64 encoding and decoding, URL encoding for internationalized strings, password strength analysis, hash generation (MD5, SHA-256, SHA-512), ZIP compression utilities, OCR text extraction from scanned documents, text case converters, JSON formatters, and AI-assisted content utilities. Each tool is engineered with a professional dashboard interface, drag-and-drop upload zones, real-time progress feedback, toast notifications, keyboard shortcuts, and mobile-first responsive layouts. The entire tools suite is installable as a standalone PWA, enabling full offline operation without any native app store dependency.
+      </p>
+      <ul class="feat-list">
+        <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>PDF editing with annotations, signatures, watermarks, page tools</li>
+        <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Universal image conversion — 70+ formats, batch processing</li>
+        <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>OCR text extraction from scanned PDFs and images</li>
+        <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Zero server upload — all processing runs locally in browser</li>
+        <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Installable as offline-capable PWA — works without internet</li>
+        <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Encoders, decoders, generators, converters — 80+ tools total</li>
+      </ul>
+      <div style="display:flex;gap:.75rem;flex-wrap:wrap;">
+        <a href="/tools/" class="btn-glow">
+          <svg viewBox="0 0 24 24"><polyline points="5 12 12 5 19 12"/><polyline points="12 19 12 5"/></svg>
+          <span>Open Tools Hub</span>
+        </a>
+        <button class="btn-install" onclick="installApp('tools')">
+          <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          Install Tools App
+        </button>
+      </div>
+    </div>
+    <div class="feat-visual reveal-r" style="--v-glow:rgba(99,102,241,0.2)">
+      <svg class="main-svg" viewBox="0 0 340 320" xmlns="http://www.w3.org/2000/svg">
+        <!-- Dashboard frame -->
+        <rect x="20" y="20" width="300" height="280" rx="16" fill="rgba(99,102,241,0.06)" stroke="rgba(99,102,241,0.2)" stroke-width="1.5"/>
+        <!-- Top bar -->
+        <rect x="20" y="20" width="300" height="36" rx="16" fill="rgba(99,102,241,0.1)"/>
+        <circle cx="42" cy="38" r="5" fill="#ef4444" opacity=".7"/>
+        <circle cx="58" cy="38" r="5" fill="#f59e0b" opacity=".7"/>
+        <circle cx="74" cy="38" r="5" fill="#10b981" opacity=".7"/>
+        <rect x="110" y="31" width="100" height="14" rx="7" fill="rgba(255,255,255,0.06)"/>
+        <!-- Sidebar -->
+        <rect x="20" y="56" width="64" height="244" rx="0" fill="rgba(0,0,0,0.15)"/>
+        <rect x="30" y="72" width="44" height="10" rx="5" fill="rgba(99,102,241,0.5)"/>
+        <rect x="30" y="90" width="44" height="8" rx="4" fill="rgba(255,255,255,0.1)"/>
+        <rect x="30" y="106" width="44" height="8" rx="4" fill="rgba(255,255,255,0.1)"/>
+        <rect x="30" y="122" width="44" height="8" rx="4" fill="rgba(255,255,255,0.1)"/>
+        <rect x="30" y="138" width="44" height="8" rx="4" fill="rgba(255,255,255,0.1)"/>
+        <!-- Main area -->
+        <rect x="96" y="68" width="210" height="60" rx="10" fill="rgba(99,102,241,0.08)" stroke="rgba(99,102,241,0.15)" stroke-width="1"/>
+        <text x="108" y="93" fill="rgba(99,102,241,0.8)" font-family="monospace" font-size="9" opacity=".8">PDF Editor</text>
+        <text x="108" y="108" fill="rgba(255,255,255,0.3)" font-family="monospace" font-size="7">Edit · Sign · Annotate · Export</text>
+        <!-- Progress bar -->
+        <rect x="108" y="115" width="140" height="5" rx="2.5" fill="rgba(255,255,255,0.06)"/>
+        <rect x="108" y="115" width="96" height="5" rx="2.5" fill="rgba(99,102,241,0.7)"/>
+
+        <!-- Card 1 -->
+        <rect x="96" y="140" width="98" height="70" rx="10" fill="rgba(6,182,212,0.06)" stroke="rgba(6,182,212,0.15)" stroke-width="1"/>
+        <rect x="106" y="150" width="30" height="30" rx="8" fill="rgba(6,182,212,0.15)"/>
+        <rect x="142" y="155" width="44" height="7" rx="3.5" fill="rgba(255,255,255,0.2)"/>
+        <rect x="142" y="167" width="36" height="6" rx="3" fill="rgba(255,255,255,0.1)"/>
+        <rect x="106" y="188" width="78" height="14" rx="7" fill="rgba(6,182,212,0.2)"/>
+        <text x="126" y="199" fill="rgba(6,182,212,0.8)" font-family="monospace" font-size="7" text-anchor="middle">Image Convert</text>
+
+        <!-- Card 2 -->
+        <rect x="208" y="140" width="98" height="70" rx="10" fill="rgba(16,185,129,0.06)" stroke="rgba(16,185,129,0.15)" stroke-width="1"/>
+        <rect x="218" y="150" width="30" height="30" rx="8" fill="rgba(16,185,129,0.15)"/>
+        <rect x="254" y="155" width="44" height="7" rx="3.5" fill="rgba(255,255,255,0.2)"/>
+        <rect x="254" y="167" width="36" height="6" rx="3" fill="rgba(255,255,255,0.1)"/>
+        <rect x="218" y="188" width="78" height="14" rx="7" fill="rgba(16,185,129,0.2)"/>
+        <text x="257" y="199" fill="rgba(16,185,129,0.8)" font-family="monospace" font-size="7" text-anchor="middle">QR Generator</text>
+
+        <!-- Bottom strip -->
+        <rect x="96" y="224" width="210" height="40" rx="10" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
+        <rect x="107" y="234" width="55" height="20" rx="10" fill="rgba(99,102,241,0.15)"/>
+        <text x="134" y="248" fill="rgba(99,102,241,0.8)" font-family="monospace" font-size="7" text-anchor="middle">PDF Tools</text>
+        <rect x="170" y="234" width="55" height="20" rx="10" fill="rgba(255,255,255,0.06)"/>
+        <text x="197" y="248" fill="rgba(255,255,255,0.3)" font-family="monospace" font-size="7" text-anchor="middle">Image</text>
+        <rect x="233" y="234" width="55" height="20" rx="10" fill="rgba(255,255,255,0.06)"/>
+        <text x="260" y="248" fill="rgba(255,255,255,0.3)" font-family="monospace" font-size="7" text-anchor="middle">Security</text>
+
+        <!-- Animated glow ring -->
+        <circle cx="170" cy="160" r="120" fill="none" stroke="rgba(99,102,241,0.06)" stroke-width="40"/>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<div class="pwa-divider"></div>
+
+<!-- ══════════════════════════════════════════
+     SHIELD SECTION
+══════════════════════════════════════════ -->
+<section id="shield">
+  <div class="pwa-section">
+    <div class="tc reveal">
+      <div class="pwa-label" style="color:#10b981;background:rgba(16,185,129,0.1);border-color:rgba(16,185,129,0.25);">
+        <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        Shield — Security Suite
+      </div>
+      <h2 class="pwa-h2 tc"><span class="grad-text-2">Security-grade tools</span> for developers, analysts &amp; privacy advocates</h2>
+      <p class="feat-desc tc" style="max-width:720px;margin:0 auto 2.5rem;">
+        TyagiHub Shield is a professional-grade cybersecurity and privacy utility ecosystem built entirely for browser-side operation. Every cryptographic operation — from AES encryption to SHA-512 hashing — executes locally using the native Web Crypto API, ensuring your sensitive data never traverses the network. Shield was engineered for developers who demand security tooling without the overhead of installing native applications, security researchers who need lightweight analysis utilities, and privacy-conscious individuals who require provably secure data transformation. The ecosystem includes advanced password generators with entropy scoring, full-spectrum hash utilities, Base64 encoding and decoding systems, URL encoding for internationalized data, integrity verification tools, symmetric encryption interfaces, and developer-grade data transformation pipelines. Every UI surface is crafted to match the precision of professional desktop security suites — with dark terminal-inspired aesthetics, monospaced readouts, real-time entropy indicators, and copy-to-clipboard workflows optimized for developer speed.
+      </p>
+    </div>
+    <div class="shield-grid reveal">
+      <div class="shield-card" style="--s-color:#10b981">
+        <div class="shield-card-icon" style="background:rgba(16,185,129,.12)">
+          <svg viewBox="0 0 24 24" style="stroke:#10b981"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+        </div>
+        <h4>Password Generator</h4>
+        <p>Cryptographically secure, entropy-scored passwords with customizable character sets, length, and complexity rules. Generates from Web Crypto API randomness — never pseudo-random.</p>
+      </div>
+      <div class="shield-card" style="--s-color:#6366f1">
+        <div class="shield-card-icon" style="background:rgba(99,102,241,.12)">
+          <svg viewBox="0 0 24 24" style="stroke:#6366f1"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+        </div>
+        <h4>Hash Generator</h4>
+        <p>MD5, SHA-1, SHA-256, SHA-384, SHA-512, and BLAKE2 hashing via WebCrypto. Supports file hashing, text hashing, and HMAC generation for authentication workflows.</p>
+      </div>
+      <div class="shield-card" style="--s-color:#06b6d4">
+        <div class="shield-card-icon" style="background:rgba(6,182,212,.12)">
+          <svg viewBox="0 0 24 24" style="stroke:#06b6d4"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+        </div>
+        <h4>URL Encoder</h4>
+        <p>Full RFC 3986 compliant URL encoding and decoding. Handles Unicode, emoji, non-Latin scripts, query parameter parsing, and special character escaping for API workflows.</p>
+      </div>
+      <div class="shield-card" style="--s-color:#f59e0b">
+        <div class="shield-card-icon" style="background:rgba(245,158,11,.12)">
+          <svg viewBox="0 0 24 24" style="stroke:#f59e0b"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/><line x1="12" y1="12" x2="12" y2="16"/><line x1="10" y1="14" x2="14" y2="14"/></svg>
+        </div>
+        <h4>Base64 Suite</h4>
+        <p>UTF-8 safe Base64 encoding and decoding with full Unicode, emoji, and multi-language support via TextEncoder. Handles multiline content, data URIs, and MIME boundary encoding.</p>
+      </div>
+      <div class="shield-card" style="--s-color:#ec4899">
+        <div class="shield-card-icon" style="background:rgba(236,72,153,.12)">
+          <svg viewBox="0 0 24 24" style="stroke:#ec4899"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+        </div>
+        <h4>Privacy Auditor</h4>
+        <p>Browser fingerprint analysis, cookie inspection, storage audit, network header review, and tracker detection — giving users visibility into their own browser's privacy posture.</p>
+      </div>
+      <div class="shield-card" style="--s-color:#8b5cf6">
+        <div class="shield-card-icon" style="background:rgba(139,92,246,.12)">
+          <svg viewBox="0 0 24 24" style="stroke:#8b5cf6"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
+        </div>
+        <h4>Integrity Checker</h4>
+        <p>File and text integrity verification using cryptographic signatures. Compare hashes across inputs, verify download authenticity, and detect data corruption with precision.</p>
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:2.5rem;">
+      <a href="/tools/security/" class="btn-glow" style="background:linear-gradient(135deg,#10b981,#06b6d4);">
+        <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        <span>Open Shield Suite</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<div class="pwa-divider"></div>
+
+<!-- ══════════════════════════════════════════
+     EDITOR SECTION
+══════════════════════════════════════════ -->
+<section id="editor" class="bg-accent-section">
+  <div class="feat-section rev">
+    <div class="feat-text reveal-r">
+      <div class="pwa-label" style="color:#ec4899;background:rgba(236,72,153,0.1);border-color:rgba(236,72,153,0.25);">
+        <svg viewBox="0 0 24 24"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4z"/></svg>
+        Editor Suite
+      </div>
+      <h2 class="pwa-h2">A <span class="grad-text-4">professional editor</span> that rivals Adobe — for free</h2>
+      <div class="pill-group">
+        <span class="pill pill-violet">PDF Editor</span>
+        <span class="pill pill-rose">Image Editor</span>
+        <span class="pill pill-cyan">OCR Engine</span>
+        <span class="pill pill-indigo">Layer System</span>
+        <span class="pill pill-green">Export PDF</span>
+        <span class="pill pill-amber">Canva-Style</span>
+      </div>
+      <p class="feat-desc">
+        The TyagiHub Editor Suite is a professional-grade, browser-native creative editing platform that brings Canva-level accessibility to Adobe Acrobat-level power. The PDF Editor is the centrepiece — a fully featured document editing environment built on PDF.js for pixel-perfect rendering and pdf-lib for standards-compliant PDF generation. It supports real-time text annotation with full typography controls (font family, size, weight, style, colour, alignment), freehand drawing with pressure-sensitive brush simulation, shape insertion across eight geometric forms with configurable stroke, fill, and dash properties, digital signature creation via draw-to-sign, type-to-sign, or image upload workflows, sticky note and comment threads, whiteout and redaction boxes, watermark layers with opacity and rotation controls, page management including rotation, duplication, deletion, extraction, and reordering, QR code embedding, interactive form field creation, and find-and-replace across annotation layers. The export engine uses html2canvas to capture every page — merging the original PDF render with all annotation overlays — producing a flattened PDF that displays correctly in every PDF viewer worldwide, with zero data transmitted externally.
+      </p>
+      <ul class="feat-list">
+        <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Full PDF editor — text, draw, shapes, signatures, watermarks</li>
+        <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Canva-style drag-and-drop with layer system and snap grid</li>
+        <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>html2canvas export — all edits embedded in downloaded PDF</li>
+        <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>OCR text extraction from scanned documents</li>
+        <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Form filling, QR codes, page management, find &amp; replace</li>
+        <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Undo/redo history, keyboard shortcuts, fullscreen mode</li>
+      </ul>
+      <div style="display:flex;gap:.75rem;flex-wrap:wrap;">
+        <a href="/tools/pdf/edit/" class="btn-glow" style="background:linear-gradient(135deg,#ec4899,#8b5cf6);">
+          <svg viewBox="0 0 24 24"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4z"/></svg>
+          <span>Open PDF Editor</span>
+        </a>
+        <button class="btn-install" style="color:#ec4899;border-color:rgba(236,72,153,.3);background:rgba(236,72,153,.08);" onclick="installApp('editor')">
+          <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          Install Editor App
+        </button>
+      </div>
+    </div>
+    <div class="feat-visual reveal-l" style="--v-glow:rgba(236,72,153,0.15)">
+      <svg class="main-svg" viewBox="0 0 340 320" xmlns="http://www.w3.org/2000/svg">
+        <!-- Editor canvas -->
+        <rect x="15" y="15" width="310" height="290" rx="14" fill="rgba(236,72,153,0.04)" stroke="rgba(236,72,153,0.15)" stroke-width="1.5"/>
+        <!-- Toolbar -->
+        <rect x="15" y="15" width="310" height="40" rx="14" fill="rgba(0,0,0,0.2)"/>
+        <rect x="15" y="40" width="310" height="15" fill="rgba(0,0,0,0.2)"/>
+        <!-- Tool icons -->
+        <rect x="26" y="23" width="22" height="24" rx="5" fill="rgba(236,72,153,0.2)"/>
+        <rect x="54" y="23" width="22" height="24" rx="5" fill="rgba(255,255,255,0.05)"/>
+        <rect x="82" y="23" width="22" height="24" rx="5" fill="rgba(255,255,255,0.05)"/>
+        <rect x="110" y="23" width="22" height="24" rx="5" fill="rgba(255,255,255,0.05)"/>
+        <rect x="138" y="23" width="22" height="24" rx="5" fill="rgba(255,255,255,0.05)"/>
+        <!-- Sidebar thumbnails -->
+        <rect x="15" y="55" width="50" height="250" fill="rgba(0,0,0,0.15)"/>
+        <rect x="22" y="63" width="36" height="48" rx="5" fill="rgba(236,72,153,0.2)" stroke="rgba(236,72,153,0.4)" stroke-width="1.5"/>
+        <rect x="22" y="119" width="36" height="48" rx="5" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
+        <rect x="22" y="175" width="36" height="48" rx="5" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
+        <!-- Main document -->
+        <rect x="78" y="62" width="188" height="236" rx="4" fill="rgba(255,255,255,0.96)"/>
+        <!-- Text lines on document -->
+        <rect x="92" y="78" width="120" height="8" rx="4" fill="rgba(0,0,0,0.15)"/>
+        <rect x="92" y="93" width="160" height="6" rx="3" fill="rgba(0,0,0,0.07)"/>
+        <rect x="92" y="105" width="148" height="6" rx="3" fill="rgba(0,0,0,0.07)"/>
+        <rect x="92" y="117" width="140" height="6" rx="3" fill="rgba(0,0,0,0.07)"/>
+        <!-- Highlight annotation -->
+        <rect x="92" y="130" width="100" height="12" rx="2" fill="rgba(255,220,0,0.4)"/>
+        <rect x="92" y="130" width="100" height="6" rx="3" fill="rgba(0,0,0,0.07)"/>
+        <!-- Text annotation box -->
+        <rect x="120" y="158" width="120" height="32" rx="5" fill="none" stroke="rgba(236,72,153,0.8)" stroke-width="1.5" stroke-dasharray="4,3"/>
+        <rect x="126" y="165" width="80" height="7" rx="3.5" fill="rgba(236,72,153,0.3)"/>
+        <rect x="126" y="177" width="60" height="7" rx="3.5" fill="rgba(236,72,153,0.15)"/>
+        <!-- Signature -->
+        <path d="M92 220 C100 210 110 230 122 218 C130 210 138 224 148 216" fill="none" stroke="rgba(99,102,241,0.8)" stroke-width="2" stroke-linecap="round"/>
+        <!-- Properties panel -->
+        <rect x="278" y="55" width="47" height="243" fill="rgba(0,0,0,0.12)"/>
+        <rect x="284" y="66" width="35" height="7" rx="3.5" fill="rgba(255,255,255,0.1)"/>
+        <rect x="284" y="80" width="35" height="7" rx="3.5" fill="rgba(255,255,255,0.06)"/>
+        <rect x="284" y="94" width="35" height="7" rx="3.5" fill="rgba(255,255,255,0.06)"/>
+        <rect x="284" y="112" width="35" height="20" rx="5" fill="rgba(236,72,153,0.15)"/>
+        <!-- Color swatches -->
+        <circle cx="289" cy="148" r="5" fill="#000000"/>
+        <circle cx="302" cy="148" r="5" fill="#e74c3c"/>
+        <circle cx="315" cy="148" r="5" fill="#3498db"/>
+        <circle cx="289" cy="162" r="5" fill="#2ecc71"/>
+        <circle cx="302" cy="162" r="5" fill="#f39c12"/>
+        <circle cx="315" cy="162" r="5" fill="#9b59b6"/>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<div class="pwa-divider"></div>
+
+<!-- ══════════════════════════════════════════
+     LEARN SECTION
+══════════════════════════════════════════ -->
+<section id="learn">
+  <div class="feat-section">
+    <div class="feat-text reveal-l">
+      <div class="pwa-label" style="color:#f59e0b;background:rgba(245,158,11,0.1);border-color:rgba(245,158,11,0.25);">
+        <svg viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+        Learn Platform
+      </div>
+      <h2 class="pwa-h2">A <span class="grad-text-3">structured learning system</span> built for developers</h2>
+      <p class="feat-desc">
+        TyagiHub Learn is a developer-centric knowledge platform engineered for focused, structured study without the distractions of traditional learning management systems. Built as a modular PWA, it delivers bite-sized coding tutorials, AI and machine learning foundations, cybersecurity learning paths, frontend engineering deep-dives, system design walkthroughs, and modern developer toolchain guides — all organized into concise, scannable formats designed for working professionals with limited study windows. The platform features a built-in revision system with spaced-repetition principles, allowing learners to surface weak topics automatically based on their quiz performance and note interactions. Each learning module includes interactive code sandboxes for hands-on practice, annotatable notes with markdown rendering, progress tracking dashboards showing completion rates across topics, and offline access via service workers — meaning your study materials are always available regardless of connectivity. The installable PWA wraps the entire experience in a native app shell, enabling home-screen access, push reminders for daily goals, and a distraction-free reading interface that rivals dedicated e-reader applications. Teachers and content creators can use the platform as a structured note-sharing and curriculum distribution system, with shareable links and print-optimized exports built in.
+      </p>
+      <ul class="feat-list">
+        <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Coding, AI, cybersecurity, and system design learning paths</li>
+        <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Spaced repetition revision system with progress tracking</li>
+        <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Interactive code sandboxes embedded in every module</li>
+        <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Offline-capable PWA — study without internet connection</li>
+        <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Markdown notes, annotations, and export to PDF</li>
+      </ul>
+      <div style="display:flex;gap:.75rem;flex-wrap:wrap;">
+        <a href="/learn/" class="btn-glow" style="background:linear-gradient(135deg,#f59e0b,#ef4444);">
+          <svg viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+          <span>Start Learning</span>
+        </a>
+        <button class="btn-install" style="color:#f59e0b;border-color:rgba(245,158,11,.3);background:rgba(245,158,11,.08);" onclick="installApp('learn')">
+          <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          Install Learn App
+        </button>
+      </div>
+    </div>
+    <div class="feat-visual reveal-r" style="--v-glow:rgba(245,158,11,0.12)">
+      <svg class="main-svg" viewBox="0 0 340 320" xmlns="http://www.w3.org/2000/svg">
+        <!-- Book-like layout -->
+        <rect x="20" y="20" width="130" height="280" rx="10" fill="rgba(245,158,11,0.06)" stroke="rgba(245,158,11,0.15)" stroke-width="1.5"/>
+        <rect x="190" y="20" width="130" height="280" rx="10" fill="rgba(245,158,11,0.06)" stroke="rgba(245,158,11,0.15)" stroke-width="1.5"/>
+        <!-- Spine -->
+        <rect x="148" y="20" width="44" height="280" rx="5" fill="rgba(245,158,11,0.1)" stroke="rgba(245,158,11,0.2)" stroke-width="1"/>
+        <text x="170" y="175" fill="rgba(245,158,11,0.5)" font-family="monospace" font-size="8" text-anchor="middle" transform="rotate(-90 170 175)">TyagiHub Learn</text>
+        <!-- Left page content -->
+        <rect x="32" y="38" width="100" height="8" rx="4" fill="rgba(245,158,11,0.4)"/>
+        <rect x="32" y="54" width="106" height="5" rx="2.5" fill="rgba(255,255,255,0.08)"/>
+        <rect x="32" y="65" width="100" height="5" rx="2.5" fill="rgba(255,255,255,0.08)"/>
+        <rect x="32" y="76" width="90" height="5" rx="2.5" fill="rgba(255,255,255,0.08)"/>
+        <rect x="32" y="90" width="106" height="5" rx="2.5" fill="rgba(255,255,255,0.08)"/>
+        <!-- Code block left -->
+        <rect x="32" y="105" width="106" height="60" rx="6" fill="rgba(0,0,0,0.2)"/>
+        <rect x="40" y="113" width="60" height="5" rx="2.5" fill="rgba(99,102,241,0.5)"/>
+        <rect x="40" y="124" width="80" height="5" rx="2.5" fill="rgba(255,255,255,0.15)"/>
+        <rect x="40" y="135" width="70" height="5" rx="2.5" fill="rgba(16,185,129,0.5)"/>
+        <rect x="40" y="146" width="55" height="5" rx="2.5" fill="rgba(255,255,255,0.1)"/>
+        <!-- Progress bars -->
+        <rect x="32" y="178" width="106" height="6" rx="3" fill="rgba(255,255,255,0.06)"/>
+        <rect x="32" y="178" width="70" height="6" rx="3" fill="rgba(245,158,11,0.5)"/>
+        <rect x="32" y="190" width="106" height="6" rx="3" fill="rgba(255,255,255,0.06)"/>
+        <rect x="32" y="190" width="90" height="6" rx="3" fill="rgba(245,158,11,0.35)"/>
+        <rect x="32" y="202" width="106" height="6" rx="3" fill="rgba(255,255,255,0.06)"/>
+        <rect x="32" y="202" width="45" height="6" rx="3" fill="rgba(245,158,11,0.25)"/>
+        <!-- Right page content -->
+        <rect x="202" y="38" width="100" height="8" rx="4" fill="rgba(245,158,11,0.25)"/>
+        <rect x="202" y="54" width="106" height="5" rx="2.5" fill="rgba(255,255,255,0.08)"/>
+        <rect x="202" y="65" width="90" height="5" rx="2.5" fill="rgba(255,255,255,0.08)"/>
+        <!-- Quiz-style cards -->
+        <rect x="202" y="80" width="106" height="30" rx="6" fill="rgba(16,185,129,0.08)" stroke="rgba(16,185,129,0.2)" stroke-width="1"/>
+        <rect x="210" y="89" width="80" height="6" rx="3" fill="rgba(16,185,129,0.3)"/>
+        <rect x="202" y="118" width="106" height="30" rx="6" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
+        <rect x="210" y="127" width="70" height="6" rx="3" fill="rgba(255,255,255,0.1)"/>
+        <rect x="202" y="156" width="106" height="30" rx="6" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
+        <rect x="210" y="165" width="60" height="6" rx="3" fill="rgba(255,255,255,0.1)"/>
+        <rect x="202" y="194" width="106" height="30" rx="6" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
+        <rect x="210" y="203" width="75" height="6" rx="3" fill="rgba(255,255,255,0.1)"/>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<div class="pwa-divider"></div>
+
+<!-- ══════════════════════════════════════════
+     GK QUIZ SECTION
+══════════════════════════════════════════ -->
+<section id="gkquiz" class="bg-accent-section">
+  <div class="pwa-section">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;" class="reveal">
+      <div>
+        <div class="pwa-label" style="color:#8b5cf6;background:rgba(139,92,246,0.1);border-color:rgba(139,92,246,0.25);">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+          GK Quiz Platform
+        </div>
+        <h2 class="pwa-h2"><span class="grad-text-4">Daily knowledge challenges</span> for competitive excellence</h2>
+        <p class="feat-desc">
+          TyagiHub GK Quiz is a comprehensive general knowledge assessment and competitive preparation platform built for students, professionals, and lifelong learners who understand that breadth of knowledge is as valuable as depth. The platform delivers daily curated question sets spanning Indian history, geography, polity, economy, science and technology, international affairs, current events, sports, culture, literature, and environmental studies — all mapped to competitive examination syllabi for UPSC, SSC, IBPS, Railways, State PSC, and major entrance examinations. Each quiz session is dynamically generated with adaptive difficulty — questions become progressively harder as accuracy improves, ensuring continuous cognitive challenge rather than repetitive memorization. The platform records granular performance metrics: accuracy rates per topic, time-per-question analysis, streak tracking, and comparative benchmarking against the TyagiHub community. A smart revision engine surfaces previously incorrect answers on a scientifically calibrated schedule based on forgetting curve research. The installable PWA enables push notifications for daily quiz reminders, offline question access for commute-mode study, and a distraction-free full-screen quiz interface.
+        </p>
+        <div style="display:flex;gap:.75rem;flex-wrap:wrap;">
+          <a href="/gk/" class="btn-glow" style="background:linear-gradient(135deg,#8b5cf6,#ec4899);">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+            <span>Start Daily Quiz</span>
+          </a>
+          <button class="btn-install" style="color:#8b5cf6;border-color:rgba(139,92,246,.3);background:rgba(139,92,246,.08);" onclick="installApp('gkquiz')">
+            <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Install Quiz App
+          </button>
+        </div>
+      </div>
+      <!-- Live quiz mockup -->
+      <div>
+        <div class="quiz-showcase">
+          <div class="quiz-q" id="quiz-question">Which Article of the Indian Constitution abolishes untouchability and forbids its practice in any form?</div>
+          <div class="quiz-opts" id="quiz-opts">
+            <div class="quiz-opt neutral" onclick="quizAnswer(this, false)">Article 14</div>
+            <div class="quiz-opt neutral" onclick="quizAnswer(this, false)">Article 16</div>
+            <div class="quiz-opt neutral" onclick="quizAnswer(this, true)">Article 17</div>
+            <div class="quiz-opt neutral" onclick="quizAnswer(this, false)">Article 21</div>
+          </div>
+          <div class="quiz-bar">
+            <span id="quiz-count">Q 3 of 10</span>
+            <div class="quiz-progress"><div class="quiz-progress-fill" id="quiz-fill" style="width:30%"></div></div>
+            <span id="quiz-score">Score: 2</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="pwa-divider"></div>
+
+<!-- ══════════════════════════════════════════
+     DISCOVER SECTION
+══════════════════════════════════════════ -->
+<section id="discover">
+  <div class="pwa-section">
+    <div class="tc reveal">
+      <div class="pwa-label" style="color:#06b6d4;background:rgba(6,182,212,0.1);border-color:rgba(6,182,212,0.25);">
+        <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        Discover
+      </div>
+      <h2 class="pwa-h2"><span class="grad-text-2">Curated content &amp; resources</span> for the modern creator</h2>
+      <p class="feat-desc" style="max-width:640px;margin:0 auto 2.5rem;">A hand-curated aggregation layer surfacing the best tools, tutorials, templates, articles, and community resources from across the TyagiHub ecosystem and the broader web — organized by topic, format, and skill level.</p>
+    </div>
+    <div class="discover-grid reveal">
+      <div class="disc-card big">
+        <div>
+          <div class="disc-tag">Featured</div>
+          <div class="disc-title">Building Your First PDF Editor with PDF.js and pdf-lib in the Browser</div>
+          <p class="disc-body">A comprehensive engineering walkthrough of building a professional-grade, browser-native PDF editing application from scratch. Covers PDF.js rendering pipeline, canvas overlay architecture, html2canvas export strategy, pdf-lib annotation embedding, and the complete annotation persistence system that powers the TyagiHub PDF Editor. Includes 3,200-word source commentary, architecture diagrams, and working code samples for every major subsystem.</p>
+        </div>
+        <div class="disc-footer">
+          <div class="disc-avatar" style="background:linear-gradient(135deg,#6366f1,#8b5cf6)">T</div>
+          <div>
+            <div class="disc-meta">TyagiHub Engineering · 18 min read</div>
+          </div>
+        </div>
+      </div>
+      <div class="disc-card">
+        <div class="disc-tag">Tutorial</div>
+        <div class="disc-title">Browser-Side Image Conversion: 70+ Formats</div>
+        <p class="disc-body">Deep dive into the Canvas API toBlob pipeline, MIME type mapping, and UTF-8 safe encoding strategies behind TyagiHub's universal image converter.</p>
+      </div>
+      <div class="disc-card">
+        <div class="disc-tag">Guide</div>
+        <div class="disc-title">Web Crypto API for Developers</div>
+        <p class="disc-body">A practitioner's guide to cryptographic operations in the browser — covering SHA-256 hashing, AES-GCM encryption, and secure random generation without libraries.</p>
+      </div>
+      <div class="disc-card">
+        <div class="disc-tag">Template</div>
+        <div class="disc-title">PWA Architecture Boilerplate 2025</div>
+        <p class="disc-body">Production-ready service worker, manifest, and offline-first architecture for installable browser applications with background sync support.</p>
+      </div>
+      <div class="disc-card">
+        <div class="disc-tag">Reference</div>
+        <div class="disc-title">URL Encoding: The Complete RFC 3986 Guide</div>
+        <p class="disc-body">Everything developers need to understand percent-encoding, query parameter escaping, internationalized domain names, and common encoding pitfalls.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="pwa-divider"></div>
+
+<!-- ══════════════════════════════════════════
+     STOCK SECTION
+══════════════════════════════════════════ -->
+<section id="stock" class="bg-accent-section">
+  <div class="pwa-section">
+    <div class="tc reveal">
+      <div class="pwa-label" style="color:#f59e0b;background:rgba(245,158,11,0.1);border-color:rgba(245,158,11,0.25);">
+        <svg viewBox="0 0 24 24"><path d="M5 3l14 9-7 1-4 7z"/></svg>
+        Stock Library
+      </div>
+      <h2 class="pwa-h2">A <span class="grad-text-3">growing library</span> of free creative assets</h2>
+      <p class="feat-desc" style="max-width:680px;margin:0 auto 2.5rem;">
+        TyagiHub Stock is a curated, open-use creative asset repository featuring SVG icon sets, illustration packs, custom typefaces, color palette collections, UI component libraries, background texture sets, gradient libraries, and animated motion graphics — all available for free download and use in personal and commercial projects without attribution requirements. The library is organized into themed collections covering technology, education, finance, healthcare, nature, abstract geometry, and data visualization. Every asset is hand-reviewed for quality, optimized for web delivery, and tagged with comprehensive metadata enabling fast search across 5,000+ individual assets. New collections drop weekly, curated by the TyagiHub design team with input from the creator community. Designers can submit their own assets for inclusion through the community contribution portal, giving creators visibility within the ecosystem while enriching the shared library for everyone.
+      </p>
+    </div>
+    <div class="stock-grid reveal">
+      <!-- Generative stock thumbnails using inline SVG -->
+      <div class="stock-item">
+        <div class="stock-thumb">
+          <svg viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg" style="width:80px;height:80px;opacity:1;">
+            <defs><linearGradient id="sg1" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#6366f1"/><stop offset="100%" stop-color="#8b5cf6"/></linearGradient></defs>
+            <circle cx="40" cy="40" r="28" fill="none" stroke="url(#sg1)" stroke-width="2"/>
+            <circle cx="40" cy="40" r="16" fill="url(#sg1)" opacity=".15"/>
+            <path d="M28 40 L40 28 L52 40 L40 52 Z" fill="url(#sg1)" opacity=".6"/>
+          </svg>
+        </div>
+        <div class="stock-info"><div class="stock-title">Abstract Geometry Vol. 1</div><div class="stock-meta">24 SVGs · Free</div></div>
+      </div>
+      <div class="stock-item">
+        <div class="stock-thumb">
+          <svg viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg" style="width:80px;height:80px;opacity:1;">
+            <defs><linearGradient id="sg2" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#06b6d4"/><stop offset="100%" stop-color="#10b981"/></linearGradient></defs>
+            <rect x="15" y="15" width="50" height="50" rx="12" fill="url(#sg2)" opacity=".15"/>
+            <rect x="22" y="22" width="36" height="36" rx="8" fill="none" stroke="url(#sg2)" stroke-width="2"/>
+            <circle cx="40" cy="40" r="8" fill="url(#sg2)" opacity=".8"/>
+          </svg>
+        </div>
+        <div class="stock-info"><div class="stock-title">Tech Iconography Set</div><div class="stock-meta">120 icons · Free</div></div>
+      </div>
+      <div class="stock-item">
+        <div class="stock-thumb">
+          <svg viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg" style="width:80px;height:80px;opacity:1;">
+            <defs><linearGradient id="sg3" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#f59e0b"/><stop offset="100%" stop-color="#ef4444"/></linearGradient></defs>
+            <polygon points="40,10 68,58 12,58" fill="url(#sg3)" opacity=".15" stroke="url(#sg3)" stroke-width="2"/>
+            <line x1="40" y1="26" x2="40" y2="48" stroke="url(#sg3)" stroke-width="2" stroke-linecap="round"/>
+            <circle cx="40" cy="53" r="2.5" fill="url(#sg3)"/>
+          </svg>
+        </div>
+        <div class="stock-info"><div class="stock-title">Gradient Palette Collection</div><div class="stock-meta">200 palettes · Free</div></div>
+      </div>
+      <div class="stock-item">
+        <div class="stock-thumb">
+          <svg viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg" style="width:80px;height:80px;opacity:1;">
+            <defs><linearGradient id="sg4" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#ec4899"/><stop offset="100%" stop-color="#8b5cf6"/></linearGradient></defs>
+            <circle cx="30" cy="30" r="14" fill="none" stroke="url(#sg4)" stroke-width="2"/>
+            <circle cx="52" cy="50" r="12" fill="url(#sg4)" opacity=".2" stroke="url(#sg4)" stroke-width="1.5"/>
+            <line x1="30" y1="44" x2="40" y2="38" stroke="url(#sg4)" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div class="stock-info"><div class="stock-title">UI Illustration Pack</div><div class="stock-meta">56 illustrations · Free</div></div>
+      </div>
+      <div class="stock-item">
+        <div class="stock-thumb">
+          <svg viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg" style="width:80px;height:80px;opacity:1;">
+            <defs><linearGradient id="sg5" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#10b981"/><stop offset="100%" stop-color="#06b6d4"/></linearGradient></defs>
+            <path d="M20 60 Q40 20 60 60" fill="none" stroke="url(#sg5)" stroke-width="3" stroke-linecap="round"/>
+            <path d="M15 50 Q40 30 65 50" fill="none" stroke="url(#sg5)" stroke-width="1.5" stroke-linecap="round" opacity=".4"/>
+            <circle cx="40" cy="35" r="5" fill="url(#sg5)"/>
+          </svg>
+        </div>
+        <div class="stock-info"><div class="stock-title">Motion Curve Animations</div><div class="stock-meta">34 Lottie files · Free</div></div>
+      </div>
+      <div class="stock-item">
+        <div class="stock-thumb">
+          <svg viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg" style="width:80px;height:80px;opacity:1;">
+            <defs><linearGradient id="sg6" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#6366f1"/><stop offset="100%" stop-color="#06b6d4"/></linearGradient></defs>
+            <rect x="12" y="28" width="56" height="6" rx="3" fill="url(#sg6)" opacity=".3"/>
+            <rect x="12" y="38" width="40" height="6" rx="3" fill="url(#sg6)" opacity=".5"/>
+            <rect x="12" y="48" width="50" height="6" rx="3" fill="url(#sg6)" opacity=".2"/>
+            <rect x="12" y="18" width="30" height="8" rx="4" fill="url(#sg6)" opacity=".8"/>
+          </svg>
+        </div>
+        <div class="stock-info"><div class="stock-title">Display Font Collection</div><div class="stock-meta">18 typefaces · Free</div></div>
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:2.5rem;">
+      <a href="/stock/" class="btn-glow" style="background:linear-gradient(135deg,#f59e0b,#ef4444);">
+        <svg viewBox="0 0 24 24"><path d="M5 3l14 9-7 1-4 7z"/></svg>
+        <span>Browse Stock Library</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<div class="pwa-divider"></div>
+
+<!-- ══════════════════════════════════════════
+     PWA APPS INSTALL SECTION
+══════════════════════════════════════════ -->
+<section id="apps">
+  <div class="pwa-section">
+    <div class="tc reveal">
+      <div class="pwa-label">
+        <svg viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
+        Installable PWAs
+      </div>
+      <h2 class="pwa-h2">Install <span class="grad-text">any module</span> as a standalone app</h2>
+      <p class="feat-desc" style="max-width:660px;margin:0 auto 3rem;">Every section of TyagiHub is independently installable as a Progressive Web App. Add any module to your home screen for native app speed, offline access, and a distraction-free experience — no app store required, no account needed, no permissions requested beyond what you explicitly grant.</p>
+    </div>
+    <div class="app-cards-grid reveal">
+
+      <div class="app-card" style="--card-top:#6366f1">
+        <div class="app-card-icon" style="background:rgba(99,102,241,.12)">
+          <svg viewBox="0 0 24 24" style="stroke:#6366f1"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg>
+        </div>
+        <h3>Tools App</h3>
+        <p>The full TyagiHub utility suite as a standalone installable app. PDF editor, image converter, security tools, encoders, decoders, QR generators — 80+ utilities running entirely offline after first load. No permissions required. Works on desktop and mobile.</p>
+        <div class="app-card-footer">
+          <span class="app-card-meta">v2.0 · 2.4 MB · Offline</span>
+          <button class="btn-install" onclick="installApp('tools')">
+            <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Install
+          </button>
+        </div>
+      </div>
+
+      <div class="app-card" style="--card-top:#10b981">
+        <div class="app-card-icon" style="background:rgba(16,185,129,.12)">
+          <svg viewBox="0 0 24 24" style="stroke:#10b981"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <h3>Shield App</h3>
+        <p>The complete cybersecurity and privacy toolkit as a home-screen app. Password generation, hash computation, encryption utilities, and privacy auditing — all running locally with the Web Crypto API. Never transmits data externally by architectural design.</p>
+        <div class="app-card-footer">
+          <span class="app-card-meta">v1.8 · 1.1 MB · Offline</span>
+          <button class="btn-install" style="color:#10b981;border-color:rgba(16,185,129,.3);background:rgba(16,185,129,.08);" onclick="installApp('shield')">
+            <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Install
+          </button>
+        </div>
+      </div>
+
+      <div class="app-card" style="--card-top:#ec4899">
+        <div class="app-card-icon" style="background:rgba(236,72,153,.12)">
+          <svg viewBox="0 0 24 24" style="stroke:#ec4899"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4z"/></svg>
+        </div>
+        <h3>Editor App</h3>
+        <p>The professional PDF and image editing suite as a standalone PWA. Full annotation, signature, watermark, shape, drawing, and export capabilities — comparable to Adobe Acrobat — available offline with a single install. Touch-optimised for tablet editing.</p>
+        <div class="app-card-footer">
+          <span class="app-card-meta">v1.5 · 3.8 MB · Offline</span>
+          <button class="btn-install" style="color:#ec4899;border-color:rgba(236,72,153,.3);background:rgba(236,72,153,.08);" onclick="installApp('editor')">
+            <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Install
+          </button>
+        </div>
+      </div>
+
+      <div class="app-card" style="--card-top:#f59e0b">
+        <div class="app-card-icon" style="background:rgba(245,158,11,.12)">
+          <svg viewBox="0 0 24 24" style="stroke:#f59e0b"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+        </div>
+        <h3>Learn App</h3>
+        <p>Structured learning paths, coding tutorials, and revision systems as an offline-first study companion. Download course modules for commute-mode study. Syncs progress across devices. Push notifications for daily study goals and spaced-repetition reminders.</p>
+        <div class="app-card-footer">
+          <span class="app-card-meta">v2.1 · 1.6 MB · Offline</span>
+          <button class="btn-install" style="color:#f59e0b;border-color:rgba(245,158,11,.3);background:rgba(245,158,11,.08);" onclick="installApp('learn')">
+            <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Install
+          </button>
+        </div>
+      </div>
+
+      <div class="app-card" style="--card-top:#8b5cf6">
+        <div class="app-card-icon" style="background:rgba(139,92,246,.12)">
+          <svg viewBox="0 0 24 24" style="stroke:#8b5cf6"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+        </div>
+        <h3>GK Quiz App</h3>
+        <p>Daily general knowledge challenges, competitive exam preparation, and adaptive assessment — installed as a home-screen PWA. Offline question packs covering History, Geography, Science, Current Affairs, Polity, and Economy. Daily streak tracking with performance analytics.</p>
+        <div class="app-card-footer">
+          <span class="app-card-meta">v3.0 · 900 KB · Offline</span>
+          <button class="btn-install" style="color:#8b5cf6;border-color:rgba(139,92,246,.3);background:rgba(139,92,246,.08);" onclick="installApp('gkquiz')">
+            <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Install
+          </button>
+        </div>
+      </div>
+
+      <div class="app-card glow-border" style="--card-top:linear-gradient(135deg,#6366f1,#ec4899)">
+        <div class="app-card-icon" style="background:linear-gradient(135deg,rgba(99,102,241,.15),rgba(236,72,153,.15))">
+          <svg viewBox="0 0 24 24" style="stroke:url(#btngrad)">
+            <defs><linearGradient id="btngrad" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#6366f1"/><stop offset="100%" stop-color="#ec4899"/></linearGradient></defs>
+            <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
+          </svg>
+        </div>
+        <h3>Full Ecosystem App</h3>
+        <p>Install the complete TyagiHub platform as a single unified PWA — giving you access to all tools, editors, learning modules, security utilities, quiz systems, stock assets, and discovery feeds in one cohesive home-screen application with unified navigation and cross-module workflows.</p>
+        <div class="app-card-footer">
+          <span class="app-card-meta">v2.0 · 5.2 MB · Offline</span>
+          <button class="btn-glow" onclick="installApp('full')" style="font-size:.78rem;padding:.5rem 1.1rem;">
+            <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            <span>Install Everything</span>
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══ FOOTER ══ -->
+<footer>
+  <div class="pwa-footer">
+    <div class="footer-brand">
+      <span class="footer-logo">TyagiHub</span>
+      <p class="footer-tagline">A futuristic modular ecosystem for creators, developers, students, and researchers. Browser-native, installable, private by design.</p>
+    </div>
+    <div class="footer-links">
+      <h5>Tools</h5>
+      <ul>
+        <li><a href="/tools/pdf/">PDF Tools</a></li>
+        <li><a href="/tools/utilities/image-converter/">Image Converter</a></li>
+        <li><a href="/tools/security/">Security Suite</a></li>
+        <li><a href="/tools/utilities/base64-encoder-decoder/">Base64 Tool</a></li>
+        <li><a href="/tools/security/url-encoder/">URL Encoder</a></li>
+      </ul>
+    </div>
+    <div class="footer-links">
+      <h5>Platform</h5>
+      <ul>
+        <li><a href="/learn/">Learn</a></li>
+        <li><a href="/gk/">GK Quiz</a></li>
+        <li><a href="/tools/pdf/edit/">PDF Editor</a></li>
+        <li><a href="/stock/">Stock Library</a></li>
+        <li><a href="/pwa/">PWA Apps</a></li>
+      </ul>
+    </div>
+    <div class="footer-links">
+      <h5>About</h5>
+      <ul>
+        <li><a href="/about/">About TyagiHub</a></li>
+        <li><a href="/privacy/">Privacy Policy</a></li>
+        <li><a href="/contact/">Contact</a></li>
+        <li><a href="/sitemap.xml">Sitemap</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>&copy; 2025 TyagiHub. All rights reserved. Built with zero frameworks.</span>
+    <span>All processing is browser-local — <a href="/privacy/">zero server upload</a></span>
+  </div>
+</footer>
+
+<!-- TOAST -->
+<div class="pwa-toast" id="pwa-toast"></div>
+
+<!-- ══════════════════════════════════════════
+     JAVASCRIPT
+══════════════════════════════════════════ -->
+<script>
+'use strict';
+
+/* ── Theme ── */
+(function() {
+  const saved = localStorage.getItem('pwa-theme') || 'dark';
+  if (saved === 'light') document.documentElement.setAttribute('data-theme','light');
+  const btn = document.getElementById('pwa-theme-btn');
+  const di  = document.getElementById('theme-icon-dark');
+  const li  = document.getElementById('theme-icon-light');
+  if (saved === 'light') { di.style.display='none'; li.style.display=''; }
+  btn.addEventListener('click', () => {
+    const cur = document.documentElement.getAttribute('data-theme') || 'dark';
+    const next = cur === 'dark' ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-theme', next);
+    localStorage.setItem('pwa-theme', next);
+    if (next === 'light') { di.style.display='none'; li.style.display=''; }
+    else { di.style.display=''; li.style.display='none'; }
+  });
+})();
+
+/* ── Particle canvas ── */
+(function() {
+  const canvas = document.getElementById('pwa-bg-canvas');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  let W, H, particles = [], animId;
+
+  function resize() {
+    W = canvas.width  = window.innerWidth;
+    H = canvas.height = window.innerHeight;
+  }
+  resize();
+  window.addEventListener('resize', resize);
+
+  class Particle {
+    constructor() { this.reset(); }
+    reset() {
+      this.x  = Math.random() * W;
+      this.y  = Math.random() * H;
+      this.r  = Math.random() * 1.5 + .3;
+      this.vx = (Math.random() - .5) * .3;
+      this.vy = (Math.random() - .5) * .3;
+      this.a  = Math.random() * .5 + .1;
+    }
+    update() {
+      this.x += this.vx; this.y += this.vy;
+      if (this.x < 0||this.x > W||this.y < 0||this.y > H) this.reset();
+    }
+    draw() {
+      ctx.beginPath();
+      ctx.arc(this.x, this.y, this.r, 0, Math.PI*2);
+      ctx.fillStyle = `rgba(99,102,241,${this.a})`;
+      ctx.fill();
+    }
+  }
+
+  for (let i = 0; i < 80; i++) particles.push(new Particle());
+
+  function draw() {
+    ctx.clearRect(0, 0, W, H);
+    // Draw connections
+    for (let i = 0; i < particles.length; i++) {
+      for (let j = i+1; j < particles.length; j++) {
+        const dx = particles[i].x - particles[j].x;
+        const dy = particles[i].y - particles[j].y;
+        const d  = Math.sqrt(dx*dx + dy*dy);
+        if (d < 120) {
+          ctx.beginPath();
+          ctx.moveTo(particles[i].x, particles[i].y);
+          ctx.lineTo(particles[j].x, particles[j].y);
+          ctx.strokeStyle = `rgba(99,102,241,${.08*(1-d/120)})`;
+          ctx.lineWidth = .5;
+          ctx.stroke();
+        }
+      }
+    }
+    particles.forEach(p => { p.update(); p.draw(); });
+    animId = requestAnimationFrame(draw);
+  }
+  draw();
+})();
+
+/* ── Scroll reveal ── */
+(function() {
+  const els = document.querySelectorAll('.reveal,.reveal-l,.reveal-r');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        io.unobserve(e.target);
+      }
+    });
+  }, { threshold: .12 });
+  els.forEach(el => io.observe(el));
+})();
+
+/* ── Counter animation ── */
+(function() {
+  const nums = document.querySelectorAll('[data-count]');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (!e.isIntersecting) return;
+      const el  = e.target;
+      const end = parseInt(el.getAttribute('data-count'));
+      const suf = el.getAttribute('data-suffix') || (end > 0 ? '+' : '');
+      if (end === 0) { el.textContent = '0 bytes'; io.unobserve(el); return; }
+      let cur = 0;
+      const step = Math.ceil(end / 60);
+      const timer = setInterval(() => {
+        cur = Math.min(cur + step, end);
+        el.textContent = cur + suf;
+        if (cur >= end) clearInterval(timer);
+      }, 20);
+      io.unobserve(el);
+    });
+  }, { threshold: .5 });
+  nums.forEach(el => io.observe(el));
+})();
+
+/* ── GK Quiz interaction ── */
+let quizScore = 2;
+let quizNum   = 3;
+let quizAnswered = false;
+
+function quizAnswer(opt, correct) {
+  if (quizAnswered) return;
+  quizAnswered = true;
+  const opts = document.querySelectorAll('.quiz-opt');
+  opts.forEach(o => {
+    o.classList.remove('neutral');
+    const isCorrect = o.textContent === 'Article 17';
+    o.classList.add(isCorrect ? 'correct' : 'wrong');
+    o.style.pointerEvents = 'none';
+  });
+  if (correct) quizScore++;
+  document.getElementById('quiz-score').textContent = 'Score: ' + quizScore;
+
+  // Cycle to next question after delay
+  setTimeout(() => {
+    quizNum = Math.min(quizNum + 1, 10);
+    const pct = (quizNum / 10) * 100;
+    document.getElementById('quiz-fill').style.width = pct + '%';
+    document.getElementById('quiz-count').textContent = 'Q ' + quizNum + ' of 10';
+
+    const QUESTIONS = [
+      { q: 'Which planet is known as the "Red Planet"?', opts: ['Venus','Jupiter','Mars','Saturn'], correct: 2 },
+      { q: 'The Preamble to the Indian Constitution was amended in which year?', opts: ['1974','1976','1978','1980'], correct: 1 },
+      { q: 'Which river is known as the "Sorrow of Bengal"?', opts: ['Ganga','Brahmaputra','Damodar','Hooghly'], correct: 2 },
+      { q: 'Who invented the World Wide Web?', opts: ['Bill Gates','Tim Berners-Lee','Steve Jobs','Vint Cerf'], correct: 1 },
+      { q: 'The Battle of Panipat (1526) was fought between Babur and whom?', opts: ['Humayun','Ibrahim Lodi','Rana Sanga','Sher Shah'], correct: 1 },
+    ];
+
+    if (quizNum < 10) {
+      const q = QUESTIONS[(quizNum - 4) % QUESTIONS.length];
+      document.getElementById('quiz-question').textContent = q.q;
+      const optsEl = document.getElementById('quiz-opts');
+      optsEl.innerHTML = '';
+      q.opts.forEach((o, i) => {
+        const div = document.createElement('div');
+        div.className = 'quiz-opt neutral';
+        div.textContent = o;
+        div.onclick = function() { quizAnswer(this, i === q.correct); };
+        optsEl.appendChild(div);
+      });
+      quizAnswered = false;
+    } else {
+      document.getElementById('quiz-question').textContent = 'Quiz complete! Score: ' + quizScore + '/10';
+      document.getElementById('quiz-opts').innerHTML = '<div class="quiz-opt correct" style="pointer-events:none;text-align:center;">🎉 Excellent performance!</div>';
+    }
+  }, 1600);
+}
+
+/* ── PWA install ── */
+let deferredPrompt = null;
+window.addEventListener('beforeinstallprompt', e => {
+  e.preventDefault();
+  deferredPrompt = e;
+});
+
+function installApp(app) {
+  const labels = {
+    tools:  'Tools App',
+    shield: 'Shield App',
+    editor: 'Editor App',
+    learn:  'Learn App',
+    gkquiz: 'GK Quiz App',
+    full:   'TyagiHub Platform',
+  };
+  if (deferredPrompt) {
+    deferredPrompt.prompt();
+    deferredPrompt.userChoice.then(r => {
+      if (r.outcome === 'accepted') showToast('✓ ' + (labels[app] || 'App') + ' installed successfully!');
+      deferredPrompt = null;
+    });
+  } else {
+    showToast('Open in Chrome/Edge and tap "Add to Home Screen" to install ' + (labels[app] || 'the app'));
+  }
+}
+
+document.getElementById('pwa-install-btn')?.addEventListener('click', () => installApp('full'));
+
+/* ── Toast ── */
+let _toastTimer;
+function showToast(msg) {
+  const t = document.getElementById('pwa-toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  clearTimeout(_toastTimer);
+  _toastTimer = setTimeout(() => t.classList.remove('show'), 4000);
+}
+
+/* ── Responsive quiz layout ── */
+if (window.innerWidth < 860) {
+  const quizSection = document.querySelector('#gkquiz .pwa-section div[style*="grid"]');
+  if (quizSection) quizSection.style.gridTemplateColumns = '1fr';
+}
+</script>

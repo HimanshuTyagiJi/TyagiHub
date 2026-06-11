@@ -1,0 +1,128 @@
+{
+  "title": "World History",
+  "title_hi": "विश्व इतिहास",
+  "icon": "🌍",
+  "slug": "world-history",
+  "questions": [
+    {
+      "id": 1,
+      "q": "The French Revolution began in which year?",
+      "opts": [
+        "1776",
+        "1789",
+        "1799",
+        "1815"
+      ],
+      "ans": 1,
+      "exp": "The French Revolution began in 1789 with the storming of the Bastille on 14 July 1789. It ended the French monarchy and established the First French Republic."
+    },
+    {
+      "id": 2,
+      "q": "World War I started in which year?",
+      "opts": [
+        "1910",
+        "1914",
+        "1916",
+        "1918"
+      ],
+      "ans": 1,
+      "exp": "World War I started in 1914 following the assassination of Archduke Franz Ferdinand of Austria. It ended in 1918 with the Allied victory."
+    },
+    {
+      "id": 3,
+      "q": "The United Nations was established in?",
+      "opts": [
+        "1944",
+        "1945",
+        "1946",
+        "1947"
+      ],
+      "ans": 1,
+      "exp": "The United Nations was established on 24 October 1945, after World War II. It replaced the League of Nations and currently has 193 member states."
+    },
+    {
+      "id": 4,
+      "q": "Who was the first man to walk on the Moon?",
+      "opts": [
+        "Yuri Gagarin",
+        "Buzz Aldrin",
+        "Neil Armstrong",
+        "John Glenn"
+      ],
+      "ans": 2,
+      "exp": "Neil Armstrong became the first human to walk on the Moon on 21 July 1969 during NASA's Apollo 11 mission. His words: 'One small step for man, one giant leap for mankind.'"
+    },
+    {
+      "id": 5,
+      "q": "The Renaissance began in which country?",
+      "opts": [
+        "France",
+        "England",
+        "Italy",
+        "Germany"
+      ],
+      "ans": 2,
+      "exp": "The Renaissance (meaning 'rebirth') began in Italy in the 14th century. It was a period of cultural, artistic, and intellectual revival that later spread across Europe."
+    },
+    {
+      "id": 6,
+      "q": "The Cold War was primarily between which two countries?",
+      "opts": [
+        "USA and China",
+        "USA and USSR",
+        "UK and USSR",
+        "USA and Germany"
+      ],
+      "ans": 1,
+      "exp": "The Cold War (1947–1991) was a geopolitical rivalry between the United States and the Soviet Union (USSR). It ended with the dissolution of the USSR in 1991."
+    },
+    {
+      "id": 7,
+      "q": "The Berlin Wall fell in which year?",
+      "opts": [
+        "1985",
+        "1987",
+        "1989",
+        "1991"
+      ],
+      "ans": 2,
+      "exp": "The Berlin Wall fell on 9 November 1989. It had divided East and West Berlin since 1961. Its fall symbolized the end of the Cold War and led to German reunification."
+    },
+    {
+      "id": 8,
+      "q": "Who wrote 'The Communist Manifesto'?",
+      "opts": [
+        "Lenin and Stalin",
+        "Marx and Engels",
+        "Trotsky and Lenin",
+        "Mao and Marx"
+      ],
+      "ans": 1,
+      "exp": "'The Communist Manifesto' was written by Karl Marx and Friedrich Engels in 1848. It describes the class struggle and the need for a communist revolution."
+    },
+    {
+      "id": 9,
+      "q": "The American Declaration of Independence was signed in?",
+      "opts": [
+        "1774",
+        "1775",
+        "1776",
+        "1777"
+      ],
+      "ans": 2,
+      "exp": "The American Declaration of Independence was signed on 4 July 1776. This date is celebrated as Independence Day in the United States."
+    },
+    {
+      "id": 10,
+      "q": "World War II ended in which year?",
+      "opts": [
+        "1943",
+        "1944",
+        "1945",
+        "1946"
+      ],
+      "ans": 2,
+      "exp": "World War II ended in 1945. Germany surrendered on 8 May 1945 (V-E Day) and Japan surrendered on 2 September 1945 (V-J Day) after atomic bombs were dropped on Hiroshima and Nagasaki."
+    }
+  ]
+}

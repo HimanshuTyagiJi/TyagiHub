@@ -1,0 +1,128 @@
+{
+  "title": "World Organizations",
+  "title_hi": "विश्व संगठन",
+  "icon": "🤝",
+  "slug": "world-organizations",
+  "questions": [
+    {
+      "id": 1,
+      "q": "The United Nations was founded in which year?",
+      "opts": [
+        "1942",
+        "1944",
+        "1945",
+        "1947"
+      ],
+      "ans": 2,
+      "exp": "The United Nations was founded on 24 October 1945, with 51 original member states. It replaced the League of Nations. Currently 193 countries are members of the UN."
+    },
+    {
+      "id": 2,
+      "q": "WHO stands for?",
+      "opts": [
+        "World Health Office",
+        "World Health Organisation",
+        "World Humanitarian Organisation",
+        "World Health Organisation"
+      ],
+      "ans": 1,
+      "exp": "WHO stands for World Health Organization. It was established on 7 April 1948 (World Health Day). Its headquarters is in Geneva, Switzerland. It leads global health responses."
+    },
+    {
+      "id": 3,
+      "q": "The headquarters of NATO is located in?",
+      "opts": [
+        "Washington D.C.",
+        "London",
+        "Brussels",
+        "Paris"
+      ],
+      "ans": 2,
+      "exp": "NATO (North Atlantic Treaty Organization) headquarters is located in Brussels, Belgium. NATO was founded in 1949. It is a military alliance of 32 member countries from Europe and North America."
+    },
+    {
+      "id": 4,
+      "q": "UNICEF stands for?",
+      "opts": [
+        "United Nations International Children's Emergency Fund",
+        "Universal Children's Emergency Fund",
+        "United Nations International Child Education Fund",
+        "United Nations Children's Fund"
+      ],
+      "ans": 3,
+      "exp": "UNICEF stands for United Nations Children's Fund (originally United Nations International Children's Emergency Fund). It was created in 1946 and works for children's rights, health, education, and protection worldwide."
+    },
+    {
+      "id": 5,
+      "q": "The G20 is a forum of?",
+      "opts": [
+        "20 richest countries",
+        "19 countries + European Union",
+        "20 most populous countries",
+        "20 nuclear powers"
+      ],
+      "ans": 1,
+      "exp": "G20 (Group of Twenty) is an intergovernmental forum of 19 countries and the European Union. It represents about 85% of global GDP, 75% of international trade, and 2/3 of the world's population."
+    },
+    {
+      "id": 6,
+      "q": "IMF stands for?",
+      "opts": [
+        "International Money Fund",
+        "International Monetary Fund",
+        "International Market Fund",
+        "International Management Fund"
+      ],
+      "ans": 1,
+      "exp": "IMF stands for International Monetary Fund. Founded in 1944, it works to foster global monetary cooperation, secure financial stability, facilitate international trade, and promote economic growth."
+    },
+    {
+      "id": 7,
+      "q": "The International Court of Justice is located in?",
+      "opts": [
+        "New York",
+        "Geneva",
+        "Vienna",
+        "The Hague"
+      ],
+      "ans": 3,
+      "exp": "The International Court of Justice (ICJ) is the principal judicial organ of the United Nations, located in The Hague, Netherlands. It settles legal disputes between countries and gives advisory opinions."
+    },
+    {
+      "id": 8,
+      "q": "SAARC was established in which year?",
+      "opts": [
+        "1980",
+        "1985",
+        "1987",
+        "1990"
+      ],
+      "ans": 1,
+      "exp": "SAARC (South Asian Association for Regional Cooperation) was established on 8 December 1985 in Dhaka, Bangladesh. It has 8 member states: Afghanistan, Bangladesh, Bhutan, India, Maldives, Nepal, Pakistan, and Sri Lanka."
+    },
+    {
+      "id": 9,
+      "q": "The Red Cross was founded by?",
+      "opts": [
+        "Florence Nightingale",
+        "Henry Dunant",
+        "Albert Schweitzer",
+        "Mother Teresa"
+      ],
+      "ans": 1,
+      "exp": "Henry Dunant founded the International Red Cross in 1863. He was inspired by the suffering of wounded soldiers at the Battle of Solferino in 1859. He won the first Nobel Peace Prize in 1901."
+    },
+    {
+      "id": 10,
+      "q": "WTO replaced which organization?",
+      "opts": [
+        "UNCTAD",
+        "IMF",
+        "GATT",
+        "IBRD"
+      ],
+      "ans": 2,
+      "exp": "The World Trade Organization (WTO) replaced the General Agreement on Tariffs and Trade (GATT) on 1 January 1995. WTO governs international trade rules and currently has 164 member countries."
+    }
+  ]
+}

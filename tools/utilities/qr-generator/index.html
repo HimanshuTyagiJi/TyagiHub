@@ -1,0 +1,1183 @@
+---
+layout: default
+title: "QR Code Generator — Free & Powerful | TyagiHub"
+description: "Generate high-quality QR codes for URLs, WiFi, vCards, WhatsApp, Email, SMS, PDF, Location, Text and more. Free, browser-based, no signup."
+keywords: "QR code generator, free QR generator, WiFi QR code, WhatsApp QR, vCard QR, text QR, TyagiHub tools"
+lang: en
+lang_switch: false
+
+extra_js:
+  - https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js
+---
+
+<style>
+/* ── Variables — TyagiHub theme compatible ── */
+:root {
+  --qr-accent:   #f5a623;
+  --qr-accent2:  #e8431a;
+  --qr-green:    #34d399;
+  --qr-surface:  var(--clr-surface,  #1a1d2e);
+  --qr-surface2: var(--clr-surface-2,#242740);
+  --qr-surface3: #2e3250;
+  --qr-border:   var(--clr-border,   rgba(255,255,255,0.08));
+  --qr-border2:  rgba(255,255,255,0.12);
+  --qr-text:     var(--clr-text,     #c8cde0);
+  --qr-heading:  var(--clr-heading,  #eef0fa);
+  --qr-muted:    var(--clr-text-3,   #5a6080);
+  --qr-bg:       var(--clr-bg,       #0f1117);
+  --qr-radius:   14px;
+  --qr-font:     var(--font-body, 'Segoe UI', system-ui, sans-serif);
+  --qr-mono:     'Courier New', 'Consolas', monospace;
+}
+
+/* ── Wrapper ── */
+.qr-wrap {
+  max-width: 1080px;
+  margin: 0 auto;
+margin-top:40px;
+  padding: 2.5rem 1.25rem 5rem;
+  font-family: var(--qr-font);
+}
+
+/* ── Intro ── */
+.qr-intro { margin-bottom: 2rem; }
+.qr-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(245,166,35,0.12);
+  border: 1px solid rgba(245,166,35,0.28);
+  color: var(--qr-accent);
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 4px 14px;
+  border-radius: 100px;
+  margin-bottom: 1rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.qr-intro h1 {
+  font-size: clamp(1.7rem, 4vw, 2.4rem);
+  font-weight: 800;
+  color: var(--qr-heading);
+  letter-spacing: -0.03em;
+  margin-bottom: 0.6rem;
+  line-height: 1.15;
+}
+.qr-intro h1 em {
+  font-style: normal;
+  background: linear-gradient(135deg, var(--qr-accent), var(--qr-accent2));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.qr-intro p {
+  color: var(--qr-text);
+  font-size: 0.93rem;
+  max-width: 600px;
+  line-height: 1.75;
+}
+
+/* ── Main Grid ── */
+.qr-grid {
+  display: grid;
+  grid-template-columns: 1fr 320px;
+  gap: 1.5rem;
+  align-items: start;
+}
+@media (max-width: 820px) {
+  .qr-grid { grid-template-columns: 1fr; }
+  .qr-preview-panel { order: -1; }
+}
+
+/* ── Cards ── */
+.qr-card {
+  background: var(--qr-surface);
+  border: 1px solid var(--qr-border);
+  border-radius: var(--qr-radius);
+  padding: 1.4rem;
+  margin-bottom: 1.25rem;
+}
+.qr-card:last-child { margin-bottom: 0; }
+
+.qr-card-title {
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--qr-muted);
+  margin-bottom: 1.1rem;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.qr-card-title::before {
+  content: '';
+  width: 3px; height: 13px;
+  background: linear-gradient(180deg, var(--qr-accent), var(--qr-accent2));
+  border-radius: 99px;
+  flex-shrink: 0;
+}
+
+/* ── Type Grid ── */
+.qr-type-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(84px, 1fr));
+  gap: 0.45rem;
+  margin-bottom: 1.4rem;
+}
+.qr-type-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  padding: 0.65rem 0.4rem;
+  background: var(--qr-surface2);
+  border: 1px solid var(--qr-border);
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.18s;
+  color: var(--qr-text);
+  font-family: var(--qr-font);
+  font-size: 0.73rem;
+  font-weight: 600;
+}
+.qr-type-btn:hover { border-color: var(--qr-accent); color: var(--qr-accent); background: rgba(245,166,35,0.05); }
+.qr-type-btn.active {
+  border-color: rgba(245,166,35,0.5);
+  background: rgba(245,166,35,0.1);
+  color: var(--qr-accent);
+}
+.qr-type-btn svg {
+  width: 19px; height: 19px;
+  stroke: currentColor; fill: none;
+  stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round;
+}
+
+/* ── Forms ── */
+.qr-form { display: none; }
+.qr-form.active { display: block; }
+
+.qr-field { margin-bottom: 0.9rem; }
+.qr-field label {
+  display: block;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--qr-text);
+  margin-bottom: 5px;
+}
+.qr-field label span.req { color: var(--qr-accent); margin-left: 2px; }
+
+.qr-input {
+  width: 100%;
+  box-sizing: border-box;
+  background: var(--qr-surface2);
+  border: 1px solid var(--qr-border2);
+  border-radius: 10px;
+  padding: 10px 13px;
+  font-family: var(--qr-font);
+  font-size: 0.88rem;
+  color: var(--qr-heading);
+  outline: none;
+  transition: border-color 0.18s, box-shadow 0.18s;
+}
+.qr-input:focus {
+  border-color: var(--qr-accent);
+  box-shadow: 0 0 0 3px rgba(245,166,35,0.1);
+}
+.qr-input::placeholder { color: var(--qr-muted); }
+textarea.qr-input {
+  resize: vertical;
+  min-height: 90px;
+  font-family: var(--qr-mono);
+  font-size: 0.83rem;
+  line-height: 1.6;
+}
+.qr-select {
+  width: 100%;
+  box-sizing: border-box;
+  background: var(--qr-surface2);
+  border: 1px solid var(--qr-border2);
+  border-radius: 10px;
+  padding: 10px 13px;
+  font-family: var(--qr-font);
+  font-size: 0.88rem;
+  color: var(--qr-heading);
+  outline: none;
+  appearance: none;
+  -webkit-appearance: none;
+  cursor: pointer;
+  transition: border-color 0.18s;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%235a6080' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 13px center;
+  padding-right: 35px;
+}
+.qr-select:focus { border-color: var(--qr-accent); }
+
+.qr-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.7rem;
+}
+@media (max-width: 500px) { .qr-row { grid-template-columns: 1fr; } }
+
+/* ── Generate Button ── */
+.qr-gen-btn {
+  width: 100%;
+  padding: 0.95rem;
+  border: none;
+  border-radius: var(--qr-radius);
+  background: linear-gradient(135deg, var(--qr-accent), var(--qr-accent2));
+  color: #000;
+  font-family: var(--qr-font);
+  font-size: 0.97rem;
+  font-weight: 800;
+  letter-spacing: 0.03em;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  transition: all 0.2s;
+  box-shadow: 0 6px 24px rgba(245,166,35,0.22);
+  margin-top: 0.5rem;
+}
+.qr-gen-btn:hover { transform: translateY(-2px); box-shadow: 0 12px 32px rgba(245,166,35,0.35); }
+.qr-gen-btn:active { transform: translateY(0); }
+.qr-gen-btn svg { width: 18px; height: 18px; stroke: #000; fill: none; stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; }
+.qr-gen-btn.secondary {
+  background: var(--qr-surface2);
+  border: 1px solid var(--qr-border2);
+  color: var(--qr-text);
+  box-shadow: none;
+  font-size: 0.85rem;
+  padding: 0.72rem;
+}
+.qr-gen-btn.secondary:hover { border-color: var(--qr-accent); color: var(--qr-accent); background: rgba(245,166,35,0.06); transform: none; }
+.qr-gen-btn.secondary svg { stroke: currentColor; }
+
+/* ── Right Panel ── */
+.qr-preview-panel { position: sticky; top: 1.5rem; }
+
+.qr-preview-box {
+  background: var(--qr-surface);
+  border: 1px solid var(--qr-border);
+  border-radius: var(--qr-radius);
+  padding: 1.4rem;
+  text-align: center;
+  margin-bottom: 1.25rem;
+}
+.qr-preview-label {
+  font-size: 0.7rem;
+  color: var(--qr-muted);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 0.75rem;
+}
+
+.qr-canvas-wrap {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: #fff;
+  border-radius: 12px;
+  padding: 16px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.35);
+  position: relative;
+  min-width: 160px;
+  min-height: 160px;
+}
+.qr-canvas-wrap canvas,
+.qr-canvas-wrap img { display: block; }
+
+.qr-placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  color: #aaa;
+  font-size: 0.78rem;
+  width: 200px;
+  height: 200px;
+  justify-content: center;
+}
+.qr-placeholder svg { width: 52px; height: 52px; stroke: #ccc; fill: none; stroke-width: 1.3; }
+
+.qr-logo-overlay {
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: 48px; height: 48px;
+  border-radius: 8px;
+  object-fit: cover;
+  border: 3px solid #fff;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+  display: none;
+}
+
+/* ── Colors ── */
+.qr-color-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.7rem;
+  margin-bottom: 0.9rem;
+}
+.qr-color-field label {
+  font-size: 0.76rem;
+  font-weight: 600;
+  color: var(--qr-muted);
+  display: block;
+  margin-bottom: 5px;
+}
+.qr-color-pick {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--qr-surface2);
+  border: 1px solid var(--qr-border2);
+  border-radius: 8px;
+  padding: 6px 10px;
+  transition: border-color 0.18s;
+  cursor: pointer;
+}
+.qr-color-pick:focus-within { border-color: var(--qr-accent); }
+.qr-color-pick input[type=color] {
+  width: 26px; height: 26px;
+  border: none; border-radius: 6px;
+  padding: 0; cursor: pointer;
+  background: none; outline: none; flex-shrink: 0;
+}
+.qr-color-pick span {
+  font-family: var(--qr-mono);
+  font-size: 0.78rem;
+  color: var(--qr-heading);
+  flex: 1;
+}
+
+/* Presets */
+.qr-preset-row {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  margin-bottom: 0.9rem;
+}
+.qr-preset-dot {
+  width: 26px; height: 26px;
+  border-radius: 7px;
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition: all 0.18s;
+  flex-shrink: 0;
+}
+.qr-preset-dot:hover { transform: scale(1.18); }
+.qr-preset-dot.selected { border-color: var(--qr-heading); box-shadow: 0 0 0 2px rgba(255,255,255,0.3); }
+
+/* Error correction */
+.qr-ec-row { display: flex; gap: 5px; margin-bottom: 0.9rem; }
+.qr-ec-btn {
+  flex: 1;
+  padding: 7px 4px;
+  border: 1px solid var(--qr-border2);
+  border-radius: 8px;
+  background: var(--qr-surface2);
+  color: var(--qr-muted);
+  font-family: var(--qr-font);
+  font-size: 0.73rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.18s;
+  text-align: center;
+}
+.qr-ec-btn:hover { border-color: var(--qr-accent); color: var(--qr-accent); }
+.qr-ec-btn.active { border-color: var(--qr-accent); color: var(--qr-accent); background: rgba(245,166,35,0.1); }
+.qr-ec-tip { font-size: 0.7rem; color: var(--qr-muted); margin-bottom: 0.9rem; line-height: 1.5; }
+
+/* Size slider */
+.qr-size-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 0.9rem;
+}
+.qr-size-row label { font-size: 0.76rem; color: var(--qr-muted); font-weight: 600; min-width: 48px; }
+.qr-size-val { font-size: 0.82rem; font-weight: 700; color: var(--qr-accent); min-width: 48px; text-align: right; font-family: var(--qr-mono); }
+input[type=range].qr-slider {
+  flex: 1;
+  height: 4px;
+  border-radius: 99px;
+  background: var(--qr-border2);
+  outline: none;
+  appearance: none;
+  -webkit-appearance: none;
+  cursor: pointer;
+  accent-color: var(--qr-accent);
+}
+input[type=range].qr-slider::-webkit-slider-thumb {
+  appearance: none;
+  width: 17px; height: 17px;
+  border-radius: 50%;
+  background: var(--qr-accent);
+  border: 3px solid var(--qr-bg);
+  box-shadow: 0 0 0 2px var(--qr-accent);
+  cursor: pointer;
+}
+
+/* Logo upload */
+.qr-logo-upload {
+  border: 2px dashed var(--qr-border2);
+  border-radius: 10px;
+  padding: 0.9rem;
+  text-align: center;
+  cursor: pointer;
+  transition: border-color 0.18s;
+  margin-bottom: 0.75rem;
+  position: relative;
+}
+.qr-logo-upload:hover { border-color: var(--qr-accent); }
+.qr-logo-upload input[type=file] { position: absolute; inset: 0; opacity: 0; cursor: pointer; }
+.qr-logo-upload svg { width: 22px; height: 22px; stroke: var(--qr-muted); fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; margin-bottom: 4px; }
+.qr-logo-upload p { font-size: 0.76rem; color: var(--qr-muted); }
+.qr-logo-upload .logo-name { font-size: 0.75rem; color: var(--qr-accent); margin-top: 4px; display: none; }
+
+/* ── Export ── */
+.qr-export-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.55rem;
+}
+.qr-export-btn {
+  padding: 9px 5px;
+  border: 1px solid var(--qr-border2);
+  border-radius: 10px;
+  background: var(--qr-surface2);
+  color: var(--qr-text);
+  font-family: var(--qr-font);
+  font-size: 0.78rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.18s;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+.qr-export-btn svg { width: 15px; height: 15px; stroke: currentColor; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.qr-export-btn:hover { border-color: var(--qr-accent); color: var(--qr-accent); background: rgba(245,166,35,0.07); }
+.qr-export-btn:disabled { opacity: 0.35; cursor: not-allowed; }
+.qr-export-btn:disabled:hover { border-color: var(--qr-border2); color: var(--qr-text); background: var(--qr-surface2); transform: none; }
+
+/* ── Notice ── */
+.qr-notice {
+  background: rgba(52,211,153,0.06);
+  border: 1px solid rgba(52,211,153,0.18);
+  border-radius: var(--qr-radius);
+  padding: 0.9rem 1.1rem;
+  font-size: 0.8rem;
+  color: var(--qr-text);
+  line-height: 1.7;
+  margin-top: 1.25rem;
+}
+.qr-notice strong { color: var(--qr-green); display: block; margin-bottom: 3px; }
+
+/* ── Divider ── */
+.qr-divider {
+  height: 1px;
+  background: var(--qr-border);
+  margin: 1rem 0;
+}
+
+/* ── Toast ── */
+.qr-toast {
+  position: fixed;
+  bottom: 2rem; left: 50%;
+  transform: translateX(-50%) translateY(80px);
+  background: #1e2235;
+  border: 1px solid var(--qr-accent);
+  color: var(--qr-heading);
+  font-size: 0.85rem;
+  font-weight: 600;
+  padding: 10px 22px;
+  border-radius: 100px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+  transition: transform 0.3s cubic-bezier(.4,0,.2,1);
+  z-index: 9999;
+  white-space: nowrap;
+}
+.qr-toast.show { transform: translateX(-50%) translateY(0); }
+
+/* Light theme compat */
+[data-theme="light"] .qr-card { background: #fff; border-color: #d8deed; }
+[data-theme="light"] .qr-type-btn,
+[data-theme="light"] .qr-input,
+[data-theme="light"] .qr-select,
+[data-theme="light"] .qr-color-pick,
+[data-theme="light"] .qr-export-btn,
+[data-theme="light"] .qr-ec-btn { background: #f5f7fa; border-color: #d0d7e6; color: #1a2030; }
+[data-theme="light"] .qr-type-btn.active { background: rgba(245,166,35,0.08); }
+[data-theme="light"] .qr-input { background: #f5f7fa; color: #1a2030; }
+[data-theme="light"] .qr-preview-box { background: #fff; border-color: #d8deed; }
+[data-theme="light"] .qr-notice { background: rgba(52,211,153,0.04); }
+</style>
+
+<div class="qr-wrap">
+
+  <!-- Intro -->
+  <div class="qr-intro">
+    <div class="qr-badge">
+      <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="3" height="3"/></svg>
+      Security Tool
+    </div>
+    <h1>QR Code <em>Generator</em></h1>
+    <p>URL, WiFi, WhatsApp, vCard, UPI — kisi bhi kaam ke liye QR code banayein. Colors customize karein, logo add karein, PNG/JPG/SVG mein download karein. Sab kuch 100% browser mein — koi data server par nahi jaata.</p>
+  </div>
+
+  <div class="qr-grid">
+
+    <!-- LEFT: Controls -->
+    <div>
+      <div class="qr-card">
+        <div class="qr-card-title">QR Type Chunein</div>
+
+        <!-- Type Buttons -->
+        <div class="qr-type-grid">
+          <button class="qr-type-btn active" data-type="url" onclick="switchType('url',this)">
+            <svg viewBox="0 0 24 24"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+            URL / Link
+          </button>
+          <button class="qr-type-btn" data-type="whatsapp" onclick="switchType('whatsapp',this)">
+            <svg viewBox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+            WhatsApp
+          </button>
+          <button class="qr-type-btn" data-type="wifi" onclick="switchType('wifi',this)">
+            <svg viewBox="0 0 24 24"><path d="M5 12.55a11 11 0 0 1 14.08 0"/><path d="M1.42 9a16 16 0 0 1 21.16 0"/><path d="M8.53 16.11a6 6 0 0 1 6.95 0"/><line x1="12" y1="20" x2="12.01" y2="20"/></svg>
+            WiFi
+          </button>
+          <button class="qr-type-btn" data-type="email" onclick="switchType('email',this)">
+            <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            Email
+          </button>
+          <button class="qr-type-btn" data-type="sms" onclick="switchType('sms',this)">
+            <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+            SMS
+          </button>
+          <button class="qr-type-btn" data-type="call" onclick="switchType('call',this)">
+            <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.38 2 2 0 0 1 3.6 1.2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 8.77a16 16 0 0 0 6 6l1.83-1.83a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            Call
+          </button>
+          <button class="qr-type-btn" data-type="text" onclick="switchType('text',this)">
+            <svg viewBox="0 0 24 24"><polyline points="4 7 4 4 20 4 20 7"/><line x1="9" y1="20" x2="15" y2="20"/><line x1="12" y1="4" x2="12" y2="20"/></svg>
+            Plain Text
+          </button>
+          <button class="qr-type-btn" data-type="vcard" onclick="switchType('vcard',this)">
+            <svg viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><line x1="8" y1="12" x2="16" y2="12"/><line x1="8" y1="8" x2="10" y2="8"/><line x1="8" y1="16" x2="12" y2="16"/></svg>
+            vCard
+          </button>
+          <button class="qr-type-btn" data-type="location" onclick="switchType('location',this)">
+            <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            Location
+          </button>
+          <button class="qr-type-btn" data-type="upi" onclick="switchType('upi',this)">
+            <svg viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+            UPI Pay
+          </button>
+          <button class="qr-type-btn" data-type="pdf" onclick="switchType('pdf',this)">
+            <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+            PDF / File
+          </button>
+        </div>
+
+        <!-- URL -->
+        <div class="qr-form active" id="form-url">
+          <div class="qr-field">
+            <label>Website URL <span class="req">*</span></label>
+            <input class="qr-input" type="url" id="url-link" placeholder="https://tyagihub.com" oninput="autoGen()">
+          </div>
+        </div>
+
+        <!-- WhatsApp -->
+        <div class="qr-form" id="form-whatsapp">
+          <div class="qr-field">
+            <label>Phone Number (country code ke saath) <span class="req">*</span></label>
+            <input class="qr-input" type="tel" id="wa-phone" placeholder="+919876543210" oninput="autoGen()">
+          </div>
+          <div class="qr-field">
+            <label>Pre-filled Message (optional)</label>
+            <input class="qr-input" type="text" id="wa-msg" placeholder="Hello! Aapka QR dekha..." oninput="autoGen()">
+          </div>
+        </div>
+
+        <!-- WiFi -->
+        <div class="qr-form" id="form-wifi">
+          <div class="qr-row">
+            <div class="qr-field">
+              <label>Network Name (SSID) <span class="req">*</span></label>
+              <input class="qr-input" type="text" id="wifi-ssid" placeholder="MyHomeWiFi" oninput="autoGen()">
+            </div>
+            <div class="qr-field">
+              <label>Password</label>
+              <input class="qr-input" type="text" id="wifi-pass" placeholder="WiFi password" oninput="autoGen()">
+            </div>
+          </div>
+          <div class="qr-row">
+            <div class="qr-field">
+              <label>Encryption</label>
+              <select class="qr-select" id="wifi-enc" onchange="autoGen()">
+                <option value="WPA">WPA / WPA2</option>
+                <option value="WEP">WEP</option>
+                <option value="nopass">None (Open)</option>
+              </select>
+            </div>
+            <div class="qr-field">
+              <label>Hidden Network?</label>
+              <select class="qr-select" id="wifi-hidden" onchange="autoGen()">
+                <option value="false">No</option>
+                <option value="true">Yes (Hidden)</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <!-- Email -->
+        <div class="qr-form" id="form-email">
+          <div class="qr-field">
+            <label>Recipient Email <span class="req">*</span></label>
+            <input class="qr-input" type="email" id="email-to" placeholder="someone@example.com" oninput="autoGen()">
+          </div>
+          <div class="qr-row">
+            <div class="qr-field">
+              <label>Subject (optional)</label>
+              <input class="qr-input" type="text" id="email-sub" placeholder="Hello from TyagiHub!" oninput="autoGen()">
+            </div>
+            <div class="qr-field">
+              <label>CC (optional)</label>
+              <input class="qr-input" type="email" id="email-cc" placeholder="cc@example.com" oninput="autoGen()">
+            </div>
+          </div>
+          <div class="qr-field">
+            <label>Message (optional)</label>
+            <textarea class="qr-input" id="email-body" placeholder="Your message here..." oninput="autoGen()"></textarea>
+          </div>
+        </div>
+
+        <!-- SMS -->
+        <div class="qr-form" id="form-sms">
+          <div class="qr-row">
+            <div class="qr-field">
+              <label>Phone Number <span class="req">*</span></label>
+              <input class="qr-input" type="tel" id="sms-phone" placeholder="+919876543210" oninput="autoGen()">
+            </div>
+            <div class="qr-field">
+              <label>Message (optional)</label>
+              <input class="qr-input" type="text" id="sms-msg" placeholder="Namaste!" oninput="autoGen()">
+            </div>
+          </div>
+        </div>
+
+        <!-- Call -->
+        <div class="qr-form" id="form-call">
+          <div class="qr-field">
+            <label>Phone Number <span class="req">*</span></label>
+            <input class="qr-input" type="tel" id="call-phone" placeholder="+919876543210" oninput="autoGen()">
+          </div>
+        </div>
+
+        <!-- Text -->
+        <div class="qr-form" id="form-text">
+          <div class="qr-field">
+            <label>Text / Message <span class="req">*</span></label>
+            <textarea class="qr-input" id="plain-text" rows="5" placeholder="Koi bhi text likhein — quote, address, note..." oninput="autoGen()"></textarea>
+          </div>
+        </div>
+
+        <!-- vCard -->
+        <div class="qr-form" id="form-vcard">
+          <div class="qr-row">
+            <div class="qr-field">
+              <label>First Name <span class="req">*</span></label>
+              <input class="qr-input" type="text" id="vc-first" placeholder="Rahul" oninput="autoGen()">
+            </div>
+            <div class="qr-field">
+              <label>Last Name</label>
+              <input class="qr-input" type="text" id="vc-last" placeholder="Tyagi" oninput="autoGen()">
+            </div>
+          </div>
+          <div class="qr-row">
+            <div class="qr-field">
+              <label>Phone</label>
+              <input class="qr-input" type="tel" id="vc-phone" placeholder="+919876543210" oninput="autoGen()">
+            </div>
+            <div class="qr-field">
+              <label>Email</label>
+              <input class="qr-input" type="email" id="vc-email" placeholder="rahul@example.com" oninput="autoGen()">
+            </div>
+          </div>
+          <div class="qr-row">
+            <div class="qr-field">
+              <label>Company</label>
+              <input class="qr-input" type="text" id="vc-org" placeholder="TyagiHub" oninput="autoGen()">
+            </div>
+            <div class="qr-field">
+              <label>Job Title</label>
+              <input class="qr-input" type="text" id="vc-title" placeholder="Web Developer" oninput="autoGen()">
+            </div>
+          </div>
+          <div class="qr-row">
+            <div class="qr-field">
+              <label>Website</label>
+              <input class="qr-input" type="url" id="vc-url" placeholder="https://tyagihub.com" oninput="autoGen()">
+            </div>
+            <div class="qr-field">
+              <label>Address</label>
+              <input class="qr-input" type="text" id="vc-addr" placeholder="New Delhi, India" oninput="autoGen()">
+            </div>
+          </div>
+        </div>
+
+        <!-- Location -->
+        <div class="qr-form" id="form-location">
+          <div class="qr-row">
+            <div class="qr-field">
+              <label>Latitude <span class="req">*</span></label>
+              <input class="qr-input" type="number" id="loc-lat" placeholder="28.6139" step="any" oninput="autoGen()">
+            </div>
+            <div class="qr-field">
+              <label>Longitude <span class="req">*</span></label>
+              <input class="qr-input" type="number" id="loc-lng" placeholder="77.2090" step="any" oninput="autoGen()">
+            </div>
+          </div>
+          <button class="qr-gen-btn secondary" style="margin-top:0;" onclick="getGeoLoc()">
+            <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            Meri Current Location Use Karein
+          </button>
+        </div>
+
+        <!-- UPI -->
+        <div class="qr-form" id="form-upi">
+          <div class="qr-row">
+            <div class="qr-field">
+              <label>UPI ID <span class="req">*</span></label>
+              <input class="qr-input" type="text" id="upi-id" placeholder="yourname@upi" oninput="autoGen()">
+            </div>
+            <div class="qr-field">
+              <label>Payee Name</label>
+              <input class="qr-input" type="text" id="upi-name" placeholder="Rahul Tyagi" oninput="autoGen()">
+            </div>
+          </div>
+          <div class="qr-row">
+            <div class="qr-field">
+              <label>Amount ₹ (optional)</label>
+              <input class="qr-input" type="number" id="upi-amount" placeholder="0.00" step="0.01" oninput="autoGen()">
+            </div>
+            <div class="qr-field">
+              <label>Note (optional)</label>
+              <input class="qr-input" type="text" id="upi-note" placeholder="Payment for..." oninput="autoGen()">
+            </div>
+          </div>
+        </div>
+
+        <!-- PDF -->
+        <div class="qr-form" id="form-pdf">
+          <div class="qr-field">
+            <label>File / Document URL <span class="req">*</span></label>
+            <input class="qr-input" type="url" id="pdf-url" placeholder="https://example.com/file.pdf" oninput="autoGen()">
+          </div>
+          <p style="font-size:0.77rem; color:var(--qr-muted); line-height:1.6; margin-top:-0.3rem;">
+            💡 PDF ko Google Drive ya Dropbox par upload karein, phir shareable link yahan paste karein.
+          </p>
+        </div>
+
+        <!-- Generate Button -->
+        <button class="qr-gen-btn" onclick="generateQR()" style="margin-top:0.75rem;">
+          <svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="3" height="3"/></svg>
+          QR Code Generate Karein
+        </button>
+      </div>
+    </div>
+
+    <!-- RIGHT: Preview + Settings -->
+    <div class="qr-preview-panel">
+
+      <!-- Preview Box -->
+      <div class="qr-preview-box">
+        <div class="qr-preview-label">Live Preview</div>
+        <div class="qr-canvas-wrap" id="qr-canvas-wrap">
+          <div class="qr-placeholder" id="qr-ph">
+            <svg viewBox="0 0 24 24" stroke-width="1"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><path d="M14 14h.01M14 17h.01M17 14h.01M17 17h.01"/></svg>
+            <span>QR code yahan dikhega</span>
+          </div>
+          <img class="qr-logo-overlay" id="qr-logo-img" src="" alt="logo">
+        </div>
+      </div>
+
+      <!-- Customize -->
+      <div class="qr-card">
+        <div class="qr-card-title">Customize</div>
+
+        <!-- Color Presets -->
+        <p style="font-size:0.72rem; color:var(--qr-muted); margin-bottom:0.55rem; font-weight:600; text-transform:uppercase; letter-spacing:0.07em;">Quick Presets</p>
+        <div class="qr-preset-row" id="qr-presets"></div>
+
+        <div class="qr-color-row">
+          <div class="qr-color-field">
+            <label>QR Color</label>
+            <div class="qr-color-pick">
+              <input type="color" id="qr-fg" value="#000000" oninput="updateClr('fg'); autoGen()">
+              <span id="fg-lbl">#000000</span>
+            </div>
+          </div>
+          <div class="qr-color-field">
+            <label>Background</label>
+            <div class="qr-color-pick">
+              <input type="color" id="qr-bg" value="#ffffff" oninput="updateClr('bg'); autoGen()">
+              <span id="bg-lbl">#ffffff</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="qr-divider"></div>
+
+        <!-- Error Correction -->
+        <p style="font-size:0.72rem; color:var(--qr-muted); margin-bottom:0.5rem; font-weight:600; text-transform:uppercase; letter-spacing:0.07em;">Error Correction</p>
+        <div class="qr-ec-row">
+          <button class="qr-ec-btn active" data-ec="L" onclick="setEC('L',this)" title="Low — 7%">L</button>
+          <button class="qr-ec-btn" data-ec="M" onclick="setEC('M',this)" title="Medium — 15%">M</button>
+          <button class="qr-ec-btn" data-ec="Q" onclick="setEC('Q',this)" title="Quartile — 25%">Q</button>
+          <button class="qr-ec-btn" data-ec="H" onclick="setEC('H',this)" title="High — 30% (logo ke saath)">H</button>
+        </div>
+        <p class="qr-ec-tip">Logo add karne par <strong>H (High)</strong> level chunein — QR damaged hone par bhi scan hoga.</p>
+
+        <div class="qr-divider"></div>
+
+        <!-- QR Size -->
+        <p style="font-size:0.72rem; color:var(--qr-muted); margin-bottom:0.5rem; font-weight:600; text-transform:uppercase; letter-spacing:0.07em;">Size</p>
+        <div class="qr-size-row">
+          <label>Size</label>
+          <input type="range" class="qr-slider" id="qr-size" min="128" max="512" value="256" step="8"
+                 oninput="document.getElementById('qr-sz-val').textContent=this.value+'px'; autoGen()">
+          <span class="qr-size-val" id="qr-sz-val">256px</span>
+        </div>
+
+        <div class="qr-divider"></div>
+
+        <!-- Logo Upload -->
+        <p style="font-size:0.72rem; color:var(--qr-muted); margin-bottom:0.5rem; font-weight:600; text-transform:uppercase; letter-spacing:0.07em;">Logo (optional)</p>
+        <div class="qr-logo-upload">
+          <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+          <p>Logo upload karein</p>
+          <p class="logo-name" id="logo-fn"></p>
+          <input type="file" id="logo-file" accept="image/*" onchange="handleLogo(this)">
+        </div>
+        <button class="qr-gen-btn secondary" style="margin-top:0;" onclick="removeLogo()">
+          <svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+          Logo Hatayein
+        </button>
+      </div>
+
+      <!-- Export -->
+      <div class="qr-card">
+        <div class="qr-card-title">Download / Export</div>
+        <div class="qr-export-grid">
+          <button class="qr-export-btn" id="btn-png" onclick="exportQR('png')" disabled>
+            <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            PNG
+          </button>
+          <button class="qr-export-btn" id="btn-jpg" onclick="exportQR('jpg')" disabled>
+            <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            JPG
+          </button>
+          <button class="qr-export-btn" id="btn-svg" onclick="exportQR('svg')" disabled>
+            <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            SVG
+          </button>
+        </div>
+      </div>
+
+      <!-- Notice -->
+      <div class="qr-notice">
+        <strong>🔒 100% Browser-Based — Koi Data Server Par Nahi Jaata</strong>
+        WiFi passwords, UPI IDs, contacts — sab kuch sirf aapke device mein rahta hai. Safe to use for sensitive information.
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<div class="qr-toast" id="qr-toast"></div>
+
+<script>
+/* ── State ── */
+let qrType = 'url', qrEC = 'L', logoData = null, qrReady = false;
+
+/* ── Color Presets ── */
+const PRESETS = [
+  {fg:'#000000',bg:'#ffffff',l:'Classic'},
+  {fg:'#0f172a',bg:'#f5a623',l:'TyagiHub'},
+  {fg:'#1e3a8a',bg:'#dbeafe',l:'Ocean'},
+  {fg:'#065f46',bg:'#d1fae5',l:'Forest'},
+  {fg:'#7c3aed',bg:'#ede9fe',l:'Purple'},
+  {fg:'#b91c1c',bg:'#fee2e2',l:'Red'},
+  {fg:'#ffffff',bg:'#1a1d2e',l:'Dark'},
+  {fg:'#78350f',bg:'#fef3c7',l:'Amber'},
+];
+
+(function renderPresets() {
+  const w = document.getElementById('qr-presets');
+  PRESETS.forEach((p,i) => {
+    const d = document.createElement('div');
+    d.className = 'qr-preset-dot' + (i===0?' selected':'');
+    d.title = p.l;
+    d.style.background = `linear-gradient(135deg,${p.fg} 50%,${p.bg} 50%)`;
+    d.onclick = () => {
+      document.querySelectorAll('.qr-preset-dot').forEach(x=>x.classList.remove('selected'));
+      d.classList.add('selected');
+      document.getElementById('qr-fg').value = p.fg;
+      document.getElementById('qr-bg').value = p.bg;
+      updateClr('fg'); updateClr('bg');
+      autoGen();
+    };
+    w.appendChild(d);
+  });
+})();
+
+function updateClr(w) {
+  const id  = w==='fg' ? 'qr-fg' : 'qr-bg';
+  const lbl = w==='fg' ? 'fg-lbl': 'bg-lbl';
+  document.getElementById(lbl).textContent = document.getElementById(id).value;
+}
+
+/* ── Type Switch ── */
+function switchType(t, btn) {
+  qrType = t;
+  document.querySelectorAll('.qr-type-btn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('.qr-form').forEach(f=>f.classList.remove('active'));
+  document.getElementById('form-'+t).classList.add('active');
+}
+
+/* ── Build QR String ── */
+function buildStr() {
+  const v = id => document.getElementById(id)?.value.trim() || '';
+  switch(qrType) {
+    case 'url':       return v('url-link') || null;
+    case 'whatsapp':  {
+      const ph = v('wa-phone').replace(/\D/g,'');
+      if(!ph) return null;
+      const m = encodeURIComponent(v('wa-msg'));
+      return `https://wa.me/${ph}${m?'?text='+m:''}`;
+    }
+    case 'wifi': {
+      const ssid = v('wifi-ssid'); if(!ssid) return null;
+      return `WIFI:T:${v('wifi-enc')};S:${ssid};P:${v('wifi-pass')};H:${v('wifi-hidden')};;`;
+    }
+    case 'email': {
+      const to = v('email-to'); if(!to) return null;
+      let s = `mailto:${to}?`;
+      const sub = encodeURIComponent(v('email-sub'));
+      const cc  = encodeURIComponent(v('email-cc'));
+      const bd  = encodeURIComponent(v('email-body'));
+      if(sub) s+=`subject=${sub}&`;
+      if(cc)  s+=`cc=${cc}&`;
+      if(bd)  s+=`body=${bd}`;
+      return s.replace(/[&?]$/,'');
+    }
+    case 'sms': {
+      const ph = v('sms-phone'); if(!ph) return null;
+      const m = v('sms-msg');
+      return `sms:${ph}${m?'?body='+encodeURIComponent(m):''}`;
+    }
+    case 'call':      { const ph=v('call-phone'); return ph?`tel:${ph}`:null; }
+    case 'text':      return v('plain-text') || null;
+    case 'vcard': {
+      const fn = v('vc-first'); if(!fn) return null;
+      const ln = v('vc-last');
+      const l = ['BEGIN:VCARD','VERSION:3.0',`N:${ln};${fn};;;`,`FN:${fn} ${ln}`.trim()];
+      if(v('vc-phone')) l.push(`TEL:${v('vc-phone')}`);
+      if(v('vc-email')) l.push(`EMAIL:${v('vc-email')}`);
+      if(v('vc-org'))   l.push(`ORG:${v('vc-org')}`);
+      if(v('vc-title')) l.push(`TITLE:${v('vc-title')}`);
+      if(v('vc-url'))   l.push(`URL:${v('vc-url')}`);
+      if(v('vc-addr'))  l.push(`ADR:;;${v('vc-addr')};;;;`);
+      l.push('END:VCARD');
+      return l.join('\n');
+    }
+    case 'location': {
+      const la=v('loc-lat'),ln=v('loc-lng');
+      return (la&&ln)?`geo:${la},${ln}`:null;
+    }
+    case 'upi': {
+      const id=v('upi-id'); if(!id) return null;
+      let s=`upi://pay?pa=${encodeURIComponent(id)}`;
+      if(v('upi-name'))   s+=`&pn=${encodeURIComponent(v('upi-name'))}`;
+      if(v('upi-amount')) s+=`&am=${v('upi-amount')}`;
+      if(v('upi-note'))   s+=`&tn=${encodeURIComponent(v('upi-note'))}`;
+      return s;
+    }
+    case 'pdf': return v('pdf-url') || null;
+    default: return null;
+  }
+}
+
+/* ── Generate QR ── */
+function generateQR() {
+  const data = buildStr();
+  if(!data) { qrToast('⚠️ Pehle required fields bharein.'); return; }
+
+  const fg   = document.getElementById('qr-fg').value;
+  const bg   = document.getElementById('qr-bg').value;
+  const size = parseInt(document.getElementById('qr-size').value);
+  const ecMap = {L:QRCode.CorrectLevel.L,M:QRCode.CorrectLevel.M,Q:QRCode.CorrectLevel.Q,H:QRCode.CorrectLevel.H};
+
+  const wrap = document.getElementById('qr-canvas-wrap');
+  // Remove placeholder & old QR
+  document.getElementById('qr-ph')?.remove();
+  wrap.querySelector('#qr-inner')?.remove();
+
+  const inner = document.createElement('div');
+  inner.id = 'qr-inner';
+  wrap.insertBefore(inner, wrap.querySelector('#qr-logo-img'));
+
+  new QRCode(inner, {
+    text: data, width: size, height: size,
+    colorDark: fg, colorLight: bg,
+    correctLevel: ecMap[qrEC]
+  });
+
+  wrap.style.background = bg;
+
+  const logoImg = document.getElementById('qr-logo-img');
+  if(logoData) { logoImg.src=logoData; logoImg.style.display='block'; }
+  else { logoImg.style.display='none'; }
+
+  qrReady = true;
+  setExport(true);
+  qrToast('✅ QR Code ready! Download karein.');
+}
+
+let _timer;
+function autoGen() {
+  clearTimeout(_timer);
+  _timer = setTimeout(generateQR, 550);
+}
+
+/* ── EC ── */
+function setEC(l, btn) {
+  qrEC = l;
+  document.querySelectorAll('.qr-ec-btn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  if(qrReady) generateQR();
+}
+
+/* ── Logo ── */
+function handleLogo(inp) {
+  const f = inp.files[0]; if(!f) return;
+  const r = new FileReader();
+  r.onload = e => {
+    logoData = e.target.result;
+    document.getElementById('logo-fn').textContent = f.name;
+    document.getElementById('logo-fn').style.display = 'block';
+    if(qrReady) generateQR();
+    qrToast('🖼️ Logo upload hua! H error correction use karein.');
+  };
+  r.readAsDataURL(f);
+}
+
+function removeLogo() {
+  logoData = null;
+  document.getElementById('logo-file').value = '';
+  const fn = document.getElementById('logo-fn');
+  fn.style.display='none'; fn.textContent='';
+  document.getElementById('qr-logo-img').style.display='none';
+  if(qrReady) generateQR();
+}
+
+/* ── Geolocation ── */
+function getGeoLoc() {
+  if(!navigator.geolocation) { qrToast('❌ Geolocation support nahi hai.'); return; }
+  navigator.geolocation.getCurrentPosition(p=>{
+    document.getElementById('loc-lat').value = p.coords.latitude.toFixed(6);
+    document.getElementById('loc-lng').value = p.coords.longitude.toFixed(6);
+    autoGen();
+    qrToast('📍 Location mil gayi!');
+  }, ()=>qrToast('❌ Location permission dijiye.'));
+}
+
+/* ── Export ── */
+function setExport(on) {
+  ['btn-png','btn-jpg','btn-svg'].forEach(id=>{ document.getElementById(id).disabled=!on; });
+}
+
+function getCanvas() { return document.querySelector('#qr-canvas-wrap canvas'); }
+
+function exportQR(fmt) {
+  const c = getCanvas();
+  if(!c) { qrToast('⚠️ Pehle QR generate karein!'); return; }
+  if(fmt==='svg') { exportSVG(); return; }
+
+  const M=20, bg=document.getElementById('qr-bg').value;
+  const exp=document.createElement('canvas');
+  exp.width=c.width+M*2; exp.height=c.height+M*2;
+  const ctx=exp.getContext('2d');
+  ctx.fillStyle=bg; ctx.fillRect(0,0,exp.width,exp.height);
+  ctx.drawImage(c,M,M);
+
+  if(logoData) {
+    const ls=Math.round(c.width*0.18);
+    const lx=M+(c.width-ls)/2, ly=M+(c.height-ls)/2;
+    const img=new Image();
+    img.onload=()=>{
+      ctx.save();
+      ctx.beginPath(); ctx.roundRect(lx-4,ly-4,ls+8,ls+8,8);
+      ctx.fillStyle='#fff'; ctx.fill();
+      ctx.drawImage(img,lx,ly,ls,ls);
+      ctx.restore();
+      dlCanvas(exp,fmt);
+    };
+    img.src=logoData; return;
+  }
+  dlCanvas(exp,fmt);
+}
+
+function dlCanvas(c,fmt) {
+  const mime=fmt==='jpg'?'image/jpeg':'image/png';
+  const a=document.createElement('a');
+  a.download=`qr-tyagihub.${fmt}`;
+  a.href=c.toDataURL(mime,0.95);
+  a.click();
+  qrToast(`✅ ${fmt.toUpperCase()} download hua!`);
+}
+
+function exportSVG() {
+  const c=getCanvas(); if(!c) return;
+  const fg=document.getElementById('qr-fg').value;
+  const bg=document.getElementById('qr-bg').value;
+  const size=parseInt(document.getElementById('qr-size').value);
+  const M=20, total=size+M*2;
+  const ctx=c.getContext('2d');
+  const d=ctx.getImageData(0,0,c.width,c.height);
+  const scale=size/c.width;
+  let rects='';
+  for(let y=0;y<c.width;y++) for(let x=0;x<c.width;x++) {
+    const i=(y*c.width+x)*4;
+    if(d.data[i]<128&&d.data[i+1]<128&&d.data[i+2]<128)
+      rects+=`<rect x="${M+x*scale}" y="${M+y*scale}" width="${scale}" height="${scale}" fill="${fg}"/>`;
+  }
+  const svg=`<svg xmlns="http://www.w3.org/2000/svg" width="${total}" height="${total}" viewBox="0 0 ${total} ${total}"><rect width="${total}" height="${total}" fill="${bg}"/>${rects}</svg>`;
+  const a=document.createElement('a');
+  a.download='qr-tyagihub.svg';
+  a.href=URL.createObjectURL(new Blob([svg],{type:'image/svg+xml'}));
+  a.click();
+  qrToast('✅ SVG download hua!');
+}
+
+/* ── Toast ── */
+function qrToast(msg) {
+  const t=document.getElementById('qr-toast');
+  t.textContent=msg; t.classList.add('show');
+  setTimeout(()=>t.classList.remove('show'),3000);
+}
+
+setExport(false);
+</script>

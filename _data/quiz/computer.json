@@ -1,0 +1,128 @@
+{
+  "title": "Computer",
+  "title_hi": "कंप्यूटर",
+  "icon": "💻",
+  "slug": "computer",
+  "questions": [
+    {
+      "id": 1,
+      "q": "CPU stands for?",
+      "opts": [
+        "Central Processing Unit",
+        "Computer Processing Unit",
+        "Central Program Unit",
+        "Core Processing Unit"
+      ],
+      "ans": 0,
+      "exp": "CPU stands for Central Processing Unit. It is the primary component of a computer that executes instructions of a program by performing basic arithmetic, logic, control and I/O operations."
+    },
+    {
+      "id": 2,
+      "q": "The binary number system uses which digits?",
+      "opts": [
+        "0 to 7",
+        "0 to 9",
+        "0 and 1",
+        "1 and 2"
+      ],
+      "ans": 2,
+      "exp": "The binary number system uses only two digits: 0 and 1. All computer data is ultimately stored and processed as binary (base-2) numbers."
+    },
+    {
+      "id": 3,
+      "q": "Who is known as the Father of Computers?",
+      "opts": [
+        "Alan Turing",
+        "Charles Babbage",
+        "Bill Gates",
+        "Steve Jobs"
+      ],
+      "ans": 1,
+      "exp": "Charles Babbage is known as the Father of Computers. He designed the first mechanical computer, the Difference Engine, in the early 19th century."
+    },
+    {
+      "id": 4,
+      "q": "WWW stands for?",
+      "opts": [
+        "World Wide Web",
+        "World Wide Wire",
+        "World Web Wide",
+        "Worldwide Web"
+      ],
+      "ans": 0,
+      "exp": "WWW stands for World Wide Web. It was invented by Tim Berners-Lee in 1989. It is a system of interlinked hypertext documents accessed via the Internet."
+    },
+    {
+      "id": 5,
+      "q": "RAM stands for?",
+      "opts": [
+        "Read Access Memory",
+        "Random Access Memory",
+        "Read And Memory",
+        "Random And Memory"
+      ],
+      "ans": 1,
+      "exp": "RAM stands for Random Access Memory. It is the primary memory of a computer that stores data and instructions currently in use. It is volatile, meaning data is lost when power is off."
+    },
+    {
+      "id": 6,
+      "q": "The first computer virus was called?",
+      "opts": [
+        "Brain",
+        "Creeper",
+        "Melissa",
+        "ILOVEYOU"
+      ],
+      "ans": 1,
+      "exp": "The Creeper program (1971) is often cited as the first computer virus. It spread through ARPANET and displayed the message 'I'm the creeper, catch me if you can!'"
+    },
+    {
+      "id": 7,
+      "q": "HTTP stands for?",
+      "opts": [
+        "HyperText Transfer Protocol",
+        "HyperText Transmission Protocol",
+        "High Text Transfer Protocol",
+        "HyperText Transport Protocol"
+      ],
+      "ans": 0,
+      "exp": "HTTP stands for HyperText Transfer Protocol. It is the foundation of data communication on the World Wide Web. HTTPS is the secure version with encryption."
+    },
+    {
+      "id": 8,
+      "q": "1 GB is equal to how many MB?",
+      "opts": [
+        "100 MB",
+        "512 MB",
+        "1000 MB",
+        "1024 MB"
+      ],
+      "ans": 3,
+      "exp": "1 GB (Gigabyte) = 1024 MB (Megabytes). Similarly, 1 MB = 1024 KB, and 1 KB = 1024 bytes."
+    },
+    {
+      "id": 9,
+      "q": "The programming language Python was created by?",
+      "opts": [
+        "James Gosling",
+        "Linus Torvalds",
+        "Guido van Rossum",
+        "Dennis Ritchie"
+      ],
+      "ans": 2,
+      "exp": "Python was created by Guido van Rossum and first released in 1991. It is a high-level, interpreted programming language known for its simplicity and readability."
+    },
+    {
+      "id": 10,
+      "q": "Which company developed the Android operating system?",
+      "opts": [
+        "Apple",
+        "Microsoft",
+        "Google",
+        "Samsung"
+      ],
+      "ans": 2,
+      "exp": "Android was developed by Android Inc., which was acquired by Google in 2005. Google then released Android as an open-source operating system in 2008."
+    }
+  ]
+}

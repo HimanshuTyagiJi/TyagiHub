@@ -1,0 +1,269 @@
+<!-- _includes/navbar.html -->
+
+<header class="navbar" role="banner" aria-label="Main navigation">
+  <div class="container">
+    <div class="navbar__inner">
+
+      <!-- Logo -->
+      <a href="{% if page.lang == 'hi' %}/hi/{% else %}/{% endif %}" class="navbar__logo" aria-label="TyagiHub Home">
+        <img src="/assets/images/tyagihub.png" alt="TyagiHub Logo" class="navbar__logo-icon">
+        Tyagi<span>Hub</span>
+      </a>
+
+      <!-- Desktop Navigation -->
+      <nav class="navbar__nav" role="navigation" aria-label="Primary">
+
+        {% if page.lang == "hi" %}
+
+          <a href="/hi/learn/" class="navbar__link">सीखें</a>
+
+          <a href="/hi/gk-quiz/" class="navbar__link">जीके क्विज</a>
+
+          <a href="/hi/test/" class="navbar__link">टेस्ट</a>
+
+          <a href="/hi/shield/" class="navbar__link">सुरक्षा</a>
+
+          <a href="/tools/" class="navbar__link">टूल्स</a>
+
+          <a href="/editor/" class="navbar__link">एडिटर</a>
+
+          <a href="/stock/" class="navbar__link">स्टॉक</a>
+
+          <a href="/apps/" class="navbar__link">ऐप्स</a>
+
+          <a href="/hi/discover/" class="navbar__link">डिस्कवर</a>
+
+        {% else %}
+
+          <a href="/learn/" class="navbar__link">Learn</a>
+
+          <a href="/gk-quiz/" class="navbar__link">GK Quiz</a>
+
+          <a href="/test/" class="navbar__link">Test</a>
+
+          <a href="/shield/" class="navbar__link">Shield</a>
+
+          <a href="/tools/" class="navbar__link">Tools</a>
+
+          <a href="/editor/" class="navbar__link">Editor</a>
+
+          <a href="/stock/" class="navbar__link">Stock</a>
+
+          <a href="/apps/" class="navbar__link">Apps</a>
+
+          <a href="/discover/" class="navbar__link">Discover</a>
+
+        {% endif %}
+
+      </nav>
+
+      <!-- Actions -->
+      <div class="navbar__actions">
+
+        <!-- Search Icon -->
+        <button class="navbar-search-btn" id="navbar-search-btn"
+          aria-label="{% if page.lang == 'hi' %}TyagiHub खोजें{% else %}Search TyagiHub{% endif %}"
+          title="{% if page.lang == 'hi' %}खोजें{% else %}Search{% endif %}">
+
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+
+        </button>
+
+        <!-- Theme Toggle -->
+        <button class="theme-toggle"
+          aria-label="{% if page.lang == 'hi' %}थीम बदलें{% else %}Toggle dark/light mode{% endif %}"
+          title="{% if page.lang == 'hi' %}थीम बदलें{% else %}Toggle theme{% endif %}">
+
+          <svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+
+            <circle cx="12" cy="12" r="5"></circle>
+
+            <line x1="12" y1="1" x2="12" y2="3"></line>
+
+            <line x1="12" y1="21" x2="12" y2="23"></line>
+
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+
+            <line x1="1" y1="12" x2="3" y2="12"></line>
+
+            <line x1="21" y1="12" x2="23" y2="12"></line>
+
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+
+          </svg>
+
+          <svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+
+          </svg>
+
+        </button>
+
+      <!-- Language Switch -->
+
+{% if page.lang_switch != false %}
+
+  {% if page.lang == "hi" %}
+
+    <a href="{{ page.url | remove:'/hi' }}"
+      class="btn btn-outline btn-sm navbar__docs-link">
+
+      English
+
+    </a>
+
+  {% else %}
+
+    <a href="/hi{{ page.url }}"
+      class="btn btn-outline btn-sm navbar__docs-link">
+
+      हिन्दी
+
+    </a>
+
+  {% endif %}
+
+{% endif %}
+
+        <!-- Sign In -->
+
+        {% if page.lang == "hi" %}
+
+          <a href="#" class="btn btn-primary btn-sm"
+            onclick="TyagiHub.Toast.show('ऑथेंटिकेशन जल्द आ रहा है!', 'info'); return false;">
+
+            लॉगिन
+
+          </a>
+
+        {% else %}
+
+          <a href="#" class="btn btn-primary btn-sm"
+            onclick="TyagiHub.Toast.show('Authentication coming soon!', 'info'); return false;">
+
+            Sign In
+
+          </a>
+
+        {% endif %}
+
+        <!-- Hamburger -->
+        <button class="navbar__hamburger"
+          aria-label="{% if page.lang == 'hi' %}मेनू खोलें{% else %}Toggle menu{% endif %}"
+          aria-expanded="false"
+          aria-controls="mobile-nav">
+
+          <span></span>
+          <span></span>
+          <span></span>
+
+        </button>
+
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- SEARCH OVERLAY -->
+<div id="search-overlay" class="search-overlay" aria-hidden="true"></div>
+
+<!-- SEARCH BOX -->
+<div id="search-box" class="search-box" role="combobox" aria-expanded="false" aria-haspopup="listbox">
+
+  <div class="search-box__input-row">
+
+    <span class="search-box__icon" aria-hidden="true">
+
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+        stroke-linecap="round" stroke-linejoin="round">
+
+        <circle cx="11" cy="11" r="8"></circle>
+
+        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+
+      </svg>
+
+    </span>
+
+    <input type="search"
+      id="search-input"
+      class="search-box__input"
+
+      placeholder="{% if page.lang == 'hi' %}टूल्स, कोर्स, ऐप्स खोजें...{% else %}Tools, courses, apps dhundho...{% endif %}"
+
+      aria-label="{% if page.lang == 'hi' %}TyagiHub खोजें{% else %}Search TyagiHub{% endif %}"
+
+      autocomplete="off"
+      spellcheck="false">
+
+    <button class="search-box__close"
+      id="search-close"
+      aria-label="{% if page.lang == 'hi' %}खोज बंद करें{% else %}Close search{% endif %}">
+
+      ESC
+
+    </button>
+
+  </div>
+
+  <!-- Results -->
+  <div class="search-results" role="listbox">
+
+    <div class="search-results__header" id="search-results-header"></div>
+
+    <div id="search-results-list" role="group"></div>
+
+    <div class="search-no-results" id="search-no-results">
+
+      <div class="search-no-results__icon">🔍</div>
+
+      <div class="search-no-results__text">
+
+        {% if page.lang == "hi" %}
+
+          कोई रिजल्ट नहीं मिला
+
+        {% else %}
+
+          Koi result nahi mila
+
+        {% endif %}
+
+      </div>
+
+    </div>
+
+    <div class="search-keyboard-hint" aria-hidden="true">
+
+      <span class="search-kbd"><kbd>↑</kbd><kbd>↓</kbd>
+        {% if page.lang == "hi" %}नेविगेट{% else %}Navigate{% endif %}
+      </span>
+
+      <span class="search-kbd"><kbd>Enter</kbd>
+        {% if page.lang == "hi" %}खोलें{% else %}Open{% endif %}
+      </span>
+
+      <span class="search-kbd"><kbd>ESC</kbd>
+        {% if page.lang == "hi" %}बंद करें{% else %}Close{% endif %}
+      </span>
+
+      <span class="search-kbd"><kbd>/</kbd>
+        {% if page.lang == "hi" %}खोलें{% else %}Open{% endif %}
+      </span>
+
+    </div>
+
+  </div>
+
+</div>

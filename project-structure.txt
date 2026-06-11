@@ -1,0 +1,556 @@
+Folder PATH listing for volume DATA
+Volume serial number is 3465-BBC0
+D:.
+³   .gitignore
+³   404.html
+³   Gemfile
+³   Gemfile.lock
+³   index.html
+³   project-structure.txt
+³   README.md
+³   robots.txt
+³   search.json
+³   site.webmanifest
+³   _config.yml
+³   
+ÃÄÄÄabout
+³       index.html
+³       
+ÃÄÄÄapps
+³   ³   index.html
+³   ³   
+³   ÃÄÄÄbhaktipath
+³   ÃÄÄÄdeviceX
+³   ³       index.html
+³   ³       
+³   ÃÄÄÄgraphio-player
+³   ÃÄÄÄplatform
+³   ÃÄÄÄpwa
+³   ³       index.html
+³   ³       
+³   ÃÄÄÄtyagi-game-box
+³   ÃÄÄÄtyagipad
+³   ÀÄÄÄtyagistudio
+³           index.html
+³           
+ÃÄÄÄassets
+³   ÃÄÄÄcss
+³   ³       blog.css
+³   ³       discover.css
+³   ³       gk-quiz-play.css
+³   ³       gk-quiz.css
+³   ³       global.css
+³   ³       image-converter.css
+³   ³       main.css
+³   ³       search.css
+³   ³       stock.css
+³   ³       text-tools.css
+³   ³       tools.css
+³   ³       tyagi-studio.css
+³   ³       tyagihub-pdf.min.css
+³   ³       
+³   ÃÄÄÄicons
+³   ³       ICONS-README.txt
+³   ³       
+³   ÃÄÄÄimages
+³   ³       apple-touch-icon.png
+³   ³       bhaktipath.png
+³   ³       favicon.png
+³   ³       favicon.svg
+³   ³       graphioplayer.png
+³   ³       icon-192.png
+³   ³       IMAGES-README.txt
+³   ³       logo.svg
+³   ³       tyagihub-dark-web-data-check-cyber-awareness-banner.png
+³   ³       tyagihub.png
+³   ³       tyagipad.png
+³   ³       tyagistudio.png
+³   ³       
+³   ÃÄÄÄjs
+³   ³   ³   blog.js
+³   ³   ³   discover.js
+³   ³   ³   gk-quiz-player.js
+³   ³   ³   gk-quiz.js
+³   ³   ³   image-converter.js
+³   ³   ³   main.js
+³   ³   ³   search.js
+³   ³   ³   stock.js
+³   ³   ³   tools.js
+³   ³   ³   
+³   ³   ÀÄÄÄlibs
+³   ³           all.pdf.js
+³   ³           combine.js
+³   ³           create.js
+³   ³           pdf-lib.min.js
+³   ³           pdf.min.mjs
+³   ³           pdf.worker.min.mjs
+³   ³           scan.js
+³   ³           tesseract.min.js
+³   ³           to-word.js
+³   ³           
+³   ÃÄÄÄvendor
+³   ³   ³   VENDOR-README.txt
+³   ³   ³   
+³   ³   ÃÄÄÄpdf-lib
+³   ³   ³       pdf-lib.min.js
+³   ³   ³       PLACE-HERE.txt
+³   ³   ³       
+³   ³   ÀÄÄÄpdfjs
+³   ³           PLACE-HERE.txt
+³   ³           
+³   ÀÄÄÄvideos
+³           VIDEOS-README.txt
+³           
+ÃÄÄÄcomment
+³       index.html
+³       
+ÃÄÄÄcontact
+³       index.html
+³       
+ÃÄÄÄdiscover
+³       index.html
+³       
+ÃÄÄÄdocs
+³       index.html
+³       
+ÃÄÄÄeditor
+³   ³   index.html
+³   ³   
+³   ÃÄÄÄaudio
+³   ³       index.html
+³   ³       
+³   ÃÄÄÄimage
+³   ³   ³   index.html
+³   ³   ³   
+³   ³   ÃÄÄÄbg-remove
+³   ³   ÃÄÄÄcompress
+³   ³   ÃÄÄÄconvert
+³   ³   ÃÄÄÄcrop
+³   ³   ÀÄÄÄresize
+³   ÀÄÄÄvideo
+³           index.html
+³           
+ÃÄÄÄgk-quiz
+³   ³   index.html
+³   ³   
+³   ÃÄÄÄancient-history
+³   ³       index.html
+³   ³       
+³   ÃÄÄÄawards-honors
+³   ³       index.html
+³   ³       
+³   ÃÄÄÄbiology
+³   ³       index.html
+³   ³       
+³   ÃÄÄÄbooks-authors
+³   ³       index.html
+³   ³       
+³   ÃÄÄÄchemistry
+³   ³       index.html
+³   ³       
+³   ÃÄÄÄcomputer
+³   ³       index.html
+³   ³       
+³   ÃÄÄÄdisasters
+³   ³       index.html
+³   ³       
+³   ÃÄÄÄenvironment
+³   ³       index.html
+³   ³       
+³   ÃÄÄÄfamous-monuments
+³   ³       index.html
+³   ³       
+³   ÃÄÄÄfamous-personalities
+³   ³       index.html
+³   ³       
+³   ÃÄÄÄimportant-dates
+³   ³       index.html
+³   ³       
+³   ÃÄÄÄindian-art-culture
+³   ³       index.html
+³   ³       
+³   ÃÄÄÄindian-constitution
+³   ³       index.html
+³   ³       
+³   ÃÄÄÄindian-defense
+³   ³       index.html
+³   ³       
+³   ÃÄÄÄindian-economy
+³   ³       index.html
+³   ³       
+³   ÃÄÄÄindian-festivals
+³   ³       index.html
+³   ³       
+³   ÃÄÄÄindian-geography
+³   ³       index.html
+³   ³       
+³   ÃÄÄÄinternational-relations
+³   ³       index.html
+³   ³       
+³   ÃÄÄÄmathematics
+³   ³       index.html
+³   ³       
+³   ÃÄÄÄmedieval-history
+³   ³       index.html
+³   ³       
+³   ÃÄÄÄmodern-history
+³   ³       index.html
+³   ³       
+³   ÃÄÄÄphysics
+³   ³       index.html
+³   ³       
+³   ÃÄÄÄrivers
+³   ³       index.html
+³   ³       
+³   ÃÄÄÄsanskrit
+³   ³       index.html
+³   ³       
+³   ÃÄÄÄscience-technology
+³   ³       index.html
+³   ³       
+³   ÃÄÄÄspace-universe
+³   ³       index.html
+³   ³       
+³   ÃÄÄÄsports
+³   ³       index.html
+³   ³       
+³   ÃÄÄÄtechnology-inventions
+³   ³       index.html
+³   ³       
+³   ÃÄÄÄtransport
+³   ³       index.html
+³   ³       
+³   ÃÄÄÄwildlife
+³   ³       index.html
+³   ³       
+³   ÃÄÄÄworld-geography
+³   ³       index.html
+³   ³       
+³   ÃÄÄÄworld-history
+³   ³       index.html
+³   ³       
+³   ÀÄÄÄworld-organizations
+³           index.html
+³           
+ÃÄÄÄhi
+³   ³   index.html
+³   ³   
+³   ÀÄÄÄdiscover
+³           index.html
+³           
+ÃÄÄÄlearn
+³   ³   index.html
+³   ³   
+³   ÀÄÄÄgk-quiz
+³       ÃÄÄÄancient-history
+³       ³       index.html
+³       ³       
+³       ÃÄÄÄawards-honors
+³       ³       index.html
+³       ³       
+³       ÃÄÄÄbiology
+³       ³       index.html
+³       ³       
+³       ÃÄÄÄbooks-authors
+³       ³       index.html
+³       ³       
+³       ÃÄÄÄchemistry
+³       ³       index.html
+³       ³       
+³       ÃÄÄÄcomputer
+³       ³       index.html
+³       ³       
+³       ÃÄÄÄdisasters
+³       ³       index.html
+³       ³       
+³       ÃÄÄÄenvironment
+³       ³       index.html
+³       ³       
+³       ÃÄÄÄfamous-monuments
+³       ³       index.html
+³       ³       
+³       ÃÄÄÄfamous-personalities
+³       ³       index.html
+³       ³       
+³       ÃÄÄÄimportant-dates
+³       ³       index.html
+³       ³       
+³       ÃÄÄÄindian-art-culture
+³       ³       index.html
+³       ³       
+³       ÃÄÄÄindian-constitution
+³       ³       index.html
+³       ³       
+³       ÃÄÄÄindian-defense
+³       ³       index.html
+³       ³       
+³       ÃÄÄÄindian-economy
+³       ³       index.html
+³       ³       
+³       ÃÄÄÄindian-festivals
+³       ³       index.html
+³       ³       
+³       ÃÄÄÄindian-geography
+³       ³       index.html
+³       ³       
+³       ÃÄÄÄinternational-relations
+³       ³       index.html
+³       ³       
+³       ÃÄÄÄmathematics
+³       ³       index.html
+³       ³       
+³       ÃÄÄÄmedieval-history
+³       ³       index.html
+³       ³       
+³       ÃÄÄÄmodern-history
+³       ³       index.html
+³       ³       
+³       ÃÄÄÄphysics
+³       ³       index.html
+³       ³       
+³       ÃÄÄÄrivers
+³       ³       index.html
+³       ³       
+³       ÃÄÄÄsanskrit
+³       ³       index.html
+³       ³       
+³       ÃÄÄÄscience-technology
+³       ³       index.html
+³       ³       
+³       ÃÄÄÄspace-universe
+³       ³       index.html
+³       ³       
+³       ÃÄÄÄsports
+³       ³       index.html
+³       ³       
+³       ÃÄÄÄtechnology-inventions
+³       ³       index.html
+³       ³       
+³       ÃÄÄÄtransport
+³       ³       index.html
+³       ³       
+³       ÃÄÄÄwildlife
+³       ³       index.html
+³       ³       
+³       ÃÄÄÄworld-geography
+³       ³       index.html
+³       ³       
+³       ÃÄÄÄworld-history
+³       ³       index.html
+³       ³       
+³       ÀÄÄÄworld-organizations
+³               index.html
+³               
+ÃÄÄÄprivacy
+³       index.html
+³       
+ÃÄÄÄshield
+³       index.html
+³       
+ÃÄÄÄstock
+³       index.html
+³       
+ÃÄÄÄterms
+³       index.html
+³       
+ÃÄÄÄtools
+³   ³   index.html
+³   ³   
+³   ÃÄÄÄconvert
+³   ³   ³   index.html
+³   ³   ³   
+³   ³   ÃÄÄÄimage-convert
+³   ³   ³       index.html
+³   ³   ³       
+³   ³   ÃÄÄÄtext
+³   ³   ³       index.html
+³   ³   ³       
+³   ³   ÃÄÄÄunit-convert
+³   ³   ³       index.html
+³   ³   ³       
+³   ³   ÀÄÄÄwebp-to-jpg
+³   ÃÄÄÄpdf
+³   ³   ³   index.html
+³   ³   ³   
+³   ³   ÃÄÄÄcompress
+³   ³   ³       index.html
+³   ³   ³       
+³   ³   ÃÄÄÄcreate
+³   ³   ³       index.html
+³   ³   ³       
+³   ³   ÃÄÄÄcrop
+³   ³   ³       index.html
+³   ³   ³       
+³   ³   ÃÄÄÄedit
+³   ³   ³   ³   app.js
+³   ³   ³   ³   index.html
+³   ³   ³   ³   server.cjs
+³   ³   ³   ³   server.cjs.map
+³   ³   ³   ³   
+³   ³   ³   ÀÄÄÄassets
+³   ³   ³           cursor-editorTextHighlight-kG3uUOwL.svg
+³   ³   ³           index-9JDSCDCd.css
+³   ³   ³           index-BE9u1TYN.css
+³   ³   ³           index-CgivvjF8.js
+³   ³   ³           index-D_6qlosq.js
+³   ³   ³           
+³   ³   ÃÄÄÄextract-pages
+³   ³   ³       index.html
+³   ³   ³       
+³   ³   ÃÄÄÄgrayscale
+³   ³   ³       index.html
+³   ³   ³       
+³   ³   ÃÄÄÄheader-footer
+³   ³   ³       index.html
+³   ³   ³       
+³   ³   ÃÄÄÄimage-to-pdf
+³   ³   ³       index.html
+³   ³   ³       
+³   ³   ÃÄÄÄmerge
+³   ³   ³       index.html
+³   ³   ³       
+³   ³   ÃÄÄÄmetadata
+³   ³   ³       index.html
+³   ³   ³       
+³   ³   ÃÄÄÄocr
+³   ³   ³       index.html
+³   ³   ³       
+³   ³   ÃÄÄÄprotect
+³   ³   ³       index.html
+³   ³   ³       
+³   ³   ÃÄÄÄredact
+³   ³   ³       index - Copy.html
+³   ³   ³       index.html
+³   ³   ³       
+³   ³   ÃÄÄÄremove-pages
+³   ³   ³       index.html
+³   ³   ³       
+³   ³   ÃÄÄÄreorder-pages
+³   ³   ³       index.html
+³   ³   ³       
+³   ³   ÃÄÄÄrepair
+³   ³   ³       index.html
+³   ³   ³       
+³   ³   ÃÄÄÄrotate
+³   ³   ³       index.html
+³   ³   ³       
+³   ³   ÃÄÄÄscan-to-document
+³   ³   ³       index.html
+³   ³   ³       
+³   ³   ÃÄÄÄsignature-stamp
+³   ³   ³       index.html
+³   ³   ³       
+³   ³   ÃÄÄÄsplit
+³   ³   ³       index.html
+³   ³   ³       
+³   ³   ÃÄÄÄto-image
+³   ³   ³       index.html
+³   ³   ³       
+³   ³   ÃÄÄÄto-word-ppt
+³   ³   ³       index.html
+³   ³   ³       
+³   ³   ÃÄÄÄunlock
+³   ³   ³       index.html
+³   ³   ³       
+³   ³   ÀÄÄÄwatermark
+³   ³           index.html
+³   ³           
+³   ÃÄÄÄrotate
+³   ³       index.html
+³   ³       
+³   ÃÄÄÄsecurity
+³   ³   ³   index.html
+³   ³   ³   
+³   ³   ÃÄÄÄhash-generator
+³   ³   ³       index.html
+³   ³   ³       
+³   ³   ÀÄÄÄpassword-generator
+³   ³           index.html
+³   ³           
+³   ÃÄÄÄtext
+³   ³   ³   index.html
+³   ³   ³   
+³   ³   ÃÄÄÄcase-converter
+³   ³   ³       index.html
+³   ³   ³       
+³   ³   ÃÄÄÄremove-extra-spaces
+³   ³   ³       index.html
+³   ³   ³       
+³   ³   ÃÄÄÄtext-compare
+³   ³   ³       index.html
+³   ³   ³       
+³   ³   ÀÄÄÄword-counter
+³   ³           index.html
+³   ³           
+³   ÀÄÄÄutilities
+³       ³   index.html
+³       ³   
+³       ÃÄÄÄbase64-encoder-decoder
+³       ³       index.html
+³       ³       
+³       ÃÄÄÄqr-generator
+³       ³       index.html
+³       ³       
+³       ÀÄÄÄurl-encoder-decoder
+³               index.html
+³               
+ÃÄÄÄ_data
+³   ÀÄÄÄquiz
+³           ancient-history.json
+³           awards-honors.json
+³           biology.json
+³           books-authors.json
+³           chemistry.json
+³           computer.json
+³           disasters.json
+³           environment.json
+³           famous-monuments.json
+³           famous-personalities.json
+³           important-dates.json
+³           indian-art-culture.json
+³           indian-constitution.json
+³           indian-defense.json
+³           indian-economy.json
+³           indian-festivals.json
+³           indian-geography.json
+³           international-relations.json
+³           mathematics.json
+³           medieval-history.json
+³           modern-history.json
+³           physics.json
+³           rivers.json
+³           sanskrit.json
+³           science-technology.json
+³           space-universe.json
+³           sports.json
+³           technology-inventions.json
+³           transport.json
+³           wildlife.json
+³           world-geography.json
+³           world-history.json
+³           world-organizations.json
+³           
+ÃÄÄÄ_discover
+³       2024-01-15-upi-scam-se-kaise-bache-2026.html
+³       
+ÃÄÄÄ_includes
+³       footer.html
+³       mobile-nav.html
+³       navbar.html
+³       seo-meta.html
+³       
+ÃÄÄÄ_layouts
+³       default.html
+³       discover.html
+³       post.html
+³       quiz-player.html
+³       tool-pdf.html
+³       
+ÃÄÄÄ_posts
+³       2026-05-14-dark-web-data-check-hindi.html
+³       2026-05-14-onlinge-safety-tips.md
+³       
+ÀÄÄÄ_posts_hi
+        2024-01-15-upi-scam-se-kaise-bache-2026 - Copy (10) - Copy.html
+        2026-05-14-dark-web-data-check-hindi.html
+        

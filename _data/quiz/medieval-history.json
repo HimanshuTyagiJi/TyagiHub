@@ -1,0 +1,128 @@
+{
+  "title": "Medieval Indian History",
+  "title_hi": "मध्यकालीन भारतीय इतिहास",
+  "icon": "🕌",
+  "slug": "medieval-history",
+  "questions": [
+    {
+      "id": 1,
+      "q": "Who founded the Delhi Sultanate?",
+      "opts": [
+        "Muhammad Ghori",
+        "Qutb-ud-din Aibak",
+        "Iltutmish",
+        "Balban"
+      ],
+      "ans": 1,
+      "exp": "Qutb-ud-din Aibak founded the Delhi Sultanate in 1206 AD after the death of Muhammad Ghori. He established the Slave Dynasty, the first dynasty of the Delhi Sultanate."
+    },
+    {
+      "id": 2,
+      "q": "The Qutb Minar was built by which ruler?",
+      "opts": [
+        "Akbar",
+        "Qutb-ud-din Aibak",
+        "Humayun",
+        "Shah Jahan"
+      ],
+      "ans": 1,
+      "exp": "The Qutb Minar was started by Qutb-ud-din Aibak and completed by Iltutmish. It is a UNESCO World Heritage Site in Delhi."
+    },
+    {
+      "id": 3,
+      "q": "Who was the first woman ruler of the Delhi Sultanate?",
+      "opts": [
+        "Noor Jahan",
+        "Razia Sultana",
+        "Chand Bibi",
+        "Durgavati"
+      ],
+      "ans": 1,
+      "exp": "Razia Sultana (1236–1240) was the first and only woman ruler of the Delhi Sultanate. She was the daughter of Iltutmish who appointed her as his successor."
+    },
+    {
+      "id": 4,
+      "q": "The Battle of Panipat (First) was fought between whom?",
+      "opts": [
+        "Babur and Rana Sanga",
+        "Babur and Ibrahim Lodi",
+        "Akbar and Hemu",
+        "Humayun and Sher Shah"
+      ],
+      "ans": 1,
+      "exp": "The First Battle of Panipat (1526) was fought between Babur and Ibrahim Lodi. Babur's victory established the Mughal Empire in India."
+    },
+    {
+      "id": 5,
+      "q": "Akbar's famous policy of religious tolerance was called?",
+      "opts": [
+        "Din-i-Ilahi",
+        "Sulh-i-Kul",
+        "Ibadat Khana",
+        "Mahzar"
+      ],
+      "ans": 0,
+      "exp": "Din-i-Ilahi (Divine Faith) was Akbar's syncretic religion founded in 1582. It combined elements of Islam, Hinduism, Zoroastrianism, and Christianity."
+    },
+    {
+      "id": 6,
+      "q": "Who built the Taj Mahal?",
+      "opts": [
+        "Akbar",
+        "Jehangir",
+        "Shah Jahan",
+        "Aurangzeb"
+      ],
+      "ans": 2,
+      "exp": "The Taj Mahal was built by Mughal Emperor Shah Jahan in memory of his wife Mumtaz Mahal. It was completed in 1653 and is a UNESCO World Heritage Site."
+    },
+    {
+      "id": 7,
+      "q": "The Vijayanagara Empire was founded in which year?",
+      "opts": [
+        "1206",
+        "1336",
+        "1526",
+        "1556"
+      ],
+      "ans": 1,
+      "exp": "The Vijayanagara Empire was founded in 1336 by Harihara I and Bukka Raya I. It was one of the greatest Hindu empires of medieval India."
+    },
+    {
+      "id": 8,
+      "q": "Who was Sher Shah Suri?",
+      "opts": [
+        "A Mughal general",
+        "A Afghan king who defeated Humayun",
+        "A Rajput king",
+        "A Maratha ruler"
+      ],
+      "ans": 1,
+      "exp": "Sher Shah Suri defeated Humayun in 1540 and established the Sur Empire. He introduced significant administrative reforms including the Grand Trunk Road."
+    },
+    {
+      "id": 9,
+      "q": "The Bhakti Movement in South India was started by?",
+      "opts": [
+        "Kabir",
+        "Mirabai",
+        "Alvars and Nayanmars",
+        "Tukaram"
+      ],
+      "ans": 2,
+      "exp": "The Bhakti Movement in South India was pioneered by the Alvars (Vaishnava saints) and Nayanmars (Shaiva saints) between the 6th and 9th centuries CE."
+    },
+    {
+      "id": 10,
+      "q": "The last major ruler of the Mughal Empire was?",
+      "opts": [
+        "Aurangzeb",
+        "Bahadur Shah I",
+        "Muhammad Shah",
+        "Bahadur Shah Zafar"
+      ],
+      "ans": 3,
+      "exp": "Bahadur Shah Zafar (1837–1857) was the last Mughal Emperor. He was exiled to Rangoon after the 1857 revolt and died there in 1862."
+    }
+  ]
+}

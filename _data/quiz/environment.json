@@ -1,0 +1,128 @@
+{
+  "title": "Environment & Biodiversity",
+  "title_hi": "पर्यावरण और जैव विविधता",
+  "icon": "🌿",
+  "slug": "environment",
+  "questions": [
+    {
+      "id": 1,
+      "q": "Which gas is primarily responsible for global warming?",
+      "opts": [
+        "Oxygen",
+        "Carbon Dioxide",
+        "Nitrogen",
+        "Hydrogen"
+      ],
+      "ans": 1,
+      "exp": "Carbon Dioxide (CO₂) is the primary greenhouse gas responsible for global warming. It is released through burning fossil fuels, deforestation, and industrial processes."
+    },
+    {
+      "id": 2,
+      "q": "The Kyoto Protocol is related to?",
+      "opts": [
+        "Nuclear Weapons",
+        "Greenhouse Gas Emissions",
+        "Marine Pollution",
+        "Ozone Depletion"
+      ],
+      "ans": 1,
+      "exp": "The Kyoto Protocol (1997) is an international treaty that commits its parties to reduce greenhouse gas emissions. It was the first agreement requiring industrialized nations to cut their CO₂ emissions."
+    },
+    {
+      "id": 3,
+      "q": "World Environment Day is celebrated on?",
+      "opts": [
+        "5 June",
+        "5 July",
+        "22 April",
+        "16 September"
+      ],
+      "ans": 0,
+      "exp": "World Environment Day is celebrated on 5 June every year. It was established by the United Nations in 1972 and is the principal vehicle for encouraging awareness about environmental protection."
+    },
+    {
+      "id": 4,
+      "q": "The national animal of India is?",
+      "opts": [
+        "Lion",
+        "Elephant",
+        "Tiger",
+        "Leopard"
+      ],
+      "ans": 2,
+      "exp": "The Bengal Tiger (Panthera tigris tigris) is the national animal of India. It was declared so in 1973. Project Tiger was launched to protect this endangered species."
+    },
+    {
+      "id": 5,
+      "q": "Chipko Movement was related to?",
+      "opts": [
+        "Water conservation",
+        "Forest conservation",
+        "Wildlife conservation",
+        "Soil conservation"
+      ],
+      "ans": 1,
+      "exp": "The Chipko Movement (1973) was a forest conservation movement in Uttarakhand where villagers hugged trees to prevent them from being cut down. It was started by Sundarlal Bahuguna and Chandi Prasad Bhatt."
+    },
+    {
+      "id": 6,
+      "q": "The full form of CITES is?",
+      "opts": [
+        "Convention on Illegal Trade in Endangered Species",
+        "Convention on International Trade in Endangered Species",
+        "Committee on International Trade in Endangered Species",
+        "Convention on Illegal Tourism and Endangered Species"
+      ],
+      "ans": 1,
+      "exp": "CITES stands for Convention on International Trade in Endangered Species of Wild Fauna and Flora. It is an international agreement between governments to regulate trade in wildlife species."
+    },
+    {
+      "id": 7,
+      "q": "Ozone layer is found in which layer of atmosphere?",
+      "opts": [
+        "Troposphere",
+        "Stratosphere",
+        "Mesosphere",
+        "Thermosphere"
+      ],
+      "ans": 1,
+      "exp": "The ozone layer is found in the stratosphere, approximately 15–35 km above Earth's surface. It absorbs most of the Sun's ultraviolet radiation, protecting life on Earth."
+    },
+    {
+      "id": 8,
+      "q": "The Indian state with the highest forest cover is?",
+      "opts": [
+        "Kerala",
+        "Assam",
+        "Madhya Pradesh",
+        "Uttarakhand"
+      ],
+      "ans": 2,
+      "exp": "Madhya Pradesh has the highest total forest cover in India. However, in terms of percentage of total area, Mizoram ranks highest. MP has been consistently the most forested state."
+    },
+    {
+      "id": 9,
+      "q": "Earth Hour is observed in which month?",
+      "opts": [
+        "January",
+        "March",
+        "June",
+        "September"
+      ],
+      "ans": 1,
+      "exp": "Earth Hour is observed on the last Saturday of March every year. It is a worldwide movement by WWF where people turn off non-essential electric lights for one hour."
+    },
+    {
+      "id": 10,
+      "q": "The number of biodiversity hotspots in India is?",
+      "opts": [
+        "2",
+        "3",
+        "4",
+        "5"
+      ],
+      "ans": 2,
+      "exp": "India has 4 biodiversity hotspots: the Himalayas, Western Ghats, Indo-Burma region, and Sundaland (includes Nicobar Islands). A biodiversity hotspot must have at least 1,500 endemic plant species."
+    }
+  ]
+}

@@ -1,0 +1,128 @@
+{
+  "title": "Biology",
+  "title_hi": "जीव विज्ञान",
+  "icon": "🧬",
+  "slug": "biology",
+  "questions": [
+    {
+      "id": 1,
+      "q": "The basic unit of life is?",
+      "opts": [
+        "Tissue",
+        "Organ",
+        "Cell",
+        "Atom"
+      ],
+      "ans": 2,
+      "exp": "The cell is the basic structural and functional unit of all living organisms. Robert Hooke first discovered and named cells in 1665 while looking at cork under a microscope."
+    },
+    {
+      "id": 2,
+      "q": "DNA stands for?",
+      "opts": [
+        "Deoxyribose Nucleic Acid",
+        "Deoxyribonucleic Acid",
+        "Di-Nitrogen Acid",
+        "Double Nitrogen Acid"
+      ],
+      "ans": 1,
+      "exp": "DNA stands for Deoxyribonucleic Acid. It is the molecule that carries genetic information in living organisms. Its double helix structure was discovered by Watson and Crick in 1953."
+    },
+    {
+      "id": 3,
+      "q": "Which organ produces insulin?",
+      "opts": [
+        "Liver",
+        "Kidney",
+        "Pancreas",
+        "Spleen"
+      ],
+      "ans": 2,
+      "exp": "Insulin is produced by the beta cells in the islets of Langerhans in the pancreas. Insulin regulates blood sugar levels. Insufficient insulin production leads to diabetes mellitus."
+    },
+    {
+      "id": 4,
+      "q": "How many chambers does the human heart have?",
+      "opts": [
+        "2",
+        "3",
+        "4",
+        "5"
+      ],
+      "ans": 2,
+      "exp": "The human heart has 4 chambers: two upper chambers called atria (left atrium and right atrium) and two lower chambers called ventricles (left ventricle and right ventricle)."
+    },
+    {
+      "id": 5,
+      "q": "Which blood group is called the universal donor?",
+      "opts": [
+        "A",
+        "B",
+        "AB",
+        "O"
+      ],
+      "ans": 3,
+      "exp": "Blood group O negative (O-) is called the universal donor because it can be donated to any blood group. AB positive is the universal recipient as it can receive from all blood groups."
+    },
+    {
+      "id": 6,
+      "q": "Photosynthesis occurs in which part of the plant?",
+      "opts": [
+        "Root",
+        "Stem",
+        "Leaf",
+        "Flower"
+      ],
+      "ans": 2,
+      "exp": "Photosynthesis primarily occurs in the leaves, in the chloroplasts. Chlorophyll (the green pigment) absorbs sunlight to convert CO₂ and water into glucose and oxygen."
+    },
+    {
+      "id": 7,
+      "q": "The longest bone in the human body is?",
+      "opts": [
+        "Spine",
+        "Humerus",
+        "Femur",
+        "Tibia"
+      ],
+      "ans": 2,
+      "exp": "The femur (thigh bone) is the longest, heaviest, and strongest bone in the human body. It can support up to 30 times the body weight."
+    },
+    {
+      "id": 8,
+      "q": "Which vitamin is produced by the skin in sunlight?",
+      "opts": [
+        "Vitamin A",
+        "Vitamin B",
+        "Vitamin C",
+        "Vitamin D"
+      ],
+      "ans": 3,
+      "exp": "Vitamin D is produced in the skin when exposed to ultraviolet B (UVB) rays from sunlight. It is essential for calcium absorption and bone health."
+    },
+    {
+      "id": 9,
+      "q": "The process by which plants lose water through leaves is called?",
+      "opts": [
+        "Photosynthesis",
+        "Transpiration",
+        "Respiration",
+        "Absorption"
+      ],
+      "ans": 1,
+      "exp": "Transpiration is the process by which plants lose water vapor through their leaves (mainly through stomata). It helps in the upward movement of water and minerals from roots to leaves."
+    },
+    {
+      "id": 10,
+      "q": "The study of fungi is called?",
+      "opts": [
+        "Botany",
+        "Mycology",
+        "Virology",
+        "Entomology"
+      ],
+      "ans": 1,
+      "exp": "Mycology is the branch of biology that deals with the study of fungi. Fungi include mushrooms, yeasts, and molds. They play an important role in decomposition and nutrient cycling."
+    }
+  ]
+}

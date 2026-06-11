@@ -1,0 +1,128 @@
+{
+  "title": "Indian Art & Culture",
+  "title_hi": "भारतीय कला और संस्कृति",
+  "icon": "🎭",
+  "slug": "indian-art-culture",
+  "questions": [
+    {
+      "id": 1,
+      "q": "Which dance form is associated with Manipur?",
+      "opts": [
+        "Bharatanatyam",
+        "Kathakali",
+        "Manipuri",
+        "Kuchipudi"
+      ],
+      "ans": 2,
+      "exp": "Manipuri is the classical dance form of Manipur. It is known for its graceful movements and depicts themes of Vaishnavism. It was recognized as one of India's eight classical dances."
+    },
+    {
+      "id": 2,
+      "q": "The Ajanta Caves are famous for?",
+      "opts": [
+        "Sculptures",
+        "Paintings",
+        "Architecture",
+        "All of the above"
+      ],
+      "ans": 3,
+      "exp": "The Ajanta Caves (Maharashtra) are famous for their Buddhist paintings, sculptures, and rock-cut architecture. They date from the 2nd century BCE to about 480 CE and are a UNESCO World Heritage Site."
+    },
+    {
+      "id": 3,
+      "q": "Carnatic music is classical music of which region?",
+      "opts": [
+        "North India",
+        "South India",
+        "East India",
+        "West India"
+      ],
+      "ans": 1,
+      "exp": "Carnatic music is the classical music tradition of South India. It is one of the two main subgenres of Indian classical music, the other being Hindustani music (North India)."
+    },
+    {
+      "id": 4,
+      "q": "The Ramayana was composed by?",
+      "opts": [
+        "Tulsidas",
+        "Valmiki",
+        "Vyasa",
+        "Kalidasa"
+      ],
+      "ans": 1,
+      "exp": "The original Sanskrit Ramayana was composed by the sage Valmiki. It consists of 24,000 verses and narrates the life of Prince Rama. Tulsidas later wrote Ramcharitmanas in Awadhi."
+    },
+    {
+      "id": 5,
+      "q": "The Ellora Caves represent art from which religions?",
+      "opts": [
+        "Only Buddhism",
+        "Only Hinduism",
+        "Hinduism and Buddhism",
+        "Hinduism, Buddhism and Jainism"
+      ],
+      "ans": 3,
+      "exp": "The Ellora Caves (Maharashtra) contain 34 monasteries and temples representing Buddhism, Hinduism, and Jainism, built between 600–1000 CE. They are a UNESCO World Heritage Site."
+    },
+    {
+      "id": 6,
+      "q": "Bharatanatyam dance form belongs to which state?",
+      "opts": [
+        "Kerala",
+        "Andhra Pradesh",
+        "Tamil Nadu",
+        "Karnataka"
+      ],
+      "ans": 2,
+      "exp": "Bharatanatyam is the classical dance form of Tamil Nadu. It is one of the oldest and most popular Indian classical dances, originating in the temples of Tamil Nadu."
+    },
+    {
+      "id": 7,
+      "q": "The famous Kumbh Mela is held at how many locations?",
+      "opts": [
+        "2",
+        "3",
+        "4",
+        "6"
+      ],
+      "ans": 2,
+      "exp": "Kumbh Mela is held at 4 locations: Prayagraj (Allahabad), Haridwar, Ujjain, and Nashik. The Maha Kumbh Mela at Prayagraj occurs every 12 years and is the world's largest religious gathering."
+    },
+    {
+      "id": 8,
+      "q": "Which instrument is Ravi Shankar associated with?",
+      "opts": [
+        "Tabla",
+        "Sarod",
+        "Sitar",
+        "Flute"
+      ],
+      "ans": 2,
+      "exp": "Pandit Ravi Shankar was a world-renowned sitar player. He popularized Indian classical music globally and won three Grammy Awards during his career."
+    },
+    {
+      "id": 9,
+      "q": "The Konark Sun Temple is located in which state?",
+      "opts": [
+        "Gujarat",
+        "Rajasthan",
+        "Odisha",
+        "Tamil Nadu"
+      ],
+      "ans": 2,
+      "exp": "The Konark Sun Temple is located in Odisha. Built in the 13th century by King Narasimhadeva I, it is designed in the shape of a chariot with 24 wheels and is a UNESCO World Heritage Site."
+    },
+    {
+      "id": 10,
+      "q": "Yakshagana is a traditional art form of?",
+      "opts": [
+        "Assam",
+        "Gujarat",
+        "Karnataka",
+        "Odisha"
+      ],
+      "ans": 2,
+      "exp": "Yakshagana is a traditional theatre form of Karnataka that combines dance, music, dialogue, costume, and stage techniques. It is performed in coastal and central Karnataka regions."
+    }
+  ]
+}

@@ -1,0 +1,128 @@
+{
+  "title": "Indian Government & Constitution",
+  "title_hi": "भारतीय सरकार और संविधान",
+  "icon": "⚖️",
+  "slug": "indian-constitution",
+  "questions": [
+    {
+      "id": 1,
+      "q": "Who is known as the Father of the Indian Constitution?",
+      "opts": [
+        "Jawaharlal Nehru",
+        "Mahatma Gandhi",
+        "B.R. Ambedkar",
+        "Sardar Patel"
+      ],
+      "ans": 2,
+      "exp": "Dr. B.R. Ambedkar is known as the Father of the Indian Constitution. He chaired the Drafting Committee of the Constituent Assembly."
+    },
+    {
+      "id": 2,
+      "q": "How many Fundamental Rights are given in the Indian Constitution?",
+      "opts": [
+        "5",
+        "6",
+        "7",
+        "8"
+      ],
+      "ans": 1,
+      "exp": "The Indian Constitution provides 6 Fundamental Rights: Right to Equality, Right to Freedom, Right against Exploitation, Right to Freedom of Religion, Cultural & Educational Rights, and Right to Constitutional Remedies."
+    },
+    {
+      "id": 3,
+      "q": "The President of India is elected by?",
+      "opts": [
+        "Direct election by people",
+        "Electoral College",
+        "Lok Sabha members only",
+        "Parliament members only"
+      ],
+      "ans": 1,
+      "exp": "The President of India is elected by an Electoral College consisting of elected members of both Houses of Parliament and the elected members of the Legislative Assemblies of States and UTs."
+    },
+    {
+      "id": 4,
+      "q": "Which article of the Constitution abolished untouchability?",
+      "opts": [
+        "Article 14",
+        "Article 15",
+        "Article 17",
+        "Article 21"
+      ],
+      "ans": 2,
+      "exp": "Article 17 of the Indian Constitution abolishes untouchability and its practice in any form is forbidden. The enforcement of any disability arising out of untouchability is an offence."
+    },
+    {
+      "id": 5,
+      "q": "The Preamble of the Indian Constitution begins with?",
+      "opts": [
+        "We the Citizens",
+        "We the People",
+        "We the Elected Representatives",
+        "We the Parliament"
+      ],
+      "ans": 1,
+      "exp": "The Preamble of the Indian Constitution begins with 'WE, THE PEOPLE OF INDIA'. It declares India to be a Sovereign, Socialist, Secular, Democratic Republic."
+    },
+    {
+      "id": 6,
+      "q": "Which is the highest court in India?",
+      "opts": [
+        "High Court",
+        "District Court",
+        "Supreme Court",
+        "National Court"
+      ],
+      "ans": 2,
+      "exp": "The Supreme Court of India is the highest judicial body. It was established on 28 January 1950. The Chief Justice of India heads the Supreme Court."
+    },
+    {
+      "id": 7,
+      "q": "The Rajya Sabha is also known as?",
+      "opts": [
+        "Lower House",
+        "Upper House",
+        "People's House",
+        "Council of States"
+      ],
+      "ans": 3,
+      "exp": "The Rajya Sabha is known as the Council of States or Upper House of Parliament. It has a maximum strength of 250 members, of which 238 are elected by state assemblies."
+    },
+    {
+      "id": 8,
+      "q": "Article 356 is related to?",
+      "opts": [
+        "Emergency provisions",
+        "President's Rule",
+        "Fundamental Rights",
+        "Directive Principles"
+      ],
+      "ans": 1,
+      "exp": "Article 356 deals with the imposition of President's Rule (also called State Emergency or Constitutional Emergency) in a state when constitutional machinery fails."
+    },
+    {
+      "id": 9,
+      "q": "The minimum age to become the Prime Minister of India is?",
+      "opts": [
+        "21 years",
+        "25 years",
+        "30 years",
+        "35 years"
+      ],
+      "ans": 1,
+      "exp": "The minimum age to become the Prime Minister of India is 25 years (as they must be a member of Lok Sabha). For the Rajya Sabha route, the minimum age is 30 years."
+    },
+    {
+      "id": 10,
+      "q": "How many schedules does the Indian Constitution have?",
+      "opts": [
+        "8",
+        "10",
+        "12",
+        "14"
+      ],
+      "ans": 2,
+      "exp": "The Indian Constitution currently has 12 Schedules. Originally it had 8 schedules, and 4 more were added through constitutional amendments."
+    }
+  ]
+}

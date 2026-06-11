@@ -1,0 +1,343 @@
+---
+layout: default
+title: "Merge PDF — Free Online PDF Tool | TyagiHub"
+description: "Combine multiple PDF files into one instantly. Drag to reorder before merging. 100% offline, browser-only
+local processing for absolute privacy."
+keywords: "merge PDF online, combine PDF files, join PDF India, merge multiple PDF free, offline PDF merge, TyagiHub PDF
+tools, fast PDF joiner"
+lang_switch: false
+extra_css:
+ - /assets/css/tyagihub-pdf.min.css
+extra_js:
+- /assets/js/libs/pdf-lib.min.js
+- /assets/js/libs/all.pdf.js
+
+---
+
+<div class="pdf-tool-page tyagihub-merge">
+
+  <div class="pdf-tool-header">
+    <nav class="pdf-tool-header__breadcrumb" aria-label="Breadcrumb">
+      <a href="/">Home</a>
+      <span aria-hidden="true"> / </span>
+      <a href="/tools/">Tools</a>
+      <span aria-hidden="true"> / </span>
+      <a href="/tools/pdf/">PDF Tools</a>
+      <span aria-hidden="true"> / </span>
+      <span aria-current="page">Merge PDF</span>
+    </nav>
+    <div class="container pdf-tool-header__inner">
+
+      <div class="pdf-tool-header__icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M8 6H5a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h3" />
+          <path d="M16 6h3a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2h-3" />
+          <line x1="12" y1="3" x2="12" y2="21" />
+        </svg>
+      </div>
+
+
+
+      <div class="pdf-tool-header__text">
+        <h1 class="pdf-tool-header__title">Merge PDF Documents</h1>
+        <p class="pdf-tool-header__desc">
+          Combine multiple PDF files into a single document instantly. Drag to reorder pages or files before merging.
+          100% offline — files are processed entirely in your browser and never upload to any server.
+        </p>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="pdf-tool-workspace">
+
+    <div class="pdf-dropzone" id="merge-drop" role="button" aria-label="Upload PDF files to merge" tabindex="0">
+      <div class="pdf-dropzone__icon" aria-hidden="true" style="transition: transform 0.3s ease-in-out;"
+        onmouseover="this.style.transform='translateY(-5px)'" onmouseout="this.style.transform='translateY(0)'">
+        <svg viewBox="0 0 24 24">
+          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+          <polyline points="14 2 14 8 20 8" />
+          <line x1="12" y1="18" x2="12" y2="12" />
+          <line x1="9" y1="15" x2="15" y2="15" />
+        </svg>
+      </div>
+      <div class="pdf-dropzone__title">Drop PDFs here or click to browse</div>
+      <div class="pdf-dropzone__sub">
+        Supports multiple PDF files · Up to 100 MB each · Files never leave your device
+      </div>
+      <button class="pdf-dropzone__btn" type="button" aria-label="Choose PDF files">
+        <svg viewBox="0 0 24 24" aria-hidden="true"
+          style="width:24px;height:24px;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;fill:none;overflow:visible;">
+          <!-- Tray: static -->
+          <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+          <!-- Arrow: bounces up -->
+          <g style="animation:uploadBounce 1.5s ease-in-out infinite;transform-origin:12px 9px;transform-box:fill-box;">
+            <polyline points="17 8 12 3 7 8" />
+            <line x1="12" y1="3" x2="12" y2="15" />
+          </g>
+          <style>
+            @keyframes uploadBounce {
+              0% {
+                transform: translateY(0px);
+              }
+
+              30% {
+                transform: translateY(-3px);
+              }
+
+              60% {
+                transform: translateY(0px);
+              }
+
+              80% {
+                transform: translateY(-1.5px);
+              }
+
+              100% {
+                transform: translateY(0px);
+              }
+            }
+          </style>
+        </svg>
+        Choose PDF Files
+      </button>
+
+      <input type="file" class="pdf-dropzone__input" id="merge-file-input" accept=".pdf,application/pdf" multiple
+        aria-label="Select PDF files">
+      <div class="pdf-dropzone__formats" aria-label="Supported formats">
+        <span class="pdf-format-tag">PDF</span>
+        <span class="pdf-format-tag">Multiple Files</span>
+        <span class="pdf-format-tag">100 MB Max</span>
+        <span class="pdf-format-tag">Browser-Only</span>
+        <span class="pdf-format-tag">No Upload</span>
+      </div>
+    </div>
+
+    <div class="pdf-settings" id="merge-settings" aria-label="Merge settings" hidden>
+      <div class="pdf-settings__title">
+        Files to Merge
+        <span id="merge-count" class="pdf-page-count-badge" aria-live="polite">0 files</span>
+      </div>
+      <div id="merge-file-list" class="pdf-merge-list" role="list" aria-label="PDF files to merge, drag to reorder">
+      </div>
+      <button class="pdf-merge-add-btn" id="merge-add-btn" type="button" aria-label="Add more PDF files">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+          aria-hidden="true">
+          <line x1="12" y1="5" x2="12" y2="19" />
+          <line x1="5" y1="12" x2="19" y2="12" />
+        </svg>
+        Add more PDF files
+      </button>
+      <input type="file" id="merge-add-input" accept=".pdf,application/pdf" multiple style="display:none"
+        aria-hidden="true">
+    </div>
+
+    <div class="pdf-action-bar" id="merge-action" style="display:none;" aria-label="Actions">
+      <div class="pdf-secure-badge" aria-label="Security notice">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+        </svg>
+        Files processed locally — never uploaded
+      </div>
+      <button class="btn btn-primary" id="merge-btn" type="button" aria-label="Merge all PDF files">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+          aria-hidden="true" style="display:inline;vertical-align:middle;margin-right:6px;">
+          <path d="M8 6H5a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h3" />
+          <path d="M16 6h3a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2h-3" />
+          <line x1="12" y1="3" x2="12" y2="21" />
+        </svg>
+        Merge PDFs
+      </button>
+    </div>
+
+    <div class="pdf-progress" id="merge-progress" role="progressbar" aria-valuemin="0" aria-valuemax="100"
+      aria-valuenow="0" aria-label="Merge progress" hidden>
+      <div class="pdf-progress__bar">
+        <div class="pdf-progress__fill" id="merge-progress-fill"></div>
+      </div>
+      <div class="pdf-progress__label" id="merge-progress-label" aria-live="polite">Processing…</div>
+    </div>
+
+    <div class="pdf-result" id="pdf-result-box" role="region" aria-label="Merge result" aria-live="polite" hidden>
+      <div class="pdf-result__icon" aria-hidden="true">
+        <svg width="100" height="100" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+
+
+          <!-- Background circle -->
+          <circle class="check-bg" cx="50" cy="50" r="46" />
+
+          <!-- Animated border circle -->
+          <circle class="check-circle" cx="50" cy="50" r="45" />
+
+          <!-- Animated checkmark -->
+          <polyline class="check-mark" points="28,52 43,67 72,35" />
+        </svg>
+      </div>
+      <div class="pdf-result__title">Merged Successfully!</div>
+      <div class="pdf-result__meta" id="pdf-result-meta" aria-label="File details">—</div>
+      <div class="pdf-result__actions">
+        <button class="btn btn-primary" id="result-download-btn" type="button" aria-label="Download merged PDF">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            aria-hidden="true" style="display:inline;vertical-align:middle;margin-right:4px;">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+            <polyline points="7 10 12 15 17 10" />
+            <line x1="12" y1="15" x2="12" y2="3" />
+            <style>
+              .check-circle {
+                stroke: #22c55e;
+                stroke-width: 4;
+                stroke-linecap: round;
+                fill: none;
+                stroke-dasharray: 283;
+                stroke-dashoffset: 283;
+                animation: drawCircle 0.6s ease forwards;
+                transform-origin: center;
+                transform: rotate(-90deg);
+              }
+
+              .check-mark {
+                stroke: #22c55e;
+                stroke-width: 5;
+                stroke-linecap: round;
+                stroke-linejoin: round;
+                fill: none;
+                stroke-dasharray: 60;
+                stroke-dashoffset: 60;
+                animation: drawCheck 0.4s ease forwards 0.5s;
+              }
+
+              .check-bg {
+                fill: #dcfce7;
+                opacity: 0;
+                animation: fadeInBg 0.3s ease forwards 0.2s;
+              }
+
+              .pdf-result__icon {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+              }
+
+              @keyframes drawCircle {
+                to {
+                  stroke-dashoffset: 0;
+                }
+              }
+
+              @keyframes drawCheck {
+                to {
+                  stroke-dashoffset: 0;
+                }
+              }
+
+              @keyframes fadeInBg {
+                to {
+                  opacity: 1;
+                }
+              }
+            </style>
+          </svg>
+          Download PDF
+        </button>
+        <button class="btn btn-outline" id="merge-reset-btn" type="button" aria-label="Merge more files">Merge
+          More</button>
+        <a href="/tools/pdf/" class="btn btn-outline" aria-label="Browse more PDF tools">More PDF Tools</a>
+      </div>
+    </div>
+
+    <div class="pdf-info-box" role="note" aria-label="How merge works">
+      <strong>How it works:</strong> Upload multiple PDFs, drag to set the order, then click <em>Merge PDFs</em>. The
+      combined file downloads instantly — everything runs in your browser, nothing is sent to any server.
+    </div>
+
+    <hr style="border: 0; border-top: 1px solid var(--clr-border); margin: var(--space-16) 0;">
+
+    <section style="margin-bottom: var(--space-10);" aria-labelledby="seo-features-heading">
+      <h2 id="seo-features-heading"
+        style="color: var(--clr-heading); font-size: var(--fs-xl); font-weight: var(--fw-bold); margin-bottom: var(--space-4);">
+        Why Use TyagiHub Web-Based PDF Merger?
+      </h2>
+      <p style="color: var(--clr-text-2); font-size: var(--fs-sm); line-height: 1.6; margin-bottom: var(--space-4);">
+        Managing independent documents can become disorganized. TyagiHub provides a high-performance solution that
+        combines your separate files into a clean compilation seamlessly. Built with scalability and absolute security
+        in mind, this interface offers robust features completely free of charge.
+      </p>
+      <ul style="color: var(--clr-text-2); font-size: var(--fs-sm); line-height: 1.7; padding-left: var(--space-5);">
+        <li><strong>100% Secure & Client-Side:</strong> Your privacy is our priority. Files are processed locally on
+          your computer via modern web technology. No data streams are uploaded over networks.</li>
+        <li><strong>Interactive Reordering Mechanics:</strong> Simply drag and drop items in the queue to structure
+          your
+          final document order with complete precision.</li>
+        <li><strong>No File Limitations or Subscriptions:</strong> Combine as many documents as necessary without
+          hidden
+          premium locks or file size barriers.</li>
+      </ul>
+    </section>
+
+    <section style="margin-bottom: var(--space-10);" aria-labelledby="seo-guide-heading">
+      <h2 id="seo-guide-heading"
+        style="color: var(--clr-heading); font-size: var(--fs-xl); font-weight: var(--fw-bold); margin-bottom: var(--space-4);">
+        How to Combine PDF Files Online Instantly
+      </h2>
+      <ol style="color: var(--clr-text-2); font-size: var(--fs-sm); line-height: 1.8; padding-left: var(--space-5);">
+        <li><strong>Select Files:</strong> Drag multiple PDF elements into the workspace or click "Choose PDF Files"
+          to
+          browse local system storage paths.</li>
+        <li><strong>Adjust Queue Order:</strong> Use the drag handles to shift rows into the desired arrangement. The
+          row indices update automatically in real-time.</li>
+        <li><strong>Authorize Protected Entries:</strong> If an encrypted entry is detected, our secure dialog system
+          will securely prompt you for authentication constraints locally.</li>
+        <li><strong>Execute Processing:</strong> Click the "Merge PDFs" action control to invoke local multi-buffer
+          data
+          compilation streams.</li>
+        <li><strong>Download Output:</strong> Save the combined structural payload instantly back onto your target
+          machine pathways.</li>
+      </ol>
+    </section>
+
+    <section style="margin-bottom: var(--space-10);" aria-labelledby="seo-security-heading">
+      <h2 id="seo-security-heading"
+        style="color: var(--clr-heading); font-size: var(--fs-xl); font-weight: var(--fw-bold); margin-bottom: var(--space-4);">
+        Zero-Server Storage Protection Architecture
+      </h2>
+      <p style="color: var(--clr-text-2); font-size: var(--fs-sm); line-height: 1.6;">
+        Traditional web tools transmit your confidential corporate files over remote clouds, creating vulnerabilities
+        for data leakage. TyagiHub changes this paradigm by running advanced compilation modules entirely inside your
+        local browser tab engine. No background cloud instances are connected during execution, guaranteeing total
+        compliance with rigorous modern security policies.
+      </p>
+    </section>
+
+    <section aria-labelledby="seo-faq-heading">
+      <h2 id="seo-faq-heading"
+        style="color: var(--clr-heading); font-size: var(--fs-xl); font-weight: var(--fw-bold); margin-bottom: var(--space-5);">
+        Frequently Asked Questions (FAQ)
+      </h2>
+
+      <details class="tyagihub-faq">
+        <summary>Is there an upper file limit threshold for merging?</summary>
+        <div class="faq-content">
+          No limits are imposed. The pipeline safely processes extensive high-density byte arrays up to 100MB per file
+          record directly inside local browser environments.
+        </div>
+      </details>
+
+      <details class="tyagihub-faq">
+        <summary>Can I safely merge password-encrypted documents?</summary>
+        <div class="faq-content">
+          Yes. Our decentralized unlock layer safely flags secure items, enabling users to enter credentials via
+          localized modals before starting processing tracks.
+        </div>
+      </details>
+
+      <details class="tyagihub-faq">
+        <summary>Does this application store historical copies of my documents?</summary>
+        <div class="faq-content">
+          Never. Processing relies entirely on local execution runtimes. Once the browser instance is terminated, all
+          transient data pointers are wiped automatically.
+        </div>
+      </details>
+    </section>
+
+  </div>
+</div>

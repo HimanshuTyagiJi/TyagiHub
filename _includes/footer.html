@@ -1,0 +1,240 @@
+<!-- _includes/footer.html -->
+
+<footer class="footer" role="contentinfo">
+
+  <div class="container">
+
+    <div class="footer__grid">
+
+      <!-- Brand Column -->
+      <div class="footer__brand">
+
+        <div class="footer__brand-name">
+          Tyagi<span>Hub</span>
+        </div>
+
+        {% if page.lang == "hi" %}
+
+          <p class="footer__brand-desc">
+            भारत का क्रिएटर और डेवलपर प्लेटफॉर्म। सीखें, बनाएं, डिजाइन करें और सुरक्षित रहें — सब कुछ एक ही जगह।
+          </p>
+
+          <p style="font-size:var(--fs-xs); color:var(--clr-text-3);">
+            <strong style="color:var(--clr-text-2);">Tyagi MultiTech</strong> का एक प्रोडक्ट
+          </p>
+
+        {% else %}
+
+          <p class="footer__brand-desc">
+            India's creator and developer ecosystem. Learn, build, design, and secure — all in one place.
+          </p>
+
+          <p style="font-size:var(--fs-xs); color:var(--clr-text-3);">
+            A product of <strong style="color:var(--clr-text-2);">Tyagi MultiTech</strong>
+          </p>
+
+        {% endif %}
+
+      </div>
+
+      <!-- Platform Links -->
+      <div>
+
+        <div class="footer__col-title">
+
+          {% if page.lang == "hi" %}
+            प्लेटफॉर्म
+          {% else %}
+            Platform
+          {% endif %}
+
+        </div>
+
+        <ul class="footer__links">
+
+          {% if page.lang == "hi" %}
+
+            <li><a href="/hi/learn/" class="footer__link">सीखें</a></li>
+
+            <li><a href="/hi/editor/" class="footer__link">एडिटर</a></li>
+
+            <li><a href="/hi/tools/" class="footer__link">टूल्स</a></li>
+
+            <li><a href="/hi/stock/" class="footer__link">स्टॉक</a></li>
+
+            <li><a href="/hi/apps/" class="footer__link">ऐप्स</a></li>
+
+            <li><a href="/hi/shield/" class="footer__link">सुरक्षा</a></li>
+
+          {% else %}
+
+            <li><a href="/learn/" class="footer__link">Learn</a></li>
+
+            <li><a href="/editor/" class="footer__link">Editor</a></li>
+
+            <li><a href="/tools/" class="footer__link">Tools</a></li>
+
+            <li><a href="/stock/" class="footer__link">Stock</a></li>
+
+            <li><a href="/apps/" class="footer__link">Apps</a></li>
+
+            <li><a href="/shield/" class="footer__link">Shield</a></li>
+
+          {% endif %}
+
+        </ul>
+
+      </div>
+
+      <!-- Company Links -->
+      <div>
+
+        <div class="footer__col-title">
+
+          {% if page.lang == "hi" %}
+            कंपनी
+          {% else %}
+            Company
+          {% endif %}
+
+        </div>
+
+        <ul class="footer__links">
+
+          {% if page.lang == "hi" %}
+
+            <li><a href="/hi/about/" class="footer__link">हमारे बारे में</a></li>
+
+            <li><a href="/hi/blog/" class="footer__link">ब्लॉग</a></li>
+
+            <li><a href="/hi/docs/" class="footer__link">डॉक्स</a></li>
+
+            <li><a href="/hi/careers/" class="footer__link">करियर</a></li>
+
+            <li><a href="/hi/contact/" class="footer__link">संपर्क</a></li>
+
+          {% else %}
+
+            <li><a href="/about/" class="footer__link">About Us</a></li>
+
+            <li><a href="/blog/" class="footer__link">Blog</a></li>
+
+            <li><a href="/docs/" class="footer__link">Docs</a></li>
+
+            <li><a href="/careers/" class="footer__link">Careers</a></li>
+
+            <li><a href="/contact/" class="footer__link">Contact</a></li>
+
+          {% endif %}
+
+        </ul>
+
+      </div>
+
+      <!-- Legal Links -->
+      <div>
+
+        <div class="footer__col-title">
+
+          {% if page.lang == "hi" %}
+            कानूनी
+          {% else %}
+            Legal
+          {% endif %}
+
+        </div>
+
+        <ul class="footer__links">
+
+          {% if page.lang == "hi" %}
+
+            <li><a href="/hi/privacy/" class="footer__link">प्राइवेसी पॉलिसी</a></li>
+
+            <li><a href="/hi/terms/" class="footer__link">सेवा की शर्तें</a></li>
+
+            <li><a href="/hi/cookies/" class="footer__link">कुकी पॉलिसी</a></li>
+
+            <li><a href="/hi/security/" class="footer__link">सुरक्षा</a></li>
+
+          {% else %}
+
+            <li><a href="/privacy/" class="footer__link">Privacy Policy</a></li>
+
+            <li><a href="/terms/" class="footer__link">Terms of Service</a></li>
+
+            <li><a href="/cookies/" class="footer__link">Cookie Policy</a></li>
+
+            <li><a href="/security/" class="footer__link">Security</a></li>
+
+          {% endif %}
+
+        </ul>
+
+      </div>
+
+    </div>
+
+    <!-- Bottom bar -->
+    <div class="footer__bottom">
+
+      <p class="footer__copyright">
+
+        {% if page.lang == "hi" %}
+
+          &copy; <span id="footer-year"></span> Tyagi MultiTech. सर्वाधिकार सुरक्षित। भारत 🇮🇳 में बनाया गया ❤️
+
+        {% else %}
+
+          &copy; <span id="footer-year"></span> Tyagi MultiTech. All rights reserved. Made with ❤️ in India 🇮🇳
+
+        {% endif %}
+
+      </p>
+
+      <div class="footer__legal">
+
+        {% if page.lang == "hi" %}
+
+          <a href="/sitemap.xml">साइटमैप</a>
+
+          <a href="/robots.txt">रोबोट्स</a>
+
+          <a href="https://github.com/TyagiMultiTech"
+            target="_blank"
+            rel="noopener noreferrer">
+
+            GitHub
+
+          </a>
+
+        {% else %}
+
+          <a href="/sitemap.xml">Sitemap</a>
+
+          <a href="/robots.txt">Robots</a>
+
+          <a href="https://github.com/TyagiMultiTech"
+            target="_blank"
+            rel="noopener noreferrer">
+
+            GitHub
+
+          </a>
+
+        {% endif %}
+
+      </div>
+
+    </div>
+
+  </div>
+
+</footer>
+
+<script>
+
+  // Set current year in footer
+
+  document.getElementById('footer-year').textContent = new Date().getFullYear();
+
+</script>

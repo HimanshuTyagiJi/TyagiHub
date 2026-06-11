@@ -1,0 +1,128 @@
+{
+  "title": "Rivers & Lakes",
+  "title_hi": "नदियाँ और झीलें",
+  "icon": "🏞️",
+  "slug": "rivers",
+  "questions": [
+    {
+      "id": 1,
+      "q": "The Ganga originates from which glacier?",
+      "opts": [
+        "Siachen",
+        "Zemu",
+        "Gangotri",
+        "Yamunotri"
+      ],
+      "ans": 2,
+      "exp": "The Ganga originates from the Gangotri Glacier in the Uttarkashi district of Uttarakhand. The actual source is at Gomukh (Cow's Mouth) at the snout of the glacier, at an altitude of 3,892 m."
+    },
+    {
+      "id": 2,
+      "q": "The Brahmaputra River originates from?",
+      "opts": [
+        "Nepal",
+        "Tibet",
+        "Bhutan",
+        "Arunachal Pradesh"
+      ],
+      "ans": 1,
+      "exp": "The Brahmaputra River originates from the Angsi Glacier (Chemayungdung) in Tibet, China. It is known as Yarlung Tsangpo in Tibet and Jamuna in Bangladesh. It is one of the world's major rivers."
+    },
+    {
+      "id": 3,
+      "q": "The largest freshwater lake in India is?",
+      "opts": [
+        "Dal Lake",
+        "Chilika Lake",
+        "Wular Lake",
+        "Loktak Lake"
+      ],
+      "ans": 2,
+      "exp": "Wular Lake in Jammu & Kashmir is the largest freshwater lake in India and one of the largest freshwater lakes in Asia. It serves as a natural flood reservoir for the Kashmir Valley."
+    },
+    {
+      "id": 4,
+      "q": "The Nile River flows into which sea?",
+      "opts": [
+        "Red Sea",
+        "Arabian Sea",
+        "Mediterranean Sea",
+        "Black Sea"
+      ],
+      "ans": 2,
+      "exp": "The Nile River flows northward through northeastern Africa and empties into the Mediterranean Sea. It is approximately 6,650 km long, making it one of the world's longest rivers."
+    },
+    {
+      "id": 5,
+      "q": "Loktak Lake is located in which state?",
+      "opts": [
+        "Assam",
+        "Sikkim",
+        "Manipur",
+        "Meghalaya"
+      ],
+      "ans": 2,
+      "exp": "Loktak Lake, the largest freshwater lake in Northeast India, is located in Manipur. It is famous for its phumdis (floating biomass) and the Keibul Lamjao National Park, the world's only floating national park."
+    },
+    {
+      "id": 6,
+      "q": "The Amazon River flows through which continent?",
+      "opts": [
+        "Africa",
+        "Asia",
+        "North America",
+        "South America"
+      ],
+      "ans": 3,
+      "exp": "The Amazon River flows through South America, primarily through Brazil. It is the world's largest river by water discharge and drainage basin. It carries about 20% of all freshwater that flows into the world's oceans."
+    },
+    {
+      "id": 7,
+      "q": "The Dal Lake is situated in?",
+      "opts": [
+        "Himachal Pradesh",
+        "Uttarakhand",
+        "Jammu & Kashmir",
+        "Ladakh"
+      ],
+      "ans": 2,
+      "exp": "Dal Lake is situated in Srinagar, Jammu & Kashmir. It is famous for its houseboats and shikaras. Dal Lake is one of the most visited tourist spots in India and is called the 'Jewel in the Crown of Kashmir'."
+    },
+    {
+      "id": 8,
+      "q": "Which river is known as the 'Holy River' of India?",
+      "opts": [
+        "Yamuna",
+        "Saraswati",
+        "Brahmaputra",
+        "Ganga"
+      ],
+      "ans": 3,
+      "exp": "The Ganga (Ganges) is known as the 'Holy River' of India. It is the most sacred river in Hinduism. Over 400 million people live in the Ganga basin, and it supports one of the world's most densely populated regions."
+    },
+    {
+      "id": 9,
+      "q": "The Caspian Sea is actually a?",
+      "opts": [
+        "Sea",
+        "Ocean",
+        "Lake",
+        "Bay"
+      ],
+      "ans": 2,
+      "exp": "The Caspian Sea is technically the world's largest inland body of water (lake), bordered by Russia, Kazakhstan, Turkmenistan, Iran, and Azerbaijan. It covers about 371,000 sq km."
+    },
+    {
+      "id": 10,
+      "q": "The Indus River originates from?",
+      "opts": [
+        "India",
+        "Nepal",
+        "Tibet",
+        "Pakistan"
+      ],
+      "ans": 2,
+      "exp": "The Indus River originates from Tibet (China), near Lake Mansarovar. It flows through Ladakh (India), then through Pakistan, and finally drains into the Arabian Sea. The ancient Indus Valley Civilization developed along its banks."
+    }
+  ]
+}

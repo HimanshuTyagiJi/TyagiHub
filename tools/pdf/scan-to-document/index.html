@@ -1,0 +1,1125 @@
+---
+layout: default
+title: "Create PDF Online Free — Standalone Vector PDF Creator | TyagiHub"
+description: "Create custom PDF documents online free. Add rich text layout layers, vectors, and pages safely. 100% offline sandbox security, no server uploads."
+keywords: "create pdf online, free pdf creator, standalone pdf maker, offline pdf compiler, TyagiHub pdf tools"
+lang_switch: false
+
+extra_js:
+
+ - "/assets/js/libs/scan.js"
+---
+    <!-- CDNs for Multi-Format Exporters, Offline OCR and Icons -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/docx@8.2.4/build/index.umd.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/pptxgenjs@3.12.0/dist/pptxgen.bundle.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js"></script>
+
+    <style>
+        :root {
+            --clr-primary: #4f46e5;     /* Indigo Main */
+            --clr-primary-hover: #4338ca;
+            --clr-accent: #f43f5e;      /* Sunset Rose / Crimson */
+            --clr-slate-dark: #0f172a;
+            --clr-slate-medium: #475569;
+            --clr-slate-light: #f8fafc;
+            --clr-border: #cbd5e1;
+            --clr-border-light: #e2e8f0;
+            --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+        }
+
+        .main-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        padding: 20px 10px;
+    }
+
+
+        /* Tool Wrapper Container Grid */
+        .wrapper {
+            width: 100%;
+            max-width: 1250px;
+            background: #ffffff;
+            border-radius: 24px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.05), 0 5px 15px rgba(0, 0, 0, 0.02);
+            border: 1px solid var(--clr-border-light);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Banner Header Section */
+        .header-banner {
+            background: linear-gradient(135deg, #1e1b4b 0%, #312e81 50%, #4338ca 100%);
+            color: #ffffff;
+            padding: 30px;
+            text-align: left;
+            position: relative;
+            border-bottom: 2px solid var(--clr-border-light);
+        }
+
+        .header-banner h1 {
+            font-size: 26px;
+            font-weight: 900;
+            letter-spacing: -0.025em;
+            margin-bottom: 6px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .header-banner p {
+            font-size: 13px;
+            color: #e0e7ff;
+            font-weight: 500;
+        }
+
+        .offline-badge {
+            background-color: #10b981;
+            color: #ffffff;
+            font-size: 10px;
+            font-weight: 800;
+            padding: 3px 10px;
+            border-radius: 9999px;
+            display: inline-block;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        /* Main Workspace container */
+        .workspace {
+            padding: 30px;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 30px;
+        }
+
+        @media (min-width: 992px) {
+            .workspace {
+                grid-template-columns: 460px 1fr;
+            }
+        }
+
+        /* Sidebar controllers box */
+        .sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .panel-card {
+            background-color: var(--clr-slate-light);
+            border: 1px solid var(--clr-border-light);
+            border-radius: 16px;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+            text-align: left;
+        }
+
+        .panel-title {
+            font-size: 12px;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--clr-slate-medium);
+            border-bottom: 1px dashed var(--clr-border);
+            padding-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-family: var(--font-mono);
+        }
+
+        .panel-info {
+            font-size: 11px;
+            color: var(--clr-slate-medium);
+            line-height: 1.45;
+            font-weight: 500;
+        }
+
+        /* Mode Selection Cards */
+        .mode-selection {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 10px;
+        }
+
+        .btn-mode {
+            background-color: #ffffff;
+            border: 1.5px solid var(--clr-border);
+            border-radius: 12px;
+            padding: 14px;
+            text-align: left;
+            transition: all 0.2s ease;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .btn-mode:hover {
+            border-color: var(--clr-primary);
+            background-color: #f5f3ff;
+        }
+
+        .btn-mode.active {
+            border-color: var(--clr-primary);
+            background-color: #eeebff;
+            box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.15);
+        }
+
+        .mode-title {
+            font-size: 12.5px;
+            font-weight: 800;
+            color: var(--clr-slate-dark);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .mode-desc {
+            font-size: 10.5px;
+            color: var(--clr-slate-medium);
+            line-height: 1.35;
+        }
+
+        /* Image Drag & Drop Box */
+        .dropzone-box {
+            background-color: #ffffff;
+            border: 2px dashed var(--clr-border);
+            border-radius: 16px;
+            padding: 24px;
+            text-align: center;
+            transition: all 0.15s ease;
+            position: relative;
+            cursor: pointer;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 140px;
+        }
+
+        .dropzone-box:hover, .dropzone-box.dragover {
+            border-color: var(--clr-primary);
+            background-color: #fbfbfe;
+        }
+
+        .dropzone-icon {
+            color: var(--clr-primary);
+            margin-bottom: 8px;
+            font-size: 24px;
+        }
+
+        .dropzone-text {
+            font-size: 11.5px;
+            font-weight: 600;
+            color: var(--clr-slate-dark);
+        }
+
+        .dropzone-subtext {
+            font-size: 10px;
+            color: var(--clr-slate-medium);
+            margin-top: 4px;
+        }
+
+        .preview-thumbnail {
+            max-height: 120px;
+            border-radius: 8px;
+            border: 1px solid var(--clr-border-light);
+            margin-top: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+
+        /* Preset Template Test Buttons Grid */
+        .presets-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 6px;
+        }
+
+        .btn-preset {
+            background-color: #ffffff;
+            border: 1px solid var(--clr-border);
+            border-radius: 10px;
+            padding: 8px 6px;
+            font-size: 10px;
+            font-weight: 700;
+            text-align: center;
+            transition: all 0.15s ease;
+            color: var(--clr-slate-medium);
+            cursor: pointer;
+        }
+
+        .btn-preset:hover {
+            border-color: var(--clr-primary);
+            color: var(--clr-primary);
+            background-color: #fbfbfe;
+        }
+
+        /* Settings grid configuration */
+        .settings-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+        }
+
+        .setting-col {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .setting-label {
+            font-size: 9.5px;
+            font-weight: 800;
+            color: var(--clr-slate-medium);
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+        }
+
+        .select-input, .text-input {
+            width: 100%;
+            padding: 8px 12px;
+            font-size: 12px;
+            font-weight: 650;
+            border-radius: 8px;
+            border: 1px solid var(--clr-border);
+            background: #ffffff;
+            color: var(--clr-slate-dark);
+            outline: none;
+            transition: all 0.15s ease;
+        }
+
+        .select-input:focus, .text-input:focus {
+            border-color: var(--clr-primary);
+            box-shadow: 0 0 0 2px rgba(79, 70, 229, 0.1);
+        }
+
+        /* Add Blocks Buttons Grid */
+        .blocks-btn-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 6px;
+        }
+
+        .btn-add-block {
+            background: #ffffff;
+            border: 1px solid var(--clr-border-light);
+            padding: 10px 4px;
+            border-radius: 10px;
+            font-size: 9.5px;
+            font-weight: 800;
+            color: var(--clr-slate-dark);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            transition: all 0.15s ease;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.02);
+            cursor: pointer;
+        }
+
+        .btn-add-block:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            border-color: var(--clr-primary);
+            color: var(--clr-primary);
+        }
+
+        .btn-add-block svg {
+            width: 16px;
+            height: 16px;
+            stroke-width: 2.2;
+        }
+
+        .btn-span-full {
+            grid-column: span 3;
+            flex-direction: row;
+            padding: 8px 16px;
+            font-size: 11px;
+            gap: 8px;
+        }
+
+        /* Block Editor Context Form */
+        .block-editor-box {
+            background-color: #eff6ff;
+            border: 1px solid #bfdbfe;
+            border-radius: 14px;
+            padding: 16px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            transition: all 0.2s ease;
+            text-align: left;
+        }
+
+        .block-editor-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-size: 11px;
+            font-weight: 850;
+            color: #1e3a8a;
+            text-transform: uppercase;
+            border-bottom: 1px dashed #bfdbfe;
+            padding-bottom: 6px;
+        }
+
+        .textarea-input {
+            width: 100%;
+            height: 80px;
+            padding: 10px;
+            font-size: 12.5px;
+            border-radius: 8px;
+            border: 1px solid #93c5fd;
+            resize: vertical;
+            outline: none;
+            font-family: inherit;
+        }
+
+        .textarea-input:focus {
+            border-color: #1d4ed8;
+            box-shadow: 0 0 0 2px rgba(29, 78, 216, 0.1);
+        }
+
+        /* Alignment Toggle Group */
+        .align-group {
+            display: flex;
+            border: 1px solid #cbd5e1;
+            border-radius: 8px;
+            background: #ffffff;
+            overflow: hidden;
+            width: fit-content;
+        }
+
+        .btn-align {
+            padding: 6px 12px;
+            font-size: 11px;
+            font-weight: 700;
+            border: none;
+            background: none;
+            color: var(--clr-slate-medium);
+            transition: all 0.15s ease;
+            cursor: pointer;
+        }
+
+        .btn-align.active {
+            background-color: #2563eb;
+            color: #ffffff;
+        }
+
+        /* List Items Manager styling */
+        .list-manager-container {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .list-edit-row {
+            display: flex;
+            gap: 6px;
+            align-items: center;
+        }
+
+        .btn-edit-action {
+            padding: 6px 10px;
+            border: none;
+            border-radius: 6px;
+            font-size: 11px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: background 0.15s ease;
+        }
+
+        .btn-edit-delete {
+            background-color: #fee2e2;
+            color: #b91c1c;
+        }
+
+        .btn-edit-delete:hover {
+            background-color: #fca5a5;
+        }
+
+        .btn-edit-add {
+            background-color: #d1fae5;
+            color: #065f46;
+            margin-top: 4px;
+        }
+
+        .btn-edit-add:hover {
+            background-color: #a7f3d0;
+        }
+
+        /* Table manager styles */
+        .table-editor-scroller {
+            max-height: 200px;
+            overflow-y: auto;
+            border: 1px solid #93c5fd;
+            border-radius: 8px;
+            background-color: #ffffff;
+        }
+
+        .table-editor-grid {
+            display: table;
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .table-editor-row {
+            display: table-row;
+            border-top: 1px solid var(--clr-border-light);
+            border-bottom: 1px solid var(--clr-border-light);
+        }
+
+        .table-editor-header-row {
+            background-color: #f1f5f9;
+        }
+
+        .table-editor-cell {
+            display: table-cell;
+            padding: 4px;
+            vertical-align: middle;
+        }
+
+        .table-cell-input {
+            width: 100%;
+            padding: 4px 6px;
+            border: 1px solid #cbd5e1;
+            border-radius: 4px;
+            font-size: 11px;
+            outline: none;
+        }
+
+        .table-cell-input:focus {
+            border-color: #2563eb;
+        }
+
+
+
+        /* Right Preview Pane Sheet rendering */
+        .preview-pane {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        /* Real Sheet Emulator */
+        .sheet-container {
+            background-color: #475569;
+            padding: 24px;
+            border-radius: 18px;
+            border: 1px solid #334155;
+            box-shadow: inset 0 2px 8px rgba(0,0,0,0.15);
+            display: flex;
+            justify-content: center;
+            width: 100%;
+            min-height: 650px;
+        }
+
+        /* Emulated A4 dimension proportions */
+        .sheet-whiteboard {
+            background-color: #ffffff;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+            border-radius: 6px;
+            width: 100%;
+            max-width: 680px;
+            padding: 45px;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            color: #334155;
+            transition: all 0.3s ease;
+            box-sizing: border-box;
+            user-select: none;
+            text-align: left;
+        }
+
+        /* Custom margining classes */
+        .sheet-margin-standard { padding: 45px; }
+        .sheet-margin-narrow { padding: 25px; }
+        .sheet-margin-wide { padding: 60px; }
+
+        /* Theme Accent Palette configurations */
+        .accent-indigo { --theme-color-hex: #4338ca; --theme-bg-color: #eef2ff; }
+        .accent-blue { --theme-color-hex: #1e40af; --theme-bg-color: #eff6ff; }
+        .accent-green { --theme-color-hex: #065f46; --theme-bg-color: #ecfdf5; }
+        .accent-amber { --theme-color-hex: #b45309; --theme-bg-color: #fef3c7; }
+        .accent-red { --theme-color-hex: #9f1239; --theme-bg-color: #fff1f2; }
+        .accent-slate { --theme-color-hex: #1e293b; --theme-bg-color: #f1f5f9; }
+
+        /* Emulated page blocks */
+        .preview-block {
+            position: relative;
+            border: 1.5px dashed transparent;
+            padding: 10px;
+            margin-bottom: 6px;
+            border-radius: 8px;
+            transition: all 0.15s ease;
+            cursor: pointer;
+        }
+
+        .preview-block:hover {
+            border-color: #93c5fd;
+            background-color: #eff6ff;
+        }
+
+        .preview-block.active {
+            border-color: var(--theme-color-hex);
+            background-color: var(--theme-bg-color);
+        }
+
+        .block-pagers-rail {
+            position: absolute;
+            top: -12px;
+            right: 8px;
+            display: none;
+            gap: 4px;
+            background: var(--theme-color-hex);
+            padding: 2px 6px;
+            border-radius: 6px;
+            z-index: 50;
+        }
+
+        .preview-block:hover .block-pagers-rail, .preview-block.active .block-pagers-rail {
+            display: flex;
+            align-items: center;
+        }
+
+        .btn-rail {
+            background: none;
+            border: none;
+            color: #ffffff;
+            cursor: pointer !important;
+            font-size: 10px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 14px;
+            height: 14px;
+        }
+
+        .btn-rail:hover {
+            opacity: 0.8;
+        }
+
+        /* Interactive Element Typography Styles */
+        .doc-heading1 {
+            font-size: 22px;
+            font-weight: 800;
+            color: #0f172a;
+            margin-bottom: 12px;
+            padding-bottom: 3px;
+        }
+
+        .doc-heading2 {
+            font-size: 13.5px;
+            font-weight: 700;
+            color: var(--theme-color-hex);
+            margin-top: 12px;
+            margin-bottom: 6px;
+            text-transform: uppercase;
+            letter-spacing: 0.02em;
+        }
+
+        .doc-paragraph {
+            font-size: 11px;
+            color: #475569;
+            margin-bottom: 8px;
+            white-space: pre-wrap;
+            line-height: 1.55;
+        }
+
+        .doc-divider {
+            height: 1.5px;
+            background-color: var(--theme-color-hex);
+            margin: 12px 0;
+            opacity: 0.85;
+        }
+
+        .doc-list {
+            margin-left: 12px;
+            margin-bottom: 10px;
+            font-size: 11px;
+            color: #475569;
+        }
+
+        .doc-list-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 6px;
+            margin-bottom: 4px;
+        }
+
+        .doc-list-bullet {
+            width: 4px;
+            height: 4px;
+            background-color: var(--theme-color-hex);
+            border-radius: 50%;
+            margin-top: 6px;
+            flex-shrink: 0;
+        }
+
+        /* Tables Grid */
+        .doc-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 10px;
+            margin: 12px 0;
+            border: 1px solid var(--clr-border-light);
+        }
+
+        .doc-table th {
+            background-color: var(--theme-color-hex);
+            color: #ffffff;
+            font-weight: bold;
+            padding: 7px 10px;
+            text-align: left;
+            border: 1px solid var(--theme-color-hex);
+        }
+
+        .doc-table td {
+            padding: 7px 10px;
+            border: 1px solid var(--clr-border-light);
+            color: #334155;
+        }
+
+        .doc-table tr:nth-child(even) {
+            background-color: #f8fafc;
+        }
+
+        /* Stamp blocks */
+        .doc-stamp-container {
+            margin: 14px 0;
+            display: inline-block;
+        }
+
+        .doc-stamp-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            border: 3px double #b91c1c;
+            color: #b91c1c;
+            font-family: var(--font-mono);
+            font-size: 11px;
+            font-weight: 800;
+            padding: 8px 16px;
+            background: #fef2f2;
+            border-radius: 8px;
+            transform: rotate(-1.5deg);
+        }
+
+        .doc-pagebreak {
+            border: 2px dashed #f43f5e;
+            background-color: #fff1f2;
+            padding: 8px;
+            text-align: center;
+            font-size: 10px;
+            font-weight: bold;
+            color: #e11d48;
+            margin: 15px 0;
+            border-radius: 6px;
+            letter-spacing: 0.05em;
+        }
+
+        /* Document Footer coordinates line */
+        .doc-page-stamp-line {
+            margin-top: auto;
+            border-top: 1px solid #e2e8f0;
+            padding-top: 10px;
+            font-weight: 700;
+            font-size: 8.5px;
+            color: #94a3b8;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        /* Buttons styling */
+        button, .btn, .btn-mode, .btn-preset {
+            cursor: pointer !important;
+            user-select: none;
+        }
+
+        .btn {
+            padding: 10px 16px;
+            font-size: 12.5px;
+            font-weight: 700;
+            border-radius: 10px;
+            border: none;
+            transition: all 0.15s ease;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+        }
+
+        .btn-primary {
+            background-color: var(--clr-primary);
+            color: #ffffff;
+        }
+
+        .btn-primary:hover:not(:disabled) {
+            background-color: var(--clr-primary-hover);
+        }
+
+        .btn-secondary {
+            background-color: var(--clr-slate-dark);
+            color: #ffffff;
+        }
+
+        .btn-secondary:hover:not(:disabled) {
+            background-color: #1e293b;
+        }
+
+        button:disabled, .btn:disabled {
+            opacity: 0.45;
+            cursor: not-allowed !important;
+        }
+
+        /* OCR & Scan Compilation state handler box */
+        .progress-box {
+            background-color: var(--clr-slate-light);
+            border: 1px solid var(--clr-border-light);
+            border-radius: 16px;
+            padding: 20px;
+            text-align: left;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .progress-title {
+            font-size: 12.5px;
+            font-weight: 750;
+            color: var(--clr-slate-dark);
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .progress-track {
+            width: 100%;
+            height: 8px;
+            background: #cbd5e1;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            width: 0%;
+            border-radius: 4px;
+            background: linear-gradient(to right, var(--clr-primary), #6366f1);
+            transition: width 0.2s ease;
+        }
+
+        .exporter-options {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 8px;
+        }
+
+        .btn-export {
+            border: 1px solid var(--clr-border-light);
+            background: #ffffff;
+            border-radius: 10px;
+            padding: 10px 4px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
+            font-size: 9.5px;
+            font-weight: 800;
+            transition: all 0.15s ease;
+            cursor: pointer;
+        }
+
+        .btn-export:hover {
+            border-color: var(--clr-primary);
+            color: var(--clr-primary);
+            transform: translateY(-1px);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+        }
+
+        /* Toast notifications alert stack */
+        .toast-notif {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #0f172a;
+            color: #fff;
+            padding: 12px 18px;
+            border-radius: 12px;
+            font-weight: 700;
+            font-size: 12px;
+            z-index: 9999;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+            display: none;
+            align-items: center;
+            gap: 8px;
+            animation: slideIn 0.35s ease;
+        }
+
+        @keyframes slideIn {
+            from { transform: translateY(100px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+    </style>
+
+<br><br><br>
+<div class="main-container">
+    <div class="wrapper" id="scanner-root-box">
+        
+        <!-- BANNER HEADER DESK -->
+        <div class="header-banner">
+            <span class="offline-badge">⚡ 100% Client-Side Private Document Scanner</span>
+            <h1>Interactive Offline Document Scanner & Layout Reconstructor</h1>
+            <p>Scan invoices, ledgers, handwriting, or academic papers. Convert elements to pristine, fully-editable Word, PPTX, Excel spreadsheets, or standard PDFs client-side.</p>
+        </div>
+
+        <div class="workspace">
+            
+            <!-- LEFT EDITING SIDEBAR CONTROLLER -->
+            <div class="sidebar">
+                
+                <!-- SECTION A: UPLOAD & ENGINE SELECT -->
+                <div class="panel-card">
+                    <span class="panel-title">📸 Input Source & Scanner Mode</span>
+                    
+                    <!-- File dropzone with camera triggers -->
+                    <div class="dropzone-box" id="dropzone-area" onclick="triggerFileInput()">
+                        <div class="dropzone-icon">📁</div>
+                        <span class="dropzone-text" id="dropzone-text-lbl">Drag image here or click to browse</span>
+                        <span class="dropzone-subtext">Supports PNG, JPG, JPEG, WEBP & HEIC</span>
+                        <input type="file" id="scanner-file-input" accept="image/*" style="display: none;" onchange="onLocalFileAdded(event)">
+                        <img id="image-upload-preview" class="preview-thumbnail" style="display: none;" alt="Uploaded thumbnail" referrerPolicy="no-referrer">
+                    </div>
+
+                    <!-- Layout Presets trigger button selection for immediate testing -->
+                    <div style="display: flex; flex-direction: column; gap: 6px;">
+                        <span class="setting-label">Or test immediate presets without uploads:</span>
+                        <div class="presets-grid">
+                            <button class="btn-preset" onclick="loadScannerPreset('invoice')">🧾 Billed Invoice</button>
+                            <button class="btn-preset" onclick="loadScannerPreset('academic')">🎓 Chapter Book</button>
+                            <button class="btn-preset" onclick="loadScannerPreset('report')">📊 Progress Report</button>
+                        </div>
+                    </div>
+
+                    <!-- Select Engine Mode (Offline Only) -->
+                    <div style="background-color: #f1f5f9; border: 1px solid var(--clr-border-light); border-radius: 12px; padding: 12px; display: flex; align-items: start; gap: 10px;">
+                        <span style="font-size: 18px;">⚙️</span>
+                        <div>
+                            <div style="font-size: 11.5px; font-weight: 800; color: var(--clr-slate-dark);">Local Offline OCR Engine</div>
+                            <div style="font-size: 10px; color: var(--clr-slate-medium); margin-top: 2px;">100% client-side privacy. Parsing runs securely in your sandboxed browser without transmitting files to any server.</div>
+                        </div>
+                    </div>
+
+                    <!-- Trigger Scan button -->
+                    <button class="btn btn-primary" style="padding: 12px;" onclick="runSelectedScannerEngine()" id="btn-trigger-scan" disabled>
+                        <span>🚀 EXPLICITLY INITIATE SCAN</span>
+                    </button>
+                </div>
+
+                <!-- SECTION B: QUICK STYLE PARAMETERS -->
+                <div class="panel-card">
+                    <span class="panel-title">🎨 Document Layout & Aesthetics</span>
+                    <div class="settings-grid">
+                        <div class="setting-col">
+                            <span class="setting-label">Accent Theme</span>
+                            <select id="cfg-theme" class="select-input" onchange="updateAesthetics()">
+                                <option value="indigo">Indigo Corporate</option>
+                                <option value="blue">Deep Ocean Blue</option>
+                                <option value="green">Forest Emerald</option>
+                                <option value="amber">Warm Gold Amber</option>
+                                <option value="red">Cinnabar Sunset</option>
+                                <option value="slate">Minimalist Charcoal</option>
+                            </select>
+                        </div>
+                        <div class="setting-col">
+                            <span class="setting-label">Global Typography</span>
+                            <select id="cfg-font" class="select-input" onchange="updateAesthetics()">
+                                <option value="Helvetica">Helvetica (Modern)</option>
+                                <option value="Times">Times Roman (Serif)</option>
+                                <option value="Courier">Courier New (Mono)</option>
+                            </select>
+                        </div>
+                        <div class="setting-col">
+                            <span class="setting-label">Page Padding</span>
+                            <select id="cfg-margins" class="select-input" onchange="updateMargins()">
+                                <option value="standard">Standard Margin</option>
+                                <option value="narrow">Narrow Margin</option>
+                                <option value="wide">Wide Layout</option>
+                            </select>
+                        </div>
+                        <div class="setting-col">
+                            <span class="setting-label">Watermark Overlay</span>
+                            <input type="text" id="cfg-watermark" class="text-input" placeholder="e.g. STRICTLY CONFIDENTIAL" oninput="updateAesthetics()">
+                        </div>
+                        <div class="setting-col" style="grid-column: span 2;">
+                            <span class="setting-label">Document Header Line text</span>
+                            <input type="text" id="cfg-header-text" class="text-input" value="TYAGIHUB SECURE SCAN SERVICE" oninput="updateAesthetics()">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SECTION C: INSERT NEW MODULES -->
+                <div class="panel-card">
+                    <span class="panel-title">➕ Inject Manual Document blocks</span>
+                    <div class="blocks-btn-grid">
+                        <button class="btn-add-block" onclick="insertManualBlock('heading1')">
+                            📊 Document Title
+                        </button>
+                        <button class="btn-add-block" onclick="insertManualBlock('heading2')">
+                            📌 Section Header
+                        </button>
+                        <button class="btn-add-block" onclick="insertManualBlock('paragraph')">
+                            ✍️ Paragraph Text
+                        </button>
+                        <button class="btn-add-block" onclick="insertManualBlock('list')">
+                            📝 Bullet Points
+                        </button>
+                        <button class="btn-add-block" onclick="insertManualBlock('table')">
+                            📅 Database Table
+                        </button>
+                        <button class="btn-add-block" onclick="insertManualBlock('stamp')">
+                            🛡️ Approved Stamp
+                        </button>
+                        <button class="btn-add-block btn-span-full" onclick="insertManualBlock('divider')">
+                            Horizontal Separator Layout Line
+                        </button>
+                    </div>
+                </div>
+
+                <!-- SECTION D: DYNAMIC BLOCK EDITOR PANEL -->
+                <div class="block-editor-box" id="block-editing-form" style="display: none;">
+                    <div class="block-editor-header">
+                        <span id="editor-block-lbl">Modify Selected Block</span>
+                        <button class="btn-edit-action btn-edit-delete" onclick="deleteActiveBlock()">Wipe Block</button>
+                    </div>
+                    
+                    <!-- Content field -->
+                    <div id="editor-field-main">
+                        <span class="setting-label" style="display: block; margin-bottom: 6px;">Main Value String</span>
+                        <textarea id="editor-textarea" class="textarea-input" oninput="saveActiveBlockEdits()"></textarea>
+                    </div>
+
+                    <!-- Text alignment handles -->
+                    <div id="editor-field-align">
+                        <span class="setting-label" style="display: block; margin-bottom: 6px;">Text Direction Alignment</span>
+                        <div class="align-group">
+                            <button id="align-left" class="btn-align active" onclick="updateActiveAlignment('left')">Left</button>
+                            <button id="align-center" class="btn-align" onclick="updateActiveAlignment('center')">Center</button>
+                            <button id="align-right" class="btn-align" onclick="updateActiveAlignment('right')">Right</button>
+                        </div>
+                    </div>
+
+                    <!-- Bullet points sub-items editor -->
+                    <div id="editor-field-bullets" style="display: none; flex-direction: column; gap: 6px;">
+                        <span class="setting-label">Configure List row bullet subtexts:</span>
+                        <div id="list-bullets-rows" style="display: flex; flex-direction: column; gap: 6px;"></div>
+                        <button class="btn-edit-action btn-edit-add" onclick="addNewBulletRow()">➕ Create New Row Item</button>
+                    </div>
+
+                    <!-- Structured spreadsheet columns grid values -->
+                    <div id="editor-field-table" style="display: none; flex-direction: column; gap: 6px;">
+                        <span class="setting-label">Table Rows & Columns Cell Editor:</span>
+                        <div class="table-editor-scroller">
+                            <div class="table-editor-grid" id="table-cells-editor-matrix"></div>
+                        </div>
+                        <div style="display: flex; gap: 6px;">
+                            <button class="btn-preset" style="flex:1;" onclick="addActiveTableCellRow()">➕ Add Table Row</button>
+                            <button class="btn-preset" style="flex:1;" onclick="addActiveTableCellCol()">➕ Add Column</button>
+                        </div>
+                    </div>
+                </div>
+
+
+
+            </div>
+
+            <!-- RIGHT EMILE SHEETS PREVIEW BOARDS -->
+            <div class="preview-pane">
+                
+                <!-- A4 sheet whiteboard canvas viewport container -->
+                <div class="sheet-container">
+                    <div class="sheet-whiteboard sheet-margin-standard accent-indigo" id="visual-whiteboard">
+                        
+                        <!-- watermarking overlay label node -->
+                        <div id="watermark-overlay" style="position: absolute; top:0; left:0; width:100%; height:100%; display: flex; align-items: center; justify-content: center; opacity: 0.04; font-size: 42px; font-weight: 900; pointer-events: none; transform: rotate(-30deg); text-transform: uppercase;"></div>
+
+                        <div id="visual-elements-stack" style="display: flex; flex-direction: column; width: 100%;">
+                            <!-- Dynamically drawn items sequential -->
+                        </div>
+
+                        <!-- Footer line -->
+                        <div class="doc-page-stamp-line">
+                            <span id="footer-stamp-header">TYAGIHUB SECURE SCAN</span>
+                            <span id="footer-stamp-title">UNTITLED REPORT</span>
+                            <span>PAGE 1 OF 1</span>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- ACTION FOOTER COMPILING LAYER -->
+                <div class="progress-box">
+                    <div class="progress-title">
+                        <span id="scanner-status-lbl">Scanner standby. Load document source to trigger parsing.</span>
+                        <span id="scanner-pct-lbl"></span>
+                    </div>
+                    <div class="progress-track" id="scanner-progress-bar" style="display: none;">
+                        <div class="progress-fill" id="scanner-progress-fill"></div>
+                    </div>
+                    
+                    <!-- HIGH FIDELITY MULTI EXPORTER GRID -->
+                    <div style="display: flex; flex-direction: column; gap: 8px; margin-top: 6px;">
+                        <div style="display: flex; justify-content: space-between; align-items: center;">
+                            <span class="setting-label">Export Compiled Document to format:</span>
+                            <button class="btn-preset" style="padding: 2px 10px;" onclick="clearActiveWorkbook()">Clear Slate</button>
+                        </div>
+                        <div class="exporter-options">
+                            <button class="btn-export" onclick="exportToWordDocx()" id="btn-exp-docx" disabled>
+                                <span style="font-size: 16px;">📘</span>
+                                <span>MS Word</span>
+                            </button>
+                            <button class="btn-export" onclick="exportToPowerPointPptx()" id="btn-exp-pptx" disabled>
+                                <span style="font-size: 16px;">📙</span>
+                                <span>MS PPT</span>
+                            </button>
+                            <button class="btn-export" onclick="exportToExcelXlsx()" id="btn-exp-xlsx" disabled>
+                                <span style="font-size: 16px;">🟢</span>
+                                <span>Excel</span>
+                            </button>
+                            <button class="btn-export" onclick="exportToPdf()" id="btn-exp-pdf" disabled>
+                                <span style="font-size: 16px;">📕</span>
+                                <span>Standard PDF</span>
+                            </button>
+                            <button class="btn-export" onclick="exportToInteractiveHTML()" id="btn-exp-html" disabled>
+                                <span style="font-size: 16px;">🌐</span>
+                                <span>HTML Doc</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- TOAST ALERT NOTIFY POPUP -->
+    <div class="toast-notif" id="toast-notify-alert">
+        <span id="toast-text-lbl">Document updated successfully.</span>
+    </div>
+</div>
+

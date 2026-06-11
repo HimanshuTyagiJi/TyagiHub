@@ -1,0 +1,128 @@
+{
+  "title": "Wildlife & National Parks",
+  "title_hi": "वन्यजीव और राष्ट्रीय उद्यान",
+  "icon": "🐯",
+  "slug": "wildlife",
+  "questions": [
+    {
+      "id": 1,
+      "q": "Jim Corbett National Park is located in?",
+      "opts": [
+        "Madhya Pradesh",
+        "Rajasthan",
+        "Uttarakhand",
+        "Assam"
+      ],
+      "ans": 2,
+      "exp": "Jim Corbett National Park, established in 1936, is India's oldest national park, located in Uttarakhand. It was the first to come under Project Tiger in 1973. It is famous for Bengal tigers and elephants."
+    },
+    {
+      "id": 2,
+      "q": "The One-Horned Rhinoceros is found in?",
+      "opts": [
+        "Kaziranga National Park",
+        "Bandhavgarh National Park",
+        "Gir Forest",
+        "Sundarbans"
+      ],
+      "ans": 0,
+      "exp": "Kaziranga National Park in Assam is home to the largest population of the Indian One-Horned Rhinoceros. It has about 2,600 rhinos, representing 2/3 of the world's total population. It is a UNESCO World Heritage Site."
+    },
+    {
+      "id": 3,
+      "q": "The Asiatic Lion is found only in?",
+      "opts": [
+        "Jim Corbett",
+        "Kaziranga",
+        "Gir National Park",
+        "Ranthambore"
+      ],
+      "ans": 2,
+      "exp": "The Asiatic Lion (Panthera leo persica) is found only in Gir National Park and Wildlife Sanctuary in Gujarat, India. As of 2020, the population was about 674 lions, the only wild population of Asiatic lions."
+    },
+    {
+      "id": 4,
+      "q": "Project Tiger was launched in India in?",
+      "opts": [
+        "1970",
+        "1973",
+        "1978",
+        "1980"
+      ],
+      "ans": 1,
+      "exp": "Project Tiger was launched by PM Indira Gandhi on 1 April 1973. It started with 9 tiger reserves and now has 53 reserves. India's tiger population has grown from about 1,800 in 1973 to over 3,600 in 2023."
+    },
+    {
+      "id": 5,
+      "q": "The Snow Leopard is primarily found in which region?",
+      "opts": [
+        "Western Ghats",
+        "Northeastern India",
+        "Eastern Ghats",
+        "Himalayas"
+      ],
+      "ans": 3,
+      "exp": "The Snow Leopard is found in the high mountain ranges of Central and South Asia, particularly in the Himalayas and associated ranges. In India, it is found in Ladakh, Himachal Pradesh, Uttarakhand, Sikkim, and Arunachal Pradesh."
+    },
+    {
+      "id": 6,
+      "q": "The Sundarbans is famous for?",
+      "opts": [
+        "One-horned rhinoceros",
+        "Snow leopard",
+        "Royal Bengal Tiger",
+        "Asiatic elephant"
+      ],
+      "ans": 2,
+      "exp": "The Sundarbans (shared between India and Bangladesh) is the world's largest mangrove forest and is famous for the Royal Bengal Tiger. About 250–350 tigers live in the Indian part of Sundarbans."
+    },
+    {
+      "id": 7,
+      "q": "IUCN stands for?",
+      "opts": [
+        "International Union for Conservation of Nature",
+        "International Unity for Conservation of Nations",
+        "International Union for Climate and Nature",
+        "Indian Union for Conservation of Nature"
+      ],
+      "ans": 0,
+      "exp": "IUCN stands for International Union for Conservation of Nature. It was founded in 1948 and is the world's oldest and largest global environmental organization. It maintains the Red List of Threatened Species."
+    },
+    {
+      "id": 8,
+      "q": "The Indian Peacock (national bird) was declared so in?",
+      "opts": [
+        "1950",
+        "1963",
+        "1972",
+        "1980"
+      ],
+      "ans": 1,
+      "exp": "The Indian Peacock (Pavo cristatus) was declared India's national bird on 1 February 1963. It was chosen for its rich religious and legendary involvement in Indian traditions and its wide distribution across India."
+    },
+    {
+      "id": 9,
+      "q": "Which national park in India is known as 'Tiger State'?",
+      "opts": [
+        "Ranthambore (Rajasthan)",
+        "Bandhavgarh (MP)",
+        "Kanha (MP)",
+        "Madhya Pradesh (overall)"
+      ],
+      "ans": 3,
+      "exp": "Madhya Pradesh is known as the 'Tiger State' of India as it has the highest number of tigers. As of 2022, MP had about 526 tigers. Ranthambore (Rajasthan) is the most popular individual tiger reserve."
+    },
+    {
+      "id": 10,
+      "q": "The Bharatpur Bird Sanctuary is also known as?",
+      "opts": [
+        "Keoladeo Ghana National Park",
+        "Chilika Bird Sanctuary",
+        "Vedanthangal Bird Sanctuary",
+        "Ranganathittu Bird Sanctuary"
+      ],
+      "ans": 0,
+      "exp": "Bharatpur Bird Sanctuary is officially known as Keoladeo Ghana National Park, located in Rajasthan. It is a UNESCO World Heritage Site and is home to thousands of migratory birds during winter."
+    }
+  ]
+}

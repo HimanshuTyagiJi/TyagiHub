@@ -1,0 +1,660 @@
+---
+layout: default
+title: "Universal Multi-Directional Unit Converter — Free & Fast | TyagiHub"
+description: "Professional multi-category universal unit converter. Input a value into ANY unit box and press Enter to instantly view all remaining conversion calculations simultaneously. 100% free and client-side."
+keywords: "unit converter, universal converter, data storage converter, length converter, multi directional converter, real time conversion grid, TyagiHub tools"
+lang: en
+lang_switch: false
+---
+
+<style>
+:root {
+  --uc-accent:  #3ecfcf;
+  --uc-accent2: #00b4d8;
+  --uc-green:   #34d399;
+  --uc-surface: var(--clr-surface,  #1a1d2e);
+  --uc-surf2:   var(--clr-surface-2,#242740);
+  --uc-surf3:   #2d3154;
+  --uc-border:  var(--clr-border,   rgba(255,255,255,0.08));
+  --uc-bord2:   rgba(255,255,255,0.14);
+  --uc-text:    var(--clr-text,     #c8cde0);
+  --uc-head:    var(--clr-heading,  #eef0fa);
+  --uc-muted:   var(--clr-text-3,   #5a6080);
+  --uc-bg:      var(--clr-bg,       #0f1117);
+  --uc-radius:  14px;
+  --uc-font:    var(--font-body,'Segoe UI',system-ui,sans-serif);
+  --uc-mono:    'Courier New','Consolas',monospace;
+  --uc-glow:    0 0 20px rgba(62,207,207,0.25);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+::-webkit-scrollbar{width:6px;height:6px;}
+::-webkit-scrollbar-track{background:var(--uc-bg);}
+::-webkit-scrollbar-thumb{background:var(--uc-surf3);border-radius:3px;}
+
+.uc-wrap{max-width:1180px;margin:0 auto;padding:2.5rem 1.25rem 6rem;font-family:var(--uc-font);color:var(--uc-text);}
+
+/* ── Hero ── */
+.uc-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(62,207,207,0.10);border:1px solid rgba(62,207,207,0.30);color:var(--uc-accent);font-size:.71rem;font-weight:700;padding:4px 14px;border-radius:100px;margin-bottom:1rem;letter-spacing:.09em;text-transform:uppercase;}
+.uc-wrap h1{font-size:clamp(1.75rem,4vw,2.5rem);font-weight:800;color:var(--uc-head);letter-spacing:-.03em;margin-bottom:.6rem;line-height:1.15;}
+.uc-wrap h1 em{font-style:normal;background:linear-gradient(135deg,var(--uc-accent),var(--uc-accent2),#a78bfa);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.uc-hero-sub{color:var(--uc-text);font-size:.95rem;line-height:1.85;margin-bottom:1.6rem;max-width:680px;}
+.uc-hero-sub strong{color:var(--uc-accent);}
+.uc-hero-stats{display:flex;flex-wrap:wrap;gap:.8rem;margin-bottom:.5rem;}
+.uc-stat-pill{display:flex;align-items:center;gap:7px;background:var(--uc-surface);border:1px solid var(--uc-border);border-radius:8px;padding:8px 14px;font-size:.82rem;font-weight:600;color:var(--uc-head);}
+.uc-stat-pill .dot{width:8px;height:8px;border-radius:50%;background:var(--uc-green);flex-shrink:0;}
+
+/* ── Layout ── */
+.uc-main-grid{display:grid;grid-template-columns:280px 1fr;gap:1.5rem;align-items:start;}
+@media(max-width:940px){.uc-main-grid{grid-template-columns:1fr;}}
+
+/* ── Sidebar ── */
+.uc-sidebar{display:flex;flex-direction:column;gap:5px;position:sticky;top:80px;}
+@media(max-width:940px){
+  .uc-sidebar{
+    flex-direction:row;
+    position:static;
+    width:100%;
+    overflow-x:auto;
+    padding-bottom:8px;
+    scrollbar-width:thin;
+  }
+  .uc-cat-btn{
+    min-width:max-content;
+    width:auto;
+    flex-shrink:0;
+  }
+}
+.uc-cat-btn{
+  padding:12px 16px;border-radius:10px;border:1px solid var(--uc-border);
+  background:var(--uc-surface);color:var(--uc-text);font-family:var(--uc-font);
+  font-size:.875rem;font-weight:600;text-align:left;cursor:pointer;
+  transition:all .22s cubic-bezier(.4,0,.2,1);
+  display:flex;align-items:center;gap:10px;
+  white-space:normal;word-break:break-word;
+  position:relative;overflow:hidden;
+}
+.uc-cat-btn::before{content:'';position:absolute;left:0;top:0;height:100%;width:3px;background:var(--uc-accent);transform:scaleY(0);transition:transform .22s;}
+.uc-cat-btn:hover{background:var(--uc-surf2);color:var(--uc-head);border-color:rgba(62,207,207,.3);}
+.uc-cat-btn.active{background:linear-gradient(135deg,rgba(62,207,207,.14),rgba(0,180,216,.07));color:var(--uc-accent);border-color:rgba(62,207,207,.45);font-weight:700;}
+.uc-cat-btn.active::before{transform:scaleY(1);}
+.uc-cat-icon{font-size:1.1rem;flex-shrink:0;}
+.uc-cat-name{flex:1;line-height:1.3;}
+
+/* ── Workspace ── */
+.uc-workspace-card{background:var(--uc-surface);border:1px solid var(--uc-border);border-radius:var(--uc-radius);padding:1.8rem;}
+.uc-card-title{font-size:1.08rem;font-weight:800;color:var(--uc-head);margin-bottom:1rem;display:flex;align-items:center;gap:8px;border-left:3px solid var(--uc-accent);padding-left:12px;}
+
+/* ── 3D SVG Panel ── */
+.uc-anim-panel{
+  background:linear-gradient(135deg,rgba(62,207,207,.04),rgba(124,58,237,.04));
+  border:1px solid rgba(62,207,207,.12);border-radius:12px;
+  padding:1rem 1.4rem;margin-bottom:1.2rem;
+  display:flex;align-items:center;gap:1.2rem;
+}
+.uc-anim-svg-wrap{flex-shrink:0;width:100px;height:100px;display:flex;align-items:center;justify-content:center;}
+.uc-anim-info{flex:1;min-width:0;}
+.uc-anim-info h3{font-size:.88rem;font-weight:700;color:var(--uc-head);margin-bottom:.3rem;}
+.uc-anim-info p{font-size:.78rem;color:var(--uc-text);line-height:1.65;margin-bottom:.6rem;}
+.uc-more-btn{
+  display:inline-flex;align-items:center;gap:5px;
+  background:rgba(62,207,207,.1);border:1px solid rgba(62,207,207,.3);
+  color:var(--uc-accent);font-family:var(--uc-font);font-size:.75rem;font-weight:700;
+  padding:6px 14px;border-radius:100px;cursor:pointer;text-decoration:none;
+  transition:all .2s;white-space:nowrap;
+}
+.uc-more-btn:hover{background:rgba(62,207,207,.22);color:var(--uc-head);}
+
+/* ── Output Grid ── */
+.uc-output-container{display:grid;grid-template-columns:repeat(2,1fr);gap:1rem;}
+@media(max-width:600px){.uc-output-container{grid-template-columns:1fr;}}
+@media(min-width:1100px){.uc-output-container{grid-template-columns:repeat(3,1fr);}}
+
+.uc-result-card{background:var(--uc-surf2);border:1px solid var(--uc-border);border-radius:10px;padding:12px 12px 9px;display:flex;flex-direction:column;gap:7px;transition:border-color .2s,box-shadow .2s;animation:card-in .35s ease both;}
+@keyframes card-in{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+.uc-result-card:focus-within{border-color:var(--uc-accent);box-shadow:0 0 0 1px var(--uc-accent),var(--uc-glow);}
+.uc-result-unit-title{font-size:.77rem;font-weight:700;color:var(--uc-text);}
+
+/* Input + Button */
+.uc-card-input-wrapper{display:flex;align-items:stretch;border:1px solid var(--uc-bord2);border-radius:7px;overflow:hidden;transition:border-color .15s,box-shadow .15s;}
+.uc-card-input-wrapper:focus-within{border-color:var(--uc-accent);box-shadow:0 0 0 1px rgba(62,207,207,.35);}
+.uc-card-input{flex:1;background:var(--uc-surface);border:none;outline:none;padding:11px 10px;color:var(--uc-green);font-family:var(--uc-mono);font-size:1.05rem;font-weight:700;width:100%;min-width:0;transition:color .15s;}
+.uc-card-input:focus{color:var(--uc-head);}
+.uc-card-input::placeholder{color:var(--uc-muted);font-weight:400;}
+.uc-enter-btn{background:rgba(62,207,207,.12);border:none;border-left:1px solid var(--uc-bord2);color:var(--uc-accent);font-family:var(--uc-font);font-size:.72rem;font-weight:800;padding:0 10px;cursor:pointer;white-space:nowrap;transition:background .15s;flex-shrink:0;display:flex;align-items:center;gap:3px;}
+.uc-enter-btn:hover{background:rgba(62,207,207,.25);color:var(--uc-head);}
+.uc-enter-btn:active{background:rgba(62,207,207,.4);}
+.uc-hint-text{font-size:.64rem;color:var(--uc-muted);text-align:right;}
+
+/* Toast */
+#uc-toast{position:fixed;bottom:2rem;left:50%;transform:translateX(-50%) translateY(20px);background:var(--uc-surf3);border:1px solid var(--uc-accent);color:var(--uc-accent);font-size:.82rem;font-weight:700;padding:10px 22px;border-radius:100px;opacity:0;pointer-events:none;transition:all .35s;z-index:999;}
+#uc-toast.show{opacity:1;transform:translateX(-50%) translateY(0);}
+
+/* Light theme */
+[data-theme="light"]{--uc-surface:#fff;--uc-surf2:#f4f6fb;--uc-surf3:#e9ecf5;--uc-border:rgba(0,0,0,.07);--uc-bord2:rgba(0,0,0,.11);--uc-text:#4a5270;--uc-head:#1a2030;--uc-muted:#8892aa;--uc-bg:#f0f2f8;}
+[data-theme="light"] .uc-card-input{background:#fff;}
+
+@media(max-width:500px){.uc-wrap{padding:1.5rem 1rem 4rem;}.uc-workspace-card{padding:1.2rem;}.uc-anim-panel{flex-direction:column;text-align:center;}.uc-anim-info h3,.uc-anim-info p{text-align:left;}}
+</style>
+
+<div class="uc-wrap">
+
+  <div class="uc-hero">
+    <div class="uc-badge">⚡ Multi-Directional Precision Studio — TyagiHub</div>
+    <h1>Universal Multi-Directional <em>Converter Workspace</em></h1>
+    <p class="uc-hero-sub">Type inside <strong>ANY input box</strong> and press <strong>Enter ↵</strong> or click <strong>→ GO</strong>. All fields sync instantly.</p>
+    <div class="uc-hero-stats">
+      <div class="uc-stat-pill"><span class="dot"></span>10 Converter Categories</div>
+      <div class="uc-stat-pill"><span class="dot"></span>100+ Units</div>
+      <div class="uc-stat-pill"><span class="dot"></span>100% Client-Side</div>
+      <div class="uc-stat-pill"><span class="dot"></span>Enter from Any Unit</div>
+    </div>
+  </div>
+
+  <div class="uc-main-grid">
+
+    <div class="uc-sidebar" role="tablist">
+      <button class="uc-cat-btn active" onclick="switchConverter('length',this)"><span class="uc-cat-icon">📏</span><span class="uc-cat-name">Length / Distance</span></button>
+      <button class="uc-cat-btn" onclick="switchConverter('weight',this)"><span class="uc-cat-icon">⚖️</span><span class="uc-cat-name">Weight / Mass</span></button>
+      <button class="uc-cat-btn" onclick="switchConverter('storage',this)"><span class="uc-cat-icon">💾</span><span class="uc-cat-name">Digital Storage</span></button>
+      <button class="uc-cat-btn" onclick="switchConverter('speed',this)"><span class="uc-cat-icon">🚀</span><span class="uc-cat-name">Speed / Velocity</span></button>
+      <button class="uc-cat-btn" onclick="switchConverter('area',this)"><span class="uc-cat-icon">📐</span><span class="uc-cat-name">Area / Surface</span></button>
+      <button class="uc-cat-btn" onclick="switchConverter('volume',this)"><span class="uc-cat-icon">🧪</span><span class="uc-cat-name">Volume / Capacity</span></button>
+      <button class="uc-cat-btn" onclick="switchConverter('temperature',this)"><span class="uc-cat-icon">🌡️</span><span class="uc-cat-name">Temperature</span></button>
+      <button class="uc-cat-btn" onclick="switchConverter('time',this)"><span class="uc-cat-icon">⏱️</span><span class="uc-cat-name">Time / Duration</span></button>
+      <button class="uc-cat-btn" onclick="switchConverter('power',this)"><span class="uc-cat-icon">⚡</span><span class="uc-cat-name">Power / Watts</span></button>
+      <button class="uc-cat-btn" onclick="switchConverter('pressure',this)"><span class="uc-cat-icon">💨</span><span class="uc-cat-name">Pressure / Bar</span></button>
+    </div>
+
+    <div class="uc-workspace-card">
+      <!-- Animation + Info Panel -->
+      <div class="uc-anim-panel" id="uc-anim-panel">
+        <div class="uc-anim-svg-wrap" id="uc-svg-wrap"></div>
+        <div class="uc-anim-info">
+          <h3 id="uc-anim-title">Length &amp; Distance</h3>
+          <p id="uc-anim-desc">Convert meters, kilometers, miles, feet, inches, nautical miles and more — instantly in any direction.</p>
+          <a href="/tools/length-converter" class="uc-more-btn" id="uc-more-link">📖 More Info &amp; Details →</a>
+        </div>
+      </div>
+
+      <h2 class="uc-card-title" id="uc-panel-title">Length &amp; Distance Converter Studio</h2>
+      <div class="uc-output-container" id="uc-grid"></div>
+    </div>
+
+  </div>
+</div>
+
+<div id="uc-toast">✓ Copied</div>
+
+<script>
+/* ═══════════════════════════════════════════
+   DATA
+   ═══════════════════════════════════════════ */
+const MATRIX = {
+  length:{
+    title:"Length &amp; Distance Converter Studio",
+    animTitle:"Length &amp; Distance",
+    animDesc:"Convert meters, kilometers, miles, feet, inches, nautical miles, furlongs and more — instantly in any direction.",
+    infoLink:"/tools/length-converter",
+    units:{meter:"Meter (m)",kilometer:"Kilometer (km)",centimeter:"Centimeter (cm)",millimeter:"Millimeter (mm)",mile:"Mile (mi)",yard:"Yard (yd)",foot:"Foot (ft)",inch:"Inch (in)",decimeter:"Decimeter (dm)",micrometer:"Micrometer (µm)",nanometer:"Nanometer (nm)",nautical_mile:"Nautical Mile (nmi)",furlong:"Furlong"},
+    factors:{meter:1,kilometer:1000,centimeter:.01,millimeter:.001,mile:1609.344,yard:.9144,foot:.3048,inch:.0254,decimeter:.1,micrometer:1e-6,nanometer:1e-9,nautical_mile:1852,furlong:201.168}
+  },
+  weight:{
+    title:"Weight &amp; Mass Conversion Grid",
+    animTitle:"Weight &amp; Mass",
+    animDesc:"Gram, kilogram, pound, stone, ounce, tola, carat, metric ton — all unit pairs computed simultaneously.",
+    infoLink:"/tools/weight-converter",
+    units:{gram:"Gram (g)",kilogram:"Kilogram (kg)",milligram:"Milligram (mg)",pound:"Pound (lb)",ounce:"Ounce (oz)",ton_metric:"Metric Ton (t)",ton_us:"US Short Ton",stone:"Stone (st)",carat:"Carat (ct)",microgram:"Microgram (µg)",quintal:"Quintal (q)",tola:"Tola (India)"},
+    factors:{gram:1,kilogram:1000,milligram:.001,pound:453.59237,ounce:28.349523,ton_metric:1e6,ton_us:907184.74,stone:6350.293,carat:.2,microgram:1e-6,quintal:1e5,tola:11.6638}
+  },
+  storage:{
+    title:"Digital Storage Architecture",
+    animTitle:"Digital Storage",
+    animDesc:"Bytes, kilobytes, megabytes, gigabytes, terabytes, petabytes, bits, nibbles — IEC binary-accurate conversions.",
+    infoLink:"/tools/storage-converter",
+    units:{byte:"Byte (B)",kilobyte:"Kilobyte (KB)",megabyte:"Megabyte (MB)",gigabyte:"Gigabyte (GB)",terabyte:"Terabyte (TB)",petabyte:"Petabyte (PB)",bit:"Bit (b)",kilobit:"Kilobit (kb)",megabit:"Megabit (mb)",gigabit:"Gigabit (gb)",terabit:"Terabit (tb)",nibble:"Nibble"},
+    factors:{byte:1,kilobyte:1024,megabyte:1048576,gigabyte:1073741824,terabyte:1099511627776,petabyte:1125899906842624,bit:.125,kilobit:128,megabit:131072,gigabit:134217728,terabit:137438953472,nibble:.5}
+  },
+  speed:{
+    title:"Speed Velocity Kinematics Center",
+    animTitle:"Speed &amp; Velocity",
+    animDesc:"Meters/second, km/h, miles/hour, knots, Mach, feet/second — convert any speed unit in real time.",
+    infoLink:"/tools/speed-converter",
+    units:{mps:"Meter/Second (m/s)",kmh:"Kilometer/Hour (km/h)",mph:"Miles/Hour (mph)",knot:"Knot (kt)",mach:"Mach (Sound)",fps:"Feet/Second (ft/s)"},
+    factors:{mps:1,kmh:1/3.6,mph:.44704,knot:.514444,mach:340.29,fps:.3048}
+  },
+  area:{
+    title:"Area Surface Land Measures",
+    animTitle:"Area &amp; Surface",
+    animDesc:"Square meter, acre, hectare, bigha, guntha, square mile and more — including India-specific land units.",
+    infoLink:"/tools/area-converter",
+    units:{sq_meter:"Sq Meter (m²)",sq_km:"Sq Kilometer (km²)",sq_mile:"Sq Mile (mi²)",acre:"Acre (ac)",hectare:"Hectare (ha)",sq_yard:"Sq Yard (yd²)",sq_foot:"Sq Foot (ft²)",sq_inch:"Sq Inch (in²)",bigha:"Bigha (India)",guntha:"Guntha"},
+    factors:{sq_meter:1,sq_km:1e6,sq_mile:2589988.11,acre:4046.856,hectare:10000,sq_yard:.836127,sq_foot:.092903,sq_inch:.00064516,bigha:2529.3,guntha:101.17}
+  },
+  volume:{
+    title:"Volume Space Fluid Capacities",
+    animTitle:"Volume &amp; Capacity",
+    animDesc:"Liters, milliliters, gallons, quarts, pints, barrels, cubic meters and feet — all fluid conversions at once.",
+    infoLink:"/tools/volume-converter",
+    units:{liter:"Liter (L)",milliliter:"Milliliter (mL)",cubic_meter:"Cubic Meter (m³)",gallon_us:"US Gallon (gal)",quart_us:"US Quart (qt)",pint_us:"US Pint (pt)",cup_us:"US Cup",fluid_ounce_us:"US Fl Oz (fl oz)",barrel_us:"US Oil Barrel (bbl)",cubic_foot:"Cubic Foot (ft³)"},
+    factors:{liter:1,milliliter:.001,cubic_meter:1000,gallon_us:3.78541,quart_us:.94635,pint_us:.473176,cup_us:.236588,fluid_ounce_us:.029573,barrel_us:158.987,cubic_foot:28.3168}
+  },
+  temperature:{
+    title:"Temperature Thermal Scaling Studio",
+    animTitle:"Temperature",
+    animDesc:"Celsius, Fahrenheit and Kelvin — converted with exact scientific formulas, not approximations.",
+    infoLink:"/tools/temperature-converter",
+    isSpecial:true,
+    units:{celsius:"Celsius (°C)",fahrenheit:"Fahrenheit (°F)",kelvin:"Kelvin (K)"}
+  },
+  time:{
+    title:"Time Durations Temporal Vectors",
+    animTitle:"Time &amp; Duration",
+    animDesc:"Milliseconds, seconds, minutes, hours, days, weeks, months, years — synchronised in one tap.",
+    infoLink:"/tools/time-converter",
+    units:{second:"Second (s)",millisecond:"Millisecond (ms)",minute:"Minute (min)",hour:"Hour (h)",day:"Day (d)",week:"Week (w)",month:"Month (mo)",year:"Year (yr)"},
+    factors:{second:1,millisecond:.001,minute:60,hour:3600,day:86400,week:604800,month:2629746,year:31556952}
+  },
+  power:{
+    title:"Power Energy Load Output",
+    animTitle:"Power &amp; Energy",
+    animDesc:"Watt, kilowatt, megawatt, milliwatt, horsepower, BTU/hr — every power unit converted instantly.",
+    infoLink:"/tools/power-converter",
+    units:{watt:"Watt (W)",kilowatt:"Kilowatt (kW)",megawatt:"Megawatt (MW)",milliwatt:"Milliwatt (mW)",horsepower:"Horsepower (hp)",btuh:"BTU/Hour"},
+    factors:{watt:1,kilowatt:1000,megawatt:1e6,milliwatt:.001,horsepower:745.6998,btuh:.293071}
+  },
+  pressure:{
+    title:"Pressure Force Atmosphere Engine",
+    animTitle:"Pressure &amp; Bar",
+    animDesc:"Pascal, kilopascal, bar, millibar, standard atmosphere, PSI — all pressure units in one workspace.",
+    infoLink:"/tools/pressure-converter",
+    units:{pascal:"Pascal (Pa)",kilopascal:"Kilopascal (kPa)",bar:"Bar",millibar:"Millibar (mbar)",atm:"Atmosphere (atm)",psi:"PSI (psi)"},
+    factors:{pascal:1,kilopascal:1000,bar:1e5,millibar:100,atm:101325,psi:6894.757}
+  }
+};
+
+/* ═══════════════════════════════════════════
+   10 UNIQUE SVG 3D ANIMATIONS
+   ═══════════════════════════════════════════ */
+const SVGS = {
+
+  /* 1. LENGTH — animated ruler with tick marks */
+  length:`<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" width="100" height="100">
+    <defs>
+      <linearGradient id="rg" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0%" stop-color="#3ecfcf"/>
+        <stop offset="100%" stop-color="#00b4d8"/>
+      </linearGradient>
+    </defs>
+    <!-- Ruler body -->
+    <rect x="8" y="38" width="84" height="24" rx="4" fill="none" stroke="url(#rg)" stroke-width="1.8"/>
+    <!-- Tick marks -->
+    <g stroke="#3ecfcf" stroke-width="1.2" opacity="0.8">
+      <line x1="18" y1="38" x2="18" y2="48"/><line x1="28" y1="38" x2="28" y2="45"/>
+      <line x1="38" y1="38" x2="38" y2="48"/><line x1="48" y1="38" x2="48" y2="45"/>
+      <line x1="58" y1="38" x2="58" y2="48"/><line x1="68" y1="38" x2="68" y2="45"/>
+      <line x1="78" y1="38" x2="78" y2="48"/>
+    </g>
+    <!-- Sliding arrow -->
+    <g>
+      <animateTransform attributeName="transform" type="translate" values="-30,0;30,0;-30,0" dur="3s" repeatCount="indefinite"/>
+      <line x1="50" y1="28" x2="50" y2="38" stroke="#34d399" stroke-width="2"/>
+      <polygon points="50,25 46,31 54,31" fill="#34d399"/>
+    </g>
+    <!-- Glow pulse ring -->
+    <circle cx="50" cy="50" r="44" fill="none" stroke="#3ecfcf" stroke-width=".6" opacity=".18">
+      <animate attributeName="r" values="40;46;40" dur="2.5s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values=".18;.05;.18" dur="2.5s" repeatCount="indefinite"/>
+    </circle>
+  </svg>`,
+
+  /* 2. WEIGHT — animated balance scale */
+  weight:`<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" width="100" height="100">
+    <defs><linearGradient id="wg" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#3ecfcf"/><stop offset="100%" stop-color="#a78bfa"/></linearGradient></defs>
+    <!-- Pole -->
+    <line x1="50" y1="20" x2="50" y2="75" stroke="url(#wg)" stroke-width="2"/>
+    <!-- Beam that tilts -->
+    <g transform-origin="50 36">
+      <animateTransform attributeName="transform" type="rotate" values="0,50,36;-12,50,36;0,50,36;12,50,36;0,50,36" dur="3.5s" repeatCount="indefinite"/>
+      <line x1="18" y1="36" x2="82" y2="36" stroke="#3ecfcf" stroke-width="2"/>
+      <!-- Left pan -->
+      <line x1="22" y1="36" x2="18" y2="52" stroke="#3ecfcf" stroke-width="1.3"/>
+      <line x1="14" y1="36" x2="18" y2="52" stroke="#3ecfcf" stroke-width="1.3"/>
+      <ellipse cx="18" cy="53" rx="8" ry="3" fill="none" stroke="#3ecfcf" stroke-width="1.5"/>
+      <!-- Right pan -->
+      <line x1="78" y1="36" x2="82" y2="52" stroke="#3ecfcf" stroke-width="1.3"/>
+      <line x1="86" y1="36" x2="82" y2="52" stroke="#3ecfcf" stroke-width="1.3"/>
+      <ellipse cx="82" cy="53" rx="8" ry="3" fill="none" stroke="#3ecfcf" stroke-width="1.5"/>
+    </g>
+    <!-- Base -->
+    <rect x="42" y="75" width="16" height="4" rx="2" fill="url(#wg)" opacity=".7"/>
+  </svg>`,
+
+  /* 3. STORAGE — animated stacked disk drive -->
+  storage:`<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" width="100" height="100">
+    <defs><linearGradient id="sg" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#3ecfcf"/><stop offset="100%" stop-color="#00b4d8" stop-opacity=".4"/></linearGradient></defs>
+    <!-- 3 stacked disks with depth illusion -->
+    <g>
+      <ellipse cx="50" cy="72" rx="32" ry="9" fill="none" stroke="#3ecfcf" stroke-width="1.5" opacity=".5"/>
+      <rect x="18" y="62" width="64" height="10" rx="0" fill="var(--uc-surf2)" stroke="none"/>
+      <ellipse cx="50" cy="62" rx="32" ry="9" fill="none" stroke="#3ecfcf" stroke-width="1.5" opacity=".7"/>
+    </g>
+    <g>
+      <ellipse cx="50" cy="54" rx="32" ry="9" fill="none" stroke="#3ecfcf" stroke-width="1.5" opacity=".6"/>
+      <rect x="18" y="44" width="64" height="10" rx="0" fill="var(--uc-surf2)" stroke="none"/>
+      <ellipse cx="50" cy="44" rx="32" ry="9" fill="none" stroke="#3ecfcf" stroke-width="1.7" opacity=".85"/>
+    </g>
+    <g>
+      <ellipse cx="50" cy="36" rx="32" ry="9" fill="none" stroke="#3ecfcf" stroke-width="1.5" opacity=".7"/>
+      <rect x="18" y="26" width="64" height="10" rx="0" fill="var(--uc-surf2)" stroke="none"/>
+      <ellipse cx="50" cy="26" rx="32" ry="9" fill="url(#sg)" stroke="#3ecfcf" stroke-width="2"/>
+    </g>
+    <!-- Spinning head -->
+    <circle cx="50" cy="26" r="5" fill="none" stroke="#34d399" stroke-width="1.5">
+      <animate attributeName="r" values="4;6;4" dur="1.2s" repeatCount="indefinite"/>
+    </circle>
+    <!-- Data pulse lines -->
+    <g opacity="0.6">
+      <line x1="30" y1="26" x2="42" y2="26" stroke="#34d399" stroke-width="1">
+        <animate attributeName="opacity" values="0;1;0" dur="1s" begin="0s" repeatCount="indefinite"/>
+      </line>
+      <line x1="58" y1="26" x2="70" y2="26" stroke="#34d399" stroke-width="1">
+        <animate attributeName="opacity" values="0;1;0" dur="1s" begin=".5s" repeatCount="indefinite"/>
+      </line>
+    </g>
+  </svg>`,
+
+  /* 4. SPEED — animated speedometer */
+  speed:`<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" width="100" height="100">
+    <defs><linearGradient id="spg" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#3ecfcf"/><stop offset="100%" stop-color="#f59e0b"/></linearGradient></defs>
+    <!-- Gauge arc -->
+    <path d="M 18 65 A 34 34 0 0 1 82 65" fill="none" stroke="#2d3154" stroke-width="7" stroke-linecap="round"/>
+    <path d="M 18 65 A 34 34 0 0 1 82 65" fill="none" stroke="url(#spg)" stroke-width="7" stroke-linecap="round" stroke-dasharray="107" stroke-dashoffset="107">
+      <animate attributeName="stroke-dashoffset" values="107;30;107" dur="2.5s" repeatCount="indefinite" calcMode="spline" keySplines=".4 0 .2 1;.4 0 .2 1"/>
+    </path>
+    <!-- Tick marks -->
+    <g stroke="#5a6080" stroke-width="1.2">
+      <line x1="18" y1="65" x2="22" y2="65" transform="rotate(-70,50,65)"/>
+      <line x1="18" y1="65" x2="22" y2="65" transform="rotate(-40,50,65)"/>
+      <line x1="18" y1="65" x2="22" y2="65" transform="rotate(0,50,65)"/>
+      <line x1="18" y1="65" x2="22" y2="65" transform="rotate(40,50,65)"/>
+      <line x1="18" y1="65" x2="22" y2="65" transform="rotate(70,50,65)"/>
+    </g>
+    <!-- Needle -->
+    <g transform-origin="50 65">
+      <animateTransform attributeName="transform" type="rotate" values="-70,50,65;40,50,65;-70,50,65" dur="2.5s" repeatCount="indefinite" calcMode="spline" keySplines=".4 0 .2 1;.4 0 .2 1"/>
+      <line x1="50" y1="65" x2="50" y2="35" stroke="#34d399" stroke-width="2" stroke-linecap="round"/>
+    </g>
+    <!-- Center dot -->
+    <circle cx="50" cy="65" r="4" fill="#34d399"/>
+    <circle cx="50" cy="65" r="2" fill="var(--uc-surf3)"/>
+  </svg>`,
+
+  /* 5. AREA — animated expanding square -->
+  area:`<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" width="100" height="100">
+    <defs><linearGradient id="ag" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#3ecfcf"/><stop offset="100%" stop-color="#a78bfa"/></linearGradient></defs>
+    <!-- Outer pulse square -->
+    <rect x="20" y="20" width="60" height="60" rx="3" fill="none" stroke="url(#ag)" stroke-width="1.5" opacity=".3">
+      <animate attributeName="width" values="60;70;60" dur="2s" repeatCount="indefinite"/>
+      <animate attributeName="height" values="60;70;60" dur="2s" repeatCount="indefinite"/>
+      <animate attributeName="x" values="20;15;20" dur="2s" repeatCount="indefinite"/>
+      <animate attributeName="y" values="20;15;20" dur="2s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values=".3;.05;.3" dur="2s" repeatCount="indefinite"/>
+    </rect>
+    <!-- Main square -->
+    <rect x="22" y="22" width="56" height="56" rx="4" fill="rgba(62,207,207,.07)" stroke="url(#ag)" stroke-width="2"/>
+    <!-- Diagonal dimension lines -->
+    <line x1="22" y1="22" x2="78" y2="22" stroke="#3ecfcf" stroke-width="1" stroke-dasharray="3,3" opacity=".6"/>
+    <line x1="78" y1="22" x2="78" y2="78" stroke="#3ecfcf" stroke-width="1" stroke-dasharray="3,3" opacity=".6"/>
+    <!-- Corner arrows -->
+    <g fill="#34d399">
+      <polygon points="22,22 30,22 22,30"/><polygon points="78,22 70,22 78,30"/>
+      <polygon points="22,78 30,78 22,70"/><polygon points="78,78 70,78 78,70"/>
+    </g>
+    <!-- Center dot -->
+    <circle cx="50" cy="50" r="3" fill="#3ecfcf" opacity=".7">
+      <animate attributeName="r" values="3;5;3" dur="2s" repeatCount="indefinite"/>
+    </circle>
+  </svg>`,
+
+  /* 6. VOLUME — animated liquid in flask */
+  volume:`<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" width="100" height="100">
+    <defs>
+      <linearGradient id="vg" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#3ecfcf" stop-opacity=".7"/><stop offset="100%" stop-color="#00b4d8" stop-opacity=".9"/></linearGradient>
+      <clipPath id="flask-clip"><path d="M 38 18 L 38 42 L 16 75 Q 14 82 22 85 L 78 85 Q 86 82 84 75 L 62 42 L 62 18 Z"/></clipPath>
+    </defs>
+    <!-- Flask outline -->
+    <path d="M 38 18 L 38 42 L 16 75 Q 14 82 22 85 L 78 85 Q 86 82 84 75 L 62 42 L 62 18 Z" fill="none" stroke="#3ecfcf" stroke-width="2" stroke-linejoin="round"/>
+    <!-- Liquid fill animated -->
+    <rect x="10" y="55" width="80" height="35" fill="url(#vg)" clip-path="url(#flask-clip)">
+      <animate attributeName="y" values="55;45;55" dur="2.2s" repeatCount="indefinite"/>
+      <animate attributeName="height" values="35;45;35" dur="2.2s" repeatCount="indefinite"/>
+    </rect>
+    <!-- Wave on liquid top -->
+    <path d="M 16 58 Q 30 54 50 58 Q 70 62 84 58" fill="none" stroke="#3ecfcf" stroke-width="1.5" clip-path="url(#flask-clip)" opacity=".9">
+      <animateTransform attributeName="transform" type="translate" values="0,0;-15,0;0,0" dur="1.5s" repeatCount="indefinite"/>
+      <animate attributeName="d" values="M 16 58 Q 30 54 50 58 Q 70 62 84 58;M 16 48 Q 30 44 50 48 Q 70 52 84 48;M 16 58 Q 30 54 50 58 Q 70 62 84 58" dur="2.2s" repeatCount="indefinite"/>
+    </path>
+    <!-- Flask top (neck) -->
+    <rect x="36" y="14" width="28" height="6" rx="2" fill="none" stroke="#3ecfcf" stroke-width="2"/>
+    <!-- Bubbles -->
+    <circle cx="36" cy="68" r="2" fill="#3ecfcf" opacity=".5"><animate attributeName="cy" values="75;50;75" dur="2s" repeatCount="indefinite" begin="0s"/><animate attributeName="opacity" values=".5;0;.5" dur="2s" repeatCount="indefinite" begin="0s"/></circle>
+    <circle cx="58" cy="62" r="1.5" fill="#3ecfcf" opacity=".5"><animate attributeName="cy" values="75;48;75" dur="2.5s" repeatCount="indefinite" begin=".8s"/><animate attributeName="opacity" values=".5;0;.5" dur="2.5s" repeatCount="indefinite" begin=".8s"/></circle>
+  </svg>`,
+
+  /* 7. TEMPERATURE — animated thermometer */
+  temperature:`<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" width="100" height="100">
+    <defs><linearGradient id="tg" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#ef4444"/><stop offset="100%" stop-color="#f97316"/></linearGradient></defs>
+    <!-- Thermometer outline -->
+    <rect x="44" y="14" width="12" height="56" rx="6" fill="none" stroke="#3ecfcf" stroke-width="2"/>
+    <!-- Bulb -->
+    <circle cx="50" cy="74" r="10" fill="none" stroke="#3ecfcf" stroke-width="2"/>
+    <!-- Mercury fill in tube -->
+    <rect x="46.5" y="30" width="7" height="44" rx="3" fill="url(#tg)">
+      <animate attributeName="y" values="55;22;55" dur="2.5s" repeatCount="indefinite"/>
+      <animate attributeName="height" values="19;52;19" dur="2.5s" repeatCount="indefinite"/>
+    </rect>
+    <!-- Bulb fill -->
+    <circle cx="50" cy="74" r="7.5" fill="url(#tg)"/>
+    <!-- Scale lines -->
+    <g stroke="#5a6080" stroke-width="1">
+      <line x1="56" y1="25" x2="62" y2="25"/><line x1="56" y1="35" x2="60" y2="35"/>
+      <line x1="56" y1="45" x2="62" y2="45"/><line x1="56" y1="55" x2="60" y2="55"/>
+      <line x1="56" y1="65" x2="62" y2="65"/>
+    </g>
+    <!-- °C / °F labels -->
+    <text x="65" y="28" font-size="7" fill="#3ecfcf" font-family="monospace">°C</text>
+    <text x="65" y="48" font-size="7" fill="#a78bfa" font-family="monospace">°F</text>
+    <text x="65" y="68" font-size="7" fill="#34d399" font-family="monospace">K</text>
+  </svg>`,
+
+  /* 8. TIME — animated clock */
+  time:`<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" width="100" height="100">
+    <defs><linearGradient id="timeg" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#3ecfcf"/><stop offset="100%" stop-color="#7c3aed"/></linearGradient></defs>
+    <!-- Clock face -->
+    <circle cx="50" cy="50" r="36" fill="none" stroke="url(#timeg)" stroke-width="2.5"/>
+    <!-- Hour marks -->
+    <g stroke="#5a6080" stroke-width="1.5">
+      <line x1="50" y1="16" x2="50" y2="22"/><line x1="50" y1="78" x2="50" y2="84"/>
+      <line x1="16" y1="50" x2="22" y2="50"/><line x1="78" y1="50" x2="84" y2="50"/>
+    </g>
+    <!-- Minute hand (fast) -->
+    <line x1="50" y1="50" x2="50" y2="24" stroke="#34d399" stroke-width="2" stroke-linecap="round" transform-origin="50 50">
+      <animateTransform attributeName="transform" type="rotate" values="0,50,50;360,50,50" dur="4s" repeatCount="indefinite"/>
+    </line>
+    <!-- Hour hand (slow) -->
+    <line x1="50" y1="50" x2="50" y2="32" stroke="#3ecfcf" stroke-width="2.5" stroke-linecap="round" transform-origin="50 50">
+      <animateTransform attributeName="transform" type="rotate" values="0,50,50;360,50,50" dur="48s" repeatCount="indefinite"/>
+    </line>
+    <!-- Second hand -->
+    <line x1="50" y1="50" x2="50" y2="19" stroke="#ef4444" stroke-width="1" stroke-linecap="round" transform-origin="50 50">
+      <animateTransform attributeName="transform" type="rotate" values="0,50,50;360,50,50" dur="1s" repeatCount="indefinite"/>
+    </line>
+    <!-- Center -->
+    <circle cx="50" cy="50" r="3.5" fill="#3ecfcf"/>
+    <circle cx="50" cy="50" r="1.5" fill="var(--uc-surf3)"/>
+  </svg>`,
+
+  /* 9. POWER — animated lightning bolt / energy wave */
+  power:`<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" width="100" height="100">
+    <defs><linearGradient id="pg" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#f59e0b"/><stop offset="100%" stop-color="#3ecfcf"/></linearGradient></defs>
+    <!-- Outer glow ring -->
+    <circle cx="50" cy="50" r="38" fill="none" stroke="#f59e0b" stroke-width=".8" opacity=".2">
+      <animate attributeName="r" values="38;44;38" dur="1.8s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values=".2;.05;.2" dur="1.8s" repeatCount="indefinite"/>
+    </circle>
+    <!-- Lightning bolt -->
+    <polygon points="56,14 36,52 50,52 44,86 68,46 54,46" fill="url(#pg)" opacity=".9">
+      <animate attributeName="opacity" values=".9;1;.6;1;.9" dur="1.5s" repeatCount="indefinite"/>
+    </polygon>
+    <!-- Energy arcs -->
+    <path d="M 20 50 Q 25 40 30 50 Q 35 60 40 50" fill="none" stroke="#3ecfcf" stroke-width="1.5" opacity=".5">
+      <animate attributeName="opacity" values=".5;.15;.5" dur="1.2s" repeatCount="indefinite" begin="0s"/>
+    </path>
+    <path d="M 60 50 Q 65 40 70 50 Q 75 60 80 50" fill="none" stroke="#3ecfcf" stroke-width="1.5" opacity=".5">
+      <animate attributeName="opacity" values=".5;.15;.5" dur="1.2s" repeatCount="indefinite" begin=".6s"/>
+    </path>
+  </svg>`,
+
+  /* 10. PRESSURE — animated pressure gauge */
+  pressure:`<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" width="100" height="100">
+    <defs><linearGradient id="prg" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#3ecfcf"/><stop offset="100%" stop-color="#a78bfa"/></linearGradient></defs>
+    <!-- Gauge body circle -->
+    <circle cx="50" cy="52" r="34" fill="none" stroke="url(#prg)" stroke-width="2.5"/>
+    <!-- Scale arc fill -->
+    <path d="M 20 67 A 34 34 0 1 1 80 67" fill="none" stroke="#2d3154" stroke-width="6" stroke-linecap="round"/>
+    <path d="M 20 67 A 34 34 0 1 1 80 67" fill="none" stroke="url(#prg)" stroke-width="6" stroke-linecap="round" stroke-dasharray="107" stroke-dashoffset="107">
+      <animate attributeName="stroke-dashoffset" values="107;15;107" dur="3s" repeatCount="indefinite" calcMode="spline" keySplines=".4 0 .2 1;.4 0 .2 1"/>
+    </path>
+    <!-- Pressure needle -->
+    <g transform-origin="50 52">
+      <animateTransform attributeName="transform" type="rotate" values="-130,50,52;50,50,52;-130,50,52" dur="3s" repeatCount="indefinite" calcMode="spline" keySplines=".4 0 .2 1;.4 0 .2 1"/>
+      <line x1="50" y1="52" x2="50" y2="24" stroke="#ef4444" stroke-width="2.5" stroke-linecap="round"/>
+    </g>
+    <!-- Center pin -->
+    <circle cx="50" cy="52" r="5" fill="url(#prg)"/>
+    <circle cx="50" cy="52" r="2.5" fill="var(--uc-surf3)"/>
+    <!-- PSI label -->
+    <text x="43" y="82" font-size="7" fill="#3ecfcf" font-family="monospace" font-weight="bold">PSI/Pa</text>
+  </svg>`
+};
+
+/* ═══════════════════════════════════════════
+   SWITCH CATEGORY
+   ═══════════════════════════════════════════ */
+let activeKey = "length";
+
+function switchConverter(key, btn) {
+  activeKey = key;
+  document.querySelectorAll('.uc-cat-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+
+  const s = MATRIX[key];
+  document.getElementById('uc-panel-title').innerHTML = s.title;
+  document.getElementById('uc-anim-title').innerHTML  = s.animTitle;
+  document.getElementById('uc-anim-desc').textContent  = s.animDesc;
+  document.getElementById('uc-more-link').href         = s.infoLink;
+  document.getElementById('uc-svg-wrap').innerHTML     = SVGS[key] || '';
+  buildGrid(s);
+}
+
+/* ═══════════════════════════════════════════
+   BUILD UNIT GRID
+   ═══════════════════════════════════════════ */
+function buildGrid(schema) {
+  const grid = document.getElementById('uc-grid');
+  grid.innerHTML = '';
+  let delay = 0;
+  Object.entries(schema.units).forEach(([uKey, uLabel]) => {
+    const card = document.createElement('div');
+    card.className = 'uc-result-card';
+    card.style.animationDelay = delay + 'ms';
+    card.innerHTML = `
+      <span class="uc-result-unit-title">${uLabel}</span>
+      <div class="uc-card-input-wrapper">
+        <input type="number" class="uc-card-input" id="inp-${uKey}" data-unit="${uKey}"
+          placeholder="0" step="any" autocomplete="off" aria-label="${uLabel}">
+        <button class="uc-enter-btn" onclick="handleGo('${uKey}')" title="Convert from ${uLabel}">→ GO</button>
+      </div>
+      <span class="uc-hint-text">↵ Enter or → GO to sync all</span>`;
+    grid.appendChild(card);
+
+    const inp = card.querySelector('.uc-card-input');
+    inp.addEventListener('keydown', e => {
+      if (e.key === 'Enter') { e.preventDefault(); fireConvert(uKey, inp.value, card); }
+    });
+    inp.addEventListener('contextmenu', e => {
+      e.preventDefault();
+      navigator.clipboard?.writeText(inp.value || '').catch(()=>{});
+      showToast('✓ Value Copied');
+    });
+    delay += 25;
+  });
+
+  const firstKey = Object.keys(schema.units)[0];
+  const firstInp = document.getElementById('inp-' + firstKey);
+  if (firstInp) { firstInp.value = 1; doConvert(firstKey, 1); }
+}
+
+function handleGo(uKey) {
+  const inp = document.getElementById('inp-' + uKey);
+  const card = inp?.closest('.uc-result-card');
+  if (inp) fireConvert(uKey, inp.value, card);
+}
+
+function fireConvert(uKey, val, card) {
+  doConvert(uKey, val);
+  if (card) {
+    card.style.borderColor = 'var(--uc-accent)';
+    card.style.boxShadow = '0 0 0 1px var(--uc-accent), 0 0 20px rgba(62,207,207,.2)';
+    setTimeout(() => { card.style.borderColor = ''; card.style.boxShadow = ''; }, 700);
+  }
+}
+
+/* ═══════════════════════════════════════════
+   CONVERSION ENGINE
+   ═══════════════════════════════════════════ */
+function doConvert(srcKey, rawVal) {
+  const val = parseFloat(rawVal);
+  const schema = MATRIX[activeKey];
+  if (isNaN(val)) {
+    Object.keys(schema.units).forEach(k => {
+      const el = document.getElementById('inp-' + k);
+      if (el && k !== srcKey) el.value = '';
+    });
+    return;
+  }
+  Object.keys(schema.units).forEach(tKey => {
+    if (tKey === srcKey) return;
+    let result = 0;
+    if (schema.isSpecial) {
+      let c = srcKey==='celsius'?val:srcKey==='fahrenheit'?(val-32)*5/9:val-273.15;
+      result = tKey==='celsius'?c:tKey==='fahrenheit'?c*9/5+32:c+273.15;
+    } else {
+      result = val * (schema.factors[srcKey] / schema.factors[tKey]);
+    }
+    const el = document.getElementById('inp-' + tKey);
+    if (!el) return;
+    if (!isFinite(result)) { el.value='∞'; return; }
+    if (Math.abs(result)<1e-9 && result!==0) el.value = result.toExponential(4);
+    else if (result%1!==0) el.value = parseFloat(result.toFixed(8));
+    else el.value = result;
+  });
+}
+
+/* ═══════════════════════════════════════════
+   TOAST
+   ═══════════════════════════════════════════ */
+function showToast(msg) {
+  const t = document.getElementById('uc-toast');
+  t.textContent = msg; t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 2000);
+}
+
+/* ═══════════════════════════════════════════
+   INIT
+   ═══════════════════════════════════════════ */
+document.addEventListener('DOMContentLoaded', () => {
+  document.getElementById('uc-svg-wrap').innerHTML = SVGS['length'];
+  buildGrid(MATRIX['length']);
+});
+</script>

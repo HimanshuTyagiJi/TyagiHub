@@ -1,0 +1,128 @@
+{
+  "title": "Indian Economy",
+  "title_hi": "भारतीय अर्थव्यवस्था",
+  "icon": "💰",
+  "slug": "indian-economy",
+  "questions": [
+    {
+      "id": 1,
+      "q": "The Reserve Bank of India was established in?",
+      "opts": [
+        "1930",
+        "1935",
+        "1947",
+        "1950"
+      ],
+      "ans": 1,
+      "exp": "The Reserve Bank of India (RBI) was established on 1 April 1935 under the Reserve Bank of India Act, 1934. It is the central bank and regulatory body of India."
+    },
+    {
+      "id": 2,
+      "q": "India's first Five Year Plan started in?",
+      "opts": [
+        "1947",
+        "1950",
+        "1951",
+        "1956"
+      ],
+      "ans": 2,
+      "exp": "India's First Five Year Plan was launched in 1951 under Prime Minister Jawaharlal Nehru. It focused on agricultural development and was largely successful."
+    },
+    {
+      "id": 3,
+      "q": "GST was implemented in India on?",
+      "opts": [
+        "1 April 2017",
+        "1 July 2017",
+        "1 January 2017",
+        "15 August 2017"
+      ],
+      "ans": 1,
+      "exp": "Goods and Services Tax (GST) was implemented in India on 1 July 2017. It replaced multiple indirect taxes and created a unified national market."
+    },
+    {
+      "id": 4,
+      "q": "Which is the largest commercial bank in India?",
+      "opts": [
+        "Punjab National Bank",
+        "HDFC Bank",
+        "State Bank of India",
+        "Bank of Baroda"
+      ],
+      "ans": 2,
+      "exp": "State Bank of India (SBI) is the largest commercial bank in India by assets, deposits, branches, customers, and employees. It has over 22,000 branches across India."
+    },
+    {
+      "id": 5,
+      "q": "The NITI Aayog replaced which body?",
+      "opts": [
+        "Finance Commission",
+        "Planning Commission",
+        "RBI",
+        "SEBI"
+      ],
+      "ans": 1,
+      "exp": "NITI Aayog (National Institution for Transforming India) replaced the Planning Commission on 1 January 2015. It serves as a policy think tank for the Government of India."
+    },
+    {
+      "id": 6,
+      "q": "India's economic liberalization policy was introduced in?",
+      "opts": [
+        "1985",
+        "1989",
+        "1991",
+        "1995"
+      ],
+      "ans": 2,
+      "exp": "India's economic liberalization policy was introduced in 1991 under Finance Minister Manmohan Singh and PM Narasimha Rao. It opened India's economy to foreign investment and market forces."
+    },
+    {
+      "id": 7,
+      "q": "The headquarters of the World Bank is located in?",
+      "opts": [
+        "New York",
+        "Geneva",
+        "Washington D.C.",
+        "London"
+      ],
+      "ans": 2,
+      "exp": "The World Bank Group is headquartered in Washington D.C., USA. It provides financial and technical assistance to developing countries worldwide."
+    },
+    {
+      "id": 8,
+      "q": "India's currency is managed by?",
+      "opts": [
+        "Finance Ministry",
+        "SEBI",
+        "RBI",
+        "Ministry of Commerce"
+      ],
+      "ans": 2,
+      "exp": "The Reserve Bank of India (RBI) manages India's currency. It has the sole authority to issue currency notes of all denominations except one rupee notes, which are issued by the Finance Ministry."
+    },
+    {
+      "id": 9,
+      "q": "Which index measures inflation at the retail level in India?",
+      "opts": [
+        "WPI",
+        "CPI",
+        "GDP Deflator",
+        "PPI"
+      ],
+      "ans": 1,
+      "exp": "Consumer Price Index (CPI) measures inflation at the retail level in India. It tracks changes in prices of goods and services consumed by households."
+    },
+    {
+      "id": 10,
+      "q": "Make in India initiative was launched in?",
+      "opts": [
+        "2013",
+        "2014",
+        "2015",
+        "2016"
+      ],
+      "ans": 1,
+      "exp": "Make in India was launched on 25 September 2014 by Prime Minister Narendra Modi. Its aim is to encourage multinational and domestic companies to manufacture their products in India."
+    }
+  ]
+}

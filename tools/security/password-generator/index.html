@@ -1,0 +1,819 @@
+---
+layout: default
+title: "Password Generator — Strong & Secure | TyagiHub"
+description: "Free strong password generator. Customize length, symbols, numbers. Copy securely. No data saved, no server — 100% browser-based."
+keywords: "password generator, strong password, secure password, free password tool India"
+lang_switch: false
+---
+
+<style>
+/* ── Variables (TyagiHub theme compatible) ── */
+:root {
+  --pg-accent: #f5a623;
+  --pg-accent2: #e8431a;
+  --pg-red: #f87171;
+  --pg-green: #34d399;
+  --pg-surface: var(--clr-surface, #1a1d2e);
+  --pg-surface2: var(--clr-surface-2, #242740);
+  --pg-border: var(--clr-border, rgba(255,255,255,0.08));
+  --pg-text: var(--clr-text, #c8cde0);
+  --pg-heading: var(--clr-heading, #eef0fa);
+  --pg-text3: var(--clr-text-3, #5a6080);
+  --pg-bg: var(--clr-bg, #0f1117);
+  --pg-radius: 14px;
+  --pg-font: var(--font-body, 'Segoe UI', system-ui, sans-serif);
+  --pg-mono: 'Courier New', 'Consolas', monospace;
+}
+
+/* ── Tool wrapper ── */
+.pg-wrap {
+
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 2.5rem 1.25rem 4rem;
+  font-family: var(--pg-font);
+margin-top:40px;
+}
+
+/* ── Intro ── */
+.pg-intro {
+  margin-bottom: 2rem;
+}
+.pg-intro h1 {
+  font-size: clamp(1.6rem, 4vw, 2.2rem);
+  font-weight: 800;
+  color: var(--pg-heading);
+  margin-bottom: 0.5rem;
+  letter-spacing: -0.02em;
+}
+.pg-intro p {
+  color: var(--pg-text);
+  font-size: 0.95rem;
+  line-height: 1.7;
+  max-width: 600px;
+}
+.pg-intro .pg-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(245,166,35,0.12);
+  border: 1px solid rgba(245,166,35,0.3);
+  color: var(--pg-accent);
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 4px 12px;
+  border-radius: 100px;
+  margin-bottom: 1rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+/* ── Output Box ── */
+.pg-output-box {
+  background: var(--pg-surface2);
+  border: 2px solid var(--pg-border);
+  border-radius: var(--pg-radius);
+  padding: 1.25rem 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  transition: border-color 0.2s;
+  position: relative;
+  overflow: hidden;
+}
+.pg-output-box::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 4px;
+  background: linear-gradient(180deg, var(--pg-accent), var(--pg-accent2));
+  border-radius: 4px 0 0 4px;
+}
+.pg-output-box:focus-within {
+  border-color: var(--pg-accent);
+}
+#pg-password {
+  flex: 1;
+  background: none;
+  border: none;
+  outline: none;
+  font-family: var(--pg-mono);
+  font-size: clamp(1rem, 3vw, 1.35rem);
+  font-weight: 600;
+  color: var(--pg-heading);
+  letter-spacing: 0.04em;
+  word-break: break-all;
+  line-height: 1.5;
+  cursor: text;
+  resize: none;
+  min-height: 2rem;
+}
+.pg-output-actions {
+  display: flex;
+  gap: 8px;
+  flex-shrink: 0;
+}
+.pg-icon-btn {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  border: 1px solid var(--pg-border);
+  background: var(--pg-surface);
+  color: var(--pg-text);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.18s;
+}
+.pg-icon-btn:hover {
+  border-color: var(--pg-accent);
+  color: var(--pg-accent);
+  background: rgba(245,166,35,0.08);
+}
+.pg-icon-btn svg {
+  width: 18px; height: 18px;
+  stroke: currentColor; fill: none;
+  stroke-width: 2; stroke-linecap: round; stroke-linejoin: round;
+}
+
+/* ── Strength Bar ── */
+.pg-strength {
+  margin-bottom: 1.75rem;
+}
+.pg-strength-label {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.8rem;
+  margin-bottom: 6px;
+  color: var(--pg-text3);
+}
+.pg-strength-label span:last-child {
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+.pg-strength-bar {
+  height: 6px;
+  background: var(--pg-border);
+  border-radius: 99px;
+  overflow: hidden;
+}
+.pg-strength-fill {
+  height: 100%;
+  border-radius: 99px;
+  transition: width 0.4s cubic-bezier(.4,0,.2,1), background 0.4s;
+  width: 0%;
+}
+
+/* ── Controls Card ── */
+.pg-card {
+  background: var(--pg-surface);
+  border: 1px solid var(--pg-border);
+  border-radius: var(--pg-radius);
+  padding: 1.5rem;
+  margin-bottom: 1.25rem;
+}
+.pg-card-title {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--pg-text3);
+  margin-bottom: 1.25rem;
+}
+
+/* Length slider */
+.pg-length-row {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.25rem;
+}
+.pg-length-row label {
+  font-size: 0.9rem;
+  color: var(--pg-text);
+  min-width: 80px;
+}
+.pg-length-val {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--pg-accent);
+  min-width: 42px;
+  text-align: right;
+}
+.pg-slider {
+  flex: 1;
+  height: 5px;
+  border-radius: 99px;
+  background: var(--pg-border);
+  outline: none;
+  appearance: none;
+  -webkit-appearance: none;
+  cursor: pointer;
+  accent-color: var(--pg-accent);
+}
+.pg-slider::-webkit-slider-thumb {
+  appearance: none;
+  width: 20px; height: 20px;
+  border-radius: 50%;
+  background: var(--pg-accent);
+  border: 3px solid var(--pg-bg, #0f1117);
+  box-shadow: 0 0 0 2px var(--pg-accent);
+  cursor: pointer;
+}
+
+/* Toggles */
+.pg-toggles {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+}
+@media (max-width: 500px) {
+  .pg-toggles { grid-template-columns: 1fr; }
+}
+.pg-toggle-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--pg-surface2);
+  border: 1px solid var(--pg-border);
+  border-radius: 10px;
+  padding: 0.75rem 1rem;
+  cursor: pointer;
+  transition: border-color 0.18s;
+  user-select: none;
+}
+.pg-toggle-row:hover { border-color: var(--pg-accent); }
+.pg-toggle-row.active { border-color: rgba(245,166,35,0.4); background: rgba(245,166,35,0.05); }
+.pg-toggle-label {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.pg-toggle-label span:first-child {
+  font-size: 0.87rem;
+  font-weight: 600;
+  color: var(--pg-heading);
+}
+.pg-toggle-label span:last-child {
+  font-size: 0.72rem;
+  color: var(--pg-text3);
+  font-family: var(--pg-mono);
+}
+/* Switch */
+.pg-switch {
+  width: 38px; height: 22px;
+  border-radius: 99px;
+  background: var(--pg-border);
+  position: relative;
+  transition: background 0.2s;
+  flex-shrink: 0;
+}
+.pg-switch::after {
+  content: '';
+  position: absolute;
+  top: 3px; left: 3px;
+  width: 16px; height: 16px;
+  border-radius: 50%;
+  background: #fff;
+  transition: transform 0.2s;
+}
+.pg-toggle-row.active .pg-switch {
+  background: var(--pg-accent);
+}
+.pg-toggle-row.active .pg-switch::after {
+  transform: translateX(16px);
+}
+
+/* Exclude chars */
+.pg-exclude-row {
+  margin-top: 1rem;
+}
+.pg-exclude-row label {
+  font-size: 0.82rem;
+  color: var(--pg-text3);
+  display: block;
+  margin-bottom: 6px;
+}
+.pg-exclude-input {
+  width: 100%;
+  box-sizing: border-box;
+  background: var(--pg-surface2);
+  border: 1px solid var(--pg-border);
+  border-radius: 8px;
+  padding: 8px 12px;
+  font-family: var(--pg-mono);
+  font-size: 0.95rem;
+  color: var(--pg-text);
+  outline: none;
+  transition: border-color 0.18s;
+}
+.pg-exclude-input:focus { border-color: var(--pg-accent); }
+
+/* ── Generate Button ── */
+.pg-generate-btn {
+  width: 100%;
+  padding: 1rem;
+  border: none;
+  border-radius: var(--pg-radius);
+  background: linear-gradient(135deg, var(--pg-accent), var(--pg-accent2));
+  color: #000;
+  font-family: var(--pg-font);
+  font-size: 1rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  transition: all 0.2s;
+  margin-bottom: 1.25rem;
+  box-shadow: 0 6px 24px rgba(245,166,35,0.25);
+}
+.pg-generate-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 32px rgba(245,166,35,0.35);
+}
+.pg-generate-btn:active { transform: translateY(0); }
+.pg-generate-btn svg {
+  width: 20px; height: 20px;
+  stroke: #000; fill: none;
+  stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round;
+}
+
+/* ── Bulk Generator ── */
+.pg-bulk-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  user-select: none;
+}
+.pg-bulk-header svg {
+  width: 16px; height: 16px;
+  stroke: var(--pg-text3); fill: none;
+  stroke-width: 2; stroke-linecap: round; stroke-linejoin: round;
+  transition: transform 0.2s;
+}
+.pg-bulk-header.open svg { transform: rotate(180deg); }
+.pg-bulk-body { display: none; margin-top: 1rem; }
+.pg-bulk-body.open { display: block; }
+.pg-bulk-count-row {
+  display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;
+}
+.pg-bulk-count-row label { font-size: 0.85rem; color: var(--pg-text); }
+.pg-bulk-count {
+  width: 80px;
+  background: var(--pg-surface2);
+  border: 1px solid var(--pg-border);
+  border-radius: 8px;
+  padding: 6px 10px;
+  color: var(--pg-heading);
+  font-family: var(--pg-mono);
+  font-size: 0.95rem;
+  outline: none;
+  text-align: center;
+}
+.pg-bulk-count:focus { border-color: var(--pg-accent); }
+.pg-bulk-list {
+  background: var(--pg-surface2);
+  border: 1px solid var(--pg-border);
+  border-radius: 10px;
+  padding: 1rem;
+  font-family: var(--pg-mono);
+  font-size: 0.85rem;
+  color: var(--pg-heading);
+  line-height: 2;
+  max-height: 220px;
+  overflow-y: auto;
+  white-space: pre-wrap;
+  word-break: break-all;
+  display: none;
+}
+.pg-bulk-list.visible { display: block; }
+.pg-bulk-actions {
+  display: flex; gap: 8px; margin-top: 0.75rem;
+}
+.pg-btn-sm {
+  padding: 7px 16px;
+  border-radius: 8px;
+  border: 1px solid var(--pg-border);
+  background: var(--pg-surface2);
+  color: var(--pg-text);
+  font-size: 0.82rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.18s;
+}
+.pg-btn-sm:hover {
+  border-color: var(--pg-accent);
+  color: var(--pg-accent);
+}
+
+/* ── Security Notice ── */
+.pg-notice {
+  background: rgba(52,211,153,0.06);
+  border: 1px solid rgba(52,211,153,0.2);
+  border-radius: var(--pg-radius);
+  padding: 1rem 1.25rem;
+  font-size: 0.83rem;
+  color: var(--pg-text);
+  line-height: 1.7;
+  margin-bottom: 1.5rem;
+}
+.pg-notice strong {
+  color: var(--pg-green);
+  display: block;
+  margin-bottom: 4px;
+  font-size: 0.87rem;
+}
+
+/* ── Toast ── */
+.pg-toast {
+  position: fixed;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%) translateY(80px);
+  background: #1e2235;
+  border: 1px solid var(--pg-accent);
+  color: var(--pg-heading);
+  font-size: 0.87rem;
+  font-weight: 600;
+  padding: 10px 20px;
+  border-radius: 100px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+  transition: transform 0.3s cubic-bezier(.4,0,.2,1);
+  z-index: 9999;
+  white-space: nowrap;
+}
+.pg-toast.show { transform: translateX(-50%) translateY(0); }
+
+/* Light theme compat */
+[data-theme="light"] .pg-output-box,
+[data-theme="light"] .pg-card { background: #fff; border-color: #d8deed; }
+[data-theme="light"] .pg-toggle-row { background: #f5f7fa; border-color: #d8deed; }
+[data-theme="light"] .pg-toggle-row.active { background: rgba(245,166,35,0.06); }
+[data-theme="light"] .pg-bulk-list,
+[data-theme="light"] .pg-exclude-input,
+[data-theme="light"] .pg-bulk-count { background: #f5f7fa; border-color: #d0d7e6; color: #1a2030; }
+[data-theme="light"] .pg-notice { background: rgba(52,211,153,0.04); }
+[data-theme="light"] #pg-password { color: #1a2030; }
+</style>
+
+
+
+  
+<div class="pg-wrap">
+ 
+  <!-- Intro -->
+
+<div class="pg-badge">
+
+  <a href="/" class="pg-breadcrumb-link">
+    Home
+  </a>
+
+<span class="pg-breadcrumb-sep">›</span>
+
+  <a href="/tools/" class="pg-breadcrumb-link">
+    Tools
+  </a>
+
+  
+
+  <span class="pg-breadcrumb-sep">›</span>
+
+  <span class="pg-breadcrumb-current">
+
+  <span class="pg-intro">
+    <div class="pg-badge">
+      <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+      Security Tool
+    </span>
+</span>
+</div>
+    <h1>Password Generator</h1>
+   <p>
+  Create strong and random passwords for your accounts. 
+  This tool works 100% inside your browser — no password is ever sent to our server. 
+  After generating the password, make sure to <strong>save it offline</strong> and avoid online copy-paste or sharing for better security.
+</p>
+<br>
+<p>
+  अपने अकाउंट्स के लिए मजबूत और रैंडम पासवर्ड बनाएं। 
+  यह टूल 100% आपके ब्राउज़र में काम करता है — कोई भी पासवर्ड हमारे सर्वर पर नहीं भेजा जाता। 
+  पासवर्ड बनाने के बाद उसे <strong>ऑफलाइन सुरक्षित नोट करें</strong> और बेहतर सुरक्षा के लिए ऑनलाइन कॉपी-पेस्ट या शेयर करने से बचें।
+</p> </div>
+<br></br>
+  <!-- Output -->
+  <div class="pg-output-box">
+    <input type="text" id="pg-password" readonly value="Click Generate to create password" aria-label="Generated password">
+    <div class="pg-output-actions">
+      <button class="pg-icon-btn" id="pg-copy-btn" title="Copy password" onclick="pgCopy()">
+        <svg viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+      </button>
+      <button class="pg-icon-btn" title="Regenerate" onclick="pgGenerate()">
+        <svg viewBox="0 0 24 24"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- Strength -->
+  <div class="pg-strength">
+    <div class="pg-strength-label">
+      <span>Password Strength</span>
+      <span id="pg-strength-text">—</span>
+    </div>
+    <div class="pg-strength-bar">
+      <div class="pg-strength-fill" id="pg-strength-fill"></div>
+    </div>
+  </div>
+
+  <!-- Controls -->
+  <div class="pg-card">
+    <div class="pg-card-title">Customize Your Password</div>
+
+    <!-- Length -->
+    <div class="pg-length-row">
+      <label for="pg-slider">Length</label>
+      <input type="range" class="pg-slider" id="pg-slider" min="6" max="64" value="16"
+             oninput="document.getElementById('pg-len-val').textContent=this.value; pgGenerate()">
+      <span class="pg-length-val" id="pg-len-val">16</span>
+    </div>
+
+    <!-- Toggles -->
+    <div class="pg-toggles">
+      <div class="pg-toggle-row active" id="tog-upper" onclick="pgToggle('upper', this)">
+        <div class="pg-toggle-label">
+          <span>Uppercase</span>
+          <span>A B C … Z</span>
+        </div>
+        <div class="pg-switch"></div>
+      </div>
+      <div class="pg-toggle-row active" id="tog-lower" onclick="pgToggle('lower', this)">
+        <div class="pg-toggle-label">
+          <span>Lowercase</span>
+          <span>a b c … z</span>
+        </div>
+        <div class="pg-switch"></div>
+      </div>
+      <div class="pg-toggle-row active" id="tog-numbers" onclick="pgToggle('numbers', this)">
+        <div class="pg-toggle-label">
+          <span>Numbers</span>
+          <span>0 1 2 … 9</span>
+        </div>
+        <div class="pg-switch"></div>
+      </div>
+      <div class="pg-toggle-row active" id="tog-symbols" onclick="pgToggle('symbols', this)">
+        <div class="pg-toggle-label">
+          <span>Symbols</span>
+          <span>! @ # $ % ^ &amp;</span>
+        </div>
+        <div class="pg-switch"></div>
+      </div>
+      <div class="pg-toggle-row" id="tog-ambiguous" onclick="pgToggle('ambiguous', this)">
+        <div class="pg-toggle-label">
+          <span>Avoid Ambiguous</span>
+          <span>Skip O, 0, l, 1, I</span>
+        </div>
+        <div class="pg-switch"></div>
+      </div>
+      <div class="pg-toggle-row" id="tog-pronounce" onclick="pgToggle('pronounce', this)">
+        <div class="pg-toggle-label">
+          <span>Pronounceable</span>
+          <span>Yaad karna aasaan</span>
+        </div>
+        <div class="pg-switch"></div>
+      </div>
+    </div>
+
+    <!-- Exclude -->
+    <div class="pg-exclude-row">
+      <label for="pg-exclude">Exclude specific characters (optional):</label>
+      <input type="text" class="pg-exclude-input" id="pg-exclude"
+             placeholder="e.g.  < > ' \" `" oninput="pgGenerate()">
+    </div>
+  </div>
+
+  <!-- Generate -->
+  <button class="pg-generate-btn" onclick="pgGenerate()">
+    <svg viewBox="0 0 24 24"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg>
+    Generate New Password
+  </button>
+
+  <!-- Security Notice -->
+  <div class="pg-notice">
+   <p>
+  <strong>🔒 Your Privacy is 100% Safe</strong><br>
+  This tool works completely inside your browser — no password is ever sent over the internet. After generating a password:
+  <br> <strong>Save the password offline in a diary or notebook</strong>
+  <br>• Do not paste passwords into online notepads (Google Keep, WhatsApp, SMS, etc.)
+  <br>• Use a password manager like Bitwarden or KeePass — this is the safest method
+  <br>• Never use the same password on multiple websites
+</p>
+<br>
+<p>
+  <strong>🔒 आपकी प्राइवेसी 100% सुरक्षित है</strong><br>
+  यह टूल पूरी तरह आपके ब्राउज़र में काम करता है — कोई भी पासवर्ड इंटरनेट पर नहीं भेजा जाता। पासवर्ड बनाने के बाद:
+  <br><strong>पासवर्ड को ऑफलाइन डायरी या नोटबुक में सुरक्षित लिखें</strong>
+  <br>• किसी भी ऑनलाइन नोटपैड (Google Keep, WhatsApp, SMS आदि) में पासवर्ड पेस्ट न करें
+  <br>• Bitwarden या KeePass जैसे पासवर्ड मैनेजर का उपयोग करें — यह सबसे सुरक्षित तरीका है
+  <br>• एक ही पासवर्ड को अलग-अलग वेबसाइट्स पर इस्तेमाल न करें
+</p> </div>
+
+  <!-- Bulk -->
+  <div class="pg-card">
+    <div class="pg-bulk-header" id="pg-bulk-header" onclick="pgBulkToggle()">
+      <div class="pg-card-title" style="margin:0">Bulk Generator — Multiple Passwords</div>
+      <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+    </div>
+    <div class="pg-bulk-body" id="pg-bulk-body">
+      <div class="pg-bulk-count-row">
+        <label>How many passwords do you need?</label>
+        <input type="number" class="pg-bulk-count" id="pg-bulk-count" value="10" min="1" max="100">
+      </div>
+      <div class="pg-bulk-actions">
+        <button class="pg-btn-sm" onclick="pgBulkGenerate()">Generate Bulk</button>
+        <button class="pg-btn-sm" onclick="pgBulkCopy()">Copy All</button>
+        <button class="pg-btn-sm" onclick="pgBulkDownload()">Download .txt</button>
+      </div>
+      <div class="pg-bulk-list" id="pg-bulk-list"></div>
+    </div>
+  </div>
+
+</div>
+
+<!-- Toast -->
+<div class="pg-toast" id="pg-toast"></div>
+
+<script>
+/* ── State ── */
+const pgState = {
+  upper: true, lower: true, numbers: true, symbols: true,
+  ambiguous: false, pronounce: false
+};
+
+const CHARS = {
+  upper:   'ABCDEFGHIJKLMNOPQRSTUVWXYZ',
+  lower:   'abcdefghijklmnopqrstuvwxyz',
+  numbers: '0123456789',
+  symbols: '!@#$%^&*()-_=+[]{}|;:,.<>?'
+};
+const AMBIGUOUS = /[O0lI1]/g;
+const VOWELS = 'aeiou', CONSONANTS = 'bcdfghjklmnpqrstvwxyz';
+
+/* ── Generate ── */
+function pgGenerate() {
+  const len = parseInt(document.getElementById('pg-slider').value);
+  const exclude = document.getElementById('pg-exclude').value;
+
+  // Build charset
+  let pool = '';
+  if (pgState.pronounce) {
+    pool = generatePronounce(len, exclude);
+    pgShowResult(pool, len);
+    return;
+  }
+  if (pgState.upper)   pool += CHARS.upper;
+  if (pgState.lower)   pool += CHARS.lower;
+  if (pgState.numbers) pool += CHARS.numbers;
+  if (pgState.symbols) pool += CHARS.symbols;
+
+  if (pgState.ambiguous) pool = pool.replace(AMBIGUOUS, '');
+  if (exclude) [...exclude].forEach(c => pool = pool.split(c).join(''));
+
+  if (!pool) { pgToast('⚠️ Please select at least one character set.'); return; }
+
+  // Crypto random
+  const arr = new Uint32Array(len);
+  crypto.getRandomValues(arr);
+  let pw = '';
+
+  // Ensure at least one from each selected set
+  const sets = [];
+  if (pgState.upper)   sets.push(CHARS.upper.replace(AMBIGUOUS, ''));
+  if (pgState.lower)   sets.push(CHARS.lower.replace(AMBIGUOUS, ''));
+  if (pgState.numbers) sets.push(CHARS.numbers.replace(AMBIGUOUS, ''));
+  if (pgState.symbols) sets.push(CHARS.symbols);
+  sets.forEach(s => { s = s.split('').filter(c => !exclude.includes(c)).join(''); if(s) pw += s[Math.floor(Math.random()*s.length)]; });
+
+  while (pw.length < len) {
+    pw += pool[arr[pw.length % len] % pool.length];
+  }
+  // Shuffle
+  pw = pw.split('').sort(() => crypto.getRandomValues(new Uint8Array(1))[0] - 128).join('').slice(0, len);
+  pgShowResult(pw, len);
+}
+
+function generatePronounce(len, exclude) {
+  let pw = '';
+  for (let i = 0; i < len; i++) {
+    const pool = i % 2 === 0 ? CONSONANTS : VOWELS;
+    const arr = new Uint32Array(1);
+    crypto.getRandomValues(arr);
+    let c = pool[arr[0] % pool.length];
+    if (Math.random() > 0.7) c = c.toUpperCase();
+    if (!exclude.includes(c)) pw += c;
+    else pw += CONSONANTS[Math.floor(Math.random()*CONSONANTS.length)];
+  }
+  return pw;
+}
+
+function pgShowResult(pw, len) {
+  document.getElementById('pg-password').value = pw;
+  pgStrength(pw, len);
+}
+
+/* ── Strength ── */
+function pgStrength(pw, len) {
+  let score = 0;
+  if (len >= 12) score++; if (len >= 16) score++; if (len >= 20) score++;
+  if (/[A-Z]/.test(pw)) score++;
+  if (/[a-z]/.test(pw)) score++;
+  if (/[0-9]/.test(pw)) score++;
+  if (/[^A-Za-z0-9]/.test(pw)) score++;
+  // Entropy bonus
+  const unique = new Set(pw).size;
+  if (unique > len * 0.7) score++;
+
+  const levels = [
+    { label: 'Too Weak',  pct: 15,  color: '#f87171' },
+    { label: 'Weak',      pct: 30,  color: '#fb923c' },
+    { label: 'Fair',      pct: 50,  color: '#fbbf24' },
+    { label: 'Good',      pct: 70,  color: '#a3e635' },
+    { label: 'Strong',    pct: 85,  color: '#34d399' },
+    { label: 'Very Strong', pct: 100, color: '#22d3ee' },
+  ];
+  const lvl = levels[Math.min(Math.floor(score / 1.4), 5)];
+  const fill = document.getElementById('pg-strength-fill');
+  fill.style.width   = lvl.pct + '%';
+  fill.style.background = lvl.color;
+  document.getElementById('pg-strength-text').textContent = lvl.label;
+  document.getElementById('pg-strength-text').style.color = lvl.color;
+}
+
+/* ── Toggle ── */
+function pgToggle(key, el) {
+  pgState[key] = !pgState[key];
+  el.classList.toggle('active', pgState[key]);
+  pgGenerate();
+}
+
+/* ── Copy ── */
+function pgCopy() {
+  const val = document.getElementById('pg-password').value;
+  if (!val || val.startsWith('Click')) return;
+  navigator.clipboard.writeText(val).then(() => pgToast('✅ Password copied! Offline note zaroor karein.'));
+}
+
+/* ── Bulk ── */
+function pgBulkToggle() {
+  const h = document.getElementById('pg-bulk-header');
+  const b = document.getElementById('pg-bulk-body');
+  h.classList.toggle('open');
+  b.classList.toggle('open');
+}
+
+let bulkPasswords = [];
+function pgBulkGenerate() {
+  const count = Math.min(parseInt(document.getElementById('pg-bulk-count').value) || 10, 100);
+  bulkPasswords = [];
+  const len = parseInt(document.getElementById('pg-slider').value);
+  for (let i = 0; i < count; i++) {
+    pgGenerate();
+    bulkPasswords.push(document.getElementById('pg-password').value);
+  }
+  const list = document.getElementById('pg-bulk-list');
+  list.textContent = bulkPasswords.map((p,i) => `${String(i+1).padStart(2,'0')}. ${p}`).join('\n');
+  list.classList.add('visible');
+  pgGenerate(); // regenerate single
+}
+
+function pgBulkCopy() {
+  if (!bulkPasswords.length) return;
+  navigator.clipboard.writeText(bulkPasswords.join('\n')).then(() => pgToast('✅ All passwords copied!'));
+}
+
+function pgBulkDownload() {
+  if (!bulkPasswords.length) return;
+  const blob = new Blob([bulkPasswords.join('\n')], {type:'text/plain'});
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = 'passwords-tyagihub.txt';
+  a.click();
+}
+
+/* ── Toast ── */
+function pgToast(msg) {
+  const t = document.getElementById('pg-toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 3000);
+}
+
+/* ── Init ── */
+pgGenerate();
+</script>

@@ -1,0 +1,911 @@
+---
+
+layout: default
+
+title: "Crop PDF Online Free — Crop Page Margins and Boundaries | TyagiHub"
+
+description: "Crop PDF page margins, white space and physical boundaries online. Use visual 8-point drag handles or standard percent sliders with live rendering. 100% secure and offline."
+
+keywords: "crop pdf, crop pdf online, trim pdf margins, crop pdf white space, free offline pdf cropper, TyagiHub pdf tools"
+
+lang_switch: false
+
+extra_css:
+
+  - /assets/css/tyagihub-pdf.min.css
+
+extra_js:
+
+  - https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.4.120/pdf.min.js
+
+  - /assets/js/libs/all.pdf.js
+
+---
+
+
+
+<script type="application/ld+json">
+
+{
+
+  "@context": "https://schema.org",
+
+  "@graph": [
+
+    {
+
+      "@type": "SoftwareApplication",
+
+      "name": "TyagiHub Crop PDF",
+
+      "operatingSystem": "All",
+
+      "applicationCategory": "WebApplication",
+
+      "description": "An advanced client-side offline PDF crop utility that allows users to resize, trim, and set coordinate page MediaBox bounds safely.",
+
+      "url": "https://tyagihub.in/tools/pdf/crop-pdf/",
+
+      "offers": {
+
+        "@type": "Offer",
+
+        "price": "0",
+
+        "priceCurrency": "INR"
+
+      },
+
+      "creator": {
+
+        "@type": "Organization",
+
+        "name": "TyagiHub",
+
+        "url": "https://tyagihub.in"
+
+      }
+
+    }
+
+  ]
+
+}
+
+</script>
+
+
+
+<div class="pdf-tool-page tyagihub-crop hind-regular">
+
+
+
+  <div class="pdf-tool-header">
+
+    <nav class="pdf-tool-header__breadcrumb" aria-label="Breadcrumb">
+
+      <a href="/">Home</a>
+
+      <span aria-hidden="true"> / </span>
+
+      <a href="/tools/">Tools</a>
+
+      <span aria-hidden="true"> / </span>
+
+      <a href="/tools/pdf/">PDF Tools</a>
+
+      <span aria-hidden="true"> / </span>
+
+      <span aria-current="page">Crop PDF</span>
+
+    </nav>
+
+    <div class="container pdf-tool-header__inner">
+
+      <div class="pdf-tool-header__icon" aria-hidden="true">
+
+        <svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round">
+
+          <path d="M6.13 1L6 16a2 2 0 0 0 2 2h15" />
+
+          <path d="M1 6.13L16 6a2 2 0 0 1 2 2v15" />
+
+        </svg>
+
+      </div>
+
+      <div class="pdf-tool-header__text">
+
+        <h1 class="pdf-tool-header__title th-heading-bold">Crop PDF Online Free</h1>
+
+        <p class="pdf-tool-header__desc">
+
+          Trim page borders, remove redundant white spaces, or resize container sheets. 
+
+          Interact with 8-point high performance drag handles or fine-tune with manual offset sliders.
+
+          Runs entirely in your local browser sandbox to keep sensitive assets 100% private.
+
+        </p>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+
+  <div class="pdf-tool-workspace">
+
+
+
+    <div class="pdf-dropzone" id="crop-drop" role="button" aria-label="Upload PDF file to crop margins" tabindex="0">
+
+      <div class="pdf-dropzone__icon th-animated-icon" aria-hidden="true">
+
+        <svg viewBox="0 0 24 24">
+
+          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+
+          <polyline points="14 2 14 8 20 8" />
+
+          <path d="M16 13H8M16 17H8M10 9H8" />
+
+        </svg>
+
+      </div>
+
+      <div class="pdf-dropzone__title th-heading-bold">Drag your PDF document right here or browse files</div>
+
+      <div class="pdf-dropzone__sub">Processed offline using client side canvas rendering · Supports up to 100 MB</div>
+
+      
+
+      <button class="pdf-dropzone__btn" type="button" aria-label="Select local PDF document">
+
+        <svg viewBox="0 0 24 24" aria-hidden="true" class="th-upload-svg">
+
+          <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+
+          <g class="th-bounce-group">
+
+            <polyline points="17 8 12 3 7 8" />
+
+            <line x1="12" y1="3" x2="12" y2="15" />
+
+          </g>
+
+        </svg>
+
+        Choose PDF Document
+
+      </button>
+
+      <input type="file" class="pdf-dropzone__input" id="crop-file-input" accept=".pdf,application/pdf" aria-label="Upload input trigger">
+
+    </div>
+
+
+
+    <div id="crop-unlock-modal-overlay" class="th-modal-overlay th-hidden-state">
+
+      <div class="th-modal-card">
+
+        <div class="th-modal-card__icon">🔒</div>
+
+        <h3 class="th-modal-card__title">Password Secured Document</h3>
+
+        <p class="th-modal-card__desc">This document requires an access key sequence prior to computing canvas dimensions offline.</p>
+
+        <input type="password" id="crop-popup-password-field" class="th-modal-card__input" autocomplete="off" placeholder="Enter file password to continue...">
+
+        <div class="th-modal-card__actions">
+
+          <button type="button" id="crop-popup-submit-btn" class="btn btn-primary">Unlock Document</button>
+
+          <button type="button" id="crop-popup-cancel-btn" class="btn btn-outline">Cancel</button>
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+
+    <div class="pdf-settings" id="crop-settings" aria-label="PDF Crop configuration layout" hidden>
+
+      <div class="pdf-settings__title th-heading-bold">Crop Configurator Desktop</div>
+
+
+
+      <div id="crop-file-details" class="th-meta-margin"></div>
+
+
+
+      <div class="crop-workbench-grid">
+
+
+
+        <div class="crop-controls-deck">
+
+          
+
+          <div class="editor-section-card">
+
+            <h3 class="editor-section-title">📐 Geometry Presets</h3>
+
+            <p class="editor-section-desc">Instantly resize crop zones to standard print measurements or content dimensions.</p>
+
+
+
+            <div class="preset-cards-list">
+
+              <div class="preset-card active" data-preset="manual" id="preset-manual">
+
+                <div class="preset-card__title">Free Hand Crop</div>
+
+                <div class="preset-card__desc">Drag corner toggles or sliders manually to frame bounds.</div>
+
+              </div>
+
+              <div class="preset-card" data-preset="remove-margins" id="preset-trim">
+
+                <div class="preset-card__title">Trim Margins (5%)</div>
+
+                <div class="preset-card__desc">Gently shave off border gutters all around pages.</div>
+
+              </div>
+
+              <div class="preset-card" data-preset="white-margins" id="preset-clean">
+
+                <div class="preset-card__title">Clear Padding (10%)</div>
+
+                <div class="preset-card__desc">Aggressive margin removal. Concentrates strictly on core text body.</div>
+
+              </div>
+
+              <div class="preset-card" data-preset="square" id="preset-sq">
+
+                <div class="preset-card__title">Square Layout (1:1)</div>
+
+                <div class="preset-card__desc">Perfect symmetrically balanced crop format.</div>
+
+              </div>
+
+              <div class="preset-card" data-preset="letter" id="preset-lt">
+
+                <div class="preset-card__title">US Letter Bound</div>
+
+                <div class="preset-card__desc">Adapts selection aspect ratio to standard Letter sheet.</div>
+
+              </div>
+
+              <div class="preset-card" data-preset="a4" id="preset-a4-ratio">
+
+                <div class="preset-card__title">A4 Aspect Ratio</div>
+
+                <div class="preset-card__desc">Configures bounding box aspect to global standard paper size.</div>
+
+              </div>
+
+            </div>
+
+          </div>
+
+
+
+          <div class="editor-section-card">
+
+            <h3 class="editor-section-title">✏️ Fine-Tune Inward Margins (%)</h3>
+
+            <p class="editor-section-desc">Perform single digit percentile adjustments for custom precision margins framing.</p>
+
+
+
+            <div class="th-slider-container">
+
+              <div class="slider-wrapper-deck">
+
+                <div class="slider-label-row">
+
+                  <span class="slider-dir-title">⬅️ Left Boundary Crop</span>
+
+                  <span class="slider-badge" id="crop-badge-left">10%</span>
+
+                </div>
+
+                <input type="range" id="crop-slider-left" min="0" max="90" value="10" class="crop-custom-slider">
+
+              </div>
+
+
+
+              <div class="slider-wrapper-deck">
+
+                <div class="slider-label-row">
+
+                  <span class="slider-dir-title">➡️ Right Boundary Crop</span>
+
+                  <span class="slider-badge" id="crop-badge-right">10%</span>
+
+                </div>
+
+                <input type="range" id="crop-slider-right" min="0" max="90" value="10" class="crop-custom-slider">
+
+              </div>
+
+
+
+              <div class="slider-wrapper-deck">
+
+                <div class="slider-label-row">
+
+                  <span class="slider-dir-title">⬆️ Top Boundary Crop</span>
+
+                  <span class="slider-badge" id="crop-badge-top">10%</span>
+
+                </div>
+
+                <input type="range" id="crop-slider-top" min="0" max="90" value="10" class="crop-custom-slider">
+
+              </div>
+
+
+
+              <div class="slider-wrapper-deck">
+
+                <div class="slider-label-row">
+
+                  <span class="slider-dir-title">⬇️ Bottom Boundary Crop</span>
+
+                  <span class="slider-badge" id="crop-badge-bottom">10%</span>
+
+                </div>
+
+                <input type="range" id="crop-slider-bottom" min="0" max="90" value="10" class="crop-custom-slider">
+
+              </div>
+
+            </div>
+
+          </div>
+
+
+
+          <div class="editor-section-card">
+
+            <h3 class="editor-section-title">📋 Execution Configuration</h3>
+
+            
+
+            <div class="pdf-tool-input-group th-input-gap">
+
+              <label for="crop-scope-select" class="th-label-style">Apply Crop Range</label>
+
+              <select id="crop-scope-select" class="th-select-style">
+
+                <option value="all">Apply Crop on All Pages</option>
+
+                <option value="current">Crop Current Previewed Page Only</option>
+
+              </select>
+
+            </div>
+
+
+
+            <div class="th-btn-group">
+
+              <button class="btn btn-primary th-full-btn" id="crop-compile-btn">
+
+                ✂️ Crop Document Offline
+
+              </button>
+
+              <button class="btn btn-outline th-full-btn" id="crop-reset-btn">
+
+                Reset Workspace
+
+              </button>
+
+            </div>
+
+          </div>
+
+
+
+        </div>
+
+
+
+        <div class="crop-preview-hull">
+
+          
+
+          <div class="crop-preview-header">
+
+            <div class="hdr-left">
+
+              <span class="live-blink" aria-hidden="true"></span>
+
+              <strong class="th-text-dark">Active Canvas Preview</strong>
+
+            </div>
+
+
+
+            <div class="hdr-right-navigator">
+
+              <button type="button" class="btn btn-outline btn-circle-nav" id="crop-prev-page-btn" disabled>◀</button>
+
+              <span id="crop-page-index-label" class="pdf-page-count-badge th-text-bold">1 / 1</span>
+
+              <button type="button" class="btn btn-outline btn-circle-nav" id="crop-next-page-btn" disabled>▶</button>
+
+            </div>
+
+          </div>
+
+
+
+          <div class="crop-viewport-wrap">
+
+            <div class="preview-outer-wrap">
+
+              <canvas id="crop-preview-canvas" class="th-canvas-base"></canvas>
+
+
+
+              <div id="crop-overlay" class="crop-overlay">
+
+                <div id="shade-left" class="crop-shade"></div>
+
+                <div id="shade-right" class="crop-shade"></div>
+
+                <div id="shade-top" class="crop-shade"></div>
+
+                <div id="shade-bottom" class="crop-shade"></div>
+
+
+
+                <div id="crop-box" class="crop-box">
+
+                  <span id="crop-box-metrics-badge" class="crop-metric-overlay">Active Bounds: 100% x 100%</span>
+
+
+
+                  <div id="handle-tl" class="crop-handle" title="Drag to crop top-left"></div>
+
+                  <div id="handle-tr" class="crop-handle" title="Drag to crop top-right"></div>
+
+                  <div id="handle-bl" class="crop-handle" title="Drag to crop bottom-left"></div>
+
+                  <div id="handle-br" class="crop-handle" title="Drag to crop bottom-right"></div>
+
+
+
+                  <div id="handle-t" class="crop-handle-bar" title="Resize Top Margin"></div>
+
+                  <div id="handle-b" class="crop-handle-bar" title="Resize Bottom Margin"></div>
+
+                  <div id="handle-l" class="crop-handle-bar" title="Resize Left Margin"></div>
+
+                  <div id="handle-r" class="crop-handle-bar" title="Resize Right Margin"></div>
+
+                </div>
+
+              </div>
+
+            </div>
+
+          </div>
+
+
+
+          <div class="th-tip-text">
+
+            💡 <strong>Quick Pro Tip:</strong> You can resize the crop target dynamically by directly grabbing any circular corner handle or edge line, or click & drag inside the green box to reposition the entire frame!
+
+          </div>
+
+
+
+        </div>
+
+
+
+      </div>
+
+    </div>
+
+
+
+    <div class="pdf-settings th-progress-panel" id="crop-progress" hidden>
+
+      <div class="th-loader-spinner"></div>
+
+      <div id="crop-progress-label" class="th-progress-title">35% — Exporting original vector layouts...</div>
+
+      <div class="th-progress-bar-wrap">
+
+        <div id="crop-progress-fill" class="th-progress-bar-fill"></div>
+
+      </div>
+
+      <p class="th-progress-desc">Keep this browser window active. Conversion runs strictly offline locally inside your sandbox client process.</p>
+
+    </div>
+
+
+
+    <div id="crop-result-box" class="pdf-settings th-result-panel" hidden>
+
+      <div class="th-celebrate-icon">🎉</div>
+
+      <h2 class="th-result-title">PDF Cropped Offline Successfully</h2>
+
+      <p class="th-result-desc">Your layout alterations were appended without security compromises or servers transmitting payload networks.</p>
+
+
+
+      <div id="crop-result-meta" class="th-result-meta-wrap"></div>
+
+
+
+      <div class="th-result-actions">
+
+        <a id="crop-download-btn" class="btn btn-primary th-download-btn-style" href="#">
+
+          📥 Download Cropped PDF
+
+        </a>
+
+        <button id="crop-return-btn" class="btn btn-outline th-return-btn-style">
+
+          Crop Another File
+
+        </button>
+
+      </div>
+
+    </div>
+
+
+
+
+
+  <div
+      class="pdf-info-box"
+      role="note"
+      style="background: rgba(var(--clr-accent-rgb), 0.03); border-left: 4px solid var(--clr-accent); margin-top: var(--space-6); font-size: var(--space-3); color: var(--clr-text-2); padding: 12px; border-radius: 4px;"
+    >
+      <strong>🛡️ TyagiHub Security Note:</strong>
+      If your uploaded input file is password-protected, the interface will automatically prompt you with a secure centered dialog block window to authorize decryption parameters. Everything executes offline in the client sandbox layout environment.
+    </div>
+
+    <hr style="border: 0; border-top: 1px solid var(--clr-border); margin: var(--space-16) 0;">
+
+    <section style="margin-bottom: var(--space-10);" aria-labelledby="seo-crop-tech-heading">
+      <h2
+        id="seo-crop-tech-heading"
+        style="color: var(--clr-heading); font-size: var(--fs-xl); font-weight: var(--fw-bold); margin-bottom: var(--space-4);"
+      >
+        How Client-Side PDF Cropping Modifies Page Definitions Losslessly
+      </h2>
+      <p style="color: var(--clr-text-2); font-size: var(--fs-sm); line-height: 1.6; margin-bottom: var(--space-3);">
+        When files are uploaded to conventional cloud networks, your proprietary layout records or data sheets traverse external servers. TyagiHub bypasses this structural vulnerability via isolated client-side sandbox execution. Bounding box recalculations operate instantaneously directly inside your browser memory context, keeping documentation private.
+      </p>
+      <p style="color: var(--clr-text-2); font-size: var(--fs-sm); line-height: 1.6;">
+        No compression or quality rasterization takes place during execution tracks. Rather, the algorithm target blocks adjust the internal page object definitions (`MediaBox`, `CropBox`) safely using programmatic structures. Added graphics, typography paths, and raw data diagrams stay completely vector-sharp while margins hide seamlessly.
+      </p>
+    </section>
+
+    <section style="margin-bottom: var(--space-10);" aria-labelledby="seo-crop-presets-heading">
+      <h2
+        id="seo-crop-presets-heading"
+        style="color: var(--clr-heading); font-size: var(--fs-xl); font-weight: var(--fw-bold); margin-bottom: var(--space-4);"
+      >
+        Selecting Bounding Geometry Profiles for Quick Formatting Alignment
+      </h2>
+      <p style="color: var(--clr-text-2); font-size: var(--fs-sm); line-height: 1.6; margin-bottom: var(--space-3);">
+        Varying layout criteria necessitate custom trimming distributions across execution parameters. Whether formatting a scanned document book or fitting white margin arrays to explicit standard sheets, applying matching strategies ensures direct target outputs:
+      </p>
+      <ul style="color: var(--clr-text-2); font-size: var(--fs-sm); line-height: 1.6; list-style-type: disc; padding-left: var(--space-5); margin-bottom: var(--space-4);">
+        <li><strong>Free Hand Crop:</strong> Provides unrestricted 8-point manual adjustment nodes. Ideal for isolation of individual table coordinates or asymmetrical layout definitions.</li>
+        <li><strong>Trim Margins (5%):</strong> Shaves off outer asset frame dimensions slightly, clearing document scan artifact outlines or uneven page edges.</li>
+        <li><strong>Clear Padding (10%):</strong> Applies aggressive margin tracking, focusing execution entirely on core centralized text sheets context profiles.</li>
+      </ul>
+    </section>
+
+    <section aria-labelledby="seo-faq-heading">
+      <h2
+        id="seo-faq-heading"
+        style="color: var(--clr-heading); font-size: var(--fs-xl); font-weight: var(--fw-bold); margin-bottom: var(--space-5);"
+      >
+        Frequently Asked Questions (FAQ)
+      </h2>
+
+      <details class="tyagihub-faq">
+        <summary>Will cropping the PDF degrade its content resolution?</summary>
+        <div class="faq-content">
+          No, not at all! TyagiHub does not compress or rasterize target pages during cropping. Rather, it modifies the document's internal vector boundary definitions (MediaBox / CropBox) to hide target margins. Your layout structures, embedded high-density typography, and raw diagrams remain 100% vector-sharp.
+        </div>
+      </details>
+
+      <details class="tyagihub-faq">
+        <summary>Can I crop individual sheets separately?</summary>
+        <div class="faq-content">
+          Yes! By default, you can opt to apply the cropping coordinates across all page lists, or isolate dimensions updates to the "Current Previewed Page Only" under execution configurations.
+        </div>
+      </details>
+
+      <details class="tyagihub-faq">
+        <summary>Are my bank data or sensitive personal archives secure?</summary>
+        <div class="faq-content">
+          Completely secure. None of your documents or files are transmitted outside your browser. All computations are resolved strictly locally inside-browser using compiled WebAssembly and Javascript engines, giving secure, instant offline processing on your local machine.
+        </div>
+      </details>
+
+    </section>
+
+  </div>
+
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    if (window.TyagiHubCropController) {
+      new window.TyagiHubCropController();
+    }
+  });
+</script>
+
+
+
+<style>
+
+  @keyframes spinLoader {
+
+    to { transform: rotate(360deg); }
+
+  }
+
+  @keyframes uploadBounce {
+
+    0%, 60%, 100% { transform: translateY(0px); }
+
+    30% { transform: translateY(-3px); }
+
+    80% { transform: translateY(-1.5px); }
+
+  }
+
+  
+
+  /* Clean Jekyll Global Styles Classes */
+
+  .th-heading-bold { font-family: 'Hind', sans-serif; font-weight: 700; }
+
+  .th-text-bold { font-weight: 700; }
+
+  .th-text-dark { color: var(--clr-text-1); }
+
+  .th-hidden-state { display: none; }
+
+  .th-meta-margin { margin-bottom: var(--space-4); }
+
+  .th-input-gap { margin-top: 8px; }
+
+  
+
+  .th-animated-icon { transition: transform 0.3s ease-in-out; }
+
+  .th-animated-icon:hover { transform: translateY(-5px); }
+
+  .th-upload-svg { width:24px; height:24px; stroke:currentColor; stroke-width:2; stroke-linecap:round; stroke-linejoin:round; fill:none; overflow:visible; }
+
+  .th-bounce-group { animation:uploadBounce 1.5s ease-in-out infinite; transform-origin:12px 9px; transform-box:fill-box; }
+
+  .pdf-dropzone__btn svg { margin-right: 8px; }
+
+
+
+  /* Configuration Subpanels */
+
+  .th-slider-container { display: flex; flex-direction: column; gap: 16px; margin-top: 12px; }
+
+  .th-label-style { font-size: 11px; color: var(--clr-text-2); font-weight: 600; display: block; margin-bottom: 4px; }
+
+  .th-select-style { width: 100%; border-radius: 8px; border: 1px solid var(--clr-border); padding: 10px; font-size: 12.5px; background: var(--clr-surface-1); }
+
+  .th-btn-group { display: flex; flex-direction: column; gap: 10px; margin-top: 20px; }
+
+  .th-full-btn { width: 100%; padding: 12px; font-weight: 700; border-radius: 8px; display: flex; justify-content: center; align-items: center; gap: 8px; }
+
+  #crop-reset-btn.th-full-btn { padding: 10px; font-weight: 500; }
+
+
+
+  /* Canvas and Tip Styles */
+
+  .th-canvas-base { display: block; max-width: 100%; height: auto; transition: opacity 0.25s; }
+
+  .th-tip-text { font-size: 11px; text-align: center; color: var(--clr-text-3); margin-top: 12px; }
+
+
+
+  /* Progress Spinner Panel classes */
+
+  .th-progress-panel { padding: var(--space-6) var(--space-4); text-align: center; }
+
+  .th-loader-spinner { width: 50px; height: 50px; border: 4px solid var(--clr-border-2); border-top-color: var(--clr-accent); border-radius: 50%; animation: spinLoader 1s linear infinite; margin: 0 auto 20px; }
+
+  .th-progress-title { font-family: 'Hind', sans-serif; font-weight: 700; font-size: 15px; color: var(--clr-text-1); }
+
+  .th-progress-bar-wrap { width: 100%; max-width: 400px; height: 6px; background: var(--clr-border-2); border-radius: 3px; margin: 16px auto 0; overflow: hidden; }
+
+  .th-progress-bar-fill { width: 35%; height: 100%; background: var(--clr-accent); border-radius: 3px; transition: width 0.25s ease; }
+
+  .th-progress-desc { font-size: 11.5px; color: var(--clr-text-3); margin-top: 10px; }
+
+
+
+  /* Result Panel classes */
+
+  .th-result-panel { padding: var(--space-6) var(--space-5); text-align: center; }
+
+  .th-celebrate-icon { font-size: 48px; margin-bottom: 12px; pointer-events: none; }
+
+  .th-result-title { font-family: 'Hind', sans-serif; font-weight: 700; font-size: 22px; color: var(--clr-text-1); }
+
+  .th-result-desc { color: var(--clr-text-2); font-size: 13.5px; max-width: 550px; margin: 6px auto var(--space-3); }
+
+  .th-result-meta-wrap { max-width: 550px; margin: 0 auto; }
+
+  .th-result-actions { display: flex; justify-content: center; gap: 12px; margin-top: 24px; }
+
+  .th-download-btn-style { border-radius: 8px; font-weight: 700; padding: 12px 24px; text-decoration: none; display: inline-flex; align-items: center; gap: 8px; }
+
+  .th-return-btn-style { border-radius: 8px; padding: 12px 20px; }
+
+
+
+  /* Steps and FAQ Layout classes */
+
+  .th-how-to-margin { margin-top: var(--space-6); }
+
+  .th-step-title { font-weight: 700; font-size: 14px; margin-bottom: 4px; color: var(--clr-text-1); font-family: 'Hind'; }
+
+  .th-step-desc { font-size: 12.5px; color: var(--clr-text-3); line-height: 1.4; display: block; }
+
+  .th-faq-main-title { color: var(--clr-heading); font-size: var(--fs-xl); font-weight: var(--fw-bold); margin-bottom: var(--space-5); }
+
+
+
+  /* Split screen visual workbench */
+
+  .crop-workbench-grid { display: grid; grid-template-columns: 1fr; gap: var(--space-5); margin-top: var(--space-4); }
+
+  @media(min-width: 992px) { .crop-workbench-grid { grid-template-columns: 4fr 5fr; } }
+
+  .crop-controls-deck { display: flex; flex-direction: column; gap: var(--space-4); }
+
+  .editor-section-card { background: #ffffff; border: 1px solid var(--clr-border); border-radius: 12px; padding: var(--space-4); box-shadow: 0 4px 12px rgba(0,0,0,0.015); }
+
+  .editor-section-title { font-family: 'Hind', sans-serif; font-weight: 700; font-size: 14.5px; color: var(--clr-accent); margin: 0; }
+
+  .editor-section-desc { font-size: 11.5px; color: var(--clr-text-3); margin: 2px 0 12px; line-height: var(--lh-sm); }
+
+
+
+  /* Preset Grid Options */
+
+  .preset-cards-list { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }
+
+  @media(min-width: 480px) { .preset-cards-list { grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); } }
+
+  .preset-card { border: 1px solid var(--clr-border-2); border-radius: 8px; padding: 10px; background: var(--clr-surface-1); cursor: pointer; transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1); }
+
+  .preset-card:hover { border-color: var(--clr-accent); background: var(--clr-surface-2); transform: translateY(-1px); }
+
+  .preset-card.active { border-color: var(--clr-accent); border-width: 2px; background: var(--clr-surface-2); box-shadow: inset 0 0 0 1px rgba(16, 185, 129, 0.1); }
+
+  .preset-card__title { font-size: 11.5px; font-weight: bold; color: var(--clr-text-1); }
+
+  .preset-card__desc { font-size: 9.5px; color: var(--clr-text-3); margin-top: 2px; line-height: 1.3; }
+
+
+
+  /* Custom slider layouts */
+
+  .slider-wrapper-deck { display: flex; flex-direction: column; gap: 4px; }
+
+  .slider-label-row { display: flex; justify-content: space-between; align-items: center; }
+
+  .slider-dir-title { font-size: 11.5px; font-weight: var(--fw-medium); color: var(--clr-text-2); }
+
+  .slider-badge { background: var(--clr-border-2); color: var(--clr-accent); font-family: var(--font-mono); font-size: 10.5px; font-weight: var(--fw-bold); padding: 2px 6px; border-radius: 4px; min-width: 32px; text-align: center; }
+
+  .crop-custom-slider { width: 100%; height: 6px; border-radius: 3px; background: var(--clr-border-2); outline: none; cursor: pointer; }
+
+
+
+  /* Preview column layouts & drag overlays styling */
+
+  .crop-preview-hull { background: var(--clr-surface-2); border: 1px solid var(--clr-border); border-radius: 12px; padding: var(--space-4); display: flex; flex-direction: column; align-items: center; box-shadow: inset 0 2px 8px rgba(0,0,0,0.015); }
+
+  .crop-preview-header { width: 100%; display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--space-3); border-bottom: 1px dashed var(--clr-border-2); padding-bottom: 10px; }
+
+  .hdr-left { display: flex; align-items: center; gap: 8px; font-size: 13px; }
+
+  .live-blink { width: 8px; height: 8px; background: var(--clr-accent); border-radius: 50%; animation: pulseGlow 1.8s infinite; }
+
+  @keyframes pulseGlow { 0% { transform: scale(0.9); opacity: 0.8; } 50% { transform: scale(1.15); opacity: 1; box-shadow: 0 0 8px rgba(16, 185, 129, 0.4); } 100% { transform: scale(0.9); opacity: 0.8; } }
+
+  .hdr-right-navigator { display: flex; align-items: center; gap: 8px; }
+
+  .btn-circle-nav { width: 24px; height: 24px; border-radius: 50%; padding: 0; display: flex; align-items: center; justify-content: center; font-size: 10px; cursor: pointer; }
+
+
+
+  /* Interactive Drag Canvas Outer Wrapper */
+
+  .crop-viewport-wrap { background: #e2e8f0; border-radius: 8px; padding: 20px; width: 100%; display: flex; justify-content: center; align-items: center; overflow: auto; min-height: 280px; box-shadow: inset 0 2px 10px rgba(15,23,42,0.05); }
+
+  .preview-outer-wrap { position: relative; display: inline-block; background: #ffffff; box-shadow: 0 8px 24px rgba(15,23,42,0.12); border-radius: 6px; max-width: 100%; overflow: hidden; }
+
+  .crop-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: auto; cursor: crosshair; user-select: none; -webkit-user-select: none; }
+
+  .crop-overlay.active-dragging { cursor: grabbing; }
+
+
+
+  /* Shades */
+
+  .crop-shade { position: absolute; background-color: rgba(15, 23, 42, 0.55); z-index: 1; pointer-events: none; transition: background-color 0.15s; }
+
+  .crop-overlay.active-dragging .crop-shade { background-color: rgba(15, 23, 42, 0.4); }
+
+
+
+  /* Central Highlight Box */
+
+  .crop-box { position: absolute; border: 2px dashed var(--clr-accent); border-radius: 2px; z-index: 3; pointer-events: auto; cursor: move; box-shadow: 0 0 10px rgba(16, 185, 129, 0.25); transition: border-color 0.2s; }
+
+  .crop-metric-overlay { position: absolute; top: -24px; left: 50%; transform: translateX(-50%); background: var(--clr-accent); color: #ffffff; font-size: 9.5px; font-weight: bold; font-family: var(--font-mono); padding: 2px 8px; border-radius: 10px; white-space: nowrap; pointer-events: none; box-shadow: 0 2px 5px rgba(0,0,0,0.15); z-index: 8; }
+
+
+
+  /* Circular Drag Handle Dots */
+
+  .crop-handle { position: absolute; width: 13px; height: 13px; background-color: var(--clr-accent); border: 2px solid #ffffff; border-radius: 50%; box-shadow: 0 2px 6px rgba(0,0,0,0.3); z-index: 10; transition: transform 0.15s, background-color 0.15s; }
+
+  .crop-handle:hover { transform: scale(1.3); background-color: #047857; }
+
+  #handle-tl { top: -7px; left: -7px; cursor: nwse-resize; }
+
+  #handle-tr { top: -7px; right: -7px; cursor: nesw-resize; }
+
+  #handle-bl { bottom: -7px; left: -7px; cursor: nesw-resize; }
+
+  #handle-br { bottom: -7px; right: -7px; cursor: nwse-resize; }
+
+
+
+  /* Segment Sizing Bars */
+
+  .crop-handle-bar { position: absolute; background: transparent; z-index: 5; }
+
+  .crop-handle-bar:hover { background: rgba(16, 185, 129, 0.25); }
+
+  #handle-t { top: -4px; left: 8px; right: 8px; height: 8px; cursor: ns-resize; }
+
+  #handle-b { bottom: -4px; left: 8px; right: 8px; height: 8px; cursor: ns-resize; }
+
+  #handle-l { left: -4px; top: 8px; bottom: 8px; width: 8px; cursor: ew-resize; }
+
+  #handle-r { right: -4px; top: 8px; bottom: 8px; width: 8px; cursor: ew-resize; }
+
+</style>

@@ -1,0 +1,128 @@
+{
+  "title": "Disasters & Accidents",
+  "title_hi": "आपदाएँ और दुर्घटनाएँ",
+  "icon": "⚠️",
+  "slug": "disasters",
+  "questions": [
+    {
+      "id": 1,
+      "q": "The Bhopal Gas Tragedy occurred in which year?",
+      "opts": [
+        "1982",
+        "1984",
+        "1986",
+        "1988"
+      ],
+      "ans": 1,
+      "exp": "The Bhopal Gas Tragedy occurred on the night of 2–3 December 1984 at the Union Carbide India Limited pesticide plant. Methyl isocyanate (MIC) gas leaked, killing thousands and affecting hundreds of thousands more."
+    },
+    {
+      "id": 2,
+      "q": "The Chernobyl Nuclear Disaster occurred in?",
+      "opts": [
+        "1982",
+        "1984",
+        "1986",
+        "1988"
+      ],
+      "ans": 2,
+      "exp": "The Chernobyl disaster occurred on 26 April 1986 at the Chernobyl Nuclear Power Plant in Soviet Ukraine (now Ukraine). It is considered the worst nuclear accident in history."
+    },
+    {
+      "id": 3,
+      "q": "The 2004 Indian Ocean Tsunami was caused by?",
+      "opts": [
+        "Cyclone",
+        "Volcanic eruption",
+        "Undersea earthquake",
+        "Landslide"
+      ],
+      "ans": 2,
+      "exp": "The 2004 Indian Ocean Tsunami was caused by a massive undersea earthquake (magnitude 9.1–9.3) off the west coast of Sumatra, Indonesia, on 26 December 2004. It killed over 230,000 people in 14 countries."
+    },
+    {
+      "id": 4,
+      "q": "The Titanic sank in which year?",
+      "opts": [
+        "1908",
+        "1910",
+        "1912",
+        "1914"
+      ],
+      "ans": 2,
+      "exp": "The RMS Titanic sank on 15 April 1912 in the North Atlantic Ocean after hitting an iceberg. About 1,500 people died, making it one of deadliest peacetime maritime disasters in history."
+    },
+    {
+      "id": 5,
+      "q": "The Fukushima nuclear disaster occurred in?",
+      "opts": [
+        "2008",
+        "2009",
+        "2011",
+        "2013"
+      ],
+      "ans": 2,
+      "exp": "The Fukushima Daiichi nuclear disaster occurred on 11 March 2011 in Japan, triggered by the Tōhoku earthquake and tsunami. Three reactors melted down. It is the second-worst nuclear accident after Chernobyl."
+    },
+    {
+      "id": 6,
+      "q": "NDRF stands for?",
+      "opts": [
+        "National Disaster Response Force",
+        "Natural Disaster Response Force",
+        "National Defense Response Force",
+        "National Disaster Relief Force"
+      ],
+      "ans": 0,
+      "exp": "NDRF stands for National Disaster Response Force. It was constituted in 2006 under the Disaster Management Act 2005. It is India's specialized force for disaster response with 16 battalions deployed across India."
+    },
+    {
+      "id": 7,
+      "q": "The deadliest earthquake in India in recent history struck which state in 2001?",
+      "opts": [
+        "Maharashtra",
+        "Odisha",
+        "Gujarat",
+        "Uttarakhand"
+      ],
+      "ans": 2,
+      "exp": "The 2001 Bhuj earthquake struck Gujarat on 26 January 2001 (Republic Day). With a magnitude of 7.7, it killed about 20,000 people, injured 167,000, and left 400,000 homeless."
+    },
+    {
+      "id": 8,
+      "q": "The Sendai Framework is related to?",
+      "opts": [
+        "Climate Change",
+        "Disaster Risk Reduction",
+        "Nuclear Safety",
+        "Pandemic Response"
+      ],
+      "ans": 1,
+      "exp": "The Sendai Framework for Disaster Risk Reduction 2015–2030 was adopted at the Third UN World Conference in Sendai, Japan in 2015. It aims to reduce disaster risk and losses in lives, livelihoods, and assets."
+    },
+    {
+      "id": 9,
+      "q": "Cyclones in the Bay of Bengal are named by which organization?",
+      "opts": [
+        "UN",
+        "WMO",
+        "IMD",
+        "NDRF"
+      ],
+      "ans": 2,
+      "exp": "Cyclones in the Bay of Bengal and Arabian Sea are named by the India Meteorological Department (IMD), which coordinates with 13 countries of the panel. The current naming list has names contributed by all member countries."
+    },
+    {
+      "id": 10,
+      "q": "The Uttarakhand flash floods disaster occurred in?",
+      "opts": [
+        "2010",
+        "2011",
+        "2013",
+        "2015"
+      ],
+      "ans": 2,
+      "exp": "The Uttarakhand flash floods and landslides (Kedarnath disaster) occurred in June 2013. Caused by an early and intense monsoon, the disaster killed over 5,700 people (official count). Many more were reported missing."
+    }
+  ]
+}

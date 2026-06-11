@@ -1,0 +1,322 @@
+---
+layout: default
+title: "Sign PDF Online Free — Place Signature and Seal in PDF | TyagiHub"
+description: "Sign PDF files online safely and securely. Draw custom handwritten signatures, type calligraphic cursive names, or upload transparent seal image stamps. 100% private and client-side secure."
+keywords: "sign pdf, signature pdf, transparent stamp, place seal in pdf, pdf-lib signature, electronic signature pdf, free offline sign pdf, TyagiHub pdf tools"
+lang_switch: false
+extra_css:
+ - "/assets/css/tyagihub-pdf.min.css"
+extra_js:
+ - "https://cdnjs.cloudflare.com/ajax/libs/pdf-lib/1.17.1/pdf-lib.min.js"
+ - "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.4.120/pdf.min.js"
+ - "/assets/js/libs/combine.js"
+---
+
+{% raw %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "SoftwareApplication",
+      "name": "TyagiHub Sign & Stamp PDF",
+      "operatingSystem": "All",
+      "applicationCategory": "WebApplication",
+      "description": "A high-fidelity client-side offline PDF signing and stamping application to electronically sign files safely.",
+      "url": "https://tyagihub.in/tools/pdf/sign-pdf/",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "INR"
+      },
+      "creator": {
+        "@type": "Organization",
+        "name": "TyagiHub",
+        "url": "https://tyagihub.in"
+      }
+    }
+  ]
+}
+</script>
+{% endraw %}
+
+<div class="pdf-tool-page tyagihub-sign hind-regular">
+
+  <div class="pdf-tool-header">
+    <nav class="pdf-tool-header__breadcrumb" aria-label="Breadcrumb">
+      <a href="/">Home</a>
+      <span aria-hidden="true"> / </span>
+      <a href="/tools/">Tools</a>
+      <span aria-hidden="true"> / </span>
+      <a href="/tools/pdf/">PDF Tools</a>
+      <span aria-hidden="true"> / </span>
+      <span aria-current="page">Sign PDF</span>
+    </nav>
+    <div class="container pdf-tool-header__inner">
+      <div class="pdf-tool-header__icon" aria-hidden="true" style="background: var(--clr-bg-active);">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:32px;height:32px;color:var(--clr-accent);">
+          <path d="M20 14.66V17c0 .55-.45 1-1 1h-2.34l-2.66 2.66v-5.32L19 10.34l1 4.32z" />
+          <path d="M12 20H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2h12c1.1 0 2 .9 2 2v6" />
+          <path d="M16 2.01L14 4h-4L8 2.01V4H4v14h4v-2.01l2 2h4l2-2v2.01h4V8" />
+          <path d="m18.5 2.5 3 3L12 15H9v-3l9.5-9.5z" />
+        </svg>
+      </div>
+      <div class="pdf-tool-header__text">
+        <h1 class="pdf-tool-header__title" style="font-family:'Hind'; font-weight:700;">Sign & Stamp PDF Documents Online</h1>
+        <p class="pdf-tool-header__desc">
+          Add electronic signatures or corporate stamps to your PDF documents with extreme visual fidelity.
+          Draw on screen, type cursive calligraphy, or import image seals. Done 100% locally in your standard sandbox.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="pdf-tool-workspace">
+
+    <div class="pdf-dropzone" id="sign-drop" role="button" aria-label="Upload PDF file to perform Signing" tabindex="0" style="cursor: pointer; display: flex; flex-direction: column; align-items: center; justify-content: center;">
+      <div class="pdf-dropzone__icon" aria-hidden="true" style="transition: transform 0.3s ease-in-out; margin-bottom: 16px;">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width: 56px; height: 56px; color: var(--clr-accent);">
+          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+          <polyline points="14 2 14 8 20 8" />
+          <path d="m16 13-9 9" />
+          <path d="m8 12 8 8" />
+        </svg>
+      </div>
+      <div class="pdf-dropzone__title" style="font-family:'Hind'; font-weight:700; font-size: 16px; margin-bottom: 6px;">Upload PDF Document to Sign</div>
+      <div class="pdf-dropzone__sub" style="font-size: 12px; color: var(--clr-text-3);">Supports drawing vectors, custom fonts & corporate seal stamps · 100% Client-Side Private</div>
+      
+      <div style="display:flex; flex-direction:column; gap:12px; align-items:center; margin-top:16px;">
+        <button class="pdf-dropzone__btn" type="button" aria-label="Select local PDF document">
+          <svg viewBox="0 0 24 24" aria-hidden="true" style="width:24px;height:24px;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;fill:none;overflow:visible;">
+            <polyline points="17 8 12 3 7 8" />
+            <line x1="12" y1="3" x2="12" y2="15" />
+          </svg>
+          Choose PDF document
+        </button>
+        <button type="button" id="sign-sample-trigger" class="pdf-dropzone__btn hover-accent-shadow" style="background:#475569; border:none; font-size:12px; padding:6px 14px; width:auto; border-radius:10px;">
+          ⚡ Try with a Sample Contract template
+        </button>
+      </div>
+      <input type="file" class="pdf-dropzone__input" id="sign-file-input" accept=".pdf,application/pdf" style="display: none;">
+    </div>
+
+    <div id="sign-unlock-modal-overlay" class="th-modal-overlay" style="display:none;">
+      <div class="th-modal-card">
+        <div class="th-modal-card__icon">🔒</div>
+        <h3 class="th-modal-card__title">Encrypted Access Required</h3>
+        <p class="th-modal-card__desc">This document contains access locks. Provide password keys to preview pages safely.</p>
+        <input type="password" id="sign-popup-password-field" class="th-modal-card__input" autocomplete="off" placeholder="Enter protection password...">
+        <div class="th-modal-card__actions">
+          <button type="button" id="sign-popup-submit-btn" class="btn btn-primary" style="background-color: var(--clr-accent); border: none;">Decrypt & Sign</button>
+          <button type="button" id="sign-popup-cancel-btn" class="btn btn-outline">Cancel</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="pdf-settings" id="sign-settings" aria-label="PDF Sign Layout Configuration" hidden>
+      <div class="pdf-tool-workspace__sign">
+        
+        <div class="sign-sidebar-controls" style="background: var(--clr-surface-2); border: 1px solid var(--clr-border-2); border-radius: 12px; padding: 20px;">
+          <h4 style="margin: 0 0 16px 0; font-family:'Hind'; font-weight:700; color:var(--clr-text-1); border-bottom: 2px solid var(--clr-border-2); padding-bottom: 10px; font-size:16px;">
+            🎨 Signature Creator
+          </h4>
+
+          <div class="sign-type-tabs">
+            <button type="button" class="sign-type-tabs__btn active" data-tab="text">📝 Text</button>
+            <button type="button" class="sign-type-tabs__btn" data-tab="draw">✍️ Draw</button>
+            <button type="button" class="sign-type-tabs__btn" data-tab="image">印 Stamp / Image</button>
+          </div>
+
+          <div style="margin-bottom: 16px;">
+            <label style="display:block; font-size:12px; font-weight:bold; color:var(--clr-text-2); margin-bottom: 6px;">
+              Ink Color Hue
+            </label>
+            <div class="color-swatches">
+              <div class="color-swatch active" style="background:#000000;" title="Midnight Black" data-hex="#000000">✓</div>
+              <div class="color-swatch" style="background:#1d4ed8;" title="Royal Blue" data-hex="#1d4ed8"></div>
+              <div class="color-swatch" style="background:#dc2626;" title="Scarlet Red" data-hex="#dc2626"></div>
+            </div>
+          </div>
+
+          <div id="pane-sign-text" class="tab-pane-content">
+            <div style="margin-bottom: 14px;">
+              <label for="sign-text-field" style="display:block; font-size:12px; font-weight:bold; color:var(--clr-text-2); margin-bottom: 6px;">
+                Enter Your Signature Text
+              </label>
+              <input type="text" id="sign-text-field" value="Authorized Sign" style="width:100%; height:40px; padding:8px 12px; border-radius:6px; border:1px solid var(--clr-border-2); background:var(--clr-bg); color:var(--clr-text-1); font-size:13.5px; outline:none;" autocomplete="off">
+            </div>
+
+            <div style="margin-bottom: 14px;">
+              <label for="sign-font-selector" style="display:block; font-size:12px; font-weight:bold; color:var(--clr-text-2); margin-bottom: 6px;">
+                Choose Hand calligraphic Cursive Style
+              </label>
+              <select id="sign-font-selector" style="width:100%; height:40px; padding:8px 12px; border-radius:6px; border:1px solid var(--clr-border-2); background:var(--clr-bg); color:var(--clr-text-1); font-size:13.5px; outline:none;">
+                <option value="0">Sacramento (Elegant)</option>
+                <option value="1">Dancing Script (Modern)</option>
+                <option value="2">Great Vibes (Flourished)</option>
+                <option value="3">Pacifico (Bold Brush)</option>
+                <option value="4">Caveat (Casual Handwriting)</option>
+                <option value="5">Homemade Apple (Organic)</option>
+              </select>
+            </div>
+          </div>
+
+          <div id="pane-sign-draw" class="tab-pane-content" hidden>
+            <div class="draw-board-container">
+              <canvas id="sign-draw-canvas" class="draw-board-canvas"></canvas>
+              <div class="draw-board-actions">
+                <span style="font-size:11px; color:var(--clr-text-2); user-select: none;">Draw inside this board</span>
+                <button type="button" id="sign-clear-board-btn" style="background: #ef4444; color:#ffffff; font-size:11px; font-weight:bold; padding:4px 8px; border-radius:4px; border:none; cursor:pointer;">
+                  Clear Panel
+                </button>
+              </div>
+            </div>
+            <div style="margin-bottom: 14px;">
+              <label for="sign-stroke-slider" style="display:flex; justify-content:space-between; font-size:12px; font-weight:bold; color:var(--clr-text-2); margin-bottom: 6px;">
+                <span>Stroke Line Width Thickness</span>
+                <span id="sign-stroke-val">3px</span>
+              </label>
+              <input type="range" id="sign-stroke-slider" min="1" max="10" value="3" style="width:100%;" oninput="document.getElementById('sign-stroke-val').textContent = this.value + 'px'">
+            </div>
+          </div>
+
+          <div id="pane-sign-image" class="tab-pane-content" hidden>
+            <div style="margin-bottom: 14px;">
+              <label for="sign-stamp-image-input" style="display:block; font-size:12px; font-weight:bold; color:var(--clr-text-2); margin-bottom: 6px;">
+                Upload Image Stamp (PNG/JPEG)
+              </label>
+              <input type="file" id="sign-stamp-image-input" accept="image/png, image/jpeg" style="font-size:12px;">
+            </div>
+
+            <div style="margin-bottom: 14px; background:var(--clr-bg-active); border:1px solid var(--clr-border-2); padding:10px; border-radius:6px; display:flex; align-items:center; gap:10px;">
+              <input type="checkbox" id="sign-white-bg-toggle" style="width:16px; height:16px; cursor:pointer;">
+              <label for="sign-white-bg-toggle" style="font-size:12px; font-weight:bold; color:var(--clr-text-1); cursor:pointer;">
+                Wipe/Remove White Solid Background
+              </label>
+            </div>
+          </div>
+
+          <h4 style="margin: 20px 0 14px 0; font-family:'Hind'; font-weight:700; color:var(--clr-text-1); border-bottom: 2px solid var(--clr-border-2); padding-bottom: 10px; font-size:14px;">
+            📏 Transformation adjustment guides
+          </h4>
+
+          <div style="margin-bottom: 12px;">
+            <label for="sign-scale-slider" style="display:flex; justify-content:space-between; font-size:11.5px; color:var(--clr-text-2); margin-bottom: 4px;">
+              <span>Signature Scale Size %</span>
+              <span id="sign-scale-lbl">40%</span>
+            </label>
+            <input type="range" id="sign-scale-slider" min="10" max="95" value="40" style="width:100%;">
+          </div>
+
+          <div style="margin-bottom: 12px;">
+            <label for="sign-rotate-slider" style="display:flex; justify-content:space-between; font-size:11.5px; color:var(--clr-text-2); margin-bottom: 4px;">
+              <span>Clockwise Rotation Angle</span>
+              <span id="sign-rotate-lbl">0°</span>
+            </label>
+            <input type="range" id="sign-rotate-slider" min="-180" max="180" value="0" style="width:100%;">
+          </div>
+
+          <div style="margin-bottom: 12px;">
+            <label for="sign-opacity-slider" style="display:flex; justify-content:space-between; font-size:11.5px; color:var(--clr-text-2); margin-bottom: 4px;">
+              <span>Transparency Opacity %</span>
+              <span id="sign-opacity-lbl">100%</span>
+            </label>
+            <input type="range" id="sign-opacity-slider" min="10" max="100" value="100" style="width:100%;">
+          </div>
+
+          <div style="margin-bottom: 12px;">
+            <label for="sign-x-slider" style="display:flex; justify-content:space-between; font-size:11.5px; color:var(--clr-text-2); margin-bottom: 4px;">
+              <span>Horizontal Align position X %</span>
+              <span id="sign-x-lbl">50%</span>
+            </label>
+            <input type="range" id="sign-x-slider" min="0" max="100" value="50" style="width:100%;">
+          </div>
+
+          <div style="margin-bottom: 12px;">
+            <label for="sign-y-slider" style="display:flex; justify-content:space-between; font-size:11.5px; color:var(--clr-text-2); margin-bottom: 4px;">
+              <span>Vertical Align position Y %</span>
+              <span id="sign-y-lbl">75%</span>
+            </label>
+            <input type="range" id="sign-y-slider" min="0" max="100" value="75" style="width:100%;">
+          </div>
+
+          <p style="font-size:11px; color:#ea580c; line-height:1.4; margin: 12px 0 0 0;">
+            💡 Quick Tip: You can also tap/click directly on the preview page, or drag the signature stamp box with your mouse to place it instantly!
+          </p>
+        </div>
+
+        <div class="sign-preview-controls" style="display: flex; flex-direction: column; align-items: center; justify-content: flex-start; width: 100%;">
+          
+          <div class="pdf-pager-toolbar">
+            <button type="button" class="pdf-pager-btn" id="sign-prev-page-btn" disabled aria-label="Previous Page">◀</button>
+            <span class="pdf-pager-indicator" id="sign-page-num-label">Page 1 of 1</span>
+            <button type="button" class="pdf-pager-btn" id="sign-next-page-btn" disabled aria-label="Next Page">▶</button>
+          </div>
+
+          <div class="pdf-preview-container-box">
+            <div class="pdf-preview-scroller">
+              <div class="pdf-preview-wrapper" id="sign-pdf-preview-wrapper" style="position: relative; display: inline-block;">
+                <canvas id="sign-pdf-canvas" class="pdf-preview-canvas"></canvas>
+                
+                <div class="signature-interactive-box" id="sign-interactive-stamp-box" style="position: absolute; z-index: 99; cursor: move; display: flex; align-items: center; justify-content: center; user-select: none; -webkit-user-select: none;">
+                  </div>
+              </div>
+            </div>
+          </div>
+
+          <div style="display: flex; gap: 12px; align-items: center; justify-content: flex-end; width:100%; margin-top:20px; border-top: 1px solid var(--clr-border-2); padding-top: 16px;">
+            <button type="button" id="sign-reset-btn" class="pdf-dropzone__btn hover-accent-shadow" style="background:#ea580c; border:none; padding:10px 20px; font-weight:600; font-size:13.5px;">
+              Reset Placement
+            </button>
+            <button type="button" id="sign-trigger-btn" class="pdf-dropzone__btn hover-accent-shadow" style="background:var(--clr-accent); border:none; padding:10px 24px; font-weight:800; font-size:14px;">
+              Apply Signature & Burn Layers ✍️
+            </button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div id="sign-progress" style="background: var(--clr-surface-2); border: 1px solid var(--clr-border-2); border-radius:12px; padding:24px; text-align:center; max-width: 500px; margin: 40px auto;" hidden>
+      <div style="font-size:32px; margin-bottom: 8px; animation: pulseSize 1.5s ease-in-out infinite;">✍️</div>
+      <div style="font-weight:700; font-size:15px; color:var(--clr-text-1); margin-bottom: 12px;" id="sign-progress-label">0% — Opening document pipeline...</div>
+      
+      <div style="width:100%; height:8px; background:var(--clr-border-2); border-radius:10px; overflow:hidden;">
+        <div id="sign-progress-fill" style="width:0%; height:100%; background:var(--clr-accent); border-radius:10px; transition: width 0.3s ease;"></div>
+      </div>
+      <p style="margin: 12px 0 0 0; font-size:11.5px; color:var(--clr-text-2); line-height: 1.5;">
+        Using offline sandboxed local execution keys. No files leave your machine workspace.
+      </p>
+    </div>
+
+    <div id="sign-result-box" class="pdf-settings" style="border: 2px solid var(--clr-accent); background: rgba(16, 185, 129, 0.03); margin-top:20px;" hidden>
+      <div id="sign-result-meta" style="margin-bottom: 16px;"></div>
+      
+      <div style="display: flex; gap: 12px; justify-content: flex-end; align-items: center; border-top: 1px solid var(--clr-border-2); padding-top: 16px;">
+        <button type="button" id="sign-return-btn" class="pdf-dropzone__btn" style="background: #475569; border:none; padding: 10px 20px;">
+          Sign Another File
+        </button>
+        <a id="sign-download-btn" class="pdf-dropzone__btn hover-accent-shadow" style="background:var(--clr-accent); border:none; text-decoration: none; padding: 10px 24px; font-weight:700;" href="#">
+          Download Signed PDF 📥
+        </a>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<style>
+  @keyframes pulseSize { 0% { transform: scale(1); } 50% { transform: scale(1.15); } 100% { transform: scale(1); } }
+  .signature-interactive-box img { display: block; max-width: 100%; height: auto; pointer-events: none; }
+  
+  /* 🌙 Dark Mode Support Contrast Elements */
+  @media (prefers-color-scheme: dark) {
+    .sign-sidebar-controls { background-color: #111827 !important; border-color: #334155 !important; }
+    #sign-text-field, #sign-font-selector { background-color: #1f2937 !important; color: #f8fafc !important; border-color: #475569 !important; }
+    .pdf-pager-toolbar { background-color: #111827 !important; border: 1px solid #334155; border-radius: 8px; padding: 4px; }
+    .pdf-pager-btn { background-color: #1f2937 !important; color: #f8fafc !important; }
+    .pdf-preview-container-box { background-color: #0f172a !important; border-color: #334155 !important; }
+    #sign-progress { background-color: #111827 !important; border-color: #334155 !important; }
+    #sign-progress-label { color: #f8fafc !important; }
+  }
+</style>

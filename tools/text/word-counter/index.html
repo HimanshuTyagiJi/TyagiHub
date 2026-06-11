@@ -1,0 +1,360 @@
+---
+layout: default
+title: "Word Counter — Count Words, Characters & Reading Time | TyagiHub"
+description: "Free online word counter. Count words, characters, sentences, paragraphs and reading time instantly. Real-time analysis with keyword density."
+keywords: "word counter, character counter, reading time calculator, word count tool, TyagiHub"
+permalink: /tools/text/word-counter/
+lang_switch: false
+---
+
+<style>
+:root {
+  --accent:#f5a623;--accent2:#e8431a;--green:#34d399;--blue:#60a5fa;--purple:#a78bfa;
+  --surface:var(--clr-surface,#1a1d2e);--surface2:var(--clr-surface-2,#242740);
+  --border:var(--clr-border,rgba(255,255,255,0.08));--border2:rgba(255,255,255,0.12);
+  --text:var(--clr-text,#c8cde0);--heading:var(--clr-heading,#eef0fa);
+  --muted:var(--clr-text-3,#5a6080);--bg:var(--clr-bg,#0f1117);
+  --radius:14px;--radius-sm:10px;
+  --font:var(--font-body,'Segoe UI',system-ui,sans-serif);
+  --mono:'Courier New','Consolas',monospace;
+}
+.tt-wrap{max-width:900px;margin:0 auto;padding:2.5rem 1.25rem 5rem;font-family:var(--font)}
+.tt-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(245,166,35,0.12);border:1px solid rgba(245,166,35,0.28);color:var(--accent);font-size:.72rem;font-weight:700;padding:4px 14px;border-radius:100px;margin-bottom:1rem;letter-spacing:.08em;text-transform:uppercase}
+.tt-badge svg{width:12px;height:12px;stroke:currentColor;fill:none;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}
+.tt-hero{margin-bottom:2rem}
+.tt-hero h1{font-size:clamp(1.7rem,4vw,2.4rem);font-weight:800;color:var(--heading);letter-spacing:-.03em;margin-bottom:.5rem;line-height:1.15}
+.tt-hero h1 em{font-style:normal;background:linear-gradient(135deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.tt-hero p{color:var(--text);font-size:.93rem;line-height:1.75;max-width:600px}
+.tt-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:1.4rem;margin-bottom:1.25rem}
+.tt-card-title{font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin-bottom:1.1rem;display:flex;align-items:center;gap:8px}
+.tt-card-title::before{content:'';width:3px;height:13px;background:linear-gradient(180deg,var(--accent),var(--accent2));border-radius:99px;flex-shrink:0}
+.tt-textarea{width:100%;box-sizing:border-box;background:var(--surface2);border:1px solid var(--border2);border-radius:var(--radius-sm);padding:14px 16px;font-family:var(--mono);font-size:.88rem;color:var(--heading);outline:none;resize:vertical;min-height:220px;line-height:1.75;transition:border-color .18s,box-shadow .18s}
+.tt-textarea:focus{border-color:var(--accent);box-shadow:0 0 0 3px rgba(245,166,35,.1)}
+.tt-textarea::placeholder{color:var(--muted);font-family:var(--font);font-size:.87rem}
+
+/* Stats grid */
+.wc-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:.75rem;margin-bottom:1.25rem}
+@media(max-width:600px){.wc-stats{grid-template-columns:repeat(2,1fr)}}
+.wc-stat-card{background:var(--surface2);border:1px solid var(--border);border-radius:var(--radius-sm);padding:1rem;text-align:center;transition:border-color .18s}
+.wc-stat-card:hover{border-color:rgba(245,166,35,.3)}
+.wc-stat-val{font-size:1.9rem;font-weight:800;color:var(--accent);font-family:var(--mono);line-height:1;margin-bottom:5px;transition:all .2s}
+.wc-stat-val.blue{color:var(--blue)}
+.wc-stat-val.green{color:var(--green)}
+.wc-stat-val.purple{color:var(--purple)}
+.wc-stat-label{font-size:.68rem;color:var(--muted);font-weight:700;text-transform:uppercase;letter-spacing:.08em}
+
+/* Reading time */
+.wc-reading{display:flex;gap:.75rem;flex-wrap:wrap;margin-bottom:1.25rem}
+.wc-read-chip{flex:1;min-width:130px;background:var(--surface2);border:1px solid var(--border);border-radius:var(--radius-sm);padding:.75rem 1rem;display:flex;align-items:center;gap:10px}
+.wc-read-chip svg{width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:1.8;flex-shrink:0}
+.wc-read-chip.silent svg{stroke:var(--blue)}
+.wc-read-chip.aloud svg{stroke:var(--green)}
+.wc-read-chip.skim svg{stroke:var(--purple)}
+.wc-read-info span:first-child{display:block;font-size:.82rem;font-weight:700;color:var(--heading)}
+.wc-read-info span:last-child{display:block;font-size:.7rem;color:var(--muted);margin-top:1px}
+
+/* Keyword density */
+.wc-kw-table{width:100%;border-collapse:collapse;font-size:.82rem}
+.wc-kw-table th{text-align:left;padding:7px 10px;border-bottom:1px solid var(--border);color:var(--muted);font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.07em}
+.wc-kw-table td{padding:7px 10px;border-bottom:1px solid var(--border);color:var(--text)}
+.wc-kw-table tr:last-child td{border-bottom:none}
+.wc-kw-word{font-family:var(--mono);color:var(--accent);font-weight:700}
+.wc-kw-bar-wrap{background:var(--surface2);border-radius:99px;height:5px;flex:1;overflow:hidden}
+.wc-kw-bar{height:100%;background:linear-gradient(90deg,var(--accent),var(--accent2));border-radius:99px;transition:width .4s}
+.wc-kw-row{display:flex;align-items:center;gap:8px}
+
+/* Controls */
+.wc-controls{display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:1rem;align-items:center}
+.tt-btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:9px 18px;border:none;border-radius:var(--radius-sm);font-family:var(--font);font-size:.87rem;font-weight:700;cursor:pointer;transition:all .2s;white-space:nowrap}
+.tt-btn svg{width:15px;height:15px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.tt-btn-primary{background:linear-gradient(135deg,var(--accent),var(--accent2));color:#000;box-shadow:0 4px 16px rgba(245,166,35,.25)}
+.tt-btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(245,166,35,.38)}
+.tt-btn-primary svg{stroke:#000}
+.tt-btn-secondary{background:var(--surface2);border:1px solid var(--border2);color:var(--text)}
+.tt-btn-secondary:hover{border-color:var(--accent);color:var(--accent)}
+.tt-btn-ghost{background:transparent;border:1px solid var(--border);color:var(--muted);font-size:.78rem;padding:7px 13px}
+.tt-btn-ghost:hover{border-color:var(--accent);color:var(--accent)}
+
+/* Empty */
+.wc-empty{text-align:center;padding:2.5rem;color:var(--muted)}
+.wc-empty svg{width:48px;height:48px;stroke:var(--surface2);fill:none;stroke-width:1.3;margin-bottom:.75rem}
+
+/* Progress bar for chars */
+.wc-limit-row{display:flex;align-items:center;gap:10px;margin-top:.75rem}
+.wc-limit-label{font-size:.75rem;color:var(--muted);white-space:nowrap}
+.wc-limit-bar-wrap{flex:1;height:4px;background:var(--border2);border-radius:99px;overflow:hidden}
+.wc-limit-bar{height:100%;background:linear-gradient(90deg,var(--green),var(--accent));border-radius:99px;transition:width .3s}
+.wc-limit-val{font-size:.75rem;color:var(--muted);font-family:var(--mono);white-space:nowrap}
+.wc-limit-input{width:90px;background:var(--surface2);border:1px solid var(--border2);border-radius:8px;padding:5px 10px;color:var(--heading);font-family:var(--mono);font-size:.83rem;outline:none;text-align:center}
+.wc-limit-input:focus{border-color:var(--accent)}
+
+.tt-toast{position:fixed;bottom:2rem;left:50%;transform:translateX(-50%) translateY(80px);background:#1e2235;border:1px solid var(--accent);color:var(--heading);font-size:.85rem;font-weight:600;padding:10px 22px;border-radius:100px;box-shadow:0 8px 32px rgba(0,0,0,.4);transition:transform .3s cubic-bezier(.4,0,.2,1);z-index:9999;white-space:nowrap;pointer-events:none}
+.tt-toast.show{transform:translateX(-50%) translateY(0)}
+
+[data-theme="light"] .tt-card{background:#fff;border-color:#d8deed}
+[data-theme="light"] .tt-textarea{background:#f5f7fa;border-color:#d0d7e6;color:#1a2030}
+[data-theme="light"] .wc-stat-card,.wc-read-chip{background:#f5f7fa;border-color:#d0d7e6}
+</style>
+
+<div class="tt-wrap">
+  <div class="tt-hero">
+    <div class="tt-badge">
+      <svg viewBox="0 0 24 24"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="15" y2="18"/></svg>
+      Text Tool
+    </div>
+    <h1>Word <em>Counter</em></h1>
+    <p>Count words, characters, sentences, and paragraphs in real time. Analyze reading time, keyword density, and set custom character limits. Perfect for essays, articles, SEO content, and social media posts.</p>
+  </div>
+
+  <!-- Stats -->
+  <div class="wc-stats">
+    <div class="wc-stat-card">
+      <div class="wc-stat-val" id="stat-words">0</div>
+      <div class="wc-stat-label">Words</div>
+    </div>
+    <div class="wc-stat-card">
+      <div class="wc-stat-val blue" id="stat-chars">0</div>
+      <div class="wc-stat-label">Characters</div>
+    </div>
+    <div class="wc-stat-card">
+      <div class="wc-stat-val green" id="stat-sentences">0</div>
+      <div class="wc-stat-label">Sentences</div>
+    </div>
+    <div class="wc-stat-card">
+      <div class="wc-stat-val purple" id="stat-para">0</div>
+      <div class="wc-stat-label">Paragraphs</div>
+    </div>
+  </div>
+
+  <!-- Reading time -->
+  <div class="wc-reading">
+    <div class="wc-read-chip silent">
+      <svg viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+      <div class="wc-read-info">
+        <span id="read-silent">0 sec</span>
+        <span>Silent Reading (238 wpm)</span>
+      </div>
+    </div>
+    <div class="wc-read-chip aloud">
+      <svg viewBox="0 0 24 24"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>
+      <div class="wc-read-info">
+        <span id="read-aloud">0 sec</span>
+        <span>Reading Aloud (183 wpm)</span>
+      </div>
+    </div>
+    <div class="wc-read-chip skim">
+      <svg viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+      <div class="wc-read-info">
+        <span id="read-skim">0 sec</span>
+        <span>Speed Reading (700 wpm)</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Input -->
+  <div class="tt-card">
+    <div class="tt-card-title">Your Text</div>
+    <div class="wc-controls">
+      <button class="tt-btn tt-btn-ghost" onclick="loadSample()">
+        <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+        Load Sample
+      </button>
+      <button class="tt-btn tt-btn-ghost" onclick="clearText()">
+        <svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        Clear
+      </button>
+      <button class="tt-btn tt-btn-secondary" onclick="copyText()">
+        <svg viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+        Copy Text
+      </button>
+      <button class="tt-btn tt-btn-secondary" onclick="downloadReport()">
+        <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        Download Report
+      </button>
+    </div>
+    <textarea class="tt-textarea" id="wc-input"
+      placeholder="Start typing or paste your text here — word count, character count, reading time and keyword analysis update in real time..."
+      oninput="analyze()" rows="10"></textarea>
+
+    <!-- Character limit -->
+    <div style="margin-top:.9rem;">
+      <div style="display:flex;align-items:center;gap:.75rem;flex-wrap:wrap;margin-bottom:.5rem;">
+        <span style="font-size:.78rem;font-weight:600;color:var(--muted);">Character Limit:</span>
+        <input type="number" class="wc-limit-input" id="limit-input" value="500" min="0" max="100000" oninput="updateLimit()">
+        <label style="display:flex;align-items:center;gap:5px;font-size:.78rem;color:var(--text);cursor:pointer;">
+          <input type="checkbox" id="limit-toggle" checked onchange="updateLimit()"> Enable limit
+        </label>
+      </div>
+      <div class="wc-limit-row">
+        <span class="wc-limit-label">0</span>
+        <div class="wc-limit-bar-wrap"><div class="wc-limit-bar" id="limit-bar" style="width:0%"></div></div>
+        <span class="wc-limit-val" id="limit-text">0 / 500</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Additional stats -->
+  <div class="tt-card">
+    <div class="tt-card-title">Detailed Analysis</div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:.6rem;" id="detail-stats">
+      <div class="wc-stat-card"><div class="wc-stat-val" id="d-chars-no-space" style="font-size:1.4rem">0</div><div class="wc-stat-label">Chars (no spaces)</div></div>
+      <div class="wc-stat-card"><div class="wc-stat-val blue" id="d-unique" style="font-size:1.4rem">0</div><div class="wc-stat-label">Unique Words</div></div>
+      <div class="wc-stat-card"><div class="wc-stat-val green" id="d-avg-word" style="font-size:1.4rem">0</div><div class="wc-stat-label">Avg Word Length</div></div>
+      <div class="wc-stat-card"><div class="wc-stat-val purple" id="d-avg-sent" style="font-size:1.4rem">0</div><div class="wc-stat-label">Avg Sentence Length</div></div>
+      <div class="wc-stat-card"><div class="wc-stat-val" id="d-lines" style="font-size:1.4rem">0</div><div class="wc-stat-label">Lines</div></div>
+      <div class="wc-stat-card"><div class="wc-stat-val blue" id="d-syllables" style="font-size:1.4rem">0</div><div class="wc-stat-label">Syllables (est.)</div></div>
+    </div>
+  </div>
+
+  <!-- Keyword density -->
+  <div class="tt-card">
+    <div class="tt-card-title">Top Keywords (Density)</div>
+    <div id="kw-wrap">
+      <div class="wc-empty">
+        <svg viewBox="0 0 24 24"><polyline points="4 7 4 4 20 4 20 7"/><line x1="9" y1="20" x2="15" y2="20"/><line x1="12" y1="4" x2="12" y2="20"/></svg>
+        <strong>No text yet</strong>
+        <p>Type or paste text to see keyword frequency analysis</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="tt-toast" id="tt-toast"></div>
+
+<script>
+const STOP = new Set(['the','a','an','and','or','but','in','on','at','to','for','of','with','by','from','is','are','was','were','be','been','have','has','had','do','does','did','will','would','could','should','may','might','it','its','this','that','these','those','i','we','you','he','she','they','me','us','him','her','them','my','our','your','his','their','as','if','not','so','than','then','when','where','who','how','what','which','can','all','any','each','no','up','out','about','into','over','after']);
+
+function analyze() {
+  const text = document.getElementById('wc-input').value;
+
+  // Basic counts
+  const words = text.trim() ? text.trim().split(/\s+/).filter(w => w.length > 0) : [];
+  const wordCount = words.length;
+  const charCount = text.length;
+  const charNoSpace = text.replace(/\s/g,'').length;
+  const sentences = text.trim() ? (text.match(/[^.!?]*[.!?]/g) || [text]).filter(s=>s.trim()).length : 0;
+  const paragraphs = text.trim() ? text.split(/\n\s*\n/).filter(p=>p.trim()).length : 0;
+  const lines = text.trim() ? text.split('\n').length : 0;
+  const unique = new Set(words.map(w=>w.toLowerCase().replace(/[^a-z]/g,''))).size;
+  const avgWord = wordCount ? (words.reduce((s,w)=>s+w.replace(/[^a-zA-Z]/g,'').length,0)/wordCount).toFixed(1) : 0;
+  const avgSent = sentences ? (wordCount/sentences).toFixed(1) : 0;
+  const syllables = words.reduce((s,w)=>s+countSyllables(w),0);
+
+  // Update stats
+  animateVal('stat-words', wordCount);
+  animateVal('stat-chars', charCount);
+  animateVal('stat-sentences', sentences);
+  animateVal('stat-para', paragraphs);
+  animateVal('d-chars-no-space', charNoSpace);
+  animateVal('d-unique', unique);
+  document.getElementById('d-avg-word').textContent = avgWord;
+  document.getElementById('d-avg-sent').textContent = avgSent;
+  animateVal('d-lines', lines);
+  animateVal('d-syllables', syllables);
+
+  // Reading times
+  const fmt = s => s < 60 ? Math.round(s)+' sec' : Math.floor(s/60)+'m '+Math.round(s%60)+'s';
+  document.getElementById('read-silent').textContent = fmt(wordCount/238*60);
+  document.getElementById('read-aloud').textContent  = fmt(wordCount/183*60);
+  document.getElementById('read-skim').textContent   = fmt(wordCount/700*60);
+
+  // Limit
+  updateLimit();
+
+  // Keywords
+  renderKeywords(words);
+}
+
+function countSyllables(word) {
+  word = word.toLowerCase().replace(/[^a-z]/g,'');
+  if (!word) return 0;
+  const vowels = word.match(/[aeiouy]+/g);
+  let count = vowels ? vowels.length : 1;
+  if (word.endsWith('e') && count > 1) count--;
+  return Math.max(1, count);
+}
+
+let lastVals = {};
+function animateVal(id, val) {
+  const el = document.getElementById(id);
+  if (!el) return;
+  el.textContent = val.toLocaleString();
+}
+
+function updateLimit() {
+  const enabled = document.getElementById('limit-toggle').checked;
+  const limit = parseInt(document.getElementById('limit-input').value) || 500;
+  const chars = document.getElementById('wc-input').value.length;
+  const bar = document.getElementById('limit-bar');
+  const txt = document.getElementById('limit-text');
+  if (enabled) {
+    const pct = Math.min(100, (chars/limit)*100);
+    bar.style.width = pct+'%';
+    bar.style.background = pct > 90 ? 'linear-gradient(90deg,#f87171,#e8431a)' : pct > 70 ? 'linear-gradient(90deg,#fbbf24,var(--accent))' : 'linear-gradient(90deg,var(--green),var(--accent))';
+    txt.textContent = `${chars.toLocaleString()} / ${limit.toLocaleString()}`;
+    txt.style.color = pct > 90 ? '#f87171' : 'var(--muted)';
+  } else {
+    bar.style.width = '0%';
+    txt.textContent = chars.toLocaleString()+' chars';
+    txt.style.color = 'var(--muted)';
+  }
+}
+
+function renderKeywords(words) {
+  const container = document.getElementById('kw-wrap');
+  if (!words.length) {
+    container.innerHTML = `<div class="wc-empty"><svg viewBox="0 0 24 24"><polyline points="4 7 4 4 20 4 20 7"/><line x1="9" y1="20" x2="15" y2="20"/><line x1="12" y1="4" x2="12" y2="20"/></svg><strong>No text yet</strong><p>Type or paste text to see keyword analysis</p></div>`;
+    return;
+  }
+  const freq = {};
+  words.forEach(w => {
+    const clean = w.toLowerCase().replace(/[^a-z']/g,'');
+    if (clean.length > 2 && !STOP.has(clean)) freq[clean] = (freq[clean]||0)+1;
+  });
+  const sorted = Object.entries(freq).sort((a,b)=>b[1]-a[1]).slice(0,12);
+  if (!sorted.length) { container.innerHTML = '<p style="color:var(--muted);font-size:.83rem;text-align:center;padding:1rem;">No significant keywords found.</p>'; return; }
+  const max = sorted[0][1];
+  container.innerHTML = `<table class="wc-kw-table">
+    <thead><tr><th>Word</th><th>Count</th><th style="min-width:120px">Frequency</th><th>Density</th></tr></thead>
+    <tbody>${sorted.map(([w,c])=>`<tr>
+      <td><span class="wc-kw-word">${w}</span></td>
+      <td style="color:var(--heading);font-weight:700">${c}</td>
+      <td><div class="wc-kw-row"><div class="wc-kw-bar-wrap"><div class="wc-kw-bar" style="width:${(c/max*100).toFixed(0)}%"></div></div></div></td>
+      <td style="color:var(--muted);font-family:var(--mono);font-size:.78rem">${(c/words.length*100).toFixed(1)}%</td>
+    </tr>`).join('')}</tbody>
+  </table>`;
+}
+
+function loadSample() {
+  document.getElementById('wc-input').value = `The quick brown fox jumps over the lazy dog. This pangram contains every letter of the English alphabet at least once. Pangrams are often used to display fonts, test keyboards, and develop typography.\n\nWord counting is an essential tool for writers, students, and content creators. Whether you are writing an essay, a blog post, or a social media caption, knowing your word count helps maintain focus and meet requirements.\n\nProfessional writers often set daily word count goals to maintain productivity. Ernest Hemingway famously aimed for 500 words per day, while Stephen King writes 2,000 words every single day without exception.`;
+  analyze();
+}
+
+function clearText() {
+  document.getElementById('wc-input').value = '';
+  analyze();
+}
+
+function copyText() {
+  const text = document.getElementById('wc-input').value;
+  if (!text) { showToast('Nothing to copy.'); return; }
+  navigator.clipboard.writeText(text).then(()=>showToast('✅ Text copied!'));
+}
+
+function downloadReport() {
+  const text = document.getElementById('wc-input').value;
+  const words = text.trim() ? text.trim().split(/\s+/).filter(w=>w.length>0).length : 0;
+  const report = `TyagiHub Word Counter — Report\nGenerated: ${new Date().toLocaleString()}\n${'='.repeat(40)}\nWords: ${words}\nCharacters (with spaces): ${text.length}\nCharacters (no spaces): ${text.replace(/\s/g,'').length}\nSentences: ${text.match(/[^.!?]*[.!?]/g)?.length||0}\nParagraphs: ${text.split(/\n\s*\n/).filter(p=>p.trim()).length}\nLines: ${text.split('\n').length}\nReading Time (silent): ~${Math.ceil(words/238)} min\nReading Time (aloud): ~${Math.ceil(words/183)} min\n${'='.repeat(40)}\n\nORIGINAL TEXT:\n${text}`;
+  const a = document.createElement('a');
+  a.download = 'word-count-report.txt';
+  a.href = URL.createObjectURL(new Blob([report],{type:'text/plain'}));
+  a.click();
+  showToast('✅ Report downloaded!');
+}
+
+function showToast(msg) {
+  const t = document.getElementById('tt-toast');
+  t.textContent=msg; t.classList.add('show');
+  setTimeout(()=>t.classList.remove('show'),2800);
+}
+</script>

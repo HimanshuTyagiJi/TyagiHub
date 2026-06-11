@@ -1,0 +1,175 @@
+---
+layout: default
+title: "PDF Header & Footer Generator — Add Page Numbers Online Free | TyagiHub"
+description: "Add dynamic running headers, custom footers, and structural sequential page numbers into PDFs online free. 100% secure offline client-side builder."
+keywords: "add page numbers to pdf, pdf header footer builder, numbering sequential sections pdf, custom watermark header pdf, free offline pdf numbers arranger, TyagiHub tools"
+lang_switch: false
+extra_css:
+ - /assets/css/tyagihub-pdf.min.css
+extra_js:
+- /assets/js/libs/pdf-lib.min.js
+- /assets/js/libs/all.pdf.js
+---
+
+
+
+<div class="pdf-tool-page tyagihub-hf-builder">
+
+  <div class="pdf-tool-header">
+<nav class="pdf-tool-header__breadcrumb" aria-label="Breadcrumb">
+      <a href="/">Home</a>
+      <span aria-hidden="true"> / </span>
+      <a href="/tools/">Tools</a>
+      <span aria-hidden="true"> / </span>
+      <a href="/tools/pdf/">PDF Tools</a>
+      <span aria-hidden="true"> / </span>
+      <span aria-current="page">H&F PDF</span>
+    </nav>
+    <div class="container pdf-tool-header__inner">
+      <div class="pdf-tool-header__text">
+        <h1 class="pdf-tool-header__title" style="font-family:'Hind'; font-weight:700;">Vector PDF Header & Page Numbers Live Engine</h1>
+        <p class="pdf-tool-header__desc">
+          Upload any document. The left panel serves as an active client-side embedded vector reader loop displaying your layout text additions instantly.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="pdf-tool-workspace">
+
+    <div class="pdf-dropzone" id="hf-drop" role="button" tabindex="0">
+      <div class="pdf-dropzone__title" style="font-family:'Hind'; font-weight:700;">Drag your PDF document here or browse local system</div>
+      <div class="pdf-dropzone__sub">Processes 100% locally inside client sandboxed memory stream loops · Max 100 MB</div>
+      <button class="pdf-dropzone__btn" type="button">Choose PDF Document</button>
+      <input type="file" class="pdf-dropzone__input" id="hf-file-input" accept=".pdf" aria-label="Target File Input">
+    </div>
+
+    <div class="pdf-settings" id="hf-settings" hidden>
+      <div id="hf-file-details"></div>
+
+      <div class="th-split-grid">
+        
+        <div class="th-pdf-viewport-pane">
+          <iframe id="hf-pdf-viewer" title="HD Vector PDF Real-time Preview Pane" src="about:blank"></iframe>
+        </div>
+
+        <div style="display:flex; flex-direction:column; gap:16px; background:var(--clr-surface); border:1px solid var(--clr-border); padding:16px; border-radius:8px;">
+          
+          <div style="border-bottom:1px solid var(--clr-border-2); padding-bottom:12px;">
+            <label style="display:flex; align-items:center; justify-content:space-between; font-weight:700; color:var(--clr-heading); font-size:13px; cursor:pointer;">
+              <span>🚀 Running Header Controls</span>
+              <input type="checkbox" id="hf-header-toggle" style="accent-color:var(--clr-accent);" checked>
+            </label>
+            <div style="display:flex; flex-direction:column; gap:6px; margin-top:8px;">
+              <input type="text" id="hf-header-left" value="Draft Version" style="padding:6px; font-size:12px; border:1px solid var(--clr-border-2); border-radius:4px; width:100%;">
+              <input type="text" id="hf-header-center" placeholder="Center Header dynamic variable..." style="padding:6px; font-size:12px; border:1px solid var(--clr-border-2); border-radius:4px; width:100%;">
+              <input type="text" id="hf-header-right" value="Confidential File" style="padding:6px; font-size:12px; border:1px solid var(--clr-border-2); border-radius:4px; width:100%;">
+            </div>
+          </div>
+
+          <div style="border-bottom:1px solid var(--clr-border-2); padding-bottom:12px;">
+            <label style="display:flex; align-items:center; justify-content:space-between; font-weight:700; color:var(--clr-heading); font-size:13px; cursor:pointer;">
+              <span>📥 Running Footer Controls</span>
+              <input type="checkbox" id="hf-footer-toggle" style="accent-color:var(--clr-accent);" checked>
+            </label>
+            <div style="display:flex; flex-direction:column; gap:6px; margin-top:8px;">
+              <input type="text" id="hf-footer-left" placeholder="Left Footer content text..." style="padding:6px; font-size:12px; border:1px solid var(--clr-border-2); border-radius:4px; width:100%;">
+              <input type="text" id="hf-footer-center" value="— Page [page] of [total] —" style="padding:6px; font-size:12px; border:1px solid var(--clr-border-2); border-radius:4px; width:100%;">
+              <input type="text" id="hf-footer-right" placeholder="Right Footer content text..." style="padding:6px; font-size:12px; border:1px solid var(--clr-border-2); border-radius:4px; width:100%;">
+            </div>
+          </div>
+
+          <div style="border-bottom:1px solid var(--clr-border-2); padding-bottom:12px; font-size:12px;">
+            <div style="display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-bottom:8px;">
+              <div>
+                <label style="font-weight:700; display:block; margin-bottom:2px;">Scope Matcher:</label>
+                <select id="hf-apply-to" style="padding:4px; width:100%; border-radius:4px; border:1px solid var(--clr-border-2);">
+                  <option value="all">All Pages</option>
+                  <option value="odd">Odd Pages Only</option>
+                  <option value="even">Even Pages Only</option>
+                </select>
+              </div>
+              <div>
+                <label style="font-weight:700; display:block; margin-bottom:2px;">Font Size (pt):</label>
+                <input type="number" id="hf-font-size" value="10" min="6" max="28" style="padding:4px; width:100%; border-radius:4px; border:1px solid var(--clr-border-2);">
+              </div>
+            </div>
+
+            <div style="display:grid; grid-template-columns:1fr 1fr; gap:8px;">
+              <div>
+                <label style="font-weight:700; display:block; margin-bottom:2px;">Hex Color:</label>
+                <input type="color" id="hf-hex-color" value="#64748b" style="padding:1px; height:28px; width:100%; border-radius:4px; border:1px solid var(--clr-border-2); cursor:pointer;">
+              </div>
+              <div>
+                <label style="font-weight:700; display:flex; justify-content:space-between; margin-bottom:2px;">
+                  <span>Opacity Layer:</span>
+                  <span id="hf-opacity-badge" style="color:var(--clr-accent);">85%</span>
+                </label>
+                <input type="range" id="hf-opacity" min="0.1" max="1.0" step="0.05" value="0.85" style="width:100%; cursor:pointer;">
+              </div>
+            </div>
+
+            <div style="display:flex; gap:12px; margin-top:10px;">
+              <label style="display:flex; align-items:center; gap:4px; cursor:pointer;"><input type="checkbox" id="hf-header-bold"><span>Bold Head</span></label>
+              <label style="display:flex; align-items:center; gap:4px; cursor:pointer;"><input type="checkbox" id="hf-footer-bold"><span>Bold Foot</span></label>
+              <label style="display:flex; align-items:center; gap:4px; cursor:pointer;"><input type="checkbox" id="hf-skip-first"><span>Skip Cover</span></label>
+            </div>
+          </div>
+
+          <div style="font-size:11px;">
+            <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:6px;">
+              <div>
+                <label style="color:var(--clr-text-3); display:block; text-align:center;">Top Bounds</label>
+                <input type="number" id="hf-margin-header" value="36" style="padding:4px; width:100%; border-radius:4px; border:1px solid var(--clr-border-2); text-align:center;">
+              </div>
+              <div>
+                <label style="color:var(--clr-text-3); display:block; text-align:center;">Bottom Bounds</label>
+                <input type="number" id="hf-margin-footer" value="36" style="padding:4px; width:100%; border-radius:4px; border:1px solid var(--clr-border-2); text-align:center;">
+              </div>
+              <div>
+                <label style="color:var(--clr-text-3); display:block; text-align:center;">Side Bounds</label>
+                <input type="number" id="hf-margin-side" value="54" style="padding:4px; width:100%; border-radius:4px; border:1px solid var(--clr-border-2); text-align:center;">
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="pdf-action-bar" id="hf-action" style="display:none;">
+      <div class="pdf-secure-badge">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" /></svg>
+        Sandbox Offline Processing Matrix Safe
+      </div>
+      <div style="display:flex; gap:8px;">
+        <button class="btn btn-outline" id="hf-reset-btn" type="button">Reset Layout</button>
+        <button class="btn btn-primary" id="hf-compile-btn" type="button">Compile Final PDF</button>
+      </div>
+    </div>
+
+    <div class="pdf-progress" id="hf-progress" role="progressbar" hidden>
+      <div class="pdf-progress__bar">
+        <div class="pdf-progress__fill" id="hf-progress-fill"></div>
+      </div>
+      <div class="pdf-progress__label" id="hf-progress-label">Regenerating vector structure parameters...</div>
+    </div>
+
+    <div class="pdf-result" id="hf-result-box" role="region" hidden>
+      <div class="pdf-result__icon" aria-hidden="true">
+        <svg width="100" height="100" viewBox="0 0 100 100" fill="none">
+          <circle class="check-bg" cx="50" cy="50" r="46" />
+          <circle class="check-circle" cx="50" cy="50" r="45" />
+          <polyline class="check-mark" points="28,52 43,67 72,35" />
+        </svg>
+      </div>
+      <div class="pdf-result__title" style="font-family:'Hind'; font-weight:700;">PDF Document Layout Compiled!</div>
+      <div class="pdf-result__meta" id="hf-result-meta">—</div>
+      <div class="pdf-result__actions">
+        <button class="btn btn-primary" id="hf-download-btn" type="button">Download Modified PDF</button>
+        <a href="/tools/pdf/" class="btn btn-outline">More PDF Tools</a>
+      </div>
+    </div>
+
+  </div>
+</div>

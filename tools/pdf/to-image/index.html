@@ -1,0 +1,215 @@
+---
+layout: default
+title: "Convert PDF to Image Online Free — High Quality PNG | TyagiHub"
+description: "Convert PDF documents pages to full-HD sharp PNG images online free. Secure client side processing."
+keywords: "convert pdf to image, pages to png, free image converter, TyagiHub pdf tools"
+lang_switch: false
+extra_css:
+ - /assets/css/tyagihub-pdf.min.css
+extra_js:
+- /assets/js/libs/pdf.min.mjs
+- /assets/js/libs/all.pdf.js
+---
+
+<div class="pdf-tool-page tyagihub-p2i-engine hind-regular">
+
+  <div class="pdf-tool-header">
+<nav class="pdf-tool-header__breadcrumb" aria-label="Breadcrumb">
+      <a href="/">Home</a>
+      <span aria-hidden="true"> / </span>
+      <a href="/tools/">Tools</a>
+      <span aria-hidden="true"> / </span>
+      <a href="/tools/pdf/">PDF Tools</a>
+      <span aria-hidden="true"> / </span>
+      <span aria-current="page">Compress PDF</span>
+    </nav>
+    <div class="container pdf-tool-header__inner">
+      <div class="pdf-tool-header__text">
+        <h1 class="pdf-tool-header__title" style="font-family:'Hind'; font-weight:700;">PDF to High-Definition Image Converter</h1>
+        <p class="pdf-tool-header__desc">
+          Rasterize vector pages into crystal clear, loss-less sharp PNG layers. 100% private, processed completely inside local client sandbox arrays.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="pdf-tool-workspace">
+
+    <div class="pdf-dropzone" id="p2i-drop" style="cursor: pointer; position: relative;">
+      <div class="pdf-dropzone__title" style="font-family:'Hind'; font-weight:700;">Drag your PDF document here or click to browse storage items</div>
+      <div class="pdf-dropzone__sub">Processes 100% locally. Safe for banking, corporate, and private identity files · Max 100 MB</div>
+      <button class="pdf-dropzone__btn" type="button" id="p2i-browse-btn">Choose PDF Document</button>
+      <input type="file" id="p2i-file-input" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; cursor: pointer; display: block;" accept="application/pdf">
+    </div>
+
+    <div id="p2i-unlock-modal-overlay" class="th-modal-overlay" style="display:none;">
+      <div class="th-modal-card">
+        <div style="font-size:32px; margin-bottom:8px;">🔒</div>
+        <h3 style="font-size:16px; color:#0f172a; font-weight:700; margin-bottom:6px; font-family:'Hind';">Password Protected Document</h3>
+        <p style="font-size:12px; color:#64748b; line-height:1.5; margin-bottom:14px;">This file requires an authorized user password before unlocking and loading internal pages vector trees layout.</p>
+        <input type="password" id="p2i-popup-password-field" class="th-modal-card__input" autocomplete="off" placeholder="">
+        <div style="display:flex; gap:10px; justify-content:center; margin-top:6px;">
+          <button type="button" id="p2i-popup-submit-btn" class="btn btn-primary" style="font-size:12px; padding:8px 16px;">Unlock Document</button>
+          <button type="button" id="p2i-popup-cancel-btn" class="btn btn-outline" style="font-size:12px; padding:8px 16px;">Cancel Process</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="pdf-settings" id="p2i-settings" hidden>
+      <div id="p2i-file-details"></div>
+
+      <div class="th-split-grid">
+        
+        <div class="th-modifier-sidebar" style="padding:24px; border-radius:16px;">
+          <h3 class="th-sidebar-heading" style="font-size:15px; margin-bottom:18px;">⚙️ Configure Extraction Parameters</h3>
+          
+          <div class="meta-input-group">
+            <label for="p2i-page-scope">Page Selection Range</label>
+            <select id="p2i-page-scope">
+              <option value="all">Convert All Pages into Images</option>
+              <option value="custom">Extract Specific Page Numbers / Ranges</option>
+            </select>
+          </div>
+
+          <div class="meta-input-group" id="p2i-custom-range-group" hidden>
+            <label for="p2i-custom-range">Type Page Numbers (Comma Separated)</label>
+            <input type="text" id="p2i-custom-range" placeholder="e.g., 1, 4, 7-12">
+          </div>
+
+          <div class="meta-input-group">
+            <label for="p2i-hd-quality">Resolution Output Quality Matrix</label>
+            <select id="p2i-hd-quality">
+              <option value="2.0">Full HD Quality (2.0x Sharp Vector Grid)</option>
+              <option value="3.0">Ultra HD Crisp Zoom (3.0x Ultra Sharp Printing)</option>
+              <option value="1.5">Standard Quality (Lightweight Optimization)</option>
+            </select>
+          </div>
+        </div>
+
+        <div style="display:flex; flex-direction:column; gap:16px;">
+          <div class="th-modifier-sidebar" style="padding:20px; border-radius:16px;">
+            <h3 class="th-sidebar-heading" style="font-size:13px; color:var(--clr-text-2); text-transform:uppercase;">📦 Continuous Download Sequence</h3>
+            <p style="font-size:12px; color:var(--clr-text-2); line-height:1.6;" class="noto-devanagari">
+              TyagiHub converts pages natively inside client runtime buffers memory. Jab aap download par click karenge, saare pages automated continuous sequence mein download hokar save ho jayenge.
+            </p>
+          </div>
+          
+          <div class="th-info-hint" style="margin:0; border-radius:12px; padding:14px;">
+            <p class="hind-bold" style="font-size:12px; color:var(--clr-heading); margin-bottom:4px;">🔒 100% Secure Offline Sandbox</p>
+            <p style="font-size:11px; line-height:1.4;">No streams, assets or parameters cross network bounds. All encryption schemas run natively within your browser.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="pdf-action-bar" id="p2i-action" style="display:none; margin-top:20px;">
+      <div class="pdf-secure-badge">
+        <svg viewBox="0 0 24 24" aria-hidden="true" style="width: 14px; height: 14px; fill: none; stroke: currentColor; stroke-width: 2; margin-right: 6px;"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" /></svg>
+        Secure Client Node Active
+      </div>
+      <div style="display:flex; gap:10px;">
+        <button class="btn btn-outline" id="p2i-reset-btn" type="button">Clear Workspaces</button>
+        <button class="btn btn-primary" id="p2i-compile-btn" type="button">Convert PDF to Image</button>
+      </div>
+    </div>
+
+    <div class="pdf-progress" id="p2i-progress" role="progressbar" hidden style="margin-top:20px;">
+      <div class="pdf-progress__bar">
+        <div class="pdf-progress__fill" id="p2i-progress-fill"></div>
+      </div>
+      <div class="pdf-progress__label" id="p2i-progress-label">Syncing variables elements...</div>
+    </div>
+
+    <div class="pdf-result" id="p2i-result-box" role="region" hidden style="margin-top:24px;">
+      <div class="pdf-result__icon" aria-hidden="true">
+        
+        <svg width="100" height="100" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+
+          <!-- Background circle -->
+          <circle class="check-bg" cx="50" cy="50" r="46"/>
+
+          <!-- Animated border circle -->
+          <circle class="check-circle" cx="50" cy="50" r="45"/>
+
+          <!-- Animated checkmark -->
+          <polyline class="check-mark" points="28,52 43,67 72,35"/>
+
+          <style>
+            .check-circle {
+              stroke: #22c55e;
+              stroke-width: 4;
+              stroke-linecap: round;
+              fill: none;
+              stroke-dasharray: 283;
+              stroke-dashoffset: 283;
+              animation: drawCircle 0.6s ease forwards;
+              transform-origin: center;
+              transform: rotate(-90deg);
+            }
+
+            .check-mark {
+              stroke: #22c55e;
+              stroke-width: 5;
+              stroke-linecap: round;
+              stroke-linejoin: round;
+              fill: none;
+              stroke-dasharray: 60;
+              stroke-dashoffset: 60;
+              animation: drawCheck 0.4s ease forwards 0.5s;
+            }
+
+            .check-bg {
+              fill: #dcfce7;
+              opacity: 0;
+              animation: fadeInBg 0.3s ease forwards 0.2s;
+            }
+
+            .pdf-result__icon {
+              display: flex;
+              align-items: center;
+              justify-content: center;
+            }
+
+            @keyframes drawCircle {
+              to { stroke-dashoffset: 0; }
+            }
+
+            @keyframes drawCheck {
+              to { stroke-dashoffset: 0; }
+            }
+
+            @keyframes fadeInBg {
+              to { opacity: 1; }
+            }
+          </style>
+
+        </svg>
+      </div>
+      <div class="pdf-result__title" style="font-family:'Hind'; font-weight:700;">Conversion Completed Successfully!</div>
+      <div class="pdf-result__meta" id="p2i-result-meta">—</div>
+      <div class="pdf-result__actions" style="display: flex; flex-direction: column; gap: 12px; align-items: center; justify-content: center; margin-top: 20px;">
+        <div style="display: flex; gap: 12px; width: 100%; justify-content: center; flex-wrap: wrap;">
+          <button class="btn btn-primary" id="p2i-download-zip-btn" type="button" style="display: flex; align-items: center; gap: 8px; font-weight: 600;">
+            📦 Download All as ZIP (Recommended)
+          </button>
+          <button class="btn btn-outline" id="p2i-download-individually-btn" type="button" style="display: flex; align-items: center; gap: 8px;">
+            🖼️ Download Individually
+          </button>
+        </div>
+        <button class="btn btn-outline" onclick="location.reload()" type="button" style="padding: 6px 14px; font-size: 11px; margin-top: 4px;">
+          🔄 Start New File
+        </button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    if (window.TyagiHubPdfToImgController) {
+      new window.TyagiHubPdfToImgController();
+    }
+  });
+</script>

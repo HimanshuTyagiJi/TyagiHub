@@ -1,0 +1,128 @@
+{
+  "title": "Famous Personalities",
+  "title_hi": "प्रसिद्ध व्यक्तित्व",
+  "icon": "👤",
+  "slug": "famous-personalities",
+  "questions": [
+    {
+      "id": 1,
+      "q": "Who is known as the 'Father of the Nation' in India?",
+      "opts": [
+        "Jawaharlal Nehru",
+        "Sardar Patel",
+        "Mahatma Gandhi",
+        "Subhas Chandra Bose"
+      ],
+      "ans": 2,
+      "exp": "Mahatma Gandhi (Mohandas Karamchand Gandhi) is known as the 'Father of the Nation' in India. He led India's independence movement through non-violent civil disobedience."
+    },
+    {
+      "id": 2,
+      "q": "Who was the first woman Prime Minister of India?",
+      "opts": [
+        "Pratibha Patil",
+        "Indira Gandhi",
+        "Sonia Gandhi",
+        "Sarojini Naidu"
+      ],
+      "ans": 1,
+      "exp": "Indira Gandhi was the first and only woman Prime Minister of India. She served as PM from 1966 to 1977 and again from 1980 until her assassination on 31 October 1984."
+    },
+    {
+      "id": 3,
+      "q": "APJ Abdul Kalam was known as the 'Missile Man of India' for his work in?",
+      "opts": [
+        "Defense research",
+        "Space exploration",
+        "Nuclear weapons",
+        "Satellite technology"
+      ],
+      "ans": 0,
+      "exp": "Dr. APJ Abdul Kalam was known as the 'Missile Man of India' for his crucial role in developing India's ballistic missile and launch vehicle programs. He also served as India's 11th President (2002–2007)."
+    },
+    {
+      "id": 4,
+      "q": "Who wrote the book 'My Experiments with Truth'?",
+      "opts": [
+        "Jawaharlal Nehru",
+        "Subhas Chandra Bose",
+        "Mahatma Gandhi",
+        "B.R. Ambedkar"
+      ],
+      "ans": 2,
+      "exp": "'My Experiments with Truth' (originally in Gujarati as Satyana Prayogo) is the autobiography of Mahatma Gandhi. It covers his life from childhood to 1921."
+    },
+    {
+      "id": 5,
+      "q": "Rabindranath Tagore was the first Asian to win the Nobel Prize in which field?",
+      "opts": [
+        "Peace",
+        "Economics",
+        "Physics",
+        "Literature"
+      ],
+      "ans": 3,
+      "exp": "Rabindranath Tagore won the Nobel Prize in Literature in 1913 for his collection of poems 'Gitanjali'. He was the first non-European to win this prize."
+    },
+    {
+      "id": 6,
+      "q": "Who founded the Indian National Army (INA)?",
+      "opts": [
+        "Bhagat Singh",
+        "Subhas Chandra Bose",
+        "Lal Bahadur Shastri",
+        "Bal Gangadhar Tilak"
+      ],
+      "ans": 1,
+      "exp": "Subhas Chandra Bose founded and led the Indian National Army (Azad Hind Fauj) during World War II to overthrow British rule in India with Axis support."
+    },
+    {
+      "id": 7,
+      "q": "Who is the first Indian-origin woman to go to space?",
+      "opts": [
+        "Sunita Williams",
+        "Kalpana Chawla",
+        "Rakhi Sharma",
+        "Indira Gandhi"
+      ],
+      "ans": 1,
+      "exp": "Kalpana Chawla was the first Indian-origin woman to go to space. She flew aboard the Space Shuttle Columbia in 1997. She died in the Columbia disaster in 2003 during her second space mission."
+    },
+    {
+      "id": 8,
+      "q": "C.V. Raman won the Nobel Prize for which discovery?",
+      "opts": [
+        "Raman Effect",
+        "Nuclear fission",
+        "Theory of Relativity",
+        "Quantum mechanics"
+      ],
+      "ans": 0,
+      "exp": "C.V. Raman won the Nobel Prize in Physics in 1930 for the discovery of the Raman Effect (the scattering of light). He was the first Asian to win a Nobel Prize in science."
+    },
+    {
+      "id": 9,
+      "q": "Who is known as the 'Nightingale of India'?",
+      "opts": [
+        "Indira Gandhi",
+        "Sarojini Naidu",
+        "Lata Mangeshkar",
+        "M.S. Subbulakshmi"
+      ],
+      "ans": 1,
+      "exp": "Sarojini Naidu is known as the 'Nightingale of India' for her literary work. She was also the first woman President of the Indian National Congress and the first woman Governor of an Indian state."
+    },
+    {
+      "id": 10,
+      "q": "Who designed the national flag of India?",
+      "opts": [
+        "Jawaharlal Nehru",
+        "Mahatma Gandhi",
+        "Pingali Venkayya",
+        "B.R. Ambedkar"
+      ],
+      "ans": 2,
+      "exp": "Pingali Venkayya designed the national flag of India. He was a freedom fighter from Andhra Pradesh. He designed the basic layout of the flag with saffron, white, and green colors."
+    }
+  ]
+}

@@ -1,0 +1,1375 @@
+---
+layout: default
+title: "DeviceX — All-in-One Device Diagnostics & Utility Toolkit"
+description: "DeviceX is the ultimate device utility app. Test sensors, GPS, internet speed, battery health, display, speakers, and more — all in one powerful toolkit."
+lang: en
+lang_switch: false
+---
+
+<style>
+/* ═══════════════════════════════════════════
+   DESIGN TOKENS
+═══════════════════════════════════════════ */
+:root {
+  --bg:       #080b12;
+  --bg2:      #0d1120;
+  --surface:  #111827;
+  --surface2: #1a2236;
+  --surface3: #222d45;
+  --border:   rgba(255,255,255,0.07);
+  --border2:  rgba(255,255,255,0.12);
+  --text:     #94a3b8;
+  --heading:  #f1f5f9;
+  --muted:    #475569;
+  --accent:   #3b82f6;
+  --accent2:  #06b6d4;
+  --accent3:  #8b5cf6;
+  --green:    #10b981;
+  --orange:   #f59e0b;
+  --red:      #ef4444;
+  --pink:     #ec4899;
+  --radius:   16px;
+  --radius-sm:10px;
+  --font:     'SF Pro Display',-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;
+  --mono:     'SF Mono','Fira Code','Consolas',monospace;
+  --glow-blue: 0 0 40px rgba(59,130,246,0.25);
+  --glow-cyan: 0 0 40px rgba(6,182,212,0.2);
+  --glow-purple:0 0 40px rgba(139,92,246,0.2);
+}
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;overflow-x:hidden}
+body{background:var(--bg);color:var(--text);font-family:var(--font);line-height:1.6;overflow-x:hidden}
+
+/* ═══════════════════════════════════════════
+   TYPOGRAPHY
+═══════════════════════════════════════════ */
+h1,h2,h3,h4{color:var(--heading);font-weight:800;letter-spacing:-0.03em;line-height:1.1}
+h1{font-size:clamp(2.8rem,7vw,5.2rem)}
+h2{font-size:clamp(1.9rem,4vw,3rem)}
+h3{font-size:clamp(1.2rem,2.5vw,1.6rem)}
+p{line-height:1.75;color:var(--text)}
+
+.gradient-text{
+  background:linear-gradient(135deg,var(--accent),var(--accent2),var(--accent3));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+}
+
+/* ═══════════════════════════════════════════
+   LAYOUT
+═══════════════════════════════════════════ */
+.container{max-width:1200px;margin:0 auto;padding:0 1.5rem}
+section{padding:6rem 0}
+
+/* ═══════════════════════════════════════════
+   SCROLLBAR
+═══════════════════════════════════════════ */
+::-webkit-scrollbar{width:5px}
+::-webkit-scrollbar-track{background:var(--bg)}
+::-webkit-scrollbar-thumb{background:var(--surface3);border-radius:99px}
+
+/* ═══════════════════════════════════════════
+   NAV
+═══════════════════════════════════════════ */
+
+.nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none}
+.nav-logo-icon{
+  width:36px;height:36px;border-radius:10px;
+  background:linear-gradient(135deg,var(--accent),var(--accent2));
+  display:flex;align-items:center;justify-content:center;
+  box-shadow:var(--glow-blue);
+}
+.nav-logo-icon svg{width:20px;height:20px;stroke:#fff;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.nav-logo-text{font-size:1.2rem;font-weight:800;color:var(--heading);letter-spacing:-.02em}
+.nav-logo-text span{background:linear-gradient(135deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.nav-links{display:flex;gap:2rem;list-style:none}
+.nav-links a{text-decoration:none;font-size:.88rem;font-weight:600;color:var(--text);transition:color .2s}
+.nav-links a:hover{color:var(--heading)}
+.nav-cta{
+  padding:8px 20px;border-radius:10px;
+  background:linear-gradient(135deg,var(--accent),var(--accent2));
+  color:#fff;text-decoration:none;font-size:.87rem;font-weight:700;
+  box-shadow:var(--glow-blue);transition:all .2s;
+}
+.nav-cta:hover{transform:translateY(-1px);box-shadow:0 0 50px rgba(59,130,246,.4)}
+@media(max-width:768px){.nav-links{display:none}}
+
+/* ═══════════════════════════════════════════
+   HERO
+═══════════════════════════════════════════ */
+.hero{
+  min-height:100vh;display:flex;align-items:center;
+  padding:8rem 0 6rem;position:relative;overflow:hidden;
+}
+.hero::before{
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(ellipse 80% 60% at 50% 0%, rgba(59,130,246,.12) 0%, transparent 60%),
+             radial-gradient(ellipse 40% 40% at 80% 60%, rgba(139,92,246,.08) 0%, transparent 50%);
+  pointer-events:none;
+}
+
+/* Animated grid background */
+.hero-grid{
+  position:absolute;inset:0;
+  background-image:linear-gradient(rgba(59,130,246,.04) 1px, transparent 1px),
+                   linear-gradient(90deg, rgba(59,130,246,.04) 1px, transparent 1px);
+  background-size:60px 60px;
+  animation:gridMove 20s linear infinite;
+  pointer-events:none;
+}
+@keyframes gridMove{0%{transform:translateY(0)}100%{transform:translateY(60px)}}
+
+.hero-content{position:relative;z-index:1;display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center}
+@media(max-width:900px){.hero-content{grid-template-columns:1fr;text-align:center}}
+
+.hero-badge{
+  display:inline-flex;align-items:center;gap:8px;
+  background:rgba(59,130,246,.1);border:1px solid rgba(59,130,246,.25);
+  color:var(--accent2);font-size:.75rem;font-weight:700;
+  padding:5px 14px;border-radius:100px;margin-bottom:1.5rem;
+  letter-spacing:.06em;text-transform:uppercase;
+  animation:fadeUp .6s ease both;
+}
+.hero-badge .pulse{width:6px;height:6px;border-radius:50%;background:var(--green);animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(1.5)}}
+
+.hero h1{margin-bottom:1.25rem;animation:fadeUp .6s .1s ease both}
+.hero p{font-size:1.1rem;margin-bottom:2rem;max-width:480px;animation:fadeUp .6s .2s ease both}
+@media(max-width:900px){.hero p{margin:0 auto 2rem}}
+
+.hero-btns{display:flex;gap:.75rem;flex-wrap:wrap;animation:fadeUp .6s .3s ease both}
+@media(max-width:900px){.hero-btns{justify-content:center}}
+
+.btn-primary{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:14px 28px;border-radius:var(--radius-sm);
+  background:linear-gradient(135deg,var(--accent),var(--accent2));
+  color:#fff;text-decoration:none;font-weight:700;font-size:.95rem;
+  box-shadow:var(--glow-blue);transition:all .25s;border:none;cursor:pointer;
+}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 0 60px rgba(59,130,246,.5)}
+.btn-primary svg{width:18px;height:18px;stroke:#fff;fill:none;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}
+
+.btn-secondary{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:14px 28px;border-radius:var(--radius-sm);
+  background:var(--surface);border:1px solid var(--border2);
+  color:var(--heading);text-decoration:none;font-weight:700;font-size:.95rem;
+  transition:all .25s;
+}
+.btn-secondary:hover{border-color:var(--accent);background:var(--surface2)}
+.btn-secondary svg{width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+
+.hero-stats{display:flex;gap:2rem;margin-top:2.5rem;animation:fadeUp .6s .4s ease both}
+@media(max-width:900px){.hero-stats{justify-content:center}}
+.hero-stat-val{font-size:1.6rem;font-weight:800;color:var(--heading);line-height:1;font-family:var(--mono)}
+.hero-stat-label{font-size:.73rem;color:var(--muted);text-transform:uppercase;letter-spacing:.07em;margin-top:3px}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+
+/* ═══════════════════════════════════════════
+   PHONE MOCKUP
+═══════════════════════════════════════════ */
+.phone-wrap{position:relative;display:flex;justify-content:center;align-items:center;animation:fadeUp .6s .2s ease both}
+@media(max-width:900px){.phone-wrap{order:-1}}
+
+.phone-glow{
+  position:absolute;width:300px;height:300px;border-radius:50%;
+  background:radial-gradient(circle,rgba(59,130,246,.2) 0%,transparent 70%);
+  animation:glowPulse 4s ease-in-out infinite;
+}
+@keyframes glowPulse{0%,100%{transform:scale(1);opacity:.7}50%{transform:scale(1.15);opacity:1}}
+
+.phone{
+  width:260px;height:520px;
+  background:linear-gradient(145deg,#1a2236,#111827);
+  border-radius:38px;
+  border:1.5px solid rgba(255,255,255,0.12);
+  box-shadow:0 40px 80px rgba(0,0,0,.6),inset 0 1px 0 rgba(255,255,255,.08);
+  position:relative;overflow:hidden;
+  animation:phoneFloat 6s ease-in-out infinite;
+}
+@keyframes phoneFloat{0%,100%{transform:translateY(0) rotate(-1deg)}50%{transform:translateY(-16px) rotate(1deg)}}
+
+.phone-notch{
+  width:80px;height:22px;background:var(--bg);
+  border-radius:0 0 16px 16px;margin:0 auto;
+  position:relative;z-index:2;
+}
+.phone-screen{
+  position:absolute;inset:0;
+  background:linear-gradient(160deg,#0d1120,#111827);
+  border-radius:38px;overflow:hidden;padding:8px;
+}
+.phone-screen-inner{
+  background:var(--bg);border-radius:32px;height:100%;
+  overflow:hidden;padding:0;
+}
+
+/* Phone dashboard */
+.phone-dash{padding:16px 14px;height:100%;display:flex;flex-direction:column;gap:8px}
+.phone-dash-header{display:flex;justify-content:space-between;align-items:center;margin-top:18px;margin-bottom:4px}
+.phone-dash-title{font-size:11px;font-weight:800;color:var(--heading);letter-spacing:-.01em}
+.phone-dash-time{font-size:9px;color:var(--muted);font-family:var(--mono)}
+
+.phone-metric-grid{display:grid;grid-template-columns:1fr 1fr;gap:6px}
+.phone-metric{
+  background:var(--surface);border:1px solid var(--border);
+  border-radius:10px;padding:8px;
+}
+.phone-metric-label{font-size:7px;text-transform:uppercase;letter-spacing:.07em;color:var(--muted);margin-bottom:4px}
+.phone-metric-val{font-size:13px;font-weight:800;font-family:var(--mono)}
+.phone-metric-bar{height:3px;background:var(--surface3);border-radius:99px;margin-top:5px;overflow:hidden}
+.phone-metric-fill{height:100%;border-radius:99px;animation:barAnim 3s ease-in-out infinite}
+@keyframes barAnim{0%,100%{width:65%}50%{width:78%}}
+
+/* Mini chart */
+.phone-chart{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:8px}
+.phone-chart-label{font-size:7px;text-transform:uppercase;letter-spacing:.07em;color:var(--muted);margin-bottom:6px}
+.mini-bars{display:flex;gap:3px;align-items:flex-end;height:28px}
+.mini-bar{flex:1;border-radius:3px 3px 0 0;background:linear-gradient(180deg,var(--accent),var(--accent2));animation:barHeight 2s ease-in-out infinite}
+@keyframes barHeight{0%,100%{opacity:.7}50%{opacity:1}}
+
+/* Status row */
+.phone-status-row{display:flex;gap:5px}
+.phone-status-chip{
+  flex:1;background:var(--surface);border:1px solid var(--border);
+  border-radius:7px;padding:5px 6px;text-align:center;
+}
+.phone-status-dot{width:5px;height:5px;border-radius:50%;margin:0 auto 3px}
+.phone-status-text{font-size:7px;color:var(--muted)}
+
+/* Floating badges around phone */
+.phone-badge{
+  position:absolute;
+  background:var(--surface);border:1px solid var(--border2);
+  border-radius:12px;padding:8px 12px;
+  display:flex;align-items:center;gap:8px;
+  box-shadow:0 8px 32px rgba(0,0,0,.4);
+  font-size:.78rem;font-weight:600;color:var(--heading);
+  white-space:nowrap;
+  animation:badgeFloat 5s ease-in-out infinite;
+}
+.phone-badge svg{width:14px;height:14px;flex-shrink:0;stroke:none;fill:currentColor}
+.badge-1{top:60px;left:-110px;animation-delay:0s}
+.badge-2{top:180px;right:-110px;animation-delay:1.5s}
+.badge-3{bottom:120px;left:-100px;animation-delay:3s}
+@keyframes badgeFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+@media(max-width:900px){.phone-badge{display:none}}
+
+/* ═══════════════════════════════════════════
+   SECTION HEADERS
+═══════════════════════════════════════════ */
+.section-header{text-align:center;margin-bottom:4rem}
+.section-badge{
+  display:inline-flex;align-items:center;gap:6px;
+  background:rgba(59,130,246,.1);border:1px solid rgba(59,130,246,.2);
+  color:var(--accent2);font-size:.72rem;font-weight:700;
+  padding:4px 14px;border-radius:100px;margin-bottom:1rem;
+  letter-spacing:.08em;text-transform:uppercase;
+}
+.section-header h2{margin-bottom:.75rem}
+.section-header p{font-size:1rem;max-width:540px;margin:0 auto;color:var(--text)}
+
+/* ═══════════════════════════════════════════
+   FEATURE CATEGORIES
+═══════════════════════════════════════════ */
+.categories{padding:5rem 0;border-top:1px solid var(--border)}
+.cat-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:1rem}
+.cat-card{
+  background:var(--surface);border:1px solid var(--border);
+  border-radius:var(--radius);padding:1.4rem;
+  transition:all .25s;cursor:pointer;
+  position:relative;overflow:hidden;
+}
+.cat-card::before{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(135deg,transparent 50%,rgba(59,130,246,.04) 100%);
+  transition:opacity .3s;opacity:0;
+}
+.cat-card:hover{border-color:rgba(59,130,246,.3);transform:translateY(-4px);box-shadow:0 20px 40px rgba(0,0,0,.3)}
+.cat-card:hover::before{opacity:1}
+.cat-icon{
+  width:44px;height:44px;border-radius:12px;
+  display:flex;align-items:center;justify-content:center;
+  margin-bottom:1rem;
+}
+.cat-icon svg{width:22px;height:22px;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.cat-name{font-size:.95rem;font-weight:700;color:var(--heading);margin-bottom:.3rem}
+.cat-count{font-size:.75rem;color:var(--muted)}
+
+/* ═══════════════════════════════════════════
+   DASHBOARD PREVIEW SECTION
+═══════════════════════════════════════════ */
+.dashboard-section{background:linear-gradient(180deg,var(--bg) 0%,var(--bg2) 50%,var(--bg) 100%)}
+.dash-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}
+@media(max-width:900px){.dash-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:580px){.dash-grid{grid-template-columns:1fr}}
+.dash-card{
+  background:var(--surface);border:1px solid var(--border);
+  border-radius:var(--radius);padding:1.4rem;
+  transition:all .3s;position:relative;overflow:hidden;
+}
+.dash-card:hover{border-color:var(--border2);transform:translateY(-2px);box-shadow:0 16px 40px rgba(0,0,0,.3)}
+.dash-card-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:1.1rem}
+.dash-card-label{font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.09em;color:var(--muted)}
+.dash-card-status{display:flex;align-items:center;gap:5px;font-size:.7rem;font-weight:600}
+.status-dot{width:6px;height:6px;border-radius:50%;animation:pulse 2s infinite}
+.status-good{color:var(--green)}.status-dot-good{background:var(--green)}
+.status-warn{color:var(--orange)}.status-dot-warn{background:var(--orange)}
+.status-ok{color:var(--accent)}.status-dot-ok{background:var(--accent)}
+
+/* Circular gauge */
+.gauge-wrap{display:flex;flex-direction:column;align-items:center;margin:.5rem 0}
+.gauge{position:relative;width:110px;height:110px}
+.gauge svg{width:100%;height:100%;transform:rotate(-90deg)}
+.gauge-track{fill:none;stroke:var(--surface3);stroke-width:8;stroke-linecap:round}
+.gauge-fill{fill:none;stroke-width:8;stroke-linecap:round;transition:stroke-dashoffset .8s ease;animation:gaugeAnim 4s ease-in-out infinite}
+@keyframes gaugeAnim{0%,100%{stroke-dashoffset:calc(282.6 - 282.6 * 0.68)}50%{stroke-dashoffset:calc(282.6 - 282.6 * 0.74)}}
+.gauge-center{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.gauge-val{font-size:1.3rem;font-weight:800;color:var(--heading);font-family:var(--mono);line-height:1}
+.gauge-unit{font-size:.65rem;color:var(--muted);margin-top:2px}
+
+/* Speed meter */
+.speed-val{font-size:2.4rem;font-weight:800;font-family:var(--mono);color:var(--heading);line-height:1}
+.speed-unit{font-size:.75rem;color:var(--muted);margin-left:4px}
+.speed-bar{height:5px;background:var(--surface3);border-radius:99px;margin:.6rem 0;overflow:hidden}
+.speed-fill{height:100%;border-radius:99px;background:linear-gradient(90deg,var(--accent),var(--accent2));animation:speedAnim 3s ease-in-out infinite}
+@keyframes speedAnim{0%,100%{width:72%}50%{width:85%}}
+.speed-labels{display:flex;justify-content:space-between;font-size:.65rem;color:var(--muted)}
+
+/* Live waveform */
+.waveform{display:flex;gap:2px;align-items:center;height:40px;padding:.3rem 0}
+.wave-bar{width:4px;border-radius:99px;background:linear-gradient(180deg,var(--accent3),var(--pink));animation:waveAnim 1.2s ease-in-out infinite}
+@keyframes waveAnim{0%,100%{height:8px;opacity:.4}50%{opacity:1}}
+
+/* Battery visual */
+.battery-wrap{display:flex;align-items:center;gap:.75rem}
+.battery-body{
+  width:90px;height:42px;border-radius:8px;
+  border:2px solid var(--border2);
+  position:relative;overflow:hidden;
+}
+.battery-body::after{
+  content:'';position:absolute;right:-7px;top:50%;transform:translateY(-50%);
+  width:6px;height:18px;background:var(--border2);border-radius:0 4px 4px 0;
+}
+.battery-level{
+  position:absolute;left:3px;top:3px;bottom:3px;
+  border-radius:5px;
+  background:linear-gradient(90deg,var(--green),#34d399);
+  width:78%;animation:battAnim 5s ease-in-out infinite;
+}
+@keyframes battAnim{0%,100%{width:78%}50%{width:80%}}
+.battery-stats{flex:1}
+.batt-pct{font-size:1.4rem;font-weight:800;font-family:var(--mono);color:var(--heading)}
+.batt-label{font-size:.7rem;color:var(--muted)}
+
+/* Sensor viz */
+.sensor-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:.5rem;margin:.5rem 0}
+.sensor-item{text-align:center;background:var(--surface2);border-radius:8px;padding:.5rem .3rem}
+.sensor-val{font-size:.85rem;font-weight:700;font-family:var(--mono);color:var(--heading)}
+.sensor-label{font-size:.6rem;color:var(--muted);text-transform:uppercase;letter-spacing:.05em}
+
+/* Ping chart */
+.ping-bars{display:flex;gap:3px;align-items:flex-end;height:36px;margin:.5rem 0}
+.ping-bar{flex:1;border-radius:3px 3px 0 0;min-height:4px}
+.ping-info{display:flex;justify-content:space-between;font-size:.7rem;color:var(--muted)}
+.ping-info strong{color:var(--green);font-family:var(--mono)}
+
+/* Thermal */
+.thermal-row{display:flex;gap:.5rem;margin:.5rem 0}
+.thermal-chip{
+  flex:1;background:var(--surface2);border-radius:8px;padding:.6rem .5rem;
+  text-align:center;border:1px solid var(--border);
+}
+.thermal-temp{font-size:.95rem;font-weight:800;font-family:var(--mono)}
+.thermal-label{font-size:.6rem;color:var(--muted);text-transform:uppercase;letter-spacing:.05em}
+
+/* ═══════════════════════════════════════════
+   FEATURES DEEP DIVE
+═══════════════════════════════════════════ */
+.feature-section{border-top:1px solid var(--border)}
+.feature-block{
+  display:grid;grid-template-columns:1fr 1fr;gap:4rem;
+  align-items:center;padding:5rem 0;
+  border-bottom:1px solid var(--border);
+}
+.feature-block:last-child{border-bottom:none}
+.feature-block.reverse{direction:rtl}
+.feature-block.reverse > *{direction:ltr}
+@media(max-width:800px){
+  .feature-block{grid-template-columns:1fr;gap:2.5rem}
+  .feature-block.reverse{direction:ltr}
+}
+.feature-badge{
+  display:inline-flex;align-items:center;gap:6px;
+  font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;
+  padding:4px 12px;border-radius:100px;margin-bottom:1rem;
+}
+.feature-list{display:flex;flex-direction:column;gap:.6rem;margin:1.25rem 0}
+.feature-item{display:flex;align-items:center;gap:10px;font-size:.9rem;color:var(--text)}
+.feature-item svg{width:16px;height:16px;stroke:var(--green);fill:none;stroke-width:2.5;flex-shrink:0}
+
+/* Visual panels for each feature */
+.feature-visual{
+  background:var(--surface);border:1px solid var(--border);
+  border-radius:var(--radius);padding:1.4rem;
+  position:relative;overflow:hidden;
+}
+.feature-visual::before{
+  content:'';position:absolute;top:-40px;right:-40px;
+  width:150px;height:150px;border-radius:50%;
+  opacity:.06;
+}
+
+/* Network tools visual */
+.net-visual .feature-visual::before{background:var(--accent)}
+.net-speed-display{text-align:center;margin:.5rem 0}
+.net-speed-num{font-size:3rem;font-weight:900;font-family:var(--mono);color:var(--heading);line-height:1}
+.net-speed-unit{font-size:.9rem;color:var(--muted);margin-left:4px}
+.net-bars{display:flex;gap:4px;align-items:flex-end;height:50px;margin:1rem 0}
+.net-bar{flex:1;border-radius:4px 4px 0 0;background:linear-gradient(180deg,var(--accent),var(--accent2));animation:netBarAnim 1.5s ease-in-out infinite}
+@keyframes netBarAnim{0%,100%{opacity:.5}50%{opacity:1}}
+.net-info-grid{display:grid;grid-template-columns:1fr 1fr;gap:.5rem}
+.net-info-item{background:var(--surface2);border-radius:8px;padding:.6rem .75rem}
+.net-info-val{font-size:.9rem;font-weight:700;font-family:var(--mono);color:var(--heading)}
+.net-info-label{font-size:.65rem;color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
+
+/* Sensor visual */
+.sensor-visual-grid{display:grid;grid-template-columns:1fr 1fr;gap:.75rem}
+.sensor-box{background:var(--surface2);border-radius:10px;padding:.85rem;border:1px solid var(--border)}
+.sensor-box-title{font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--muted);margin-bottom:.5rem}
+.sensor-val-big{font-size:1.3rem;font-weight:800;font-family:var(--mono);color:var(--heading);line-height:1}
+.sensor-axis{font-size:.7rem;color:var(--muted);margin-top:.3rem}
+.sensor-axis span{font-family:var(--mono);font-size:.72rem}
+.sensor-x{color:#f87171}.sensor-y{color:var(--green)}.sensor-z{color:var(--accent2)}
+
+/* Audio visual */
+.audio-viz{display:flex;gap:3px;align-items:center;height:60px;margin:.75rem 0}
+.audio-bar{width:5px;border-radius:99px;background:linear-gradient(180deg,var(--accent3),var(--pink));animation:audioAnim 0.8s ease-in-out infinite}
+@keyframes audioAnim{0%,100%{transform:scaleY(.2);opacity:.4}50%{transform:scaleY(1);opacity:1}}
+.db-meter{display:flex;align-items:center;gap:.75rem;background:var(--surface2);border-radius:8px;padding:.75rem}
+.db-val{font-size:1.8rem;font-weight:800;font-family:var(--mono);color:var(--heading);min-width:60px}
+.db-bar-wrap{flex:1;height:8px;background:var(--surface3);border-radius:99px;overflow:hidden}
+.db-bar{height:100%;border-radius:99px;background:linear-gradient(90deg,var(--green),var(--orange),var(--red));width:45%;transition:width .3s;animation:dbAnim 2s ease-in-out infinite}
+@keyframes dbAnim{0%,100%{width:42%}50%{width:58%}}
+
+/* GPS visual */
+.gps-speedometer{text-align:center;position:relative;margin:.5rem 0}
+.speedo-num{font-size:3.5rem;font-weight:900;font-family:var(--mono);color:var(--heading);line-height:1}
+.speedo-unit{font-size:.85rem;color:var(--muted)}
+.gps-info-row{display:flex;gap:.5rem;margin:.75rem 0}
+.gps-chip{flex:1;background:var(--surface2);border-radius:8px;padding:.6rem;text-align:center}
+.gps-chip-val{font-size:.9rem;font-weight:700;font-family:var(--mono);color:var(--heading)}
+.gps-chip-label{font-size:.62rem;color:var(--muted);text-transform:uppercase;letter-spacing:.05em}
+
+/* Battery visual panel */
+.batt-chart{margin:.75rem 0}
+.batt-history{display:flex;gap:3px;align-items:flex-end;height:50px}
+.batt-bar{flex:1;border-radius:3px 3px 0 0;min-height:4px}
+.batt-big{font-size:2.8rem;font-weight:900;font-family:var(--mono);color:var(--heading);line-height:1;text-align:center;margin:.5rem 0}
+.batt-detail-row{display:grid;grid-template-columns:1fr 1fr;gap:.5rem}
+.batt-detail-item{background:var(--surface2);border-radius:8px;padding:.6rem .75rem}
+.batt-detail-val{font-size:.9rem;font-weight:700;font-family:var(--mono);color:var(--heading)}
+.batt-detail-label{font-size:.62rem;color:var(--muted)}
+
+/* Display visual */
+.display-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:.4rem;margin:.75rem 0}
+.display-color{height:32px;border-radius:6px;transition:all .3s}
+.display-touch-area{
+  background:var(--surface2);border-radius:10px;padding:1rem;
+  text-align:center;margin:.5rem 0;border:1px solid var(--border);
+  position:relative;overflow:hidden;cursor:crosshair;
+}
+.touch-dot{
+  position:absolute;width:20px;height:20px;border-radius:50%;
+  background:var(--accent);opacity:.7;
+  transform:translate(-50%,-50%);animation:touchPulse 1.5s ease-out forwards;
+}
+@keyframes touchPulse{0%{transform:translate(-50%,-50%) scale(0);opacity:.9}100%{transform:translate(-50%,-50%) scale(2);opacity:0}}
+.display-touch-text{font-size:.78rem;color:var(--muted);margin-top:1.5rem}
+
+/* ═══════════════════════════════════════════
+   TOOLS GRID
+═══════════════════════════════════════════ */
+.tools-section{background:var(--bg2);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.tools-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:.75rem}
+.tool-card{
+  background:var(--surface);border:1px solid var(--border);
+  border-radius:var(--radius-sm);padding:1rem;
+  transition:all .2s;cursor:pointer;text-align:center;
+}
+.tool-card:hover{border-color:var(--border2);transform:translateY(-2px);background:var(--surface2)}
+.tool-card-icon{
+  width:40px;height:40px;border-radius:10px;
+  display:flex;align-items:center;justify-content:center;margin:0 auto .75rem;
+}
+.tool-card-icon svg{width:20px;height:20px;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.tool-card-name{font-size:.82rem;font-weight:700;color:var(--heading);margin-bottom:3px}
+.tool-card-desc{font-size:.68rem;color:var(--muted);line-height:1.4}
+
+/* ═══════════════════════════════════════════
+   PERFORMANCE STRIP
+═══════════════════════════════════════════ */
+.perf-strip{background:var(--surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:2.5rem 0}
+.perf-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border)}
+@media(max-width:700px){.perf-grid{grid-template-columns:repeat(2,1fr)}}
+.perf-item{background:var(--surface);padding:1.5rem 2rem;text-align:center}
+.perf-val{font-size:2rem;font-weight:900;font-family:var(--mono);color:var(--heading);line-height:1;margin-bottom:.3rem}
+.perf-label{font-size:.72rem;color:var(--muted);text-transform:uppercase;letter-spacing:.07em}
+
+/* ═══════════════════════════════════════════
+   CTA
+═══════════════════════════════════════════ */
+.cta-section{
+  text-align:center;padding:7rem 0;
+  background:radial-gradient(ellipse 60% 50% at 50% 0%,rgba(59,130,246,.1) 0%,transparent 60%);
+  border-top:1px solid var(--border);
+}
+.cta-section h2{margin-bottom:1rem}
+.cta-section p{font-size:1.05rem;margin-bottom:2.5rem;max-width:480px;margin-left:auto;margin-right:auto}
+.cta-btns{display:flex;gap:.75rem;justify-content:center;flex-wrap:wrap}
+.download-btn{
+  display:inline-flex;align-items:center;gap:10px;
+  padding:14px 24px;border-radius:var(--radius-sm);
+  background:var(--surface);border:1px solid var(--border2);
+  color:var(--heading);text-decoration:none;font-weight:700;font-size:.9rem;
+  transition:all .25s;
+}
+.download-btn:hover{border-color:var(--accent);transform:translateY(-2px);background:var(--surface2)}
+.download-btn svg{width:22px;height:22px;stroke:currentColor;fill:none;stroke-width:1.8;flex-shrink:0}
+.download-btn-label{text-align:left}
+.download-btn-sub{display:block;font-size:.68rem;color:var(--muted);font-weight:500}
+.download-btn-name{display:block;font-size:.95rem;font-weight:800}
+
+
+/* ═══════════════════════════════════════════
+   SCROLL ANIMATIONS
+═══════════════════════════════════════════ */
+.reveal{opacity:0;transform:translateY(30px);transition:all .6s cubic-bezier(.25,.46,.45,.94)}
+.reveal.visible{opacity:1;transform:translateY(0)}
+.reveal-delay-1{transition-delay:.1s}
+.reveal-delay-2{transition-delay:.2s}
+.reveal-delay-3{transition-delay:.3s}
+.reveal-delay-4{transition-delay:.4s}
+
+/* ═══════════════════════════════════════════
+   RESPONSIVE
+═══════════════════════════════════════════ */
+@media(max-width:600px){
+  section{padding:4rem 0}
+  .hero{padding:6rem 0 4rem}
+}
+</style>
+
+
+<!-- ── NAV ── -->
+<nav>
+  <a href="#" class="nav-logo">
+    <div class="nav-logo-icon">
+      <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+    </div>
+    <span class="nav-logo-text">Device<span>X</span></span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#features">Features</a></li>
+    <li><a href="#tools">Tools</a></li>
+    <li><a href="#diagnostics">Diagnostics</a></li>
+    <li><a href="#download">Download</a></li>
+  </ul>
+  <a href="#download" class="nav-cta">Get the App</a>
+</nav>
+
+<!-- ══════════════════════════════════════════
+     HERO
+══════════════════════════════════════════ -->
+<section class="hero">
+  <div class="hero-grid"></div>
+  <div class="container">
+    <div class="hero-content">
+      <div class="hero-text">
+        <div class="hero-badge">
+          <span class="pulse"></span>
+          All-in-One Device Toolkit
+        </div>
+        <h1>Know Your Device.<br><em class="gradient-text">Inside Out.</em></h1>
+        <p>The ultimate device utility and diagnostics app. Test sensors, GPS, internet speed, battery health, display, speakers — all in one powerful, beautifully designed toolkit.</p>
+        <div class="hero-btns">
+          <a href="#download" class="btn-primary">
+            <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Download Free
+          </a>
+          <a href="#features" class="btn-secondary">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8"/></svg>
+            See Features
+          </a>
+        </div>
+        <div class="hero-stats">
+          <div>
+            <div class="hero-stat-val">35+</div>
+            <div class="hero-stat-label">Built-in Tools</div>
+          </div>
+          <div>
+            <div class="hero-stat-val">4.9★</div>
+            <div class="hero-stat-label">App Rating</div>
+          </div>
+          <div>
+            <div class="hero-stat-val">500K+</div>
+            <div class="hero-stat-label">Downloads</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Phone mockup -->
+      <div class="phone-wrap">
+        <div class="phone-glow"></div>
+
+        <!-- Floating badges -->
+        <div class="phone-badge badge-1" style="color:var(--green)">
+          <svg viewBox="0 0 10 10" style="width:8px;height:8px"><circle cx="5" cy="5" r="4" fill="var(--green)"/></svg>
+          Battery: 82% · Healthy
+        </div>
+        <div class="phone-badge badge-2" style="color:var(--accent2)">
+          <svg viewBox="0 0 10 10" style="width:8px;height:8px"><circle cx="5" cy="5" r="4" fill="var(--accent2)"/></svg>
+          Download: 187 Mbps
+        </div>
+        <div class="phone-badge badge-3" style="color:var(--purple)" id="badge3">
+          <svg viewBox="0 0 10 10" style="width:8px;height:8px"><circle cx="5" cy="5" r="4" fill="var(--purple)"/></svg>
+          CPU: 34°C · Normal
+        </div>
+
+        <div class="phone">
+          <div class="phone-screen">
+            <div class="phone-screen-inner">
+              <div class="phone-dash">
+                <div class="phone-dash-header">
+                  <span class="phone-dash-title">DeviceX Dashboard</span>
+                  <span class="phone-dash-time" id="phone-time">12:00</span>
+                </div>
+
+                <!-- Metrics -->
+                <div class="phone-metric-grid">
+                  <div class="phone-metric">
+                    <div class="phone-metric-label">CPU Usage</div>
+                    <div class="phone-metric-val" style="color:var(--accent)">34%</div>
+                    <div class="phone-metric-bar"><div class="phone-metric-fill" style="background:linear-gradient(90deg,var(--accent),var(--accent2))"></div></div>
+                  </div>
+                  <div class="phone-metric">
+                    <div class="phone-metric-label">RAM Used</div>
+                    <div class="phone-metric-val" style="color:var(--purple)">5.2 GB</div>
+                    <div class="phone-metric-bar"><div class="phone-metric-fill" style="background:linear-gradient(90deg,var(--accent3),var(--pink));width:65%"></div></div>
+                  </div>
+                  <div class="phone-metric">
+                    <div class="phone-metric-label">Battery</div>
+                    <div class="phone-metric-val" style="color:var(--green)">82%</div>
+                    <div class="phone-metric-bar"><div class="phone-metric-fill" style="background:linear-gradient(90deg,var(--green),#34d399);width:82%"></div></div>
+                  </div>
+                  <div class="phone-metric">
+                    <div class="phone-metric-label">Storage</div>
+                    <div class="phone-metric-val" style="color:var(--orange)">67%</div>
+                    <div class="phone-metric-bar"><div class="phone-metric-fill" style="background:linear-gradient(90deg,var(--orange),#f59e0b);width:67%"></div></div>
+                  </div>
+                </div>
+
+                <!-- Mini chart -->
+                <div class="phone-chart">
+                  <div class="phone-chart-label">Network Speed</div>
+                  <div class="mini-bars" id="mini-bars"></div>
+                </div>
+
+                <!-- Status -->
+                <div class="phone-status-row">
+                  <div class="phone-status-chip">
+                    <div class="phone-status-dot" style="background:var(--green)"></div>
+                    <div class="phone-status-text">GPS</div>
+                  </div>
+                  <div class="phone-status-chip">
+                    <div class="phone-status-dot" style="background:var(--accent)"></div>
+                    <div class="phone-status-text">WiFi</div>
+                  </div>
+                  <div class="phone-status-chip">
+                    <div class="phone-status-dot" style="background:var(--orange)"></div>
+                    <div class="phone-status-text">4G</div>
+                  </div>
+                  <div class="phone-status-chip">
+                    <div class="phone-status-dot" style="background:var(--green)"></div>
+                    <div class="phone-status-text">BT</div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     CATEGORIES
+══════════════════════════════════════════ -->
+<div class="categories">
+  <div class="container">
+    <div class="cat-grid" id="cat-grid"></div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     LIVE DASHBOARD PREVIEW
+══════════════════════════════════════════ -->
+<section class="dashboard-section" id="diagnostics">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-badge">Live Dashboard</div>
+      <h2>Real-Time <em class="gradient-text">Diagnostics</em></h2>
+      <p>Monitor every critical metric of your device at a glance — from CPU load to battery temperature, all updated in real time.</p>
+    </div>
+
+    <div class="dash-grid">
+
+      <!-- CPU Gauge -->
+      <div class="dash-card reveal">
+        <div class="dash-card-header">
+          <span class="dash-card-label">CPU Usage</span>
+          <span class="dash-card-status status-good"><span class="status-dot status-dot-good"></span>Normal</span>
+        </div>
+        <div class="gauge-wrap">
+          <div class="gauge">
+            <svg viewBox="0 0 100 100">
+              <circle class="gauge-track" cx="50" cy="50" r="45"/>
+              <circle class="gauge-fill" cx="50" cy="50" r="45"
+                stroke="url(#blueGrad)"
+                stroke-dasharray="282.6"
+                stroke-dashoffset="calc(282.6 - 282.6 * 0.68)"/>
+              <defs>
+                <linearGradient id="blueGrad" x1="0" y1="0" x2="1" y2="0">
+                  <stop offset="0%" stop-color="#3b82f6"/>
+                  <stop offset="100%" stop-color="#06b6d4"/>
+                </linearGradient>
+              </defs>
+            </svg>
+            <div class="gauge-center">
+              <span class="gauge-val" id="cpu-val">68%</span>
+              <span class="gauge-unit">CPU Load</span>
+            </div>
+          </div>
+        </div>
+        <div class="thermal-row">
+          <div class="thermal-chip"><div class="thermal-temp" style="color:var(--green)">34°C</div><div class="thermal-label">Core Temp</div></div>
+          <div class="thermal-chip"><div class="thermal-temp" style="color:var(--accent)">8</div><div class="thermal-label">Cores</div></div>
+          <div class="thermal-chip"><div class="thermal-temp" style="color:var(--accent2)">2.8G</div><div class="thermal-label">Max Freq</div></div>
+        </div>
+      </div>
+
+      <!-- Network Speed -->
+      <div class="dash-card reveal reveal-delay-1">
+        <div class="dash-card-header">
+          <span class="dash-card-label">Internet Speed</span>
+          <span class="dash-card-status status-ok"><span class="status-dot status-dot-ok"></span>Testing</span>
+        </div>
+        <div class="net-speed-display">
+          <span class="net-speed-num" id="speed-num">187</span>
+          <span class="net-speed-unit">Mbps ↓</span>
+        </div>
+        <div class="net-bars" id="net-bars"></div>
+        <div class="net-info-grid">
+          <div class="net-info-item"><div class="net-info-val" style="color:var(--green)">94 Mbps</div><div class="net-info-label">Upload</div></div>
+          <div class="net-info-item"><div class="net-info-val" style="color:var(--orange)">12 ms</div><div class="net-info-label">Ping</div></div>
+          <div class="net-info-item"><div class="net-info-val">WiFi 6</div><div class="net-info-label">Protocol</div></div>
+          <div class="net-info-item"><div class="net-info-val" style="color:var(--accent2)">-42 dBm</div><div class="net-info-label">Signal</div></div>
+        </div>
+      </div>
+
+      <!-- Battery -->
+      <div class="dash-card reveal reveal-delay-2">
+        <div class="dash-card-header">
+          <span class="dash-card-label">Battery Status</span>
+          <span class="dash-card-status status-good"><span class="status-dot status-dot-good"></span>Charging</span>
+        </div>
+        <div class="batt-big" style="background:linear-gradient(135deg,var(--green),#34d399);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">82%</div>
+        <div class="battery-wrap" style="justify-content:center;margin:.5rem 0">
+          <div class="battery-body"><div class="battery-level"></div></div>
+        </div>
+        <div class="batt-detail-row" style="margin-top:.75rem">
+          <div class="batt-detail-item"><div class="batt-detail-val" style="color:var(--green)">Good</div><div class="batt-detail-label">Health</div></div>
+          <div class="batt-detail-item"><div class="batt-detail-val" style="color:var(--accent)">29°C</div><div class="batt-detail-label">Temperature</div></div>
+          <div class="batt-detail-item"><div class="batt-detail-val">4800</div><div class="batt-detail-label">Capacity (mAh)</div></div>
+          <div class="batt-detail-item"><div class="batt-detail-val" style="color:var(--orange)">33W</div><div class="batt-detail-label">Charging Speed</div></div>
+        </div>
+      </div>
+
+      <!-- RAM -->
+      <div class="dash-card reveal">
+        <div class="dash-card-header">
+          <span class="dash-card-label">Memory (RAM)</span>
+          <span class="dash-card-status status-warn"><span class="status-dot status-dot-warn"></span>High</span>
+        </div>
+        <div class="gauge-wrap">
+          <div class="gauge">
+            <svg viewBox="0 0 100 100">
+              <circle class="gauge-track" cx="50" cy="50" r="45"/>
+              <circle class="gauge-fill" cx="50" cy="50" r="45"
+                stroke="url(#purpleGrad)"
+                stroke-dasharray="282.6"
+                style="stroke-dashoffset:calc(282.6 - 282.6 * 0.65);animation:none"/>
+              <defs>
+                <linearGradient id="purpleGrad" x1="0" y1="0" x2="1" y2="0">
+                  <stop offset="0%" stop-color="#8b5cf6"/>
+                  <stop offset="100%" stop-color="#ec4899"/>
+                </linearGradient>
+              </defs>
+            </svg>
+            <div class="gauge-center">
+              <span class="gauge-val" style="color:var(--accent3)">5.2</span>
+              <span class="gauge-unit">GB Used</span>
+            </div>
+          </div>
+        </div>
+        <div class="thermal-row">
+          <div class="thermal-chip"><div class="thermal-temp" style="color:var(--accent3)">8 GB</div><div class="thermal-label">Total</div></div>
+          <div class="thermal-chip"><div class="thermal-temp" style="color:var(--green)">2.8G</div><div class="thermal-label">Free</div></div>
+          <div class="thermal-chip"><div class="thermal-temp" style="color:var(--orange)">65%</div><div class="thermal-label">Usage</div></div>
+        </div>
+      </div>
+
+      <!-- Ping / Latency -->
+      <div class="dash-card reveal reveal-delay-1">
+        <div class="dash-card-header">
+          <span class="dash-card-label">Network Latency</span>
+          <span class="dash-card-status status-good"><span class="status-dot status-dot-good"></span>Low</span>
+        </div>
+        <div class="ping-bars" id="ping-bars"></div>
+        <div class="ping-info">
+          <span>Min: <strong>8ms</strong></span>
+          <span>Avg: <strong id="ping-avg">12ms</strong></span>
+          <span>Max: <strong>28ms</strong></span>
+        </div>
+        <div style="margin-top:.9rem">
+          <div style="display:flex;flex-direction:column;gap:.35rem">
+            <div style="display:flex;justify-content:space-between;font-size:.75rem">
+              <span style="color:var(--muted)">google.com</span>
+              <span style="color:var(--green);font-family:var(--mono);font-weight:700">8 ms</span>
+            </div>
+            <div style="display:flex;justify-content:space-between;font-size:.75rem">
+              <span style="color:var(--muted)">cloudflare.com</span>
+              <span style="color:var(--green);font-family:var(--mono);font-weight:700">11 ms</span>
+            </div>
+            <div style="display:flex;justify-content:space-between;font-size:.75rem">
+              <span style="color:var(--muted)">gateway (local)</span>
+              <span style="color:var(--accent2);font-family:var(--mono);font-weight:700">2 ms</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Sensors -->
+      <div class="dash-card reveal reveal-delay-2">
+        <div class="dash-card-header">
+          <span class="dash-card-label">Sensor Live Data</span>
+          <span class="dash-card-status status-ok"><span class="status-dot status-dot-ok"></span>Active</span>
+        </div>
+        <div class="sensor-visual-grid">
+          <div class="sensor-box">
+            <div class="sensor-box-title">Accelerometer</div>
+            <div class="sensor-val-big" id="acc-val">9.82</div>
+            <div class="sensor-axis">
+              X: <span class="sensor-x" id="acc-x">0.12</span>
+              Y: <span class="sensor-y" id="acc-y">0.08</span>
+              Z: <span class="sensor-z" id="acc-z">9.81</span>
+            </div>
+          </div>
+          <div class="sensor-box">
+            <div class="sensor-box-title">Gyroscope</div>
+            <div class="sensor-val-big" id="gyro-val">0.03</div>
+            <div class="sensor-axis">
+              X: <span class="sensor-x" id="gyro-x">0.02</span>
+              Y: <span class="sensor-y" id="gyro-y">0.01</span>
+              Z: <span class="sensor-z" id="gyro-z">0.03</span>
+            </div>
+          </div>
+          <div class="sensor-box">
+            <div class="sensor-box-title">Light Sensor</div>
+            <div class="sensor-val-big" style="color:var(--orange)" id="light-val">824</div>
+            <div class="sensor-axis" style="color:var(--muted)">lux · Bright</div>
+          </div>
+          <div class="sensor-box">
+            <div class="sensor-box-title">Compass</div>
+            <div class="sensor-val-big" style="color:var(--accent2)" id="compass-val">247°</div>
+            <div class="sensor-axis" style="color:var(--muted)">WSW</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     FEATURE DEEP DIVE
+══════════════════════════════════════════ -->
+<section class="feature-section" id="features">
+  <div class="container">
+
+    <!-- Network Tools -->
+    <div class="feature-block net-visual">
+      <div class="reveal">
+        <div class="feature-badge" style="background:rgba(59,130,246,.1);border:1px solid rgba(59,130,246,.2);color:var(--accent2)">
+          Network Tools
+        </div>
+        <h3>Professional<br>Network Diagnostics</h3>
+        <p style="margin:.75rem 0 1rem;font-size:.93rem">Run a full internet speed test, analyze WiFi signal strength, measure latency to multiple servers, and inspect your network configuration — all with a single tap.</p>
+        <div class="feature-list">
+          <div class="feature-item"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> Download & Upload Speed Test</div>
+          <div class="feature-item"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> Real-Time Ping & Latency Graphs</div>
+          <div class="feature-item"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> WiFi Signal Strength (RSSI)</div>
+          <div class="feature-item"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> IP Info & DNS Lookup</div>
+          <div class="feature-item"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> Mobile Network Band Info (4G/5G)</div>
+        </div>
+      </div>
+      <div class="feature-visual reveal reveal-delay-1">
+        <div class="net-speed-display">
+          <span class="net-speed-num" id="feat-speed">187</span>
+          <span class="net-speed-unit">Mbps ↓</span>
+        </div>
+        <div class="net-bars" id="feat-net-bars"></div>
+        <div class="net-info-grid">
+          <div class="net-info-item"><div class="net-info-val" style="color:var(--green)">94 Mbps</div><div class="net-info-label">Upload</div></div>
+          <div class="net-info-item"><div class="net-info-val" style="color:var(--orange)">12 ms</div><div class="net-info-label">Ping</div></div>
+          <div class="net-info-item"><div class="net-info-val">WiFi 6E</div><div class="net-info-label">Type</div></div>
+          <div class="net-info-item"><div class="net-info-val" style="color:var(--accent2)">5 GHz</div><div class="net-info-label">Band</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Audio Tools -->
+    <div class="feature-block reverse">
+      <div class="reveal">
+        <div class="feature-badge" style="background:rgba(139,92,246,.1);border:1px solid rgba(139,92,246,.2);color:var(--accent3)">
+          Audio Tools
+        </div>
+        <h3>Advanced Audio<br>Testing & Analysis</h3>
+        <p style="margin:.75rem 0 1rem;font-size:.93rem">Test your microphone sensitivity, run speaker frequency sweeps, visualize audio waveforms, and measure ambient sound levels with a calibrated decibel meter.</p>
+        <div class="feature-list">
+          <div class="feature-item"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> Real-Time Audio Waveform Visualizer</div>
+          <div class="feature-item"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> Decibel Sound Meter</div>
+          <div class="feature-item"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> Speaker Frequency Test (20Hz–20kHz)</div>
+          <div class="feature-item"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> Microphone Sensitivity Test</div>
+          <div class="feature-item"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> Headphone Channel Test (L/R)</div>
+        </div>
+      </div>
+      <div class="feature-visual reveal reveal-delay-1" style="border-color:rgba(139,92,246,.2)">
+        <div class="dash-card-header">
+          <span class="dash-card-label">Microphone Input</span>
+          <span class="dash-card-status" style="color:var(--accent3)"><span class="status-dot" style="background:var(--accent3);animation:pulse 1s infinite"></span>Live</span>
+        </div>
+        <div class="audio-viz" id="audio-viz"></div>
+        <div class="db-meter">
+          <div class="db-val" style="color:var(--accent3)">62<span style="font-size:.85rem;color:var(--muted)">dB</span></div>
+          <div>
+            <div style="font-size:.68rem;color:var(--muted);margin-bottom:.3rem;text-transform:uppercase;letter-spacing:.07em">Sound Level</div>
+            <div class="db-bar-wrap"><div class="db-bar"></div></div>
+            <div style="display:flex;justify-content:space-between;font-size:.62rem;color:var(--muted);margin-top:.25rem">
+              <span>Quiet</span><span>Normal</span><span>Loud</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- GPS & Motion -->
+    <div class="feature-block">
+      <div class="reveal">
+        <div class="feature-badge" style="background:rgba(16,185,129,.1);border:1px solid rgba(16,185,129,.2);color:var(--green)">
+          GPS & Motion
+        </div>
+        <h3>GPS Accuracy &<br>Motion Tracking</h3>
+        <p style="margin:.75rem 0 1rem;font-size:.93rem">Monitor your live GPS coordinates, accuracy radius, altitude, and satellite count. Track motion in real time with a digital speedometer and compass.</p>
+        <div class="feature-list">
+          <div class="feature-item"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> Live GPS Speedometer</div>
+          <div class="feature-item"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> GPS Accuracy & Satellite Count</div>
+          <div class="feature-item"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> Altitude & Coordinates Display</div>
+          <div class="feature-item"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> Digital Compass with Bearing</div>
+          <div class="feature-item"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> Trip Distance Logger</div>
+        </div>
+      </div>
+      <div class="feature-visual reveal reveal-delay-1" style="border-color:rgba(16,185,129,.15)">
+        <div class="gps-speedometer">
+          <div class="speedo-num" style="background:linear-gradient(135deg,var(--green),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text" id="speedo-val">42</div>
+          <div class="speedo-unit">km/h</div>
+        </div>
+        <div class="gps-info-row">
+          <div class="gps-chip"><div class="gps-chip-val" style="color:var(--green)">12</div><div class="gps-chip-label">Satellites</div></div>
+          <div class="gps-chip"><div class="gps-chip-val" style="color:var(--accent2)">±4m</div><div class="gps-chip-label">Accuracy</div></div>
+          <div class="gps-chip"><div class="gps-chip-val">247°</div><div class="gps-chip-label">Bearing</div></div>
+          <div class="gps-chip"><div class="gps-chip-val" style="color:var(--orange)">182m</div><div class="gps-chip-label">Altitude</div></div>
+        </div>
+        <div style="background:var(--surface2);border-radius:8px;padding:.75rem;margin-top:.5rem;font-size:.75rem;font-family:var(--mono);color:var(--muted)">
+          <div>Lat: <span style="color:var(--heading)">28.6139° N</span></div>
+          <div>Lng: <span style="color:var(--heading)">77.2090° E</span></div>
+          <div>Provider: <span style="color:var(--green)">GPS + Network</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Display & Hardware -->
+    <div class="feature-block reverse">
+      <div class="reveal">
+        <div class="feature-badge" style="background:rgba(245,158,11,.1);border:1px solid rgba(245,158,11,.2);color:var(--orange)">
+          Display & Hardware
+        </div>
+        <h3>Complete Hardware<br>Test Suite</h3>
+        <p style="margin:.75rem 0 1rem;font-size:.93rem">Run comprehensive hardware tests — check for dead pixels, test touch accuracy, calibrate your display colors, and verify vibration, flashlight, and all physical buttons.</p>
+        <div class="feature-list">
+          <div class="feature-item"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> Dead Pixel Detector (Full Screen)</div>
+          <div class="feature-item"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> Multi-Touch Point Test</div>
+          <div class="feature-item"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> Color Calibration & Gradients</div>
+          <div class="feature-item"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> Vibration Motor Test</div>
+          <div class="feature-item"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> Flashlight & Camera Test</div>
+        </div>
+      </div>
+      <div class="feature-visual reveal reveal-delay-1" style="border-color:rgba(245,158,11,.15)">
+        <div class="dash-card-label" style="margin-bottom:.75rem">Color Test Panels</div>
+        <div class="display-grid">
+          <div class="display-color" style="background:#ff0000"></div>
+          <div class="display-color" style="background:#00ff00"></div>
+          <div class="display-color" style="background:#0000ff"></div>
+          <div class="display-color" style="background:#ffffff"></div>
+          <div class="display-color" style="background:#ffff00"></div>
+          <div class="display-color" style="background:#ff00ff"></div>
+          <div class="display-color" style="background:#00ffff"></div>
+          <div class="display-color" style="background:#000000;border:1px solid var(--border)"></div>
+        </div>
+        <div class="display-touch-area" onclick="addTouchDot(event)" id="touch-area">
+          <div style="font-size:.78rem;color:var(--muted);padding:.5rem 0">Tap to test touch accuracy</div>
+        </div>
+        <div style="display:flex;gap:.5rem;margin-top:.5rem">
+          <div style="flex:1;background:var(--surface2);border-radius:8px;padding:.5rem .75rem">
+            <div style="font-size:.85rem;font-weight:700;color:var(--heading)">AMOLED</div>
+            <div style="font-size:.65rem;color:var(--muted)">Display Type</div>
+          </div>
+          <div style="flex:1;background:var(--surface2);border-radius:8px;padding:.5rem .75rem">
+            <div style="font-size:.85rem;font-weight:700;color:var(--orange)">120Hz</div>
+            <div style="font-size:.65rem;color:var(--muted)">Refresh Rate</div>
+          </div>
+          <div style="flex:1;background:var(--surface2);border-radius:8px;padding:.5rem .75rem">
+            <div style="font-size:.85rem;font-weight:700;color:var(--accent2)">1080p</div>
+            <div style="font-size:.65rem;color:var(--muted)">Resolution</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     ALL TOOLS GRID
+══════════════════════════════════════════ -->
+<section class="tools-section" id="tools">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-badge">35+ Tools</div>
+      <h2>Every Tool You <em class="gradient-text">Need</em></h2>
+      <p>A comprehensive suite of device utilities, tests, and diagnostics — all in one app, free forever.</p>
+    </div>
+    <div class="tools-grid" id="tools-grid"></div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     PERF STRIP
+══════════════════════════════════════════ -->
+<div class="perf-strip reveal">
+  <div class="container">
+    <div class="perf-grid">
+      <div class="perf-item">
+        <div class="perf-val gradient-text">35+</div>
+        <div class="perf-label">Built-in Utilities</div>
+      </div>
+      <div class="perf-item">
+        <div class="perf-val gradient-text">&lt;1s</div>
+        <div class="perf-label">Test Response Time</div>
+      </div>
+      <div class="perf-item">
+        <div class="perf-val gradient-text">100%</div>
+        <div class="perf-label">Offline Capable</div>
+      </div>
+      <div class="perf-item">
+        <div class="perf-val gradient-text">0</div>
+        <div class="perf-label">Data Collected</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     CTA
+══════════════════════════════════════════ -->
+<section class="cta-section" id="download">
+  <div class="container">
+    <div class="section-badge">Free Download</div>
+    <h2>Start Diagnosing<br><em class="gradient-text">Your Device Today</em></h2>
+    <p>DeviceX is free to download and use. No subscriptions, no data collection, no compromises.</p>
+    <div class="cta-btns">
+      <a href="#" class="download-btn">
+        <svg viewBox="0 0 24 24"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.38 1.25 4.80L2.05 22l5.47-1.26c1.38.74 2.95 1.15 4.61 1.15 5.46 0 9.91-4.45 9.91-9.91C22.04 6.45 17.5 2 12.04 2z"/></svg>
+        <div class="download-btn-label">
+          <span class="download-btn-sub">Get it on</span>
+          <span class="download-btn-name">Google Play</span>
+        </div>
+      </a>
+      <a href="#" class="download-btn">
+        <svg viewBox="0 0 24 24"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83"/></svg>
+        <div class="download-btn-label">
+          <span class="download-btn-sub">Download on the</span>
+          <span class="download-btn-name">App Store</span>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+
+
+<script>
+/* ═══════════════════════
+   PHONE CLOCK
+═══════════════════════ */
+function updateClock() {
+  const now = new Date();
+  const h = now.getHours().toString().padStart(2,'0');
+  const m = now.getMinutes().toString().padStart(2,'0');
+  const el = document.getElementById('phone-time');
+  if (el) el.textContent = h+':'+m;
+}
+updateClock();
+setInterval(updateClock, 30000);
+
+/* ═══════════════════════
+   BUILD MINI BARS (phone)
+═══════════════════════ */
+function buildMiniBars() {
+  const el = document.getElementById('mini-bars');
+  if (!el) return;
+  const heights = [30,50,35,80,60,45,90,55,40,70,85,50,65,75,40];
+  el.innerHTML = heights.map(h=>`<div class="mini-bar" style="height:${h}%;animation-delay:${Math.random()*2}s"></div>`).join('');
+}
+buildMiniBars();
+
+/* ═══════════════════════
+   BUILD NET BARS (dashboard)
+═══════════════════════ */
+function buildNetBars(id) {
+  const el = document.getElementById(id);
+  if (!el) return;
+  const vals = [40,65,55,80,90,70,85,60,95,75,88,72,91,65,80];
+  el.innerHTML = vals.map((h,i)=>`<div class="net-bar" style="height:${h}%;animation-delay:${i*0.1}s"></div>`).join('');
+}
+buildNetBars('net-bars');
+buildNetBars('feat-net-bars');
+
+/* ═══════════════════════
+   BUILD PING BARS
+═══════════════════════ */
+function buildPingBars() {
+  const el = document.getElementById('ping-bars');
+  if (!el) return;
+  const pings = [12,8,15,10,9,14,11,8,20,12,9,16,8,11,13];
+  const max = Math.max(...pings);
+  el.innerHTML = pings.map(p=>{
+    const h = (p/max*100);
+    const color = p < 15 ? 'var(--green)' : p < 25 ? 'var(--orange)' : 'var(--red)';
+    return `<div class="ping-bar" style="height:${h}%;background:${color};animation:none"></div>`;
+  }).join('');
+}
+buildPingBars();
+
+/* ═══════════════════════
+   AUDIO VISUALIZER
+═══════════════════════ */
+function buildAudioViz() {
+  const el = document.getElementById('audio-viz');
+  if (!el) return;
+  const count = 28;
+  el.innerHTML = Array.from({length:count},(_,i)=>`<div class="audio-bar" style="animation-delay:${(i*0.06).toFixed(2)}s;animation-duration:${(0.6+Math.random()*0.6).toFixed(2)}s"></div>`).join('');
+}
+buildAudioViz();
+
+/* ═══════════════════════
+   CATEGORY GRID
+═══════════════════════ */
+const CATEGORIES = [
+  {name:'Device Info', count:'12 metrics', color:'var(--accent)', bg:'rgba(59,130,246,.12)',
+   icon:'<svg viewBox="0 0 24 24" stroke="currentColor"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>'},
+  {name:'Network Tools', count:'8 utilities', color:'var(--accent2)', bg:'rgba(6,182,212,.12)',
+   icon:'<svg viewBox="0 0 24 24" stroke="currentColor"><path d="M5 12.55a11 11 0 0 1 14.08 0"/><path d="M1.42 9a16 16 0 0 1 21.16 0"/><path d="M8.53 16.11a6 6 0 0 1 6.95 0"/><line x1="12" y1="20" x2="12.01" y2="20"/></svg>'},
+  {name:'Sensor Tests', count:'6 sensors', color:'var(--purple)', bg:'rgba(139,92,246,.12)',
+   icon:'<svg viewBox="0 0 24 24" stroke="currentColor"><circle cx="12" cy="12" r="2"/><path d="M16.24 7.76a6 6 0 0 1 0 8.49m-8.48-.01a6 6 0 0 1 0-8.49m11.31-2.82a10 10 0 0 1 0 14.14m-14.14 0a10 10 0 0 1 0-14.14"/></svg>'},
+  {name:'Audio Tools', count:'5 tests', color:'var(--accent3)', bg:'rgba(139,92,246,.1)',
+   icon:'<svg viewBox="0 0 24 24" stroke="currentColor"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>'},
+  {name:'GPS & Motion', count:'4 tools', color:'var(--green)', bg:'rgba(16,185,129,.12)',
+   icon:'<svg viewBox="0 0 24 24" stroke="currentColor"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>'},
+  {name:'Battery Tools', count:'6 metrics', color:'var(--orange)', bg:'rgba(245,158,11,.12)',
+   icon:'<svg viewBox="0 0 24 24" stroke="currentColor"><rect x="2" y="7" width="18" height="10" rx="2"/><line x1="22" y1="11" x2="22" y2="13"/></svg>'},
+  {name:'Display Tests', count:'5 tests', color:'var(--red)', bg:'rgba(239,68,68,.1)',
+   icon:'<svg viewBox="0 0 24 24" stroke="currentColor"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21l8 0"/><path d="M12 17l0 4"/></svg>'},
+];
+
+const catGrid = document.getElementById('cat-grid');
+if (catGrid) {
+  catGrid.innerHTML = CATEGORIES.map(c=>`
+    <div class="cat-card">
+      <div class="cat-icon" style="background:${c.bg}">
+        <svg viewBox="0 0 24 24" fill="none" stroke="${c.color}" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          ${c.icon.match(/<svg[^>]*>([\s\S]*)<\/svg>/)?.[1]||''}
+        </svg>
+      </div>
+      <div class="cat-name">${c.name}</div>
+      <div class="cat-count">${c.count}</div>
+    </div>
+  `).join('');
+}
+
+/* ═══════════════════════
+   ALL TOOLS GRID
+═══════════════════════ */
+const ALL_TOOLS = [
+  {name:'CPU Monitor',      desc:'Real-time load',    color:'var(--accent)',  bg:'rgba(59,130,246,.1)'},
+  {name:'RAM Tracker',      desc:'Memory usage',      color:'var(--purple)',  bg:'rgba(139,92,246,.1)'},
+  {name:'Storage Analyzer', desc:'Disk space',        color:'var(--orange)',  bg:'rgba(245,158,11,.1)'},
+  {name:'Battery Health',   desc:'Capacity & wear',   color:'var(--green)',   bg:'rgba(16,185,129,.1)'},
+  {name:'Thermal Monitor',  desc:'Temperature',       color:'var(--red)',     bg:'rgba(239,68,68,.1)'},
+  {name:'Speed Test',       desc:'Download/Upload',   color:'var(--accent2)', bg:'rgba(6,182,212,.1)'},
+  {name:'Ping Test',        desc:'Latency analysis',  color:'var(--green)',   bg:'rgba(16,185,129,.1)'},
+  {name:'WiFi Analyzer',    desc:'Signal & channel',  color:'var(--accent)',  bg:'rgba(59,130,246,.1)'},
+  {name:'IP Info',          desc:'Public & local IP', color:'var(--accent2)', bg:'rgba(6,182,212,.1)'},
+  {name:'DNS Lookup',       desc:'Domain resolver',   color:'var(--purple)',  bg:'rgba(139,92,246,.1)'},
+  {name:'Accelerometer',    desc:'Motion sensor',     color:'var(--pink)',    bg:'rgba(236,72,153,.1)'},
+  {name:'Gyroscope',        desc:'Rotation sensor',   color:'var(--accent3)', bg:'rgba(139,92,246,.1)'},
+  {name:'Compass',          desc:'Magnetic bearing',  color:'var(--accent2)', bg:'rgba(6,182,212,.1)'},
+  {name:'Light Sensor',     desc:'Lux measurement',   color:'var(--orange)',  bg:'rgba(245,158,11,.1)'},
+  {name:'Proximity',        desc:'Near/far detect',   color:'var(--green)',   bg:'rgba(16,185,129,.1)'},
+  {name:'Barometer',        desc:'Air pressure',      color:'var(--blue)',    bg:'rgba(96,165,250,.1)'},
+  {name:'Microphone Test',  desc:'Input sensitivity', color:'var(--purple)',  bg:'rgba(139,92,246,.1)'},
+  {name:'Speaker Test',     desc:'Frequency sweep',   color:'var(--accent3)', bg:'rgba(139,92,246,.1)'},
+  {name:'Sound Meter',      desc:'Decibel (dB)',       color:'var(--pink)',    bg:'rgba(236,72,153,.1)'},
+  {name:'Speedometer',      desc:'GPS speed',         color:'var(--green)',   bg:'rgba(16,185,129,.1)'},
+  {name:'GPS Tracker',      desc:'Coordinates',       color:'var(--accent)',  bg:'rgba(59,130,246,.1)'},
+  {name:'Altitude',         desc:'Elevation data',    color:'var(--orange)',  bg:'rgba(245,158,11,.1)'},
+  {name:'Battery Temp',     desc:'°C monitoring',     color:'var(--red)',     bg:'rgba(239,68,68,.1)'},
+  {name:'Charge Monitor',   desc:'Watt measurement',  color:'var(--green)',   bg:'rgba(16,185,129,.1)'},
+  {name:'Dead Pixel Test',  desc:'Full-screen scan',  color:'var(--accent)',  bg:'rgba(59,130,246,.1)'},
+  {name:'Touch Tester',     desc:'Multi-point test',  color:'var(--accent2)', bg:'rgba(6,182,212,.1)'},
+  {name:'Color Test',       desc:'Display calibrate', color:'var(--pink)',    bg:'rgba(236,72,153,.1)'},
+  {name:'Vibration Test',   desc:'Motor check',       color:'var(--purple)',  bg:'rgba(139,92,246,.1)'},
+  {name:'Flashlight',       desc:'LED torch test',    color:'var(--orange)',  bg:'rgba(245,158,11,.1)'},
+  {name:'Device Info',      desc:'Full hardware spec',color:'var(--accent)',  bg:'rgba(59,130,246,.1)'},
+  {name:'App Memory',       desc:'Per-app RAM',       color:'var(--red)',     bg:'rgba(239,68,68,.1)'},
+  {name:'Network Info',     desc:'Carrier & band',    color:'var(--accent2)', bg:'rgba(6,182,212,.1)'},
+  {name:'Camera Test',      desc:'Front & rear',      color:'var(--green)',   bg:'rgba(16,185,129,.1)'},
+  {name:'Headphone Test',   desc:'L/R channel check', color:'var(--purple)',  bg:'rgba(139,92,246,.1)'},
+  {name:'Screen Brightness',desc:'Nit measurement',   color:'var(--orange)',  bg:'rgba(245,158,11,.1)'},
+];
+
+const toolsGrid = document.getElementById('tools-grid');
+if (toolsGrid) {
+  toolsGrid.innerHTML = ALL_TOOLS.map(t=>`
+    <div class="tool-card">
+      <div class="tool-card-icon" style="background:${t.bg}">
+        <svg viewBox="0 0 24 24" fill="none" stroke="${t.color}" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="8"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/>
+        </svg>
+      </div>
+      <div class="tool-card-name">${t.name}</div>
+      <div class="tool-card-desc">${t.desc}</div>
+    </div>
+  `).join('');
+}
+
+/* ═══════════════════════
+   LIVE SENSOR MOCK DATA
+═══════════════════════ */
+function randomRange(min, max, dec=2) {
+  return (Math.random()*(max-min)+min).toFixed(dec);
+}
+
+setInterval(() => {
+  // Accelerometer
+  const ax = randomRange(-0.5,0.5);
+  const ay = randomRange(-0.5,0.5);
+  const az = randomRange(9.5,9.9);
+  const id = el => document.getElementById(el);
+  if (id('acc-x')) id('acc-x').textContent = ax;
+  if (id('acc-y')) id('acc-y').textContent = ay;
+  if (id('acc-z')) id('acc-z').textContent = az;
+  if (id('acc-val')) id('acc-val').textContent = Math.sqrt(ax*ax+ay*ay+az*az).toFixed(2);
+
+  // Gyroscope
+  const gx = randomRange(-0.05,0.05);
+  const gy = randomRange(-0.05,0.05);
+  const gz = randomRange(-0.05,0.05);
+  if (id('gyro-x')) id('gyro-x').textContent = gx;
+  if (id('gyro-y')) id('gyro-y').textContent = gy;
+  if (id('gyro-z')) id('gyro-z').textContent = gz;
+  if (id('gyro-val')) id('gyro-val').textContent = Math.abs(parseFloat(gz)).toFixed(2);
+
+  // Light
+  const lux = Math.round(randomRange(800, 900, 0));
+  if (id('light-val')) id('light-val').textContent = lux;
+
+  // Compass
+  const deg = Math.round(randomRange(240,255,0));
+  if (id('compass-val')) id('compass-val').textContent = deg + '°';
+
+  // Speed (GPS mock)
+  const spd = Math.round(randomRange(38,48,0));
+  if (id('speedo-val')) id('speedo-val').textContent = spd;
+
+  // Network speed (dashboard)
+  const dlSpeed = Math.round(randomRange(175,200,0));
+  if (id('speed-num')) id('speed-num').textContent = dlSpeed;
+  if (id('feat-speed')) id('feat-speed').textContent = dlSpeed;
+
+  // CPU
+  const cpu = Math.round(randomRange(62,76,0));
+  if (id('cpu-val')) id('cpu-val').textContent = cpu + '%';
+
+  // Ping
+  if (id('ping-avg')) id('ping-avg').textContent = Math.round(randomRange(10,16,0)) + 'ms';
+
+}, 2000);
+
+/* ═══════════════════════
+   TOUCH DOT TEST
+═══════════════════════ */
+function addTouchDot(e) {
+  const area = document.getElementById('touch-area');
+  if (!area) return;
+  const rect = area.getBoundingClientRect();
+  const x = e.clientX - rect.left;
+  const y = e.clientY - rect.top;
+  const dot = document.createElement('div');
+  dot.className = 'touch-dot';
+  dot.style.left = x + 'px';
+  dot.style.top  = y + 'px';
+  dot.style.background = `hsl(${Math.random()*360},90%,60%)`;
+  area.appendChild(dot);
+  setTimeout(() => dot.remove(), 1600);
+}
+
+/* ═══════════════════════
+   SCROLL REVEAL
+═══════════════════════ */
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('visible');
+      observer.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.12 });
+
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>

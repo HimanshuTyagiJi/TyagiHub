@@ -1,0 +1,302 @@
+---
+layout: default
+title: "Split PDF — Extract Pages from PDF Online Free | TyagiHub"
+description: "Split PDF files online into individual pages or specific ranges instantly. Secure browser-based tool with automated input decryption layer."
+keywords: "split pdf, extract pdf pages, divide pdf online, separation of pdf, free offline pdf splitter, TyagiHub tools"
+lang_switch: false
+extra_css:
+
+ - /assets/css/tyagihub-pdf.min.css
+extra_js:
+- /assets/js/libs/pdf-lib.min.js
+
+- /assets/js/libs/all.pdf.js
+---
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "SoftwareApplication",
+      "name": "TyagiHub Split PDF",
+      "operatingSystem": "All",
+      "applicationCategory": "WebApplication",
+      "description": "An advanced client-side offline PDF splitting asset tool that extracts separate page ranges securely.",
+      "url": "https://tyagihub.in/tools/pdf/split-pdf/",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "INR"
+      },
+      "creator": {
+        "@type": "Organization",
+        "name": "TyagiHub",
+        "url": "https://tyagihub.in"
+      }
+    }
+  ]
+}
+</script>
+
+<div class="pdf-tool-page tyagihub-split">
+
+  <div class="pdf-tool-header">
+    <nav class="pdf-tool-header__breadcrumb" aria-label="Breadcrumb">
+      <a href="/">Home</a>
+      <span aria-hidden="true"> / </span>
+      <a href="/tools/">Tools</a>
+      <span aria-hidden="true"> / </span>
+      <a href="/tools/pdf/">PDF Tools</a>
+      <span aria-hidden="true"> / </span>
+      <span aria-current="page">Split PDF</span>
+    </nav>
+    <div class="container pdf-tool-header__inner">
+      <div class="pdf-tool-header__icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
+          <line x1="12" y1="3" x2="12" y2="21"/>
+        </svg>
+      </div>
+      <div class="pdf-tool-header__text">
+        <h1 class="pdf-tool-header__title">Split PDF Document Pages</h1>
+        <p class="pdf-tool-header__desc">
+          Extract explicit pages or divide large documents into separate multi-page range packages instantly. 
+          Everything runs locally inside your sandboxed browser environment safely.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="pdf-tool-workspace">
+
+    <div class="pdf-dropzone" id="split-drop" role="button" aria-label="Upload PDF file for page separation" tabindex="0">
+      <div class="pdf-dropzone__icon" aria-hidden="true" style="transition: transform 0.3s ease-in-out;"
+        onmouseover="this.style.transform='translateY(-5px)'" onmouseout="this.style.transform='translateY(0)'">
+        <svg viewBox="0 0 24 24">
+          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+          <polyline points="14 2 14 8 20 8" />
+          <line x1="9" y1="15" x2="15" y2="15" />
+        </svg>
+      </div>
+      <div class="pdf-dropzone__title">Drag your large PDF here or browse files</div>
+      <div class="pdf-dropzone__sub">Extract specific page sequences safely · Up to 100 MB max target</div>
+      
+      <button class="pdf-dropzone__btn" type="button" aria-label="Select local PDF file">
+        <svg viewBox="0 0 24 24" aria-hidden="true" style="width:24px;height:24px;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;fill:none;overflow:visible;">
+          <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+          <g style="animation:uploadBounce 1.5s ease-in-out infinite;transform-origin:12px 9px;transform-box:fill-box;">
+            <polyline points="17 8 12 3 7 8" />
+            <line x1="12" y1="3" x2="12" y2="15" />
+          </g>
+          <style>
+            @keyframes uploadBounce {
+              0%, 60%, 100% { transform: translateY(0px); }
+              30% { transform: translateY(-3px); }
+              80% { transform: translateY(-1.5px); }
+            }
+          </style>
+        </svg>
+        Choose PDF Document
+      </button>
+      <input type="file" class="pdf-dropzone__input" id="split-file-input" accept=".pdf,application/pdf" aria-label="Upload input trigger">
+    </div>
+
+    <div id="tyagihub-unlock-modal-overlay" class="th-modal-overlay" style="display:none;">
+      <div class="th-modal-card">
+        <div class="th-modal-card__icon">🔒</div>
+        <h3 class="th-modal-card__title">Encrypted Document Detected</h3>
+        <p class="th-modal-card__desc">This file requires standard decryption parameters prior to running structural data separation templates.</p>
+        <input type="password" id="th-popup-password-field" class="th-modal-card__input" placeholder="Enter file access password...">
+        <div class="th-modal-card__actions">
+          <button type="button" id="th-popup-submit-btn" class="btn btn-primary">Unlock & Load</button>
+          <button type="button" id="th-popup-cancel-btn" class="btn btn-outline">Cancel Process</button>
+        </div>
+      </div>
+    </div>
+
+    <div id="th-hd-preview-modal-container" class="th-hd-preview-overlay" style="display:none;">
+      <div class="th-hd-preview-container" style="width: 85vw; height: 85vh; max-width: 1200px;">
+        <div class="th-hd-preview-canvas-wrapper" style="width: 100%; height: 100%; padding: 0; background: #fff; overflow: hidden; border-radius: 8px;">
+          <iframe id="th-real-pdf-view-iframe" style="width: 100%; height: 100%; border: none;" src=""></iframe>
+        </div>
+        <div style="margin-top: var(--space-4); display: flex; gap: 12px; justify-content: center; width: 100%;">
+          <button type="button" id="th-hd-close-btn" class="btn btn-outline" style="padding: 10px 24px; min-width: 150px;">Close Preview</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="pdf-settings" id="split-settings" aria-label="Splitting Configuration Parameters" hidden>
+      <div class="pdf-settings__title">Splitting Target Dashboard</div>
+      
+      <div id="split-file-details" class="pdf-merge-list" style="margin-bottom: var(--space-4);"></div>
+
+      <div class="pdf-tool-input-group">
+        <label style="font-weight:var(--fw-bold); color:var(--clr-heading); display:block; margin-bottom:var(--space-2);">📄 Interactive Page View Layout (Click Action Buttons on Pages)</label>
+        <div id="th-visual-split-grid-target" class="th-split-grid"></div>
+      </div>
+
+      <div style="display:flex; flex-direction:column; gap:var(--space-3); margin-bottom:var(--space-5); background:rgba(var(--clr-accent-rgb), 0.01); padding:var(--space-4); border-radius:var(--radius-md); border:1px solid var(--clr-border);">
+        <label style="display:flex; align-items:center; gap:8px; font-weight:var(--fw-bold); color:var(--clr-heading); cursor:pointer;">
+          <input type="radio" name="split-mode" id="mode-custom-range" value="range" checked style="width:16px; height:16px; accent-color:var(--clr-accent);">
+          <span>Extract Specific Page Ranges</span>
+        </label>
+        <div id="custom-range-inputs-container" style="margin-top:var(--space-2); margin-left:24px;">
+          <input type="text" id="split-ranges-input" placeholder="Ex: 1-3, 5, 8-12" style="padding:10px 14px; border-radius:var(--radius-sm); border:1px solid var(--clr-border-2); background:var(--clr-surface); color:var(--clr-heading); width:100%; max-width:320px; font-size:var(--fs-sm);">
+          <p style="font-size:var(--fs-xs); color:var(--clr-text-3); margin-top:6px; line-height:1.4;">Comma separated list of pages or ranges. Everything outside specified ranges will be discarded.</p>
+        </div>
+
+        <hr style="border:0; border-top:1px solid var(--clr-border-2); margin:var(--space-2) 0;">
+
+        <label style="display:flex; align-items:center; gap:8px; font-weight:var(--fw-bold); color:var(--clr-heading); cursor:pointer;">
+          <input type="radio" name="split-mode" id="mode-fixed-split" value="fixed" style="width:16px; height:16px; accent-color:var(--clr-accent);">
+          <span>Split into Fixed Intervals</span>
+        </label>
+        <div id="fixed-split-inputs-container" style="margin-top:var(--space-2); margin-left:24px; display:none;">
+          <div style="display:flex; align-items:center; gap:8px;">
+            <span style="font-size:var(--fs-xs); color:var(--clr-text-2);">Split file into chunks of every</span>
+            <input type="number" id="split-fixed-value" min="1" value="1" style="padding:8px 10px; border-radius:var(--radius-sm); border:1px solid var(--clr-border-2); background:var(--clr-surface); color:var(--clr-heading); width:64px; text-align:center; font-size:var(--fs-sm);">
+            <span style="font-size:var(--fs-xs); color:var(--clr-text-2);">pages.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="pdf-action-bar" id="split-action" style="display:none;" aria-label="Action controls">
+      <div class="pdf-secure-badge">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" /></svg>
+        Sandbox Local Environment Safe
+      </div>
+      <button class="btn btn-primary" id="split-trigger-btn" type="button">Extract & Split PDF</button>
+    </div>
+
+    <div class="pdf-progress" id="split-progress" role="progressbar" hidden>
+      <div class="pdf-progress__bar">
+        <div class="pdf-progress__fill" id="split-progress-fill"></div>
+      </div>
+      <div class="pdf-progress__label" id="split-progress-label">Parsing Document Structure…</div>
+    </div>
+
+    <div class="pdf-result" id="pdf-result-box" role="region" hidden>
+      <div class="pdf-result__icon" aria-hidden="true">
+             <svg width="100" height="100" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+
+          <!-- Background circle -->
+          <circle class="check-bg" cx="50" cy="50" r="46"/>
+
+          <!-- Animated border circle -->
+          <circle class="check-circle" cx="50" cy="50" r="45"/>
+
+          <!-- Animated checkmark -->
+          <polyline class="check-mark" points="28,52 43,67 72,35"/>
+
+          <style>
+            .check-circle {
+              stroke: #22c55e;
+              stroke-width: 4;
+              stroke-linecap: round;
+              fill: none;
+              stroke-dasharray: 283;
+              stroke-dashoffset: 283;
+              animation: drawCircle 0.6s ease forwards;
+              transform-origin: center;
+              transform: rotate(-90deg);
+            }
+
+            .check-mark {
+              stroke: #22c55e;
+              stroke-width: 5;
+              stroke-linecap: round;
+              stroke-linejoin: round;
+              fill: none;
+              stroke-dasharray: 60;
+              stroke-dashoffset: 60;
+              animation: drawCheck 0.4s ease forwards 0.5s;
+            }
+
+            .check-bg {
+              fill: #dcfce7;
+              opacity: 0;
+              animation: fadeInBg 0.3s ease forwards 0.2s;
+            }
+
+            .pdf-result__icon {
+              display: flex;
+              align-items: center;
+              justify-content: center;
+            }
+
+            @keyframes drawCircle {
+              to { stroke-dashoffset: 0; }
+            }
+
+            @keyframes drawCheck {
+              to { stroke-dashoffset: 0; }
+            }
+
+            @keyframes fadeInBg {
+              to { opacity: 1; }
+            }
+          </style>
+
+        </svg>
+      </div>
+      <div class="pdf-result__title">Document Split Successfully!</div>
+      
+      <div id="split-results-manifest" class="pdf-merge-list" style="margin:var(--space-4) 0; max-height:220px; overflow-y:auto; border:1px solid var(--clr-border-2); border-radius:var(--radius-md); padding:var(--space-3); background:var(--clr-surface-2);"></div>
+
+      <div class="pdf-result__meta" id="pdf-result-meta">—</div>
+      <div class="pdf-result__actions">
+        <button class="btn btn-primary" id="result-download-btn" type="button">Download All Split Files</button>
+        <button class="btn btn-outline" id="split-reset-btn" type="button">Split Another File</button>
+        <a href="/tools/pdf/" class="btn btn-outline">More PDF Tools</a>
+      </div>
+    </div>
+
+    <div class="pdf-info-box" role="note" style="background: rgba(var(--clr-accent-rgb), 0.03); border-left: 4px solid var(--clr-accent); margin-top: var(--space-6); font-size: var(--space-3); color: var(--clr-text-2); padding: 12px; border-radius: 4px;">
+      <strong>🛡️ TyagiHub Security Note:</strong> If your uploaded input file is password-protected, the interface will automatically prompt you with a secure centered dialog block window to authorize decryption parameters. Everything executes offline in the client sandbox layout environment.
+    </div>
+
+    <hr style="border: 0; border-top: 1px solid var(--clr-border); margin: var(--space-16) 0;">
+
+    <section style="margin-bottom: var(--space-10);" aria-labelledby="seo-split-tech-heading">
+      <h2 id="seo-split-tech-heading" style="color: var(--clr-heading); font-size: var(--fs-xl); font-weight: var(--fw-bold); margin-bottom: var(--space-4);">
+        Advanced Client-Side Architecture for Safe PDF Splitting
+      </h2>
+      <p style="color: var(--clr-text-2); font-size: var(--fs-sm); line-height: 1.6; margin-bottom: var(--space-3);">
+        Uploading enterprise records, invoices, or legal bundles to cloud servers compromises confidentiality checkpoints. TyagiHub bypasses this structural vulnerability using WebAssembly execution filters that extract specified vector nodes right inside your browser memory cache arrays. 
+      </p>
+      <p style="color: var(--clr-text-2); font-size: var(--fs-sm); line-height: 1.6;">
+        Our compiler extracts pages cleanly without flattening original embedded font sets, interactive hyperlink metadata parameters, or structural vector blueprints. Whether you require slicing odd pages or partitioning thousands of statement ledger records into uniform intervals, output binary sequences compile locally and execute cleanly without damage.
+      </p>
+    </section>
+
+    <section aria-labelledby="seo-faq-heading">
+      <h2 id="seo-faq-heading"
+        style="color: var(--clr-heading); font-size: var(--fs-xl); font-weight: var(--fw-bold); margin-bottom: var(--space-5);">
+        Frequently Asked Questions (FAQ)
+      </h2>
+
+      <details class="tyagihub-faq">
+        <summary>Will splitting protected documents break internal links or text searchable metrics?</summary>
+        <div class="faq-content">
+          Never. Slicing document page allocations preserves native byte structures. All text segments remain perfectly selectable, and underlying vectors maintain their original sharp resolution bounds.
+        </div>
+      </details>
+
+      <details class="tyagihub-faq">
+        <summary>Can I automatically divide a large manual into equal parts of 2 pages each?</summary>
+        <div class="faq-content">
+          Yes. Toggle the "Split into Fixed Intervals" option inside the dashboard, enter your specific range target value, and the engine will partition files into matching segment sequences instantly.
+        </div>
+      </details>
+
+      <details class="tyagihub-faq">
+        <summary>Are historical records or file buffers cached anywhere on TyagiHub routers?</summary>
+        <div class="faq-content">
+          Never. Processing relies entirely on local execution runtimes. Once the browser instance is terminated, all transient data pointers are wiped automatically.
+        </div>
+      </details>
+    </section>
+
+  </div>
+</div>

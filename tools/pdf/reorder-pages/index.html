@@ -1,0 +1,281 @@
+---
+layout: default
+title: "Reorder PDF Pages — Rearrange PDF Pages Online Free | TyagiHub"
+description: "Rearrange and sort the page order of your PDF document online free. Secure client-side visual sorting board with real-time iframe previews."
+keywords: "reorder pdf, rearrange pdf pages, change pdf order, sort pdf sheets, free offline page arranger, TyagiHub tools"
+lang_switch: false
+extra_css:
+  - /assets/css/tyagihub-pdf.min.css
+extra_js:
+  - https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.4.120/pdf.min.js
+  - /assets/js/libs/all.pdf.js
+---
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "SoftwareApplication",
+      "name": "TyagiHub Reorder PDF Pages",
+      "operatingSystem": "All",
+      "applicationCategory": "WebApplication",
+      "description": "An advanced client-side offline PDF page rearrangement asset tool that sorts pages visually.",
+      "url": "https://tyagihub.in/tools/pdf/reorder-pages/",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "INR"
+      },
+      "creator": {
+        "@type": "Organization",
+        "name": "TyagiHub",
+        "url": "https://tyagihub.in"
+      }
+    }
+  ]
+}
+</script>
+
+<div class="pdf-tool-page tyagihub-reorder-pages hind-regular">
+
+  <div class="pdf-tool-header">
+    <nav class="pdf-tool-header__breadcrumb" aria-label="Breadcrumb" data-loader="Learn">
+      <a href="/">Home</a>
+      <span aria-hidden="true"> / </span>
+      <a href="/tools/">Tools</a>
+      <span aria-hidden="true"> / </span>
+      <a href="/tools/pdf/">PDF Tools</a>
+      <span aria-hidden="true"> / </span>
+      <span aria-current="page">Reorder Pages</span>
+    </nav>
+    <div class="container pdf-tool-header__inner">
+      <div class="pdf-tool-header__icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 5v14M5 12h14M19 12l-7 7M19 12l-7-7"/>
+        </svg>
+      </div>
+      <div class="pdf-tool-header__text">
+        <h1 class="pdf-tool-header__title th-heading-bold">Rearrange PDF Pages Online</h1>
+        <p class="pdf-tool-header__desc">
+          Sort, move, and shuffle the sequence layout of your files instantly. 
+          Use our one-click positional arrow tracks to adjust sequences visually without remote uploads risk leaks.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="pdf-tool-workspace">
+
+    <div class="pdf-dropzone" id="reorder-drop" role="button" aria-label="Upload PDF file for page sorting" tabindex="0">
+      <div class="pdf-dropzone__icon th-animated-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24">
+          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+          <polyline points="14 2 14 8 20 8" />
+          <path d="M9 15h6M9 12h6" />
+        </svg>
+      </div>
+      <div class="pdf-dropzone__title th-heading-bold">Drag your unsorted PDF here or browse documents</div>
+      <div class="pdf-dropzone__sub">Rearrange page sequences natively on block views · Up to 100 MB maximum size</div>
+      
+      <button class="pdf-dropzone__btn" type="button" aria-label="Select local target file">
+        <svg viewBox="0 0 24 24" aria-hidden="true" class="th-upload-svg">
+          <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+          <g class="th-bounce-group">
+            <polyline points="17 8 12 3 7 8" />
+            <line x1="12" y1="3" x2="12" y2="15" />
+          </g>
+        </svg>
+        Choose PDF Document
+      </button>
+      <input type="file" class="pdf-dropzone__input" id="reorder-file-input" accept=".pdf,application/pdf" aria-label="Upload file loop element">
+    </div>
+
+    <div id="tyagihub-unlock-modal-overlay" class="th-modal-overlay th-hidden-state">
+      <div class="th-modal-card">
+        <div class="th-modal-icon">🔒</div>
+        <h3 class="th-modal-card__title th-heading-bold">Encrypted Document Detected</h3>
+        <p class="th-modal-card__desc">This file requires standard decryption parameters prior to running structural page sorting templates.</p>
+        <input type="password" id="th-popup-password-field" class="th-modal-card__input" placeholder="Enter file access password...">
+        <div class="th-modal-card__actions th-center-flex">
+          <button type="button" id="th-popup-submit-btn" class="btn btn-primary th-modal-btn">Unlock & Load</button>
+          <button type="button" id="th-popup-cancel-btn" class="btn btn-outline th-modal-btn">Cancel Process</button>
+        </div>
+      </div>
+    </div>
+
+    <div id="th-hd-preview-modal-container" class="th-hd-preview-overlay th-hidden-state">
+      <div class="th-hd-preview-container">
+        <div class="th-hd-preview-canvas-wrapper">
+          <iframe id="th-real-pdf-view-iframe" class="th-iframe-element" src=""></iframe>
+        </div>
+        <div class="th-modal-close-row">
+          <button type="button" id="th-hd-close-btn" class="btn btn-outline th-close-btn-style">Close Preview</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="pdf-settings" id="reorder-settings" aria-label="Reordering Dashboard Panel" hidden>
+      <div class="pdf-settings__title th-heading-bold">Sort Workspace Dashboard</div>
+      <div id="reorder-file-details" class="pdf-merge-list th-meta-margin"></div>
+
+      <div class="pdf-tool-input-group">
+        <label class="th-label-title-bold">📄 Visual Sorting Workspace (Click left/right arrows to shift index position or click eye icon for Full View)</label>
+        <div id="th-visual-reorder-grid-target" class="th-reorder-grid"></div>
+      </div>
+
+      <div class="pdf-tool-input-group th-log-max-width">
+        <label for="reorder-sequence-output-log" class="th-text-muted-bold">Dynamic Target Output Sequence Map:</label>
+        <input type="text" id="reorder-sequence-output-log" readonly class="th-sequence-input-log-style">
+      </div>
+    </div>
+
+    <div class="pdf-action-bar" id="reorder-action" style="display:none;" aria-label="Action controls">
+      <div class="pdf-secure-badge">
+        <svg viewBox="0 0 24 24" aria-hidden="true" class="th-badge-lock-svg"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" /></svg>
+        Sandbox Local Environment Safe
+      </div>
+      <div class="th-flex-gap-10">
+        <button class="btn btn-outline" id="reorder-reset-btn" type="button">Clear & Close File</button>
+        <button class="btn btn-primary" id="reorder-trigger-btn" type="button">🚀 Compile New Sequence</button>
+      </div>
+    </div>
+
+    <div class="pdf-progress" id="reorder-progress" role="progressbar" hidden>
+      <div class="pdf-progress__bar">
+        <div class="pdf-progress__fill" id="reorder-progress-fill"></div>
+      </div>
+      <div class="pdf-progress__label" id="reorder-progress-label">Re-arranging object index models…</div>
+    </div>
+
+    <div class="pdf-result" id="pdf-result-box" role="region" hidden>
+      <div class="pdf-result__icon" aria-hidden="true">
+        <svg width="100" height="100" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle class="check-bg" cx="50" cy="50" r="46"/>
+          <circle class="check-circle" cx="50" cy="50" r="45"/>
+          <polyline class="check-mark" points="28,52 43,67 72,35"/>
+          <style>
+            .check-circle { stroke: #22c55e; stroke-width: 4; stroke-linecap: round; fill: none; stroke-dasharray: 283; stroke-dashoffset: 283; animation: drawCircle 0.6s ease forwards; transform-origin: center; transform: rotate(-90deg); }
+            .check-mark { stroke: #22c55e; stroke-width: 5; stroke-linecap: round; stroke-linejoin: round; fill: none; stroke-dasharray: 60; stroke-dashoffset: 60; animation: drawCheck 0.4s ease forwards 0.5s; }
+            .check-bg { fill: #dcfce7; opacity: 0; animation: fadeInBg 0.3s ease forwards 0.2s; }
+            .pdf-result__icon { display: flex; align-items: center; justify-content: center; }
+            @keyframes drawCircle { to { stroke-dashoffset: 0; } }
+            @keyframes drawCheck { to { stroke-dashoffset: 0; } }
+            @keyframes fadeInBg { to { opacity: 1; } }
+          </style>
+        </svg>
+      </div>
+      <div class="pdf-result__title th-heading-bold">Pages Sorted Perfectly!</div>
+      <div class="pdf-result__meta" id="pdf-result-meta">—</div>
+      <div class="pdf-result__actions">
+        <button class="btn btn-primary" id="result-download-btn" type="button">📥 Download Rearranged PDF</button>
+        <button class="btn btn-outline" id="reorder-reset-page-btn" type="button">Process Another File</button>
+        <a href="/tools/pdf/" class="btn btn-outline">More PDF Tools</a>
+      </div>
+    </div>
+
+    <div class="pdf-info-box th-info-box-override" role="note">
+      <strong>🛡️ TyagiHub Security Note:</strong> If your uploaded input file is password-protected, the interface will automatically prompt you with a secure centered dialog block window to authorize decryption parameters. Everything executes offline in the client sandbox layout environment.
+    </div>
+
+    <hr class="th-hr-divider">
+
+    <section class="th-seo-section" aria-labelledby="seo-reorder-tech-heading">
+      <h2 id="seo-reorder-tech-heading" class="th-seo-title th-heading-bold">Programmatic Sequence Re-Ordering Natively Inside Your Browser</h2>
+      <p class="th-seo-text">When corporate documents, multi-page layout records, or thesis briefs are pushed onto arbitrary cloud sites, private contents become vulnerable to tracking exposures. TyagiHub eliminates this leak channel completely. Our core compilation framework executes deep binary-level structural cloning loops locally inside your local browser tab cache memory.</p>
+    </section>
+
+    <section aria-labelledby="seo-faq-heading">
+      <h2 id="seo-faq-heading" class="th-faq-title th-heading-bold">Frequently Asked Questions (FAQ)</h2>
+      <details class="tyagihub-faq">
+        <summary>Will changing page order shift underlying text-copy selection alignment?</summary>
+        <div class="faq-content">Never. Re-arranging pages shifts the global document cross-reference index maps only. Individual text structures inside all sheets remain intact, entirely selectable, and 100% searchable across all third-party readers.</div>
+      </details>
+<details class="tyagihub-faq">
+    <summary>Can I crop individual sheets separately?</summary>
+    <div class="faq-content">
+      Yes! By default, you can opt to apply the cropping coordinates across all page lists, or isolate dimensions updates to the "Current Previewed Page Only" under execution configurations.
+    </div>
+  </details>
+
+  <details class="tyagihub-faq">
+    <summary>Are my bank data or sensitive personal archives secure?</summary>
+    <div class="faq-content">
+      Completely secure. None of your documents or files are transmitted outside your browser. All computations are resolved strictly locally inside-browser using compiled WebAssembly and Javascript engines, giving secure, instant offline processing on your local machine.
+    </div>
+  </details>
+    </section>
+
+  </div>
+</div>
+
+<script>
+  (() => {
+    const lockWorkerEngine = () => {
+      const pdfjs = window.pdfjsLib || window['pdfjs-dist/build/pdf'];
+      if (pdfjs) {
+        pdfjs.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.4.120/pdf.worker.min.js';
+        return true;
+      }
+      return false;
+    };
+    if (!lockWorkerEngine()) {
+      const intervalLock = setInterval(() => {
+        if (lockWorkerEngine()) clearInterval(intervalLock);
+      }, 40);
+    }
+  })();
+</script>
+
+<style>
+  /* Core Premium Theme Skins Configurations Array */
+  .th-heading-bold { font-family: 'Hind', sans-serif; font-weight: 700; }
+  .th-hidden-state { display: none !important; }
+  .th-meta-margin { margin-bottom: var(--space-4); }
+  .th-animated-icon { transition: transform 0.3s ease-in-out; }
+  .th-animated-icon:hover { transform: translateY(-5px); }
+  .th-upload-svg { width:24px; height:24px; stroke:currentColor; stroke-width:2; stroke-linecap:round; stroke-linejoin:round; fill:none; overflow:visible; }
+  .th-bounce-group { animation:uploadBounce 1.5s ease-in-out infinite; transform-origin:12px 9px; transform-box:fill-box; }
+  .pdf-dropzone__btn svg { margin-right: 8px; }
+  
+  .th-modal-icon { font-size:32px; margin-bottom:8px; }
+  .th-modal-btn { font-size:12px; padding:8px 16px; }
+  .th-center-flex { display:flex; gap:10px; justify-content:center; margin-top:6px; }
+  
+  .th-label-title-bold { font-weight:var(--fw-bold); color:var(--clr-heading); display:block; margin-bottom:var(--space-2); }
+  .th-log-max-width { margin-bottom:var(--space-4); max-width:380px; }
+  .th-text-muted-bold { font-size:var(--fs-xs); color:var(--clr-text-2); font-weight:var(--fw-bold); }
+  .th-sequence-input-log-style { padding:10px 14px; border-radius:var(--radius-sm); border:1px solid var(--clr-border-2); background:var(--clr-surface-2); color:var(--clr-heading); width:100%; font-size:var(--fs-sm); font-family:var(--font-mono); margin-top:4px; outline:none; }
+  
+  .th-badge-lock-svg { width: 14px; height: 14px; fill: none; stroke: currentColor; stroke-width: 2; margin-right: 6px; }
+  .th-info-box-override { background: rgba(var(--clr-accent-rgb), 0.03); border-left: 4px solid var(--clr-accent); margin-top: var(--space-6); font-size: var(--space-3); color: var(--clr-text-2); padding: 12px; border-radius: 4px; }
+  .th-hr-divider { border: 0; border-top: 1px solid var(--clr-border); margin: var(--space-16) 0; }
+  .th-seo-section { margin-bottom: var(--space-10); }
+  .th-seo-title { color: var(--clr-heading); font-size: var(--fs-xl); font-weight: var(--fw-bold); margin-bottom: var(--space-4); }
+  .th-seo-text { color: var(--clr-text-2); font-size: var(--fs-sm); line-height: 1.6; margin-bottom: var(--space-3); }
+  .th-faq-title { color: var(--clr-heading); font-size: var(--fs-xl); font-weight: var(--fw-bold); margin-bottom: var(--space-5); }
+
+  .th-hd-preview-overlay { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(15,23,42,0.75); backdrop-filter: blur(4px); z-index: 999999; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+  .th-hd-preview-container { width: 85vw; height: 85vh; max-width: 1200px; display: flex; flex-direction: column; }
+  .th-hd-preview-canvas-wrapper { width: 100%; height: 100%; padding: 0; background: #fff; overflow: hidden; border-radius: 8px; box-shadow: 0 25px 50px -12px rgba(0,0,0,0.5); }
+  .th-iframe-element { width: 100%; height: 100%; border: none; }
+  .th-modal-close-row { margin-top: var(--space-4); display: flex; gap: 12px; justify-content: center; width: 100%; }
+  .th-close-btn-style { padding: 10px 24px; min-width: 150px; background: #ffffff; }
+
+  /* Grid Layout Matrix Setup Class */
+  .th-reorder-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); gap: var(--space-4); background: var(--clr-surface-2); border: 1px solid var(--clr-border); border-radius: 12px; padding: var(--space-4); min-height: 200px; }
+  @media(min-width: 600px) { .th-reorder-grid { grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: var(--space-5); padding: var(--space-5); } }
+  
+  .th-reorder-card { background: #ffffff; border: 1px solid var(--clr-border-2); border-radius: 8px; padding: 10px; display: flex; flex-direction: column; align-items: center; position: relative; box-shadow: 0 2px 5px rgba(0,0,0,0.02); transition: border-color 0.2s, transform 0.2s; }
+  .th-reorder-card:hover { border-color: var(--clr-accent); transform: translateY(-2px); }
+  .th-reorder-card canvas { width: 100%; height: auto; background: var(--clr-bg); border-radius: 4px; border: 1px solid var(--clr-border); display: block; margin-bottom: 8px; }
+  .th-reorder-badge-label { font-size: 11px; font-weight: 700; color: var(--clr-text-3); background: var(--clr-surface-2); padding: 2px 8px; border-radius: 10px; margin-top: auto; }
+  
+  .th-reorder-overlay-menu { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(15,23,42,0.65); border-radius: 8px; display: flex; align-items: center; justify-content: center; gap: 6px; opacity: 0; transition: opacity 0.2s ease-in-out; z-index: 5; }
+  .th-reorder-card:hover .th-reorder-overlay-menu { opacity: 1; }
+  
+  .th-reorder-icon-btn { width: 32px; height: 32px; border-radius: 50%; border: none; background: #ffffff; color: var(--clr-heading); font-size: 12px; cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 6px rgba(0,0,0,0.15); transition: transform 0.15s, background 0.15s; }
+  .th-reorder-icon-btn:hover { transform: scale(1.15); background: var(--clr-accent); color: #ffffff; }
+  .th-reorder-icon-btn.btn-move { background: var(--clr-surface-3); }
+  .th-reorder-icon-btn.btn-move:hover { background: var(--clr-heading); color: #ffffff; }
+</style>

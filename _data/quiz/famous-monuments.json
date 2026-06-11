@@ -1,0 +1,128 @@
+{
+  "title": "Famous Monuments",
+  "title_hi": "प्रसिद्ध स्मारक",
+  "icon": "🏯",
+  "slug": "famous-monuments",
+  "questions": [
+    {
+      "id": 1,
+      "q": "The Taj Mahal was built in memory of?",
+      "opts": [
+        "Noor Jahan",
+        "Mumtaz Mahal",
+        "Ruqaiya Sultan Begum",
+        "Jodha Bai"
+      ],
+      "ans": 1,
+      "exp": "The Taj Mahal was built by Mughal Emperor Shah Jahan in memory of his beloved wife Mumtaz Mahal, who died in 1631 during childbirth. It took 22 years (1632–1653) to complete."
+    },
+    {
+      "id": 2,
+      "q": "The Eiffel Tower is located in which city?",
+      "opts": [
+        "Rome",
+        "Berlin",
+        "London",
+        "Paris"
+      ],
+      "ans": 3,
+      "exp": "The Eiffel Tower is located in Paris, France. It was built by engineer Gustave Eiffel for the 1889 World's Fair. It stands 330 m tall and is the most visited paid monument in the world."
+    },
+    {
+      "id": 3,
+      "q": "The Statue of Liberty was gifted to the USA by?",
+      "opts": [
+        "UK",
+        "Canada",
+        "France",
+        "Germany"
+      ],
+      "ans": 2,
+      "exp": "The Statue of Liberty was gifted to the USA by France in 1886 as a symbol of friendship between the two nations. It was designed by French sculptor Frédéric Auguste Bartholdi."
+    },
+    {
+      "id": 4,
+      "q": "The Great Wall of China was primarily built to protect against?",
+      "opts": [
+        "Floods",
+        "Mongol invasions",
+        "Earthquakes",
+        "Sea pirates"
+      ],
+      "ans": 1,
+      "exp": "The Great Wall of China was primarily built to protect Chinese states from Mongol and other nomadic invasions from the north. Construction began in the 7th century BCE and continued for centuries."
+    },
+    {
+      "id": 5,
+      "q": "The Colosseum is located in?",
+      "opts": [
+        "Athens",
+        "Cairo",
+        "Rome",
+        "Istanbul"
+      ],
+      "ans": 2,
+      "exp": "The Colosseum (Coliseum) is an ancient amphitheatre located in the center of Rome, Italy. Built between 70–80 CE, it could hold 50,000–80,000 spectators and was used for gladiatorial contests."
+    },
+    {
+      "id": 6,
+      "q": "India Gate was built to commemorate?",
+      "opts": [
+        "Independence of India",
+        "Soldiers who died in World War I",
+        "Soldiers who died in 1857 revolt",
+        "Martyrs of Jallianwala Bagh"
+      ],
+      "ans": 1,
+      "exp": "India Gate is a war memorial in New Delhi, built to commemorate the 82,000 Indian soldiers who died during World War I (1914–1921). It was designed by Sir Edwin Lutyens and inaugurated in 1931."
+    },
+    {
+      "id": 7,
+      "q": "The Pyramids of Giza are located in?",
+      "opts": [
+        "Iraq",
+        "Iran",
+        "Jordan",
+        "Egypt"
+      ],
+      "ans": 3,
+      "exp": "The Pyramids of Giza are located in Giza, Egypt. The Great Pyramid of Giza, built for Pharaoh Khufu around 2560 BCE, is the oldest of the Seven Wonders of the Ancient World and the only one still largely intact."
+    },
+    {
+      "id": 8,
+      "q": "The Charminar is located in which city?",
+      "opts": [
+        "Mumbai",
+        "Lucknow",
+        "Hyderabad",
+        "Delhi"
+      ],
+      "ans": 2,
+      "exp": "The Charminar is a mosque and monument located in Hyderabad, Telangana. Built in 1591 by Muhammad Quli Qutb Shah, it stands at the intersection of the old city's main roads. Its name means 'four towers'."
+    },
+    {
+      "id": 9,
+      "q": "The Qutb Minar is the tallest brick minaret in the world, located in?",
+      "opts": [
+        "Agra",
+        "Lucknow",
+        "Lahore",
+        "Delhi"
+      ],
+      "ans": 3,
+      "exp": "The Qutb Minar is located in the Qutb complex in Mehrauli, Delhi. It is 73 m tall and was built starting in 1193 by Qutb-ud-din Aibak. It is a UNESCO World Heritage Site."
+    },
+    {
+      "id": 10,
+      "q": "The Angkor Wat temple is located in?",
+      "opts": [
+        "Thailand",
+        "Myanmar",
+        "Cambodia",
+        "Vietnam"
+      ],
+      "ans": 2,
+      "exp": "Angkor Wat is a Hindu-Buddhist temple complex in Cambodia, built in the 12th century by Khmer King Suryavarman II. It is the world's largest religious monument and appears on Cambodia's national flag."
+    }
+  ]
+}

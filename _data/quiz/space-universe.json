@@ -1,0 +1,128 @@
+{
+  "title": "Space & Universe",
+  "title_hi": "अंतरिक्ष और ब्रह्मांड",
+  "icon": "🚀",
+  "slug": "space-universe",
+  "questions": [
+    {
+      "id": 1,
+      "q": "Who was the first human to go to space?",
+      "opts": [
+        "Neil Armstrong",
+        "Buzz Aldrin",
+        "Yuri Gagarin",
+        "Alan Shepard"
+      ],
+      "ans": 2,
+      "exp": "Yuri Gagarin of the Soviet Union became the first human to travel to space on 12 April 1961. His spacecraft Vostok 1 completed one orbit of the Earth in 108 minutes."
+    },
+    {
+      "id": 2,
+      "q": "The largest planet in our solar system is?",
+      "opts": [
+        "Saturn",
+        "Mars",
+        "Jupiter",
+        "Uranus"
+      ],
+      "ans": 2,
+      "exp": "Jupiter is the largest planet in our solar system. It is so large that all other planets in the solar system could fit inside it. Jupiter is a gas giant with 95 known moons."
+    },
+    {
+      "id": 3,
+      "q": "India's first satellite was named?",
+      "opts": [
+        "Bhaskara",
+        "Rohini",
+        "Aryabhata",
+        "INSAT"
+      ],
+      "ans": 2,
+      "exp": "Aryabhata was India's first satellite, launched on 19 April 1975 by the Soviet Union. It was named after the ancient Indian mathematician and astronomer Aryabhata."
+    },
+    {
+      "id": 4,
+      "q": "The nearest star to Earth (other than the Sun) is?",
+      "opts": [
+        "Sirius",
+        "Proxima Centauri",
+        "Betelgeuse",
+        "Vega"
+      ],
+      "ans": 1,
+      "exp": "Proxima Centauri is the nearest known star to Earth (other than the Sun), at a distance of about 4.24 light-years. It is a red dwarf star in the Alpha Centauri system."
+    },
+    {
+      "id": 5,
+      "q": "How many planets are in our solar system?",
+      "opts": [
+        "7",
+        "8",
+        "9",
+        "10"
+      ],
+      "ans": 1,
+      "exp": "There are 8 planets in our solar system: Mercury, Venus, Earth, Mars, Jupiter, Saturn, Uranus, and Neptune. Pluto was reclassified as a dwarf planet in 2006 by the IAU."
+    },
+    {
+      "id": 6,
+      "q": "ISRO stands for?",
+      "opts": [
+        "Indian Space Research Organisation",
+        "Indian Scientific Research Organisation",
+        "Indian Space and Research Organisation",
+        "Indian Satellite Research Organisation"
+      ],
+      "ans": 0,
+      "exp": "ISRO stands for Indian Space Research Organisation. It was founded on 15 August 1969. Its headquarters is in Bengaluru. ISRO has successfully launched numerous satellites and space missions."
+    },
+    {
+      "id": 7,
+      "q": "The Chandrayaan-3 mission successfully landed on the Moon in?",
+      "opts": [
+        "2021",
+        "2022",
+        "2023",
+        "2024"
+      ],
+      "ans": 2,
+      "exp": "Chandrayaan-3 successfully landed on the Moon's south pole on 23 August 2023, making India the first country to land near the lunar south pole. The lander was named Vikram and the rover was Pragyan."
+    },
+    {
+      "id": 8,
+      "q": "A light-year is a unit of?",
+      "opts": [
+        "Time",
+        "Distance",
+        "Speed",
+        "Mass"
+      ],
+      "ans": 1,
+      "exp": "A light-year is a unit of distance, equal to the distance light travels in one year (about 9.46 × 10¹² km). It is used to express distances between stars and galaxies."
+    },
+    {
+      "id": 9,
+      "q": "The Big Bang Theory explains?",
+      "opts": [
+        "Evolution of species",
+        "Origin of the Universe",
+        "Formation of Earth",
+        "Origin of life"
+      ],
+      "ans": 1,
+      "exp": "The Big Bang Theory is the prevailing cosmological model explaining the origin of the Universe. It proposes that the Universe began from an extremely hot and dense state about 13.8 billion years ago."
+    },
+    {
+      "id": 10,
+      "q": "Which planet is known as the Red Planet?",
+      "opts": [
+        "Venus",
+        "Mars",
+        "Jupiter",
+        "Mercury"
+      ],
+      "ans": 1,
+      "exp": "Mars is known as the Red Planet because of its reddish appearance, caused by iron oxide (rust) on its surface. Mars has the largest volcano (Olympus Mons) and the deepest canyon in the solar system."
+    }
+  ]
+}

@@ -1,0 +1,86 @@
+<!-- _includes/mobile-nav.html -->
+
+<nav id="mobile-nav"
+  class="mobile-nav"
+  role="navigation"
+  aria-label="{% if page.lang == 'hi' %}मोबाइल नेविगेशन{% else %}Mobile navigation{% endif %}"
+  aria-hidden="true">
+
+  {% if page.lang == "hi" %}
+
+    <a href="/hi/learn/" class="mobile-nav__link">
+      📚 सीखें
+    </a>
+
+    <a href="/hi/gk-quiz/" class="mobile-nav__link">
+      🧠 जीके क्विज
+    </a>
+
+    <a href="/hi/test/" class="mobile-nav__link">
+      📝 टेस्ट
+    </a>
+
+    <a href="/hi/shield/" class="mobile-nav__link">
+      🛡️ सुरक्षा
+    </a>
+
+    <a href="/tools/" class="mobile-nav__link">
+      🔧 टूल्स
+    </a>
+
+    <a href="/editor/" class="mobile-nav__link">
+      ✏️ एडिटर
+    </a>
+
+    <a href="/stock/" class="mobile-nav__link">
+      🖼️ स्टॉक
+    </a>
+
+    <a href="/apps/" class="mobile-nav__link">
+      📱 ऐप्स
+    </a>
+
+    <a href="/hi/discover/" class="mobile-nav__link">
+      🔍 डिस्कवर
+    </a>
+
+  {% else %}
+
+    <a href="/learn/" class="mobile-nav__link">
+      📚 Learn
+    </a>
+
+    <a href="/gk-quiz/" class="mobile-nav__link">
+      🧠 GK Quiz
+    </a>
+
+    <a href="/test/" class="mobile-nav__link">
+      📝 Test
+    </a>
+
+    <a href="/shield/" class="mobile-nav__link">
+      🛡️ Shield
+    </a>
+
+    <a href="/tools/" class="mobile-nav__link">
+      🔧 Tools
+    </a>
+
+    <a href="/editor/" class="mobile-nav__link">
+      ✏️ Editor
+    </a>
+
+    <a href="/stock/" class="mobile-nav__link">
+      🖼️ Stock
+    </a>
+
+    <a href="/apps/" class="mobile-nav__link">
+      📱 Apps
+    </a>
+
+    <a href="/discover/" class="mobile-nav__link">
+      🔍 Discover
+    </a>
+
+  {% endif %}
+</nav>

@@ -1,0 +1,128 @@
+{
+  "title": "Chemistry",
+  "title_hi": "रसायन विज्ञान",
+  "icon": "🧪",
+  "slug": "chemistry",
+  "questions": [
+    {
+      "id": 1,
+      "q": "The chemical formula of water is?",
+      "opts": [
+        "H₂O₂",
+        "HO",
+        "H₂O",
+        "H₃O"
+      ],
+      "ans": 2,
+      "exp": "The chemical formula of water is H₂O. Each water molecule consists of two hydrogen atoms and one oxygen atom bonded together."
+    },
+    {
+      "id": 2,
+      "q": "Which gas is known as 'laughing gas'?",
+      "opts": [
+        "Carbon dioxide",
+        "Nitrous oxide",
+        "Nitrogen",
+        "Oxygen"
+      ],
+      "ans": 1,
+      "exp": "Nitrous oxide (N₂O) is known as 'laughing gas'. It is used as an anesthetic in medicine and dentistry. Inhaling it causes temporary euphoria and laughter."
+    },
+    {
+      "id": 3,
+      "q": "The atomic number of Carbon is?",
+      "opts": [
+        "4",
+        "6",
+        "8",
+        "12"
+      ],
+      "ans": 1,
+      "exp": "Carbon has an atomic number of 6, meaning it has 6 protons in its nucleus. Its atomic mass is approximately 12 amu."
+    },
+    {
+      "id": 4,
+      "q": "Who is known as the Father of Chemistry?",
+      "opts": [
+        "Dalton",
+        "Lavoisier",
+        "Mendeleev",
+        "Bohr"
+      ],
+      "ans": 1,
+      "exp": "Antoine Lavoisier is known as the Father of Modern Chemistry. He discovered the role of oxygen in combustion and developed the law of conservation of mass."
+    },
+    {
+      "id": 5,
+      "q": "pH of a neutral solution is?",
+      "opts": [
+        "0",
+        "7",
+        "14",
+        "1"
+      ],
+      "ans": 1,
+      "exp": "A neutral solution (like pure water) has a pH of 7. Solutions with pH < 7 are acidic, and pH > 7 are basic/alkaline. The pH scale ranges from 0 to 14."
+    },
+    {
+      "id": 6,
+      "q": "Which element has the symbol 'Au'?",
+      "opts": [
+        "Silver",
+        "Aluminum",
+        "Gold",
+        "Copper"
+      ],
+      "ans": 2,
+      "exp": "Au is the chemical symbol for Gold, derived from the Latin word 'Aurum'. Gold is a precious metal with atomic number 79 and is known for its malleability and conductivity."
+    },
+    {
+      "id": 7,
+      "q": "The process of conversion of sugar into alcohol is called?",
+      "opts": [
+        "Oxidation",
+        "Fermentation",
+        "Distillation",
+        "Crystallization"
+      ],
+      "ans": 1,
+      "exp": "Fermentation is the process by which sugar is converted into alcohol and carbon dioxide by microorganisms like yeast. It is used in making beer, wine, and bread."
+    },
+    {
+      "id": 8,
+      "q": "Which gas is used in fire extinguishers?",
+      "opts": [
+        "Oxygen",
+        "Hydrogen",
+        "Carbon dioxide",
+        "Nitrogen"
+      ],
+      "ans": 2,
+      "exp": "Carbon dioxide (CO₂) is commonly used in fire extinguishers. It smothers the fire by displacing oxygen and cooling the burning material."
+    },
+    {
+      "id": 9,
+      "q": "The chemical formula of common salt is?",
+      "opts": [
+        "KCl",
+        "MgCl₂",
+        "NaCl",
+        "CaCl₂"
+      ],
+      "ans": 2,
+      "exp": "Common salt (table salt) has the chemical formula NaCl (Sodium Chloride). It consists of sodium (Na) and chlorine (Cl) ions in a 1:1 ratio."
+    },
+    {
+      "id": 10,
+      "q": "Rusting of iron is an example of?",
+      "opts": [
+        "Physical change",
+        "Chemical change",
+        "Both",
+        "Neither"
+      ],
+      "ans": 1,
+      "exp": "Rusting of iron is a chemical change (oxidation). Iron reacts with oxygen and moisture to form iron oxide (Fe₂O₃·nH₂O), commonly known as rust. This is an irreversible process."
+    }
+  ]
+}

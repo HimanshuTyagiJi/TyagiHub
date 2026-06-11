@@ -1,0 +1,224 @@
+---
+layout: default
+title: "Remove Extra Spaces — Clean & Format Text | TyagiHub"
+description: "Free online tool to remove extra spaces, double spaces, leading/trailing spaces, blank lines and more. Clean and format your text instantly."
+keywords: "remove extra spaces, clean text, trim spaces, remove blank lines, text cleaner, TyagiHub"
+permalink: /tools/text/remove-extra-spaces/
+lang_switch: false
+---
+
+<style>
+:root{--accent:#f5a623;--accent2:#e8431a;--green:#34d399;--surface:var(--clr-surface,#1a1d2e);--surface2:var(--clr-surface-2,#242740);--border:var(--clr-border,rgba(255,255,255,0.08));--border2:rgba(255,255,255,0.12);--text:var(--clr-text,#c8cde0);--heading:var(--clr-heading,#eef0fa);--muted:var(--clr-text-3,#5a6080);--radius:14px;--radius-sm:10px;--font:var(--font-body,'Segoe UI',system-ui,sans-serif);--mono:'Courier New','Consolas',monospace}
+.tt-wrap{max-width:920px;margin:0 auto;padding:2.5rem 1.25rem 5rem;font-family:var(--font)}
+.tt-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(245,166,35,.12);border:1px solid rgba(245,166,35,.28);color:var(--accent);font-size:.72rem;font-weight:700;padding:4px 14px;border-radius:100px;margin-bottom:1rem;letter-spacing:.08em;text-transform:uppercase}
+.tt-badge svg{width:12px;height:12px;stroke:currentColor;fill:none;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}
+.tt-hero{margin-bottom:2rem}
+.tt-hero h1{font-size:clamp(1.7rem,4vw,2.4rem);font-weight:800;color:var(--heading);letter-spacing:-.03em;margin-bottom:.5rem;line-height:1.15}
+.tt-hero h1 em{font-style:normal;background:linear-gradient(135deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.tt-hero p{color:var(--text);font-size:.93rem;line-height:1.75;max-width:600px}
+.tt-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:1.4rem;margin-bottom:1.25rem}
+.tt-card-title{font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin-bottom:1.1rem;display:flex;align-items:center;gap:8px}
+.tt-card-title::before{content:'';width:3px;height:13px;background:linear-gradient(180deg,var(--accent),var(--accent2));border-radius:99px;flex-shrink:0}
+.tt-textarea{width:100%;box-sizing:border-box;background:var(--surface2);border:1px solid var(--border2);border-radius:var(--radius-sm);padding:14px 16px;font-family:var(--mono);font-size:.88rem;color:var(--heading);outline:none;resize:vertical;min-height:180px;line-height:1.75;transition:border-color .18s,box-shadow .18s}
+.tt-textarea:focus{border-color:var(--accent);box-shadow:0 0 0 3px rgba(245,166,35,.1)}
+.tt-textarea::placeholder{color:var(--muted);font-family:var(--font);font-size:.87rem}
+
+/* Options grid */
+.rs-options{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:.65rem;margin-bottom:1.25rem}
+.rs-opt{display:flex;align-items:flex-start;gap:10px;padding:.85rem 1rem;background:var(--surface2);border:1px solid var(--border);border-radius:var(--radius-sm);cursor:pointer;transition:all .18s;user-select:none}
+.rs-opt:hover{border-color:var(--accent)}
+.rs-opt.active{border-color:rgba(245,166,35,.4);background:rgba(245,166,35,.06)}
+.rs-opt input{accent-color:var(--accent);margin-top:2px;flex-shrink:0;width:15px;height:15px;cursor:pointer}
+.rs-opt-info{flex:1}
+.rs-opt-name{font-size:.85rem;font-weight:700;color:var(--heading);display:block}
+.rs-opt-desc{font-size:.71rem;color:var(--muted);display:block;margin-top:2px;line-height:1.4}
+
+/* IO grid */
+.rs-io{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+@media(max-width:680px){.rs-io{grid-template-columns:1fr}}
+.rs-label{font-size:.78rem;font-weight:700;color:var(--text);margin-bottom:6px;display:flex;justify-content:space-between}
+.rs-label span{font-size:.7rem;color:var(--muted)}
+
+/* Stats diff */
+.rs-stats{display:flex;gap:.55rem;flex-wrap:wrap;margin-top:.75rem}
+.rs-stat{display:flex;align-items:center;gap:5px;padding:5px 12px;background:var(--surface2);border:1px solid var(--border);border-radius:8px;font-size:.76rem;color:var(--text)}
+.rs-stat strong{font-family:var(--mono);font-weight:800;color:var(--accent)}
+.rs-stat.green strong{color:var(--green)}
+
+.tt-btn{display:inline-flex;align-items:center;justify-content:center;gap:7px;padding:9px 18px;border:none;border-radius:var(--radius-sm);font-family:var(--font);font-size:.87rem;font-weight:700;cursor:pointer;transition:all .2s;white-space:nowrap}
+.tt-btn svg{width:15px;height:15px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.tt-btn-primary{background:linear-gradient(135deg,var(--accent),var(--accent2));color:#000;box-shadow:0 4px 16px rgba(245,166,35,.25)}
+.tt-btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(245,166,35,.38)}
+.tt-btn-primary svg{stroke:#000}
+.tt-btn-secondary{background:var(--surface2);border:1px solid var(--border2);color:var(--text)}
+.tt-btn-secondary:hover{border-color:var(--accent);color:var(--accent)}
+.tt-btn-ghost{background:transparent;border:1px solid var(--border);color:var(--muted);font-size:.78rem;padding:7px 13px}
+.tt-btn-ghost:hover{border-color:var(--accent);color:var(--accent)}
+.tt-btn-row{display:flex;gap:.55rem;flex-wrap:wrap;margin-top:1rem}
+
+.tt-toast{position:fixed;bottom:2rem;left:50%;transform:translateX(-50%) translateY(80px);background:#1e2235;border:1px solid var(--accent);color:var(--heading);font-size:.85rem;font-weight:600;padding:10px 22px;border-radius:100px;box-shadow:0 8px 32px rgba(0,0,0,.4);transition:transform .3s cubic-bezier(.4,0,.2,1);z-index:9999;white-space:nowrap;pointer-events:none}
+.tt-toast.show{transform:translateX(-50%) translateY(0)}
+[data-theme="light"] .tt-card{background:#fff;border-color:#d8deed}
+[data-theme="light"] .tt-textarea{background:#f5f7fa;border-color:#d0d7e6;color:#1a2030}
+[data-theme="light"] .rs-opt{background:#f5f7fa;border-color:#d0d7e6}
+</style>
+
+<div class="tt-wrap">
+  <div class="tt-hero">
+    <div class="tt-badge">
+      <svg viewBox="0 0 24 24"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="15" y2="18"/></svg>
+      Text Tool
+    </div>
+    <h1>Remove <em>Extra Spaces</em></h1>
+    <p>Clean messy text instantly — remove double spaces, leading and trailing spaces, blank lines, tab characters, and more. Choose exactly what to clean and get formatted, professional text in one click.</p>
+  </div>
+
+  <!-- Options -->
+  <div class="tt-card">
+    <div class="tt-card-title">Cleaning Options</div>
+    <div class="rs-options" id="rs-options">
+      <!-- Rendered by JS -->
+    </div>
+    <div style="display:flex;gap:.5rem;flex-wrap:wrap;">
+      <button class="tt-btn tt-btn-ghost" onclick="selectAll(true)">Select All</button>
+      <button class="tt-btn tt-btn-ghost" onclick="selectAll(false)">Deselect All</button>
+    </div>
+  </div>
+
+  <!-- IO -->
+  <div class="tt-card">
+    <div class="tt-card-title">Clean Your Text</div>
+    <div class="rs-io">
+      <div>
+        <div class="rs-label">Input <span id="in-stat">0 chars</span></div>
+        <textarea class="tt-textarea" id="rs-input" placeholder="Paste your messy text here — with extra spaces,   double   gaps,     trailing whitespace, etc." rows="9" oninput="liveClean()"></textarea>
+      </div>
+      <div>
+        <div class="rs-label">Cleaned Output <span id="out-stat">0 chars</span></div>
+        <textarea class="tt-textarea" id="rs-output" readonly placeholder="Cleaned text will appear here..." rows="9"></textarea>
+      </div>
+    </div>
+    <div class="rs-stats" id="rs-stats"></div>
+    <div class="tt-btn-row">
+      <button class="tt-btn tt-btn-primary" onclick="liveClean()">
+        <svg viewBox="0 0 24 24"><path d="M3 6h18"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2"/></svg>
+        Clean Text
+      </button>
+      <button class="tt-btn tt-btn-secondary" onclick="copyOutput()">
+        <svg viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+        Copy Result
+      </button>
+      <button class="tt-btn tt-btn-secondary" onclick="useOutput()">
+        <svg viewBox="0 0 24 24"><polyline points="17 1 21 5 17 9"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><polyline points="7 23 3 19 7 15"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/></svg>
+        Use as Input
+      </button>
+      <button class="tt-btn tt-btn-ghost" onclick="clearAll()">
+        <svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        Clear
+      </button>
+    </div>
+  </div>
+</div>
+
+<div class="tt-toast" id="tt-toast"></div>
+
+<script>
+const OPTIONS = [
+  { id:'trim',       label:'Trim Leading & Trailing',  desc:'Remove spaces at start and end of entire text',  default:true },
+  { id:'double',     label:'Remove Double Spaces',      desc:'Collapse multiple spaces into single space',      default:true },
+  { id:'trim-lines', label:'Trim Each Line',            desc:'Remove spaces from start and end of each line',  default:true },
+  { id:'blank-lines',label:'Remove Blank Lines',        desc:'Delete empty lines between paragraphs',           default:false },
+  { id:'extra-blank',label:'Reduce Multiple Blanks',    desc:'Reduce multiple blank lines into one blank line', default:true },
+  { id:'tabs',       label:'Replace Tabs with Spaces',  desc:'Convert tab characters to single spaces',        default:false },
+  { id:'newline-space',label:'Remove Space Before Newline', desc:'Strip trailing spaces at end of each line',  default:true },
+  { id:'nbsp',       label:'Replace Non-Breaking Spaces',desc:'Convert &nbsp; and special spaces to normal',   default:false },
+  { id:'punctuation',label:'Fix Spacing After Punctuation',desc:'Ensure single space after . , ; : ! ?',       default:false },
+  { id:'sentence',   label:'Single Space After Period', desc:'Ensure only one space after sentence-ending punctuation', default:false },
+];
+
+function buildOptions() {
+  const wrap = document.getElementById('rs-options');
+  wrap.innerHTML = OPTIONS.map(o=>`
+    <label class="rs-opt${o.default?' active':''}" id="opt-wrap-${o.id}">
+      <input type="checkbox" id="opt-${o.id}" ${o.default?'checked':''} onchange="toggleOpt('${o.id}',this.checked); liveClean()">
+      <div class="rs-opt-info">
+        <span class="rs-opt-name">${o.label}</span>
+        <span class="rs-opt-desc">${o.desc}</span>
+      </div>
+    </label>
+  `).join('');
+}
+
+function toggleOpt(id, on) {
+  document.getElementById('opt-wrap-'+id)?.classList.toggle('active', on);
+}
+
+function selectAll(on) {
+  OPTIONS.forEach(o=>{
+    const el = document.getElementById('opt-'+o.id);
+    if (el) { el.checked=on; toggleOpt(o.id,on); }
+  });
+  liveClean();
+}
+
+function getOpt(id) { return document.getElementById('opt-'+id)?.checked; }
+
+function cleanText(text) {
+  let t = text;
+  if (getOpt('nbsp'))       t = t.replace(/[\u00a0\u2000-\u200b\u202f\u205f\u3000]/g,' ');
+  if (getOpt('tabs'))       t = t.replace(/\t/g,' ');
+  if (getOpt('trim-lines')) t = t.split('\n').map(l=>l.trim()).join('\n');
+  if (getOpt('newline-space')) t = t.replace(/ +\n/g,'\n');
+  if (getOpt('double'))     t = t.replace(/  +/g,' ');
+  if (getOpt('punctuation'))t = t.replace(/([.,;:!?])\s*/g,'$1 ').replace(/([.,;:!?])  +/g,'$1 ');
+  if (getOpt('sentence'))   t = t.replace(/([.!?])  +/g,'$1 ');
+  if (getOpt('blank-lines'))t = t.replace(/\n\s*\n/g,'\n');
+  if (getOpt('extra-blank'))t = t.replace(/\n{3,}/g,'\n\n');
+  if (getOpt('trim'))       t = t.trim();
+  return t;
+}
+
+function liveClean() {
+  const inp = document.getElementById('rs-input').value;
+  const out = inp ? cleanText(inp) : '';
+  document.getElementById('rs-output').value = out;
+  document.getElementById('in-stat').textContent  = inp.length.toLocaleString()+' chars';
+  document.getElementById('out-stat').textContent = out.length.toLocaleString()+' chars';
+
+  const diff  = inp.length - out.length;
+  const spaces = (inp.match(/ {2,}/g)||[]).length;
+  const blanks = (inp.match(/\n\s*\n/g)||[]).length;
+
+  document.getElementById('rs-stats').innerHTML = diff > 0 ? `
+    <div class="rs-stat green"><span>Removed:</span><strong>${diff.toLocaleString()}</strong><span>characters</span></div>
+    <div class="rs-stat"><span>Double spaces found:</span><strong>${spaces}</strong></div>
+    <div class="rs-stat"><span>Blank lines:</span><strong>${blanks}</strong></div>
+  ` : '';
+}
+
+function copyOutput() {
+  const v = document.getElementById('rs-output').value;
+  if(!v){showToast('Nothing to copy.');return;}
+  navigator.clipboard.writeText(v).then(()=>showToast('✅ Copied to clipboard!'));
+}
+
+function useOutput() {
+  const v = document.getElementById('rs-output').value;
+  if(!v){showToast('Nothing to use.');return;}
+  document.getElementById('rs-input').value=v;
+  liveClean();
+  showToast('Output moved to input!');
+}
+
+function clearAll() {
+  document.getElementById('rs-input').value='';
+  document.getElementById('rs-output').value='';
+  document.getElementById('rs-stats').innerHTML='';
+  document.getElementById('in-stat').textContent='0 chars';
+  document.getElementById('out-stat').textContent='0 chars';
+}
+
+function showToast(msg){const t=document.getElementById('tt-toast');t.textContent=msg;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2800)}
+
+buildOptions();
+</script>

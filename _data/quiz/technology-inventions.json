@@ -1,0 +1,128 @@
+{
+  "title": "Technology & Inventions",
+  "title_hi": "प्रौद्योगिकी और आविष्कार",
+  "icon": "💡",
+  "slug": "technology-inventions",
+  "questions": [
+    {
+      "id": 1,
+      "q": "Who invented the light bulb?",
+      "opts": [
+        "Nikola Tesla",
+        "Alexander Graham Bell",
+        "Thomas Edison",
+        "Michael Faraday"
+      ],
+      "ans": 2,
+      "exp": "Thomas Edison invented the practical incandescent light bulb in 1879. Although others had earlier versions, Edison's design using a carbon filament in a vacuum was the first commercially viable one."
+    },
+    {
+      "id": 2,
+      "q": "The printing press was invented by?",
+      "opts": [
+        "Leonardo da Vinci",
+        "Johannes Gutenberg",
+        "Isaac Newton",
+        "Galileo Galilei"
+      ],
+      "ans": 1,
+      "exp": "Johannes Gutenberg invented the movable-type printing press around 1440. His Gutenberg Bible (1455) was the first major book printed in Europe using this technology, revolutionizing the spread of knowledge."
+    },
+    {
+      "id": 3,
+      "q": "Who invented the World Wide Web?",
+      "opts": [
+        "Bill Gates",
+        "Steve Jobs",
+        "Tim Berners-Lee",
+        "Vint Cerf"
+      ],
+      "ans": 2,
+      "exp": "Tim Berners-Lee invented the World Wide Web in 1989 while working at CERN. He created the first web browser, web server, and the HTTP protocol that forms the foundation of the web."
+    },
+    {
+      "id": 4,
+      "q": "The transistor was invented at which laboratory?",
+      "opts": [
+        "MIT",
+        "Bell Laboratories",
+        "IBM Research",
+        "Xerox PARC"
+      ],
+      "ans": 1,
+      "exp": "The transistor was invented at Bell Laboratories in 1947 by William Shockley, John Bardeen, and Walter Brattain. They received the Nobel Prize in Physics in 1956 for this invention."
+    },
+    {
+      "id": 5,
+      "q": "Who invented the airplane?",
+      "opts": [
+        "Leonardo da Vinci",
+        "Louis Blériot",
+        "Wright Brothers",
+        "Charles Lindbergh"
+      ],
+      "ans": 2,
+      "exp": "Orville and Wilbur Wright (the Wright Brothers) made the first successful powered airplane flight on 17 December 1903 at Kitty Hawk, North Carolina. The flight lasted 12 seconds and covered 36 meters."
+    },
+    {
+      "id": 6,
+      "q": "The steam engine was invented by?",
+      "opts": [
+        "James Watt",
+        "George Stephenson",
+        "Thomas Newcomen",
+        "Robert Fulton"
+      ],
+      "ans": 0,
+      "exp": "James Watt significantly improved the steam engine in 1769, making it efficient enough for industrial use. Although Thomas Newcomen built an early steam engine in 1712, Watt's improvements made it practical."
+    },
+    {
+      "id": 7,
+      "q": "Who invented the radio?",
+      "opts": [
+        "Thomas Edison",
+        "Nikola Tesla",
+        "Guglielmo Marconi",
+        "Alexander Graham Bell"
+      ],
+      "ans": 2,
+      "exp": "Guglielmo Marconi is credited with inventing the radio and transmitting the first transatlantic radio signal in 1901. He won the Nobel Prize in Physics in 1909 for developing wireless telegraphy."
+    },
+    {
+      "id": 8,
+      "q": "The first computer was called?",
+      "opts": [
+        "UNIVAC",
+        "ENIAC",
+        "IBM 360",
+        "Apple I"
+      ],
+      "ans": 1,
+      "exp": "ENIAC (Electronic Numerical Integrator and Computer) is considered the first general-purpose electronic computer, completed in 1945. It weighed 30 tons and occupied a 1,800 sq ft room."
+    },
+    {
+      "id": 9,
+      "q": "Who invented the vaccination technique?",
+      "opts": [
+        "Louis Pasteur",
+        "Alexander Fleming",
+        "Edward Jenner",
+        "Robert Koch"
+      ],
+      "ans": 2,
+      "exp": "Edward Jenner developed the first successful vaccine against smallpox in 1796. He observed that milkmaids who had contracted cowpox were immune to smallpox, leading to the development of the smallpox vaccine."
+    },
+    {
+      "id": 10,
+      "q": "The USB (Universal Serial Bus) was developed by?",
+      "opts": [
+        "Apple",
+        "Microsoft",
+        "Intel",
+        "IBM"
+      ],
+      "ans": 2,
+      "exp": "USB was developed by a group of seven companies including Intel, Compaq, IBM, and Microsoft in 1994–1996. Ajay Bhatt, an Indian-American engineer at Intel, is credited as a key inventor."
+    }
+  ]
+}
