@@ -1,15 +1,4 @@
-/**
- * TyagiHub — GK Quiz JavaScript
- * File: assets/js/gk-quiz.js
- * ============================================================
- * Features:
- *  1. Language toggle (English/Hindi)
- *  2. Category search
- *  3. Quiz player (load JSON, show questions, score)
- *  4. Keyboard shortcuts (A/B/C/D, Next, Prev)
- *  5. Results screen
- * ============================================================
- */
+
 
 'use strict';
 
