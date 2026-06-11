@@ -1,284 +1,239 @@
 /**
- * TyagiHub GK Quiz Player
- * File: assets/js/gk-quiz-player.js
- * ============================================================
- * Style: GKLearnStudy — saare questions list mein dikhte hain
- * Ek page pe max 25 questions, next page ke liye pagination
- * Koi Skip/Next button nahi — scroll karo, click karo
- * ============================================================
+ * TyagiHub GK Quiz - Interactive Quiz JS
+ * Handles: option selection, correct/wrong reveal, explanation display,
+ *          answer persistence (sessionStorage), lang-sync, mobile sidebar
  */
 
-'use strict';
+(function () {
+  'use strict';
 
-(function() {
+  // ------------------------------------------------------------------
+  // CONSTANTS
+  // ------------------------------------------------------------------
+  const STORAGE_KEY_PREFIX = 'tyagihub_quiz_';
+  const CURRENT_PAGE_KEY   = 'tyagihub_current_page';
 
-  /* ---- Config ---- */
-  const PER_PAGE = 25;
+  // ------------------------------------------------------------------
+  // UTILS
+  // ------------------------------------------------------------------
+  function getPageId() {
+    // Use the canonical path as the unique page identifier
+    return window.location.pathname;
+  }
 
-  /* ---- State ---- */
-  let allQuestions = [];
-  let answered     = {}; // { globalIndex: optionIndex }
-  let currentPage  = 1;
-  let totalPages   = 1;
+  function loadPageAnswers() {
+    try {
+      const raw = sessionStorage.getItem(STORAGE_KEY_PREFIX + getPageId());
+      return raw ? JSON.parse(raw) : {};
+    } catch (e) { return {}; }
+  }
 
-  /* ---- Init ---- */
-  function init() {
-    const jsonUrl = window.QUIZ_JSON_URL;
-    if (!jsonUrl) { showError('Quiz data URL missing.'); return; }
+  function savePageAnswers(answers) {
+    try {
+      sessionStorage.setItem(STORAGE_KEY_PREFIX + getPageId(), JSON.stringify(answers));
+    } catch (e) {}
+  }
 
-    showLoading(true);
+  // ------------------------------------------------------------------
+  // QUIZ CORE
+  // ------------------------------------------------------------------
+  function initQuiz() {
+    const savedAnswers = loadPageAnswers();
 
-    fetch(jsonUrl)
-      .then(r => {
-        if (!r.ok) throw new Error('HTTP ' + r.status);
-        return r.json();
-      })
-      .then(data => {
-        allQuestions = data.questions || [];
-        if (!allQuestions.length) { showError('No questions found.'); return; }
+    document.querySelectorAll('.question-card').forEach(function (card) {
+      const qIdx     = card.dataset.qindex;
+      const correct  = card.dataset.correct;
+      const options  = card.querySelectorAll('.option-btn');
+      const expBox   = card.querySelector('.explanation-box');
 
-        totalPages  = Math.max(1, Math.ceil(allQuestions.length / PER_PAGE));
-        currentPage = getPageFromURL();
+      // Restore saved state
+      if (savedAnswers[qIdx] !== undefined) {
+        applyAnswer(card, options, expBox, correct, savedAnswers[qIdx], false);
+      }
 
-        showLoading(false);
-        renderPage();
-        initSidebar();
-      })
-      .catch(err => {
-        showError('Could not load questions. Error: ' + err.message);
+      // Attach click handlers
+      options.forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          if (card.dataset.answered === 'true') return; // lock once answered
+          const chosen = btn.dataset.option;
+          // save
+          savedAnswers[qIdx] = chosen;
+          savePageAnswers(savedAnswers);
+          applyAnswer(card, options, expBox, correct, chosen, true);
+        });
       });
-  }
-
-  /* ---- URL helpers ---- */
-  function getPageFromURL() {
-    const p = parseInt(new URLSearchParams(location.search).get('page')) || 1;
-    return Math.min(Math.max(p, 1), totalPages);
-  }
-
-  function setPageInURL(p) {
-    const url = new URL(location.href);
-    if (p === 1) url.searchParams.delete('page');
-    else         url.searchParams.set('page', p);
-    history.pushState({}, '', url);
-  }
-
-  /* ---- Render full page of questions ---- */
-  function renderPage() {
-    const wrap = document.getElementById('quiz-questions-wrap');
-    if (!wrap) return;
-
-    const start  = (currentPage - 1) * PER_PAGE;
-    const end    = Math.min(start + PER_PAGE, allQuestions.length);
-    const pageQs = allQuestions.slice(start, end);
-
-    // Update header meta
-    const metaEl = document.getElementById('quiz-total-count');
-    if (metaEl) metaEl.textContent = allQuestions.length;
-
-    const pageMetaEl = document.getElementById('quiz-page-info');
-    if (pageMetaEl) {
-      pageMetaEl.textContent = totalPages > 1
-        ? `Page ${currentPage} of ${totalPages} · Q${start+1}–Q${end}`
-        : `${allQuestions.length} Questions`;
-    }
-
-    // Build all question cards
-    wrap.innerHTML = pageQs.map((q, localIdx) => {
-      const gIdx = start + localIdx;
-      return buildQuestionCard(q, gIdx, localIdx);
-    }).join('');
-
-    // Restore any already-answered states
-    Object.entries(answered).forEach(([gIdxStr, chosenOpt]) => {
-      const gIdx = parseInt(gIdxStr);
-      if (gIdx >= start && gIdx < end) {
-        applyAnswer(gIdx, chosenOpt, allQuestions[gIdx].ans);
-      }
     });
-
-    renderPagination();
-    updateScoreBar();
-
-    // Scroll to top
-    window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
-  /* ---- Build one question card ---- */
-  function buildQuestionCard(q, gIdx, localIdx) {
-    const start = (currentPage - 1) * PER_PAGE;
-    const qNum  = start + localIdx + 1;
-    const keys  = ['A', 'B', 'C', 'D'];
+  function applyAnswer(card, options, expBox, correct, chosen, animate) {
+    card.dataset.answered = 'true';
 
-    const optsHtml = q.opts.map((opt, i) => `
-      <button class="quiz-opt"
-              id="opt-${gIdx}-${i}"
-              onclick="QuizPlayer.answer(${gIdx}, ${i})"
-              aria-label="Option ${keys[i]}: ${opt.replace(/"/g,"'")}">
-        <span class="quiz-opt__key">${keys[i]}</span>
-        <span class="quiz-opt__text">${opt}</span>
-      </button>
-    `).join('');
-
-    return `
-      <div class="quiz-qcard" id="qcard-${gIdx}" data-gidx="${gIdx}">
-        <div class="quiz-qcard__num">
-          <span class="quiz-qcard__badge">Q${qNum}</span>
-        </div>
-        <div class="quiz-qcard__question">${q.q}</div>
-        <div class="quiz-qcard__opts" id="opts-${gIdx}">
-          ${optsHtml}
-        </div>
-        <div class="quiz-qcard__exp" id="exp-${gIdx}">
-          <span class="quiz-qcard__exp-label">💡 Explanation</span>
-          <span class="quiz-qcard__exp-text">${q.exp || ''}</span>
-        </div>
-      </div>
-    `;
-  }
-
-  /* ---- Handle answer click ---- */
-  function answer(gIdx, chosenOpt) {
-    // Already answered? Ignore
-    if (answered[gIdx] !== undefined) return;
-
-    const q = allQuestions[gIdx];
-    if (!q) return;
-
-    answered[gIdx] = chosenOpt;
-    applyAnswer(gIdx, chosenOpt, q.ans);
-    updateScoreBar();
-  }
-
-  /* ---- Apply visual state to answered question ---- */
-  function applyAnswer(gIdx, chosenOpt, correctOpt) {
-    const q = allQuestions[gIdx];
-
-    // Disable all options for this question
-    for (let i = 0; i < 4; i++) {
-      const btn = document.getElementById(`opt-${gIdx}-${i}`);
-      if (!btn) continue;
+    options.forEach(function (btn) {
       btn.disabled = true;
-
-      if (i === correctOpt) {
+      if (btn.dataset.option === correct) {
         btn.classList.add('correct');
-      } else if (i === chosenOpt && chosenOpt !== correctOpt) {
+      } else if (btn.dataset.option === chosen && chosen !== correct) {
         btn.classList.add('wrong');
-      } else {
-        btn.classList.add('dimmed');
       }
-    }
-
-    // Show explanation
-    const expEl = document.getElementById(`exp-${gIdx}`);
-    if (expEl && q.exp) {
-      expEl.classList.add('show');
-    }
-
-    // Add result indicator to card
-    const card = document.getElementById(`qcard-${gIdx}`);
-    if (card) {
-      card.classList.add(chosenOpt === correctOpt ? 'answered-correct' : 'answered-wrong');
-    }
-  }
-
-  /* ---- Score bar ---- */
-  function updateScoreBar() {
-    let correct = 0, wrong = 0;
-    Object.entries(answered).forEach(([gIdx, chosen]) => {
-      const q = allQuestions[parseInt(gIdx)];
-      if (!q) return;
-      if (chosen === q.ans) correct++;
-      else wrong++;
     });
 
-    const el = document.getElementById('quiz-score-correct');
-    const el2 = document.getElementById('quiz-score-wrong');
-    const el3 = document.getElementById('quiz-score-total');
-    if (el)  el.textContent  = correct;
-    if (el2) el2.textContent = wrong;
-    if (el3) el3.textContent = Object.keys(answered).length;
-  }
-
-  /* ---- Pagination ---- */
-  function renderPagination() {
-    const el = document.getElementById('quiz-pagination');
-    if (!el) return;
-
-    if (totalPages <= 1) {
-      el.innerHTML = '';
-      return;
-    }
-
-    let html = `<button class="quiz-pg-btn" onclick="QuizPlayer.goPage(${currentPage - 1})" ${currentPage === 1 ? 'disabled' : ''}>← Prev</button>`;
-
-    for (let i = 1; i <= totalPages; i++) {
-      if (i === 1 || i === totalPages || Math.abs(i - currentPage) <= 1) {
-        html += `<button class="quiz-pg-btn ${i === currentPage ? 'active' : ''}" onclick="QuizPlayer.goPage(${i})">${i}</button>`;
-      } else if (Math.abs(i - currentPage) === 2) {
-        html += `<span class="quiz-pg-dots">…</span>`;
+    if (expBox) {
+      expBox.classList.add('show');
+      if (animate) {
+        expBox.style.opacity = '0';
+        expBox.style.transform = 'translateY(8px)';
+        requestAnimationFrame(function () {
+          expBox.style.transition = 'opacity .3s ease, transform .3s ease';
+          expBox.style.opacity = '1';
+          expBox.style.transform = 'translateY(0)';
+        });
       }
     }
 
-    html += `<button class="quiz-pg-btn" onclick="QuizPlayer.goPage(${currentPage + 1})" ${currentPage === totalPages ? 'disabled' : ''}>Next →</button>`;
-    el.innerHTML = html;
+    // Update live score strip if present
+    updateScoreStrip();
   }
 
-  function goPage(p) {
-    if (p < 1 || p > totalPages) return;
-    currentPage = p;
-    setPageInURL(p);
-    renderPage();
+  function updateScoreStrip() {
+    const strip = document.getElementById('score-strip');
+    if (!strip) return;
+
+    const cards   = document.querySelectorAll('.question-card[data-answered="true"]');
+    const correct = document.querySelectorAll('.question-card[data-answered="true"] .option-btn.correct.selected-correct').length;
+
+    // Count correct selections
+    let correctCount = 0;
+    document.querySelectorAll('.question-card').forEach(function (card) {
+      if (card.dataset.answered !== 'true') return;
+      const correctBtn = card.querySelector('.option-btn.correct');
+      // check if user selected correct (correct btn also has 'correct' class only when user selected it OR it's revealed)
+      // We differentiate: if wrong class exists on a DIFFERENT option, user was wrong
+      const hasWrong = card.querySelector('.option-btn.wrong');
+      if (!hasWrong) correctCount++; // no wrong means user picked correct
+    });
+
+    const total    = document.querySelectorAll('.question-card').length;
+    const answered = document.querySelectorAll('.question-card[data-answered="true"]').length;
+
+    strip.querySelector('.score-correct').textContent  = correctCount;
+    strip.querySelector('.score-answered').textContent = answered;
+    strip.querySelector('.score-total').textContent    = total;
   }
 
-  /* ---- Loading / Error states ---- */
-  function showLoading(show) {
-    const el = document.getElementById('quiz-loading');
-    if (el) el.style.display = show ? 'flex' : 'none';
-  }
+  // ------------------------------------------------------------------
+  // LANGUAGE SYNC
+  // ------------------------------------------------------------------
+  /**
+   * When user switches language, we try to detect which question they
+   * were on and auto-tick the same question index on the equivalent
+   * page in the other language.
+   *
+   * Implementation:
+   * - Each lang-switch link carries data-sync-target (URL of counterpart page)
+   * - On click we write the current page's answers to sessionStorage under
+   *   a SHARED cross-page key so the target page can read it on load.
+   * - When a quiz page loads, it checks if cross-page answers exist for the
+   *   SAME question indices and applies them.
+   *
+   * Answers are stored per question INDEX (position), so Q3 in English maps
+   * to Q3 in Hindi regardless of content difference.
+   *
+   * Data is scoped to sessionStorage → clears on tab close / new tab.
+   * When user navigates to ANY OTHER page (not lang counterpart), old session
+   * data stays but is keyed per page-path so it doesn't bleed.
+   */
 
-  function showError(msg) {
-    showLoading(false);
-    const el = document.getElementById('quiz-questions-wrap');
-    if (el) el.innerHTML = `<div class="quiz-error">⚠️ ${msg}</div>`;
-  }
+  const LANG_SYNC_KEY = 'tyagihub_lang_sync';
 
-  /* ---- Sidebar toggle ---- */
-  function initSidebar() {
-    const toggle  = document.getElementById('sidebar-toggle');
-    const sidebar = document.getElementById('quiz-sidebar');
-    const overlay = document.getElementById('sidebar-overlay');
-    const closeBtn= document.getElementById('sidebar-close');
+  function initLangSync() {
+    // On page load: check if sync data exists from a lang switch
+    try {
+      const syncRaw = sessionStorage.getItem(LANG_SYNC_KEY);
+      if (!syncRaw) return;
+      const sync = JSON.parse(syncRaw);
+      // Only apply once to target page
+      if (sync.target !== getPageId()) return;
 
-    function open()  { sidebar?.classList.add('open'); overlay?.classList.add('open'); document.body.style.overflow='hidden'; }
-    function close() { sidebar?.classList.remove('open'); overlay?.classList.remove('open'); document.body.style.overflow=''; }
-
-    toggle?.addEventListener('click', open);
-    overlay?.addEventListener('click', close);
-    closeBtn?.addEventListener('click', close);
-    document.addEventListener('keydown', e => { if (e.key === 'Escape') close(); });
-  }
-
-  /* ---- Keyboard shortcuts ---- */
-  document.addEventListener('keydown', e => {
-    if (document.activeElement?.tagName === 'INPUT') return;
-    // Find last unanswered visible question
-    const start = (currentPage - 1) * PER_PAGE;
-    const end   = Math.min(start + PER_PAGE, allQuestions.length);
-    for (let gIdx = start; gIdx < end; gIdx++) {
-      if (answered[gIdx] === undefined) {
-        const map = { a:0, b:1, c:2, d:3, A:0, B:1, C:2, D:3 };
-        if (e.key in map) {
-          answer(gIdx, map[e.key]);
+      // Merge into this page's answers
+      const myAnswers = loadPageAnswers();
+      let changed = false;
+      Object.keys(sync.answers).forEach(function (idx) {
+        if (myAnswers[idx] === undefined) {
+          myAnswers[idx] = sync.answers[idx];
+          changed = true;
         }
-        break;
-      }
+      });
+      if (changed) savePageAnswers(myAnswers);
+
+      // Clean up sync key after consuming
+      sessionStorage.removeItem(LANG_SYNC_KEY);
+    } catch (e) {}
+  }
+
+  function bindLangSwitchSync() {
+    // Lang switch links inside sidebar and header
+    document.querySelectorAll('[data-lang-switch]').forEach(function (link) {
+      link.addEventListener('click', function () {
+        const target = link.dataset.langSwitch; // target page path
+        if (!target) return;
+        // Save current answers to sync key
+        const answers = loadPageAnswers();
+        try {
+          sessionStorage.setItem(LANG_SYNC_KEY, JSON.stringify({
+            target: target,
+            answers: answers
+          }));
+        } catch (e) {}
+        // Track current page so we know we came from a lang switch
+        sessionStorage.setItem(CURRENT_PAGE_KEY, getPageId());
+      });
+    });
+  }
+
+  // ------------------------------------------------------------------
+  // MOBILE SIDEBAR
+  // ------------------------------------------------------------------
+  function initMobileSidebar() {
+    const toggle  = document.getElementById('menuToggle');
+    const sidebar = document.getElementById('gkSidebar');
+    const overlay = document.getElementById('sidebarOverlay');
+
+    if (!toggle || !sidebar) return;
+
+    function openSidebar() {
+      sidebar.classList.add('open');
+      if (overlay) overlay.classList.add('active');
+      document.body.style.overflow = 'hidden';
+      toggle.setAttribute('aria-expanded', 'true');
     }
+
+    function closeSidebar() {
+      sidebar.classList.remove('open');
+      if (overlay) overlay.classList.remove('active');
+      document.body.style.overflow = '';
+      toggle.setAttribute('aria-expanded', 'false');
+    }
+
+    toggle.addEventListener('click', function () {
+      sidebar.classList.contains('open') ? closeSidebar() : openSidebar();
+    });
+
+    if (overlay) overlay.addEventListener('click', closeSidebar);
+
+    // Close on ESC
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') closeSidebar();
+    });
+  }
+
+  // ------------------------------------------------------------------
+  // INIT
+  // ------------------------------------------------------------------
+  document.addEventListener('DOMContentLoaded', function () {
+    initLangSync();   // must run before initQuiz so answers are merged
+    initQuiz();
+    bindLangSwitchSync();
+    initMobileSidebar();
   });
-
-  /* ---- Expose globally ---- */
-  window.QuizPlayer = { answer, goPage };
-
-  /* ---- Boot ---- */
-  document.addEventListener('DOMContentLoaded', init);
 
 })();
