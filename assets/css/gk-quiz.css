@@ -61,7 +61,7 @@
 
 .lang-toggle__btn.active {
   background: var(--clr-accent);
-  color: #000;
+  color: #FFFFFF;
 }
 
 [data-theme="light"] .lang-toggle {
