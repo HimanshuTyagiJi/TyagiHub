@@ -1,115 +1,348 @@
-<!DOCTYPE html>
-<html lang="en" data-theme="dark">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>{{ page.title }}</title>
-  <meta name="description" content="{{ page.description }}">
-  <meta name="keywords"    content="{{ page.keywords }}">
-  <link rel="canonical"    href="https://tyagihub.in{{ page.url }}">
+---
+layout: default
+---
 
-  <meta property="og:title"       content="{{ page.title }}">
-  <meta property="og:description" content="{{ page.description }}">
-  <meta property="og:type"        content="website">
+{% assign lang = page.lang | default: 'en' %}
+{% assign quiz_id = page.quiz_id %}
 
-  {% if page.slug_hi %}
-  <link rel="alternate" hreflang="en" href="https://tyagihub.in{{ page.url }}">
-  <link rel="alternate" hreflang="hi" href="https://tyagihub.in/learn/gk-quiz/hi/{{ page.slug_hi }}/">
-  {% endif %}
+{% if lang == 'hi' %}
+  {% assign quiz_data = site.data.quiz.hi[quiz_id] %}
+{% else %}
+  {% assign quiz_data = site.data.quiz.en[quiz_id] %}
+{% endif %}
 
-  <link rel="icon" href="/assets/images/favicon.svg" type="image/svg+xml">
-  <meta name="theme-color" content="#f5a623">
+{% assign questions_per_page = site.quiz.questions_per_page | default: 2 %}
+{% assign total_questions = quiz_data.size %}
+{% assign total_pages = total_questions | divided_by: questions_per_page %}
 
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Quiz",
-    "name": "{{ page.title }}",
-    "description": "{{ page.description }}",
-    "url": "https://tyagihub.in{{ page.url }}",
-    "educationalLevel": "Intermediate",
-    "inLanguage": "en",
-    "provider": { "@type": "Organization", "name": "TyagiHub" }
-  }
-  </script>
+{% assign current_page = page.page_num | default: 1 %}
+{% assign start_index = current_page | minus: 1 | times: questions_per_page %}
+{% assign end_index = start_index | plus: questions_per_page | minus: 1 %}
 
-  <link rel="stylesheet" href="/assets/css/main.css">
-  <link rel="stylesheet" href="/assets/css/search.css">
-  <link rel="stylesheet" href="/assets/css/gk-quiz.css">
-</head>
-<body>
+<div class="page-wrapper">
 
-{% include navbar.html %}
-{% include mobile-nav.html %}
+  <div id="sidebarOverlay" class="sidebar-overlay"></div>
 
-<div class="quiz-page-wrap">
+  <aside id="gkSidebar" class="gk-sidebar">
 
-  <!-- ========== SIDEBAR ========== -->
-  <aside class="quiz-sidebar" id="quiz-sidebar" aria-label="Quiz categories">
-    <div class="quiz-sidebar__header">
-      <span class="quiz-sidebar__title">📚 Quiz Topics</span>
-      <button class="quiz-sidebar__close" id="sidebar-close" aria-label="Close">✕</button>
+    <div class="sidebar-header">
+      <div class="sidebar-title">
+        GK Quiz
+      </div>
+
+      <div class="sidebar-subtitle">
+        TyagiHub Practice Center
+      </div>
     </div>
-    <nav class="quiz-sidebar__nav">
-      {% assign cats = "ancient-history,medieval-history,modern-history,world-history,indian-constitution,indian-economy,environment,indian-art-culture,physics,chemistry,mathematics,biology,computer,sanskrit,science-technology,books-authors,sports,famous-personalities,technology-inventions,space-universe,indian-geography,world-geography,indian-festivals,world-organizations,international-relations,awards-honors,indian-defense,important-dates,transport,famous-monuments,wildlife,rivers,disasters" | split: "," %}
-      {% assign labels = "🏛️ Ancient History,🕌 Medieval History,🇮🇳 Modern History,🌍 World History,⚖️ Constitution,💰 Indian Economy,🌿 Environment,🎭 Art & Culture,⚡ Physics,🧪 Chemistry,🔢 Mathematics,🧬 Biology,💻 Computer,📜 Sanskrit,🔬 Science & Tech,📚 Books & Authors,🏆 Sports,👤 Personalities,💡 Tech & Inventions,🚀 Space & Universe,🗺️ Indian Geography,🌐 World Geography,🪔 Festivals,🤝 World Orgs,🌏 Intl Relations,🏅 Awards & Honors,🛡️ Indian Defense,📅 Important Dates,🚆 Transport,🏯 Monuments,🐯 Wildlife,🏞️ Rivers & Lakes,⚠️ Disasters" | split: "," %}
-      {% for cat in cats %}
-        {% assign idx = forloop.index0 %}
-        {% assign label = labels[idx] %}
-        <a href="/gk-quiz/{{ cat }}/"
-           class="quiz-sidebar__link {% if page.slug == cat %}active{% endif %}">
-          {{ label }}
+
+    <div class="sidebar-lang-tabs">
+
+      {% if lang == 'en' %}
+        <a href="#" class="active">English</a>
+        <a href="#" data-lang-switch>हिन्दी</a>
+      {% else %}
+        <a href="#" data-lang-switch>English</a>
+        <a href="#" class="active">हिन्दी</a>
+      {% endif %}
+
+    </div>
+
+    <div class="nav-section">
+
+      <div class="nav-section-label">
+        Categories
+      </div>
+
+      {% for cat in site.quiz_categories %}
+
+        {% assign current = false %}
+
+        {% if cat.id == quiz_id %}
+          {% assign current = true %}
+        {% endif %}
+
+        <a
+          href="{% if lang == 'hi' %}/hi/gk-quiz/{{ cat.slug_hi }}/{% else %}/gk-quiz/{{ cat.slug_en }}/{% endif %}"
+          class="nav-item {% if current %}active{% endif %}"
+        >
+
+          <span class="nav-item-icon">📘</span>
+
+          {% if lang == 'hi' %}
+            {{ cat.title_hi }}
+          {% else %}
+            {{ cat.title_en }}
+          {% endif %}
+
         </a>
+
       {% endfor %}
-    </nav>
+
+    </div>
+
+    <div class="sidebar-footer">
+      <p>
+        Practice daily and improve your competitive exam score.
+      </p>
+    </div>
+
   </aside>
 
-  <!-- Overlay -->
-  <div class="quiz-sidebar-overlay" id="sidebar-overlay"></div>
+  <main class="main-content">
 
-  <!-- ========== MAIN ========== -->
-  <main class="quiz-main" id="main-content">
+    <div class="breadcrumb">
 
-    <!-- Topbar -->
-    <div class="quiz-topbar">
-      <div class="quiz-topbar__left">
-        <button class="quiz-sidebar-toggle" id="sidebar-toggle">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <line x1="3" y1="6" x2="21" y2="6"/>
-            <line x1="3" y1="12" x2="21" y2="12"/>
-            <line x1="3" y1="18" x2="21" y2="18"/>
-          </svg>
-          Categories
-        </button>
-        <nav class="quiz-breadcrumb" aria-label="Breadcrumb">
-          <a href="/">Home</a> /
-          
-          <a href="/gk-quiz/">GK Quiz</a> /
-          <span>{{ page.category_title }}</span>
-        </nav>
-      </div>
-      <a href="/gk-quiz/" class="btn btn-ghost btn-sm">← All Topics</a>
+      <a href="/">Home</a>
+
+      <span class="sep">›</span>
+
+      <a href="/gk-quiz/">
+        GK Quiz
+      </a>
+
+      <span class="sep">›</span>
+
+      <span class="current">
+        {{ page.title }}
+      </span>
+
     </div>
 
-    <!-- Player -->
-    <div class="quiz-player-wrap">
-      {{ content }}
+    <div class="quiz-page-header">
+
+      <div class="quiz-category-badge">
+
+        {% if lang == 'hi' %}
+          सामान्य ज्ञान
+        {% else %}
+          General Knowledge
+        {% endif %}
+
+      </div>
+
+      <h1>
+        {{ page.title }}
+      </h1>
+
+      <div class="quiz-description">
+        {{ page.description }}
+      </div>
+
+      <div class="quiz-meta">
+
+        <div class="meta-item">
+          📄 {{ total_questions }} Questions
+        </div>
+
+        <div class="meta-item">
+          📚 MCQ Practice
+        </div>
+
+        <div class="meta-item">
+          🎯 Competitive Exams
+        </div>
+
+      </div>
+
+    </div>
+
+    <div id="score-strip" class="score-strip">
+
+      <span class="score-label">
+        Score:
+      </span>
+
+      <span class="score-correct">
+        0
+      </span>
+
+      /
+
+      <span class="score-answered">
+        0
+      </span>
+
+      /
+
+      <span class="score-total">
+        {{ questions_per_page }}
+      </span>
+
+    </div>
+
+    <div class="questions-list">
+            {% for question in quiz_data limit: questions_per_page offset: start_index %}
+
+        {% assign q_number = start_index | plus: forloop.index %}
+
+        <article
+          class="question-card"
+          data-qindex="{{ q_number }}"
+          data-correct="{{ question.correct_answer }}"
+        >
+
+          <div class="question-header">
+
+            <div class="q-number">
+              {{ q_number }}
+            </div>
+
+            <div class="q-text">
+              {{ question.question }}
+            </div>
+
+          </div>
+
+          <div class="options-grid">
+
+            <button
+              class="option-btn"
+              data-option="a"
+              type="button"
+            >
+              <span class="opt-label">A</span>
+              <span class="opt-text">
+                {{ question.option_a }}
+              </span>
+            </button>
+
+            <button
+              class="option-btn"
+              data-option="b"
+              type="button"
+            >
+              <span class="opt-label">B</span>
+              <span class="opt-text">
+                {{ question.option_b }}
+              </span>
+            </button>
+
+            <button
+              class="option-btn"
+              data-option="c"
+              type="button"
+            >
+              <span class="opt-label">C</span>
+              <span class="opt-text">
+                {{ question.option_c }}
+              </span>
+            </button>
+
+            <button
+              class="option-btn"
+              data-option="d"
+              type="button"
+            >
+              <span class="opt-label">D</span>
+              <span class="opt-text">
+                {{ question.option_d }}
+              </span>
+            </button>
+
+          </div>
+
+          <div class="explanation-box">
+
+            <div class="exp-icon">
+              💡
+            </div>
+
+            <div>
+
+              <span class="exp-label">
+
+                {% if lang == 'hi' %}
+                  व्याख्या
+                {% else %}
+                  Explanation
+                {% endif %}
+
+              </span>
+
+              {{ question.explanation }}
+
+            </div>
+
+          </div>
+
+        </article>
+
+      {% endfor %}
+
+    </div>
+
+    <div class="pagination-wrapper">
+
+      <div class="pagination-info">
+
+        {% if lang == 'hi' %}
+          पेज {{ current_page }} / {{ total_pages }}
+        {% else %}
+          Page {{ current_page }} of {{ total_pages }}
+        {% endif %}
+
+      </div>
+
+      <div class="pagination">
+
+        {% if current_page > 1 %}
+
+          <a
+            class="prev-next"
+            href="?page={{ current_page | minus: 1 }}"
+          >
+            ← Previous
+          </a>
+
+        {% else %}
+
+          <span class="disabled">
+            ← Previous
+          </span>
+
+        {% endif %}
+
+        {% for i in (1..total_pages) %}
+
+          {% if i == current_page %}
+
+            <span class="current-page">
+              {{ i }}
+            </span>
+
+          {% else %}
+
+            <a href="?page={{ i }}">
+              {{ i }}
+            </a>
+
+          {% endif %}
+
+        {% endfor %}
+
+        {% if current_page < total_pages %}
+
+          <a
+            class="prev-next"
+            href="?page={{ current_page | plus: 1 }}"
+          >
+            Next →
+          </a>
+
+        {% else %}
+
+          <span class="disabled">
+            Next →
+          </span>
+
+        {% endif %}
+
+      </div>
+
     </div>
 
   </main>
+
 </div>
 
-{% include footer.html %}
-
-<!-- JS gets data via fetch from JSON file -->
-<!-- data-json-url tells player which file to load -->
-<script>
-  window.QUIZ_JSON_URL = '/_data/quiz/{{ page.slug }}.json';
-</script>
-
-<script src="/assets/js/main.js" defer></script>
-<script src="/assets/js/search.js" defer></script>
-<script src="/assets/js/gk-quiz.js" defer></script>
-
-</body>
-</html>
+<script src="{{ '/assets/js/gk-quiz.js' | absolute_url }}"></script>
