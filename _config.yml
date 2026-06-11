@@ -124,3 +124,25 @@ google_analytics: false
 api:
   base_url: "https://api.tyagihub.in/v1"
   enabled: false
+
+# GK Quiz Settings
+quiz:
+  questions_per_page: 2
+
+# GK Quiz Categories
+quiz_categories:
+  - id: "ancient-history"
+    title_en: "Ancient Indian History"
+    title_hi: "प्राचीन भारतीय इतिहास"
+    slug_en: "ancient-indian-history"
+    slug_hi: "prachin-bharatiya-itihas"
+    description_en: "Practice Ancient Indian History GK questions for UPSC, SSC, Railway and competitive exams."
+    description_hi: "UPSC, SSC, Railway और अन्य प्रतियोगी परीक्षाओं के लिए प्राचीन भारतीय इतिहास प्रश्न।"
+
+  - id: "modern-history"
+    title_en: "Modern Indian History"
+    title_hi: "आधुनिक भारतीय इतिहास"
+    slug_en: "modern-indian-history"
+    slug_hi: "aadhunik-bharatiya-itihas"
+    description_en: "Practice Modern Indian History GK questions for UPSC, SSC, Railway and competitive exams."
+    description_hi: "UPSC, SSC, Railway और अन्य प्रतियोगी परीक्षाओं के लिए आधुनिक भारतीय इतिहास प्रश्न।"
