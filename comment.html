@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Discussion & Reviews - TyagiHub</title>
+  <title>Discussion & Reviews Forum - TyagiHub</title>
   <meta name="description" content="TyagiHub ki is video series aur development forum par aapka swagat hai. Yahan sabhi important reviews aur discussions live chalte hain.">
   <meta property="og:description" content="TyagiHub Forums: Join the core community discussion, track mobile applications, and view live user ratings instantly.">
   <meta property="og:title" content="Discussion Panel - TyagiHub Core Platform">
@@ -40,7 +40,7 @@
   </div>
 
   <div class="tc-user-rate-box">
-    <p style="margin:0 0 5px 0; font-size:12px; color:#666;">Tap stars to rate:</p>
+    <p style="margin:0 0 5px 0; font-size:12px; color:#666;">Tap stars to rate this page:</p>
     <div id="tc-star-row" class="tc-stars-input">
       <span class="tc-s" onclick="handleStar(1)" onmouseover="hoverStar(1)" onmouseout="resetStar()">★</span>
       <span class="tc-s" onclick="handleStar(2)" onmouseover="hoverStar(2)" onmouseout="resetStar()">★</span>
@@ -61,7 +61,7 @@
 </div>
 
 <style>
-  #tc-root { max-width:800px; margin:20px auto; border:1px solid #ddd; border-radius:12px; background:#fff; font-family:sans-serif; overflow:hidden; box-shadow:0 4px 12px rgba(0,0,0,0.1); }
+  #tc-root { max-width:750px; margin:20px auto; border:1px solid #ddd; border-radius:12px; background:#fff; font-family:sans-serif; overflow:hidden; box-shadow:0 4px 12px rgba(0,0,0,0.08); }
   .tc-header { padding:15px 20px; border-bottom:1px solid #eee; display:flex; justify-content:space-between; align-items:flex-start; background:#fafafa; }
   .tc-ps-rating { display:flex; align-items:center; gap:10px; margin-top:5px; }
   .tc-avg-big { font-size:32px; font-weight:bold; color:#202124; }
@@ -73,24 +73,28 @@
   .tc-u-name { font-size:12px; font-weight:bold; max-width:80px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
   .tc-logout-btn { border:none; background:none; color:#d93025; font-size:10px; cursor:pointer; font-weight:bold; }
   .tc-user-rate-box { padding:10px; text-align:center; border-bottom:1px solid #eee; }
-  .tc-stars-input { font-size:28px; color:#ddd; cursor:pointer; }
+  .tc-stars-input { font-size:28px; color:#ddd; cursor:pointer; user-select:none; }
   .tc-s.active { color:#f4b400; }
   .tc-editor-box { padding:15px 20px; border-bottom:1px solid #eee; }
   textarea { width:100%; height:70px; padding:12px; border:1px solid #ddd; border-radius:8px; resize:none; box-sizing:border-box; font-family:inherit; font-size:14px; outline:none; }
   textarea:focus { border-color:#1a73e8; }
-  .tc-feed { max-height: 500px; overflow: auto; background: #fff; }
+  .tc-feed { max-height: 600px; overflow-y: auto; background: #fff; }
   .tc-post-btn { background:#1a73e8; color:#fff; border:none; padding:8px 16px; border-radius:6px; cursor:pointer; font-weight:bold; }
+  
+  /* Comments Cards Styles */
   .tc-card { padding:15px 20px; border-bottom:1px solid #f1f1f1; transition:opacity 0.3s; background:#fff; }
   .tc-card.pending { opacity:0.5; border-left:3px solid #f4b400; }
   .tc-card.reply { margin-left:45px; border-left:2px solid #ddd; background:#fcfcfc; }
   .tc-card-pfp { width:32px; height:32px; border-radius:50%; vertical-align:middle; margin-right:10px; }
   .tc-admin-badge { background:#1a73e8; color:white; font-size:9px; padding:2px 5px; border-radius:3px; margin-left:5px; font-weight:bold; }
   
-  /* Actions Row and Like/Dislike Badges Styling */
+  /* Functional Actions Row */
   .tc-actions { margin-left:42px; margin-top:10px; display:flex; gap:15px; font-size:12px; font-weight:bold; color:#1a73e8; align-items: center; }
-  .tc-action-btn { cursor:pointer; user-select:none; }
-  .tc-action-btn:hover { text-decoration: underline; }
-  .tc-rx-btn { background: #f1f3f4; padding: 3px 8px; border-radius: 12px; color: #3c4043; font-weight: normal; font-size: 11px; cursor: pointer; }
+  .tc-act-btn { cursor:pointer; user-select:none; }
+  .tc-act-btn:hover { text-decoration: underline; }
+  
+  /* Reactive Like / Dislike Badges Styling */
+  .tc-rx-btn { background: #f1f3f4; padding: 3px 8px; border-radius: 12px; color: #3c4043; font-weight: normal; font-size: 11px; cursor: pointer; user-select: none; }
   .tc-rx-btn:hover { background: #e8eaed; }
   .tc-rx-btn.active { background: #e8f0fe; color: #1a73e8; font-weight: bold; }
   
@@ -99,8 +103,8 @@
 
 <script>
 (function() {
-  // TERI NAYI API EXEC URL DYNAMICALLY BOUND
-  const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxtP6WgdXXZo5X5h8EwesCtOsAkmWR786Cq9EdOHWhGEWAE2T8QdjrScQR-D60k_6tS2w/exec";
+  // TERI APPS SCRIPT v19.2 EXEC URL
+  const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbz0xTOEZiOIlHvtDJkH9s7u0WGC4xCptC-LDVHBT-_VmqHGrkbrRHdjRtaD2erwLvAQDw/exec";
   const ADMIN_EMAIL = "tyagihub.core@gmail.com";
 
   let user          = JSON.parse(localStorage.getItem("tc_user")) || null;
@@ -117,7 +121,8 @@
       document.getElementById("tc-user-pfp").src = user.p;
     }
     sync();
-    setInterval(function() { if (!isTyping) sync(); }, 6000);
+    // Background polling update ticks every 7 seconds if user isn't actively writing
+    setInterval(function() { if (!isTyping) sync(); }, 7000);
   }
 
   window.onGoogleAuth = function(r) {
@@ -146,7 +151,7 @@
     document.querySelectorAll(".tc-s").forEach(function(s, i) { s.classList.toggle("active", i < n); });
   }
 
-  // FRONTEND PAYLOAD SYNC SYSTEM WITH DYNAMIC META DESCRIPTION EXTRACTION
+  // FRONTEND ACTION CONTROLLER (NEW COMMENTS & EDITS DISPATCHER)
   window.handleAction = function(pid, mode, rowId) {
     mode  = mode  || "new";
     rowId = rowId || null;
@@ -169,7 +174,7 @@
     inputEl.value = "";
     isTyping = false;
     
-    // Auto-extracting description tag to pass to Telegram Bot
+    // Automatic page meta description extraction for transmission to Telegram
     var metaDescEl = document.querySelector('meta[name="description"]') || document.querySelector('meta[property="og:description"]');
     var pageDesc = metaDescEl ? metaDescEl.getAttribute("content") : "No description set.";
 
@@ -205,7 +210,7 @@
       updateRatingUI(data.avgRating, data.totalVotes);
       paintStars(currentRating);
       render();
-    } catch(e) { console.log("Frame update dropped."); }
+    } catch(e) { console.log("Data sync dropped."); }
   }
 
   function updateRatingUI(avg, total) {
@@ -224,8 +229,7 @@
   }
 
   function renderCard(c, list) {
-    // SECURITY RULES IMPLEMENTATION VISUALS
-    // Admin can delete ANYTHING, normal user can only delete their OWN comments
+    // ENFORCING DELETION POWER CONTROLS: Admin can delete everything. User can only delete self row.
     var isAdminUser = user && (user.e === ADMIN_EMAIL);
     var isOwnComment = user && (user.e === c.email);
     var showDeleteButton = isAdminUser || isOwnComment;
@@ -240,11 +244,11 @@
       + '<small style="float:right;color:#999;font-size:11px;">' + c.date + '</small></div>'
       + '<div style="margin:8px 0 0 42px;font-size:14px;color:#333;line-height:1.5;" id="body-' + c.rowId + '">' + c.comment + '</div>'
       + '<div class="tc-actions">'
-      + '<span class="tc-action-btn" onclick="checkAuthAndOpen(\'' + c.rowId + '\',\'reply\')">Reply</span>'
-      + (isOwnComment || isAdminUser ? '<span class="tc-action-btn" onclick="checkAuthAndOpen(\'' + c.rowId + '\',\'edit\')">Edit</span>' : '')
-      + (showDeleteButton ? '<span class="tc-action-btn" style="color:#d93025" onclick="deleteMsg(\'' + c.rowId + '\')">Delete</span>' : '')
+      + '<span class="tc-act-btn" onclick="checkAuthAndOpen(\'' + c.rowId + '\',\'reply\')">Reply</span>'
+      + (isOwnComment || isAdminUser ? '<span class="tc-act-btn" onclick="checkAuthAndOpen(\'' + c.rowId + '\',\'edit\')">Edit</span>' : '')
+      + (showDeleteButton ? '<span class="tc-act-btn" style="color:#d93025" onclick="deleteMsg(\'' + c.rowId + '\')">Delete</span>' : '')
       
-      // Dynamic Like / Dislike UI Mounting
+      // Reactive Like/Dislike Badges Injected Inline
       + '<span class="tc-rx-btn ' + (c.myReaction === 'like' ? 'active' : '') + '" onclick="triggerReaction(\'' + c.rowId + '\',\'like\')">👍 ' + (c.likes || 0) + '</span>'
       + '<span class="tc-rx-btn ' + (c.myReaction === 'dislike' ? 'active' : '') + '" onclick="triggerReaction(\'' + c.rowId + '\',\'dislike\')">👎 ' + (c.dislikes || 0) + '</span>'
       
@@ -275,18 +279,16 @@
     box.querySelector("textarea").focus();
   };
 
-  // WEB SIDE DELETE TRIGGER
   window.deleteMsg = async function(id) {
-    if (!user) return alert("Login required!");
-    if (!confirm("Wipe entry permanently from database?")) return;
+    if (!user) return alert("Authentication required.");
+    if (!confirm("Wipe comment permanently from system database?")) return;
     await fetch(SCRIPT_URL, { method: "POST", body: JSON.stringify({ action: "delete", rowId: id, userEmail: user.e }) });
     sync();
   };
 
-  // LIKE / DISLIKE FRONTEND NETWORK ACTION
+  // LIKE / DISLIKE INTERACTIVE NETWORK TRIGGER
   window.triggerReaction = async function(id, type) {
-    if (!user) return alert("Please Login to react on comments!");
-    // Optimistic UI updates feel faster, but sync ensures accurate database state
+    if (!user) return alert("Please log-in to react to comments!");
     await fetch(SCRIPT_URL, {
       method: "POST",
       body: JSON.stringify({ action: "reaction", rowId: id, email: user.e, reactionType: type })
