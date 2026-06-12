@@ -2,7 +2,7 @@
 # TyagiHub GK Quiz — Build-time paginated page generator
 # Reads JSON from _data/gk/*.json and generates fully rendered static HTML pages.
 # Google gets complete pre-rendered HTML — no JS fetch needed.
-
+ 
 require 'json'
 
 module TyagiHub
