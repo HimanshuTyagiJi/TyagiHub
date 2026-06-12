@@ -99,7 +99,7 @@
     if (!strip) return;
 
     const cards   = document.querySelectorAll('.question-card[data-answered="true"]');
-    const correct = document.querySelectorAll('.question-card[data-answered="true"] .option-btn.correct.selected-correct').length;
+    
 
     // Count correct selections
     let correctCount = 0;
