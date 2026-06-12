@@ -139,7 +139,7 @@ quiz_categories:
     description_en: "Practice Ancient Indian History GK questions for UPSC, SSC, Railway and competitive exams."
     description_hi: "UPSC, SSC, Railway और अन्य प्रतियोगी परीक्षाओं के लिए प्राचीन भारतीय इतिहास प्रश्न।"
 
-  - id: "modern-history"
+  - id: "modern-indian-history"
     title_en: "Modern Indian History"
     title_hi: "आधुनिक भारतीय इतिहास"
     slug_en: "modern-indian-history"
