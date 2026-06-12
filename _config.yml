@@ -131,7 +131,7 @@ quiz:
 
 # GK Quiz Categories
 quiz_categories:
-  - id: "ancient-history"
+  - id: "ancient-indian-history"
     title_en: "Ancient Indian History"
     title_hi: "प्राचीन भारतीय इतिहास"
     slug_en: "ancient-indian-history"
