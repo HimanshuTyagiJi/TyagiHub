@@ -80,6 +80,7 @@ module TyagiHub
             'seo_description'  => seo_desc,
             'description'      => seo_desc,
             'lang'             => 'en',
+           'categories_config' => site.config['categories'],
             'category_id'      => cat['id'],
             'category_title'   => cat['title'],
             'category_url'     => base_url,
