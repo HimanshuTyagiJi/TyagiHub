@@ -26,7 +26,8 @@
       {% if cp == 2 %}
         {% assign prev_url = base %}
       {% else %}
-        {% assign prev_url = base | append: 'page-' | append: cp | minus: 1 | append: '/' %}
+        {% assign prev_page = cp | minus: 1 %} 
+        {% assign prev_url = base | append: 'page-' | append: prev_page | append: '/' %}
       {% endif %}
       <a href="{{ prev_url | relative_url }}" class="prev-next" role="listitem" rel="prev" aria-label="Previous page">
         ← {% if include.lang == 'hi' %}पिछला{% else %}Prev{% endif %}
@@ -75,7 +76,8 @@
 
     <!-- NEXT -->
     {% if cp < tp %}
-      {% assign next_url = base | append: 'page-' | append: cp | plus: 1 | append: '/' %}
+      {% assign next_page = cp | plus: 1 %} 
+                  {% assign next_url = base | append: 'page-' | append: next_page | append: '/' %}
       <a href="{{ next_url | relative_url }}" class="prev-next" role="listitem" rel="next" aria-label="Next page">
         {% if include.lang == 'hi' %}अगला{% else %}Next{% endif %} →
       </a>
