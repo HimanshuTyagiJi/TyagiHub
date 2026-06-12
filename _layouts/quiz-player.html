@@ -35,7 +35,15 @@ layout: quiz-format
   <p class="quiz-description">
     {{ page.description }}
   </p>
-
+<div class="quiz-actions">
+  <button id="resetQuizProgress" type="button" class="reset-quiz-btn">
+    {% if page.lang == 'hi' %}
+      सभी उत्तर रीसेट करें
+    {% else %}
+      Reset Quiz Progress
+    {% endif %}
+  </button>
+</div>
   <div class="quiz-meta">
 
     <span class="meta-item">
