@@ -30,8 +30,7 @@ module TyagiHub
       # Process ENGLISH categories
       # ----------------------------------------------------------------
       (site.config.dig('categories', 'english') || []).each do |cat|
-        data_key  = cat['data_file'].split('/').last          # e.g. ancient-history-en
-        questions = load_questions(site, cat['data_file'])
+       questions = load_questions(site, cat['data_file'])
         next if questions.empty?
 
         total_pages = (questions.size.to_f / qpp).ceil
@@ -75,7 +74,7 @@ module TyagiHub
           schema = breadcrumb_schema(site.config['url'], cat['title'], page_url, page_num)
 
           page_data = {
-            'layout'           => 'quiz',
+            'layout'           => 'quiz-player',
             'title'            => seo_title,
             'seo_title'        => seo_title,
             'seo_description'  => seo_desc,
@@ -144,7 +143,7 @@ module TyagiHub
           schema    = breadcrumb_schema(site.config['url'], cat['title'], page_url, page_num)
 
           page_data = {
-            'layout'           => 'quiz',
+            'layout'           => 'quiz-player',
             'title'            => seo_title,
             'seo_title'        => seo_title,
             'seo_description'  => seo_desc,
