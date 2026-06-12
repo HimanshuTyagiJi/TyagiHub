@@ -14,7 +14,7 @@ module TyagiHub
       @name = filename
 
       self.process(@name)
-      self.read_yaml(File.join(base, '_layouts'), 'quiz.html')
+      self.read_yaml(File.join(base, '_layouts'), 'quiz-player.html')
       self.data.merge!(data_override)
     end
   end
