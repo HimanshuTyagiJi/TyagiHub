@@ -1,8 +1,14 @@
 <!-- _includes/question_card.html
      Parameters:
-       include.question  - the question object
-       include.number    - absolute question number (e.g. 3)
-       include.index     - 0-based index within this page (e.g. 0, 1)
+       include.question  - the question object from JSON
+       include.number    - absolute question number (e.g. Q3 on page 2 when qpp=2)
+       include.index     - 0-based index within this page (0, 1, 2…)
+
+     SEO NOTE:
+     All content (question, options, answer, explanation) is rendered in
+     static HTML at build time. Google sees everything in page source.
+     The explanation uses aria-hidden + CSS class toggling — content stays
+     in DOM (indexable), only visibility changes via JS.
 -->
 {% assign q   = include.question %}
 {% assign num = include.number %}
@@ -12,34 +18,48 @@
          id="q{{ num }}"
          data-qindex="{{ idx }}"
          data-correct="{{ q.correct_answer }}"
+         data-qnum="{{ num }}"
          aria-label="Question {{ num }}">
 
+  <!-- Question header: number badge + question text as H2 (page H1 is category title) -->
   <div class="question-header">
     <div class="q-number" aria-hidden="true">{{ num }}</div>
     <h2 class="q-text">{{ q.question }}</h2>
   </div>
 
+  <!-- Answer options — static HTML buttons, JS adds correct/wrong classes on click -->
   <div class="options-grid" role="group" aria-label="Answer options for question {{ num }}">
-
     {% assign options = "a,b,c,d" | split: "," %}
     {% for opt in options %}
       {% assign field = "option_" | append: opt %}
       {% assign label = opt | upcase %}
       <button class="option-btn"
+              type="button"
               data-option="{{ opt }}"
               aria-label="Option {{ label }}: {{ q[field] }}">
         <span class="opt-label" aria-hidden="true">{{ label }}</span>
         <span class="opt-text">{{ q[field] }}</span>
       </button>
     {% endfor %}
-
   </div>
 
-  <div class="explanation-box" role="alert" aria-live="polite">
+  <!--
+    EXPLANATION BOX
+    ★ SEO: Content is in the HTML source — Google indexes it.
+    ★ UX: Hidden visually until user answers (via .exp-hidden class removal in JS).
+    ★ Do NOT use display:none here — that prevents indexing.
+       Instead we use max-height + opacity CSS transition (class-toggled by JS).
+  -->
+  <div class="explanation-box exp-hidden"
+       role="region"
+       aria-label="Explanation for question {{ num }}"
+       aria-live="polite">
     <span class="exp-icon" aria-hidden="true">💡</span>
-    <div>
-      <span class="exp-label">Explanation</span>
-      {{ q.explanation }}
+    <div class="exp-content">
+      <span class="exp-label">
+        {% if page.lang == 'hi' %}व्याख्या{% else %}Explanation{% endif %}
+      </span>
+      <p class="exp-text">{{ q.explanation }}</p>
     </div>
   </div>
 
