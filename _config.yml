@@ -125,34 +125,30 @@ api:
   base_url: "https://api.tyagihub.in/v1"
   enabled: false
 
-# GK Quiz Settings
 quiz:
-  questions_per_page: 2
+  questions_per_page: 2   # Change to 25 for production
 
-# GK Quiz Categories
+# Navigation Categories
 categories:
   english:
     - id: "ancient-indian-history"
       title: "Ancient Indian History"
       url: "/gk/ancient-indian-history/"
-      data_file: "quiz/en/ancient-history"
-      description: "Practice Ancient Indian History GK questions for UPSC, SSC, Railway and competitive exams."
-
+      data_file: "gk/ancient-history-en"
+      description: "Practice Ancient Indian History GK questions for UPSC, SSC, Railway and other competitive exams."
     - id: "modern-indian-history"
       title: "Modern Indian History"
       url: "/gk/modern-indian-history/"
-      data_file: "quiz/en/modern-history"
-      description: "Practice Modern Indian History GK questions for UPSC, SSC, Railway and competitive exams."
-
+      data_file: "gk/modern-history-en"
+      description: "Practice Modern Indian History GK questions for UPSC, SSC, Railway and other competitive exams."
   hindi:
-    - id: "ancient-indian-history"
+    - id: "prachin-bharatiya-itihas"
       title: "प्राचीन भारतीय इतिहास"
       url: "/hi/gk/prachin-bharatiya-itihas/"
-      data_file: "quiz/hi/ancient-history"
-      description: "UPSC, SSC, Railway और अन्य प्रतियोगी परीक्षाओं के लिए प्राचीन भारतीय इतिहास प्रश्न।"
-
-    - id: "modern-indian-history"
+      data_file: "gk/ancient-history-hi"
+      description: "UPSC, SSC, Railway और अन्य प्रतियोगी परीक्षाओं के लिए प्राचीन भारतीय इतिहास के प्रश्नों का अभ्यास करें।"
+    - id: "aadhunik-bharatiya-itihas"
       title: "आधुनिक भारतीय इतिहास"
       url: "/hi/gk/aadhunik-bharatiya-itihas/"
-      data_file: "quiz/hi/modern-history"
-      description: "UPSC, SSC, Railway और अन्य प्रतियोगी परीक्षाओं के लिए आधुनिक भारतीय इतिहास प्रश्न।"
+      data_file: "gk/modern-history-hi"
+      description: "UPSC, SSC, Railway और अन्य प्रतियोगी परीक्षाओं के लिए आधुनिक भारतीय इतिहास के प्रश्नों का अभ्यास करें।"
