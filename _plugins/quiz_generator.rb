@@ -4,7 +4,7 @@
 # Google gets complete pre-rendered HTML — no JS fetch needed.
  
 require 'json'
-
+ 
 module TyagiHub
   class QuizPage < Jekyll::Page
     def initialize(site, base, dir, filename, data_override)
