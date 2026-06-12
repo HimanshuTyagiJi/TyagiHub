@@ -1,0 +1,90 @@
+<!-- _includes/pagination.html
+     Parameters:
+       include.total_pages    - total number of pages
+       include.current_page   - current page number (1-based)
+       include.base_url       - base URL like /gk/ancient-indian-history/
+       include.lang           - 'hi' or 'en'
+-->
+{% assign tp   = include.total_pages | plus: 0 %}
+{% assign cp   = include.current_page | plus: 0 %}
+{% assign base = include.base_url %}
+
+{% if tp > 1 %}
+<nav class="pagination-wrapper" aria-label="Quiz pages">
+  <p class="pagination-info">
+    {% if include.lang == 'hi' %}
+      पृष्ठ {{ cp }} / {{ tp }}
+    {% else %}
+      Page {{ cp }} of {{ tp }}
+    {% endif %}
+  </p>
+
+  <div class="pagination" role="list">
+
+    <!-- PREV -->
+    {% if cp > 1 %}
+      {% if cp == 2 %}
+        {% assign prev_url = base %}
+      {% else %}
+        {% assign prev_url = base | append: 'page-' | append: cp | minus: 1 | append: '/' %}
+      {% endif %}
+      <a href="{{ prev_url | relative_url }}" class="prev-next" role="listitem" rel="prev" aria-label="Previous page">
+        ← {% if include.lang == 'hi' %}पिछला{% else %}Prev{% endif %}
+      </a>
+    {% else %}
+      <span class="disabled prev-next" role="listitem" aria-disabled="true">
+        ← {% if include.lang == 'hi' %}पिछला{% else %}Prev{% endif %}
+      </span>
+    {% endif %}
+
+    <!-- PAGE NUMBERS with smart ellipsis -->
+    {% for i in (1..tp) %}
+      {% assign diff_start = i | minus: 1 %}
+      {% assign diff_end   = tp | minus: i %}
+      {% assign diff_curr  = i | minus: cp %}
+      {% if diff_curr < 0 %}{% assign diff_curr = cp | minus: i %}{% endif %}
+
+      {% if i == 1 or i == tp or diff_curr <= 2 %}
+        {% if i == cp %}
+          <span class="current-page" role="listitem" aria-current="page" aria-label="Page {{ i }}, current">{{ i }}</span>
+        {% else %}
+          {% if i == 1 %}
+            {% assign page_url = base %}
+          {% else %}
+            {% assign page_url = base | append: 'page-' | append: i | append: '/' %}
+          {% endif %}
+          <a href="{{ page_url | relative_url }}" role="listitem" aria-label="Page {{ i }}">{{ i }}</a>
+        {% endif %}
+
+      {% else %}
+        <!-- Show ellipsis only once per gap -->
+        {% assign prev_i = i | minus: 1 %}
+        {% assign prev_diff = prev_i | minus: cp %}
+        {% if prev_diff < 0 %}{% assign prev_diff = cp | minus: prev_i %}{% endif %}
+        {% if prev_diff > 2 and prev_i != 1 and prev_i != tp %}
+          <!-- already shown ellipsis -->
+        {% else %}
+          {% assign next_diff = i | plus: 1 | minus: cp %}
+          {% if next_diff < 0 %}{% assign next_diff = cp | minus: i | plus: 1 %}{% endif %}
+          {% if next_diff > 2 %}
+            <span class="ellipsis" role="listitem" aria-hidden="true">…</span>
+          {% endif %}
+        {% endif %}
+      {% endif %}
+    {% endfor %}
+
+    <!-- NEXT -->
+    {% if cp < tp %}
+      {% assign next_url = base | append: 'page-' | append: cp | plus: 1 | append: '/' %}
+      <a href="{{ next_url | relative_url }}" class="prev-next" role="listitem" rel="next" aria-label="Next page">
+        {% if include.lang == 'hi' %}अगला{% else %}Next{% endif %} →
+      </a>
+    {% else %}
+      <span class="disabled prev-next" role="listitem" aria-disabled="true">
+        {% if include.lang == 'hi' %}अगला{% else %}Next{% endif %} →
+      </span>
+    {% endif %}
+
+  </div>
+</nav>
+{% endif %}

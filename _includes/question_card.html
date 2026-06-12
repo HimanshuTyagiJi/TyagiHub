@@ -1,0 +1,46 @@
+<!-- _includes/question_card.html
+     Parameters:
+       include.question  - the question object
+       include.number    - absolute question number (e.g. 3)
+       include.index     - 0-based index within this page (e.g. 0, 1)
+-->
+{% assign q   = include.question %}
+{% assign num = include.number %}
+{% assign idx = include.index %}
+
+<article class="question-card"
+         id="q{{ num }}"
+         data-qindex="{{ idx }}"
+         data-correct="{{ q.correct_answer }}"
+         aria-label="Question {{ num }}">
+
+  <div class="question-header">
+    <div class="q-number" aria-hidden="true">{{ num }}</div>
+    <h2 class="q-text">{{ q.question }}</h2>
+  </div>
+
+  <div class="options-grid" role="group" aria-label="Answer options for question {{ num }}">
+
+    {% assign options = "a,b,c,d" | split: "," %}
+    {% for opt in options %}
+      {% assign field = "option_" | append: opt %}
+      {% assign label = opt | upcase %}
+      <button class="option-btn"
+              data-option="{{ opt }}"
+              aria-label="Option {{ label }}: {{ q[field] }}">
+        <span class="opt-label" aria-hidden="true">{{ label }}</span>
+        <span class="opt-text">{{ q[field] }}</span>
+      </button>
+    {% endfor %}
+
+  </div>
+
+  <div class="explanation-box" role="alert" aria-live="polite">
+    <span class="exp-icon" aria-hidden="true">💡</span>
+    <div>
+      <span class="exp-label">Explanation</span>
+      {{ q.explanation }}
+    </div>
+  </div>
+
+</article>
