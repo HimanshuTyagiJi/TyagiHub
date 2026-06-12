@@ -6,14 +6,6 @@
     <div class="sidebar-subtitle">All Categories</div>
   </div>
 
-  <!-- DEBUG -->
-  <div style="padding:10px;font-size:12px;color:red;">
-    English Count: {{ site.config.categories.english | size }}
-    <br>
-    Hindi Count: {{ site.config.categories.hindi | size }}
-  </div>
-
-  <!-- Language tabs -->
   <div class="sidebar-lang-tabs">
     {% assign en_url = page.lang_en_url | default: '/gk/ancient-indian-history/' %}
     {% assign hi_url = page.lang_hi_url | default: '/hi/gk/prachin-bharatiya-itihas/' %}
@@ -34,7 +26,7 @@
     <div class="nav-section">
       <div class="nav-section-label">हिंदी श्रेणियाँ</div>
 
-      {% for cat in site.config.categories.hindi %}
+      {% for cat in page.categories_config.hindi %}
       <a href="{{ cat.url | relative_url }}"
          class="nav-item{% if page.category_id == cat.id %} active{% endif %}">
         <span class="nav-item-icon">📖</span>
@@ -48,7 +40,7 @@
     <div class="nav-section">
       <div class="nav-section-label">English Categories</div>
 
-      {% for cat in site.config.categories.english %}
+      {% for cat in page.categories_config.english %}
       <a href="{{ cat.url | relative_url }}"
          class="nav-item{% if page.category_id == cat.id %} active{% endif %}">
         <span class="nav-item-icon">📖</span>
