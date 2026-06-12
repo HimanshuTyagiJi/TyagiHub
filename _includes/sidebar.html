@@ -12,15 +12,15 @@
     {% assign hi_url = page.lang_hi_url | default: '/hi/gk/prachin-bharatiya-itihas/' %}
 
     <a href="{{ en_url | relative_url }}"
-       class="{% if page.lang != 'hi' %}active{% endif %}"
+       class="{% unless page.lang == 'hi' %}active{% endunless %}"
        data-lang-switch="{{ hi_url }}">
-       English
+      English
     </a>
 
     <a href="{{ hi_url | relative_url }}"
        class="{% if page.lang == 'hi' %}active{% endif %}"
        data-lang-switch="{{ en_url }}">
-       हिंदी
+      हिंदी
     </a>
   </div>
 
@@ -30,13 +30,13 @@
   <div class="nav-section">
     <div class="nav-section-label">हिंदी श्रेणियाँ</div>
 
-    {% for cat in site.config.categories.hindi %}
-    <a href="{{ cat.url | relative_url }}"
-       class="nav-item{% if page.category_id == cat.id %} active{% endif %}"
-       aria-current="{% if page.category_id == cat.id %}page{% else %}false{% endif %}">
-      <span class="nav-item-icon">📖</span>
-      <span class="nav-item-label">{{ cat.title }}</span>
-    </a>
+    {% for cat in site.categories.hindi %}
+      <a href="{{ cat.url | relative_url }}"
+         class="nav-item{% if page.category_id == cat.id %} active{% endif %}"
+         aria-current="{% if page.category_id == cat.id %}page{% else %}false{% endif %}">
+        <span class="nav-item-icon">📖</span>
+        <span class="nav-item-label">{{ cat.title }}</span>
+      </a>
     {% endfor %}
   </div>
 
@@ -46,13 +46,13 @@
   <div class="nav-section">
     <div class="nav-section-label">English Categories</div>
 
-    {% for cat in site.config.categories.english %}
-    <a href="{{ cat.url | relative_url }}"
-       class="nav-item{% if page.category_id == cat.id %} active{% endif %}"
-       aria-current="{% if page.category_id == cat.id %}page{% else %}false{% endif %}">
-      <span class="nav-item-icon">📖</span>
-      <span class="nav-item-label">{{ cat.title }}</span>
-    </a>
+    {% for cat in site.categories.english %}
+      <a href="{{ cat.url | relative_url }}"
+         class="nav-item{% if page.category_id == cat.id %} active{% endif %}"
+         aria-current="{% if page.category_id == cat.id %}page{% else %}false{% endif %}">
+        <span class="nav-item-icon">📖</span>
+        <span class="nav-item-label">{{ cat.title }}</span>
+      </a>
     {% endfor %}
   </div>
 
