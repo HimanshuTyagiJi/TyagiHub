@@ -1,149 +1,185 @@
 <!DOCTYPE html>
 <html lang="{{ page.lang | default: site.lang | default: 'en' }}" dir="ltr">
-<head> 
+<head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-  <!-- Primary Meta -->
   <title>{{ page.seo_title | default: page.title | append: ' | TyagiHub GK Quiz' }}</title>
   <meta name="description" content="{{ page.seo_description | default: page.description | default: site.description }}">
   <meta name="author" content="TyagiHub">
   <meta name="robots" content="index, follow">
 
-  <!-- Canonical -->
   <link rel="canonical" href="{{ site.url }}{{ page.canonical_url | default: page.url }}">
 
-  <!-- Open Graph -->
-  <meta property="og:type"        content="website">
-  <meta property="og:title"       content="{{ page.seo_title | default: page.title | append: ' | TyagiHub GK Quiz' }}">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="{{ page.seo_title | default: page.title | append: ' | TyagiHub GK Quiz' }}">
   <meta property="og:description" content="{{ page.seo_description | default: page.description | default: site.description }}">
-  <meta property="og:url"         content="{{ site.url }}{{ page.url }}">
-  <meta property="og:site_name"   content="TyagiHub GK Quiz">
-  <meta property="og:locale"      content="{{ page.lang | default: 'en_IN' }}">
+  <meta property="og:url" content="{{ site.url }}{{ page.url }}">
+  <meta property="og:site_name" content="TyagiHub GK Quiz">
+  <meta property="og:locale" content="{{ page.lang | default: 'en_IN' }}">
 
-  <!-- Twitter Card -->
-  <meta name="twitter:card"        content="summary">
-  <meta name="twitter:title"       content="{{ page.seo_title | default: page.title }}">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="{{ page.seo_title | default: page.title }}">
   <meta name="twitter:description" content="{{ page.seo_description | default: page.description | default: site.description }}">
 
-  <!-- Hreflang for EN/HI counterparts -->
-  {% if page.lang_en_url %}<link rel="alternate" hreflang="en" href="{{ site.url }}{{ page.lang_en_url }}">{% endif %}
-  {% if page.lang_hi_url %}<link rel="alternate" hreflang="hi" href="{{ site.url }}{{ page.lang_hi_url }}">{% endif %}
+  {% if page.lang_en_url %}
+  <link rel="alternate" hreflang="en" href="{{ site.url }}{{ page.lang_en_url }}">
+  {% endif %}
 
-  <!-- Preconnect -->
+  {% if page.lang_hi_url %}
+  <link rel="alternate" hreflang="hi" href="{{ site.url }}{{ page.lang_hi_url }}">
+  {% endif %}
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;600;700;800&family=Noto+Sans+Devanagari:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
-  <!-- Styles -->
   <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}">
 
-  <!-- Favicon -->
   <link rel="icon" type="image/svg+xml" href="{{ '/assets/images/favicon.svg' | relative_url }}">
 
-  <!-- Schema.org Structured Data -->
-  {% if page.schema_json %}{{ page.schema_json }}{% endif %}
+  {% if page.schema_json %}
+    {{ page.schema_json }}
+  {% endif %}
 </head>
+
 <body>
 
 <a href="#main-content" class="skip-link">Skip to main content</a>
 
-<!-- ============================================================
-     SITE HEADER
-     ============================================================ -->
 <header class="site-header" role="banner">
   <div class="header-inner">
+
     <div class="header-left">
-      <!-- Mobile menu toggle -->
-      <button class="menu-toggle" id="menuToggle" aria-label="Open navigation menu" aria-expanded="false" aria-controls="gkSidebar">
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5M3.75 17.25h16.5"/>
+
+      <button class="menu-toggle"
+              id="menuToggle"
+              aria-label="Open navigation menu"
+              aria-expanded="false"
+              aria-controls="gkSidebar">
+
+        <svg xmlns="http://www.w3.org/2000/svg"
+             fill="none"
+             viewBox="0 0 24 24"
+             stroke-width="2"
+             stroke="currentColor">
+          <path stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M3.75 6.75h16.5M3.75 12h16.5M3.75 17.25h16.5"/>
         </svg>
+
       </button>
 
-      <!-- Logo -->
-      <a href="{{ '/' | relative_url }}" class="site-logo" aria-label="TyagiHub Home">
-        <div class="logo-icon" aria-hidden="true">TH</div>
+      <a href="{{ '/' | relative_url }}"
+         class="site-logo"
+         aria-label="TyagiHub Home">
+
+        <div class="logo-icon">TH</div>
+
         <div class="logo-text">
           <span class="brand-name"><span>Tyagi</span>Hub</span>
           <span class="brand-tagline">GK Quiz Platform</span>
         </div>
+
       </a>
+
     </div>
 
     <div class="header-right">
-      <!-- Language Switcher -->
+
       <nav class="lang-switcher" aria-label="Language switcher">
+
         {% assign en_url = page.lang_en_url | default: '/gk/ancient-indian-history/' %}
         {% assign hi_url = page.lang_hi_url | default: '/hi/gk/prachin-bharatiya-itihas/' %}
+
         <a href="{{ en_url | relative_url }}"
-           class="{% if page.lang == 'hi' %}{% else %}active{% endif %}"
-           data-lang-switch="{{ hi_url }}"
-           hreflang="en"
-           aria-label="Switch to English">EN</a>
+           class="{% unless page.lang == 'hi' %}active{% endunless %}">
+          EN
+        </a>
+
         <a href="{{ hi_url | relative_url }}"
-           class="{% if page.lang == 'hi' %}active{% endif %}"
-           data-lang-switch="{{ en_url }}"
-           hreflang="hi"
-           aria-label="हिंदी में बदलें">HI</a>
+           class="{% if page.lang == 'hi' %}active{% endif %}">
+          HI
+        </a>
+
       </nav>
+
     </div>
+
   </div>
 </header>
 
-<!-- Mobile Sidebar Overlay -->
 <div class="sidebar-overlay" id="sidebarOverlay" aria-hidden="true"></div>
 
-<!-- ============================================================
-     PAGE WRAPPER
-     ============================================================ -->
 <div class="page-wrapper">
 
-  <!-- SIDEBAR -->
   {% include sidebar.html %}
 
-  <!-- MAIN CONTENT -->
   <main class="main-content" id="main-content" role="main">
     {{ content }}
   </main>
 
-</div><!-- /.page-wrapper -->
+</div>
 
-<!-- ============================================================
-     SITE FOOTER
-     ============================================================ -->
 <footer class="site-footer" role="contentinfo">
+
   <div class="footer-inner">
+
     <div class="footer-top">
+
       <div class="footer-brand">
-        <div class="footer-logo-text"><span>Tyagi</span>Hub</div>
-        <p>India's trusted free GK Quiz platform for UPSC, SSC, Railway and all competitive exam preparation. Practice in English & Hindi.</p>
+        <div class="footer-logo-text">
+          <span>Tyagi</span>Hub
+        </div>
+
+        <p>
+          India's trusted free GK Quiz platform for UPSC, SSC, Railway and all competitive exam preparation.
+          Practice in English & Hindi.
+        </p>
       </div>
+
       <div class="footer-col">
         <h4>English GK</h4>
+
         <ul>
-          {% for cat in site.categories.english %}
-          <li><a href="{{ cat.url | relative_url }}">{{ cat.title }}</a></li>
+          {% for cat in site.config.categories.english %}
+          <li>
+            <a href="{{ cat.url | relative_url }}">
+              {{ cat.title }}
+            </a>
+          </li>
           {% endfor %}
         </ul>
       </div>
+
       <div class="footer-col">
         <h4>हिंदी GK</h4>
+
         <ul>
-          {% for cat in site.categories.hindi %}
-          <li><a href="{{ cat.url | relative_url }}">{{ cat.title }}</a></li>
+          {% for cat in site.config.categories.hindi %}
+          <li>
+            <a href="{{ cat.url | relative_url }}">
+              {{ cat.title }}
+            </a>
+          </li>
           {% endfor %}
         </ul>
       </div>
+
     </div>
+
     <div class="footer-bottom">
       <span>&copy; {{ 'now' | date: '%Y' }} TyagiHub. All rights reserved.</span>
       <span>Built for competitive exam aspirants of India 🇮🇳</span>
     </div>
+
   </div>
+
 </footer>
 
 <script src="{{ '/assets/js/quiz.js' | relative_url }}" defer></script>
+
 </body>
 </html>
