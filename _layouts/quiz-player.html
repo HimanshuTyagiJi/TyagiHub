@@ -1,81 +1,159 @@
 ---
 layout: quiz-format
 ---
+
 <!-- Quiz Page Template — rendered by _plugins/quiz_generator.rb -->
-<!-- BREADCRUMBS -->
+
 {% include breadcrumb.html
    category_title=page.category_title
    page_num=page.page_num
    lang=page.lang %}
 
-<!-- PAGE HEADER -->
 <header class="quiz-page-header">
+
   <div class="quiz-category-badge">
     <span aria-hidden="true">📚</span>
-    {% if page.lang == 'hi' %}GK प्रश्नोत्तरी{% else %}GK Quiz{% endif %}
+    {% if page.lang == 'hi' %}
+      GK प्रश्नोत्तरी
+    {% else %}
+      GK Quiz
+    {% endif %}
   </div>
 
   <h1>
     {{ page.category_title }}
+
     {% if page.page_num > 1 %}
-      {% if page.lang == 'hi' %} — पृष्ठ {{ page.page_num }}{% else %} — Page {{ page.page_num }}{% endif %}
+      {% if page.lang == 'hi' %}
+        — पृष्ठ {{ page.page_num }}
+      {% else %}
+        — Page {{ page.page_num }}
+      {% endif %}
     {% endif %}
   </h1>
 
-  <p class="quiz-description">{{ page.description }}</p>
+  <p class="quiz-description">
+    {{ page.description }}
+  </p>
 
   <div class="quiz-meta">
+
     <span class="meta-item">
-      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" width="15" height="15">
-        <path stroke-linecap="round" stroke-linejoin="round" d="M9 12h3.75M9 15h3.75M9 18h3.75m3 .75H18a2.25 2.25 0 002.25-2.25V6.108c0-1.135-.845-2.098-1.976-2.192a48.424 48.424 0 00-1.123-.08m-5.801 0c-.065.21-.1.433-.1.664 0 .414.336.75.75.75h4.5a.75.75 0 00.75-.75 2.25 2.25 0 00-.1-.664m-5.8 0A2.251 2.251 0 0113.5 2.25H15c1.012 0 1.867.668 2.15 1.586m-5.8 0c-.376.023-.75.05-1.124.08C9.095 4.01 8.25 4.973 8.25 6.108V8.25m0 0H4.875c-.621 0-1.125.504-1.125 1.125v11.25c0 .621.504 1.125 1.125 1.125h9.75c.621 0 1.125-.504 1.125-1.125V9.375c0-.621-.504-1.125-1.125-1.125H8.25z"/>
-      </svg>
-      {% if page.lang == 'hi' %}कुल {{ page.total_questions }} प्रश्न{% else %}{{ page.total_questions }} Total Questions{% endif %}
+      📄
+      {% if page.lang == 'hi' %}
+        कुल {{ page.total_questions }} प्रश्न
+      {% else %}
+        {{ page.total_questions }} Total Questions
+      {% endif %}
     </span>
+
     <span class="meta-item">
-      {% if page.lang == 'hi' %}पृष्ठ {{ page.page_num }} / {{ page.total_pages }}{% else %}Page {{ page.page_num }} of {{ page.total_pages }}{% endif %}
+      {% if page.lang == 'hi' %}
+        पृष्ठ {{ page.page_num }} / {{ page.total_pages }}
+      {% else %}
+        Page {{ page.page_num }} of {{ page.total_pages }}
+      {% endif %}
     </span>
+
     <span class="meta-item">
-      {% if page.lang == 'hi' %}MCQ प्रारूप{% else %}MCQ Format{% endif %}
+      {% if page.lang == 'hi' %}
+        MCQ प्रारूप
+      {% else %}
+        MCQ Format
+      {% endif %}
     </span>
+
     {% if page.lang == 'hi' and page.lang_en_url %}
-    <a href="{{ page.lang_en_url | relative_url }}" class="meta-item" style="color:#1a56db;font-weight:600;margin-left:auto;" data-lang-switch="{{ page.lang_en_url }}">🇺🇸 Read in English</a>
+      <a href="{{ page.lang_en_url | relative_url }}"
+         class="meta-item"
+         style="margin-left:auto;">
+         🇺🇸 Read in English
+      </a>
     {% elsif page.lang_hi_url %}
-    <a href="{{ page.lang_hi_url | relative_url }}" class="meta-item" style="color:#1a56db;font-weight:600;margin-left:auto;" data-lang-switch="{{ page.lang_hi_url }}">🇮🇳 हिंदी में पढ़ें</a>
+      <a href="{{ page.lang_hi_url | relative_url }}"
+         class="meta-item"
+         style="margin-left:auto;">
+         🇮🇳 हिंदी में पढ़ें
+      </a>
     {% endif %}
+
   </div>
+
 </header>
 
-<!-- QUESTIONS -->
 <section aria-label="Quiz Questions">
+
   <div class="questions-list" id="questionsList">
+
     {% for q in page.questions %}
+
       {% assign abs_num = page.page_start_index | plus: forloop.index %}
-      {% include question_card.html question=q number=abs_num index=forloop.index0 %}
+
+      {% include question_card.html
+         question=q
+         number=abs_num
+         index=forloop.index0 %}
+
     {% endfor %}
+
   </div>
+
 </section>
 
-<!-- PAGINATION -->
-{% include pagination.html total_pages=page.total_pages current_page=page.page_num base_url=page.base_url lang=page.lang %}
+{% include pagination.html
+   total_pages=page.total_pages
+   current_page=page.page_num
+   base_url=page.base_url
+   lang=page.lang %}
 
-<!-- INTERNAL LINKS -->
-<aside class="related-categories" style="margin-top:32px;" aria-label="Other quiz categories">
+<aside class="related-categories"
+       style="margin-top:32px;"
+       aria-label="Other quiz categories">
+
   <h2 style="font-size:17px;margin-bottom:14px;color:#374151;">
-    {% if page.lang == 'hi' %}अन्य श्रेणियाँ{% else %}Explore More Categories{% endif %}
-  </h2>
-  <div style="display:flex;flex-wrap:wrap;gap:10px;">
+
     {% if page.lang == 'hi' %}
-      {% for cat in site.categories.hindi %}
-        {% unless cat.id == page.category_id %}
-        <a href="{{ cat.url | relative_url }}" style="padding:8px 16px;background:#f3f4f6;border-radius:20px;font-size:13px;font-weight:600;color:#374151;text-decoration:none;">📖 {{ cat.title }}</a>
-        {% endunless %}
-      {% endfor %}
+      अन्य श्रेणियाँ
     {% else %}
-      {% for cat in site.categories.english %}
-        {% unless cat.id == page.category_id %}
-        <a href="{{ cat.url | relative_url }}" style="padding:8px 16px;background:#f3f4f6;border-radius:20px;font-size:13px;font-weight:600;color:#374151;text-decoration:none;">📖 {{ cat.title }}</a>
-        {% endunless %}
-      {% endfor %}
+      Explore More Categories
     {% endif %}
+
+  </h2>
+
+  <div style="display:flex;flex-wrap:wrap;gap:10px;">
+
+    {% if page.lang == 'hi' %}
+
+      {% for cat in site.config.categories.hindi %}
+
+        {% unless cat.id == page.category_id %}
+
+          <a href="{{ cat.url | relative_url }}"
+             style="padding:8px 16px;background:#f3f4f6;border-radius:20px;font-size:13px;font-weight:600;color:#374151;text-decoration:none;">
+            📖 {{ cat.title }}
+          </a>
+
+        {% endunless %}
+
+      {% endfor %}
+
+    {% else %}
+
+      {% for cat in site.config.categories.english %}
+
+        {% unless cat.id == page.category_id %}
+
+          <a href="{{ cat.url | relative_url }}"
+             style="padding:8px 16px;background:#f3f4f6;border-radius:20px;font-size:13px;font-weight:600;color:#374151;text-decoration:none;">
+            📖 {{ cat.title }}
+          </a>
+
+        {% endunless %}
+
+      {% endfor %}
+
+    {% endif %}
+
   </div>
+
 </aside>
