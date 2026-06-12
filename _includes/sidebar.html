@@ -1,68 +1,16 @@
-<!-- _includes/sidebar.html -->
-<nav class="gk-sidebar" id="gkSidebar" role="navigation" aria-label="GK Quiz Categories">
+<!-- English Categories -->
+<div class="nav-section">
+  <div class="nav-section-label">English Categories</div>
 
-  <div class="sidebar-header">
-    <div class="sidebar-title">📚 GK Quiz</div>
-    <div class="sidebar-subtitle">All Categories</div>
+  <div style="color:red;font-size:12px;">
+    English Count: {{ site.categories.english | size }}
   </div>
 
-  <!-- Language tabs -->
-  <div class="sidebar-lang-tabs">
-    {% assign en_url = page.lang_en_url | default: '/gk/ancient-indian-history/' %}
-    {% assign hi_url = page.lang_hi_url | default: '/hi/gk/prachin-bharatiya-itihas/' %}
-
-    <a href="{{ en_url | relative_url }}"
-       class="{% unless page.lang == 'hi' %}active{% endunless %}"
-       data-lang-switch="{{ hi_url }}">
-      English
+  {% for cat in site.categories.english %}
+    <a href="{{ cat.url | relative_url }}"
+       class="nav-item{% if page.category_id == cat.id %} active{% endif %}">
+      <span class="nav-item-icon">📖</span>
+      <span class="nav-item-label">{{ cat.title }}</span>
     </a>
-
-    <a href="{{ hi_url | relative_url }}"
-       class="{% if page.lang == 'hi' %}active{% endif %}"
-       data-lang-switch="{{ en_url }}">
-      हिंदी
-    </a>
-  </div>
-
-  {% if page.lang == 'hi' %}
-
-  <!-- Hindi Categories -->
-  <div class="nav-section">
-    <div class="nav-section-label">हिंदी श्रेणियाँ</div>
-
-    {% for cat in site.categories.hindi %}
-      <a href="{{ cat.url | relative_url }}"
-         class="nav-item{% if page.category_id == cat.id %} active{% endif %}"
-         aria-current="{% if page.category_id == cat.id %}page{% else %}false{% endif %}">
-        <span class="nav-item-icon">📖</span>
-        <span class="nav-item-label">{{ cat.title }}</span>
-      </a>
-    {% endfor %}
-  </div>
-
-  {% else %}
-
-  <!-- English Categories -->
-  <div class="nav-section">
-    <div class="nav-section-label">English Categories</div>
-
-    {% for cat in site.categories.english %}
-      <a href="{{ cat.url | relative_url }}"
-         class="nav-item{% if page.category_id == cat.id %} active{% endif %}"
-         aria-current="{% if page.category_id == cat.id %}page{% else %}false{% endif %}">
-        <span class="nav-item-icon">📖</span>
-        <span class="nav-item-label">{{ cat.title }}</span>
-      </a>
-    {% endfor %}
-  </div>
-
-  {% endif %}
-
-  <div class="sidebar-footer">
-    <p>
-      Free GK Practice<br>
-      for Competitive Exams 🇮🇳
-    </p>
-  </div>
-
-</nav>
+  {% endfor %}
+</div>
