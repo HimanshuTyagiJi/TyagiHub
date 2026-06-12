@@ -130,19 +130,29 @@ quiz:
   questions_per_page: 2
 
 # GK Quiz Categories
-quiz_categories:
-  - id: "ancient-indian-history"
-    title_en: "Ancient Indian History"
-    title_hi: "प्राचीन भारतीय इतिहास"
-    slug_en: "ancient-indian-history"
-    slug_hi: "prachin-bharatiya-itihas"
-    description_en: "Practice Ancient Indian History GK questions for UPSC, SSC, Railway and competitive exams."
-    description_hi: "UPSC, SSC, Railway और अन्य प्रतियोगी परीक्षाओं के लिए प्राचीन भारतीय इतिहास प्रश्न।"
+categories:
+  english:
+    - id: "ancient-indian-history"
+      title: "Ancient Indian History"
+      url: "/gk/ancient-indian-history/"
+      data_file: "quiz/en/ancient-history"
+      description: "Practice Ancient Indian History GK questions for UPSC, SSC, Railway and competitive exams."
 
-  - id: "modern-indian-history"
-    title_en: "Modern Indian History"
-    title_hi: "आधुनिक भारतीय इतिहास"
-    slug_en: "modern-indian-history"
-    slug_hi: "aadhunik-bharatiya-itihas"
-    description_en: "Practice Modern Indian History GK questions for UPSC, SSC, Railway and competitive exams."
-    description_hi: "UPSC, SSC, Railway और अन्य प्रतियोगी परीक्षाओं के लिए आधुनिक भारतीय इतिहास प्रश्न।"
+    - id: "modern-indian-history"
+      title: "Modern Indian History"
+      url: "/gk/modern-indian-history/"
+      data_file: "quiz/en/modern-history"
+      description: "Practice Modern Indian History GK questions for UPSC, SSC, Railway and competitive exams."
+
+  hindi:
+    - id: "ancient-indian-history"
+      title: "प्राचीन भारतीय इतिहास"
+      url: "/hi/gk/prachin-bharatiya-itihas/"
+      data_file: "quiz/hi/ancient-history"
+      description: "UPSC, SSC, Railway और अन्य प्रतियोगी परीक्षाओं के लिए प्राचीन भारतीय इतिहास प्रश्न।"
+
+    - id: "modern-indian-history"
+      title: "आधुनिक भारतीय इतिहास"
+      url: "/hi/gk/aadhunik-bharatiya-itihas/"
+      data_file: "quiz/hi/modern-history"
+      description: "UPSC, SSC, Railway और अन्य प्रतियोगी परीक्षाओं के लिए आधुनिक भारतीय इतिहास प्रश्न।"
