@@ -6,53 +6,63 @@
     <div class="sidebar-subtitle">All Categories</div>
   </div>
 
-  <!-- Language tabs inside sidebar -->
+  <!-- Language tabs -->
   <div class="sidebar-lang-tabs">
     {% assign en_url = page.lang_en_url | default: '/gk/ancient-indian-history/' %}
     {% assign hi_url = page.lang_hi_url | default: '/hi/gk/prachin-bharatiya-itihas/' %}
+
     <a href="{{ en_url | relative_url }}"
        class="{% if page.lang != 'hi' %}active{% endif %}"
-       data-lang-switch="{{ hi_url }}"
-       aria-label="English categories">English</a>
+       data-lang-switch="{{ hi_url }}">
+       English
+    </a>
+
     <a href="{{ hi_url | relative_url }}"
        class="{% if page.lang == 'hi' %}active{% endif %}"
-       data-lang-switch="{{ en_url }}"
-       aria-label="हिंदी श्रेणियाँ">हिंदी</a>
+       data-lang-switch="{{ en_url }}">
+       हिंदी
+    </a>
   </div>
 
   {% if page.lang == 'hi' %}
-  <!-- ========== HINDI NAVIGATION ========== -->
+
+  <!-- Hindi Categories -->
   <div class="nav-section">
     <div class="nav-section-label">हिंदी श्रेणियाँ</div>
-    {% for cat in site.categories.hindi %}
+
+    {% for cat in site.config.categories.hindi %}
     <a href="{{ cat.url | relative_url }}"
-       class="nav-item {% if page.category_id == cat.id %}active{% endif %}"
+       class="nav-item{% if page.category_id == cat.id %} active{% endif %}"
        aria-current="{% if page.category_id == cat.id %}page{% else %}false{% endif %}">
-      <span class="nav-item-icon" aria-hidden="true">📖</span>
-      {{ cat.title }}
-      <span class="nav-item-count">Q</span>
+      <span class="nav-item-icon">📖</span>
+      <span class="nav-item-label">{{ cat.title }}</span>
     </a>
     {% endfor %}
   </div>
 
   {% else %}
-  <!-- ========== ENGLISH NAVIGATION ========== -->
+
+  <!-- English Categories -->
   <div class="nav-section">
     <div class="nav-section-label">English Categories</div>
-    {% for cat in site.categories.english %}
+
+    {% for cat in site.config.categories.english %}
     <a href="{{ cat.url | relative_url }}"
-       class="nav-item {% if page.category_id == cat.id %}active{% endif %}"
+       class="nav-item{% if page.category_id == cat.id %} active{% endif %}"
        aria-current="{% if page.category_id == cat.id %}page{% else %}false{% endif %}">
-      <span class="nav-item-icon" aria-hidden="true">📖</span>
-      {{ cat.title }}
-      <span class="nav-item-count">Q</span>
+      <span class="nav-item-icon">📖</span>
+      <span class="nav-item-label">{{ cat.title }}</span>
     </a>
     {% endfor %}
   </div>
+
   {% endif %}
 
   <div class="sidebar-footer">
-    <p>Free GK Practice<br>for Competitive Exams</p>
+    <p>
+      Free GK Practice<br>
+      for Competitive Exams 🇮🇳
+    </p>
   </div>
 
 </nav>
