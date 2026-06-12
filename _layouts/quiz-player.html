@@ -71,19 +71,21 @@ layout: quiz-format
       {% endif %}
     </span>
 
-    {% if page.lang == 'hi' and page.lang_en_url %}
-      <a href="{{ page.lang_en_url | relative_url }}"
-         class="meta-item"
-         style="margin-left:auto;">
-         🇺🇸 Read in English
-      </a>
-    {% elsif page.lang_hi_url %}
-      <a href="{{ page.lang_hi_url | relative_url }}"
-         class="meta-item"
-         style="margin-left:auto;">
-         🇮🇳 हिंदी में पढ़ें
-      </a>
-    {% endif %}
+ {% if page.lang == 'hi' and page.lang_en_url %}
+  <a href="{{ page.lang_en_url | relative_url }}"
+     class="meta-item"
+     style="margin-left:auto;"
+     data-lang-switch="{{ page.lang_en_url }}">
+     🇺🇸 Read in English
+  </a>
+{% elsif page.lang_hi_url %}
+  <a href="{{ page.lang_hi_url | relative_url }}"
+     class="meta-item"
+     style="margin-left:auto;"
+     data-lang-switch="{{ page.lang_hi_url }}">
+     🇮🇳 हिंदी में पढ़ें
+  </a>
+{% endif %}
 
   </div>
 
