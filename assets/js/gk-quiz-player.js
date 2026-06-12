@@ -227,6 +227,56 @@ function restoreScrollPosition() {
 
   } catch (e) {}
 }
+  function restoreScrollPosition() {
+  try {
+    const qnum = sessionStorage.getItem(LAST_Q_KEY);
+    if (!qnum) return;
+
+    const target = document.querySelector(
+      '.question-card[data-qnum="' + qnum + '"]'
+    );
+
+    if (target) {
+      setTimeout(function () {
+        target.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start'
+        });
+      }, 300);
+    }
+
+    sessionStorage.removeItem(LAST_Q_KEY);
+
+  } catch (e) {}
+}
+
+function initResetButton() {
+
+  const btn = document.getElementById('resetQuizProgress');
+
+  if (!btn) return;
+
+  btn.addEventListener('click', function () {
+
+    const ok = confirm(
+      'Reset all saved quiz answers?'
+    );
+
+    if (!ok) return;
+
+    Object.keys(sessionStorage).forEach(function(key) {
+
+      if (key.indexOf('tyagihub_') === 0) {
+        sessionStorage.removeItem(key);
+      }
+
+    });
+
+    location.reload();
+
+  });
+
+}
   // ------------------------------------------------------------------
   // MOBILE SIDEBAR
   // ------------------------------------------------------------------
@@ -266,12 +316,13 @@ function restoreScrollPosition() {
   // ------------------------------------------------------------------
   // INIT
   // ------------------------------------------------------------------
-  document.addEventListener('DOMContentLoaded', function () {
+ document.addEventListener('DOMContentLoaded', function () {
   initLangSync();
   initQuiz();
   bindLangSwitchSync();
   initMobileSidebar();
   restoreScrollPosition();
+  initResetButton();
 });
 
 })();
