@@ -12,6 +12,8 @@
   // ------------------------------------------------------------------
   const STORAGE_KEY_PREFIX = 'tyagihub_quiz_';
   const CURRENT_PAGE_KEY   = 'tyagihub_current_page';
+  const LANG_SYNC_KEY = 'tyagihub_lang_sync';
+  const LAST_Q_KEY    = 'tyagihub_last_question';
 
   // ------------------------------------------------------------------
   // UTILS
@@ -143,7 +145,7 @@
    * data stays but is keyed per page-path so it doesn't bleed.
    */
 
-  const LANG_SYNC_KEY = 'tyagihub_lang_sync';
+ 
 
   function initLangSync() {
     // On page load: check if sync data exists from a lang switch
@@ -174,7 +176,21 @@
     // Lang switch links inside sidebar and header
     document.querySelectorAll('[data-lang-switch]').forEach(function (link) {
       link.addEventListener('click', function () {
-        const target = link.dataset.langSwitch; // target page path
+        
+        const target = link.dataset.langSwitch; 
+        
+        const activeCard = document.elementFromPoint(
+  window.innerWidth / 2,
+  window.innerHeight / 2
+)?.closest('.question-card');
+
+if (activeCard) {
+  sessionStorage.setItem(
+    LAST_Q_KEY,
+    activeCard.dataset.qnum
+  );
+}
+        // target page path
         if (!target) return;
         // Save current answers to sync key
         const answers = loadPageAnswers();
@@ -189,7 +205,28 @@
       });
     });
   }
+function restoreScrollPosition() {
+  try {
+    const qnum = sessionStorage.getItem(LAST_Q_KEY);
+    if (!qnum) return;
 
+    const target = document.querySelector(
+      '.question-card[data-qnum="' + qnum + '"]'
+    );
+
+    if (target) {
+      setTimeout(function () {
+        target.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start'
+        });
+      }, 300);
+    }
+
+    sessionStorage.removeItem(LAST_Q_KEY);
+
+  } catch (e) {}
+}
   // ------------------------------------------------------------------
   // MOBILE SIDEBAR
   // ------------------------------------------------------------------
@@ -230,10 +267,11 @@
   // INIT
   // ------------------------------------------------------------------
   document.addEventListener('DOMContentLoaded', function () {
-    initLangSync();   // must run before initQuiz so answers are merged
-    initQuiz();
-    bindLangSwitchSync();
-    initMobileSidebar();
-  });
+  initLangSync();
+  initQuiz();
+  bindLangSwitchSync();
+  initMobileSidebar();
+  restoreScrollPosition();
+});
 
 })();
