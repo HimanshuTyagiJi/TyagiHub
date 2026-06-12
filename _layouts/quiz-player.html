@@ -1,348 +1,82 @@
 ---
 layout: default
 ---
+<!-- Quiz Page Template — rendered by _plugins/quiz_generator.rb -->
 
-{% assign lang = page.lang | default: 'en' %}
-{% assign quiz_id = page.quiz_id %}
+<!-- BREADCRUMBS -->
+{% include breadcrumb.html
+   category_title=page.category_title
+   page_num=page.page_num
+   lang=page.lang %}
 
-{% if lang == 'hi' %}
-  {% assign quiz_data = site.data.quiz.hi[quiz_id] %}
-{% else %}
-  {% assign quiz_data = site.data.quiz.en[quiz_id] %}
-{% endif %}
+<!-- PAGE HEADER -->
+<header class="quiz-page-header">
+  <div class="quiz-category-badge">
+    <span aria-hidden="true">📚</span>
+    {% if page.lang == 'hi' %}GK प्रश्नोत्तरी{% else %}GK Quiz{% endif %}
+  </div>
 
-{% assign questions_per_page = site.quiz.questions_per_page | default: 2 %}
-{% assign total_questions = quiz_data.size %}
-{% assign total_pages = total_questions | divided_by: questions_per_page %}
+  <h1>
+    {{ page.category_title }}
+    {% if page.page_num > 1 %}
+      {% if page.lang == 'hi' %} — पृष्ठ {{ page.page_num }}{% else %} — Page {{ page.page_num }}{% endif %}
+    {% endif %}
+  </h1>
 
-{% assign current_page = page.page_num | default: 1 %}
-{% assign start_index = current_page | minus: 1 | times: questions_per_page %}
-{% assign end_index = start_index | plus: questions_per_page | minus: 1 %}
+  <p class="quiz-description">{{ page.description }}</p>
 
-<div class="page-wrapper">
+  <div class="quiz-meta">
+    <span class="meta-item">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" width="15" height="15">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M9 12h3.75M9 15h3.75M9 18h3.75m3 .75H18a2.25 2.25 0 002.25-2.25V6.108c0-1.135-.845-2.098-1.976-2.192a48.424 48.424 0 00-1.123-.08m-5.801 0c-.065.21-.1.433-.1.664 0 .414.336.75.75.75h4.5a.75.75 0 00.75-.75 2.25 2.25 0 00-.1-.664m-5.8 0A2.251 2.251 0 0113.5 2.25H15c1.012 0 1.867.668 2.15 1.586m-5.8 0c-.376.023-.75.05-1.124.08C9.095 4.01 8.25 4.973 8.25 6.108V8.25m0 0H4.875c-.621 0-1.125.504-1.125 1.125v11.25c0 .621.504 1.125 1.125 1.125h9.75c.621 0 1.125-.504 1.125-1.125V9.375c0-.621-.504-1.125-1.125-1.125H8.25z"/>
+      </svg>
+      {% if page.lang == 'hi' %}कुल {{ page.total_questions }} प्रश्न{% else %}{{ page.total_questions }} Total Questions{% endif %}
+    </span>
+    <span class="meta-item">
+      {% if page.lang == 'hi' %}पृष्ठ {{ page.page_num }} / {{ page.total_pages }}{% else %}Page {{ page.page_num }} of {{ page.total_pages }}{% endif %}
+    </span>
+    <span class="meta-item">
+      {% if page.lang == 'hi' %}MCQ प्रारूप{% else %}MCQ Format{% endif %}
+    </span>
+    {% if page.lang == 'hi' and page.lang_en_url %}
+    <a href="{{ page.lang_en_url | relative_url }}" class="meta-item" style="color:#1a56db;font-weight:600;margin-left:auto;" data-lang-switch="{{ page.lang_en_url }}">🇺🇸 Read in English</a>
+    {% elsif page.lang_hi_url %}
+    <a href="{{ page.lang_hi_url | relative_url }}" class="meta-item" style="color:#1a56db;font-weight:600;margin-left:auto;" data-lang-switch="{{ page.lang_hi_url }}">🇮🇳 हिंदी में पढ़ें</a>
+    {% endif %}
+  </div>
+</header>
 
-  <div id="sidebarOverlay" class="sidebar-overlay"></div>
+<!-- QUESTIONS -->
+<section aria-label="Quiz Questions">
+  <div class="questions-list" id="questionsList">
+    {% for q in page.questions %}
+      {% assign abs_num = page.page_start_index | plus: forloop.index %}
+      {% include question_card.html question=q number=abs_num index=forloop.index0 %}
+    {% endfor %}
+  </div>
+</section>
 
-  <aside id="gkSidebar" class="gk-sidebar">
+<!-- PAGINATION -->
+{% include pagination.html total_pages=page.total_pages current_page=page.page_num base_url=page.base_url lang=page.lang %}
 
-    <div class="sidebar-header">
-      <div class="sidebar-title">
-        GK Quiz
-      </div>
-
-      <div class="sidebar-subtitle">
-        TyagiHub Practice Center
-      </div>
-    </div>
-
-    <div class="sidebar-lang-tabs">
-
-      {% if lang == 'en' %}
-        <a href="#" class="active">English</a>
-        <a href="#" data-lang-switch>हिन्दी</a>
-      {% else %}
-        <a href="#" data-lang-switch>English</a>
-        <a href="#" class="active">हिन्दी</a>
-      {% endif %}
-
-    </div>
-
-    <div class="nav-section">
-
-      <div class="nav-section-label">
-        Categories
-      </div>
-
-      {% for cat in site.quiz_categories %}
-
-        {% assign current = false %}
-
-        {% if cat.id == quiz_id %}
-          {% assign current = true %}
-        {% endif %}
-
-        <a
-          href="{% if lang == 'hi' %}/hi/gk-quiz/{{ cat.slug_hi }}/{% else %}/gk-quiz/{{ cat.slug_en }}/{% endif %}"
-          class="nav-item {% if current %}active{% endif %}"
-        >
-
-          <span class="nav-item-icon">📘</span>
-
-          {% if lang == 'hi' %}
-            {{ cat.title_hi }}
-          {% else %}
-            {{ cat.title_en }}
-          {% endif %}
-
-        </a>
-
+<!-- INTERNAL LINKS -->
+<aside class="related-categories" style="margin-top:32px;" aria-label="Other quiz categories">
+  <h2 style="font-size:17px;margin-bottom:14px;color:#374151;">
+    {% if page.lang == 'hi' %}अन्य श्रेणियाँ{% else %}Explore More Categories{% endif %}
+  </h2>
+  <div style="display:flex;flex-wrap:wrap;gap:10px;">
+    {% if page.lang == 'hi' %}
+      {% for cat in site.categories.hindi %}
+        {% unless cat.id == page.category_id %}
+        <a href="{{ cat.url | relative_url }}" style="padding:8px 16px;background:#f3f4f6;border-radius:20px;font-size:13px;font-weight:600;color:#374151;text-decoration:none;">📖 {{ cat.title }}</a>
+        {% endunless %}
       {% endfor %}
-
-    </div>
-
-    <div class="sidebar-footer">
-      <p>
-        Practice daily and improve your competitive exam score.
-      </p>
-    </div>
-
-  </aside>
-
-  <main class="main-content">
-
-    <div class="breadcrumb">
-
-      <a href="/">Home</a>
-
-      <span class="sep">›</span>
-
-      <a href="/gk-quiz/">
-        GK Quiz
-      </a>
-
-      <span class="sep">›</span>
-
-      <span class="current">
-        {{ page.title }}
-      </span>
-
-    </div>
-
-    <div class="quiz-page-header">
-
-      <div class="quiz-category-badge">
-
-        {% if lang == 'hi' %}
-          सामान्य ज्ञान
-        {% else %}
-          General Knowledge
-        {% endif %}
-
-      </div>
-
-      <h1>
-        {{ page.title }}
-      </h1>
-
-      <div class="quiz-description">
-        {{ page.description }}
-      </div>
-
-      <div class="quiz-meta">
-
-        <div class="meta-item">
-          📄 {{ total_questions }} Questions
-        </div>
-
-        <div class="meta-item">
-          📚 MCQ Practice
-        </div>
-
-        <div class="meta-item">
-          🎯 Competitive Exams
-        </div>
-
-      </div>
-
-    </div>
-
-    <div id="score-strip" class="score-strip">
-
-      <span class="score-label">
-        Score:
-      </span>
-
-      <span class="score-correct">
-        0
-      </span>
-
-      /
-
-      <span class="score-answered">
-        0
-      </span>
-
-      /
-
-      <span class="score-total">
-        {{ questions_per_page }}
-      </span>
-
-    </div>
-
-    <div class="questions-list">
-            {% for question in quiz_data limit: questions_per_page offset: start_index %}
-
-        {% assign q_number = start_index | plus: forloop.index %}
-
-        <article
-          class="question-card"
-          data-qindex="{{ q_number }}"
-          data-correct="{{ question.correct_answer }}"
-        >
-
-          <div class="question-header">
-
-            <div class="q-number">
-              {{ q_number }}
-            </div>
-
-            <div class="q-text">
-              {{ question.question }}
-            </div>
-
-          </div>
-
-          <div class="options-grid">
-
-            <button
-              class="option-btn"
-              data-option="a"
-              type="button"
-            >
-              <span class="opt-label">A</span>
-              <span class="opt-text">
-                {{ question.option_a }}
-              </span>
-            </button>
-
-            <button
-              class="option-btn"
-              data-option="b"
-              type="button"
-            >
-              <span class="opt-label">B</span>
-              <span class="opt-text">
-                {{ question.option_b }}
-              </span>
-            </button>
-
-            <button
-              class="option-btn"
-              data-option="c"
-              type="button"
-            >
-              <span class="opt-label">C</span>
-              <span class="opt-text">
-                {{ question.option_c }}
-              </span>
-            </button>
-
-            <button
-              class="option-btn"
-              data-option="d"
-              type="button"
-            >
-              <span class="opt-label">D</span>
-              <span class="opt-text">
-                {{ question.option_d }}
-              </span>
-            </button>
-
-          </div>
-
-          <div class="explanation-box">
-
-            <div class="exp-icon">
-              💡
-            </div>
-
-            <div>
-
-              <span class="exp-label">
-
-                {% if lang == 'hi' %}
-                  व्याख्या
-                {% else %}
-                  Explanation
-                {% endif %}
-
-              </span>
-
-              {{ question.explanation }}
-
-            </div>
-
-          </div>
-
-        </article>
-
+    {% else %}
+      {% for cat in site.categories.english %}
+        {% unless cat.id == page.category_id %}
+        <a href="{{ cat.url | relative_url }}" style="padding:8px 16px;background:#f3f4f6;border-radius:20px;font-size:13px;font-weight:600;color:#374151;text-decoration:none;">📖 {{ cat.title }}</a>
+        {% endunless %}
       {% endfor %}
-
-    </div>
-
-    <div class="pagination-wrapper">
-
-      <div class="pagination-info">
-
-        {% if lang == 'hi' %}
-          पेज {{ current_page }} / {{ total_pages }}
-        {% else %}
-          Page {{ current_page }} of {{ total_pages }}
-        {% endif %}
-
-      </div>
-
-      <div class="pagination">
-
-        {% if current_page > 1 %}
-
-          <a
-            class="prev-next"
-            href="?page={{ current_page | minus: 1 }}"
-          >
-            ← Previous
-          </a>
-
-        {% else %}
-
-          <span class="disabled">
-            ← Previous
-          </span>
-
-        {% endif %}
-
-        {% for i in (1..total_pages) %}
-
-          {% if i == current_page %}
-
-            <span class="current-page">
-              {{ i }}
-            </span>
-
-          {% else %}
-
-            <a href="?page={{ i }}">
-              {{ i }}
-            </a>
-
-          {% endif %}
-
-        {% endfor %}
-
-        {% if current_page < total_pages %}
-
-          <a
-            class="prev-next"
-            href="?page={{ current_page | plus: 1 }}"
-          >
-            Next →
-          </a>
-
-        {% else %}
-
-          <span class="disabled">
-            Next →
-          </span>
-
-        {% endif %}
-
-      </div>
-
-    </div>
-
-  </main>
-
-</div>
-
-<script src="{{ '/assets/js/gk-quiz-player.js' | absolute_url }}"></script>
+    {% endif %}
+  </div>
+</aside>
