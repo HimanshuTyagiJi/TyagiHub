@@ -902,3 +902,18 @@ quiz-right-sidebar{
   }
 
 }
+.gk-sidebar-right{
+  width:280px;
+  position:fixed;
+  right:0;
+  top:70px;
+  height:calc(100vh - 64px);
+  overflow-y:auto;
+}.main-content{
+flex:1;
+min-width:0;
+padding:24px;
+max-width:920px;
+width:100%;
+margin:0 auto;
+}
