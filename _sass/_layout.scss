@@ -1143,3 +1143,33 @@ order:2;
 }
 
 }
+
+.gk-sidebar,
+.gk-sidebar-right{
+background:var(--bg-color);
+border-radius:8px;
+box-shadow:
+0 0 0 1px rgba(255,255,255,.04),
+0 4px 18px rgba(0,0,0,.06);
+}
+
+.gk-sidebar-right::before{
+content:"";
+border-radius:8px;
+background:linear-gradient(
+90deg,
+#4285f4,
+#34a853,
+#fbbc05,
+#ea4335,
+#4285f4
+);
+background-size:300% 100%;
+animation:sidebarGlow 6s linear infinite;
+opacity:.18;
+}
+
+@keyframes sidebarGlow{
+0%{background-position:0% 50%;}
+100%{background-position:300% 50%;}
+}
