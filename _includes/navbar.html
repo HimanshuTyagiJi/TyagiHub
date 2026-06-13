@@ -64,30 +64,41 @@
           </svg>
         </button>
 
-        {% if page.lang_switch != false %}
-          {% if page.lang == "hi" %}
-            <a href="{{ site.url }}{{ page.url | remove:'/hi' }}" class="btn btn-outline btn-sm navbar__docs-link">
-              English
-            </a>
-          {% else %}
-            <a href="{{ site.url }}/hi{{ page.url }}" class="btn btn-outline btn-sm navbar__docs-link">
-              हिन्दी
-            </a>
-          {% endif %}
-        {% endif %}
+     {% if page.lang_switch != false %}
 
-        {% if page.lang == "hi" %}
-          <a href="#" class="btn btn-primary btn-sm"
-            onclick="TyagiHub.Toast.show('ऑथेंटिकेशन जल्द आ रहा है!', 'info'); return false;">
-            लॉगिन
-          </a>
-        {% else %}
-          <a href="#" class="btn btn-primary btn-sm"
-            onclick="TyagiHub.Toast.show('Authentication coming soon!', 'info'); return false;">
-            Sign In
-          </a>
-        {% endif %}
+  {% if page.lang_en_url or page.lang_hi_url %}
 
+    {% if page.lang == "hi" %}
+      <a href="{{ page.lang_en_url | relative_url }}"
+         class="btn btn-outline btn-sm navbar__docs-link"
+         data-lang-switch="{{ page.lang_en_url }}">
+        English
+      </a>
+    {% else %}
+      <a href="{{ page.lang_hi_url | relative_url }}"
+         class="btn btn-outline btn-sm navbar__docs-link"
+         data-lang-switch="{{ page.lang_hi_url }}">
+        हिन्दी
+      </a>
+    {% endif %}
+
+  {% else %}
+
+    {% if page.lang == "hi" %}
+      <a href="{{ site.url }}{{ page.url | remove:'/hi' }}"
+         class="btn btn-outline btn-sm navbar__docs-link">
+        English
+      </a>
+    {% else %}
+      <a href="{{ site.url }}/hi{{ page.url }}"
+         class="btn btn-outline btn-sm navbar__docs-link">
+        हिन्दी
+      </a>
+    {% endif %}
+
+  {% endif %}
+
+{% endif %}
         <button class="navbar__hamburger"
           aria-label="{% if page.lang == 'hi' %}मेनू खोलें{% else %}Toggle menu{% endif %}"
           aria-expanded="false"
