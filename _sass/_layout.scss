@@ -1131,3 +1131,20 @@ justify-content:center;
 }
 
 }
+@media(max-width:1023px){
+.gk-sidebar-right{
+width:100%;
+margin-top:24px;
+margin-left:0;
+margin-right:0;
+padding:16px;
+display:block;
+position:static;
+top:auto;
+right:auto;
+height:auto;
+order:2;
+    ;
+}
+
+}
