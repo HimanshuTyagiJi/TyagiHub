@@ -787,4 +787,38 @@
     margin-left: auto;
   }
 }
+quiz-right-sidebar{
+  width:280px;
+  flex-shrink:0;
+  margin-left:24px;
+}
+
+@media (max-width:1023px){
+
+  .page-wrapper{
+    flex-wrap:wrap;
+  }
+
+  .quiz-right-sidebar{
+    width:100%;
+    margin-left:0;
+    margin-top:24px;
+    order:999;
+  }
+
+}@media (max-width:1023px){
+
+  .main-content{
+    width:100%;
+    flex:0 0 100%;
+  }
+
+  .quiz-right-sidebar{
+    width:100%;
+    flex:0 0 100%;
+    margin:24px 0 0;
+    order:999;
+  }
+
+}
 
