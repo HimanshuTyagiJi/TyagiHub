@@ -139,6 +139,7 @@
 // PAGE LAYOUT (Sidebar + Main)
 // ============================================================
 .page-wrapper {
+  margin-top: 90px;
   display: flex;
   min-height: calc(100vh - #{$header-height});
   position: relative;
@@ -323,7 +324,7 @@
 // MAIN CONTENT AREA
 // ============================================================
 .main-content {
-  margin-top:80px !important;
+  
   flex: 1;
   min-width: 0;
   padding: 24px;
