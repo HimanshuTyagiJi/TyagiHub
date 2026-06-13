@@ -124,61 +124,7 @@
 
 </div>
 
-<footer class="site-footer" role="contentinfo">
 
-  <div class="footer-inner">
-
-    <div class="footer-top">
-
-      <div class="footer-brand">
-        <div class="footer-logo-text">
-          <span>Tyagi</span>Hub
-        </div>
-
-        <p>
-          India's trusted free GK Quiz platform for UPSC, SSC, Railway and all competitive exam preparation.
-          Practice in English & Hindi.
-        </p>
-      </div>
-
-      <div class="footer-col">
-        <h4>English GK</h4>
-
-        <ul>
-          {% for cat in site.config.categories.english %}
-          <li>
-            <a href="{{ cat.url | relative_url }}">
-              {{ cat.title }}
-            </a>
-          </li>
-          {% endfor %}
-        </ul>
-      </div>
-
-      <div class="footer-col">
-        <h4>हिंदी GK</h4>
-
-        <ul>
-          {% for cat in site.config.categories.hindi %}
-          <li>
-            <a href="{{ cat.url | relative_url }}">
-              {{ cat.title }}
-            </a>
-          </li>
-          {% endfor %}
-        </ul>
-      </div>
-
-    </div>
-
-    <div class="footer-bottom">
-      <span>&copy; {{ 'now' | date: '%Y' }} TyagiHub. All rights reserved.</span>
-      <span>Built for competitive exam aspirants of India 🇮🇳</span>
-    </div>
-
-  </div>
-
-</footer>
 
 <script src="{{ '/assets/js/gk-quiz-player.js' | relative_url }}" defer></script>
 
