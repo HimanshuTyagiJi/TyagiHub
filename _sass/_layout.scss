@@ -821,4 +821,129 @@ quiz-right-sidebar{
   }
 
 }
+/* =========================
+   GK QUIZ RIGHT SIDEBAR
+========================= */
 
+.gk-sidebar-right{
+  width:280px;
+  flex-shrink:0;
+  margin-left:24px;
+}
+
+.gk-sidebar-right .sidebar-section{
+  margin-bottom:18px;
+}
+
+.gk-sidebar-right .sidebar-title{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  font-size:14px;
+  font-weight:700;
+  color:#111827;
+  margin-bottom:10px;
+}
+
+.gk-sidebar-right .sidebar-icon{
+  width:18px;
+  height:18px;
+  color:#1a56db;
+}
+
+.gk-sidebar-right .app-card,
+.gk-sidebar-right .sidebar-link-card,
+.gk-sidebar-right .telegram-card,
+.gk-sidebar-right .random-quiz-btn{
+  display:flex;
+  align-items:center;
+  text-decoration:none;
+  background:#fff;
+  border:1px solid #e5e7eb;
+  border-radius:14px;
+  padding:14px;
+  transition:all .25s ease;
+  color:#111827;
+}
+
+.gk-sidebar-right .app-card:hover,
+.gk-sidebar-right .sidebar-link-card:hover,
+.gk-sidebar-right .telegram-card:hover,
+.gk-sidebar-right .random-quiz-btn:hover{
+  border-color:#1a56db;
+  transform:translateY(-2px);
+  box-shadow:0 8px 20px rgba(0,0,0,.08);
+}
+
+.gk-sidebar-right .sidebar-links{
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+}
+
+.gk-sidebar-right .app-logo-box{
+  width:42px;
+  height:42px;
+  border-radius:12px;
+  background:#1a56db;
+  color:#fff;
+  font-size:13px;
+  font-weight:800;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  margin-right:12px;
+  flex-shrink:0;
+}
+
+.gk-sidebar-right .app-details{
+  flex:1;
+}
+
+.gk-sidebar-right .app-name{
+  display:block;
+  font-size:13px;
+  font-weight:700;
+  color:#111827;
+}
+
+.gk-sidebar-right .app-meta{
+  display:block;
+  margin-top:2px;
+  font-size:11px;
+  color:#6b7280;
+}
+
+.gk-sidebar-right .download-btn{
+  font-size:11px;
+  font-weight:700;
+  color:#1a56db;
+}
+
+.gk-sidebar-right .telegram-card{
+  justify-content:center;
+  font-weight:700;
+}
+
+.gk-sidebar-right .random-quiz-btn{
+  justify-content:center;
+  background:#1a56db;
+  color:#fff;
+  font-weight:700;
+  border-color:#1a56db;
+}
+
+.gk-sidebar-right .random-quiz-btn:hover{
+  background:#1240a8;
+  border-color:#1240a8;
+}
+
+@media (max-width:1023px){
+
+  .gk-sidebar-right{
+    width:100%;
+    margin:24px 0 0;
+    order:999;
+  }
+
+}
