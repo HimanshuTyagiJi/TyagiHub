@@ -1,116 +1,8 @@
-<!DOCTYPE html>
-<html lang="{{ page.lang | default: site.lang | default: 'en' }}" dir="ltr">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
- 
-  <title>{{ page.seo_title | default: page.title | append: ' | TyagiHub GK Quiz' }}</title>
-  <meta name="description" content="{{ page.seo_description | default: page.description | default: site.description }}">
-  <meta name="author" content="TyagiHub">
-  <meta name="robots" content="index, follow">
+---
+layout: default
+---
 
-  <link rel="canonical" href="{{ site.url }}{{ page.canonical_url | default: page.url }}">
-
-  <meta property="og:type" content="website">
-  <meta property="og:title" content="{{ page.seo_title | default: page.title | append: ' | TyagiHub GK Quiz' }}">
-  <meta property="og:description" content="{{ page.seo_description | default: page.description | default: site.description }}">
-  <meta property="og:url" content="{{ site.url }}{{ page.url }}">
-  <meta property="og:site_name" content="TyagiHub GK Quiz">
-  <meta property="og:locale" content="{{ page.lang | default: 'en_IN' }}">
-
-  <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="{{ page.seo_title | default: page.title }}">
-  <meta name="twitter:description" content="{{ page.seo_description | default: page.description | default: site.description }}">
-
-  {% if page.lang_en_url %}
-  <link rel="alternate" hreflang="en" href="{{ site.url }}{{ page.lang_en_url }}">
-  {% endif %}
-
-  {% if page.lang_hi_url %}
-  <link rel="alternate" hreflang="hi" href="{{ site.url }}{{ page.lang_hi_url }}">
-  {% endif %}
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;600;700;800&family=Noto+Sans+Devanagari:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-
-  <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}">
 <link rel="stylesheet" href="{{ '/assets/css/gk-quiz-play.css' | relative_url }}">
-
-  <link rel="icon" type="image/svg+xml" href="{{ '/assets/images/favicon.svg' | relative_url }}">
-
-  {% if page.schema_json %}
-    {{ page.schema_json }}
-  {% endif %}
-</head>
-
-<body>
-
-<a href="#main-content" class="skip-link">Skip to main content</a>
-
-<header class="site-header" role="banner">
-  <div class="header-inner">
-
-    <div class="header-left">
-
-      <button class="menu-toggle"
-              id="menuToggle"
-              aria-label="Open navigation menu"
-              aria-expanded="false"
-              aria-controls="gkSidebar">
-
-        <svg xmlns="http://www.w3.org/2000/svg"
-             fill="none"
-             viewBox="0 0 24 24"
-             stroke-width="2"
-             stroke="currentColor">
-          <path stroke-linecap="round"
-                stroke-linejoin="round"
-                d="M3.75 6.75h16.5M3.75 12h16.5M3.75 17.25h16.5"/>
-        </svg>
-
-      </button>
-
-      <a href="{{ '/' | relative_url }}"
-         class="site-logo"
-         aria-label="TyagiHub Home">
-
-        <div class="logo-icon">TH</div>
-
-        <div class="logo-text">
-          <span class="brand-name"><span>Tyagi</span>Hub</span>
-          <span class="brand-tagline">GK Quiz Platform</span>
-        </div>
-
-      </a>
-
-    </div>
-
-    <div class="header-right">
-
-      <nav class="lang-switcher" aria-label="Language switcher">
-
-        {% assign en_url = page.lang_en_url | default: '/gk/ancient-indian-history/' %}
-        {% assign hi_url = page.lang_hi_url | default: '/hi/gk/prachin-bharatiya-itihas/' %}
-
-        <a href="{{ en_url | relative_url }}"
-           class="{% unless page.lang == 'hi' %}active{% endunless %}">
-          EN
-        </a>
-
-        <a href="{{ hi_url | relative_url }}"
-           class="{% if page.lang == 'hi' %}active{% endif %}">
-          HI
-        </a>
-
-      </nav>
-
-    </div>
-
-  </div>
-</header>
 
 <div class="sidebar-overlay" id="sidebarOverlay" aria-hidden="true"></div>
 
@@ -124,9 +16,4 @@
 
 </div>
 
-
-
 <script src="{{ '/assets/js/gk-quiz-player.js' | relative_url }}" defer></script>
-
-</body>
-</html>
