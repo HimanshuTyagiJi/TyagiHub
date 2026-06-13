@@ -1,14 +1,23 @@
-<div class="sidebar-lang-tabs">
-  {% assign en_url = page.lang_en_url | default: '/gk/ancient-indian-history/' %}
-  {% assign hi_url = page.lang_hi_url | default: '/hi/gk/prachin-bharatiya-itihas/' %}
+<nav class="gk-sidebar" id="gkSidebar">
 
-  <a href="{{ en_url | relative_url }}"
-     class="{% unless page.lang == 'hi' %}active{% endunless %}">
-    English
-  </a>
+  {% if page.lang == 'hi' %}
 
-  <a href="{{ hi_url | relative_url }}"
-     class="{% if page.lang == 'hi' %}active{% endif %}">
-    हिंदी
-  </a>
-</div>
+    {% for cat in page.categories_config.hindi %}
+      <a href="{{ cat.url | relative_url }}"
+         class="nav-item{% if page.category_id == cat.id %} active{% endif %}">
+        {{ cat.title }}
+      </a>
+    {% endfor %}
+
+  {% else %}
+
+    {% for cat in page.categories_config.english %}
+      <a href="{{ cat.url | relative_url }}"
+         class="nav-item{% if page.category_id == cat.id %} active{% endif %}">
+        {{ cat.title }}
+      </a>
+    {% endfor %}
+
+  {% endif %}
+
+</nav>
