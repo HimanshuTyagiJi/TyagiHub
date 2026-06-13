@@ -95,6 +95,7 @@ module TyagiHub
             'lang_en_url'      => page_url,
             'lang_hi_url'      => hi_page_url,
             'schema_json'      => schema,
+            'section' => 'gkquiz',
           }
 
           quiz_page = QuizPage.new(site, site.source, dir, filename, page_data)
@@ -165,6 +166,7 @@ module TyagiHub
             'lang_en_url'      => en_page_url,
             'lang_hi_url'      => page_url,
             'schema_json'      => schema,
+            'section'          => 'gkquiz',
           }
 
           quiz_page = QuizPage.new(site, site.source, dir, filename, page_data)
