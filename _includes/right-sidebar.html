@@ -1,0 +1,15 @@
+{% case page.section %}
+
+  {% when "gkquiz" %}
+    {% include sidebars/gkquiz-sidebar.html %}
+
+  {% when "shield" %}
+    {% include sidebars/shield-sidebar.html %}
+
+  {% when "learn" %}
+    {% include sidebars/learn-sidebar.html %}
+
+  {% else %}
+    {% include sidebars/default-sidebar.html %}
+
+{% endcase %}
