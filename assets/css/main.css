@@ -2270,5 +2270,8 @@ body {
   }
 
 }
-
+footer{
+position:relative;
+z-index:10;
+}
 
