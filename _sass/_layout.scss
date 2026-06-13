@@ -129,7 +129,7 @@
       &.active { color: $primary; }
     }
   }
-
+   
   .header-cta {
     @include responsive('mobile') { display: none; }
   }
