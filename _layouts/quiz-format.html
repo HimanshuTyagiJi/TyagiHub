@@ -3,7 +3,23 @@ layout: default
 ---
 
 <link rel="stylesheet" href="{{ '/assets/css/gk-quiz-play.css' | relative_url }}">
+<button class="menu-toggle"
+        id="menuToggle"
+        aria-label="Open navigation menu"
+        aria-expanded="false"
+        aria-controls="gkSidebar">
 
+  <svg xmlns="http://www.w3.org/2000/svg"
+       fill="none"
+       viewBox="0 0 24 24"
+       stroke-width="2"
+       stroke="currentColor">
+    <path stroke-linecap="round"
+          stroke-linejoin="round"
+          d="M3.75 6.75h16.5M3.75 12h16.5M3.75 17.25h16.5"/>
+  </svg>
+
+</button>
 <div class="sidebar-overlay" id="sidebarOverlay" aria-hidden="true"></div>
 
 <div class="page-wrapper">
