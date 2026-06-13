@@ -129,7 +129,7 @@
       &.active { color: $primary; }
     }
   }
-   
+
   .header-cta {
     @include responsive('mobile') { display: none; }
   }
@@ -159,23 +159,21 @@
 // ============================================================
 // SIDEBAR NAVIGATION
 // ============================================================
-.gk-sidebar{
-padding:20px;
-padding-right:0;
-width:280px;
-flex-shrink:0;
-background:#fff;
-border-right:1px solid #e5e7eb;
-position:fixed;
-top:70px;
-height:calc(100vh - 64px);
-overflow-y:auto;
-overflow-x:hidden;
-scrollbar-width:thin;
-scrollbar-color:#d1d5db rgba(0,0,0,0);
-z-index:2;
-transition:transform .2s ease;
-}
+.gk-sidebar {
+  padding:20px;
+  padding-right:0;
+  width: $sidebar-width;
+  flex-shrink: 0;
+  background: $white;
+  border-right: 1px solid $neutral-200;
+  position: fixed;
+  top: 70px;
+  height: calc(100vh - #{$header-height});
+  overflow-y: auto;
+  overflow-x: hidden;
+  scrollbar-width: thin;
+  scrollbar-color: $neutral-300 transparent;
+  z-index:2;
   @include transition(transform);
 
   @include responsive('tablet') {
