@@ -67,7 +67,14 @@ collections:
 
   posts_hi:
     output: true
+  
+  shield:
+    output: true
+    permalink: /shield/:name/
 
+  shield_hi:
+    output: true
+    permalink: /hi/shield/:name/
 # Defaults
 defaults:
   - scope:
