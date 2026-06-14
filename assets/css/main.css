@@ -509,8 +509,7 @@ h6 {
 
 .navbar__link {
   padding: var(--space-2) var(--space-3);
-  font-size: var(--fs-sm);
-  font-weight: var(--fw-medium);
+  font-size: var(--fs-md);
   color: var(--clr-text-2);
   border-radius: var(--radius-sm);
   transition: color var(--ease-fast), background var(--ease-fast);
