@@ -622,10 +622,16 @@ h6 {
   display: none;
   position: fixed;
   top: var(--nav-height);
-  left: 0;
+ width:200px;
   right: 0;
   background: var(--clr-bg-2);
-  border-bottom: 1px solid var(--clr-border);
+  border-bottom-left-radius: 12px;
+
+box-shadow:
+0 0 0 1px rgba(59,130,246,.15),
+0 2px 8px rgba(59,130,246,.10),
+0 8px 24px rgba(59,130,246,.08);
+   
   padding: var(--space-4);
   z-index: calc(var(--z-nav) - 1);
   flex-direction: column;
