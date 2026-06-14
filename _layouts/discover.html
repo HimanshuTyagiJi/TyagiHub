@@ -1,89 +1,18 @@
-<!DOCTYPE html>
-<html lang="{% if page.lang == 'hi' %}hi{% else %}en{% endif %}">
-<head>
-	<meta charset="UTF-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+---
+layout:default
+extra_css:
 
-	<title>{{ page.title }}</title>
+  - /assets/css/discover.css
 
-	<meta name="title" content="{{ page.title }}">
-	<meta name="description" content="{{ page.description }}">
-	<meta name="keywords" content="{{ page.keywords }}">
-	<meta name="author" content="{{ page.author }}">
-	<meta name="robots" content="index, follow">
-	<meta name="googlebot" content="index, follow, max-image-preview:large">
-	<meta name="bingbot" content="index, follow">
-	<meta name="theme-color" content="#0f172a">
-	<meta name="language" content="{{ page.lang | default: 'en' }}">
-	<meta name="revisit-after" content="2 days">
-	<meta name="distribution" content="global">
-	<meta name="rating" content="general">
-	<meta name="referrer" content="origin-when-cross-origin">
-	<meta name="format-detection" content="telephone=no">
+extra_js:
 
-	<link rel="canonical" href="{{ page.canonical_url | default: page.url | absolute_url }}">
-
-	<!-- Open Graph -->
-	<meta property="og:type" content="website">
-	<meta property="og:site_name" content="TyagiHub">
-	<meta property="og:title" content="{{ page.title }}">
-	<meta property="og:description" content="{{ page.description }}">
-	<meta property="og:image" content="{{ page.image | absolute_url }}">
-	<meta property="og:url" content="{{ page.url | absolute_url }}">
-	<meta property="og:locale" content="en_IN">
-
-	<!-- Twitter -->
-	<meta name="twitter:card" content="summary_large_image">
-	<meta name="twitter:title" content="{{ page.title }}">
-	<meta name="twitter:description" content="{{ page.description }}">
-	<meta name="twitter:image" content="{{ page.image | absolute_url }}">
-	<meta name="twitter:site" content="@tyagicore">
-	<meta name="twitter:creator" content="@tyagicore">
-
-	<!-- Icons -->
-	<link rel="icon" href="/assets/images/favicon.png" type="image/png">
-	<link rel="apple-touch-icon" href="/assets/images/favicon.png">
-
-	<!-- RSS -->
-	<link rel="alternate" type="application/rss+xml" title="TyagiHub Feed" href="/feed.xml">
-
-	<!-- Preconnect -->
-	<link rel="preconnect" href="https://fonts.googleapis.com">
-	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-	<!-- CSS -->
-	<link rel="stylesheet" href="/assets/css/fonts.css">
-	<link rel="stylesheet" href="/assets/css/main.css">
-	<link rel="stylesheet" href="/assets/css/search.css">
-	<link rel="stylesheet" href="/assets/css/discover.css">
-
-	<!-- Schema -->
-	<script type="application/ld+json">
-{
-  "@context":"https://schema.org",
-  "@type":"WebSite",
-  "name":"TyagiHub",
-  "url":"{{ site.url }}",
-  "description":"{{ page.description }}",
-  "publisher":{
-    "@type":"Organization",
-    "name":"TyagiHub",
-    "logo":{
-      "@type":"ImageObject",
-      "url":"{{ '/assets/images/tyagihub.png' | absolute_url }}"
-    }
-  }
-}
-</script>
-
-</head>
-
-<body>
+  - /assetsjs/discover.js
+---
 
 
-	{% include navbar.html %}
-	{% include mobile-nav.html %}
+
+
+
 	<div class="container">
 
 		<div id="reading-progress-container" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"
@@ -459,102 +388,6 @@
 	</div>
 
 
-<!-- Floating Language Switch -->
-
-<div class="floating-lang-switch">
-
-  {% if page.lang_switch != false %}
-
-<div class="floating-lang-switch">
-
-  {% if page.lang == "hi" %}
-
-    <a href="{{ page.url | remove:'/hi' }}"
-      class="floating-lang-btn"
-      aria-label="Switch to English">
-
-      EN
-
-    </a>
-
-  {% else %}
-
-    <a href="/hi{{ page.url }}"
-      class="floating-lang-btn"
-      aria-label="हिन्दी में बदलें">
-
-      हिं
-
-    </a>
-
-  {% endif %}
-
-</div>
-
-{% endif %}
-
-</div><style>.floating-lang-switch{
-  position:fixed;
-  right:14px;
-  bottom:84px;
-  z-index:9999;
-}
-
-.floating-lang-btn{
-  width:48px;
-  height:48px;
-  border-radius:999px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  background:rgba(15,23,42,.88);
-  backdrop-filter:blur(12px);
-  border:1px solid rgba(255,255,255,.08);
-  color:#fff;
-  text-decoration:none;
-  font-size:14px;
-  font-weight:800;
-  box-shadow:0 10px 30px rgba(0,0,0,.25);
-  transition:.25s ease;
-}
-
-.floating-lang-btn:hover{
-  transform:translateY(-2px) scale(1.05);
-}
-
-@media(min-width:901px){
-
-  .floating-lang-switch{
-    display:none;
-  }
-
-}</style>
- 
-
-	{% include footer.html %}
-
-
-
-
-
-	<button id="tyagi-top-wrap" aria-label="Scroll to top">
-		<svg class="tyagi-progress-svg" viewBox="-1 -1 102 102" aria-hidden="true">
-			<path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98" />
-		</svg>
-		<svg width="24" height="24" viewBox="0 0 24 24" fill="none" color="var(--text-color)" stroke="currentColor"
-			stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg"
-			aria-hidden="true" style="display: inline-block; vertical-align: middle;">
-			<polyline points="17 8 12 3 7 8"></polyline>
-			<line x1="12" y1="3" x2="12" y2="15"></line>
-
-		</svg>
-	</button>
-
-
-
-	<script src="/assets/js/main.js" defer></script>
-	<script src="/assets/js/search.js" defer></script>
-	<script src="/assets/js/discover.js" defer></script>
 
 </body>
 
