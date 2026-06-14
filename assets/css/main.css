@@ -1578,7 +1578,7 @@ body {
 
   /* Logo text ke saath shrink allow karo */
   .navbar__logo {
-    font-size: var(--fs-base);
+    font-size: var(--fs-md);
     gap: var(--space-2);
     min-width: 0;
     flex: 1;
@@ -1720,7 +1720,7 @@ body {
 
   /* Logo pe sirf icon + text, no overflow */
   .navbar__logo {
-    font-size: var(--fs-sm);
+    font-size: var(--fs-md);
   }
 
   /* Buttons */
