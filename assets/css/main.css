@@ -622,7 +622,7 @@ h6 {
   display: none;
   position: fixed;
   top: var(--nav-height);
-  width:250px;
+  width:225px;
   right: 0;
   background: var(--clr-bg-2);
   border-bottom-left-radius: 12px;
