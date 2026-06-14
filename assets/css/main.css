@@ -87,7 +87,7 @@
   /* --- Layout --- */
   --container-max: 1280px;
   --container-pad: clamp(1rem, 4vw, 3rem);
-  --nav-height: 70px;
+  --nav-height: 60px;
 
   /* --- Borders --- */
   --radius-sm: 6px;
@@ -463,7 +463,7 @@ h6 {
 }
 
 .navbar__inner {
-  margin-top: 15px;
+  margin-top: 10px;
   display: flex;
   align-items: center;
   justify-content: space-between;
