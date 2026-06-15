@@ -54,33 +54,34 @@
 
   <!-- Related Articles -->
 
+
+
+{% if page.is_post %}
+
 <div class="sidebar-section">
 
   <div class="sidebar-title">
     <span>Related Articles</span>
   </div>
 
-  <div class="sidebar-links">
+  <div id="related-posts-container" class="sidebar-links"></div>
+
+  <div id="related-posts-data" style="display:none;">
 
     {% assign current_category = page.categories[0] %}
-
-    {% assign related_count = 0 %}
 
     {% for post in site.categories[current_category] %}
 
       {% unless post.url == page.url %}
 
-        <a href="{{ post.url | relative_url }}" class="sidebar-link-card">
-          {{ post.title }}
-        </a>
-
-        {% assign related_count = related_count | plus: 1 %}
+      <div
+        class="related-post-item"
+        data-title="{{ post.title | escape }}"
+        data-url="{{ post.url | relative_url }}"
+        data-image="{{ post.image | default:'/assets/images/default-thumb.png' }}">
+      </div>
 
       {% endunless %}
-
-      {% if related_count >= 5 %}
-        {% break %}
-      {% endif %}
 
     {% endfor %}
 
@@ -88,7 +89,31 @@
 
 </div>
 
+{% else %}
+
+<div class="sidebar-section">
+
+  <div class="sidebar-title">
+    <span>Latest Discover</span>
   </div>
+
+  <div class="sidebar-links">
+
+    {% assign latest_posts = site.posts | sort:"date" | reverse %}
+
+    {% for post in latest_posts limit:5 %}
+
+      <a href="{{ post.url | relative_url }}" class="sidebar-link-card">
+        {{ post.title }}
+      </a>
+
+    {% endfor %}
+
+  </div>
+
+</div>
+
+{% endif %}
 
   <!-- Popular Topics -->
   <div class="sidebar-section">
