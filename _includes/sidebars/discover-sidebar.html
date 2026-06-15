@@ -1,0 +1,154 @@
+<aside class="right-sidebar discover-sidebar" aria-label="Discover Sidebar">
+
+  <!-- Trending Now -->
+  <div class="sidebar-section">
+
+    <div class="sidebar-title">
+      <svg class="sidebar-icon"><!-- trending icon --></svg>
+      <span>Trending Now</span>
+    </div>
+
+    <div id="discover-trending-items" class="sidebar-links">
+
+      <a href="/discover/" class="sidebar-link-card">
+        Loading trending topics...
+      </a>
+
+    </div>
+
+  </div>
+
+  <!-- Featured Collection -->
+  <div class="sidebar-section">
+
+    <div class="sidebar-title">
+      <svg class="sidebar-icon"><!-- collection icon --></svg>
+      <span>Featured Collection</span>
+    </div>
+
+    <div class="sidebar-links">
+
+      <a href="/discover/cyber-security/" class="sidebar-link-card">
+        Cyber Security
+      </a>
+
+      <a href="/discover/ai-automation/" class="sidebar-link-card">
+        AI & Automation
+      </a>
+
+      <a href="/discover/privacy/" class="sidebar-link-card">
+        Privacy & Safety
+      </a>
+
+    </div>
+
+  </div>
+
+  <!-- Latest Discover -->
+  <div class="sidebar-section">
+
+    <div class="sidebar-title">
+      <svg class="sidebar-icon"><!-- latest icon --></svg>
+      <span>Latest Discover</span>
+    </div>
+
+    <div class="sidebar-links">
+
+      {% assign latest_posts = site.categories.discover | slice: 0, 5 %}
+
+      {% for post in latest_posts %}
+      <a href="{{ post.url }}" class="sidebar-link-card">
+        {{ post.title }}
+      </a>
+      {% endfor %}
+
+    </div>
+
+  </div>
+
+  <!-- Popular Topics -->
+  <div class="sidebar-section">
+
+    <div class="sidebar-title">
+      <svg class="sidebar-icon"><!-- topic icon --></svg>
+      <span>Popular Topics</span>
+    </div>
+
+    <div class="sidebar-links">
+
+      <a href="/discover/technology/" class="sidebar-link-card">
+        Technology
+      </a>
+
+      <a href="/discover/security/" class="sidebar-link-card">
+        Security
+      </a>
+
+      <a href="/discover/apps/" class="sidebar-link-card">
+        Apps & Tools
+      </a>
+
+      <a href="/discover/internet/" class="sidebar-link-card">
+        Internet
+      </a>
+
+    </div>
+
+  </div>
+
+  <!-- Telegram -->
+  <div class="sidebar-section">
+
+    <div class="sidebar-title">
+      <svg class="sidebar-icon"><!-- telegram icon --></svg>
+      <span>Telegram Updates</span>
+    </div>
+
+    <a href="https://t.me/TyagiHubs"
+       target="_blank"
+       rel="noopener"
+       class="telegram-card">
+
+      Join Telegram Channel
+
+    </a>
+
+  </div>
+
+  <!-- TyagiHub Apps -->
+  <div class="sidebar-section">
+
+    <div class="sidebar-title">
+      <svg class="sidebar-icon"><!-- app icon --></svg>
+      <span>TyagiHub Apps</span>
+    </div>
+
+    <div class="app-card">
+
+      <div class="app-logo-box">SM</div>
+
+      <div class="app-details">
+        <span class="app-name">Secure Media Player</span>
+        <span class="app-meta">Private Media Protection</span>
+      </div>
+
+      <span class="download-btn">Soon</span>
+
+    </div>
+
+    <div class="app-card">
+
+      <div class="app-logo-box">GK</div>
+
+      <div class="app-details">
+        <span class="app-name">GK Quiz App</span>
+        <span class="app-meta">Practice & Mock Tests</span>
+      </div>
+
+      <span class="download-btn">Soon</span>
+
+    </div>
+
+  </div>
+
+</aside>
