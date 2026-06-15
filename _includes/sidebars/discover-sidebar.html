@@ -7,50 +7,34 @@
       <svg class="sidebar-icon"><!-- trending icon --></svg>
       <span>Trending Now</span>
     </div>
+<div id="trending-posts-data" style="display:none;">
 
-    <div id="discover-trending-items" class="sidebar-links">
+{% assign discover_posts = site.posts | where:"layout","discover" %}
 
-      <a href="/discover/" class="sidebar-link-card">
-        Loading trending topics...
-      </a>
+{% for post in discover_posts %}
 
-    </div>
+  {% unless post.url == page.url %}
+
+  <div
+    class="trending-post-item"
+    data-title="{{ post.title | escape }}"
+    data-url="{{ post.url | relative_url }}"
+    data-image="{{ post.image }}">
+  </div>
+
+  {% endunless %}
+
+{% endfor %}
+
+</div>
+
+<div id="trending-posts-container" class="sidebar-links"></div>
 
   </div>
 
-  <!-- Featured Collection -->
-  <div class="sidebar-section">
+ 
 
-    <div class="sidebar-title">
-      <svg class="sidebar-icon"><!-- collection icon --></svg>
-      <span>Featured Collection</span>
-    </div>
 
-    <div class="sidebar-links">
-
-      <a href="/discover/cyber-security/" class="sidebar-link-card">
-        Cyber Security
-      </a>
-
-      <a href="/discover/ai-automation/" class="sidebar-link-card">
-        AI & Automation
-      </a>
-
-      <a href="/discover/privacy/" class="sidebar-link-card">
-        Privacy & Safety
-      </a>
-
-    </div>
-
-  </div>
-
-  <!-- Latest Discover -->
-  <div class="sidebar-section">
-
-    <div class="sidebar-title">
-      <svg class="sidebar-icon"><!-- latest icon --></svg>
-      <span>Latest Discover</span>
-    </div>
 
   <!-- Related Articles -->
 
@@ -115,35 +99,7 @@
 
 {% endif %}
 
-  <!-- Popular Topics -->
-  <div class="sidebar-section">
 
-    <div class="sidebar-title">
-      <svg class="sidebar-icon"><!-- topic icon --></svg>
-      <span>Popular Topics</span>
-    </div>
-
-    <div class="sidebar-links">
-
-      <a href="/discover/technology/" class="sidebar-link-card">
-        Technology
-      </a>
-
-      <a href="/discover/security/" class="sidebar-link-card">
-        Security
-      </a>
-
-      <a href="/discover/apps/" class="sidebar-link-card">
-        Apps & Tools
-      </a>
-
-      <a href="/discover/internet/" class="sidebar-link-card">
-        Internet
-      </a>
-
-    </div>
-
-  </div>
 
   <!-- Telegram -->
   <div class="sidebar-section">
