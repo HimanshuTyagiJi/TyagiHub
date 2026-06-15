@@ -8,6 +8,12 @@ author: "Himanshu Tyagi"
 lang: hi
 robots: "index, follow"
 keywords: "TyagiHub, AI टूल्स, साइबर सुरक्षा, शिक्षा, टेक्नोलॉजी, डिजिटल अपडेट, ऑनलाइन सुरक्षा"
+
+extra_css:
+  - /assets/css/discover.css
+
+extra_js:
+  - /assets/js/discover.js
 ---
 
 {% assign all_posts = site.posts_hi %}
@@ -16,29 +22,99 @@ keywords: "TyagiHub, AI टूल्स, साइबर सुरक्षा, 
 
 <div style="padding-top:var(--nav-height);">
 
-  <section
-    style="padding:var(--space-16) 0 var(--space-12);background:var(--clr-bg-2);border-bottom:1px solid var(--clr-border);">
+<div class="discover-hero">
 
-    <div class="container">
+  <div class="discover-hero__bg"></div>
 
-      <div class="section-label" aria-hidden="true">
-        TyagiHub
+  <div class="container discover-hero__content">
+
+    <div class="discover-badge">
+      <span class="discover-badge__dot"></span>
+      TyagiHub डिस्कवर
+    </div>
+
+    <h1 class="discover-title">
+      तकनीक के भविष्य को
+      <span>खोजें</span>
+    </h1>
+
+    <p class="discover-desc">
+      टेक्नोलॉजी, कृत्रिम बुद्धिमत्ता (AI), साइबर सुरक्षा, शिक्षा,
+      समसामयिक घटनाएँ, डिजिटल टूल्स, ऐप्स, ट्यूटोरियल,
+      ऑनलाइन सुरक्षा और भविष्य की नवाचार तकनीकों से जुड़ी
+      उपयोगी जानकारी — सब कुछ एक ही शक्तिशाली
+      TyagiHub Discover फ़ीड में।
+    </p>
+
+    <div class="discover-icons">
+
+      <!-- AI -->
+
+      <div class="discover-icon">
+
+        <svg viewBox="0 0 64 64" class="icon-ai">
+
+          <rect x="18" y="18" width="28" height="28" rx="6"/>
+
+          <line x1="12" y1="24" x2="18" y2="24"/>
+          <line x1="12" y1="40" x2="18" y2="40"/>
+
+          <line x1="46" y1="24" x2="52" y2="24"/>
+          <line x1="46" y1="40" x2="52" y2="40"/>
+
+          <line x1="24" y1="12" x2="24" y2="18"/>
+          <line x1="40" y1="12" x2="40" y2="18"/>
+
+          <line x1="24" y1="46" x2="24" y2="52"/>
+          <line x1="40" y1="46" x2="40" y2="52"/>
+
+        </svg>
+
       </div>
 
-      <h1>
-        टेक्नोलॉजी की दुनिया खोजें
-      </h1>
+      <!-- Cybersecurity -->
 
-      <p style="font-size:var(--fs-md);line-height:1.9;color:var(--clr-text-2);max-width:60ch;">
+      <div class="discover-icon">
 
-        टेक्नोलॉजी, AI, साइबर सुरक्षा, शिक्षा, करंट अफेयर्स, डिजिटल टूल्स, ऐप्स, ट्यूटोरियल्स और ऑनलाइन सुरक्षा —
-        सब कुछ एक ही शक्तिशाली हिंदी Discover फीड में।
+        <svg viewBox="0 0 64 64" class="icon-shield">
 
-      </p>
+          <path d="M32 8L50 16V30C50 42 42 52 32 56C22 52 14 42 14 30V16L32 8Z"/>
+
+        </svg>
+
+      </div>
+
+      <!-- Innovation -->
+
+      <div class="discover-icon">
+
+        <svg viewBox="0 0 64 64" class="icon-rocket">
+
+          <path d="M44 10C34 12 24 22 22 34L30 42C42 40 52 30 54 18C54 14 50 10 44 10Z"/>
+
+          <circle cx="40" cy="24" r="3"/>
+
+        </svg>
+
+      </div>
+
+      <!-- Energy -->
+
+      <div class="discover-icon">
+
+        <svg viewBox="0 0 64 64" class="icon-energy">
+
+          <path d="M36 8L18 36H30L24 56L46 28H34L36 8Z"/>
+
+        </svg>
+
+      </div>
 
     </div>
 
-  </section>
+  </div>
+
+</div>
 
   <section
     style="padding:22px 0;border-bottom:1px solid var(--clr-border);background:var(--clr-bg);">
