@@ -333,4 +333,49 @@ document.addEventListener("DOMContentLoaded", () => {
 
 });
 
+document.addEventListener("DOMContentLoaded", () => {
 
+  const hiddenPosts = document.querySelectorAll(
+    "#related-posts-data .related-post-item"
+  );
+
+  const container = document.getElementById(
+    "related-posts-container"
+  );
+
+  if (!hiddenPosts.length || !container) return;
+
+  const posts = [...hiddenPosts];
+
+  posts.sort(() => Math.random() - 0.5);
+
+  const selected = posts.slice(0, 5);
+
+  selected.forEach(post => {
+
+    const title = post.dataset.title;
+    const url = post.dataset.url;
+    const image = post.dataset.image;
+
+    container.insertAdjacentHTML(
+      "beforeend",
+      `
+      <a href="${url}" class="related-post-card">
+
+        <img
+          src="${image}"
+          alt="${title}"
+          class="related-thumb"
+          loading="lazy">
+
+        <span class="related-title">
+          ${title}
+        </span>
+
+      </a>
+      `
+    );
+
+  });
+
+});
