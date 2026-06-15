@@ -52,17 +52,41 @@
       <span>Latest Discover</span>
     </div>
 
-    <div class="sidebar-links">
+  <!-- Related Articles -->
 
-      {% assign latest_posts = site.categories.discover | slice: 0, 5 %}
+<div class="sidebar-section">
 
-      {% for post in latest_posts %}
-      <a href="{{ post.url }}" class="sidebar-link-card">
-        {{ post.title }}
-      </a>
-      {% endfor %}
+  <div class="sidebar-title">
+    <span>Related Articles</span>
+  </div>
 
-    </div>
+  <div class="sidebar-links">
+
+    {% assign current_category = page.categories[0] %}
+
+    {% assign related_count = 0 %}
+
+    {% for post in site.categories[current_category] %}
+
+      {% unless post.url == page.url %}
+
+        <a href="{{ post.url | relative_url }}" class="sidebar-link-card">
+          {{ post.title }}
+        </a>
+
+        {% assign related_count = related_count | plus: 1 %}
+
+      {% endunless %}
+
+      {% if related_count >= 5 %}
+        {% break %}
+      {% endif %}
+
+    {% endfor %}
+
+  </div>
+
+</div>
 
   </div>
 
