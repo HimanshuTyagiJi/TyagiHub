@@ -425,11 +425,7 @@ h6 {
   color: var(--clr-text-2);
 }
 
-[data-theme="light"] .navbar__link:hover,
-[data-theme="light"] .navbar__link.active {
-  color: var(--clr-heading);
-  background: var(--clr-surface-2);
-}
+
 
 [data-theme="light"] .navbar__hamburger span {
   background: var(--clr-text);
@@ -516,11 +512,7 @@ h6 {
   position: relative;
 }
 
-.navbar__link:hover,
-.navbar__link.active {
-  color: var(--clr-heading);
-  background: var(--clr-surface);
-}
+
 
 .navbar__actions {
   display: flex;
@@ -656,10 +648,7 @@ box-shadow:
   transition: all var(--ease-fast);
 }
 
-.mobile-nav__link:hover {
-  color: var(--clr-heading);
-  background: var(--clr-surface);
-}
+
 
 /* ============================================================
    7. BUTTONS
@@ -1914,10 +1903,29 @@ body {
   color: #3d4d6a;
 }
 
-[data-theme="light"] .navbar__link:hover,
-[data-theme="light"] .navbar__link.active {
-  color: #0d1421;
-  background: #edf0f7;
+.navbar__link.active{
+color:#60a5fa;
+font-weight:700;
+background:transparent;
+text-shadow:0 0 12px rgba(96,165,250,.35);
+cursor:default;
+}
+
+[data-theme="light"] .navbar__link.active{
+color:#2563eb;
+font-weight:700;
+background:transparent;
+text-shadow:none;
+}
+
+.navbar__link:not(.active):hover{
+background:linear-gradient(135deg,#2563eb,#ec4899);
+color:#fff;
+}
+
+[data-theme="light"] .navbar__link:not(.active):hover{
+background:linear-gradient(135deg,#2563eb,#ec4899);
+color:#fff;
 }
 
 [data-theme="light"] .navbar__hamburger span {
@@ -1933,9 +1941,26 @@ body {
   color: #3d4d6a;
 }
 
-[data-theme="light"] .mobile-nav__link:hover {
-  color: #0d1421;
-  background: #edf0f7;
+.mobile-nav__link.active{
+color:#60a5fa;
+font-weight:700;
+background:transparent;
+text-shadow:0 0 12px rgba(96,165,250,.35);
+}
+
+[data-theme="light"] .mobile-nav__link.active{
+color:#2563eb;
+text-shadow:none;
+}
+
+.mobile-nav__link:not(.active):hover{
+background:linear-gradient(135deg,#2563eb,#ec4899);
+color:#fff;
+}
+
+[data-theme="light"] .mobile-nav__link:not(.active):hover{
+background:linear-gradient(135deg,#2563eb,#ec4899);
+color:#fff;
 }
 
 /* --- Buttons in light theme --- */
