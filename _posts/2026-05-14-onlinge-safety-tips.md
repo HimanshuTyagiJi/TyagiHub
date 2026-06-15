@@ -1,25 +1,37 @@
 
-
-````md
 ---
-layout: post
+layout: discover
+title: "What is the Dark Web and How Does Your Data Get Leaked? | TyagiHub"
+description: "What is the dark web, how does data get leaked, and how to keep your personal information safe online — an easy cyber awareness guide by TyagiHub."
+image: "/assets/images/tyagihub-dark-web-data-check-cyber-awareness-banner.png"
 is_post: true
-title: "ऑनलाइन फ्रॉड से कैसे बचें — 10 Powerful Cyber Safety Tips"
-description: "UPI fraud, phishing, fake APK, scam links aur online hacking se bachne ke practical cybersecurity tips in Hindi."
-date: 2026-05-14 10:00:00 +0530
+categories: "CyberSecurity"
+date: 2026-04-05
 author: "Himanshu Tyagi"
-image: /assets/images/cyber-security-cover.jpg
-categories:
-- cybersecurity
-- safety
+lang: en
+permalink: /cybersecurity/dark-web-data-check/
 tags:
-- cybersecurity
-- online safety
-- phishing
-- upi fraud
-- scam alerts
-canonical_url: "https://tyagihub.in/discover/online-safety-tips/"
-keywords: "online safety, cyber security hindi, upi fraud, phishing scam, fake apk alert"
+  - dark web data check
+  - how to check if your data is on dark web
+  - HaveIBeenPwned guide
+  - data breach check India
+  - how to stay safe from dark web
+  - check your data on dark web
+  - email leak check
+  - password leak check
+  - dark web safe check
+  - data breach notification India
+  - what is dark web
+  - online data security India
+
+section: discover
+
+
+extra_css:
+  - /assets/css/discover.css
+
+extra_js:
+  - /assets/js/discover.js
 ---
 
 ## Introduction
