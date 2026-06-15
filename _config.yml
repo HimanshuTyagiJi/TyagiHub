@@ -107,15 +107,13 @@ defaults:
     values:
       layout: "default"
 
-compress_html:
-  comments: all
 
 # Plugins (GitHub Pages safe)
 plugins:
   - jekyll-feed
   - jekyll-sitemap
   - jekyll-seo-tag
-  - jekyll-compress-html
+  
 
 # SEO
 twitter:
