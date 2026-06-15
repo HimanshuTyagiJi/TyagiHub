@@ -37,7 +37,12 @@ jobs:
       - name: Format HTML
         run: |
           npm install -g js-beautify
-          find _site -name "*.html" -exec html-beautify -r {} \;
+
+          find _site -type f -name "*.html" -exec html-beautify \
+            --indent-size 2 \
+            --preserve-newlines true \
+            --max-preserve-newlines 1 \
+            -r {} \;
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
