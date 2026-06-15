@@ -379,3 +379,47 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
 });
+const trendingPosts = [
+  ...document.querySelectorAll(
+    "#trending-posts-data .trending-post-item"
+  )
+];
+
+const trendingContainer =
+  document.getElementById(
+    "trending-posts-container"
+  );
+
+if (trendingPosts.length && trendingContainer){
+
+  trendingPosts.sort(
+    () => Math.random() - 0.5
+  );
+
+  trendingPosts
+    .slice(0,5)
+    .forEach(post => {
+
+      trendingContainer.insertAdjacentHTML(
+        "beforeend",
+        `
+        <a href="${post.dataset.url}"
+           class="related-post-card">
+
+          <img
+            src="${post.dataset.image}"
+            alt="${post.dataset.title}"
+            class="related-thumb"
+            loading="lazy">
+
+          <span class="related-title">
+            ${post.dataset.title}
+          </span>
+
+        </a>
+        `
+      );
+
+    });
+
+}
