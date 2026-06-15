@@ -80,17 +80,23 @@ const Navbar = (() => {
     spans.forEach(s => { s.style.transform = ''; s.style.opacity = ''; });
   }
 
-  function setActiveLink() {
-    const path = window.location.pathname;
-    $$('.navbar__link, .mobile-nav__link').forEach(link => {
-      const href = link.getAttribute('href');
-      if (href && path.startsWith(href) && href !== '/') {
-        link.classList.add('active');
-      } else if (href === '/' && path === '/') {
-        link.classList.add('active');
-      }
-    });
-  }
+ function setActiveLink() {
+
+  const path = window.location.pathname;
+
+  $$('.navbar__link, .mobile-nav__link').forEach(link => {
+
+    const href = new URL(link.href).pathname;
+
+    if (href !== '/' && path.startsWith(href)) {
+      link.classList.add('active');
+    } else if (href === '/' && path === '/') {
+      link.classList.add('active');
+    }
+
+  });
+
+}
 
   function init() {
     on(window, 'scroll', debounce(onScroll, 10), { passive: true });
