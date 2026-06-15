@@ -1337,3 +1337,37 @@
   }
 
 }
+.related-post-card{
+  display:flex;
+  gap:12px;
+  align-items:center;
+
+  text-decoration:none;
+  color:inherit;
+
+  padding:10px;
+  border-radius:12px;
+
+  transition:.25s ease;
+}
+
+.related-post-card:hover{
+  background:rgba(255,255,255,.04);
+}
+
+.related-thumb{
+  width:72px;
+  height:54px;
+
+  object-fit:cover;
+
+  border-radius:10px;
+
+  flex-shrink:0;
+}
+
+.related-title{
+  font-size:13px;
+  line-height:1.4;
+  font-weight:600;
+}
