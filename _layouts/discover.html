@@ -16,16 +16,24 @@ layout: default
 		<div class="tc-left">
 
 			{% if page.is_post %}
-
 				{% assign words = content | number_of_words %}
-				{% if words < 360 %} {% assign read_time="2 min read" %} {% else %} {% assign minutes=words | divided_by: 180 %}
-					{% assign read_time=minutes | append: " min read" %} {% endif %} 
+
+				{% if words < 360 %} 
+					{% assign read_time="2 min read" %} 
+				{% else %} 
+					{% assign minutes=words | divided_by: 180 %}
+					{% assign read_time=minutes | append: " min read" %} 
+				{% endif %} 
 				
-				<h1 class="post-title" style="margin-bottom:10px;">{{ page.title }}</h1>
+				<h1 class="post-title" style="margin-bottom:10px;">
+					{{ page.title }}
+				</h1>
 
 				<p style="color:var(--text-muted);font-size:14px;margin-bottom:28px;">
 					By {{ page.author | default: "Himanshu Tyagi" }} · TyagiHub · {{ page.date | date: "%d %B %Y" }} ·
-					<span class="read-time"><i class="far fa-clock"></i> {{ read_time }}</span>
+					<span class="read-time">
+						<i class="far fa-clock"></i> {{ read_time }}
+					</span>
 				</p>
 
 				{% if page.image %}
@@ -35,17 +43,18 @@ layout: default
 				{% endif %}
 
 				<div class="toc-container" id="toc-box" style="display:none;margin-bottom:30px;">
-					<div class="toc-title"><i class="fas fa-list-ul"></i> &nbsp; Topics</div>
+					<div class="toc-title">
+						<i class="fas fa-list-ul"></i> &nbsp; Topics
+					</div>
 					<ul id="toc-list" role="list"></ul>
-					<button id="toc-toggle-btn" class="toc-see-more" aria-expanded="false">See More <i class="fas fa-chevron-down"></i></button>
+					<button id="toc-toggle-btn" class="toc-see-more" aria-expanded="false">
+						See More <i class="fas fa-chevron-down"></i>
+					</button>
 				</div>
 
-			{% endif %}
+				{{ content }}
 
-			{{ content }}
-
-			{% unless page.url == "/" or page.url == "/index.html" %}
-				{% if page.is_post %}
+				{% unless page.url == "/" or page.url == "/index.html" %}
 					<div class="share-wrapper">
 						<p class="share-label">Share With Friends 🚀</p>
 						<button onclick="tyagiShare()" class="tyagi-share-btn" aria-label="Share this article">
@@ -58,11 +67,14 @@ layout: default
 					{% else %}
 						{% assign all_posts = site.posts | where:"lang","en" | sort:"date" %}
 					{% endif %}
+					
 					{% assign post_count = all_posts | size %}
 					{% assign current_index = nil %}
 
 					{% for p in all_posts %}
-						{% if p.url == page.url %}{% assign current_index = forloop.index0 %}{% endif %}
+						{% if p.url == page.url %}
+							{% assign current_index = forloop.index0 %}
+						{% endif %}
 					{% endfor %}
 
 					{% if current_index != nil %}
@@ -102,8 +114,12 @@ layout: default
 						</nav>
 					{% endif %}
 					<hr style="margin:44px 0;border:none;border-top:1px solid var(--border-color)">
-				{% endif %}
-			{% endunless %}
+				{% endunless %}
+
+			{% else %}
+				{{ content }}
+
+			{% endif %}
 
 		</div>
 
@@ -123,6 +139,14 @@ layout: default
 			{% endif %}
 		</div>
 	{% endif %}
+</div>
+
+{% if page.lang == "hi" %}{% assign stream = site.posts_hi %}{% else %}{% assign stream = site.posts %}{% endif %}
+<div id="trending-posts-data" style="display:none;">
+  {% for item in stream limit:20 %}<div class="trending-post-item" data-title="{{ item.title | escape }}" data-url="{{ item.url | relative_url }}" data-image="{{ item.image | default: '/assets/images/default-thumb.png' }}"></div>{% endfor %}
+</div>
+<div id="related-posts-data" style="display:none;">
+  {% for item in stream limit:20 %}<div class="related-post-item" data-title="{{ item.title | escape }}" data-url="{{ item.url | relative_url }}" data-image="{{ item.image | default: '/assets/images/default-thumb.png' }}"></div>{% endfor %}
 </div>
 
 <style>
