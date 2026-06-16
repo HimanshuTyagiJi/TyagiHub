@@ -13,10 +13,6 @@ extra_css:
   - /assets/css/discover.css
 extra_js:
   - /assets/js/discover.js
-pagination:
-  enabled: true
-  collection: posts
-  permalink: "/page-:num/"
 ---
 
 <div style="padding-top:var(--nav-height);">
@@ -44,30 +40,23 @@ pagination:
         <div class="discover-icon">
           <svg viewBox="0 0 64 64" class="icon-ai">
             <rect x="18" y="18" width="28" height="28" rx="6"/>
-            <line x1="12" y1="24" x2="18" y2="24"/>
-            <line x1="12" y1="40" x2="18" y2="40"/>
-            <line x1="46" y1="24" x2="52" y2="24"/>
-            <line x1="46" y1="40" x2="52" y2="40"/>
-            <line x1="24" y1="12" x2="24" y2="18"/>
-            <line x1="40" y1="12" x2="40" y2="18"/>
-            <line x1="24" y1="46" x2="24" y2="52"/>
-            <line x1="40" y1="46" x2="40" y2="52"/>
+            <line x1="12" y1="24" x2="18" y2="24"/><line x1="12" y1="40" x2="18" y2="40"/>
+            <line x1="46" y1="24" x2="52" y2="24"/><line x1="46" y1="40" x2="52" y2="40"/>
+            <line x1="24" y1="12" x2="24" y2="18"/><line x1="40" y1="12" x2="40" y2="18"/>
+            <line x1="24" y1="46" x2="24" y2="52"/><line x1="40" y1="46" x2="40" y2="52"/>
           </svg>
         </div>
-
         <div class="discover-icon">
           <svg viewBox="0 0 64 64" class="icon-shield">
             <path d="M32 8L50 16V30C50 42 42 52 32 56C22 52 14 42 14 30V16L32 8Z"/>
           </svg>
         </div>
-
         <div class="discover-icon">
           <svg viewBox="0 0 64 64" class="icon-rocket">
             <path d="M44 10C34 12 24 22 22 34L30 42C42 40 52 30 54 18C54 14 50 10 44 10Z"/>
             <circle cx="40" cy="24" r="3"/>
           </svg>
         </div>
-
         <div class="discover-icon">
           <svg viewBox="0 0 64 64" class="icon-energy">
             <path d="M36 8L18 36H30L24 56L46 28H34L36 8Z"/>
@@ -121,38 +110,23 @@ pagination:
                data-categories="{% for cat in p.categories %}{{ cat | downcase }} {% endfor %}">
             
             <div class="post-img">
-              <span class="post-category">
-                {{ p.categories[0] | default: "Technology" }}
-              </span>
+              <span class="post-category">{{ p.categories[0] | default: "Technology" }}</span>
               <div class="post-date">
-                <i class="fa-regular fa-calendar"></i>
-                {{ p.date | date: "%d %b %Y" }}
+                <i class="fa-regular fa-calendar"></i> {{ p.date | date: "%d %b %Y" }}
               </div>
-              <img src="{{ p.image | default: '/assets/images/default-thumb.png' }}" alt="{{ p.title }} - TyagiHub"
-                   loading="lazy" width="260" height="188">
+              <img src="{{ p.image | default: '/assets/images/default-thumb.png' }}" alt="{{ p.title }} - TyagiHub" loading="lazy" width="260" height="188">
             </div>
 
             <div class="post-info">
               <div class="post-top-meta">
-                <h2>
-                  <a href="{{ p.url | relative_url }}">
-                    {{ p.title }}
-                  </a>
-                </h2>
-                <p>
-                  {{ p.description | default:p.excerpt | strip_html | truncate:110 }}
-                </p>
+                <h2><a href="{{ p.url | relative_url }}">{{ p.title }}</a></h2>
+                <p>{{ p.description | default:p.excerpt | strip_html | truncate:110 }}</p>
               </div>
-
               <div class="post-footer">
-                <button class="native-share-btn"
-                        onclick="nativeShare('{{ p.title | escape }}','{{ p.url | absolute_url }}')">
-                  <i class="fa-solid fa-share-nodes"></i>
-                  Share
+                <button class="native-share-btn" onclick="nativeShare('{{ p.title | escape }}','{{ p.url | absolute_url }}')">
+                  <i class="fa-solid fa-share-nodes"></i> Share
                 </button>
-                <a href="{{ p.url | relative_url }}" class="read-link">
-                  Read More →
-                </a>
+                <a href="{{ p.url | relative_url }}" class="read-link">Read More →</a>
               </div>
             </div>
 
