@@ -17,7 +17,6 @@ extra_js:
 
 <div style="padding-top:var(--nav-height);">
 
-  <!-- Hero Section (Exactly Preserved) -->
   <div class="discover-hero">
     <div class="discover-hero__bg"></div>
     <div class="container discover-hero__content">
@@ -38,7 +37,6 @@ extra_js:
       </p>
 
       <div class="discover-icons">
-        <!-- AI -->
         <div class="discover-icon">
           <svg viewBox="0 0 64 64" class="icon-ai">
             <rect x="18" y="18" width="28" height="28" rx="6"/>
@@ -53,14 +51,12 @@ extra_js:
           </svg>
         </div>
 
-        <!-- Cybersecurity -->
         <div class="discover-icon">
           <svg viewBox="0 0 64 64" class="icon-shield">
             <path d="M32 8L50 16V30C50 42 42 52 32 56C22 52 14 42 14 30V16L32 8Z"/>
           </svg>
         </div>
 
-        <!-- Innovation -->
         <div class="discover-icon">
           <svg viewBox="0 0 64 64" class="icon-rocket">
             <path d="M44 10C34 12 24 22 22 34L30 42C42 40 52 30 54 18C54 14 50 10 44 10Z"/>
@@ -68,7 +64,6 @@ extra_js:
           </svg>
         </div>
 
-        <!-- Energy -->
         <div class="discover-icon">
           <svg viewBox="0 0 64 64" class="icon-energy">
             <path d="M36 8L18 36H30L24 56L46 28H34L36 8Z"/>
@@ -78,18 +73,15 @@ extra_js:
     </div>
   </div>
 
-  <!-- Search & Filter Bar Section (Added Missing Search Input Securely) -->
   <section style="padding:22px 0; border-bottom:1px solid var(--clr-border); background:var(--clr-bg);">
     <div class="container">
       
-      <!-- Added High-Performance Search Input Box -->
       <div class="search-container" style="margin-bottom: 22px; display: flex; justify-content: center; width: 100%;">
         <input type="text" id="discover-search" placeholder="Type to search updates across all categories..." 
                style="width: 100%; max-width: 500px; padding: 12px 20px; border: 2px solid var(--clr-border, #e2e8f0); border-radius: 30px; background: var(--clr-bg-surface, #ffffff); color: var(--clr-text-dark, #0f172a); font-size: 16px; outline: none; box-shadow: 0 2px 8px rgba(0,0,0,0.02);">
       </div>
 
-      <!-- Categories Buttons (Exactly matching your setup, powered by dynamic filter triggers) -->
-      <div class="discover-categories" id="discover-cats-pool">
+      <div class="discover-categories">
         {% if page.lang == "hi" %}
           {% assign all_posts = site.posts_hi %}
         {% else %}
@@ -113,20 +105,11 @@ extra_js:
     </div>
   </section>
 
-  <!-- Feed Loop Section -->
   <section class="section">
     <div id="posts">
       
-      <!-- Wrapper stays exactly as defined for data extraction -->
       <div id="post-wrapper">
-        {% if page.lang == "hi" %}
-          {% assign sorted = site.posts_hi | sort: "date" | reverse %}
-        {% else %}
-          {% assign sorted = site.posts | sort: "date" | reverse %}
-        {% endif %}
-        
-        {% for p in sorted %}
-          <!-- Added metadata tags like data-title and data-desc cleanly for smooth local searching -->
+        {% for p in paginator.posts %}
           <div class="horizontal-post-card js-post"
                data-lang="{{ p.lang | default: 'en' }}"
                data-title="{{ p.title | downcase }}"
@@ -173,12 +156,58 @@ extra_js:
         {% endfor %}
       </div>
 
-      <!-- Pagination Nav (Exactly as your layout wants, dynamic mathematical links will auto-populate inside) -->
-      <nav id="pagination-nav" class="pagination-center" aria-label="Pagination Navigation"
-           style="display: flex; gap: 6px; justify-content: center; margin-top: 30px; align-items: center; flex-wrap: wrap;">
-      </nav>
+      {% if paginator.total_pages > 1 %}
+        <nav id="pagination-nav" class="pagination-center" aria-label="Pagination Navigation" style="display: flex; gap: 8px; justify-content: center; margin-top: 30px; align-items: center; flex-wrap: wrap;">
+          
+          {% if paginator.page > 1 %}
+            <a href="{{ '/discover/' | relative_url }}" class="page-btn page-control-btn">First</a>
+            <a href="{{ paginator.previous_page_path | relative_url }}" class="page-btn">←</a>
+          {% endif %}
+
+          {% assign current_page = paginator.page %}
+          {% assign total_pages = paginator.total_pages %}
+          {% assign window_size = 2 %} 
+          {% assign min_page = current_page | minus: window_size %}
+          {% assign max_page = current_page | plus: window_size %}
+
+          {% if min_page < 1 %}{% assign min_page = 1 %}{% endif %}
+          {% if max_page > total_pages %}{% assign max_page = total_pages %}{% endif %}
+
+          {% if min_page > 1 %}
+            <span class="page-dots" style="padding:0 4px; font-weight:bold; color: var(--clr-text-light);">...</span>
+          {% endif %}
+
+          {% for p_num in (min_page..max_page) %}
+            {% if p_num == current_page %}
+              <span class="page-btn active" style="padding: 8px 14px; background: var(--clr-primary, #f5a623); color: #fff; border-radius: 6px; font-weight: bold;">{{ p_num }}</span>
+            {% elsif p_num == 1 %}
+              <a href="{{ '/discover/' | relative_url }}" class="page-btn" style="padding: 8px 14px; border: 1px solid var(--clr-border); border-radius: 6px;">{{ p_num }}</a>
+            {% else %}
+              <a href="{{ '/discover/page-' | append: p_num | append: '/' | relative_url }}" class="page-btn" style="padding: 8px 14px; border: 1px solid var(--clr-border); border-radius: 6px;">{{ p_num }}</a>
+            {% endif %}
+          {% endfor %}
+
+          {% if max_page < total_pages %}
+            <span class="page-dots" style="padding:0 4px; font-weight:bold; color: var(--clr-text-light);">...</span>
+          {% endif %}
+
+          {% if paginator.page < total_pages %}
+            <a href="{{ paginator.next_page_path | relative_url }}" class="page-btn">→</a>
+            <a href="{{ '/discover/page-' | append: total_pages | append: '/' | relative_url }}" class="page-btn page-control-btn">Last</a>
+          {% endif %}
+          
+        </nav>
+      {% endif %}
 
     </div>
   </section>
 
+</div>
+
+{% if page.lang == "hi" %}{% assign fallback_stream = site.posts_hi %}{% else %}{% assign fallback_stream = site.posts %}{% endif %}
+<div id="trending-posts-data" style="display:none;">
+  {% for item in fallback_stream limit:20 %}<div class="trending-post-item" data-title="{{ item.title | escape }}" data-url="{{ item.url | relative_url }}" data-image="{{ item.image | default: '/assets/images/default-thumb.png' }}"></div>{% endfor %}
+</div>
+<div id="related-posts-data" style="display:none;">
+  {% for item in fallback_stream limit:20 %}<div class="related-post-item" data-title="{{ item.title | escape }}" data-url="{{ item.url | relative_url }}" data-image="{{ item.image | default: '/assets/images/default-thumb.png' }}"></div>{% endfor %}
 </div>
