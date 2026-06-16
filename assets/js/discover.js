@@ -4,27 +4,45 @@ document.addEventListener("DOMContentLoaded", () => {
 
   if (!wrapper || !searchInput) return;
 
-  // Collect physically rendered server posts
-  const localPosts = Array.from(wrapper.querySelectorAll(".js-post"));
+  const currentPosts = Array.from(wrapper.querySelectorAll(".js-post"));
+  let currentCategory = "all";
+  let searchQuery = "";
 
-  // Simple clean local live search functionality
-  searchInput.addEventListener("input", (e) => {
-    const query = e.target.value.toLowerCase().trim();
-
-    localPosts.forEach(post => {
+  function evaluateFilters() {
+    currentPosts.forEach(post => {
       const title = post.dataset.title || "";
       const desc = post.dataset.desc || "";
+      const cats = post.dataset.categories || "";
 
-      if (title.includes(query) || desc.includes(query)) {
-        post.style.display = ""; // Show matching
+      const matchesCategory = (currentCategory === "all") || cats.includes(currentCategory);
+      const matchesSearch = title.includes(searchQuery) || desc.includes(searchQuery) || cats.includes(searchQuery);
+
+      if (matchesCategory && matchesSearch) {
+        post.style.display = "";
       } else {
-        post.style.display = "none"; // Hide mismatching
+        post.style.display = "none";
       }
     });
+  }
+
+  window.filterCategory = function (category, button) {
+    currentCategory = category.toLowerCase().trim();
+
+    document.querySelectorAll(".discover-cat-btn").forEach(btn => {
+      btn.classList.remove("active");
+    });
+    if (button) button.classList.add("active");
+
+    evaluateFilters();
+  };
+
+  searchInput.addEventListener("input", (e) => {
+    searchQuery = e.target.value.toLowerCase().trim();
+    evaluateFilters();
   });
 });
 
-/* Trending and Related Component Randomizers */
+/* Trending and Related Logic (Unchanged) */
 document.addEventListener("DOMContentLoaded", () => {
   const hiddenRelated = document.querySelectorAll("#related-posts-data .related-post-item");
   const relatedContainer = document.getElementById("related-posts-container");
@@ -57,7 +75,6 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 });
 
-// Global Native Share
 function nativeShare(title, url) {
   if (navigator.share) {
     navigator.share({ title: title, url: url }).catch(console.error);
