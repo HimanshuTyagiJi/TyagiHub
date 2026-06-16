@@ -1,7 +1,7 @@
 /**
  * TyagiHub Ecosystem Platform - Discover Dynamic Filter Engine
- * Handles high-performance client-side search and category filtering 
- * directly on top of server-rendered clean URL slug pages (/discover/page-2/).
+ * Handles high-performance client-side search on current slug pages
+ * and routes category clicks to their clean physical server URLs.
  */
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -12,25 +12,21 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Collect only the posts physically generated on this slug page by the server
   const currentPosts = Array.from(wrapper.querySelectorAll(".js-post"));
-  let currentCategory = "all";
   let searchQuery = "";
 
-  // Master Filter Router Execution
+  // Dynamic search system for the current active page stream
   function evaluateViewFilters() {
     currentPosts.forEach(post => {
       const title = post.dataset.title || "";
       const desc = post.dataset.desc || "";
       const cats = post.dataset.categories || "";
 
-      // Check Category parameters logic
-      const matchesCategory = (currentCategory === "all") || cats.includes(currentCategory);
-      
-      // Check Search text pools parameters logic
-      const textPool = `${title} ${desc} ${cats}`.toLowerCase();
+      // Check Search text pools parameters logic cleanly
+      const textPool = `${title} ${desc} ${cats}`.toLowerCase().trim();
       const matchesSearch = textPool.includes(searchQuery);
 
-      // Instantly reveal or hide matching DOM assets
-      if (matchesCategory && matchesSearch) {
+      // Instantly reveal or hide matching DOM assets on the fly
+      if (matchesSearch) {
         post.style.display = "";
       } else {
         post.style.display = "none";
@@ -38,9 +34,9 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // Global Binding for Old Style Interactive Categories Buttons
+  // Global Binding for Interactive Categories Buttons - ROUTING BUG FIXED!
   window.filterCategory = function (category, buttonNode) {
-    currentCategory = category.toLowerCase().trim();
+    const targetCat = category.toLowerCase().trim();
 
     // Reset active indicators on tabs rows
     document.querySelectorAll(".discover-cat-btn").forEach(btn => {
@@ -48,7 +44,12 @@ document.addEventListener("DOMContentLoaded", () => {
     });
     if (buttonNode) buttonNode.classList.add("active");
 
-    evaluateViewFilters();
+    // BHAI YAHAN DEKH: Agar 'all' hai toh main discover feed par bhejega, warna clean physical category slug par!
+    if (targetCat === "all") {
+      window.location.href = "/discover/";
+    } else {
+      window.location.href = `/${targetCat}/`;
+    }
   };
 
   // Real-time Text Interceptor input stream listener
