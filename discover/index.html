@@ -1,272 +1,160 @@
 ---
 layout: discover
 title: "Discover — TyagiHub"
-description: "Technology, AI, cybersecurity, education, current affairs, digital updates, online safety, apps, tutorials
-& future innovation — all in one Discover feed by TyagiHub."
+description: "Technology, AI, cybersecurity, education, current affairs, digital updates, online safety, apps, tutorials & future innovation — all in one Discover feed by TyagiHub."
 permalink: /discover/
 image: /assets/images/tyagihub.png
 author: "Himanshu Tyagi"
 lang: en
 robots: "index, follow"
-keywords: "TyagiHub, AI tools, cybersecurity, education, current affairs, apps, tutorials, technology news, digital
-updates, online safety"
+keywords: "TyagiHub, AI tools, cybersecurity, education, current affairs, apps, tutorials, technology news, digital updates, online safety"
 section: discover
-
- 
 extra_css:
   - /assets/css/discover.css
-
 extra_js:
   - /assets/js/discover.js
-
+pagination:
+  enabled: true
+  collection: posts
+  per_page: 10 # Bhai yahan testing ke liye tum 1 rakh sakte ho, production par 10 ya 15 kar lena
+  permalink: /page/:num/
 ---
 
 <div style="padding-top:var(--nav-height);">
 
- 
- <div class="discover-hero">
-
-  <div class="discover-hero__bg"></div>
-
-  <div class="container discover-hero__content">
-
-    <div class="discover-badge">
-      <span class="discover-badge__dot"></span>
-      TyagiHub Discover
+  <div class="discover-hero">
+    <div class="discover-hero__bg"></div>
+    <div class="container discover-hero__content">
+      <div class="discover-badge">
+        <span class="discover-badge__dot"></span>
+        TyagiHub Discover
+      </div>
+      <h1 class="discover-title">
+        Discover The Future Of
+        <span>Technology</span>
+      </h1>
+      <p class="discover-desc">
+        Technology, AI, Cybersecurity, Education, Current Affairs, Digital Tools, Apps, Tutorials, Online Safety & Future Innovation — all in one powerful Discover feed.
+      </p>
+      <div class="discover-icons">
+        <div class="discover-icon">
+          <svg viewBox="0 0 64 64" class="icon-ai">
+            <rect x="18" y="18" width="28" height="28" rx="6"/>
+            <line x1="12" y1="24" x2="18" y2="24"/><line x1="12" y1="40" x2="18" y2="40"/>
+            <line x1="46" y1="24" x2="52" y2="24"/><line x1="46" y1="40" x2="52" y2="40"/>
+            <line x1="24" y1="12" x2="24" y2="18"/><line x1="40" y1="12" x2="40" y2="18"/>
+            <line x1="24" y1="46" x2="24" y2="52"/><line x1="40" y1="46" x2="40" y2="52"/>
+          </svg>
+        </div>
+        <div class="discover-icon">
+          <svg viewBox="0 0 64 64" class="icon-shield">
+            <path d="M32 8L50 16V30C50 42 42 52 32 56C22 52 14 42 14 30V16L32 8Z"/>
+          </svg>
+        </div>
+        <div class="discover-icon">
+          <svg viewBox="0 0 64 64" class="icon-rocket">
+            <path d="M44 10C34 12 24 22 22 34L30 42C42 40 52 30 54 18C54 14 50 10 44 10Z"/>
+            <circle cx="40" cy="24" r="3"/>
+          </svg>
+        </div>
+        <div class="discover-icon">
+          <svg viewBox="0 0 64 64" class="icon-energy">
+            <path d="M36 8L18 36H30L24 56L46 28H34L36 8Z"/>
+          </svg>
+        </div>
+      </div>
     </div>
-
-    <h1 class="discover-title">
-      Discover The Future Of
-      <span>Technology</span>
-    </h1>
-
-    <p class="discover-desc">
-      Technology, AI, Cybersecurity, Education, Current Affairs,
-      Digital Tools, Apps, Tutorials, Online Safety &
-      Future Innovation — all in one powerful Discover feed.
-    </p>
-
-    <div class="discover-icons">
-
-      <!-- AI -->
-
-      <div class="discover-icon">
-
-        <svg viewBox="0 0 64 64" class="icon-ai">
-
-          <rect x="18" y="18" width="28" height="28" rx="6"/>
-
-          <line x1="12" y1="24" x2="18" y2="24"/>
-          <line x1="12" y1="40" x2="18" y2="40"/>
-
-          <line x1="46" y1="24" x2="52" y2="24"/>
-          <line x1="46" y1="40" x2="52" y2="40"/>
-
-          <line x1="24" y1="12" x2="24" y2="18"/>
-          <line x1="40" y1="12" x2="40" y2="18"/>
-
-          <line x1="24" y1="46" x2="24" y2="52"/>
-          <line x1="40" y1="46" x2="40" y2="52"/>
-
-        </svg>
-
-      </div>
-
-      <!-- Cybersecurity -->
-
-      <div class="discover-icon">
-
-        <svg viewBox="0 0 64 64" class="icon-shield">
-
-          <path d="M32 8L50 16V30C50 42 42 52 32 56C22 52 14 42 14 30V16L32 8Z"/>
-
-        </svg>
-
-      </div>
-
-      <!-- Innovation -->
-
-      <div class="discover-icon">
-
-        <svg viewBox="0 0 64 64" class="icon-rocket">
-
-          <path d="M44 10C34 12 24 22 22 34L30 42C42 40 52 30 54 18C54 14 50 10 44 10Z"/>
-
-          <circle cx="40" cy="24" r="3"/>
-
-        </svg>
-
-      </div>
-
-      <!-- Energy -->
-
-      <div class="discover-icon">
-
-        <svg viewBox="0 0 64 64" class="icon-energy">
-
-          <path d="M36 8L18 36H30L24 56L46 28H34L36 8Z"/>
-
-        </svg>
-
-      </div>
-
-    </div>
-
   </div>
 
-</div>
-
-  
-
   <section style="padding:22px 0;border-bottom:1px solid var(--clr-border);background:var(--clr-bg);">
-
     <div class="container">
-
       <div class="discover-categories">
-
         {% if page.lang == "hi" %}
+          {% assign all_posts = site.posts_hi %}
+        {% else %}
+          {% assign all_posts = site.posts %}
+        {% endif %}
 
-  {% assign all_posts = site.posts_hi %}
-
-{% else %}
-
-  {% assign all_posts = site.posts %}
-
-{% endif %}
-
-<button class="discover-cat-btn active" onclick="filterCategory('all',this)">
-
-          All
-
-          <span>
-            ({{ all_posts.size }})
-          </span>
-
-        </button>
+        <a href="{{ '/discover/' | relative_url }}" class="discover-cat-btn {% if paginator.page == 1 %}active{% endif %}">
+          All <span>({{ all_posts.size }})</span>
+        </a>
 
         {% assign categories = site.categories | sort %}
-
         {% for category in categories %}
-
-        {% unless category[0] == "discover" %}
-
-        <button class="discover-cat-btn" onclick="filterCategory('{{ category[0] | downcase }}',this)">
-
-          {{ category[0] }}
-
-          <span>
-            ({{ category[1].size }})
-          </span>
-
-        </button>
-
-        {% endunless %}
-
+          {% unless category[0] == "discover" %}
+            <button class="discover-cat-btn" data-cat-slug="{{ category[0] | downcase }}">
+              {{ category[0] }} <span>({{ category[1].size }})</span>
+            </button>
+          {% endunless %}
         {% endfor %}
-
       </div>
-
     </div>
-
   </section>
 
   <section class="section">
-
-
-
     <div id="posts">
-
       <div id="post-wrapper">
-
-        {% if page.lang == "hi" %}
-
-  {% assign sorted = site.posts_hi | sort: "date" | reverse %}
-
-{% else %}
-
-  {% assign sorted = site.posts | sort: "date" | reverse %}
-
-{% endif %}
-        {% for p in sorted %}
-<div class="horizontal-post-card js-post"
-  data-lang="{{ p.lang }}"
-  data-categories="{% for cat in p.categories %}{{ cat | downcase }} {% endfor %}">
-          <div class="post-img">
-
-            <span class="post-category">
-
-              {{ p.categories[0] | default: "Technology" }}
-
-            </span>
-
-            <div class="post-date">
-
-              <i class="fa-regular fa-calendar"></i>
-
-              {{ p.date | date: "%d %b %Y" }}
-
+        {% for p in paginator.posts %}
+          <div class="horizontal-post-card js-post" data-categories="{% for cat in p.categories %}{{ cat | downcase }} {% endfor %}">
+            <div class="post-img">
+              <span class="post-category">{{ p.categories[0] | default: "Technology" }}</span>
+              <div class="post-date">
+                <i class="fa-regular fa-calendar"></i>
+                {{ p.date | date: "%d %b %Y" }}
+              </div>
+              <img src="{{ p.image | default: '/assets/images/default-thumb.png' }}" alt="{{ p.title }} - TyagiHub" loading="lazy" width="260" height="188">
             </div>
 
-            <img src="{{ p.image | default: '/assets/images/default-thumb.png' }}" alt="{{ p.title }} - TyagiHub"
-              loading="lazy" width="260" height="188">
-
+            <div class="post-info">
+              <div class="post-top-meta">
+                <h2><a href="{{ p.url | relative_url }}">{{ p.title }}</a></h2>
+                <p>{{ p.description | default:p.excerpt | strip_html | truncate:110 }}</p>
+              </div>
+              <div class="post-footer">
+                <button class="native-share-btn" onclick="nativeShare('{{ p.title | escape }}','{{ p.url | absolute_url }}')">
+                  <i class="fa-solid fa-share-nodes"></i> Share
+                </button>
+                <a href="{{ p.url | relative_url }}" class="read-link">Read More →</a>
+              </div>
+            </div>
           </div>
-
-          <div class="post-info">
-
-            <div class="post-top-meta">
-
-              <h2>
-
-                <a href="{{ p.url | relative_url }}">
-
-                  {{ p.title }}
-
-                </a>
-
-              </h2>
-
-              <p>
-
-                {{ p.description | default:p.excerpt | strip_html | truncate:110 }}
-
-              </p>
-
-            </div>
-
-            <div class="post-footer">
-
-              <button class="native-share-btn"
-                onclick="nativeShare('{{ p.title | escape }}','{{ p.url | absolute_url }}')">
-
-                <i class="fa-solid fa-share-nodes"></i>
-
-                Share
-
-              </button>
-
-              <a href="{{ p.url | relative_url }}" class="read-link">
-
-                Read More →
-
-              </a>
-
-            </div>
-
-          </div>
-
-        </div>
-
         {% endfor %}
-
       </div>
 
-      <nav id="pagination-nav" class="pagination-center" aria-label="Pagination Navigation">
+      {% if paginator.total_pages > 1 %}
+        <nav id="pagination-nav" class="pagination-center" aria-label="Pagination Navigation" style="display: flex; gap: 8px; justify-content: center; margin-top: 30px;">
+          {% if paginator.previous_page %}
+            <a href="{{ paginator.previous_page_path | relative_url }}" class="page-btn">←</a>
+          {% endif %}
 
-            </nav>
+          {% for page in (1..paginator.total_pages) %}
+            {% if page == paginator.page %}
+              <span class="page-btn active">{{ page }}</span>
+            {% elsif page == 1 %}
+              <a href="{{ '/discover/' | relative_url }}" class="page-btn">{{ page }}</a>
+            {% else %}
+              <a href="{{ site.pagination.permalink | relative_url | replace: ':num', page }}" class="page-btn">{{ page }}</a>
+            {% endif %}
+          {% endfor %}
 
+          {% if paginator.next_page %}
+            <a href="{{ paginator.next_page_path | relative_url }}" class="page-btn">→</a>
+          {% endif %}
+        </nav>
+      {% endif %}
     </div>
-
   </section>
 
+</div>
+
+<div id="trending-posts-data" style="display:none;">
+  {% for item in all_posts limit:20 %}
+    <div class="trending-post-item" data-title="{{ item.title | escape }}" data-url="{{ item.url | relative_url }}" data-image="{{ item.image | default: '/assets/images/default-thumb.png' }}"></div>
+  {% endfor %}
+</div>
+
+<div id="related-posts-data" style="display:none;">
+  {% for item in all_posts limit:20 %}
+    <div class="related-post-item" data-title="{{ item.title | escape }}" data-url="{{ item.url | relative_url }}" data-image="{{ item.image | default: '/assets/images/default-thumb.png' }}"></div>
+  {% endfor %}
 </div>
