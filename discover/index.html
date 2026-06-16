@@ -38,7 +38,7 @@ extra_js:
     <div class="container">
       
       <div class="search-container" style="margin-bottom: 20px; display: flex; justify-content: center; width: 100%;">
-        <input type="text" id="discover-search" placeholder="Type to search posts on this page..." 
+        <input type="text" id="discover-search" placeholder="Search posts on this page..." 
                style="width: 100%; max-width: 500px; padding: 12px 20px; border: 2px solid var(--clr-border, #e2e8f0); border-radius: 30px; background: var(--clr-bg-surface, #ffffff); color: var(--clr-text-dark, #0f172a); font-size: 16px; outline: none;">
       </div>
 
@@ -116,7 +116,7 @@ extra_js:
           {% if max_page > total_pages %}{% assign max_page = total_pages %}{% endif %}
 
           {% if min_page > 1 %}
-            <span class="page-dots" style="padding:0 4px; font-weight:bold;">...</span>
+            <span class="page-dots" style="padding:0 4px; font-weight:bold; color: var(--clr-text-light);">...</span>
           {% endif %}
 
           {% for p_num in (min_page..max_page) %}
@@ -130,7 +130,7 @@ extra_js:
           {% endfor %}
 
           {% if max_page < total_pages %}
-            <span class="page-dots" style="padding:0 4px; font-weight:bold;">...</span>
+            <span class="page-dots" style="padding:0 4px; font-weight:bold; color: var(--clr-text-light);">...</span>
           {% endif %}
 
           {% if paginator.page < total_pages %}
