@@ -113,11 +113,26 @@ plugins:
   - jekyll-feed
   - jekyll-sitemap
   - jekyll-seo-tag
-  - jekyll-paginate
+  - jekyll-paginate-v2     # <--- Mismatch fixed to lock v2 engine
 
-paginate: 1              # Bhai tumne testing ke liye 1 bola, toh yahan 1 rakh lo (production par 6 ya 10 kar lena)
-paginate_path: "/discover/page-:num/"
+# Configuration map for main site loops
+pagination:
+  enabled: true
+  per_page: 6              # Har index slug page par sateek 6 posts locked rahengi (Testing ke liye 1 bhi kar sakte ho)
+  permalink: "/page-:num/" # Final Output Path Structure: /discover/page-2/
+  title: ":title - Page :num"
+  limit: 0
+  sort_by: "date"
+  sort_reverse: true
 
+# Autopages Infrastructure: Generates physical clean category paths automatically
+autopages:
+  enabled: true
+  categories:
+    enabled: true
+    layouts:
+      - "discover"         # Yeh tumhare discover template layout loop ko inherit karega
+    permalink: "/:name/"   # Clean routing achieved: tyagihub.in/cybersecurity/
 
 # SEO
 twitter:
