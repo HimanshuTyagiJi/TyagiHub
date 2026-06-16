@@ -131,8 +131,11 @@ autopages:
   categories:
     enabled: true
     layouts:
-      - "discover"         # Yeh tumhare discover template layout loop ko inherit karega
-    permalink: "/:name/"   # Clean routing achieved: tyagihub.in/cybersecurity/
+      - "discover"
+    permalink: "/:name/"
+    slugify:
+      mode: "default"
+      cased: false # <--- Yeh capital letters ko automatic lowercase URL folder mein badal dega!
 
 # SEO
 twitter:
