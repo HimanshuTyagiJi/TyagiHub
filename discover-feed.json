@@ -13,12 +13,27 @@ permalink: /assets/data/discover-feed.json
   {% assign combined_posts = english_posts | concat: hindi_posts | sort: "date" | reverse %}
   
   {% for p in combined_posts %}
+    {% comment %} Smart Image Path Resolver Matrix {% endcomment %}
+    {% if p.image %}
+      {% if p.image contains '://' %}
+        {% assign post_img = p.image %}
+      {% else %}
+        {% assign first_char = p.image | slice: 0 %}
+        {% if first_char == '/' %}
+          {% assign post_img = p.image %}
+        {% else %}
+          {% assign post_img = '/' | append: p.image %}
+        {% endif %}
+      {% endif %}
+    {% else %}
+      {% assign post_img = '/assets/images/default-thumb.png' %}
+    {% endif %}
     {
       "title": {{ p.title | jsonify }},
       "url": {{ p.url | relative_url | jsonify }},
-      "image": {{ p.image | default: '/assets/images/default-thumb.png' | jsonify }},
+      "image": {{ post_img | relative_url | jsonify }},
       "category": {{ p.categories | first | default: "Technology" | jsonify }},
-      "categories": [{% if p.categories.size > 0 %}{% for cat in p.categories %}{{ cat | downcase | jsonify }}{% unless forloop.last %},{% endunless %}{% endfor %}{% else %}{{ p.categories | downcase | jsonify }}{% endif %}],
+      "categories": [{% if p.categories.size > 0 %}{% for cat in p.categories %}{{ cat | downcase | jsonify }}{% unless forloop.last %},{% endunless %}{% endfor %} {% else %} {{ p.categories | downcase | jsonify }} {% endif %}],
       "date": {{ p.date | date: "%d %b %Y" | jsonify }},
       "lang": {{ p.lang | default: "en" | jsonify }},
       "description": {{ p.description | default: p.excerpt | strip_html | truncate: 110 | jsonify }}
