@@ -1,10 +1,17 @@
 ---
+layout: null
 permalink: /assets/data/discover-feed.json
 ---
 [
+  {% if site.posts_hi %}
+    {% assign hindi_posts = site.posts_hi %}
+  {% else %}
+    {% assign hindi_posts = "" | split: "," %}
+  {% endif %}
+  
   {% assign english_posts = site.posts %}
-  {% assign hindi_posts = site.posts_hi %}
   {% assign combined_posts = english_posts | concat: hindi_posts | sort: "date" | reverse %}
+  
   {% for p in combined_posts %}
     {
       "title": {{ p.title | jsonify }},
