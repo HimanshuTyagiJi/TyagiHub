@@ -24,12 +24,10 @@ extra_js:
         <span class="discover-badge__dot"></span>
         TyagiHub Discover
       </div>
-
       <h1 class="discover-title">
         Discover The Future Of
         <span>Technology</span>
       </h1>
-
       <p class="discover-desc">
         Technology, AI, Cybersecurity, Education, Current Affairs,
         Digital Tools, Apps, Tutorials, Online Safety &
@@ -72,15 +70,21 @@ extra_js:
 
   <section style="padding:22px 0;border-bottom:1px solid var(--clr-border);background:var(--clr-bg);">
     <div class="container">
-      <div class="discover-categories">
+      
+      <div class="search-container" style="margin-bottom: 22px; display: flex; justify-content: center; width: 100%;">
+        <input type="text" id="discover-search" placeholder="Search posts dynamically..." 
+               style="width: 100%; max-width: 500px; padding: 12px 20px; border: 2px solid var(--clr-border, #e2e8f0); border-radius: 30px; background: var(--clr-bg-surface, #ffffff); color: var(--clr-text-dark, #0f172a); font-size: 16px; outline: none; box-shadow: 0 2px 8px rgba(0,0,0,0.02);">
+      </div>
 
+      <div class="discover-categories" id="category-buttons-container">
+        
         {% if page.lang == "hi" %}
           {% assign all_posts = site.posts_hi %}
         {% else %}
           {% assign all_posts = site.posts %}
         {% endif %}
 
-        <button class="discover-cat-btn active" onclick="filterCategory('all',this)">
+        <button class="discover-cat-btn" data-cat="all" onclick="window.location.href='?category=all'">
           All
           <span>({{ all_posts.size }})</span>
         </button>
@@ -88,7 +92,7 @@ extra_js:
         {% assign categories = site.categories | sort %}
         {% for category in categories %}
           {% unless category[0] == "discover" %}
-            <button class="discover-cat-btn" onclick="filterCategory('{{ category[0] | downcase }}',this)">
+            <button class="discover-cat-btn" data-cat="{{ category[0] | downcase }}" onclick="window.location.href='?category={{ category[0] | downcase }}'">
               {{ category[0] | capitalize }}
               <span>({{ category[1].size }})</span>
             </button>
@@ -96,11 +100,13 @@ extra_js:
         {% endfor %}
 
       </div>
+
     </div>
   </section>
 
   <section class="section">
     <div id="posts">
+      
       <div id="post-wrapper" class="static-seo-load">
         
         {% if page.lang == "hi" %}
