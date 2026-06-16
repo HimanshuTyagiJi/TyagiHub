@@ -16,15 +16,29 @@ layout: default
 		<div class="tc-left">
 
 			{% if page.is_post %}
+
 				{% assign words = content | number_of_words %}
-				{% if words < 360 %} {% assign read_time="2 min read" %} {% else %} {% assign minutes=words | divided_by: 180 %}
-					{% assign read_time=minutes | append: " min read" %} {% endif %} 
+
+				{% if words < 360 %} 
+					{% assign read_time="2 min read" %} 
+				{% else %} 
+					{% assign minutes=words | divided_by: 180 %}
+					{% assign read_time=minutes | append: " min read" %} 
+				{% endif %} 
 				
-				<h1 class="post-title" style="margin-bottom:10px;">{{ page.title }}</h1>
+				<h1 class="post-title" style="margin-bottom:10px;">
+					{{ page.title }}
+				</h1>
 
 				<p style="color:var(--text-muted);font-size:14px;margin-bottom:28px;">
-					By {{ page.author | default: "Himanshu Tyagi" }} · TyagiHub · {{ page.date | date: "%d %B %Y" }} ·
-					<span class="read-time"><i class="far fa-clock"></i> {{ read_time }}</span>
+					By {{ page.author | default: "Himanshu Tyagi" }}
+					· TyagiHub ·
+					{{ page.date | date: "%d %B %Y" }}
+					·
+					<span class="read-time">
+						<i class="far fa-clock"></i>
+						{{ read_time }}
+					</span>
 				</p>
 
 				{% if page.image %}
@@ -34,14 +48,30 @@ layout: default
 				{% endif %}
 
 				<div class="toc-container" id="toc-box" style="display:none;margin-bottom:30px;">
-					<div class="toc-title"><i class="fas fa-list-ul"></i> &nbsp; Topics</div>
+					<div class="toc-title">
+						<i class="fas fa-list-ul"></i>
+						&nbsp; Topics
+					</div>
 					<ul id="toc-list" role="list"></ul>
-					<button id="toc-toggle-btn" class="toc-see-more" aria-expanded="false">See More <i class="fas fa-chevron-down"></i></button>
+					<button id="toc-toggle-btn" class="toc-see-more" aria-expanded="false">
+						See More
+						<i class="fas fa-chevron-down"></i>
+					</button>
 				</div>
 
-				{{ content }}
+			{% endif %}
 
-				{% unless page.url == "/" or page.url == "/index.html" %}
+			{{ content }}
+
+			{% unless page.is_post %}
+				<nav id="pagination-nav" class="pagination-center" aria-label="Pagination Navigation" style="display: flex; gap: 8px; justify-content: center; margin-top: 30px; align-items: center; flex-wrap: wrap;"></nav>
+			{% endunless %}
+
+
+			{% unless page.url == "/" or page.url == "/index.html" %}
+
+				{% if page.is_post %}
+
 					<div class="share-wrapper">
 						<p class="share-label">Share With Friends 🚀</p>
 						<button onclick="tyagiShare()" class="tyagi-share-btn" aria-label="Share this article">
@@ -54,121 +84,80 @@ layout: default
 					{% else %}
 						{% assign all_posts = site.posts | where:"lang","en" | sort:"date" %}
 					{% endif %}
+					
 					{% assign post_count = all_posts | size %}
 					{% assign current_index = nil %}
 
 					{% for p in all_posts %}
-						{% if p.url == page.url %}{% assign current_index = forloop.index0 %}{% endif %}
+						{% if p.url == page.url %}
+							{% assign current_index = forloop.index0 %}
+						{% endif %}
 					{% endfor %}
 
 					{% if current_index != nil %}
+
 						{% assign prev_index = current_index | minus: 1 %}
 						{% assign next_index = current_index | plus: 1 %}
 
 						<nav class="post-nav-container" aria-label="Post navigation">
+
 							<div class="post-nav-link prev">
 								{% if current_index > 0 %}
 									{% assign prev_post = all_posts[prev_index] %}
 									<a href="{{ prev_post.url | relative_url }}">
-										<span class="nav-label"><i class="fas fa-arrow-left"></i> Previous Post</span>
-										<div class="nav-post-title">{{ prev_post.title }}</div>
+										<span class="nav-label">
+											<i class="fas fa-arrow-left"></i>
+											Previous Post
+										</span>
+										<div class="nav-post-title">
+											{{ prev_post.title }}
+										</div>
 									</a>
 								{% else %}
 									<span class="nav-disabled">
-										<span class="nav-label">Previous Post</span>
-										<div class="nav-post-title" style="opacity:0.4;">No previous post</div>
+										<span class="nav-label">
+											Previous Post
+										</span>
+										<div class="nav-post-title" style="opacity:0.4;">
+											No previous post
+										</div>
 									</span>
 								{% endif %}
 							</div>
 
 							<div class="post-nav-link next">
 								{% if next_index < post_count %} 
-									{% assign next_post = all_posts[next_index] %} 
+									{% assign next_post=all_posts[next_index] %} 
 									<a href="{{ next_post.url | relative_url }}">
-										<span class="nav-label">Next Post <i class="fas fa-arrow-right"></i></span>
-										<div class="nav-post-title">{{ next_post.title }}</div>
+										<span class="nav-label">
+											Next Post
+											<i class="fas fa-arrow-right"></i>
+										</span>
+										<div class="nav-post-title">
+											{{ next_post.title }}
+										</div>
 									</a>
 								{% else %}
 									<span class="nav-disabled">
-										<span class="nav-label">Next Post</span>
-										<div class="nav-post-title" style="opacity:0.4;">No next post</div>
+										<span class="nav-label">
+											Next Post
+										</span>
+										<div class="nav-post-title" style="opacity:0.4;">
+											No next post
+										</div>
 									</span>
 								{% endif %}
 							</div>
+
 						</nav>
+
 					{% endif %}
+ 
 					<hr style="margin:44px 0;border:none;border-top:1px solid var(--border-color)">
-				{% endunless %}
 
-			{% else %}
-				{{ content }}
-
-				<div id="posts" style="margin-top: 20px;">
-					<div id="post-wrapper">
-						{% if paginator.posts.size > 0 %}
-							{% for p in paginator.posts %}
-								<div class="horizontal-post-card js-post"
-									 data-lang="{{ p.lang | default: 'en' }}"
-									 data-title="{{ p.title | downcase }}"
-									 data-desc="{{ p.description | default: p.excerpt | strip_html | downcase }}"
-									 data-categories="{% for cat in p.categories %}{{ cat | downcase }} {% endfor %}">
-									
-									<div class="post-img">
-										<span class="post-category">{{ p.categories[0] | default: "Technology" }}</span>
-										<div class="post-date">
-											<i class="fa-regular fa-calendar"></i> {{ p.date | date: "%d %b %Y" }}
-										</div>
-										<img src="{{ p.image | default: '/assets/images/default-thumb.png' }}" alt="{{ p.title }} - TyagiHub" loading="lazy" width="260" height="188">
-									</div>
-
-									<div class="post-info">
-										<div class="post-top-meta">
-											<h2><a href="{{ p.url | relative_url }}">{{ p.title }}</a></h2>
-											<p>{{ p.description | default: p.excerpt | strip_html | truncate: 110 }}</p>
-										</div>
-										<div class="post-footer">
-											<button class="native-share-btn" onclick="nativeShare('{{ p.title | escape }}','{{ p.url | absolute_url }}')">
-												<i class="fa-solid fa-share-nodes"></i> Share
-											</button>
-											<a href="{{ p.url | relative_url }}" class="read-link">Read More →</a>
-										</div>
-									</div>
-
-								</div>
-							{% endfor %}
-						{% endif %}
-					</div>
-				</div>
-
-				{% if paginator.total_pages > 1 %}
-					<nav id="pagination-nav" class="pagination-center" aria-label="Pagination Navigation" style="display: flex; gap: 8px; justify-content: center; margin-top: 30px; align-items: center; flex-wrap: wrap;">
-						
-						{% if paginator.page > 1 %}
-							<a href="{{ paginator.previous_page_path | relative_url | replace: 'index.html', '' }}" class="page-btn">←</a>
-						{% endif %}
-
-						{% for p_num in (1..paginator.total_pages) %}
-							{% if p_num == paginator.page %}
-								<span class="page-btn active" style="padding: 8px 14px; background: var(--clr-primary, #f5a623); color: #fff; border-radius: 6px; font-weight: bold;">{{ p_num }}</span>
-							{% else %}
-								{% if p_num == 1 %}
-									{% assign target_path = page.url | split: '/page-' | first | append: '/' | replace: '//', '/' %}
-									<a href="{{ target_path | relative_url }}" class="page-btn" style="padding: 8px 14px; border: 1px solid var(--clr-border); border-radius: 6px;">{{ p_num }}</a>
-								{% else %}
-									{% assign target_path = page.url | split: '/page-' | first | append: '/page-' | append: p_num | append: '/' | replace: '//', '/' %}
-									<a href="{{ target_path | relative_url }}" class="page-btn" style="padding: 8px 14px; border: 1px solid var(--clr-border); border-radius: 6px;">{{ p_num }}</a>
-								{% endif %}
-							{% endif %}
-						{% endfor %}
-
-						{% if paginator.page < paginator.total_pages %}
-							<a href="{{ paginator.next_page_path | relative_url }}" class="page-btn">→</a>
-						{% endif %}
-						
-					</nav>
 				{% endif %}
 
-			{% endif %}
+			{% endunless %}
 
 		</div>
 
@@ -178,10 +167,55 @@ layout: default
 
 </div>
 
-{% if page.lang == "hi" %}{% assign stream = site.posts_hi %}{% else %}{% assign stream = site.posts %}{% endif %}
-<div id="trending-posts-data" style="display:none;">
-  {% for item in stream limit:20 %}<div class="trending-post-item" data-title="{{ item.title | escape }}" data-url="{{ item.url | relative_url }}" data-image="{{ item.image | default: '/assets/images/default-thumb.png' }}"></div>{% endfor %}
+<div class="floating-lang-switch">
+	{% if page.lang_switch != false %}
+		<div class="floating-lang-switch">
+			{% if page.lang == "hi" %}
+				<a href="{{ page.url | remove:'/hi' }}" class="floating-lang-btn" aria-label="Switch to English">
+					EN
+				</a>
+			{% else %}
+				<a href="/hi{{ page.url }}" class="floating-lang-btn" aria-label="हिन्दी में बदलें">
+					हिं
+				</a>
+			{% endif %}
+		</div>
+	{% endif %}
 </div>
-<div id="related-posts-data" style="display:none;">
-  {% for item in stream limit:20 %}<div class="related-post-item" data-title="{{ item.title | escape }}" data-url="{{ item.url | relative_url }}" data-image="{{ item.image | default: '/assets/images/default-thumb.png' }}"></div>{% endfor %}
-</div>
+
+<style>
+.floating-lang-switch {
+	position:fixed;
+	right:14px;
+	bottom:84px;
+	z-index:9999;
+}
+
+.floating-lang-btn {
+	width:48px;
+	height:48px;
+	border-radius:999px;
+	display:flex;
+	align-items:center;
+	justify-content:center;
+	background:rgba(15,23,42,.88);
+	backdrop-filter:blur(12px);
+	border:1px solid rgba(255,255,255,.08);
+	color:#fff;
+	text-decoration:none;
+	font-size:14px;
+	font-weight:800;
+	box-shadow:0 10px 30px rgba(0,0,0,.25);
+	transition:.25s ease;
+}
+
+.floating-lang-btn:hover {
+	transform:translateY(-2px) scale(1.05);
+}
+
+@media(min-width:901px){
+	.floating-lang-switch {
+		display:none;
+	}
+}
+</style>
