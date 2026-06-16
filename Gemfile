@@ -6,7 +6,7 @@ group :jekyll_plugins do
   gem "jekyll-feed"
   gem "jekyll-sitemap"
   gem "jekyll-seo-tag"
-  gem "jekyll-paginate"
+  gem "jekyll-paginate-v2" # <--- Puraane wale ko hata kar sateek v2 plugin lock kar diya hai
 end
 
 platforms :mingw, :x64_mingw, :mswin, :jruby do
