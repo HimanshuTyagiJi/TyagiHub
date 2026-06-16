@@ -1,0 +1,16 @@
+---
+layout: null
+permalink: /posts.json
+---
+[
+  {% for p in site.posts %}
+  {
+    "title": {{ p.title | jsonify }},
+    "url": {{ p.url | relative_url | jsonify }},
+    "image": {{ p.image | default: '/assets/images/default-thumb.png' | jsonify }},
+    "description": {{ p.description | default: p.excerpt | strip_html | truncate: 110 | jsonify }},
+    "categories": [{% for cat in p.categories %}{{ cat | downcase | jsonify }}{% unless forloop.last %},{% endunless %}{% endfor %}],
+    "date": {{ p.date | date: "%d %b %Y" | jsonify }}
+  }{% unless forloop.last %},{% endunless %}
+  {% endfor %}
+]
