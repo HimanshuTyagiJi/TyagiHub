@@ -1,5 +1,5 @@
 ---
-layout: discover
+layout: default
 title: "Discover — TyagiHub"
 description: "Technology, AI, cybersecurity, education, current affairs, digital updates, online safety, apps, tutorials & future innovation — all in one Discover feed by TyagiHub."
 permalink: /discover/
@@ -13,10 +13,6 @@ extra_css:
   - /assets/css/discover.css
 extra_js:
   - /assets/js/discover.js
-pagination:
-  enabled: true
-  collection: posts
-  permalink: "/page-:num/"
 ---
 
 <div style="padding-top:var(--nav-height);">
@@ -42,7 +38,7 @@ pagination:
     <div class="container">
       
       <div class="search-container" style="margin-bottom: 20px; display: flex; justify-content: center; width: 100%;">
-        <input type="text" id="discover-search" placeholder="Search posts on this page..." 
+        <input type="text" id="discover-search" placeholder="Type to search posts on this page..." 
                style="width: 100%; max-width: 500px; padding: 12px 20px; border: 2px solid var(--clr-border, #e2e8f0); border-radius: 30px; background: var(--clr-bg-surface, #ffffff); color: var(--clr-text-dark, #0f172a); font-size: 16px; outline: none;">
       </div>
 
@@ -53,17 +49,16 @@ pagination:
           {% assign all_posts = site.posts %}
         {% endif %}
 
-        <a href="{{ '/discover/' | relative_url }}" class="discover-cat-btn {% if page.url == '/discover/' %}active{% endif %}">
+        <button class="discover-cat-btn active" onclick="filterCategory('all', this)">
           All <span>({{ all_posts.size }})</span>
-        </a>
+        </button>
 
         {% assign categories = site.categories | sort %}
         {% for category in categories %}
           {% unless category[0] == "discover" %}
-            {% capture cat_url %}/{{ category[0] | downcase }}/{% endcapture %}
-            <a href="{{ cat_url | relative_url }}" class="discover-cat-btn {% if page.url contains cat_url %}active{% endif %}">
+            <button class="discover-cat-btn" onclick="filterCategory('{{ category[0] | downcase }}', this)">
               {{ category[0] }} <span>({{ category[1].size }})</span>
-            </a>
+            </button>
           {% endunless %}
         {% endfor %}
       </div>
@@ -76,7 +71,7 @@ pagination:
       <div id="post-wrapper">
         
         {% for p in paginator.posts %}
-          <div class="horizontal-post-card js-post" data-title="{{ p.title | downcase }}" data-desc="{{ p.description | default: p.excerpt | strip_html | downcase }}">
+          <div class="horizontal-post-card js-post" data-title="{{ p.title | downcase }}" data-desc="{{ p.description | default: p.excerpt | strip_html | downcase }}" data-categories="{{ p.categories | join: ' ' | downcase }}">
             <div class="post-img">
               <span class="post-category">{{ p.categories[0] | default: "Technology" }}</span>
               <div class="post-date">
@@ -107,8 +102,7 @@ pagination:
         <nav id="pagination-nav" class="pagination-center" aria-label="Pagination Navigation" style="display: flex; gap: 8px; justify-content: center; margin-top: 30px; align-items: center; flex-wrap: wrap;">
           
           {% if paginator.page > 1 %}
-            {% assign base_link = page.url | split: '/page-' | first %}
-            <a href="{{ base_link | relative_url }}" class="page-btn page-control-btn">First</a>
+            <a href="{{ '/discover/' | relative_url }}" class="page-btn page-control-btn">First</a>
             <a href="{{ paginator.previous_page_path | relative_url }}" class="page-btn">←</a>
           {% endif %}
 
@@ -122,28 +116,26 @@ pagination:
           {% if max_page > total_pages %}{% assign max_page = total_pages %}{% endif %}
 
           {% if min_page > 1 %}
-            <span class="page-dots">...</span>
+            <span class="page-dots" style="padding:0 4px; font-weight:bold;">...</span>
           {% endif %}
 
-          {% for page in (min_page..max_page) %}
-            {% if page == current_page %}
-              <span class="page-btn active">{{ page }}</span>
-            {% elsif page == 1 %}
-              <a href="{{ base_link | relative_url }}" class="page-btn">{{ page }}</a>
+          {% for p_num in (min_page..max_page) %}
+            {% if p_num == current_page %}
+              <span class="page-btn active">{{ p_num }}</span>
+            {% elsif p_num == 1 %}
+              <a href="{{ '/discover/' | relative_url }}" class="page-btn">{{ p_num }}</a>
             {% else %}
-              {% assign clean_base = page.url | split: '/page-' | first | replace: '//', '/' %}
-              {% if clean_base == '/' %}{% assign clean_base = '/discover/' %}{% endif %}
-              <a href="{{ clean_base | append: 'page-' | append: page | append: '/' | replace: '//', '/' | relative_url }}" class="page-btn">{{ page }}</a>
+              <a href="{{ '/discover/page-' | append: p_num | append: '/' | relative_url }}" class="page-btn">{{ p_num }}</a>
             {% endif %}
           {% endfor %}
 
           {% if max_page < total_pages %}
-            <span class="page-dots">...</span>
+            <span class="page-dots" style="padding:0 4px; font-weight:bold;">...</span>
           {% endif %}
 
           {% if paginator.page < total_pages %}
             <a href="{{ paginator.next_page_path | relative_url }}" class="page-btn">→</a>
-            <a href="{{ clean_base | append: 'page-' | append: total_pages | append: '/' | replace: '//', '/' | relative_url }}" class="page-btn page-control-btn">Last</a>
+            <a href="{{ '/discover/page-' | append: total_pages | append: '/' | relative_url }}" class="page-btn page-control-btn">Last</a>
           {% endif %}
           
         </nav>
