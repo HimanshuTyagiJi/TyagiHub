@@ -13,16 +13,6 @@ extra_css:
   - /assets/css/discover.css
 extra_js:
   - /assets/js/discover.js
-
-pagination:
-
-  enabled: true
-
-  collection: posts
-
-  per_page: 1           # Bhai tumne bola config me 2 kiya, to yahan bhi 2 rakh diya hai
-
-  permalink: "/page-:num/" # Slash(/) hata kar dash(-) lagaya taaki /discover/page-2/ slug bane
 ---
 
 <div style="padding-top:var(--nav-height);">
@@ -71,46 +61,39 @@ pagination:
     </div>
   </div>
 
-  <section style="padding:22px 0;border-bottom:1px solid var(--clr-border);background:var(--clr-bg);">
+  <section style="padding:25px 0; border-bottom:1px solid var(--clr-border); background:var(--clr-bg);">
     <div class="container">
+      {% if page.lang == "hi" %}
+        {% assign all_posts = site.posts_hi | sort: "date" | reverse %}
+      {% else %}
+        {% assign all_posts = site.posts | sort: "date" | reverse %}
+      {% endif %}
+
+      <div class="filter-search-row" style="display: flex; gap: 12px; justify-content: center; width: 100%; max-width: 750px; margin: 0 auto; flex-wrap: wrap;">
+        
+        <select id="discover-cat-select" style="padding: 14px 20px; border: 2px solid var(--clr-border, #e2e8f0); border-radius: 50px; background: var(--clr-bg-surface, #ffffff); color: var(--clr-text-dark, #0f172a); font-size: 16px; font-weight: 600; outline: none; cursor: pointer; min-width: 180px; box-shadow: 0 4px 10px rgba(0,0,0,0.02);">
+          <option value="all">All Categories ({{ all_posts.size }})</option>
+          {% assign categories = site.categories | sort %}
+          {% for category in categories %}
+            {% unless category[0] == "discover" %}
+              <option value="{{ category[0] | downcase }}">{{ category[0] | capitalize }} ({{ category[1].size }})</option>
+            {% endunless %}
+          {% endfor %}
+        </select>
+
+        <input type="text" id="discover-search" placeholder="Type keywords to find posts..." 
+               style="flex: 1; min-width: 280px; padding: 14px 24px; border: 2px solid var(--clr-border, #e2e8f0); border-radius: 50px; background: var(--clr-bg-surface, #ffffff); color: var(--clr-text-dark, #0f172a); font-size: 16px; outline: none; transition: all 0.3s ease; box-shadow: 0 4px 10px rgba(0,0,0,0.02);">
       
-      <div class="search-wrapper" style="margin-bottom: 25px; display: flex; justify-content: center; width: 100%;">
-        <div style="position: relative; width: 100%; max-width: 550px;">
-          <input type="text" id="discover-search" placeholder="Search posts by title, excerpt or category tags..." 
-                 style="width: 100%; padding: 14px 24px; border: 2px solid var(--clr-border, #e2e8f0); border-radius: 50px; background: var(--clr-bg-surface, #ffffff); color: var(--clr-text-dark, #0f172a); font-size: 16px; outline: none; transition: all 0.3s ease; box-shadow: 0 4px 10px rgba(0,0,0,0.02);">
-        </div>
-      </div>
-
-      <div class="discover-categories">
-        {% if page.lang == "hi" %}
-          {% assign all_posts = site.posts_hi | sort: "date" | reverse %}
-        {% else %}
-          {% assign all_posts = site.posts | sort: "date" | reverse %}
-        {% endif %}
-
-        <button class="discover-cat-btn active" onclick="filterCategory('all',this)">
-          All <span>({{ all_posts.size }})</span>
-        </button>
-
-        {% assign categories = site.categories | sort %}
-        {% for category in categories %}
-          {% unless category[0] == "discover" %}
-            <button class="discover-cat-btn" onclick="filterCategory('{{ category[0] | downcase }}',this)">
-              {{ category[0] }} <span>({{ category[1].size }})</span>
-            </button>
-          {% endunless %}
-        {% endfor %}
       </div>
     </div>
   </section>
 
   <section class="section">
     <div id="posts">
-      
       <div id="post-wrapper"></div>
 
-      <nav id="pagination-nav" class="pagination-center" aria-label="Pagination Navigation" style="display: flex; gap: 6px; justify-content: center; margin-top: 30px; align-items: center; flex-wrap: wrap;"></nav>
-      
+      <nav id="pagination-nav" class="pagination-center" aria-label="Pagination Navigation" 
+           style="display: flex; gap: 6px; justify-content: center; margin-top: 30px; align-items: center; flex-wrap: wrap;"></nav>
     </div>
   </section>
 
@@ -133,8 +116,8 @@ pagination:
   {% for p in all_posts %}
     {
       "title": {{ p.title | jsonify }},
-      "url": {{ p.url | relative_url }},
-      "absolute_url": {{ p.url | absolute_url }},
+      "url": {{ p.url | relative_url | jsonify }},
+      "absolute_url": {{ p.url | absolute_url | jsonify }},
       "image": {{ p.image | default: '/assets/images/default-thumb.png' | jsonify }},
       "category": {{ p.categories[0] | default: "Technology" | jsonify }},
       "categories": [{% for cat in p.categories %}{{ cat | downcase | jsonify }}{% unless forloop.last %},{% endunless %}{% endfor %}],
