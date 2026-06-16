@@ -1,288 +1,240 @@
 ---
 layout: default
-...
+---
 
-	<div class="container">
+<div class="container">
 
-		<div id="reading-progress-container" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"
-			aria-label="Reading progress">
-			<div id="reading-progress-bar"></div>
-		</div>
+	<div id="reading-progress-container" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"
+		aria-label="Reading progress">
+		<div id="reading-progress-bar"></div>
+	</div>
 
-		<div id="index-category-nav"></div>
+	<div id="index-category-nav"></div>
 
-		<!-- MAIN LAYOUT -->
-		<main class="tc-wrapper" id="main-content">
+	<main class="tc-wrapper" id="main-content">
 
-			<!-- LEFT -->
-			<div class="tc-left">
+		<div class="tc-left">
 
-				{% if page.is_post %}
-
+			{% if page.is_post %}
 				{% assign words = content | number_of_words %}
+				{% if words < 360 %} 
+					{% assign read_time="2 min read" %} 
+				{% else %} 
+					{% assign minutes=words | divided_by: 180 %}
+					{% assign read_time=minutes | append: " min read" %} 
+				{% endif %} 
+				
+				<h1 class="post-title" style="margin-bottom:10px;">{{ page.title }}</h1>
 
-				{% if words < 360 %} {% assign read_time="2 min read" %} {% else %} {% assign minutes=words | divided_by: 180 %}
-					{% assign read_time=minutes | append: " min read" %} {% endif %} <h1 class="post-title"
-					style="margin-bottom:10px;">
-					{{ page.title }}
-					</h1>
+				<p style="color:var(--text-muted);font-size:14px;margin-bottom:28px;">
+					By {{ page.author | default: "Himanshu Tyagi" }} · TyagiHub · {{ page.date | date: "%d %b %Y" }} ·
+					<span class="read-time"><i class="far fa-clock"></i> {{ read_time }}</span>
+				</p>
 
-					<p style="color:var(--text-muted);font-size:14px;margin-bottom:28px;">
-						By {{ page.author | default: "Himanshu Tyagi" }}
-						· TyagiHub ·
-						{{ page.date | date: "%d %B %Y" }}
-						·
-						<span class="read-time">
-							<i class="far fa-clock"></i>
-							{{ read_time }}
-						</span>
-					</p>
-
-					{% if page.image %}
-
+				{% if page.image %}
 					<div class="post-hero-img" id="post-hero-wrap">
-
-						<img src="{{ page.image | relative_url }}" alt="{{ page.title }}" width="1280" height="720" loading="lazy"
-							style="border-radius:12px;width:100%;height:auto;">
-
+						<img src="{{ page.image | relative_url }}" alt="{{ page.title }}" width="1280" height="720" loading="lazy" style="border-radius:12px;width:100%;height:auto;">
 					</div>
+				{% endif %}
 
-					{% endif %}
+				<div class="toc-container" id="toc-box" style="display:none;margin-bottom:30px;">
+					<div class="toc-title"><i class="fas fa-list-ul"></i>&nbsp; Topics</div>
+					<ul id="toc-list" role="list"></ul>
+					<button id="toc-toggle-btn" class="toc-see-more" aria-expanded="false">See More <i class="fas fa-chevron-down"></i></button>
+				</div>
 
-					<div class="toc-container" id="toc-box" style="display:none;margin-bottom:30px;">
+				{{ content }}
 
-						<div class="toc-title">
-
-							<i class="fas fa-list-ul"></i>
-
-							&nbsp; Topics
-
-						</div>
-
-						<ul id="toc-list" role="list">
-						</ul>
-
-						<button id="toc-toggle-btn" class="toc-see-more" aria-expanded="false">
-
-							See More
-
-							<i class="fas fa-chevron-down"></i>
-
-						</button>
-
-					</div>
-
-					{% endif %}
-
-					{{ content }}
-
-					{% unless page.url == "/" or page.url == "/index.html" %}
-
-					{% if page.is_post %}
-
-					<!-- SHARE -->
+				{% unless page.url == "/" or page.url == "/index.html" %}
 					<div class="share-wrapper">
-      <p class="share-label">Share With Friends 🚀</p>
-      <button onclick="tyagiShare()" class="tyagi-share-btn" aria-label="Share this article">
-        <i class="fas fa-paper-plane" aria-hidden="true"></i> SHARE ARTICLE
-      </button>
-    </div>
+						<p class="share-label">Share With Friends 🚀</p>
+						<button onclick="tyagiShare()" class="tyagi-share-btn" aria-label="Share this article">
+							<i class="fas fa-paper-plane" aria-hidden="true"></i> SHARE ARTICLE
+						</button>
+					</div>
 
-    
-
-					<!-- POST NAVIGATION -->
-{% if page.lang == "hi" %}
-
-  {% assign all_posts = site.posts | where:"lang","hi" | sort:"date" %}
-
-{% else %}
-
-  {% assign all_posts = site.posts | where:"lang","en" | sort:"date" %}
-
-{% endif %}{% assign post_count = all_posts | size %}
+					{% if page.lang == "hi" %}
+						{% assign all_posts = site.posts | where:"lang","hi" | sort:"date" %}
+					{% else %}
+						{% assign all_posts = site.posts | where:"lang","en" | sort:"date" %}
+					{% endif %}
+					{% assign post_count = all_posts | size %}
 					{% assign current_index = nil %}
 
 					{% for p in all_posts %}
-					{% if p.url == page.url %}
-					{% assign current_index = forloop.index0 %}
-					{% endif %}
+						{% if p.url == page.url %}
+							{% assign current_index = forloop.index0 %}
+						{% endif %}
 					{% endfor %}
 
 					{% if current_index != nil %}
+						{% assign prev_index = current_index | minus: 1 %}
+						{% assign next_index = current_index | plus: 1 %}
 
-					{% assign prev_index = current_index | minus: 1 %}
-					{% assign next_index = current_index | plus: 1 %}
-
-					<nav class="post-nav-container" aria-label="Post navigation">
-
-						<!-- PREVIOUS -->
-						<div class="post-nav-link prev">
-
-							{% if current_index > 0 %}
-
-							{% assign prev_post = all_posts[prev_index] %}
-
-							<a href="{{ prev_post.url | relative_url }}">
-
-								<span class="nav-label">
-									<i class="fas fa-arrow-left"></i>
-									Previous Post
-								</span>
-
-								<div class="nav-post-title">
-									{{ prev_post.title }}
-								</div>
-
-							</a>
-
-							{% else %}
-
-							<span class="nav-disabled">
-
-								<span class="nav-label">
-									Previous Post
-								</span>
-
-								<div class="nav-post-title" style="opacity:0.4;">
-									No previous post
-								</div>
-
-							</span>
-
-							{% endif %}
-
-						</div>
-
-						<!-- NEXT -->
-						<div class="post-nav-link next">
-
-							{% if next_index < post_count %} {% assign next_post=all_posts[next_index] %} <a
-								href="{{ next_post.url | relative_url }}">
-
-								<span class="nav-label">
-
-									Next Post
-
-									<i class="fas fa-arrow-right"></i>
-
-								</span>
-
-								<div class="nav-post-title">
-
-									{{ next_post.title }}
-
-								</div>
-
-								</a>
-
+						<nav class="post-nav-container" aria-label="Post navigation">
+							<div class="post-nav-link prev">
+								{% if current_index > 0 %}
+									{% assign prev_post = all_posts[prev_index] %}
+									<a href="{{ prev_post.url | relative_url }}">
+										<span class="nav-label"><i class="fas fa-arrow-left"></i> Previous Post</span>
+										<div class="nav-post-title">{{ prev_post.title }}</div>
+									</a>
 								{% else %}
-
-								<span class="nav-disabled">
-
-									<span class="nav-label">
-										Next Post
+									<span class="nav-disabled">
+										<span class="nav-label">Previous Post</span>
+										<div class="nav-post-title" style="opacity:0.4;">No previous post</div>
 									</span>
-
-									<div class="nav-post-title" style="opacity:0.4;">
-										No next post
-									</div>
-
-								</span>
-
 								{% endif %}
+							</div>
 
-						</div>
-
-					</nav>
-
+							<div class="post-nav-link next">
+								{% if next_index < post_count %}
+									{% assign next_post = all_posts[next_index] %} 
+									<a href="{{ next_post.url | relative_url }}">
+										<span class="nav-label">Next Post <i class="fas fa-arrow-right"></i></span>
+										<div class="nav-post-title">{{ next_post.title }}</div>
+									</a>
+								{% else %}
+									<span class="nav-disabled">
+										<span class="nav-label">Next Post</span>
+										<div class="nav-post-title" style="opacity:0.4;">No next post</div>
+									</span>
+								{% endif %}
+							</div>
+						</nav>
 					{% endif %}
- 
 					<hr style="margin:44px 0;border:none;border-top:1px solid var(--border-color)">
+				{% endunless %}
 
+			{% else %}
+				<div class="search-container" style="margin-bottom: 20px; display: flex; justify-content: center; width: 100%;">
+					<input type="text" id="discover-search" placeholder="Search posts on this stream..." 
+						   style="width: 100%; max-width: 500px; padding: 12px 20px; border: 2px solid var(--clr-border, #e2e8f0); border-radius: 30px; background: var(--clr-bg-surface, #ffffff); color: var(--clr-text-dark, #0f172a); font-size: 16px; outline: none; box-shadow: 0 2px 8px rgba(0,0,0,0.02);">
+				</div>
+
+				<div class="discover-categories" style="margin-bottom: 25px;">
+					{% if page.lang == "hi" %}
+						{% assign stream_posts = site.posts_hi %}
+					{% else %}
+						{% assign stream_posts = site.posts %}
 					{% endif %}
 
-					{% endunless %}
+					<a href="{{ '/discover/' | relative_url }}" class="discover-cat-btn {% if page.url == '/discover/' or page.url contains '/discover/page-' %}active{% endif %}">
+						All <span>({{ stream_posts.size }})</span>
+					</a>
 
-			</div>
+					{% assign categories = site.categories | sort %}
+					{% for category in categories %}
+						{% unless category[0] == "discover" %}
+							{% capture cat_url %}/{{ category[0] | downcase }}/{% endcapture %}
+							<a href="{{ cat_url | relative_url }}" class="discover-cat-btn {% if page.url contains cat_url %}active{% endif %}">
+								{{ category[0] }} <span>({{ category[1].size }})</span>
+							</a>
+						{% endunless %}
+					{% endfor %}
+				</div>
 
-			<!-- SIDEBAR -->
-			  {% include right-sidebar.html %}
+				<div id="post-wrapper">
+					{% for p in paginator.posts %}
+						<div class="horizontal-post-card js-post" data-title="{{ p.title | downcase }}" data-desc="{{ p.description | default: p.excerpt | strip_html | downcase }}">
+							<div class="post-img">
+								<span class="post-category">{{ p.categories[0] | default: "Technology" }}</span>
+								<div class="post-date"><i class="fa-regular fa-calendar"></i> {{ p.date | date: "%d %b %Y" }}</div>
+								<img src="{{ p.image | default: '/assets/images/default-thumb.png' }}" alt="{{ p.title }} - TyagiHub" loading="lazy" width="260" height="188">
+							</div>
+							<div class="post-info">
+								<div class="post-top-meta">
+									<h2><a href="{{ p.url | relative_url }}">{{ p.title }}</a></h2>
+									<p>{{ p.description | default:p.excerpt | strip_html | truncate:110 }}</p>
+								</div>
+								<div class="post-footer">
+									<button class="native-share-btn" onclick="nativeShare('{{ p.title | escape }}','{{ p.url | absolute_url }}')">
+										<i class="fa-solid fa-share-nodes"></i> Share
+									</button>
+									<a href="{{ p.url | relative_url }}" class="read-link">Read More →</a>
+								</div>
+							</div>
+						</div>
+					{% endfor %}
+				</div>
 
+				{% if paginator.total_pages > 1 %}
+					<nav id="pagination-nav" class="pagination-center" aria-label="Pagination Navigation" style="display: flex; gap: 8px; justify-content: center; margin-top: 30px; align-items: center; flex-wrap: wrap;">
+						{% assign base_link = page.url | split: '/page-' | first %}
+						{% if paginator.page > 1 %}
+							<a href="{{ base_link | relative_url }}" class="page-btn page-control-btn">First</a>
+							<a href="{{ paginator.previous_page_path | relative_url }}" class="page-btn">←</a>
+						{% endif %}
 
-		</main>
+						{% assign current_page = paginator.page %}
+						{% assign total_pages = paginator.total_pages %}
+						{% assign window_size = 2 %} 
+						{% assign min_page = current_page | minus: window_size %}
+						{% assign max_page = current_page | plus: window_size %}
 
+						{% if min_page < 1 %}{% assign min_page = 1 %}{% endif %}
+						{% if max_page > total_pages %}{% assign max_page = total_pages %}{% endif %}
 
+						{% if min_page > 1 %}<span class="page-dots">...</span>{% endif %}
 
-	</div>
+						{% for p_num in (min_page..max_page) %}
+							{% if p_num == current_page %}
+								<span class="page-btn active">{{ p_num }}</span>
+							{% elsif p_num == 1 %}
+								<a href="{{ base_link | relative_url }}" class="page-btn">{{ p_num }}</a>
+							{% else %}
+								{% assign clean_base = base_link | replace: '//', '/' %}
+								{% if clean_base == '/' %}{% assign clean_base = '/discover/' %}{% endif %}
+								<a href="{{ clean_base | append: 'page-' | append: p_num | append: '/' | replace: '//', '/' | relative_url }}" class="page-btn">{{ p_num }}</a>
+							{% endif %}
+						{% endfor %}
 
+						{% if max_page < total_pages %}<span class="page-dots">...</span>{% endif %}
 
-<!-- Floating Language Switch -->
+						{% if paginator.page < total_pages %}
+							<a href="{{ paginator.next_page_path | relative_url }}" class="page-btn">→</a>
+							<a href="{{ clean_base | append: 'page-' | append: total_pages | append: '/' | replace: '//', '/' | relative_url }}" class="page-btn page-control-btn">Last</a>
+						{% endif %}
+					</nav>
+				{% endif %}
 
-<div class="floating-lang-switch">
+			{% endif %}
 
-  {% if page.lang_switch != false %}
+		</div>
 
-<div class="floating-lang-switch">
+		{% include right-sidebar.html %}
 
-  {% if page.lang == "hi" %}
-
-    <a href="{{ page.url | remove:'/hi' }}"
-      class="floating-lang-btn"
-      aria-label="Switch to English">
-
-      EN
-
-    </a>
-
-  {% else %}
-
-    <a href="/hi{{ page.url }}"
-      class="floating-lang-btn"
-      aria-label="हिन्दी में बदलें">
-
-      हिं
-
-    </a>
-
-  {% endif %}
+	</main>
 
 </div>
 
+{% if page.lang_switch != false %}
+<div class="floating-lang-switch">
+	{% if page.lang == "hi" %}
+		<a href="{{ page.url | remove:'/hi' }}" class="floating-lang-btn" aria-label="Switch to English">EN</a>
+	{% else %}
+		<a href="/hi{{ page.url }}" class="floating-lang-btn" aria-label="हिन्दी में बदलें">हिं</a>
+	{% endif %}
+</div>
 {% endif %}
 
-</div><style>.floating-lang-switch{
-  position:fixed;
-  right:14px;
-  bottom:84px;
-  z-index:9999;
-}
+{% if page.is_post == nil or page.is_post == false %}
+<div id="trending-posts-data" style="display:none;">
+  {% for item in stream_posts limit:20 %}
+    <div class="trending-post-item" data-title="{{ item.title | escape }}" data-url="{{ item.url | relative_url }}" data-image="{{ item.image | default: '/assets/images/default-thumb.png' }}"></div>
+  {% endfor %}
+</div>
 
-.floating-lang-btn{
-  width:48px;
-  height:48px;
-  border-radius:999px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  background:rgba(15,23,42,.88);
-  backdrop-filter:blur(12px);
-  border:1px solid rgba(255,255,255,.08);
-  color:#fff;
-  text-decoration:none;
-  font-size:14px;
-  font-weight:800;
-  box-shadow:0 10px 30px rgba(0,0,0,.25);
-  transition:.25s ease;
-}
+<div id="related-posts-data" style="display:none;">
+  {% for item in stream_posts limit:20 %}
+    <div class="related-post-item" data-title="{{ item.title | escape }}" data-url="{{ item.url | relative_url }}" data-image="{{ item.image | default: '/assets/images/default-thumb.png' }}"></div>
+  {% endfor %}
+</div>
+{% endif %}
 
-.floating-lang-btn:hover{
-  transform:translateY(-2px) scale(1.05);
-}
-
-@media(min-width:901px){
-
-  .floating-lang-switch{
-    display:none;
-  }
-
-}</style>
+<style>
+.floating-lang-switch{ position:fixed; right:14px; bottom:84px; z-index:9999; }
+.floating-lang-btn{ width:48px; height:48px; border-radius:999px; display:flex; align-items:center; justify-content:center; background:rgba(15,23,42,.88); backdrop-filter:blur(12px); border:1px solid rgba(255,255,255,.08); color:#fff; text-decoration:none; font-size:14px; font-weight:800; box-shadow:0 10px 30px rgba(0,0,0,.25); transition:.25s ease; }
+.floating-lang-btn:hover{ transform:translateY(-2px) scale(1.05); }
+@media(min-width:901px){ .floating-lang-switch{ display:none; } }
+</style>
