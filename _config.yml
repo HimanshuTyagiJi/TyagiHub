@@ -137,6 +137,11 @@ autopages:
       mode: "default"
       cased: false # <--- Yeh capital letters ko automatic lowercase URL folder mein badal dega!
 
+collections:
+  shield:
+    output: true
+    permalink: /shield/:title/
+
 # SEO
 twitter:
   username: TyagiMultiTech
