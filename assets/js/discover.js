@@ -42,7 +42,7 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
-/* Trending and Related Logic (Unchanged) */
+/* Trending & Related Structural Modules (Exactly Unchanged) */
 document.addEventListener("DOMContentLoaded", () => {
   const hiddenRelated = document.querySelectorAll("#related-posts-data .related-post-item");
   const relatedContainer = document.getElementById("related-posts-container");
