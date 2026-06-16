@@ -16,7 +16,6 @@ extra_js:
 pagination:
   enabled: true
   collection: posts
-  per_page: 1
   permalink: "/page-:num/"
 ---
 
@@ -54,14 +53,14 @@ pagination:
           {% assign all_posts = site.posts %}
         {% endif %}
 
-        <a href="{{ '/discover/' | relative_url }}" class="discover-cat-btn {% if paginator.page == 1 and page.url == '/discover/' %}active{% endif %}">
+        <a href="{{ '/discover/' | relative_url }}" class="discover-cat-btn {% if page.url == '/discover/' %}active{% endif %}">
           All <span>({{ all_posts.size }})</span>
         </a>
 
         {% assign categories = site.categories | sort %}
         {% for category in categories %}
           {% unless category[0] == "discover" %}
-            {% capture cat_url %}/category/{{ category[0] | downcase }}/{% endcapture %}
+            {% capture cat_url %}/{{ category[0] | downcase }}/{% endcapture %}
             <a href="{{ cat_url | relative_url }}" class="discover-cat-btn {% if page.url contains cat_url %}active{% endif %}">
               {{ category[0] }} <span>({{ category[1].size }})</span>
             </a>
@@ -105,10 +104,11 @@ pagination:
       </div>
 
       {% if paginator.total_pages > 1 %}
-        <nav id="pagination-nav" class="pagination-center" aria-label="Pagination Navigation" style="display: flex; gap: 6px; justify-content: center; margin-top: 30px; align-items: center; flex-wrap: wrap;">
+        <nav id="pagination-nav" class="pagination-center" aria-label="Pagination Navigation" style="display: flex; gap: 8px; justify-content: center; margin-top: 30px; align-items: center; flex-wrap: wrap;">
           
           {% if paginator.page > 1 %}
-            <a href="{{ '/discover/' | relative_url }}" class="page-btn page-control-btn">First</a>
+            {% assign base_link = page.url | split: '/page-' | first %}
+            <a href="{{ base_link | relative_url }}" class="page-btn page-control-btn">First</a>
             <a href="{{ paginator.previous_page_path | relative_url }}" class="page-btn">←</a>
           {% endif %}
 
@@ -129,9 +129,11 @@ pagination:
             {% if page == current_page %}
               <span class="page-btn active">{{ page }}</span>
             {% elsif page == 1 %}
-              <a href="{{ '/discover/' | relative_url }}" class="page-btn">{{ page }}</a>
+              <a href="{{ base_link | relative_url }}" class="page-btn">{{ page }}</a>
             {% else %}
-              <a href="{{ '/discover/page-' | append: page | append: '/' | relative_url }}" class="page-btn">{{ page }}</a>
+              {% assign clean_base = page.url | split: '/page-' | first | replace: '//', '/' %}
+              {% if clean_base == '/' %}{% assign clean_base = '/discover/' %}{% endif %}
+              <a href="{{ clean_base | append: 'page-' | append: page | append: '/' | replace: '//', '/' | relative_url }}" class="page-btn">{{ page }}</a>
             {% endif %}
           {% endfor %}
 
@@ -141,7 +143,7 @@ pagination:
 
           {% if paginator.page < total_pages %}
             <a href="{{ paginator.next_page_path | relative_url }}" class="page-btn">→</a>
-            <a href="{{ '/discover/page-' | append: total_pages | append: '/' | relative_url }}" class="page-btn page-control-btn">Last</a>
+            <a href="{{ clean_base | append: 'page-' | append: total_pages | append: '/' | replace: '//', '/' | relative_url }}" class="page-btn page-control-btn">Last</a>
           {% endif %}
           
         </nav>
