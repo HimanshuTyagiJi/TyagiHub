@@ -1,0 +1,169 @@
+---
+layout: default
+title: About Us | TyagiHub - The MultiTech Digital Ecosystem
+permalink: /about/
+description: Learn about TyagiHub, a comprehensive digital ecosystem engineered by Tyagi MultiTech. We provide core computer utilities, structural learning desks, exam simulations, and cyber safety tools.
+---
+
+<style>
+  :root {
+    --primary-gradient: linear-gradient(135deg, #74b9ff 0%, #0984e3 100%);
+    --card-shadow: 0 10px 30px rgba(0,0,0,0.05);
+  }
+  .about-wrapper { max-width: 1050px; margin: 40px auto; padding: 0 20px; color: var(--clr-text, #2d3436); line-height: 1.8; font-family: system-ui, -apple-system, sans-serif; }
+  .about-header { text-align: center; margin-bottom: 60px; padding: 40px 0; border-bottom: 1px solid var(--clr-border, #dfe6e9); }
+  .about-header h1 { font-size: 3.5rem; font-weight: 800; color: var(--clr-primary, #0984e3); margin: 0 0 10px 0; }
+  .about-header .tagline { font-size: 1.3rem; color: var(--clr-text-3, #636e72); font-weight: 500; }
+  
+  .about-section { margin-bottom: 50px; }
+  .about-section h2 { font-size: 2.2rem; color: var(--clr-text-2, #2d3436); border-left: 6px solid var(--clr-primary, #0984e3); padding-left: 15px; margin-bottom: 25px; font-weight: 700; }
+  .about-section p { font-size: 1.15rem; text-align: justify; margin-bottom: 20px; color: var(--clr-text, #2d3436); }
+  
+  .vision-quote { background: var(--primary-gradient); color: white; padding: 40px; border-radius: 16px; font-size: 1.4rem; text-align: center; font-style: italic; margin: 40px 0; box-shadow: 0 8px 25px rgba(9, 132, 227, 0.25); line-height: 1.6; }
+  
+  .grid-infrastructure { display: grid; grid-template-columns: repeat(2, 1fr); gap: 25px; margin: 35px 0; }
+  .infra-card { background: var(--clr-bg-2, #ffffff); border: 1px solid var(--clr-border, #f1f2f6); padding: 30px; border-radius: 12px; box-shadow: var(--card-shadow); transition: transform 0.3s ease; }
+  .infra-card:hover { transform: translateY(-5px); }
+  .infra-card h3 { font-size: 1.4rem; margin-top: 0; color: var(--clr-primary, #0984e3); margin-bottom: 12px; }
+  .infra-card p { font-size: 1.05rem; margin: 0; text-align: left; }
+  
+  .bullet-list { list-style: none; padding: 0; margin: 25px 0; }
+  .bullet-list li { position: relative; padding-left: 35px; margin-bottom: 18px; font-size: 1.1rem; }
+  .bullet-list li::before { content: "⚡"; position: absolute; left: 0; top: 2px; color: var(--clr-primary, #0984e3); font-weight: bold; }
+  
+  .contact-footer { background: var(--clr-bg-2, #f8f9fa); border: 1px solid var(--clr-border, #dfe6e9); padding: 35px; border-radius: 12px; margin-top: 50px; text-align: center; }
+  .btn-tele { display: inline-block; background: #0088cc; color: white !important; padding: 14px 35px; border-radius: 50px; font-weight: bold; text-decoration: none; transition: all 0.3s ease; margin-top: 15px; box-shadow: 0 4px 15px rgba(0, 136, 204, 0.3); }
+  .btn-tele:hover { background: #00a2f2; transform: translateY(-2px); }
+  
+  #page-timestamp { font-style: italic; margin-top: 60px; color: var(--clr-text-3, #b2bec3); font-size: 0.95rem; text-align: center; border-top: 1px solid var(--clr-border, #dfe6e9); padding-top: 25px; }
+  @media (max-width: 768px) { .about-header h1 { font-size: 2.5rem; } .grid-infrastructure { grid-template-columns: 1fr; } .about-section h2 { font-size: 1.8rem; } }
+</style>
+
+<div class="about-wrapper">
+  <header class="about-header">
+    <h1>About TyagiHub</h1>
+    <div class="tagline">The Digital Ecosystem of Tyagi MultiTech</div>
+  </header>
+
+  <div class="about-section">
+    {% if page.lang == "hi" %}
+      <h2>हम कौन हैं? (The Core Identity)</h2>
+      <p>इंटरनेट की इस विशाल दुनिया में जहां लाखों बिखरी हुई वेबसाइट्स, अनगिनत टूल्स और भ्रामक जानकारियां मौजूद हैं, वहां <strong><a href="{{ site.url }}/">TyagiHub</a></strong> एक सुव्यवस्थित, साफ-सुथरे और बेहद ताकतवर डिजिटल इंफ्रास्ट्रक्चर के रूप में खड़ा है। Tyagi MultiTech द्वारा संचालित, यह प्लेटफॉर्म कोई साधारण ब्लॉग या वेबसाइट नहीं है, बल्कि एक कस्टमाइज्ड <strong>Tech-Ecosystem</strong> है। हमारा एकमात्र मिशन डेवलपर्स, कोडिंग के छात्रों और सामान्य पाठकों को एक ही सुरक्षित छत के नीचे प्रीमियम वेब यूटिलिटीज और सटीक ज्ञान प्रदान करना है।</p>
+      <p>इस पूरे आर्किटेक्चर की नींव कंप्यूटर एप्लीकेशंस (BCA/MCA) की कोर थ्योरी और रियल-वर्ल्ड सॉफ्टवेयर इंजीनियरिंग के अनुभवों पर रखी गई है। हमने इंटरनेट की उन बुनियादी कमियों को देखा है जहां यूजर्स को एक छोटे से टool या नोट्स के लिए सैकड़ों लोडिंग स्क्रीन और पॉप-अप विज्ञापनों से जूझना पड़ता है। इसी समस्या को जड़ से खत्म करने के लिए TyagiHub को पूरी तरह से ऑप्टिमाइज्ड और लाइटनिंग-फास्ट बनाया गया है।</p>
+    {% else %}
+      <h2>Who We Are (The Core Identity)</h2>
+      <p>In a digital landscape filled with fragmented platforms and chaotic software utilities, <strong><a href="{{ site.url }}/">TyagiHub</a></strong> stands out as a highly optimized, fully integrated, and robust operational ecosystem. Operated under the umbrella of Tyagi MultiTech, this platform is not just a standard web portal—it is a centralized engineering desk built to serve developer utilities, technical learning modules, and critical digital guardrails under a unified structure.</p>
+      <p>The entire foundation of our architecture is deeply rooted in academic computer science disciplines (BCA/MCA frameworks) and practical software engineering principles. Having monitored the exhaustion users face when dealing with heavy, broken tools and ad-trapped sites, TyagiHub was deployed to execute actions immediately, clean codes cleanly, and deliver standard output with zero performance lag.</p>
+    {% endif %}
+  </div>
+
+  <div class="vision-quote">
+    {% if page.lang == "hi" %}
+      "हमारा संकल्प एक ऐसा हाई-परफॉर्मिंग डिजिटल स्पेस बनाना है, जहां थ्योरी और प्रैक्टिकल टूल्स का तालमेल हर एक क्रिएटर के काम को बेहद आसान बना सके।"
+    {% else %}
+      "Our core philosophy relies on delivering absolute structural clarity, replacing bloated frameworks with clean static builds, and bridging the gap between theoretical computing and functional daily tools."
+    {% endif %}
+  </div>
+
+  <div class="about-section">
+    {% if page.lang == "hi" %}
+      <h2>आर्किटेक्चर और ऑटोमेशन (Behind the Infrastructure)</h2>
+      <p>TyagiHub का बैकएंड और फ्रंटएंड किसी पारंपरिक और भारी मैनेजमेंट सिस्टम पर काम नहीं करता। हमने इस पूरे नेटवर्क को एक **अत्याधुनिक ऑटोमेशन फ्रेमवर्क** पर डिजाइन किया है। इसका सबसे बड़ा फायदा यह है कि सिस्टम के जितने भी मुख्य मॉड्यूल हैं—चाहे वो कोडिंग से जुड़े डेटा हों या एजुकेशनल रिसोर्सेज—वे सब पूरी तरह से स्केलेबल हैं और रियल-टाइम में बिना किसी सर्वर क्रैश के काम करते हैं।</p>
+      <p>एक मजबूत और सुव्यवस्थित तकनीकी ढांचा (Technical Infrastructure) होने के कारण, हम इस बात को सुनिश्चित करते हैं कि हमारी कोर टीम बैकएंड लॉजिक्स को लगातार बिना रुकावट अपडेट करती रहे, जिससे यूज़र को हमेशा एक बेहतरीन और स्थिर अनुभव प्राप्त हो।</p>
+    {% else %}
+      <h2>Architecture & High Automation</h2>
+      <p>TyagiHub is engineered entirely upon an advanced automation assembly, moving away from heavy dynamic frameworks that bog down performance. Every operational node inside our catalog has been meticulously automated to ensure deployment scripts, mathematical parsing layers, and dynamic index tables serve resources efficiently without crashing under unexpected spikes.</p>
+      <p>By enforcing clean compilation practices and systematic data models, our internal structure allows for frictionless updates to live assets. This guarantees that whether a user executes a tool or pulls an entire reference table, the backend serves the query instantly with absolute stability.</p>
+    {% endif %}
+  </div>
+
+  <div class="about-section">
+    {% if page.lang == "hi" %}
+      <h2>हमारे 4 मुख्य पिलर्स (Ecosystem Operations)</h2>
+      <p>हमने अपनी सेवाओं और उपयोगिताओं को चार स्पष्ट और बेहद महत्वपूर्ण डिवीशन्स में विभाजित किया है, ताकि किसी भी यूजर को अपनी जरूरत की चीज़ ढूंढने में एक सेकंड का भी समय बर्बाद न करना पड़े:</p>
+    {% else %}
+      <h2>The Core Pillars of Operation</h2>
+      <p>To eliminate directory confusion, our digital infrastructure divides all system utilities into four highly isolated, targeted wings:</p>
+    {% endif %}
+
+    <div class="grid-infrastructure">
+      <div class="infra-card">
+        {% if page.lang == "hi" %}
+          <h3>1. एक्सप्लोर और लर्निंग नेटवर्क</h3>
+          <p>इसके अंतर्गत हमारा 'Discover' सेक्शन नया ज्ञान खोजने में मदद करता है। साथ ही व्यवस्थित शैक्षणिक नोट्स (Learn) और सेल्फ-इवैल्यूएशन के लिए 'GK Quiz' व 'Mock Test' मॉड्यूल को डिजाइन किया गया है ताकि छात्र अपनी तैयारी को सही दिशा दे सकें।</p>
+        {% else %}
+          <h3>1. Explore & Evaluation Desk</h3>
+          <p>Houses our dedicated learning network. It includes the Discover engine for structural exploration, comprehensive educational frameworks, and an analytical GK Quiz/Test suite for progressive mock evaluations.</p>
+        {% endif %}
+      </div>
+      
+      <div class="infra-card">
+        {% if page.lang == "hi" %}
+          <h3>2. क्रिएटर और डेवलपर यूटिलिटीज</h3>
+          <p>यह हमारा सबसे पावरफुल इंजीनियरिंग विंग है। इसमें डेवलपर्स और कोडिंग करने वालों के लिए कस्टमाइज्ड 'Tyagi Editor', रोजमर्रा के कामों को आसान बनाने वाले स्मार्ट 'Tyagi Tools', वेब एप्लिकेशंस और मीडिया असेट्स के लिए 'Tyagi Stock' शामिल हैं।</p>
+        {% else %}
+          <h3>2. Creator & Utility Subsystems</h3>
+          <p>The engineering core. This engine integrates the custom-tuned Tyagi Editor, high-efficiency web micro-tools, functional software applications, and an open asset repository managed via Tyagi Stock.</p>
+        {% endif %}
+      </div>
+      
+      <div class="infra-card">
+        {% if page.lang == "hi" %}
+          <h3>3. आपके लिए (Specialized Resource Desk)</h3>
+          <p>विशेष तौर पर कंप्यूटर साइंस, प्रोग्रामिंग और सॉफ्टवेयर डेवलपमेंट को समझने के लिए बनाए गए कोडिंग चीटशीट्स, महत्वपूर्ण शॉर्टकट कीज (Shortcut Keys) और सभी आवश्यक सूत्रों (All Formulas) का एक विस्तृत डेटाबेस संग्रह।</p>
+        {% else %}
+          <h3>3. For You (Resource Engine)</h3>
+          <p>A contextual knowledge desk built for computing reference. It houses structural programming cheatsheets, system-wide hotkeys, and an expansive index of all academic and computational formulas.</p>
+        {% endif %}
+      </div>
+      
+      <div class="infra-card">
+        {% if page.lang == "hi" %}
+          <h3>4. इन्फोशील्ड सुरक्षा प्रणाली (InfoShield)</h3>
+          <p>आज के डिजिटल युग में सबसे बड़ी समस्या है अधूरी और अधकचरी जानकारी, जिसके कारण लोग ऑनलाइन फ्रॉड का शिकार होते हैं। हमारी 'Shield Security' प्रणाली यूजर्स को साइबर खतरों, डेटा सुरक्षा नीतियों और सुरक्षित इंटरनेट यूसेज के बारे में बिल्कुल सटीक और पूर्ण इन-डेप्थ गाइडलाइंस देती है।</p>
+        {% else %}
+          <h3>4. InfoShield Security Matrix</h3>
+          <p>Our dedicated threat intelligence and safety wing. Recognizing that partial explanations lead to vulnerabilities, InfoShield offers definitive, full-length cybersecurity blueprints to safeguard user operations online.</p>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+
+  <div class="about-section">
+    {% if page.lang == "hi" %}
+      <h2>हमारा कड़ा मापदंड (Why Choose Us?)</h2>
+      <p>TyagiHub पर पब्लिश होने वाला एक-एक कोड ब्लॉक, हर एक टूल का लॉजिक और प्रत्येक लेख एक कड़े क्वालिटी चेक से गुजरता है। हम आधी-अधूरी चीजें देने पर बिल्कुल विश्वास नहीं रखते।</p>
+      <ul class="bullet-list">
+        <li><strong>पूर्ण व्याख्या और स्पष्टता:</strong> जहां अन्य प्लेटफॉर्म्स सिर्फ कामचलाऊ हेडलाइंस देते हैं, हमारा सिस्टम उस टूल या सब्जेक्ट की पूरी गहराई (Full Explain Details) यूजर के सामने रखता है।</li>
+        <li><strong>क्लीन वेब पॉलिसी:</strong> हमारा इंफ्रास्ट्रक्चर बिल्कुल सुरक्षित और साफ-सुथरा है, जो आपकी प्राइवेसी और लीगल सिक्योरिटी पॉलिसी का पूरी तरह सम्मान करता है।</li>
+        <li><strong>लगातार स्केलेबिलिटी:</strong> हम आने वाले समय में अपने यूटिलिटी टूल्स और एप्लिकेशंस के बेड़े को और अधिक अपग्रेड करने के लिए लगातार रिसर्च और डेवलपमेंट मोड में काम कर रहे हैं।</li>
+      </ul>
+    {% else %}
+      <h2>Our Quality Protocols (Why Choose Us?)</h2>
+      <p>Every single programmatic line, tool logic, and reference matrix published on TyagiHub goes through strict validation before hitting deployment. We refuse to serve fragmented information.</p>
+      <ul class="bullet-list">
+        <li><strong>Exhaustive Data Integrity:</strong> Where standard platforms offer surface-level insights, our system focuses on breaking down the full architectural details for our users.</li>
+        <li><strong>Privacy First Standards:</strong> Completely optimized static frame rendering that preserves bandwidth and functions securely under global technical compliances.</li>
+        <li><strong>Continuous Scaling:</strong> We continuously innovate our software stack, deploying fresh automation algorithms and expanding utility configurations regularly.</li>
+      </ul>
+    {% endif %}
+  </div>
+
+  <div class="contact-footer">
+    {% if page.lang == "hi" %}
+      <h2>जुड़ें और अपडेटेड रहें</h2>
+      <p>नए वेब टूल्स की लॉन्चिंग, लेटेस्ट कोडिंग चीटशीट्स और महत्वपूर्ण टेक्निकल अनाउंसमेंट्स की तुरंत जानकारी पाने के लिए आप हमारे ऑफिशियल टेलीग्राम चैनल का हिस्सा बन सकते हैं:</p>
+      <a href="https://t.me/" class="btn-tele" target="_blank" rel="noopener">Join Our Telegram Channel</a>
+      <p style="margin-top: 25px; font-size: 1.05rem;">किसी भी प्रकार के तकनीकी फीडबैक, सुझाव या सपोर्ट के लिए सीधे संपर्क करें: <br><strong>ईमेल:</strong> <a href="mailto:contact@tyagihub.in">contact@tyagihub.in</a></p>
+    {% else %}
+      <h2>Connect & Maintain Track</h2>
+      <p>To stay directly aligned with immediate script deployments, security breakdowns, and fresh application launches, become a part of our ecosystem via our official platform:</p>
+      <a href="https://t.me/" class="btn-tele" target="_blank" rel="noopener">Join Our Telegram Channel</a>
+      <p style="margin-top: 25px; font-size: 1.05rem;">For architectural suggestions, reporting bugs, or infrastructure feedback, interface directly with us: <br><strong>Email:</strong> <a href="mailto:contact@tyagihub.in">contact@tyagihub.in</a></p>
+    {% endif %}
+  </div>
+
+  <p id="page-timestamp">Ecosystem Authority: <strong>Tyagi MultiTech</strong> | Operations Verified up to: <strong><span id="current-year"></span></strong></p>
+</div>
+
+<script>document.getElementById('current-year').textContent = new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });</script>
