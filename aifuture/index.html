@@ -5,12 +5,11 @@ permalink: /aifuture/
 pagination:
   enabled: true
   category: aifuture
-  per_page: 2
---- 
+  per_page: 6
+---
 
 <div style="padding-top:var(--nav-height);">
 
-  <!-- HERO SECTION -->
   <div class="discover-hero">
     <div class="discover-hero__bg"></div>
     <div class="container discover-hero__content">
@@ -26,7 +25,6 @@ pagination:
     </div>
   </div>
 
-  <!-- SEARCH BAR & CATEGORIES BUTTONS -->
   <section style="padding:22px 0; border-bottom:1px solid var(--clr-border); background:var(--clr-bg);">
     <div class="container">
       
@@ -43,46 +41,46 @@ pagination:
     </div>
   </section>
 
-  <!-- POSTS FEED MATRIX -->
   <section class="section">
     <div id="posts">
       
       <div id="post-wrapper">
-        {% for p in paginator.posts %}
-          <div class="horizontal-post-card js-post"
-               data-lang="{{ p.lang | default: 'en' }}"
-               data-title="{{ p.title | downcase }}"
-               data-desc="{{ p.description | default: p.excerpt | strip_html | downcase }}"
-               data-categories="{% for cat in p.categories %}{{ cat | downcase }} {% endfor %}">
-            
-            <div class="post-img">
-              <span class="post-category">{{ p.categories[0] | default: "Technology" }}</span>
-              <div class="post-date">
-                <i class="fa-regular fa-calendar"></i> {{ p.date | date: "%d %b %Y" }}
+        {% if paginator.posts.size > 0 %}
+          {% for p in paginator.posts %}
+            <div class="horizontal-post-card js-post"
+                 data-lang="{{ p.lang | default: 'en' }}"
+                 data-title="{{ p.title | downcase }}"
+                 data-desc="{{ p.description | default: p.excerpt | strip_html | downcase }}"
+                 data-categories="{% for cat in p.categories %}{{ cat | downcase }} {% endfor %}">
+              
+              <div class="post-img">
+                <span class="post-category">{{ p.categories[0] | default: "Technology" }}</span>
+                <div class="post-date">
+                  <i class="fa-regular fa-calendar"></i> {{ p.date | date: "%d %b %Y" }}
+                </div>
+                <img src="{{ p.image | default: '/assets/images/default-thumb.png' }}" alt="{{ p.title }} - TyagiHub" loading="lazy" width="260" height="188">
               </div>
-              <img src="{{ p.image | default: '/assets/images/default-thumb.png' }}" alt="{{ p.title }} - TyagiHub" loading="lazy" width="260" height="188">
-            </div>
 
-            <div class="post-info">
-              <div class="post-top-meta">
-                <h2><a href="{{ p.url | relative_url }}">{{ p.title }}</a></h2>
-                <p>{{ p.description | default:p.excerpt | strip_html | truncate:110 }}</p>
+              <div class="post-info">
+                <div class="post-top-meta">
+                  <h2><a href="{{ p.url | relative_url }}">{{ p.title }}</a></h2>
+                  <p>{{ p.description | default:p.excerpt | strip_html | truncate:110 }}</p>
+                </div>
+                <div class="post-footer">
+                  <button class="native-share-btn" onclick="nativeShare('{{ p.title | escape }}','{{ p.url | absolute_url }}')">
+                    <i class="fa-solid fa-share-nodes"></i> Share
+                  </button>
+                  <a href="{{ p.url | relative_url }}" class="read-link">Read More →</a>
+                </div>
               </div>
-              <div class="post-footer">
-                <button class="native-share-btn" onclick="nativeShare('{{ p.title | escape }}','{{ p.url | absolute_url }}')">
-                  <i class="fa-solid fa-share-nodes"></i> Share
-                </button>
-                <a href="{{ p.url | relative_url }}" class="read-link">Read More →</a>
-              </div>
-            </div>
 
-          </div>
-        {% empty %}
-          <p style="text-align:center; padding: 40px 0; color: var(--text-muted);">No posts found in this category.</p>
-        {% endfor %}
+            </div>
+          {% endfor %}
+        {% else %}
+          <p style="text-align:center; padding: 40px 0; color: var(--text-muted); width:100%;">No posts found in this category.</p>
+        {% endif %}
       </div>
 
-      <!-- PAGINATION FOR THIS CATEGORY -->
       {% if paginator.total_pages > 1 %}
         <nav id="pagination-nav" class="pagination-center" aria-label="Pagination" style="display: flex; gap: 8px; justify-content: center; margin-top: 30px;">
           {% if paginator.page > 1 %}
