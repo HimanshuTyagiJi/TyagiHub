@@ -108,7 +108,7 @@ defaults:
       layout: "default"
 
 
-# Plugins (GitHub Pages safe)
+# Advanced Multi-Page & Autopages Configuration
 plugins:
   - jekyll-feed
   - jekyll-sitemap
@@ -117,12 +117,18 @@ plugins:
 
 pagination:
   enabled: true
-  per_page: 1
-  permalink: "/page-:num/"   # <--- Yahan slash hata kar dash (-) laga diya hai
+  per_page: 1            # Jitna number tu set karega, har page par utni hi posts dikhengi
+  permalink: "/page-:num/"
   title: ":title - Page :num"
-  limit: 0
-  sort_field: "date"
-  sort_reverse: true
+  
+  # Autopages Logic: Ye automatic bina page banaye category directories generate karega
+  autopages:
+    enabled: true
+    categories:
+      enabled: true
+      layouts: 
+        - "discover"       # Ye teri custom discover layout ko use karega
+      permalink: "/:name/" # Dekh bhai, yahan se hamne /category/ hata kar seedha /:name/ kar diya hai!
 
 # SEO
 twitter:
