@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
 
-  const POSTS_PER_PAGE = 2;
+  const POSTS_PER_PAGE = 1;
 
   const wrapper =
     document.querySelector("#post-wrapper");
