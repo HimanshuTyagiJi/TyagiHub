@@ -121,37 +121,49 @@ pagination:
         {% endfor %}
       </div>
 
-    {% if paginator.total_pages > 1 %}
-        <nav id="pagination-nav" class="pagination-center" aria-label="Pagination Navigation" style="display: flex; gap: 8px; justify-content: center; margin-top: 30px; align-items: center;">
+   {% if paginator.total_pages > 1 %}
+        <nav id="pagination-nav" class="pagination-center" aria-label="Pagination Navigation" style="display: flex; gap: 6px; justify-content: center; margin-top: 30px; align-items: center; flex-wrap: wrap;">
           
           {% if paginator.page > 1 %}
             <a href="{{ '/discover/' | relative_url }}" class="page-btn page-control-btn" title="Go to First Page">First</a>
+            <a href="{{ paginator.previous_page_path | relative_url }}" class="page-btn">←</a>
           {% endif %}
 
-          {% for page in (1..paginator.total_pages) %}
-            
-            {% if page == 1 or page == paginator.total_pages or page == paginator.page or page == paginator.previous_page or page == paginator.next_page %}
-              
-              {% if page == paginator.page %}
-                <span class="page-btn active">{{ page }}</span>
-              {% elsif page == 1 %}
-                <a href="{{ '/discover/' | relative_url }}" class="page-btn">{{ page }}</a>
-              {% else %}
-                <a href="{{ '/discover/page-' | append: page | append: '/' | relative_url }}" class="page-btn">{{ page }}</a>
-              {% endif %}
+          {% assign current_page = paginator.page %}
+          {% assign total_pages = paginator.total_pages %}
+          
+          {% assign window_size = 2 %} 
+          {% assign min_page = current_page | minus: window_size %}
+          {% assign max_page = current_page | plus: window_size %}
 
-            {% elsif page == 2 and paginator.page > 3 %}
-              <span class="page-dots" style="padding: 0 4px; color: var(--clr-text-light, #475569); font-weight: bold;">...</span>
-            
-            {% elsif page == paginator.total_pages | minus: 1 and paginator.page < paginator.total_pages | minus: 2 %}
-              <span class="page-dots" style="padding: 0 4px; color: var(--clr-text-light, #475569); font-weight: bold;">...</span>
-              
+          {% if min_page < 1 %}
+            {% assign min_page = 1 %}
+          {% endif %}
+          {% if max_page > total_pages %}
+            {% assign max_page = total_pages %}
+          {% endif %}
+
+          {% if min_page > 1 %}
+            <span class="page-dots" style="padding: 0 4px; color: var(--clr-text-light, #475569); font-weight: bold;">...</span>
+          {% endif %}
+
+          {% for page in (min_page..max_page) %}
+            {% if page == current_page %}
+              <span class="page-btn active">{{ page }}</span>
+            {% elsif page == 1 %}
+              <a href="{{ '/discover/' | relative_url }}" class="page-btn">{{ page }}</a>
+            {% else %}
+              <a href="{{ '/discover/page-' | append: page | append: '/' | relative_url }}" class="page-btn">{{ page }}</a>
             {% endif %}
-
           {% endfor %}
 
-          {% if paginator.page < paginator.total_pages %}
-            {% assign last_page_url = '/discover/page-' | append: paginator.total_pages | append: '/' %}
+          {% if max_page < total_pages %}
+            <span class="page-dots" style="padding: 0 4px; color: var(--clr-text-light, #475569); font-weight: bold;">...</span>
+          {% endif %}
+
+          {% if paginator.page < total_pages %}
+            <a href="{{ paginator.next_page_path | relative_url }}" class="page-btn">→</a>
+            {% assign last_page_url = '/discover/page-' | append: total_pages | append: '/' %}
             <a href="{{ last_page_url | relative_url }}" class="page-btn page-control-btn" title="Go to Last Page">Last</a>
           {% endif %}
           
