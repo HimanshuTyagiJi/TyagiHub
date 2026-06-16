@@ -53,7 +53,11 @@ include:
   - robots.txt
   - sitemap.xml
 
-# Collections
+# =============================================================
+# TyagiHub - Clean Config (No Conflicts)
+# =============================================================
+
+# Collections (SARI COLLECTIONS EK JAGAH)
 collections:
   tools:
     output: true
@@ -64,17 +68,15 @@ collections:
   apps:
     output: true
     permalink: /apps/:name/
-
   posts_hi:
     output: true
-  
   shield:
     output: true
     permalink: /shield/:name/
-
   shield_hi:
     output: true
     permalink: /hi/shield/:name/
+
 # Defaults
 defaults:
   - scope:
@@ -83,49 +85,44 @@ defaults:
     values:
       layout: "post"
       author: "Tyagi MultiTech"
-
   - scope:
       path: ""
       type: "tools"
     values:
       layout: "tool"
-
   - scope:
       path: ""
       type: "learn"
     values:
       layout: "learn"
-
   - scope:
       path: ""
     values:
       layout: "quiz-player"
-
   - scope:
       path: ""
       type: "pages"
     values:
       layout: "default"
 
-
-# Advanced Multi-Page & Autopages Configuration
+# Plugins
 plugins:
   - jekyll-feed
   - jekyll-sitemap
   - jekyll-seo-tag
-  - jekyll-paginate-v2     # <--- Mismatch fixed to lock v2 engine
+  - jekyll-paginate-v2
 
-# Configuration map for main site loops
+# Discover Pagination (Ye tumhare main posts ke liye hai)
 pagination:
   enabled: true
-  per_page: 6              # Har index slug page par sateek 6 posts locked rahengi (Testing ke liye 1 bhi kar sakte ho)
-  permalink: "/page-:num/" # Final Output Path Structure: /discover/page-2/
+  per_page: 6
+  permalink: "/page-:num/"
   title: ":title - Page :num"
   limit: 0
   sort_by: "date"
   sort_reverse: true
 
-# Autopages Infrastructure: Generates physical clean category paths automatically
+# Autopages Infrastructure (Fixed: Ab ye sirf 'discover' layout use karega)
 autopages:
   enabled: true
   categories:
@@ -135,12 +132,7 @@ autopages:
     permalink: "/:name/"
     slugify:
       mode: "default"
-      cased: false # <--- Yeh capital letters ko automatic lowercase URL folder mein badal dega!
-
-collections:
-  shield:
-    output: true
-    permalink: /shield/:title/
+      cased: false
 
 # SEO
 twitter:
