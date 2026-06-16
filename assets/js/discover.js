@@ -1,59 +1,94 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const POSTS_PER_PAGE = 6; // Dhyan rakhna, ye HTML wale limit se match hona chahiye
+  const POSTS_PER_PAGE = 6; 
   const wrapper = document.querySelector("#post-wrapper");
   const pagination = document.querySelector("#pagination-nav");
+  const searchInput = document.getElementById("discover-search");
 
   if (!wrapper || !pagination) return;
 
-  // Language & URL Context
+  // Language Context
   const isHindi = window.location.pathname.startsWith("/hi/");
+  
+  // URL Parameters
   const params = new URLSearchParams(window.location.search);
   let currentPage = parseInt(params.get("page")) || 1;
-
-  // Detect Category Context directly from URL
-  const path = window.location.pathname.toLowerCase();
-  let currentCategory = "all";
-  if (path.includes("/cybersecurity/")) currentCategory = "cybersecurity";
-  else if (path.includes("/aifuture/")) currentCategory = "aifuture";
+  let currentCategory = params.get("category") || "all";
+  let searchQuery = ""; 
   
   let allPostsData = [];
   let filteredPosts = [];
 
+  // Set Active Category Button
+  document.querySelectorAll(".discover-cat-btn").forEach(btn => {
+    if (btn.dataset.cat === currentCategory) {
+      btn.classList.add("active");
+    } else {
+      btn.classList.remove("active");
+    }
+  });
+
   // =========================
-  // 1. FETCH JSON DATA (Hybrid Load)
+  // 1. FETCH JSON DATA
   // =========================
   fetch("/posts.json")
     .then(res => res.json())
     .then(data => {
-      // Filter by Language
-      const languagePosts = data.filter(post => isHindi ? post.lang === "hi" : post.lang !== "hi");
-
-      // Filter by Category
-      if (currentCategory === "all") {
-        filteredPosts = languagePosts;
-      } else {
-        filteredPosts = languagePosts.filter(post => post.categories.includes(currentCategory));
-      }
-
-      // Action based on Page Number
-      if (currentPage === 1) {
-        // Page 1 par Jekyll ka HTML pehle se hai, SEO ke liye use chhedna nahi hai!
-        // Sirf pagination render karenge
-        renderPagination();
-      } else {
-        // Page > 1 par JS se naye cards HTML mein inject karenge
-        renderPosts();
-        renderPagination();
-      }
+      allPostsData = data.filter(post => isHindi ? post.lang === "hi" : post.lang !== "hi");
+      applyFiltersAndRender();
     })
     .catch(err => console.error("Data load failed:", err));
 
   // =========================
-  // 2. SHOW POSTS (For Page > 1)
+  // 2. MASTER FILTER (Category + Search Box)
+  // =========================
+  function applyFiltersAndRender() {
+    filteredPosts = allPostsData.filter(post => {
+      const matchesCat = (currentCategory === "all") || post.categories.includes(currentCategory);
+      const searchPool = `${post.title} ${post.description} ${post.categories.join(" ")}`.toLowerCase();
+      const matchesSearch = searchPool.includes(searchQuery);
+      return matchesCat && matchesSearch;
+    });
+
+    // Determine if we should keep the default SEO HTML or render via JS
+    const isDefaultState = (currentPage === 1 && currentCategory === "all" && searchQuery === "");
+
+    if (isDefaultState) {
+      // Keep Jekyll's HTML, just build pagination
+      renderPagination();
+    } else {
+      // Render dynamic cards from JS
+      renderPosts();
+      renderPagination();
+    }
+  }
+
+  // =========================
+  // 3. LIVE SEARCH INTERCEPTOR
+  // =========================
+  if (searchInput) {
+    searchInput.addEventListener("input", (e) => {
+      searchQuery = e.target.value.toLowerCase().trim();
+      currentPage = 1; // Reset to page 1 on search
+      
+      // Update URL silently so if they refresh, search is lost but category stays
+      const newUrl = window.location.pathname + `?category=${currentCategory}`;
+      window.history.replaceState({}, "", newUrl);
+
+      applyFiltersAndRender();
+    });
+  }
+
+  // =========================
+  // 4. SHOW POSTS DYNAMICALLY
   // =========================
   function renderPosts() {
-    wrapper.innerHTML = ""; // Clear existing HTML
+    wrapper.innerHTML = ""; 
     
+    if (filteredPosts.length === 0) {
+      wrapper.innerHTML = `<p style="text-align:center; padding: 40px 0; color: var(--text-muted); width:100%;">No results found.</p>`;
+      return;
+    }
+
     const start = (currentPage - 1) * POSTS_PER_PAGE;
     const end = start + POSTS_PER_PAGE;
     const chunk = filteredPosts.slice(start, end);
@@ -83,13 +118,10 @@ document.addEventListener("DOMContentLoaded", () => {
       `;
       wrapper.insertAdjacentHTML("beforeend", cardHTML);
     });
-    
-    // Smooth scroll back to top of feed
-    window.scrollTo({ top: wrapper.offsetTop - 80, behavior: 'smooth' });
   }
 
   // =========================
-  // 3. PAGINATION (Tera exact purana logic)
+  // 5. PAGINATION RENDER
   // =========================
   function renderPagination() {
     pagination.innerHTML = "";
@@ -99,7 +131,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function createPageBtn(page) {
       const btn = document.createElement("a");
-      btn.href = `?page=${page}`;
+      // Add both Category and Page parameters to the URL
+      btn.href = `?category=${currentCategory}&page=${page}`;
       btn.innerText = page;
       btn.className = "page-btn";
       if (page === currentPage) btn.classList.add("active");
@@ -113,31 +146,26 @@ document.addEventListener("DOMContentLoaded", () => {
       pagination.appendChild(dots);
     }
 
-    // PREV
     if (currentPage > 1) {
       const prev = document.createElement("a");
-      prev.href = `?page=${currentPage - 1}`;
+      prev.href = `?category=${currentCategory}&page=${currentPage - 1}`;
       prev.className = "page-btn";
       prev.innerHTML = "←";
       pagination.appendChild(prev);
     }
 
-    // START
     createPageBtn(1);
     if (totalPages >= 2) createPageBtn(2);
 
-    // FIRST AREA
     if (currentPage <= 3) {
       if (totalPages > 5) createDots();
     }
-    // LAST AREA
     else if (currentPage >= totalPages - 2) {
       createDots();
       for (let i = totalPages - 3; i <= totalPages - 1; i++) {
         if (i > 2) createPageBtn(i);
       }
     }
-    // MIDDLE AREA
     else {
       createDots();
       createPageBtn(currentPage);
@@ -145,77 +173,39 @@ document.addEventListener("DOMContentLoaded", () => {
       createDots();
     }
 
-    // LAST PAGE
     if (totalPages > 2) createPageBtn(totalPages);
 
-    // NEXT
     if (currentPage < totalPages) {
       const next = document.createElement("a");
-      next.href = `?page=${currentPage + 1}`;
+      next.href = `?category=${currentCategory}&page=${currentPage + 1}`;
       next.className = "page-btn";
       next.innerHTML = "→";
       pagination.appendChild(next);
     }
   }
-
-  // =========================
-  // 4. CATEGORY FILTER (Redirects for clean SEO URLs)
-  // =========================
-  window.filterCategory = function (category, button) {
-    const langPrefix = isHindi ? "/hi" : "";
-    if (category === "all") {
-      window.location.href = `${langPrefix}/discover/`;
-    } else {
-      window.location.href = `${langPrefix}/${category.toLowerCase()}/`;
-    }
-  };
 });
 
-// =========================
-// TRENDING & RELATED POSTS ENGINE (Tera purana original code)
-// =========================
+// Trending / Related / Share Logic
 document.addEventListener("DOMContentLoaded", () => {
-  // Related Posts Logic
   const hiddenPosts = document.querySelectorAll("#related-posts-data .related-post-item");
   const container = document.getElementById("related-posts-container");
-
   if (hiddenPosts.length && container) {
-    const posts = [...hiddenPosts];
-    posts.sort(() => Math.random() - 0.5);
-    const selected = posts.slice(0, 5);
-
-    selected.forEach(post => {
-      container.insertAdjacentHTML("beforeend", `
-        <a href="${post.dataset.url}" class="related-post-card">
-          <img src="${post.dataset.image}" alt="${post.dataset.title}" class="related-thumb" loading="lazy">
-          <span class="related-title">${post.dataset.title}</span>
-        </a>
-      `);
+    const posts = [...hiddenPosts].sort(() => Math.random() - 0.5).slice(0, 5);
+    posts.forEach(post => {
+      container.insertAdjacentHTML("beforeend", `<a href="${post.dataset.url}" class="related-post-card"><img src="${post.dataset.image}" alt="${post.dataset.title}" class="related-thumb" loading="lazy"><span class="related-title">${post.dataset.title}</span></a>`);
     });
   }
 
-  // Trending Posts Logic
   const trendingPosts = [...document.querySelectorAll("#trending-posts-data .trending-post-item")];
   const trendingContainer = document.getElementById("trending-posts-container");
-
   if (trendingPosts.length && trendingContainer) {
-    trendingPosts.sort(() => Math.random() - 0.5);
-    trendingPosts.slice(0, 5).forEach(post => {
-      trendingContainer.insertAdjacentHTML("beforeend", `
-        <a href="${post.dataset.url}" class="related-post-card">
-          <img src="${post.dataset.image}" alt="${post.dataset.title}" class="related-thumb" loading="lazy">
-          <span class="related-title">${post.dataset.title}</span>
-        </a>
-      `);
+    trendingPosts.sort(() => Math.random() - 0.5).slice(0, 5).forEach(post => {
+      trendingContainer.insertAdjacentHTML("beforeend", `<a href="${post.dataset.url}" class="related-post-card"><img src="${post.dataset.image}" alt="${post.dataset.title}" class="related-thumb" loading="lazy"><span class="related-title">${post.dataset.title}</span></a>`);
     });
   }
 });
 
-// Native Share Fallback
 function nativeShare(title, url) {
-  if (navigator.share) {
-    navigator.share({ title: title, url: url }).catch(console.error);
-  } else {
-    navigator.clipboard.writeText(url).then(() => alert("Link copied to clipboard!"));
-  }
+  if (navigator.share) navigator.share({ title: title, url: url }).catch(console.error);
+  else navigator.clipboard.writeText(url).then(() => alert("Link copied!"));
 }
