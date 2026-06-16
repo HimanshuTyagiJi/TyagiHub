@@ -42,68 +42,103 @@ layout: default
 				{{ content }}
 
 				{% unless page.url == "/" or page.url == "/index.html" %}
-					{% if page.is_post %}
-						<div class="share-wrapper">
-							<p class="share-label">Share With Friends 🚀</p>
-							<button onclick="tyagiShare()" class="tyagi-share-btn" aria-label="Share this article">
-								<i class="fas fa-paper-plane" aria-hidden="true"></i> SHARE ARTICLE
-							</button>
-						</div>
+					<div class="share-wrapper">
+						<p class="share-label">Share With Friends 🚀</p>
+						<button onclick="tyagiShare()" class="tyagi-share-btn" aria-label="Share this article">
+							<i class="fas fa-paper-plane" aria-hidden="true"></i> SHARE ARTICLE
+						</button>
+					</div>
 
-						{% if page.lang == "hi" %}
-							{% assign all_posts = site.posts | where:"lang","hi" | sort:"date" %}
-						{% else %}
-							{% assign all_posts = site.posts | where:"lang","en" | sort:"date" %}
-						{% endif %}
-						{% assign post_count = all_posts | size %}
-						{% assign current_index = nil %}
-
-						{% for p in all_posts %}
-							{% if p.url == page.url %}{% assign current_index = forloop.index0 %}{% endif %}
-						{% endfor %}
-
-						{% if current_index != nil %}
-							{% assign prev_index = current_index | minus: 1 %}
-							{% assign next_index = current_index | plus: 1 %}
-
-							<nav class="post-nav-container" aria-label="Post navigation">
-								<div class="post-nav-link prev">
-									{% if current_index > 0 %}
-										{% assign prev_post = all_posts[prev_index] %}
-										<a href="{{ prev_post.url | relative_url }}">
-											<span class="nav-label"><i class="fas fa-arrow-left"></i> Previous Post</span>
-											<div class="nav-post-title">{{ prev_post.title }}</div>
-										</a>
-									{% else %}
-										<span class="nav-disabled">
-											<span class="nav-label">Previous Post</span>
-											<div class="nav-post-title" style="opacity:0.4;">No previous post</div>
-										</span>
-									{% endif %}
-								</div>
-
-								<div class="post-nav-link next">
-									{% if next_index < post_count %} 
-										{% assign next_post = all_posts[next_index] %} 
-										<a href="{{ next_post.url | relative_url }}">
-											<span class="nav-label">Next Post <i class="fas fa-arrow-right"></i></span>
-											<div class="nav-post-title">{{ next_post.title }}</div>
-										</a>
-									{% else %}
-										<span class="nav-disabled">
-											<span class="nav-label">Next Post</span>
-											<div class="nav-post-title" style="opacity:0.4;">No next post</div>
-										</span>
-									{% endif %}
-								</div>
-							</nav>
-						{% endif %}
-						<hr style="margin:44px 0;border:none;border-top:1px solid var(--border-color)">
+					{% if page.lang == "hi" %}
+						{% assign all_posts = site.posts | where:"lang","hi" | sort:"date" %}
+					{% else %}
+						{% assign all_posts = site.posts | where:"lang","en" | sort:"date" %}
 					{% endif %}
+					{% assign post_count = all_posts | size %}
+					{% assign current_index = nil %}
+
+					{% for p in all_posts %}
+						{% if p.url == page.url %}{% assign current_index = forloop.index0 %}{% endif %}
+					{% endfor %}
+
+					{% if current_index != nil %}
+						{% assign prev_index = current_index | minus: 1 %}
+						{% assign next_index = current_index | plus: 1 %}
+
+						<nav class="post-nav-container" aria-label="Post navigation">
+							<div class="post-nav-link prev">
+								{% if current_index > 0 %}
+									{% assign prev_post = all_posts[prev_index] %}
+									<a href="{{ prev_post.url | relative_url }}">
+										<span class="nav-label"><i class="fas fa-arrow-left"></i> Previous Post</span>
+										<div class="nav-post-title">{{ prev_post.title }}</div>
+									</a>
+								{% else %}
+									<span class="nav-disabled">
+										<span class="nav-label">Previous Post</span>
+										<div class="nav-post-title" style="opacity:0.4;">No previous post</div>
+									</span>
+								{% endif %}
+							</div>
+
+							<div class="post-nav-link next">
+								{% if next_index < post_count %} 
+									{% assign next_post = all_posts[next_index] %} 
+									<a href="{{ next_post.url | relative_url }}">
+										<span class="nav-label">Next Post <i class="fas fa-arrow-right"></i></span>
+										<div class="nav-post-title">{{ next_post.title }}</div>
+									</a>
+								{% else %}
+									<span class="nav-disabled">
+										<span class="nav-label">Next Post</span>
+										<div class="nav-post-title" style="opacity:0.4;">No next post</div>
+									</span>
+								{% endif %}
+							</div>
+						</nav>
+					{% endif %}
+					<hr style="margin:44px 0;border:none;border-top:1px solid var(--border-color)">
 				{% endunless %}
 
 			{% else %}
 				{{ content }}
+
+				<div id="posts" style="margin-top: 20px;">
+					<div id="post-wrapper">
+						{% if paginator.posts.size > 0 %}
+							{% for p in paginator.posts %}
+								<div class="horizontal-post-card js-post"
+									 data-lang="{{ p.lang | default: 'en' }}"
+									 data-title="{{ p.title | downcase }}"
+									 data-desc="{{ p.description | default: p.excerpt | strip_html | downcase }}"
+									 data-categories="{% for cat in p.categories %}{{ cat | downcase }} {% endfor %}">
+									
+									<div class="post-img">
+										<span class="post-category">{{ p.categories[0] | default: "Technology" }}</span>
+										<div class="post-date">
+											<i class="fa-regular fa-calendar"></i> {{ p.date | date: "%d %b %Y" }}
+										</div>
+										<img src="{{ p.image | default: '/assets/images/default-thumb.png' }}" alt="{{ p.title }} - TyagiHub" loading="lazy" width="260" height="188">
+									</div>
+
+									<div class="post-info">
+										<div class="post-top-meta">
+											<h2><a href="{{ p.url | relative_url }}">{{ p.title }}</a></h2>
+											<p>{{ p.description | default: p.excerpt | strip_html | truncate: 110 }}</p>
+										</div>
+										<div class="post-footer">
+											<button class="native-share-btn" onclick="nativeShare('{{ p.title | escape }}','{{ p.url | absolute_url }}')">
+												<i class="fa-solid fa-share-nodes"></i> Share
+											</button>
+											<a href="{{ p.url | relative_url }}" class="read-link">Read More →</a>
+										</div>
+									</div>
+
+								</div>
+							{% endfor %}
+						{% endif %}
+					</div>
+				</div>
 
 				{% if paginator.total_pages > 1 %}
 					<nav id="pagination-nav" class="pagination-center" aria-label="Pagination Navigation" style="display: flex; gap: 8px; justify-content: center; margin-top: 30px; align-items: center; flex-wrap: wrap;">
