@@ -1,197 +1,55 @@
 ---
-layout: discover
-title: "Discover — TyagiHub"
-description: "Technology, AI, cybersecurity, education, current affairs, digital updates, online safety, apps, tutorials & future innovation — all in one Discover feed by TyagiHub."
-permalink: /discover/
-image: /assets/images/tyagihub.png
-author: "Himanshu Tyagi"
-lang: en
-robots: "index, follow"
-keywords: "TyagiHub, AI tools, cybersecurity, education, current affairs, apps, tutorials, technology news, digital updates, online safety"
-section: discover
-extra_css:
-  - /assets/css/discover.css
-extra_js:
-  - /assets/js/discover.js
-
-# V2 ENGINE DIRECTIVES (JEKYLL KO BATANA PEDEGA KI IS PAGE PAR DATA LOAD KARNA HAI)
-pagination:
-  enabled: true
-  collection: all
-  per_page: 1
+layout: default
 ---
 
-<div style="padding-top:var(--nav-height);">
+<div class="container" style="padding-top:var(--nav-height);">
 
-  <div class="discover-hero">
-    <div class="discover-hero__bg"></div>
-    <div class="container discover-hero__content">
-      <div class="discover-badge">
-        <span class="discover-badge__dot"></span>
-        TyagiHub Discover
-      </div>
+	<div id="reading-progress-container" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" aria-label="Reading progress">
+		<div id="reading-progress-bar"></div>
+	</div>
 
-      <h1 class="discover-title">
-        Discover The Future Of
-        <span>Technology</span>
-      </h1>
+	<section style="padding:22px 0; border-bottom:1px solid var(--clr-border); background:var(--clr-bg); margin-bottom: 20px;">
+		<div class="search-container" style="margin-bottom: 22px; display: flex; justify-content: center; width: 100%;">
+			<input type="text" id="discover-search" placeholder="Type to search updates dynamically across active filters..." style="width: 100%; max-width: 500px; padding: 12px 20px; border: 2px solid var(--clr-border, #e2e8f0); border-radius: 30px; background: var(--clr-bg-surface, #ffffff); color: var(--clr-text-dark, #0f172a); font-size: 16px; outline: none;">
+		</div>
 
-      <p class="discover-desc">
-        Technology, AI, Cybersecurity, Education, Current Affairs,
-        Digital Tools, Apps, Tutorials, Online Safety &
-        Future Innovation — all in one powerful Discover feed.
-      </p>
+		<div class="discover-categories">
+			<button class="discover-cat-btn" onclick="filterCategory('all', this)">
+				All <span>({{ site.posts.size }})</span>
+			</button>
 
-      <div class="discover-icons">
-        <div class="discover-icon">
-          <svg viewBox="0 0 64 64" class="icon-ai">
-            <rect x="18" y="18" width="28" height="28" rx="6"/>
-            <line x1="12" y1="24" x2="18" y2="24"/><line x1="12" y1="40" x2="18" y2="40"/>
-            <line x1="46" y1="24" x2="52" y2="24"/><line x1="46" y1="40" x2="52" y2="40"/>
-            <line x1="24" y1="12" x2="24" y2="18"/><line x1="40" y1="12" x2="40" y2="18"/>
-            <line x1="24" y1="46" x2="24" y2="52"/><line x1="40" y1="46" x2="40" y2="52"/>
-          </svg>
-        </div>
-        <div class="discover-icon">
-          <svg viewBox="0 0 64 64" class="icon-shield">
-            <path d="M32 8L50 16V30C50 42 42 52 32 56C22 52 14 42 14 30V16L32 8Z"/>
-          </svg>
-        </div>
-        <div class="discover-icon">
-          <svg viewBox="0 0 64 64" class="icon-rocket">
-            <path d="M44 10C34 12 24 22 22 34L30 42C42 40 52 30 54 18C54 14 50 10 44 10Z"/>
-            <circle cx="40" cy="24" r="3"/>
-          </svg>
-        </div>
-        <div class="discover-icon">
-          <svg viewBox="0 0 64 64" class="icon-energy">
-            <path d="M36 8L18 36H30L24 56L46 28H34L36 8Z"/>
-          </svg>
-        </div>
-      </div>
-    </div>
-  </div>
+			{% assign categories = site.categories | sort %}
+			{% for category in categories %}
+				{% unless category[0] == "discover" %}
+					<button class="discover-cat-btn" onclick="filterCategory('{{ category[0] | downcase }}', this)">
+						{{ category[0] | capitalize }} <span>({{ category[1].size }})</span>
+					</button>
+				{% endunless %}
+			{% endfor %}
+		</div>
+	</section>
 
-  <section style="padding:22px 0; border-bottom:1px solid var(--clr-border); background:var(--clr-bg);">
-    <div class="container">
-      
-      <div class="search-container" style="margin-bottom: 22px; display: flex; justify-content: center; width: 100%;">
-        <input type="text" id="discover-search" placeholder="Type to search updates across all categories..." 
-               style="width: 100%; max-width: 500px; padding: 12px 20px; border: 2px solid var(--clr-border, #e2e8f0); border-radius: 30px; background: var(--clr-bg-surface, #ffffff); color: var(--clr-text-dark, #0f172a); font-size: 16px; outline: none; box-shadow: 0 2px 8px rgba(0,0,0,0.02);">
-      </div>
+	<main class="tc-wrapper" id="main-content">
 
-      <div class="discover-categories">
-        {% if page.lang == "hi" %}
-          {% assign all_posts = site.posts_hi %}
-        {% else %}
-          {% assign all_posts = site.posts %}
-        {% endif %}
+		<div class="tc-left">
+			{{ content }}
+			
+			<div id="posts">
+				<div id="post-wrapper"></div>
+				<nav id="pagination-nav" class="pagination-center" aria-label="Pagination Navigation" style="display: flex; gap: 8px; justify-content: center; margin-top: 30px; align-items: center; flex-wrap: wrap;"></nav>
+			</div>
+		</div>
 
-        <button class="discover-cat-btn active" onclick="filterCategory('all', this)">
-          All <span>({{ all_posts.size }})</span>
-        </button>
+		{% include right-sidebar.html %}
 
-        {% assign categories = site.categories | sort %}
-        {% for category in categories %}
-          {% unless category[0] == "discover" %}
-            <button class="discover-cat-btn" onclick="filterCategory('{{ category[0] | downcase }}', this)">
-              {{ category[0] }} <span>({{ category[1].size }})</span>
-            </button>
-          {% endunless %}
-        {% endfor %}
-      </div>
-
-    </div>
-  </section>
-
-  <section class="section">
-    <div id="posts">
-      
-      <div id="post-wrapper">
-        {% for p in paginator.posts %}
-          <div class="horizontal-post-card js-post"
-               data-lang="{{ p.lang | default: 'en' }}"
-               data-title="{{ p.title | downcase }}"
-               data-desc="{{ p.description | default: p.excerpt | strip_html | downcase }}"
-               data-categories="{% for cat in p.categories %}{{ cat | downcase }} {% endfor %}">
-            
-            <div class="post-img">
-              <span class="post-category">{{ p.categories[0] | default: "Technology" }}</span>
-              <div class="post-date">
-                <i class="fa-regular fa-calendar"></i> {{ p.date | date: "%d %b %Y" }}
-              </div>
-              <img src="{{ p.image | default: '/assets/images/default-thumb.png' }}" alt="{{ p.title }} - TyagiHub" loading="lazy" width="260" height="188">
-            </div>
-
-            <div class="post-info">
-              <div class="post-top-meta">
-                <h2><a href="{{ p.url | relative_url }}">{{ p.title }}</a></h2>
-                <p>{{ p.description | default:p.excerpt | strip_html | truncate:110 }}</p>
-              </div>
-              <div class="post-footer">
-                <button class="native-share-btn" onclick="nativeShare('{{ p.title | escape }}','{{ p.url | absolute_url }}')">
-                  <i class="fa-solid fa-share-nodes"></i> Share
-                </button>
-                <a href="{{ p.url | relative_url }}" class="read-link">Read More →</a>
-              </div>
-            </div>
-
-          </div>
-        {% endfor %}
-      </div>
-
-      {% if paginator.total_pages > 1 %}
-        <nav id="pagination-nav" class="pagination-center" aria-label="Pagination Navigation" style="display: flex; gap: 8px; justify-content: center; margin-top: 30px; align-items: center; flex-wrap: wrap;">
-          
-          {% if paginator.page > 1 %}
-            <a href="{{ '/discover/' | relative_url }}" class="page-btn page-control-btn">First</a>
-            <a href="{{ paginator.previous_page_path | relative_url }}" class="page-btn">←</a>
-          {% endif %}
-
-          {% assign current_page = paginator.page %}
-          {% assign total_pages = paginator.total_pages %}
-          {% assign window_size = 2 %} 
-          {% assign min_page = current_page | minus: window_size %}
-          {% assign max_page = current_page | plus: window_size %}
-
-          {% if min_page < 1 %}{% assign min_page = 1 %}{% endif %}
-          {% if max_page > total_pages %}{% assign max_page = total_pages %}{% endif %}
-
-          {% if min_page > 1 %}
-            <span class="page-dots" style="padding:0 4px; font-weight:bold; color: var(--clr-text-light);">...</span>
-          {% endif %}
-
-          {% for p_num in (min_page..max_page) %}
-            {% if p_num == current_page %}
-              <span class="page-btn active" style="padding: 8px 14px; background: var(--clr-primary, #f5a623); color: #fff; border-radius: 6px; font-weight: bold;">{{ p_num }}</span>
-            {% elsif p_num == 1 %}
-              <a href="{{ '/discover/' | relative_url }}" class="page-btn" style="padding: 8px 14px; border: 1px solid var(--clr-border); border-radius: 6px;">{{ p_num }}</a>
-            {% else %}
-              <a href="{{ '/discover/page-' | append: p_num | append: '/' | relative_url }}" class="page-btn" style="padding: 8px 14px; border: 1px solid var(--clr-border); border-radius: 6px;">{{ p_num }}</a>
-            {% endif %}
-          {% endfor %}
-
-          {% if max_page < total_pages %}
-            <span class="page-dots" style="padding:0 4px; font-weight:bold; color: var(--clr-text-light);">...</span>
-          {% endif %}
-
-          {% if paginator.page < total_pages %}
-            <a href="{{ paginator.next_page_path | relative_url }}" class="page-btn">→</a>
-            <a href="{{ '/discover/page-' | append: total_pages | append: '/' | relative_url }}" class="page-btn page-control-btn">Last</a>
-          {% endif %}
-          
-        </nav>
-      {% endif %}
-
-    </div>
-  </section>
+	</main>
 
 </div>
 
-{% if page.lang == "hi" %}{% assign fallback_stream = site.posts_hi %}{% else %}{% assign fallback_stream = site.posts %}{% endif %}
+{% if page.lang == "hi" %}{% assign stream = site.posts_hi %}{% else %}{% assign stream = site.posts %}{% endif %}
 <div id="trending-posts-data" style="display:none;">
-  {% for item in fallback_stream limit:20 %}<div class="trending-post-item" data-title="{{ item.title | escape }}" data-url="{{ item.url | relative_url }}" data-image="{{ item.image | default: '/assets/images/default-thumb.png' }}"></div>{% endfor %}
+  {% for item in stream limit:20 %}<div class="trending-post-item" data-title="{{ item.title | escape }}" data-url="{{ item.url | relative_url }}" data-image="{{ item.image | default: '/assets/images/default-thumb.png' }}"></div>{% endfor %}
 </div>
 <div id="related-posts-data" style="display:none;">
-  {% for item in fallback_stream limit:20 %}<div class="related-post-item" data-title="{{ item.title | escape }}" data-url="{{ item.url | relative_url }}" data-image="{{ item.image | default: '/assets/images/default-thumb.png' }}"></div>{% endfor %}
+  {% for item in stream limit:20 %}<div class="related-post-item" data-title="{{ item.title | escape }}" data-url="{{ item.url | relative_url }}" data-image="{{ item.image | default: '/assets/images/default-thumb.png' }}"></div>{% endfor %}
 </div>
