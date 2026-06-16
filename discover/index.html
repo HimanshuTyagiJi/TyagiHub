@@ -13,11 +13,6 @@ extra_css:
   - /assets/css/discover.css
 extra_js:
   - /assets/js/discover.js
-pagination:
-  enabled: true
-  collection: posts
-  per_page: 1           # Bhai tumne bola config me 2 kiya, to yahan bhi 2 rakh diya hai
-  permalink: "/page-:num/" # Slash(/) hata kar dash(-) lagaya taaki /discover/page-2/ slug bane
 ---
 
 <div style="padding-top:var(--nav-height);">
@@ -68,21 +63,29 @@ pagination:
 
   <section style="padding:22px 0;border-bottom:1px solid var(--clr-border);background:var(--clr-bg);">
     <div class="container">
+      
+      <div class="search-wrapper" style="margin-bottom: 25px; display: flex; justify-content: center; width: 100%;">
+        <div style="position: relative; width: 100%; max-width: 550px;">
+          <input type="text" id="discover-search" placeholder="Search posts by title, excerpt or category tags..." 
+                 style="width: 100%; padding: 14px 24px; border: 2px solid var(--clr-border, #e2e8f0); border-radius: 50px; background: var(--clr-bg-surface, #ffffff); color: var(--clr-text-dark, #0f172a); font-size: 16px; outline: none; transition: all 0.3s ease; box-shadow: 0 4px 10px rgba(0,0,0,0.02);">
+        </div>
+      </div>
+
       <div class="discover-categories">
         {% if page.lang == "hi" %}
-          {% assign all_posts = site.posts_hi %}
+          {% assign all_posts = site.posts_hi | sort: "date" | reverse %}
         {% else %}
-          {% assign all_posts = site.posts %}
+          {% assign all_posts = site.posts | sort: "date" | reverse %}
         {% endif %}
 
-        <a href="{{ '/discover/' | relative_url }}" class="discover-cat-btn {% if paginator.page == 1 %}active{% endif %}">
+        <button class="discover-cat-btn active" onclick="filterCategory('all',this)">
           All <span>({{ all_posts.size }})</span>
-        </a>
+        </button>
 
         {% assign categories = site.categories | sort %}
         {% for category in categories %}
           {% unless category[0] == "discover" %}
-            <button class="discover-cat-btn" data-cat-slug="{{ category[0] | downcase }}">
+            <button class="discover-cat-btn" onclick="filterCategory('{{ category[0] | downcase }}',this)">
               {{ category[0] }} <span>({{ category[1].size }})</span>
             </button>
           {% endunless %}
@@ -93,82 +96,11 @@ pagination:
 
   <section class="section">
     <div id="posts">
-      <div id="post-wrapper">
-        {% for p in paginator.posts %}
-          <div class="horizontal-post-card js-post" data-categories="{% for cat in p.categories %}{{ cat | downcase }} {% endfor %}">
-            <div class="post-img">
-              <span class="post-category">{{ p.categories[0] | default: "Technology" }}</span>
-              <div class="post-date">
-                <i class="fa-regular fa-calendar"></i>
-                {{ p.date | date: "%d %b %Y" }}
-              </div>
-              <img src="{{ p.image | default: '/assets/images/default-thumb.png' }}" alt="{{ p.title }} - TyagiHub" loading="lazy" width="260" height="188">
-            </div>
+      
+      <div id="post-wrapper"></div>
 
-            <div class="post-info">
-              <div class="post-top-meta">
-                <h2><a href="{{ p.url | relative_url }}">{{ p.title }}</a></h2>
-                <p>{{ p.description | default:p.excerpt | strip_html | truncate:110 }}</p>
-              </div>
-              <div class="post-footer">
-                <button class="native-share-btn" onclick="nativeShare('{{ p.title | escape }}','{{ p.url | absolute_url }}')">
-                  <i class="fa-solid fa-share-nodes"></i> Share
-                </button>
-                <a href="{{ p.url | relative_url }}" class="read-link">Read More →</a>
-              </div>
-            </div>
-          </div>
-        {% endfor %}
-      </div>
-
-   {% if paginator.total_pages > 1 %}
-        <nav id="pagination-nav" class="pagination-center" aria-label="Pagination Navigation" style="display: flex; gap: 6px; justify-content: center; margin-top: 30px; align-items: center; flex-wrap: wrap;">
-          
-          {% if paginator.page > 1 %}
-            <a href="{{ '/discover/' | relative_url }}" class="page-btn page-control-btn" title="Go to First Page">First</a>
-            <a href="{{ paginator.previous_page_path | relative_url }}" class="page-btn">←</a>
-          {% endif %}
-
-          {% assign current_page = paginator.page %}
-          {% assign total_pages = paginator.total_pages %}
-          
-          {% assign window_size = 2 %} 
-          {% assign min_page = current_page | minus: window_size %}
-          {% assign max_page = current_page | plus: window_size %}
-
-          {% if min_page < 1 %}
-            {% assign min_page = 1 %}
-          {% endif %}
-          {% if max_page > total_pages %}
-            {% assign max_page = total_pages %}
-          {% endif %}
-
-          {% if min_page > 1 %}
-            <span class="page-dots" style="padding: 0 4px; color: var(--clr-text-light, #475569); font-weight: bold;">...</span>
-          {% endif %}
-
-          {% for page in (min_page..max_page) %}
-            {% if page == current_page %}
-              <span class="page-btn active">{{ page }}</span>
-            {% elsif page == 1 %}
-              <a href="{{ '/discover/' | relative_url }}" class="page-btn">{{ page }}</a>
-            {% else %}
-              <a href="{{ '/discover/page-' | append: page | append: '/' | relative_url }}" class="page-btn">{{ page }}</a>
-            {% endif %}
-          {% endfor %}
-
-          {% if max_page < total_pages %}
-            <span class="page-dots" style="padding: 0 4px; color: var(--clr-text-light, #475569); font-weight: bold;">...</span>
-          {% endif %}
-
-          {% if paginator.page < total_pages %}
-            <a href="{{ paginator.next_page_path | relative_url }}" class="page-btn">→</a>
-            {% assign last_page_url = '/discover/page-' | append: total_pages | append: '/' %}
-            <a href="{{ last_page_url | relative_url }}" class="page-btn page-control-btn" title="Go to Last Page">Last</a>
-          {% endif %}
-          
-        </nav>
-      {% endif %}
+      <nav id="pagination-nav" class="pagination-center" aria-label="Pagination Navigation" style="display: flex; gap: 6px; justify-content: center; margin-top: 30px; align-items: center; flex-wrap: wrap;"></nav>
+      
     </div>
   </section>
 
@@ -185,3 +117,20 @@ pagination:
     <div class="related-post-item" data-title="{{ item.title | escape }}" data-url="{{ item.url | relative_url }}" data-image="{{ item.image | default: '/assets/images/default-thumb.png' }}"></div>
   {% endfor %}
 </div>
+
+<script id="raw-posts-json" type="application/json">
+[
+  {% for p in all_posts %}
+    {
+      "title": {{ p.title | jsonify }},
+      "url": {{ p.url | relative_url }},
+      "absolute_url": {{ p.url | absolute_url }},
+      "image": {{ p.image | default: '/assets/images/default-thumb.png' | jsonify }},
+      "category": {{ p.categories[0] | default: "Technology" | jsonify }},
+      "categories": [{% for cat in p.categories %}{{ cat | downcase | jsonify }}{% unless forloop.last %},{% endunless %}{% endfor %}],
+      "date": {{ p.date | date: "%d %b %Y" | jsonify }},
+      "description": {{ p.description | default: p.excerpt | strip_html | truncate: 110 | jsonify }}
+    }{% unless forloop.last %},{% endunless %}
+  {% endfor %}
+]
+</script>
