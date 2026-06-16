@@ -113,22 +113,11 @@ plugins:
   - jekyll-feed
   - jekyll-sitemap
   - jekyll-seo-tag
-  - jekyll-paginate-v2
+  - jekyll-paginate
 
-pagination:
-  enabled: true
-  per_page: 1            # Jitna number tu set karega, har page par utni hi posts dikhengi
-  permalink: "/page-:num/"
-  title: ":title - Page :num"
-  
-  # Autopages Logic: Ye automatic bina page banaye category directories generate karega
-  autopages:
-    enabled: true
-    categories:
-      enabled: true
-      layouts: 
-        - "discover"       # Ye teri custom discover layout ko use karega
-      permalink: "/:name/" # Dekh bhai, yahan se hamne /category/ hata kar seedha /:name/ kar diya hai!
+paginate: 1              # Bhai tumne testing ke liye 1 bola, toh yahan 1 rakh lo (production par 6 ya 10 kar lena)
+paginate_path: "/discover/page-:num/"
+
 
 # SEO
 twitter:
