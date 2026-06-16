@@ -16,8 +16,8 @@ extra_js:
 pagination:
   enabled: true
   collection: posts
-  per_page: 10 # Bhai yahan testing ke liye tum 1 rakh sakte ho, production par 10 ya 15 kar lena
-  permalink: /page/:num/
+  per_page: 2           # Bhai tumne bola config me 2 kiya, to yahan bhi 2 rakh diya hai
+  permalink: "/page-:num/" # Slash(/) hata kar dash(-) lagaya taaki /discover/page-2/ slug bane
 ---
 
 <div style="padding-top:var(--nav-height);">
@@ -133,7 +133,7 @@ pagination:
             {% elsif page == 1 %}
               <a href="{{ '/discover/' | relative_url }}" class="page-btn">{{ page }}</a>
             {% else %}
-              <a href="{{ site.pagination.permalink | relative_url | replace: ':num', page }}" class="page-btn">{{ page }}</a>
+              <a href="{{ '/discover/page-' | append: page | append: '/' | relative_url }}" class="page-btn">{{ page }}</a>
             {% endif %}
           {% endfor %}
 
