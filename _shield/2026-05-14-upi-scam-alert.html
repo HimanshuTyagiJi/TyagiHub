@@ -1,16 +1,411 @@
----
 
-title: "UPI Scam Alert: How Fraudsters Steal Money"
-description: "Learn how fake payment requests, QR codes and UPI fraud tricks are used to steal money from users."
-category: "Scam Alerts"
-image: "/assets/images/shield/upi-scam.jpg"
-date: 2026-06-14
-lang: en
+---
 layout: shield
+title: "How Phishing Websites Steal Your Data and How to Stay Safe"
+description: "Understand how fake phishing websites are created, how they harvest your passwords and credit card details, and the best ways to identify and avoid them."
+image: "/assets/images/phishing-websites-guide-banner.png"
+is_post: true
+categories: ["cybersecurity"]
+date: 2026-06-01   # <--- DATE EKDOM SAFE PAST KI KAR DE!
+author: "Himanshu Tyagi"
+lang: en
+tags:
+  - phishing
+  - fake websites
+  - cyber fraud
+section: discover
+extra_css:
+  - /assets/css/discover.css
+extra_js:
+  - /assets/js/shield.js
 ---
 
-UPI scams are increasing rapidly across India. Fraudsters often send fake payment requests or ask users to scan QR codes.
+<style>
+:root{--clr-bg:#0a0c10;--clr-bg-2:#0f1219;--clr-bg-3:#161b27;--clr-surface:#1a2030;--clr-surface-2:#212840;--clr-border:#2a3348;--clr-border-2:#3a4560;--clr-accent:#f5a623;--clr-accent-2:#ff7c3a;--clr-accent-glow:rgba(245,166,35,0.18);--clr-learn:#3ecfcf;--clr-editor:#a78bfa;--clr-tools:#f5a623;--clr-stock:#34d399;--clr-apps:#60a5fa;--clr-shield:#f87171;--clr-blog:#fb923c;--clr-text:#e8eaf0;--clr-text-2:#a0a8bc;--clr-text-3:#606880;--clr-heading:#f0f2f8}
+[data-theme="light"]{--clr-bg:#ffffff;--clr-bg-2:#edf0f7;--clr-bg-3:#e4e8f3;--clr-surface:#ffffff;--clr-surface-2:#f0f3fb;--clr-border:#d8deed;--clr-border-2:#bdc6e0;--clr-text:#1a2030;--clr-text-2:#3d4d6a;--clr-text-3:#6b7a9a;--clr-heading:#0d1421;--clr-accent:#0000FF;--clr-accent-2:#e8682a;--clr-accent-glow:rgba(224,152,32,0.15)}
+*{margin:0;padding:0;box-sizing:border-box}
+.post-wrap{font-family:'Segoe UI',system-ui,sans-serif;color:var(--clr-text);background:var(--clr-bg);line-height:1.75;max-width:900px;margin:0 auto;padding:2rem 1.2rem 4rem}
+.post-hero{position:relative;border-radius:16px;overflow:hidden;background:var(--clr-surface);border:1px solid var(--clr-border);padding:3rem 2rem 2rem;margin-bottom:3rem;text-align:center}
+.post-hero svg.hero-bg{position:absolute;inset:0;width:100%;height:100%;opacity:.18;pointer-events:none}
+.post-hero .tag-chip{display:inline-block;background:var(--clr-shield);color:#fff;font-size:.72rem;font-weight:700;letter-spacing:.08em;padding:.25rem .75rem;border-radius:999px;text-transform:uppercase;margin-bottom:1rem}
+.post-hero h1{font-size:clamp(1.6rem,4vw,2.6rem);font-weight:800;color:var(--clr-heading);line-height:1.2;margin-bottom:1rem;position:relative}
+.post-hero .hero-meta{font-size:.82rem;color:var(--clr-text-3);display:flex;gap:1.5rem;justify-content:center;flex-wrap:wrap}
+.toc-box{background:var(--clr-surface);border:1px solid var(--clr-border);border-left:4px solid var(--clr-accent);border-radius:10px;padding:1.5rem;margin-bottom:2.5rem}
+.toc-box h3{font-size:.95rem;font-weight:700;color:var(--clr-accent);text-transform:uppercase;letter-spacing:.06em;margin-bottom:1rem}
+.toc-box ol{padding-left:1.4rem;color:var(--clr-text-2)}
+.toc-box ol li{margin-bottom:.4rem}
+.toc-box ol li a{color:var(--clr-text-2);text-decoration:none;font-size:.9rem;transition:color .2s}
+.toc-box ol li a:hover{color:var(--clr-accent)}
+.post-section{margin-bottom:3rem}
+.post-section h2{font-size:1.45rem;font-weight:800;color:var(--clr-heading);border-left:4px solid var(--clr-accent);padding-left:.9rem;margin-bottom:1.2rem;scroll-margin-top:80px}
+.post-section h3{font-size:1.1rem;font-weight:700;color:var(--clr-accent-2);margin:1.5rem 0 .6rem}
+.post-section p{color:var(--clr-text-2);margin-bottom:1rem;font-size:.97rem}
+.post-section ul,.post-section ol{padding-left:1.5rem;color:var(--clr-text-2);margin-bottom:1rem}
+.post-section ul li,.post-section ol li{margin-bottom:.45rem;font-size:.95rem}
+.highlight-box{background:var(--clr-surface-2);border:1px solid var(--clr-border-2);border-left:4px solid var(--clr-shield);border-radius:8px;padding:1.2rem 1.4rem;margin:1.5rem 0}
+.highlight-box.warn{border-left-color:#f87171}
+.highlight-box.tip{border-left-color:#34d399}
+.highlight-box.info{border-left-color:#60a5fa}
+.highlight-box .hb-label{font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--clr-shield);margin-bottom:.5rem}
+.highlight-box.tip .hb-label{color:#34d399}
+.highlight-box.info .hb-label{color:#60a5fa}
+.styled-table{width:100%;border-collapse:collapse;margin:1.5rem 0;font-size:.9rem;border-radius:10px;overflow:hidden;border:1px solid var(--clr-border)}
+.styled-table thead{background:var(--clr-surface-2)}
+.styled-table thead th{padding:.85rem 1rem;text-align:left;color:var(--clr-accent);font-weight:700;font-size:.82rem;text-transform:uppercase;letter-spacing:.05em}
+.styled-table tbody tr{border-top:1px solid var(--clr-border);transition:background .2s}
+.styled-table tbody tr:hover{background:var(--clr-surface-2)}
+.styled-table tbody td{padding:.8rem 1rem;color:var(--clr-text-2)}
+.styled-table tbody td:first-child{color:var(--clr-text);font-weight:600}
+.step-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1.2rem;margin:1.5rem 0}
+.step-card{background:var(--clr-surface);border:1px solid var(--clr-border);border-radius:12px;padding:1.3rem;position:relative;overflow:hidden;transition:transform .2s,box-shadow .2s}
+.step-card:hover{transform:translateY(-3px);box-shadow:0 8px 24px rgba(0,0,0,.35)}
+.step-card .step-num{font-size:2.5rem;font-weight:900;color:var(--clr-accent);opacity:.15;position:absolute;top:.3rem;right:.7rem;line-height:1}
+.step-card h4{font-size:.95rem;font-weight:700;color:var(--clr-heading);margin-bottom:.5rem}
+.step-card p{font-size:.85rem;color:var(--clr-text-2);line-height:1.6}
+.checklist{list-style:none;padding:0;margin:1rem 0}
+.checklist li{display:flex;align-items:flex-start;gap:.75rem;padding:.6rem 0;border-bottom:1px solid var(--clr-border);font-size:.93rem;color:var(--clr-text-2)}
+.checklist li:last-child{border-bottom:none}
+.checklist li::before{content:"✓";color:#34d399;font-weight:900;font-size:1rem;flex-shrink:0;margin-top:.1rem}
+.svg-diagram{background:var(--clr-surface);border:1px solid var(--clr-border);border-radius:12px;padding:1.5rem;margin:1.5rem 0;overflow-x:auto;text-align:center}
+.stat-strip{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:1rem;margin:1.5rem 0}
+.stat-card{background:var(--clr-surface);border:1px solid var(--clr-border);border-radius:10px;padding:1.2rem;text-align:center}
+.stat-card .stat-val{font-size:1.8rem;font-weight:900;color:var(--clr-accent);display:block}
+.stat-card .stat-label{font-size:.78rem;color:var(--clr-text-3);margin-top:.3rem}
+@keyframes fadeUp{0%{opacity:0;transform:translateY(12px)}100%{opacity:1;transform:translateY(0)}}
+.post-section{animation:fadeUp .5s ease both}
+.url-compare{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:1.5rem 0}
+.url-box{background:var(--clr-surface);border:1px solid var(--clr-border);border-radius:10px;padding:1.2rem}
+.url-box .url-label{font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;margin-bottom:.6rem}
+.url-box.real .url-label{color:#34d399}
+.url-box.fake .url-label{color:#f87171}
+.url-box .url-text{font-family:monospace;font-size:.88rem;padding:.5rem;background:var(--clr-bg-3);border-radius:6px;word-break:break-all}
+.url-box.real .url-text{color:#34d399;border:1px solid #34d39940}
+.url-box.fake .url-text{color:#f87171;border:1px solid #f8717140}
+.url-box .url-note{font-size:.78rem;color:var(--clr-text-3);margin-top:.5rem}
+.post-tags{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:2.5rem}
+.post-tags .ptag{background:var(--clr-surface-2);border:1px solid var(--clr-border);border-radius:999px;padding:.3rem .85rem;font-size:.78rem;color:var(--clr-text-2)}
+@media(max-width:600px){.post-hero{padding:2rem 1rem 1.5rem}.step-grid{grid-template-columns:1fr}.stat-strip{grid-template-columns:repeat(2,1fr)}.url-compare{grid-template-columns:1fr}}
+</style>
 
-Never enter your UPI PIN to receive money. A UPI PIN is only required when sending money.
+<div class="post-wrap">
 
-Always verify requests before making any transaction.
+<div class="post-hero">
+  <svg class="hero-bg" viewBox="0 0 900 300" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <radialGradient id="rg2" cx="50%" cy="50%" r="60%">
+        <stop offset="0%" stop-color="#f87171" stop-opacity=".4"/>
+        <stop offset="100%" stop-color="transparent"/>
+      </radialGradient>
+    </defs>
+    <rect width="900" height="300" fill="url(#rg2)"/>
+    <!-- fishing hook animation -->
+    <path d="M450,20 Q450,80 420,100 Q380,130 390,170 Q400,200 430,200" fill="none" stroke="#f87171" stroke-width="2" opacity=".5">
+      <animate attributeName="stroke-dasharray" from="0,400" to="400,0" dur="3s" repeatCount="indefinite"/>
+    </path>
+    <circle cx="430" cy="200" r="8" fill="none" stroke="#f87171" stroke-width="2" opacity=".6"/>
+    <!-- browser window sketch -->
+    <rect x="600" y="60" width="220" height="160" rx="8" fill="#1a2030" stroke="#f5a623" stroke-width="1.5" opacity=".6"/>
+    <rect x="600" y="60" width="220" height="25" rx="8" fill="#f5a623" opacity=".2"/>
+    <circle cx="615" cy="72" r="5" fill="#f87171" opacity=".6"/>
+    <circle cx="630" cy="72" r="5" fill="#f5a623" opacity=".6"/>
+    <circle cx="645" cy="72" r="5" fill="#34d399" opacity=".6"/>
+    <rect x="615" y="95" width="150" height="10" rx="3" fill="#f5a623" opacity=".2"/>
+    <rect x="615" y="112" width="190" height="8" rx="3" fill="#606880" opacity=".3"/>
+    <rect x="615" y="126" width="170" height="8" rx="3" fill="#606880" opacity=".25"/>
+    <rect x="615" y="155" width="190" height="28" rx="4" fill="#f87171" opacity=".15"/>
+    <text x="710" y="174" text-anchor="middle" fill="#f87171" font-size="11" opacity=".7">LOGIN — FAKE</text>
+  </svg>
+  <span class="tag-chip">🛡️ CyberSecurity</span>
+  <h1>How Phishing Websites Steal<br>Your Data</h1>
+  <div class="hero-meta">
+    <span>✍️ Himanshu Tyagi</span>
+    <span>📅 June 16, 2026</span>
+    <span>⏱️ 13 min read</span>
+    <span>🎣 Credential Theft</span>
+  </div>
+</div>
+
+<div class="toc-box">
+  <h3>📋 Table of Contents</h3>
+  <ol>
+    <li><a href="#what-is-phishing">What is Phishing and How It Works</a></li>
+    <li><a href="#types">Types of Phishing Attacks</a></li>
+    <li><a href="#how-fake-sites-work">How Fake Websites Are Built</a></li>
+    <li><a href="#how-to-identify">How to Identify a Phishing Website</a></li>
+    <li><a href="#url-tricks">URL Tricks Attackers Use</a></li>
+    <li><a href="#real-examples">Real-World Phishing Examples in India</a></li>
+    <li><a href="#what-happens-after">What Happens After You Enter Your Details</a></li>
+    <li><a href="#browser-defenses">Browser and Tool-Based Defenses</a></li>
+    <li><a href="#protect">How to Protect Yourself</a></li>
+    <li><a href="#report">How to Report a Phishing Site</a></li>
+  </ol>
+</div>
+
+<div class="post-section" id="what-is-phishing">
+  <h2>1. What is Phishing and How It Works</h2>
+  <p>Phishing is one of the oldest and most effective forms of cybercrime. The term comes from "fishing" — attackers cast a wide net (usually emails or messages) hoping victims will take the bait. A phishing website is a fraudulent website designed to look identical to a legitimate website — your bank, your email provider, a government portal, or a popular shopping site — with the sole purpose of tricking you into entering sensitive information.</p>
+  <p>Once you type your username and password on a phishing site and hit login, that information is instantly sent to the attacker's server. You might be redirected to the real website after, making you think it was just a "glitch." But by then, the attacker has your credentials and the clock has started on what they can steal or access.</p>
+  <p>Phishing is the entry point for a vast majority of cyberattacks. It is the number one technique used in ransomware deployments, business email compromise, and financial fraud. According to multiple cybersecurity reports, over 90% of data breaches begin with a phishing email.</p>
+
+  <div class="stat-strip">
+    <div class="stat-card"><span class="stat-val">3.4B</span><div class="stat-label">Phishing emails sent globally every day</div></div>
+    <div class="stat-card"><span class="stat-val">90%+</span><div class="stat-label">Cyberattacks that start with phishing</div></div>
+    <div class="stat-card"><span class="stat-val">₹1,750 Cr</span><div class="stat-label">Estimated annual phishing losses in India</div></div>
+    <div class="stat-card"><span class="stat-val">20 min</span><div class="stat-label">Time to build a convincing phishing page</div></div>
+  </div>
+
+  <div class="highlight-box warn">
+    <div class="hb-label">⚠️ Scary Fact</div>
+    <p>Modern AI tools can generate highly convincing phishing emails with perfect grammar, personalized content, and even authentic-looking logos in seconds. The era of poorly spelled phishing emails is over. Today's attacks are nearly indistinguishable from legitimate communications.</p>
+  </div>
+</div>
+
+<div class="post-section" id="types">
+  <h2>2. Types of Phishing Attacks</h2>
+  <table class="styled-table">
+    <thead>
+      <tr><th>Attack Type</th><th>Method</th><th>Target</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Email Phishing</td><td>Mass emails with fake login links</td><td>Everyone — broad attack</td></tr>
+      <tr><td>Spear Phishing</td><td>Targeted emails using victim's personal info</td><td>Specific individuals / executives</td></tr>
+      <tr><td>Smishing</td><td>Phishing via SMS ("Your parcel is held, click here")</td><td>Mobile users</td></tr>
+      <tr><td>Vishing</td><td>Voice call impersonating bank/telecom</td><td>Elderly, less tech-savvy users</td></tr>
+      <tr><td>Clone Phishing</td><td>Duplicate of real email with replaced link</td><td>Corporate employees</td></tr>
+      <tr><td>Whaling</td><td>Executive-targeted spear phishing</td><td>CEOs, CFOs, senior management</td></tr>
+      <tr><td>Search Engine Phishing</td><td>Fake sites ranked on Google for "HDFC Bank login"</td><td>Banking customers</td></tr>
+      <tr><td>QR Code Phishing (Quishing)</td><td>Malicious QR codes redirecting to phishing sites</td><td>Mobile users scanning QR in public</td></tr>
+    </tbody>
+  </table>
+
+  <h3>The Rise of Smishing in India</h3>
+  <p>India has seen explosive growth in SMS-based phishing (smishing) targeting banking customers. Common scenarios include fake IRDAI insurance messages, fake parcel delivery notifications from India Post or Delhivery, KYC expiry threats from "your bank," and Aadhaar deactivation warnings. These messages contain shortened URLs that lead to convincing fake banking or government portals.</p>
+</div>
+
+<div class="post-section" id="how-fake-sites-work">
+  <h2>3. How Fake Websites Are Built</h2>
+  <p>You might imagine that building a convincing fake website requires advanced programming skills. The reality is far more disturbing — modern phishing toolkits have lowered the barrier to near zero.</p>
+
+  <h3>Phishing Kits and Toolkits</h3>
+  <p>Phishing kits are pre-packaged archives containing a complete copy of a target website's HTML, CSS, and JavaScript, along with a PHP backend that captures submitted credentials. A criminal can download a kit for "HDFC Bank" or "SBI Internet Banking" from dark web forums for as little as $5-$20, upload it to a compromised web hosting account, and have a working phishing site operational in under 30 minutes.</p>
+
+  <h3>HTTrack and Website Cloning</h3>
+  <p>Tools like HTTrack allow anyone to create a complete offline copy of any website with a single command. Attackers clone the real bank or service website, add a few lines of PHP to capture submitted forms, and host it on a domain that looks similar to the original.</p>
+
+  <h3>Adversary-in-the-Middle (AiTM) Phishing</h3>
+  <p>More sophisticated attacks use AiTM proxies. Instead of hosting a static clone, the attacker sets up a real-time proxy that sits between you and the legitimate website. You actually see and interact with real content from the real site — but the attacker captures your session cookies and credentials in real time, allowing them to bypass even multi-factor authentication.</p>
+
+  <div class="step-grid">
+    <div class="step-card"><div class="step-num">1</div><h4>🎣 Clone Target Site</h4><p>Attacker creates pixel-perfect copy of real website using automated tools or manual HTML copying.</p></div>
+    <div class="step-card"><div class="step-num">2</div><h4>🌐 Register Lookalike Domain</h4><p>Registers a domain like "hdfcbaank.com" or "sbi-netbanking.in" — looks genuine at a glance.</p></div>
+    <div class="step-card"><div class="step-num">3</div><h4>🔒 Add Free SSL Certificate</h4><p>Gets a free HTTPS certificate via Let's Encrypt, so the site shows the "padlock" icon — which many users mistakenly trust.</p></div>
+    <div class="step-card"><div class="step-num">4</div><h4>📧 Send Phishing Messages</h4><p>Sends bulk SMS or emails with fake urgent messages driving victims to the phishing page.</p></div>
+    <div class="step-card"><div class="step-num">5</div><h4>📥 Harvest Credentials</h4><p>Captures every username, password, OTP, and card detail entered, storing them in a database or emailing to attacker.</p></div>
+    <div class="step-card"><div class="step-num">6</div><h4>🔄 Redirect Victim</h4><p>After capturing data, redirects victim to real site with "incorrect password" error — victim suspects nothing.</p></div>
+  </div>
+
+  <div class="highlight-box info">
+    <div class="hb-label">ℹ️ The HTTPS Myth</div>
+    <p>A padlock icon (HTTPS) does NOT mean a website is safe. It only means the connection between your browser and that website is encrypted. A phishing site can — and routinely does — have HTTPS. Always verify the domain name, not just the padlock.</p>
+  </div>
+</div>
+
+<div class="post-section" id="how-to-identify">
+  <h2>4. How to Identify a Phishing Website</h2>
+  <p>While phishing sites are increasingly convincing, there are still reliable signals that reveal their nature if you know what to look for:</p>
+
+  <h3>Check the Domain Name Very Carefully</h3>
+  <p>This is the single most important check. The domain name is the only thing an attacker cannot fake. Look at the address bar carefully before entering any information. Focus on the text immediately before the first single slash (/) — that is the actual domain.</p>
+
+  <div class="url-compare">
+    <div class="url-box real">
+      <div class="url-label">✅ Real Website</div>
+      <div class="url-text">https://www.hdfcbank.com/personal/login</div>
+      <div class="url-note">Domain: hdfcbank.com — legitimate</div>
+    </div>
+    <div class="url-box fake">
+      <div class="url-label">❌ Phishing Website</div>
+      <div class="url-text">https://hdfcbank.netbanking-verify.com/login</div>
+      <div class="url-note">Domain: netbanking-verify.com — FAKE! hdfcbank here is just a subdomain.</div>
+    </div>
+  </div>
+
+  <div class="url-compare">
+    <div class="url-box real">
+      <div class="url-label">✅ Real Website</div>
+      <div class="url-text">https://onlinesbi.sbi/</div>
+      <div class="url-note">Domain: sbi — official government TLD</div>
+    </div>
+    <div class="url-box fake">
+      <div class="url-label">❌ Phishing Website</div>
+      <div class="url-text">https://www.onlinesbi-account-verify.in/</div>
+      <div class="url-note">Domain: onlinesbi-account-verify.in — obviously fake once you look</div>
+    </div>
+  </div>
+
+  <h3>Other Red Flags to Watch For</h3>
+  <ul>
+    <li><strong>Urgency language:</strong> "Your account will be blocked in 24 hours," "Immediate action required" — designed to bypass rational thinking</li>
+    <li><strong>Grammar and spelling errors:</strong> Even one misspelled word on a bank page is a huge red flag</li>
+    <li><strong>Missing or wrong logos:</strong> Logos may be blurry, wrong color, or slightly different</li>
+    <li><strong>Non-functional links:</strong> Footer links, menu items often lead nowhere on phishing sites</li>
+    <li><strong>Asking for too much information:</strong> No bank will ask for your full debit card number, CVV, and PIN together on one page</li>
+    <li><strong>Different page layout from what you remember:</strong> Always trust your memory of how a site usually looks</li>
+    <li><strong>Pop-ups asking to install software:</strong> Legitimate banking sites never ask you to download an app via a pop-up</li>
+  </ul>
+</div>
+
+<div class="post-section" id="url-tricks">
+  <h2>5. URL Tricks Attackers Use</h2>
+  <p>Attackers are creative with domain names. They exploit the fact that most people only glance at the URL rather than reading it carefully. Here are the most common URL manipulation techniques:</p>
+
+  <table class="styled-table">
+    <thead>
+      <tr><th>Technique</th><th>Example</th><th>How It Fools You</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Typosquatting</td><td>goggle.com, facebok.com</td><td>Relies on mistyping the real URL</td></tr>
+      <tr><td>Homograph Attack</td><td>аmazon.com (Cyrillic 'а')</td><td>Identical looking characters from other alphabets</td></tr>
+      <tr><td>Subdomain Spoofing</td><td>paypal.com.evilsite.net</td><td>Real brand name appears before the actual domain</td></tr>
+      <tr><td>TLD Swapping</td><td>google.co (vs google.com)</td><td>Different top-level domain that looks similar</td></tr>
+      <tr><td>Hyphen Insertion</td><td>net-banking-sbi.com</td><td>Hyphenated version sounds official</td></tr>
+      <tr><td>URL Shorteners</td><td>bit.ly/xxxxxx</td><td>Completely hides the real destination domain</td></tr>
+      <tr><td>Unicode Lookalikes</td><td>ɢoogle.com</td><td>Different Unicode characters that render identically</td></tr>
+    </tbody>
+  </table>
+
+  <!-- SVG URL anatomy diagram -->
+  <div class="svg-diagram">
+    <svg viewBox="0 0 780 120" xmlns="http://www.w3.org/2000/svg" width="780" height="120">
+      <rect width="780" height="120" fill="transparent"/>
+      <!-- URL bar background -->
+      <rect x="20" y="20" width="740" height="40" rx="8" fill="#1a2030" stroke="#3a4560" stroke-width="1.5"/>
+      <!-- URL text -->
+      <text x="35" y="46" font-family="monospace" font-size="15" fill="#e8eaf0">https://</text>
+      <text x="105" y="46" font-family="monospace" font-size="15" fill="#f87171">paypal</text>
+      <text x="155" y="46" font-family="monospace" font-size="15" fill="#e8eaf0">.com.</text>
+      <text x="197" y="46" font-family="monospace" font-size="15" fill="#f5a623">evil-steal</text>
+      <text x="289" y="46" font-family="monospace" font-size="15" fill="#e8eaf0">.net</text>
+      <text x="327" y="46" font-family="monospace" font-size="15" fill="#a0a8bc">/login/secure</text>
+      <!-- labels -->
+      <text x="35" y="90" font-size="10" fill="#34d399" font-weight="700">Protocol</text>
+      <text x="105" y="90" font-size="10" fill="#f87171" font-weight="700">Brand name (subdomain)</text>
+      <text x="230" y="90" font-size="10" fill="#f5a623" font-weight="700">REAL DOMAIN ← attacker controls this</text>
+      <text x="327" y="90" font-size="10" fill="#606880">Path</text>
+      <!-- arrows -->
+      <line x1="55" y1="62" x2="55" y2="78" stroke="#34d399" stroke-width="1" marker-end="url(#arr2)"/>
+      <line x1="130" y1="62" x2="130" y2="78" stroke="#f87171" stroke-width="1"/>
+      <line x1="260" y1="62" x2="260" y2="78" stroke="#f5a623" stroke-width="1"/>
+      <defs>
+        <marker id="arr2" markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto">
+          <path d="M0,0 L0,6 L6,3 z" fill="#34d399"/>
+        </marker>
+      </defs>
+    </svg>
+    <p style="font-size:.8rem;color:var(--clr-text-3);margin-top:.5rem">Always look at the part just before the first "/" — that is the real domain. "paypal" here is just a subdomain.</p>
+  </div>
+</div>
+
+<div class="post-section" id="real-examples">
+  <h2>6. Real-World Phishing Examples in India</h2>
+
+  <h3>Fake SBI YONO App Login Pages</h3>
+  <p>SBI's YONO app is one of the most phished targets in India. Fraudsters create near-perfect clones of the YONO login page and distribute links via WhatsApp messages claiming "YONO service will be suspended unless you update your KYC." Millions of SBI customers receive these messages monthly. The fake pages capture internet banking credentials and OTPs in real time, enabling immediate fund transfers.</p>
+
+  <h3>Fake Income Tax Refund Portals</h3>
+  <p>Every tax filing season, a wave of phishing sites mimicking the Income Tax Department's portal (incometax.gov.in) appears. Emails and SMS messages claim "Your refund of ₹X,XXX is ready to be processed. Click here to update your bank account details." Victims who click enter their PAN, Aadhaar, and bank account information directly into the attacker's hands.</p>
+
+  <h3>Fake UPI Payment Collect Requests</h3>
+  <p>A uniquely Indian phishing vector — attackers send UPI payment collect requests (the reverse of sending money — this asks you to approve a payment FROM your account) with misleading descriptions like "Cashback credited — approve to receive." Victims approve what they think is receiving money but are actually authorizing a debit.</p>
+
+  <h3>Job Offer Phishing During Placement Season</h3>
+  <p>Phishing emails offering fake job offers from reputed companies (TCS, Infosys, Wipro, Amazon) surge during college placement seasons. These emails ask students to "pay a security deposit," "fill a detailed form" with financial details, or download a "registration app" that is actually malware.</p>
+
+  <div class="highlight-box warn">
+    <div class="hb-label">⚠️ Remember</div>
+    <p>UPI works on a "pull request" model. When someone sends you a UPI collect request, it is asking for money FROM you — not sending money TO you. Any request that asks you to enter your UPI PIN to "receive" money is a scam.</p>
+  </div>
+</div>
+
+<div class="post-section" id="what-happens-after">
+  <h2>7. What Happens After You Enter Your Details</h2>
+  <p>The moment you submit a form on a phishing site, a chain of events begins on the attacker's side with remarkable speed:</p>
+
+  <h3>Instant Automated Processing</h3>
+  <p>Most phishing backends are fully automated. The second your credentials are submitted, they are stored in a database AND emailed directly to the attacker's inbox. Automated scripts may immediately attempt to log in to the real service with your credentials before you even notice.</p>
+
+  <h3>Credential Stuffing</h3>
+  <p>If your email and password combination is captured, it's immediately fed into automated credential stuffing tools that try the same combination on hundreds of other services — Gmail, Amazon, Netflix, Flipkart, banking apps. Since many people reuse passwords, a single phishing hit often unlocks multiple accounts.</p>
+
+  <h3>Dark Web Sale</h3>
+  <p>Captured credentials are packaged and sold on dark web marketplaces within hours of being captured. Banking credentials from India sell for anywhere from a few dollars to hundreds, depending on the account balance visible during the compromise. This is why your data can be misused months or years after the original breach.</p>
+
+  <h3>Account Takeover and Monetization</h3>
+  <p>Email accounts are used to reset passwords for linked services. Bank accounts are drained via IMPS/NEFT/UPI transfers to mule accounts. Social media accounts are used to run scams on your friends list. Everything of value is extracted as quickly as possible before the victim notices and triggers a lockdown.</p>
+</div>
+
+<div class="post-section" id="browser-defenses">
+  <h2>8. Browser and Tool-Based Defenses</h2>
+
+  <h3>Built-in Browser Protections</h3>
+  <p>Modern browsers include phishing and malware detection that checks URLs against constantly updated blocklists. Google Safe Browsing (used by Chrome, Firefox, and Safari) blocks millions of phishing pages daily. However, new phishing sites are launched constantly and may have a window of hours to days before being added to blocklists.</p>
+
+  <h3>Password Manager as a Phishing Defense</h3>
+  <p>This is an underrated but extremely effective defense. Password managers like Bitwarden, 1Password, or even Chrome's built-in manager only autofill credentials when the domain exactly matches where the password was saved. If you're on hdfc-bank-verify.com, your password manager will not autofill your HDFC Bank credentials. If autofill doesn't trigger, that's your alert that something is wrong.</p>
+
+  <h3>Browser Extensions</h3>
+  <ul>
+    <li><strong>Netcraft Anti-Phishing Extension</strong> — specifically designed to detect phishing sites</li>
+    <li><strong>uBlock Origin</strong> — blocks malicious domains and tracking scripts</li>
+    <li><strong>HTTPS Everywhere</strong> — forces HTTPS connections (now largely built into browsers)</li>
+    <li><strong>Privacy Badger</strong> — blocks invisible trackers that phishing campaigns use to profile targets</li>
+  </ul>
+</div>
+
+<div class="post-section" id="protect">
+  <h2>9. How to Protect Yourself</h2>
+
+  <ul class="checklist">
+    <li><strong>Never click links in SMS or WhatsApp</strong> claiming to be from your bank, government, or delivery service — always type the URL manually or use your app</li>
+    <li>Use a <strong>password manager</strong> — it will refuse to autofill on phishing sites since the domain doesn't match</li>
+    <li>Enable <strong>multi-factor authentication</strong> using an authenticator app (not SMS) so stolen passwords alone aren't enough</li>
+    <li>Bookmark your important sites (bank, email, government portals) and only access them through bookmarks</li>
+    <li><strong>Check the URL carefully</strong> before entering any information — focus on the domain, not the full URL</li>
+    <li>Never enter your full card number, CVV, and OTP on the same page — legitimate payment flows don't work this way</li>
+    <li>Install and keep updated a reputable <strong>antivirus with anti-phishing</strong> features (Windows Defender is good on Windows)</li>
+    <li>Regularly <strong>check your bank statements</strong> for unauthorized transactions — report within 3 working days for RBI protection</li>
+    <li>Use <strong>virtual card numbers</strong> for online shopping where available (some banks offer this via their app)</li>
+    <li>Sign up for <strong>transaction alerts</strong> via SMS and email for every transaction above ₹0 — maximum visibility</li>
+  </ul>
+</div>
+
+<div class="post-section" id="report">
+  <h2>10. How to Report a Phishing Site</h2>
+  <p>Reporting phishing sites helps protect other users and gets the sites taken down faster. Every report matters:</p>
+
+  <div class="step-grid">
+    <div class="step-card"><div class="step-num">1</div><h4>🇮🇳 Cyber Crime Portal</h4><p>Report at cybercrime.gov.in or call 1930 (National Cyber Crime Helpline). Best for financial fraud cases.</p></div>
+    <div class="step-card"><div class="step-num">2</div><h4>🔍 Google Safe Browsing</h4><p>Report to Google at safebrowsing.google.com/safebrowsing/report_phish/ — gets the site blocked in Chrome, Firefox, Safari.</p></div>
+    <div class="step-card"><div class="step-num">3</div><h4>📧 CERT-In</h4><p>India's Computer Emergency Response Team: incident@cert-in.org.in — especially for organized phishing campaigns.</p></div>
+    <div class="step-card"><div class="step-num">4</div><h4>🏦 Your Bank</h4><p>All banks have a dedicated fraud/phishing reporting email. Report fake bank sites directly to your bank's security team.</p></div>
+  </div>
+
+  <div class="highlight-box tip">
+    <div class="hb-label">✅ Final Reminder</div>
+    <p>The most powerful defense is a habit: <strong>never act on urgency created in an SMS or email.</strong> Legitimate services will not close your account or freeze your funds in the next hour if you don't click a link. That urgency is always manufactured. Slow down, open a new tab, type the URL yourself.</p>
+  </div>
+</div>
+
+<div class="post-tags">
+  <span class="ptag">#Phishing</span>
+  <span class="ptag">#FakeWebsites</span>
+  <span class="ptag">#CyberFraud</span>
+  <span class="ptag">#PasswordTheft</span>
+  <span class="ptag">#OnlineSafety</span>
+  <span class="ptag">#CyberAwareness</span>
+  <span class="ptag">#BrowserSecurity</span>
+  <span class="ptag">#Smishing</span>
+  <span class="ptag">#UPIScam</span>
+</div>
+
+</div>
