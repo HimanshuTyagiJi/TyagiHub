@@ -1,259 +1,105 @@
+<!-- _includes/footer.html -->
 <footer class="footer" role="contentinfo">
   <div class="container">
-
     <div class="footer__grid">
 
-      <!-- Brand -->
+      <!-- Column 1: Brand Profile -->
       <div class="footer__brand">
-
-        <div class="footer__brand-name">
-          Tyagi<span>Hub</span>
-        </div>
-
+        <div class="footer__brand-name">Tyagi<span>Hub</span></div>
         {% if page.lang == "hi" %}
-
-        <p class="footer__brand-desc">
-          सीखें। बनाएं। आगे बढ़ें।
-        </p>
-
-        <p class="footer__brand-desc">
-          TyagiHub, Tyagi MultiTech का डिजिटल इकोसिस्टम है जो शिक्षा, साइबर सुरक्षा,
-          डिजिटल टूल्स, एप्लिकेशन और भविष्य की तकनीकों पर केंद्रित है।
-        </p>
-
+          <p class="footer__brand-desc">सीखें। बनाएं। आगे बढ़ें।</p>
+          <p class="footer__brand-desc">TyagiHub, Tyagi MultiTech का डिजिटल इकोसिस्टम है जो शिक्षा, साइबर सुरक्षा, डिजिटल टूल्स, एप्लिकेशन और भविष्य की तकनीकों पर केंद्रित है।</p>
         {% else %}
-
-        <p class="footer__brand-desc">
-          Create. Learn. Build.
-        </p>
-
-        <p class="footer__brand-desc">
-          TyagiHub is the digital ecosystem of Tyagi MultiTech focused on
-          education, cybersecurity, digital tools, applications and future technology.
-        </p>
-
+          <p class="footer__brand-desc">Create. Learn. Build.</p>
+          <p class="footer__brand-desc">TyagiHub is the digital ecosystem of Tyagi MultiTech focused on education, cybersecurity, digital tools, applications and future technology.</p>
         {% endif %}
-
-        <div class="footer__social">
-
-          <a href="https://t.me/" aria-label="Telegram">
-            Telegram
-          </a>
-
-          <a href="https://youtube.com/" aria-label="YouTube">
-            YouTube
-          </a>
-
-          <a href="https://github.com/" aria-label="GitHub">
-            GitHub
-          </a>
-
-          <a href="https://instagram.com/" aria-label="Instagram">
-            Instagram
-          </a>
-
+        <div class="footer__social" style="margin-top: 12px; display: flex; gap: 12px;">
+          <a href="https://t.me/" aria-label="Telegram" class="footer__link">Telegram</a>
+          <a href="https://youtube.com/" aria-label="YouTube" class="footer__link">YouTube</a>
+          <a href="https://github.com/" aria-label="GitHub" class="footer__link">GitHub</a>
+          <a href="https://instagram.com/" aria-label="Instagram" class="footer__link">Instagram</a>
         </div>
-
       </div>
 
-      <!-- Products -->
+      <!-- Column 2: Explore (Platform Features) -->
       <div>
-
-        <div class="footer__col-title">
-          {% if page.lang == "hi" %}
-          प्रोडक्ट्स
-          {% else %}
-          Products
-          {% endif %}
-        </div>
-
+        <div class="footer__col-title">{% if page.lang == "hi" %}एक्सप्लोर{% else %}Explore{% endif %}</div>
         <ul class="footer__links">
-
-          <li>
-            <a href="{{ site.url }}/gklearnstudy/" class="footer__link">
-              GK Learn Study
-            </a>
-          </li>
-
-          <li>
-            <a href="{{ site.url }}/shield/" class="footer__link">
-              InfoShield India
-            </a>
-          </li>
-
-          <li>
-            <a href="{{ site.url }}/stock/" class="footer__link">
-              Tyagi Stock
-            </a>
-          </li>
-
-          <li>
-            <a href="{{ site.url }}/editor/" class="footer__link">
-              Tyagi Editor
-            </a>
-          </li>
-
-          <li>
-            <a href="{{ site.url }}/apps/" class="footer__link">
-              Tyagi Apps
-            </a>
-          </li>
-
+          {% if page.lang == "hi" %}
+            <li><a href="{{ site.url }}/hi/discover/" class="footer__link">डिस्कवर</a></li>
+            <li><a href="{{ site.url }}/hi/learn/" class="footer__link">सीखें</a></li>
+            <li><a href="{{ site.url }}/hi/gk-quiz/" class="footer__link">जीके क्विज</a></li>
+            <li><a href="{{ site.url }}/hi/test/" class="footer__link">टेस्ट</a></li>
+            <li><a href="{{ site.url }}/hi/shield/" class="footer__link">सुरक्षा (Shield)</a></li>
+          {% else %}
+            <li><a href="{{ site.url }}/discover/" class="footer__link">Discover</a></li>
+            <li><a href="{{ site.url }}/learn/" class="footer__link">Learn</a></li>
+            <li><a href="{{ site.url }}/gk-quiz/" class="footer__link">GK Quiz</a></li>
+            <li><a href="{{ site.url }}/test/" class="footer__link">Test</a></li>
+            <li><a href="{{ site.url }}/shield/" class="footer__link">Shield Security</a></li>
+          {% endif %}
         </ul>
-
       </div>
 
-      <!-- Platform -->
+      <!-- Column 3: Utilities (Tools & Apps) -->
       <div>
-
-        <div class="footer__col-title">
-          {% if page.lang == "hi" %}
-          प्लेटफॉर्म
-          {% else %}
-          Platform
-          {% endif %}
-        </div>
-
+        <div class="footer__col-title">{% if page.lang == "hi" %}टूल्स और ऐप्स{% else %}Utilities{% endif %}</div>
         <ul class="footer__links">
-
           {% if page.lang == "hi" %}
-
-          <li><a href="{{ site.url }}/hi/discover/" class="footer__link">डिस्कवर</a></li>
-          <li><a href="{{ site.url }}/hi/learn/" class="footer__link">सीखें</a></li>
-          <li><a href="{{ site.url }}/hi/gk-quiz/" class="footer__link">जीके क्विज</a></li>
-          <li><a href="{{ site.url }}/hi/test/" class="footer__link">टेस्ट</a></li>
-          <li><a href="{{ site.url }}/hi/shield/" class="footer__link">सुरक्षा</a></li>
-          <li><a href="{{ site.url }}/hi/tools/" class="footer__link">टूल्स</a></li>
-          <li><a href="{{ site.url }}/hi/apps/" class="footer__link">ऐप्स</a></li>
-          <li><a href="{{ site.url }}/hi/stock/" class="footer__link">स्टॉक</a></li>
-
+            <li><a href="{{ site.url }}/editor/" class="footer__link">Tyagi Editor</a></li>
+            <li><a href="{{ site.url }}/tools/" class="footer__link">Tyagi Tools</a></li>
+            <li><a href="{{ site.url }}/apps/" class="footer__link">Tyagi Apps</a></li>
+            <li><a href="{{ site.url }}/stock/" class="footer__link">Tyagi Stock</a></li>
           {% else %}
-
-          <li><a href="{{ site.url }}/discover/" class="footer__link">Discover</a></li>
-          <li><a href="{{ site.url }}/learn/" class="footer__link">Learn</a></li>
-          <li><a href="{{ site.url }}/gk-quiz/" class="footer__link">GK Quiz</a></li>
-          <li><a href="{{ site.url }}/test/" class="footer__link">Test</a></li>
-          <li><a href="{{ site.url }}/shield/" class="footer__link">Shield</a></li>
-          <li><a href="{{ site.url }}/tools/" class="footer__link">Tools</a></li>
-          <li><a href="{{ site.url }}/apps/" class="footer__link">Apps</a></li>
-          <li><a href="{{ site.url }}/stock/" class="footer__link">Stock</a></li>
-
+            <li><a href="{{ site.url }}/editor/" class="footer__link">Tyagi Editor</a></li>
+            <li><a href="{{ site.url }}/tools/" class="footer__link">Tyagi Tools</a></li>
+            <li><a href="{{ site.url }}/apps/" class="footer__link">Tyagi Apps</a></li>
+            <li><a href="{{ site.url }}/stock/" class="footer__link">Tyagi Stock</a></li>
           {% endif %}
-
         </ul>
-
       </div>
 
-      <!-- Company -->
+      <!-- Column 4: Company & Legal -->
       <div>
-
-        <div class="footer__col-title">
-          {% if page.lang == "hi" %}
-          कंपनी
-          {% else %}
-          Company
-          {% endif %}
-        </div>
-
+        <div class="footer__col-title">{% if page.lang == "hi" %}कंपनी और लीगल{% else %}Company & Legal{% endif %}</div>
         <ul class="footer__links">
-
           {% if page.lang == "hi" %}
-
-          <li><a href="{{ site.url }}/hi/about/" class="footer__link">हमारे बारे में</a></li>
-          <li><a href="{{ site.url }}/hi/contact/" class="footer__link">संपर्क</a></li>
-          <li><a href="{{ site.url }}/hi/blog/" class="footer__link">ब्लॉग</a></li>
-
+            <li><a href="{{ site.url }}/hi/about/" class="footer__link">हमारे बारे में</a></li>
+            <li><a href="{{ site.url }}/hi/contact/" class="footer__link">संपर्क</a></li>
+            <li><a href="{{ site.url }}/hi/privacy/" class="footer__link">प्राइवेसी पॉलिसी</a></li>
+            <li><a href="{{ site.url }}/hi/terms/" class="footer__link">सेवा की शर्तें</a></li>
+            <li><a href="{{ site.url }}/hi/cookies/" class="footer__link">कुकी पॉलिसी</a></li>
+            <li><a href="{{ site.url }}/hi/security/" class="footer__link">सुरक्षा नीति</a></li>
           {% else %}
-
-          <li><a href="{{ site.url }}/about/" class="footer__link">About Us</a></li>
-          <li><a href="{{ site.url }}/contact/" class="footer__link">Contact</a></li>
-          <li><a href="{{ site.url }}/blog/" class="footer__link">Blog</a></li>
-
+            <li><a href="{{ site.url }}/about/" class="footer__link">About Us</a></li>
+            <li><a href="{{ site.url }}/contact/" class="footer__link">Contact</a></li>
+            <li><a href="{{ site.url }}/privacy/" class="footer__link">Privacy Policy</a></li>
+            <li><a href="{{ site.url }}/terms/" class="footer__link">Terms of Service</a></li>
+            <li><a href="{{ site.url }}/cookies/" class="footer__link">Cookie Policy</a></li>
+            <li><a href="{{ site.url }}/security/" class="footer__link">Security Policy</a></li>
           {% endif %}
-
         </ul>
-
-      </div>
-
-      <!-- Legal -->
-      <div>
-
-        <div class="footer__col-title">
-          {% if page.lang == "hi" %}
-          कानूनी
-          {% else %}
-          Legal
-          {% endif %}
-        </div>
-
-        <ul class="footer__links">
-
-          {% if page.lang == "hi" %}
-
-          <li><a href="{{ site.url }}/hi/privacy/" class="footer__link">प्राइवेसी पॉलिसी</a></li>
-          <li><a href="{{ site.url }}/hi/terms/" class="footer__link">सेवा की शर्तें</a></li>
-          <li><a href="{{ site.url }}/hi/cookies/" class="footer__link">कुकी पॉलिसी</a></li>
-          <li><a href="{{ site.url }}/hi/security/" class="footer__link">सुरक्षा नीति</a></li>
-
-          {% else %}
-
-          <li><a href="{{ site.url }}/privacy/" class="footer__link">Privacy Policy</a></li>
-          <li><a href="{{ site.url }}/terms/" class="footer__link">Terms of Service</a></li>
-          <li><a href="{{ site.url }}/cookies/" class="footer__link">Cookie Policy</a></li>
-          <li><a href="{{ site.url }}/security/" class="footer__link">Security Policy</a></li>
-
-          {% endif %}
-
-        </ul>
-
       </div>
 
     </div>
 
+    <!-- Bottom Bar -->
     <div class="footer__bottom">
-
-      <p class="footer__copyright">
-
-        {% if page.lang == "hi" %}
-
-        &copy; 2024 - <span id="footer-year"></span>
-        Tyagi MultiTech. सर्वाधिकार सुरक्षित।
-
-        {% else %}
-
-        &copy; 2024 - <span id="footer-year"></span>
-        Tyagi MultiTech. All rights reserved.
-
-        {% endif %}
-
-      </p>
-
+      <p class="footer__copyright">{% if page.lang == "hi" %}&copy; 2024 - <span id="footer-year"></span> Tyagi MultiTech. सर्वाधिकार सुरक्षित। भारत <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 600" width="18" height="12" style="display: inline-block; vertical-align: middle; margin: 0 4px; border-radius: 1px;"><rect width="900" height="200" fill="#FF9933"/><rect y="200" width="900" height="200" fill="#FFFFFF"/><rect y="400" width="900" height="200" fill="#128807"/><g transform="translate(450, 300)"><circle r="92" fill="none" stroke="#000080" stroke-width="6"/><circle r="16" fill="#000080"/><g id="hi-spoke"><line x1="0" y1="0" x2="0" y2="-92" stroke="#000080" stroke-width="4"/><polygon points="0,-92 -4,-65 0,-60 4,-65" fill="#000080"/></g><use href="#hi-spoke" transform="rotate(15)"/><use href="#hi-spoke" transform="rotate(30)"/><use href="#hi-spoke" transform="rotate(45)"/><use href="#hi-spoke" transform="rotate(60)"/><use href="#hi-spoke" transform="rotate(75)"/><use href="#hi-spoke" transform="rotate(90)"/><use href="#hi-spoke" transform="rotate(105)"/><use href="#hi-spoke" transform="rotate(120)"/><use href="#hi-spoke" transform="rotate(135)"/><use href="#hi-spoke" transform="rotate(150)"/><use href="#hi-spoke" transform="rotate(165)"/><use href="#hi-spoke" transform="rotate(180)"/><use href="#hi-spoke" transform="rotate(195)"/><use href="#hi-spoke" transform="rotate(210)"/><use href="#hi-spoke" transform="rotate(225)"/><use href="#hi-spoke" transform="rotate(240)"/><use href="#hi-spoke" transform="rotate(255)"/><use href="#hi-spoke" transform="rotate(270)"/><use href="#hi-spoke" transform="rotate(285)"/><use href="#hi-spoke" transform="rotate(300)"/><use href="#hi-spoke" transform="rotate(315)"/><use href="#hi-spoke" transform="rotate(330)"/><use href="#hi-spoke" transform="rotate(345)"/></g></svg> में बनाया गया ❤️{% else %}&copy; 2024 - <span id="footer-year"></span> Tyagi MultiTech. All rights reserved. Made with ❤️ in India <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 600" width="18" height="12" style="display: inline-block; vertical-align: middle; margin: 0 4px; border-radius: 1px;"><rect width="900" height="200" fill="#FF9933"/><rect y="200" width="900" height="200" fill="#FFFFFF"/><rect y="400" width="900" height="200" fill="#128807"/><g transform="translate(450, 300)"><circle r="92" fill="none" stroke="#000080" stroke-width="6"/><circle r="16" fill="#000080"/><g id="en-spoke"><line x1="0" y1="0" x2="0" y2="-92" stroke="#000080" stroke-width="4"/><polygon points="0,-92 -4,-65 0,-60 4,-65" fill="#000080"/></g><use href="#en-spoke" transform="rotate(15)"/><use href="#en-spoke" transform="rotate(30)"/><use href="#en-spoke" transform="rotate(45)"/><use href="#en-spoke" transform="rotate(60)"/><use href="#en-spoke" transform="rotate(75)"/><use href="#en-spoke" transform="rotate(90)"/><use href="#en-spoke" transform="rotate(105)"/><use href="#en-spoke" transform="rotate(120)"/><use href="#en-spoke" transform="rotate(135)"/><use href="#en-spoke" transform="rotate(150)"/><use href="#en-spoke" transform="rotate(165)"/><use href="#en-spoke" transform="rotate(180)"/><use href="#en-spoke" transform="rotate(195)"/><use href="#en-spoke" transform="rotate(210)"/><use href="#en-spoke" transform="rotate(225)"/><use href="#en-spoke" transform="rotate(240)"/><use href="#en-spoke" transform="rotate(255)"/><use href="#en-spoke" transform="rotate(270)"/><use href="#en-spoke" transform="rotate(285)"/><use href="#en-spoke" transform="rotate(300)"/><use href="#en-spoke" transform="rotate(315)"/><use href="#en-spoke" transform="rotate(330)"/><use href="#en-spoke" transform="rotate(345)"/></g></svg>{% endif %}</p>
       <div class="footer__legal">
-
         {% if page.lang == "hi" %}
-
-        <a href="{{ site.url }}/hi/support/">सपोर्ट</a>
-        <a href="{{ site.url }}/hi/status/">स्टेटस</a>
-        <a href="{{ site.url }}/hi/help-center/">सहायता केंद्र</a>
-        <a href="{{ site.url }}/hi/sitemap/">साइटमैप</a>
-
+          <a href="{{ site.url }}/hi/support/">सपोर्ट</a>
+          <a href="{{ site.url }}/hi/status/">स्टेटस</a>
+          <a href="{{ site.url }}/hi/help-center/">सहायता केंद्र</a>
         {% else %}
-
-        <a href="{{ site.url }}/support/">Support</a>
-        <a href="{{ site.url }}/status/">Status</a>
-        <a href="{{ site.url }}/help-center/">Help Center</a>
-        <a href="{{ site.url }}/sitemap/">Sitemap</a>
-
+          <a href="{{ site.url }}/support/">Support</a>
+          <a href="{{ site.url }}/status/">Status</a>
+          <a href="{{ site.url }}/help-center/">Help Center</a>
         {% endif %}
-
       </div>
-
     </div>
 
   </div>
 </footer>
 
-<script>
-document.getElementById('footer-year').textContent =
-new Date().getFullYear();
-</script>
+<script>document.getElementById('footer-year').textContent = new Date().getFullYear();</script>
