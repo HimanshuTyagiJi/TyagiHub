@@ -1,8 +1,336 @@
 
 
 /* ============================================================
+   1. DESIGN TOKENS
+   ============================================================ */
+:root {
+  /* --- Color Palette --- */
+  --clr-bg: #0a0c10;
+  --clr-bg-2: #0f1219;
+  --clr-bg-3: #161b27;
+  --clr-surface: #1a2030;
+  --clr-surface-2: #212840;
+  --clr-border: #2a3348;
+  --clr-border-2: #3a4560;
+
+  /* Accent — warm amber / saffron (Indian tech identity) */
+  --clr-accent: #f5a623;
+  --clr-accent-2: #ff7c3a;
+  --clr-accent-glow: rgba(245, 166, 35, 0.18);
+
+  /* Semantic */
+  --clr-learn: #3ecfcf;
+  --clr-editor: #a78bfa;
+  --clr-tools: #f5a623;
+  --clr-stock: #34d399;
+  --clr-apps: #60a5fa;
+  --clr-shield: #f87171;
+  --clr-blog: #fb923c;
+
+  /* Text */
+  --clr-text: #e8eaf0;
+  --clr-text-2: #a0a8bc;
+  --clr-text-3: #606880;
+  --clr-heading: #f0f2f8;
+
+  /* --- Typography --- */
+  --font-display: 'SpaceGrotesk', 'Outfit', sans-serif;
+  --font-body: 'Outfit', 'SpaceGrotesk', sans-serif;
+  --font-mono: 'JetBrainsMono', 'Courier New', monospace;
+
+    --bg-1: #030712;
+      --bg-2: #0a0c10;
+      --bg-3: #0f172a;
+      --bg-4: #1e293b;
+      --bg-5: #334155;
+      --bg-6: #475569;
+      /* 6 Texts */
+      --text-1: #ffffff;
+      --text-2: #f8fafc;
+      --text-3: #e2e8f0;
+      --text-4: #60a5fa;
+      --text-5: #34d399;
+      --text-6: #fbbf24;
+      /* 6 Borders */
+      --border-1: #1e293b;
+      --border-2: #334155;
+      --border-3: #475569;
+      --border-4: #3b82f6;
+      --border-5: #ef4444;
+      --border-6: #10b981;
+      /* 6 Hover Backgrounds */
+      --hover-bg-1: #1e293b;
+      --hover-bg-2: #334155;
+      --hover-bg-3: #475569;
+      --hover-bg-4: #2563eb;
+      --hover-bg-5: #059669;
+      --hover-bg-6: #dc2626;
+      /* 6 Hover Texts */
+      --hover-text-1: #ffffff;
+      --hover-text-2: #f8fafc;
+      --hover-text-3: #e2e8f0;
+      --hover-text-4: #93c5fd;
+      --hover-text-5: #6ee7b7;
+      --hover-text-6: #fca5a5;
+      /* 6 Hover Outlines */
+      --hover-outline-1: #3b82f6;
+      --hover-outline-2: #10b981;
+      --hover-outline-3: #ef4444;
+      --hover-outline-4: #f59e0b;
+      --hover-outline-5: #8b5cf6;
+      --hover-outline-6: #06b6d4;
+      /* 6 Active Links */
+      --active-link-1: #60a5fa;
+      --active-link-2: #38bdf8;
+      --active-link-3: #34d399;
+      --active-link-4: #fbbf24;
+      --active-link-5: #f87171;
+      --active-link-6: #c084fc;
+      /* 6 Shadows */
+      --shadow-1: 0 1px 3px rgba(0, 0, 0, 0.5);
+      --shadow-2: 0 4px 8px rgba(0, 0, 0, 0.6);
+      --shadow-3: 0 10px 20px rgba(0, 0, 0, 0.7);
+      --shadow-4: 0 0 15px rgba(59, 130, 246, 0.3);
+      --shadow-5: 0 0 15px rgba(16, 185, 129, 0.3);
+      --shadow-6: 0 0 15px rgba(239, 68, 68, 0.3);
+      /* 6 Animations */
+      --anim-glow-1: #2563eb;
+      --anim-glow-2: #7c3aed;
+      --anim-glow-3: #db2777;
+      --anim-glow-4: #ea580c;
+      --anim-glow-5: #16a34a;
+      --anim-glow-6: #0891b2;
+      /* Semantic Elements */
+      --bg-body: var(--bg-2);
+      --bg-surface: var(--bg-3);
+      --bg-input: var(--bg-4);
+      --text-heading: var(--text-1);
+      --text-paragraph: var(--text-3);
+      --text-muted: #94a3b8;
+      --bg-table: var(--bg-2);
+      --bg-table-stripe: var(--bg-3);
+      --bg-th: var(--bg-1);
+      --border-table: var(--border-2);
+      --text-inverse: #ffffff;
+      --bg-success: #022c22;
+      --text-success: #6ee7b7;
+      --border-success: #059669;
+      --bg-danger: #450a0a;
+      --text-danger: #fca5a5;
+      --border-danger: #ef4444;
+      --bg-info: #082f49;
+      --text-info: #7dd3fc;
+      --border-info: #38bdf8;
+      --primary-base: #4f46e5;
+      --primary-hover: #4338ca;
+      --outline-focus-ring: #818cf8;
+
+  --fs-xs: 0.89rem;
+  --fs-sm: 0.95rem;
+  --fs-base: 1rem;
+  --fs-md: 1.125rem;
+  --fs-lg: 1.375rem;
+  --fs-xl: 1.75rem;
+  --fs-2xl: 2.25rem;
+  --fs-3xl: 3rem;
+  --fs-4xl: 4rem;
+  --fs-hero: clamp(2.5rem, 6vw, 5.5rem);
+
+  --fw-regular: 400;
+  --fw-medium: 500;
+  --fw-semi: 600;
+  --fw-bold: 700;
+  --fw-black: 900;
+
+  --lh-tight: 1.1;
+  --lh-snug: 1.3;
+  --lh-normal: 1.6;
+  --lh-loose: 1.8;
+
+  /* --- Spacing --- */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.25rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-10: 2.5rem;
+  --space-12: 3rem;
+  --space-16: 4rem;
+  --space-20: 5rem;
+  --space-24: 6rem;
+  --space-32: 8rem;
+
+  /* --- Layout --- */
+  --container-max: 1280px;
+  --container-pad: clamp(1rem, 4vw, 3rem);
+  --nav-height: 60px;
+
+  /* --- Borders --- */
+  --radius-sm: 6px;
+  --radius-md: 12px;
+  --radius-lg: 18px;
+  --radius-xl: 24px;
+  --radius-full: 9999px;
+
+  /* --- Shadows --- */
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.4);
+  --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.5);
+  --shadow-accent: 0 0 32px rgba(245, 166, 35, 0.2);
+  --shadow-glow: 0 0 60px rgba(245, 166, 35, 0.08);
+
+  /* --- Transitions --- */
+  --ease-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-normal: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-slow: 400ms cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-spring: 500ms cubic-bezier(0.34, 1.56, 0.64, 1);
+
+  /* --- Z-index layers --- */
+  --z-base: 1;
+  --z-card: 10;
+  --z-overlay: 100;
+  --z-nav: 1000;
+  --z-modal: 2000;
+  --z-toast: 3000;
+}
+
+/* Light mode (future toggle) */
+[data-theme="light"] {
+  --clr-bg: #ffffff;
+  --clr-bg-2: #edf0f7;
+  --clr-bg-3: #e4e8f3;
+  --clr-surface: #ffffff;
+  --clr-surface-2: #f0f3fb;
+  --clr-border: #d8deed;
+  --clr-border-2: #bdc6e0;
+
+  /* Text — dark on light bg */
+  --clr-text: #1a2030;
+  --clr-text-2: #3d4d6a;
+  --clr-text-3: #6b7a9a;
+  --clr-heading: #0d1421;
+
+  /* Accent stays same */
+  --clr-accent: #0000FF;
+  --clr-accent-2: #e8682a;
+  --clr-accent-glow: rgba(224, 152, 32, 0.15);
+
+   --bg-1: #ffffff;
+      --bg-2: #f8fafc;
+      --bg-3: #f1f5f9;
+      --bg-4: #e2e8f0;
+      --bg-5: #cbd5e1;
+      --bg-6: #94a3b8;
+      --text-1: #020617;
+      --text-2: #0f172a;
+      --text-3: #1e293b;
+      --text-4: #1d4ed8;
+      --text-5: #15803d;
+      --text-6: #b45309;
+      --border-1: #e2e8f0;
+      --border-2: #cbd5e1;
+      --border-3: #94a3b8;
+      --border-4: #2563eb;
+      --border-5: #dc2626;
+      --border-6: #059669;
+      --hover-bg-1: #f1f5f9;
+      --hover-bg-2: #e2e8f0;
+      --hover-bg-3: #cbd5e1;
+      --hover-bg-4: #dbeafe;
+      --hover-bg-5: #d1fae5;
+      --hover-bg-6: #fee2e2;
+      --hover-text-1: #000000;
+      --hover-text-2: #0f172a;
+      --hover-text-3: #1e293b;
+      --hover-text-4: #1e3a8a;
+      --hover-text-5: #064e3b;
+      --hover-text-6: #7f1d1d;
+      --hover-outline-1: #2563eb;
+      --hover-outline-2: #059669;
+      --hover-outline-3: #dc2626;
+      --hover-outline-4: #d97706;
+      --hover-outline-5: #7c3aed;
+      --hover-outline-6: #0891b2;
+      --active-link-1: #1e40af;
+      --active-link-2: #0369a1;
+      --active-link-3: #15803d;
+      --active-link-4: #b45309;
+      --active-link-5: #b91c1c;
+      --active-link-6: #7e22ce;
+      --shadow-1: 0 1px 3px rgba(0, 0, 0, 0.05);
+      --shadow-2: 0 4px 8px rgba(0, 0, 0, 0.1);
+      --shadow-3: 0 10px 20px rgba(0, 0, 0, 0.15);
+      --shadow-4: 0 0 15px rgba(59, 130, 246, 0.15);
+      --shadow-5: 0 0 15px rgba(16, 185, 129, 0.15);
+      --shadow-6: 0 0 15px rgba(239, 68, 68, 0.15);
+      --bg-body: var(--bg-2);
+      --bg-surface: var(--bg-1);
+      --bg-input: var(--bg-1);
+      --text-heading: var(--text-1);
+      --text-paragraph: var(--text-3);
+      --text-muted: #64748b;
+      --bg-table: var(--bg-1);
+      --bg-table-stripe: var(--bg-2);
+      --bg-th: var(--bg-3);
+      --border-table: var(--border-2);
+      --text-inverse: #ffffff;
+      --bg-success: #d1fae5;
+      --text-success: #065f46;
+      --border-success: #10b981;
+      --bg-danger: #fee2e2;
+      --text-danger: #b91c1c;
+      --border-danger: #ef4444;
+      --bg-info: #e0f2fe;
+      --text-info: #0369a1;
+      --border-info: #38bdf8;
+      --primary-base: #4f46e5;
+      --primary-hover: #4338ca;
+      --outline-focus-ring: #4f46e5;
+}
+
+/* ============================================================
    2. RESET & BASE
    ============================================================ */
+
+ /* ============================================================
+       2. GLOBAL LAYOUT & MAPPING
+       ============================================================ */
+    @keyframes anim-glow-pulse {
+      0% {
+        box-shadow: 0 0 5px var(--anim-glow-1);
+      }
+
+      50% {
+        box-shadow: 0 0 20px var(--anim-glow-3);
+      }
+
+      100% {
+        box-shadow: 0 0 5px var(--anim-glow-1);
+      }
+    }
+
+    @keyframes anim-border-pulse {
+      0% {
+        border-color: var(--anim-glow-2);
+      }
+
+      50% {
+        border-color: var(--anim-glow-6);
+      }
+
+      100% {
+        border-color: var(--anim-glow-2);
+      }
+    }
+
+
+
+
+
+
+
 
 
 html {
