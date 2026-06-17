@@ -3,338 +3,205 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>TyagiHub - Master Framework 3.0</title>
+  <title>Master Color System Demo</title>
   <style>
-    /* ==========================================================================
-       PART 1: THE MASSIVE UTILITY PALETTE (No Placeholders, Exact Count)
-       ========================================================================== */
+    /* ============================================================
+       1. CORE COLOR SYSTEM (TERA ORIGINAL CSS)
+       ============================================================ */
     :root {
-      /* --- 20 Backgrounds (Dark scales) --- */
-      --bg-1: #030712; --bg-2: #0a0c10; --bg-3: #0f172a; --bg-4: #111827; --bg-5: #1e293b;
-      --bg-6: #1f2937; --bg-7: #334155; --bg-8: #374151; --bg-9: #475569; --bg-10: #4b5563;
-      --bg-11: #000000; --bg-12: #050505; --bg-13: #0d1117; --bg-14: #161b22; --bg-15: #21262d;
-      --bg-16: #0a192f; --bg-17: #112240; --bg-18: #233554; --bg-19: #18181b; --bg-20: #27272a;
+      /* Backgrounds */
+      --bg-base: #0a0c10; --bg-surface: #11141d; --bg-surface-hover: #1a1e2b;
+      --bg-card: #161a25; --bg-modal: #1e2433; --bg-elevated: #252c3f;
+      --bg-accent: #2563eb; --bg-accent-muted: rgba(37, 99, 235, 0.15);
+      --bg-success: #059669; --bg-danger: #dc2626; --bg-warning: #d97706; --bg-info: #0284c7;
 
-      /* --- 20 Text Colors (Light scales) --- */
-      --text-1: #ffffff; --text-2: #f8fafc; --text-3: #f1f5f9; --text-4: #e2e8f0; --text-5: #cbd5e1;
-      --text-6: #94a3b8; --text-7: #f9fafb; --text-8: #f3f4f6; --text-9: #e5e7eb; --text-10: #d1d5db;
-      --text-11: #9ca3af; --text-12: #e4e4e7; --text-13: #d4d4d8; --text-14: #a1a1aa; --text-15: #71717a;
-      --text-16: #60a5fa; --text-17: #34d399; --text-18: #f87171; --text-19: #fbbf24; --text-20: #c084fc;
+      /* Text */
+      --text-primary: #ffffff; --text-secondary: #e2e8f0; --text-tertiary: #cbd5e1;
+      --text-muted: #94a3b8; --text-inverse: #020617; --text-accent: #60a5fa;
+      --text-accent-hover: #93c5fd; --text-success: #34d399; --text-danger: #f87171;
+      --text-warning: #fbbf24; --text-info: #38bdf8; --text-highlight: #c084fc;
 
-      /* --- 10 Borders --- */
-      --border-1: #1e293b; --border-2: #334155; --border-3: #475569; --border-4: #374151; --border-5: #4b5563;
-      --border-6: #27272a; --border-7: #3f3f46; --border-8: #161b22; --border-9: #30363d; --border-10: #233554;
+      /* Borders */
+      --border-light: #1e293b; --border-base: #334155; --border-heavy: #475569;
+      --border-accent: #3b82f6; --border-danger: #ef4444; --border-success: #10b981;
 
-      /* --- 12 Hover Backgrounds --- */
-      --hover-bg-1: #1e293b; --hover-bg-2: #334155; --hover-bg-3: #475569; --hover-bg-4: #374151;
-      --hover-bg-5: #1f2937; --hover-bg-6: #27272a; --hover-bg-7: #3f3f46; --hover-bg-8: #161b22;
-      --hover-bg-9: #2563eb; --hover-bg-10: #059669; --hover-bg-11: #dc2626; --hover-bg-12: #d97706;
+      /* Outlines */
+      --outline-focus: rgba(59, 130, 246, 0.5); --outline-accent: rgba(96, 165, 250, 0.4);
+      --outline-danger: rgba(239, 68, 68, 0.4); --outline-success: rgba(16, 185, 129, 0.4);
+      --outline-warning: rgba(245, 158, 11, 0.4); --outline-info: rgba(14, 165, 233, 0.4);
 
-      /* --- 12 Hover Texts --- */
-      --hover-text-1: #ffffff; --hover-text-2: #f8fafc; --hover-text-3: #f1f5f9; --hover-text-4: #e2e8f0;
-      --hover-text-5: #cbd5e1; --hover-text-6: #93c5fd; --hover-text-7: #6ee7b7; --hover-text-8: #fca5a5;
-      --hover-text-9: #fcd34d; --hover-text-10: #d8b4fe; --hover-text-11: #67e8f9; --hover-text-12: #f9a8d4;
+      /* Shadows */
+      --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.5); --shadow-md: 0 8px 16px rgba(0, 0, 0, 0.6);
+      --shadow-lg: 0 16px 32px rgba(0, 0, 0, 0.7); --shadow-accent: 0 8px 24px rgba(37, 99, 235, 0.3);
+      --shadow-danger: 0 8px 24px rgba(220, 38, 38, 0.3); --shadow-success: 0 8px 24px rgba(5, 150, 105, 0.3);
 
-      /* --- 12 Hover Outlines --- */
-      --hover-outline-1: #3b82f6; --hover-outline-2: #10b981; --hover-outline-3: #ef4444; --hover-outline-4: #f59e0b;
-      --hover-outline-5: #8b5cf6; --hover-outline-6: #06b6d4; --hover-outline-7: #ec4899; --hover-outline-8: #6366f1;
-      --hover-outline-9: #14b8a6; --hover-outline-10: #e2e8f0; --hover-outline-11: #cbd5e1; --hover-outline-12: #94a3b8;
-
-      /* --- 18 Active Links --- */
-      --active-link-1: #60a5fa; --active-link-2: #3b82f6; --active-link-3: #2563eb; --active-link-4: #1d4ed8;
-      --active-link-5: #34d399; --active-link-6: #10b981; --active-link-7: #059669; --active-link-8: #047857;
-      --active-link-9: #f87171; --active-link-10: #ef4444; --active-link-11: #dc2626; --active-link-12: #b91c1c;
-      --active-link-13: #fbbf24; --active-link-14: #f59e0b; --active-link-15: #d97706; --active-link-16: #b45309;
-      --active-link-17: #c084fc; --active-link-18: #a855f7;
-
-      /* --- 10 Animation Glows --- */
-      --anim-glow-1: 0 0 15px rgba(59, 130, 246, 0.5); --anim-glow-2: 0 0 20px rgba(139, 92, 246, 0.5);
-      --anim-glow-3: 0 0 25px rgba(236, 72, 153, 0.5); --anim-glow-4: 0 0 15px rgba(245, 158, 11, 0.5);
-      --anim-glow-5: 0 0 20px rgba(16, 185, 129, 0.5); --anim-glow-6: 0 0 10px rgba(6, 182, 212, 0.5);
-      --anim-glow-7: 0 0 30px rgba(99, 102, 241, 0.4); --anim-glow-8: 0 0 15px rgba(225, 29, 72, 0.5);
-      --anim-glow-9: 0 0 20px rgba(202, 138, 4, 0.5);  --anim-glow-10: 0 0 10px rgba(20, 184, 166, 0.5);
-
-      /* --- 10 Shadows --- */
-      --shadow-1: 0 1px 2px rgba(0,0,0,0.5); --shadow-2: 0 4px 6px rgba(0,0,0,0.6);
-      --shadow-3: 0 10px 15px rgba(0,0,0,0.7); --shadow-4: 0 20px 25px rgba(0,0,0,0.8);
-      --shadow-5: 0 25px 50px rgba(0,0,0,0.9); --shadow-6: inset 0 2px 4px rgba(0,0,0,0.6);
-      --shadow-7: 0 0 10px rgba(0,0,0,0.5); --shadow-8: 0 8px 32px rgba(0,0,0,0.7);
-      --shadow-9: 0 4px 14px rgba(0,0,0,0.6); --shadow-10: 0 2px 8px rgba(255,255,255,0.05);
-
-      /* ==========================================================================
-         PART 2: PREMIUM SEMANTIC COMPONENTS (For real HTML tags)
-         ========================================================================== */
-      --text-heading: #ffffff;
-      --text-paragraph: #cbd5e1;
-      --text-muted: #94a3b8;
-      --text-bold: #f8fafc;
-      --text-inverse: #0f172a;
-
-      --bg-table: #0f172a;
-      --bg-table-stripe: #1e293b;
-      --bg-th: #020617;
-      --text-th: #94a3b8;
-      --border-table: #334155;
-
-      --bg-accordion: #1e293b;
-      --bg-accordion-hover: #334155;
-      --text-accordion: #f1f5f9;
-      --border-accordion: #475569;
-
-      --bg-success: #064e3b; --text-success: #34d399; --border-success: #059669;
-      --bg-danger: #7f1d1d;  --text-danger: #f87171;  --border-danger: #dc2626;
-      --bg-warning: #78350f; --text-warning: #fbbf24; --border-warning: #d97706;
-      --bg-info: #1e3a8a;    --text-info: #60a5fa;    --border-info: #2563eb;
-
-      --primary-base: #4f46e5;
-      --primary-hover: #4338ca;
-      --primary-active: #3730a3;
-      --split-primary: #818cf8;
-      --split-secondary: #ec4899;
-      --outline-focus-ring: #6366f1;
+      /* Animations */
+      --anim-color-1: #2563eb; --anim-color-2: #7c3aed; --anim-color-3: #db2777; --anim-color-4: #ea580c;
+      --anim-color-5: #16a34a; --anim-color-6: #0891b2; --anim-color-7: #4f46e5; --anim-color-8: #e11d48;
+      --anim-color-9: #ca8a04; --anim-color-10: #14b8a6;
     }
 
-    /* ==========================================================================
-       PART 3: LIGHT THEME OVERRIDES (Bright, Crisp, WCAG Compliant)
-       ========================================================================== */
     [data-theme="light"] {
-      /* --- 20 Backgrounds (Light scales) --- */
-      --bg-1: #ffffff; --bg-2: #f8fafc; --bg-3: #f1f5f9; --bg-4: #e2e8f0; --bg-5: #cbd5e1;
-      --bg-6: #f9fafb; --bg-7: #f3f4f6; --bg-8: #e5e7eb; --bg-9: #d1d5db; --bg-10: #9ca3af;
-      --bg-11: #fafafa; --bg-12: #f4f4f5; --bg-13: #e4e4e7; --bg-14: #d4d4d8; --bg-15: #a1a1aa;
-      --bg-16: #f0f9ff; --bg-17: #e0f2fe; --bg-18: #bae6fd; --bg-19: #fdf2f8; --bg-20: #fce7f3;
+      --bg-base: #f8fafc; --bg-surface: #ffffff; --bg-surface-hover: #f1f5f9;
+      --bg-card: #ffffff; --bg-modal: #fcfcfc; --bg-elevated: #ffffff;
+      --bg-accent: #2563eb; --bg-accent-muted: rgba(37, 99, 235, 0.1);
+      --bg-success: #10b981; --bg-danger: #ef4444; --bg-warning: #f59e0b; --bg-info: #0ea5e9;
 
-      /* --- 20 Text Colors (Dark scales) --- */
-      --text-1: #020617; --text-2: #0f172a; --text-3: #1e293b; --text-4: #334155; --text-5: #475569;
-      --text-6: #64748b; --text-7: #111827; --text-8: #1f2937; --text-9: #374151; --text-10: #4b5563;
-      --text-11: #6b7280; --text-12: #18181b; --text-13: #27272a; --text-14: #3f3f46; --text-15: #52525b;
-      --text-16: #1d4ed8; --text-17: #047857; --text-18: #b91c1c; --text-19: #b45309; --text-20: #7e22ce;
+      --text-primary: #0f172a; --text-secondary: #334155; --text-tertiary: #475569;
+      --text-muted: #64748b; --text-inverse: #ffffff; --text-accent: #2563eb;
+      --text-accent-hover: #1d4ed8; --text-success: #059669; --text-danger: #dc2626;
+      --text-warning: #d97706; --text-info: #0284c7; --text-highlight: #9333ea;
 
-      /* --- 10 Borders --- */
-      --border-1: #e2e8f0; --border-2: #cbd5e1; --border-3: #94a3b8; --border-4: #e5e7eb; --border-5: #d1d5db;
-      --border-6: #e4e4e7; --border-7: #d4d4d8; --border-8: #d1d5db; --border-9: #e2e8f0; --border-10: #cbd5e1;
+      --border-light: #f1f5f9; --border-base: #e2e8f0; --border-heavy: #cbd5e1;
+      --border-accent: #93c5fd; --border-danger: #fca5a5; --border-success: #6ee7b7;
 
-      /* --- 12 Hover Backgrounds --- */
-      --hover-bg-1: #f1f5f9; --hover-bg-2: #e2e8f0; --hover-bg-3: #cbd5e1; --hover-bg-4: #f3f4f6;
-      --hover-bg-5: #e5e7eb; --hover-bg-6: #f4f4f5; --hover-bg-7: #e4e4e7; --hover-bg-8: #d1d5db;
-      --hover-bg-9: #dbeafe; --hover-bg-10: #d1fae5; --hover-bg-11: #fee2e2; --hover-bg-12: #fef3c7;
+      --outline-focus: rgba(37, 99, 235, 0.3); --outline-accent: rgba(59, 130, 246, 0.25);
+      --outline-danger: rgba(239, 68, 68, 0.25); --outline-success: rgba(16, 185, 129, 0.25);
+      --outline-warning: rgba(245, 158, 11, 0.25); --outline-info: rgba(14, 165, 233, 0.25);
 
-      /* --- 12 Hover Texts --- */
-      --hover-text-1: #000000; --hover-text-2: #0f172a; --hover-text-3: #1e293b; --hover-text-4: #334155;
-      --hover-text-5: #475569; --hover-text-6: #1e3a8a; --hover-text-7: #064e3b; --hover-text-8: #7f1d1d;
-      --hover-text-9: #78350f; --hover-text-10: #581c87; --hover-text-11: #164e63; --hover-text-12: #831843;
+      --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.05); --shadow-md: 0 8px 16px rgba(0, 0, 0, 0.08);
+      --shadow-lg: 0 16px 32px rgba(0, 0, 0, 0.12); --shadow-accent: 0 8px 24px rgba(37, 99, 235, 0.15);
+      --shadow-danger: 0 8px 24px rgba(239, 68, 68, 0.15); --shadow-success: 0 8px 24px rgba(16, 185, 129, 0.15);
 
-      /* --- 12 Hover Outlines --- */
-      --hover-outline-1: #2563eb; --hover-outline-2: #059669; --hover-outline-3: #dc2626; --hover-outline-4: #d97706;
-      --hover-outline-5: #7c3aed; --hover-outline-6: #0891b2; --hover-outline-7: #db2777; --hover-outline-8: #4f46e5;
-      --hover-outline-9: #0d9488; --hover-outline-10: #94a3b8; --hover-outline-11: #64748b; --hover-outline-12: #475569;
-
-      /* --- 18 Active Links --- */
-      --active-link-1: #1e40af; --active-link-2: #1e3a8a; --active-link-3: #172554; --active-link-4: #1d4ed8;
-      --active-link-5: #064e3b; --active-link-6: #022c22; --active-link-7: #059669; --active-link-8: #047857;
-      --active-link-9: #991b1b; --active-link-10: #7f1d1d; --active-link-11: #450a0a; --active-link-12: #b91c1c;
-      --active-link-13: #92400e; --active-link-14: #78350f; --active-link-15: #451a03; --active-link-16: #b45309;
-      --active-link-17: #6b21a8; --active-link-18: #581c87;
-
-      /* --- 10 Animation Glows --- */
-      --anim-glow-1: 0 0 15px rgba(59, 130, 246, 0.2); --anim-glow-2: 0 0 20px rgba(139, 92, 246, 0.2);
-      --anim-glow-3: 0 0 25px rgba(236, 72, 153, 0.2); --anim-glow-4: 0 0 15px rgba(245, 158, 11, 0.2);
-      --anim-glow-5: 0 0 20px rgba(16, 185, 129, 0.2); --anim-glow-6: 0 0 10px rgba(6, 182, 212, 0.2);
-      --anim-glow-7: 0 0 30px rgba(99, 102, 241, 0.15); --anim-glow-8: 0 0 15px rgba(225, 29, 72, 0.2);
-      --anim-glow-9: 0 0 20px rgba(202, 138, 4, 0.2);  --anim-glow-10: 0 0 10px rgba(20, 184, 166, 0.2);
-
-      /* --- 10 Shadows --- */
-      --shadow-1: 0 1px 2px rgba(0,0,0,0.05); --shadow-2: 0 4px 6px rgba(0,0,0,0.1);
-      --shadow-3: 0 10px 15px rgba(0,0,0,0.1); --shadow-4: 0 20px 25px rgba(0,0,0,0.15);
-      --shadow-5: 0 25px 50px rgba(0,0,0,0.25); --shadow-6: inset 0 2px 4px rgba(0,0,0,0.05);
-      --shadow-7: 0 0 10px rgba(0,0,0,0.05); --shadow-8: 0 8px 32px rgba(0,0,0,0.08);
-      --shadow-9: 0 4px 14px rgba(0,0,0,0.08); --shadow-10: 0 2px 8px rgba(0,0,0,0.04);
-
-      /* --- Premium Semantic Overrides --- */
-      --text-heading: #0f172a; --text-paragraph: #334155; --text-muted: #64748b;
-      --text-bold: #020617; --text-inverse: #ffffff;
-
-      --bg-table: #ffffff; --bg-table-stripe: #f8fafc; --bg-th: #f1f5f9;
-      --text-th: #475569; --border-table: #e2e8f0;
-
-      --bg-accordion: #ffffff; --bg-accordion-hover: #f1f5f9;
-      --text-accordion: #1e293b; --border-accordion: #e2e8f0;
-
-      --bg-success: #d1fae5; --text-success: #065f46; --border-success: #10b981;
-      --bg-danger: #fee2e2;  --text-danger: #991b1b;  --border-danger: #ef4444;
-      --bg-warning: #fef3c7; --text-warning: #92400e; --border-warning: #f59e0b;
-      --bg-info: #dbeafe;    --text-info: #1e40af;    --border-info: #3b82f6;
-
-      --primary-base: #4f46e5; --primary-hover: #4338ca; --primary-active: #3730a3;
-      --split-primary: #6366f1; --split-secondary: #db2777; --outline-focus-ring: #4f46e5;
+      --anim-color-1: #3b82f6; --anim-color-2: #8b5cf6; --anim-color-3: #ec4899; --anim-color-4: #f97316;
+      --anim-color-5: #22c55e; --anim-color-6: #06b6d4; --anim-color-7: #6366f1; --anim-color-8: #f43f5e;
+      --anim-color-9: #eab308; --anim-color-10: #14b8a6;
     }
 
-    /* ==========================================================================
-       PART 4: ACTUAL CSS RULES & LAYOUT (Real Auto-Mapping)
-       ========================================================================== */
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    
+    @keyframes text-gradient-flow {
+      0% { color: var(--anim-color-1); } 25% { color: var(--anim-color-2); }
+      50% { color: var(--anim-color-3); } 75% { color: var(--anim-color-7); } 100% { color: var(--anim-color-1); }
+    }
+    @keyframes bg-pulse-glow {
+      0% { background-color: var(--anim-color-1); box-shadow: 0 0 15px var(--anim-color-1); }
+      33% { background-color: var(--anim-color-4); box-shadow: 0 0 15px var(--anim-color-4); }
+      66% { background-color: var(--anim-color-6); box-shadow: 0 0 15px var(--anim-color-6); }
+      100% { background-color: var(--anim-color-1); box-shadow: 0 0 15px var(--anim-color-1); }
+    }
+    @keyframes border-neon-flash {
+      0% { border-color: var(--anim-color-5); box-shadow: 0 0 10px var(--anim-color-5); }
+      50% { border-color: var(--anim-color-10); box-shadow: 0 0 20px var(--anim-color-10); }
+      100% { border-color: var(--anim-color-5); box-shadow: 0 0 10px var(--anim-color-5); }
+    }
+    @keyframes alert-danger-flash {
+      0% { background-color: var(--bg-card); border-color: var(--border-base); }
+      50% { background-color: var(--bg-danger); border-color: var(--border-danger); color: #fff; }
+      100% { background-color: var(--bg-card); border-color: var(--border-base); }
+    }
+
+    /* ============================================================
+       2. BASIC LAYOUT FOR DEMO (Sirf page structure ke liye)
+       ============================================================ */
     body {
-      background-color: var(--bg-2);
-      color: var(--text-paragraph);
-      font-family: system-ui, -apple-system, sans-serif;
+      background-color: var(--bg-base);
+      color: var(--text-primary);
+      font-family: system-ui, sans-serif;
+      margin: 0; padding: 20px;
       transition: background-color 0.3s, color 0.3s;
-      line-height: 1.6;
     }
-
-    .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
-
-    /* Auto Mapped Typography */
-    h1, h2, h3, h4 { color: var(--text-heading); margin-bottom: 15px; font-weight: 800; }
-    p { color: var(--text-paragraph); margin-bottom: 15px; }
-    small { color: var(--text-muted); }
-    b, strong { color: var(--text-bold); }
-    a { color: var(--primary-base); text-decoration: none; transition: 0.2s; }
-    a:hover { color: var(--primary-hover); text-shadow: var(--anim-glow-1); }
-
-    /* Navbar */
-    .navbar {
-      display: flex; justify-content: space-between; align-items: center;
-      padding: 15px 20px; background-color: var(--bg-1);
-      border-bottom: 1px solid var(--border-1); box-shadow: var(--shadow-2);
-      border-radius: 12px; margin-bottom: 40px;
+    .container { max-width: 1200px; margin: 0 auto; }
+    h1, h2 { color: var(--text-primary); border-bottom: 2px solid var(--border-base); padding-bottom: 10px; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin-bottom: 40px; }
+    
+    .box {
+      padding: 20px; border-radius: 8px; font-weight: bold; text-align: center;
+      border: 1px solid var(--border-light);
     }
-
-    /* Buttons */
-    .btn {
-      padding: 10px 20px; border-radius: 8px; font-weight: bold; cursor: pointer;
-      border: none; transition: 0.3s; outline: none;
+    
+    .theme-btn {
+      position: fixed; top: 20px; right: 20px;
+      padding: 10px 20px; border-radius: 8px; cursor: pointer;
+      background-color: var(--bg-accent); color: #fff; border: none;
+      font-weight: bold; box-shadow: var(--shadow-md); z-index: 100;
     }
-    .btn-primary { background-color: var(--primary-base); color: var(--text-inverse); box-shadow: var(--shadow-2); }
-    .btn-primary:hover { background-color: var(--primary-hover); box-shadow: var(--anim-glow-7); }
-    .btn-secondary { background-color: var(--bg-3); color: var(--text-heading); border: 1px solid var(--border-2); }
-    .btn-secondary:hover { background-color: var(--hover-bg-2); border-color: var(--hover-outline-1); }
-
-    /* Grid & Cards */
-    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; margin-bottom: 40px; }
-    .card {
-      background-color: var(--bg-3); border: 1px solid var(--border-2);
-      border-radius: 12px; padding: 20px; box-shadow: var(--shadow-1);
-      transition: 0.3s;
-    }
-    .card:hover { transform: translateY(-5px); box-shadow: var(--shadow-3); border-color: var(--hover-outline-1); }
-
-    /* Semantic Table */
-    .premium-table { width: 100%; border-collapse: collapse; background-color: var(--bg-table); border-radius: 10px; overflow: hidden; border: 1px solid var(--border-table); margin-bottom: 40px;}
-    .premium-table th { background-color: var(--bg-th); color: var(--text-th); padding: 15px; text-align: left; border-bottom: 2px solid var(--border-table); }
-    .premium-table td { padding: 15px; color: var(--text-paragraph); border-bottom: 1px solid var(--border-table); }
-    .premium-table tr:nth-child(even) { background-color: var(--bg-table-stripe); }
-
-    /* Semantic Accordion */
-    .accordion { background-color: var(--bg-accordion); border: 1px solid var(--border-accordion); border-radius: 8px; margin-bottom: 10px; overflow: hidden; }
-    .acc-header { width: 100%; padding: 15px; background: none; border: none; text-align: left; color: var(--text-accordion); font-weight: bold; cursor: pointer; transition: 0.3s; display: flex; justify-content: space-between; }
-    .acc-header:hover { background-color: var(--bg-accordion-hover); }
-    .acc-body { padding: 0 15px; color: var(--text-paragraph); max-height: 0; transition: 0.3s; opacity: 0; }
-    .accordion.active .acc-body { padding: 15px; max-height: 200px; opacity: 1; border-top: 1px solid var(--border-accordion); }
-
-    /* Alerts */
-    .alert { padding: 15px; border-radius: 8px; border-left: 5px solid; margin-bottom: 15px; font-weight: bold; }
-    .alert-success { background-color: var(--bg-success); color: var(--text-success); border-color: var(--border-success); }
-    .alert-danger { background-color: var(--bg-danger); color: var(--text-danger); border-color: var(--border-danger); }
-    .alert-warning { background-color: var(--bg-warning); color: var(--text-warning); border-color: var(--border-warning); }
-    .alert-info { background-color: var(--bg-info); color: var(--text-info); border-color: var(--border-info); }
   </style>
 </head>
 <body>
 
+  <button class="theme-btn" id="themeToggle">🌓 Toggle Dark/Light Mode</button>
+
   <div class="container">
-    <nav class="navbar">
-      <h2>TyagiHub <span style="color: var(--primary-base);">Framework</span></h2>
-      <button class="btn btn-secondary" id="themeToggle">🌓 Switch Theme</button>
-    </nav>
+    <h1>🎨 Master Color System Test Page</h1>
+    <p style="color: var(--text-muted);">Is page par tere saare 30+ colors, borders, shadows aur animations apply kiye gaye hain.</p>
 
-    <div style="text-align: center; margin-bottom: 50px;">
-      <h1 style="font-size: 3rem;">Ultimate <span style="color: var(--split-secondary);">Master UI</span></h1>
-      <p>Bhai, ab ye dekh asli website. Saare 156+ variables yahan background mein automatically kaam kar rahe hain. Table, cards, aur alerts sab dynamic hain.</p>
-      <button class="btn btn-primary">Start Building</button>
-    </div>
-
-    <h3>Framework Features</h3>
+    <h2>1. Background Colors (12)</h2>
     <div class="grid">
-      <div class="card">
-        <h4 style="color: var(--primary-base);">1. Auto-Mapped Typography</h4>
-        <p>H1, H2, aur Paragraphs directly <b>--text-heading</b> aur <b>--text-paragraph</b> se linked hain. Koi class lagane ki zaroorat nahi.</p>
-      </div>
-      <div class="card">
-        <h4 style="color: var(--primary-base);">2. 150+ Utility Variables</h4>
-        <p>Agar tujhe apna custom box banana ho, toh <b>--bg-15</b> ya <b>--text-12</b> use kar sakta hai backup ke liye.</p>
-      </div>
-      <div class="card">
-        <h4 style="color: var(--primary-base);">3. Exact Matches</h4>
-        <p>Jo Prompt mein maanga tha, utni hi ginti ka code exact daala gaya hai dark aur light mein.</p>
-      </div>
+      <div class="box" style="background-color: var(--bg-base);">Base</div>
+      <div class="box" style="background-color: var(--bg-surface);">Surface</div>
+      <div class="box" style="background-color: var(--bg-surface-hover);">Surface Hover</div>
+      <div class="box" style="background-color: var(--bg-card);">Card</div>
+      <div class="box" style="background-color: var(--bg-modal);">Modal</div>
+      <div class="box" style="background-color: var(--bg-elevated);">Elevated</div>
+      <div class="box" style="background-color: var(--bg-accent); color: white;">Accent</div>
+      <div class="box" style="background-color: var(--bg-accent-muted);">Accent Muted</div>
+      <div class="box" style="background-color: var(--bg-success); color: white;">Success</div>
+      <div class="box" style="background-color: var(--bg-danger); color: white;">Danger</div>
+      <div class="box" style="background-color: var(--bg-warning); color: white;">Warning</div>
+      <div class="box" style="background-color: var(--bg-info); color: white;">Info</div>
     </div>
 
-    <h3>Semantic Status Alerts</h3>
+    <h2>2. Typography Colors (12)</h2>
+    <div class="grid" style="background: var(--bg-surface); padding: 20px; border-radius: 8px;">
+      <div style="color: var(--text-primary); font-size: 1.2rem; font-weight: bold;">Text Primary</div>
+      <div style="color: var(--text-secondary); font-size: 1.2rem; font-weight: bold;">Text Secondary</div>
+      <div style="color: var(--text-tertiary); font-size: 1.2rem; font-weight: bold;">Text Tertiary</div>
+      <div style="color: var(--text-muted); font-size: 1.2rem; font-weight: bold;">Text Muted</div>
+      <div style="color: var(--text-accent); font-size: 1.2rem; font-weight: bold;">Text Accent</div>
+      <div style="color: var(--text-success); font-size: 1.2rem; font-weight: bold;">Text Success</div>
+      <div style="color: var(--text-danger); font-size: 1.2rem; font-weight: bold;">Text Danger</div>
+      <div style="color: var(--text-warning); font-size: 1.2rem; font-weight: bold;">Text Warning</div>
+      <div style="color: var(--text-info); font-size: 1.2rem; font-weight: bold;">Text Info</div>
+      <div style="color: var(--text-highlight); font-size: 1.2rem; font-weight: bold;">Text Highlight</div>
+    </div>
+
+    <h2>3. Borders & Outlines</h2>
     <div class="grid">
-      <div class="alert alert-success">System Successfully Loaded (Success)</div>
-      <div class="alert alert-danger">Critical Database Error (Danger)</div>
-      <div class="alert alert-warning">Check your internet connection (Warning)</div>
-      <div class="alert alert-info">New update available v3.0 (Info)</div>
+      <div class="box" style="background-color: var(--bg-surface); border: 2px solid var(--border-base);">Border Base</div>
+      <div class="box" style="background-color: var(--bg-surface); border: 2px solid var(--border-heavy);">Border Heavy</div>
+      <div class="box" style="background-color: var(--bg-surface); border: 2px solid var(--border-accent);">Border Accent</div>
+      <div class="box" style="background-color: var(--bg-surface); border: 2px solid var(--border-danger);">Border Danger</div>
+      <div class="box" style="background-color: var(--bg-surface); outline: 4px solid var(--outline-focus); border: 1px solid var(--border-accent);">Outline Focus</div>
+      <div class="box" style="background-color: var(--bg-surface); outline: 4px solid var(--outline-warning); border: 1px solid var(--border-base);">Outline Warning</div>
     </div>
 
-    <h3>Semantic Data Table</h3>
-    <table class="premium-table">
-      <thead>
-        <tr>
-          <th>Variable Name</th>
-          <th>Component</th>
-          <th>Status</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td><b>--bg-table</b></td>
-          <td>Table Background</td>
-          <td><span style="color: var(--text-success);">Active</span></td>
-        </tr>
-        <tr>
-          <td><b>--bg-table-stripe</b></td>
-          <td>Even Row Background</td>
-          <td><span style="color: var(--text-success);">Active</span></td>
-        </tr>
-        <tr>
-          <td><b>--bg-th</b></td>
-          <td>Header Background</td>
-          <td><span style="color: var(--text-success);">Active</span></td>
-        </tr>
-      </tbody>
-    </table>
+    <h2>4. Shadows (Depth)</h2>
+    <div class="grid" style="padding-top: 20px;">
+      <div class="box" style="background-color: var(--bg-card); box-shadow: var(--shadow-sm); border: none;">Shadow SM</div>
+      <div class="box" style="background-color: var(--bg-card); box-shadow: var(--shadow-md); border: none;">Shadow MD</div>
+      <div class="box" style="background-color: var(--bg-card); box-shadow: var(--shadow-lg); border: none;">Shadow LG</div>
+      <div class="box" style="background-color: var(--bg-card); box-shadow: var(--shadow-accent); border: 1px solid var(--border-accent);">Shadow Accent</div>
+      <div class="box" style="background-color: var(--bg-card); box-shadow: var(--shadow-danger); border: 1px solid var(--border-danger);">Shadow Danger</div>
+      <div class="box" style="background-color: var(--bg-card); box-shadow: var(--shadow-success); border: 1px solid var(--border-success);">Shadow Success</div>
+    </div>
 
-    <h3>Interactive Accordions</h3>
-    <div class="accordion">
-      <button class="acc-header" onclick="this.parentElement.classList.toggle('active')">
-        Semantic Mapping kya hai? <span>+</span>
-      </button>
-      <div class="acc-body">
-        Bhai semantic ka matlab hai HTML tags ko pehle se color bata dena. Jaise CSS mein likh diya: `table { background: var(--bg-table); }`. Ab tu jab bhi table banayega, color apne aap set ho jayega.
+    <h2>5. CSS Animations</h2>
+    <div class="grid">
+      <div class="box" style="background-color: var(--bg-surface); animation: text-gradient-flow 4s infinite; font-size: 1.5rem;">
+        Text Gradient Flow
       </div>
-    </div>
-    <div class="accordion">
-      <button class="acc-header" onclick="this.parentElement.classList.toggle('active')">
-        Ye 1000 websites pe kaise chalega? <span>+</span>
-      </button>
-      <div class="acc-body">
-        Kyunki isme kisi color ka naam 'Red' ya 'Blue' nahi hai. Agar kal ko nayi website banani ho, toh bas :root ke andar jake `--primary-base` ka color badal de, poori website change ho jayegi!
+      <div class="box" style="color: white; animation: bg-pulse-glow 6s infinite;">
+        Background Pulse Glow
+      </div>
+      <div class="box" style="background-color: var(--bg-surface); border: 3px solid transparent; animation: border-neon-flash 3s infinite;">
+        Neon Border Flash
+      </div>
+      <div class="box" style="animation: alert-danger-flash 2s infinite;">
+        Danger Alert Flash
       </div>
     </div>
 
   </div>
 
   <script>
-    // Theme Toggle Script
     const btn = document.getElementById('themeToggle');
     const html = document.documentElement;
 
     btn.addEventListener('click', () => {
-      const currentTheme = html.getAttribute('data-theme');
-      html.setAttribute('data-theme', currentTheme === 'dark' ? 'light' : 'dark');
+      let currentTheme = html.getAttribute('data-theme');
+      let newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+      html.setAttribute('data-theme', newTheme);
     });
   </script>
+
 </body>
 </html>
