@@ -36,7 +36,7 @@ keywords: "cybersecurity Hindi, online scam alerts India, digital safety, InfoSh
         {% assign shield_posts = site.shield | sort:"date" | reverse %}
         
         {% for p in shield_posts limit: 1 %}
-        <a href="{{ p.url | relative_url }}" class="blog-card" role="listitem" style="opacity: 1 !important; visibility: visible !important;">
+        <a href="{{ p.url | relative_url }}" class="blog-card" role="listitem">
           <div class="blog-card__thumb">
             <img src="{{ p.image | default:'/assets/images/default-thumb.png' }}" alt="{{ p.title }}" loading="lazy">
           </div>
@@ -63,4 +63,4 @@ keywords: "cybersecurity Hindi, online scam alerts India, digital safety, InfoSh
   </section>
 </div>
 
-<script src="/assets/js/shield.js?v=10.0"></script>
+<script src="/assets/js/shield.js?v=final_fix" defer></script>
