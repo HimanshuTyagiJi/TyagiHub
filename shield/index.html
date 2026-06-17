@@ -37,7 +37,7 @@ extra_js:
         
         {% assign shield_posts = site.shield | sort:"date" | reverse %}
         
-        {% for p in shield_posts limit: 6 %}
+        {% for p in shield_posts limit: 1 %}
         <a href="{{ p.url | relative_url }}" class="blog-card reveal js-post" role="listitem">
           <div class="blog-card__thumb">
             <img src="{{ p.image | default:'/assets/images/default-thumb.png' }}" alt="{{ p.title }}" loading="lazy">
