@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Master Color System Demo</title>
+  <style>
+    /* ============================================================
+       1. CORE COLOR SYSTEM (TERA ORIGINAL CSS)
+       ============================================================ */
+    :root {
+      /* Backgrounds */
+      --bg-base: #0a0c10; --bg-surface: #11141d; --bg-surface-hover: #1a1e2b;
+      --bg-card: #161a25; --bg-modal: #1e2433; --bg-elevated: #252c3f;
+      --bg-accent: #2563eb; --bg-accent-muted: rgba(37, 99, 235, 0.15);
+      --bg-success: #059669; --bg-danger: #dc2626; --bg-warning: #d97706; --bg-info: #0284c7;
+
+      /* Text */
+      --text-primary: #ffffff; --text-secondary: #e2e8f0; --text-tertiary: #cbd5e1;
+      --text-muted: #94a3b8; --text-inverse: #020617; --text-accent: #60a5fa;
+      --text-accent-hover: #93c5fd; --text-success: #34d399; --text-danger: #f87171;
+      --text-warning: #fbbf24; --text-info: #38bdf8; --text-highlight: #c084fc;
+
+      /* Borders */
+      --border-light: #1e293b; --border-base: #334155; --border-heavy: #475569;
+      --border-accent: #3b82f6; --border-danger: #ef4444; --border-success: #10b981;
+
+      /* Outlines */
+      --outline-focus: rgba(59, 130, 246, 0.5); --outline-accent: rgba(96, 165, 250, 0.4);
+      --outline-danger: rgba(239, 68, 68, 0.4); --outline-success: rgba(16, 185, 129, 0.4);
+      --outline-warning: rgba(245, 158, 11, 0.4); --outline-info: rgba(14, 165, 233, 0.4);
+
+      /* Shadows */
+      --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.5); --shadow-md: 0 8px 16px rgba(0, 0, 0, 0.6);
+      --shadow-lg: 0 16px 32px rgba(0, 0, 0, 0.7); --shadow-accent: 0 8px 24px rgba(37, 99, 235, 0.3);
+      --shadow-danger: 0 8px 24px rgba(220, 38, 38, 0.3); --shadow-success: 0 8px 24px rgba(5, 150, 105, 0.3);
+
+      /* Animations */
+      --anim-color-1: #2563eb; --anim-color-2: #7c3aed; --anim-color-3: #db2777; --anim-color-4: #ea580c;
+      --anim-color-5: #16a34a; --anim-color-6: #0891b2; --anim-color-7: #4f46e5; --anim-color-8: #e11d48;
+      --anim-color-9: #ca8a04; --anim-color-10: #14b8a6;
+    }
+
+    [data-theme="light"] {
+      --bg-base: #f8fafc; --bg-surface: #ffffff; --bg-surface-hover: #f1f5f9;
+      --bg-card: #ffffff; --bg-modal: #fcfcfc; --bg-elevated: #ffffff;
+      --bg-accent: #2563eb; --bg-accent-muted: rgba(37, 99, 235, 0.1);
+      --bg-success: #10b981; --bg-danger: #ef4444; --bg-warning: #f59e0b; --bg-info: #0ea5e9;
+
+      --text-primary: #0f172a; --text-secondary: #334155; --text-tertiary: #475569;
+      --text-muted: #64748b; --text-inverse: #ffffff; --text-accent: #2563eb;
+      --text-accent-hover: #1d4ed8; --text-success: #059669; --text-danger: #dc2626;
+      --text-warning: #d97706; --text-info: #0284c7; --text-highlight: #9333ea;
+
+      --border-light: #f1f5f9; --border-base: #e2e8f0; --border-heavy: #cbd5e1;
+      --border-accent: #93c5fd; --border-danger: #fca5a5; --border-success: #6ee7b7;
+
+      --outline-focus: rgba(37, 99, 235, 0.3); --outline-accent: rgba(59, 130, 246, 0.25);
+      --outline-danger: rgba(239, 68, 68, 0.25); --outline-success: rgba(16, 185, 129, 0.25);
+      --outline-warning: rgba(245, 158, 11, 0.25); --outline-info: rgba(14, 165, 233, 0.25);
+
+      --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.05); --shadow-md: 0 8px 16px rgba(0, 0, 0, 0.08);
+      --shadow-lg: 0 16px 32px rgba(0, 0, 0, 0.12); --shadow-accent: 0 8px 24px rgba(37, 99, 235, 0.15);
+      --shadow-danger: 0 8px 24px rgba(239, 68, 68, 0.15); --shadow-success: 0 8px 24px rgba(16, 185, 129, 0.15);
+
+      --anim-color-1: #3b82f6; --anim-color-2: #8b5cf6; --anim-color-3: #ec4899; --anim-color-4: #f97316;
+      --anim-color-5: #22c55e; --anim-color-6: #06b6d4; --anim-color-7: #6366f1; --anim-color-8: #f43f5e;
+      --anim-color-9: #eab308; --anim-color-10: #14b8a6;
+    }
+
+    @keyframes text-gradient-flow {
+      0% { color: var(--anim-color-1); } 25% { color: var(--anim-color-2); }
+      50% { color: var(--anim-color-3); } 75% { color: var(--anim-color-7); } 100% { color: var(--anim-color-1); }
+    }
+    @keyframes bg-pulse-glow {
+      0% { background-color: var(--anim-color-1); box-shadow: 0 0 15px var(--anim-color-1); }
+      33% { background-color: var(--anim-color-4); box-shadow: 0 0 15px var(--anim-color-4); }
+      66% { background-color: var(--anim-color-6); box-shadow: 0 0 15px var(--anim-color-6); }
+      100% { background-color: var(--anim-color-1); box-shadow: 0 0 15px var(--anim-color-1); }
+    }
+    @keyframes border-neon-flash {
+      0% { border-color: var(--anim-color-5); box-shadow: 0 0 10px var(--anim-color-5); }
+      50% { border-color: var(--anim-color-10); box-shadow: 0 0 20px var(--anim-color-10); }
+      100% { border-color: var(--anim-color-5); box-shadow: 0 0 10px var(--anim-color-5); }
+    }
+    @keyframes alert-danger-flash {
+      0% { background-color: var(--bg-card); border-color: var(--border-base); }
+      50% { background-color: var(--bg-danger); border-color: var(--border-danger); color: #fff; }
+      100% { background-color: var(--bg-card); border-color: var(--border-base); }
+    }
+
+    /* ============================================================
+       2. BASIC LAYOUT FOR DEMO (Sirf page structure ke liye)
+       ============================================================ */
+    body {
+      background-color: var(--bg-base);
+      color: var(--text-primary);
+      font-family: system-ui, sans-serif;
+      margin: 0; padding: 20px;
+      transition: background-color 0.3s, color 0.3s;
+    }
+    .container { max-width: 1200px; margin: 0 auto; }
+    h1, h2 { color: var(--text-primary); border-bottom: 2px solid var(--border-base); padding-bottom: 10px; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin-bottom: 40px; }
+    
+    .box {
+      padding: 20px; border-radius: 8px; font-weight: bold; text-align: center;
+      border: 1px solid var(--border-light);
+    }
+    
+    .theme-btn {
+      position: fixed; top: 20px; right: 20px;
+      padding: 10px 20px; border-radius: 8px; cursor: pointer;
+      background-color: var(--bg-accent); color: #fff; border: none;
+      font-weight: bold; box-shadow: var(--shadow-md); z-index: 100;
+    }
+  </style>
+</head>
+<body>
+
+  <button class="theme-btn" id="themeToggle">🌓 Toggle Dark/Light Mode</button>
+
+  <div class="container">
+    <h1>🎨 Master Color System Test Page</h1>
+    <p style="color: var(--text-muted);">Is page par tere saare 30+ colors, borders, shadows aur animations apply kiye gaye hain.</p>
+
+    <h2>1. Background Colors (12)</h2>
+    <div class="grid">
+      <div class="box" style="background-color: var(--bg-base);">Base</div>
+      <div class="box" style="background-color: var(--bg-surface);">Surface</div>
+      <div class="box" style="background-color: var(--bg-surface-hover);">Surface Hover</div>
+      <div class="box" style="background-color: var(--bg-card);">Card</div>
+      <div class="box" style="background-color: var(--bg-modal);">Modal</div>
+      <div class="box" style="background-color: var(--bg-elevated);">Elevated</div>
+      <div class="box" style="background-color: var(--bg-accent); color: white;">Accent</div>
+      <div class="box" style="background-color: var(--bg-accent-muted);">Accent Muted</div>
+      <div class="box" style="background-color: var(--bg-success); color: white;">Success</div>
+      <div class="box" style="background-color: var(--bg-danger); color: white;">Danger</div>
+      <div class="box" style="background-color: var(--bg-warning); color: white;">Warning</div>
+      <div class="box" style="background-color: var(--bg-info); color: white;">Info</div>
+    </div>
+
+    <h2>2. Typography Colors (12)</h2>
+    <div class="grid" style="background: var(--bg-surface); padding: 20px; border-radius: 8px;">
+      <div style="color: var(--text-primary); font-size: 1.2rem; font-weight: bold;">Text Primary</div>
+      <div style="color: var(--text-secondary); font-size: 1.2rem; font-weight: bold;">Text Secondary</div>
+      <div style="color: var(--text-tertiary); font-size: 1.2rem; font-weight: bold;">Text Tertiary</div>
+      <div style="color: var(--text-muted); font-size: 1.2rem; font-weight: bold;">Text Muted</div>
+      <div style="color: var(--text-accent); font-size: 1.2rem; font-weight: bold;">Text Accent</div>
+      <div style="color: var(--text-success); font-size: 1.2rem; font-weight: bold;">Text Success</div>
+      <div style="color: var(--text-danger); font-size: 1.2rem; font-weight: bold;">Text Danger</div>
+      <div style="color: var(--text-warning); font-size: 1.2rem; font-weight: bold;">Text Warning</div>
+      <div style="color: var(--text-info); font-size: 1.2rem; font-weight: bold;">Text Info</div>
+      <div style="color: var(--text-highlight); font-size: 1.2rem; font-weight: bold;">Text Highlight</div>
+    </div>
+
+    <h2>3. Borders & Outlines</h2>
+    <div class="grid">
+      <div class="box" style="background-color: var(--bg-surface); border: 2px solid var(--border-base);">Border Base</div>
+      <div class="box" style="background-color: var(--bg-surface); border: 2px solid var(--border-heavy);">Border Heavy</div>
+      <div class="box" style="background-color: var(--bg-surface); border: 2px solid var(--border-accent);">Border Accent</div>
+      <div class="box" style="background-color: var(--bg-surface); border: 2px solid var(--border-danger);">Border Danger</div>
+      <div class="box" style="background-color: var(--bg-surface); outline: 4px solid var(--outline-focus); border: 1px solid var(--border-accent);">Outline Focus</div>
+      <div class="box" style="background-color: var(--bg-surface); outline: 4px solid var(--outline-warning); border: 1px solid var(--border-base);">Outline Warning</div>
+    </div>
+
+    <h2>4. Shadows (Depth)</h2>
+    <div class="grid" style="padding-top: 20px;">
+      <div class="box" style="background-color: var(--bg-card); box-shadow: var(--shadow-sm); border: none;">Shadow SM</div>
+      <div class="box" style="background-color: var(--bg-card); box-shadow: var(--shadow-md); border: none;">Shadow MD</div>
+      <div class="box" style="background-color: var(--bg-card); box-shadow: var(--shadow-lg); border: none;">Shadow LG</div>
+      <div class="box" style="background-color: var(--bg-card); box-shadow: var(--shadow-accent); border: 1px solid var(--border-accent);">Shadow Accent</div>
+      <div class="box" style="background-color: var(--bg-card); box-shadow: var(--shadow-danger); border: 1px solid var(--border-danger);">Shadow Danger</div>
+      <div class="box" style="background-color: var(--bg-card); box-shadow: var(--shadow-success); border: 1px solid var(--border-success);">Shadow Success</div>
+    </div>
+
+    <h2>5. CSS Animations</h2>
+    <div class="grid">
+      <div class="box" style="background-color: var(--bg-surface); animation: text-gradient-flow 4s infinite; font-size: 1.5rem;">
+        Text Gradient Flow
+      </div>
+      <div class="box" style="color: white; animation: bg-pulse-glow 6s infinite;">
+        Background Pulse Glow
+      </div>
+      <div class="box" style="background-color: var(--bg-surface); border: 3px solid transparent; animation: border-neon-flash 3s infinite;">
+        Neon Border Flash
+      </div>
+      <div class="box" style="animation: alert-danger-flash 2s infinite;">
+        Danger Alert Flash
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    const btn = document.getElementById('themeToggle');
+    const html = document.documentElement;
+
+    btn.addEventListener('click', () => {
+      let currentTheme = html.getAttribute('data-theme');
+      let newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+      html.setAttribute('data-theme', newTheme);
+    });
+  </script>
+
+</body>
+</html>
