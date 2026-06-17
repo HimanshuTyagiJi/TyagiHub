@@ -3,8 +3,6 @@ layout: default
 title: "Shield — Cybersecurity Awareness in Hindi"
 description: "InfoShield India — Free cybersecurity awareness, scam alerts, digital safety guides in Hindi for Indian internet users."
 keywords: "cybersecurity Hindi, online scam alerts India, digital safety, InfoShield India, internet security tips Hindi"
-extra_js:
-  - /assets/js/shield.js
 ---
 
 <div style="padding-top:var(--nav-height);">
@@ -33,12 +31,12 @@ extra_js:
                style="width: 100%; max-width: 600px; padding: 14px 24px; border: 2px solid var(--clr-border, #e2e8f0); border-radius: 30px; background: var(--clr-bg-surface, #ffffff); color: var(--clr-text-dark, #0f172a); font-size: 16px; outline: none; box-shadow: 0 4px 12px rgba(0,0,0,0.05);">
       </div>
 
-      <div id="post-wrapper" class="grid-3 static-seo-load" role="list">
+      <div id="post-wrapper" class="grid-3" role="list">
         
         {% assign shield_posts = site.shield | sort:"date" | reverse %}
         
         {% for p in shield_posts limit: 1 %}
-        <a href="{{ p.url | relative_url }}" class="blog-card reveal js-post" role="listitem">
+        <a href="{{ p.url | relative_url }}" class="blog-card" role="listitem" style="opacity: 1 !important; visibility: visible !important;">
           <div class="blog-card__thumb">
             <img src="{{ p.image | default:'/assets/images/default-thumb.png' }}" alt="{{ p.title }}" loading="lazy">
           </div>
@@ -64,4 +62,5 @@ extra_js:
     </div>
   </section>
 </div>
-<script src="/assets/js/shield.js"></script>
+
+<script src="/assets/js/shield.js?v=10.0"></script>
