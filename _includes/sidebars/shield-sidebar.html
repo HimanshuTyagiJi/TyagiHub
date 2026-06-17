@@ -1,72 +1,172 @@
-<aside class="right-sidebar shield-sidebar" aria-label="Shield Sidebar"> 
+<aside class="right-sidebar shield-sidebar" aria-label="Shield Sidebar">
+
+  <!-- Shield Tools -->
 
   <div class="sidebar-section">
+
     <div class="sidebar-title">
-      <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
-      <span>Trending Updates</span>
+      <span>🛡️ Shield Tools</span>
     </div>
 
-    <div id="shield-trending-posts-data" style="display:none;">
-      {% assign shield_posts = site.shield %}
-      {% for post in shield_posts %}
-        {% unless post.url == page.url %}
-        <div class="shield-trending-post-item"
-             data-title="{{ post.title | escape }}"
-             data-url="{{ post.url | relative_url }}"
-             data-image="{{ post.image | default:'/assets/images/default-thumb.png' }}">
-        </div>
-        {% endunless %}
-      {% endfor %}
-    </div>
-
-    <div id="shield-trending-posts-container" class="sidebar-links"></div>
-  </div>
-
-
-  {% if page.is_post %}
-  <div class="sidebar-section">
-    <div class="sidebar-title">
-      <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
-      <span>Related Guides</span>
-    </div>
-
-    <div id="shield-related-posts-container" class="sidebar-links"></div>
-
-    <div id="shield-related-posts-data" style="display:none;">
-      {% assign current_category = page.categories[0] %}
-      {% for post in site.shield %}
-        {% if post.categories contains current_category %}
-          {% unless post.url == page.url %}
-          <div class="shield-related-post-item"
-               data-title="{{ post.title | escape }}"
-               data-url="{{ post.url | relative_url }}"
-               data-image="{{ post.image | default:'/assets/images/default-thumb.png' }}">
-          </div>
-          {% endunless %}
-        {% endif %}
-      {% endfor %}
-    </div>
-  </div>
-
-  {% else %}
-  
-  <div class="sidebar-section">
-    <div class="sidebar-title">
-      <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
-      <span>Latest Shield Articles</span>
-    </div>
     <div class="sidebar-links">
-      {% assign latest_shield = site.shield | sort:"date" | reverse %}
-      {% for post in latest_shield limit:5 %}
-        <a href="{{ post.url | relative_url }}" class="sidebar-link-card">
-          {{ post.title }}
-        </a>
-      {% endfor %}
-    </div>
-  </div>
-  {% endif %}
 
+      <a href="/shield/data-breach-check/" class="sidebar-link-card">
+        Check Data Breach
+      </a>
+
+      <a href="/shield/password-strength-test/" class="sidebar-link-card">
+        Password Strength Test
+      </a>
+
+      <a href="/shield/password-generator/" class="sidebar-link-card">
+        Password Generator
+      </a>
+
+      <a href="/shield/email-exposure-check/" class="sidebar-link-card">
+        Email Exposure Check
+      </a>
+
+    </div>
+
+  </div>
+
+  <!-- Privacy Center -->
 
   <div class="sidebar-section">
+
     <div class="sidebar-title">
-      <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 11 12 14 22 4"></polyline><path d="M21 12v7a2 2 0 0 1-2 2H5a2
+      <span>🔒 Privacy Center</span>
+    </div>
+
+    <div class="sidebar-links">
+
+      <a href="/shield/browser-privacy/" class="sidebar-link-card">
+        Browser Privacy
+      </a>
+
+      <a href="/shield/app-permissions/" class="sidebar-link-card">
+        App Permissions
+      </a>
+
+      <a href="/shield/location-tracking/" class="sidebar-link-card">
+        Location Tracking
+      </a>
+
+      <a href="/shield/privacy-guides/" class="sidebar-link-card">
+        Privacy Guides
+      </a>
+
+    </div>
+
+  </div>
+
+  <!-- Latest Threats -->
+
+  <div class="sidebar-section">
+
+    <div class="sidebar-title">
+      <span>🚨 Latest Threats</span>
+    </div>
+
+    <div class="sidebar-links">
+
+      <a href="/cybersecurity/sim-swap-attack-guide/" class="sidebar-link-card">
+        SIM Swap Attack
+      </a>
+
+      <a href="/cybersecurity/phishing-websites-guide/" class="sidebar-link-card">
+        Phishing Websites
+      </a>
+
+      <a href="/cybersecurity/android-spyware-guide/" class="sidebar-link-card">
+        Android Spyware
+      </a>
+
+      <a href="/cybersecurity/ai-voice-cloning-risks/" class="sidebar-link-card">
+        AI Voice Scam
+      </a>
+
+    </div>
+
+  </div>
+
+  <!-- Security Guides -->
+
+  <div class="sidebar-section">
+
+    <div class="sidebar-title">
+      <span>📚 Security Guides</span>
+    </div>
+
+    <div class="sidebar-links">
+
+      <a href="/cybersecurity/dark-web-data-check/" class="sidebar-link-card">
+        Data Breach Guide
+      </a>
+
+      <a href="/shield/password-security/" class="sidebar-link-card">
+        Password Security
+      </a>
+
+      <a href="/shield/identity-theft-guide/" class="sidebar-link-card">
+        Identity Theft
+      </a>
+
+      <a href="/shield/online-scam-guide/" class="sidebar-link-card">
+        Online Scam Guide
+      </a>
+
+    </div>
+
+  </div>
+
+  <!-- Security Alerts -->
+
+  <div class="sidebar-section">
+
+    <div class="sidebar-title">
+      <span>📡 Security Alerts</span>
+    </div>
+
+    <a href="https://t.me/TyagiHubs"
+       target="_blank"
+       rel="noopener"
+       class="telegram-card">
+
+      Join Telegram Channel
+
+    </a>
+
+  </div>
+
+  <!-- Upcoming Shield Tools -->
+
+  <div class="sidebar-section">
+
+    <div class="sidebar-title">
+      <span>🛠 Upcoming Shield Tools</span>
+    </div>
+
+    <div class="sidebar-links">
+
+      <a href="/shield/email-leak-scanner/" class="sidebar-link-card">
+        Email Leak Scanner
+      </a>
+
+      <a href="/shield/data-breach-monitor/" class="sidebar-link-card">
+        Data Breach Monitor
+      </a>
+
+      <a href="/shield/password-auditor/" class="sidebar-link-card">
+        Password Auditor
+      </a>
+
+      <a href="/shield/device-security-check/" class="sidebar-link-card">
+        Device Security Check
+      </a>
+
+    </div>
+
+  </div>
+
+</aside>
