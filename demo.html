@@ -1,6 +1,12 @@
 <style>
+
    /* ==========================================================================
-   PART 1: THE MASSIVE UTILITY PALETTE (WCAG PASSED - HIGH CONTRAST)
+   TYAGIHUB MASTER CSS ENGINE v4.0 (1000-SITE SCALABLE FRAMEWORK)
+   WCAG Compliance Passed | Auto-HTML Mapping Included
+   ========================================================================== */
+
+/* ==========================================================================
+   PART 1: THE MASSIVE UTILITY PALETTE (DARK MODE DEFAULT)
    ========================================================================== */
 :root {
   /* --- 20 Backgrounds (Deep Dark scales) --- */
@@ -9,7 +15,7 @@
   --bg-11: #000000; --bg-12: #050505; --bg-13: #0d1117; --bg-14: #161b22; --bg-15: #21262d;
   --bg-16: #0a192f; --bg-17: #112240; --bg-18: #233554; --bg-19: #18181b; --bg-20: #27272a;
 
-  /* --- 20 Text Colors (Light, Vibrant & WCAG Safe for Dark Mode) --- */
+  /* --- 20 Text Colors (Vibrant & WCAG Safe for Dark Mode) --- */
   --text-1: #ffffff; /* Pure White */
   --text-2: #f8fafc; /* Slate Light */
   --text-3: #f1f5f9; /* Slate */
@@ -24,7 +30,7 @@
   --text-12: #facc15; /* Vibrant Yellow */
   --text-13: #fbbf24; /* Vibrant Amber */
   --text-14: #fb923c; /* Vibrant Orange */
-  --text-15: #f87171; /* Vibrant Red (Fixed Error) */
+  --text-15: #f87171; /* Vibrant Red */
   --text-16: #f43f5e; /* Vibrant Rose */
   --text-17: #f472b6; /* Vibrant Pink */
   --text-18: #c084fc; /* Vibrant Purple */
@@ -35,45 +41,36 @@
   --border-1: #1e293b; --border-2: #334155; --border-3: #475569; --border-4: #374151; --border-5: #4b5563;
   --border-6: #27272a; --border-7: #3f3f46; --border-8: #161b22; --border-9: #30363d; --border-10: #233554;
 
-  /* --- 18 Active Links (Pastel/Bright for Dark Mode visibility) --- */
-  --active-link-1: #60a5fa; /* Blue */
-  --active-link-2: #38bdf8; /* Sky */
-  --active-link-3: #2dd4bf; /* Teal (Fixed Error) */
-  --active-link-4: #34d399; /* Green (Fixed Error) */
-  --active-link-5: #a3e635; /* Lime */
-  --active-link-6: #facc15; /* Yellow */
-  --active-link-7: #fbbf24; /* Amber */
-  --active-link-8: #fb923c; /* Orange (Fixed Error) */
-  --active-link-9: #f87171; /* Red */
-  --active-link-10: #f43f5e; /* Rose */
-  --active-link-11: #f472b6; /* Pink (Fixed Error) */
-  --active-link-12: #c084fc; /* Purple (Fixed Error) */
-  --active-link-13: #a78bfa; /* Violet */
-  --active-link-14: #818cf8; /* Indigo */
-  --active-link-15: #93c5fd; /* Soft Blue */
-  --active-link-16: #6ee7b7; /* Soft Green (Fixed Error) */
-  --active-link-17: #fca5a5; /* Soft Red */
-  --active-link-18: #d8b4fe; /* Soft Purple */
-
-  /* --- Hover States & Glows (Kept same as they pass contrast) --- */
+  /* --- 12 Hover Backgrounds --- */
   --hover-bg-1: #1e293b; --hover-bg-2: #334155; --hover-bg-3: #475569; --hover-bg-4: #374151;
   --hover-bg-5: #1f2937; --hover-bg-6: #27272a; --hover-bg-7: #3f3f46; --hover-bg-8: #161b22;
   --hover-bg-9: #2563eb; --hover-bg-10: #059669; --hover-bg-11: #dc2626; --hover-bg-12: #d97706;
 
+  /* --- 12 Hover Texts --- */
   --hover-text-1: #ffffff; --hover-text-2: #f8fafc; --hover-text-3: #f1f5f9; --hover-text-4: #e2e8f0;
   --hover-text-5: #cbd5e1; --hover-text-6: #93c5fd; --hover-text-7: #6ee7b7; --hover-text-8: #fca5a5;
   --hover-text-9: #fcd34d; --hover-text-10: #d8b4fe; --hover-text-11: #67e8f9; --hover-text-12: #f9a8d4;
 
+  /* --- 12 Hover Outlines --- */
   --hover-outline-1: #3b82f6; --hover-outline-2: #10b981; --hover-outline-3: #ef4444; --hover-outline-4: #f59e0b;
   --hover-outline-5: #8b5cf6; --hover-outline-6: #06b6d4; --hover-outline-7: #ec4899; --hover-outline-8: #6366f1;
   --hover-outline-9: #14b8a6; --hover-outline-10: #e2e8f0; --hover-outline-11: #cbd5e1; --hover-outline-12: #94a3b8;
 
+  /* --- 18 Active Links (Pastel/Bright for Dark Mode) --- */
+  --active-link-1: #60a5fa; --active-link-2: #38bdf8; --active-link-3: #2dd4bf; --active-link-4: #34d399;
+  --active-link-5: #a3e635; --active-link-6: #facc15; --active-link-7: #fbbf24; --active-link-8: #fb923c;
+  --active-link-9: #f87171; --active-link-10: #f43f5e; --active-link-11: #f472b6; --active-link-12: #c084fc;
+  --active-link-13: #a78bfa; --active-link-14: #818cf8; --active-link-15: #93c5fd; --active-link-16: #6ee7b7;
+  --active-link-17: #fca5a5; --active-link-18: #d8b4fe;
+
+  /* --- 10 Animation Glows --- */
   --anim-glow-1: 0 0 15px rgba(59, 130, 246, 0.5); --anim-glow-2: 0 0 20px rgba(139, 92, 246, 0.5);
   --anim-glow-3: 0 0 25px rgba(236, 72, 153, 0.5); --anim-glow-4: 0 0 15px rgba(245, 158, 11, 0.5);
   --anim-glow-5: 0 0 20px rgba(16, 185, 129, 0.5); --anim-glow-6: 0 0 10px rgba(6, 182, 212, 0.5);
   --anim-glow-7: 0 0 30px rgba(99, 102, 241, 0.4); --anim-glow-8: 0 0 15px rgba(225, 29, 72, 0.5);
   --anim-glow-9: 0 0 20px rgba(202, 138, 4, 0.5);  --anim-glow-10: 0 0 10px rgba(20, 184, 166, 0.5);
 
+  /* --- 10 Shadows --- */
   --shadow-1: 0 1px 2px rgba(0,0,0,0.5); --shadow-2: 0 4px 6px rgba(0,0,0,0.6);
   --shadow-3: 0 10px 15px rgba(0,0,0,0.7); --shadow-4: 0 20px 25px rgba(0,0,0,0.8);
   --shadow-5: 0 25px 50px rgba(0,0,0,0.9); --shadow-6: inset 0 2px 4px rgba(0,0,0,0.6);
@@ -81,15 +78,13 @@
   --shadow-9: 0 4px 14px rgba(0,0,0,0.6); --shadow-10: 0 2px 8px rgba(255,255,255,0.05);
 
   /* ==========================================================================
-     PREMIUM SEMANTIC COMPONENTS (FIXED FOR WCAG)
+     PREMIUM SEMANTIC COMPONENTS (WCAG FIXED)
      ========================================================================== */
   --text-heading: #ffffff;
   --text-paragraph: #cbd5e1;
   --text-muted: #94a3b8;
   --text-bold: #f8fafc;
-  
-  /* FIXED: Inverse text on dark buttons MUST be pure white to pass contrast */
-  --text-inverse: #ffffff; 
+  --text-inverse: #ffffff;
 
   --bg-body: #0a0c10;
   --bg-surface: #111827;
@@ -106,11 +101,10 @@
   --text-accordion: #f1f5f9;
   --border-accordion: #475569;
 
-  /* FIXED ALERTS: Adjusted background and text combo for perfect contrast */
   --bg-success: #022c22; --text-success: #6ee7b7; --border-success: #059669;
-  --bg-danger: #450a0a;  --text-danger: #fca5a5;  --border-danger: #ef4444; /* Fixed Danger */
+  --bg-danger: #450a0a;  --text-danger: #fca5a5;  --border-danger: #ef4444;
   --bg-warning: #451a03; --text-warning: #fcd34d; --border-warning: #d97706;
-  --bg-info: #082f49;    --text-info: #7dd3fc;    --border-info: #38bdf8;   /* Fixed Info */
+  --bg-info: #082f49;    --text-info: #7dd3fc;    --border-info: #38bdf8;
 
   --primary-base: #4f46e5;
   --primary-hover: #4338ca;
@@ -121,7 +115,7 @@
 }
 
 /* ==========================================================================
-   LIGHT THEME OVERRIDES (CRISP, BRIGHT & HIGH CONTRAST)
+   PART 2: LIGHT THEME OVERRIDES (CRISP, BRIGHT & HIGH CONTRAST)
    ========================================================================== */
 [data-theme="light"] {
   /* --- 20 Backgrounds --- */
@@ -130,81 +124,55 @@
   --bg-11: #fafafa; --bg-12: #f4f4f5; --bg-13: #e4e4e7; --bg-14: #d4d4d8; --bg-15: #a1a1aa;
   --bg-16: #f0f9ff; --bg-17: #e0f2fe; --bg-18: #bae6fd; --bg-19: #fdf2f8; --bg-20: #fce7f3;
 
-  /* --- 20 Text Colors (Deep, Vibrant & WCAG Safe for Light Mode) --- */
-  --text-1: #020617; /* Pure Black */
-  --text-2: #0f172a; /* Slate Dark */
-  --text-3: #1e293b; /* Slate */
-  --text-4: #334155; /* Gray Dark */
-  --text-5: #475569; /* Gray */
-  --text-6: #64748b; /* Muted Dark */
-  --text-7: #1d4ed8; /* Deep Blue */
-  --text-8: #0369a1; /* Deep Sky */
-  --text-9: #0f766e; /* Deep Teal */
-  --text-10: #15803d; /* Deep Green */
-  --text-11: #4d7c0f; /* Deep Lime */
-  --text-12: #a16207; /* Deep Yellow/Brown */
-  --text-13: #b45309; /* Deep Amber */
-  --text-14: #c2410c; /* Deep Orange */
-  --text-15: #b91c1c; /* Deep Red */
-  --text-16: #be123c; /* Deep Rose */
-  --text-17: #be185d; /* Deep Pink */
-  --text-18: #7e22ce; /* Deep Purple */
-  --text-19: #6d28d9; /* Deep Violet */
-  --text-20: #4338ca; /* Deep Indigo */
+  /* --- 20 Text Colors (Deep & Saturated for Light Mode) --- */
+  --text-1: #020617; --text-2: #0f172a; --text-3: #1e293b; --text-4: #334155; --text-5: #475569;
+  --text-6: #64748b; --text-7: #1d4ed8; --text-8: #0369a1; --text-9: #0f766e; --text-10: #15803d;
+  --text-11: #4d7c0f; --text-12: #a16207; --text-13: #b45309; --text-14: #c2410c; --text-15: #b91c1c;
+  --text-16: #be123c; --text-17: #be185d; --text-18: #7e22ce; --text-19: #6d28d9; --text-20: #4338ca;
 
   /* --- 10 Borders --- */
   --border-1: #e2e8f0; --border-2: #cbd5e1; --border-3: #94a3b8; --border-4: #e5e7eb; --border-5: #d1d5db;
   --border-6: #e4e4e7; --border-7: #d4d4d8; --border-8: #d1d5db; --border-9: #e2e8f0; --border-10: #cbd5e1;
 
-  /* --- 18 Active Links (Deep saturated colors for white backgrounds) --- */
-  --active-link-1: #1e40af; /* Blue */
-  --active-link-2: #0369a1; /* Sky */
-  --active-link-3: #0f766e; /* Teal */
-  --active-link-4: #15803d; /* Green */
-  --active-link-5: #4d7c0f; /* Lime */
-  --active-link-6: #a16207; /* Yellow */
-  --active-link-7: #b45309; /* Amber */
-  --active-link-8: #c2410c; /* Orange */
-  --active-link-9: #b91c1c; /* Red */
-  --active-link-10: #be123c; /* Rose */
-  --active-link-11: #be185d; /* Pink */
-  --active-link-12: #7e22ce; /* Purple */
-  --active-link-13: #6d28d9; /* Violet */
-  --active-link-14: #4338ca; /* Indigo */
-  --active-link-15: #1e3a8a; /* Soft Blue Dark */
-  --active-link-16: #064e3b; /* Soft Green Dark */
-  --active-link-17: #7f1d1d; /* Soft Red Dark */
-  --active-link-18: #581c87; /* Soft Purple Dark */
-
-  /* --- Hover States & Glows --- */
+  /* --- 12 Hover Backgrounds --- */
   --hover-bg-1: #f1f5f9; --hover-bg-2: #e2e8f0; --hover-bg-3: #cbd5e1; --hover-bg-4: #f3f4f6;
   --hover-bg-5: #e5e7eb; --hover-bg-6: #f4f4f5; --hover-bg-7: #e4e4e7; --hover-bg-8: #d1d5db;
   --hover-bg-9: #dbeafe; --hover-bg-10: #d1fae5; --hover-bg-11: #fee2e2; --hover-bg-12: #fef3c7;
 
+  /* --- 12 Hover Texts --- */
   --hover-text-1: #000000; --hover-text-2: #0f172a; --hover-text-3: #1e293b; --hover-text-4: #334155;
   --hover-text-5: #475569; --hover-text-6: #1e3a8a; --hover-text-7: #064e3b; --hover-text-8: #7f1d1d;
   --hover-text-9: #78350f; --hover-text-10: #581c87; --hover-text-11: #164e63; --hover-text-12: #831843;
 
+  /* --- 12 Hover Outlines --- */
   --hover-outline-1: #2563eb; --hover-outline-2: #059669; --hover-outline-3: #dc2626; --hover-outline-4: #d97706;
   --hover-outline-5: #7c3aed; --hover-outline-6: #0891b2; --hover-outline-7: #db2777; --hover-outline-8: #4f46e5;
   --hover-outline-9: #0d9488; --hover-outline-10: #94a3b8; --hover-outline-11: #64748b; --hover-outline-12: #475569;
 
+  /* --- 18 Active Links (Deep saturated colors) --- */
+  --active-link-1: #1e40af; --active-link-2: #0369a1; --active-link-3: #0f766e; --active-link-4: #15803d;
+  --active-link-5: #4d7c0f; --active-link-6: #a16207; --active-link-7: #b45309; --active-link-8: #c2410c;
+  --active-link-9: #b91c1c; --active-link-10: #be123c; --active-link-11: #be185d; --active-link-12: #7e22ce;
+  --active-link-13: #6d28d9; --active-link-14: #4338ca; --active-link-15: #1e3a8a; --active-link-16: #064e3b;
+  --active-link-17: #7f1d1d; --active-link-18: #581c87;
+
+  /* --- 10 Animation Glows --- */
   --anim-glow-1: 0 0 15px rgba(59, 130, 246, 0.2); --anim-glow-2: 0 0 20px rgba(139, 92, 246, 0.2);
   --anim-glow-3: 0 0 25px rgba(236, 72, 153, 0.2); --anim-glow-4: 0 0 15px rgba(245, 158, 11, 0.2);
   --anim-glow-5: 0 0 20px rgba(16, 185, 129, 0.2); --anim-glow-6: 0 0 10px rgba(6, 182, 212, 0.2);
   --anim-glow-7: 0 0 30px rgba(99, 102, 241, 0.15); --anim-glow-8: 0 0 15px rgba(225, 29, 72, 0.2);
   --anim-glow-9: 0 0 20px rgba(202, 138, 4, 0.2);  --anim-glow-10: 0 0 10px rgba(20, 184, 166, 0.2);
 
+  /* --- 10 Shadows --- */
   --shadow-1: 0 1px 2px rgba(0,0,0,0.05); --shadow-2: 0 4px 6px rgba(0,0,0,0.1);
   --shadow-3: 0 10px 15px rgba(0,0,0,0.1); --shadow-4: 0 20px 25px rgba(0,0,0,0.15);
   --shadow-5: 0 25px 50px rgba(0,0,0,0.25); --shadow-6: inset 0 2px 4px rgba(0,0,0,0.05);
   --shadow-7: 0 0 10px rgba(0,0,0,0.05); --shadow-8: 0 8px 32px rgba(0,0,0,0.08);
   --shadow-9: 0 4px 14px rgba(0,0,0,0.08); --shadow-10: 0 2px 8px rgba(0,0,0,0.04);
 
-  /* --- Premium Semantic Overrides (FIXED FOR WCAG) --- */
+  /* --- Premium Semantic Overrides --- */
   --text-heading: #0f172a; --text-paragraph: #334155; --text-muted: #64748b;
-  --text-bold: #020617; 
-  --text-inverse: #ffffff; /* FIXED: White text on dark primary buttons */
+  --text-bold: #020617; --text-inverse: #ffffff;
 
   --bg-body: #f8fafc;
   --bg-surface: #ffffff;
@@ -217,13 +185,277 @@
   --text-accordion: #1e293b; --border-accordion: #e2e8f0;
 
   --bg-success: #d1fae5; --text-success: #065f46; --border-success: #10b981;
-  --bg-danger: #fee2e2;  --text-danger: #b91c1c;  --border-danger: #ef4444; /* Fixed */
+  --bg-danger: #fee2e2;  --text-danger: #b91c1c;  --border-danger: #ef4444;
   --bg-warning: #fef3c7; --text-warning: #92400e; --border-warning: #f59e0b;
-  --bg-info: #e0f2fe;    --text-info: #0369a1;    --border-info: #38bdf8;   /* Fixed */
+  --bg-info: #e0f2fe;    --text-info: #0369a1;    --border-info: #38bdf8;
 
   --primary-base: #4f46e5; --primary-hover: #4338ca; --primary-active: #3730a3;
   --split-primary: #6366f1; --split-secondary: #db2777; --outline-focus-ring: #4f46e5;
-}</style>
+}
+
+/* ==========================================================================
+   PART 3: CSS ANIMATION KEYFRAMES
+   ========================================================================== */
+@keyframes glow-pulse {
+  0% { box-shadow: var(--anim-glow-1); }
+  50% { box-shadow: var(--anim-glow-2); }
+  100% { box-shadow: var(--anim-glow-1); }
+}
+
+@keyframes border-pulse {
+  0% { border-color: var(--primary-base); }
+  50% { border-color: var(--split-secondary); }
+  100% { border-color: var(--primary-base); }
+}
+
+/* ==========================================================================
+   PART 4: HTML ELEMENT AUTO-MAPPING
+   ========================================================================== */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: var(--bg-body);
+  color: var(--text-paragraph);
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: var(--text-heading);
+  font-weight: 800;
+  line-height: 1.2;
+  margin-bottom: 1rem;
+  transition: color 0.3s ease;
+}
+
+p, span, div {
+  color: var(--text-paragraph);
+}
+
+small, caption, figcaption {
+  color: var(--text-muted);
+  font-size: 0.875em;
+}
+
+b, strong {
+  color: var(--text-bold);
+  font-weight: 700;
+}
+
+a {
+  color: var(--active-link-1);
+  text-decoration: none;
+  transition: color 0.2s ease, text-shadow 0.2s ease;
+}
+
+a:hover {
+  color: var(--hover-text-6);
+  text-shadow: var(--anim-glow-1);
+}
+
+a:active {
+  color: var(--active-link-4);
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: var(--bg-table);
+  border: 1px solid var(--border-table);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+th, td {
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--border-table);
+  text-align: left;
+}
+
+th {
+  background-color: var(--bg-th);
+  color: var(--text-th);
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  letter-spacing: 0.05em;
+}
+
+tr:nth-child(even) {
+  background-color: var(--bg-table-stripe);
+}
+
+tr:hover td {
+  background-color: var(--hover-bg-2);
+}
+
+input, textarea, select {
+  background-color: var(--bg-input);
+  color: var(--text-heading);
+  border: 1px solid var(--border-2);
+  padding: 10px 14px;
+  border-radius: 6px;
+  font-family: inherit;
+  font-size: 1rem;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  width: 100%;
+}
+
+input:focus, textarea:focus, select:focus {
+  outline: none;
+  border-color: var(--outline-focus-ring);
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.2);
+}
+
+input::placeholder, textarea::placeholder {
+  color: var(--text-muted);
+}
+
+hr {
+  border: 0;
+  height: 1px;
+  background-color: var(--border-1);
+  margin: 2rem 0;
+}
+
+ul, ol {
+  padding-left: 1.5rem;
+  margin-bottom: 1rem;
+  color: var(--text-paragraph);
+}
+
+li {
+  margin-bottom: 0.5rem;
+}
+
+blockquote {
+  border-left: 4px solid var(--primary-base);
+  background-color: var(--bg-surface);
+  padding: 1rem 1.5rem;
+  margin: 1.5rem 0;
+  border-radius: 0 8px 8px 0;
+  color: var(--text-heading);
+  font-style: italic;
+}
+
+/* ==========================================================================
+   PART 5: CORE COMPONENT CLASSES
+   ========================================================================== */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  border: 1px solid transparent;
+  transition: all 0.2s ease;
+  font-family: inherit;
+}
+
+.btn-primary {
+  background-color: var(--primary-base);
+  color: var(--text-inverse);
+  box-shadow: var(--shadow-2);
+}
+
+.btn-primary:hover {
+  background-color: var(--primary-hover);
+  box-shadow: var(--anim-glow-1);
+  transform: translateY(-2px);
+}
+
+.btn-secondary {
+  background-color: var(--bg-surface);
+  color: var(--text-heading);
+  border-color: var(--border-2);
+}
+
+.btn-secondary:hover {
+  background-color: var(--hover-bg-2);
+  border-color: var(--hover-outline-1);
+}
+
+.card {
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-1);
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: var(--shadow-1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-3);
+  border-color: var(--hover-outline-1);
+}
+
+.accordion {
+  background-color: var(--bg-accordion);
+  border: 1px solid var(--border-accordion);
+  border-radius: 8px;
+  margin-bottom: 12px;
+  overflow: hidden;
+  transition: background-color 0.3s;
+}
+
+.accordion-header {
+  width: 100%;
+  padding: 16px;
+  background: none;
+  border: none;
+  text-align: left;
+  color: var(--text-accordion);
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  display: flex;
+  justify-content: space-between;
+}
+
+.accordion-header:hover {
+  background-color: var(--bg-accordion-hover);
+}
+
+.accordion-body {
+  padding: 0 16px;
+  color: var(--text-paragraph);
+  max-height: 0;
+  opacity: 0;
+  transition: all 0.3s ease;
+}
+
+.accordion.active .accordion-body {
+  padding: 16px;
+  max-height: 500px;
+  opacity: 1;
+  border-top: 1px solid var(--border-accordion);
+}
+
+.alert {
+  padding: 16px;
+  border-radius: 8px;
+  border-left: 4px solid;
+  margin-bottom: 16px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.alert-success { background-color: var(--bg-success); color: var(--text-success); border-color: var(--border-success); }
+.alert-danger { background-color: var(--bg-danger); color: var(--text-danger); border-color: var(--border-danger); }
+.alert-warning { background-color: var(--bg-warning); color: var(--text-warning); border-color: var(--border-warning); }
+.alert-info { background-color: var(--bg-info); color: var(--text-info); border-color: var(--border-info); }
+ </style>
 
 
 <!DOCTYPE html>
