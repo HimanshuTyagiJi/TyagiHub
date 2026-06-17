@@ -1,6 +1,6 @@
 /**
- * InfoShield India - Dynamic JSON Data Engine
- * Handles pure hybrid search and pagination for cybersecurity feed.
+ * InfoShield India - Complete Dynamic Engine
+ * Handles full search, pagination, and data rendering for Shield.
  */
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -11,7 +11,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   if (!wrapper || !pagination) return;
 
-  // URL Parameters track karne ke liye
   const params = new URLSearchParams(window.location.search);
   let currentPage = parseInt(params.get("page")) || 1;
   let searchQuery = ""; 
@@ -19,9 +18,7 @@ document.addEventListener("DOMContentLoaded", () => {
   let allShieldData = [];
   let filteredPosts = [];
 
-  // =========================
-  // 1. FETCH SHIELD JSON DATA
-  // =========================
+  // 1. FETCH DATA
   fetch("/shield.json")
     .then(res => res.json())
     .then(data => {
@@ -30,51 +27,33 @@ document.addEventListener("DOMContentLoaded", () => {
     })
     .catch(err => console.error("Shield Data load failed:", err));
 
-  // =========================
-  // 2. MASTER FILTER (Search Box Engine)
-  // =========================
+  // 2. MASTER FILTER LOGIC
   function applyFiltersAndRender() {
     filteredPosts = allShieldData.filter(post => {
       const searchPool = `${post.title} ${post.description} ${post.category}`.toLowerCase();
       return searchPool.includes(searchQuery);
     });
 
-    // Check ki page 1 par hai aur koi search nahi kiya (Default SEO State)
-    const isDefaultState = (currentPage === 1 && searchQuery === "");
-
-    if (isDefaultState) {
-      // Sirf niche ke numbers (pagination) banao, HTML pehle se chapa hua hai
-      renderPagination();
-    } else {
-      // JSON se naye HTML cards bana kar dikhao
-      renderPosts();
-      renderPagination();
-    }
+    renderPosts();
+    renderPagination();
   }
 
-  // =========================
-  // 3. LIVE SEARCH INTERCEPTOR
-  // =========================
+  // 3. LIVE SEARCH
   if (searchInput) {
     searchInput.addEventListener("input", (e) => {
       searchQuery = e.target.value.toLowerCase().trim();
-      currentPage = 1; // Kuch bhi type karte hi wapas Page 1 par aa jaye
-      
-      // Bina page reload kiye URL saaf kar do
+      currentPage = 1; 
       window.history.replaceState({}, "", window.location.pathname);
-
       applyFiltersAndRender();
     });
   }
 
-  // =========================
-  // 4. SHOW POSTS DYNAMICALLY (Grid Design Match)
-  // =========================
+  // 4. RENDER POSTS (Grid Design)
   function renderPosts() {
     wrapper.innerHTML = ""; 
     
     if (filteredPosts.length === 0) {
-      wrapper.innerHTML = `<p style="text-align:center; padding: 40px 0; color: var(--text-muted); width:100%; grid-column: 1 / -1; font-size: 18px;">कोई परिणाम नहीं मिला। कृपया कुछ और खोजें।</p>`;
+      wrapper.innerHTML = `<p style="text-align:center; padding: 40px 0; color: #666; width:100%; grid-column: 1 / -1; font-size: 18px;">कोई परिणाम नहीं मिला। कृपया कुछ और खोजें।</p>`;
       return;
     }
 
@@ -84,8 +63,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     chunk.forEach(p => {
       const cat = p.category ? p.category.charAt(0).toUpperCase() + p.category.slice(1) : "Security";
-      
-      // Tera ekdum sateek purana Grid Blog Card Design
       const cardHTML = `
         <a href="${p.url}" class="blog-card reveal js-post" role="listitem">
           <div class="blog-card__thumb">
@@ -104,9 +81,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // =========================
-  // 5. PAGINATION RENDER (Numbers & Dots)
-  // =========================
+  // 5. RENDER PAGINATION
   function renderPagination() {
     pagination.innerHTML = "";
     const totalPages = Math.ceil(filteredPosts.length / POSTS_PER_PAGE);
@@ -119,16 +94,21 @@ document.addEventListener("DOMContentLoaded", () => {
       btn.innerText = page;
       btn.className = "page-btn";
       if (page === currentPage) btn.classList.add("active");
+      btn.style.margin = "0 5px";
+      btn.style.padding = "8px 16px";
+      btn.style.textDecoration = "none";
+      btn.style.borderRadius = "5px";
+      btn.style.border = "1px solid #ddd";
       pagination.appendChild(btn);
     }
 
     function createDots() {
       const dots = document.createElement("span");
-      dots.className = "page-dots";
       dots.innerText = "...";
       pagination.appendChild(dots);
     }
 
+    // Previous Button
     if (currentPage > 1) {
       const prev = document.createElement("a");
       prev.href = `?page=${currentPage - 1}`;
@@ -137,27 +117,20 @@ document.addEventListener("DOMContentLoaded", () => {
       pagination.appendChild(prev);
     }
 
+    // Numbers Logic
     createPageBtn(1);
     if (totalPages >= 2) createPageBtn(2);
-
-    if (currentPage <= 3) {
-      if (totalPages > 5) createDots();
+    
+    if (currentPage > 3) createDots();
+    
+    // Page logic for current view
+    if (currentPage > 2 && currentPage < totalPages - 1) {
+       createPageBtn(currentPage);
     }
-    else if (currentPage >= totalPages - 2) {
-      createDots();
-      for (let i = totalPages - 3; i <= totalPages - 1; i++) {
-        if (i > 2) createPageBtn(i);
-      }
-    }
-    else {
-      createDots();
-      createPageBtn(currentPage);
-      createPageBtn(currentPage + 1);
-      createDots();
-    }
-
+    
     if (totalPages > 2) createPageBtn(totalPages);
 
+    // Next Button
     if (currentPage < totalPages) {
       const next = document.createElement("a");
       next.href = `?page=${currentPage + 1}`;
