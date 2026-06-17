@@ -1,103 +1,64 @@
----
-# Jekyll processing ke liye ye front-matter lines zaroori hain
----
 
-/* ============================================================================
- * TyagiHub — Global Main CSS Engine File
- * Location: assets/css/main.css (or main.scss)
- * Purpose: Import variables, compile components, handle static overrides.
- * ============================================================================ */
 
-// 1. DYNAMIC CORE ENGINE IMPORT (SASS Variable File)
-@import "variables"; 
+/* ============================================================
+   2. RESET & BASE
+   ============================================================ */
 
- 
-/* ============================================================================
-   2. ADDITIONAL GLOBAL STRUCTURES (Jo bache hue the aur seedha main.css me aane hain)
-   ============================================================================ */
-
-/* --- Advanced Engineered Elevation Shadows --- */
-:root {
-  --shadow-sm: var(--shadow-1);
-  --shadow-md: var(--shadow-2);
-  --shadow-lg: var(--shadow-3);
-  --shadow-accent: 0 0 32px rgba(245, 166, 35, 0.2);
-  --shadow-glow: 0 0 60px rgba(245, 166, 35, 0.08);
-
-  /* --- Motion Transition Systems --- */
-  --ease-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
-  --ease-normal: 250ms cubic-bezier(0.4, 0, 0.2, 1);
-  --ease-slow: 400ms cubic-bezier(0.4, 0, 0.2, 1);
-  --ease-spring: 500ms cubic-bezier(0.34, 1.56, 0.64, 1);
-
-  /* --- Layout Layer Indexes (Z-Index Master Scale) --- */
-  --z-base: 1; 
-  --z-card: 10; 
-  --z-overlay: 100; 
-  --z-nav: 1000; 
-  --z-modal: 2000; 
-  --z-toast: 3000;
-}
-
-/* Light Theme Shadows Override */
-[data-theme="light"] {
-  --shadow-sm: 0 1px 3px rgba(0,0,0,.08), 0 1px 2px rgba(0,0,0,.05);
-  --shadow-md: 0 4px 6px rgba(0,0,0,.07), 0 2px 4px rgba(0,0,0,.06);
-  --shadow-lg: 0 10px 25px rgba(0,0,0,.1), 0 4px 10px rgba(0,0,0,.08);
-}
-
-/* ============================================================================
-   3. BASE RESET & ELEMENT ATTACHMENT MAPPING (For Safe Rendering)
-   ============================================================================ */
-*, *::before, *::after { 
-  box-sizing: border-box; 
-  margin: 0; 
-  padding: 0; 
-}
 
 html {
+  font-size: 16px;
   scroll-behavior: smooth;
   -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
 }
 
 body {
-  font-family: $font-body;
-  color: $neutral-800;
-  background: $neutral-50;
-  line-height: 1.6;
-  font-size: 16px;
+
+  font-size: var(--fs-base);
+margin:0;
+  color: var(--clr-text);
+
+  background: var(--clr-bg);
+  overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
-  transition: background-color var(--ease-normal), color var(--ease-normal);
-
-  @include responsive('mobile') { 
-    font-size: 15px; 
-  }
+  -moz-osx-font-smoothing: grayscale;
 }
 
-a { 
-  color: $primary; 
-  text-decoration: none; 
-  @include transition(color, 0.2s);
+img,
+video,
+svg {
+  display: block;
+  max-width: 100%;
 }
 
-a:hover { 
-  color: $primary-dark; 
-  text-decoration: underline; 
+a {
+  color: inherit;
+  text-decoration: none;
 }
 
-img { 
-  max-width: 100%; 
-  height: auto; 
+button {
+  cursor: pointer;
+  border: none;
+  background: none;
+  font-family: inherit;
 }
 
-h1, h2, h3, h4, h5, h6 {
-  font-family: $font-heading;
-  font-weight: 700;
-  line-height: 1.3;
-  color: $neutral-900;
-  margin-bottom: 0.5rem;
+ul,
+ol {
+  list-style: none;
 }
 
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-display);
+  font-weight: var(--fw-bold);
+  line-height: var(--lh-tight);
+  color: var(--clr-heading);
+}
 
 /* ============================================================
    3. LAYOUT UTILITIES
