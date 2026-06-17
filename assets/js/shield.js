@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", () => {
   if (!wrapper || !pagination) return;
 
   const params = new URLSearchParams(window.location.search);
-  let currentPage = parseInt(params.get("page")) || 1;
+  let currentPage = parseInt(params.get("page")) || 2;
   let searchQuery = ""; 
   
   let allShieldData = [];
