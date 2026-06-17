@@ -1,245 +1,72 @@
-<aside class="right-sidebar shield-sidebar" aria-label="Shield Sidebar">
-
-  <!-- Security Resources -->
+<aside class="right-sidebar shield-sidebar" aria-label="Shield Sidebar"> 
 
   <div class="sidebar-section">
-
     <div class="sidebar-title">
-      <svg class="sidebar-icon"></svg>
-      <span>Security Resources</span>
-    </div>
-
-    <div class="sidebar-links">
-
-      <a href="/shield/" class="sidebar-link-card">
-        Data Breach Awareness
-      </a>
-
-      <a href="/shield/" class="sidebar-link-card">
-        Password Security
-      </a>
-
-      <a href="/shield/" class="sidebar-link-card">
-        Scam Prevention
-      </a>
-
-      <a href="/shield/" class="sidebar-link-card">
-        Privacy Protection
-      </a>
-
-    </div>
-
-  </div>
-
-  <!-- Security Updates -->
-
-  <div class="sidebar-section">
-
-    <div class="sidebar-title">
-      <svg class="sidebar-icon"></svg>
-      <span>Security Updates</span>
+      <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
+      <span>Trending Updates</span>
     </div>
 
     <div id="shield-trending-posts-data" style="display:none;">
-
-      {% assign shield_posts = site.posts | where:"layout","shield" %}
-
+      {% assign shield_posts = site.shield %}
       {% for post in shield_posts %}
-
         {% unless post.url == page.url %}
-
-        <div
-          class="shield-trending-post-item"
-          data-title="{{ post.title | escape }}"
-          data-url="{{ post.url | relative_url }}"
-          data-image="{{ post.image }}">
+        <div class="shield-trending-post-item"
+             data-title="{{ post.title | escape }}"
+             data-url="{{ post.url | relative_url }}"
+             data-image="{{ post.image | default:'/assets/images/default-thumb.png' }}">
         </div>
-
         {% endunless %}
-
       {% endfor %}
-
     </div>
 
-    <div id="shield-trending-posts-container" class="sidebar-links">
-    </div>
-
+    <div id="shield-trending-posts-container" class="sidebar-links"></div>
   </div>
 
-  <!-- Related Guides -->
 
   {% if page.is_post %}
-
   <div class="sidebar-section">
-
     <div class="sidebar-title">
-      <svg class="sidebar-icon"></svg>
-      <span>Related Security Guides</span>
+      <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+      <span>Related Guides</span>
     </div>
 
     <div id="shield-related-posts-container" class="sidebar-links"></div>
 
     <div id="shield-related-posts-data" style="display:none;">
-
       {% assign current_category = page.categories[0] %}
-
-      {% for post in site.categories[current_category] %}
-
-        {% unless post.url == page.url %}
-
-        <div
-          class="shield-related-post-item"
-          data-title="{{ post.title | escape }}"
-          data-url="{{ post.url | relative_url }}"
-          data-image="{{ post.image }}">
-        </div>
-
-        {% endunless %}
-
+      {% for post in site.shield %}
+        {% if post.categories contains current_category %}
+          {% unless post.url == page.url %}
+          <div class="shield-related-post-item"
+               data-title="{{ post.title | escape }}"
+               data-url="{{ post.url | relative_url }}"
+               data-image="{{ post.image | default:'/assets/images/default-thumb.png' }}">
+          </div>
+          {% endunless %}
+        {% endif %}
       {% endfor %}
-
     </div>
-
   </div>
 
   {% else %}
-
+  
   <div class="sidebar-section">
-
     <div class="sidebar-title">
-      <svg class="sidebar-icon"></svg>
+      <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
       <span>Latest Shield Articles</span>
     </div>
-
     <div class="sidebar-links">
-
-      {% assign latest_shield_posts = site.posts | where:"layout","shield" | sort:"date" | reverse %}
-
-      {% for post in latest_shield_posts limit:5 %}
-
-      <a href="{{ post.url | relative_url }}"
-         class="sidebar-link-card">
-
-        {{ post.title }}
-
-      </a>
-
+      {% assign latest_shield = site.shield | sort:"date" | reverse %}
+      {% for post in latest_shield limit:5 %}
+        <a href="{{ post.url | relative_url }}" class="sidebar-link-card">
+          {{ post.title }}
+        </a>
       {% endfor %}
-
     </div>
-
   </div>
-
   {% endif %}
 
-  <!-- Quick Safety Checklist -->
 
   <div class="sidebar-section">
-
     <div class="sidebar-title">
-      <svg class="sidebar-icon"></svg>
-      <span>Safety Checklist</span>
-    </div>
-
-    <div class="sidebar-links">
-
-      <span class="sidebar-link-card">
-        Enable 2FA
-      </span>
-
-      <span class="sidebar-link-card">
-        Use Unique Passwords
-      </span>
-
-      <span class="sidebar-link-card">
-        Check Data Breaches
-      </span>
-
-      <span class="sidebar-link-card">
-        Avoid Suspicious Links
-      </span>
-
-    </div>
-
-  </div>
-
-  <!-- Telegram Alerts -->
-
-  <div class="sidebar-section">
-
-    <div class="sidebar-title">
-      <svg class="sidebar-icon"></svg>
-      <span>Security Alerts</span>
-    </div>
-
-    <a href="https://t.me/TyagiHubs"
-       target="_blank"
-       rel="noopener"
-       class="telegram-card">
-
-      Join Telegram Channel
-
-    </a>
-
-  </div>
-
-  <!-- Shield Tools -->
-
-  <div class="sidebar-section">
-
-    <div class="sidebar-title">
-      <svg class="sidebar-icon"></svg>
-      <span>Shield Tools</span>
-    </div>
-
-    <div class="app-card">
-
-      <div class="app-logo-box">
-        DB
-      </div>
-
-      <div class="app-details">
-
-        <span class="app-name">
-          Data Breach Check
-        </span>
-
-        <span class="app-meta">
-          Check exposed accounts
-        </span>
-
-      </div>
-
-      <span class="download-btn">
-        Soon
-      </span>
-
-    </div>
-
-    <div class="app-card">
-
-      <div class="app-logo-box">
-        PS
-      </div>
-
-      <div class="app-details">
-
-        <span class="app-name">
-          Password Shield
-        </span>
-
-        <span class="app-meta">
-          Password security tools
-        </span>
-
-      </div>
-
-      <span class="download-btn">
-        Soon
-      </span>
-
-    </div>
-
-  </div>
-
-</aside>
+      <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 11 12 14 22 4"></polyline><path d="M21 12v7a2 2 0 0 1-2 2H5a2
