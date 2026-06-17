@@ -1099,7 +1099,7 @@
 .sidebar-section{
   position:relative;
 
-  background:var(--card-bg,#fff);
+
 
   border:1px solid var(--border-color,#e5e7eb);
 
@@ -1241,7 +1241,7 @@
 
   border:1px solid var(--border-color,#e5e7eb);
 
-  background:var(--surface-bg,#fafafa);
+ 
 
   transition:
     transform .22s ease,
