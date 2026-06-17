@@ -4,7 +4,7 @@
  */
 
 document.addEventListener("DOMContentLoaded", () => {
-  const POSTS_PER_PAGE = 6; 
+  const POSTS_PER_PAGE = 1; 
   const wrapper = document.querySelector("#post-wrapper");
   const pagination = document.querySelector("#pagination-nav");
   const searchInput = document.getElementById("shield-search");
