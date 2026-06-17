@@ -1163,9 +1163,7 @@
 
   text-decoration:none;
 
-  color:var(--text-color,#111827);
-
-  background:var(--surface-bg,#fafafa);
+ 
 
   border:1px solid transparent;
 
@@ -1373,7 +1371,7 @@
 .related-title{
   font-size:13px;
   line-height:1.4;
-  font-weight:600;
+
 }/* ==========================================
    SHIELD SIDEBAR (LIGHT THEME)
 ========================================== */
