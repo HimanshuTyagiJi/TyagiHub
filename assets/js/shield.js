@@ -1,6 +1,6 @@
 /**
- * InfoShield India - Complete Dynamic Engine
- * Handles full search, pagination, and data rendering for Shield.
+ * InfoShield India - Anti-Race Condition Engine
+ * Fixes the hard-refresh disappearing post issue permanently.
  */
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -18,17 +18,11 @@ document.addEventListener("DOMContentLoaded", () => {
   let allShieldData = [];
   let filteredPosts = [];
 
-  // 1. FETCH DATA
-  fetch("/shield.json")
-    .then(res => res.json())
-    .then(data => {
-      allShieldData = data;
-      applyFiltersAndRender();
-    })
-    .catch(err => console.error("Shield Data load failed:", err));
-
-  // 2. MASTER FILTER LOGIC
+  // MASTER FILTER LOGIC
   function applyFiltersAndRender() {
+    // Agar data abhi load nahi hua toh render block ko roko
+    if (!allShieldData || allShieldData.length === 0) return;
+
     filteredPosts = allShieldData.filter(post => {
       const searchPool = `${post.title} ${post.description} ${post.category}`.toLowerCase();
       return searchPool.includes(searchQuery);
@@ -38,7 +32,7 @@ document.addEventListener("DOMContentLoaded", () => {
     renderPagination();
   }
 
-  // 3. LIVE SEARCH
+  // LIVE SEARCH
   if (searchInput) {
     searchInput.addEventListener("input", (e) => {
       searchQuery = e.target.value.toLowerCase().trim();
@@ -48,7 +42,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // 4. RENDER POSTS (Grid Design)
+  // RENDER POSTS
   function renderPosts() {
     wrapper.innerHTML = ""; 
     
@@ -81,7 +75,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // 5. RENDER PAGINATION
+  // RENDER PAGINATION
   function renderPagination() {
     pagination.innerHTML = "";
     const totalPages = Math.ceil(filteredPosts.length / POSTS_PER_PAGE);
@@ -94,11 +88,6 @@ document.addEventListener("DOMContentLoaded", () => {
       btn.innerText = page;
       btn.className = "page-btn";
       if (page === currentPage) btn.classList.add("active");
-      btn.style.margin = "0 5px";
-      btn.style.padding = "8px 16px";
-      btn.style.textDecoration = "none";
-      btn.style.borderRadius = "5px";
-      btn.style.border = "1px solid #ddd";
       pagination.appendChild(btn);
     }
 
@@ -108,7 +97,6 @@ document.addEventListener("DOMContentLoaded", () => {
       pagination.appendChild(dots);
     }
 
-    // Previous Button
     if (currentPage > 1) {
       const prev = document.createElement("a");
       prev.href = `?page=${currentPage - 1}`;
@@ -117,20 +105,12 @@ document.addEventListener("DOMContentLoaded", () => {
       pagination.appendChild(prev);
     }
 
-    // Numbers Logic
     createPageBtn(1);
     if (totalPages >= 2) createPageBtn(2);
-    
     if (currentPage > 3) createDots();
-    
-    // Page logic for current view
-    if (currentPage > 2 && currentPage < totalPages - 1) {
-       createPageBtn(currentPage);
-    }
-    
+    if (currentPage > 2 && currentPage < totalPages - 1) createPageBtn(currentPage);
     if (totalPages > 2) createPageBtn(totalPages);
 
-    // Next Button
     if (currentPage < totalPages) {
       const next = document.createElement("a");
       next.href = `?page=${currentPage + 1}`;
@@ -139,4 +119,14 @@ document.addEventListener("DOMContentLoaded", () => {
       pagination.appendChild(next);
     }
   }
+
+  // FETCH DATA AFTER FUNCTIONS ARE DEFINED
+  fetch("/shield.json")
+    .then(res => res.json())
+    .then(data => {
+      allShieldData = data;
+      // Data aane ke BAAD filter aur render call hoga
+      applyFiltersAndRender();
+    })
+    .catch(err => console.error("Shield Data load failed:", err));
 });
