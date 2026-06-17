@@ -460,152 +460,300 @@ blockquote {
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>TyagiHub - Full Variable Showcase</title>
+  <title>TyagiHub - Exhaustive CSS Engine Showcase (Part 1)</title>
   
   <link rel="stylesheet" href="style.css">
 
   <style>
-    .grid-5 { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 15px; margin-bottom: 30px; }
-    .box { padding: 20px 10px; border-radius: 8px; text-align: center; font-weight: bold; font-size: 14px; transition: all 0.3s ease; }
-    
-    /* Hover Showcase Classes (CSS variables ko HTML hover se jodna) */
-    .hover-box-1:hover { background-color: var(--hover-bg-1); color: var(--hover-text-1); outline: 3px solid var(--hover-outline-1); transform: translateY(-3px); }
-    .hover-box-2:hover { background-color: var(--hover-bg-2); color: var(--hover-text-2); outline: 3px solid var(--hover-outline-2); transform: translateY(-3px); }
-    .hover-box-3:hover { background-color: var(--hover-bg-3); color: var(--hover-text-3); outline: 3px solid var(--hover-outline-3); transform: translateY(-3px); }
-    .hover-box-4:hover { background-color: var(--hover-bg-4); color: var(--hover-text-4); outline: 3px solid var(--hover-outline-4); transform: translateY(-3px); }
-    .hover-box-5:hover { background-color: var(--hover-bg-5); color: var(--hover-text-5); outline: 3px solid var(--hover-outline-5); transform: translateY(-3px); }
-    .hover-box-6:hover { background-color: var(--hover-bg-6); color: var(--hover-text-6); outline: 3px solid var(--hover-outline-6); transform: translateY(-3px); }
-    
-    /* Animation Showcase */
-    .anim-box-1 { animation: glow-pulse 2s infinite; border: 2px solid var(--primary-base); }
-    .anim-box-2 { animation: border-pulse 3s infinite; border: 3px solid transparent; }
+    /* Styling for the showcase grid only */
+    .showcase-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 15px; margin-bottom: 40px; }
+    .swatch { padding: 25px 10px; border-radius: 8px; text-align: center; font-family: monospace; font-size: 13px; font-weight: bold; display: flex; flex-direction: column; gap: 8px; justify-content: center; transition: all 0.2s ease; }
+    .section-title { padding-bottom: 10px; margin-bottom: 20px; border-bottom: 2px solid var(--border-2); margin-top: 50px; font-weight: 800; color: var(--text-heading); }
   </style>
 </head>
 <body>
 
   <div class="container">
     
-    <header style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 40px; padding-bottom: 20px; border-bottom: 1px solid var(--border-1);">
+    <header style="display: flex; justify-content: space-between; align-items: center; padding-top: 20px; padding-bottom: 20px; border-bottom: 1px solid var(--border-1);">
       <div>
-        <h1>Complete <span style="color: var(--primary-base);">Variable Showcase</span></h1>
-        <p>Ek ek hover, outline, border, aur shadow HTML se connected hai.</p>
+        <h1>Master CSS Engine <span style="color: var(--primary-base);">Exhaustive Showcase</span></h1>
+        <p style="color: var(--text-muted);">PART 1: Backgrounds, Texts, Borders & Shadows (No Skipping)</p>
       </div>
       <button class="btn btn-secondary" id="themeToggle">🌓 Toggle Theme</button>
     </header>
 
-    <section style="margin-bottom: 50px;">
-      <h2 style="border-bottom: 2px solid var(--border-3); padding-bottom: 10px;">1. Interactive Hovers & Outlines</h2>
-      <p style="margin-bottom: 20px;">In boxes par mouse le jaakar dekh. Background, Text Color, aur Outline sab ek sath change honge (Hover Variables mapped).</p>
-      
-      <div class="grid-5">
-        <div class="box hover-box-1" style="background-color: var(--bg-3); border: 1px solid var(--border-1);">Hover Test 1</div>
-        <div class="box hover-box-2" style="background-color: var(--bg-3); border: 1px solid var(--border-2);">Hover Test 2</div>
-        <div class="box hover-box-3" style="background-color: var(--bg-3); border: 1px solid var(--border-3);">Hover Test 3</div>
-        <div class="box hover-box-4" style="background-color: var(--bg-3); border: 1px solid var(--border-4);">Hover Test 4</div>
-        <div class="box hover-box-5" style="background-color: var(--bg-3); border: 1px solid var(--border-5);">Hover Test 5</div>
-        <div class="box hover-box-6" style="background-color: var(--bg-3); border: 1px solid var(--border-6);">Hover Test 6</div>
-      </div>
-    </section>
+    <h2 class="section-title">1. All Background Variables (20 Items)</h2>
+    <div class="showcase-grid">
+      <div class="swatch" style="background-color: var(--bg-1); border: 1px solid var(--border-2); color: var(--text-12);">--bg-1</div>
+      <div class="swatch" style="background-color: var(--bg-2); border: 1px solid var(--border-2); color: var(--text-12);">--bg-2</div>
+      <div class="swatch" style="background-color: var(--bg-3); border: 1px solid var(--border-2); color: var(--text-12);">--bg-3</div>
+      <div class="swatch" style="background-color: var(--bg-4); border: 1px solid var(--border-2); color: var(--text-12);">--bg-4</div>
+      <div class="swatch" style="background-color: var(--bg-5); border: 1px solid var(--border-2); color: var(--text-12);">--bg-5</div>
+      <div class="swatch" style="background-color: var(--bg-6); border: 1px solid var(--border-2); color: var(--text-12);">--bg-6</div>
+      <div class="swatch" style="background-color: var(--bg-7); border: 1px solid var(--border-2); color: var(--text-12);">--bg-7</div>
+      <div class="swatch" style="background-color: var(--bg-8); border: 1px solid var(--border-2); color: var(--text-12);">--bg-8</div>
+      <div class="swatch" style="background-color: var(--bg-9); border: 1px solid var(--border-2); color: var(--text-12);">--bg-9</div>
+      <div class="swatch" style="background-color: var(--bg-10); border: 1px solid var(--border-2); color: var(--text-2);">--bg-10</div>
+      <div class="swatch" style="background-color: var(--bg-11); border: 1px solid var(--border-2); color: var(--text-2);">--bg-11</div>
+      <div class="swatch" style="background-color: var(--bg-12); border: 1px solid var(--border-2); color: var(--text-2);">--bg-12</div>
+      <div class="swatch" style="background-color: var(--bg-13); border: 1px solid var(--border-2); color: var(--text-2);">--bg-13</div>
+      <div class="swatch" style="background-color: var(--bg-14); border: 1px solid var(--border-2); color: var(--text-2);">--bg-14</div>
+      <div class="swatch" style="background-color: var(--bg-15); border: 1px solid var(--border-2); color: var(--text-2);">--bg-15</div>
+      <div class="swatch" style="background-color: var(--bg-16); border: 1px solid var(--border-2); color: var(--text-2);">--bg-16</div>
+      <div class="swatch" style="background-color: var(--bg-17); border: 1px solid var(--border-2); color: var(--text-2);">--bg-17</div>
+      <div class="swatch" style="background-color: var(--bg-18); border: 1px solid var(--border-2); color: var(--text-2);">--bg-18</div>
+      <div class="swatch" style="background-color: var(--bg-19); border: 1px solid var(--border-2); color: var(--text-2);">--bg-19</div>
+      <div class="swatch" style="background-color: var(--bg-20); border: 1px solid var(--border-2); color: var(--text-2);">--bg-20</div>
+    </div>
 
-    <section style="margin-bottom: 50px;">
-      <h2 style="border-bottom: 2px solid var(--border-3); padding-bottom: 10px;">2. Background & Text Colors (20 Scales)</h2>
-      <div class="grid-5">
-        <div class="box" style="background-color: var(--bg-1); color: var(--text-20); border: 1px solid var(--border-1);">BG 1 / TXT 20</div>
-        <div class="box" style="background-color: var(--bg-3); color: var(--text-18); border: 1px solid var(--border-2);">BG 3 / TXT 18</div>
-        <div class="box" style="background-color: var(--bg-5); color: var(--text-16); border: 1px solid var(--border-3);">BG 5 / TXT 16</div>
-        <div class="box" style="background-color: var(--bg-7); color: var(--text-14); border: 1px solid var(--border-4);">BG 7 / TXT 14</div>
-        <div class="box" style="background-color: var(--bg-9); color: var(--text-12); border: 1px solid var(--border-5);">BG 9 / TXT 12</div>
-        <div class="box" style="background-color: var(--bg-12); color: var(--text-8); border: 1px solid var(--border-6);">BG 12 / TXT 8</div>
-        <div class="box" style="background-color: var(--bg-15); color: var(--text-5); border: 1px solid var(--border-7);">BG 15 / TXT 5</div>
-        <div class="box" style="background-color: var(--bg-18); color: var(--text-2); border: 1px solid var(--border-8);">BG 18 / TXT 2</div>
-        <div class="box" style="background-color: var(--bg-20); color: var(--text-1); border: 1px solid var(--border-9);">BG 20 / TXT 1</div>
-      </div>
-    </section>
+    <h2 class="section-title">2. All Text Color Variables (20 Items)</h2>
+    <div class="showcase-grid" style="background-color: var(--bg-2); padding: 20px; border-radius: 12px; border: 1px solid var(--border-1);">
+      <div class="swatch" style="color: var(--text-1); border: 1px dashed var(--border-3);">--text-1</div>
+      <div class="swatch" style="color: var(--text-2); border: 1px dashed var(--border-3);">--text-2</div>
+      <div class="swatch" style="color: var(--text-3); border: 1px dashed var(--border-3);">--text-3</div>
+      <div class="swatch" style="color: var(--text-4); border: 1px dashed var(--border-3);">--text-4</div>
+      <div class="swatch" style="color: var(--text-5); border: 1px dashed var(--border-3);">--text-5</div>
+      <div class="swatch" style="color: var(--text-6); border: 1px dashed var(--border-3);">--text-6</div>
+      <div class="swatch" style="color: var(--text-7); border: 1px dashed var(--border-3);">--text-7</div>
+      <div class="swatch" style="color: var(--text-8); border: 1px dashed var(--border-3);">--text-8</div>
+      <div class="swatch" style="color: var(--text-9); border: 1px dashed var(--border-3);">--text-9</div>
+      <div class="swatch" style="color: var(--text-10); border: 1px dashed var(--border-3);">--text-10</div>
+      <div class="swatch" style="color: var(--text-11); border: 1px dashed var(--border-3);">--text-11</div>
+      <div class="swatch" style="color: var(--text-12); border: 1px dashed var(--border-3);">--text-12</div>
+      <div class="swatch" style="color: var(--text-13); border: 1px dashed var(--border-3);">--text-13</div>
+      <div class="swatch" style="color: var(--text-14); border: 1px dashed var(--border-3);">--text-14</div>
+      <div class="swatch" style="color: var(--text-15); border: 1px dashed var(--border-3);">--text-15</div>
+      <div class="swatch" style="color: var(--text-16); border: 1px dashed var(--border-3);">--text-16</div>
+      <div class="swatch" style="color: var(--text-17); border: 1px dashed var(--border-3);">--text-17</div>
+      <div class="swatch" style="color: var(--text-18); border: 1px dashed var(--border-3);">--text-18</div>
+      <div class="swatch" style="color: var(--text-19); border: 1px dashed var(--border-3);">--text-19</div>
+      <div class="swatch" style="color: var(--text-20); border: 1px dashed var(--border-3);">--text-20</div>
+    </div>
 
-    <section style="margin-bottom: 50px;">
-      <h2 style="border-bottom: 2px solid var(--border-3); padding-bottom: 10px;">3. Shadows & Borders (Depth Test)</h2>
-      <div class="grid-5" style="padding-top: 20px;">
-        <div class="box" style="background-color: var(--bg-surface); border: 1px solid var(--border-1); box-shadow: var(--shadow-1);">Shadow 1 + B1</div>
-        <div class="box" style="background-color: var(--bg-surface); border: 1px solid var(--border-3); box-shadow: var(--shadow-3);">Shadow 3 + B3</div>
-        <div class="box" style="background-color: var(--bg-surface); border: 1px solid var(--border-5); box-shadow: var(--shadow-5);">Shadow 5 + B5</div>
-        <div class="box" style="background-color: var(--bg-surface); border: 1px solid var(--border-7); box-shadow: var(--shadow-7);">Shadow 7 + B7</div>
-        <div class="box" style="background-color: var(--bg-surface); border: 1px solid var(--border-9); box-shadow: var(--shadow-9);">Shadow 9 + B9</div>
-      </div>
-    </section>
+    <h2 class="section-title">3. All Border Variables (10 Items)</h2>
+    <div class="showcase-grid">
+      <div class="swatch" style="background-color: var(--bg-surface); border: 3px solid var(--border-1);">--border-1</div>
+      <div class="swatch" style="background-color: var(--bg-surface); border: 3px solid var(--border-2);">--border-2</div>
+      <div class="swatch" style="background-color: var(--bg-surface); border: 3px solid var(--border-3);">--border-3</div>
+      <div class="swatch" style="background-color: var(--bg-surface); border: 3px solid var(--border-4);">--border-4</div>
+      <div class="swatch" style="background-color: var(--bg-surface); border: 3px solid var(--border-5);">--border-5</div>
+      <div class="swatch" style="background-color: var(--bg-surface); border: 3px solid var(--border-6);">--border-6</div>
+      <div class="swatch" style="background-color: var(--bg-surface); border: 3px solid var(--border-7);">--border-7</div>
+      <div class="swatch" style="background-color: var(--bg-surface); border: 3px solid var(--border-8);">--border-8</div>
+      <div class="swatch" style="background-color: var(--bg-surface); border: 3px solid var(--border-9);">--border-9</div>
+      <div class="swatch" style="background-color: var(--bg-surface); border: 3px solid var(--border-10);">--border-10</div>
+    </div>
 
-    <section style="margin-bottom: 50px;">
-      <h2 style="border-bottom: 2px solid var(--border-3); padding-bottom: 10px;">4. Active Links Showcase</h2>
-      <div style="background-color: var(--bg-surface); padding: 25px; border-radius: 12px; border: 1px solid var(--border-2);">
-        <a href="#" style="color: var(--active-link-1); font-weight: bold; margin-right: 15px;">Active Link 1</a>
-        <a href="#" style="color: var(--active-link-4); font-weight: bold; margin-right: 15px;">Active Link 4</a>
-        <a href="#" style="color: var(--active-link-7); font-weight: bold; margin-right: 15px;">Active Link 7</a>
-        <a href="#" style="color: var(--active-link-10); font-weight: bold; margin-right: 15px;">Active Link 10</a>
-        <a href="#" style="color: var(--active-link-13); font-weight: bold; margin-right: 15px;">Active Link 13</a>
-        <a href="#" style="color: var(--active-link-17); font-weight: bold; margin-right: 15px;">Active Link 17</a>
-      </div>
-    </section>
-
-    <section style="margin-bottom: 50px;">
-      <h2 style="border-bottom: 2px solid var(--border-3); padding-bottom: 10px;">5. CSS Animations & Glows</h2>
-      <div class="grid-5" style="padding-top: 20px;">
-        <div class="box anim-box-1" style="background-color: var(--bg-surface);">Glow Pulse Anim</div>
-        <div class="box anim-box-2" style="background-color: var(--bg-surface);">Border Pulse Anim</div>
-        <div class="box" style="background-color: var(--bg-surface); box-shadow: var(--anim-glow-1);">Static Glow 1</div>
-        <div class="box" style="background-color: var(--bg-surface); box-shadow: var(--anim-glow-4);">Static Glow 4</div>
-        <div class="box" style="background-color: var(--bg-surface); box-shadow: var(--anim-glow-8);">Static Glow 8</div>
-      </div>
-    </section>
-
-    <section style="margin-bottom: 50px;">
-      <h2 style="border-bottom: 2px solid var(--border-3); padding-bottom: 10px;">6. Real-World Auto Mapped UI</h2>
-      
-      <div style="display: flex; gap: 15px; margin-bottom: 20px;">
-        <input type="text" placeholder="Focus me for Outline Ring!" style="flex: 1;">
-        <button class="btn btn-primary">Primary Btn</button>
-        <button class="btn btn-secondary">Secondary Btn</button>
-      </div>
-
-      <table style="margin-bottom: 20px;">
-        <thead>
-          <tr>
-            <th>Name</th>
-            <th>Type</th>
-            <th>Status</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>Hover Outlines</td>
-            <td>Interaction Variable</td>
-            <td style="color: var(--text-success);">Active</td>
-          </tr>
-          <tr>
-            <td>Animation Glows</td>
-            <td>Keyframe Variable</td>
-            <td style="color: var(--text-success);">Active</td>
-          </tr>
-        </tbody>
-      </table>
-
-      <div class="accordion">
-        <button class="accordion-header" onclick="this.parentElement.classList.toggle('active')">
-          Everything is Connected Now! <span>+</span>
-        </button>
-        <div class="accordion-body">
-          Bhai, is HTML file mein ek bhi cheez adhuri nahi chhodi hai. Tere CSS mein banaye gaye hovers, outlines, shadows, aur animations sab yahan manually unke HTML tags ke sath map kar diye gaye hain.
-        </div>
-      </div>
-    </section>
+    <h2 class="section-title">4. All Shadow Variables (10 Items)</h2>
+    <div class="showcase-grid" style="padding-top: 20px; padding-bottom: 40px;">
+      <div class="swatch" style="background-color: var(--bg-surface); border: 1px solid var(--border-1); box-shadow: var(--shadow-1);">--shadow-1</div>
+      <div class="swatch" style="background-color: var(--bg-surface); border: 1px solid var(--border-1); box-shadow: var(--shadow-2);">--shadow-2</div>
+      <div class="swatch" style="background-color: var(--bg-surface); border: 1px solid var(--border-1); box-shadow: var(--shadow-3);">--shadow-3</div>
+      <div class="swatch" style="background-color: var(--bg-surface); border: 1px solid var(--border-1); box-shadow: var(--shadow-4);">--shadow-4</div>
+      <div class="swatch" style="background-color: var(--bg-surface); border: 1px solid var(--border-1); box-shadow: var(--shadow-5);">--shadow-5</div>
+      <div class="swatch" style="background-color: var(--bg-surface); border: 1px solid var(--border-1); box-shadow: var(--shadow-6);">--shadow-6</div>
+      <div class="swatch" style="background-color: var(--bg-surface); border: 1px solid var(--border-1); box-shadow: var(--shadow-7);">--shadow-7</div>
+      <div class="swatch" style="background-color: var(--bg-surface); border: 1px solid var(--border-1); box-shadow: var(--shadow-8);">--shadow-8</div>
+      <div class="swatch" style="background-color: var(--bg-surface); border: 1px solid var(--border-1); box-shadow: var(--shadow-9);">--shadow-9</div>
+      <div class="swatch" style="background-color: var(--bg-surface); border: 1px solid var(--border-1); box-shadow: var(--shadow-10);">--shadow-10</div>
+    </div>
 
   </div>
 
   <script>
     const btn = document.getElementById('themeToggle');
     const html = document.documentElement;
+    btn.addEventListener('click', () => {
+      html.setAttribute('data-theme', html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark');
+    });
+  </script>
+
+</body>
+</html><h2 class="section-title">5. All Hover Backgrounds (12 Items)</h2>
+    <p style="margin-bottom: 20px; color: var(--text-muted);">In boxes par mouse le jaakar dekh, background color change hoga.</p>
+    <style>
+      .h-bg { background-color: var(--bg-surface); border: 1px solid var(--border-2); cursor: pointer; }
+      .h-bg-1:hover { background-color: var(--hover-bg-1); }
+      .h-bg-2:hover { background-color: var(--hover-bg-2); }
+      .h-bg-3:hover { background-color: var(--hover-bg-3); }
+      .h-bg-4:hover { background-color: var(--hover-bg-4); }
+      .h-bg-5:hover { background-color: var(--hover-bg-5); }
+      .h-bg-6:hover { background-color: var(--hover-bg-6); }
+      .h-bg-7:hover { background-color: var(--hover-bg-7); }
+      .h-bg-8:hover { background-color: var(--hover-bg-8); }
+      .h-bg-9:hover { background-color: var(--hover-bg-9); }
+      .h-bg-10:hover { background-color: var(--hover-bg-10); }
+      .h-bg-11:hover { background-color: var(--hover-bg-11); }
+      .h-bg-12:hover { background-color: var(--hover-bg-12); }
+    </style>
+    <div class="showcase-grid">
+      <div class="swatch h-bg h-bg-1">--hover-bg-1</div>
+      <div class="swatch h-bg h-bg-2">--hover-bg-2</div>
+      <div class="swatch h-bg h-bg-3">--hover-bg-3</div>
+      <div class="swatch h-bg h-bg-4">--hover-bg-4</div>
+      <div class="swatch h-bg h-bg-5">--hover-bg-5</div>
+      <div class="swatch h-bg h-bg-6">--hover-bg-6</div>
+      <div class="swatch h-bg h-bg-7">--hover-bg-7</div>
+      <div class="swatch h-bg h-bg-8">--hover-bg-8</div>
+      <div class="swatch h-bg h-bg-9">--hover-bg-9</div>
+      <div class="swatch h-bg h-bg-10">--hover-bg-10</div>
+      <div class="swatch h-bg h-bg-11">--hover-bg-11</div>
+      <div class="swatch h-bg h-bg-12">--hover-bg-12</div>
+    </div>
+
+    <h2 class="section-title">6. All Hover Texts (12 Items)</h2>
+    <style>
+      .h-txt { background-color: var(--bg-2); border: 1px solid var(--border-1); color: var(--text-muted); cursor: pointer; }
+      .h-txt-1:hover { color: var(--hover-text-1); }
+      .h-txt-2:hover { color: var(--hover-text-2); }
+      .h-txt-3:hover { color: var(--hover-text-3); }
+      .h-txt-4:hover { color: var(--hover-text-4); }
+      .h-txt-5:hover { color: var(--hover-text-5); }
+      .h-txt-6:hover { color: var(--hover-text-6); }
+      .h-txt-7:hover { color: var(--hover-text-7); }
+      .h-txt-8:hover { color: var(--hover-text-8); }
+      .h-txt-9:hover { color: var(--hover-text-9); }
+      .h-txt-10:hover { color: var(--hover-text-10); }
+      .h-txt-11:hover { color: var(--hover-text-11); }
+      .h-txt-12:hover { color: var(--hover-text-12); }
+    </style>
+    <div class="showcase-grid">
+      <div class="swatch h-txt h-txt-1">--hover-text-1</div>
+      <div class="swatch h-txt h-txt-2">--hover-text-2</div>
+      <div class="swatch h-txt h-txt-3">--hover-text-3</div>
+      <div class="swatch h-txt h-txt-4">--hover-text-4</div>
+      <div class="swatch h-txt h-txt-5">--hover-text-5</div>
+      <div class="swatch h-txt h-txt-6">--hover-text-6</div>
+      <div class="swatch h-txt h-txt-7">--hover-text-7</div>
+      <div class="swatch h-txt h-txt-8">--hover-text-8</div>
+      <div class="swatch h-txt h-txt-9">--hover-text-9</div>
+      <div class="swatch h-txt h-txt-10">--hover-text-10</div>
+      <div class="swatch h-txt h-txt-11">--hover-text-11</div>
+      <div class="swatch h-txt h-txt-12">--hover-text-12</div>
+    </div>
+
+    <h2 class="section-title">7. All Hover Outlines (12 Items)</h2>
+    <style>
+      .h-out { background-color: var(--bg-surface); border: 2px solid transparent; cursor: pointer; outline-offset: 2px; }
+      .h-out-1:hover { outline: 3px solid var(--hover-outline-1); }
+      .h-out-2:hover { outline: 3px solid var(--hover-outline-2); }
+      .h-out-3:hover { outline: 3px solid var(--hover-outline-3); }
+      .h-out-4:hover { outline: 3px solid var(--hover-outline-4); }
+      .h-out-5:hover { outline: 3px solid var(--hover-outline-5); }
+      .h-out-6:hover { outline: 3px solid var(--hover-outline-6); }
+      .h-out-7:hover { outline: 3px solid var(--hover-outline-7); }
+      .h-out-8:hover { outline: 3px solid var(--hover-outline-8); }
+      .h-out-9:hover { outline: 3px solid var(--hover-outline-9); }
+      .h-out-10:hover { outline: 3px solid var(--hover-outline-10); }
+      .h-out-11:hover { outline: 3px solid var(--hover-outline-11); }
+      .h-out-12:hover { outline: 3px solid var(--hover-outline-12); }
+    </style>
+    <div class="showcase-grid">
+      <div class="swatch h-out h-out-1">--hover-outline-1</div>
+      <div class="swatch h-out h-out-2">--hover-outline-2</div>
+      <div class="swatch h-out h-out-3">--hover-outline-3</div>
+      <div class="swatch h-out h-out-4">--hover-outline-4</div>
+      <div class="swatch h-out h-out-5">--hover-outline-5</div>
+      <div class="swatch h-out h-out-6">--hover-outline-6</div>
+      <div class="swatch h-out h-out-7">--hover-outline-7</div>
+      <div class="swatch h-out h-out-8">--hover-outline-8</div>
+      <div class="swatch h-out h-out-9">--hover-outline-9</div>
+      <div class="swatch h-out h-out-10">--hover-outline-10</div>
+      <div class="swatch h-out h-out-11">--hover-outline-11</div>
+      <div class="swatch h-out h-out-12">--hover-outline-12</div>
+    </div>
+
+    <h2 class="section-title">8. All Active Links (18 Items)</h2>
+    <div class="showcase-grid" style="background-color: var(--bg-2); padding: 20px; border-radius: 12px; border: 1px solid var(--border-1);">
+      <a href="#" class="swatch" style="color: var(--active-link-1); text-decoration: underline;">--active-link-1</a>
+      <a href="#" class="swatch" style="color: var(--active-link-2); text-decoration: underline;">--active-link-2</a>
+      <a href="#" class="swatch" style="color: var(--active-link-3); text-decoration: underline;">--active-link-3</a>
+      <a href="#" class="swatch" style="color: var(--active-link-4); text-decoration: underline;">--active-link-4</a>
+      <a href="#" class="swatch" style="color: var(--active-link-5); text-decoration: underline;">--active-link-5</a>
+      <a href="#" class="swatch" style="color: var(--active-link-6); text-decoration: underline;">--active-link-6</a>
+      <a href="#" class="swatch" style="color: var(--active-link-7); text-decoration: underline;">--active-link-7</a>
+      <a href="#" class="swatch" style="color: var(--active-link-8); text-decoration: underline;">--active-link-8</a>
+      <a href="#" class="swatch" style="color: var(--active-link-9); text-decoration: underline;">--active-link-9</a>
+      <a href="#" class="swatch" style="color: var(--active-link-10); text-decoration: underline;">--active-link-10</a>
+      <a href="#" class="swatch" style="color: var(--active-link-11); text-decoration: underline;">--active-link-11</a>
+      <a href="#" class="swatch" style="color: var(--active-link-12); text-decoration: underline;">--active-link-12</a>
+      <a href="#" class="swatch" style="color: var(--active-link-13); text-decoration: underline;">--active-link-13</a>
+      <a href="#" class="swatch" style="color: var(--active-link-14); text-decoration: underline;">--active-link-14</a>
+      <a href="#" class="swatch" style="color: var(--active-link-15); text-decoration: underline;">--active-link-15</a>
+      <a href="#" class="swatch" style="color: var(--active-link-16); text-decoration: underline;">--active-link-16</a>
+      <a href="#" class="swatch" style="color: var(--active-link-17); text-decoration: underline;">--active-link-17</a>
+      <a href="#" class="swatch" style="color: var(--active-link-18); text-decoration: underline;">--active-link-18</a>
+    </div>
+
+    <h2 class="section-title">9. All Animation Glows (10 Items)</h2>
+    <div class="showcase-grid">
+      <div class="swatch" style="background-color: var(--bg-surface); box-shadow: var(--anim-glow-1);">--anim-glow-1</div>
+      <div class="swatch" style="background-color: var(--bg-surface); box-shadow: var(--anim-glow-2);">--anim-glow-2</div>
+      <div class="swatch" style="background-color: var(--bg-surface); box-shadow: var(--anim-glow-3);">--anim-glow-3</div>
+      <div class="swatch" style="background-color: var(--bg-surface); box-shadow: var(--anim-glow-4);">--anim-glow-4</div>
+      <div class="swatch" style="background-color: var(--bg-surface); box-shadow: var(--anim-glow-5);">--anim-glow-5</div>
+      <div class="swatch" style="background-color: var(--bg-surface); box-shadow: var(--anim-glow-6);">--anim-glow-6</div>
+      <div class="swatch" style="background-color: var(--bg-surface); box-shadow: var(--anim-glow-7);">--anim-glow-7</div>
+      <div class="swatch" style="background-color: var(--bg-surface); box-shadow: var(--anim-glow-8);">--anim-glow-8</div>
+      <div class="swatch" style="background-color: var(--bg-surface); box-shadow: var(--anim-glow-9);">--anim-glow-9</div>
+      <div class="swatch" style="background-color: var(--bg-surface); box-shadow: var(--anim-glow-10);">--anim-glow-10</div>
+    </div>
+
+    <h2 class="section-title">10. All Semantic Components Fully Mapped</h2>
+    
+    <div style="margin-bottom: 20px;">
+      <div style="padding: 15px; margin-bottom: 10px; border-radius: 8px; border-left: 5px solid var(--border-success); background-color: var(--bg-success); color: var(--text-success); font-weight: bold;">--bg-success | --text-success | --border-success</div>
+      <div style="padding: 15px; margin-bottom: 10px; border-radius: 8px; border-left: 5px solid var(--border-danger); background-color: var(--bg-danger); color: var(--text-danger); font-weight: bold;">--bg-danger | --text-danger | --border-danger</div>
+      <div style="padding: 15px; margin-bottom: 10px; border-radius: 8px; border-left: 5px solid var(--border-warning); background-color: var(--bg-warning); color: var(--text-warning); font-weight: bold;">--bg-warning | --text-warning | --border-warning</div>
+      <div style="padding: 15px; margin-bottom: 10px; border-radius: 8px; border-left: 5px solid var(--border-info); background-color: var(--bg-info); color: var(--text-info); font-weight: bold;">--bg-info | --text-info | --border-info</div>
+    </div>
+
+    <div style="margin-bottom: 30px; display: flex; gap: 15px; flex-wrap: wrap;">
+      <button style="padding: 12px 24px; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; background-color: var(--primary-base); color: var(--text-inverse);">--primary-base</button>
+      <button style="padding: 12px 24px; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; background-color: var(--primary-hover); color: var(--text-inverse);">--primary-hover</button>
+      <button style="padding: 12px 24px; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; background-color: var(--primary-active); color: var(--text-inverse);">--primary-active</button>
+      <div style="padding: 12px 24px; border-radius: 8px; font-weight: bold; background: linear-gradient(90deg, var(--split-primary), var(--split-secondary)); color: white;">--split-primary to --split-secondary</div>
+    </div>
+
+    <table style="width: 100%; border-collapse: collapse; background-color: var(--bg-table); border: 1px solid var(--border-table); margin-bottom: 30px;">
+      <thead>
+        <tr>
+          <th style="background-color: var(--bg-th); color: var(--text-th); padding: 15px; text-align: left; border-bottom: 1px solid var(--border-table);">--bg-th & --text-th</th>
+          <th style="background-color: var(--bg-th); color: var(--text-th); padding: 15px; text-align: left; border-bottom: 1px solid var(--border-table);">Column 2</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td style="padding: 15px; color: var(--text-paragraph); border-bottom: 1px solid var(--border-table);">Row 1</td>
+          <td style="padding: 15px; color: var(--text-paragraph); border-bottom: 1px solid var(--border-table);">Normal Table Row (--bg-table)</td>
+        </tr>
+        <tr style="background-color: var(--bg-table-stripe);">
+          <td style="padding: 15px; color: var(--text-paragraph); border-bottom: 1px solid var(--border-table);">Row 2</td>
+          <td style="padding: 15px; color: var(--text-paragraph); border-bottom: 1px solid var(--border-table);">Striped Table Row (--bg-table-stripe)</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div style="background-color: var(--bg-accordion); border: 1px solid var(--border-accordion); border-radius: 8px; padding: 15px; color: var(--text-accordion); font-weight: bold; margin-bottom: 50px;">
+      Accordion Header (--bg-accordion & --text-accordion)
+      <div style="font-weight: normal; color: var(--text-paragraph); margin-top: 10px; padding-top: 10px; border-top: 1px solid var(--border-accordion);">
+        Accordion Body Content mapped to --text-paragraph.
+      </div>
+    </div></div> <script>
+    const btn = document.getElementById('themeToggle');
+    const html = document.documentElement;
 
     btn.addEventListener('click', () => {
+      // Check current theme
       const currentTheme = html.getAttribute('data-theme');
-      html.setAttribute('data-theme', currentTheme === 'dark' ? 'light' : 'dark');
+      // Switch to the opposite theme
+      const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+      
+      html.setAttribute('data-theme', newTheme);
+      
+      // Optional: Button text animation/change
+      btn.innerText = newTheme === 'dark' ? '🌓 Switch to Light' : '🌓 Switch to Dark';
     });
   </script>
 
