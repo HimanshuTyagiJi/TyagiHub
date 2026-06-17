@@ -1,5 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const POSTS_PER_PAGE = 1; // Limit 1 rakhi hai tere test ke liye
+  // Yahan Limit 6 set hai (HTML se match karne ke liye)
+  const POSTS_PER_PAGE = 6; 
   
   const wrapper = document.getElementById("post-wrapper");
   const pagination = document.getElementById("pagination-nav");
@@ -8,7 +9,7 @@ document.addEventListener("DOMContentLoaded", () => {
   if (!wrapper || !pagination) return;
 
   const params = new URLSearchParams(window.location.search);
-  let currentPage = parseInt(params.get("page")) || 2;
+  let currentPage = parseInt(params.get("page")) || 1;
   let searchQuery = ""; 
   
   let allShieldData = [];
@@ -23,7 +24,7 @@ document.addEventListener("DOMContentLoaded", () => {
     })
     .catch(err => console.error("Shield JSON fetch error:", err));
 
-  // MASTER FILTER
+  // MASTER FILTER & SAFETY LOCK
   function applyFiltersAndRender() {
     if (!allShieldData.length) return;
 
@@ -31,6 +32,14 @@ document.addEventListener("DOMContentLoaded", () => {
       const searchPool = `${post.title} ${post.description} ${post.category}`.toLowerCase();
       return searchPool.includes(searchQuery);
     });
+
+    // SAFETY LOCK: Agar URL mein page 50 likha hai aur total post 2 hain, 
+    // toh ye user ko dhakka maar ke Page 1 par wapas bhej dega.
+    const totalPages = Math.ceil(filteredPosts.length / POSTS_PER_PAGE) || 1;
+    if (currentPage > totalPages) {
+      currentPage = totalPages;
+      updateURL();
+    }
 
     renderPosts();
     renderPagination();
@@ -48,10 +57,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function updateURL() {
     const newUrl = currentPage === 1 ? window.location.pathname : `?page=${currentPage}`;
-    window.history.pushState({}, "", newUrl);
+    window.history.replaceState({}, "", newUrl); // replaceState better hai taki back history gandi na ho
   }
 
-  // RENDER POSTS USING EXISTING THEME CSS
+  // RENDER POSTS
   function renderPosts() {
     wrapper.innerHTML = ""; 
     
@@ -67,7 +76,6 @@ document.addEventListener("DOMContentLoaded", () => {
     chunk.forEach(p => {
       const cat = p.category ? p.category.charAt(0).toUpperCase() + p.category.slice(1) : "Security";
       
-      // EXACT THEME CLASSES USE KI HAIN ('reveal' aur 'js-post' HATA DIYE)
       const cardHTML = `
         <a href="${p.url}" class="blog-card" role="listitem">
           <div class="blog-card__thumb">
@@ -96,7 +104,6 @@ document.addEventListener("DOMContentLoaded", () => {
     function createBtn(page, text = page) {
       const btn = document.createElement("button");
       btn.innerText = text;
-      // Simple inline styling for buttons so they don't break
       btn.style.margin = "0 4px";
       btn.style.padding = "8px 14px";
       btn.style.border = "1px solid #ccc";
