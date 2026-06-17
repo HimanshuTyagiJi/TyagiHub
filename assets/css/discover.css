@@ -637,7 +637,7 @@
   cursor: pointer;
   padding: 11px 18px;
   border-radius: 12px;
-  background: #1e293b;
+  background: var(--active-link-1);
   color: #fff;
   font-size: 14px;
   font-weight: 700;
@@ -649,10 +649,14 @@
 }
 
 .read-link {
-  color: #60a5fa;
-  text-decoration: none;
-  font-size: 14px;
-  font-weight: 700;
+    
+    color: #60a5fa;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 700;
+    padding: 11px 18px;
+    border-radius: 12px;
+    background: var(--anim-glow-3);
 }
 
 /* =========================
@@ -744,10 +748,7 @@
     gap: 12px;
   }
 
-  .native-share-btn {
-    width: auto;
-    flex: 1;
-  }
+
 
   .read-link {
     text-align: right;
