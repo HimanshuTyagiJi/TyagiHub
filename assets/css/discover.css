@@ -1078,7 +1078,7 @@
     padding-right:4px;
     
 
-    scrollbar-width:thin;
+    scrollbar-width:none;
   }
 
   .discover-sidebar::-webkit-scrollbar{
@@ -1101,7 +1101,7 @@
 
 
 
-  border:1px solid var(--border-color,#e5e7eb);
+ border-color: rgba(37, 99, 235, 0.35); /* Blue Border Glow */
 
   border-radius:18px;
 
@@ -1113,15 +1113,12 @@
     box-shadow .25s ease;
 }
 
-.sidebar-section:hover{
-  transform:translateY(-2px);
-
-  border-color:rgba(37,99,235,.35);
-
-  box-shadow:
-    0 10px 30px rgba(0,0,0,.08);
+.sidebar-section:hover {
+  transform: translateY(-2px);
+  border-color: rgba(37, 99, 235, 0.35); /* Blue Border Glow */
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08); /* Soft Shadow */
+  background-color: var(--hover-bg-1); /* Optional: Background bhi halka sa highlight ho jayega */
 }
-
 /* ==========================================
    TITLES
 ========================================== */
