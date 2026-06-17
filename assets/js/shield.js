@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
   // Yahan Limit 6 set hai (HTML se match karne ke liye)
-  const POSTS_PER_PAGE = 6; 
+  const POSTS_PER_PAGE = 1; 
   
   const wrapper = document.getElementById("post-wrapper");
   const pagination = document.getElementById("pagination-nav");
