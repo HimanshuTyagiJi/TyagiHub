@@ -1,12 +1,8 @@
-/**
- * InfoShield India - Anti-Race Condition Engine
- * Fixes the hard-refresh disappearing post issue permanently.
- */
-
 document.addEventListener("DOMContentLoaded", () => {
-  const POSTS_PER_PAGE = 1; 
-  const wrapper = document.querySelector("#post-wrapper");
-  const pagination = document.querySelector("#pagination-nav");
+  const POSTS_PER_PAGE = 1; // Limit 1 rakhi hai tere test ke liye
+  
+  const wrapper = document.getElementById("post-wrapper");
+  const pagination = document.getElementById("pagination-nav");
   const searchInput = document.getElementById("shield-search");
 
   if (!wrapper || !pagination) return;
@@ -18,10 +14,18 @@ document.addEventListener("DOMContentLoaded", () => {
   let allShieldData = [];
   let filteredPosts = [];
 
-  // MASTER FILTER LOGIC
+  // FETCH JSON DATA
+  fetch("/shield.json")
+    .then(res => res.json())
+    .then(data => {
+      allShieldData = data;
+      applyFiltersAndRender();
+    })
+    .catch(err => console.error("Shield JSON fetch error:", err));
+
+  // MASTER FILTER
   function applyFiltersAndRender() {
-    // Agar data abhi load nahi hua toh render block ko roko
-    if (!allShieldData || allShieldData.length === 0) return;
+    if (!allShieldData.length) return;
 
     filteredPosts = allShieldData.filter(post => {
       const searchPool = `${post.title} ${post.description} ${post.category}`.toLowerCase();
@@ -32,22 +36,27 @@ document.addEventListener("DOMContentLoaded", () => {
     renderPagination();
   }
 
-  // LIVE SEARCH
+  // SEARCH INPUT
   if (searchInput) {
     searchInput.addEventListener("input", (e) => {
       searchQuery = e.target.value.toLowerCase().trim();
       currentPage = 1; 
-      window.history.replaceState({}, "", window.location.pathname);
+      updateURL();
       applyFiltersAndRender();
     });
   }
 
-  // RENDER POSTS
+  function updateURL() {
+    const newUrl = currentPage === 1 ? window.location.pathname : `?page=${currentPage}`;
+    window.history.pushState({}, "", newUrl);
+  }
+
+  // RENDER POSTS USING EXISTING THEME CSS
   function renderPosts() {
     wrapper.innerHTML = ""; 
     
     if (filteredPosts.length === 0) {
-      wrapper.innerHTML = `<p style="text-align:center; padding: 40px 0; color: #666; width:100%; grid-column: 1 / -1; font-size: 18px;">कोई परिणाम नहीं मिला। कृपया कुछ और खोजें।</p>`;
+      wrapper.innerHTML = `<p style="text-align:center; padding:40px; color:#666; font-size:18px; grid-column:1/-1;">कोई परिणाम नहीं मिला। कृपया कुछ और खोजें।</p>`;
       return;
     }
 
@@ -57,8 +66,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
     chunk.forEach(p => {
       const cat = p.category ? p.category.charAt(0).toUpperCase() + p.category.slice(1) : "Security";
+      
+      // EXACT THEME CLASSES USE KI HAIN ('reveal' aur 'js-post' HATA DIYE)
       const cardHTML = `
-        <a href="${p.url}" class="blog-card reveal js-post" role="listitem">
+        <a href="${p.url}" class="blog-card" role="listitem">
           <div class="blog-card__thumb">
             <img src="${p.image}" alt="${p.title}" loading="lazy">
           </div>
@@ -75,58 +86,51 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // RENDER PAGINATION
+  // PAGINATION RENDER
   function renderPagination() {
     pagination.innerHTML = "";
     const totalPages = Math.ceil(filteredPosts.length / POSTS_PER_PAGE);
 
     if (totalPages <= 1) return;
 
-    function createPageBtn(page) {
-      const btn = document.createElement("a");
-      btn.href = `?page=${page}`;
-      btn.innerText = page;
-      btn.className = "page-btn";
-      if (page === currentPage) btn.classList.add("active");
+    function createBtn(page, text = page) {
+      const btn = document.createElement("button");
+      btn.innerText = text;
+      // Simple inline styling for buttons so they don't break
+      btn.style.margin = "0 4px";
+      btn.style.padding = "8px 14px";
+      btn.style.border = "1px solid #ccc";
+      btn.style.borderRadius = "4px";
+      btn.style.background = page === currentPage ? "#16a34a" : "#fff";
+      btn.style.color = page === currentPage ? "#fff" : "#333";
+      btn.style.cursor = "pointer";
+      
+      btn.addEventListener("click", (e) => {
+        e.preventDefault();
+        currentPage = page;
+        updateURL();
+        applyFiltersAndRender();
+        window.scrollTo({ top: wrapper.offsetTop - 100, behavior: "smooth" });
+      });
       pagination.appendChild(btn);
     }
 
     function createDots() {
       const dots = document.createElement("span");
       dots.innerText = "...";
+      dots.style.margin = "0 4px";
       pagination.appendChild(dots);
     }
 
-    if (currentPage > 1) {
-      const prev = document.createElement("a");
-      prev.href = `?page=${currentPage - 1}`;
-      prev.className = "page-btn";
-      prev.innerHTML = "←";
-      pagination.appendChild(prev);
-    }
+    if (currentPage > 1) createBtn(currentPage - 1, "←");
 
-    createPageBtn(1);
-    if (totalPages >= 2) createPageBtn(2);
+    createBtn(1);
+    if (totalPages >= 2) createBtn(2);
     if (currentPage > 3) createDots();
-    if (currentPage > 2 && currentPage < totalPages - 1) createPageBtn(currentPage);
-    if (totalPages > 2) createPageBtn(totalPages);
+    if (currentPage > 2 && currentPage < totalPages - 1) createBtn(currentPage);
+    if (totalPages > 2 && currentPage < totalPages - 1) createDots();
+    if (totalPages > 2) createBtn(totalPages);
 
-    if (currentPage < totalPages) {
-      const next = document.createElement("a");
-      next.href = `?page=${currentPage + 1}`;
-      next.className = "page-btn";
-      next.innerHTML = "→";
-      pagination.appendChild(next);
-    }
+    if (currentPage < totalPages) createBtn(currentPage + 1, "→");
   }
-
-  // FETCH DATA AFTER FUNCTIONS ARE DEFINED
-  fetch("/shield.json")
-    .then(res => res.json())
-    .then(data => {
-      allShieldData = data;
-      // Data aane ke BAAD filter aur render call hoga
-      applyFiltersAndRender();
-    })
-    .catch(err => console.error("Shield Data load failed:", err));
 });
