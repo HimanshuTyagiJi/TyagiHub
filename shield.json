@@ -11,7 +11,7 @@ permalink: /shield.json
     "description": {{ p.description | default: p.excerpt | strip_html | truncate: 110 | jsonify }},
     "date": {{ p.date | date: "%d %b %Y" | jsonify }},
     "lang": {{ p.lang | default: "en" | jsonify }},
-    "category": "shield"
+    "category": {{ p.categories | first | default: "Security" | jsonify }}
   }{% unless forloop.last %},{% endunless %}
   {% endfor %}
 ]
