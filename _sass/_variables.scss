@@ -1,176 +1,77 @@
-/* ============================================================================
- * TyagiHub — Global Unified Design System (v5.6-SCSS-Master-Engine)
- * Architecture: SCSS Dynamic Tokens + CSS Custom Properties Interop
- * Aesthetic: Dark-dominant, Indian tech energy — sharp geometry,
- * warm amber/saffron accent, deep navy-charcoal base.
- * ============================================================================ */
+// TyagiHub GK Quiz - Variables & Base Styles
 
-// ============================================================================
-// 1. DYNAMIC CSS CUSTOM PROPERTIES INNER GRID (For Dark/Light Theme Engine)
-// ============================================================================
-:root {
-  /* --- 6 Base Backgrounds --- */  
-  --bg-1: #030712; --bg-2: #0a0c10; --bg-3: #0f1219; 
-  --bg-4: #161b27; --bg-5: #1e293b; --bg-6: #334155;
-
-  /* --- 6 High-Contrast Texts --- */
-  --text-1: #ffffff; --text-2: #f8fafc; --text-3: #e8eaf0; 
-  --text-4: #60a5fa; --text-5: #34d399; --text-6: #f5a623;
-
-  /* --- 6 Dividing Borders --- */
-  --border-1: #1e293b; --border-2: #2a3348; --border-3: #3a4560; 
-  --border-4: #3b82f6; --border-5: #f87171; --border-6: #34d399;
-
-  /* --- 6 Interactive Hover Backgrounds --- */
-  --hover-bg-1: #0f1219; --hover-bg-2: #161b27; --hover-bg-3: #1e293b; 
-  --hover-bg-4: #2563eb; --hover-bg-5: #059669; --hover-bg-6: #dc2626;
-
-  /* --- 6 Interactive Hover Texts --- */
-  --hover-text-1: #ffffff; --hover-text-2: #f8fafc; --hover-text-3: #cbd5e1; 
-  --hover-text-4: #93c5fd; --hover-text-5: #6ee7b7; --hover-text-6: #fca5a5;
-
-  /* --- 6 Interaction Outlines --- */
-  --hover-outline-1: #3b82f6; --hover-outline-2: #10b981; --hover-outline-3: #ef4444; 
-  --hover-outline-4: #f59e0b; --hover-outline-5: #8b5cf6; --hover-outline-6: #06b6d4;
-
-  /* --- 6 Active Link Targets --- */
-  --active-link-1: #60a5fa; --active-link-2: #38bdf8; --active-link-3: #34d399; 
-  --active-link-4: #f5a623; --active-link-5: #f87171; --active-link-6: #c084fc;
-
-  /* --- 6 Animation Target Colors --- */
-  --anim-glow-1: #2563eb; --anim-glow-2: #7c3aed; --anim-glow-3: #db2777; 
-  --anim-glow-4: #ea580c; --anim-glow-5: #16a34a; --anim-glow-6: #0891b2;
-
-  /* --- Mapped Semantic Core --- */
-  --clr-bg: var(--bg-2);
-  --clr-bg-2: var(--bg-3);
-  --clr-bg-3: var(--bg-4);
-  --clr-surface: #1a2030;
-  --clr-surface-2: #212840;
-  --clr-border: var(--border-2);
-  --clr-border-2: var(--border-3);
-  --clr-accent: var(--text-6); 
-  --clr-accent-2: #ff7c3a;
-  --clr-accent-glow: rgba(245, 166, 35, 0.18);
-
-  /* --- Segment Categories --- */
-  --clr-learn: #3ecfcf; --clr-editor: #a78bfa; --clr-tools: var(--text-6);
-  --clr-stock: var(--text-5);  --clr-apps: var(--text-4);   --clr-shield: var(--border-5);
-  --clr-blog: #fb923c;
-
-  /* --- Core Typo Variables --- */
-  --clr-text: var(--text-3); --clr-text-2: #a0a8bc; --clr-text-3: #606880; --clr-heading: var(--text-2);
-
-  /* --- GK Quiz Core Target Fallbacks (Dark Mode Default Setup) --- */
-  --quiz-primary: #1a56db;       --quiz-primary-dark: #1240a8;       --quiz-primary-light: var(--bg-5);
-  --quiz-accent: var(--text-6);   --quiz-accent-dark: #ea6a00;
-  --quiz-success: #16a34a;       --quiz-success-light: #022c22;
-  --quiz-danger: #dc2626;        --quiz-danger-light: #450a0a;
-  --quiz-warning: #d97706;       --quiz-warning-light: #451a03;
-}
-
-/* Light Mode Engine Variables Alignment */
-[data-theme="light"] {
-  --bg-1: #ffffff; --bg-2: #f8fafc; --bg-3: #f1f5f9; 
-  --bg-4: #e2e8f0; --bg-5: #cbd5e1; --bg-6: #94a3b8;
-  --text-1: #020617; --text-2: #0f172a; --text-3: #1e293b; 
-  --text-4: #1d4ed8; --text-5: #15803d; --text-6: #b45309;
-  --border-1: #e2e8f0; --border-2: #cbd5e1; --border-3: #94a3b8; 
-
-  --clr-bg: var(--bg-1); --clr-bg-2: var(--bg-2); --clr-bg-3: var(--bg-3);
-  --clr-surface: #ffffff; --clr-surface-2: #f0f3fb;
-  --clr-border: var(--border-1); --clr-border-2: var(--border-2);
-  --clr-text: var(--text-3); --clr-text-2: #3d4d6a; --clr-text-3: #6b7a9a; --clr-heading: var(--text-2);
-  --clr-accent: #ff7c3a; --clr-accent-2: #e8682a; --clr-accent-glow: rgba(224, 152, 32, 0.15);
-
-  /* --- GK Quiz Light Overrides --- */
-  --quiz-primary: #1a56db;       --quiz-primary-dark: #1240a8;       --quiz-primary-light: #e8f0fd;
-  --quiz-accent: #b45309;        --quiz-accent-dark: #c2410c;
-  --quiz-success: #16a34a;       --quiz-success-light: #dcfce7;
-  --quiz-danger: #dc2626;        --quiz-danger-light: #fee2e2;
-  --quiz-warning: #d97706;       --quiz-warning-light: #fef3c7;
-}
-
-// ============================================================================
-// 2. SCSS NATIVE VARIABLE PLATFORM (Exact Mappings - No Hardcoding!)
-// ============================================================================
-// Color Palette Map
-$primary:        var(--quiz-primary);
-$primary-dark:   var(--quiz-primary-dark);
-$primary-light:  var(--quiz-primary-light);
-$accent:         var(--quiz-accent);
-$accent-dark:    var(--quiz-accent-dark);
-$success:        var(--quiz-success);
-$success-light:  var(--quiz-success-light);
-$danger:         var(--quiz-danger);
-$danger-light:   var(--quiz-danger-light);
-$warning:        var(--quiz-warning);
-$warning-light:  var(--quiz-warning-light);
-
-// Neutral Scales Linked Dynamically for Dark/Light Engine
-$neutral-50:     var(--bg-1);
-$neutral-100:    var(--bg-2);
-$neutral-200:    var(--bg-3);
-$neutral-300:    var(--bg-4);
-$neutral-400:    var(--border-3);
+// ============================================================
+// COLOR PALETTE
+// ============================================================
+$primary:        #1a56db;
+$primary-dark:   #1240a8;
+$primary-light:  #e8f0fd;
+$accent:         #f97316;
+$accent-dark:    #ea6a00;
+$success:        #16a34a;
+$success-light:  #dcfce7;
+$danger:         #dc2626;
+$danger-light:   #fee2e2;
+$warning:        #d97706;
+$warning-light:  #fef3c7;
+$neutral-50:     #f9fafb;
+$neutral-100:    #f3f4f6;
+$neutral-200:    #e5e7eb;
+$neutral-300:    #d1d5db;
+$neutral-400:    #9ca3af;
 $neutral-500:    #6b7280;
 $neutral-600:    #4b5563;
-$neutral-700:    var(--bg-6);
-$neutral-800:    var(--clr-text);
-$neutral-900:    var(--clr-heading);
+$neutral-700:    #374151;
+$neutral-800:    #1f2937;
+$neutral-900:    #111827;
 $white:          #ffffff;
 
-// Typography Layout Configuration
-$font-body:      'Outfit', 'Segoe UI', 'Noto Sans', 'Noto Sans Devanagari', Arial, sans-serif;
-$font-heading:   'SpaceGrotesk', 'Segoe UI', 'Noto Sans', Arial, sans-serif;
-$font-mono:      'JetBrainsMono', 'Courier New', monospace;
+// ============================================================
+// TYPOGRAPHY
+// ============================================================
+$font-body:    'Segoe UI', 'Noto Sans', 'Noto Sans Devanagari', Arial, sans-serif;
+$font-heading: 'Segoe UI', 'Noto Sans', Arial, sans-serif;
+$font-mono:    'Courier New', monospace;
 
-// Layout Layout Bounds & Units
+// ============================================================
+// SPACING & LAYOUT
+// ============================================================
 $sidebar-width:        280px;
 $sidebar-width-tablet: 240px;
 $header-height:        64px;
 $border-radius:        8px;
 $border-radius-lg:     12px;
 $border-radius-xl:     16px;
+$shadow-sm:   0 1px 3px rgba(0,0,0,.08), 0 1px 2px rgba(0,0,0,.05);
+$shadow-md:   0 4px 6px rgba(0,0,0,.07), 0 2px 4px rgba(0,0,0,.06);
+$shadow-lg:   0 10px 25px rgba(0,0,0,.1), 0 4px 10px rgba(0,0,0,.08);
 
-// Advanced Adaptive Box Shadows
-$shadow-sm:      0 1px 3px rgba(0,0,0,.08), 0 1px 2px rgba(0,0,0,.05);
-$shadow-md:      0 4px 6px rgba(0,0,0,.07), 0 2px 4px rgba(0,0,0,.06);
-$shadow-lg:      0 10px 25px rgba(0,0,0,.1), 0 4px 10px rgba(0,0,0,.08);
-
-// ============================================================================
-// 3. MASTER REUSABLE MIXINS SYSTEM
-// ============================================================================
+// ============================================================
+// MIXINS
+// ============================================================
 @mixin flex-center {
   display: flex;
   align-items: center;
   justify-content: center;
 }
-
 @mixin flex-between {
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
-
 @mixin transition($props: all, $dur: .2s, $ease: ease) {
   transition: $props $dur $ease;
 }
-
 @mixin responsive($bp) {
   @if $bp == 'mobile'  { @media (max-width: 639px)  { @content; } }
   @if $bp == 'tablet'  { @media (max-width: 1023px) { @content; } }
   @if $bp == 'desktop' { @media (min-width: 1024px) { @content; } }
 }
 
-// ============================================================================
-// 4. CORE ENGINE RESET & AUTOMATIC HTML TAG BINDING
-// ============================================================================
-*, *::before, *::after { 
-  box-sizing: border-box; 
-  margin: 0; 
-  padding: 0; 
-}
+// ============================================================
+// BASE RESET
+// ============================================================
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 html {
   scroll-behavior: smooth;
@@ -183,34 +84,17 @@ body {
   background: $neutral-50;
   line-height: 1.6;
   font-size: 16px;
-  -webkit-font-smoothing: antialiased;
-  transition: background-color 250ms ease, color 250ms ease;
-
-  @include responsive('mobile') { 
-    font-size: 15px; 
-  }
+  @include responsive('mobile') { font-size: 15px; }
 }
 
-a { 
-  color: $primary; 
-  text-decoration: none; 
-  @include transition(color);
-}
+a { color: $primary; text-decoration: none; }
+a:hover { color: $primary-dark; text-decoration: underline; }
 
-a:hover { 
-  color: $primary-dark; 
-  text-decoration: underline; 
-}
+img { max-width: 100%; height: auto; }
 
-img { 
-  max-width: 100%; 
-  height: auto; 
-}
-
-h1, h2, h3, h4, h5, h6 {
+h1,h2,h3,h4,h5,h6 {
   font-family: $font-heading;
   font-weight: 700;
   line-height: 1.3;
   color: $neutral-900;
-  margin-bottom: 0.5rem;
 }
