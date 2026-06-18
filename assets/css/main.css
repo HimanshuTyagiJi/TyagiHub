@@ -2664,3 +2664,10 @@ z-index:10;
   }
 
 }
+/* Footer Indian Flag SVG Style */
+.footer-flag-svg {
+  display: inline-block;
+  vertical-align: middle;
+  margin: 0 4px;
+  border-radius: 1px;
+}
