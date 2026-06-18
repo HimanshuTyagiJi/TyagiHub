@@ -122,38 +122,48 @@ extra_js:
   {% if page.lang == "hi" %}
     {% assign sorted = site.posts_hi | sort: "date" | reverse %}
   {% else %}
-    {% comment %} 🚀 CORE ENGINE MERGE: Normal posts aur Shield data ko concat kiya {% endcomment %}
-    {% assign base_posts = site.posts %}
-    {% assign shield_posts = site.shield %}
-    {% assign combined_posts = base_posts | concat: shield_posts %}
+    
+    {% comment %} 🚀 JADU START: Khali array banaya aur dono collections ko push kiya {% endcomment %}
+    {% assign combined_posts = "" | split: "" %}
+    
+    {% comment %} 1. Saari normal posts jodi {% endcomment %}
+    {% for p in site.posts %}
+      {% assign combined_posts = combined_posts | push: p %}
+    {% endfor %}
+    
+    {% comment %} 2. Saari shield (cyber security) posts jodi {% endcomment %}
+    {% for p in site.shield %}
+      {% assign combined_posts = combined_posts | push: p %}
+    {% endfor %}
+    
+    {% comment %} 3. Ab poori mixed list ko ek sath date wise sort kiya {% endcomment %}
     {% assign sorted = combined_posts | sort: "date" | reverse %}
+    
   {% endif %}
   
   {% for p in sorted limit: 6 %}
     {% comment %} 
-      Dynamic Category Setup: Shield posts me .category (string) hota hai 
-      aur Posts me .categories (array). Dono ko standard handle kiya.
+      Dynamic Category Standardizer: Posts me categories[0] hai, 
+      Shield me direct category string hai.
     {% endcomment %}
-    {% assign current_cats = "" %}
     {% if p.categories %}
+      {% assign p_cat = p.categories[0] | default: "Technology" %}
+      {% assign data_cats = "" %}
       {% for cat in p.categories %}
-        {% assign current_cats = current_cats | append: cat | downcase | append: " " %}
+        {% assign data_cats = data_cats | append: cat | downcase | append: " " %}
       {% endfor %}
     {% else %}
-      {% assign current_cats = p.category | downcase | append: " " %}
+      {% assign p_cat = p.category | default: "CyberSecurity" %}
+      {% assign data_cats = p.category | downcase | append: " " %}
     {% endif %}
 
     <div class="horizontal-post-card js-post"
          data-lang="{{ p.lang | default: 'en' }}"
-         data-categories="{{ current_cats | strip }}">
+         data-categories="{{ data_cats | strip }}">
       
       <div class="post-img">
         <span class="post-category">
-          {% if p.categories %}
-            {{ p.categories[0] | default: "Technology" }}
-          {% else %}
-            {{ p.category | default: "CyberSecurity" }}
-          {% endif %}
+          {{ p_cat | capitalize }}
         </span>
         <div class="post-date">
           <i class="fa-regular fa-calendar"></i>
