@@ -614,7 +614,7 @@
 }
 
 .post-top-meta p {
-  color:  #1d1e23;
+  color: var(--clr-text-2);
   line-height: 1.8;
   font-size: 15px;
 }
@@ -793,7 +793,7 @@
 }
 
 .discover-cat-btn span {
-  color:  #1d1e23;
+  color:  var(--clr-text-2);
   font-size: 13px;
 }
 
