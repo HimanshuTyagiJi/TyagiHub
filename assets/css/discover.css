@@ -1079,6 +1079,9 @@
     
 
     scrollbar-width:none;
+
+     border: 2px solid var(--clr-bg-3);
+     border-radius:25px;
   }
 
   .discover-sidebar::-webkit-scrollbar{
