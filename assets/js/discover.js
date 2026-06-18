@@ -27,16 +27,37 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
+// =========================
+  // 1. FETCH MULTI-JSON DATA (Merged Engine 🚀)
   // =========================
-  // 1. FETCH JSON DATA
-  // =========================
-  fetch("/posts.json")
-    .then(res => res.json())
-    .then(data => {
-      allPostsData = data.filter(post => isHindi ? post.lang === "hi" : post.lang !== "hi");
+  Promise.all([
+    fetch("/posts.json").then(res => res.json()),
+    fetch("/shield.json").then(res => res.json())
+  ])
+    .then(([postsData, shieldData]) => {
+      // 1. Shield posts ke static keys ko standard format me map kiya
+      const normalizedShield = shieldData.map(post => ({
+        title: post.title,
+        url: post.url,
+        image: post.image,
+        description: post.description,
+        categories: [post.category.toLowerCase()], // convert string to array standard
+        date: post.date,
+        lang: post.lang || "en"
+      }));
+
+      // 2. Dono datasets ko jod kar single master collection banaya
+      const masterCombinedData = [...postsData, ...normalizedShield];
+
+      // 3. Language filter apply kiya
+      allPostsData = masterCombinedData.filter(post => isHindi ? post.lang === "hi" : post.lang !== "hi");
+      
+      // 4. Latest date ke hisab se javascript engine me bhi sort lock kar diya
+      allPostsData.sort((a, b) => new Date(b.date) - new Date(a.date));
+
       applyFiltersAndRender();
     })
-    .catch(err => console.error("Data load failed:", err));
+    .catch(err => console.error("Multi-Data load failed:", err));
 
   // =========================
   // 2. MASTER FILTER (Category + Search Box)
@@ -100,7 +121,7 @@ document.addEventListener("DOMContentLoaded", () => {
           <div class="post-img">
             <span class="post-category">${mainCat.charAt(0).toUpperCase() + mainCat.slice(1)}</span>
             <div class="post-date"><i class="fa-regular fa-calendar"></i> ${p.date}</div>
-            <img src="${p.image}" alt="${p.title}" loading="lazy" width="260" height="188">
+          <img src="${p.image}" alt="${p.title}" loading="lazy" width="354" height="236">
           </div>
           <div class="post-info">
             <div class="post-top-meta">
