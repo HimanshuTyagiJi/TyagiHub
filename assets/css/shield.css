@@ -181,3 +181,37 @@
   }
 
 }
+
+/* ==========================================================================
+   🚀 INFO-SHIELD CARD IMAGE ASPECT RATIO & COVER FIX (PRODUCTION READY)
+   ========================================================================== */
+
+/* 1. Outer Frame Box (Dabba): Iska ratio 1.50 par lock kiya */
+.blog-card__thumb {
+  width: 100% !important;
+  max-width: 100% !important;
+  overflow: hidden !important;
+  position: relative !important;
+  display: block !important;
+  
+  /* Browser ko forced math calculations di taaki PageSpeed 100/100 rahe */
+  aspect-ratio: 354 / 236 !important; 
+}
+
+/* 2. Actual Image: Box bada hone par photo bina khinche poora cover karegi */
+.blog-card__thumb img {
+  width: 100% !important;
+  height: 100% !important;
+  display: block !important;
+  
+  /* 🔥 Sabse main jadu: Image stretch nahi hogi, automatic crop hokar tight fit ho jayegi */
+  object-fit: cover !important; 
+  object-position: center !important; /* Photo ka center area hamesha focus me rahega */
+  
+  transition: transform 0.3s ease !important; /* Smooth hover effect ke liye (optional) */
+}
+
+/* 3. Hover Effect (Optional but cool): Card par hover karne se photo makkhan jaisi zoom hogi */
+.blog-card:hover .blog-card__thumb img {
+  transform: scale(1.05) !important;
+}
