@@ -2549,7 +2549,7 @@ z-index:10;
 
 /* =========================================================
    LIGHT THEME
-   FOOTER ALWAYS DARK
+   FOOTER ALWAYS DARK (High Contrast Fixed 🚀)
 ========================================================= */
 
 [data-theme="light"] .footer{
@@ -2565,40 +2565,45 @@ z-index:10;
   color:#f5a623;
 }
 
+/* Pehle #9ca3af tha, thoda bright kiya */
 [data-theme="light"] .footer__brand-desc{
-  color:#9ca3af;
+  color:#cbd5e1; 
 }
 
 [data-theme="light"] .footer__col-title{
   color:#d1d5db;
 }
 
+/* Pehle #9ca3af tha, thoda bright kiya */
 [data-theme="light"] .footer__link{
-  color:#9ca3af;
+  color:#cbd5e1;
 }
 
 [data-theme="light"] .footer__link:hover{
   color:#f5a623;
 }
 
+/* Pehle #9ca3af tha, thoda bright kiya */
 [data-theme="light"] .footer__social a{
-  color:#9ca3af;
+  color:#cbd5e1;
 }
 
 [data-theme="light"] .footer__social a:hover{
   color:#f5a623;
 }
 
+/* 🔴 Sabse badi galti yahan thi: #6b7280 bohot dark tha kaale background par */
 [data-theme="light"] .footer__copyright{
-  color:#6b7280;
+  color:#94a3b8; 
 }
 
+/* 🔴 Dusri badi galti: Links bhi maut ke kuan lag rahe the, inhe bright kiya */
 [data-theme="light"] .footer__legal a{
-  color:#6b7280;
+  color:#94a3b8;
 }
 
 [data-theme="light"] .footer__legal a:hover{
-  color:#9ca3af;
+  color:#f5a623; /* Hover par gold chamke ganda grey hone ke bajaye */
 }
 
 [data-theme="light"] .footer__bottom{
