@@ -42,7 +42,11 @@ extra_js:
         {% for p in shield_posts limit: 6 %}
         <a href="{{ p.url | relative_url }}" class="blog-card" role="listitem">
           <div class="blog-card__thumb">
-            <img src="{{ p.image | default:'/assets/images/default-thumb.png' }}" alt="{{ p.title }}" loading="lazy">
+            <img src="{{ p.image | default:'/assets/images/default-thumb.png' }}" 
+                 alt="{{ p.title }}" 
+                 loading="lazy" 
+                 width="354" 
+                 height="236">
           </div>
           <div class="blog-card__body">
             <span class="blog-card__tag">
