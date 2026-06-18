@@ -339,7 +339,7 @@
 
 .hub-desc {
   font-size: 13px;
-  color: var(--text-muted, #9ca3af);
+  color: var(--text-muted, #4D5160);
 }
 
 .hub-action {
@@ -392,7 +392,7 @@
 
 .app-meta {
   font-size: 12px;
-  color: var(--text-muted, #9ca3af);
+  color: var(--text-muted, #4D5160);
 }
 
 .download-btn {
@@ -614,7 +614,7 @@
 }
 
 .post-top-meta p {
-  color: var(--clr-text-2, #9ca3af);
+  color: var(--clr-text-2, #4D5160);
   line-height: 1.8;
   font-size: 15px;
 }
@@ -793,7 +793,7 @@
 }
 
 .discover-cat-btn span {
-  color: var(--clr-text-2, #9ca3af);
+  color: var(--clr-text-2, #4D5160);
   font-size: 13px;
 }
 
@@ -802,13 +802,13 @@
 }
 
 .discover-cat-btn.active {
-  background: #2563eb;
+  background: #144BCC;
   border-color: #2563eb;
   color: #fff;
 }
 
 .discover-cat-btn.active span {
-  color: rgba(255, 255, 255, .82);
+  color: #FFFFFF;
 }
 
 .discover-hero{
@@ -1315,9 +1315,9 @@
   font-size:11px;
   font-weight:700;
 
-  background:rgba(37,99,235,.10);
+  background:#F2F0F9;
 
-  color:#2563eb;
+  color:#1344AF;
 }
 
 /* ==========================================
