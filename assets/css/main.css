@@ -2343,7 +2343,7 @@ z-index:10;
 ========================================================= */
 
 .footer{
-  background:var(--clr-bg;
+  background:var(--clr-bg);
   border-top:1px solid var(--clr-border);
   padding-top:var(--space-16);
   padding-bottom:var(--space-8);
