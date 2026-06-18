@@ -339,7 +339,7 @@
 
 .hub-desc {
   font-size: 13px;
-  color: var(--text-muted, #4D5160);
+  color:  #1d1e23;
 }
 
 .hub-action {
@@ -392,7 +392,7 @@
 
 .app-meta {
   font-size: 12px;
-  color:  #4D5160;
+  color:  #1d1e23;
 }
 
 .download-btn {
@@ -614,7 +614,7 @@
 }
 
 .post-top-meta p {
-  color: var(--clr-text-2, #4D5160);
+  color:  #1d1e23;
   line-height: 1.8;
   font-size: 15px;
 }
@@ -793,7 +793,7 @@
 }
 
 .discover-cat-btn span {
-  color: var(--clr-text-2, #4D5160);
+  color:  #1d1e23;
   font-size: 13px;
 }
 
