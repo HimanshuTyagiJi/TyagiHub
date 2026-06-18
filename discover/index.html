@@ -76,30 +76,42 @@ extra_js:
                style="width: 100%; max-width: 500px; padding: 12px 20px; border: 2px solid var(--clr-border, #e2e8f0); border-radius: 30px; background: var(--clr-bg-surface, #ffffff); color: var(--clr-text-dark, #0f172a); font-size: 16px; outline: none; box-shadow: 0 2px 8px rgba(0,0,0,0.02);">
       </div>
 
-      <div class="discover-categories" id="category-buttons-container">
-        
-        {% if page.lang == "hi" %}
-          {% assign all_posts = site.posts_hi %}
-        {% else %}
-          {% assign all_posts = site.posts %}
-        {% endif %}
+     <div class="discover-categories" id="category-buttons-container">
+  
+  {% if page.lang == "hi" %}
+    {% assign all_posts = site.posts_hi %}
+  {% else %}
+    {% assign all_posts = site.posts %}
+  {% endif %}
 
-        <button class="discover-cat-btn" data-cat="all" onclick="window.location.href='?category=all'">
-          All
-          <span>({{ all_posts.size }})</span>
-        </button>
+  <button class="discover-cat-btn" data-cat="all" onclick="window.location.href='?category=all'">
+    All
+    <span>({{ all_posts.size }})</span>
+  </button>
 
-        {% assign categories = site.categories | sort %}
-        {% for category in categories %}
-          {% unless category[0] == "discover" %}
-            <button class="discover-cat-btn" data-cat="{{ category[0] | downcase }}" onclick="window.location.href='?category={{ category[0] | downcase }}'">
-              {{ category[0] | capitalize }}
-              <span>({{ category[1].size }})</span>
-            </button>
-          {% endunless %}
-        {% endfor %}
+  {% assign categories = site.categories | sort %}
+  {% for category in categories %}
+    {% unless category[0] == "discover" %}
+      
+      {% assign cat_name = category[0] | downcase %}
+      
+      {% if cat_name == "appsandinternet" %}
+        {% assign display_name = "Apps & Internet" %}
+      {% elsif cat_name == "aifuture" %}
+        {% assign display_name = "AI Future" %}
+      
+      {% else %}
+        {% assign display_name = category[0] | replace: "-", " " | replace: "_", " " | capitalize %}
+      {% endif %}
 
-      </div>
+      <button class="discover-cat-btn" data-cat="{{ category[0] | downcase }}" onclick="window.location.href='?category={{ category[0] | downcase }}'">
+        {{ display_name }}
+        <span>({{ category[1].size }})</span>
+      </button>
+    {% endunless %}
+  {% endfor %}
+
+</div>
 
     </div>
   </section>
