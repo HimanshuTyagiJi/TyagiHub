@@ -1067,7 +1067,7 @@
 
   .discover-sidebar{
     position:fixed;
-    top:88px;
+    top:60px;
     right:24px;
     width:340px;
     height:calc(100vh - 112px);
@@ -1080,7 +1080,7 @@
 
     scrollbar-width:none;
 
-     border: 2px solid var(--clr-bg-3);
+     border-left: 2px  solid var(--clr-bg-3);
      border-radius:25px;
   }
 
