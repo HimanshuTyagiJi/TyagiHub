@@ -9,6 +9,7 @@ layout: default
 		<div id="reading-progress-bar"></div>
 	</div>
 
+
 	<div id="index-category-nav"></div>
 
 	<div class="tc-wrapper">
@@ -159,63 +160,7 @@ layout: default
 
 			{% endunless %}
 
-		</div>
+		</div> {% include right-sidebar.html %}
 
-		{% include right-sidebar.html %}
-
-	</div>
-
-</div>
-
-
-	{% if page.lang_switch != false %}
-		<div class="floating-lang-switch">
-			{% if page.lang == "hi" %}
-				<a href="{{ page.url | remove:'/hi' }}" class="floating-lang-btn" aria-label="Switch to English">
-					EN
-				</a>
-			{% else %}
-				<a href="/hi{{ page.url }}" class="floating-lang-btn" aria-label="हिन्दी में बदलें">
-					हिं
-				</a>
-			{% endif %}
-		</div>
-	{% endif %}
-
-
-<style>
-.floating-lang-switch {
-	position:fixed;
-	right:14px;
-	bottom:84px;
-	z-index:9999;
-}
-
-.floating-lang-btn {
-	width:48px;
-	height:48px;
-	border-radius:999px;
-	display:flex;
-	align-items:center;
-	justify-content:center;
-	background:rgba(15,23,42,.88);
-	backdrop-filter:blur(12px);
-	border:1px solid rgba(255,255,255,.08);
-	color:#fff;
-	text-decoration:none;
-	font-size:14px;
-	font-weight:800;
-	box-shadow:0 10px 30px rgba(0,0,0,.25);
-	transition:.25s ease;
-}
-
-.floating-lang-btn:hover {
-	transform:translateY(-2px) scale(1.05);
-}
-
-@media(min-width:901px){
-	.floating-lang-switch {
-		display:none;
-	}
-}
-</style>
+	</div> 
+</div> 
