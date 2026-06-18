@@ -1554,4 +1554,29 @@
     border-radius:999px;
   }
 
+}/* Discover Search & Filter Container Clean-up */
+.discover-search-filter-section {
+  padding: 22px 0;
+  border-bottom: 1px solid var(--clr-border);
+  background: var(--clr-bg);
+}
+
+.discover-search-wrapper {
+  margin-bottom: 22px;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.discover-search-input {
+  width: 100%;
+  max-width: 500px;
+  padding: 12px 20px;
+  border: 2px solid var(--clr-border, #e2e8f0);
+  border-radius: 30px;
+  background: var(--clr-bg-surface, #ffffff);
+  color: var(--clr-text-dark, #0f172a);
+  font-size: 16px;
+  outline: none;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
 }
