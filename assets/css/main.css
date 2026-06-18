@@ -352,12 +352,7 @@ margin:0;
   -moz-osx-font-smoothing: grayscale;
 }
 
-img,
-video,
-svg {
-  display: block;
-  max-width: 100%;
-}
+
 
 a {
   color: inherit;
@@ -2680,14 +2675,26 @@ z-index:10;
 
 
 
-
-
+img,
+video,
+svg {
+  display: block;
+  max-width: 100%;
+}
 
 /* Website ki saari images ko responsive aur progressive banane ke liye */
 img {
   max-width: 100%;
   height: auto;
   display: block; /* Gap/spacing issues khatam karne ke liye */
+}
+
+/* 🚀 Google Aspect-Ratio Mismatch Fix: Asli 354x236 image ka ratio lock kiya */
+.js-post-img {
+  width: 100% !important;
+  height: auto !important;
+  aspect-ratio: 354 / 236 !important; /* Display box ratio aur image ratio match ho gaya */
+  object-fit: cover !important;       /* Image stretch hoke bhaddi nahi dikhegi */
 }
 
 /* Agar kisi specific class (jaise sidebar thumb) ka size fix rakhna hai */
