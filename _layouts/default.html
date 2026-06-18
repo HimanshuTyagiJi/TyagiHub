@@ -154,13 +154,13 @@
   <script src="{{ site.url }}/assets/js/main.js" defer></script>
   <script src="{{ site.url }}/assets/js/search.js" defer></script>
   {% if page.extra_js %}
-    {% for js in page.extra_js %}
-      {% if js contains '.mjs' %}
-        <script type="module" src="{{ js | absolute_url }}"></script>
-      {% else %}
-        <script src="{{ js | absolute_url }}"></script>
-      {% endif %}
-    {% endfor %}
-  {% endif %}
+  {% for js in page.extra_js %}
+    {% if js contains '.mjs' %}
+      <script type="module" src="{{ js | absolute_url }}" defer="defer"></script>
+    {% else %}
+      <script src="{{ js | absolute_url }}" defer="defer"></script>
+    {% endif %}
+  {% endfor %}
+{% endif %}
 </body>
 </html>
