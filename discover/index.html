@@ -74,42 +74,52 @@ extra_js:
       <div class="discover-search-wrapper">
         <input type="text" id="discover-search" class="discover-search-input" placeholder="Search posts dynamically...">
       </div>
+<div class="discover-categories" id="category-buttons-container">
 
-      <div class="discover-categories" id="category-buttons-container">
-  
-        {% if page.lang == "hi" %}
-          {% assign all_posts = site.posts_hi %}
-        {% else %}
-          {% assign all_posts = site.posts %}
-        {% endif %}
+  {% if page.lang == "hi" %}
+    {% assign all_posts_size = site.posts_hi.size %}
+  {% else %}
+    {% comment %} 🚀 All button ke count me posts aur shield dono ko jodh diya {% endcomment %}
+    {% assign posts_size = site.posts.size %}
+    {% assign shield_size = site.shield.size %}
+    {% assign all_posts_size = posts_size | plus: shield_size %}
+  {% endif %}
 
-        <button class="discover-cat-btn" data-cat="all" onclick="window.location.href='?category=all'">
-          All
-          <span>({{ all_posts.size }})</span>
-        </button>
+  <button class="discover-cat-btn" data-cat="all" onclick="window.location.href='?category=all'">
+    All
+    <span>({{ all_posts_size }})</span>
+  </button>
 
-        {% assign categories = site.categories | sort %}
-        {% for category in categories %}
-          {% unless category[0] == "discover" %}
-            
-            {% assign cat_name = category[0] | downcase %}
-            
-            {% if cat_name == "appsandinternet" %}
-              {% assign display_name = "Apps & Internet" %}
-            {% elsif cat_name == "aifuture" %}
-              {% assign display_name = "AI Future" %}
-            {% else %}
-              {% assign display_name = category[0] | replace: "-", " " | replace: "_", " " | capitalize %}
-            {% endif %}
+  {% assign categories = site.categories | sort %}
+  {% for category in categories %}
+    {% unless category[0] == "discover" %}
+      
+      {% assign cat_name = category[0] | downcase %}
+      
+      {% if cat_name == "appsandinternet" %}
+        {% assign display_name = "Apps & Internet" %}
+      {% elsif cat_name == "aifuture" %}
+        {% assign display_name = "AI Future" %}
+      {% else %}
+        {% assign display_name = category[0] | replace: "-", " " | replace: "_", " " | capitalize %}
+      {% endif %}
 
-            <button class="discover-cat-btn" data-cat="{{ category[0] | downcase }}" onclick="window.location.href='?category={{ category[0] | downcase }}'">
-              {{ display_name }}
-              <span>({{ category[1].size }})</span>
-            </button>
-          {% endunless %}
-        {% endfor %}
+      <button class="discover-cat-btn" data-cat="{{ category[0] | downcase }}" onclick="window.location.href='?category={{ category[0] | downcase }}'">
+        {{ display_name }}
+        <span>({{ category[1].size }})</span>
+      </button>
+    {% endunless %}
+  {% endfor %}
 
-      </div>
+  {% comment %} 🚀 CYBER SECURITY MANUALLY ADDED HERE FOR ENGLISH PAGE {% endcomment %}
+  {% unless page.lang == "hi" %}
+    <button class="discover-cat-btn" data-cat="cybersecurity" onclick="window.location.href='?category=cybersecurity'">
+      Cyber Security
+      <span>({{ site.shield.size }})</span>
+    </button>
+  {% endunless %}
+
+</div>
 
     </div>
   </section>
