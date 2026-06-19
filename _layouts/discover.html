@@ -43,9 +43,6 @@ layout: default
 			</div>
 
 			{% endif %}
-
-		{{ content }}
-
 		{% if page.is_post %}
 			<div class="toc-box" style="margin-top: 20px; margin-bottom: 30px;">
 				<h3>📋 Table of Contents</h3>
@@ -76,6 +73,9 @@ layout: default
 				</label>
 			</div>
 		{% endif %}
+		{{ content }}
+
+
 
 		{% unless page.url == "/" or page.url == "/index.html" %}
 			{% if page.is_post %}
