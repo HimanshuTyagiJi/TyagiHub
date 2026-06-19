@@ -183,7 +183,7 @@ extra_js:
                 {{ p.date | date: "%d %b %Y" }}
               </div>
 
-              <div class="thumb-media-box" style="width:100%; height:100%; display:flex; align-items:center; justify-content:center;">
+              <div class="thumb-media-box" style="width:100%; height:100%; display:flex; align-items:center; justify-content:center; position:relative;">
                 
                 <img src="{{ p.image | default: '/assets/images/default-thumb.png' }}" 
                      alt="{{ p.title }} - TyagiHub" 
@@ -251,11 +251,11 @@ extra_js:
 </div>
 
 <script>
-// Image fail hone par trigger hone wala function
+// Image broken hone par chalne wala function
 function triggerFallback(imgNode) {
   imgNode.style.display = 'none';
   const fallbackCard = imgNode.nextElementSibling;
-  if (fallbackCard && !imgNode.parentElement.querySelector('svg:not(.auto-title-fallback svg)')) {
+  if (fallbackCard) {
     fallbackCard.style.display = 'flex';
   }
 }
@@ -266,31 +266,33 @@ document.addEventListener("DOMContentLoaded", function() {
   postCards.forEach(card => {
     const postUrl = card.getAttribute("data-post-url");
     const mediaBox = card.querySelector(".thumb-media-box");
-    const mainImg = card.querySelector(".js-thumbnail-img");
 
     if (postUrl && mediaBox) {
-      // Background mein page ka HTML body fetch karo
+      // Post ka HTML text format me pull karo background me
       fetch(postUrl)
         .then(response => response.text())
         .then(htmlData => {
           const parser = new DOMParser();
           const doc = parser.parseFromString(htmlData, "text/html");
           
-          // Article ke andar ka actual content `<svg>` dhoondho
+          // Article ke real body content se pehla actual SVG dhoondho
           const contentSvg = doc.querySelector("article svg, .post-content svg, main svg");
 
           if (contentSvg) {
-            // Priority Rule Triggered: Agar content me SVG mila, toh image aur title-fallback ko delete karo
+            // Priority Rule Triggered: Pehle media box ka poora inner HTML (Image + Fallback) mitao
             mediaBox.innerHTML = "";
             
-            // Thumbnail frame ke liye SVG inline CSS setting
-            contentSvg.style.width = "100px";
-            contentSvg.style.height = "100px";
+            // SVG ko force karo full height aur width 100% cover karne ke liye
+            contentSvg.style.width = "100%";
+            contentSvg.style.height = "100%";
             contentSvg.style.display = "block";
+            contentSvg.style.objectFit = "cover";
+            
+            // Inline attribute clear karo jo custom size rok rahe the
             contentSvg.removeAttribute("height");
             contentSvg.removeAttribute("width");
             
-            // Content ka asli SVG append kar do template me
+            // Asli SVG inject kar do
             mediaBox.appendChild(contentSvg);
           }
         })
