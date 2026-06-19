@@ -144,8 +144,6 @@ extra_js:
           {% endfor %}
           
           {% assign sorted = combined_posts | sort: "date" | reverse %}
-        ```
-        ```html
         {% endif %}
         
         {% for p in sorted limit: 6 %}
@@ -175,15 +173,39 @@ extra_js:
                data-lang="{{ p.lang | default: 'en' }}"
                data-categories="{{ data_cats | strip }}">
             
-            <div class="post-img">
-              <span class="post-category">
+            <div class="post-img" style="position: relative; overflow: hidden; background: #111216; display: flex; align-items: center; justify-content: center; width: 354px; height: 236px;">
+              <span class="post-category" style="z-index: 10;">
                 {{ display_chip }}
               </span>
-              <div class="post-date">
+              <div class="post-date" style="z-index: 10;">
                 <i class="fa-regular fa-calendar"></i>
                 {{ p.date | date: "%d %b %Y" }}
               </div>
-              <img src="{{ p.image | default: '/assets/images/default-thumb.png' }}" alt="{{ p.title }} - TyagiHub" loading="lazy" width="354" height="236">
+
+              {% if p.image contains "<svg" %}
+                <div class="dynamic-svg-thumb" style="width:100%; height:100%; display:flex; align-items:center; justify-content:center; padding:30px;">
+                  {{ p.image }}
+                </div>
+              {% else %}
+                <img src="{{ p.image | default: '/assets/images/default-thumb.png' }}" 
+                     alt="{{ p.title }} - TyagiHub" 
+                     loading="lazy" 
+                     width="354" 
+                     height="236"
+                     style="width:100%; height:100%; object-fit:cover; display:block;"
+                     onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+
+                <div class="auto-title-fallback" style="display:none; width:100%; height:100%; position:absolute; top:0; left:0; background:linear-gradient(135deg, #1e1e24 0%, #111216 100%); flex-direction:column; align-items:center; justify-content:center; padding:20px; text-align:center; box-sizing:border-box; border:1px solid rgba(255,255,255,0.05);">
+                  <div class="animated-bg-glow" style="position:absolute; width:130px; height:130px; background:rgba(0,123,255,0.15); filter:blur(40px); border-radius:50%; animation: pulseGlow 3s infinite alternative;"></div>
+                  <svg viewBox="0 0 24 24" width="40" height="40" fill="none" stroke="#007bff" stroke-width="1.5" style="margin-bottom:10px; z-index:2; filter: drop-shadow(0 2px 8px rgba(0,123,255,0.3));">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25" />
+                  </svg>
+                  <span style="font-size:15px; font-weight:600; color:#ffffff; line-height:1.4; padding:0 10px; z-index:2; font-family:sans-serif; display:-webkit-box; -webkit-line-clamp:3; -webkit-box-orient:vertical; overflow:hidden;">
+                    {{ p.title }}
+                  </span>
+                </div>
+              {% endif %}
+
             </div>
 
             <div class="post-info">
@@ -224,6 +246,15 @@ extra_js:
       </nav>
 
     </div>
-  </section>
+  </section><style>@keyframes pulseGlow {
+  0% { transform: scale(0.95); opacity: 0.6; }
+  100% { transform: scale(1.1); opacity: 1; }
+}
+.dynamic-svg-thumb svg {
+  width: 100%;
+  height: 100%;
+  max-width: 100px;
+  max-height: 100px;
+}</style>
 
 </div>
