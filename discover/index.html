@@ -183,18 +183,18 @@ extra_js:
                 {{ p.date | date: "%d %b %Y" }}
               </div>
 
-              <div class="thumb-container-target" style="width:100%; height:100%; display:flex; align-items:center; justify-content:center;">
-                {% if p.image and p.image != "" %}
-                  <img src="{{ p.image }}" 
-                       alt="{{ p.title }} - TyagiHub" 
-                       loading="lazy" 
-                       width="354" 
-                       height="236"
-                       style="width:100%; height:100%; object-fit:cover; display:block;"
-                       onerror="triggerTitleFallback(this)">
-                {% endif %}
+              <div class="thumb-media-box" style="width:100%; height:100%; display:flex; align-items:center; justify-content:center;">
                 
-                <div class="auto-title-fallback" style="{% if p.image and p.image != "" %}display:none;{% else %}display:flex;{% endif %} width:100%; height:100%; position:absolute; top:0; left:0; background:linear-gradient(135deg, #1e1e24 0%, #111216 100%); flex-direction:column; align-items:center; justify-content:center; padding:20px; text-align:center; box-sizing:border-box; border:1px solid rgba(255,255,255,0.05);">
+                <img src="{{ p.image | default: '/assets/images/default-thumb.png' }}" 
+                     alt="{{ p.title }} - TyagiHub" 
+                     class="js-thumbnail-img"
+                     loading="lazy" 
+                     width="354" 
+                     height="236"
+                     style="width:100%; height:100%; object-fit:cover; display:block;"
+                     onerror="triggerFallback(this)">
+                
+                <div class="auto-title-fallback" style="display:none; width:100%; height:100%; position:absolute; top:0; left:0; background:linear-gradient(135deg, #1e1e24 0%, #111216 100%); flex-direction:column; align-items:center; justify-content:center; padding:20px; text-align:center; box-sizing:border-box; border:1px solid rgba(255,255,255,0.05);">
                   <div class="animated-bg-glow" style="position:absolute; width:130px; height:130px; background:rgba(0,123,255,0.15); filter:blur(40px); border-radius:50%;"></div>
                   <svg viewBox="0 0 24 24" width="40" height="40" fill="none" stroke="#007bff" stroke-width="1.5" style="margin-bottom:10px; z-index:2;">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25" />
@@ -203,6 +203,7 @@ extra_js:
                     {{ p.title }}
                   </span>
                 </div>
+
               </div>
 
             </div>
@@ -250,10 +251,13 @@ extra_js:
 </div>
 
 <script>
-function triggerTitleFallback(imgNode) {
+// Image fail hone par trigger hone wala function
+function triggerFallback(imgNode) {
   imgNode.style.display = 'none';
-  const fallbackBox = imgNode.nextElementSibling;
-  if(fallbackBox) fallbackBox.style.display = 'flex';
+  const fallbackCard = imgNode.nextElementSibling;
+  if (fallbackCard && !imgNode.parentElement.querySelector('svg:not(.auto-title-fallback svg)')) {
+    fallbackCard.style.display = 'flex';
+  }
 }
 
 document.addEventListener("DOMContentLoaded", function() {
@@ -261,33 +265,36 @@ document.addEventListener("DOMContentLoaded", function() {
 
   postCards.forEach(card => {
     const postUrl = card.getAttribute("data-post-url");
-    const targetContainer = card.querySelector(".thumb-container-target");
+    const mediaBox = card.querySelector(".thumb-media-box");
+    const mainImg = card.querySelector(".js-thumbnail-img");
 
-    if (postUrl && targetContainer) {
-      // 🚀 Background me post page ko pure text format me read karo
+    if (postUrl && mediaBox) {
+      // Background mein page ka HTML body fetch karo
       fetch(postUrl)
         .then(response => response.text())
         .then(htmlData => {
-          // Pure page ke HTML me se <svg> tags dhoondho
           const parser = new DOMParser();
           const doc = parser.parseFromString(htmlData, "text/html");
           
-          // Post body/content ka sabse pehla real SVG code nikalo
-          const firstSvg = doc.querySelector("article svg, .post-content svg, main svg, svg");
+          // Article ke andar ka actual content `<svg>` dhoondho
+          const contentSvg = doc.querySelector("article svg, .post-content svg, main svg");
 
-          if (firstSvg) {
-            // SATEEK ACTION: SVG milte hi container khali karo aur jabardasti SVG insert karo!
-            targetContainer.innerHTML = "";
+          if (contentSvg) {
+            // Priority Rule Triggered: Agar content me SVG mila, toh image aur title-fallback ko delete karo
+            mediaBox.innerHTML = "";
             
-            // Clean up SVG styles for thumbnail framing
-            firstSvg.style.width = "100px";
-            firstSvg.style.height = "100px";
-            firstSvg.style.display = "block";
+            // Thumbnail frame ke liye SVG inline CSS setting
+            contentSvg.style.width = "100px";
+            contentSvg.style.height = "100px";
+            contentSvg.style.display = "block";
+            contentSvg.removeAttribute("height");
+            contentSvg.removeAttribute("width");
             
-            targetContainer.appendChild(firstSvg);
+            // Content ka asli SVG append kar do template me
+            mediaBox.appendChild(contentSvg);
           }
         })
-        .catch(err => console.error("Scanner failed for post:", postUrl, err));
+        .catch(err => console.error("Scanner failed for:", postUrl, err));
     }
   });
 });
