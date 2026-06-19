@@ -349,7 +349,7 @@
   
   /* 🔥 JADU: Browser ko pehle se pata hoga ki 1st page par kam se kam 2 raw ki height reserve rakhni hai, 
      chahe JS load ho rahi ho ya khali ho rahi ho. Isse dabba zero height nahi banega. */
-  min-height: 800px !important; 
+  min-height: 550px !important; 
 }
 
 /* 3. Mobile aur Tablet responsive par layout shift lock pixels adjust karo */
