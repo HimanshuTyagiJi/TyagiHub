@@ -84,7 +84,7 @@ document.addEventListener("DOMContentLoaded", () => {
           <div class="blog-card__body">
             <span class="blog-card__tag">${cat}</span>
             <h2 class="blog-card__title">${p.title}</h2>
-            <p style="font-size:var(--fs-sm);color:var(--clr-text-3);margin-top:var(--space-2);">
+            <p>
               ${p.description}
             </p>
           </div>
