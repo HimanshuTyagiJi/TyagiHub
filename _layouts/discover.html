@@ -3,109 +3,117 @@ layout: default
 ---
 
 <div id="reading-progress-container" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" aria-label="Reading progress">
-    <div id="reading-progress-bar"></div>
+	<div id="reading-progress-bar"></div>
 </div>
 
 <div id="index-category-nav"></div>
 
 <div class="tc-wrapper">
-    <div class="tc-left">
+	<div class="tc-left">
 
-        {% if page.is_post %}
-            <div class="toc-box" style="margin-bottom:30px;">
-                <h3>📋 Table of Contents</h3>
-                
-                <input type="checkbox" id="toc-toggle" class="toc-toggle-checkbox" style="display: none;">
-                
-                <ol class="toc-list">
-                    {% assign headings = content | split: '<h2 id="' %}
-                    {% for heading in headings %}
-                        {% if forloop.first == false %}
-                            {% assign parts = heading | split: '"' %}
-                            {% assign html_id = parts[0] %}
-                            {% assign title_parts = parts[1] | split: '>' %}
-                            {% assign title_subparts = title_parts[1] | split: '</h2' %}
-                            {% assign clean_title = title_subparts[0] | strip_html %}
-                            
-                            <li><a href="#{{ html_id }}">{{ clean_title }}</a></li>
-                        {% endif %}
-                    {% endfor %}
-                </ol>
-                
-                <label for="toc-toggle" class="toc-btn" style="cursor: pointer; display: inline-flex; align-items: center; margin-top: 12px; font-weight: 600;">
-                    <span class="text-more">See More <i class="fas fa-chevron-down"></i></span>
-                    <span class="text-less" style="display: none;">See Less <i class="fas fa-chevron-up"></i></span>
-                </label>
-            </div>
-        {% endif %}
+		{% if page.is_post %}
+			{% assign words = content | number_of_words %}
+			{% if words < 360 %} 
+				{% assign read_time = "2 min read" %} 
+			{% else %} 
+				{% assign minutes = words | divided_by: 180 %}
+				{% assign read_time = minutes | append: " min read" %} 
+			{% endif %} 
+		{% endif %}
 
-        {{ content }}
+		{{ content }}
 
-        {% unless page.url == "/" or page.url == "/index.html" %}
-            {% if page.is_post %}
-                <div class="share-wrapper">
-                    <p class="share-label">Share With Friends 🚀</p>
-                    <button onclick="tyagiShare()" class="tyagi-share-btn" aria-label="Share this article">
-                        <i class="fas fa-paper-plane" aria-hidden="true"></i> SHARE ARTICLE
-                    </button>
-                </div>
+		{% if page.is_post %}
+			<div class="toc-box" style="margin-bottom:30px;">
+				<h3>📋 Table of Contents</h3>
+				
+				<input type="checkbox" id="toc-toggle" class="toc-toggle-checkbox" style="display: none;">
+				
+				<ol class="toc-list">
+					{% assign headings = content | split: '<h2 id="' %}
+					{% for heading in headings %}
+						{% if forloop.first == false %}
+							{% assign parts = heading | split: '"' %}
+							{% assign html_id = parts[0] %}
+							{% assign title_parts = parts[1] | split: '>' %}
+							{% assign title_subparts = title_parts[1] | split: '</h2' %}
+							{% assign clean_title = title_subparts[0] | strip_html %}
+							
+							<li><a href="#{{ html_id }}">{{ clean_title }}</a></li>
+						{% endif %}
+					{% endfor %}
+				</ol>
+				
+				<label for="toc-toggle" class="toc-btn" style="cursor: pointer; display: inline-flex; align-items: center; margin-top: 12px; font-weight: 600;">
+					<span class="text-more">See More <i class="fas fa-chevron-down"></i></span>
+					<span class="text-less" style="display: none;">See Less <i class="fas fa-chevron-up"></i></span>
+				</label>
+			</div>
+		{% endif %}
 
-                {% if page.lang == "hi" %}
-                    {% assign all_posts = site.posts | where:"lang","hi" | sort:"date" %}
-                {% else %}
-                    {% assign all_posts = site.posts | where:"lang","en" | sort:"date" %}
-                {% endif %}
-                
-                {% assign post_count = all_posts | size %}
-                {% assign current_index = nil %}
+		{% unless page.url == "/" or page.url == "/index.html" %}
+			{% if page.is_post %}
+				<div class="share-wrapper">
+					<p class="share-label">Share With Friends 🚀</p>
+					<button onclick="tyagiShare()" class="tyagi-share-btn" aria-label="Share this article">
+						<i class="fas fa-paper-plane" aria-hidden="true"></i> SHARE ARTICLE
+					</button>
+				</div>
 
-                {% for p in all_posts %}
-                    {% if p.url == page.url %}
-                        {% assign current_index = forloop.index0 %}
-                    {% endif %}
-                {% endfor %}
+				{% if page.lang == "hi" %}
+					{% assign all_posts = site.posts | where:"lang","hi" | sort:"date" %}
+				{% else %}
+					{% assign all_posts = site.posts | where:"lang","en" | sort:"date" %}
+				{% endif %}
+				
+				{% assign post_count = all_posts | size %}
+				{% assign current_index = nil %}
 
-                {% if current_index != nil %}
-                    {% assign prev_index = current_index | minus: 1 %}
-                    {% assign next_index = current_index | plus: 1 %}
+				{% for p in all_posts %}
+					{% if p.url == page.url %}
+						{% assign current_index = forloop.index0 %}
+					{% endif %}
+				{% endfor %}
 
-                    <nav class="post-nav-container" aria-label="Post navigation">
-                        <div class="post-nav-link prev">
-                            {% if current_index > 0 %}
-                                {% assign prev_post = all_posts[prev_index] %}
-                                <a href="{{ prev_post.url | relative_url }}">
-                                    <span class="nav-label"><i class="fas fa-arrow-left"></i> Previous Post</span>
-                                    <div class="nav-post-title">{{ prev_post.title }}</div>
-                                </a>
-                            {% else %}
-                                <span class="nav-disabled">
-                                    <span class="nav-label">Previous Post</span>
-                                    <div class="nav-post-title" style="opacity:0.4;">No previous post</div>
-                                </span>
-                            {% endif %}
-                        </div>
+				{% if current_index != nil %}
+					{% assign prev_index = current_index | minus: 1 %}
+					{% assign next_index = current_index | plus: 1 %}
 
-                        <div class="post-nav-link next">
-                            {% if next_index < post_count %} 
-                                {% assign next_post = all_posts[next_index] %} 
-                                <a href="{{ next_post.url | relative_url }}">
-                                    <span class="nav-label">Next Post <i class="fas fa-arrow-right"></i></span>
-                                    <div class="nav-post-title">{{ next_post.title }}</div>
-                                </a>
-                            {% else %}
-                                <span class="nav-disabled">
-                                    <span class="nav-label">Next Post</span>
-                                    <div class="nav-post-title" style="opacity:0.4;">No next post</div>
-                                </span>
-                            {% endif %}
-                        </div>
-                    </nav>
-                {% endif %}
-                <hr style="margin:44px 0;border:none;border-top:1px solid var(--border-color)">
-            {% endif %}
-        {% endunless %}
+					<nav class="post-nav-container" aria-label="Post navigation">
+						<div class="post-nav-link prev">
+							{% if current_index > 0 %}
+								{% assign prev_post = all_posts[prev_index] %}
+								<a href="{{ prev_post.url | relative_url }}">
+									<span class="nav-label"><i class="fas fa-arrow-left"></i> Previous Post</span>
+									<div class="nav-post-title">{{ prev_post.title }}</div>
+								</a>
+							{% else %}
+								<span class="nav-disabled">
+									<span class="nav-label">Previous Post</span>
+									<div class="nav-post-title" style="opacity:0.4;">No previous post</div>
+								</span>
+							{% endif %}
+						</div>
 
-    </div> 
-    
-    {% include right-sidebar.html %}
+						<div class="post-nav-link next">
+							{% if next_index < post_count %} 
+								{% assign next_post = all_posts[next_index] %} 
+								<a href="{{ next_post.url | relative_url }}">
+									<span class="nav-label">Next Post <i class="fas fa-arrow-right"></i></span>
+									<div class="nav-post-title">{{ next_post.title }}</div>
+								</a>
+							{% else %}
+								<span class="nav-disabled">
+									<span class="nav-label">Next Post</span>
+									<div class="nav-post-title" style="opacity:0.4;">No next post</div>
+								</span>
+							{% endif %}
+						</div>
+					</nav>
+				{% endif %}
+				<hr style="margin:44px 0;border:none;border-top:1px solid var(--border-color)">
+			{% endif %}
+		{% endunless %}
+
+	</div> {% include right-sidebar.html %}
 </div>
