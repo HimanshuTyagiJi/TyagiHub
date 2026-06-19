@@ -26,37 +26,103 @@ extra_css:
 extra_js:
 - /assets/js/discover.js
 
----
+
 <div class="post-wrap">
 
   <div class="post-hero">
-    <svg class="hero-bg" viewBox="0 0 900 300" xmlns="http://www.w3.org/2000/svg">
-      <defs>
-        <radialGradient id="rg12" cx="50%" cy="50%" r="60%">
-          <stop offset="0%" stop-color="#f87171" stop-opacity=".4" />
-          <stop offset="100%" stop-color="transparent" />
-        </radialGradient>
-      </defs>
-      <rect width="900" height="300" fill="url(#rg12)" />
-      <!-- Split face - half real half glitch -->
-      <circle cx="450" cy="150" r="80" fill="#1a2030" stroke="#a78bfa" stroke-width="2" opacity=".6" />
-      <path d="M450,70 A80,80 0 0,1 450,230 Z" fill="#212840" opacity=".5" />
-      <!-- glitch lines on right half -->
-      <g opacity=".6">
-        <rect x="450" y="100" width="75" height="4" fill="#f87171" />
-        <rect x="455" y="115" width="65" height="3" fill="#f5a623" />
-        <rect x="448" y="130" width="78" height="5" fill="#f87171" />
-        <rect x="460" y="150" width="60" height="3" fill="#a78bfa" />
-        <rect x="450" y="170" width="72" height="4" fill="#f87171" />
-        <rect x="455" y="190" width="68" height="3" fill="#f5a623" />
-        <rect x="448" y="205" width="76" height="5" fill="#f87171" />
+    <svg viewBox="0 0 480 220" xmlns="http://www.w3.org/2000/svg">
+      <rect width="480" height="220" fill="#0a0c10" />
+
+      <!-- SPLIT FACE — left half real, right half deepfake -->
+      <!-- face circle -->
+      <circle cx="200" cy="95" r="72" fill="#1a2030" stroke="#2a3348" stroke-width="1.5" />
+
+      <!-- LEFT HALF — real (clean) -->
+      <clipPath id="left-half">
+        <rect x="0" y="0" width="200" height="220" />
+      </clipPath>
+      <circle cx="200" cy="95" r="72" fill="#212840" clip-path="url(#left-half)" />
+      <!-- real eye (left) -->
+      <ellipse cx="170" cy="78" rx="14" ry="9" fill="#1a2030" stroke="#34d399" stroke-width="1.2"
+        clip-path="url(#left-half)" />
+      <circle cx="170" cy="78" r="5" fill="#34d399" opacity=".7" clip-path="url(#left-half)" />
+      <!-- real mouth (left) -->
+      <path d="M155,112 Q175,124 195,112" fill="none" stroke="#34d399" stroke-width="1.5" stroke-linecap="round"
+        clip-path="url(#left-half)" />
+      <!-- REAL label -->
+      <rect x="128" y="158" width="52" height="16" rx="4" fill="#34d399" fill-opacity=".2" stroke="#34d399"
+        stroke-width=".8" />
+      <text x="154" y="170" text-anchor="middle" font-size="8" fill="#34d399" font-weight="700">REAL</text>
+
+      <!-- RIGHT HALF — deepfake (glitchy) -->
+      <clipPath id="right-half">
+        <rect x="200" y="0" width="280" height="220" />
+      </clipPath>
+      <circle cx="200" cy="95" r="72" fill="#1a2030" clip-path="url(#right-half)" />
+      <!-- glitch bars -->
+      <rect x="200" y="70" width="72" height="5" fill="#f87171" opacity=".6" clip-path="url(#right-half)">
+        <animate attributeName="x" values="200;214;200;206;200" dur="3s" repeatCount="indefinite" />
+        <animate attributeName="opacity" values=".6;1;.3;.8;.6" dur="3s" repeatCount="indefinite" />
+      </rect>
+      <rect x="200" y="85" width="56" height="3" fill="#f5a623" opacity=".5" clip-path="url(#right-half)">
+        <animate attributeName="x" values="200;218;200;210;200" dur="2.5s" begin=".3s" repeatCount="indefinite" />
+      </rect>
+      <rect x="200" y="98" width="68" height="4" fill="#f87171" opacity=".4" clip-path="url(#right-half)">
+        <animate attributeName="x" values="200;208;200;215;200" dur="2s" begin=".7s" repeatCount="indefinite" />
+      </rect>
+      <rect x="200" y="112" width="50" height="3" fill="#f5a623" opacity=".35" clip-path="url(#right-half)">
+        <animate attributeName="x" values="200;220;200;205;200" dur="3.5s" begin=".5s" repeatCount="indefinite" />
+      </rect>
+      <rect x="200" y="120" width="64" height="5" fill="#f87171" opacity=".5" clip-path="url(#right-half)">
+        <animate attributeName="x" values="200;212;200;218;200" dur="1.8s" begin="1s" repeatCount="indefinite" />
+      </rect>
+      <!-- fake eye (right) — slightly off -->
+      <ellipse cx="230" cy="78" rx="14" ry="9" fill="#1a2030" stroke="#f87171" stroke-width="1.2" opacity=".8"
+        clip-path="url(#right-half)">
+        <animate attributeName="cy" values="78;80;78;76;78" dur="2s" repeatCount="indefinite" />
+      </ellipse>
+      <circle cx="230" cy="78" r="5" fill="#f87171" opacity=".6" clip-path="url(#right-half)" />
+      <!-- DEEPFAKE label -->
+      <rect x="214" y="158" width="68" height="16" rx="4" fill="#f87171" fill-opacity=".2" stroke="#f87171"
+        stroke-width=".8" />
+      <text x="248" y="170" text-anchor="middle" font-size="8" fill="#f87171" font-weight="700">DEEPFAKE</text>
+
+      <!-- CENTER DIVIDING LINE -->
+      <line x1="200" y1="23" x2="200" y2="167" stroke="#f5a623" stroke-width="2" stroke-dasharray="4,3" opacity=".8" />
+      <circle cx="200" cy="95" r="4" fill="#f5a623" />
+
+      <!-- DETECTION SIGNALS right panel -->
+      <text x="360" y="32" text-anchor="middle" font-size="8" fill="#a0a8bc" font-weight="700">DETECTION SIGNALS</text>
+
+      <rect x="300" y="42" width="150" height="22" rx="5" fill="#1a2030" stroke="#f87171" stroke-width=".8" />
+      <text x="312" y="57" font-size="8" fill="#f87171">↺ Blinking pattern off</text>
+
+      <rect x="300" y="70" width="150" height="22" rx="5" fill="#1a2030" stroke="#f5a623" stroke-width=".8" />
+      <text x="312" y="85" font-size="8" fill="#f5a623">⚡ Edge artifacts visible</text>
+
+      <rect x="300" y="98" width="150" height="22" rx="5" fill="#1a2030" stroke="#a78bfa" stroke-width=".8" />
+      <text x="312" y="113" font-size="8" fill="#a78bfa">🎙 Lip-sync drift</text>
+
+      <rect x="300" y="126" width="150" height="22" rx="5" fill="#1a2030" stroke="#34d399" stroke-width=".8" />
+      <text x="312" y="141" font-size="8" fill="#34d399">✓ Check source first</text>
+
+      <!-- MAGNIFIER searching -->
+      <g opacity=".7">
+        <circle cx="330" cy="175" r="16" fill="none" stroke="#f5a623" stroke-width="2" />
+        <line x1="341" y1="187" x2="354" y2="200" stroke="#f5a623" stroke-width="3" stroke-linecap="round" />
+        <!-- crosshair inside -->
+        <line x1="322" y1="175" x2="338" y2="175" stroke="#f5a623" stroke-width="1" />
+        <line x1="330" y1="167" x2="330" y2="183" stroke="#f5a623" stroke-width="1" />
       </g>
-      <!-- left half normal face features -->
-      <circle cx="420" cy="130" r="6" fill="#e8eaf0" opacity=".5" />
-      <path d="M395,180 Q420,195 440,180" fill="none" stroke="#e8eaf0" stroke-width="2" opacity=".5" />
-      <!-- magnifying glass scanning -->
-      <circle cx="250" cy="150" r="30" fill="none" stroke="#34d399" stroke-width="3" opacity=".7" />
-      <line x1="272" y1="172" x2="300" y2="200" stroke="#34d399" stroke-width="4" opacity=".7" />
+      <!-- scanning line across face -->
+      <line x1="128" y1="60" x2="272" y2="60" stroke="#f5a623" stroke-width="1" opacity=".6">
+        <animate attributeName="y1" values="24;166;24" dur="4s" repeatCount="indefinite" calcMode="ease-in-out" />
+        <animate attributeName="y2" values="24;166;24" dur="4s" repeatCount="indefinite" calcMode="ease-in-out" />
+        <animate attributeName="opacity" values=".7;.3;.7" dur="4s" repeatCount="indefinite" />
+      </line>
+
+      <text x="240" y="210" text-anchor="middle" font-size="10" fill="#a0a8bc">Scan for glitch artifacts — verify the
+        source first</text>
     </svg>
 
 
