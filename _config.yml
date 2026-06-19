@@ -104,7 +104,10 @@ defaults:
       type: "pages"
     values:
       layout: "default"
-
+sitemap:
+  exclude:
+    - "/tag/**/*"
+    - "/tags/**/*"
 # Plugins
 plugins:
   - jekyll-feed
