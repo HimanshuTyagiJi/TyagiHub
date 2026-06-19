@@ -1433,3 +1433,21 @@
     aspect-ratio: 354 / 236 !important;
   }
 }
+/* Default State: 4 items ke baad sab chupao */
+.toc-list li:nth-child(n+5) {
+  display: none;
+}
+
+/* Checkbox active hote hi baaki saare list items dikhao */
+#toc-toggle:checked ~ .toc-list li:nth-child(n+5) {
+  display: list-item;
+}
+
+/* Button text display configuration */
+#toc-toggle:checked ~ .toc-btn .text-more {
+  display: none;
+}
+
+#toc-toggle:checked ~ .toc-btn .text-less {
+  display: inline !important;
+}
