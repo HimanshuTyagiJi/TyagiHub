@@ -3,9 +3,9 @@ layout: discover
 title: "Discover — Technology, AI & Cybersecurity"
 description: "Technology, AI, cybersecurity, education, current affairs, digital updates, online safety, apps, tutorials & future innovation — all in one Discover feed by TyagiHub."
 permalink: /discover/
-image: /assets/images/tyagihub.png 
+image: /assets/images/tyagihub.png
 author: "Himanshu Tyagi"
-lang: en 
+lang: en
 robots: "index, follow"
 keywords: "TyagiHub, AI tools, cybersecurity, education, current affairs, apps, tutorials, technology news, digital updates, online safety"
 section: discover
@@ -98,10 +98,10 @@ extra_js:
             {% if cat_id == "aifuture" or cat_id == "ai-future" %}
               {% assign display_name = "AI Future" %}
               {% assign cat_data = "ai-future" %}
-            {% elsif cat_id == "appsandinternet" or cat_id == "apps-and-internet" %}
+            {% elif cat_id == "appsandinternet" or cat_id == "apps-and-internet" %}
               {% assign display_name = "Apps & Internet" %}
               {% assign cat_data = "apps-and-internet" %}
-            {% elsif cat_id == "cybersecurity" or cat_id == "cyber-security" %}
+            {% elif cat_id == "cybersecurity" or cat_id == "cyber-security" %}
               {% assign display_name = "Cyber Security" %}
               {% assign cat_data = "cyber-security" %}
             {% else %}
@@ -159,7 +159,7 @@ extra_js:
 
           {% if raw_cat == "aifuture" or raw_cat == "ai-future" %}
             {% assign chip_name = "AI Future" %}
-          {% Moreton raw_cat == "appsandinternet" or raw_cat == "apps-and-internet" %}
+          {% elsif raw_cat == "appsandinternet" or raw_cat == "apps-and-internet" %}
             {% assign chip_name = "Apps & Internet" %}
           {% elsif raw_cat == "cybersecurity" or raw_cat == "cyber-security" or raw_cat == "" %}
             {% assign chip_name = "Cyber Security" %}
