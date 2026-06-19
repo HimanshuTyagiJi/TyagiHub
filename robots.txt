@@ -1,9 +1,13 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://tyagihub.in/sitemap.xml
+# 🚀 TAG LINKS BLOCK LOCK
+Disallow: /tag/
+Disallow: /tags/
 
 # Block admin/internal paths (when they exist)
 Disallow: /admin/
 Disallow: /api/
 Disallow: /_
+
+Sitemap: https://tyagihub.in/sitemap.xml
