@@ -68,60 +68,58 @@ extra_js:
     </div>
   </div>
 
-  <section class="discover-search-filter-section">
+<section class="discover-search-filter-section">
     <div class="container">
       
       <div class="discover-search-wrapper">
         <input type="text" id="discover-search" class="discover-search-input" placeholder="Search posts dynamically...">
       </div>
+<div class="discover-categories" id="category-buttons-container">
 
-      <div class="discover-categories" id="category-buttons-container">
+  {% if page.lang == "hi" %}
+    {% assign all_posts_size = site.posts_hi.size %}
+  {% else %}
+    {% comment %} 🚀 All button ke count me posts aur shield dono ko jodh diya {% endcomment %}
+    {% assign posts_size = site.posts.size %}
+    {% assign shield_size = site.shield.size %}
+    {% assign all_posts_size = posts_size | plus: shield_size %}
+  {% endif %}
 
-        {% if page.lang == "hi" %}
-          {% assign all_posts_size = site.posts_hi.size %}
-        {% else %}
-          {% assign posts_size = site.posts.size %}
-          {% assign shield_size = site.shield.size %}
-          {% assign all_posts_size = posts_size | plus: shield_size %}
-        {% endif %}
+  <button class="discover-cat-btn" data-cat="all" onclick="window.location.href='?category=all'">
+    All
+    <span>({{ all_posts_size }})</span>
+  </button>
 
-        <button class="discover-cat-btn" data-cat="all" onclick="window.location.href='?category=all'">
-          All <span>( {{ all_posts_size }} )</span>
-        </button>
+  {% assign categories = site.categories | sort %}
+  {% for category in categories %}
+    {% unless category[0] == "discover" %}
+      
+      {% assign cat_name = category[0] | downcase %}
+      
+      {% if cat_name == "appsandinternet" %}
+        {% assign display_name = "Apps & Internet" %}
+      {% elsif cat_name == "aifuture" %}
+        {% assign display_name = "AI Future" %}
+      {% else %}
+        {% assign display_name = category[0] | replace: "-", " " | replace: "_", " " | capitalize %}
+      {% endif %}
 
-        {% assign categories = site.categories | sort %}
-        {% for category in categories %}
-          {% unless category[0] == "discover" %}
-            
-            {% assign cat_id = category[0] | downcase | strip %}
-            
-            {% if cat_id == "aifuture" or cat_id == "ai-future" %}
-              {% assign display_name = "AI Future" %}
-              {% assign cat_data = "ai-future" %}
-            {% elif cat_id == "appsandinternet" or cat_id == "apps-and-internet" %}
-              {% assign display_name = "Apps & Internet" %}
-              {% assign cat_data = "apps-and-internet" %}
-            {% elif cat_id == "cybersecurity" or cat_id == "cyber-security" %}
-              {% assign display_name = "Cyber Security" %}
-              {% assign cat_data = "cyber-security" %}
-            {% else %}
-              {% assign display_name = category[0] | replace: "-", " " | replace: "_", " " | capitalize %}
-              {% assign cat_data = category[0] | downcase %}
-            {% endif %}
+      <button class="discover-cat-btn" data-cat="{{ category[0] | downcase }}" onclick="window.location.href='?category={{ category[0] | downcase }}'">
+        {{ display_name }}
+        <span>({{ category[1].size }})</span>
+      </button>
+    {% endunless %}
+  {% endfor %}
 
-            <button class="discover-cat-btn" data-cat="{{ cat_data }}" onclick="window.location.href='?category={{ cat_data }}'">
-              {{ display_name }} <span>( {{ category[1].size }} )</span>
-            </button>
-          {% endunless %}
-        {% endfor %}
+  {% comment %} 🚀 CYBER SECURITY MANUALLY ADDED HERE FOR ENGLISH PAGE {% endcomment %}
+  {% unless page.lang == "hi" %}
+    <button class="discover-cat-btn" data-cat="cybersecurity" onclick="window.location.href='?category=cybersecurity'">
+      Cyber Security
+      <span>({{ site.shield.size }})</span>
+    </button>
+  {% endunless %}
 
-        {% unless page.lang == "hi" %}
-          <button class="discover-cat-btn" data-cat="cyber-security" onclick="window.location.href='?category=cyber-security'">
-            Cyber Security <span>( {{ site.shield.size }} )</span>
-          </button>
-        {% endunless %}
-
-      </div>
+</div>
 
     </div>
   </section>
@@ -129,96 +127,94 @@ extra_js:
   <section class="section">
     <div id="posts">
       
-      <div id="post-wrapper" class="static-seo-load">
-        
-        {% if page.lang == "hi" %}
-          {% assign sorted = site.posts_hi | sort: "date" | reverse %}
-        {% else %}
-          {% assign combined_posts = "" | split: "" %}
-          {% for p in site.posts %}
-            {% assign combined_posts = combined_posts | push: p %}
-          {% endfor %}
-          {% for p in site.shield %}
-            {% assign combined_posts = combined_posts | push: p %}
-          {% endfor %}
-          {% assign sorted = combined_posts | sort: "date" | reverse %}
-        {% endif %}
-        
-        {% for p in sorted limit: 6 %}
-          
-          {% if p.categories %}
-            {% assign raw_cat = p.categories[0] | downcase | strip %}
-            {% assign data_cats = "" %}
-            {% for cat in p.categories %}
-              {% assign data_cats = data_cats | append: cat | downcase | replace: " ", "-" | append: " " %}
-            {% endfor %}
-          {% else %}
-            {% assign raw_cat = p.category | downcase | strip %}
-            {% assign data_cats = p.category | downcase | replace: " ", "-" | append: " " %}
-          {% endif %}
+<div id="post-wrapper" class="static-seo-load">
+  
+  {% if page.lang == "hi" %}
+    {% assign sorted = site.posts_hi | sort: "date" | reverse %}
+  {% else %}
+    
+    {% comment %} 🚀 JADU START: Khali array banaya aur dono collections ko push kiya {% endcomment %}
+    {% assign combined_posts = "" | split: "" %}
+    
+    {% comment %} 1. Saari normal posts jodi {% endcomment %}
+    {% for p in site.posts %}
+      {% assign combined_posts = combined_posts | push: p %}
+    {% endfor %}
+    
+    {% comment %} 2. Saari shield (cyber security) posts jodi {% endcomment %}
+    {% for p in site.shield %}
+      {% assign combined_posts = combined_posts | push: p %}
+    {% endfor %}
+    
+    {% comment %} 3. Ab poori mixed list ko ek sath date wise sort kiya {% endcomment %}
+    {% assign sorted = combined_posts | sort: "date" | reverse %}
+    
+  {% endif %}
+  
+  {% for p in sorted limit: 6 %}
+    {% comment %} 
+      Dynamic Category Standardizer: Posts me categories[0] hai, 
+      Shield me direct category string hai.
+    {% endcomment %}
+    {% if p.categories %}
+      {% assign p_cat = p.categories[0] | default: "Technology" %}
+      {% assign data_cats = "" %}
+      {% for cat in p.categories %}
+        {% assign data_cats = data_cats | append: cat | downcase | append: " " %}
+      {% endfor %}
+    {% else %}
+      {% assign p_cat = p.category | default: "CyberSecurity" %}
+      {% assign data_cats = p.category | downcase | append: " " %}
+    {% endif %}
 
-          {% if raw_cat == "aifuture" or raw_cat == "ai-future" %}
-            {% assign chip_name = "AI Future" %}
-          {% elsif raw_cat == "appsandinternet" or raw_cat == "apps-and-internet" %}
-            {% assign chip_name = "Apps & Internet" %}
-          {% elsif raw_cat == "cybersecurity" or raw_cat == "cyber-security" or raw_cat == "" %}
-            {% assign chip_name = "Cyber Security" %}
-          {% else %}
-            {% if p.categories %}
-              {% assign chip_name = p.categories[0] | replace: "-", " " | replace: "_", " " | capitalize %}
-            {% else %}
-              {% assign chip_name = p.category | replace: "-", " " | replace: "_", " " | capitalize %}
-            {% endif %}
-          {% endif %}
-
-          <div class="horizontal-post-card js-post"
-               data-lang="{{ p.lang | default: 'en' }}"
-               data-categories="{{ data_cats | strip }}">
-            
-            <div class="post-img">
-              <span class="post-category">
-                {{ chip_name }}
-              </span>
-              <div class="post-date">
-                <i class="fa-regular fa-calendar"></i>
-                {{ p.date | date: "%d %b %Y" }}
-              </div>
-              <img src="{{ p.image | default: '/assets/images/default-thumb.png' }}" alt="{{ p.title }} - TyagiHub" loading="lazy" width="354" height="236">
-            </div>
-
-            <div class="post-info">
-              <div class="post-top-meta">
-                <h2>
-                  <a href="{{ p.url | relative_url }}">
-                    {{ p.title }}
-                  </a>
-                </h2>
-                <p>
-                  {{ p.description | default: p.excerpt | strip_html | truncate: 110 }}
-                </p>
-              </div>
-
-              <div class="post-footer">
-                <button class="native-share-btn" onclick="nativeShare('{{ p.title | escape }}','{{ p.url | absolute_url }}')">
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <circle cx="18" cy="5" r="3"></circle>
-                    <circle cx="6" cy="12" r="3"></circle>
-                    <circle cx="18" cy="19" r="3"></circle>
-                    <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line>
-                    <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line>
-                  </svg>
-                  <span>Share</span>
-                </button>
-                <a href="{{ p.url | relative_url }}" class="read-link">
-                  Read More →
-                </a>
-              </div>
-            </div>
-
-          </div>
-        {% endfor %}
-
+    <div class="horizontal-post-card js-post"
+         data-lang="{{ p.lang | default: 'en' }}"
+         data-categories="{{ data_cats | strip }}">
+      
+      <div class="post-img">
+        <span class="post-category">
+          {{ p_cat | capitalize }}
+        </span>
+        <div class="post-date">
+          <i class="fa-regular fa-calendar"></i>
+          {{ p.date | date: "%d %b %Y" }}
+        </div>
+        <img src="{{ p.image | default: '/assets/images/default-thumb.png' }}" alt="{{ p.title }} - TyagiHub" loading="lazy" width="354" height="236">
       </div>
+
+      <div class="post-info">
+        <div class="post-top-meta">
+          <h2>
+            <a href="{{ p.url | relative_url }}">
+              {{ p.title }}
+            </a>
+          </h2>
+          <p>
+            {{ p.description | default: p.excerpt | strip_html | truncate: 110 }}
+          </p>
+        </div>
+
+        <div class="post-footer">
+          <button class="native-share-btn" onclick="nativeShare('{{ p.title | escape }}','{{ p.url | absolute_url }}')">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="18" cy="5" r="3"></circle>
+              <circle cx="6" cy="12" r="3"></circle>
+              <circle cx="18" cy="19" r="3"></circle>
+              <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line>
+              <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line>
+            </svg>
+            <span>Share</span>
+          </button>
+          <a href="{{ p.url | relative_url }}" class="read-link">
+            Read More →
+          </a>
+        </div>
+      </div>
+
+    </div>
+  {% endfor %}
+
+</div>
 
       <nav id="pagination-nav" class="pagination-center" aria-label="Pagination Navigation" style="display: flex; gap: 8px; justify-content: center; margin-top: 30px; align-items: center; flex-wrap: wrap;">
       </nav>
