@@ -624,4 +624,4 @@
 .checklist li::before{content:"✓";color:#34d399;font-weight:900;font-size:1rem;flex-shrink:0;margin-top:.1rem}
 .post-tags{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:2.5rem}
 .symptom-grid{grid-template-columns:1fr}
-.post-hero{position:relative;border-radius:16px;overflow:hidden;background:var(--clr-surface);border:1px solid var(--clr-border);padding:0;margin-bottom:0;}
+.post-hero{position:relative;border-radius:16px;overflow:hidden;background:var(--clr-surface);border:1px solid var(--clr-border);padding:0;}
