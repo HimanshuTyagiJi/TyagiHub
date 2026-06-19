@@ -41,30 +41,36 @@ layout: default
 			</div>
 
 			<div class="toc-box" style="margin-bottom: 30px;">
-				<h3>📋 Table of Contents</h3>
+	<h3>📋 Table of Contents</h3>
+	
+	<input type="checkbox" id="toc-toggle" class="toc-toggle-checkbox" style="display: none;">
+	
+	<ol class="toc-list">
+		{% assign h2_blocks = content | split: '<h2' %}
+		{% for block in h2_blocks %}
+			{% if forloop.first == false %}
+				{% assign id_extract = block | split: 'id="' %}
+				{% assign id_clean = id_extract[1] | split: '"' | first %}
 				
-				<input type="checkbox" id="toc-toggle" class="toc-toggle-checkbox" style="display: none;">
+				{% assign title_extract = block | split: '>' %}
+				{% assign title_clean = title_extract[1] | split: '</h2' | first | strip_html %}
 				
-				<ol class="toc-list">
-					{% assign headings = content | split: '<h2 id="' %}
-					{% for heading in headings %}
-						{% if forloop.first == false %}
-							{% assign parts = heading | split: '"' %}
-							{% assign html_id = parts[0] %}
-							{% assign title_parts = parts[1] | split: '>' %}
-							{% assign title_subparts = title_parts[1] | split: '</h2' %}
-							{% assign clean_title = title_subparts[0] | strip_html %}
-							
-							<li><a href="#{{ html_id }}">{{ clean_title }}</a></li>
-						{% endif %}
-					{% endfor %}
-				</ol>
-				
-				<label for="toc-toggle" class="toc-btn" style="cursor: pointer; display: inline-flex; align-items: center; margin-top: 12px; font-weight: 600;">
-					<span class="text-more">See More <i class="fas fa-chevron-down"></i></span>
-					<span class="text-less" style="display: none;">See Less <i class="fas fa-chevron-up"></i></span>
-				</label>
-			</div>
+				{% if title_clean != "" %}
+					<li>
+						<a href="#{% if id_clean != "" %}{{ id_clean }}{% else %}{{ title_clean | slugify }}{% endif %}">
+							{{ title_clean }}
+						</a>
+					</li>
+				{% endif %}
+			{% endif %}
+		{% endfor %}
+	</ol>
+	
+	<label for="toc-toggle" class="toc-btn" style="cursor: pointer; display: inline-flex; align-items: center; margin-top: 12px; font-weight: 600;">
+		<span class="text-more">See More <i class="fas fa-chevron-down"></i></span>
+		<span class="text-less" style="display: none;">See Less <i class="fas fa-chevron-up"></i></span>
+	</label>
+</div>
 		{% endif %}
 
 		{{ content }}
