@@ -328,3 +328,41 @@
   object-position: center !important;
   display: block !important;
 }
+/* ==========================================================================
+   🎯 ANTI-LAYOUT SHIFT (CLS) AIRTIGHT LOCKS 
+   ========================================================================== */
+
+/* 1. Search Box Container ko pehle se hi fixed height de do */
+.shield-search-box {
+  min-height: 54px !important; /* Input box ki pixel height */
+  margin-bottom: 40px !important;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+/* 2. Grid Container (Wrapper) ka structural safety lock */
+#post-wrapper.grid-3 {
+  display: grid !important;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+  
+  /* 🔥 JADU: Browser ko pehle se pata hoga ki 1st page par kam se kam 2 raw ki height reserve rakhni hai, 
+     chahe JS load ho rahi ho ya khali ho rahi ho. Isse dabba zero height nahi banega. */
+  min-height: 800px !important; 
+}
+
+/* 3. Mobile aur Tablet responsive par layout shift lock pixels adjust karo */
+@media (max-width: 900px) {
+  #post-wrapper.grid-3 {
+    grid-template-columns: repeat(2, 1fr);
+    min-height: 1200px !important; /* Mobile grid stack height layout lock */
+  }
+}
+
+@media (max-width: 600px) {
+  #post-wrapper.grid-3 {
+    grid-template-columns: 1fr;
+    min-height: 2200px !important; /* Single column layout stack height */
+  }
+}
