@@ -31,15 +31,23 @@ layout: default
 				
 				<div class="hero-meta" style="color: var(--text-muted); font-size: 14px; margin-bottom: 25px;">
 					<span>✍️ By <a href="/profile.html?author={{ page.author | url_encode }}" style="color: var(--clr-accent); text-decoration: none; font-weight: 600;">{{ page.author | default: "Himanshu Tyagi" }}</a></span> · 
-					<span>📅 {{ page.date | date: "%d %B %Y" }}</span> 
-					{% if page.updated_date %}
-						· <span>🔄 Updated: {{ page.updated_date | date: "%d %B %Y" }}</span>
-					{% endif %}
-					· <span>⏱️ {{ read_time }}</span>
+					<span>📅 {{ page.date | date: "%d %B %Y" }}</span> · 
+					<span>⏱️ {{ read_time }}</span>
 				</div>
+
+				{% if page.image %}
+					<div class="post-hero-img" id="post-hero-wrap" style="margin-bottom: 30px; text-align: center;">
+						<img src="{{ page.image | relative_url }}" alt="{{ page.title }}" width="1280" height="720" loading="eager" style="border-radius: 12px; width: 100%; height: auto; box-shadow: 0 4px 15px rgba(0,0,0,0.15);">
+					</div>
+				{% endif %}
 			</div>
 
-			<div class="toc-box" style="margin-bottom: 30px;">
+			{% endif %}
+
+		{{ content }}
+
+		{% if page.is_post %}
+			<div class="toc-box" style="margin-top: 20px; margin-bottom: 30px;">
 				<h3>📋 Table of Contents</h3>
 				<input type="checkbox" id="toc-toggle" class="toc-toggle-checkbox" style="display: none;">
 				<ol class="toc-list">
@@ -66,21 +74,6 @@ layout: default
 					<span class="text-more">See More <i class="fas fa-chevron-down"></i></span>
 					<span class="text-less" style="display: none;">See Less <i class="fas fa-chevron-up"></i></span>
 				</label>
-			</div>
-
-			{% if page.image %}
-				<div class="post-hero-img adaptive-thumbnail-wrap" style="max-width: 420px; margin: 0 auto 35px auto; text-align: center;">
-					<img src="{{ page.image | relative_url }}" alt="{{ page.title }}" width="420" height="236" loading="lazy" style="border-radius: 12px; width: 100%; max-width: 420px; height: 236px; object-fit: cover; box-shadow: 0 4px 15px rgba(0,0,0,0.15);">
-				</div>
-			{% endif %}
-
-		{% endif %}
-
-		{{ content }}
-
-		{% if page.is_post and page.image %}
-			<div class="post-footer-img adaptive-thumbnail-wrap" style="max-width: 420px; margin: 40px auto 20px auto; text-align: center;">
-				<img src="{{ page.image | relative_url }}" alt="{{ page.title }}" width="420" height="236" loading="lazy" style="border-radius: 12px; width: 100%; max-width: 420px; height: 236px; object-fit: cover; box-shadow: 0 4px 15px rgba(0,0,0,0.15);">
 			</div>
 		{% endif %}
 
