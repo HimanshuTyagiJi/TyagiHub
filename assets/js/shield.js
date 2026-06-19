@@ -76,20 +76,20 @@ document.addEventListener("DOMContentLoaded", () => {
     chunk.forEach(p => {
       const cat = p.category ? p.category.charAt(0).toUpperCase() + p.category.slice(1) : "Security";
       
-      const cardHTML = `
-        <a href="${p.url}" class="blog-card" role="listitem">
-          <div class="blog-card__thumb">
-            <img src="${p.image}" alt="${p.title}" loading="lazy">
-          </div>
-          <div class="blog-card__body">
-            <span class="blog-card__tag">${cat}</span>
-            <h2 class="blog-card__title">${p.title}</h2>
-            <p>
-              ${p.description}
-            </p>
-          </div>
-        </a>
-      `;
+     const cardHTML = `
+  <a href="${p.url}" class="blog-card">
+    <div class="blog-card__thumb">
+      <img src="${p.image}" alt="${p.title}" loading="lazy" width="354" height="236" class="shield-card-img">
+    </div>
+    <div class="blog-card__body">
+      <span class="blog-card__tag">${cat}</span>
+      <h2 class="blog-card__title">${p.title}</h2>
+      <p>
+        ${p.description}
+      </p>
+    </div>
+  </a>
+`;
       wrapper.insertAdjacentHTML("beforeend", cardHTML);
     });
   }
