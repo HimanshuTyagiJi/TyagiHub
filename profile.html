@@ -1,0 +1,135 @@
+---
+layout: default
+---
+
+<main class="container" style="margin-top: 40px;">
+    <div id="author-profile-card" class="author-profile-wrapper" style="margin-bottom: 40px;">
+        <div class="spinner"></div>
+    </div>
+
+    <div id="author-posts-container">
+        <h2 id="author-posts-heading" style="margin-bottom: 25px;">Articles by this author</h2>
+        <div id="author-post-grid" class="post-grid"></div>
+    </div>
+</main>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const profileCard = document.getElementById('author-profile-card');
+    const postsGrid = document.getElementById('author-post-grid');
+    const postsHeading = document.getElementById('author-posts-heading');
+
+    const generateAuthorAvatarSVG = (name) => {
+        const words = name.split(' ').filter(Boolean);
+        let initials = words[0] ? words[0][0] : '';
+        if (words.length > 1) {
+            initials += words[words.length - 1][0];
+        }
+        initials = initials.toUpperCase();
+
+        let hash = 0;
+        for (let i = 0; i < name.length; i++) {
+            hash = name.charCodeAt(i) + ((hash << 5) - hash);
+            hash = hash & hash;
+        }
+        const hue = Math.abs(hash % 360);
+        const color = `hsl(${hue}, 70%, 45%)`;
+        const fontSize = initials.length > 1 ? '48' : '60';
+
+        return `<div class="author-avatar-large">
+            <svg width="120" height="120" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="60" cy="60" r="60" fill="${color}" />
+                <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" font-size="${fontSize}" font-weight="bold" fill="white" font-family="Arial, sans-serif">${initials}</text>
+            </svg>
+        </div>`;
+    };
+
+    const renderProfile = (authorName, postCount) => {
+        if (!profileCard) return;
+        
+        let authorAvatar;
+        // Specific checks for owner assets validation arrays
+        if (authorName === "Mr. Himanshu Tyagi" || authorName === "Owner" || authorName === "Himanshu Tyagi") {
+            const ownerLogoSVG = `<svg xmlns="http://www.w3.org/2000/svg" width="120" height="120" viewBox="0 0 300 300" role="img" aria-label="GK Learn Study logo">
+                <title>GK Learn Study</title>
+                <circle cx="150" cy="150" r="150" fill="white"></circle>
+                <defs><clipPath id="circle-clip-main"><circle cx="150" cy="150" r="150"></circle></clipPath></defs>
+                <g clip-path="url(#circle-clip-main)">
+                    <path fill="#c0a4fb" fill-opacity="1"><animate attributeName="d" dur="8s" repeatCount="indefinite" values="M0 230 Q 75 210, 150 230 T 300 210 L 300 300 L 0 300 Z; M0 240 Q 75 260, 150 240 T 300 250 L 300 300 L 0 300 Z; M0 230 Q 75 210, 150 230 T 300 210 L 300 300 L 0 300 Z"></animate></path>
+                    <path fill="#641ef9" fill-opacity="0.7"><animate attributeName="d" dur="7s" repeatCount="indefinite" values="M0 220 Q 75 245, 150 220 T 300 235 L 300 300 L 0 300 Z; M0 250 Q 75 220, 150 250 T 300 220 L 300 300 L 0 300 Z; M0 220 Q 75 245, 150 220 T 300 235 L 300 300 L 0 300 Z"></animate></path>
+                </g>
+                <text x="50%" y="35%" font-size="90" font-weight="700" fill="#e53935" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" style="transform-origin: 150px 90px;" opacity="1">GK</text>
+                <text x="50%" y="65%" font-size="38" fill="#6a1b9a" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" style="transform-origin: 150px 195px;" opacity="1">Learn Study</text>
+                <circle cx="150" cy="150" r="145" fill="none" stroke="#f0e6ff" stroke-width="4" opacity="0.6"></circle>
+            </svg>`;
+            authorAvatar = `<div class="author-avatar-large">${ownerLogoSVG}</div>`;
+        } else {
+            authorAvatar = generateAuthorAvatarSVG(authorName);
+        }
+        
+        profileCard.innerHTML = `
+            ${authorAvatar}
+            <div class="author-info">
+                <h1 class="author-name-large">${authorName}</h1>
+                <p class="author-education">Author at GK Learn Study</p>
+                <p class="author-bio">Explore all articles and contributions by ${authorName} below.</p>
+            </div>
+            <div class="author-stats">
+                <div class="stat-item">
+                    <span class="stat-number">${postCount}</span>
+                    <span>Total Posts</span>
+                </div>
+            </div>
+        `;
+    };
+
+    const renderPosts = (posts) => {
+        if (!postsGrid || !window.GKApp || !window.GKApp.createPostCard) return;
+        postsGrid.innerHTML = '';
+
+        if (posts.length === 0) {
+            postsGrid.innerHTML = '<p class="no-posts-found">This author has not published any articles yet.</p>';
+            return;
+        }
+
+        const fragment = document.createDocumentFragment();
+        posts.forEach((post, index) => {
+            fragment.appendChild(window.GKApp.createPostCard(post, index));
+        });
+        postsGrid.appendChild(fragment);
+        
+        if (window.GKApp.initializeLazyLoading) {
+            window.GKApp.initializeLazyLoading(postsGrid);
+        }
+    };
+    
+    const initializePage = async () => {
+        const urlParams = new URLSearchParams(window.location.search);
+        const authorParam = urlParams.get('author');
+
+        if (!authorParam) {
+            profileCard.innerHTML = `<p class="muted error">No author specified.</p>`;
+            postsHeading.style.display = 'none';
+            return;
+        }
+        
+        const authorName = authorParam.trim();
+
+        document.title = `${authorName} | Author Profile | GK Learn Study`;
+        postsHeading.textContent = `Articles by ${authorName}`;
+
+        await window.GKApp.dataReady;
+        
+        const allPosts = window.GKApp.searchData || [];
+        const authorPosts = allPosts.filter(post => post.author && post.author.trim() === authorName);
+
+        renderProfile(authorName, authorPosts.length);
+        renderPosts(authorPosts);
+    };
+
+    initializePage().catch(error => {
+        console.error("Failed to initialize profile page:", error);
+        profileCard.innerHTML = `<p class="muted error">Could not load author details.</p>`;
+    });
+});
+</script>
