@@ -1,0 +1,70 @@
+---
+layout: default
+---
+
+<main class="container" style="margin-top: 40px;">
+    <div id="category-posts-container">
+        <h1 id="category-posts-heading" style="margin-bottom: 25px;">Loading Category...</h1>
+        <div id="category-post-grid" class="post-grid">
+            <div class="spinner"></div>
+        </div>
+    </div>
+</main>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const postsGrid = document.getElementById('category-post-grid');
+    const postsHeading = document.getElementById('category-posts-heading');
+
+    const urlParams = new URLSearchParams(window.location.search);
+    const categoryName = urlParams.get('category');
+
+    const renderPosts = (posts) => {
+        if (!postsGrid || !window.GKApp || !window.GKApp.createPostCard) return;
+
+        postsGrid.innerHTML = ''; // Clear spinner
+
+        if (posts.length === 0) {
+            postsGrid.innerHTML = '<p class="no-posts-found">No articles found in this category.</p>';
+            return;
+        }
+
+        const fragment = document.createDocumentFragment();
+        posts.forEach((post, index) => {
+            fragment.appendChild(window.GKApp.createPostCard(post, index));
+        });
+        postsGrid.appendChild(fragment);
+        
+        if (window.GKApp.initializeLazyLoading) {
+            window.GKApp.initializeLazyLoading(postsGrid);
+        }
+    };
+    
+    const initializePage = async () => {
+        if (!categoryName) {
+            postsHeading.textContent = 'No Category Specified';
+            postsGrid.innerHTML = `<p class="muted error">Please go back and select a category.</p>`;
+            return;
+        }
+
+        document.title = `${categoryName} | GK Learn Study`;
+        postsHeading.textContent = `Articles in: ${categoryName}`;
+
+        await window.GKApp.dataReady;
+        
+        const allPosts = window.GKApp.searchData || [];
+        // Case-insensitive filtering safety parameters
+        const categoryPosts = allPosts.filter(post => 
+            post.category && post.category.toLowerCase() === categoryName.toLowerCase()
+        );
+
+        renderPosts(categoryPosts);
+    };
+
+    initializePage().catch(error => {
+        console.error("Failed to initialize category page:", error);
+        postsHeading.textContent = 'Error';
+        postsGrid.innerHTML = `<p class="muted error">Could not load articles for this category.</p>`;
+    });
+});
+</script>
