@@ -126,6 +126,7 @@ pagination:
   sort_reverse: true
 
 # Autopages Infrastructure (Fixed: Ab ye sirf 'discover' layout use karega)
+# Autopages Infrastructure (Fixed: Tags strictly disabled to stop 404 links 🚀)
 autopages:
   enabled: true
   categories:
@@ -136,7 +137,9 @@ autopages:
     slugify:
       mode: "default"
       cased: false
-
+  # 🎯 YEH VALI LINE JADU HAI: Yeh fake tag pages ko generate hone se jad se rok degi
+  tags:
+    enabled: false
 # SEO
 twitter:
   username: TyagiMultiTech
