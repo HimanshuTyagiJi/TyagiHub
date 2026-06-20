@@ -40,7 +40,7 @@
 /*         HINDI  : 2026-06-15-how-sim-swap-attacks-work-hi.html */
 /* ============================================================ */
 
-:root{--clr-bg:#0a0c10;--clr-bg-2:#0f1219;--clr-bg-3:#161b27;--clr-surface:#1a2030;--clr-surface-2:#212840;--clr-border:#2a3348;--clr-border-2:#3a4560;--clr-accent:#f5a623;--clr-accent-2:#ff7c3a;--clr-accent-glow:rgba(245,166,35,0.18);--clr-learn:#3ecfcf;--clr-editor:#a78bfa;--clr-tools:#f5a623;--clr-stock:#34d399;--clr-apps:#60a5fa;--clr-shield:#f87171;--clr-blog:#fb923c;--clr-text:#e8eaf0;--clr-text-2:#a0a8bc;--clr-text-3:#606880;--clr-heading:#f0f2f8}
+:root{--clr-bg:#0a0c10;--clr-bg-2:#0f1219;--clr-bg-3:#161b27;--clr-surface:#1a2030;--clr-surface-2:#212840;--clr-border:#2a3348;--clr-border-2:#3a4560;--clr-accent:#f5a623;--clr-accent-2:#ff7c3a;--clr-accent-glow:rgba(245,166,35,0.18);--clr-learn:#3ecfcf;--clr-editor:#a78bfa;--clr-tools:#f5a623;--clr-stock:#34d399;--clr-apps:#60a5fa;--clr-shield:#AC0707;--clr-blog:#fb923c;--clr-text:#e8eaf0;--clr-text-2:#a0a8bc;--clr-text-3:#606880;--clr-heading:#f0f2f8}
 [data-theme="light"]{--clr-bg:#ffffff;--clr-bg-2:#edf0f7;--clr-bg-3:#e4e8f3;--clr-surface:#ffffff;--clr-surface-2:#f0f3fb;--clr-border:#d8deed;--clr-border-2:#bdc6e0;--clr-text:#1a2030;--clr-text-2:#3d4d6a;--clr-text-3:#6b7a9a;--clr-heading:#0d1421;--clr-accent:#0000FF;--clr-accent-2:#e8682a;--clr-accent-glow:rgba(224,152,32,0.15)}
 .post-wrap{font-family:'Segoe UI',system-ui,sans-serif;color:var(--clr-text);background:var(--clr-bg);line-height:1.75;max-width:900px;margin:0 auto;padding:2rem 1.2rem 4rem}
 /* HERO */
@@ -63,7 +63,7 @@
 .post-section ul li,.post-section ol li{margin-bottom:.45rem;font-size:.95rem}
 /* HIGHLIGHT BOX */
 .highlight-box{background:var(--clr-surface-2);border:1px solid var(--clr-border-2);border-left:4px solid var(--clr-shield);border-radius:8px;padding:1.2rem 1.4rem;margin:1.5rem 0}
-.highlight-box.warn{border-left-color:#f87171}
+.highlight-box.warn{border-left-color:#AC0707}
 .highlight-box.tip{border-left-color:#34d399}
 .highlight-box.info{border-left-color:#60a5fa}
 .highlight-box .hb-label{font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--clr-shield);margin-bottom:.5rem}
@@ -105,7 +105,7 @@
 /*         HINDI  : 2026-06-16-how-phishing-websites-steal-your-data-hi.html */
 /* ============================================================ */
 
-:root{--clr-bg:#0a0c10;--clr-bg-2:#0f1219;--clr-bg-3:#161b27;--clr-surface:#1a2030;--clr-surface-2:#212840;--clr-border:#2a3348;--clr-border-2:#3a4560;--clr-accent:#f5a623;--clr-accent-2:#ff7c3a;--clr-accent-glow:rgba(245,166,35,0.18);--clr-learn:#3ecfcf;--clr-editor:#a78bfa;--clr-tools:#f5a623;--clr-stock:#34d399;--clr-apps:#60a5fa;--clr-shield:#f87171;--clr-blog:#fb923c;--clr-text:#e8eaf0;--clr-text-2:#a0a8bc;--clr-text-3:#606880;--clr-heading:#f0f2f8}
+:root{--clr-bg:#0a0c10;--clr-bg-2:#0f1219;--clr-bg-3:#161b27;--clr-surface:#1a2030;--clr-surface-2:#212840;--clr-border:#2a3348;--clr-border-2:#3a4560;--clr-accent:#f5a623;--clr-accent-2:#ff7c3a;--clr-accent-glow:rgba(245,166,35,0.18);--clr-learn:#3ecfcf;--clr-editor:#a78bfa;--clr-tools:#f5a623;--clr-stock:#34d399;--clr-apps:#60a5fa;--clr-shield:#AC0707;--clr-blog:#fb923c;--clr-text:#e8eaf0;--clr-text-2:#a0a8bc;--clr-text-3:#606880;--clr-heading:#f0f2f8}
 [data-theme="light"]{--clr-bg:#ffffff;--clr-bg-2:#edf0f7;--clr-bg-3:#e4e8f3;--clr-surface:#ffffff;--clr-surface-2:#f0f3fb;--clr-border:#d8deed;--clr-border-2:#bdc6e0;--clr-text:#1a2030;--clr-text-2:#3d4d6a;--clr-text-3:#6b7a9a;--clr-heading:#0d1421;--clr-accent:#0000FF;--clr-accent-2:#e8682a;--clr-accent-glow:rgba(224,152,32,0.15)}
 .post-wrap{font-family:'Segoe UI',system-ui,sans-serif;color:var(--clr-text);background:var(--clr-bg);line-height:1.75;max-width:900px;margin:0 auto;padding:2rem 1.2rem 4rem}
 .post-hero{position:relative;border-radius:16px;overflow:hidden;background:var(--clr-surface);border:1px solid var(--clr-border);padding:3rem 2rem 2rem;margin-bottom:3rem;text-align:center}
@@ -123,7 +123,7 @@
 .post-section ul,.post-section ol{padding-left:1.5rem;color:var(--clr-text-2);margin-bottom:1rem}
 .post-section ul li,.post-section ol li{margin-bottom:.45rem;font-size:.95rem}
 .highlight-box{background:var(--clr-surface-2);border:1px solid var(--clr-border-2);border-left:4px solid var(--clr-shield);border-radius:8px;padding:1.2rem 1.4rem;margin:1.5rem 0}
-.highlight-box.warn{border-left-color:#f87171}
+.highlight-box.warn{border-left-color:#AC0707}
 .highlight-box.tip{border-left-color:#34d399}
 .highlight-box.info{border-left-color:#60a5fa}
 .highlight-box .hb-label{font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--clr-shield);margin-bottom:.5rem}
@@ -149,10 +149,10 @@
 .url-box{background:var(--clr-surface);border:1px solid var(--clr-border);border-radius:10px;padding:1.2rem}
 .url-box .url-label{font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;margin-bottom:.6rem}
 .url-box.real .url-label{color:#34d399}
-.url-box.fake .url-label{color:#f87171}
+.url-box.fake .url-label{color:#AC0707}
 .url-box .url-text{font-family:monospace;font-size:.88rem;padding:.5rem;background:var(--clr-bg-3);border-radius:6px;word-break:break-all}
 .url-box.real .url-text{color:#34d399;border:1px solid #34d39940}
-.url-box.fake .url-text{color:#f87171;border:1px solid #f8717140}
+.url-box.fake .url-text{color:#AC0707;border:1px solid #AC070740}
 .url-box .url-note{font-size:.78rem;color:var(--clr-text-3);margin-top:.5rem}
 .post-tags{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:2.5rem}
 .step-grid{grid-template-columns:1fr}
@@ -164,7 +164,7 @@
 /*         HINDI  : 2026-06-17-android-spyware-detection-guide-hi.html */
 /* ============================================================ */
 
-:root{--clr-bg:#0a0c10;--clr-bg-2:#0f1219;--clr-bg-3:#161b27;--clr-surface:#1a2030;--clr-surface-2:#212840;--clr-border:#2a3348;--clr-border-2:#3a4560;--clr-accent:#f5a623;--clr-accent-2:#ff7c3a;--clr-accent-glow:rgba(245,166,35,0.18);--clr-stock:#34d399;--clr-apps:#60a5fa;--clr-shield:#f87171;--clr-text:#e8eaf0;--clr-text-2:#a0a8bc;--clr-text-3:#606880;--clr-heading:#f0f2f8}
+:root{--clr-bg:#0a0c10;--clr-bg-2:#0f1219;--clr-bg-3:#161b27;--clr-surface:#1a2030;--clr-surface-2:#212840;--clr-border:#2a3348;--clr-border-2:#3a4560;--clr-accent:#f5a623;--clr-accent-2:#ff7c3a;--clr-accent-glow:rgba(245,166,35,0.18);--clr-stock:#34d399;--clr-apps:#60a5fa;--clr-shield:#AC0707;--clr-text:#e8eaf0;--clr-text-2:#a0a8bc;--clr-text-3:#606880;--clr-heading:#f0f2f8}
 [data-theme="light"]{--clr-bg:#fff;--clr-bg-2:#edf0f7;--clr-bg-3:#e4e8f3;--clr-surface:#fff;--clr-surface-2:#f0f3fb;--clr-border:#d8deed;--clr-border-2:#bdc6e0;--clr-text:#1a2030;--clr-text-2:#3d4d6a;--clr-text-3:#6b7a9a;--clr-heading:#0d1421;--clr-accent:#0000FF;--clr-accent-2:#e8682a}
 .post-wrap{font-family:'Segoe UI',system-ui,sans-serif;color:var(--clr-text);background:var(--clr-bg);line-height:1.75;max-width:900px;margin:0 auto;padding:2rem 1.2rem 4rem}
 .post-hero{position:relative;border-radius:16px;overflow:hidden;background:var(--clr-surface);border:1px solid var(--clr-border);padding:3rem 2rem 2rem;margin-bottom:3rem;text-align:center}
@@ -218,7 +218,7 @@
 /*         HINDI  : 2026-06-18-how-ai-is-changing-everyday-life-hi.html */
 /* ============================================================ */
 
-:root{--clr-bg:#0a0c10;--clr-bg-2:#0f1219;--clr-bg-3:#161b27;--clr-surface:#1a2030;--clr-surface-2:#212840;--clr-border:#2a3348;--clr-border-2:#3a4560;--clr-accent:#f5a623;--clr-accent-2:#ff7c3a;--clr-learn:#3ecfcf;--clr-apps:#60a5fa;--clr-shield:#f87171;--clr-stock:#34d399;--clr-text:#e8eaf0;--clr-text-2:#a0a8bc;--clr-text-3:#606880;--clr-heading:#f0f2f8}
+:root{--clr-bg:#0a0c10;--clr-bg-2:#0f1219;--clr-bg-3:#161b27;--clr-surface:#1a2030;--clr-surface-2:#212840;--clr-border:#2a3348;--clr-border-2:#3a4560;--clr-accent:#f5a623;--clr-accent-2:#ff7c3a;--clr-learn:#3ecfcf;--clr-apps:#60a5fa;--clr-shield:#AC0707;--clr-stock:#34d399;--clr-text:#e8eaf0;--clr-text-2:#a0a8bc;--clr-text-3:#606880;--clr-heading:#f0f2f8}
 [data-theme="light"]{--clr-bg:#fff;--clr-bg-2:#edf0f7;--clr-bg-3:#e4e8f3;--clr-surface:#fff;--clr-surface-2:#f0f3fb;--clr-border:#d8deed;--clr-border-2:#bdc6e0;--clr-text:#1a2030;--clr-text-2:#3d4d6a;--clr-text-3:#6b7a9a;--clr-heading:#0d1421;--clr-accent:#0000FF;--clr-accent-2:#e8682a}
 .post-wrap{font-family:'Segoe UI',system-ui,sans-serif;color:var(--clr-text);background:var(--clr-bg);line-height:1.75;max-width:900px;margin:0 auto;padding:2rem 1.2rem 4rem}
 .post-hero{position:relative;border-radius:16px;overflow:hidden;background:var(--clr-surface);border:1px solid var(--clr-border);padding:3rem 2rem 2rem;margin-bottom:3rem;text-align:center}
@@ -236,10 +236,10 @@
 .post-section ul,.post-section ol{padding-left:1.5rem;color:var(--clr-text-2);margin-bottom:1rem}
 .post-section li{margin-bottom:.45rem;font-size:.95rem}
 .highlight-box{background:var(--clr-surface-2);border:1px solid var(--clr-border-2);border-left:4px solid var(--clr-learn);border-radius:8px;padding:1.2rem 1.4rem;margin:1.5rem 0}
-.highlight-box.warn{border-left-color:#f87171}
+.highlight-box.warn{border-left-color:#AC0707}
 .highlight-box.tip{border-left-color:#34d399}
 .highlight-box .hb-label{font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--clr-learn);margin-bottom:.5rem}
-.highlight-box.warn .hb-label{color:#f87171}
+.highlight-box.warn .hb-label{color:#AC0707}
 .highlight-box.tip .hb-label{color:#34d399}
 .table-wrap{width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch;margin:1.5rem 0;border-radius:10px;border:1px solid var(--clr-border)}
 .styled-table thead th{padding:.85rem 1rem;text-align:left;color:var(--clr-accent);font-weight:700;font-size:.8rem;text-transform:uppercase;white-space:normal;word-break:break-word}
@@ -269,7 +269,7 @@
 /*         HINDI  : 2026-06-19-future-of-smart-devices-hi.html */
 /* ============================================================ */
 
-:root{--clr-bg:#0a0c10;--clr-bg-2:#0f1219;--clr-bg-3:#161b27;--clr-surface:#1a2030;--clr-surface-2:#212840;--clr-border:#2a3348;--clr-border-2:#3a4560;--clr-accent:#f5a623;--clr-accent-2:#ff7c3a;--clr-learn:#3ecfcf;--clr-apps:#60a5fa;--clr-stock:#34d399;--clr-shield:#f87171;--clr-text:#e8eaf0;--clr-text-2:#a0a8bc;--clr-text-3:#606880;--clr-heading:#f0f2f8}
+:root{--clr-bg:#0a0c10;--clr-bg-2:#0f1219;--clr-bg-3:#161b27;--clr-surface:#1a2030;--clr-surface-2:#212840;--clr-border:#2a3348;--clr-border-2:#3a4560;--clr-accent:#f5a623;--clr-accent-2:#ff7c3a;--clr-learn:#3ecfcf;--clr-apps:#60a5fa;--clr-stock:#34d399;--clr-shield:#AC0707;--clr-text:#e8eaf0;--clr-text-2:#a0a8bc;--clr-text-3:#606880;--clr-heading:#f0f2f8}
 [data-theme="light"]{--clr-bg:#fff;--clr-bg-2:#edf0f7;--clr-bg-3:#e4e8f3;--clr-surface:#fff;--clr-surface-2:#f0f3fb;--clr-border:#d8deed;--clr-border-2:#bdc6e0;--clr-text:#1a2030;--clr-text-2:#3d4d6a;--clr-text-3:#6b7a9a;--clr-heading:#0d1421;--clr-accent:#0000FF;--clr-accent-2:#e8682a}
 .post-wrap{font-family:'Segoe UI',system-ui,sans-serif;color:var(--clr-text);background:var(--clr-bg);line-height:1.75;max-width:900px;margin:0 auto;padding:2rem 1.2rem 4rem}
 .post-hero{position:relative;border-radius:16px;overflow:hidden;background:var(--clr-surface);border:1px solid var(--clr-border);padding:3rem 2rem 2rem;margin-bottom:3rem;text-align:center}
@@ -287,10 +287,10 @@
 .post-section ul{padding-left:1.5rem;color:var(--clr-text-2);margin-bottom:1rem}
 .post-section li{margin-bottom:.45rem;font-size:.95rem}
 .highlight-box{background:var(--clr-surface-2);border:1px solid var(--clr-border-2);border-left:4px solid var(--clr-apps);border-radius:8px;padding:1.2rem 1.4rem;margin:1.5rem 0}
-.highlight-box.warn{border-left-color:#f87171}
+.highlight-box.warn{border-left-color:#AC0707}
 .highlight-box.tip{border-left-color:#34d399}
 .highlight-box .hb-label{font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--clr-apps);margin-bottom:.5rem}
-.highlight-box.warn .hb-label{color:#f87171}
+.highlight-box.warn .hb-label{color:#AC0707}
 .highlight-box.tip .hb-label{color:#34d399}
 .table-wrap{width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch;margin:1.5rem 0;border-radius:10px;border:1px solid var(--clr-border)}
 .styled-table thead th{padding:.85rem 1rem;text-align:left;color:var(--clr-accent);font-weight:700;font-size:.8rem;text-transform:uppercase;white-space:normal;word-break:break-word}
@@ -314,7 +314,7 @@
 /*         HINDI  : 2026-06-20-what-is-edge-computing-hi.html */
 /* ============================================================ */
 
-:root{--clr-bg:#0a0c10;--clr-bg-2:#0f1219;--clr-bg-3:#161b27;--clr-surface:#1a2030;--clr-surface-2:#212840;--clr-border:#2a3348;--clr-border-2:#3a4560;--clr-accent:#f5a623;--clr-accent-2:#ff7c3a;--clr-learn:#3ecfcf;--clr-apps:#60a5fa;--clr-stock:#34d399;--clr-shield:#f87171;--clr-text:#e8eaf0;--clr-text-2:#a0a8bc;--clr-text-3:#606880;--clr-heading:#f0f2f8}
+:root{--clr-bg:#0a0c10;--clr-bg-2:#0f1219;--clr-bg-3:#161b27;--clr-surface:#1a2030;--clr-surface-2:#212840;--clr-border:#2a3348;--clr-border-2:#3a4560;--clr-accent:#f5a623;--clr-accent-2:#ff7c3a;--clr-learn:#3ecfcf;--clr-apps:#60a5fa;--clr-stock:#34d399;--clr-shield:#AC0707;--clr-text:#e8eaf0;--clr-text-2:#a0a8bc;--clr-text-3:#606880;--clr-heading:#f0f2f8}
 [data-theme="light"]{--clr-bg:#fff;--clr-bg-2:#edf0f7;--clr-bg-3:#e4e8f3;--clr-surface:#fff;--clr-surface-2:#f0f3fb;--clr-border:#d8deed;--clr-border-2:#bdc6e0;--clr-text:#1a2030;--clr-text-2:#3d4d6a;--clr-text-3:#6b7a9a;--clr-heading:#0d1421;--clr-accent:#0000FF;--clr-accent-2:#e8682a}
 .post-wrap{font-family:'Segoe UI',system-ui,sans-serif;color:var(--clr-text);background:var(--clr-bg);line-height:1.75;max-width:900px;margin:0 auto;padding:2rem 1.2rem 4rem}
 .post-hero{position:relative;border-radius:16px;overflow:hidden;background:var(--clr-surface);border:1px solid var(--clr-border);padding:3rem 2rem 2rem;margin-bottom:3rem;text-align:center}
@@ -332,11 +332,11 @@
 .post-section ul{padding-left:1.5rem;color:var(--clr-text-2);margin-bottom:1rem}
 .post-section li{margin-bottom:.45rem;font-size:.95rem}
 .highlight-box{background:var(--clr-surface-2);border:1px solid var(--clr-border-2);border-left:4px solid var(--clr-learn);border-radius:8px;padding:1.2rem 1.4rem;margin:1.5rem 0}
-.highlight-box.warn{border-left-color:#f87171}
+.highlight-box.warn{border-left-color:#AC0707}
 .highlight-box.tip{border-left-color:#34d399}
 .highlight-box.info{border-left-color:#60a5fa}
 .highlight-box .hb-label{font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--clr-learn);margin-bottom:.5rem}
-.highlight-box.warn .hb-label{color:#f87171}
+.highlight-box.warn .hb-label{color:#AC0707}
 .highlight-box.tip .hb-label{color:#34d399}
 .highlight-box.info .hb-label{color:#60a5fa}
 .table-wrap{width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch;margin:1.5rem 0;border-radius:10px;border:1px solid var(--clr-border)}
@@ -359,7 +359,7 @@
 /*         HINDI  : 2026-06-21-best-productivity-apps-guide-hi.html */
 /* ============================================================ */
 
-:root{--clr-bg:#0a0c10;--clr-bg-2:#0f1219;--clr-bg-3:#161b27;--clr-surface:#1a2030;--clr-surface-2:#212840;--clr-border:#2a3348;--clr-border-2:#3a4560;--clr-accent:#f5a623;--clr-accent-2:#ff7c3a;--clr-apps:#60a5fa;--clr-stock:#34d399;--clr-shield:#f87171;--clr-text:#e8eaf0;--clr-text-2:#a0a8bc;--clr-text-3:#606880;--clr-heading:#f0f2f8}
+:root{--clr-bg:#0a0c10;--clr-bg-2:#0f1219;--clr-bg-3:#161b27;--clr-surface:#1a2030;--clr-surface-2:#212840;--clr-border:#2a3348;--clr-border-2:#3a4560;--clr-accent:#f5a623;--clr-accent-2:#ff7c3a;--clr-apps:#60a5fa;--clr-stock:#34d399;--clr-shield:#AC0707;--clr-text:#e8eaf0;--clr-text-2:#a0a8bc;--clr-text-3:#606880;--clr-heading:#f0f2f8}
 [data-theme="light"]{--clr-bg:#fff;--clr-bg-2:#edf0f7;--clr-bg-3:#e4e8f3;--clr-surface:#fff;--clr-surface-2:#f0f3fb;--clr-border:#d8deed;--clr-border-2:#bdc6e0;--clr-text:#1a2030;--clr-text-2:#3d4d6a;--clr-text-3:#6b7a9a;--clr-heading:#0d1421;--clr-accent:#0000FF;--clr-accent-2:#e8682a}
 .post-wrap{font-family:'Segoe UI',system-ui,sans-serif;color:var(--clr-text);background:var(--clr-bg);line-height:1.75;max-width:900px;margin:0 auto;padding:2rem 1.2rem 4rem}
 .post-hero{position:relative;border-radius:16px;overflow:hidden;background:var(--clr-surface);border:1px solid var(--clr-border);padding:3rem 2rem 2rem;margin-bottom:3rem;text-align:center}
@@ -378,10 +378,10 @@
 .post-section li{margin-bottom:.45rem;font-size:.95rem}
 .highlight-box{background:var(--clr-surface-2);border:1px solid var(--clr-border-2);border-left:4px solid var(--clr-apps);border-radius:8px;padding:1.2rem 1.4rem;margin:1.5rem 0}
 .highlight-box.tip{border-left-color:#34d399}
-.highlight-box.warn{border-left-color:#f87171}
+.highlight-box.warn{border-left-color:#AC0707}
 .highlight-box .hb-label{font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--clr-apps);margin-bottom:.5rem}
 .highlight-box.tip .hb-label{color:#34d399}
-.highlight-box.warn .hb-label{color:#f87171}
+.highlight-box.warn .hb-label{color:#AC0707}
 /* RESPONSIVE TABLE FIX */
 .table-wrap{width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch;margin:1.5rem 0;border-radius:10px;border:1px solid var(--clr-border)}
 .styled-table thead th{padding:.85rem 1rem;text-align:left;color:var(--clr-accent);font-weight:700;font-size:.8rem;text-transform:uppercase;white-space:normal;word-break:break-word}
@@ -404,7 +404,7 @@
 /*         HINDI  : 2026-06-22-how-password-managers-work-hi.html */
 /* ============================================================ */
 
-:root{--clr-bg:#0a0c10;--clr-bg-2:#0f1219;--clr-bg-3:#161b27;--clr-surface:#1a2030;--clr-surface-2:#212840;--clr-border:#2a3348;--clr-border-2:#3a4560;--clr-accent:#f5a623;--clr-accent-2:#ff7c3a;--clr-apps:#60a5fa;--clr-stock:#34d399;--clr-shield:#f87171;--clr-text:#e8eaf0;--clr-text-2:#a0a8bc;--clr-text-3:#606880;--clr-heading:#f0f2f8}
+:root{--clr-bg:#0a0c10;--clr-bg-2:#0f1219;--clr-bg-3:#161b27;--clr-surface:#1a2030;--clr-surface-2:#212840;--clr-border:#2a3348;--clr-border-2:#3a4560;--clr-accent:#f5a623;--clr-accent-2:#ff7c3a;--clr-apps:#60a5fa;--clr-stock:#34d399;--clr-shield:#AC0707;--clr-text:#e8eaf0;--clr-text-2:#a0a8bc;--clr-text-3:#606880;--clr-heading:#f0f2f8}
 [data-theme="light"]{--clr-bg:#fff;--clr-bg-2:#edf0f7;--clr-bg-3:#e4e8f3;--clr-surface:#fff;--clr-surface-2:#f0f3fb;--clr-border:#d8deed;--clr-border-2:#bdc6e0;--clr-text:#1a2030;--clr-text-2:#3d4d6a;--clr-text-3:#6b7a9a;--clr-heading:#0d1421;--clr-accent:#0000FF;--clr-accent-2:#e8682a}
 .post-wrap{font-family:'Segoe UI',system-ui,sans-serif;color:var(--clr-text);background:var(--clr-bg);line-height:1.75;max-width:900px;margin:0 auto;padding:2rem 1.2rem 4rem}
 .post-hero{position:relative;border-radius:16px;overflow:hidden;background:var(--clr-surface);border:1px solid var(--clr-border);padding:3rem 2rem 2rem;margin-bottom:3rem;text-align:center}
@@ -422,10 +422,10 @@
 .post-section ul{padding-left:1.5rem;color:var(--clr-text-2);margin-bottom:1rem}
 .post-section li{margin-bottom:.45rem;font-size:.95rem}
 .highlight-box{background:var(--clr-surface-2);border:1px solid var(--clr-border-2);border-left:4px solid var(--clr-stock);border-radius:8px;padding:1.2rem 1.4rem;margin:1.5rem 0}
-.highlight-box.warn{border-left-color:#f87171}
+.highlight-box.warn{border-left-color:#AC0707}
 .highlight-box.info{border-left-color:#60a5fa}
 .highlight-box .hb-label{font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--clr-stock);margin-bottom:.5rem}
-.highlight-box.warn .hb-label{color:#f87171}
+.highlight-box.warn .hb-label{color:#AC0707}
 .highlight-box.info .hb-label{color:#60a5fa}
 .table-wrap{width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch;margin:1.5rem 0;border-radius:10px;border:1px solid var(--clr-border)}
 .styled-table thead th{padding:.85rem 1rem;text-align:left;color:var(--clr-accent);font-weight:700;font-size:.8rem;text-transform:uppercase;white-space:normal;word-break:break-word}
@@ -447,7 +447,7 @@
 /*         HINDI  : 2026-06-23-internet-tracking-explained-hi.html */
 /* ============================================================ */
 
-:root{--clr-bg:#0a0c10;--clr-bg-2:#0f1219;--clr-bg-3:#161b27;--clr-surface:#1a2030;--clr-surface-2:#212840;--clr-border:#2a3348;--clr-border-2:#3a4560;--clr-accent:#f5a623;--clr-accent-2:#ff7c3a;--clr-apps:#60a5fa;--clr-stock:#34d399;--clr-shield:#f87171;--clr-text:#e8eaf0;--clr-text-2:#a0a8bc;--clr-text-3:#606880;--clr-heading:#f0f2f8}
+:root{--clr-bg:#0a0c10;--clr-bg-2:#0f1219;--clr-bg-3:#161b27;--clr-surface:#1a2030;--clr-surface-2:#212840;--clr-border:#2a3348;--clr-border-2:#3a4560;--clr-accent:#f5a623;--clr-accent-2:#ff7c3a;--clr-apps:#60a5fa;--clr-stock:#34d399;--clr-shield:#AC0707;--clr-text:#e8eaf0;--clr-text-2:#a0a8bc;--clr-text-3:#606880;--clr-heading:#f0f2f8}
 [data-theme="light"]{--clr-bg:#fff;--clr-bg-2:#edf0f7;--clr-bg-3:#e4e8f3;--clr-surface:#fff;--clr-surface-2:#f0f3fb;--clr-border:#d8deed;--clr-border-2:#bdc6e0;--clr-text:#1a2030;--clr-text-2:#3d4d6a;--clr-text-3:#6b7a9a;--clr-heading:#0d1421;--clr-accent:#0000FF;--clr-accent-2:#e8682a}
 .post-wrap{font-family:'Segoe UI',system-ui,sans-serif;color:var(--clr-text);background:var(--clr-bg);line-height:1.75;max-width:900px;margin:0 auto;padding:2rem 1.2rem 4rem}
 .post-hero{position:relative;border-radius:16px;overflow:hidden;background:var(--clr-surface);border:1px solid var(--clr-border);padding:3rem 2rem 2rem;margin-bottom:3rem;text-align:center}
@@ -493,7 +493,7 @@
 /*         HINDI  : 2026-06-24-ai-voice-cloning-risks-hi.html */
 /* ============================================================ */
 
-:root{--clr-bg:#0a0c10;--clr-bg-2:#0f1219;--clr-bg-3:#161b27;--clr-surface:#1a2030;--clr-surface-2:#212840;--clr-border:#2a3348;--clr-border-2:#3a4560;--clr-accent:#f5a623;--clr-accent-2:#ff7c3a;--clr-editor:#a78bfa;--clr-shield:#f87171;--clr-stock:#34d399;--clr-text:#e8eaf0;--clr-text-2:#a0a8bc;--clr-text-3:#606880;--clr-heading:#f0f2f8}
+:root{--clr-bg:#0a0c10;--clr-bg-2:#0f1219;--clr-bg-3:#161b27;--clr-surface:#1a2030;--clr-surface-2:#212840;--clr-border:#2a3348;--clr-border-2:#3a4560;--clr-accent:#f5a623;--clr-accent-2:#ff7c3a;--clr-editor:#a78bfa;--clr-shield:#AC0707;--clr-stock:#34d399;--clr-text:#e8eaf0;--clr-text-2:#a0a8bc;--clr-text-3:#606880;--clr-heading:#f0f2f8}
 [data-theme="light"]{--clr-bg:#fff;--clr-bg-2:#edf0f7;--clr-bg-3:#e4e8f3;--clr-surface:#fff;--clr-surface-2:#f0f3fb;--clr-border:#d8deed;--clr-border-2:#bdc6e0;--clr-text:#1a2030;--clr-text-2:#3d4d6a;--clr-text-3:#6b7a9a;--clr-heading:#0d1421;--clr-accent:#0000FF;--clr-accent-2:#e8682a}
 .post-wrap{font-family:'Segoe UI',system-ui,sans-serif;color:var(--clr-text);background:var(--clr-bg);line-height:1.75;max-width:900px;margin:0 auto;padding:2rem 1.2rem 4rem}
 .post-hero{position:relative;border-radius:16px;overflow:hidden;background:var(--clr-surface);border:1px solid var(--clr-border);padding:3rem 2rem 2rem;margin-bottom:3rem;text-align:center}
@@ -585,7 +585,7 @@
 /*         HINDI  : 2026-06-26-deepfake-detection-guide-hi.html */
 /* ============================================================ */
 
-:root{--clr-bg:#0a0c10;--clr-bg-2:#0f1219;--clr-bg-3:#161b27;--clr-surface:#1a2030;--clr-surface-2:#212840;--clr-border:#2a3348;--clr-border-2:#3a4560;--clr-accent:#f5a623;--clr-accent-2:#ff7c3a;--clr-editor:#a78bfa;--clr-shield:#f87171;--clr-stock:#34d399;--clr-text:#e8eaf0;--clr-text-2:#a0a8bc;--clr-text-3:#606880;--clr-heading:#f0f2f8}
+:root{--clr-bg:#0a0c10;--clr-bg-2:#0f1219;--clr-bg-3:#161b27;--clr-surface:#1a2030;--clr-surface-2:#212840;--clr-border:#2a3348;--clr-border-2:#3a4560;--clr-accent:#f5a623;--clr-accent-2:#ff7c3a;--clr-editor:#a78bfa;--clr-shield:#AC0707;--clr-stock:#34d399;--clr-text:#e8eaf0;--clr-text-2:#a0a8bc;--clr-text-3:#606880;--clr-heading:#f0f2f8}
 [data-theme="light"]{--clr-bg:#fff;--clr-bg-2:#edf0f7;--clr-bg-3:#e4e8f3;--clr-surface:#fff;--clr-surface-2:#f0f3fb;--clr-border:#d8deed;--clr-border-2:#bdc6e0;--clr-text:#1a2030;--clr-text-2:#3d4d6a;--clr-text-3:#6b7a9a;--clr-heading:#0d1421;--clr-accent:#0000FF;--clr-accent-2:#e8682a}
 .post-wrap{font-family:'Segoe UI',system-ui,sans-serif;color:var(--clr-text);background:var(--clr-bg);line-height:1.75;max-width:900px;margin:0 auto;padding:2rem 1.2rem 4rem}
 .post-hero{position:relative;border-radius:16px;overflow:hidden;background:var(--clr-surface);border:1px solid var(--clr-border);padding:3rem 2rem 2rem;margin-bottom:3rem;text-align:center}
