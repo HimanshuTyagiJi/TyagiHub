@@ -1452,44 +1452,35 @@
   display: inline !important;
 }
 
-
-/* 🖥️ Only for Desktop Screens where CLS is triggering */
+/* 🖥️ GLOBAL ZERO-CLS DESKTOP OVERRIDE */
 @media (min-width: 901px) {
 
-  /* 1. Main Content Left Block ko fixed structural breathing space do */
-  .tc-left {
-    flex: 1;
-    min-width: 0; /* Prevents flex items from bursting layouts */
-    display: block;
-    /* Browser ko bolta hai ki iska layout internally secure rakhe */
-    contain: layout shortcuts; 
+  /* 1. Content ke andar jitne bhi raw SVG vectors hain, unhe jhatke maarne se roko */
+  .post-wrap svg, 
+  .post-section svg,
+  main id="main-content" svg {
+    max-width: 100%;
+    height: auto;
+    aspect-ratio: attr(width) / attr(height); /* Browser ko layout dynamic reserve karne deta hai */
+    display: inline-block;
   }
 
-  /* 2. ASLI SUSPECT: Table of Contents Box */
-  /* Jab Liquid loop late render hota hai, toh ye hilega nahi */
-  .toc-box {
+  /* 2. Table of Contents Loop stability */
+  .toc-box ol.toc-list {
+    min-height: 200px; /* List ke items load hone tak default rigid area */
     display: block;
-    width: 100%;
-    min-height: 120px; /* Ek baseline height reserve rakho loop chalne tak */
-    box-sizing: border-box;
-    contain: layout style;
   }
 
-  /* 3. Reading Progress Wrapper Context */
-  #reading-progress-container {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 4px; /* Fixed height pehle se locked */
-    z-index: 9999;
-    background-color: rgba(0,0,0,0.1);
+  /* 3. FontAwesome Icons space collapse protection */
+  .fas, .far, .fa-regular, .fa-solid {
+    display: inline-block;
+    width: 14px; /* Icon load hone se pahle text shift nahi hoga */
+    height: 14px;
   }
 
-  /* 4. Post Hero Section Info text constraints */
-  .post-hero {
-    display: block;
-    width: 100%;
-    min-height: 180px; /* Title, Author, Date ke liye space reserved */
+  /* 4. Navbar structural shift prevention */
+  .navbar__actions button svg {
+    width: 24px !important;
+    height: 24px !important;
   }
 }
