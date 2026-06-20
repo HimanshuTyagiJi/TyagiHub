@@ -629,3 +629,9 @@
 .post-section {
   scroll-margin-top: 85px !important; /* Header 60px + 25px safe breathing space */
 }
+.concept-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.2rem;margin:1.5rem 0}
+.concept-card{background:var(--clr-surface);border:1px solid var(--clr-border);border-radius:12px;padding:1.3rem;border-top:3px solid var(--cc,var(--clr-editor));transition:transform .2s}
+.concept-card:hover{transform:translateY(-3px)}
+.concept-card .cc-icon{font-size:1.8rem;margin-bottom:.5rem}
+.concept-card h4{font-size:.95rem;font-weight:700;color:var(--clr-heading);margin-bottom:.4rem}
+.concept-card p{font-size:.83rem;color:var(--clr-text-2);line-height:1.6}
