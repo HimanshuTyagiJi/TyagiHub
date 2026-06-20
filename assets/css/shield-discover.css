@@ -625,3 +625,7 @@
 .post-tags{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:2.5rem}
 .symptom-grid{grid-template-columns:1fr}
 .post-hero{position:relative;border-radius:16px;overflow:hidden;background:var(--clr-surface);border:1px solid var(--clr-border);padding:0;}
+/* 🎯 Global Scroll Offset: Har post-section wrapper ko target karega */
+.post-section {
+  scroll-margin-top: 85px !important; /* Header 60px + 25px safe breathing space */
+}
