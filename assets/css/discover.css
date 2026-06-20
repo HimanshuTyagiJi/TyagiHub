@@ -1451,36 +1451,45 @@
 #toc-toggle:checked ~ .toc-btn .text-less {
   display: inline !important;
 }
-/* 🖼️ Card ke image container ko ekdam fixed kar do */
-.post-img {
-  width: 354px !important;
-  height: 236px !important;
-  position: relative;
-  overflow: hidden;
-  background: #111216;
-  /* Aspect Ratio lock karo taaki loading ke waqt layout na hile */
-  aspect-ratio: 354 / 236; 
-}
 
-/* 🔄 Iske andar jo dynamic media box hai use bhi fix karo */
-.thumb-media-box {
-  width: 100% !important;
-  height: 100% !important;
-  display: flex !important;
-  align-items: center;
-  justify-content: center;
-  position: absolute;
-  top: 0;
-  left: 0;
-}
 
-/* 📐 SVG aur Img dono ko is container ke andar stretch hone se roko aur fit rakho */
-.thumb-media-box img,
-.thumb-media-box svg {
-  width: 100% !important;
-  height: 100% !important;
-  max-width: 100% !important;
-  max-height: 100% !important;
-  object-fit: cover !important;
-  display: block !important;
+/* 🖥️ Only for Desktop Screens where CLS is triggering */
+@media (min-width: 901px) {
+
+  /* 1. Main Content Left Block ko fixed structural breathing space do */
+  .tc-left {
+    flex: 1;
+    min-width: 0; /* Prevents flex items from bursting layouts */
+    display: block;
+    /* Browser ko bolta hai ki iska layout internally secure rakhe */
+    contain: layout shortcuts; 
+  }
+
+  /* 2. ASLI SUSPECT: Table of Contents Box */
+  /* Jab Liquid loop late render hota hai, toh ye hilega nahi */
+  .toc-box {
+    display: block;
+    width: 100%;
+    min-height: 120px; /* Ek baseline height reserve rakho loop chalne tak */
+    box-sizing: border-box;
+    contain: layout style;
+  }
+
+  /* 3. Reading Progress Wrapper Context */
+  #reading-progress-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px; /* Fixed height pehle se locked */
+    z-index: 9999;
+    background-color: rgba(0,0,0,0.1);
+  }
+
+  /* 4. Post Hero Section Info text constraints */
+  .post-hero {
+    display: block;
+    width: 100%;
+    min-height: 180px; /* Title, Author, Date ke liye space reserved */
+  }
 }
