@@ -1452,35 +1452,3 @@
   display: inline !important;
 }
 
-/* 🖥️ GLOBAL ZERO-CLS DESKTOP OVERRIDE */
-@media (min-width: 901px) {
-
-  /* 1. Content ke andar jitne bhi raw SVG vectors hain, unhe jhatke maarne se roko */
-  .post-wrap svg, 
-  .post-section svg,
-  main id="main-content" svg {
-    max-width: 100%;
-    height: auto;
-    aspect-ratio: attr(width) / attr(height); /* Browser ko layout dynamic reserve karne deta hai */
-    display: inline-block;
-  }
-
-  /* 2. Table of Contents Loop stability */
-  .toc-box ol.toc-list {
-    min-height: 200px; /* List ke items load hone tak default rigid area */
-    display: block;
-  }
-
-  /* 3. FontAwesome Icons space collapse protection */
-  .fas, .far, .fa-regular, .fa-solid {
-    display: inline-block;
-    width: 14px; /* Icon load hone se pahle text shift nahi hoga */
-    height: 14px;
-  }
-
-  /* 4. Navbar structural shift prevention */
-  .navbar__actions button svg {
-    width: 24px !important;
-    height: 24px !important;
-  }
-}
