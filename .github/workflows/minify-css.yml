@@ -3,7 +3,11 @@ name: Auto Optimize & Merge CSS
 on:
   push:
     branches:
-      - main  # Agar branch ka naam master hai toh yahan master kar dena
+      - main
+
+# 🔑 GITHUB ACTIONS BOT KO WRITE ACCESS DENE KE LIYE
+permissions:
+  contents: write
 
 jobs:
   minify:
@@ -22,7 +26,7 @@ jobs:
 
       - name: Merge and Minify main and search CSS
         run: |
-          # main.css aur search.css ko jodkar search-main.css banayega, bina purani files ko nuksaan pahunchaye
+          # main.css aur search.css ko jodkar search-main.css banayega
           cleancss -o assets/css/search-main.css assets/css/main.css assets/css/search.css
 
       - name: Commit and Push Compiled Joint File
