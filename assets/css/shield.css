@@ -363,6 +363,6 @@
 @media (max-width: 600px) {
   #post-wrapper.grid-3 {
     grid-template-columns: 1fr;
-    min-height: 2200px !important; /* Single column layout stack height */
+  
   }
 }
