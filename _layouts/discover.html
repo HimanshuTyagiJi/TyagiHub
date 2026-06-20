@@ -49,7 +49,7 @@ layout: default
 		
 		{% if page.is_post %}
 			<div class="toc-box" style="margin-top: 20px; margin-bottom: 30px;">
-				<h3>📋 Table of Contents</h3>
+			<div class="toc-title">📋 Table of Contents</div>
 				<input type="checkbox" id="toc-toggle" class="toc-toggle-checkbox" style="display: none;">
 				<ol class="toc-list">
 					{% assign blocks = content | split: 'post-section' %}
