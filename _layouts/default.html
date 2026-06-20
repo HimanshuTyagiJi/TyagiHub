@@ -15,12 +15,12 @@
   <meta property="og:description" content="{% if page.description %}{{ page.description }}{% else %}{{ site.description }}{% endif %}">
   <meta property="og:url" content="{{ site.url }}{{ page.url }}">
   <meta property="og:site_name" content="{{ site.title }}">
-  <meta property="og:image" content="{% if page.image %}{{ site.url }}{{ page.image }}{% else %}{{ site.url }}/assets/images/tyagihub.png{% endif %}">
+  <meta property="og:image" content="{% if page.image %}{{ site.url }}{{ page.image }}{% else %}{{ site.url }}/assets/images/tyagihub.avif{% endif %}">
   
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}">
   <meta name="twitter:description" content="{% if page.description %}{{ page.description }}{% else %}{{ site.description }}{% endif %}">
-  <meta name="twitter:image" content="{% if page.image %}{{ site.url }}{{ page.image }}{% else %}{{ site.url }}/assets/images/tyagihub.png{% endif %}">
+  <meta name="twitter:image" content="{% if page.image %}{{ site.url }}{{ page.image }}{% else %}{{ site.url }}/assets/images/tyagihub.avif{% endif %}">
   <meta name="twitter:site" content="@TyagiHub">
   
   <link rel="icon" type="image/png" sizes="32x32" href="{{ site.url }}/assets/images/favicon.png">
@@ -41,7 +41,7 @@
   {% if page.image %}
     <link rel="preload" href="{{ site.url }}{{ page.image }}" as="image">
   {% else %}
-    <link rel="preload" href="{{ site.url }}/assets/images/tyagihub.png" as="image">
+    <link rel="preload" href="{{ site.url }}/assets/images/tyagihub.avif" as="image">
   {% endif %}
 
   <script type="application/ld+json">
@@ -92,7 +92,7 @@
           "name": "{{ page.author | default: 'Himanshu Tyagi' }}"
         },
         "publisher": { "@id": "{{ site.url }}/#organization" },
-        "image": "{% if page.image %}{{ site.url }}{{ page.image }}{% else %}{{ site.url }}/assets/images/tyagihub.png{% endif %}",
+        "image": "{% if page.image %}{{ site.url }}{{ page.image }}{% else %}{{ site.url }}/assets/images/tyagihub.avif{% endif %}",
         "description": "{{ page.description }}"
       }
       {% endif %}
@@ -237,8 +237,8 @@
 }
   </style>
   {% include footer.html %}
-  <script src="{{ site.url }}/assets/js/main.js" defer></script>
-  <script src="{{ site.url }}/assets/js/search.js" defer></script>
+  <script src="{{ site.url }}/assets/js/main.js" defer="defer"></script>
+  <script src="{{ site.url }}/assets/js/search.js" defer="defer"></script>
   {% if page.extra_js %}
   {% for js in page.extra_js %}
     {% if js contains '.mjs' %}
