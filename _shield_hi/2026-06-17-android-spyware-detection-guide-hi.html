@@ -1,0 +1,360 @@
+---
+layout: discover
+title: "एंड्रॉइड स्पाइवेयर डिटेक्शन गाइड: छुपा स्पाइवेयर कैसे ढूंढें और हटाएं"
+description: "जानिए अपने एंड्रॉइड फोन में छुपे स्पाइवेयर को कैसे पहचानें, स्टॉकरवेयर क्या है, खतरनाक ऐप कैसे हटाएं, और अपने डिवाइस को सर्विलांस टूल्स से कैसे बचाएं।"
+image: "/assets/images/android-spyware-signs-you-should-never-ignore-banner.avif"
+is_post: true
+categories: "Cyber-Security"
+date: 2026-06-17
+author: "Himanshu Tyagi"
+lang: hi
+permalink: /hi/cyber-security/android-spyware-detection-guide/
+tags:
+  - एंड्रॉइड स्पाइवेयर
+  - स्टॉकरवेयर
+  - फोन सर्विलांस
+  - mobile malware
+  - spyware removal
+  - android security
+  - pegasus spyware
+  - mobile privacy
+section: discover
+extra_css:
+- /assets/css/discover.css
+- /assets/css/shield-discover.css
+extra_js:
+- /assets/js/discover.js
+---
+<div class="post-wrap">
+
+
+
+<div class="post-section" id="what-is-spyware">
+  <h2>1. एंड्रॉइड स्पाइवेयर है क्या</h2>
+  <p>एंड्रॉइड स्पाइवेयर एक तरह का मालिशियस सॉफ्टवेयर है जो आपके डिवाइस पर बिना आपकी जानकारी के चुपचाप चलता है और जानकारी इकट्ठा करके भेजता रहता है। वायरस की तरह डेटा डिलीट नहीं करता, रैनसमवेयर की तरह फाइल लॉक नहीं करता — स्पाइवेयर का काम है पूरी तरह छुपा रहकर जितना डेटा हो सके निकालना।</p>
+  <p>स्पाइवेयर आपके मैसेज पढ़ सकता है, कॉल रिकॉर्ड कर सकता है, बिना किसी इंडिकेटर लाइट के माइक और कैमरा ऑन कर सकता है, रियल टाइम में GPS लोकेशन ट्रैक कर सकता है, हर कीस्ट्रोक लॉग कर सकता है, स्क्रीनशॉट ले सकता है, कॉन्टैक्ट और फोटो एक्सेस कर सकता है — और ये सब अटैकर के रिमोट सर्वर पर भेज सकता है।</p>
+  <p>एंड्रॉइड खासतौर पर स्पाइवेयर का टारगेट बनता है क्योंकि इसका इकोसिस्टम ओपन है — iOS के उलट, एंड्रॉइड पर ऑफिशियल ऐप स्टोर के बाहर से भी ऐप इंस्टॉल किया जा सकता है (जिसे साइडलोडिंग कहते हैं), और स्पाइवेयर बनाने वाले इसी का फायदा उठाते हैं।</p>
+
+  <div class="stat-strip">
+    <div class="stat-card"><span class="stat-val">42%</span><div class="stat-label">एंड्रॉइड मालवेयर जो स्पाइवेयर या स्टॉकरवेयर है</div></div>
+    <div class="stat-card"><span class="stat-val">8M+</span><div class="stat-label">हर साल मोबाइल स्पाइवेयर से इन्फेक्ट होने वाले डिवाइस</div></div>
+    <div class="stat-card"><span class="stat-val">3.5x</span><div class="stat-label">साइडलोडेड ऐप में स्पाइवेयर मिलने की ज्यादा संभावना</div></div>
+    <div class="stat-card"><span class="stat-val">₹0</span><div class="stat-label">कई कंज्यूमर-ग्रेड स्टॉकरवेयर टूल्स की कीमत</div></div>
+  </div>
+</div>
+
+<div class="post-section" id="types-spyware">
+  <h2>2. स्पाइवेयर के प्रकार</h2>
+  <div class="table-wrap">
+  <table class="styled-table">
+    <thead><tr><th>स्पाइवेयर टाइप</th><th>मुख्य काम</th><th>आम सोर्स</th></tr></thead>
+    <tbody>
+      <tr><td>स्टॉकरवेयर</td><td>बिना सहमति पार्टनर/परिवार को ट्रैक करना</td><td>दुर्व्यवहार करने वाले द्वारा फिजिकल एक्सेस</td></tr>
+      <tr><td>कमर्शियल स्पाइवेयर</td><td>"पेरेंटल कंट्रोल" के नाम पर लोकेशन + कॉल लॉग</td><td>ऐप स्टोर, डायरेक्ट डाउनलोड</td></tr>
+      <tr><td>कीलॉगर्स</td><td>हर कीस्ट्रोक रिकॉर्ड — पासवर्ड, मैसेज</td><td>मालिशियस APK डाउनलोड</td></tr>
+      <tr><td>RAT (रिमोट एक्सेस ट्रोजन)</td><td>डिवाइस का पूरा रिमोट कंट्रोल</td><td>फिशिंग लिंक, मालिशियस ऐप</td></tr>
+      <tr><td>एडवेयर-स्पाइवेयर हाइब्रिड</td><td>डेटा लेकर टारगेटेड ऐड + रीसेल</td><td>हिडन SDK वाले फ्री ऐप</td></tr>
+      <tr><td>राष्ट्र-स्तरीय स्पाइवेयर</td><td>पूरा डिवाइस कब्जा — डेटा + माइक/कैमरा</td><td>Zero-click एक्सप्लॉइट (जैसे Pegasus)</td></tr>
+      <tr><td>बैंकिंग ट्रोजन</td><td>बैंकिंग क्रेडेंशियल, OTP कैप्चर</td><td>नकली बैंकिंग ऐप, SMS लिंक</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h3>भारत में स्टॉकरवेयर की समस्या</h3>
+  <p>"स्पाउस ट्रैकर", "एम्प्लॉयी मॉनिटर" या "पेरेंटल कंट्रोल" के नाम पर बिकने वाले कंज्यूमर-ग्रेड स्टॉकरवेयर भारत में अक्सर घरेलू सर्विलांस के लिए गलत इस्तेमाल किए जाते हैं। ये ऐप्स इंस्टॉल होते ही अपना आइकॉन छुपा लेते हैं, बैकग्राउंड में चलते रहते हैं, और लोकेशन, मैसेज, कॉल लॉग को एक वेब डैशबोर्ड पर अपलोड कर देते हैं जो इंस्टॉल करने वाले को दिखता है। यह गंभीर प्राइवेसी उल्लंघन है और IT एक्ट के तहत क्रिमिनल ऑफेंस भी बनता जा रहा है।</p>
+</div>
+ <div class="post-hero">
+    <svg viewBox="0 0 480 220" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <radialGradient id="g3" cx="50%" cy="50%" r="55%">
+          <stop offset="0%" stop-color="#a78bfa" stop-opacity=".18" />
+          <stop offset="100%" stop-color="#0a0c10" stop-opacity="0" />
+        </radialGradient>
+      </defs>
+      <rect width="480" height="220" fill="#0a0c10" />
+      <rect width="480" height="220" fill="url(#g3)" />
+
+      <!-- PHONE BODY -->
+      <rect x="170" y="18" width="140" height="184" rx="16" fill="#1a2030" stroke="#2a3348" stroke-width="2" />
+      <rect x="178" y="30" width="124" height="155" rx="8" fill="#0a0c10" />
+      <!-- home bar -->
+      <rect x="220" y="190" width="40" height="4" rx="2" fill="#2a3348" />
+      <!-- front camera -->
+      <circle cx="240" cy="24" r="3" fill="#0f1219" stroke="#2a3348" stroke-width=".8" />
+
+      <!-- SCANNING LINE across screen -->
+      <line x1="178" y1="80" x2="302" y2="80" stroke="#a78bfa" stroke-width="1.5" opacity=".8">
+        <animate attributeName="y1" values="30;184;30" dur="3s" repeatCount="indefinite" calcMode="ease-in-out" />
+        <animate attributeName="y2" values="30;184;30" dur="3s" repeatCount="indefinite" calcMode="ease-in-out" />
+        <animate attributeName="opacity" values=".9;.4;.9" dur="3s" repeatCount="indefinite" />
+      </line>
+
+      <!-- SPY EYE inside screen -->
+      <ellipse cx="240" cy="107" rx="36" ry="20" fill="none" stroke="#a78bfa" stroke-width="1.5" opacity=".7" />
+      <circle cx="240" cy="107" r="11" fill="#a78bfa" opacity=".3" />
+      <circle cx="240" cy="107" r="6" fill="#a78bfa" opacity=".7" />
+      <circle cx="243" cy="104" r="2" fill="#fff" opacity=".6" />
+
+      <!-- INFECTED APPS leaking data (icons with red dot) -->
+      <!-- App row on screen -->
+      <rect x="188" y="55" width="20" height="20" rx="4" fill="#212840" />
+      <circle cx="207" cy="56" r="4" fill="#f87171">
+        <animate attributeName="r" values="3;5;3" dur="1.4s" repeatCount="indefinite" />
+      </circle>
+      <rect x="214" y="55" width="20" height="20" rx="4" fill="#212840" />
+      <circle cx="233" cy="56" r="4" fill="#f87171">
+        <animate attributeName="r" values="3;5;3" dur="1.7s" repeatCount="indefinite" />
+      </circle>
+      <rect x="240" y="55" width="20" height="20" rx="4" fill="#212840" />
+      <circle cx="259" cy="56" r="4" fill="#f87171">
+        <animate attributeName="r" values="3;5;3" dur="1.2s" repeatCount="indefinite" />
+      </circle>
+      <rect x="266" y="55" width="20" height="20" rx="4" fill="#212840" />
+
+      <!-- DATA LEAKING out (right side) — flowing dots -->
+      <circle cx="320" cy="88" r="3" fill="#f87171" opacity=".8">
+        <animate attributeName="cx" values="302;360;420" dur="2s" repeatCount="indefinite" />
+        <animate attributeName="opacity" values=".8;.5;0" dur="2s" repeatCount="indefinite" />
+      </circle>
+      <circle cx="320" cy="107" r="2.5" fill="#f87171" opacity=".8">
+        <animate attributeName="cx" values="302;360;420" dur="2s" begin=".5s" repeatCount="indefinite" />
+        <animate attributeName="opacity" values=".8;.5;0" dur="2s" begin=".5s" repeatCount="indefinite" />
+      </circle>
+      <circle cx="320" cy="126" r="3" fill="#f87171" opacity=".8">
+        <animate attributeName="cx" values="302;360;420" dur="2s" begin="1s" repeatCount="indefinite" />
+        <animate attributeName="opacity" values=".8;.5;0" dur="2s" begin="1s" repeatCount="indefinite" />
+      </circle>
+
+      <!-- ATTACKER SERVER (right) -->
+      <rect x="420" y="82" width="48" height="52" rx="6" fill="#212840" stroke="#f87171" stroke-width="1.2" />
+      <rect x="428" y="90" width="32" height="4" rx="2" fill="#f87171" opacity=".5" />
+      <rect x="428" y="100" width="24" height="4" rx="2" fill="#f87171" opacity=".35" />
+      <rect x="428" y="110" width="28" height="4" rx="2" fill="#f87171" opacity=".25" />
+      <text x="444" y="148" text-anchor="middle" font-size="8" fill="#f87171">C&C</text>
+
+      <!-- permission labels left -->
+      <text x="28" y="72" text-anchor="start" font-size="8" fill="#a78bfa">📍 Location</text>
+      <text x="28" y="90" text-anchor="start" font-size="8" fill="#a78bfa">🎤 Microphone</text>
+      <text x="28" y="108" text-anchor="start" font-size="8" fill="#a78bfa">📷 Camera</text>
+      <text x="28" y="126" text-anchor="start" font-size="8" fill="#a78bfa">💬 Messages</text>
+      <!-- leader lines -->
+      <line x1="100" y1="70" x2="170" y2="90" stroke="#a78bfa" stroke-width=".6" stroke-dasharray="2,2" opacity=".4" />
+      <line x1="110" y1="88" x2="170" y2="100" stroke="#a78bfa" stroke-width=".6" stroke-dasharray="2,2"
+        opacity=".35" />
+      <line x1="100" y1="106" x2="170" y2="110" stroke="#a78bfa" stroke-width=".6" stroke-dasharray="2,2"
+        opacity=".3" />
+      <line x1="110" y1="124" x2="170" y2="120" stroke="#a78bfa" stroke-width=".6" stroke-dasharray="2,2"
+        opacity=".25" />
+
+      <text x="240" y="212" text-anchor="middle" font-size="10" fill="#a0a8bc">Hidden spyware drains your permissions
+        silently</text>
+    </svg>
+
+  </div>
+<div class="post-section" id="how-installed">
+  <h2>3. स्पाइवेयर इंस्टॉल कैसे होता है</h2>
+
+  <div class="step-grid">
+    <div class="step-card"><div class="step-num">1</div><h3>📦 मालिशियस APK फाइल</h3><p>WhatsApp मैसेज "ये ऐप इंस्टॉल करो फ्री रीचार्ज/मूवी मिलेगी" स्पाइवेयर वाली APK फैलाते हैं। एक इंस्टॉल और अटैकर का एक्सेस बन जाता है।</p></div>
+    <div class="step-card"><div class="step-num">2</div><h3>🔗 ड्राइव-बाय डाउनलोड</h3><p>पुराने ब्राउज़र पर मालिशियस वेबसाइट विजिट करने से बिना किसी एक्शन के APK चुपचाप डाउनलोड और इंस्टॉल हो सकती है।</p></div>
+    <div class="step-card"><div class="step-num">3</div><h3>👆 फिजिकल डिवाइस एक्सेस</h3><p>आपके अनलॉक फोन पर 5-10 मिनट का फिजिकल एक्सेस मिलने पर कोई भी स्टॉकरवेयर इंस्टॉल कर सकता है। घरेलू दुर्व्यवहार में सबसे कॉमन।</p></div>
+    <div class="step-card"><div class="step-num">4</div><h3>🎭 ट्रोजन वाले असली ऐप</h3><p>पॉपुलर ऐप के रीपैकेज वर्जन (GBWhatsApp जैसे WhatsApp मॉड, क्रैक्ड Netflix APK) असली फीचर के साथ छुपा स्पाइवेयर भी रखते हैं।</p></div>
+    <div class="step-card"><div class="step-num">5</div><h3>🛒 Play Store मालवेयर</h3><p>Google की सुरक्षा के बावजूद, स्पाइवेयर कभी-कभी फ्लैशलाइट ऐप, QR स्कैनर, यूटिलिटी टूल में छुपकर Play Store पर पहुंच जाता है।</p></div>
+    <div class="step-card"><div class="step-num">6</div><h3>🔓 Zero-Click एक्सप्लॉइट</h3><p>Pegasus जैसे एडवांस स्पाइवेयर को यूजर के किसी एक्शन की जरूरत नहीं — ये WhatsApp, iMessage, SMS की कमजोरी का फायदा उठाकर चुपचाप इंस्टॉल हो जाता है।</p></div>
+  </div>
+
+  <div class="highlight-box warn">
+    <div class="hb-label">⚠️ भारत में ज्यादा खतरा</div>
+    <p>GBWhatsApp, WhatsApp Plus, FMWhatsApp — ये अनऑफिशियल WhatsApp मॉड भारत में बहुत पॉपुलर हैं और इनमें बार-बार स्पाइवेयर या एडवेयर मिलता है। ये Meta द्वारा नहीं बनाए जाते और WhatsApp के ऑफिशियल सिक्योरिटी फ्रेमवर्क के बाहर काम करते हैं। इन्हें तुरंत डिलीट करें और ऑफिशियल WhatsApp इस्तेमाल करें।</p>
+  </div>
+</div>
+
+<div class="post-section" id="symptoms">
+  <h2>4. इन्फेक्टेड डिवाइस के लक्षण</h2>
+  <p>स्पाइवेयर खुद को छुपाने की कोशिश करता है, लेकिन बैकग्राउंड में चलते रहना और लगातार डेटा भेजना अपने निशान छोड़ ही देता है। कैटेगरी के हिसाब से चेतावनी संकेत यहां हैं:</p>
+
+  <div class="symptom-grid">
+    <div class="symptom-card"><div class="sym-icon">🔋</div><h3>तेजी से बैटरी खत्म होना</h3><p>एक जैसी इस्तेमाल पैटर्न में भी बैटरी 30-50% तेजी से खत्म होना। स्पाइवेयर बैकग्राउंड में लगातार चलता है।</p></div>
+    <div class="symptom-card"><div class="sym-icon">🌡️</div><h3>फोन गर्म होना</h3><p>आइडल या चार्जिंग के समय भी डिवाइस गर्म महसूस होना। बैकग्राउंड रिकॉर्डिंग और डेटा भेजना गर्मी पैदा करता है।</p></div>
+    <div class="symptom-card"><div class="sym-icon">📡</div><h3>ज्यादा डेटा खर्च</h3><p>खासतौर पर रात में अनयूज़ुअल मोबाइल डेटा खर्च। स्पाइवेयर रिकॉर्डिंग और लॉग रिमोट सर्वर पर अपलोड करता है।</p></div>
+    <div class="symptom-card"><div class="sym-icon">🐌</div><h3>धीमी परफॉर्मेंस</h3><p>फोन साफ तौर पर लैगी हो जाता है। स्पाइवेयर प्रोसेस आपके ऐप्स के साथ CPU/RAM के लिए कॉम्पिटीशन करते हैं।</p></div>
+    <div class="symptom-card"><div class="sym-icon">💡</div><h3>स्क्रीन खुद ऑन होना</h3><p>बिना किसी नोटिफिकेशन या यूजर एक्शन के स्क्रीन ऑन होना — रिमोट एक्सेस का संकेत हो सकता है।</p></div>
+    <div class="symptom-card"><div class="sym-icon">📞</div><h3>कॉल में आवाज़</h3><p>कॉल के दौरान क्लिकिंग साउंड, इको या स्टैटिक — कॉल रिकॉर्डिंग सॉफ्टवेयर चलने का संकेत हो सकता है।</p></div>
+    <div class="symptom-card"><div class="sym-icon">🔔</div><h3>सेटिंग में अनजान ऐप</h3><p>Settings > Apps में दिखने वाले अनजान ऐप, अक्सर "System Service" या "Phone Manager" जैसे जेनेरिक नाम के साथ।</p></div>
+    <div class="symptom-card"><div class="sym-icon">🔑</div><h3>बिना दी गई परमिशन</h3><p>परमिशन सेटिंग चेक करने पर माइक, कैमरा, लोकेशन एक्सेस वाले ऐप्स दिखें जो आपने कभी इरादतन अलाउ नहीं किए।</p></div>
+  </div>
+
+  <div class="svg-diagram">
+    <svg viewBox="0 0 700 180" xmlns="http://www.w3.org/2000/svg" width="700" height="180">
+      <text x="350" y="20" text-anchor="middle" fill="#a0a8bc" font-size="11" font-weight="700">नॉर्मल vs इन्फेक्टेड — बैटरी और डेटा यूसेज पैटर्न</text>
+      <text x="80" y="50" text-anchor="middle" fill="#34d399" font-size="10">नॉर्मल डिवाइस</text>
+      <rect x="20" y="60" width="120" height="20" rx="4" fill="#1a2030" stroke="#34d399" stroke-width="1.5"/>
+      <rect x="20" y="60" width="96" height="20" rx="4" fill="#34d399" opacity=".7"/>
+      <text x="150" y="75" fill="#a0a8bc" font-size="9">शाम 6 बजे 80% बैटरी</text>
+      <rect x="20" y="90" width="120" height="20" rx="4" fill="#1a2030" stroke="#34d399" stroke-width="1.5"/>
+      <rect x="20" y="90" width="60" height="20" rx="4" fill="#34d399" opacity=".5"/>
+      <text x="150" y="105" fill="#a0a8bc" font-size="9">रात 12 बजे 50% बैटरी</text>
+      <text x="430" y="50" text-anchor="middle" fill="#f87171" font-size="10">इन्फेक्टेड डिवाइस</text>
+      <rect x="370" y="60" width="120" height="20" rx="4" fill="#1a2030" stroke="#f87171" stroke-width="1.5"/>
+      <rect x="370" y="60" width="96" height="20" rx="4" fill="#f87171" opacity=".7"/>
+      <text x="500" y="75" fill="#a0a8bc" font-size="9">शाम 6 बजे 80% बैटरी</text>
+      <rect x="370" y="90" width="120" height="20" rx="4" fill="#1a2030" stroke="#f87171" stroke-width="1.5"/>
+      <rect x="370" y="90" width="12" height="20" rx="4" fill="#f87171" opacity=".5"/>
+      <text x="500" y="105" fill="#f87171" font-size="9">रात 12 बजे 10% बैटरी ⚠️</text>
+      <text x="350" y="135" text-anchor="middle" fill="#a0a8bc" font-size="10">बैकग्राउंड डेटा यूसेज (MB/दिन)</text>
+      <rect x="100" y="145" width="80" height="20" rx="3" fill="#34d399" opacity=".6"/>
+      <text x="190" y="160" fill="#a0a8bc" font-size="9">नॉर्मल: ~50MB</text>
+      <rect x="380" y="130" width="220" height="35" rx="3" fill="#f87171" opacity=".6"/>
+      <text x="610" y="152" fill="#f87171" font-size="9">इन्फेक्टेड: ~400MB+ ⚠️</text>
+    </svg>
+  </div>
+</div>
+
+<div class="post-section" id="detection">
+  <h2>5. स्टेप-बाय-स्टेप डिटेक्शन</h2>
+
+  <h3>स्टेप 1: बैटरी यूसेज डिटेल चेक करें</h3>
+  <p><strong>Settings → Battery → Battery Usage</strong> में जाएं। किसी भी अनजान ऐप को ज्यादा बैटरी खर्च करते देखें। 5% से ज्यादा बैटरी खर्च करने वाला कोई भी अनजान ऐप शक के दायरे में है। ये भी देखें कि कोई ऐप बिना इस्तेमाल हुए भी बैटरी खर्च कर रहा है।</p>
+
+  <h3>स्टेप 2: इंस्टॉल किए गए ऐप्स ऑडिट करें</h3>
+  <p><strong>Settings → Apps → See All Apps</strong> में जाकर हर ऐप रिव्यू करें। "Show System Apps" भी ऑन करें। जेनेरिक नाम वाले ऐप्स (System Tool, Phone Service, Device Helper, Update Service) देखें जो आपको इंस्टॉल करने की याद न हो। शक वाली चीज नोट करें।</p>
+
+  <h3>स्टेप 3: ऐप के हिसाब से डेटा यूसेज चेक करें</h3>
+  <p><strong>Settings → Network & Internet → Data Usage → Mobile Data Usage</strong> पर जाएं। सबसे ज्यादा यूसेज से सॉर्ट करें। खासतौर पर बैकग्राउंड में ज्यादा डेटा खर्च करने वाला कोई अनजान ऐप रेड फ्लैग है। व्यू को "Background data" पर स्विच करें।</p>
+
+  <h3>स्टेप 4: ऐप परमिशन रिव्यू करें</h3>
+  <p><strong>Settings → Privacy → Permission Manager</strong> में जाएं। हर सेंसिटिव परमिशन चेक करें: कैमरा, माइक्रोफोन, लोकेशन, कॉन्टैक्ट, SMS, कॉल लॉग। जो ऐप आपको पहचान में न आए या जिसे उसके काम के लिए ये परमिशन की जरूरत न हो, उसकी तुरंत जांच करें या हटा दें।</p>
+
+  <h3>स्टेप 5: डिवाइस एडमिनिस्ट्रेटर ऐप्स चेक करें</h3>
+  <p><strong>Settings → Security → Device Admin Apps</strong> में जाएं। इस लिस्ट में सिर्फ असली ऐप होने चाहिए जैसे कॉर्पोरेट MDM सॉल्यूशन या Google Find My Device। यहां कोई अनजान ऐप दिखे तो उसके पास सिस्टम का गहरा एक्सेस है — तुरंत डीएक्टिवेट करके हटा दें।</p>
+
+  <h3>स्टेप 6: Play Protect स्कैन चलाएं</h3>
+  <p>Play Store खोलें → प्रोफाइल फोटो पर टैप करें → Play Protect → Scan पर टैप करें। Google Play Protect सभी इंस्टॉल ऐप्स को Google के मालवेयर डेटाबेस से चेक करता है। परफेक्ट नहीं है, लेकिन ज्यादातर जाने-पहचाने स्पाइवेयर पकड़ लेता है।</p>
+
+  <h3>स्टेप 7: Accessibility Services चेक करें</h3>
+  <p><strong>Settings → Accessibility → Installed Services</strong> में जाएं। स्पाइवेयर अक्सर कीस्ट्रोक लॉग करने और स्क्रीन कंटेंट मॉनिटर करने के लिए एंड्रॉइड की Accessibility Service का गलत इस्तेमाल करता है। यहां सिर्फ वो ऐप दिखने चाहिए जिसे आपने जानबूझकर ये परमिशन दी हो (स्क्रीन रीडर, भरोसेमंद कस्टम कीबोर्ड)।</p>
+
+  <div class="highlight-box info">
+    <div class="hb-label">ℹ️ एडवांस डिटेक्शन</div>
+    <p>टेक्निकली एडवांस यूजर्स <strong>NetGuard</strong> (ओपन-सोर्स फायरवॉल ऐप) इंस्टॉल करके ऐप के हिसाब से सभी आउटगोइंग कनेक्शन मॉनिटर कर सकते हैं। जब आप शक वाला ऐप एक्टिवली इस्तेमाल नहीं कर रहे तब भी अनजान IP और डोमेन से कनेक्शन दिखना स्पाइवेयर का संकेत है।</p>
+  </div>
+</div>
+
+<div class="post-section" id="permission-audit">
+  <h2>6. परमिशन ऑडिट — ऐप्स को क्या नहीं देना चाहिए</h2>
+  <div class="table-wrap">
+  <table class="styled-table">
+    <thead><tr><th>परमिशन</th><th>जायज इस्तेमाल</th><th>संदेह तब हो जब ये मिले...</th></tr></thead>
+    <tbody>
+      <tr><td>माइक्रोफोन</td><td>कॉलिंग ऐप, वॉइस नोट, वीडियो कॉल</td><td>फ्लैशलाइट ऐप, कैलकुलेटर, वेदर ऐप</td></tr>
+      <tr><td>कैमरा</td><td>कैमरा ऐप, वीडियो कॉलिंग, QR स्कैनर</td><td>VPN ऐप, एंटीवायरस, फाइल मैनेजर</td></tr>
+      <tr><td>लोकेशन (हमेशा)</td><td>नेविगेशन ऐप, फूड डिलीवरी जब एक्टिव हो</td><td>"हमेशा ऑन" लोकेशन की जरूरत न रखने वाला कोई भी ऐप</td></tr>
+      <tr><td>SMS पढ़ना</td><td>OTP ऑटोफिल, ऑफिशियल बैंकिंग ऐप</td><td>गेम, यूटिलिटी, सोशल ऐप</td></tr>
+      <tr><td>कॉल लॉग पढ़ना</td><td>फोन बैकअप ऐप, truecaller टाइप ऐप</td><td>कॉल मैनेजर न होने वाला कोई भी ऐप</td></tr>
+      <tr><td>Accessibility Service</td><td>स्क्रीन रीडर, असली कीबोर्ड</td><td>इसके अलावा लगभग कोई भी ऐप जो मांगे</td></tr>
+      <tr><td>Device Administrator</td><td>कॉर्पोरेट MDM, Google Find My Device</td><td>आपने जानबूझकर सेट न किया हो कोई भी कंज्यूमर ऐप</td></tr>
+      <tr><td>Install Unknown Apps</td><td>ऐप स्टोर, भरोसेमंद साइडलोड सोर्स</td><td>डिफॉल्ट रूप से सभी ऐप के लिए OFF होना चाहिए</td></tr>
+    </tbody>
+  </table>
+  </div>
+</div>
+
+<div class="post-section" id="pegasus">
+  <h2>7. Pegasus और सरकारी स्पाइवेयर</h2>
+  <p>Pegasus, इजरायली साइबर इंटेलिजेंस कंपनी NSO Group द्वारा बनाया गया है और सिर्फ सरकारों और कानून लागू करने वाली एजेंसियों को बेचा जाता है। यह मोबाइल स्पाइवेयर की सबसे टॉप क्षमता का उदाहरण है — और इसके सामने आने से मोबाइल सिक्योरिटी की हमारी समझ बुनियादी रूप से बदल गई।</p>
+
+  <h3>Pegasus को अलग क्या बनाता है</h3>
+  <p>Pegasus एक "zero-click" स्पाइवेयर है — मतलब इसे किसी डिवाइस को कब्जे में लेने के लिए टारगेट से किसी क्लिक की जरूरत नहीं होती। ये WhatsApp, iMessage, Safari और कभी-कभी फोन के बेसबैंड प्रोसेसर में मौजूद zero-day कमजोरियों (अनजान बग) का फायदा उठाता है। एक गलत-फॉर्मेटेड मैसेज, इमेज या मिस्ड कॉल भी पूरे डिवाइस को कब्जे में लेने के लिए काफी हो सकता है।</p>
+
+  <h3>Pegasus क्या-क्या एक्सेस कर सकता है</h3>
+  <ul>
+    <li>सभी मैसेज (WhatsApp, Signal, Telegram, SMS — end-to-end एन्क्रिप्टेड मैसेज भी ऐप से सीधे पढ़े जा सकते हैं)</li>
+    <li>रियल-टाइम कैमरा और माइक्रोफोन एक्टिवेशन बिना किसी इंडिकेटर के</li>
+    <li>लाइव GPS लोकेशन ट्रैकिंग</li>
+    <li>कीलॉगिंग से सभी सेव पासवर्ड</li>
+    <li>फोटो, कॉन्टैक्ट, ईमेल, कैलेंडर</li>
+    <li>मेमोरी से निकालकर एन्क्रिप्टेड ऐप डेटा</li>
+  </ul>
+
+  <h3>भारत में Pegasus</h3>
+  <p>Pegasus Project (इंटरनेशनल पत्रकारों के एक समूह) ने कई भारतीय फोन नंबरों को संभावित Pegasus टारगेट के तौर पर पहचाना, जिनमें पत्रकार, एक्टिविस्ट, विपक्षी राजनेता और शिक्षाविद शामिल थे। इससे सर्विलांस टूल्स के गलत इस्तेमाल पर गंभीर चिंता बढ़ी और भारत में डिजिटल प्राइवेसी पर संसदीय बहस शुरू हुई।</p>
+
+  <h3>Pegasus कैसे चेक करें (Mobile Verification Toolkit)</h3>
+  <p>Amnesty International की Security Lab ने एक ओपन-सोर्स टूल "Mobile Verification Toolkit (MVT)" बनाया है जो iPhone बैकअप और Android फॉरेंसिक इमेज को Pegasus इन्फेक्शन के संकेतों के लिए जांच सकता है। इसे इस्तेमाल करने के लिए टेक्निकल जानकारी जरूरी है, लेकिन यह सबसे भरोसेमंद पब्लिकली उपलब्ध Pegasus डिटेक्शन तरीका है।</p>
+
+  <div class="highlight-box warn">
+    <div class="hb-label">⚠️ हकीकत समझें</div>
+    <p>Pegasus हाई-वैल्यू लोगों को टारगेट करता है — पत्रकार, राजनेता, एग्जीक्यूटिव, ह्यूमन राइट्स एक्टिविस्ट। अगर आप एक आम नागरिक हैं, तो इतना एडवांस स्पाइवेयर शायद आपका खतरा नहीं है। कंज्यूमर-ग्रेड स्टॉकरवेयर और फिशिंग से आने वाला RAT ज्यादातर लोगों के लिए कहीं ज्यादा कॉमन खतरा है।</p>
+  </div>
+</div>
+
+<div class="post-section" id="removal">
+  <h2>8. स्पाइवेयर कैसे हटाएं</h2>
+
+  <h3>तरीका 1: पहचाने हुए स्पाइवेयर ऐप हटाएं</h3>
+  <p>अगर ऑडिट में कोई शक वाला ऐप मिले: Settings → Apps → [शक वाला ऐप] → Uninstall पर जाएं। अगर Uninstall बटन ग्रेड आउट है, तो ऐप के पास Device Administrator एक्सेस है। पहले Settings → Security → Device Admin Apps में जाकर ऐप को डीएक्टिवेट करें, फिर अनइंस्टॉल करें।</p>
+
+  <h3>तरीका 2: Safe Mode में बूट करके अनइंस्टॉल करें</h3>
+  <p>Safe Mode अस्थायी रूप से सभी थर्ड-पार्टी ऐप बंद कर देता है, जो काम आता है अगर स्पाइवेयर नॉर्मल अनइंस्टॉल को रोक रहा हो। Safe Mode में जाने के लिए: पावर बटन दबाकर रखें → "Power Off" को लंबे समय दबाएं → Safe Mode कन्फर्म करें। Safe Mode में Settings → Apps में जाकर शक वाला स्पाइवेयर अनइंस्टॉल करें। बाद में नॉर्मल रीस्टार्ट करें।</p>
+
+  <h3>तरीका 3: फैक्ट्री रीसेट (आखिरी उपाय)</h3>
+  <p>अगर स्पाइवेयर पहचान या हटा नहीं पा रहे, या डीप सिस्टम-लेवल कॉम्प्रोमाइज का शक है, तो फैक्ट्री रीसेट सबसे भरोसेमंद सॉल्यूशन है। ये सब कुछ मिटाकर डिवाइस को नया जैसा बना देता है। रीसेट करने से पहले ध्यान दें कि Google पर बैकअप न होने वाला सारा लोकल डेटा खो जाएगा।</p>
+
+  <div class="step-grid">
+    <div class="step-card"><div class="step-num">1</div><h3>☁️ जरूरी डेटा बैकअप करें</h3><p>कॉन्टैक्ट, फोटो, डॉक्यूमेंट Google Drive या PC पर बैकअप करें। रीसेट के बाद ऐप बैकअप रीस्टोर न करें, क्योंकि उसमें स्पाइवेयर भी वापस आ सकता है।</p></div>
+    <div class="step-card"><div class="step-num">2</div><h3>⚙️ फैक्ट्री रीसेट</h3><p>Settings → System → Reset Options → Erase All Data (Factory Reset)। इसमें 10-20 मिनट लग सकते हैं।</p></div>
+    <div class="step-card"><div class="step-num">3</div><h3>📱 नया सेटअप करें</h3><p>नए डिवाइस की तरह सेटअप करें। सिर्फ Play Store से ऐप इंस्टॉल करें। इन्फेक्शन वाले बैकअप से रीस्टोर न करें।</p></div>
+    <div class="step-card"><div class="step-num">4</div><h3>🔑 सभी पासवर्ड बदलें</h3><p>क्लीन सेटअप के बाद किसी सुरक्षित डिवाइस से सभी अकाउंट के पासवर्ड बदलें — स्पाइवेयर ने आपके पुराने पासवर्ड कैप्चर किए हो सकते हैं।</p></div>
+  </div>
+</div>
+
+<div class="post-section" id="prevention">
+  <h2>9. बचाव के तरीके</h2>
+  <ul>
+    <li>सिर्फ ऑफिशियल Google Play Store से ऐप इंस्टॉल करें — WhatsApp, Telegram या किसी रैंडम वेबसाइट से APK कभी इंस्टॉल न करें</li>
+    <li>GBWhatsApp, WhatsApp Plus या कोई भी अनऑफिशियल ऐप मॉड तुरंत डिलीट करें और ऑफिशियल वर्जन पर शिफ्ट करें</li>
+    <li><strong>फोन का OS अपडेट रखें</strong> — सिक्योरिटी पैच उन कमजोरियों को ठीक करते हैं जिनका स्पाइवेयर फायदा उठाता है। महीने में एक बार Settings → System → Software Update पर जाएं</li>
+    <li><strong>Google Play Protect</strong> ऑन रखें और कभी बंद न करें (Settings → Security → Google Play Protect)</li>
+    <li>पूरी तरह भरोसेमंद न होने वाले किसी भी इंसान के पास अपना फोन अनलॉक करके अकेला न छोड़ें</li>
+    <li>मजबूत लॉक स्क्रीन PIN (6+ डिजिट या अल्फान्यूमेरिक) रखें — फिजिकल इंस्टॉलेशन काफी मुश्किल हो जाता है</li>
+    <li>हर 3 महीने में ऐप परमिशन रिव्यू करें और जो जरूरी न लगे उसे हटा दें</li>
+    <li>सभी ऐप के लिए <strong>"Install Unknown Apps"</strong> बंद रखें (Settings → Apps → Special App Access → Install Unknown Apps)</li>
+    <li>SMS या WhatsApp में आए शॉर्ट URL पर क्लिक न करें — पहले किसी URL एक्सपैंडर सर्विस से उसे एक्सपैंड करें</li>
+    <li>पूरी तरह भरोसा न करने वाले ऐप्स के लिए <strong>Shelter ऐप</strong> से वर्क प्रोफाइल बनाने पर विचार करें, जो उनके डेटा एक्सेस को आइसोलेट करता है</li>
+  </ul>
+</div>
+
+<div class="post-section" id="tools">
+  <h2>10. बेस्ट सिक्योरिटी ऐप्स</h2>
+  <div class="table-wrap">
+  <table class="styled-table">
+    <thead><tr><th>ऐप</th><th>काम</th><th>कीमत</th></tr></thead>
+    <tbody>
+      <tr><td>Malwarebytes for Android</td><td>स्पाइवेयर/मालवेयर स्कैनर, प्राइवेसी ऑडिट</td><td>फ्री (प्रीमियम ऑप्शनल)</td></tr>
+      <tr><td>NetGuard</td><td>हर ऐप के लिए फायरवॉल, आउटगोइंग कनेक्शन मॉनिटर</td><td>फ्री (ओपन सोर्स)</td></tr>
+      <tr><td>Exodus Privacy</td><td>ऐप में छुपे ट्रैकर और परमिशन की जांच</td><td>फ्री</td></tr>
+      <tr><td>Privacy Dashboard (Android 12+)</td><td>बिल्ट-इन — रियल-टाइम परमिशन यूसेज दिखाता है</td><td>बिल्ट-इन (Android 12+)</td></tr>
+      <tr><td>Bitdefender Mobile Security</td><td>रियल-टाइम मालवेयर प्रोटेक्शन, VPN</td><td>पेड (~₹799/साल)</td></tr>
+      <tr><td>Shelter</td><td>अनट्रस्टेड ऐप के लिए वर्क प्रोफाइल आइसोलेशन</td><td>फ्री (ओपन सोर्स)</td></tr>
+      <tr><td>Should I Answer?</td><td>कॉल उठाने से पहले स्कैम/स्पैम कॉलर पहचानता है</td><td>फ्री</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <div class="highlight-box tip">
+    <div class="hb-label">✅ निचोड़ बात</div>
+    <p>सबसे असरदार काम जो आप कर सकते हैं: फोन का OS अपडेट रखें, Play Store के बाहर से कभी APK इंस्टॉल न करें, और महीने में एक बार परमिशन रिव्यू करें। इन तीन आदतों से 95% एंड्रॉइड स्पाइवेयर इन्फेक्शन पूरी तरह रोके जा सकते हैं।</p>
+  </div>
+</div>
+
+<div class="post-tags">
+  <span class="ptag">#एंड्रॉइडस्पाइवेयर</span>
+  <span class="ptag">#स्टॉकरवेयर</span>
+  <span class="ptag">#मोबाइलसुरक्षा</span>
+  <span class="ptag">#Pegasus</span>
+  <span class="ptag">#SpywareRemoval</span>
+  <span class="ptag">#AndroidPrivacy</span>
+  <span class="ptag">#CyberSecurity</span>
+</div>
+
+</div>
