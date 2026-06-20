@@ -31,18 +31,24 @@ layout: default
 				
 				<div class="hero-meta" style="color: var(--text-muted); font-size: 14px; margin-bottom: 25px;">
 					<span>✍️ By <a href="/profile.html?author={{ page.author | url_encode }}" style="color: var(--clr-accent); text-decoration: none; font-weight: 600;">{{ page.author | default: "Himanshu Tyagi" }}</a></span> · 
-					<span>📅 {{ page.date | date: "%d %B %Y" }}</span> · 
+					<span>📅 {{ page.date | date: "%d %b %Y" }}</span> · 
 					<span>⏱️ {{ read_time }}</span>
 				</div>
 
 				{% if page.image %}
-					<div class="post-hero-img" id="post-hero-wrap" style="margin-bottom: 30px; text-align: center;">
-						<img src="{{ page.image | relative_url }}" alt="{{ page.title }}" width="1280" height="720" loading="eager" style="border-radius: 12px; width: 100%; height: auto; box-shadow: 0 4px 15px rgba(0,0,0,0.15);">
+					<div class="post-hero-img" id="post-hero-wrap" style="margin-bottom: 30px; text-align: center; width: 100%; max-width: 1280px; aspect-ratio: 16 / 9; background: #111216; border-radius: 12px; overflow: hidden; position: relative;">
+						<img src="{{ page.image | relative_url }}" 
+                             alt="{{ page.title }}" 
+                             width="1280" 
+                             height="720" 
+                             loading="eager" 
+                             style="width: 100%; height: 100%; object-fit: cover; display: block; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.15);">
 					</div>
 				{% endif %}
 			</div>
 
-			{% endif %}
+		{% endif %}
+		
 		{% if page.is_post %}
 			<div class="toc-box" style="margin-top: 20px; margin-bottom: 30px;">
 				<h3>📋 Table of Contents</h3>
@@ -73,9 +79,8 @@ layout: default
 				</label>
 			</div>
 		{% endif %}
+		
 		{{ content }}
-
-
 
 		{% unless page.url == "/" or page.url == "/index.html" %}
 			{% if page.is_post %}
