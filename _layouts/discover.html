@@ -54,26 +54,52 @@ layout: default
 				<h3>📋 Table of Contents</h3>
 				<input type="checkbox" id="toc-toggle" class="toc-toggle-checkbox" style="display: none;">
 				<ol class="toc-list">
-					{% assign sections = content | split: 'class="post-section"' %}
-					{% for section in sections %}
+					{% assign h2_blocks = content | split: '<h2' %}
+					{% for block in h2_blocks %}
 						{% if forloop.first == false %}
 							
-							{% assign id_part = section | split: 'id="' %}
-							{% assign id_clean = id_part[1] | split: '"' | first | strip %}
+							{% assign title_extract = block | split: '>' %}
+							{% assign title_raw = title_extract[1] | split: '</h2' | first %}
+							{% assign title_clean = title_raw | strip_html | strip %}
 							
-							{% assign title_part = section | split: '</h2' | first %}
-							{% assign title_subpart = title_part | split: '<h2' %}
-							
-							{% if title_subpart.size > 1 %}
-								{% assign heading_body = title_subpart[1] | split: '>' %}
-								{% assign title_clean = heading_body[1] | strip_html | strip %}
-							{% else %}
-								{% assign title_clean = title_part | strip_html | strip %}
-							{% endif %}
-							
-							{% if title_clean != "" and id_clean != "" and id_clean contains "half" == false %}
+							{% if title_clean != "" and title_clean contains "clipPath" == false and title_clean contains "DETECTION" == false %}
+								
+								{% assign id_clean = "" %}
+								{% if block contains 'id="' %}
+									{% assign id_extract = block | split: 'id="' %}
+									{% assign id_clean = id_extract[1] | split: '"' | first | strip %}
+								{% endif %}
+
+								{% assign target_id = id_clean %}
+								{% if target_id == "" or target_id == nil %}
+									{% assign target_id = title_clean | slugify %}
+								{% endif %}
+
+								{% if title_clean contains "What is a Deepfake" %}
+									{% assign target_id = "what-is-deepfake" %}
+								{% crayons }
+								{% elsif title_clean contains "How Deepfakes Are Created" %}
+									{% assign target_id = "how-created" %}
+								{% elsif title_clean contains "Types of Deepfake Manipulation" %}
+									{% assign target_id = "types-deepfakes" %}
+								{% elsif title_clean contains "Visual Signs" %}
+									{% assign target_id = "visual-signs" %}
+								{% elsif title_clean contains "Audio and Lip-Sync" %}
+									{% assign target_id = "audio-signs" %}
+								{% elsif title_clean contains "Contextual and Behavioral" %}
+									{% assign target_id = "contextual-clues" %}
+								{% elsif title_clean contains "AI Detection Tools" %}
+									{% assign target_id = "detection-tools" %}
+								{% elsif title_clean contains "Real-World Deepfake" %}
+									{% assign target_id = "real-cases-deepfake" %}
+								{% elsif title_clean contains "Laws and Cases" or title_clean contains "India" %}
+									{% assign target_id = "india-deepfake" %}
+								{% elsif title_clean contains "Protect Yourself" %}
+									{% assign target_id = "protect-future" %}
+								{% endif %}
+
 								<li>
-									<a href="#{{ id_clean }}">
+									<a href="#{{ target_id }}">
 										{{ title_clean }}
 									</a>
 								</li>
