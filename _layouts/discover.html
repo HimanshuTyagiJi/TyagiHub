@@ -53,9 +53,31 @@ layout: default
 			<div class="toc-box" style="margin-top: 20px; margin-bottom: 30px;">
 				<h3>📋 Table of Contents</h3>
 				<input type="checkbox" id="toc-toggle" class="toc-toggle-checkbox" style="display: none;">
-				
-				<ol class="toc-list" id="dynamic-toc-list"></ol>
-				
+				<ol class="toc-list">
+					{% assign h2_blocks = content | split: 'id="' %}
+					{% for block in h2_blocks %}
+						{% if forloop.first == false %}
+							{% assign id_clean = block | split: '"' | first | strip %}
+							
+							{% assign title_part = block | split: '</h2' | first %}
+							{% assign title_subpart = title_part | split: '>' %}
+							
+							{% if title_subpart.size > 2 %}
+								{% assign title_clean = title_part | strip_html | strip %}
+							{% else %}
+								{% assign title_clean = title_subpart[1] | strip_html | strip %}
+							{% endif %}
+							
+							{% if title_clean != "" and id_clean != "" %}
+								<li>
+									<a href="#{{ id_clean }}">
+										{{ title_clean }}
+									</a>
+								</li>
+							{% endif %}
+						{% endif %}
+					{% endfor %}
+				</ol>
 				<label for="toc-toggle" class="toc-btn" style="cursor: pointer; display: inline-flex; align-items: center; margin-top: 12px; font-weight: 600;">
 					<span class="text-more">See More <i class="fas fa-chevron-down"></i></span>
 					<span class="text-less" style="display: none;">See Less <i class="fas fa-chevron-up"></i></span>
@@ -63,9 +85,7 @@ layout: default
 			</div>
 		{% endif %}
 		
-		<div id="post-body-content">
-			{{ content }}
-		</div>
+		{{ content }}
 
 		{% unless page.url == "/" or page.url == "/index.html" %}
 			{% if page.is_post %}
@@ -135,43 +155,3 @@ layout: default
 	
 	{% include right-sidebar.html %}
 </div>
-
-<script>
-document.addEventListener("DOMContentLoaded", function() {
-  const tocContainer = document.getElementById("dynamic-toc-list");
-  const contentArea = document.getElementById("post-body-content");
-  
-  if (tocContainer && contentArea) {
-    // Content body ke andar jitne bhi asli h2 tags hain unhe extract karo
-    const headings = contentArea.querySelectorAll("h2");
-    
-    headings.forEach((heading) => {
-      let targetId = "";
-      
-      // Case 1: Agar heading khud kisi id attribute wale section div ke andar hai
-      const parentSection = heading.closest(".post-section, div[id]");
-      if (parentSection && parentSection.hasAttribute("id")) {
-        targetId = parentSection.getAttribute("id");
-      } else if (heading.hasAttribute("id")) {
-        // Case 2: Agar heading par direct id attribute laga hai
-        targetId = heading.getAttribute("id");
-      } else {
-        // Case 3: Fallback safety step (agar kahin id na mile)
-        targetId = heading.textContent.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
-        heading.setAttribute("id", targetId);
-      }
-      
-      // Dynamic List Item insertion with exact node binding
-      if (targetId) {
-        const li = document.createElement("li");
-        const a = document.createElement("a");
-        a.setAttribute("href", "#" + targetId);
-        a.textContent = heading.textContent.trim();
-        
-        li.appendChild(a);
-        tocContainer.appendChild(li);
-      }
-    });
-  }
-});
-</script>
