@@ -3,7 +3,7 @@ layout: discover
 title: "What is Edge Computing? How It Works and Why It Matters"
 description: "Understand edge computing — what it is, how it differs from cloud computing, real-world applications in
 telecom, manufacturing, healthcare, and why 5G makes it critical."
-image: "/assets/images/what-is-edge-computing-banner.png"
+image: "/assets/images/what-is-edge-computing-banner.avif"
 is_post: true
 categories: "Technology"
 date: 2026-06-09
@@ -29,77 +29,7 @@ extra_js:
 
 <div class="post-wrap">
 
-  <div class="post-hero">
-    <svg viewBox="0 0 480 220" xmlns="http://www.w3.org/2000/svg">
-      <rect width="480" height="220" fill="#0a0c10" />
-
-      <!-- LATENCY COMPARISON visual -->
-      <!-- CLOUD path (top, slow) -->
-      <!-- device -->
-      <rect x="20" y="25" width="48" height="60" rx="8" fill="#1a2030" stroke="#2a3348" stroke-width="1.5" />
-      <rect x="26" y="32" width="36" height="44" rx="4" fill="#0a0c10" />
-      <text x="44" y="57" text-anchor="middle" font-size="16">📱</text>
-      <text x="44" y="96" text-anchor="middle" font-size="7" fill="#606880">Device</text>
-
-      <!-- cloud (top right) -->
-      <g transform="translate(348,14)">
-        <ellipse cx="44" cy="30" rx="44" ry="22" fill="#1a2030" stroke="#2a3348" stroke-width="1" />
-        <ellipse cx="22" cy="24" rx="22" ry="18" fill="#1a2030" stroke="#2a3348" stroke-width="1" />
-        <ellipse cx="66" cy="24" rx="22" ry="18" fill="#1a2030" stroke="#2a3348" stroke-width="1" />
-        <text x="44" y="28" text-anchor="middle" font-size="8" fill="#606880" font-weight="700">CLOUD</text>
-        <text x="44" y="40" text-anchor="middle" font-size="7" fill="#606880">300ms</text>
-      </g>
-
-      <!-- slow path to cloud (top, dashed red) -->
-      <path d="M68,45 Q210,10 348,30" fill="none" stroke="#f87171" stroke-width="1.5" stroke-dasharray="5,3"
-        opacity=".6">
-        <animate attributeName="stroke-dashoffset" from="0" to="-16" dur="1.5s" repeatCount="indefinite" />
-      </path>
-      <path d="M348,38 Q210,10 68,52" fill="none" stroke="#f87171" stroke-width="1" stroke-dasharray="5,3" opacity=".3">
-        <animate attributeName="stroke-dashoffset" from="0" to="16" dur="1.5s" repeatCount="indefinite" />
-      </path>
-      <text x="210" y="16" text-anchor="middle" font-size="8" fill="#f87171">200–300 ms round trip</text>
-
-      <!-- EDGE NODE (center) -->
-      <rect x="180" y="90" width="120" height="70" rx="10" fill="#1a2030" stroke="#f5a623" stroke-width="2" />
-      <text x="240" y="118" text-anchor="middle" font-size="9" fill="#f5a623" font-weight="700">EDGE NODE</text>
-      <text x="240" y="133" text-anchor="middle" font-size="8" fill="#606880">AI · Cache · RT</text>
-      <text x="240" y="150" text-anchor="middle" font-size="8" fill="#f5a623">~2 ms</text>
-
-      <!-- fast path device → edge (green) -->
-      <path d="M70,65 L178,115" fill="none" stroke="#34d399" stroke-width="2" stroke-dasharray="5,3">
-        <animate attributeName="stroke-dashoffset" from="0" to="-16" dur=".6s" repeatCount="indefinite" />
-      </path>
-      <polygon points="176,109 182,118 170,118" fill="#34d399" />
-
-      <!-- edge → cloud (thin, rare syncs) -->
-      <path d="M300,108 Q370,60 400,42" fill="none" stroke="#a78bfa" stroke-width="1" stroke-dasharray="3,4"
-        opacity=".5">
-        <animate attributeName="stroke-dashoffset" from="0" to="-14" dur="3s" repeatCount="indefinite" />
-      </path>
-      <text x="360" y="75" text-anchor="middle" font-size="7" fill="#a78bfa">sync only</text>
-
-      <!-- LATENCY labels -->
-      <text x="116" y="90" text-anchor="middle" font-size="9" fill="#34d399" font-weight="700">2 ms</text>
-      <text x="116" y="103" text-anchor="middle" font-size="7" fill="#34d399">ultra-low</text>
-
-      <!-- USE CASE row bottom -->
-      <rect x="20" y="175" width="82" height="24" rx="5" fill="#1a2030" stroke="#34d399" stroke-width=".8" />
-      <text x="61" y="191" text-anchor="middle" font-size="8" fill="#34d399">Self-driving</text>
-      <rect x="114" y="175" width="82" height="24" rx="5" fill="#1a2030" stroke="#f5a623" stroke-width=".8" />
-      <text x="155" y="191" text-anchor="middle" font-size="8" fill="#f5a623">Industrial AI</text>
-      <rect x="208" y="175" width="82" height="24" rx="5" fill="#1a2030" stroke="#a78bfa" stroke-width=".8" />
-      <text x="249" y="191" text-anchor="middle" font-size="8" fill="#a78bfa">AR / VR</text>
-      <rect x="302" y="175" width="82" height="24" rx="5" fill="#1a2030" stroke="#60a5fa" stroke-width=".8" />
-      <text x="343" y="191" text-anchor="middle" font-size="8" fill="#60a5fa">Smart city</text>
-      <rect x="396" y="175" width="70" height="24" rx="5" fill="#1a2030" stroke="#fb923c" stroke-width=".8" />
-      <text x="431" y="191" text-anchor="middle" font-size="8" fill="#fb923c">Retail AI</text>
-
-      <text x="240" y="212" text-anchor="middle" font-size="10" fill="#a0a8bc">Compute moves to the edge — latency drops
-        to near-zero</text>
-    </svg>
-
-  </div>
+ 
 
   <div class="post-section" id="what-is-edge">
     <h2>1. What is Edge Computing?</h2>
@@ -180,6 +110,76 @@ extra_js:
         real-world architectures combine both — edge handles time-critical local processing, cloud handles historical
         analysis, AI model training, and centralized management. They are complementary, not competing.</p>
     </div>
+  </div> <div class="post-hero">
+    <svg viewBox="0 0 480 220" xmlns="http://www.w3.org/2000/svg">
+      <rect width="480" height="220" fill="#0a0c10" />
+
+      <!-- LATENCY COMPARISON visual -->
+      <!-- CLOUD path (top, slow) -->
+      <!-- device -->
+      <rect x="20" y="25" width="48" height="60" rx="8" fill="#1a2030" stroke="#2a3348" stroke-width="1.5" />
+      <rect x="26" y="32" width="36" height="44" rx="4" fill="#0a0c10" />
+      <text x="44" y="57" text-anchor="middle" font-size="16">📱</text>
+      <text x="44" y="96" text-anchor="middle" font-size="7" fill="#606880">Device</text>
+
+      <!-- cloud (top right) -->
+      <g transform="translate(348,14)">
+        <ellipse cx="44" cy="30" rx="44" ry="22" fill="#1a2030" stroke="#2a3348" stroke-width="1" />
+        <ellipse cx="22" cy="24" rx="22" ry="18" fill="#1a2030" stroke="#2a3348" stroke-width="1" />
+        <ellipse cx="66" cy="24" rx="22" ry="18" fill="#1a2030" stroke="#2a3348" stroke-width="1" />
+        <text x="44" y="28" text-anchor="middle" font-size="8" fill="#606880" font-weight="700">CLOUD</text>
+        <text x="44" y="40" text-anchor="middle" font-size="7" fill="#606880">300ms</text>
+      </g>
+
+      <!-- slow path to cloud (top, dashed red) -->
+      <path d="M68,45 Q210,10 348,30" fill="none" stroke="#f87171" stroke-width="1.5" stroke-dasharray="5,3"
+        opacity=".6">
+        <animate attributeName="stroke-dashoffset" from="0" to="-16" dur="1.5s" repeatCount="indefinite" />
+      </path>
+      <path d="M348,38 Q210,10 68,52" fill="none" stroke="#f87171" stroke-width="1" stroke-dasharray="5,3" opacity=".3">
+        <animate attributeName="stroke-dashoffset" from="0" to="16" dur="1.5s" repeatCount="indefinite" />
+      </path>
+      <text x="210" y="16" text-anchor="middle" font-size="8" fill="#f87171">200–300 ms round trip</text>
+
+      <!-- EDGE NODE (center) -->
+      <rect x="180" y="90" width="120" height="70" rx="10" fill="#1a2030" stroke="#f5a623" stroke-width="2" />
+      <text x="240" y="118" text-anchor="middle" font-size="9" fill="#f5a623" font-weight="700">EDGE NODE</text>
+      <text x="240" y="133" text-anchor="middle" font-size="8" fill="#606880">AI · Cache · RT</text>
+      <text x="240" y="150" text-anchor="middle" font-size="8" fill="#f5a623">~2 ms</text>
+
+      <!-- fast path device → edge (green) -->
+      <path d="M70,65 L178,115" fill="none" stroke="#34d399" stroke-width="2" stroke-dasharray="5,3">
+        <animate attributeName="stroke-dashoffset" from="0" to="-16" dur=".6s" repeatCount="indefinite" />
+      </path>
+      <polygon points="176,109 182,118 170,118" fill="#34d399" />
+
+      <!-- edge → cloud (thin, rare syncs) -->
+      <path d="M300,108 Q370,60 400,42" fill="none" stroke="#a78bfa" stroke-width="1" stroke-dasharray="3,4"
+        opacity=".5">
+        <animate attributeName="stroke-dashoffset" from="0" to="-14" dur="3s" repeatCount="indefinite" />
+      </path>
+      <text x="360" y="75" text-anchor="middle" font-size="7" fill="#a78bfa">sync only</text>
+
+      <!-- LATENCY labels -->
+      <text x="116" y="90" text-anchor="middle" font-size="9" fill="#34d399" font-weight="700">2 ms</text>
+      <text x="116" y="103" text-anchor="middle" font-size="7" fill="#34d399">ultra-low</text>
+
+      <!-- USE CASE row bottom -->
+      <rect x="20" y="175" width="82" height="24" rx="5" fill="#1a2030" stroke="#34d399" stroke-width=".8" />
+      <text x="61" y="191" text-anchor="middle" font-size="8" fill="#34d399">Self-driving</text>
+      <rect x="114" y="175" width="82" height="24" rx="5" fill="#1a2030" stroke="#f5a623" stroke-width=".8" />
+      <text x="155" y="191" text-anchor="middle" font-size="8" fill="#f5a623">Industrial AI</text>
+      <rect x="208" y="175" width="82" height="24" rx="5" fill="#1a2030" stroke="#a78bfa" stroke-width=".8" />
+      <text x="249" y="191" text-anchor="middle" font-size="8" fill="#a78bfa">AR / VR</text>
+      <rect x="302" y="175" width="82" height="24" rx="5" fill="#1a2030" stroke="#60a5fa" stroke-width=".8" />
+      <text x="343" y="191" text-anchor="middle" font-size="8" fill="#60a5fa">Smart city</text>
+      <rect x="396" y="175" width="70" height="24" rx="5" fill="#1a2030" stroke="#fb923c" stroke-width=".8" />
+      <text x="431" y="191" text-anchor="middle" font-size="8" fill="#fb923c">Retail AI</text>
+
+      <text x="240" y="212" text-anchor="middle" font-size="10" fill="#a0a8bc">Compute moves to the edge — latency drops
+        to near-zero</text>
+    </svg>
+
   </div>
 
   <div class="post-section" id="how-works">
