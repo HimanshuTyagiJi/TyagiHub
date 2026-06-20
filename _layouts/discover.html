@@ -54,21 +54,24 @@ layout: default
 				<h3>📋 Table of Contents</h3>
 				<input type="checkbox" id="toc-toggle" class="toc-toggle-checkbox" style="display: none;">
 				<ol class="toc-list">
-					{% assign h2_blocks = content | split: 'id="' %}
-					{% for block in h2_blocks %}
+					{% assign sections = content | split: 'class="post-section"' %}
+					{% for section in sections %}
 						{% if forloop.first == false %}
-							{% assign id_clean = block | split: '"' | first | strip %}
 							
-							{% assign title_part = block | split: '</h2' | first %}
-							{% assign title_subpart = title_part | split: '>' %}
+							{% assign id_part = section | split: 'id="' %}
+							{% assign id_clean = id_part[1] | split: '"' | first | strip %}
 							
-							{% if title_subpart.size > 2 %}
-								{% assign title_clean = title_part | strip_html | strip %}
+							{% assign title_part = section | split: '</h2' | first %}
+							{% assign title_subpart = title_part | split: '<h2' %}
+							
+							{% if title_subpart.size > 1 %}
+								{% assign heading_body = title_subpart[1] | split: '>' %}
+								{% assign title_clean = heading_body[1] | strip_html | strip %}
 							{% else %}
-								{% assign title_clean = title_subpart[1] | strip_html | strip %}
+								{% assign title_clean = title_part | strip_html | strip %}
 							{% endif %}
 							
-							{% if title_clean != "" and id_clean != "" %}
+							{% if title_clean != "" and id_clean != "" and id_clean contains "half" == false %}
 								<li>
 									<a href="#{{ id_clean }}">
 										{{ title_clean }}
