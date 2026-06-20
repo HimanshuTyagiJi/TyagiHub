@@ -54,32 +54,37 @@ layout: default
 				<h3>📋 Table of Contents</h3>
 				<input type="checkbox" id="toc-toggle" class="toc-toggle-checkbox" style="display: none;">
 				<ol class="toc-list">
-					{% assign id_blocks = content | split: 'id="' %}
-					{% for block in id_blocks %}
+					{% assign blocks = content | split: 'post-section' %}
+					{% for block in blocks %}
 						{% if forloop.first == false %}
 							
-							{% assign id_clean = block | split: '"' | first | strip %}
-							
-							{% if block contains '</h2' %}
+							{% if block contains 'id="' %}
+								{% assign id_extract = block | split: 'id="' %}
+								{% assign id_clean = id_extract[1] | split: '"' | first | strip %}
 								
-								{% assign title_part = block | split: '</h2' | first %}
-								{% assign title_subpart = title_part | split: '>' %}
-								
-								{% assign last_idx = title_subpart.size | minus: 1 %}
-								{% assign title_clean = title_subpart[last_idx] | strip_html | strip %}
-								
-								{% if title_clean != "" and id_clean contains "half" == false and id_clean contains "reading" == false and id_clean contains "index" == false %}
+								{% if block contains '</h2' %}
+									{% assign title_part = block | split: '</h2' | first %}
+									{% assign title_subpart = title_part | split: '<h2' %}
 									
-									{% assign target_id = id_clean %}
-									{% if title_clean contains "Protect Yourself" %}
-										{% assign target_id = "protect-future" %}
+									{% if title_subpart.size > 1 %}
+										{% assign heading_body = title_subpart[1] | split: '>' %}
+										{% assign title_clean = heading_body[1] | strip_html | strip %}
+									{% else %}
+										{% assign title_clean = title_part | strip_html | strip %}
 									{% endif %}
 									
-									<li>
-										<a href="#{{ target_id }}">
-											{{ title_clean }}
-										</a>
-									</li>
+									{% if title_clean != "" and id_clean != "" %}
+										{% assign target_id = id_clean %}
+										{% if title_clean contains "Protect Yourself" and target_id == "" %}
+											{% assign target_id = "protect-future" %}
+										{% endif %}
+										
+										<li>
+											<a href="#{{ target_id }}">
+												{{ title_clean }}
+											</a>
+										</li>
+									{% endif %}
 								{% endif %}
 							{% endif %}
 						{% endif %}
