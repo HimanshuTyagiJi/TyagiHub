@@ -251,7 +251,6 @@ extra_js:
 </div>
 
 <script>
-// Image broken hone par chalne wala function
 function triggerFallback(imgNode) {
   imgNode.style.display = 'none';
   const fallbackCard = imgNode.nextElementSibling;
@@ -261,38 +260,40 @@ function triggerFallback(imgNode) {
 }
 
 document.addEventListener("DOMContentLoaded", function() {
+  // Saari posts ko uthao
   const postCards = document.querySelectorAll(".js-post");
 
-  postCards.forEach(card => {
+  postCards.forEach((card, index) => {
+    // 🎯 STRICT RULE: Sirf pehli 2 posts (Index 0 aur Index 1) par SVG dhoondhenge
+    if (index >= 2) {
+      return; // Baaki saari 4 posts ke liye loop yahin ruk jayega (Normal Image chalegi)
+    }
+
     const postUrl = card.getAttribute("data-post-url");
     const mediaBox = card.querySelector(".thumb-media-box");
 
     if (postUrl && mediaBox) {
-      // Post ka HTML text format me pull karo background me
+      // Sirf shuru ki do posts ke liye fetch chalega
       fetch(postUrl)
         .then(response => response.text())
         .then(htmlData => {
           const parser = new DOMParser();
           const doc = parser.parseFromString(htmlData, "text/html");
           
-          // Article ke real body content se pehla actual SVG dhoondho
           const contentSvg = doc.querySelector("article svg, .post-content svg, main svg");
 
           if (contentSvg) {
-            // Priority Rule Triggered: Pehle media box ka poora inner HTML (Image + Fallback) mitao
+            // Priority Rule Triggered for first 2 posts
             mediaBox.innerHTML = "";
             
-            // SVG ko force karo full height aur width 100% cover karne ke liye
             contentSvg.style.width = "100%";
             contentSvg.style.height = "100%";
             contentSvg.style.display = "block";
             contentSvg.style.objectFit = "cover";
             
-            // Inline attribute clear karo jo custom size rok rahe the
             contentSvg.removeAttribute("height");
             contentSvg.removeAttribute("width");
             
-            // Asli SVG inject kar do
             mediaBox.appendChild(contentSvg);
           }
         })
