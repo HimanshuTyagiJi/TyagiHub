@@ -1451,3 +1451,36 @@
 #toc-toggle:checked ~ .toc-btn .text-less {
   display: inline !important;
 }
+/* 🖼️ Card ke image container ko ekdam fixed kar do */
+.post-img {
+  width: 354px !important;
+  height: 236px !important;
+  position: relative;
+  overflow: hidden;
+  background: #111216;
+  /* Aspect Ratio lock karo taaki loading ke waqt layout na hile */
+  aspect-ratio: 354 / 236; 
+}
+
+/* 🔄 Iske andar jo dynamic media box hai use bhi fix karo */
+.thumb-media-box {
+  width: 100% !important;
+  height: 100% !important;
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+/* 📐 SVG aur Img dono ko is container ke andar stretch hone se roko aur fit rakho */
+.thumb-media-box img,
+.thumb-media-box svg {
+  width: 100% !important;
+  height: 100% !important;
+  max-width: 100% !important;
+  max-height: 100% !important;
+  object-fit: cover !important;
+  display: block !important;
+}
