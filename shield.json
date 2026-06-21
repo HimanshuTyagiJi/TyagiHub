@@ -3,32 +3,19 @@ layout: null
 permalink: /shield.json
 ---
 [
-  {% assign all_json_posts = "" | split: "" %}
+  {% assign hi_shield = site.shield_hi %}
+  {% assign en_shield = site.shield | where_exp: "item", "item.lang != 'hi'" %}
+  {% assign all_clean_shield = hi_shield | concat: en_shield | uniq %}
   
-  {% for p in site.shield %}
-    {% assign all_json_posts = all_json_posts | push: p %}
-  {% endfor %}
-  
-  {% for p in site.shield_hi %}
-    {% assign all_json_posts = all_json_posts | push: p %}
-  {% endfor %}
-  
-  {% for p in site.posts_hi %}
-    {% if p.categories contains "Cyber-Security" or p.categories contains "cyber-security" %}
-      {% assign all_json_posts = all_json_posts | push: p %}
-    {% endif %}
-  {% endfor %}
-  
-  {% assign unique_json_posts = all_json_posts | uniq %}
-  {% for p in unique_json_posts %}
+  {% for p in all_clean_shield %}
   {
     "title": {{ p.title | jsonify }},
     "url": {{ p.url | relative_url | jsonify }},
     "image": {{ p.image | default: '/assets/images/default-thumb.png' | jsonify }},
     "description": {{ p.description | default: p.excerpt | strip_html | truncate: 110 | jsonify }},
-    "date": {{ p.date | date: "%d %b %Y" | jsonify }},
-    "lang": {{ p.lang | default: "en" | jsonify }},
-    "category": {{ p.categories | first | default: "Security" | jsonify }}
+    "categories": [{{ p.categories | first | default: "cyber-security" | downcase | jsonify }}],
+    "date": {{ p.date | date: "%Y-%m-%d" | jsonify }},
+    "lang": {{ p.lang | default: "en" | jsonify }}
   }{% unless forloop.last %},{% endunless %}
   {% endfor %}
 ]
