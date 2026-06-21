@@ -1,3 +1,5 @@
+
+
 'use strict';
 
 /* ============================================================
@@ -16,6 +18,9 @@ const LangToggle = (() => {
     document.querySelectorAll('[data-lang-section]').forEach(el => {
       el.style.display = el.dataset.langSection === lang ? '' : 'none';
     });
+
+    // Update hreflang canonical hint in URL
+    // (actual hreflang is in page <head>)
   }
 
   function init() {
@@ -25,7 +30,6 @@ const LangToggle = (() => {
         lang = btn.dataset.lang;
         localStorage.setItem(STORAGE_KEY, lang);
         apply();
-        if (typeof AutoCountEngine !== 'undefined') AutoCountEngine.syncLabels(lang);
       });
     });
   }
@@ -33,72 +37,6 @@ const LangToggle = (() => {
   function getLang() { return lang; }
 
   return { init, getLang };
-})();
-
-/* ============================================================
-   1.5. AUTO-COUNT ENGINE (Strict _data Root Pipeline 🚀)
-   ============================================================ */
-const AutoCountEngine = (() => {
-  let totals = { en: 0, hi: 0 };
-
-  function init() {
-    const countElements = document.querySelectorAll('.js-quiz-count');
-    if (countElements.length === 0) return;
-
-    let processed = 0;
-
-    countElements.forEach(el => {
-      const card = el.closest('.quiz-cat-card');
-      const fileName = card.dataset.quizFile;
-      const fileLang = card.dataset.quizLang;
-      
-      // 🎯 THE EXACT ROOT PATH Handshake Lock
-      const dataUrl = `/gk-quiz/_data/quiz/${fileLang}/${fileName}.json`;
-
-      fetch(dataUrl)
-        .then(res => {
-          if (!res.ok) throw new Error();
-          return res.json();
-        })
-        .then(data => {
-          const arr = Array.isArray(data) ? data : (data.questions || []);
-          const qCount = arr.length;
-          el.setAttribute('data-actual-count', qCount);
-          totals[fileLang] += qCount;
-        })
-        .catch(() => {
-          el.setAttribute('data-actual-count', 0);
-        })
-        .finally(() => {
-          processed++;
-          renderLabel(el);
-
-          if (processed === countElements.length) {
-            updateGlobalHero(LangToggle.getLang());
-          }
-        });
-    });
-  }
-
-  function renderLabel(el) {
-    const count = el.getAttribute('data-actual-count') || 0;
-    const fileLang = el.closest('.quiz-cat-card').dataset.quizLang;
-    el.innerText = fileLang === 'hi' ? `${count} प्रश्न` : `${count} Questions`;
-  }
-
-  function syncLabels(currentLang) {
-    document.querySelectorAll('.js-quiz-count').forEach(el => renderLabel(el));
-    updateGlobalHero(currentLang);
-  }
-
-  function updateGlobalHero(currentLang) {
-    const heroCounter = document.getElementById('total-global-questions');
-    if (!heroCounter) return;
-    const finalSum = totals[currentLang] || 500;
-    heroCounter.innerText = `${finalSum}+`;
-  }
-
-  return { init, syncLabels };
 })();
 
 /* ============================================================
@@ -116,6 +54,7 @@ const QuizSearch = (() => {
         card.style.display = (!q || name.includes(q)) ? '' : 'none';
       });
 
+      // Hide section if all cards hidden
       document.querySelectorAll('[data-lang-section]').forEach(section => {
         if (section.style.display === 'none') return;
         const visible = [...section.querySelectorAll('.quiz-cat-card')]
@@ -138,6 +77,7 @@ const QuizPlayer = (() => {
   let lang        = 'en';
   let score       = 0;
 
+  // DOM refs
   const progressFill   = document.getElementById('quiz-progress-fill');
   const progressLabel  = document.getElementById('quiz-progress-label');
   const questionNum    = document.getElementById('quiz-question-num');
@@ -156,10 +96,13 @@ const QuizPlayer = (() => {
   const skipBtn        = document.getElementById('quiz-skip-btn');
   const restartBtn     = document.getElementById('quiz-restart-btn');
 
+  /* ---- Load questions from data attribute ---- */
   async function loadQuestions() {
     const el = document.getElementById('quiz-data');
     if (!el) return;
 
+    const dataFile = el.dataset.file; // e.g. "/assets/quiz-data/history.json" but we use _data
+    // Questions are embedded as JSON in the page via Jekyll
     const raw = el.textContent.trim();
     if (!raw) return;
 
@@ -174,6 +117,7 @@ const QuizPlayer = (() => {
     }
   }
 
+  /* ---- Render question ---- */
   function renderQuestion(idx) {
     if (!questions.length) return;
     currentIdx = idx;
@@ -183,6 +127,7 @@ const QuizPlayer = (() => {
     const total = questions.length;
     const pct   = ((idx) / total) * 100;
 
+    // Progress
     if (progressFill)  progressFill.style.width = pct + '%';
     if (progressLabel) {
       progressLabel.innerHTML = `
@@ -191,9 +136,11 @@ const QuizPlayer = (() => {
       `;
     }
 
+    // Question
     if (questionNum)  questionNum.textContent  = `Q${idx + 1}`;
     if (questionText) questionText.textContent = lang === 'hi' ? q.q_hi : q.q_en;
 
+    // Options
     if (optionsWrap) {
       const opts = lang === 'hi' ? q.opts_hi : q.opts_en;
       const keys = ['A', 'B', 'C', 'D'];
@@ -208,14 +155,16 @@ const QuizPlayer = (() => {
       `).join('');
     }
 
+    // Explanation
     if (answered[idx] !== null) {
       const exp = lang === 'hi' ? q.exp_hi : q.exp_en;
-      if (explanation)  explanation.classList.add('visible');
+      if (explanation)    explanation.classList.add('visible');
       if (explanationTxt) explanationTxt.textContent = exp;
     } else {
-      if (explanation)  explanation.classList.remove('visible');
+      if (explanation)    explanation.classList.remove('visible');
     }
 
+    // Buttons
     if (prevBtn) prevBtn.disabled = idx === 0;
     if (nextBtn) nextBtn.textContent = idx === total - 1 ? (lang === 'hi' ? 'परिणाम देखें' : 'See Results') : (lang === 'hi' ? 'अगला →' : 'Next →');
     if (skipBtn) skipBtn.style.display = answered[idx] !== null ? 'none' : '';
@@ -229,6 +178,7 @@ const QuizPlayer = (() => {
     return '';
   }
 
+  /* ---- Select option ---- */
   function selectOption(optIdx) {
     if (answered[currentIdx] !== null) return;
     const q = questions[currentIdx];
@@ -243,14 +193,20 @@ const QuizPlayer = (() => {
   }
 
   function updateScoreBar() {
+    const correct = answered.filter(a => {
+      if (a === null) return false;
+      return questions[answered.indexOf(a)]?.answer === a;
+    }).length;
+    // Simple count
     const c = answered.filter((a, i) => a !== null && a === questions[i]?.answer).length;
     const w = answered.filter((a, i) => a !== null && a !== questions[i]?.answer).length;
     const s = answered.filter(a => a === 'skip').length;
     if (scoreCorrect) scoreCorrect.textContent = c;
     if (scoreWrong)   scoreWrong.textContent   = w;
-    if (scoreSkip)    scoreSkip.textContent    = s;
+    if (scoreSkip)    scoreSkip.textContent     = s;
   }
 
+  /* ---- Navigation ---- */
   function nextQuestion() {
     if (currentIdx >= questions.length - 1) {
       showResult();
@@ -271,6 +227,7 @@ const QuizPlayer = (() => {
     nextQuestion();
   }
 
+  /* ---- Result screen ---- */
   function showResult() {
     const total   = questions.length;
     const correct = answered.filter((a, i) => a !== null && a !== 'skip' && a === questions[i]?.answer).length;
@@ -286,8 +243,9 @@ const QuizPlayer = (() => {
     if (totalDisplay) totalDisplay.textContent = `${pct}%`;
     if (scoreCorrect) scoreCorrect.textContent = correct;
     if (scoreWrong)   scoreWrong.textContent   = wrong;
-    if (scoreSkip)    scoreSkip.textContent    = skipped;
+    if (scoreSkip)    scoreSkip.textContent     = skipped;
 
+    // Emoji based on score
     const icon = document.getElementById('quiz-result-icon');
     if (icon) {
       if (pct >= 80)      icon.textContent = '🏆';
@@ -296,6 +254,7 @@ const QuizPlayer = (() => {
       else                icon.textContent = '💪';
     }
 
+    // Message
     const msg = document.getElementById('quiz-result-msg');
     if (msg) {
       if (lang === 'hi') {
@@ -310,10 +269,12 @@ const QuizPlayer = (() => {
     }
   }
 
+  /* ---- Keyboard shortcuts ---- */
   function initKeyboard() {
     document.addEventListener('keydown', e => {
       if (!questions.length) return;
-      const map = { 'a': 0, 'b': 1, 'c': 2, 'd': 3, 'A': 0, 'B': 1, 'C': 2, 'D': 3 };
+      const map = { 'a': 0, 'b': 1, 'c': 2, 'd': 3,
+                    'A': 0, 'B': 1, 'C': 2, 'D': 3 };
       if (e.key in map && answered[currentIdx] === null) {
         selectOption(map[e.key]);
       }
@@ -322,6 +283,7 @@ const QuizPlayer = (() => {
     });
   }
 
+  /* ---- Init ---- */
   function init() {
     loadQuestions();
     initKeyboard();
@@ -338,13 +300,13 @@ const QuizPlayer = (() => {
 window.QuizPlayer = QuizPlayer;
 
 /* ============================================================
-   4. INIT EXECUTION
+   4. INIT
    ============================================================ */
 document.addEventListener('DOMContentLoaded', () => {
   LangToggle.init();
-  AutoCountEngine.init(); // 🚀 Root sync safe attachment
   QuizSearch.init();
 
+  // Only init player if on quiz player page
   if (document.getElementById('quiz-player-area')) {
     QuizPlayer.init();
   }
