@@ -13,11 +13,21 @@ layout: default
 
 		{% if page.is_post %}
 			{% assign words = content | number_of_words %}
-			{% if words < 360 %} 
-				{% assign read_time = "2 min read" %} 
-			{% else %} 
-				{% assign minutes = words | divided_by: 180 %}
-				{% assign read_time = minutes | append: " min read" %} 
+			
+			{% if page.lang == "hi" %}
+				{% if words < 360 %} 
+					{% assign read_time = "2 मिनट का पाठ" %} 
+				{% else %} 
+					{% assign minutes = words | divided_by: 180 %}
+					{% assign read_time = minutes | append: " मिनट ka पाठ" %} 
+				{% endif %}
+			{% else %}
+				{% if words < 360 %} 
+					{% assign read_time = "2 min read" %} 
+				{% else %} 
+					{% assign minutes = words | divided_by: 180 %}
+					{% assign read_time = minutes | append: " min read" %} 
+				{% endif %}
 			{% endif %} 
 
 			<div class="post-hero" style="margin-bottom: 25px;">
@@ -30,7 +40,7 @@ layout: default
 				<h1 class="post-title" style="margin-top: 15px; margin-bottom: 15px;">{{ page.title }}</h1>
 				
 				<div class="hero-meta" style="color: var(--text-muted); font-size: 14px; margin-bottom: 25px;">
-					<span>✍️ By <a href="/profile.html?author={{ page.author | url_encode }}" style="color: var(--clr-accent); text-decoration: none; font-weight: 600;">{{ page.author | default: "Himanshu Tyagi" }}</a></span> · 
+					<span>✍️ {% if page.lang == "hi" %}द्वारा{% else %}By{% endif %} <a href="/profile.html?author={{ page.author | url_encode }}" style="color: var(--clr-accent); text-decoration: none; font-weight: 600;">{{ page.author | default: "Himanshu Tyagi" }}</a></span> · 
 					<span>📅 {{ page.date | date: "%d %b %Y" }}</span> · 
 					<span>⏱️ {{ read_time }}</span>
 				</div>
@@ -49,7 +59,9 @@ layout: default
 		
 		{% if page.is_post %}
 			<div class="toc-box" style="margin-top: 20px; margin-bottom: 30px;">
-			<div class="toc-title">📋 Table of Contents</div>
+				<div style="font-family: var(--font-display); font-size: var(--fs-lg); font-weight: var(--fw-bold); color: var(--clr-heading); margin-bottom: var(--space-3);">
+					{% if page.lang == "hi" %}📋 विषय सूची{% else %}📋 Table of Contents{% endif %}
+				</div>
 				<input type="checkbox" id="toc-toggle" class="toc-toggle-checkbox" style="display: none;">
 				<ol class="toc-list">
 					{% assign blocks = content | split: 'post-section' %}
@@ -89,8 +101,12 @@ layout: default
 					{% endfor %}
 				</ol>
 				<label for="toc-toggle" class="toc-btn" style="cursor: pointer; display: inline-flex; align-items: center; margin-top: 12px; font-weight: 600;">
-					<span class="text-more">See More <i class="fas fa-chevron-down"></i></span>
-					<span class="text-less" style="display: none;">See Less <i class="fas fa-chevron-up"></i></span>
+					<span class="text-more">
+						{% if page.lang == "hi" %}और देखें{% else %}See More{% endif %} <i class="fas fa-chevron-down"></i>
+					</span>
+					<span class="text-less" style="display: none;">
+						{% if page.lang == "hi" %}कम देखें{% else %}See Less{% endif %} <i class="fas fa-chevron-up"></i>
+					</span>
 				</label>
 			</div>
 		{% endif %}
@@ -100,9 +116,9 @@ layout: default
 		{% unless page.url == "/" or page.url == "/index.html" %}
 			{% if page.is_post %}
 				<div class="share-wrapper" style="margin-top: 40px;">
-					<p class="share-label">Share With Friends 🚀</p>
+					<p class="share-label">{% if page.lang == "hi" %}दोस्तों के साथ शेयर करें 🚀{% else %}Share With Friends 🚀{% endif %}</p>
 					<button onclick="tyagiShare()" class="tyagi-share-btn" aria-label="Share this article">
-						<i class="fas fa-paper-plane" aria-hidden="true"></i> SHARE ARTICLE
+						<i class="fas fa-paper-plane" aria-hidden="true"></i> {% if page.lang == "hi" %}आर्टिकल शेयर करें{% else %}SHARE ARTICLE{% endif %}
 					</button>
 				</div>
 
@@ -130,13 +146,13 @@ layout: default
 							{% if current_index > 0 %}
 								{% assign prev_post = all_posts[prev_index] %}
 								<a href="{{ prev_post.url | relative_url }}">
-									<span class="nav-label"><i class="fas fa-arrow-left"></i> Previous Post</span>
+									<span class="nav-label"><i class="fas fa-arrow-left"></i> {% if page.lang == "hi" %}पिछला आर्टिकल{% else %}Previous Post{% endif %}</span>
 									<div class="nav-post-title">{{ prev_post.title }}</div>
 								</a>
 							{% else %}
 								<span class="nav-disabled">
-									<span class="nav-label">Previous Post</span>
-									<div class="nav-post-title" style="opacity: 0.4;">No previous post</div>
+									<span class="nav-label">{% if page.lang == "hi" %} can't go back {% else %}Previous Post{% endif %}</span>
+									<div class="nav-post-title" style="opacity: 0.4;">{% if page.lang == "hi" %}कोई पिछला पोस्ट नहीं है{% else %}No previous post{% endif %}</div>
 								</span>
 							{% endif %}
 						</div>
@@ -145,13 +161,13 @@ layout: default
 							{% if next_index < post_count %} 
 								{% assign next_post = all_posts[next_index] %} 
 								<a href="{{ next_post.url | relative_url }}">
-									<span class="nav-label">Next Post <i class="fas fa-arrow-right"></i></span>
+									<span class="nav-label">{% if page.lang == "hi" %}अगला आर्टिकल{% else %}Next Post{% endif %} <i class="fas fa-arrow-right"></i></span>
 									<div class="nav-post-title">{{ next_post.title }}</div>
 								</a>
 							{% else %}
 								<span class="nav-disabled">
-									<span class="nav-label">Next Post</span>
-									<div class="nav-post-title" style="opacity: 0.4;">No next post</div>
+									<span class="nav-label">{% if page.lang == "hi" %}समाप्त{% else %}Next Post{% endif %}</span>
+									<div class="nav-post-title" style="opacity: 0.4;">{% if page.lang == "hi" %}कोई अगला पोस्ट नहीं है{% else %}No next post{% endif %}</div>
 								</span>
 							{% endif %}
 						</div>
