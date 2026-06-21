@@ -3,14 +3,26 @@ layout: null
 permalink: /posts.json
 ---
 [
+  {% assign all_p = "" | split: "" %}
+  
+  {% for p in site.posts_hi %}
+    {% assign all_p = all_p | push: p %}
+  {% endfor %}
+  
   {% for p in site.posts %}
+    {% assign all_p = all_p | push: p %}
+  {% endfor %}
+  
+  {% assign unique_p = all_p | uniq %}
+  {% for p in unique_p %}
   {
     "title": {{ p.title | jsonify }},
     "url": {{ p.url | relative_url | jsonify }},
     "image": {{ p.image | default: '/assets/images/default-thumb.png' | jsonify }},
     "description": {{ p.description | default: p.excerpt | strip_html | truncate: 110 | jsonify }},
     "categories": [{% for cat in p.categories %}{{ cat | downcase | jsonify }}{% unless forloop.last %},{% endunless %}{% endfor %}],
-    "date": {{ p.date | date: "%d %b %Y" | jsonify }}
+    "date": {{ p.date | date: "%Y-%m-%d" | jsonify }},
+    "lang": {{ p.lang | default: "en" | jsonify }}
   }{% unless forloop.last %},{% endunless %}
   {% endfor %}
 ]
