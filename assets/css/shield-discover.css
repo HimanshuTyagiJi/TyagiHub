@@ -635,3 +635,16 @@
 .concept-card .cc-icon{font-size:1.8rem;margin-bottom:.5rem}
 .concept-card h4{font-size:.95rem;font-weight:700;color:var(--clr-heading);margin-bottom:.4rem}
 .concept-card p{font-size:.83rem;color:var(--clr-text-2);line-height:1.6}
+/* STEP CARDS */
+.step-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1.2rem;margin:1.5rem 0}
+.step-card{background:var(--clr-surface);border:1px solid var(--clr-border);border-radius:12px;padding:1.3rem;position:relative;overflow:hidden;transition:transform .2s,box-shadow .2s}
+.step-card:hover{transform:translateY(-3px);box-shadow:0 8px 24px rgba(0,0,0,.35)}
+.step-card .step-num{font-size:2.5rem;font-weight:900;color:var(--clr-accent);opacity:.15;position:absolute;top:.3rem;right:.7rem;line-height:1}
+.step-card h4{font-size:.95rem;font-weight:700;color:var(--clr-heading);margin-bottom:.5rem}
+.step-card p{font-size:.85rem;color:var(--clr-text-2);line-height:1.6}
+ .svg-diagram{background:var(--clr-surface);border:1px solid var(--clr-border);border-radius:12px;padding:1.5rem;margin:1.5rem 0;overflow-x:auto;text-align:center}
+.symptom-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem;margin:1.5rem 0}
+.symptom-card{background:var(--clr-surface);border:1px solid var(--clr-border);border-radius:10px;padding:1.1rem;border-top:3px solid var(--clr-shield)}
+.symptom-card .sym-icon{font-size:1.5rem;margin-bottom:.4rem}
+.symptom-card h4{font-size:.9rem;font-weight:700;color:var(--clr-heading);margin-bottom:.3rem}
+.symptom-card p{font-size:.82rem;color:var(--clr-text-2)}
