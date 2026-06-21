@@ -22,11 +22,20 @@ extra_js:
 
         {% assign words = content | number_of_words %}
 
-        {% if words < 360 %}
-          {% assign read_time = "2 min read" %}
+        {% if page.lang == "hi" %}
+          {% if words < 360 %}
+            {% assign read_time = "2 मिनट का पाठ" %}
+          {% else %}
+            {% assign minutes = words | divided_by: 180 %}
+            {% assign read_time = minutes | append: " मिनट का पाठ" %}
+          {% endif %}
         {% else %}
-          {% assign minutes = words | divided_by: 180 %}
-          {% assign read_time = minutes | append: " min read" %}
+          {% if words < 360 %}
+            {% assign read_time = "2 min read" %}
+          {% else %}
+            {% assign minutes = words | divided_by: 180 %}
+            {% assign read_time = minutes | append: " min read" %}
+          {% endif %}
         {% endif %}
 
         <h1 class="post-title">
@@ -34,9 +43,9 @@ extra_js:
         </h1>
 
         <p style="color:var(--text-muted);font-size:14px;margin-bottom:28px;">
-          By {{ page.author | default:"Tyagi MultiTech" }}
+          {% if page.lang == "hi" %}द्वारा{% else %}By{% endif %} {{ page.author | default:"Tyagi MultiTech" }}
           ·
-          {{ page.date | date: "%d %B %Y" }}
+          {{ page.date | date: "%d %b %Y" }}
           ·
           {{ read_time }}
         </p>
@@ -48,12 +57,12 @@ extra_js:
         {% endif %}
 
         <div class="toc-container" id="toc-box" style="display:none;margin-bottom:30px;">
-          <div class="toc-title">
-            Topics
+          <div class="toc-title" style="font-family: var(--font-display); font-weight: var(--fw-bold); color: var(--clr-heading);">
+            {% if page.lang == "hi" %}मुख्य विषय{% else %}Topics{% endif %}
           </div>
           <ul id="toc-list"></ul>
           <button id="toc-toggle-btn" class="toc-see-more">
-            See More
+            {% if page.lang == "hi" %}और देखें{% else %}See More{% endif %}
           </button>
         </div>
 
@@ -63,9 +72,9 @@ extra_js:
 
       {% if page.is_post %}
         <div class="share-wrapper">
-          <p class="share-label">Share With Friends 🚀</p>
+          <p class="share-label">{% if page.lang == "hi" %}दोस्तों के साथ शेयर करें 🚀{% else %}Share With Friends 🚀{% endif %}</p>
           <button onclick="tyagiShare()" class="tyagi-share-btn">
-            SHARE ARTICLE
+            {% if page.lang == "hi" %}आर्टिकल शेयर करें{% else %}SHARE ARTICLE{% endif %}
           </button>
         </div>
 
@@ -74,12 +83,8 @@ extra_js:
 
     </div>
 
-   {% include sidebars/shield-sidebar.html %}
+    {% include sidebars/shield-sidebar.html %}
 
   </main>
   
-
-
 </div>
-
-
