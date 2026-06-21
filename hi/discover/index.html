@@ -1,6 +1,6 @@
 ---
 layout: discover
-title: "डिस्कवर"
+title: "डिस्कवर — TyagiHub"
 description: "टेक्नोलॉजी, AI, साइबर सुरक्षा, शिक्षा, डिजिटल अपडेट, ऑनलाइन सुरक्षा और नई जानकारी — सब कुछ एक ही Discover फीड में।"
 permalink: /hi/discover/
 image: /assets/images/tyagihub.png
@@ -130,7 +130,7 @@ pagination:
 
   <section class="section">
     <div id="posts">
-      <div id="post-wrapper">
+      <div id="post-wrapper" class="static-seo-load">
 
         {% for p in sorted %}
           {% assign cat_clean = p.categories[0] | downcase %}
@@ -142,20 +142,37 @@ pagination:
 
         <div class="horizontal-post-card js-post"
           data-lang="hi"
-          data-categories="{% for cat in p.categories %}{{ cat | downcase }} {% endfor %}">
+          data-categories="{% for cat in p.categories %}{{ cat | downcase }} {% endfor %}"
+          data-post-url="{{ p.url | relative_url }}">
 
-          <div class="post-img">
-            <span class="post-category">{{ chip_tag }}</span>
-            <div class="post-date">
+          <div class="post-img" style="position: relative; overflow: hidden; background: #111216; display: flex; align-items: center; justify-content: center; width: 354px; height: 236px;">
+            <span class="post-category" style="z-index: 10;">{{ chip_tag }}</span>
+            <div class="post-date" style="z-index: 10;">
               <i class="fa-regular fa-calendar"></i>
               {{ p.date | date: "%d %b %Y" }}
             </div>
-            <img
-              src="{{ p.image | default: '/assets/images/default-thumb.png' }}"
-              alt="{{ p.title }} - TyagiHub"
-              loading="lazy"
-              width="260"
-              height="188">
+            
+            <div class="thumb-media-box" style="width:100%; height:100%; display:flex; align-items:center; justify-content:center; position:relative;">
+              <img
+                src="{{ p.image | default: '/assets/images/default-thumb.png' }}"
+                alt="{{ p.title }} - TyagiHub"
+                class="js-thumbnail-img"
+                loading="lazy"
+                width="354"
+                height="236"
+                style="width:100%; height:100%; object-fit:cover; display:block;"
+                onerror="triggerFallback(this)">
+                
+              <div class="auto-title-fallback" style="display:none; width:100%; height:100%; position:absolute; top:0; left:0; background:linear-gradient(135deg, #1e1e24 0%, #111216 100%); flex-direction:column; align-items:center; justify-content:center; padding:20px; text-align:center; box-sizing:border-box; border:1px solid rgba(255,255,255,0.05);">
+                <div class="animated-bg-glow" style="position:absolute; width:130px; height:130px; background:rgba(0,123,255,0.15); filter:blur(40px); border-radius:50%;"></div>
+                <svg viewBox="0 0 24 24" width="40" height="40" fill="none" stroke="#007bff" stroke-width="1.5" style="margin-bottom:10px; z-index:2;">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25" />
+                </svg>
+                <span style="font-size:15px; font-weight:600; color:#ffffff; line-height:1.4; padding:0 10px; z-index:2; font-family:sans-serif; display:-webkit-box; -webkit-line-clamp:3; -webkit-box-orient:vertical; overflow:hidden;">
+                  {{ p.title }}
+                </span>
+              </div>
+            </div>
           </div>
 
           <div class="post-info">
@@ -185,9 +202,52 @@ pagination:
 
       </div>
 
-      <nav id="pagination-nav" class="pagination-center" aria-label="Pagination Navigation">
+      <nav id="pagination-nav" class="pagination-center" aria-label="Pagination Navigation" style="display: flex; gap: 8px; justify-content: center; margin-top: 30px; align-items: center; flex-wrap: wrap;">
       </nav>
     </div>
   </section>
 
 </div>
+
+<script>
+function triggerFallback(imgNode) {
+  imgNode.style.display = 'none';
+  const fallbackCard = imgNode.nextElementSibling;
+  if (fallbackCard) {
+    fallbackCard.style.display = 'flex';
+  }
+}
+
+document.addEventListener("DOMContentLoaded", function() {
+  const postCards = document.querySelectorAll(".js-post");
+
+  postCards.forEach((card, index) => {
+    if (index >= 2) return; 
+
+    const postUrl = card.getAttribute("data-post-url");
+    const mediaBox = card.querySelector(".thumb-media-box");
+
+    if (postUrl && mediaBox) {
+      fetch(postUrl)
+        .then(response => response.text())
+        .then(htmlData => {
+          const parser = new DOMParser();
+          const doc = parser.parseFromString(htmlData, "text/html");
+          const contentSvg = doc.querySelector("article svg, .post-content svg, main svg");
+
+          if (contentSvg) {
+            mediaBox.innerHTML = "";
+            contentSvg.style.width = "100%";
+            contentSvg.style.height = "100%";
+            contentSvg.style.display = "block";
+            contentSvg.style.objectFit = "cover";
+            contentSvg.removeAttribute("height");
+            contentSvg.removeAttribute("width");
+            mediaBox.appendChild(contentSvg);
+          }
+        })
+        .catch(err => console.error("Scanner failed for:", postUrl, err));
+    }
+  });
+});
+</script>
