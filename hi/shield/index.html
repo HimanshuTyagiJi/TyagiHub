@@ -14,8 +14,19 @@ extra_js:
   - /assets/js/shield.js
 ---
 
-{% assign all_posts = site.posts_hi %}
-{% assign sorted = site.posts_hi | sort: "date" | reverse %}
+{% assign combined_hindi = "" | split: "" %}
+
+{% for p in site.shield_hi %}
+  {% assign combined_hindi = combined_hindi | push: p %}
+{% endfor %}
+
+{% for p in site.posts_hi %}
+  {% if p.categories contains "Cyber-Security" or p.categories contains "cyber-security" %}
+    {% assign combined_hindi = combined_hindi | push: p %}
+  {% endif %}
+{% endfor %}
+
+{% assign sorted = combined_hindi | uniq | sort: "date" | reverse %}
 
 <div class="shield-page-wrapper">
   
@@ -26,7 +37,7 @@ extra_js:
         InfoShield India
       </div>
       <h1 class="shield-hero__title">
-        ऑनलाइन सुरक्षित रहें।<br>
+        オンライン सुरक्षित रहें।<br>
         <span class="shield-hero__title--alert">Scam से बचें।</span>
       </h1>
       <p class="shield-hero__desc">
@@ -42,7 +53,7 @@ extra_js:
         <input type="text" id="shield-search" placeholder="स्कैम्स, सुरक्षा टिप्स और गाइड सर्च करें...">
       </div>
 
-      <div id="post-wrapper" class="grid-3">
+      <div id="post-wrapper" class="grid-3" data-page-lang="hi">
   
         {% for p in sorted limit: 6 %}
         
@@ -54,7 +65,7 @@ extra_js:
           {% endif %}
 
         <div class="blog-card js-post"
-             data-lang="{{ p.lang | default: 'hi' }}"
+             data-lang="hi"
              data-categories="{% for cat in p.categories %}{{ cat | downcase }} {% endfor %}"
              data-post-url="{{ p.url | relative_url }}">
              
