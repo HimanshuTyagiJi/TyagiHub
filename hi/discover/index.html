@@ -13,27 +13,7 @@ extra_css:
   - /assets/css/discover.css
 extra_js:
   - /assets/js/discover.js
-
-# 🎯 CONFIG ENGINE: Pagination plugin ko bol diya ki posts_hi uthaye
-pagination:
-  enabled: true
-  collection: posts_hi
-  per_page: 6
-  permalink: "/hi/discover/page-:num/"
 ---
-
-{% assign combined_discover = "" | split: "" %}
-
-{% for p in site.shield_hi %}
-  {% assign combined_discover = combined_discover | push: p %}
-{% endfor %}
-
-{% for p in site.posts_hi %}
-  {% assign combined_discover = combined_discover | push: p %}
-{% endfor %}
-
-{% assign sorted = combined_discover | uniq | sort: "date" | reverse %}
-{% assign total_count = sorted | size %}
 
 <div style="padding-top:var(--nav-height);">
 
@@ -99,30 +79,21 @@ pagination:
     <div class="container">
       <div class="discover-categories">
 
-        <button class="discover-cat-btn active" onclick="filterCategory('all',this)">
-          सभी <span>({{ total_count }})</span>
+        <button class="discover-cat-btn" data-cat="all" onclick="window.location.href='?category=all'">
+          सभी पोस्ट
         </button>
 
-        {% assign categories = site.categories | sort %}
-        {% for category in categories %}
-          {% unless category[0] == "discover" %}
-            {% assign cat_name = category[0] | downcase %}
-            
-            {% if cat_name == "cyber-security" or cat_name == "cybersecurity" %}
-              {% assign display_name = "साइबर सुरक्षा" %}
-            {% elsif cat_name == "apps" %}
-              {% assign display_name = "ऐप्स" %}
-            {% elsif cat_name == "learn" %}
-              {% assign display_name = "सीखें" %}
-            {% else %}
-              {% assign display_name = category[0] | replace: "-", " " | replace: "_", " " | capitalize %}
-            {% endif %}
+        <button class="discover-cat-btn" data-cat="cyber-security" onclick="window.location.href='?category=cyber-security'">
+          साइबर सुरक्षा
+        </button>
 
-            <button class="discover-cat-btn" onclick="filterCategory('{{ category[0] | downcase }}',this)">
-              {{ display_name }} <span>({{ category[1].size }})</span>
-            </button>
-          {% endunless %}
-        {% endfor %}
+        <button class="discover-cat-btn" data-cat="apps" onclick="window.location.href='?category=apps'">
+          ऐप्स
+        </button>
+
+        <button class="discover-cat-btn" data-cat="learn" onclick="window.location.href='?category=learn'">
+          सीखें
+        </button>
 
       </div>
     </div>
@@ -131,75 +102,7 @@ pagination:
   <section class="section">
     <div id="posts">
       <div id="post-wrapper" class="static-seo-load">
-
-        {% for p in sorted %}
-          {% assign cat_clean = p.categories[0] | downcase %}
-          {% if cat_clean == "cyber-security" or cat_clean == "cybersecurity" or p.url contains "cyber-security" %}
-            {% assign chip_tag = "साइबर सुरक्षा" %}
-          {% else %}
-            {% assign chip_tag = p.categories[0] | default: "सुरक्षा" | capitalize %}
-          {% endif %}
-
-        <div class="horizontal-post-card js-post"
-          data-lang="hi"
-          data-categories="{% for cat in p.categories %}{{ cat | downcase }} {% endfor %}"
-          data-post-url="{{ p.url | relative_url }}">
-
-          <div class="post-img" style="position: relative; overflow: hidden; background: #111216; display: flex; align-items: center; justify-content: center; width: 354px; height: 236px;">
-            <span class="post-category" style="z-index: 10;">{{ chip_tag }}</span>
-            <div class="post-date" style="z-index: 10;">
-              <i class="fa-regular fa-calendar"></i>
-              {{ p.date | date: "%d %b %Y" }}
-            </div>
-            
-            <div class="thumb-media-box" style="width:100%; height:100%; display:flex; align-items:center; justify-content:center; position:relative;">
-              <img
-                src="{{ p.image | default: '/assets/images/default-thumb.png' }}"
-                alt="{{ p.title }} - TyagiHub"
-                class="js-thumbnail-img"
-                loading="lazy"
-                width="354"
-                height="236"
-                style="width:100%; height:100%; object-fit:cover; display:block;"
-                onerror="triggerFallback(this)">
-                
-              <div class="auto-title-fallback" style="display:none; width:100%; height:100%; position:absolute; top:0; left:0; background:linear-gradient(135deg, #1e1e24 0%, #111216 100%); flex-direction:column; align-items:center; justify-content:center; padding:20px; text-align:center; box-sizing:border-box; border:1px solid rgba(255,255,255,0.05);">
-                <div class="animated-bg-glow" style="position:absolute; width:130px; height:130px; background:rgba(0,123,255,0.15); filter:blur(40px); border-radius:50%;"></div>
-                <svg viewBox="0 0 24 24" width="40" height="40" fill="none" stroke="#007bff" stroke-width="1.5" style="margin-bottom:10px; z-index:2;">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25" />
-                </svg>
-                <span style="font-size:15px; font-weight:600; color:#ffffff; line-height:1.4; padding:0 10px; z-index:2; font-family:sans-serif; display:-webkit-box; -webkit-line-clamp:3; -webkit-box-orient:vertical; overflow:hidden;">
-                  {{ p.title }}
-                </span>
-              </div>
-            </div>
-          </div>
-
-          <div class="post-info">
-            <div class="post-top-meta">
-              <h2>
-                <a href="{{ p.url | relative_url }}">
-                  {{ p.title }}
-                </a>
-              </h2>
-              <p>
-                {{ p.description | default:p.excerpt | strip_html | truncate:110 }}
-              </p>
-            </div>
-
-            <div class="post-footer">
-              <button class="native-share-btn" onclick="nativeShare('{{ p.title | escape }}','{{ p.url | absolute_url }}')">
-                <i class="fa-solid fa-share-nodes"></i> शेयर
-              </button>
-              <a href="{{ p.url | relative_url }}" class="read-link">
-                पूरा पढ़ें →
-              </a>
-            </div>
-          </div>
-
-        </div>
-        {% endfor %}
-
+        <p style="text-align:center; padding: 40px 0; color: var(--text-muted); width:100%;">आर्टिकल्स लोड हो रहे हैं...</p>
       </div>
 
       <nav id="pagination-nav" class="pagination-center" aria-label="Pagination Navigation" style="display: flex; gap: 8px; justify-content: center; margin-top: 30px; align-items: center; flex-wrap: wrap;">
@@ -208,46 +111,3 @@ pagination:
   </section>
 
 </div>
-
-<script>
-function triggerFallback(imgNode) {
-  imgNode.style.display = 'none';
-  const fallbackCard = imgNode.nextElementSibling;
-  if (fallbackCard) {
-    fallbackCard.style.display = 'flex';
-  }
-}
-
-document.addEventListener("DOMContentLoaded", function() {
-  const postCards = document.querySelectorAll(".js-post");
-
-  postCards.forEach((card, index) => {
-    if (index >= 2) return; 
-
-    const postUrl = card.getAttribute("data-post-url");
-    const mediaBox = card.querySelector(".thumb-media-box");
-
-    if (postUrl && mediaBox) {
-      fetch(postUrl)
-        .then(response => response.text())
-        .then(htmlData => {
-          const parser = new DOMParser();
-          const doc = parser.parseFromString(htmlData, "text/html");
-          const contentSvg = doc.querySelector("article svg, .post-content svg, main svg");
-
-          if (contentSvg) {
-            mediaBox.innerHTML = "";
-            contentSvg.style.width = "100%";
-            contentSvg.style.height = "100%";
-            contentSvg.style.display = "block";
-            contentSvg.style.objectFit = "cover";
-            contentSvg.removeAttribute("height");
-            contentSvg.removeAttribute("width");
-            mediaBox.appendChild(contentSvg);
-          }
-        })
-        .catch(err => console.error("Scanner failed for:", postUrl, err));
-    }
-  });
-});
-</script>
