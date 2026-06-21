@@ -25,8 +25,7 @@ const LangToggle = (() => {
         lang = btn.dataset.lang;
         localStorage.setItem(STORAGE_KEY, lang);
         apply();
-        // Global update trigger if auto-count exists
-        if (typeof AutoCountEngine !== 'undefined') AutoCountEngine.updateLabels(lang);
+        if (typeof AutoCountEngine !== 'undefined') AutoCountEngine.syncLabels(lang);
       });
     });
   }
@@ -37,7 +36,7 @@ const LangToggle = (() => {
 })();
 
 /* ============================================================
-   1.5. AUTO-COUNT ENGINE (Real-Time JSON Parser 🚀)
+   1.5. AUTO-COUNT ENGINE (Strict _data Root Pipeline 🚀)
    ============================================================ */
 const AutoCountEngine = (() => {
   let totals = { en: 0, hi: 0 };
@@ -53,8 +52,8 @@ const AutoCountEngine = (() => {
       const fileName = card.dataset.quizFile;
       const fileLang = card.dataset.quizLang;
       
-      // Exact path hierarchy format mapping 
-      const dataUrl = `/assets/data/quiz/${fileLang}/${fileName}.json`;
+      // 🎯 THE EXACT ROOT PATH Handshake Lock
+      const dataUrl = `/gk-quiz/_data/quiz/${fileLang}/${fileName}.json`;
 
       fetch(dataUrl)
         .then(res => {
@@ -62,7 +61,8 @@ const AutoCountEngine = (() => {
           return res.json();
         })
         .then(data => {
-          const qCount = Array.isArray(data) ? data.length : 0;
+          const arr = Array.isArray(data) ? data : (data.questions || []);
+          const qCount = arr.length;
           el.setAttribute('data-actual-count', qCount);
           totals[fileLang] += qCount;
         })
@@ -71,10 +71,8 @@ const AutoCountEngine = (() => {
         })
         .finally(() => {
           processed++;
-          // Render count labels as soon as single fetch finishes
-          renderLabel(el, LangToggle.getLang());
+          renderLabel(el);
 
-          // All categories parsed successfully -> Trigger global hero updater
           if (processed === countElements.length) {
             updateGlobalHero(LangToggle.getLang());
           }
@@ -82,21 +80,14 @@ const AutoCountEngine = (() => {
     });
   }
 
-  function renderLabel(el, currentLang) {
+  function renderLabel(el) {
     const count = el.getAttribute('data-actual-count') || 0;
     const fileLang = el.closest('.quiz-cat-card').dataset.quizLang;
-    
-    if (fileLang === 'hi') {
-      el.innerText = `${count} प्रश्न`;
-    } else {
-      el.innerText = `${count} Questions`;
-    }
+    el.innerText = fileLang === 'hi' ? `${count} प्रश्न` : `${count} Questions`;
   }
 
-  function updateLabels(currentLang) {
-    document.querySelectorAll('.js-quiz-count').forEach(el => {
-      renderLabel(el, currentLang);
-    });
+  function syncLabels(currentLang) {
+    document.querySelectorAll('.js-quiz-count').forEach(el => renderLabel(el));
     updateGlobalHero(currentLang);
   }
 
@@ -107,7 +98,7 @@ const AutoCountEngine = (() => {
     heroCounter.innerText = `${finalSum}+`;
   }
 
-  return { init, updateLabels };
+  return { init, syncLabels };
 })();
 
 /* ============================================================
@@ -125,7 +116,6 @@ const QuizSearch = (() => {
         card.style.display = (!q || name.includes(q)) ? '' : 'none';
       });
 
-      // Hide section if all cards hidden
       document.querySelectorAll('[data-lang-section]').forEach(section => {
         if (section.style.display === 'none') return;
         const visible = [...section.querySelectorAll('.quiz-cat-card')]
@@ -148,7 +138,6 @@ const QuizPlayer = (() => {
   let lang        = 'en';
   let score       = 0;
 
-  // DOM refs
   const progressFill   = document.getElementById('quiz-progress-fill');
   const progressLabel  = document.getElementById('quiz-progress-label');
   const questionNum    = document.getElementById('quiz-question-num');
@@ -167,7 +156,6 @@ const QuizPlayer = (() => {
   const skipBtn        = document.getElementById('quiz-skip-btn');
   const restartBtn     = document.getElementById('quiz-restart-btn');
 
-  /* ---- Load questions from data attribute ---- */
   async function loadQuestions() {
     const el = document.getElementById('quiz-data');
     if (!el) return;
@@ -186,7 +174,6 @@ const QuizPlayer = (() => {
     }
   }
 
-  /* ---- Render question ---- */
   function renderQuestion(idx) {
     if (!questions.length) return;
     currentIdx = idx;
@@ -196,7 +183,6 @@ const QuizPlayer = (() => {
     const total = questions.length;
     const pct   = ((idx) / total) * 100;
 
-    // Progress
     if (progressFill)  progressFill.style.width = pct + '%';
     if (progressLabel) {
       progressLabel.innerHTML = `
@@ -205,11 +191,9 @@ const QuizPlayer = (() => {
       `;
     }
 
-    // Question
     if (questionNum)  questionNum.textContent  = `Q${idx + 1}`;
     if (questionText) questionText.textContent = lang === 'hi' ? q.q_hi : q.q_en;
 
-    // Options
     if (optionsWrap) {
       const opts = lang === 'hi' ? q.opts_hi : q.opts_en;
       const keys = ['A', 'B', 'C', 'D'];
@@ -224,7 +208,6 @@ const QuizPlayer = (() => {
       `).join('');
     }
 
-    // Explanation
     if (answered[idx] !== null) {
       const exp = lang === 'hi' ? q.exp_hi : q.exp_en;
       if (explanation)  explanation.classList.add('visible');
@@ -233,7 +216,6 @@ const QuizPlayer = (() => {
       if (explanation)  explanation.classList.remove('visible');
     }
 
-    // Buttons
     if (prevBtn) prevBtn.disabled = idx === 0;
     if (nextBtn) nextBtn.textContent = idx === total - 1 ? (lang === 'hi' ? 'परिणाम देखें' : 'See Results') : (lang === 'hi' ? 'अगला →' : 'Next →');
     if (skipBtn) skipBtn.style.display = answered[idx] !== null ? 'none' : '';
@@ -247,7 +229,6 @@ const QuizPlayer = (() => {
     return '';
   }
 
-  /* ---- Select option ---- */
   function selectOption(optIdx) {
     if (answered[currentIdx] !== null) return;
     const q = questions[currentIdx];
@@ -270,7 +251,6 @@ const QuizPlayer = (() => {
     if (scoreSkip)    scoreSkip.textContent    = s;
   }
 
-  /* ---- Navigation ---- */
   function nextQuestion() {
     if (currentIdx >= questions.length - 1) {
       showResult();
@@ -291,7 +271,6 @@ const QuizPlayer = (() => {
     nextQuestion();
   }
 
-  /* ---- Result screen ---- */
   function showResult() {
     const total   = questions.length;
     const correct = answered.filter((a, i) => a !== null && a !== 'skip' && a === questions[i]?.answer).length;
@@ -309,7 +288,6 @@ const QuizPlayer = (() => {
     if (scoreWrong)   scoreWrong.textContent   = wrong;
     if (scoreSkip)    scoreSkip.textContent    = skipped;
 
-    // Emoji based on score
     const icon = document.getElementById('quiz-result-icon');
     if (icon) {
       if (pct >= 80)      icon.textContent = '🏆';
@@ -318,7 +296,6 @@ const QuizPlayer = (() => {
       else                icon.textContent = '💪';
     }
 
-    // Message
     const msg = document.getElementById('quiz-result-msg');
     if (msg) {
       if (lang === 'hi') {
@@ -333,12 +310,10 @@ const QuizPlayer = (() => {
     }
   }
 
-  /* ---- Keyboard shortcuts ---- */
   function initKeyboard() {
     document.addEventListener('keydown', e => {
       if (!questions.length) return;
-      const map = { 'a': 0, 'b': 1, 'c': 2, 'd': 3,
-                    'A': 0, 'B': 1, 'C': 2, 'D': 3 };
+      const map = { 'a': 0, 'b': 1, 'c': 2, 'd': 3, 'A': 0, 'B': 1, 'C': 2, 'D': 3 };
       if (e.key in map && answered[currentIdx] === null) {
         selectOption(map[e.key]);
       }
@@ -347,7 +322,6 @@ const QuizPlayer = (() => {
     });
   }
 
-  /* ---- Init ---- */
   function init() {
     loadQuestions();
     initKeyboard();
@@ -368,10 +342,9 @@ window.QuizPlayer = QuizPlayer;
    ============================================================ */
 document.addEventListener('DOMContentLoaded', () => {
   LangToggle.init();
-  AutoCountEngine.init(); // 🚀 Loaded safely into the system pipeline
+  AutoCountEngine.init(); // 🚀 Root sync safe attachment
   QuizSearch.init();
 
-  // Only init player if on quiz player page
   if (document.getElementById('quiz-player-area')) {
     QuizPlayer.init();
   }
