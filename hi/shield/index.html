@@ -21,9 +21,7 @@ extra_js:
 {% endfor %}
 
 {% for p in site.posts_hi %}
-  {% if p.categories contains "Cyber-Security" or p.categories contains "cyber-security" %}
-    {% assign combined_hindi = combined_hindi | push: p %}
-  {% endif %}
+  {% assign combined_hindi = combined_hindi | push: p %}
 {% endfor %}
 
 {% assign sorted = combined_hindi | uniq | sort: "date" | reverse %}
@@ -37,7 +35,7 @@ extra_js:
         InfoShield India
       </div>
       <h1 class="shield-hero__title">
-        ऑनलाइन सुरक्षित रहें।<br>
+        オンライン सुरक्षित रहें।<br>
         <span class="shield-hero__title--alert">Scam से बचें।</span>
       </h1>
       <p class="shield-hero__desc">
@@ -58,7 +56,7 @@ extra_js:
         {% for p in sorted limit: 6 %}
         
           {% assign cat_clean = p.categories[0] | downcase %}
-          {% if cat_clean == "cyber-security" or cat_clean == "cybersecurity" or cat_clean == "security" %}
+          {% if cat_clean == "cyber-security" or cat_clean == "cybersecurity" or cat_clean == "security" or p.url contains "cyber-security" %}
             {% assign display_tag = "साइबर सुरक्षा" %}
           {% else %}
             {% assign display_tag = p.categories[0] | default: "सुरक्षा" | capitalize %}
