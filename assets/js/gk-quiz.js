@@ -44,21 +44,25 @@ const AutoCountEngine = (() => {
   let totals = { en: 0, hi: 0 };
 
   function init() {
-    // HTML layout ke hidden script registry se JSON load karega
     const scriptTag = document.getElementById('jekyll-quiz-counts-repo');
     if (!scriptTag) return;
 
     try {
       repoData = JSON.parse(scriptTag.textContent);
       
-      // Dono language sections ke total global sums ko calculate karega
-      Object.keys(repoData.en).forEach(k => totals.en += (repoData.en[k] || 0));
-      Object.keys(repoData.hi).forEach(k => totals.hi += (repoData.hi[k] || 0));
+      // Pure Dynamic Loop: No manual file names checked!
+      Object.keys(repoData.en).forEach(k => {
+        totals.en += (repoData.en[k] || 0);
+      });
+
+      Object.keys(repoData.hi).forEach(k => {
+        totals.hi += (repoData.hi[k] || 0);
+      });
+      
     } catch (e) {
       console.error("Failed to parse local jekyll repo data chunk", e);
     }
 
-    // Dom mount hote hi card labels render karega synchronously
     syncLabels(LangToggle.getLang());
   }
 
@@ -68,7 +72,6 @@ const AutoCountEngine = (() => {
     const fileName = card.dataset.quizFile;
     const fileLang = card.dataset.quizLang;
     
-    // Hidden box se correct number nikalega
     const count = repoData[fileLang][fileName] || 0;
     el.innerText = fileLang === 'hi' ? `${count} प्रश्न` : `${count} Questions`;
   }
