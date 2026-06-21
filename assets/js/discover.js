@@ -58,17 +58,30 @@ document.addEventListener("DOMContentLoaded", () => {
           description: post.description,
           categories: [catStr.toLowerCase().trim()],
           date: post.date,
-          lang: post.lang || "hi" // Shield collection default hi context filter
+          lang: post.lang || "hi"
         };
       });
 
-      // 3. Combine master database array
-      const masterCombinedData = [...normalizedPosts, ...normalizedShield];
+      // 3. Combine raw array
+      const rawCombinedData = [...normalizedPosts, ...normalizedShield];
 
-      // 4. Strict Language Segment gatekeeper
+      // 4. 🎯 STRIKE ANTI-DUPLICATE LOCK: URL key scan checks to wipe out same items
+      const uniqueMap = new Map();
+      rawCombinedData.forEach(post => {
+        if (post.url) {
+          const cleanUrl = post.url.toLowerCase().trim();
+          if (!uniqueMap.has(cleanUrl)) {
+            uniqueMap.set(cleanUrl, post);
+          }
+        }
+      });
+
+      const masterCombinedData = Array.from(uniqueMap.values());
+
+      // 5. Strict Language Segment gatekeeper
       allPostsData = masterCombinedData.filter(post => isHindi ? post.lang === "hi" : post.lang !== "hi");
       
-      // 5. Date Engine Sort Lock
+      // 6. Date Engine Sort Lock
       allPostsData.sort((a, b) => new Date(b.date) - new Date(a.date));
 
       applyFiltersAndRender();
@@ -91,10 +104,8 @@ document.addEventListener("DOMContentLoaded", () => {
     const isDefaultState = (currentPage === 1 && currentCategory === "all" && searchQuery === "");
 
     if (isDefaultState) {
-      // Keep Jekyll HTML layer if pure fresh load, just inject pagination
       renderPagination();
     } else {
-      // Dynamic rendering filter bypass override
       renderPosts();
       renderPagination();
     }
@@ -104,7 +115,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // 3. LIVE SEARCH INTERCEPTOR
   // =========================
   if (searchInput) {
-    if (isHindi) searchInput.placeholder = "Articls तुरंत सर्च करें...";
+    if (isHindi) searchInput.placeholder = "Articles तुरंत सर्च करें...";
     searchInput.addEventListener("input", (e) => {
       searchQuery = e.target.value.toLowerCase().trim();
       currentPage = 1; 
@@ -135,7 +146,6 @@ document.addEventListener("DOMContentLoaded", () => {
     chunk.forEach(p => {
       const rawCat = p.categories && p.categories.length > 0 ? p.categories[0] : "technology";
       
-      // Dynamic Chip Translation
       let displayChip = rawCat.replace("-", " ").toUpperCase();
       if (isHindi) {
         if (rawCat === "cyber-security" || rawCat === "cybersecurity") displayChip = "साइबर सुरक्षा";
@@ -146,7 +156,6 @@ document.addEventListener("DOMContentLoaded", () => {
       const shareBtnText = isHindi ? "शेयर" : "Share";
       const readMoreText = isHindi ? "पूरा पढ़ें →" : "Read More →";
 
-      // Fixed native share escaping issues inside templates
       const safeTitle = (p.title || "").replace(/'/g, "\\'");
       const safeUrl = p.url;
 
