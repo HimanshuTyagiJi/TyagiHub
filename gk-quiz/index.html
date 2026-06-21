@@ -70,55 +70,311 @@ extra_js:
     </div>
 
     <div data-lang-section="en">
-
-      <div class="quiz-section">
-        <h2 class="quiz-section__title">🏆 Exam Corner</h2>
-        <div class="exam-corner">
-          <a href="{{ site.url }}/gk-quiz/ssc/" class="exam-card">
-            <div class="exam-card__icon">🎯</div>
-            <div class="exam-card__name">SSC Exams</div>
-            <div class="exam-card__desc">CGL, CHSL, MTS — practice topic-wise</div>
-          </a>
-          <a href="{{ site.url }}/gk-quiz/banking/" class="exam-card">
-            <div class="exam-card__icon">🏦</div>
-            <div class="exam-card__name">Banking</div>
-            <div class="exam-card__desc">IBPS PO, Clerk, SBI — curated GK sets</div>
-          </a>
-          <a href="{{ site.url }}/gk-quiz/railway/" class="exam-card">
-            <div class="exam-card__icon">🚆</div>
-            <div class="exam-card__name">Railway</div>
-            <div class="exam-card__desc">RRB NTPC, Group D — GK practice</div>
-          </a>
-          <a href="{{ site.url }}/gk-quiz/upsc/" class="exam-card">
-            <div class="exam-card__icon">🏛️</div>
-            <div class="exam-card__name">UPSC</div>
-            <div class="exam-card__desc">Prelims GK — History, Polity, Economy</div>
-          </a>
-        </div>
-      </div>
-
       <div class="quiz-section">
         <h2 class="quiz-section__title">📚 All Quiz Topics</h2>
         <div class="quiz-grid">
-          {% for cat in site.quiz.categories.english %}
-          {% assign file_key = cat.data_file | split: '/' | last %}
-          <a href="{{ site.url }}{{ cat.url }}" class="quiz-cat-card" style="--cat-color:#e97c2a;" data-quiz-file="{{ cat.id }}" data-quiz-lang="en">
-            <div class="quiz-cat-card__icon">
-              {% if cat.id contains 'history' %}🏛️{% elsif cat.id contains 'constitution' or cat.id contains 'samvidhan' %}⚖️{% elsif cat.id contains 'economy' or cat.id contains 'arthavyavastha' %}💰{% elsif cat.id contains 'environment' or cat.id contains 'paryavaran' %}🌿{% elsif cat.id contains 'geography' or cat.id contains 'bhugol' %}🗺️{% elsif cat.id contains 'physics' or cat.id contains 'bhautiki' %}⚡{% elsif cat.id contains 'chemistry' or cat.id contains 'rasayan' %}🧪{% elsif cat.id contains 'computer' %}💻{% elsif cat.id contains 'sports' or cat.id contains 'khel' %}🏆{% else %}📚{% endif %}
-            </div>
+
+          <a href="{{ site.url }}/gk-quiz/ancient-indian-history/" class="quiz-cat-card" data-quiz-file="ancient-indian-history" data-quiz-lang="en">
+            <div class="quiz-cat-card__icon">🏛️</div>
             <div class="quiz-cat-card__content">
-              <div class="quiz-cat-card__name">{{ cat.title }}</div>
+              <div class="quiz-cat-card__name">Ancient Indian History</div>
               <div class="quiz-cat-card__count js-quiz-count">Loading...</div>
             </div>
             <span class="quiz-cat-card__arrow">→</span>
           </a>
-          {% endfor %}
+
+          <a href="{{ site.url }}/gk-quiz/medieval-indian-history/" class="quiz-cat-card" data-quiz-file="medieval-history" data-quiz-lang="en">
+            <div class="quiz-cat-card__icon">🕌</div>
+            <div class="quiz-cat-card__content">
+              <div class="quiz-cat-card__name">Medieval Indian History</div>
+              <div class="quiz-cat-card__count js-quiz-count">Loading...</div>
+            </div>
+            <span class="quiz-cat-card__arrow">→</span>
+          </a>
+
+          <a href="{{ site.url }}/gk-quiz/modern-indian-history/" class="quiz-cat-card" data-quiz-file="modern-history" data-quiz-lang="en">
+            <div class="quiz-cat-card__icon">🇮🇳</div>
+            <div class="quiz-cat-card__content">
+              <div class="quiz-cat-card__name">Modern Indian History</div>
+              <div class="quiz-cat-card__count js-quiz-count">Loading...</div>
+            </div>
+            <span class="quiz-cat-card__arrow">→</span>
+          </a>
+
+          <a href="{{ site.url }}/gk-quiz/world-history/" class="quiz-cat-card" data-quiz-file="world-history" data-quiz-lang="en">
+            <div class="quiz-cat-card__icon">🌍</div>
+            <div class="quiz-cat-card__content">
+              <div class="quiz-cat-card__name">World History</div>
+              <div class="quiz-cat-card__count js-quiz-count">Loading...</div>
+            </div>
+            <span class="quiz-cat-card__arrow">→</span>
+          </a>
+
+          <a href="{{ site.url }}/gk-quiz/indian-constitution/" class="quiz-cat-card" data-quiz-file="indian-constitution" data-quiz-lang="en">
+            <div class="quiz-cat-card__icon">⚖️</div>
+            <div class="quiz-cat-card__content">
+              <div class="quiz-cat-card__name">Indian Government & Constitution</div>
+              <div class="quiz-cat-card__count js-quiz-count">Loading...</div>
+            </div>
+            <span class="quiz-cat-card__arrow">→</span>
+          </a>
+
+          <a href="{{ site.url }}/gk-quiz/indian-economy/" class="quiz-cat-card" data-quiz-file="indian-economy" data-quiz-lang="en">
+            <div class="quiz-cat-card__icon">💰</div>
+            <div class="quiz-cat-card__content">
+              <div class="quiz-cat-card__name">Indian Economy</div>
+              <div class="quiz-cat-card__count js-quiz-count">Loading...</div>
+            </div>
+            <span class="quiz-cat-card__arrow">→</span>
+          </a>
+
+          <a href="{{ site.url }}/gk-quiz/environment/" class="quiz-cat-card" data-quiz-file="environment" data-quiz-lang="en">
+            <div class="quiz-cat-card__icon">🌿</div>
+            <div class="quiz-cat-card__content">
+              <div class="quiz-cat-card__name">Environment & Biodiversity</div>
+              <div class="quiz-cat-card__count js-quiz-count">Loading...</div>
+            </div>
+            <span class="quiz-cat-card__arrow">→</span>
+          </a>
+
+          <a href="{{ site.url }}/gk-quiz/indian-art-culture/" class="quiz-cat-card" data-quiz-file="indian-art-culture" data-quiz-lang="en">
+            <div class="quiz-cat-card__icon">🎭</div>
+            <div class="quiz-cat-card__content">
+              <div class="quiz-cat-card__name">Indian Art & Culture</div>
+              <div class="quiz-cat-card__count js-quiz-count">Loading...</div>
+            </div>
+            <span class="quiz-cat-card__arrow">→</span>
+          </a>
+
+          <a href="{{ site.url }}/gk-quiz/physics/" class="quiz-cat-card" data-quiz-file="physics" data-quiz-lang="en">
+            <div class="quiz-cat-card__icon">⚡</div>
+            <div class="quiz-cat-card__content">
+              <div class="quiz-cat-card__name">Physics</div>
+              <div class="quiz-cat-card__count js-quiz-count">Loading...</div>
+            </div>
+            <span class="quiz-cat-card__arrow">→</span>
+          </a>
+
+          <a href="{{ site.url }}/gk-quiz/chemistry/" class="quiz-cat-card" data-quiz-file="chemistry" data-quiz-lang="en">
+            <div class="quiz-cat-card__icon">🧪</div>
+            <div class="quiz-cat-card__content">
+              <div class="quiz-cat-card__name">Chemistry</div>
+              <div class="quiz-cat-card__count js-quiz-count">Loading...</div>
+            </div>
+            <span class="quiz-cat-card__arrow">→</span>
+          </a>
+
+          <a href="{{ site.url }}/gk-quiz/mathematics/" class="quiz-cat-card" data-quiz-file="mathematics" data-quiz-lang="en">
+            <div class="quiz-cat-card__icon">🔢</div>
+            <div class="quiz-cat-card__content">
+              <div class="quiz-cat-card__name">Mathematics</div>
+              <div class="quiz-cat-card__count js-quiz-count">Loading...</div>
+            </div>
+            <span class="quiz-cat-card__arrow">→</span>
+          </a>
+
+          <a href="{{ site.url }}/gk-quiz/biology/" class="quiz-cat-card" data-quiz-file="biology" data-quiz-lang="en">
+            <div class="quiz-cat-card__icon">🧬</div>
+            <div class="quiz-cat-card__content">
+              <div class="quiz-cat-card__name">Biology</div>
+              <div class="quiz-cat-card__count js-quiz-count">Loading...</div>
+            </div>
+            <span class="quiz-cat-card__arrow">→</span>
+          </a>
+
+          <a href="{{ site.url }}/gk-quiz/computer/" class="quiz-cat-card" data-quiz-file="computer" data-quiz-lang="en">
+            <div class="quiz-cat-card__icon">💻</div>
+            <div class="quiz-cat-card__content">
+              <div class="quiz-cat-card__name">Computer</div>
+              <div class="quiz-cat-card__count js-quiz-count">Loading...</div>
+            </div>
+            <span class="quiz-cat-card__arrow">→</span>
+          </a>
+
+          <a href="{{ site.url }}/gk-quiz/sanskrit/" class="quiz-cat-card" data-quiz-file="sanskrit" data-quiz-lang="en">
+            <div class="quiz-cat-card__icon">📜</div>
+            <div class="quiz-cat-card__content">
+              <div class="quiz-cat-card__name">Sanskrit</div>
+              <div class="quiz-cat-card__count js-quiz-count">Loading...</div>
+            </div>
+            <span class="quiz-cat-card__arrow">→</span>
+          </a>
+
+          <a href="{{ site.url }}/gk-quiz/science-technology/" class="quiz-cat-card" data-quiz-file="science-technology" data-quiz-lang="en">
+            <div class="quiz-cat-card__icon">🔬</div>
+            <div class="quiz-cat-card__content">
+              <div class="quiz-cat-card__name">Science & Technology</div>
+              <div class="quiz-cat-card__count js-quiz-count">Loading...</div>
+            </div>
+            <span class="quiz-cat-card__arrow">→</span>
+          </a>
+
+          <a href="{{ site.url }}/gk-quiz/books-authors/" class="quiz-cat-card" data-quiz-file="books-authors" data-quiz-lang="en">
+            <div class="quiz-cat-card__icon">📚</div>
+            <div class="quiz-cat-card__content">
+              <div class="quiz-cat-card__name">Books & Authors</div>
+              <div class="quiz-cat-card__count js-quiz-count">Loading...</div>
+            </div>
+            <span class="quiz-cat-card__arrow">→</span>
+          </a>
+
+          <a href="{{ site.url }}/gk-quiz/sports/" class="quiz-cat-card" data-quiz-file="sports" data-quiz-lang="en">
+            <div class="quiz-cat-card__icon">🏆</div>
+            <div class="quiz-cat-card__content">
+              <div class="quiz-cat-card__name">Sports General Knowledge</div>
+              <div class="quiz-cat-card__count js-quiz-count">Loading...</div>
+            </div>
+            <span class="quiz-cat-card__arrow">→</span>
+          </a>
+
+          <a href="{{ site.url }}/gk-quiz/famous-personalities/" class="quiz-cat-card" data-quiz-file="famous-personalities" data-quiz-lang="en">
+            <div class="quiz-cat-card__icon">👤</div>
+            <div class="quiz-cat-card__content">
+              <div class="quiz-cat-card__name">Famous Personalities</div>
+              <div class="quiz-cat-card__count js-quiz-count">Loading...</div>
+            </div>
+            <span class="quiz-cat-card__arrow">→</span>
+          </a>
+
+          <a href="{{ site.url }}/gk-quiz/technology-inventions/" class="quiz-cat-card" data-quiz-file="technology-inventions" data-quiz-lang="en">
+            <div class="quiz-cat-card__icon">💡</div>
+            <div class="quiz-cat-card__content">
+              <div class="quiz-cat-card__name">Technology & Inventions</div>
+              <div class="quiz-cat-card__count js-quiz-count">Loading...</div>
+            </div>
+            <span class="quiz-cat-card__arrow">→</span>
+          </a>
+
+          <a href="{{ site.url }}/gk-quiz/space-universe/" class="quiz-cat-card" data-quiz-file="space-universe" data-quiz-lang="en">
+            <div class="quiz-cat-card__icon">🚀</div>
+            <div class="quiz-cat-card__content">
+              <div class="quiz-cat-card__name">Space & Universe</div>
+              <div class="quiz-cat-card__count js-quiz-count">Loading...</div>
+            </div>
+            <span class="quiz-cat-card__arrow">→</span>
+          </a>
+
+          <a href="{{ site.url }}/gk-quiz/indian-geography/" class="quiz-cat-card" data-quiz-file="indian-geography" data-quiz-lang="en">
+            <div class="quiz-cat-card__icon">🗺️</div>
+            <div class="quiz-cat-card__content">
+              <div class="quiz-cat-card__name">Indian Geography</div>
+              <div class="quiz-cat-card__count js-quiz-count">Loading...</div>
+            </div>
+            <span class="quiz-cat-card__arrow">→</span>
+          </a>
+
+          <a href="{{ site.url }}/gk-quiz/world-geography/" class="quiz-cat-card" data-quiz-file="world-geography" data-quiz-lang="en">
+            <div class="quiz-cat-card__icon">🌐</div>
+            <div class="quiz-cat-card__content">
+              <div class="quiz-cat-card__name">World Geography</div>
+              <div class="quiz-cat-card__count js-quiz-count">Loading...</div>
+            </div>
+            <span class="quiz-cat-card__arrow">→</span>
+          </a>
+
+          <a href="{{ site.url }}/gk-quiz/indian-festivals/" class="quiz-cat-card" data-quiz-file="indian-festivals" data-quiz-lang="en">
+            <div class="quiz-cat-card__icon">🪔</div>
+            <div class="quiz-cat-card__content">
+              <div class="quiz-cat-card__name">Indian Festivals & Traditions</div>
+              <div class="quiz-cat-card__count js-quiz-count">Loading...</div>
+            </div>
+            <span class="quiz-cat-card__arrow">→</span>
+          </a>
+
+          <a href="{{ site.url }}/gk-quiz/world-organizations/" class="quiz-cat-card" data-quiz-file="world-organizations" data-quiz-lang="en">
+            <div class="quiz-cat-card__icon">🤝</div>
+            <div class="quiz-cat-card__content">
+              <div class="quiz-cat-card__name">World Organizations</div>
+              <div class="quiz-cat-card__count js-quiz-count">Loading...</div>
+            </div>
+            <span class="quiz-cat-card__arrow">→</span>
+          </a>
+
+          <a href="{{ site.url }}/gk-quiz/international-relations/" class="quiz-cat-card" data-quiz-file="international-relations" data-quiz-lang="en">
+            <div class="quiz-cat-card__icon">🌏</div>
+            <div class="quiz-cat-card__content">
+              <div class="quiz-cat-card__name">International Relations</div>
+              <div class="quiz-cat-card__count js-quiz-count">Loading...</div>
+            </div>
+            <span class="quiz-cat-card__arrow">→</span>
+          </a>
+
+          <a href="{{ site.url }}/gk-quiz/awards-honors/" class="quiz-cat-card" data-quiz-file="awards-honors" data-quiz-lang="en">
+            <div class="quiz-cat-card__icon">🏅</div>
+            <div class="quiz-cat-card__content">
+              <div class="quiz-cat-card__name">Awards & Honors</div>
+              <div class="quiz-cat-card__count js-quiz-count">Loading...</div>
+            </div>
+            <span class="quiz-cat-card__arrow">→</span>
+          </a>
+
+          <a href="{{ site.url }}/gk-quiz/indian-defense/" class="quiz-cat-card" data-quiz-file="indian-defense" data-quiz-lang="en">
+            <div class="quiz-cat-card__icon">🛡️</div>
+            <div class="quiz-cat-card__content">
+              <div class="quiz-cat-card__name">Indian Defense</div>
+              <div class="quiz-cat-card__count js-quiz-count">Loading...</div>
+            </div>
+            <span class="quiz-cat-card__arrow">→</span>
+          </a>
+
+          <a href="{{ site.url }}/gk-quiz/important-dates/" class="quiz-cat-card" data-quiz-file="important-dates" data-quiz-lang="en">
+            <div class="quiz-cat-card__icon">📅</div>
+            <div class="quiz-cat-card__content">
+              <div class="quiz-cat-card__name">Important Dates & Events</div>
+              <div class="quiz-cat-card__count js-quiz-count">Loading...</div>
+            </div>
+            <span class="quiz-cat-card__arrow">→</span>
+          </a>
+
+          <a href="{{ site.url }}/gk-quiz/transport/" class="quiz-cat-card" data-quiz-file="transport" data-quiz-lang="en">
+            <div class="quiz-cat-card__icon">🚆</div>
+            <div class="quiz-cat-card__content">
+              <div class="quiz-cat-card__name">Transport & Communication</div>
+              <div class="quiz-cat-card__count js-quiz-count">Loading...</div>
+            </div>
+            <span class="quiz-cat-card__arrow">→</span>
+          </a>
+
+          <a href="{{ site.url }}/gk-quiz/famous-monuments/" class="quiz-cat-card" data-quiz-file="famous-monuments" data-quiz-lang="en">
+            <div class="quiz-cat-card__icon">🏯</div>
+            <div class="quiz-cat-card__content">
+              <div class="quiz-cat-card__name">Famous Monuments</div>
+              <div class="quiz-cat-card__count js-quiz-count">Loading...</div>
+            </div>
+            <span class="quiz-cat-card__arrow">→</span>
+          </a>
+
+          <a href="{{ site.url }}/gk-quiz/wildlife/" class="quiz-cat-card" data-quiz-file="wildlife" data-quiz-lang="en">
+            <div class="quiz-cat-card__icon">🐯</div>
+            <div class="quiz-cat-card__content">
+              <div class="quiz-cat-card__name">Wildlife & National Parks</div>
+              <div class="quiz-cat-card__count js-quiz-count">Loading...</div>
+            </div>
+            <span class="quiz-cat-card__arrow">→</span>
+          </a>
+
+          <a href="{{ site.url }}/gk-quiz/rivers/" class="quiz-cat-card" data-quiz-file="rivers" data-quiz-lang="en">
+            <div class="quiz-cat-card__icon">🏞️</div>
+            <div class="quiz-cat-card__content">
+              <div class="quiz-cat-card__name">Rivers & Lakes</div>
+              <div class="quiz-cat-card__count js-quiz-count">Loading...</div>
+            </div>
+            <span class="quiz-cat-card__arrow">→</span>
+          </a>
+
+          <a href="{{ site.url }}/gk-quiz/disasters/" class="quiz-cat-card" data-quiz-file="disasters" data-quiz-lang="en">
+            <div class="quiz-cat-card__icon">⚠️</div>
+            <div class="quiz-cat-card__content">
+              <div class="quiz-cat-card__name">Disasters & Accidents</div>
+              <div class="quiz-cat-card__count js-quiz-count">Loading...</div>
+            </div>
+            <span class="quiz-cat-card__arrow">→</span>
+          </a>
         </div>
       </div>
     </div>
 
     <div data-lang-section="hi" style="display:none;">
-
       <div class="quiz-section">
         <h2 class="quiz-section__title">🏆 परीक्षा कॉर्नर</h2>
         <div class="exam-corner">
@@ -148,42 +404,300 @@ extra_js:
       <div class="quiz-section">
         <h2 class="quiz-section__title">📚 सभी विषय</h2>
         <div class="quiz-grid">
-          {% for cat in site.quiz.categories.hindi %}
-          {% assign file_key = cat.data_file | split: '/' | last %}
-          <a href="{{ site.url }}{{ cat.url }}" class="quiz-cat-card" style="--cat-color:#e97c2a;" data-quiz-file="{{ file_key }}" data-quiz-lang="hi">
-            <div class="quiz-cat-card__icon">
-              {% if cat.id contains 'history' %}🏛️{% elsif cat.id contains 'constitution' or cat.id contains 'samvidhan' %}⚖️{% elsif cat.id contains 'economy' or cat.id contains 'arthavyavastha' %}💰{% elsif cat.id contains 'environment' or cat.id contains 'paryavaran' %}🌿{% elsif cat.id contains 'geography' or cat.id contains 'bhugol' %}🗺️{% elsif cat.id contains 'physics' or cat.id contains 'bhautiki' %}⚡{% elsif cat.id contains 'chemistry' or cat.id contains 'rasayan' %}🧪{% elsif cat.id contains 'computer' %}💻{% elsif cat.id contains 'sports' or cat.id contains 'khel' %}🏆{% else %}📚{% endif %}
-            </div>
+
+          <a href="{{ site.url }}/hi/gk-quiz/prachin-bharatiya-itihas/" class="quiz-cat-card" data-quiz-file="ancient-indian-history" data-quiz-lang="hi">
+            <div class="quiz-cat-card__icon">🏛️</div>
             <div class="quiz-cat-card__content">
-              <div class="quiz-cat-card__name">{{ cat.title }}</div>
+              <div class="quiz-cat-card__name">प्राचीन भारतीय इतिहास</div>
               <div class="quiz-cat-card__count js-quiz-count">Loading...</div>
             </div>
             <span class="quiz-cat-card__arrow">→</span>
           </a>
-          {% endfor %}
+
+          <a href="{{ site.url }}/hi/gk-quiz/madhyakalin-bharatiya-itihas/" class="quiz-cat-card" data-quiz-file="medieval-history" data-quiz-lang="hi">
+            <div class="quiz-cat-card__icon">🕌</div>
+            <div class="quiz-cat-card__content">
+              <div class="quiz-cat-card__name">मध्यकालीन भारतीय इतिहास</div>
+              <div class="quiz-cat-card__count js-quiz-count">Loading...</div>
+            </div>
+            <span class="quiz-cat-card__arrow">→</span>
+          </a>
+
+          <a href="{{ site.url }}/hi/gk-quiz/aadhunik-bharatiya-itihas/" class="quiz-cat-card" data-quiz-file="modern-history" data-quiz-lang="hi">
+            <div class="quiz-cat-card__icon">🇮🇳</div>
+            <div class="quiz-cat-card__content">
+              <div class="quiz-cat-card__name">आधुनिक भारतीय इतिहास</div>
+              <div class="quiz-cat-card__count js-quiz-count">Loading...</div>
+            </div>
+            <span class="quiz-cat-card__arrow">→</span>
+          </a>
+
+          <a href="{{ site.url }}/hi/gk-quiz/vishwa-itihas/" class="quiz-cat-card" data-quiz-file="world-history" data-quiz-lang="hi">
+            <div class="quiz-cat-card__icon">🌍</div>
+            <div class="quiz-cat-card__content">
+              <div class="quiz-cat-card__name">विश्व इतिहास</div>
+              <div class="quiz-cat-card__count js-quiz-count">Loading...</div>
+            </div>
+            <span class="quiz-cat-card__arrow">→</span>
+          </a>
+
+          <a href="{{ site.url }}/hi/gk-quiz/samvidhan/" class="quiz-cat-card" data-quiz-file="indian-constitution" data-quiz-lang="hi">
+            <div class="quiz-cat-card__icon">⚖️</div>
+            <div class="quiz-cat-card__content">
+              <div class="quiz-cat-card__name">भारतीय सरकार और संविधान</div>
+              <div class="quiz-cat-card__count js-quiz-count">Loading...</div>
+            </div>
+            <span class="quiz-cat-card__arrow">→</span>
+          </a>
+
+          <a href="{{ site.url }}/hi/gk-quiz/arthavyavastha/" class="quiz-cat-card" data-quiz-file="indian-economy" data-quiz-lang="hi">
+            <div class="quiz-cat-card__icon">💰</div>
+            <div class="quiz-cat-card__content">
+              <div class="quiz-cat-card__name">भारतीय अर्थव्यवस्था</div>
+              <div class="quiz-cat-card__count js-quiz-count">Loading...</div>
+            </div>
+            <span class="quiz-cat-card__arrow">→</span>
+          </a>
+
+          <a href="{{ site.url }}/hi/gk-quiz/paryavaran/" class="quiz-cat-card" data-quiz-file="environment" data-quiz-lang="hi">
+            <div class="quiz-cat-card__icon">🌿</div>
+            <div class="quiz-cat-card__content">
+              <div class="quiz-cat-card__name">पर्यावरण और जैव विविधता</div>
+              <div class="quiz-cat-card__count js-quiz-count">Loading...</div>
+            </div>
+            <span class="quiz-cat-card__arrow">→</span>
+          </a>
+
+          <a href="{{ site.url }}/hi/gk-quiz/kala-sanskriti/" class="quiz-cat-card" data-quiz-file="indian-art-culture" data-quiz-lang="hi">
+            <div class="quiz-cat-card__icon">🎭</div>
+            <div class="quiz-cat-card__content">
+              <div class="quiz-cat-card__name">भारतीय कला और संस्कृति</div>
+              <div class="quiz-cat-card__count js-quiz-count">Loading...</div>
+            </div>
+            <span class="quiz-cat-card__arrow">→</span>
+          </a>
+
+          <a href="{{ site.url }}/hi/gk-quiz/bhautiki/" class="quiz-cat-card" data-quiz-file="physics" data-quiz-lang="hi">
+            <div class="quiz-cat-card__icon">⚡</div>
+            <div class="quiz-cat-card__content">
+              <div class="quiz-cat-card__name">भौतिकी</div>
+              <div class="quiz-cat-card__count js-quiz-count">Loading...</div>
+            </div>
+            <span class="quiz-cat-card__arrow">→</span>
+          </a>
+
+          <a href="{{ site.url }}/hi/gk-quiz/rasayan/" class="quiz-cat-card" data-quiz-file="chemistry" data-quiz-lang="hi">
+            <div class="quiz-cat-card__icon">🧪</div>
+            <div class="quiz-cat-card__content">
+              <div class="quiz-cat-card__name">रसायन विज्ञान</div>
+              <div class="quiz-cat-card__count js-quiz-count">Loading...</div>
+            </div>
+            <span class="quiz-cat-card__arrow">→</span>
+          </a>
+
+          <a href="{{ site.url }}/hi/gk-quiz/ganit/" class="quiz-cat-card" data-quiz-file="mathematics" data-quiz-lang="hi">
+            <div class="quiz-cat-card__icon">🔢</div>
+            <div class="quiz-cat-card__content">
+              <div class="quiz-cat-card__name">गणित</div>
+              <div class="quiz-cat-card__count js-quiz-count">Loading...</div>
+            </div>
+            <span class="quiz-cat-card__arrow">→</span>
+          </a>
+
+          <a href="{{ site.url }}/hi/gk-quiz/jeev-vigyan/" class="quiz-cat-card" data-quiz-file="biology" data-quiz-lang="hi">
+            <div class="quiz-cat-card__icon">🧬</div>
+            <div class="quiz-cat-card__content">
+              <div class="quiz-cat-card__name">जीव विज्ञान</div>
+              <div class="quiz-cat-card__count js-quiz-count">Loading...</div>
+            </div>
+            <span class="quiz-cat-card__arrow">→</span>
+          </a>
+
+          <a href="{{ site.url }}/hi/gk-quiz/computer/" class="quiz-cat-card" data-quiz-file="computer" data-quiz-lang="hi">
+            <div class="quiz-cat-card__icon">💻</div>
+            <div class="quiz-cat-card__content">
+              <div class="quiz-cat-card__name">कंप्यूटर</div>
+              <div class="quiz-cat-card__count js-quiz-count">Loading...</div>
+            </div>
+            <span class="quiz-cat-card__arrow">→</span>
+          </a>
+
+          <a href="{{ site.url }}/hi/gk-quiz/vigyan-taknik/" class="quiz-cat-card" data-quiz-file="science-technology" data-quiz-lang="hi">
+            <div class="quiz-cat-card__icon">🔬</div>
+            <div class="quiz-cat-card__content">
+              <div class="quiz-cat-card__name">विज्ञान और प्रौद्योगिकी</div>
+              <div class="quiz-cat-card__count js-quiz-count">Loading...</div>
+            </div>
+            <span class="quiz-cat-card__arrow">→</span>
+          </a>
+
+          <a href="{{ site.url }}/hi/gk-quiz/khel/" class="quiz-cat-card" data-quiz-file="sports" data-quiz-lang="hi">
+            <div class="quiz-cat-card__icon">🏆</div>
+            <div class="quiz-cat-card__content">
+              <div class="quiz-cat-card__name">खेल सामान्य ज्ञान</div>
+              <div class="quiz-cat-card__count js-quiz-count">Loading...</div>
+            </div>
+            <span class="quiz-cat-card__arrow">→</span>
+          </a>
+
+          <a href="{{ site.url }}/hi/gk-quiz/antariksh/" class="quiz-cat-card" data-quiz-file="space-universe" data-quiz-lang="hi">
+            <div class="quiz-cat-card__icon">🚀</div>
+            <div class="quiz-cat-card__content">
+              <div class="quiz-cat-card__name">अंतरिक्ष और ब्रह्मांड</div>
+              <div class="quiz-cat-card__count js-quiz-count">Loading...</div>
+            </div>
+            <span class="quiz-cat-card__arrow">→</span>
+          </a>
+
+          <a href="{{ site.url }}/hi/gk-quiz/bhartiya-bhugol/" class="quiz-cat-card" data-quiz-file="indian-geography" data-quiz-lang="hi">
+            <div class="quiz-cat-card__icon">🗺️</div>
+            <div class="quiz-cat-card__content">
+              <div class="quiz-cat-card__name">भारतीय भूगोल</div>
+              <div class="quiz-cat-card__count js-quiz-count">Loading...</div>
+            </div>
+            <span class="quiz-cat-card__arrow">→</span>
+          </a>
+
+          <a href="{{ site.url }}/hi/gk-quiz/vishwa-bhugol/" class="quiz-cat-card" data-quiz-file="world-geography" data-quiz-lang="hi">
+            <div class="quiz-cat-card__icon">🌐</div>
+            <div class="quiz-cat-card__content">
+              <div class="quiz-cat-card__name">विश्व भूगोल</div>
+              <div class="quiz-cat-card__count js-quiz-count">Loading...</div>
+            </div>
+            <span class="quiz-cat-card__arrow">→</span>
+          </a>
+
+          <a href="{{ site.url }}/hi/gk-quiz/tyohar/" class="quiz-cat-card" data-quiz-file="indian-festivals" data-quiz-lang="hi">
+            <div class="quiz-cat-card__icon">🪔</div>
+            <div class="quiz-cat-card__content">
+              <div class="quiz-cat-card__name">भारतीय त्यौहार और परंपराएँ</div>
+              <div class="quiz-cat-card__count js-quiz-count">Loading...</div>
+            </div>
+            <span class="quiz-cat-card__arrow">→</span>
+          </a>
+
+          <a href="{{ site.url }}/hi/gk-quiz/puraskaar/" class="quiz-cat-card" data-quiz-file="awards-honors" data-quiz-lang="hi">
+            <div class="quiz-cat-card__icon">🏅</div>
+            <div class="quiz-cat-card__content">
+              <div class="quiz-cat-card__name">पुरस्कार और सम्मान</div>
+              <div class="quiz-cat-card__count js-quiz-count">Loading...</div>
+            </div>
+            <span class="quiz-cat-card__arrow">→</span>
+          </a>
+
+          <a href="{{ site.url }}/hi/gk-quiz/raksha/" class="quiz-cat-card" data-quiz-file="indian-defense" data-quiz-lang="hi">
+            <div class="quiz-cat-card__icon">🛡️</div>
+            <div class="quiz-cat-card__content">
+              <div class="quiz-cat-card__name">भारतीय रक्षा</div>
+              <div class="quiz-cat-card__count js-quiz-count">Loading...</div>
+            </div>
+            <span class="quiz-cat-card__arrow">→</span>
+          </a>
+
+          <a href="{{ site.url }}/hi/gk-quiz/nadiyan/" class="quiz-cat-card" data-quiz-file="rivers" data-quiz-lang="hi">
+            <div class="quiz-cat-card__icon">🏞️</div>
+            <div class="quiz-cat-card__content">
+              <div class="quiz-cat-card__name">नदियाँ और झीलें</div>
+              <div class="quiz-cat-card__count js-quiz-count">Loading...</div>
+            </div>
+            <span class="quiz-cat-card__arrow">→</span>
+          </a>
+
+          <a href="{{ site.url }}/hi/gk-quiz/vanya-jeev/" class="quiz-cat-card" data-quiz-file="wildlife" data-quiz-lang="hi">
+            <div class="quiz-cat-card__icon">🐯</div>
+            <div class="quiz-cat-card__content">
+              <div class="quiz-cat-card__name">वन्यजीव और राष्ट्रीय उद्यान</div>
+              <div class="quiz-cat-card__count js-quiz-count">Loading...</div>
+            </div>
+            <span class="quiz-cat-card__arrow">→</span>
+          </a>
+
+          <a href="{{ site.url }}/hi/gk-quiz/aapda/" class="quiz-cat-card" data-quiz-file="disasters" data-quiz-lang="hi">
+            <div class="quiz-cat-card__icon">⚠️</div>
+            <div class="quiz-cat-card__content">
+              <div class="quiz-cat-card__name">आपदाएँ और दुर्घटनाएँ</div>
+              <div class="quiz-cat-card__count js-quiz-count">Loading...</div>
+            </div>
+            <span class="quiz-cat-card__arrow">→</span>
+          </a>
         </div>
       </div>
     </div>
+
   </div>
 </div>
 
 <script id="jekyll-quiz-counts-repo" type="application/json">
 {
   "en": {
-    {% for cat in site.quiz.categories.english %}
-      {% assign file_key = cat.data_file | split: '/' | last %}
-      {% assign file_data = site.data.quiz.en[file_key] %}
-      {% assign arr = file_data.questions | default: file_data %}
-      "{{ cat.id }}": {{ arr.size | default: 0 }}{% unless forloop.last %},{% endunless %}
-    {% endfor %}
+    "ancient-indian-history": {{ site.data.quiz.en.ancient-indian-history.questions.size | default: site.data.quiz.en.ancient-indian-history.size | default: 0 }},
+    "medieval-history": {{ site.data.quiz.en.medieval-history.questions.size | default: site.data.quiz.en.medieval-history.size | default: 0 }},
+    "modern-history": {{ site.data.quiz.en.modern-history.questions.size | default: site.data.quiz.en.modern-history.size | default: 0 }},
+    "world-history": {{ site.data.quiz.en.world-history.questions.size | default: site.data.quiz.en.world-history.size | default: 0 }},
+    "indian-constitution": {{ site.data.quiz.en.indian-constitution.questions.size | default: site.data.quiz.en.indian-constitution.size | default: 0 }},
+    "indian-economy": {{ site.data.quiz.en.indian-economy.questions.size | default: site.data.quiz.en.indian-economy.size | default: 0 }},
+    "environment": {{ site.data.quiz.en.environment.questions.size | default: site.data.quiz.en.environment.size | default: 0 }},
+    "indian-art-culture": {{ site.data.quiz.en.indian-art-culture.questions.size | default: site.data.quiz.en.indian-art-culture.size | default: 0 }},
+    "physics": {{ site.data.quiz.en.physics.questions.size | default: site.data.quiz.en.physics.size | default: 0 }},
+    "chemistry": {{ site.data.quiz.en.chemistry.questions.size | default: site.data.quiz.en.chemistry.size | default: 0 }},
+    "mathematics": {{ site.data.quiz.en.mathematics.questions.size | default: site.data.quiz.en.mathematics.size | default: 0 }},
+    "biology": {{ site.data.quiz.en.biology.questions.size | default: site.data.quiz.en.biology.size | default: 0 }},
+    "computer": {{ site.data.quiz.en.computer.questions.size | default: site.data.quiz.en.computer.size | default: 0 }},
+    "sanskrit": {{ site.data.quiz.en.sanskrit.questions.size | default: site.data.quiz.en.sanskrit.size | default: 0 }},
+    "science-technology": {{ site.data.quiz.en.science-technology.questions.size | default: site.data.quiz.en.science-technology.size | default: 0 }},
+    "books-authors": {{ site.data.quiz.en.books-authors.questions.size | default: site.data.quiz.en.books-authors.size | default: 0 }},
+    "sports": {{ site.data.quiz.en.sports.questions.size | default: site.data.quiz.en.sports.size | default: 0 }},
+    "famous-personalities": {{ site.data.quiz.en.famous-personalities.questions.size | default: site.data.quiz.en.famous-personalities.size | default: 0 }},
+    "technology-inventions": {{ site.data.quiz.en.technology-inventions.questions.size | default: site.data.quiz.en.technology-inventions.size | default: 0 }},
+    "space-universe": {{ site.data.quiz.en.space-universe.questions.size | default: site.data.quiz.en.space-universe.size | default: 0 }},
+    "indian-geography": {{ site.data.quiz.en.indian-geography.questions.size | default: site.data.quiz.en.indian-geography.size | default: 0 }},
+    "world-geography": {{ site.data.quiz.en.world-geography.questions.size | default: site.data.quiz.en.world-geography.size | default: 0 }},
+    "indian-festivals": {{ site.data.quiz.en.indian-festivals.questions.size | default: site.data.quiz.en.indian-festivals.size | default: 0 }},
+    "world-organizations": {{ site.data.quiz.en.world-organizations.questions.size | default: site.data.quiz.en.world-organizations.size | default: 0 }},
+    "international-relations": {{ site.data.quiz.en.international-relations.questions.size | default: site.data.quiz.en.international-relations.size | default: 0 }},
+    "awards-honors": {{ site.data.quiz.en.awards-honors.questions.size | default: site.data.quiz.en.awards-honors.size | default: 0 }},
+    "indian-defense": {{ site.data.quiz.en.indian-defense.questions.size | default: site.data.quiz.en.indian-defense.size | default: 0 }},
+    "important-dates": {{ site.data.quiz.en.important-dates.questions.size | default: site.data.quiz.en.important-dates.size | default: 0 }},
+    "transport": {{ site.data.quiz.en.transport.questions.size | default: site.data.quiz.en.transport.size | default: 0 }},
+    "famous-monuments": {{ site.data.quiz.en.famous-monuments.questions.size | default: site.data.quiz.en.famous-monuments.size | default: 0 }},
+    "wildlife": {{ site.data.quiz.en.wildlife.questions.size | default: site.data.quiz.en.wildlife.size | default: 0 }},
+    "rivers": {{ site.data.quiz.en.rivers.questions.size | default: site.data.quiz.en.rivers.size | default: 0 }},
+    "disasters": {{ site.data.quiz.en.disasters.questions.size | default: site.data.quiz.en.disasters.size | default: 0 }}
   },
   "hi": {
-    {% for cat in site.quiz.categories.hindi %}
-      {% assign file_key = cat.data_file | split: '/' | last %}
-      {% assign file_data = site.data.quiz.hi[file_key] %}
-      {% assign arr = file_data.questions | default: file_data %}
-      "{{ file_key }}": {{ arr.size | default: 0 }}{% unless forloop.last %},{% endunless %}
-    {% endfor %}
+    "ancient-indian-history": {{ site.data.quiz.hi.ancient-indian-history.questions.size | default: site.data.quiz.hi.ancient-indian-history.size | default: 0 }},
+    "medieval-history": {{ site.data.quiz.hi.medieval-history.questions.size | default: site.data.quiz.hi.medieval-history.size | default: 0 }},
+    "modern-history": {{ site.data.quiz.hi.modern-history.questions.size | default: site.data.quiz.hi.modern-history.size | default: 0 }},
+    "world-history": {{ site.data.quiz.hi.world-history.questions.size | default: site.data.quiz.hi.world-history.size | default: 0 }},
+    "indian-constitution": {{ site.data.quiz.hi.indian-constitution.questions.size | default: site.data.quiz.hi.indian-constitution.size | default: 0 }},
+    "indian-economy": {{ site.data.quiz.hi.indian-economy.questions.size | default: site.data.quiz.hi.indian-economy.size | default: 0 }},
+    "environment": {{ site.data.quiz.hi.environment.questions.size | default: site.data.quiz.hi.environment.size | default: 0 }},
+    "indian-art-culture": {{ site.data.quiz.hi.indian-art-culture.questions.size | default: site.data.quiz.hi.indian-art-culture.size | default: 0 }},
+    "physics": {{ site.data.quiz.hi.physics.questions.size | default: site.data.quiz.hi.physics.size | default: 0 }},
+    "chemistry": {{ site.data.quiz.hi.chemistry.questions.size | default: site.data.quiz.hi.chemistry.size | default: 0 }},
+    "mathematics": {{ site.data.quiz.hi.mathematics.questions.size | default: site.data.quiz.hi.mathematics.size | default: 0 }},
+    "biology": {{ site.data.quiz.hi.biology.questions.size | default: site.data.quiz.hi.biology.size | default: 0 }},
+    "computer": {{ site.data.quiz.hi.computer.questions.size | default: site.data.quiz.hi.computer.size | default: 0 }},
+    "sanskrit": {{ site.data.quiz.hi.sanskrit.questions.size | default: site.data.quiz.hi.sanskrit.size | default: 0 }},
+    "science-technology": {{ site.data.quiz.hi.science-technology.questions.size | default: site.data.quiz.hi.science-technology.size | default: 0 }},
+    "books-authors": {{ site.data.quiz.hi.books-authors.questions.size | default: site.data.quiz.hi.books-authors.size | default: 0 }},
+    "sports": {{ site.data.quiz.hi.sports.questions.size | default: site.data.quiz.hi.sports.size | default: 0 }},
+    "famous-personalities": {{ site.data.quiz.hi.famous-personalities.questions.size | default: site.data.quiz.hi.famous-personalities.size | default: 0 }},
+    "technology-inventions": {{ site.data.quiz.hi.technology-inventions.questions.size | default: site.data.quiz.hi.technology-inventions.size | default: 0 }},
+    "space-universe": {{ site.data.quiz.hi.space-universe.questions.size | default: site.data.quiz.hi.space-universe.size | default: 0 }},
+    "indian-geography": {{ site.data.quiz.hi.indian-geography.questions.size | default: site.data.quiz.hi.indian-geography.size | default: 0 }},
+    "world-geography": {{ site.data.quiz.hi.world-geography.questions.size | default: site.data.quiz.hi.world-geography.size | default: 0 }},
+    "indian-festivals": {{ site.data.quiz.hi.indian-festivals.questions.size | default: site.data.quiz.hi.indian-festivals.size | default: 0 }},
+    "world-organizations": {{ site.data.quiz.hi.world-organizations.questions.size | default: site.data.quiz.hi.world-organizations.size | default: 0 }},
+    "international-relations": {{ site.data.quiz.hi.international-relations.questions.size | default: site.data.quiz.hi.international-relations.size | default: 0 }},
+    "awards-honors": {{ site.data.quiz.hi.awards-honors.questions.size | default: site.data.quiz.hi.awards-honors.size | default: 0 }},
+    "indian-defense": {{ site.data.quiz.hi.indian-defense.questions.size | default: site.data.quiz.hi.indian-defense.size | default: 0 }},
+    "important-dates": {{ site.data.quiz.hi.important-dates.questions.size | default: site.data.quiz.hi.important-dates.size | default: 0 }},
+    "transport": {{ site.data.quiz.hi.transport.questions.size | default: site.data.quiz.hi.transport.size | default: 0 }},
+    "famous-monuments": {{ site.data.quiz.hi.famous-monuments.questions.size | default: site.data.quiz.hi.famous-monuments.size | default: 0 }},
+    "wildlife": {{ site.data.quiz.hi.wildlife.questions.size | default: site.data.quiz.hi.wildlife.size | default: 0 }},
+    "rivers": {{ site.data.quiz.hi.rivers.questions.size | default: site.data.quiz.hi.rivers.size | default: 0 }},
+    "disasters": {{ site.data.quiz.hi.disasters.questions.size | default: site.data.quiz.hi.disasters.size | default: 0 }}
   }
 }
 </script>
