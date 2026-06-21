@@ -4,7 +4,7 @@ title: "डिस्कवर — टेक्नोलॉजी, एआई औ�
 description: "टेक्नोलॉजी, एआई, साइबर सुरक्षा, शिक्षा, करंट अफेयर्स, डिजिटल अपडेट, ऑनलाइन सुरक्षा, ऐप्स, ट्यूटोरियल और भविष्य के नए इनोवेशन — सब कुछ TyagiHub के एक ही डिस्कवर फीड में।"
 permalink: /discover/
 image: /assets/images/tyagihub.png
-author: "Himanshu Tyagi" 
+author: "Himanshu Tyagi"
 lang: hi
 robots: "index, follow"
 keywords: "TyagiHub, AI tools, cybersecurity, education, current affairs, apps, tutorials, technology news, digital updates, online safety"
@@ -150,7 +150,7 @@ extra_js:
           {% if p.categories %}
             {% assign p_cat_raw = p.categories[0] | default: "Technology" %}
             {% assign data_cats = "" %}
-            {% border for cat in p.categories %}
+            {% for cat in p.categories %}
               {% assign data_cats = data_cats | append: cat | downcase | append: " " %}
             {% endfor %}
           {% else %}
