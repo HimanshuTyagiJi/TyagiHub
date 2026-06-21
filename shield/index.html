@@ -1,9 +1,9 @@
+
 ---
 layout: default
-title: "शील्ड — साइबर सुरक्षा और स्कैम अलर्ट"
-description: "इंफोशील्ड इंडिया — भारतीय इंटरनेट यूजर्स के लिए मुफ्त साइबर सुरक्षा जागरूकता, ऑनलाइन स्कैम अलर्ट और डिजिटल सेफ्टी गाइड।"
-keywords: "cybersecurity Hindi, online scam alerts India, digital safety, InfoShield India, internet security tips Hindi, साइबर सुरक्षा"
-lang: hi
+title: "Shield — Cybersecurity Awareness"
+description: "InfoShield India — Free cybersecurity awareness, scam alerts, digital safety guides in english for Indian internet users."
+keywords: "cybersecurity Hindi, online scam alerts India, digital safety, InfoShield India, internet security tips Hindi"
 extra_css:
   - /assets/css/shield.css
 extra_js:
@@ -23,7 +23,7 @@ extra_js:
         <span class="shield-hero__title--alert">Scam से बचें।</span>
       </h1>
       <p class="shield-hero__desc">
-        हिंदी में मुफ्त साइबर सुरक्षा जागरूकता — छात्रों, परिवारों और हर भारतीय इंटरनेट यूजर के लिए। कोई कठिन शब्द नहीं, बिल्कुल आसान भाषा में।
+        Free cybersecurity awareness in Hindi — for students, families, and every Indian internet user. No jargon. Simple and clear.
       </p>
     </div>
   </section>
@@ -32,36 +32,27 @@ extra_js:
     <div class="container">
 
       <div class="shield-search-box">
-        <input type="text" id="shield-search" placeholder="स्कैम्स, सुरक्षा टिप्स और गाइड सर्च करें...">
+        <input type="text" id="shield-search" placeholder="Search scams, security tips, and guides...">
       </div>
 
-      <div id="post-wrapper" class="grid-3">
+     <div id="post-wrapper" class="grid-3">
   
-        {% assign hindi_shield_posts = site.shield | where:"lang","hi" %}
-        
-        {% for p in hindi_shield_posts limit: 6 %}
-        <a href="{{ p.url | relative_url }}" class="blog-card">
-          <div class="blog-card__thumb">
-            <img src="{{ p.image | default:'/assets/images/default-thumb.png' }}" alt="{{ p.title }}" loading="lazy" width="354" height="236">
-          </div>
-          <div class="blog-card__body">
-            {% assign cat_clean = p.category | downcase %}
-            {% if cat_clean == "cybersecurity" or cat_clean == "security" %}
-              {% assign display_tag = "साइबर सुरक्षा" %}
-            {% else %}
-              {% assign display_tag = p.category | default:"सुरक्षा" | capitalize %}
-            {% endif %}
-            
-            <span class="blog-card__tag">{{ display_tag }}</span>
-            <h2 class="blog-card__title">{{ p.title }}</h2>
-            <p>
-              {{ p.description | strip_html | truncate:180 }}
-            </p>
-          </div>
-        </a>
-        {% endfor %}
+  {% for p in shield_posts limit: 6 %}
+  <a href="{{ p.url | relative_url }}" class="blog-card">
+    <div class="blog-card__thumb">
+      <img src="{{ p.image | default:'/assets/images/default-thumb.png' }}" alt="{{ p.title }}" loading="lazy" width="354" height="236">
+    </div>
+    <div class="blog-card__body">
+      <span class="blog-card__tag">{{ p.category | default:"Security" | capitalize }}</span>
+      <h2 class="blog-card__title">{{ p.title }}</h2>
+      <p>
+        {{ p.description | strip_html | truncate:180 }}
+      </p>
+    </div>
+  </a>
+  {% endfor %}
 
-      </div>
+</div>
 
       <nav id="pagination-nav" class="pagination-center shield-pagination" aria-label="Pagination Navigation">
       </nav>
