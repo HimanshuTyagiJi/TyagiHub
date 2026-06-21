@@ -3,18 +3,11 @@ layout: null
 permalink: /posts.json
 ---
 [
-  {% assign all_p = "" | split: "" %}
+  {% assign hi_posts = site.posts_hi %}
+  {% assign en_posts = site.posts | where_exp: "item", "item.lang != 'hi'" %}
+  {% assign all_clean_posts = hi_posts | concat: en_posts | uniq %}
   
-  {% for p in site.posts_hi %}
-    {% assign all_p = all_p | push: p %}
-  {% endfor %}
-  
-  {% for p in site.posts %}
-    {% assign all_p = all_p | push: p %}
-  {% endfor %}
-  
-  {% assign unique_p = all_p | uniq %}
-  {% for p in unique_p %}
+  {% for p in all_clean_posts %}
   {
     "title": {{ p.title | jsonify }},
     "url": {{ p.url | relative_url | jsonify }},
