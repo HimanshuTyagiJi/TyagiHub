@@ -1,0 +1,665 @@
+---
+layout: default
+title: "GK Quiz - Free General Knowledge Questions, MCQ Test & Exam Practice"
+description: "Play free GK Quiz with 33+ categories covering History, Geography, Science, Polity, Economics, Sports, Environment, Computer, Current Affairs and more. Practice unlimited MCQs with answers for SSC, UPSC, Railway, Banking, Police, Defence and competitive exams in Hindi and English."
+keywords: "GK Quiz, General Knowledge Quiz, Free GK Test, GK Questions and Answers, MCQ Quiz, SSC GK, UPSC GK, Railway GK, Banking GK, Police Exam GK, Competitive Exam Quiz, History Quiz, Geography Quiz, Science Quiz, Computer GK, Current Affairs Quiz, Hindi GK, English GK, Online Quiz, Mock Test, Practice Test, General Awareness"
+lang_switch: false
+extra_css:
+  - /assets/css/gk-quiz.css
+extra_js:
+  - /assets/js/gk-quiz.js
+---
+<div class="quiz-page">
+
+  <div class="quiz-hero">
+    <div class="container">
+      <h1 class="quiz-hero__title">GK Quiz Hub</h1>
+      <p class="quiz-hero__sub">
+        Competitive exam preparation — SSC, Banking, Railway, UPSC.<br>
+        33 categories · Hindi &amp; English · Free forever.
+      </p>
+
+      <div class="lang-toggle" role="group" aria-label="Language selection">
+        <button class="lang-toggle__btn active" data-lang="en">
+          <svg width="20" height="14" viewBox="0 0 30 20" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <rect width="30" height="20" fill="#138808"/>
+            <rect width="30" height="13.33" y="0" fill="#FFFFFF"/>
+            <rect width="30" height="6.66" y="0" fill="#FF9933"/>
+            <circle cx="15" cy="10" r="2.2" fill="none" stroke="#000080" stroke-width="0.4"/>
+            <circle cx="15" cy="10" r="0.25" fill="#000080"/>
+          </svg>
+          <span>English</span>
+        </button>
+
+        <button class="lang-toggle__btn" data-lang="hi">
+          <svg width="20" height="14" viewBox="0 0 30 20" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <rect width="30" height="20" fill="#138808"/>
+            <rect width="30" height="13.33" y="0" fill="#FFFFFF"/>
+            <rect width="30" height="6.66" y="0" fill="#FF9933"/>
+            <circle cx="15" cy="10" r="2.2" fill="none" stroke="#000080" stroke-width="0.4"/>
+            <circle cx="15" cy="10" r="0.25" fill="#000080"/>
+          </svg>
+          <span>हिन्दी</span>
+        </button>
+      </div>
+
+      <div class="quiz-stats">
+        <div>
+          <div class="quiz-stat__num">33</div>
+          <div class="quiz-stat__label">Categories</div>
+        </div>
+        <div>
+          <div class="quiz-stat__num" id="total-global-questions">500+</div>
+          <div class="quiz-stat__label">Questions</div>
+        </div>
+        <div>
+          <div class="quiz-stat__num">Free</div>
+          <div class="quiz-stat__label">Forever</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="quiz-content">
+
+    <div style="max-width:480px; margin:0 auto var(--space-8); position:relative;">
+      <span style="position:absolute;left:16px;top:50%;transform:translateY(-50%);color:var(--clr-text-3);">🔍</span>
+      <input type="search" id="quiz-search-input"
+             style="width:100%;padding:var(--space-3) var(--space-5) var(--space-3) 44px;background:var(--clr-surface);border:1.5px solid var(--clr-border-2);border-radius:var(--radius-full);font-family:var(--font-body);font-size:var(--fs-base);color:var(--clr-text);outline:none;"
+             placeholder="Search categories...">
+    </div>
+
+    <div data-lang-section="en">
+
+      <div class="quiz-section">
+        <h2 class="quiz-section__title">🏆 Exam Corner</h2>
+        <div class="exam-corner">
+          <a href="{{ site.url }}/gk-quiz/ssc/" class="exam-card">
+            <div class="exam-card__icon">🎯</div>
+            <div class="exam-card__name">SSC Exams</div>
+            <div class="exam-card__desc">CGL, CHSL, MTS — practice topic-wise</div>
+          </a>
+          <a href="{{ site.url }}/gk-quiz/banking/" class="exam-card">
+            <div class="exam-card__icon">🏦</div>
+            <div class="exam-card__name">Banking</div>
+            <div class="exam-card__desc">IBPS PO, Clerk, SBI — curated GK sets</div>
+          </a>
+          <a href="{{ site.url }}/gk-quiz/railway/" class="exam-card">
+            <div class="exam-card__icon">🚆</div>
+            <div class="exam-card__name">Railway</div>
+            <div class="exam-card__desc">RRB NTPC, Group D — GK practice</div>
+          </a>
+          <a href="{{ site.url }}/gk-quiz/upsc/" class="exam-card">
+            <div class="exam-card__icon">🏛️</div>
+            <div class="exam-card__name">UPSC</div>
+            <div class="exam-card__desc">Prelims GK — History, Polity, Economy</div>
+          </a>
+        </div>
+      </div>
+
+      <div class="quiz-section">
+        <h2 class="quiz-section__title">📚 All Quiz Topics</h2>
+        <div class="quiz-grid">
+
+          <a href="{{ site.url }}/gk-quiz/ancient-indian-history/" class="quiz-cat-card" style="--cat-color:#e97c2a;" data-quiz-file="ancient-indian-history" data-quiz-lang="en">
+            <div class="quiz-cat-card__icon">🏛️</div>
+            <div class="quiz-cat-card__content">
+              <div class="quiz-cat-card__name">Ancient Indian History</div>
+              <div class="quiz-cat-card__count js-quiz-count">Loading...</div>
+            </div>
+            <span class="quiz-cat-card__arrow">→</span>
+          </a>
+
+          <a href="{{ site.url }}/gk-quiz/medieval-indian-history/" class="quiz-cat-card" style="--cat-color:#e97c2a;" data-quiz-file="medieval-history" data-quiz-lang="en">
+            <div class="quiz-cat-card__icon">🕌</div>
+            <div class="quiz-cat-card__content">
+              <div class="quiz-cat-card__name">Medieval Indian History</div>
+              <div class="quiz-cat-card__count js-quiz-count">Loading...</div>
+            </div>
+            <span class="quiz-cat-card__arrow">→</span>
+          </a>
+
+          <a href="{{ site.url }}/gk-quiz/modern-indian-history/" class="quiz-cat-card" style="--cat-color:#e97c2a;" data-quiz-file="modern-history" data-quiz-lang="en">
+            <div class="quiz-cat-card__icon">
+              <svg width="20" height="14" viewBox="0 0 30 20" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <rect width="30" height="20" fill="#138808"/>
+                <rect width="30" height="13.33" y="0" fill="#FFFFFF"/>
+                <rect width="30" height="6.66" y="0" fill="#FF9933"/>
+                <circle cx="15" cy="10" r="2.2" fill="none" stroke="#000080" stroke-width="0.4"/>
+                <circle cx="15" cy="10" r="0.25" fill="#000080"/>
+              </svg>
+            </div>
+            <div class="quiz-cat-card__content">
+              <div class="quiz-cat-card__name">Modern Indian History</div>
+              <div class="quiz-cat-card__count js-quiz-count">Loading...</div>
+            </div>
+            <span class="quiz-cat-card__arrow">→</span>
+          </a>
+
+          <a href="{{ site.url }}/gk-quiz/world-history/" class="quiz-cat-card" style="--cat-color:#e97c2a;" data-quiz-file="world-history" data-quiz-lang="en">
+            <div class="quiz-cat-card__icon">🌍</div>
+            <div class="quiz-cat-card__content">
+              <div class="quiz-cat-card__name">World History</div>
+              <div class="quiz-cat-card__count js-quiz-count">Loading...</div>
+            </div>
+            <span class="quiz-cat-card__arrow">→</span>
+          </a>
+
+          <a href="{{ site.url }}/gk-quiz/indian-constitution/" class="quiz-cat-card" style="--cat-color:#3ecfcf;" data-quiz-file="indian-constitution" data-quiz-lang="en">
+            <div class="quiz-cat-card__icon">⚖️</div>
+            <div class="quiz-cat-card__content">
+              <div class="quiz-cat-card__name">Indian Government & Constitution</div>
+              <div class="quiz-cat-card__count js-quiz-count">Loading...</div>
+            </div>
+            <span class="quiz-cat-card__arrow">→</span>
+          </a>
+
+          <a href="{{ site.url }}/gk-quiz/indian-economy/" class="quiz-cat-card" style="--cat-color:#3ecfcf;" data-quiz-file="indian-economy" data-quiz-lang="en">
+            <div class="quiz-cat-card__icon">💰</div>
+            <div class="quiz-cat-card__content">
+              <div class="quiz-cat-card__name">Indian Economy</div>
+              <div class="quiz-cat-card__count js-quiz-count">Loading...</div>
+            </div>
+            <span class="quiz-cat-card__arrow">→</span>
+          </a>
+
+          <a href="{{ site.url }}/gk-quiz/environment/" class="quiz-cat-card" style="--cat-color:#34d399;" data-quiz-file="environment" data-quiz-lang="en">
+            <div class="quiz-cat-card__icon">🌿</div>
+            <div class="quiz-cat-card__content">
+              <div class="quiz-cat-card__name">Environment & Biodiversity</div>
+              <div class="quiz-cat-card__count js-quiz-count">Loading...</div>
+            </div>
+            <span class="quiz-cat-card__arrow">→</span>
+          </a>
+
+          <a href="{{ site.url }}/gk-quiz/indian-art-culture/" class="quiz-cat-card" style="--cat-color:#a78bfa;" data-quiz-file="indian-art-culture" data-quiz-lang="en">
+            <div class="quiz-cat-card__icon">🎭</div>
+            <div class="quiz-cat-card__content">
+              <div class="quiz-cat-card__name">Indian Art & Culture</div>
+              <div class="quiz-cat-card__count js-quiz-count">Loading...</div>
+            </div>
+            <span class="quiz-cat-card__arrow">→</span>
+          </a>
+
+          <a href="{{ site.url }}/gk-quiz/physics/" class="quiz-cat-card" style="--cat-color:#60a5fa;" data-quiz-file="physics" data-quiz-lang="en">
+            <div class="quiz-cat-card__icon">⚡</div>
+            <div class="quiz-cat-card__content">
+              <div class="quiz-cat-card__name">Physics</div>
+              <div class="quiz-cat-card__count js-quiz-count">Loading...</div>
+            </div>
+            <span class="quiz-cat-card__arrow">→</span>
+          </a>
+
+          <a href="{{ site.url }}/gk-quiz/chemistry/" class="quiz-cat-card" style="--cat-color:#60a5fa;" data-quiz-file="chemistry" data-quiz-lang="en">
+            <div class="quiz-cat-card__icon">🧪</div>
+            <div class="quiz-cat-card__content">
+              <div class="quiz-cat-card__name">Chemistry</div>
+              <div class="quiz-cat-card__count js-quiz-count">Loading...</div>
+            </div>
+            <span class="quiz-cat-card__arrow">→</span>
+          </a>
+
+          <a href="{{ site.url }}/gk-quiz/mathematics/" class="quiz-cat-card" style="--cat-color:#60a5fa;" data-quiz-file="mathematics" data-quiz-lang="en">
+            <div class="quiz-cat-card__icon">🔢</div>
+            <div class="quiz-cat-card__content">
+              <div class="quiz-cat-card__name">Mathematics</div>
+              <div class="quiz-cat-card__count js-quiz-count">Loading...</div>
+            </div>
+            <span class="quiz-cat-card__arrow">→</span>
+          </a>
+
+          <a href="{{ site.url }}/gk-quiz/biology/" class="quiz-cat-card" style="--cat-color:#34d399;" data-quiz-file="biology" data-quiz-lang="en">
+            <div class="quiz-cat-card__icon">🧬</div>
+            <div class="quiz-cat-card__content">
+              <div class="quiz-cat-card__name">Biology</div>
+              <div class="quiz-cat-card__count js-quiz-count">Loading...</div>
+            </div>
+            <span class="quiz-cat-card__arrow">→</span>
+          </a>
+
+          <a href="{{ site.url }}/gk-quiz/computer/" class="quiz-cat-card" style="--cat-color:#a78bfa;" data-quiz-file="computer" data-quiz-lang="en">
+            <div class="quiz-cat-card__icon">💻</div>
+            <div class="quiz-cat-card__content">
+              <div class="quiz-cat-card__name">Computer</div>
+              <div class="quiz-cat-card__count js-quiz-count">Loading...</div>
+            </div>
+            <span class="quiz-cat-card__arrow">→</span>
+          </a>
+
+          <a href="{{ site.url }}/gk-quiz/sanskrit/" class="quiz-cat-card" style="--cat-color:#f5a623;" data-quiz-file="sanskrit" data-quiz-lang="en">
+            <div class="quiz-cat-card__icon">📜</div>
+            <div class="quiz-cat-card__content">
+              <div class="quiz-cat-card__name">Sanskrit</div>
+              <div class="quiz-cat-card__count js-quiz-count">Loading...</div>
+            </div>
+            <span class="quiz-cat-card__arrow">→</span>
+          </a>
+
+          <a href="{{ site.url }}/gk-quiz/science-technology/" class="quiz-cat-card" style="--cat-color:#60a5fa;" data-quiz-file="science-technology" data-quiz-lang="en">
+            <div class="quiz-cat-card__icon">🔬</div>
+            <div class="quiz-cat-card__content">
+              <div class="quiz-cat-card__name">Science & Technology</div>
+              <div class="quiz-cat-card__count js-quiz-count">Loading...</div>
+            </div>
+            <span class="quiz-cat-card__arrow">→</span>
+          </a>
+
+          <a href="{{ site.url }}/gk-quiz/books-authors/" class="quiz-cat-card" style="--cat-color:#fb923c;" data-quiz-file="books-authors" data-quiz-lang="en">
+            <div class="quiz-cat-card__icon">📚</div>
+            <div class="quiz-cat-card__content">
+              <div class="quiz-cat-card__name">Books & Authors</div>
+              <div class="quiz-cat-card__count js-quiz-count">Loading...</div>
+            </div>
+            <span class="quiz-cat-card__arrow">→</span>
+          </a>
+
+          <a href="{{ site.url }}/gk-quiz/sports/" class="quiz-cat-card" style="--cat-color:#f5a623;" data-quiz-file="sports" data-quiz-lang="en">
+            <div class="quiz-cat-card__icon">🏆</div>
+            <div class="quiz-cat-card__content">
+              <div class="quiz-cat-card__name">Sports General Knowledge</div>
+              <div class="quiz-cat-card__count js-quiz-count">Loading...</div>
+            </div>
+            <span class="quiz-cat-card__arrow">→</span>
+          </a>
+
+          <a href="{{ site.url }}/gk-quiz/famous-personalities/" class="quiz-cat-card" style="--cat-color:#a78bfa;" data-quiz-file="famous-personalities" data-quiz-lang="en">
+            <div class="quiz-cat-card__icon">👤</div>
+            <div class="quiz-cat-card__content">
+              <div class="quiz-cat-card__name">Famous Personalities</div>
+              <div class="quiz-cat-card__count js-quiz-count">Loading...</div>
+            </div>
+            <span class="quiz-cat-card__arrow">→</span>
+          </a>
+
+          <a href="{{ site.url }}/gk-quiz/technology-inventions/" class="quiz-cat-card" style="--cat-color:#60a5fa;" data-quiz-file="technology-inventions" data-quiz-lang="en">
+            <div class="quiz-cat-card__icon">💡</div>
+            <div class="quiz-cat-card__content">
+              <div class="quiz-cat-card__name">Technology & Inventions</div>
+              <div class="quiz-cat-card__count js-quiz-count">Loading...</div>
+            </div>
+            <span class="quiz-cat-card__arrow">→</span>
+          </a>
+
+          <a href="{{ site.url }}/gk-quiz/space-universe/" class="quiz-cat-card" style="--cat-color:#a78bfa;" data-quiz-file="space-universe" data-quiz-lang="en">
+            <div class="quiz-cat-card__icon">🚀</div>
+            <div class="quiz-cat-card__content">
+              <div class="quiz-cat-card__name">Space & Universe</div>
+              <div class="quiz-cat-card__count js-quiz-count">Loading...</div>
+            </div>
+            <span class="quiz-cat-card__arrow">→</span>
+          </a>
+
+          <a href="{{ site.url }}/gk-quiz/indian-geography/" class="quiz-cat-card" style="--cat-color:#34d399;" data-quiz-file="indian-geography" data-quiz-lang="en">
+            <div class="quiz-cat-card__icon">🗺️</div>
+            <div class="quiz-cat-card__content">
+              <div class="quiz-cat-card__name">Indian Geography</div>
+              <div class="quiz-cat-card__count js-quiz-count">Loading...</div>
+            </div>
+            <span class="quiz-cat-card__arrow">→</span>
+          </a>
+
+          <a href="{{ site.url }}/gk-quiz/world-geography/" class="quiz-cat-card" style="--cat-color:#34d399;" data-quiz-file="world-geography" data-quiz-lang="en">
+            <div class="quiz-cat-card__icon">🌐</div>
+            <div class="quiz-cat-card__content">
+              <div class="quiz-cat-card__name">World Geography</div>
+              <div class="quiz-cat-card__count js-quiz-count">Loading...</div>
+            </div>
+            <span class="quiz-cat-card__arrow">→</span>
+          </a>
+
+          <a href="{{ site.url }}/gk-quiz/indian-festivals/" class="quiz-cat-card" style="--cat-color:#f5a623;" data-quiz-file="indian-festivals" data-quiz-lang="en">
+            <div class="quiz-cat-card__icon">🪔</div>
+            <div class="quiz-cat-card__content">
+              <div class="quiz-cat-card__name">Indian Festivals & Traditions</div>
+              <div class="quiz-cat-card__count js-quiz-count">Loading...</div>
+            </div>
+            <span class="quiz-cat-card__arrow">→</span>
+          </a>
+
+          <a href="{{ site.url }}/gk-quiz/world-organizations/" class="quiz-cat-card" style="--cat-color:#3ecfcf;" data-quiz-file="world-organizations" data-quiz-lang="en">
+            <div class="quiz-cat-card__icon">🤝</div>
+            <div class="quiz-cat-card__content">
+              <div class="quiz-cat-card__name">World Organizations</div>
+              <div class="quiz-cat-card__count js-quiz-count">Loading...</div>
+            </div>
+            <span class="quiz-cat-card__arrow">→</span>
+          </a>
+
+          <a href="{{ site.url }}/gk-quiz/international-relations/" class="quiz-cat-card" style="--cat-color:#3ecfcf;" data-quiz-file="international-relations" data-quiz-lang="en">
+            <div class="quiz-cat-card__icon">🌏</div>
+            <div class="quiz-cat-card__content">
+              <div class="quiz-cat-card__name">International Relations</div>
+              <div class="quiz-cat-card__count js-quiz-count">Loading...</div>
+            </div>
+            <span class="quiz-cat-card__arrow">→</span>
+          </a>
+
+          <a href="{{ site.url }}/gk-quiz/awards-honors/" class="quiz-cat-card" style="--cat-color:#f5a623;" data-quiz-file="awards-honors" data-quiz-lang="en">
+            <div class="quiz-cat-card__icon">🏅</div>
+            <div class="quiz-cat-card__content">
+              <div class="quiz-cat-card__name">Awards & Honors</div>
+              <div class="quiz-cat-card__count js-quiz-count">Loading...</div>
+            </div>
+            <span class="quiz-cat-card__arrow">→</span>
+          </a>
+
+          <a href="{{ site.url }}/gk-quiz/indian-defense/" class="quiz-cat-card" style="--cat-color:#f87171;" data-quiz-file="indian-defense" data-quiz-lang="en">
+            <div class="quiz-cat-card__icon">🛡️</div>
+            <div class="quiz-cat-card__content">
+              <div class="quiz-cat-card__name">Indian Defense</div>
+              <div class="quiz-cat-card__count js-quiz-count">Loading...</div>
+            </div>
+            <span class="quiz-cat-card__arrow">→</span>
+          </a>
+
+          <a href="{{ site.url }}/gk-quiz/important-dates/" class="quiz-cat-card" style="--cat-color:#fb923c;" data-quiz-file="important-dates" data-quiz-lang="en">
+            <div class="quiz-cat-card__icon">📅</div>
+            <div class="quiz-cat-card__content">
+              <div class="quiz-cat-card__name">Important Dates & Events</div>
+              <div class="quiz-cat-card__count js-quiz-count">Loading...</div>
+            </div>
+            <span class="quiz-cat-card__arrow">→</span>
+          </a>
+
+          <a href="{{ site.url }}/gk-quiz/transport/" class="quiz-cat-card" style="--cat-color:#3ecfcf;" data-quiz-file="transport" data-quiz-lang="en">
+            <div class="quiz-cat-card__icon">🚆</div>
+            <div class="quiz-cat-card__content">
+              <div class="quiz-cat-card__name">Transport & Communication</div>
+              <div class="quiz-cat-card__count js-quiz-count">Loading...</div>
+            </div>
+            <span class="quiz-cat-card__arrow">→</span>
+          </a>
+
+          <a href="{{ site.url }}/gk-quiz/famous-monuments/" class="quiz-cat-card" style="--cat-color:#e97c2a;" data-quiz-file="famous-monuments" data-quiz-lang="en">
+            <div class="quiz-cat-card__icon">🏯</div>
+            <div class="quiz-cat-card__content">
+              <div class="quiz-cat-card__name">Famous Monuments</div>
+              <div class="quiz-cat-card__count js-quiz-count">Loading...</div>
+            </div>
+            <span class="quiz-cat-card__arrow">→</span>
+          </a>
+
+          <a href="{{ site.url }}/gk-quiz/wildlife/" class="quiz-cat-card" style="--cat-color:#34d399;" data-quiz-file="wildlife" data-quiz-lang="en">
+            <div class="quiz-cat-card__icon">🐯</div>
+            <div class="quiz-cat-card__content">
+              <div class="quiz-cat-card__name">Wildlife & National Parks</div>
+              <div class="quiz-cat-card__count js-quiz-count">Loading...</div>
+            </div>
+            <span class="quiz-cat-card__arrow">→</span>
+          </a>
+
+          <a href="{{ site.url }}/gk-quiz/rivers/" class="quiz-cat-card" style="--cat-color:#60a5fa;" data-quiz-file="rivers" data-quiz-lang="en">
+            <div class="quiz-cat-card__icon">🏞️</div>
+            <div class="quiz-cat-card__content">
+              <div class="quiz-cat-card__name">Rivers & Lakes</div>
+              <div class="quiz-cat-card__count js-quiz-count">Loading...</div>
+            </div>
+            <span class="quiz-cat-card__arrow">→</span>
+          </a>
+
+          <a href="{{ site.url }}/gk-quiz/disasters/" class="quiz-cat-card" style="--cat-color:#f87171;" data-quiz-file="disasters" data-quiz-lang="en">
+            <div class="quiz-cat-card__icon">⚠️</div>
+            <div class="quiz-cat-card__content">
+              <div class="quiz-cat-card__name">Disasters & Accidents</div>
+              <div class="quiz-cat-card__count js-quiz-count">Loading...</div>
+            </div>
+            <span class="quiz-cat-card__arrow">→</span>
+          </a>
+
+        </div>
+      </div>
+    </div>
+
+    <div data-lang-section="hi" style="display:none;">
+
+      <div class="quiz-section">
+        <h2 class="quiz-section__title">🏆 परीक्षा कॉर्नर</h2>
+        <div class="exam-corner">
+          <a href="{{ site.url }}/gk-quiz/hi/ssc/" class="exam-card">
+            <div class="exam-card__icon">🎯</div>
+            <div class="exam-card__name">SSC परीक्षा</div>
+            <div class="exam-card__desc">CGL, CHSL, MTS — विषयवार अभ्यास</div>
+          </a>
+          <a href="{{ site.url }}/gk-quiz/hi/banking/" class="exam-card">
+            <div class="exam-card__icon">🏦</div>
+            <div class="exam-card__name">बैंकिंग</div>
+            <div class="exam-card__desc">IBPS PO, Clerk, SBI — GK प्रश्न</div>
+          </a>
+          <a href="{{ site.url }}/gk-quiz/hi/railway/" class="exam-card">
+            <div class="exam-card__icon">🚆</div>
+            <div class="exam-card__name">रेलवे</div>
+            <div class="exam-card__desc">RRB NTPC, Group D — GK अभ्यास</div>
+          </a>
+          <a href="{{ site.url }}/gk-quiz/hi/upsc/" class="exam-card">
+            <div class="exam-card__icon">🏛️</div>
+            <div class="exam-card__name">UPSC</div>
+            <div class="exam-card__desc">Prelims GK — इतिहास, राजव्यवस्था</div>
+          </a>
+        </div>
+      </div>
+
+      <div class="quiz-section">
+        <h2 class="quiz-section__title">📚 सभी विषय</h2>
+        <div class="quiz-grid">
+
+          <a href="{{ site.url }}/gk-quiz/hi/prachin-bharatiya-itihas/" class="quiz-cat-card" style="--cat-color:#e97c2a;" data-quiz-file="ancient-indian-history" data-quiz-lang="hi">
+            <div class="quiz-cat-card__icon">🏛️</div>
+            <div class="quiz-cat-card__content">
+              <div class="quiz-cat-card__name">प्राचीन भारतीय इतिहास</div>
+              <div class="quiz-cat-card__count js-quiz-count">Loading...</div>
+            </div>
+            <span class="quiz-cat-card__arrow">→</span>
+          </a>
+
+          <a href="{{ site.url }}/gk-quiz/hi/madhyakalin-bharatiya-itihas/" class="quiz-cat-card" style="--cat-color:#e97c2a;" data-quiz-file="medieval-history" data-quiz-lang="hi">
+            <div class="quiz-cat-card__icon">🕌</div>
+            <div class="quiz-cat-card__content">
+              <div class="quiz-cat-card__name">मध्यकालीन भारतीय इतिहास</div>
+              <div class="quiz-cat-card__count js-quiz-count">Loading...</div>
+            </div>
+            <span class="quiz-cat-card__arrow">→</span>
+          </a>
+
+          <a href="{{ site.url }}/gk-quiz/hi/aadhunik-bharatiya-itihas/" class="quiz-cat-card" style="--cat-color:#e97c2a;" data-quiz-file="modern-history" data-quiz-lang="hi">
+            <div class="quiz-cat-card__icon">🇮🇳</div>
+            <div class="quiz-cat-card__content">
+              <div class="quiz-cat-card__name">आधुनिक भारतीय इतिहास</div>
+              <div class="quiz-cat-card__count js-quiz-count">Loading...</div>
+            </div>
+            <span class="quiz-cat-card__arrow">→</span>
+          </a>
+
+          <a href="{{ site.url }}/gk-quiz/hi/vishwa-itihas/" class="quiz-cat-card" style="--cat-color:#e97c2a;" data-quiz-file="world-history" data-quiz-lang="hi">
+            <div class="quiz-cat-card__icon">🌍</div>
+            <div class="quiz-cat-card__content">
+              <div class="quiz-cat-card__name">विश्व इतिहास</div>
+              <div class="quiz-cat-card__count js-quiz-count">Loading...</div>
+            </div>
+            <span class="quiz-cat-card__arrow">→</span>
+          </a>
+
+          <a href="{{ site.url }}/gk-quiz/hi/samvidhan/" class="quiz-cat-card" style="--cat-color:#3ecfcf;" data-quiz-file="indian-constitution" data-quiz-lang="hi">
+            <div class="quiz-cat-card__icon">⚖️</div>
+            <div class="quiz-cat-card__content">
+              <div class="quiz-cat-card__name">भारतीय सरकार और संविधान</div>
+              <div class="quiz-cat-card__count js-quiz-count">Loading...</div>
+            </div>
+            <span class="quiz-cat-card__arrow">→</span>
+          </a>
+
+          <a href="{{ site.url }}/gk-quiz/hi/arthavyavastha/" class="quiz-cat-card" style="--cat-color:#3ecfcf;" data-quiz-file="indian-economy" data-quiz-lang="hi">
+            <div class="quiz-cat-card__icon">💰</div>
+            <div class="quiz-cat-card__content">
+              <div class="quiz-cat-card__name">भारतीय अर्थव्यवस्था</div>
+              <div class="quiz-cat-card__count js-quiz-count">Loading...</div>
+            </div>
+            <span class="quiz-cat-card__arrow">→</span>
+          </a>
+
+          <a href="{{ site.url }}/gk-quiz/hi/paryavaran/" class="quiz-cat-card" style="--cat-color:#34d399;" data-quiz-file="environment" data-quiz-lang="hi">
+            <div class="quiz-cat-card__icon">🌿</div>
+            <div class="quiz-cat-card__content">
+              <div class="quiz-cat-card__name">पर्यावरण और जैव विविधता</div>
+              <div class="quiz-cat-card__count js-quiz-count">Loading...</div>
+            </div>
+            <span class="quiz-cat-card__arrow">→</span>
+          </a>
+
+          <a href="{{ site.url }}/gk-quiz/hi/kala-sanskriti/" class="quiz-cat-card" style="--cat-color:#a78bfa;" data-quiz-file="indian-art-culture" data-quiz-lang="hi">
+            <div class="quiz-cat-card__icon">🎭</div>
+            <div class="quiz-cat-card__content">
+              <div class="quiz-cat-card__name">भारतीय कला और संस्कृति</div>
+              <div class="quiz-cat-card__count js-quiz-count">Loading...</div>
+            </div>
+            <span class="quiz-cat-card__arrow">→</span>
+          </a>
+
+          <a href="{{ site.url }}/gk-quiz/hi/bhautiki/" class="quiz-cat-card" style="--cat-color:#60a5fa;" data-quiz-file="physics" data-quiz-lang="hi">
+            <div class="quiz-cat-card__icon">⚡</div>
+            <div class="quiz-cat-card__content">
+              <div class="quiz-cat-card__name">भौतिकी</div>
+              <div class="quiz-cat-card__count js-quiz-count">Loading...</div>
+            </div>
+            <span class="quiz-cat-card__arrow">→</span>
+          </a>
+
+          <a href="{{ site.url }}/gk-quiz/hi/rasayan/" class="quiz-cat-card" style="--cat-color:#60a5fa;" data-quiz-file="chemistry" data-quiz-lang="hi">
+            <div class="quiz-cat-card__icon">🧪</div>
+            <div class="quiz-cat-card__content">
+              <div class="quiz-cat-card__name">रसायन विज्ञान</div>
+              <div class="quiz-cat-card__count js-quiz-count">Loading...</div>
+            </div>
+            <span class="quiz-cat-card__arrow">→</span>
+          </a>
+
+          <a href="{{ site.url }}/gk-quiz/hi/ganit/" class="quiz-cat-card" style="--cat-color:#60a5fa;" data-quiz-file="mathematics" data-quiz-lang="hi">
+            <div class="quiz-cat-card__icon">🔢</div>
+            <div class="quiz-cat-card__content">
+              <div class="quiz-cat-card__name">गणित</div>
+              <div class="quiz-cat-card__count js-quiz-count">Loading...</div>
+            </div>
+            <span class="quiz-cat-card__arrow">→</span>
+          </a>
+
+          <a href="{{ site.url }}/gk-quiz/hi/jeev-vigyan/" class="quiz-cat-card" style="--cat-color:#34d399;" data-quiz-file="biology" data-quiz-lang="hi">
+            <div class="quiz-cat-card__icon">🧬</div>
+            <div class="quiz-cat-card__content">
+              <div class="quiz-cat-card__name">जीव विज्ञान</div>
+              <div class="quiz-cat-card__count js-quiz-count">Loading...</div>
+            </div>
+            <span class="quiz-cat-card__arrow">→</span>
+          </a>
+
+          <a href="{{ site.url }}/gk-quiz/hi/computer/" class="quiz-cat-card" style="--cat-color:#a78bfa;" data-quiz-file="computer" data-quiz-lang="hi">
+            <div class="quiz-cat-card__icon">💻</div>
+            <div class="quiz-cat-card__content">
+              <div class="quiz-cat-card__name">कंप्यूटर</div>
+              <div class="quiz-cat-card__count js-quiz-count">Loading...</div>
+            </div>
+            <span class="quiz-cat-card__arrow">→</span>
+          </a>
+
+          <a href="{{ site.url }}/gk-quiz/hi/vigyan-taknik/" class="quiz-cat-card" style="--cat-color:#60a5fa;" data-quiz-file="science-technology" data-quiz-lang="hi">
+            <div class="quiz-cat-card__icon">🔬</div>
+            <div class="quiz-cat-card__content">
+              <div class="quiz-cat-card__name">विज्ञान और प्रौद्योगिकी</div>
+              <div class="quiz-cat-card__count js-quiz-count">Loading...</div>
+            </div>
+            <span class="quiz-cat-card__arrow">→</span>
+          </a>
+
+          <a href="{{ site.url }}/gk-quiz/hi/khel/" class="quiz-cat-card" style="--cat-color:#f5a623;" data-quiz-file="sports" data-quiz-lang="hi">
+            <div class="quiz-cat-card__icon">🏆</div>
+            <div class="quiz-cat-card__content">
+              <div class="quiz-cat-card__name">खेल सामान्य ज्ञान</div>
+              <div class="quiz-cat-card__count js-quiz-count">Loading...</div>
+            </div>
+            <span class="quiz-cat-card__arrow">→</span>
+          </a>
+
+          <a href="{{ site.url }}/gk-quiz/hi/antariksh/" class="quiz-cat-card" style="--cat-color:#a78bfa;" data-quiz-file="space-universe" data-quiz-lang="hi">
+            <div class="quiz-cat-card__icon">🚀</div>
+            <div class="quiz-cat-card__content">
+              <div class="quiz-cat-card__name">अंतरिक्ष और ब्रह्मांड</div>
+              <div class="quiz-cat-card__count js-quiz-count">Loading...</div>
+            </div>
+            <span class="quiz-cat-card__arrow">→</span>
+          </a>
+
+          <a href="{{ site.url }}/gk-quiz/hi/bhartiya-bhugol/" class="quiz-cat-card" style="--cat-color:#34d399;" data-quiz-file="indian-geography" data-quiz-lang="hi">
+            <div class="quiz-cat-card__icon">🗺️</div>
+            <div class="quiz-cat-card__content">
+              <div class="quiz-cat-card__name">भारतीय भूगोल</div>
+              <div class="quiz-cat-card__count js-quiz-count">Loading...</div>
+            </div>
+            <span class="quiz-cat-card__arrow">→</span>
+          </a>
+
+          <a href="{{ site.url }}/gk-quiz/hi/vishwa-bhugol/" class="quiz-cat-card" style="--cat-color:#34d399;" data-quiz-file="world-geography" data-quiz-lang="hi">
+            <div class="quiz-cat-card__icon">🌐</div>
+            <div class="quiz-cat-card__content">
+              <div class="quiz-cat-card__name">विश्व भूगोल</div>
+              <div class="quiz-cat-card__count js-quiz-count">Loading...</div>
+            </div>
+            <span class="quiz-cat-card__arrow">→</span>
+          </a>
+
+          <a href="{{ site.url }}/gk-quiz/hi/tyohar/" class="quiz-cat-card" style="--cat-color:#f5a623;" data-quiz-file="indian-festivals" data-quiz-lang="hi">
+            <div class="quiz-cat-card__icon">🪔</div>
+            <div class="quiz-cat-card__content">
+              <div class="quiz-cat-card__name">भारतीय त्यौहार और परंपराएँ</div>
+              <div class="quiz-cat-card__count js-quiz-count">Loading...</div>
+            </div>
+            <span class="quiz-cat-card__arrow">→</span>
+          </a>
+
+          <a href="{{ site.url }}/gk-quiz/hi/puraskaar/" class="quiz-cat-card" style="--cat-color:#f5a623;" data-quiz-file="awards-honors" data-quiz-lang="hi">
+            <div class="quiz-cat-card__icon">🏅</div>
+            <div class="quiz-cat-card__content">
+              <div class="quiz-cat-card__name">पुरस्कार और सम्मान</div>
+              <div class="quiz-cat-card__count js-quiz-count">Loading...</div>
+            </div>
+            <span class="quiz-cat-card__arrow">→</span>
+          </a>
+
+          <a href="{{ site.url }}/gk-quiz/hi/raksha/" class="quiz-cat-card" style="--cat-color:#f87171;" data-quiz-file="indian-defense" data-quiz-lang="hi">
+            <div class="quiz-cat-card__icon">🛡️</div>
+            <div class="quiz-cat-card__content">
+              <div class="quiz-cat-card__name">भारतीय रक्षा</div>
+              <div class="quiz-cat-card__count js-quiz-count">Loading...</div>
+            </div>
+            <span class="quiz-cat-card__arrow">→</span>
+          </a>
+
+          <a href="{{ site.url }}/gk-quiz/hi/nadiyan/" class="quiz-cat-card" style="--cat-color:#60a5fa;" data-quiz-file="rivers" data-quiz-lang="hi">
+            <div class="quiz-cat-card__icon">🏞️</div>
+            <div class="quiz-cat-card__content">
+              <div class="quiz-cat-card__name">नदियाँ और झीलें</div>
+              <div class="quiz-cat-card__count js-quiz-count">Loading...</div>
+            </div>
+            <span class="quiz-cat-card__arrow">→</span>
+          </a>
+
+          <a href="{{ site.url }}/gk-quiz/hi/vanya-jeev/" class="quiz-cat-card" style="--cat-color:#34d399;" data-quiz-file="wildlife" data-quiz-lang="hi">
+            <div class="quiz-cat-card__icon">🐯</div>
+            <div class="quiz-cat-card__content">
+              <div class="quiz-cat-card__name">वन्यजीव और राष्ट्रीय उद्यान</div>
+              <div class="quiz-cat-card__count js-quiz-count">Loading...</div>
+            </div>
+            <span class="quiz-cat-card__arrow">→</span>
+          </a>
+
+          <a href="{{ site.url }}/gk-quiz/hi/aapda/" class="quiz-cat-card" style="--cat-color:#f87171;" data-quiz-file="disasters" data-quiz-lang="hi">
+            <div class="quiz-cat-card__icon">⚠️</div>
+            <div class="quiz-cat-card__content">
+              <div class="quiz-cat-card__name">आपदाएँ और दुर्घटनाएँ</div>
+              <div class="quiz-cat-card__count js-quiz-count">Loading...</div>
+            </div>
+            <span class="quiz-cat-card__arrow">→</span>
+          </a>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
