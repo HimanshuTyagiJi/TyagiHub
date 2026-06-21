@@ -1,6 +1,6 @@
 ---
 layout: discover
-title: "डिस्कवर — TyagiHub"
+title: "डिस्कवर"
 description: "टेक्नोलॉजी, AI, साइबर सुरक्षा, शिक्षा, डिजिटल अपडेट, ऑनलाइन सुरक्षा और नई जानकारी — सब कुछ एक ही Discover फीड में।"
 permalink: /hi/discover/
 image: /assets/images/tyagihub.png
@@ -13,20 +13,33 @@ extra_css:
   - /assets/css/discover.css
 extra_js:
   - /assets/js/discover.js
+
+# 🎯 CONFIG ENGINE: Pagination plugin ko bol diya ki posts_hi uthaye
+pagination:
+  enabled: true
+  collection: posts_hi
+  per_page: 6
+  permalink: "/hi/discover/page-:num/"
 ---
 
-{% assign all_posts = site.posts_hi %}
+{% assign combined_discover = "" | split: "" %}
 
-{% assign sorted = site.posts_hi | sort: "date" | reverse %}
+{% for p in site.shield_hi %}
+  {% assign combined_discover = combined_discover | push: p %}
+{% endfor %}
+
+{% for p in site.posts_hi %}
+  {% assign combined_discover = combined_discover | push: p %}
+{% endfor %}
+
+{% assign sorted = combined_discover | uniq | sort: "date" | reverse %}
+{% assign total_count = sorted | size %}
 
 <div style="padding-top:var(--nav-height);">
 
 <div class="discover-hero">
-
   <div class="discover-hero__bg"></div>
-
   <div class="container discover-hero__content">
-
     <div class="discover-badge">
       <span class="discover-badge__dot"></span>
       TyagiHub डिस्कवर
@@ -40,13 +53,12 @@ extra_js:
     <p class="discover-desc">
       टेक्नोलॉजी, कृत्रिम बुद्धिमत्ता (AI), साइबर सुरक्षा, शिक्षा,
       समसामयिक घटनाएँ, डिजिटल टूल्स, ऐप्स, ट्यूटोरियल,
-      オンライン सुरक्षा और भविष्य की नवाचार तकनीकों से जुड़ी
+      ऑनलाइन सुरक्षा और भविष्य की नवाचार तकनीकों से जुड़ी
       उपयोगी जानकारी — सब कुछ एक ही शक्तिशाली
       TyagiHub Discover फ़ीड में।
     </p>
 
     <div class="discover-icons">
-
       <div class="discover-icon">
         <svg viewBox="0 0 64 64" class="icon-ai">
           <rect x="18" y="18" width="28" height="28" rx="6"/>
@@ -79,104 +91,93 @@ extra_js:
           <path d="M36 8L18 36H30L24 56L46 28H34L36 8Z"/>
         </svg>
       </div>
-
     </div>
-
   </div>
-
 </div>
 
   <section style="padding:22px 0;border-bottom:1px solid var(--clr-border);background:var(--clr-bg);">
-
     <div class="container">
-
       <div class="discover-categories">
 
         <button class="discover-cat-btn active" onclick="filterCategory('all',this)">
-          सभी
-          <span>
-            ({{ all_posts.size }})
-          </span>
+          सभी <span>({{ total_count }})</span>
         </button>
 
         {% assign categories = site.categories | sort %}
         {% for category in categories %}
-        {% unless category[0] == "discover" %}
-        <button class="discover-cat-btn" onclick="filterCategory('{{ category[0] | downcase }}',this)">
-          {{ category[0] }}
-          <span>
-            ({{ category[1].size }})
-          </span>
-        </button>
-        {% endunless %}
+          {% unless category[0] == "discover" %}
+            {% assign cat_name = category[0] | downcase %}
+            
+            {% if cat_name == "cyber-security" or cat_name == "cybersecurity" %}
+              {% assign display_name = "साइबर सुरक्षा" %}
+            {% elsif cat_name == "apps" %}
+              {% assign display_name = "ऐप्स" %}
+            {% elsif cat_name == "learn" %}
+              {% assign display_name = "सीखें" %}
+            {% else %}
+              {% assign display_name = category[0] | replace: "-", " " | replace: "_", " " | capitalize %}
+            {% endif %}
+
+            <button class="discover-cat-btn" onclick="filterCategory('{{ category[0] | downcase }}',this)">
+              {{ display_name }} <span>({{ category[1].size }})</span>
+            </button>
+          {% endunless %}
         {% endfor %}
 
       </div>
-
     </div>
-
   </section>
 
   <section class="section">
-
     <div id="posts">
-
       <div id="post-wrapper">
 
         {% for p in sorted %}
+          {% assign cat_clean = p.categories[0] | downcase %}
+          {% if cat_clean == "cyber-security" or cat_clean == "cybersecurity" or p.url contains "cyber-security" %}
+            {% assign chip_tag = "साइबर सुरक्षा" %}
+          {% else %}
+            {% assign chip_tag = p.categories[0] | default: "सुरक्षा" | capitalize %}
+          {% endif %}
+
         <div class="horizontal-post-card js-post"
-          data-lang="{{ p.lang }}"
+          data-lang="hi"
           data-categories="{% for cat in p.categories %}{{ cat | downcase }} {% endfor %}">
 
           <div class="post-img">
-
-            <span class="post-category">
-              {{ p.categories[0] | default: "Technology" }}
-            </span>
-
+            <span class="post-category">{{ chip_tag }}</span>
             <div class="post-date">
               <i class="fa-regular fa-calendar"></i>
               {{ p.date | date: "%d %b %Y" }}
             </div>
-
             <img
               src="{{ p.image | default: '/assets/images/default-thumb.png' }}"
               alt="{{ p.title }} - TyagiHub"
               loading="lazy"
               width="260"
               height="188">
-
           </div>
 
           <div class="post-info">
-
             <div class="post-top-meta">
-
               <h2>
                 <a href="{{ p.url | relative_url }}">
                   {{ p.title }}
                 </a>
               </h2>
-
               <p>
                 {{ p.description | default:p.excerpt | strip_html | truncate:110 }}
               </p>
-
             </div>
 
             <div class="post-footer">
-
               <button class="native-share-btn" onclick="nativeShare('{{ p.title | escape }}','{{ p.url | absolute_url }}')">
-                <i class="fa-solid fa-share-nodes"></i>
-                शेयर
+                <i class="fa-solid fa-share-nodes"></i> शेयर
               </button>
-
               <a href="{{ p.url | relative_url }}" class="read-link">
                 पूरा पढ़ें →
               </a>
-
             </div>
-
           </div>
 
         </div>
@@ -186,9 +187,7 @@ extra_js:
 
       <nav id="pagination-nav" class="pagination-center" aria-label="Pagination Navigation">
       </nav>
-
     </div>
-
   </section>
 
 </div>
