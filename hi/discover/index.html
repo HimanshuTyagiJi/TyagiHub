@@ -26,16 +26,13 @@ extra_js:
 {% endfor %}
 
 {% assign sorted = combined_discover | uniq | sort: "date" | reverse %}
-{% assign all_posts = sorted %}
+{% assign total_count = sorted | size %}
 
 <div style="padding-top:var(--nav-height);">
 
 <div class="discover-hero">
-
   <div class="discover-hero__bg"></div>
-
   <div class="container discover-hero__content">
-
     <div class="discover-badge">
       <span class="discover-badge__dot"></span>
       TyagiHub डिस्कवर
@@ -55,7 +52,6 @@ extra_js:
     </p>
 
     <div class="discover-icons">
-
       <div class="discover-icon">
         <svg viewBox="0 0 64 64" class="icon-ai">
           <rect x="18" y="18" width="28" height="28" rx="6"/>
@@ -69,88 +65,68 @@ extra_js:
           <line x1="40" y1="46" x2="40" y2="52"/>
         </svg>
       </div>
-
       <div class="discover-icon">
         <svg viewBox="0 0 64 64" class="icon-shield">
           <path d="M32 8L50 16V30C50 42 42 52 32 56C22 52 14 42 14 30V16L32 8Z"/>
         </svg>
       </div>
-
       <div class="discover-icon">
         <svg viewBox="0 0 64 64" class="icon-rocket">
           <path d="M44 10C34 12 24 22 22 34L30 42C42 40 52 30 54 18C54 14 50 10 44 10Z"/>
           <circle cx="40" cy="24" r="3"/>
         </svg>
       </div>
-
       <div class="discover-icon">
         <svg viewBox="0 0 64 64" class="icon-energy">
           <path d="M36 8L18 36H30L24 56L46 28H34L36 8Z"/>
         </svg>
       </div>
-
     </div>
-
   </div>
-
 </div>
 
   <section style="padding:22px 0;border-bottom:1px solid var(--clr-border);background:var(--clr-bg);">
-
     <div class="container">
+      <div class="discover-categories" id="category-buttons-container">
 
-      <div class="discover-categories">
-
-        <button class="discover-cat-btn active"
-          onclick="filterCategory('all',this)">
-          सभी
-          <span>
-            ({{ all_posts.size }})
-          </span>
+        <button class="discover-cat-btn active" data-cat="all" onclick="window.location.href='?category=all'">
+          सभी <span>({{ total_count }})</span>
         </button>
 
-        {% assign categories = site.categories | sort %}
-        {% for category in categories %}
-        {% unless category[0] == "discover" %}
-          {% assign cat_name = category[0] | downcase %}
-          
-          {% if cat_name == "cyber-security" or cat_name == "cybersecurity" %}
-            {% assign display_name = "साइबर सुरक्षा" %}
-          {% elsif cat_name == "apps" %}
-            {% assign display_name = "ऐप्स" %}
-          {% elsif cat_name == "learn" %}
-            {% assign display_name = "सीखें" %}
-          {% else %}
-            {% assign display_name = category[0] | replace: "-", " " | replace: "_", " " | capitalize %}
-          {% endif %}
-
-        <button class="discover-cat-btn"
-          onclick="filterCategory('{{ category[0] | downcase }}',this)">
-          {{ display_name }}
-          <span>
-            {% if cat_name == "cyber-security" or cat_name == "cybersecurity" %}
-              ({{ site.shield_hi.size | plus: category[1].size }})
-            {% else %}
-              ({{ category[1].size }})
-            {% endif %}
-          </span>
+        <button class="discover-cat-btn" data-cat="ai-future" onclick="window.location.href='?category=ai-future'">
+          AI Future <span>({{ site.categories['ai-future'].size | default: 3 }})</span>
         </button>
-        {% endunless %}
-        {% endfor %}
+
+        <button class="discover-cat-btn" data-cat="apps-and-internet" onclick="window.location.href='?category=apps-and-internet'">
+          Apps & Internet <span>({{ site.categories['apps-and-internet'].size | default: 3 }})</span>
+        </button>
+
+        <button class="discover-cat-btn" data-cat="technology" onclick="window.location.href='?category=technology'">
+          Technology <span>({{ site.categories['technology'].size | default: 3 }})</span>
+        </button>
+
+        <button class="discover-cat-btn" data-cat="cyber-security" onclick="window.location.href='?category=cyber-security'">
+          Cyber Security <span>({{ site.shield_hi.size | default: 3 }})</span>
+        </button>
 
       </div>
-
     </div>
-
   </section>
 
   <section class="section">
-
     <div id="posts">
-
       <div id="post-wrapper">
 
         {% for p in sorted %}
+          {% assign data_cats = "" %}
+          {% if p.categories %}
+            {% for cat in p.categories %}
+              {% assign data_cats = data_cats | append: cat | downcase | append: " " %}
+            {% endfor %}
+          {% else %}
+            {% assign data_cats = "cyber-security " %}
+          {% endif %}
+
           {% assign cat_clean = p.categories[0] | downcase %}
           {% if cat_clean == "cyber-security" or cat_clean == "cybersecurity" or p.url contains "cyber-security" %}
             {% assign chip_tag = "साइबर सुरक्षा" %}
@@ -159,61 +135,50 @@ extra_js:
           {% endif %}
 
         <div class="horizontal-post-card js-post"
-          data-lang="{{ p.lang | default: 'hi' }}"
-          data-categories="{% for cat in p.categories %}{{ cat | downcase }} {% endfor %}">
+          data-lang="hi"
+          data-categories="{{ data_cats | strip }}"
+          data-post-url="{{ p.url | relative_url }}">
 
-          <div class="post-img">
-
-            <span class="post-category">
-              {{ chip_tag }}
-            </span>
-
-            <div class="post-date">
+          <div class="post-img" style="position: relative; overflow: hidden; background: #111216; display: flex; align-items: center; justify-content: center; width: 354px; height: 236px;">
+            <span class="post-category" style="z-index: 10;">{{ chip_tag }}</span>
+            <div class="post-date" style="z-index: 10;">
               <i class="fa-regular fa-calendar"></i>
               {{ p.date | date: "%d %b %Y" }}
             </div>
-
-            <img
-              src="{{ p.image | default: '/assets/images/default-thumb.png' }}"
-              alt="{{ p.title }} - TyagiHub"
-              loading="lazy"
-              width="260"
-              height="188">
-
+            
+            <div class="thumb-media-box" style="width:100%; height:100%; display:flex; align-items:center; justify-content:center; position:relative;">
+              <img
+                src="{{ p.image | default: '/assets/images/default-thumb.png' }}"
+                alt="{{ p.title }} - TyagiHub"
+                class="js-thumbnail-img"
+                loading="lazy"
+                width="354"
+                height="236"
+                style="width:100%; height:100%; object-fit:cover; display:block;"
+                onerror="triggerFallback(this)">
+            </div>
           </div>
 
           <div class="post-info">
-
             <div class="post-top-meta">
-
               <h2>
                 <a href="{{ p.url | relative_url }}">
                   {{ p.title }}
                 </a>
               </h2>
-
               <p>
                 {{ p.description | default:p.excerpt | strip_html | truncate:110 }}
               </p>
-
             </div>
 
             <div class="post-footer">
-
-              <button
-                class="native-share-btn"
-                onclick="nativeShare('{{ p.title | escape }}','{{ p.url | absolute_url }}')">
-                <i class="fa-solid fa-share-nodes"></i>
-                शेयर
+              <button class="native-share-btn" onclick="nativeShare('{{ p.title | escape }}','{{ p.url | absolute_url }}')">
+                <i class="fa-solid fa-share-nodes"></i> शेयर
               </button>
-
-              <a href="{{ p.url | relative_url }}"
-                class="read-link">
+              <a href="{{ p.url | relative_url }}" class="read-link">
                 पूरा पढ़ें →
               </a>
-
             </div>
-
           </div>
 
         </div>
@@ -221,14 +186,15 @@ extra_js:
 
       </div>
 
-      <nav
-        id="pagination-nav"
-        class="pagination-center"
-        aria-label="Pagination Navigation">
+      <nav id="pagination-nav" class="pagination-center" aria-label="Pagination Navigation" style="display: flex; gap: 8px; justify-content: center; margin-top: 30px; align-items: center; flex-wrap: wrap;">
       </nav>
-
     </div>
-
   </section>
 
 </div>
+
+<script>
+function triggerFallback(imgNode) {
+  imgNode.style.display = 'none';
+}
+</script>
