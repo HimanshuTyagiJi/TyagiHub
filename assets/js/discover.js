@@ -6,13 +6,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
   if (!wrapper || !pagination) return;
 
-  // Language Context
+  // 🌐 Language Context Detection
   const isHindi = window.location.pathname.startsWith("/hi/");
   
   // URL Parameters
   const params = new URLSearchParams(window.location.search);
   let currentPage = parseInt(params.get("page")) || 1;
-  let currentCategory = params.get("category") || "all";
+  let currentCategory = (params.get("category") || "all").toLowerCase().trim();
   let searchQuery = ""; 
   
   let allPostsData = [];
@@ -20,39 +20,55 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Set Active Category Button
   document.querySelectorAll(".discover-cat-btn").forEach(btn => {
-    if (btn.dataset.cat === currentCategory) {
+    const btnCat = (btn.dataset.cat || "").toLowerCase().trim();
+    if (btnCat === currentCategory) {
       btn.classList.add("active");
     } else {
       btn.classList.remove("active");
     }
   });
 
-// =========================
+  // =========================
   // 1. FETCH MULTI-JSON DATA (Merged Engine 🚀)
   // =========================
   Promise.all([
-    fetch("/posts.json").then(res => res.json()),
-    fetch("/shield.json").then(res => res.json())
+    fetch("/posts.json").then(res => res.json()).catch(() => []),
+    fetch("/shield.json").then(res => res.json()).catch(() => [])
   ])
     .then(([postsData, shieldData]) => {
-      // 1. Shield posts ke static keys ko standard format me map kiya
-      const normalizedShield = shieldData.map(post => ({
-        title: post.title,
-        url: post.url,
-        image: post.image,
-        description: post.description,
-        categories: [post.category.toLowerCase()], // convert string to array standard
-        date: post.date,
-        lang: post.lang || "en"
-      }));
+      
+      // 1. Regular Posts formatting and lowercase normalization
+      const normalizedPosts = postsData.map(post => {
+        let cats = [];
+        if (Array.isArray(post.categories)) {
+          cats = post.categories.map(c => c.toLowerCase().trim());
+        } else if (typeof post.categories === "string") {
+          cats = post.categories.split(",").map(c => c.toLowerCase().trim());
+        }
+        return { ...post, categories: cats, lang: post.lang || "en" };
+      });
 
-      // 2. Dono datasets ko jod kar single master collection banaya
-      const masterCombinedData = [...postsData, ...normalizedShield];
+      // 2. Shield posts mapping standard
+      const normalizedShield = shieldData.map(post => {
+        let catStr = post.category || "cyber-security";
+        return {
+          title: post.title,
+          url: post.url,
+          image: post.image,
+          description: post.description,
+          categories: [catStr.toLowerCase().trim()],
+          date: post.date,
+          lang: post.lang || "hi" // Shield collection default hi context filter
+        };
+      });
 
-      // 3. Language filter apply kiya
+      // 3. Combine master database array
+      const masterCombinedData = [...normalizedPosts, ...normalizedShield];
+
+      // 4. Strict Language Segment gatekeeper
       allPostsData = masterCombinedData.filter(post => isHindi ? post.lang === "hi" : post.lang !== "hi");
       
-      // 4. Latest date ke hisab se javascript engine me bhi sort lock kar diya
+      // 5. Date Engine Sort Lock
       allPostsData.sort((a, b) => new Date(b.date) - new Date(a.date));
 
       applyFiltersAndRender();
@@ -60,9 +76,11 @@ document.addEventListener("DOMContentLoaded", () => {
     .catch(err => console.error("Multi-Data load failed:", err));
 
   // =========================
-  // 2. MASTER FILTER (Category + Search Box)
+  // 2. MASTER FILTER ENGINE
   // =========================
   function applyFiltersAndRender() {
+    if (!allPostsData.length) return;
+
     filteredPosts = allPostsData.filter(post => {
       const matchesCat = (currentCategory === "all") || post.categories.includes(currentCategory);
       const searchPool = `${post.title} ${post.description} ${post.categories.join(" ")}`.toLowerCase();
@@ -70,14 +88,13 @@ document.addEventListener("DOMContentLoaded", () => {
       return matchesCat && matchesSearch;
     });
 
-    // Determine if we should keep the default SEO HTML or render via JS
     const isDefaultState = (currentPage === 1 && currentCategory === "all" && searchQuery === "");
 
     if (isDefaultState) {
-      // Keep Jekyll's HTML, just build pagination
+      // Keep Jekyll HTML layer if pure fresh load, just inject pagination
       renderPagination();
     } else {
-      // Render dynamic cards from JS
+      // Dynamic rendering filter bypass override
       renderPosts();
       renderPagination();
     }
@@ -87,11 +104,11 @@ document.addEventListener("DOMContentLoaded", () => {
   // 3. LIVE SEARCH INTERCEPTOR
   // =========================
   if (searchInput) {
+    if (isHindi) searchInput.placeholder = "Articls तुरंत सर्च करें...";
     searchInput.addEventListener("input", (e) => {
       searchQuery = e.target.value.toLowerCase().trim();
-      currentPage = 1; // Reset to page 1 on search
+      currentPage = 1; 
       
-      // Update URL silently so if they refresh, search is lost but category stays
       const newUrl = window.location.pathname + `?category=${currentCategory}`;
       window.history.replaceState({}, "", newUrl);
 
@@ -106,7 +123,8 @@ document.addEventListener("DOMContentLoaded", () => {
     wrapper.innerHTML = ""; 
     
     if (filteredPosts.length === 0) {
-      wrapper.innerHTML = `<p style="text-align:center; padding: 40px 0; color: var(--text-muted); width:100%;">No results found.</p>`;
+      const noResultText = isHindi ? "कोई परिणाम नहीं मिला। कृपया कुछ और खोजें।" : "No results found.";
+      wrapper.innerHTML = `<p style="text-align:center; padding: 40px 0; color: var(--text-muted); width:100%;">${noResultText}</p>`;
       return;
     }
 
@@ -115,32 +133,47 @@ document.addEventListener("DOMContentLoaded", () => {
     const chunk = filteredPosts.slice(start, end);
 
     chunk.forEach(p => {
-      const mainCat = p.categories && p.categories.length > 0 ? p.categories[0] : "Technology";
+      const rawCat = p.categories && p.categories.length > 0 ? p.categories[0] : "technology";
+      
+      // Dynamic Chip Translation
+      let displayChip = rawCat.replace("-", " ").toUpperCase();
+      if (isHindi) {
+        if (rawCat === "cyber-security" || rawCat === "cybersecurity") displayChip = "साइबर सुरक्षा";
+        else if (rawCat === "apps") displayChip = "ऐप्स";
+        else if (rawCat === "learn") displayChip = "सीखें";
+      }
+
+      const shareBtnText = isHindi ? "शेयर" : "Share";
+      const readMoreText = isHindi ? "पूरा पढ़ें →" : "Read More →";
+
+      // Fixed native share escaping issues inside templates
+      const safeTitle = (p.title || "").replace(/'/g, "\\'");
+      const safeUrl = p.url;
+
       const cardHTML = `
-        <div class="horizontal-post-card js-post">
+        <div class="horizontal-post-card js-post" data-lang="${p.lang}">
           <div class="post-img">
-            <span class="post-category">${mainCat.charAt(0).toUpperCase() + mainCat.slice(1)}</span>
+            <span class="post-category">${displayChip}</span>
             <div class="post-date"><i class="fa-regular fa-calendar"></i> ${p.date}</div>
-          <img src="${p.image}" alt="${p.title}" loading="lazy" width="354" height="236">
+            <img src="${p.image || '/assets/images/default-thumb.png'}" alt="${p.title}" loading="lazy" width="354" height="236">
           </div>
           <div class="post-info">
             <div class="post-top-meta">
               <h2><a href="${p.url}">${p.title}</a></h2>
-              <p>${p.description}</p>
+              <p>${p.description || ''}</p>
             </div>
             <div class="post-footer">
-            <button class="native-share-btn" onclick="nativeShare('{{ p.title | escape }}','{{ p.url | absolute_url }}')" >
-  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-    <circle cx="18" cy="5" r="3"></circle>
-    <circle cx="6" cy="12" r="3"></circle>
-    <circle cx="18" cy="19" r="3"></circle>
-    <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line>
-    <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line>
-  </svg>
-  
-  <span>Share</span>
-</button>
-              <a href="${p.url}" class="read-link">Read More →</a>
+              <button class="native-share-btn" onclick="nativeShare('${safeTitle}','${safeUrl}')">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="18" cy="5" r="3"></circle>
+                  <circle cx="6" cy="12" r="3"></circle>
+                  <circle cx="18" cy="19" r="3"></circle>
+                  <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line>
+                  <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line>
+                </svg>
+                <span>${shareBtnText}</span>
+              </button>
+              <a href="${p.url}" class="read-link">${readMoreText}</a>
             </div>
           </div>
         </div>
@@ -160,7 +193,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function createPageBtn(page) {
       const btn = document.createElement("a");
-      // Add both Category and Page parameters to the URL
       btn.href = `?category=${currentCategory}&page=${page}`;
       btn.innerText = page;
       btn.className = "page-btn";
@@ -214,7 +246,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 });
 
-// Trending / Related / Share Logic
+// Sidebar Core Logic Initialization
 document.addEventListener("DOMContentLoaded", () => {
   const hiddenPosts = document.querySelectorAll("#related-posts-data .related-post-item");
   const container = document.getElementById("related-posts-container");
