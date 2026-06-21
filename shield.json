@@ -3,7 +3,24 @@ layout: null
 permalink: /shield.json
 ---
 [
+  {% assign all_json_posts = "" | split: "" %}
+  
   {% for p in site.shield %}
+    {% assign all_json_posts = all_json_posts | push: p %}
+  {% endfor %}
+  
+  {% for p in site.shield_hi %}
+    {% assign all_json_posts = all_json_posts | push: p %}
+  {% endfor %}
+  
+  {% for p in site.posts_hi %}
+    {% if p.categories contains "Cyber-Security" or p.categories contains "cyber-security" %}
+      {% assign all_json_posts = all_json_posts | push: p %}
+    {% endif %}
+  {% endfor %}
+  
+  {% assign unique_json_posts = all_json_posts | uniq %}
+  {% for p in unique_json_posts %}
   {
     "title": {{ p.title | jsonify }},
     "url": {{ p.url | relative_url | jsonify }},
