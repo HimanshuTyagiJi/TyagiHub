@@ -1,188 +1,94 @@
-# =============================================================
-# TyagiHub - Tyagi MultiTech Ecosystem Platform
-# Jekyll Configuration
-# ============================================================= 
-   
-title: "TyagiHub"
-tagline: "India's Creator & Developer Ecosystem"
-description: "TyagiHub by Tyagi MultiTech — Learn, Create, Build, and Secure. One platform for creators, students, and developers."
-baseurl: "" 
-url: "https://tyagihub.in"
+---
+layout: default
+title: "शील्ड — साइबर सुरक्षा और स्कैम अलर्ट"
+description: "इंफोशील्ड इंडिया — भारतीय इंटरनेट यूजर्स के लिए मुफ्त साइबर सुरक्षा जागरूकता, ऑनलाइन स्कैम अलर्ट और डिजिटल सुरक्षा गाइड।"
+image: /assets/images/tyagihub.png
+author: "Himanshu Tyagi"
+lang: hi
+robots: "index, follow"
+keywords: "TyagiHub, AI टूल्स, साइबर सुरक्षा, शिक्षा, टेक्नोलॉजी, डिजिटल अपडेट, ऑनलाइन सुरक्षा"
+section: shield
+extra_css:
+  - /assets/css/shield.css
+extra_js:
+  - /assets/js/shield.js
+---
 
-# Brand
-brand:
-  name: "TyagiHub"
-  parent: "Tyagi MultiTech"
-  tagline: "Create. Learn. Build."
-  logo: "/assets/images/logo.svg"
-  favicon: "/assets/images/favicon.ico"
+{% assign combined_hindi = "" | split: "" %}
 
-# Author / Organization
-author:
-  name: "Tyagi MultiTech"
-  email: "hello@tyagihub.in"
-  twitter: "@TyagiMultiTech"
-  github: "TyagiMultiTech"
+{% for p in site.shield_hi %}
+  {% assign combined_hindi = combined_hindi | push: p %}
+{% endfor %}
 
-# Build Settings
-markdown: kramdown
-highlighter: rouge
-permalink: /:categories/:title/
+{% for p in site.posts_hi %}
+  {% if p.categories contains "Cyber-Security" or p.categories contains "cyber-security" %}
+    {% assign combined_hindi = combined_hindi | push: p %}
+  {% endif %}
+{% endfor %}
 
-# Sass
-sass:
-  sass_dir: _sass
-  style: compressed
+{% assign sorted = combined_hindi | uniq | sort: "date" | reverse %}
 
-# Exclude from build
-exclude:
-  - Gemfile
-  - Gemfile.lock
-  - node_modules/
-  - vendor/
-  - .gitignore
-  - tools/pdf-source
-  - tools/pdf-source/node_modules
-  - README.md
-  - ARCHITECTURE.md
+<div class="shield-page-wrapper">
+  
+  <section class="shield-hero">
+    <div class="shield-hero__glow" aria-hidden="true"></div>
+    <div class="container shield-hero__container">
+      <div class="section-label shield-hero__label" aria-hidden="true">
+        InfoShield India
+      </div>
+      <h1 class="shield-hero__title">
+        オンライン सुरक्षित रहें।<br>
+        <span class="shield-hero__title--alert">Scam से बचें।</span>
+      </h1>
+      <p class="shield-hero__desc">
+        हिंदी में मुफ्त साइबर सुरक्षा जागरूकता — छात्रों, परिवारों और हर भारतीय internet यूजर के लिए। कोई कठिन शब्द नहीं, बिल्कुल आसान भाषा में।
+      </p>
+    </div>
+  </section>
 
-# Include
-include:
-  - admin
-  - _pages
-  - robots.txt
-  - sitemap.xml
+  <section class="section">
+    <div class="container">
 
-# =============================================================
-# TyagiHub - Clean Config (No Conflicts)
-# =============================================================
+      <div class="shield-search-box">
+        <input type="text" id="shield-search" placeholder="स्कैम्स, सुरक्षा टिप्स और गाइड सर्च करें...">
+      </div>
 
-# Collections (SARI COLLECTIONS EK JAGAH)
-collections:
-  tools:
-    output: true
-    permalink: /tools/:name/
-  learn:
-    output: true
-    permalink: /learn/:name/
-  apps:
-    output: true
-    permalink: /apps/:name/
-  posts_hi:
-    output: true
-  shield:
-    output: true
-    permalink: /shield/:name/
-  shield_hi:
-    output: true
-    permalink: /hi/shield/:name/
+      <div id="post-wrapper" class="grid-3" data-page-lang="hi">
+  
+        {% for p in sorted limit: 6 %}
+        
+          {% assign cat_clean = p.categories[0] | downcase %}
+          {% if cat_clean == "cyber-security" or cat_clean == "cybersecurity" or cat_clean == "security" %}
+            {% assign display_tag = "साइबर सुरक्षा" %}
+          {% else %}
+            {% assign display_tag = p.categories[0] | default: "सुरक्षा" | capitalize %}
+          {% endif %}
 
-# Defaults
-defaults:
-  - scope:
-      path: ""
-      type: "posts"
-    values:
-      layout: "post"
-      author: "Tyagi MultiTech"
-  - scope:
-      path: ""
-      type: "tools"
-    values:
-      layout: "tool"
-  - scope:
-      path: ""
-      type: "learn"
-    values:
-      layout: "learn"
-  - scope:
-      path: ""
-    values:
-      layout: "quiz-player"
-  - scope:
-      path: ""
-      type: "pages"
-    values:
-      layout: "default"
-sitemap:
-  exclude:
-    - "/tag/**/*"
-    - "/tags/**/*"
-# Plugins
-plugins:
-  - jekyll-feed
-  - jekyll-sitemap
-  - jekyll-seo-tag
-  - jekyll-paginate-v2
+        <div class="blog-card js-post"
+             data-lang="hi"
+             data-categories="{% for cat in p.categories %}{{ cat | downcase }} {% endfor %}"
+             data-post-url="{{ p.url | relative_url }}">
+             
+          <a href="{{ p.url | relative_url }}" style="text-decoration: none; color: inherit; display: block;">
+            <div class="blog-card__thumb">
+              <img src="{{ p.image | default:'/assets/images/default-thumb.png' }}" alt="{{ p.title }}" loading="lazy" width="354" height="236">
+            </div>
+            <div class="blog-card__body">
+              <span class="blog-card__tag">{{ display_tag }}</span>
+              <h2 class="blog-card__title">{{ p.title }}</h2>
+              <p>
+                {{ p.description | default: p.excerpt | strip_html | truncate: 120 }}
+              </p>
+            </div>
+          </a>
+        </div>
+        {% endfor %}
 
-# Discover Pagination (Ye tumhare main posts ke liye hai)
-pagination:
-  enabled: true
-  per_page: 2
-  permalink: "/page-:num/"
-  title: ":title - Page :num"
-  limit: 0
-  sort_by: "date"
-  sort_reverse: true
+      </div>
 
-# Autopages Infrastructure (Fixed: Ab ye sirf 'discover' layout use karega)
-# Autopages Infrastructure (Fixed: Tags strictly disabled to stop 404 links 🚀)
-autopages:
-  enabled: true
-  categories:
-    enabled: true
-    layouts:
-      - "discover"
-    permalink: "/:name/"
-    slugify:
-      mode: "default"
-      cased: false
-  # 🎯 YEH VALI LINE JADU HAI: Yeh fake tag pages ko generate hone se jad se rok degi
-  tags:
-    enabled: false
-# SEO
-twitter:
-  username: TyagiMultiTech
-  card: summary_large_image
+      <nav id="pagination-nav" class="pagination-center shield-pagination" aria-label="Pagination Navigation">
+      </nav>
 
-social:
-  name: Tyagi MultiTech
-  links:
-    - https://twitter.com/TyagiMultiTech
-    - https://github.com/TyagiMultiTech
-
-# Analytics - NONE (privacy-first)
-google_analytics: false
-
-# Future backend API endpoint (placeholder)
-api:
-  base_url: "https://api.tyagihub.in/v1"
-  enabled: false
-
-quiz:
-  questions_per_page: 2   # Change to 25 for production
-
-# Navigation Categories
-categories:
-  english:
-    - id: "ancient-indian-history"
-      title: "Ancient Indian History"
-      url: "/gk/ancient-indian-history/"
-      data_file: "quiz/en/ancient-indian-history"
-      description: "Practice Ancient Indian History GK questions for UPSC, SSC, Railway and other competitive exams."
-    - id: "modern-indian-history"
-      title: "Modern Indian History"
-      url: "/gk/modern-indian-history/"
-      data_file: "quiz/en/modern-history"
-      description: "Practice Modern Indian History GK questions for UPSC, SSC, Railway and other competitive exams."
-  hindi:
-    - id: "ancient-indian-history"
-      title: "प्राचीन भारतीय इतिहास"
-      url: "/hi/gk/prachin-bharatiya-itihas/"
-      data_file: "quiz/hi/ancient-indian-history"
-      description: "UPSC, SSC, Railway और अन्य प्रतियोगी परीक्षाओं के लिए प्राचीन भारतीय इतिहास के प्रश्नों का अभ्यास करें।"
-    - id: "modern-indian-history"
-      title: "आधुनिक भारतीय इतिहास"
-      url: "/hi/gk/aadhunik-bharatiya-itihas/"
-      data_file: "quiz/hi/modern-history"
-      description: "UPSC, SSC, Railway और अन्य प्रतियोगी परीक्षाओं के लिए आधुनिक भारतीय इतिहास के प्रश्नों का अभ्यास करें।"
+    </div>
+  </section>
+</div>
