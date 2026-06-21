@@ -1,7 +1,7 @@
 ---
 layout: discover
 title: "डिस्कवर — TyagiHub"
-description: "टेक्नोलॉजी, AI, साइबर सुरक्षा, शिक्षा, डिजिटल अपडेट, ऑनलाइन सुरक्षा trends और नई जानकारी — सब कुछ एक ही Discover फीड में।"
+description: "टेक्नोलॉजी, AI, साइबर सुरक्षा, शिक्षा, डिजिटल अपडेट, ऑनलाइन सुरक्षा, apps, tutorials & future innovation — सब कुछ एक ही Discover फीड में।"
 permalink: /hi/discover/
 image: /assets/images/tyagihub.png
 author: "Himanshu Tyagi"
@@ -14,180 +14,220 @@ extra_css:
 extra_js:
   - /assets/js/discover.js
 ---
-
-{% assign combined_discover = "" | split: "" %}
-
-{% for p in site.shield_hi %}
-  {% assign combined_discover = combined_discover | push: p %}
-{% endfor %}
-
-{% for p in site.posts_hi %}
-  {% assign combined_discover = combined_discover | push: p %}
-{% endfor %}
-
-{% assign sorted = combined_discover | uniq | sort: "date" | reverse %}
-{% assign total_count = sorted | size %}
-
+ 
 <div style="padding-top:var(--nav-height);">
 
-<div class="discover-hero">
-  <div class="discover-hero__bg"></div>
-  <div class="container discover-hero__content">
-    <div class="discover-badge">
-      <span class="discover-badge__dot"></span>
-      TyagiHub डिस्कवर
-    </div>
-
-    <h1 class="discover-title">
-      तकनीक के भविष्य को
-      <span>खोजें</span>
-    </h1>
-
-    <p class="discover-desc">
-      टेक्नोलॉजी, कृत्रिम बुद्धिमत्ता (AI), साइबर सुरक्षा, शिक्षा,
-      समसामयिक घटनाएँ, डिजिटल टूल्स, ऐप्स, ट्यूटोरियल,
-      ऑनलाइन सुरक्षा और भविष्य की नवाचार तकनीकों से जुड़ी
-      उपयोगी जानकारी — सब कुछ एक ही शक्तिशाली
-      TyagiHub Discover फ़ीड में।
-    </p>
-
-    <div class="discover-icons">
-      <div class="discover-icon">
-        <svg viewBox="0 0 64 64" class="icon-ai">
-          <rect x="18" y="18" width="28" height="28" rx="6"/>
-          <line x1="12" y1="24" x2="18" y2="24"/>
-          <line x1="12" y1="40" x2="18" y2="40"/>
-          <line x1="46" y1="24" x2="52" y2="24"/>
-          <line x1="46" y1="40" x2="52" y2="40"/>
-          <line x1="24" y1="12" x2="24" y2="18"/>
-          <line x1="40" y1="12" x2="40" y2="18"/>
-          <line x1="24" y1="46" x2="24" y2="52"/>
-          <line x1="40" y1="46" x2="40" y2="52"/>
-        </svg>
+  <div class="discover-hero">
+    <div class="discover-hero__bg"></div>
+    <div class="container discover-hero__content">
+      <div class="discover-badge">
+        <span class="discover-badge__dot"></span>
+        TyagiHub डिस्कवर
       </div>
-      <div class="discover-icon">
-        <svg viewBox="0 0 64 64" class="icon-shield">
-          <path d="M32 8L50 16V30C50 42 42 52 32 56C22 52 14 42 14 30V16L32 8Z"/>
-        </svg>
-      </div>
-      <div class="discover-icon">
-        <svg viewBox="0 0 64 64" class="icon-rocket">
-          <path d="M44 10C34 12 24 22 22 34L30 42C42 40 52 30 54 18C54 14 50 10 44 10Z"/>
-          <circle cx="40" cy="24" r="3"/>
-        </svg>
-      </div>
-      <div class="discover-icon">
-        <svg viewBox="0 0 64 64" class="icon-energy">
-          <path d="M36 8L18 36H30L24 56L46 28H34L36 8Z"/>
-        </svg>
+      <h1 class="discover-title">
+        तकनीक के भविष्य को
+        <span>खोजें</span>
+      </h1>
+      <p class="discover-desc">
+        टेक्नोलॉजी, कृत्रिम बुद्धिमत्ता (AI), साइबर सुरक्षा, शिक्षा, समसामयिक घटनाएँ,
+        डिजिटल टूल्स, ऐप्स, ट्यूटोरियल, ऑनलाइन सुरक्षा और भविष्य की नवाचार तकनीकों से जुड़ी
+        उपयोगी जानकारी — सब कुछ एक ही शक्तिशाली TyagiHub Discover फ़ीड में।
+      </p>
+
+      <div class="discover-icons">
+        <div class="discover-icon">
+          <svg viewBox="0 0 64 64" class="icon-ai">
+            <rect x="18" y="18" width="28" height="28" rx="6"/>
+            <line x1="12" y1="24" x2="18" y2="24"/>
+            <line x1="12" y1="40" x2="18" y2="40"/>
+            <line x1="46" y1="24" x2="52" y2="24"/>
+            <line x1="46" y1="40" x2="52" y2="40"/>
+            <line x1="24" y1="12" x2="24" y2="18"/>
+            <line x1="40" y1="12" x2="40" y2="18"/>
+            <line x1="24" y1="46" x2="24" y2="52"/>
+            <line x1="40" y1="46" x2="40" y2="52"/>
+          </svg>
+        </div>
+        <div class="discover-icon">
+          <svg viewBox="0 0 64 64" class="icon-shield">
+            <path d="M32 8L50 16V30C50 42 42 52 32 56C22 52 14 42 14 30V16L32 8Z"/>
+          </svg>
+        </div>
+        <div class="discover-icon">
+          <svg viewBox="0 0 64 64" class="icon-rocket">
+            <path d="M44 10C34 12 24 22 22 34L30 42C42 40 52 30 54 18C54 14 50 10 44 10Z"/>
+            <circle cx="40" cy="24" r="3"/>
+          </svg>
+        </div>
+        <div class="discover-icon">
+          <svg viewBox="0 0 64 64" class="icon-energy">
+            <path d="M36 8L18 36H30L24 56L46 28H34L36 8Z"/>
+          </svg>
+        </div>
       </div>
     </div>
   </div>
-</div>
 
-  <section style="padding:22px 0;border-bottom:1px solid var(--clr-border);background:var(--clr-bg);">
+  <section class="discover-search-filter-section">
     <div class="container">
+      
+      <div class="discover-search-wrapper">
+        <input type="text" id="discover-search" class="discover-search-input" placeholder="Search posts dynamically...">
+      </div>
+      
       <div class="discover-categories" id="category-buttons-container">
 
-        <button class="discover-cat-btn active" data-cat="all" onclick="window.location.href='?category=all'">
-          सभी <span>({{ total_count }})</span>
+        {% assign posts_size = site.posts_hi.size | default: 0 %}
+        {% assign shield_size = site.shield_hi.size | default: 0 %}
+        {% assign all_posts_size = posts_size | plus: shield_size %}
+
+        <button class="discover-cat-btn" data-cat="all" onclick="window.location.href='?category=all'">
+          सभी <span>({{ all_posts_size }})</span>
         </button>
 
-        <button class="discover-cat-btn" data-cat="ai-future" onclick="window.location.href='?category=ai-future'">
-          AI Future <span>({{ site.categories['ai-future'].size | default: 3 }})</span>
-        </button>
+        {% assign categories = site.categories | sort %}
+        {% for category in categories %}
+          {% unless category[0] == "discover" %}
+            
+            {% assign cat_name = category[0] | downcase %}
+            
+            {% if cat_name == "appsandinternet" or cat_name == "apps-and-internet" %}
+              {% assign display_name = "Apps & Internet" %}
+            {% elsif cat_name == "aifuture" or cat_name == "ai-future" %}
+              {% assign display_name = "AI Future" %}
+            {% elsif cat_name == "cybersecurity" or cat_name == "cyber-security" %}
+              {% assign display_name = "Cyber Security" %}
+            {% else %}
+              {% assign display_name = category[0] | replace: "-", " " | replace: "_", " " | capitalize %}
+            {% endif %}
 
-        <button class="discover-cat-btn" data-cat="apps-and-internet" onclick="window.location.href='?category=apps-and-internet'">
-          Apps & Internet <span>({{ site.categories['apps-and-internet'].size | default: 3 }})</span>
-        </button>
+            <button class="discover-cat-btn" data-cat="{{ category[0] | downcase }}" onclick="window.location.href='?category={{ category[0] | downcase }}'">
+              {{ display_name }} <span>({{ category[1].size }})</span>
+            </button>
+          {% endunless %}
+        {% endfor %}
 
-        <button class="discover-cat-btn" data-cat="technology" onclick="window.location.href='?category=technology'">
-          Technology <span>({{ site.categories['technology'].size | default: 3 }})</span>
-        </button>
-
-        <button class="discover-cat-btn" data-cat="cyber-security" onclick="window.location.href='?category=cyber-security'">
-          Cyber Security <span>({{ site.shield_hi.size | default: 3 }})</span>
+        <button class="discover-cat-btn" data-cat="cybersecurity" onclick="window.location.href='?category=cybersecurity'">
+          Cyber Security <span>({{ site.shield_hi.size }})</span>
         </button>
 
       </div>
+
     </div>
   </section>
 
   <section class="section">
     <div id="posts">
-      <div id="post-wrapper">
-
-        {% for p in sorted %}
-          {% assign data_cats = "" %}
+      
+      <div id="post-wrapper" class="static-seo-load">
+        
+        {% assign combined_posts = "" | split: "" %}
+        {% for p in site.posts_hi %}
+          {% assign combined_posts = combined_posts | push: p %}
+        {% endfor %}
+        {% for p in site.shield_hi %}
+          {% assign combined_posts = combined_posts | push: p %}
+        {% endfor %}
+        
+        {% assign sorted = combined_posts | uniq | sort: "date" | reverse %}
+        
+        {% for p in sorted limit: 6 %}
           {% if p.categories %}
+            {% assign p_cat_raw = p.categories[0] | default: "Technology" %}
+            {% assign data_cats = "" %}
             {% for cat in p.categories %}
               {% assign data_cats = data_cats | append: cat | downcase | append: " " %}
             {% endfor %}
           {% else %}
-            {% assign data_cats = "cyber-security " %}
+            {% assign p_cat_raw = p.category | default: "CyberSecurity" %}
+            {% assign data_cats = p.category | downcase | append: " " %}
           {% endif %}
 
-          {% assign cat_clean = p.categories[0] | downcase %}
-          {% if cat_clean == "cyber-security" or cat_clean == "cybersecurity" or p.url contains "cyber-security" %}
-            {% assign chip_tag = "साइबर सुरक्षा" %}
+          {% assign check_cat = p_cat_raw | downcase %}
+          {% if check_cat == "aifuture" or check_cat == "ai-future" %}
+            {% assign display_chip = "AI Future" %}
+          {% elsif check_cat == "appsandinternet" or check_cat == "apps-and-internet" %}
+            {% assign display_chip = "Apps & Internet" %}
+          {% elsif check_cat == "cybersecurity" or check_cat == "cyber-security" %}
+            {% assign display_chip = "Cyber Security" %}
           {% else %}
-            {% assign chip_tag = p.categories[0] | default: "Technology" | capitalize %}
+            {% assign display_chip = p_cat_raw | replace: "-", " " | replace: "_", " " | capitalize %}
           {% endif %}
 
-        <div class="horizontal-post-card js-post"
-          data-lang="hi"
-          data-categories="{{ data_cats | strip }}"
-          data-post-url="{{ p.url | relative_url }}">
-
-          <div class="post-img" style="position: relative; overflow: hidden; background: #111216; display: flex; align-items: center; justify-content: center; width: 354px; height: 236px;">
-            <span class="post-category" style="z-index: 10;">{{ chip_tag }}</span>
-            <div class="post-date" style="z-index: 10;">
-              <i class="fa-regular fa-calendar"></i>
-              {{ p.date | date: "%d %b %Y" }}
-            </div>
+          <div class="horizontal-post-card js-post"
+               data-lang="{{ p.lang | default: 'hi' }}"
+               data-categories="{{ data_cats | strip }}"
+               data-post-url="{{ p.url | relative_url }}">
             
-            <div class="thumb-media-box" style="width:100%; height:100%; display:flex; align-items:center; justify-content:center; position:relative;">
-              <img
-                src="{{ p.image | default: '/assets/images/default-thumb.png' }}"
-                alt="{{ p.title }} - TyagiHub"
-                class="js-thumbnail-img"
-                loading="lazy"
-                width="354"
-                height="236"
-                style="width:100%; height:100%; object-fit:cover; display:block;"
-                onerror="triggerFallback(this)">
-            </div>
-          </div>
+            <div class="post-img" style="position: relative; overflow: hidden; background: #111216; display: flex; align-items: center; justify-content: center; width: 354px; height: 236px;">
+              <span class="post-category" style="z-index: 10;">
+                {{ display_chip }}
+              </span>
+              <div class="post-date" style="z-index: 10;">
+                <i class="fa-regular fa-calendar"></i>
+                {{ p.date | date: "%d %b %Y" }}
+              </div>
 
-          <div class="post-info">
-            <div class="post-top-meta">
-              <h2>
-                <a href="{{ p.url | relative_url }}">
-                  {{ p.title }}
+              <div class="thumb-media-box" style="width:100%; height:100%; display:flex; align-items:center; justify-content:center; position:relative;">
+                <img src="{{ p.image | default: '/assets/images/default-thumb.png' }}" 
+                     alt="{{ p.title }} - TyagiHub" 
+                     class="js-thumbnail-img"
+                     loading="lazy" 
+                     width="354" 
+                     height="236"
+                     style="width:100%; height:100%; object-fit:cover; display:block;"
+                     onerror="triggerFallback(this)">
+                
+                <div class="auto-title-fallback" style="display:none; width:100%; height:100%; position:absolute; top:0; left:0; background:linear-gradient(135deg, #1e1e24 0%, #111216 100%); flex-direction:column; align-items:center; justify-content:center; padding:20px; text-align:center; box-sizing:border-box; border:1px solid rgba(255,255,255,0.05);">
+                  <div class="animated-bg-glow" style="position:absolute; width:130px; height:130px; background:rgba(0,123,255,0.15); filter:blur(40px); border-radius:50%;"></div>
+                  <svg viewBox="0 0 24 24" width="40" height="40" fill="none" stroke="#007bff" stroke-width="1.5" style="margin-bottom:10px; z-index:2;">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25" />
+                  </svg>
+                  <span style="font-size:15px; font-weight:600; color:#ffffff; line-height:1.4; padding:0 10px; z-index:2; font-family:sans-serif; display:-webkit-box; -webkit-line-clamp:3; -webkit-box-orient:vertical; overflow:hidden;">
+                    {{ p.title }}
+                  </span>
+                </div>
+              </div>
+
+            </div>
+
+            <div class="post-info">
+              <div class="post-top-meta">
+                <h2>
+                  <a href="{{ p.url | relative_url }}">
+                    {{ p.title }}
+                  </a>
+                </h2>
+                <p>
+                  {{ p.description | default: p.excerpt | strip_html | truncate: 110 }}
+                </p>
+              </div>
+
+              <div class="post-footer">
+                <button class="native-share-btn" onclick="nativeShare('{{ p.title | escape }}','{{ p.url | absolute_url }}')">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="18" cy="5" r="3"></circle>
+                    <circle cx="6" cy="12" r="3"></circle>
+                    <circle cx="18" cy="19" r="3"></circle>
+                    <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line>
+                    <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line>
+                  </svg>
+                  <span>शेयर</span>
+                </button>
+                <a href="{{ p.url | relative_url }}" class="read-link">
+                  पूरा पढ़ें →
                 </a>
-              </h2>
-              <p>
-                {{ p.description | default:p.excerpt | strip_html | truncate:110 }}
-              </p>
+              </div>
             </div>
 
-            <div class="post-footer">
-              <button class="native-share-btn" onclick="nativeShare('{{ p.title | escape }}','{{ p.url | absolute_url }}')">
-                <i class="fa-solid fa-share-nodes"></i> शेयर
-              </button>
-              <a href="{{ p.url | relative_url }}" class="read-link">
-                पूरा पढ़ें →
-              </a>
-            </div>
           </div>
-
-        </div>
         {% endfor %}
 
       </div>
 
       <nav id="pagination-nav" class="pagination-center" aria-label="Pagination Navigation" style="display: flex; gap: 8px; justify-content: center; margin-top: 30px; align-items: center; flex-wrap: wrap;">
       </nav>
+
     </div>
   </section>
 
@@ -196,5 +236,38 @@ extra_js:
 <script>
 function triggerFallback(imgNode) {
   imgNode.style.display = 'none';
+  const fallbackCard = imgNode.nextElementSibling;
+  if (fallbackCard) {
+    fallbackCard.style.display = 'flex';
+  }
 }
+
+document.addEventListener("DOMContentLoaded", function() {
+  const postCards = document.querySelectorAll(".js-post");
+  postCards.forEach((card, index) => {
+    if (index >= 2) return;
+    const postUrl = card.getAttribute("data-post-url");
+    const mediaBox = card.querySelector(".thumb-media-box");
+    if (postUrl && mediaBox) {
+      fetch(postUrl)
+        .then(response => response.text())
+        .then(htmlData => {
+          const parser = new DOMParser();
+          const doc = parser.parseFromString(htmlData, "text/html");
+          const contentSvg = doc.querySelector("article svg, .post-content svg, main svg");
+          if (contentSvg) {
+            mediaBox.innerHTML = "";
+            contentSvg.style.width = "100%";
+            contentSvg.style.height = "100%";
+            contentSvg.style.display = "block";
+            contentSvg.style.objectFit = "cover";
+            contentSvg.removeAttribute("height");
+            contentSvg.removeAttribute("width");
+            mediaBox.appendChild(contentSvg);
+          }
+        })
+        .catch(err => console.error("Scanner failed for:", postUrl, err));
+    }
+  });
+});
 </script>
