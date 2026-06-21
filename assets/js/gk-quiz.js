@@ -1,5 +1,3 @@
-
-
 'use strict';
 
 /* ============================================================
@@ -18,9 +16,6 @@ const LangToggle = (() => {
     document.querySelectorAll('[data-lang-section]').forEach(el => {
       el.style.display = el.dataset.langSection === lang ? '' : 'none';
     });
-
-    // Update hreflang canonical hint in URL
-    // (actual hreflang is in page <head>)
   }
 
   function init() {
@@ -30,6 +25,8 @@ const LangToggle = (() => {
         lang = btn.dataset.lang;
         localStorage.setItem(STORAGE_KEY, lang);
         apply();
+        // 🎯 Language change hote hi card text ko sync karega (प्रश्न vs Questions)
+        if (typeof AutoCountEngine !== 'undefined') AutoCountEngine.syncLabels(lang);
       });
     });
   }
@@ -37,6 +34,58 @@ const LangToggle = (() => {
   function getLang() { return lang; }
 
   return { init, getLang };
+})();
+
+/* ============================================================
+   1.5. AUTO-COUNT ENGINE (Zero-Fetch Local Repo Pipeline 🚀)
+   ============================================================ */
+const AutoCountEngine = (() => {
+  let repoData = { en: {}, hi: {} };
+  let totals = { en: 0, hi: 0 };
+
+  function init() {
+    // HTML layout ke hidden script registry se JSON load karega
+    const scriptTag = document.getElementById('jekyll-quiz-counts-repo');
+    if (!scriptTag) return;
+
+    try {
+      repoData = JSON.parse(scriptTag.textContent);
+      
+      // Dono language sections ke total global sums ko calculate karega
+      Object.keys(repoData.en).forEach(k => totals.en += (repoData.en[k] || 0));
+      Object.keys(repoData.hi).forEach(k => totals.hi += (repoData.hi[k] || 0));
+    } catch (e) {
+      console.error("Failed to parse local jekyll repo data chunk", e);
+    }
+
+    // Dom mount hote hi card labels render karega synchronously
+    syncLabels(LangToggle.getLang());
+  }
+
+  function renderLabel(el) {
+    const card = el.closest('.quiz-cat-card');
+    if (!card) return;
+    const fileName = card.dataset.quizFile;
+    const fileLang = card.dataset.quizLang;
+    
+    // Hidden box se correct number nikalega
+    const count = repoData[fileLang][fileName] || 0;
+    el.innerText = fileLang === 'hi' ? `${count} प्रश्न` : `${count} Questions`;
+  }
+
+  function syncLabels(currentLang) {
+    document.querySelectorAll('.js-quiz-count').forEach(el => renderLabel(el));
+    updateGlobalHero(currentLang);
+  }
+
+  function updateGlobalHero(currentLang) {
+    const heroCounter = document.getElementById('total-global-questions');
+    if (!heroCounter) return;
+    const finalSum = totals[currentLang] || 0;
+    heroCounter.innerText = `${finalSum}+`;
+  }
+
+  return { init, syncLabels };
 })();
 
 /* ============================================================
@@ -101,8 +150,6 @@ const QuizPlayer = (() => {
     const el = document.getElementById('quiz-data');
     if (!el) return;
 
-    const dataFile = el.dataset.file; // e.g. "/assets/quiz-data/history.json" but we use _data
-    // Questions are embedded as JSON in the page via Jekyll
     const raw = el.textContent.trim();
     if (!raw) return;
 
@@ -158,10 +205,10 @@ const QuizPlayer = (() => {
     // Explanation
     if (answered[idx] !== null) {
       const exp = lang === 'hi' ? q.exp_hi : q.exp_en;
-      if (explanation)    explanation.classList.add('visible');
+      if (explanation)  explanation.classList.add('visible');
       if (explanationTxt) explanationTxt.textContent = exp;
     } else {
-      if (explanation)    explanation.classList.remove('visible');
+      if (explanation)  explanation.classList.remove('visible');
     }
 
     // Buttons
@@ -193,17 +240,12 @@ const QuizPlayer = (() => {
   }
 
   function updateScoreBar() {
-    const correct = answered.filter(a => {
-      if (a === null) return false;
-      return questions[answered.indexOf(a)]?.answer === a;
-    }).length;
-    // Simple count
     const c = answered.filter((a, i) => a !== null && a === questions[i]?.answer).length;
     const w = answered.filter((a, i) => a !== null && a !== questions[i]?.answer).length;
     const s = answered.filter(a => a === 'skip').length;
     if (scoreCorrect) scoreCorrect.textContent = c;
     if (scoreWrong)   scoreWrong.textContent   = w;
-    if (scoreSkip)    scoreSkip.textContent     = s;
+    if (scoreSkip)    scoreSkip.textContent    = s;
   }
 
   /* ---- Navigation ---- */
@@ -243,7 +285,7 @@ const QuizPlayer = (() => {
     if (totalDisplay) totalDisplay.textContent = `${pct}%`;
     if (scoreCorrect) scoreCorrect.textContent = correct;
     if (scoreWrong)   scoreWrong.textContent   = wrong;
-    if (scoreSkip)    scoreSkip.textContent     = skipped;
+    if (scoreSkip)    scoreSkip.textContent    = skipped;
 
     // Emoji based on score
     const icon = document.getElementById('quiz-result-icon');
@@ -300,10 +342,11 @@ const QuizPlayer = (() => {
 window.QuizPlayer = QuizPlayer;
 
 /* ============================================================
-   4. INIT
+   4. INIT EXECUTION
    ============================================================ */
 document.addEventListener('DOMContentLoaded', () => {
   LangToggle.init();
+  AutoCountEngine.init(); // 🚀 Central handshake initialized cleanly
   QuizSearch.init();
 
   // Only init player if on quiz player page
