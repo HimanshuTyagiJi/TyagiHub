@@ -167,7 +167,7 @@
   background: $white;
   border-right: 1px solid $neutral-200;
   position: fixed;
-  top: 70px;
+  top: 62px;
   height: calc(100vh - #{$header-height});
   overflow-y: auto;
   overflow-x: hidden;
@@ -178,7 +178,7 @@
 
   @include responsive('tablet') {
     position: fixed;
-    top: 0;
+    top: 56px;
     left: 0;
     height: 100vh;
     z-index: 90;
@@ -901,8 +901,8 @@ quiz-right-sidebar{
   width:280px;
   position:fixed;
   right:0;
-  top:70px;
-  height:calc(100vh - 64px);
+  top:62px;
+  height:calc(100vh - 60px);
   overflow-y:auto;
   padding:15px;
 }.main-content{
