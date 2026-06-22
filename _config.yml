@@ -160,7 +160,7 @@ api:
   enabled: false
 
 quiz:
-  questions_per_page: 2   # Change to 25 for production
+  questions_per_page: 25  # Change to 25 for production
 
 # Navigation Categories (Full 33 Categories Locked with /gk-quiz/ Routes)
 categories:
