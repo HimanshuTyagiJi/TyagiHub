@@ -71,6 +71,32 @@ extra_js:
 
     <div data-lang-section="en">
       <div class="quiz-section">
+        <h2 class="quiz-section__title">🏆 Exam Corner</h2>
+        <div class="exam-corner">
+          <a href="{{ site.url }}/gk-quiz/ssc/" class="exam-card">
+            <div class="exam-card__icon">🎯</div>
+            <div class="exam-card__name">SSC Exams</div>
+            <div class="exam-card__desc">CGL, CHSL, MTS — practice topic-wise</div>
+          </a>
+          <a href="{{ site.url }}/gk-quiz/banking/" class="exam-card">
+            <div class="exam-card__icon">🏦</div>
+            <div class="exam-card__name">Banking</div>
+            <div class="exam-card__desc">IBPS PO, Clerk, SBI — curated GK sets</div>
+          </a>
+          <a href="{{ site.url }}/gk-quiz/railway/" class="exam-card">
+            <div class="exam-card__icon">🚆</div>
+            <div class="exam-card__name">Railway</div>
+            <div class="exam-card__desc">RRB NTPC, Group D — GK practice</div>
+          </a>
+          <a href="{{ site.url }}/gk-quiz/upsc/" class="exam-card">
+            <div class="exam-card__icon">🏛️</div>
+            <div class="exam-card__name">UPSC</div>
+            <div class="exam-card__desc">Prelims GK — History, Polity, Economy</div>
+          </a>
+        </div>
+      </div>
+
+      <div class="quiz-section">
         <h2 class="quiz-section__title">📚 All Quiz Topics</h2>
         <div class="quiz-grid">
 
@@ -379,22 +405,22 @@ extra_js:
         <h2 class="quiz-section__title">🏆 परीक्षा कॉर्नर</h2>
         <div class="exam-corner">
           <a href="{{ site.url }}/gk-quiz/hi/ssc/" class="exam-card">
-            <div class="exam-card__icon">🎯</div>
+            <div class="exam-corner__icon">🎯</div>
             <div class="exam-card__name">SSC परीक्षा</div>
             <div class="exam-card__desc">CGL, CHSL, MTS — विषयवार अभ्यास</div>
           </a>
           <a href="{{ site.url }}/gk-quiz/hi/banking/" class="exam-card">
-            <div class="exam-card__icon">🏦</div>
+            <div class="exam-corner__icon">🏦</div>
             <div class="exam-card__name">बैंकिंग</div>
             <div class="exam-card__desc">IBPS PO, Clerk, SBI — GK प्रश्न</div>
           </a>
           <a href="{{ site.url }}/gk-quiz/hi/railway/" class="exam-card">
-            <div class="exam-card__icon">🚆</div>
+            <div class="exam-corner__icon">🚆</div>
             <div class="exam-card__name">रेलवे</div>
             <div class="exam-card__desc">RRB NTPC, Group D — GK अभ्यास</div>
           </a>
           <a href="{{ site.url }}/gk-quiz/hi/upsc/" class="exam-card">
-            <div class="exam-card__icon">🏛️</div>
+            <div class="exam-corner__icon">🏛️</div>
             <div class="exam-card__name">UPSC</div>
             <div class="exam-card__desc">Prelims GK — इतिहास, राजव्यवस्था</div>
           </a>
@@ -657,7 +683,7 @@ extra_js:
     "international-relations": {% assign f = site.data.quiz.en.international-relations %}{% if f.questions %}{{ f.questions.size }}{% elsif f.size %}{{ f.size }}{% else %}0{% endif %},
     "awards-honors": {% assign f = site.data.quiz.en.awards-honors %}{% if f.questions %}{{ f.questions.size }}{% elsif f.size %}{{ f.size }}{% else %}0{% endif %},
     "indian-defense": {% assign f = site.data.quiz.en.indian-defense %}{% if f.questions %}{{ f.questions.size }}{% elsif f.size %}{{ f.size }}{% else %}0{% endif %},
-    "important-dates": {% if site.data.quiz.en.important-dates.questions %}{{ site.data.quiz.en.important-dates.questions.size }}{% else %}0{% endif %},
+    "important-dates": {% assign f = site.data.quiz.en.important-dates %}{% if f.questions %}{{ f.questions.size }}{% elsif f.size %}{{ f.size }}{% else %}0{% endif %},
     "transport": {% assign f = site.data.quiz.en.transport %}{% if f.questions %}{{ f.questions.size }}{% elsif f.size %}{{ f.size }}{% else %}0{% endif %},
     "famous-monuments": {% assign f = site.data.quiz.en.famous-monuments %}{% if f.questions %}{{ f.questions.size }}{% elsif f.size %}{{ f.size }}{% else %}0{% endif %},
     "wildlife": {% assign f = site.data.quiz.en.wildlife %}{% if f.questions %}{{ f.questions.size }}{% elsif f.size %}{{ f.size }}{% else %}0{% endif %},
@@ -676,7 +702,7 @@ extra_js:
     "physics": {% assign f = site.data.quiz.hi.physics %}{% if f.questions %}{{ f.questions.size }}{% elsif f.size %}{{ f.size }}{% else %}0{% endif %},
     "chemistry": {% assign f = site.data.quiz.hi.chemistry %}{% if f.questions %}{{ f.questions.size }}{% elsif f.size %}{{ f.size }}{% else %}0{% endif %},
     "mathematics": {% assign f = site.data.quiz.hi.mathematics %}{% if f.questions %}{{ f.questions.size }}{% elsif f.size %}{{ f.size }}{% else %}0{% endif %},
-    "biology": {% assign f = site.data.quiz.hi.biology %}{% if f.questions %}{{ f.questions.size Ram }}{% elsif f.size %}{{ f.size }}{% else %}0{% endif %},
+    "biology": {% assign f = site.data.quiz.hi.biology %}{% if f.questions %}{{ f.questions.size }}{% elsif f.size %}{{ f.size }}{% else %}0{% endif %},
     "computer": {% assign f = site.data.quiz.hi.computer %}{% if f.questions %}{{ f.questions.size }}{% elsif f.size %}{{ f.size }}{% else %}0{% endif %},
     "sanskrit": {% assign f = site.data.quiz.hi.sanskrit %}{% if f.questions %}{{ f.questions.size }}{% elsif f.size %}{{ f.size }}{% else %}0{% endif %},
     "science-technology": {% assign f = site.data.quiz.hi.science-technology %}{% if f.questions %}{{ f.questions.size }}{% elsif f.size %}{{ f.size }}{% else %}0{% endif %},
