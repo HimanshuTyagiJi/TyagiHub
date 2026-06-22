@@ -19,7 +19,7 @@ layout: default
 					{% assign read_time = "2 मिनट का पाठ" %} 
 				{% else %} 
 					{% assign minutes = words | divided_by: 180 %}
-					{% assign read_time = minutes | append: " मिनट ka पाठ" %} 
+					{% assign read_time = minutes | append: " मिनट में पढ़ें" %} 
 				{% endif %}
 			{% else %}
 				{% if words < 360 %} 
