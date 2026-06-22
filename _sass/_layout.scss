@@ -23,7 +23,7 @@
 .sidebar-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,.45); z-index: 89; transition: opacity var(--ease-normal); }
 .sidebar-overlay.active { display: block; }
 .gk-sidebar { padding: 20px; padding-right: 0; width: 280px; flex-shrink: 0; background: var(--bg-surface); border-right: 1px solid var(--border-table); position: fixed; top: 62px; height: calc(100vh - 64px); overflow-y: auto; overflow-x: hidden; scrollbar-width: thin; scrollbar-color: var(--border-3) transparent; z-index: 2; transition: transform var(--ease-normal); }
-@media (max-width: 1023px) { .gk-sidebar { position: fixed; top: 56px; left: 0; height: 100vh; z-index: 90; transform: translateX(-100%); box-shadow: var(--shadow-3); width: 240px; } .gk-sidebar.open { transform: translateX(0); } }
+@media (max-width: 1023px) { .gk-sidebar { position: fixed; top: 56px; left: 0; height: 100%; z-index: 90; transform: translateX(-100%); box-shadow: var(--shadow-3); width: 240px; } .gk-sidebar.open { transform: translateX(0); } }
 .gk-sidebar .sidebar-header { padding: 20px 16px 12px; border-bottom: 1px solid var(--border-table); background: var(--bg-table-stripe); }
 .gk-sidebar .sidebar-header .sidebar-title { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--primary-base); }
 .gk-sidebar .sidebar-header .sidebar-subtitle { font-size: 13px; color: var(--clr-text-2); margin-top: 2px; }
