@@ -1,56 +1,488 @@
 [
   {
-    "question": "The Battle of Plassey was fought in which year?",
-    "option_a": "1747",
-    "option_b": "1757",
-    "option_c": "1767",
-    "option_d": "1777",
+    "question": "The historic Battle of Plassey, which inaugurated the British political dominance in India, was fought in which year?",
+    "option_a": "1757",
+    "option_b": "1764",
+    "option_c": "1782",
+    "option_d": "1799",
+    "correct_answer": "a",
+    "explanation": "The Battle of Plassey was fought on June 23, 1757, near Palashi on the banks of Bhagirathi river. The British East India Company under Robert Clive defeated the last independent Nawab of Bengal, Siraj-ud-Daulah, due to the betrayal of Mir Jafar. [Memory Trick: Mir Jafar played a 'Sly Game' making Siraj lose under Clive in '57 = 1757.]"
+  },
+  {
+    "question": "The great uprising of 1857, also styled as the First War of Independence, officially started at which cantonment?",
+    "option_a": "Barrackpore",
+    "option_b": "Meerut",
+    "option_c": "Jhansi",
+    "option_d": "Kanpur",
     "correct_answer": "b",
-    "explanation": "The Battle of Plassey was fought on June 23, 1757 between the British East India Company and the Nawab of Bengal, Siraj ud-Daulah. The British victory marked the beginning of British rule in India."
+    "explanation": "While Mangal Pandey rebelled at Barrackpore in March 1857, the official mutiny of sepoys started as a collective march on May 10, 1857, at the Meerut cantonment, from where soldiers marched toward Delhi to declare Bahadur Shah Zafar as Emperor. [Memory Trick: The soldiers decided to 'Meet up' in 'Meerut' before marching to Delhi.]"
   },
   {
-    "question": "Who started the Brahmo Samaj in 1828?",
-    "option_a": "Swami Vivekananda",
-    "option_b": "Dayananda Saraswati",
-    "option_c": "Ram Mohan Roy",
-    "option_d": "Keshab Chandra Sen",
+    "question": "Which Viceroy of India was responsible for the controversial Partition of Bengal in 1905?",
+    "option_a": "Lord Ripon",
+    "option_b": "Lord Curzon",
+    "option_c": "Lord Dalhousie",
+    "option_d": "Lord Mountbatten",
+    "correct_answer": "b",
+    "explanation": "Lord Curzon partitioned the massive Bengal province in 1905 to divide Hindu-Muslim cohesion, which sparked the Swadeshi Movement. The partition was eventually annulled in 1911 by Lord Hardinge. [Memory Trick: Curzon acted with a 'Curse' (Curzon) on Bengal's integrity.]"
+  },
+  {
+    "question": "Who was the founder of the 'Servants of India Society' established in Pune in 1905?",
+    "option_a": "Gopal Krishna Gokhale",
+    "option_b": "Bal Gangadhar Tilak",
+    "option_c": "Dadabhai Naoroji",
+    "option_d": "Mahadev Govind Ranade",
+    "correct_answer": "a",
+    "explanation": "Gopal Krishna Gokhale, political mentor of Mahatma Gandhi, founded the Servants of India Society in 1905 to train nationwide missionaries for serving public welfare and educational programs. [Memory Trick: To true public service, Lord 'Krishna's' namesake Gopal became a servant = 'Gopal Krishna Gokhale'.]"
+  },
+  {
+    "question": "At which session of the Indian National Congress was the historic 'Purna Swaraj' (Complete Independence) resolution adopted in 1929?",
+    "option_a": "Lahore Session",
+    "option_b": "Karachi Session",
+    "option_c": "Belgaum Session",
+    "option_d": "Lucknow Session",
+    "correct_answer": "a",
+    "explanation": "The 1929 annual session of the Indian National Congress was held in Lahore, presided by Jawaharlal Nehru. The declaration of Purna Swaraj was made on December 31, 1929, with the hoisting of the tricolor on the banks of river Ravi. [Memory Trick: Nehru raised the flag while shouting with full 'Lahr' (wave) of patriotic joy in 'Lahore' Session.]"
+  },
+  {
+    "question": "The Battle of Buxar, which firmly secured the dual administration of Bengal for the British East India Company, was fought in which year?",
+    "option_a": "1757",
+    "option_b": "1764",
+    "option_c": "1772",
+    "option_d": "1784",
+    "correct_answer": "b",
+    "explanation": "Fought on October 22, 1764, the Battle of Buxar saw Hector Munro defeat the combined forces of Mir Qasim (Bengal), Shuja-ud-Daulah (Awadh), and Mughal Emperor Shah Alam II. [Memory Trick: After Plassey in '57, the British became 'Sick' of waiting and took key administrative power 'Four' years later in '64 = 1764.]"
+  },
+  {
+    "question": "The Permanent Settlement of Bengal system, which created a class of hereditary landlords under the British, was introduced in 1793 by which Viceroy/Governor-General?",
+    "option_a": "Lord Warren Hastings",
+    "option_b": "Lord Cornwallis",
+    "option_c": "Lord Wellesley",
+    "option_d": "Lord William Bentinck",
+    "correct_answer": "b",
+    "explanation": "Introduced in 1793 by Governor-General Lord Cornwallis, the Permanent Settlement system fixed land revenue perpetually, transforming zamindars from tax collectors to absolute owners of the land. [Memory Trick: 'Corn' grows on lands owned by wealthy landlords = Lord 'Corn'-wallis established the land settlement.]"
+  },
+  {
+    "question": "Which Governor-General of India pioneered the 'Subsidiary Alliance' system to bring Indian princely states under British sovereign control?",
+    "option_a": "Lord Wellesley",
+    "option_b": "Lord Dalhousie",
+    "option_c": "Lord Hastings",
+    "option_d": "Lord Amherst",
+    "correct_answer": "a",
+    "explanation": "The Subsidiary Alliance was developed by Lord Wellesley (Governor-General from 1798 to 1805) to expand British territories. Under this system, local rulers disarmed and accepted British garrisons in exchange for nominal protection. Hyderabad was the first to sign in 1798. [Memory Trick: Rulers fell heavily into a 'Well' of debt and loss under 'Wellesley's' Alliance.]"
+  },
+  {
+    "question": "Under of 'Doctrine of Lapse', which Indian princely state was the very first to be annexed in 1848 by Lord Dalhousie?",
+    "option_a": "Jhansi",
+    "option_b": "Nagpur",
+    "option_c": "Satara",
+    "option_d": "Awadh",
     "correct_answer": "c",
-    "explanation": "Raja Ram Mohan Roy founded the Brahmo Samaj in 1828 in Calcutta. He was a social reformer who worked against sati, child marriage, and caste discrimination, and advocated for women's rights and education."
+    "explanation": "Lord Dalhousie utilized the Doctrine of Lapse to annex states whose rulers died without a natural heir. Satara was annexed first in 1848, followed by Sambalpur (1849), Jhansi (1853), and Nagpur (1854). [Memory Trick: The very first state had to 'Sit' ('Satara') down and surrender to Dalhousie's 'Doctrine'.]"
   },
   {
-    "question": "The Revolt of 1857 began from which place?",
-    "option_a": "Delhi",
-    "option_b": "Kanpur",
-    "option_c": "Meerut",
-    "option_d": "Lucknow",
+    "question": "The first passenger railway line in Indian history was opened in 1853 to connect which two destinations?",
+    "option_a": "Calcutta and Raniganj",
+    "option_b": "Bombay and Thane",
+    "option_c": "Madras and Arkonam",
+    "option_d": "Delhi and Meerut",
+    "correct_answer": "b",
+    "explanation": "On April 16, 1853, India's first commercial passenger train travelled 34 kilometers from Bori Bunder (Bombay) to Thane, carrying 400 passengers across 14 carriages. [Memory Trick: The railway route was a grand 'B-T' (Beautiful Trip) connecting 'B'ombay and 'T'hane.]"
+  },
+  {
+    "question": "Wood's Despatch of 1854, often described as the 'Magna Carta of English Education in India', was formulated during the tenure of which Governor-General?",
+    "option_a": "Lord Dalhousie",
+    "option_b": "Lord Canning",
+    "option_c": "Lord Bentinck",
+    "option_d": "Lord Macaulay",
+    "correct_answer": "a",
+    "explanation": "Sir Charles Wood, President of the Board of Control of the East India Company, drafted the educational program of 1854, which promoted native vernacular education alongside English. It was implemented under Lord Dalhousie's governorship. [Memory Trick: 'Wood' was used to build schools in 'Dalhousie' town.]"
+  },
+  {
+    "question": "The notorious Vernacular Press Act of 1878, which aimed to muzzle nationalist regional newspapers, was passed by which Viceroy?",
+    "option_a": "Lord Ripon",
+    "option_b": "Lord Lytton",
+    "option_c": "Lord Dufferin",
+    "option_d": "Lord Lansdowne",
+    "correct_answer": "b",
+    "explanation": "Introduced by Lord Lytton in 1878 to curb critiques of the Anglo-Afghan War, the Vernacular Press Act gagged regional language presses. It was repealed in 1882 by the liberal successor Lord Ripon. [Memory Trick: Lytton was 'Lethal' (Lytton) with his gag acts, while Ripon 'Repaired' (Ripon) freedom of press.]"
+  },
+  {
+    "question": "Who is revered as the 'Father of Local Self-Government in India' for introducing municipal local boards in 1882?",
+    "option_a": "Lord Mayo",
+    "option_b": "Lord Ripon",
+    "option_c": "Lord Curzon",
+    "option_d": "Lord Lytton",
+    "correct_answer": "b",
+    "explanation": "Lord Ripon introduced the landmark resolution on Local Self-Government in 1882, which established democratic, representative urban local bodies and rural district boards. [Memory Trick: Ripon made municipal bodies 'Ripe' (Ripon) with democratic rights.]"
+  },
+  {
+    "question": "The first historic session of the Indian National Congress (1885) was organized at which city under the presidency of Womesh Chandra Bonnerjee?",
+    "option_a": "Calcutta",
+    "option_b": "Bombay",
+    "option_c": "Madras",
+    "option_d": "Pune",
+    "correct_answer": "b",
+    "explanation": "The Indian National Congress met for the first time from December 28 to 31, 1885, at Gokuldas Tejpal Sanskrit College in Bombay. It was attended by 72 delegates, facilitated by retired civil servant Allan Octavian Hume. [Memory Trick: The political 'Bomb' ('Bombay') of national unity was first exploded in 1885.]"
+  },
+  {
+    "question": "In which historic year was the controversial Partition of Bengal formally revoked at the Delhi Durbar?",
+    "option_a": "1909",
+    "option_b": "1911",
+    "option_c": "1916",
+    "option_d": "1919",
+    "correct_answer": "b",
+    "explanation": "The Partition of Bengal was annulled in 1911 during the state visit of King George V to the Delhi Durbar, hosted by Viceroy Lord Hardinge. Concurrently, the capital of British India was shifted from Calcutta to Delhi. [Memory Trick: In 19'11', both parts of divided Bengal stood tall next to each other like parallel ones = '11'.]"
+  },
+  {
+    "question": "The Indian National Congress witnessed its first major vertical split between Moderates and Extremists during which annual session (1907)?",
+    "option_a": "Surat Session",
+    "option_b": "Calcutta Session",
+    "option_c": "Lucknow Session",
+    "option_d": "Banaras Session",
+    "correct_answer": "a",
+    "explanation": "Presided over by Rash Behari Ghosh, the 1907 INC session in Surat erupted in disputes over the methods of boycott and Swadeshi, leading to a split. The groups reunited in 1916 at Lucknow. [Memory Trick: In Surat, the angry factions threw a 'Shoe' at each other, causing a split in their 'Surat' (faces) = Surat Session.]"
+  },
+  {
+    "question": "The famous Lucknow Pact of 1916, which brought a unique temporary joint political platform, was signed between which two entities?",
+    "option_a": "Moderates and the British Government",
+    "option_b": "Congress and the Muslim League",
+    "option_c": "Swarajists and No-Changers",
+    "option_d": "Ghadar League and Congress",
+    "correct_answer": "b",
+    "explanation": "The Lucknow Pact was a joint agreement between the Indian National Congress and the All India Muslim League, establishing common demands for self-government. Concurrently, Moderates and Extremists reunited, thanks to Lokmanya Tilak and Annie Besant. [Memory Trick: High 'Luck' ('Lucknow') brought a friendly alliance between Congress and League in 1916.]"
+  },
+  {
+    "question": "The Champaran Satyagraha of 1917, Mahatma Gandhi's first active satyagraha in India, was launched to protest against which system?",
+    "option_a": "Tinkathia indigo cultivation system",
+    "option_b": "High land revenue during draught",
+    "option_c": "Rowlatt Police Acts",
+    "option_d": "Exploitative factory working hours",
+    "correct_answer": "a",
+    "explanation": "At Bihar's Champaran, the Tinkathia system forced farmers to cultivate indigo on 3/20th of their land, causing severe distress. Under Raj Kumar Shukla's invitation, Gandhi intervened and successfully got the system abolished. [Memory Trick: 'Tin' means 'Three' parts of land had to be cultivated with Blue dye = 'Tinkathia'.]"
+  },
+  {
+    "question": "The oppressive Rowlatt Act, which gave the colonial government powers to imprison any political suspect without a warrant or trial, was passed in which year?",
+    "option_a": "1915",
+    "option_b": "1917",
+    "option_c": "1919",
+    "option_d": "1921",
     "correct_answer": "c",
-    "explanation": "The Revolt of 1857 (also called India's First War of Independence) began on May 10, 1857 at Meerut when Indian soldiers (sepoys) mutinied against the British East India Company."
+    "explanation": "Passed by the Imperial Legislative Council in March 1919, the Anarchical and Revolutionary Crimes Act (Rowlatt Act/Black Act) authorized indefinite preventive detention, sparking massive nationwide protests. [Memory Trick: No appeal, No argument, No lawyer in 19'19' = Rowlatt Act.]"
   },
   {
-    "question": "Who gave the slogan 'Swaraj is my birthright'?",
+    "question": "The Jallianwala Bagh Massacre, in which British troops opened fire on a peaceful religious and political gathering, took place in which city on April 13, 1919?",
+    "option_a": "Amritsar",
+    "option_b": "Lahore",
+    "option_c": "Jalandhar",
+    "option_d": "Peshawar",
+    "correct_answer": "a",
+    "explanation": "On Baisakhi Day, Brigadier-General Reginald Dyer ordered troops to block the exit of Jallianwala Bagh in Amritsar and fire upon an unarmed crowd protesting the arrest of leaders Satya Pal and Saifuddin Kitchlew. [Memory Trick: The holy city of nectar 'Amritsar' shed tears of blood on Baisakhi 1919.]"
+  },
+  {
+    "question": "The historic Khilafat Movement (1919-1924) in India was launched under the main leadership of which brothers?",
+    "option_a": "Ali Brothers (Shaukat Ali and Muhammad Ali)",
+    "option_b": "Sayyid Brothers (Abdullah and Husain)",
+    "option_c": "Deoband Brothers (Qasim and Yaqub)",
+    "option_d": "Khilji Brothers (Alauddin and Jalal)",
+    "correct_answer": "a",
+    "explanation": "The Khilafat Movement was started by the Ali Brothers (Shaukat Ali and Muhammad Ali) to protect the Ottoman Caliphate (Khilafat) from dismemberment after World War I. Gandhi supported it to forge Hindu-Muslim unity. [Memory Trick: The active brothers ('Ali Brothers') led the 'Khilafat' to protect the Caliph.]"
+  },
+  {
+    "question": "Why did Mahatma Gandhi decide to abruptly suspend the active Non-Cooperation Movement in February 1922?",
+    "option_a": "Cruel Jallianwala Bagh firing",
+    "option_b": "Violent Chauri Chaura police station burning",
+    "option_c": "Arrest of Maulana Abul Kalam Azad",
+    "option_d": "Failure of the Khilafat leaders",
+    "correct_answer": "b",
+    "explanation": "On February 5, 1922, a mob set fire to a police station in Chauri Chaura (Gorakhpur, UP), burning 22 police constables alive. Committed to absolute non-violence (Ahimsa), Gandhi called off the movement immediately. [Memory Trick: The 'Chauri Chaura' fire ended the non-violent flow of the movement.]"
+  },
+  {
+    "question": "Who were the primary founders of the 'Swaraj Party' established in January 1923 within the Congress to contest council elections?",
+    "option_a": "C.R. Das and Motilal Nehru",
+    "option_b": "Mahatma Gandhi and Jawaharlal Nehru",
+    "option_c": "Sardar Patel and Rajendra Prasad",
+    "option_d": "Subhas Chandra Bose and Lala Lajpat Rai",
+    "correct_answer": "a",
+    "explanation": "Swaraj Party was founded by Deshbandhu Chittaranjan Das (as President) and Motilal Nehru (as Secretary) in 1923, advocating for 'council entry' from within to obstruct British administration. [Memory Trick: 'Das' and 'Nehru' (senior) were 'Pro-Changers' who wanted to sit in Councils to demand Swaraj.]"
+  },
+  {
+    "question": "The Simon Commission, a group of seven British Members of Parliament, was widely boycotted upon its arrival in India in 1928 for what primary reason?",
+    "option_a": "It supported the Partition of Bengal",
+    "option_b": "It contained no Indian members",
+    "option_c": "It proposed high salt taxes",
+    "option_d": "It recommended immediate military rule",
+    "correct_answer": "b",
+    "explanation": "Formed under Sir John Simon to review constitutional reforms, the commission arrived in 1928 but was boycotted with 'Simon Go Back' slogans because it excluded Indians, denying them a say in their own constitutional future. [Memory Trick: Simon's 'Seven' members were 'all-white', leaving Indians out in the dark.]"
+  },
+  {
+    "question": "The Bardoli Satyagraha of 1928, a highly successful tax strike of farmers in Gujarat, was led by which nationalist leader?",
     "option_a": "Mahatma Gandhi",
-    "option_b": "Subhas Chandra Bose",
+    "option_b": "Sardar Vallabhbhai Patel",
+    "option_c": "Morarji Desai",
+    "option_d": "Mahadev Desai",
+    "correct_answer": "b",
+    "explanation": "Vallabhbhai Patel organized the farmers of Bardoli against a 22% land revenue increase. Because of his outstanding organization, the local women conferred upon him the title 'Sardar' (Leader). [Memory Trick: The 'Iron Man' 'Sardar' Patel stood strong as a wall against arbitrary colonial taxes.]"
+  },
+  {
+    "question": "On which historic date did Mahatma Gandhi launch his famous Dandi March (Salt Satyagraha) from Sabarmati Ashram?",
+    "option_a": "March 12, 1930",
+    "option_b": "April 6, 1930",
+    "option_c": "August 8, 1942",
+    "option_d": "January 26, 1950",
+    "correct_answer": "a",
+    "explanation": "Gandhi started the Dandi March on March 12, 1930, walking 385 kilometers with 78 volunteers from Sabarmati to Dandi, reaching the coast on April 5 and breaking the salt law on April 6, 1930. [Memory Trick: March '12' started the march, and '12 * 2' = 24 days later they violated the salt tax.]"
+  },
+  {
+    "question": "The celebrated Gandhi-Irwin Pact was signed in March 1931, leading to which major political outcome?",
+    "option_a": "Congress boycotted the Second Round Table Conference",
+    "option_b": "Suspension of Civil Disobedience and release of political prisoners",
+    "option_c": "Abolition of the salt tax entirely",
+    "option_d": "Announcement of provincial autonomy for India",
+    "correct_answer": "b",
+    "explanation": "The Gandhi-Irwin Pact resulted in the suspension of the Civil Disobedience Movement, and the British agreed to release non-violent political prisoners. Gandhi agreed to attend the Second Round Table Conference in London. [Memory Trick: Gandhi and Irwin sat as equals to bring a peaceful pause ('Pact') to the civil protest.]"
+  },
+  {
+    "question": "The Poona Pact of September 1932, which settled municipal representation for depressed classes, was signed between which two leaders?",
+    "option_a": "Jawaharlal Nehru and Mahatma Gandhi",
+    "option_b": "Dr. B.R. Ambedkar and Mahatma Gandhi",
+    "option_c": "Lord Willingdon and Dr. Ambedkar",
+    "option_d": "Muhammad Ali Jinnah and Sardar Patel",
+    "correct_answer": "b",
+    "explanation": "Signed at Yerwada Jail, Pune, the Poona Pact saw Dr. B.R. Ambedkar agree to joint electorates with reserved seats for depressed classes (dalits) in lieu of separate electorates, which Gandhi opposed with a fast-unto-death. [Memory Trick: 'Ambedkar' (representing dalits) and 'Gandhi' (representing Congress) shook hands in 'Poona' jail.]"
+  },
+  {
+    "question": "Which of the following acts of British Parliament introduced 'Provincial Autonomy', abolished dyarchy in provinces, and proposed a Federal Court?",
+    "option_a": "Indian Councils Act 1909",
+    "option_b": "Government of India Act 1919",
+    "option_c": "Government of India Act 1935",
+    "option_d": "Indian Independence Act 1947",
+    "correct_answer": "c",
+    "explanation": "The Government of India Act 1935 was the mock constitution of British India, providing for a federal structure, establishing provincial autonomy, dual rule at the center, and creating the Federal Court of India. [Memory Trick: The massive '1935' Act became the major blueprint ('35') of the modern Indian Constitution.]"
+  },
+  {
+    "question": "The 'August Offer' of 1940, which proposed Dominion Status for India after World War II in exchange for war support, was issued by which Viceroy?",
+    "option_a": "Lord Linlithgow",
+    "option_b": "Lord Wavell",
+    "option_c": "Lord Mountbatten",
+    "option_d": "Lord Irwin",
+    "correct_answer": "a",
+    "explanation": "Issued on August 8, 1940, during the Battle of Britain by Viceroy Lord Linlithgow, the August Offer promised a post-war constituent assembly and Dominion status, but was rejected by both Congress and the Muslim League. [Memory Trick: In 'August' heat, you go down a 'Lith' path, or 'Linlith'-gow issued the offer.]"
+  },
+  {
+    "question": "Which British diplomatic mission was described by Mahatma Gandhi as 'a post-dated cheque on a crashing bank'?",
+    "option_a": "Simon Commission",
+    "option_b": "Cripps Mission",
+    "option_c": "Cabinet Mission",
+    "option_d": "Wavell Plan",
+    "correct_answer": "b",
+    "explanation": "The Cripps Mission of March 1942, headed by Sir Stafford Cripps, offered post-war Dominion status and right of provinces to secede. Gandhi rejected it because it failed to provide immediate self-government. [Memory Trick: 'Cripps' offered a promise that was already 'Crippled' (Cripps) = post-dated cheque.]"
+  },
+  {
+    "question": "During which mass national movement did Mahatma Gandhi give his historic call of 'Do or Die' (Karo Ya Maro) to the Indian masses?",
+    "option_a": "Non-Cooperation Movement",
+    "option_b": "Civil Disobedience Movement",
+    "option_c": "Quit India Movement",
+    "option_d": "Anti-Partition Movement",
+    "correct_answer": "c",
+    "explanation": "Gandhi delivered the 'Do or Die' speech on August 8, 1942, at Gowalia Tank Maidan (now August Kranti Maidan) in Bombay, launching the Quit India Movement demanding an immediate orderly British withdrawal. [Memory Trick: The final call to 'Quit' ('Quit India') left no choice but to 'Do or Die'.]"
+  },
+  {
+    "question": "The Cabinet Mission of 1946, which proposed a three-tier federal structure and a Constituent Assembly, was headed by which British Secretary of State?",
+    "option_a": "Lord Pethick-Lawrence",
+    "option_b": "Sir Stafford Cripps",
+    "option_c": "A.V. Alexander",
+    "option_d": "Lord Clement Attlee",
+    "correct_answer": "a",
+    "explanation": "The 1946 Cabinet Mission comprised Lord Pethick-Lawrence (Secretary of State for India), Sir Stafford Cripps, and A.V. Alexander. It rejected the demand for Pakistan and proposed a united India framework and constitutional assembly. [Memory Trick: The Cabinet chief walked on the 'Pat' ('Pethick') of peace toward Indian leaders.]"
+  },
+  {
+    "question": "The Mountbatten Plan, which laid down the formal framework for the Partition of British India, was officially announced on which date?",
+    "option_a": "June 3, 1947",
+    "option_b": "August 15, 1947",
+    "option_c": "January 26, 1950",
+    "option_d": "November 26, 1949",
+    "correct_answer": "a",
+    "explanation": "Lord Mountbatten announced his plan on June 3, 1947 (also called the June 3 Plan), accelerating the transfer of power and partitioning British India into two independent dominions of India and Pakistan. [Memory Trick: On the '3rd' of 'June' (3-6), Mountbatten drew a '3' divided nation line.]"
+  },
+  {
+    "question": "Who served as the first Governor-General of independent India from August 15, 1947, to June 21, 1948?",
+    "option_a": "C. Rajagopalachari",
+    "option_b": "Lord Louis Mountbatten",
+    "option_c": "Dr. Rajendra Prasad",
+    "option_d": "Jawaharlal Nehru",
+    "correct_answer": "b",
+    "explanation": "Lord Louis Mountbatten served as independent India's first Governor-General under the Indian Independence Act. He was succeeded in 1948 by C. Rajagopalachari, who became the first and only Indian Governor-General. [Memory Trick: Lord 'Mountbatten' battened down the sails during the transition to freedom.]"
+  },
+  {
+    "question": "The influential socio-religious reform organization 'Brahmo Samaj' was originally founded by Raja Ram Mohan Roy in which year?",
+    "option_a": "1815",
+    "option_b": "1828",
+    "option_c": "1875",
+    "option_d": "1897",
+    "correct_answer": "b",
+    "explanation": "Raja Ram Mohan Roy (Father of Indian Renaissance) founded the Brahmo Sabha in 1828 in Calcutta, later renamed Brahmo Samaj, preaching monotheism and opposing idolatry, caste discrimination, and Sati. [Memory Trick: Ram Mohan Roy constructed an educational 'B-S' (Brahmo Samaj) bridge in '28' (1828).]"
+  },
+  {
+    "question": "Which social reformer founded the 'Arya Samaj' in Bombay in 1875 and gave the call of 'Go back to the Vedas'?",
+    "option_a": "Swami Vivekananda",
+    "option_b": "Swami Dayanand Saraswati",
+    "option_c": "Raja Ram Mohan Roy",
+    "option_d": "Keshab Chandra Sen",
+    "correct_answer": "b",
+    "explanation": "Swami Dayanand Saraswati founded the Arya Samaj in 1875. He rejected idolatry, rituals, and child marriage, promoting Vedic monological realism. He also penned 'Satyarth Prakash'. [Memory Trick: The Vedic light shines like 'Day' = Swami 'Day'-anand Saraswati.]"
+  },
+  {
+    "question": "The philanthropic and spiritual organization 'Ramakrishna Mission' was formally established in 1897 by whom?",
+    "option_a": "Sri Ramakrishna Paramahamsa",
+    "option_b": "Swami Vivekananda",
+    "option_c": "Sarada Devi",
+    "option_d": "Debendranath Tagore",
+    "correct_answer": "b",
+    "explanation": "The Ramakrishna Mission was founded in 1897 near Calcutta by Swami Vivekananda (Narendranath Datta) to propagate the teachings of his guru, Ramakrishna Paramahamsa, combining spiritual practice with humanitarian service. [Memory Trick: Vivekananda carried the torch of 'Ramakrishna' across '97' countries.]"
+  },
+  {
+    "question": "The social activist group 'Satyashodhak Samaj' was established in Maharashtra in 1873 to combat caste exploitation and elevate marginalized communities by whom?",
+    "option_a": "Dr. B.R. Ambedkar",
+    "option_b": "Jyotirao Phule",
+    "option_c": "Mahadev Govind Ranade",
+    "option_d": "Savtribai Phule",
+    "correct_answer": "b",
+    "explanation": "Jyotirao Phule founded the Satyashodhak Samaj (Truth-Seekers' Society) in Pune in 1873. He and his wife Savitribai Phule dedicated their lives to promoting education and welfare for lower castes and women. [Memory Trick: A flower ('Phule') of truth flourished in Pune in '73 = Jyotirao 'Phule' founded Satyashodhak.]"
+  },
+  {
+    "question": "What was the name of the very first printed English language newspaper in Indian history, started in Calcutta in 1780?",
+    "option_a": "The India Gazette",
+    "option_b": "The Bengal Gazette (Hicky's Bengal Gazette)",
+    "option_c": "The Calcutta Chronicle",
+    "option_d": "The Madras Courier",
+    "correct_answer": "b",
+    "explanation": "Introduced in January 1780 by James Augustus Hicky, Hicky's Bengal Gazette was the first major printed newspaper in South Asia, known for its fierce, witty, and independent anti-corruption tone. [Memory Trick: The tiger state 'Bengal' gave birth to Hicky's 'Bengal Gazette'.]"
+  },
+  {
+    "question": "The famous vernacular play 'Neel Darpan' (1860), which vividly depicted the cruelty and oppression of British indigo planters, was written by whom?",
+    "option_a": "Dinabandhu Mitra",
+    "option_b": "Bankim Chandra Chattopadhyay",
+    "option_c": "Michael Madhusudan Dutt",
+    "option_d": "Rabindranath Tagore",
+    "correct_answer": "a",
+    "explanation": "Dinabandhu Mitra wrote 'Neel Darpan' (The Mirror of Indigo Indigo Farming) in Dhaka. It exposed how native farmers were coerced by European planters to grow indigo under threat of physical violence. [Memory Trick: He acted as a compassionate friend ('Bandhu') to poor indigo farmers = Jivan 'Dinabandhu' Mitra.]"
+  },
+  {
+    "question": "Who authored the classic book 'Poverty and Un-British Rule in India', which systematically exposed the economic 'Drain of Wealth' from India?",
+    "option_a": "Dr. Rajendra Prasad",
+    "option_b": "Dadabhai Naoroji",
+    "option_c": "Romesh Chunder Dutt",
+    "option_d": "M.G. Ranade",
+    "correct_answer": "b",
+    "explanation": "Dadabhai Naoroji, the 'Grand Old Man of India', developed the 'Drain of Wealth' theory in his book written in 1901, proving how Britain siphoned off Indian economic resource revenues without equivalent returns. [Memory Trick: The wise grandfather ('Dada') calculated the entire loss of national pennies = 'Dadabhai' Naoroji.]"
+  },
+  {
+    "question": "The inhuman practice of Sati was formally outlawed and declare a criminal offense in 1829 during the governorship of which British administrator?",
+    "option_a": "Lord William Bentinck",
+    "option_b": "Lord Cornwallis",
+    "option_c": "Lord Hastings",
+    "option_d": "Lord Wellesley",
+    "correct_answer": "a",
+    "explanation": "Under Regulation XVII of December 1829, Governor-General Lord William Bentinck declared Sati illegal and punishable as culpable homicide, largely due to social defense work by Raja Ram Mohan Roy. [Memory Trick: Bentinck was a 'Benevolent' ('Bentinck') governor who banned the act of Sati.]"
+  },
+  {
+    "question": "The Hindu Widows' Remarriage Act of 1856 was enacted because of tireless social reforms and campaigns led by which Indian visionary?",
+    "option_a": "Raja Ram Mohan Roy",
+    "option_b": "Ishwar Chandra Vidyasagar",
+    "option_c": "Balshastri Jambhekar",
+    "option_d": "Keshab Chandra Sen",
+    "correct_answer": "b",
+    "explanation": "Ishwar Chandra Vidyasagar was the champion of widow remarriage, petitioning the government with historic texts. This culminated in Act XV of July 1856, drafted by Lord Dalhousie and passed under Lord Canning. [Memory Trick: An ocean of wisdom ('Vidyasagar') brought legal relief and life to widows = 'Vidyasagar'.]"
+  },
+  {
+    "question": "Who raised the stirring patriotic slogan: 'Swaraj is my birthright and I shall have it' during India's struggle for independence?",
+    "option_a": "Subhas Chandra Bose",
+    "option_b": "Bal Gangadhar Tilak",
     "option_c": "Lala Lajpat Rai",
-    "option_d": "Bal Gangadhar Tilak",
-    "correct_answer": "d",
-    "explanation": "Bal Gangadhar Tilak gave the famous slogan 'Swaraj is my birthright and I shall have it.' He was a strong advocate for Indian independence and used his newspapers Kesari and Mahratta to spread nationalist ideas."
+    "option_d": "Bipin Chandra Pal",
+    "correct_answer": "b",
+    "explanation": "Lokmanya Bal Gangadhar Tilak declared this slogan to inspire national pride and active resistance. He launched the Home Rule League in 1916 alongside Annie Besant to secure self-government. [Memory Trick: The crown prince of the masses, 'Lokmanya' 'Tilak', put a heavy national mark ('Tilak') of Swaraj on Indian hearts.]"
   },
   {
-    "question": "The Non-Cooperation Movement was launched in which year?",
-    "option_a": "1917",
-    "option_b": "1919",
-    "option_c": "1920",
-    "option_d": "1922",
-    "correct_answer": "c",
-    "explanation": "The Non-Cooperation Movement was launched by Mahatma Gandhi in September 1920. It called upon Indians to withdraw cooperation from the British government by boycotting British goods, schools, and courts."
+    "question": "Who was the first woman President of the Indian National Congress, presiding over the Calcutta Session in 1917?",
+    "option_a": "Sarojini Naidu",
+    "option_b": "Annie Besant",
+    "option_c": "Nellie Sengupta",
+    "option_d": "Aruna Asaf Ali",
+    "correct_answer": "b",
+    "explanation": "Dr. Annie Besant, the Irish-origin leader of the Home Rule movement, was elected President of INC in 1917. Concurrently, Sarojini Naidu became the first Indian woman President at Kanpur in 1925. [Memory Trick: 'Annie' was the first 'A-grade' woman ('Annie Besant') to lead the Congress session.]"
   },
   {
-    "question": "India became independent on which date?",
-    "option_a": "15 August 1945",
-    "option_b": "26 January 1947",
-    "option_c": "15 August 1947",
-    "option_d": "26 January 1950",
-    "correct_answer": "c",
-    "explanation": "India gained independence from British rule on August 15, 1947. Jawaharlal Nehru became the first Prime Minister and delivered his famous 'Tryst with Destiny' speech at midnight on this historic occasion."
+    "question": "The revolutionary nationalist 'Ghadar Party' was founded in 1913 in San Francisco (USA) by which key leaders?",
+    "option_a": "Lala Har Dayal and Sohan Singh Bhakna",
+    "option_b": "Bhagat Singh and Sukhdev",
+    "option_c": "Rash Behari Bose and Sachin Sanyal",
+    "option_d": "Ram Prasad Bismil and Ashfaqullah Khan",
+    "correct_answer": "a",
+    "explanation": "The Ghadar Party was established in 1913 by Indian immigrants in North America, with Lala Har Dayal as its intellectual engine and Sohan Singh Bhakna as President. It published 'The Ghadar' weekly newspaper. [Memory Trick: Immigrants declared a 'Ghadar' (revolt) to secure 'Har' (every) 'Day' ('Har Dayal') of freedom.]"
+  },
+  {
+    "question": "The historic Kakori Train Robbery of August 1925, targeting government cash on the railway, was executed by members of which revolutionary group?",
+    "option_a": "Anushilan Samiti",
+    "option_b": "Hindustan Republican Association (HRA)",
+    "option_c": "Abhinav Bharat",
+    "option_d": "Jugantar Party",
+    "correct_answer": "b",
+    "explanation": "The Kakori conspiracy was executed on August 9, 1925, by the HRA (Hindustan Republican Association), including Ram Prasad Bismil, Ashfaqullah Khan, and Chandrashekhar Azad, to fund revolutionary arms purchases. [Memory Trick: True patriots of the 'Republic' ('Republican Association' - HRA) executed the Kakori plan.]"
+  },
+  {
+    "question": "The Indian National Army (Azad Hind Fauj) was dynamically reorganized and expanded in Singapore in 1943 under which supreme commander?",
+    "option_a": "Captain Mohan Singh",
+    "option_b": "Subhas Chandra Bose",
+    "option_c": "Rash Behari Bose",
+    "option_d": "Shah Nawaz Khan",
+    "correct_answer": "b",
+    "explanation": "The INA was originally formed by Mohan Singh. Reorganized in July 1943 under Subhas Chandra Bose (Netaji), it set up the Arzi Hukumat-e-Azad Hind (Provisional Government of Free India) in Singapore. [Memory Trick: 'Netaji' Bose rallied Azad Hind Fauj with 'Chalo Delhi' and 'Jai Hind'.]"
+  },
+  {
+    "question": "Which prominent Indian leader was universally called the 'Grand Old Man of India' owing to his long dedicated service to the nation?",
+    "option_a": "Surendranath Banerjee",
+    "option_b": "Dadabhai Naoroji",
+    "option_c": "Gopal Krishna Gokhale",
+    "option_d": "Madan Mohan Malaviya",
+    "correct_answer": "b",
+    "explanation": "Dadabhai Naoroji (1825–1917) was a founder of INC, three-time Congress President, and the first Indian elected to the British House of Commons in 1901. [Memory Trick: 'Dada' means grandfather = 'Grand' Old Man = 'Dadabhai' Naoroji.]"
+  },
+  {
+    "question": "Which British boundary commission chairman was assigned to draw the territorial partition lines of undivided Punjab and Bengal provinces in 1947?",
+    "option_a": "Sir Stafford Cripps",
+    "option_b": "Sir Cyril Radcliffe",
+    "option_c": "Lord Wavell",
+    "option_d": "Sir John Simon",
+    "correct_answer": "b",
+    "explanation": "Sir Cyril Radcliffe was appointed by Mountbatten to chair two boundary commissions. On August 17, 1947, he published the 'Radcliffe Line', partitioning India and Pakistan. [Memory Trick: The 'Radical' ('Radcliffe') division cut houses and villages in half overnight.]"
+  },
+  {
+    "question": "The high-profile Alipore Bomb Case (1908), which surfaced after the Muzaffarpur attack, is famously associated with the trial of which revolutionary philosopher?",
+    "option_a": "Aurobindo Ghosh",
+    "option_b": "Bhagat Singh",
+    "option_c": "V.D. Savarkar",
+    "option_d": "Lala Lajpat Rai",
+    "correct_answer": "a",
+    "explanation": "The Alipore Bomb Case (Emperor v. Aurobindo Ghosh and others) saw the trial of Aurobindo Ghosh and his brother Barindra. Successfully defended by Chittaranjan Das, Aurobindo was acquitted and subsequently retired to Puducherry. [Memory Trick: Aurobindo had a celestial 'Aura' ('Aurobindo') during the Alipore Trial.]"
+  },
+  {
+    "question": "Who designed the modern national tricolor flag of India, which was adopted by the Constituent Assembly on July 22, 1947?",
+    "option_a": "Pingali Venkayya",
+    "option_b": "Rabindranath Tagore",
+    "option_c": "Madame Bhikaji Cama",
+    "option_d": "Bankim Chandra Chatterjee",
+    "correct_answer": "a",
+    "explanation": "Pingali Venkayya, a freedom fighter from Andhra Pradesh, designed the Swaraj flag with a charkha. It was later modified to include the ashoka chakra as the national tricolor in July 1947. [Memory Trick: Painted 'Pink' ('Pingali') and green, he created the vibrant design of the tricolor.]"
+  },
+  {
+    "question": "The formal resolution for launching the nationwide anti-Partition Swadeshi Movement (1905) was adopted on August 7, 1905, at which historic venue?",
+    "option_a": "Calcutta Town Hall",
+    "option_b": "Congress Ground, Bombay",
+    "option_c": "Gokhale Hall, Pune",
+    "option_d": "Victoria Hall, Shimla",
+    "correct_answer": "a",
+    "explanation": "On August 7, 1905, a massive public meeting was held at Calcutta Town Hall, passing the historic Swadeshi resolution and starting the boycott of British goods. [Memory Trick: Swadeshi began at the heart of Bengal's capital administrative core = 'Calcutta Town Hall'.]"
   }
 ]

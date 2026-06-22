@@ -1,128 +1,212 @@
-{
-  "title": "Rivers & Lakes",
-  "title_hi": "नदियाँ और झीलें",
-  "icon": "🏞️",
-  "slug": "rivers",
-  "questions": [
-    {
-      "id": 1,
-      "q": "The Ganga originates from which glacier?",
-      "opts": [
-        "Siachen",
-        "Zemu",
-        "Gangotri",
-        "Yamunotri"
-      ],
-      "ans": 2,
-      "exp": "The Ganga originates from the Gangotri Glacier in the Uttarkashi district of Uttarakhand. The actual source is at Gomukh (Cow's Mouth) at the snout of the glacier, at an altitude of 3,892 m."
-    },
-    {
-      "id": 2,
-      "q": "The Brahmaputra River originates from?",
-      "opts": [
-        "Nepal",
-        "Tibet",
-        "Bhutan",
-        "Arunachal Pradesh"
-      ],
-      "ans": 1,
-      "exp": "The Brahmaputra River originates from the Angsi Glacier (Chemayungdung) in Tibet, China. It is known as Yarlung Tsangpo in Tibet and Jamuna in Bangladesh. It is one of the world's major rivers."
-    },
-    {
-      "id": 3,
-      "q": "The largest freshwater lake in India is?",
-      "opts": [
-        "Dal Lake",
-        "Chilika Lake",
-        "Wular Lake",
-        "Loktak Lake"
-      ],
-      "ans": 2,
-      "exp": "Wular Lake in Jammu & Kashmir is the largest freshwater lake in India and one of the largest freshwater lakes in Asia. It serves as a natural flood reservoir for the Kashmir Valley."
-    },
-    {
-      "id": 4,
-      "q": "The Nile River flows into which sea?",
-      "opts": [
-        "Red Sea",
-        "Arabian Sea",
-        "Mediterranean Sea",
-        "Black Sea"
-      ],
-      "ans": 2,
-      "exp": "The Nile River flows northward through northeastern Africa and empties into the Mediterranean Sea. It is approximately 6,650 km long, making it one of the world's longest rivers."
-    },
-    {
-      "id": 5,
-      "q": "Loktak Lake is located in which state?",
-      "opts": [
-        "Assam",
-        "Sikkim",
-        "Manipur",
-        "Meghalaya"
-      ],
-      "ans": 2,
-      "exp": "Loktak Lake, the largest freshwater lake in Northeast India, is located in Manipur. It is famous for its phumdis (floating biomass) and the Keibul Lamjao National Park, the world's only floating national park."
-    },
-    {
-      "id": 6,
-      "q": "The Amazon River flows through which continent?",
-      "opts": [
-        "Africa",
-        "Asia",
-        "North America",
-        "South America"
-      ],
-      "ans": 3,
-      "exp": "The Amazon River flows through South America, primarily through Brazil. It is the world's largest river by water discharge and drainage basin. It carries about 20% of all freshwater that flows into the world's oceans."
-    },
-    {
-      "id": 7,
-      "q": "The Dal Lake is situated in?",
-      "opts": [
-        "Himachal Pradesh",
-        "Uttarakhand",
-        "Jammu & Kashmir",
-        "Ladakh"
-      ],
-      "ans": 2,
-      "exp": "Dal Lake is situated in Srinagar, Jammu & Kashmir. It is famous for its houseboats and shikaras. Dal Lake is one of the most visited tourist spots in India and is called the 'Jewel in the Crown of Kashmir'."
-    },
-    {
-      "id": 8,
-      "q": "Which river is known as the 'Holy River' of India?",
-      "opts": [
-        "Yamuna",
-        "Saraswati",
-        "Brahmaputra",
-        "Ganga"
-      ],
-      "ans": 3,
-      "exp": "The Ganga (Ganges) is known as the 'Holy River' of India. It is the most sacred river in Hinduism. Over 400 million people live in the Ganga basin, and it supports one of the world's most densely populated regions."
-    },
-    {
-      "id": 9,
-      "q": "The Caspian Sea is actually a?",
-      "opts": [
-        "Sea",
-        "Ocean",
-        "Lake",
-        "Bay"
-      ],
-      "ans": 2,
-      "exp": "The Caspian Sea is technically the world's largest inland body of water (lake), bordered by Russia, Kazakhstan, Turkmenistan, Iran, and Azerbaijan. It covers about 371,000 sq km."
-    },
-    {
-      "id": 10,
-      "q": "The Indus River originates from?",
-      "opts": [
-        "India",
-        "Nepal",
-        "Tibet",
-        "Pakistan"
-      ],
-      "ans": 2,
-      "exp": "The Indus River originates from Tibet (China), near Lake Mansarovar. It flows through Ladakh (India), then through Pakistan, and finally drains into the Arabian Sea. The ancient Indus Valley Civilization developed along its banks."
-    }
-  ]
-}
+[
+  {
+    "question": "At which historic confluence do the Alaknanda and Bhagirathi rivers merge to officially form the holy River Ganga?",
+    "option_a": "Devprayag",
+    "option_b": "Rudraprayag",
+    "option_c": "Karnaprayag",
+    "option_d": "Vishnuprayag",
+    "correct_answer": "a",
+    "explanation": "At Devprayag in Uttarakhand, the Alaknanda (flowing from Badrinath) and the Bhagirathi (flowing from Gangotri) unite. From this confluence onward, the river is known as the Ganga. [Memory Trick: 'Dev' means God, and 'Bhagi-Alak' join at the 'Divine' (Devprayag) gate to create the sacred Ganga.]",
+    "id": "rv_en_01"
+  },
+  {
+    "question": "Which of these lakes, located in Jammu and Kashmir, is the largest freshwater lake in India and is naturally fed by the Jhelum River?",
+    "option_a": "Wular Lake",
+    "option_b": "Dal Lake",
+    "option_c": "Mansar Lake",
+    "option_d": "Pangong Tso",
+    "correct_answer": "a",
+    "explanation": "Wular Lake is the largest freshwater lake in India, formed by tectonic activity and fed directly by the Jhelum River. It acts as a massive natural reservoir. [Memory Trick: 'Wular' sounds like 'Woolen' - you need warm woolens in J&K when visiting its coolest, largest freshwater lake!]",
+    "id": "rv_en_02"
+  },
+  {
+    "question": "Chilika Lake in Odisha, recognized as the first Ramsar site in India, is famous as Asia's largest brackish water lagoon. Which bird sanctuary is situated inside it?",
+    "option_a": "Nalbana Bird Sanctuary",
+    "option_b": "Sultanpur Bird Sanctuary",
+    "option_c": "Kumarakom Bird Sanctuary",
+    "option_d": "Salim Ali Bird Sanctuary",
+    "correct_answer": "a",
+    "explanation": "Chilika Lake is Asia's largest brackish water lagoon. Nalbana Bird Sanctuary, located in the core area of Chilika, gets submerged during the monsoon but attracts millions of migratory birds in winter. [Memory Trick: 'Nal-bana' sounds like 'No-Land-made' because it gets completely submerged in water during heavy rains.]",
+    "id": "rv_en_03"
+  },
+  {
+    "question": "Which river is widely infamous as the 'Sorrow of Bihar' due to its frequent course changes causing catastrophic flooding in the region?",
+    "option_a": "Kosi River",
+    "option_b": "Gandak River",
+    "option_c": "Son River",
+    "option_d": "Damodar River",
+    "correct_answer": "a",
+    "explanation": "The Kosi River is known as the 'Sorrow of Bihar' (Bihar ka Shok). Originating in Tibet, it brings heavy sediment loads, causing it to change channels frequently and flood North Bihar. [Memory Trick: When the river floods, Bihar has to 'Kosh' (curse) the 'Kosi' for sweeping away livelihoods.]",
+    "id": "rv_en_04"
+  },
+  {
+    "question": "Which major peninsular river of India is the second-longest river in the country and is reverently known as the 'Dakshin Ganga' or 'Vriddha Ganga'?",
+    "option_a": "Godavari River",
+    "option_b": "Krishna River",
+    "option_c": "Kaveri River",
+    "option_d": "Mahanadi River",
+    "correct_answer": "a",
+    "explanation": "The Godavari is the largest river system in the Peninsular India, spanning 1,465 km. Because of its massive size and sacred status, it is called the 'Dakshin Ganga' (Ganga of the South) or 'Vriddha Ganga' (Old Ganga). [Memory Trick: 'God-avari' is a 'Godly' massive old river, acting as the South's majestic counterpart to Mother Ganga.]",
+    "id": "rv_en_05"
+  },
+  {
+    "question": "Which West-flowing river of India originates near Amarkantak and flows through a rift valley between the Vindhya and Satpura ranges, creating the scenic Dhuandhar Falls?",
+    "option_a": "Narmada River",
+    "option_b": "Tapi River",
+    "option_c": "Mahi River",
+    "option_d": "Sabarmati River",
+    "correct_answer": "a",
+    "explanation": "The Narmada River is the largest west-flowing river in India. It originates at Amarkantak in Madhya Pradesh, runs through a narrow rift valley, and creates the spectacular marble gorge and Dhuandhar ('smoke-mist') Falls near Jabalpur. [Memory Trick: 'Narmada' sounds like 'Narm-ada' (soft demeanor) but it aggressively cuts down rocks inside a rugged rift valley!]",
+    "id": "rv_en_06"
+  },
+  {
+    "question": "Loktak Lake, famous for its unique floating swamp islands called 'Phumdis', is located in which northeastern state of India?",
+    "option_a": "Manipur",
+    "option_b": "Meghalaya",
+    "option_c": "Assam",
+    "option_d": "Nagaland",
+    "correct_answer": "a",
+    "explanation": "Loktak Lake is the largest freshwater lake in Northeast India, located in Manipur. It is famous for phumdis, which are floating mats of soil, organic matter, and vegetation. [Memory Trick: 'Lok-tak' sounds like a 'Lock' holding a precious 'Mani' (Jewel) which represents Manipur.]",
+    "id": "rv_en_07"
+  },
+  {
+    "question": "The Indus River, one of the longest rivers in Asia, originates from the glaciers of the Kailash Range in Tibet. Near which of these holy lakes does it rise?",
+    "option_a": "Lake Manasarovar",
+    "option_b": "Lake Rakshastal",
+    "option_c": "Lake Karakul",
+    "option_d": "Pangong Lake",
+    "correct_answer": "a",
+    "explanation": "The Indus River (Sindu) originates on the northern slope of the Kailash Range near Lake Manasarovar and Mount Kailash in Tibet, before entering India in Ladakh. [Memory Trick: Lake 'Manasarovar' (pure mind lake) sits at the peak of the world, serving as the cradle for the mighty Indus and Brahmaputra.]",
+    "id": "rv_en_08"
+  },
+  {
+    "question": "Which transboundary river is known as the 'Tsangpo' in Tibet, 'Dihang' in Arunachal Pradesh, and 'Jamuna' in Bangladesh?",
+    "option_a": "Brahmaputra River",
+    "option_b": "Ganga River",
+    "option_c": "Teesta River",
+    "option_d": "Indus River",
+    "correct_answer": "a",
+    "explanation": "The Brahmaputra River originates in Tibet as the Yarlung Tsangpo, enters India through a deep gorge in Arunachal Pradesh under the name Dihang, flows through Assam as Brahmaputra, and enters Bangladesh where it is renamed Jamuna. [Memory Trick: The river takes multiple names because it travels 'Brahma's' vast path crossing three distinct international boundaries.]",
+    "id": "rv_en_09"
+  },
+  {
+    "question": "Situated in Assam, Majuli is recognized as the world's largest river island. Which river forms Majuli, and which of its channels is it situated in?",
+    "option_a": "Brahmaputra River",
+    "option_b": "Ganga River",
+    "option_c": "Hooghly River",
+    "option_d": "Meghna River",
+    "correct_answer": "a",
+    "explanation": "Majuli is a vast river island in the Brahmaputra River, Assam. It was formed due to course changes by the Brahmaputra and its tributaries, and is the first island district of India. [Memory Trick: 'Majuli' sounds like 'My-Jewel' (Majesty) which sits directly in the broad chest of the mighty 'Brahmaputra'.]",
+    "id": "rv_en_10"
+  },
+  {
+    "question": "Jog Falls, one of the most majestic plunge waterfalls in India, is created by which of these rivers in the state of Karnataka?",
+    "option_a": "Sharavati River",
+    "option_b": "Kaveri River",
+    "option_c": "Krishna River",
+    "option_d": "Nethravathi River",
+    "correct_answer": "a",
+    "explanation": "Jog Falls (also called Gerosoppa Falls) in Karnataka is created by the Sharavati River rushing down a 253-meter vertical drop. It is a major tourism landmark. [Memory Trick: To 'Jog' swiftly in the green forests, you need 'Sharav-ti' (Sharp energy) of a fast-running river.]",
+    "id": "rv_en_11"
+  },
+  {
+    "question": "Which of these rivers is a pluvial, ephemeral river that flows only during non-winter monsoons in Rajasthan and completely disappears into the marshy Rann of Kutch?",
+    "option_a": "Luni River",
+    "option_b": "Chambal River",
+    "option_c": "Banaskantha River",
+    "option_d": "Sabarmati River",
+    "correct_answer": "a",
+    "explanation": "The Luni is an endorheic river of western Rajasthan. It originates in the Pushkar valley of the Aravalli range, has saline water in its lower reaches, and terminates directly in the salt silts of the Rann of Kutch. [Memory Trick: 'Luni' sounds like 'Lavan' (Salt) - a dry, salty river that gets lost in the epic salt marshes.]",
+    "id": "rv_en_12"
+  },
+  {
+    "question": "Which highly unique lake in Maharashtra was formed around 52,000 years ago by a high-velocity meteor impact, causing it to have both saline and alkaline water?",
+    "option_a": "Lonar Lake",
+    "option_b": "Vembanad Lake",
+    "option_c": "Pulicat Lake",
+    "option_d": "Chilika Lake",
+    "correct_answer": "a",
+    "explanation": "Lonar Lake is a National Geo-heritage monument in Maharashtra. It is a hyper-velocity meteorite impact crater lake situated in basalt rock, famous for turning pink occasionally due to micro-organisms. [Memory Trick: A 'Lone-Star' (Lonar) fell from the sky (meteor) and smashed a crater in Maharashtra!]",
+    "id": "rv_en_13"
+  },
+  {
+    "question": "Where does the Kaveri River create the cascading Sivasamudram falls, which was utilized to establish India's first major hydroelectric power station in 1902?",
+    "option_a": "Karnataka",
+    "option_b": "Tamil Nadu",
+    "option_c": "Andhra Pradesh",
+    "option_d": "Kerala",
+    "correct_answer": "a",
+    "explanation": "The Sivasamudram Falls of the Kaveri River in Karnataka became famous in 1902 when power was routed to the Kolar Gold Fields, making it one of the earliest hydro projects in Asia. [Memory Trick: Lord 'Siva' (Sivasamudram) cascades water down on 'Kaveri' to power up early Karnataka's gold mines.]",
+    "id": "rv_en_14"
+  },
+  {
+    "question": "Which trans-Himalayan saltwater lake in eastern Ladakh, through which the Line of Actual Control (LAC) passes, is infamous for its changing scenic colors?",
+    "option_a": "Pangong Tso",
+    "option_b": "Tso Moriri",
+    "option_c": "Tso Kar",
+    "option_d": "Chandra Taal",
+    "correct_answer": "a",
+    "explanation": "Pangong Tso is a narrow, endorheic lake extending from India to Tibet. It sits at an altitude of 4,225 meters, and about one-third of the lake lies within India's direct control. [Memory Trick: 'Pangong' is the glorious, extremely cold lake where the famous climax of the movie '3 Idiots' was filmed!]",
+    "id": "rv_en_15"
+  },
+  {
+    "question": "Ayodhya, the sacred historic city and birthplace of Lord Rama, is globally prominent for standing on the banks of which holy river?",
+    "option_a": "Sarayu River",
+    "option_b": "Yamuna River",
+    "option_c": "Gomti River",
+    "option_d": "Kosi River",
+    "correct_answer": "a",
+    "explanation": "The Sarayu (also spelled Sarju) is a ancient river mentioned in the Ramayana. Ayodhya is situated on its banks. It is formed by the confluence of the Mahakali and Karnali rivers. [Memory Trick: 'Sara-yu' (All of you) pray at the banks of Ayodhya to seek blessings of Rama.]",
+    "id": "rv_en_16"
+  },
+  {
+    "question": "Vembanad Lake, the longest lake in India and famous for hosting the annual competitive Nehru Trophy Snake Boat Race (Vallam Kali), is situated in which state?",
+    "option_a": "Kerala",
+    "option_b": "Tamil Nadu",
+    "option_c": "Karnataka",
+    "option_d": "Andhra Pradesh",
+    "correct_answer": "a",
+    "explanation": "Vembanad Lake is the longest lake in India, spanning several districts in Kerala. It holds the major Kumarakom Bird Sanctuary and is globally celebrated for the colorful backwater boat races during Onam. [Memory Trick: 'Vembanad' begins with 'V' like 'Vallam Kali' (snake boat race) taking place in the soothing backwaters of Kerala.]",
+    "id": "rv_en_17"
+  },
+  {
+    "question": "Which river is widely termed the 'Red River' of India, primarily due to the heavy suspension of iron-oxide rich red soil sediment in its currents in Assam?",
+    "option_a": "Brahmaputra River",
+    "option_b": "Narmada River",
+    "option_c": "Godavari River",
+    "option_d": "Mahanadi River",
+    "correct_answer": "a",
+    "explanation": "The Brahmaputra is known as the 'Red River of India' because during monsoon, its sweeping waters over the red clay of Assam turn deep reddish, giving it a copper-rust color. [Memory Trick: Brahmaputra is the mighty 'Son' (Brahma-Putra) carrying the iron-rich 'Red' clay down the dense valley.]",
+    "id": "rv_en_18"
+  },
+  {
+    "question": "The Indira Gandhi Canal, India's longest irrigation canal spanning across Rajasthan, draws its water supply from Harike Barrage, which is situated at the confluence of which two major rivers?",
+    "option_a": "Sutlej and Beas",
+    "option_b": "Ravi and Jhelum",
+    "option_c": "Indus and Chenab",
+    "option_d": "Ganga and Yamuna",
+    "correct_answer": "a",
+    "explanation": "The Harike Barrage in Punjab sits at the junction where Satluj and Beas merge. The Indira Gandhi Canal starts here, transforming agriculture in northwestern Rajasthan. [Memory Trick: To water the desert, you need the 'Sweet-Beas' and the 'Strong-Sutlej' joining forces to feed the massive canal.]",
+    "id": "rv_en_19"
+  },
+  {
+    "question": "Which river basin in India is famous for having the nickname 'Rice Bowl of India' due to its rich agricultural delta plain?",
+    "option_a": "Krishna-Godavari River Basin",
+    "option_b": "Narmada River Basin",
+    "option_c": "Ganga-Yamuna River Basin",
+    "option_d": "Luni River Basin",
+    "correct_answer": "a",
+    "explanation": "The Krishna-Godavari Delta in Andhra Pradesh is widely recognized as the 'Rice Bowl of South India' due to its highly fertile soil, abundant river irrigation channels, and immense paddy yield. [Memory Trick: Combine the names of two giants 'Krishna' and 'Godavari' to form a massive basin that fills up India's 'Rice Bowl'.]",
+    "id": "rv_en_20"
+  },
+  {
+    "question": "The legendary 'Grand Anicut' or Kallanai Dam, one of the oldest water-diversion dams in the world still in active use, was constructed by Chola King Karikala on which river?",
+    "option_a": "Kaveri River",
+    "option_b": "Krishna River",
+    "option_c": "Godavari River",
+    "option_d": "Vaigai River",
+    "correct_answer": "a",
+    "explanation": "The Kallanai Dam (Grand Anicut) was built around the 2nd century AD by Karikala Chola across the Kaveri River in Tamil Nadu to divert water for irrigation of the fertile delta. [Memory Trick: The smooth waters of 'Kaveri' are routed beautifully by the ancient 'Kallanai' dam built by King 'Karikala'.]",
+    "id": "rv_en_21"
+  }
+]

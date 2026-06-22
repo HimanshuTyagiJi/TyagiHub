@@ -1,128 +1,407 @@
-{
-  "title": "Indian Government & Constitution",
-  "title_hi": "भारतीय सरकार और संविधान",
-  "icon": "⚖️",
-  "slug": "indian-constitution",
-  "questions": [
-    {
-      "id": 1,
-      "q": "Who is known as the Father of the Indian Constitution?",
-      "opts": [
-        "Jawaharlal Nehru",
-        "Mahatma Gandhi",
-        "B.R. Ambedkar",
-        "Sardar Patel"
-      ],
-      "ans": 2,
-      "exp": "Dr. B.R. Ambedkar is known as the Father of the Indian Constitution. He chaired the Drafting Committee of the Constituent Assembly."
-    },
-    {
-      "id": 2,
-      "q": "How many Fundamental Rights are given in the Indian Constitution?",
-      "opts": [
-        "5",
-        "6",
-        "7",
-        "8"
-      ],
-      "ans": 1,
-      "exp": "The Indian Constitution provides 6 Fundamental Rights: Right to Equality, Right to Freedom, Right against Exploitation, Right to Freedom of Religion, Cultural & Educational Rights, and Right to Constitutional Remedies."
-    },
-    {
-      "id": 3,
-      "q": "The President of India is elected by?",
-      "opts": [
-        "Direct election by people",
-        "Electoral College",
-        "Lok Sabha members only",
-        "Parliament members only"
-      ],
-      "ans": 1,
-      "exp": "The President of India is elected by an Electoral College consisting of elected members of both Houses of Parliament and the elected members of the Legislative Assemblies of States and UTs."
-    },
-    {
-      "id": 4,
-      "q": "Which article of the Constitution abolished untouchability?",
-      "opts": [
-        "Article 14",
-        "Article 15",
-        "Article 17",
-        "Article 21"
-      ],
-      "ans": 2,
-      "exp": "Article 17 of the Indian Constitution abolishes untouchability and its practice in any form is forbidden. The enforcement of any disability arising out of untouchability is an offence."
-    },
-    {
-      "id": 5,
-      "q": "The Preamble of the Indian Constitution begins with?",
-      "opts": [
-        "We the Citizens",
-        "We the People",
-        "We the Elected Representatives",
-        "We the Parliament"
-      ],
-      "ans": 1,
-      "exp": "The Preamble of the Indian Constitution begins with 'WE, THE PEOPLE OF INDIA'. It declares India to be a Sovereign, Socialist, Secular, Democratic Republic."
-    },
-    {
-      "id": 6,
-      "q": "Which is the highest court in India?",
-      "opts": [
-        "High Court",
-        "District Court",
-        "Supreme Court",
-        "National Court"
-      ],
-      "ans": 2,
-      "exp": "The Supreme Court of India is the highest judicial body. It was established on 28 January 1950. The Chief Justice of India heads the Supreme Court."
-    },
-    {
-      "id": 7,
-      "q": "The Rajya Sabha is also known as?",
-      "opts": [
-        "Lower House",
-        "Upper House",
-        "People's House",
-        "Council of States"
-      ],
-      "ans": 3,
-      "exp": "The Rajya Sabha is known as the Council of States or Upper House of Parliament. It has a maximum strength of 250 members, of which 238 are elected by state assemblies."
-    },
-    {
-      "id": 8,
-      "q": "Article 356 is related to?",
-      "opts": [
-        "Emergency provisions",
-        "President's Rule",
-        "Fundamental Rights",
-        "Directive Principles"
-      ],
-      "ans": 1,
-      "exp": "Article 356 deals with the imposition of President's Rule (also called State Emergency or Constitutional Emergency) in a state when constitutional machinery fails."
-    },
-    {
-      "id": 9,
-      "q": "The minimum age to become the Prime Minister of India is?",
-      "opts": [
-        "21 years",
-        "25 years",
-        "30 years",
-        "35 years"
-      ],
-      "ans": 1,
-      "exp": "The minimum age to become the Prime Minister of India is 25 years (as they must be a member of Lok Sabha). For the Rajya Sabha route, the minimum age is 30 years."
-    },
-    {
-      "id": 10,
-      "q": "How many schedules does the Indian Constitution have?",
-      "opts": [
-        "8",
-        "10",
-        "12",
-        "14"
-      ],
-      "ans": 2,
-      "exp": "The Indian Constitution currently has 12 Schedules. Originally it had 8 schedules, and 4 more were added through constitutional amendments."
-    }
-  ]
-}
+[
+  {
+    "question": "Who was appointed as the permanent Chairman of the Constituent Assembly of India in December 1946?",
+    "option_a": "Dr. B.R. Ambedkar",
+    "option_b": "Dr. Rajendra Prasad",
+    "option_c": "Sardar Vallabhbhai Patel",
+    "option_d": "Sachchidananda Sinha",
+    "correct_answer": "b",
+    "explanation": "While Dr. Sachchidananda Sinha served as the temporary President of the Constituent Assembly, Dr. Rajendra Prasad was elected as its permanent Chairman on December 11, 1946. Later, he became the first President of India. [Memory Trick: He who 'Presides' over the assembly properly becomes the long-term leader = 'Prasad' / 'Rajendra Prasad'.]"
+  },
+  {
+    "question": "Which specific constitutional article, dealing with the Right to Constitutional Remedies, was described by Dr. B.R. Ambedkar as the 'Heart and Soul' of the Indian Constitution?",
+    "option_a": "Article 14",
+    "option_b": "Article 19",
+    "option_c": "Article 21",
+    "option_d": "Article 32",
+    "correct_answer": "d",
+    "explanation": "Article 32 provides the fundamental right to citizens to approach the Supreme Court directly for the enforcement of fundamental rights through writs. Dr. Ambedkar remarked that without this article, the Constitution would be a nullity. [Memory Trick: The super '3-2' combo ensures that if your rights are breached, you score a winning goal directly in the Supreme Court.]"
+  },
+  {
+    "question": "The Fundamental Duties of citizens were incorporated into Part IV-A of the Constitution under Article 51A by which Amendment Act?",
+    "option_a": "42nd Amendment Act, 1976",
+    "option_b": "44th Amendment Act, 1978",
+    "option_c": "73rd Amendment Act, 1992",
+    "option_d": "86th Amendment Act, 2002",
+    "correct_answer": "a",
+    "explanation": "The 42nd Amendment of 1976, often termed the 'Mini-Constitution', added 10 Fundamental Duties on the recommendations of the Swaran Singh Committee. An 11th duty was added later in 2002. [Memory Trick: 4 + 2 = 6, which was passed by Indira Gandhi during emergency in '76 to demand citizen responsibility.]"
+  },
+  {
+    "question": "Which of the following schedules of the Indian Constitution contains provisions related to the disqualification of members of Parliament on grounds of defection?",
+    "option_a": "Seventh Schedule",
+    "option_b": "Eighth Schedule",
+    "option_c": "Ninth Schedule",
+    "option_d": "Tenth Schedule",
+    "correct_answer": "d",
+    "explanation": "The Tenth Schedule (Anti-Defection Law) was added to the Constitution of India via the 52nd Amendment Act of 1985 to restrict political opportunism and switching parties. [Memory Trick: 'Ten' (10) starts with 'T', which is similar to 'Turncoat' prevention = Anti-Defection.]"
+  },
+  {
+    "question": "An emergency under Article 356 of the Indian Constitution, commonly known as President's Rule, deals with which of the following?",
+    "option_a": "National Security and War Emergencies",
+    "option_b": "Failure of Constitutional Machinery in States",
+    "option_c": "Extreme Financial Instability",
+    "option_d": "Natural Disasters or Pandemic Outbreaks",
+    "correct_answer": "b",
+    "explanation": "Article 356 governs President's Rule, which is imposed on any state of India if it fails to operate according to the provisions of the Constitution, usually initiated on highly critical reports of the regional Governor. [Memory Trick: When a State loses '56' inch chest stability, Center assumes control through Article 3-5-6.]"
+  },
+  {
+    "question": "Which Article under Directive Principles of State Policy (Part IV) orders the complete Separation of the Judiciary from the Executive branch of state administration?",
+    "option_a": "Article 40",
+    "option_b": "Article 45",
+    "option_c": "Article 48",
+    "option_d": "Article 50",
+    "correct_answer": "d",
+    "explanation": "Article 50 of the Directive Principles of State Policy directs the State to take steps to separate the judiciary from the executive in public services, ensuring independent justice. [Memory Trick: A clean '50-50' split divider separates two sibling branches: the judge (Judiciary) and the boss (Executive).]"
+  },
+  {
+    "question": "The structural model of 'Single Citizenship' implemented under the Indian Sovereign framework is borrowed from which country's constitution?",
+    "option_a": "United States of America",
+    "option_b": "United Kingdom",
+    "option_c": "Canada",
+    "option_d": "Australia",
+    "correct_answer": "b",
+    "explanation": "India adopted a parliamentary system of governance and Single Citizenship from the United Kingdom (Britain). Unlike the US where citizens hold state and federal citizenships, an Indian citizen holds only one national identity. [Memory Trick: The 'King' (United Kingdom) ruled with one single scepter and gave us Single Citizenship.]"
+  },
+  {
+    "question": "Who introduced the historic 'Objective Resolution' in the Constituent Assembly on December 13, 1946, which later served as the foundation of the Preamble?",
+    "option_a": "Dr. B.R. Ambedkar",
+    "option_b": "Jawaharlal Nehru",
+    "option_c": "Sardar Vallabhbhai Patel",
+    "option_d": "K.M. Munshi",
+    "correct_answer": "b",
+    "explanation": "Jawaharlal Nehru introduced the Objective Resolution on December 13, 1946. It laid down the fundamental principles and vision for the framing of the Constitution, adopted on January 22, 1947. [Memory Trick: Nehru's grand 'visionary jewel' ('Jawahar') gave the Assembly its clear starting 'Objective'.]"
+  },
+  {
+    "question": "The concept of 'Directive Principles of State Policy' (DPSPs) enshrined in Part IV of the Indian Constitution was adapted from which nation's constitution?",
+    "option_a": "Irish Constitution (Ireland)",
+    "option_b": "USSR Constitution (Russia)",
+    "option_c": "Weimar Constitution (Germany)",
+    "option_d": "French Constitution",
+    "correct_answer": "a",
+    "explanation": "The Directive Principles of State Policy (Articles 36 to 51) are borrowed from the Irish Constitution of 1937, which had copied it from the Spanish Constitution. [Memory Trick: We need to drink a pint of cool 'Irish' stout to find the golden 'Directives' for state charity.]"
+  },
+  {
+    "question": "Who is universally recognized as the 'Father of the Indian Constitution' and served as the chief orchestrator of the drafting process?",
+    "option_a": "Mahatma Gandhi",
+    "option_b": "Dr. B.R. Ambedkar",
+    "option_c": "Dr. Rajendra Prasad",
+    "option_d": "Jawaharlal Nehru",
+    "correct_answer": "b",
+    "explanation": "Dr. Bhimrao Ramji Ambedkar was the Chairman of the Drafting Committee and is regarded as the Father of the Indian Constitution for his unparalleled guidance and scholarship. [Memory Trick: The ultimate 'Bheem' (giant) of constitutional design who laid down the rules of absolute justice.]"
+  },
+  {
+    "question": "The Fundamental Rights guaranteed in Part III (Articles 12-35) of the Indian Constitution are primarily borrowed from which foreign system?",
+    "option_a": "British Magna Carta",
+    "option_b": "United States Bill of Rights",
+    "option_c": "Soviet Union Charter",
+    "option_d": "Canadian Federal Scheme",
+    "correct_answer": "b",
+    "explanation": "Fundamental Rights were inspired by the United States Constitution's 'Bill of Rights'. These rights are justiciable, meaning citizens can directly petition courts if violated. [Memory Trick: The 'US' (United States) is famous for yelling 'My Rights!' at every step, which is where we took our Rights charter.]"
+  },
+  {
+    "question": "Which was the very first state in India to be created on a purely linguistic basis on October 1, 1953?",
+    "option_a": "Andhra Pradesh",
+    "option_b": "Gujarat",
+    "option_c": "Maharashtra",
+    "option_d": "Punjab",
+    "correct_answer": "a",
+    "explanation": "Following the prolonged fast and death of activist Potti Sreeramulu, the Indian Government was forced to create the Telugu-speaking state of Andhra State (later Andhra Pradesh) in 1953. [Memory Trick: The alphabet starts with 'A' (Andhra), which is also the 'First' state created by words and speech.]"
+  },
+  {
+    "question": "Under Article 108 of the Constitution, a 'Joint Sitting' of both Houses of Parliament is summoned by whom and presided over by whom?",
+    "option_a": "Summoned by President, Presided by Vice-President",
+    "option_b": "Summoned by President, Presided by Speaker of Lok Sabha",
+    "option_c": "Summoned by Prime Minister, Presided by Speaker of Lok Sabha",
+    "option_d": "Summoned by Speaker of Lok Sabha, Presided by Chairman of Rajya Sabha",
+    "correct_answer": "b",
+    "explanation": "In case of a deadlock between Lok Sabha and Rajya Sabha over an ordinary bill, the President summons a joint sitting under Article 108. However, it is always presided over by the Speaker of Lok Sabha. [Memory Trick: The grand 'Presiding Master' of the massive lower house (Speaker) holds the gavel while the 'President' acts as the caller host.]"
+  },
+  {
+    "question": "Which constitutional article defines the precise legislative parameters and procedures for introducing a 'Money Bill' in Parliament?",
+    "option_a": "Article 108",
+    "option_b": "Article 110",
+    "option_c": "Article 112",
+    "option_d": "Article 117",
+    "correct_answer": "b",
+    "explanation": "Article 110 defines a Money Bill inside the Indian legislative framework. It can only be introduced in Lok Sabha on the recommendation of the President, and the Speaker has sole authority to certify it. [Memory Trick: 'Ten' (10) out of 'Ten' (10) cash points are needed to pay your bills = Article 1-1-0.]"
+  },
+  {
+    "question": "The voting age in India was reduced from 21 years to 18 years by which landmark Constitutional Amendment Act of 1988/1989?",
+    "option_a": "44th Amendment Act",
+    "option_b": "61st Amendment Act",
+    "option_c": "73rd Amendment Act",
+    "option_d": "86th Amendment Act",
+    "correct_answer": "b",
+    "explanation": "The 61st Amendment Act, 1988 (which came into force in 1989) amended Article 326 of the Constitution to reduce the voting eligibility age from 21 to 18 to increase youth participation. [Memory Trick: When youths turned '18' in '61' (or 6+1=7 years of extra power), they gained the democratic stamp of vote.]"
+  },
+  {
+    "question": "Which Article of the Constitution provides for the independent office of the Comptroller and Auditor General (CAG) of India, the guardian of the public purse?",
+    "option_a": "Article 76",
+    "option_b": "Article 148",
+    "option_c": "Article 280",
+    "option_d": "Article 324",
+    "correct_answer": "b",
+    "explanation": "Article 148 mandates the appointment of the CAG by the President. The CAG audits all receipts and expenditures of the Union and State governments. [Memory Trick: CAG checks the books of accounts of one great state ('1') and its '48' departments = Article 1-4-8.]"
+  },
+  {
+    "question": "Following the revocation of Anglo-Indian nominations, what is the maximum permissible strength of the Lok Sabha as per the Constitution?",
+    "option_a": "545",
+    "option_b": "550",
+    "option_c": "552",
+    "option_d": "500",
+    "correct_answer": "b",
+    "explanation": "Previously, the maximum strength was 552. However, the 104th Constitutional Amendment Act, 2019, abolished the reservation and nomination of 2 Anglo-Indian members, reducing the effective maximum strength to 550. [Memory Trick: A neat 'double nickel-zero' (550) represents the absolute limit of elected MPs sitting in Parliament.]"
+  },
+  {
+    "question": "Who was appointed as the highly distinguished first Chief Election Commissioner (CEC) of independent India in 1950?",
+    "option_a": "Sukumar Sen",
+    "option_b": "T.N. Seshan",
+    "option_c": "K.V.K. Sundaram",
+    "option_d": "Rajiv Kumar",
+    "correct_answer": "a",
+    "explanation": "Sukumar Sen served as India's first Chief Election Commissioner from 1950 to 1958. He successfully engineered the first two massive general elections of independent India in 1951-52 and 1957. [Memory Trick: Our very first voting experience was guided 'beautifully and smoothly' = 'Sukumar' (Su-kumar) Sen.]"
+  },
+  {
+    "question": "The Preamble of the Indian Constitution has been amended only once in history. Which Amendment Act introduced the terms 'Socialist', 'Secular', and 'Integrity'?",
+    "option_a": "42nd Amendment Act, 1976",
+    "option_b": "44th Amendment Act, 1978",
+    "option_c": "52nd Amendment Act, 1985",
+    "option_d": "91st Amendment Act, 2003",
+    "correct_answer": "a",
+    "explanation": "The 42nd Amendment Act, 1976, added three words to the Preamble: 'Socialist', 'Secular', and 'Integrity'. Before this, India was described as a 'Sovereign Democratic Republic'. [Memory Trick: Prime Minister Indira Gandhi inserted a solid 'triple-word capsule' using her massive '4-2' emergency power.]"
+  },
+  {
+    "question": "The concept of 'Judicial Review', allowing courts to evaluate and nullify legislative actions, is adapted from which country's judicial structure?",
+    "option_a": "United Kingdom",
+    "option_b": "United States of America",
+    "option_c": "Soviet Union",
+    "option_d": "Switzerland",
+    "correct_answer": "b",
+    "explanation": "The power of Judicial Review is borrowed from the United States constitutional framework, where courts can declare legislative or executive orders unconstitutional if they breach fundamental law. [Memory Trick: Powerful 'US' Judges can review any political law and shred it to secure rights.]"
+  },
+  {
+    "question": "Which of the historic five prerogative writs literally translates from Latin as 'To have the body of' or 'produce the person' in court?",
+    "option_a": "Mandamus",
+    "option_b": "Habeas Corpus",
+    "option_c": "Certiorari",
+    "option_d": "Quo Warranto",
+    "correct_answer": "b",
+    "explanation": "Habeas Corpus is a writ used to secure a person's release from unlawful detention. It commands the jailer or detaining authority to produce the individual before the court. [Memory Trick: If police lock you up without a warrant, demand: 'Give me back my 'Body' (Corpus)!' = Habeas Corpus.]"
+  },
+  {
+    "question": "Which writ would be issued by the Supreme Court to prevent an individual from holding a public office to which they are not legally entitled?",
+    "option_a": "Prohibition",
+    "option_b": "Quo Warranto",
+    "option_c": "Mandamus",
+    "option_d": "Certiorari",
+    "correct_answer": "b",
+    "explanation": "Quo Warranto ('by what authority') is issued by the judiciary to prevent unlawful usurpation of a public office by anyone who does not meet the necessary criteria. [Memory Trick: Ask the usurper: 'What is your 'Warrant' (authority) to sit on this public chair?!' = Quo Warranto.]"
+  },
+  {
+    "question": "The highly controversial Ninth Schedule, designed to shield agrarian reform laws from judicial scrutiny, was added to the Constitution by which Amendment?",
+    "option_a": "1st Constitutional Amendment Act, 1951",
+    "option_b": "7th Constitutional Amendment Act, 1956",
+    "option_c": "24th Constitutional Amendment Act, 1971",
+    "option_d": "44th Constitutional Amendment Act, 1978",
+    "correct_answer": "a",
+    "explanation": "The Ninth Schedule was introduced by the 1st Constitutional Amendment in 1951 under PM Jawaharlal Nehru to implement land reforms and abolish the Zamindari system. [Memory Trick: The absolute 'First' thing Nehru did to reform land was to build a protective '9th' Schedule wall.]"
+  },
+  {
+    "question": "By which landmark constitutional amendment passed in 1992 were rural local self-governments (Panchayati Raj) constitutionalized?",
+    "option_a": "72nd Amendment Act",
+    "option_b": "73rd Amendment Act",
+    "option_c": "74th Amendment Act",
+    "option_d": "86th Amendment Act",
+    "correct_answer": "b",
+    "explanation": "The 73rd Amendment Act, 1992, added Part IX and the Eleventh Schedule to the Constitution, providing systemic recognition to Panchayati Raj Institutions (PRIs) with 29 functional matters. [Memory Trick: You need '73rd' amendment to build small mud houses in the village 'Panchayat', and '74th' for urban towns.]"
+  },
+  {
+    "question": "The Right to Education (RTE) was incorporated as a justiciable Fundamental Right under Article 21-A by which Amendment Act?",
+    "option_a": "44th Amendment Act, 1978",
+    "option_b": "86th Amendment Act, 2002",
+    "option_c": "91st Amendment Act, 2003",
+    "option_d": "103rd Amendment Act, 2019",
+    "correct_answer": "b",
+    "explanation": "The 86th Amendment in 2002 inserted Article 21-A, making free and compulsory education for children between the ages of 6 and 14 a Fundamental Right. [Memory Trick: Eight and Six ('8-6') kids sat in a complete round circle of study to claim their educational book.]"
+  },
+  {
+    "question": "Who was the legendary statesman who chaired the critical 'Drafting Committee' responsible for preparing the first draft of the Indian Constitution?",
+    "option_a": "Dr. Rajendra Prasad",
+    "option_b": "Dr. B.R. Ambedkar",
+    "option_c": "Alladi Krishnaswamy Iyer",
+    "option_d": "Sir Benegal Narsing Rau",
+    "correct_answer": "b",
+    "explanation": "Dr. B.R. Ambedkar chaired the 7-member Drafting Committee set up on August 29, 1947, to write the blueprint of modern India's fundamental law. [Memory Trick: The Master 'Architect' who drafted every sentence of the Indian supreme scroll.]"
+  },
+  {
+    "question": "In India, 'Constitution Day' (Samvidhan Divas) is observed on which calendar date to commemorate the formal adoption of the Constitution?",
+    "option_a": "15th August",
+    "option_b": "26th November",
+    "option_c": "26th January",
+    "option_d": "2nd October",
+    "correct_answer": "b",
+    "explanation": "The Constituent Assembly adopted the Constitution of India on November 26, 1949. To mark this historic step, the government declared this day as Constitution Day in 2015. [Memory Trick: In late 'November' (26th), the work was completely finished and ('Samvidhan') was adopted before starting it on Republic day.]"
+  },
+  {
+    "question": "When the Indian Constitution was officially adopted by the Assembly in 1949, it consisted of how many Articles and Schedules?",
+    "option_a": "395 Articles and 8 Schedules",
+    "option_b": "395 Articles and 12 Schedules",
+    "option_c": "444 Articles and 10 Schedules",
+    "option_d": "465 Articles and 12 Schedules",
+    "correct_answer": "a",
+    "explanation": "The original Constitution of India had 22 Parts, 395 Articles, and 8 Schedules. Over years of amendments, the schedules have expanded to 12. [Memory Trick: Starting with exactly 'Three-Ninety-Five' (395) scrolls and 'Eight' (8) original index chapters.]"
+  },
+  {
+    "question": "Under which specific Article of the Constitution can a national 'Financial Emergency' be declared if financial stability is threatened?",
+    "option_a": "Article 352",
+    "option_b": "Article 356",
+    "option_c": "Article 360",
+    "option_d": "Article 368",
+    "correct_answer": "c",
+    "explanation": "Article 360 empowers the President to declare a Financial Emergency if the financial stability or credit of India is threatened. India has never declared a financial emergency. [Memory Trick: When the Indian economy performs a dangerous '360' degree spin-out, the center invokes Article 360.]"
+  },
+  {
+    "question": "What is the maximum permissible period for which President's Rule under Article 356 can be extended in a state with bi-annual legislative approvals?",
+    "option_a": "1 Year",
+    "option_b": "2 Years",
+    "option_c": "3 Years",
+    "option_d": "5 Years",
+    "correct_answer": "c",
+    "explanation": "President's Rule can be imposed initially for six months. It can be extended up to a maximum period of three years, subject to Parliamentary approval every six months. [Memory Trick: Three is 'the magic limit' (3 Years) for keeping regional state governance suspended under union rules.]"
+  },
+  {
+    "question": "The independent functioning and structure of the Election Commission of India is guaranteed under which legal Article?",
+    "option_a": "Article 315",
+    "option_b": "Article 324",
+    "option_c": "Article 338",
+    "option_d": "Article 343",
+    "correct_answer": "b",
+    "explanation": "Article 324 of the Constitution vests the superintendence, direction, and control of elections in the Election Commission of India. [Memory Trick: ECI works '24' hours a day across '3' tiers to run the voting booths = Article 3-2-4.]"
+  },
+  {
+    "question": "Who is designated as the primary Law Officer of the Government of India and holds office under Article 76?",
+    "option_a": "Chief Justice of India",
+    "option_b": "Attorney General of India",
+    "option_c": "Solicitor General of India",
+    "option_d": "Union Law Minister",
+    "correct_answer": "b",
+    "explanation": "The Attorney General of India is appointed by the President under Article 76. The AG advises the union on legal matters and has the right to speak in both Houses of Parliament. [Memory Trick: AG represents the Union of '76' states as the top legal advocate in court = Article 76.]"
+  },
+  {
+    "question": "On which historic date did the Parliament of India pass the statutory resolution revoking the special status of Jammu & Kashmir under Article 370?",
+    "option_a": "August 5, 2019",
+    "option_b": "January 26, 2020",
+    "option_c": "October 31, 2019",
+    "option_d": "August 15, 2019",
+    "correct_answer": "a",
+    "explanation": "On August 5, 2019, the President of India issued a constitutional order rendering Article 370 inoperative, and Parliament passed the J&K Reorganisation Act, splitting it into two Union Territories. [Memory Trick: Right in the start of 'August' (5th) in '19', J&K was fully integrated under one nation rule.]"
+  },
+  {
+    "question": "The President of India constitutes the 'Finance Commission' every five years under which Article of the Constitution?",
+    "option_a": "Article 110",
+    "option_b": "Article 280",
+    "option_c": "Article 312",
+    "option_d": "Article 315",
+    "correct_answer": "b",
+    "explanation": "Article 280 requires the President to constitute a Finance Commission every 5 years to recommend the distribution of tax revenues between the Union and the States. [Memory Trick: Sharing '280' bags of tax money fairly between Delhi and regional capitals = Article 2-8-0.]"
+  },
+  {
+    "question": "Which specific Schedule of the Indian Constitution divides legislative powers into Union, State, and Concurrent Lists?",
+    "option_a": "Fifth Schedule",
+    "option_b": "Sixth Schedule",
+    "option_c": "Seventh Schedule",
+    "option_d": "Eighth Schedule",
+    "correct_answer": "c",
+    "explanation": "The Seventh Schedule of the Constitution of India defines and specifies allocation of powers and functions between Union and States, containing three lists: Union, State, and Concurrent. [Memory Trick: Seven 'Lucky' items represent the 'Seven' (7th) Schedule distribution of sovereign powers.]"
+  },
+  {
+    "question": "How many official languages are currently recognized and protected under the Eighth Schedule of the Indian Constitution?",
+    "option_a": "14",
+    "option_b": "18",
+    "option_c": "22",
+    "option_d": "24",
+    "correct_answer": "c",
+    "explanation": "There were 14 languages initially, but subsequent amendments added more, bringing the total to 22 officially recognized languages in the Eighth Schedule. [Memory Trick: A total 'Double-Two' (22) languages represent the diverse vocal index of India.]"
+  },
+  {
+    "question": "Which Article of the Constitution details the precise power and procedure of Parliament to amend the Constitution?",
+    "option_a": "Article 356",
+    "option_b": "Article 360",
+    "option_c": "Article 368",
+    "option_d": "Article 370",
+    "correct_answer": "c",
+    "explanation": "Article 368 in Part XX of the Constitution deals with the powers of Parliament to amend the Constitution and its procedures. [Memory Trick: If you want to change '68' old rules, use Article 3-6-8.]"
+  },
+  {
+    "question": "The Fundamental Right to Property was deleted from Part III and shifted to Article 300A as a legal right by which amendment?",
+    "option_a": "42nd Amendment Act, 1976",
+    "option_b": "44th Amendment Act, 1978",
+    "option_c": "61st Amendment Act, 1989",
+    "option_d": "86th Amendment Act, 2002",
+    "correct_answer": "b",
+    "explanation": "The right to property was originally a Fundamental Right. The Janata Party government under Morarji Desai passed the 44th Amendment in 1978, reducing it to a constitutional legal right under Article 300A. [Memory Trick: Four and Four ('44') restored property ownership rules from emergency blocks.]"
+  },
+  {
+    "question": "Who was elected as the highly revered first Speaker of the Lok Sabha of independent India in 1952?",
+    "option_a": "G.V. Mavalankar",
+    "option_b": "M. Ananthasayanam Ayyangar",
+    "option_c": "Hukam Singh",
+    "option_d": "K.S. Hegde",
+    "correct_answer": "a",
+    "explanation": "Ganesh Vasudev Mavalankar served as the first Speaker of Lok Sabha (1952–1956). He is fondly remembered as the 'Dadasaheb' of Indian legislative history. [Memory Trick: The grand 'Ganesh' (G.V. Mavalankar) led the very first Lok Sabha assembly invocation.]"
+  },
+  {
+    "question": "What is the minimum qualification age mandated in the Constitution for an individual to contest the election for the President of India?",
+    "option_a": "25 Years",
+    "option_b": "30 Years",
+    "option_c": "35 Years",
+    "option_d": "40 Years",
+    "correct_answer": "c",
+    "explanation": "Article 58 of the Constitution states that a candidate must be a citizen of India and completed at least 35 years of age to contest the Presidential election. [Memory Trick: You need 'Three-Five' (35) lines of wisdom to acquire the keys of Rashtrapati Bhavan.]"
+  },
+  {
+    "question": "What is the minimum age prescribed for an individual to become a member of the Rajya Sabha (Council of States)?",
+    "option_a": "21 Years",
+    "option_b": "25 Years",
+    "option_c": "30 Years",
+    "option_d": "35 Years",
+    "correct_answer": "c",
+    "explanation": "To be eligible to become a member of Rajya Sabha, a person must be a citizen of India and not less than 30 years of age. [Memory Trick: Village panchyat needs 21, Lok Sabha needs 25, while the 'Elderly' Council (Rajya Sabha) requires 'Thirty' (30) years.]"
+  },
+  {
+    "question": "Under which specific Article of the Indian Constitution can the President of India be impeached for violating the Constitution?",
+    "option_a": "Article 52",
+    "option_b": "Article 61",
+    "option_c": "Article 72",
+    "option_d": "Article 123",
+    "correct_answer": "b",
+    "explanation": "Article 61 of the Constitution provides the precise procedure for the impeachment of the President of India through a resolution in either House of Parliament. [Memory Trick: If PM and cabinet turn '61' years old, they can start impeachment checks on the President's actions = Article 61.]"
+  },
+  {
+    "question": "The famous Sarkaria Commission was appointed by the Government of India in 1983 to thoroughly examine which governance aspect?",
+    "option_a": "Electoral Reforms",
+    "option_b": "Centre-State Relations",
+    "option_c": "Implementation of Panchayati Raj",
+    "option_d": "Indirect Taxation structures",
+    "correct_answer": "b",
+    "explanation": "The Sarkaria Commission, led by Justice R.S. Sarkaria, studied the scope of power and balance of relations between the Union (Centre) and the regional State governments. [Memory Trick: The 'Sarkar' (Govt) and the state need to work hand in hand = Centre-State relations analyzed by 'Sarkaria' commission.]"
+  },
+  {
+    "question": "Which high-level advisory commission, headed by a former Chief Justice of India, was set up in 2007 to review Centre-State Relations?",
+    "option_a": "Punchhi Commission",
+    "option_b": "Kothari Commission",
+    "option_c": "Shah Commission",
+    "option_d": "Verma Commission",
+    "correct_answer": "a",
+    "explanation": "The Punchhi Commission, headed by Justice Madan Mohan Punchhi, submitted its report in 2010 on federal relations and emergency actions in regional states. [Memory Trick: Punchhi gave a solid 'punch' of federal guidance to Center-State relations in 2010.]"
+  },
+  {
+    "question": "In which landmark historic case did the Supreme Court of India propound the famous 'Basic Structure Doctrine'?",
+    "option_a": "Golaknath Case, 1967",
+    "option_b": "Kesavananda Bharati Case, 1973",
+    "option_c": "Minerva Mills Case, 1980",
+    "option_d": "Indira Gandhi Case, 1975",
+    "correct_answer": "b",
+    "explanation": "By a tight 7:6 majority, a 13-judge bench in Kesavananda Bharati v. State of Kerala (1973) held that while Parliament can amend any part of the Constitution, it cannot alter its Basic Structure. [Memory Trick: 'Kesavananda' (Divine Bliss) saved the 'Basic Soul' of our supreme book from being broken.]"
+  }
+]

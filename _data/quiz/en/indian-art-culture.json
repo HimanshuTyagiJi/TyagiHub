@@ -1,128 +1,389 @@
-{
-  "title": "Indian Art & Culture",
-  "title_hi": "भारतीय कला और संस्कृति",
-  "icon": "🎭",
-  "slug": "indian-art-culture",
-  "questions": [
-    {
-      "id": 1,
-      "q": "Which dance form is associated with Manipur?",
-      "opts": [
-        "Bharatanatyam",
-        "Kathakali",
-        "Manipuri",
-        "Kuchipudi"
-      ],
-      "ans": 2,
-      "exp": "Manipuri is the classical dance form of Manipur. It is known for its graceful movements and depicts themes of Vaishnavism. It was recognized as one of India's eight classical dances."
-    },
-    {
-      "id": 2,
-      "q": "The Ajanta Caves are famous for?",
-      "opts": [
-        "Sculptures",
-        "Paintings",
-        "Architecture",
-        "All of the above"
-      ],
-      "ans": 3,
-      "exp": "The Ajanta Caves (Maharashtra) are famous for their Buddhist paintings, sculptures, and rock-cut architecture. They date from the 2nd century BCE to about 480 CE and are a UNESCO World Heritage Site."
-    },
-    {
-      "id": 3,
-      "q": "Carnatic music is classical music of which region?",
-      "opts": [
-        "North India",
-        "South India",
-        "East India",
-        "West India"
-      ],
-      "ans": 1,
-      "exp": "Carnatic music is the classical music tradition of South India. It is one of the two main subgenres of Indian classical music, the other being Hindustani music (North India)."
-    },
-    {
-      "id": 4,
-      "q": "The Ramayana was composed by?",
-      "opts": [
-        "Tulsidas",
-        "Valmiki",
-        "Vyasa",
-        "Kalidasa"
-      ],
-      "ans": 1,
-      "exp": "The original Sanskrit Ramayana was composed by the sage Valmiki. It consists of 24,000 verses and narrates the life of Prince Rama. Tulsidas later wrote Ramcharitmanas in Awadhi."
-    },
-    {
-      "id": 5,
-      "q": "The Ellora Caves represent art from which religions?",
-      "opts": [
-        "Only Buddhism",
-        "Only Hinduism",
-        "Hinduism and Buddhism",
-        "Hinduism, Buddhism and Jainism"
-      ],
-      "ans": 3,
-      "exp": "The Ellora Caves (Maharashtra) contain 34 monasteries and temples representing Buddhism, Hinduism, and Jainism, built between 600–1000 CE. They are a UNESCO World Heritage Site."
-    },
-    {
-      "id": 6,
-      "q": "Bharatanatyam dance form belongs to which state?",
-      "opts": [
-        "Kerala",
-        "Andhra Pradesh",
-        "Tamil Nadu",
-        "Karnataka"
-      ],
-      "ans": 2,
-      "exp": "Bharatanatyam is the classical dance form of Tamil Nadu. It is one of the oldest and most popular Indian classical dances, originating in the temples of Tamil Nadu."
-    },
-    {
-      "id": 7,
-      "q": "The famous Kumbh Mela is held at how many locations?",
-      "opts": [
-        "2",
-        "3",
-        "4",
-        "6"
-      ],
-      "ans": 2,
-      "exp": "Kumbh Mela is held at 4 locations: Prayagraj (Allahabad), Haridwar, Ujjain, and Nashik. The Maha Kumbh Mela at Prayagraj occurs every 12 years and is the world's largest religious gathering."
-    },
-    {
-      "id": 8,
-      "q": "Which instrument is Ravi Shankar associated with?",
-      "opts": [
-        "Tabla",
-        "Sarod",
-        "Sitar",
-        "Flute"
-      ],
-      "ans": 2,
-      "exp": "Pandit Ravi Shankar was a world-renowned sitar player. He popularized Indian classical music globally and won three Grammy Awards during his career."
-    },
-    {
-      "id": 9,
-      "q": "The Konark Sun Temple is located in which state?",
-      "opts": [
-        "Gujarat",
-        "Rajasthan",
-        "Odisha",
-        "Tamil Nadu"
-      ],
-      "ans": 2,
-      "exp": "The Konark Sun Temple is located in Odisha. Built in the 13th century by King Narasimhadeva I, it is designed in the shape of a chariot with 24 wheels and is a UNESCO World Heritage Site."
-    },
-    {
-      "id": 10,
-      "q": "Yakshagana is a traditional art form of?",
-      "opts": [
-        "Assam",
-        "Gujarat",
-        "Karnataka",
-        "Odisha"
-      ],
-      "ans": 2,
-      "exp": "Yakshagana is a traditional theatre form of Karnataka that combines dance, music, dialogue, costume, and stage techniques. It is performed in coastal and central Karnataka regions."
-    }
-  ]
-}
+[
+  {
+    "question": "Which state does the classical dance form 'Bharatanatyam' originate from?",
+    "option_a": "Kerala",
+    "option_b": "Tamil Nadu",
+    "option_c": "Andhra Pradesh",
+    "option_d": "Karnataka",
+    "correct_answer": "b",
+    "explanation": "Bharatanatyam is one of the oldest classical dance traditions of India, originating from the temples of Tamil Nadu where it was performed by Devadasis. [Memory Trick: 'Bharat' met 'Nadu' (Tamil Nadu) in the temple of dance.]"
+  },
+  {
+    "question": "The famous Madhubani folk paintings are traditionally practiced in which Indian state?",
+    "option_a": "West Bengal",
+    "option_b": "Odisha",
+    "option_c": "Bihar",
+    "option_d": "Madhya Pradesh",
+    "correct_answer": "c",
+    "explanation": "Madhubani painting (or Mithila art) is a style of Indian painting, practiced in the Mithila region of Bihar and Nepal, using fingers, twigs, brushes, and matchsticks with natural dyes. [Memory Trick: 'Madhuban' (honey forest) is sweet like Bihar's 'Litti Chokha'.]"
+  },
+  {
+    "question": "Who was the builder of the world-famous Sun Temple at Konark, Odisha?",
+    "option_a": "Anantavarman Chodagangadeva",
+    "option_b": "Narasimhadeva I",
+    "option_c": "Rajendra Chola",
+    "option_d": "Kharavela",
+    "correct_answer": "b",
+    "explanation": "The Konark Sun Temple was constructed in the mid-13th century by King Narasimhadeva I of the Eastern Ganga Dynasty. [Memory Trick: The 'Sun' (Konark) is so strong that only a 'Narasimha' (Lion-person) could build a temple for it.]"
+  },
+  {
+    "question": "The paintings in the famous Ajanta Caves in Maharashtra primarily depict stories from which religious texts?",
+    "option_a": "Rigveda",
+    "option_b": "Upanishad",
+    "option_c": "Jataka Tales (Buddhism)",
+    "option_d": "Puranas",
+    "correct_answer": "c",
+    "explanation": "Ajanta Caves are UNESCO World Heritage site rock-cut Buddhist monument caves. The paintings depict the past lives and rebirths of the Buddha described in the Jataka tales. [Memory Trick: 'Ajanta' starts with 'A' and Jataka ends with 'a', representing the eternal loop of Buddhist rebirths.]"
+  },
+  {
+    "question": "'Sattriya', a recognized classical dance form, was introduced in the 15th century by which saint-reformer in Assam?",
+    "option_a": "Srimanta Sankardev",
+    "option_b": "Chaitanya Mahaprabhu",
+    "option_c": "Kabir Das",
+    "option_d": "Jnaneshwar",
+    "correct_answer": "a",
+    "explanation": "Sattriya was created by the great Assamese Vaishnavite saint-reformer Srimanta Sankardev as an artistic play to propagate the Bhakti movement. [Memory Trick: Sankardev created 'Sattriya' of Assam; both start with 'S'.]"
+  },
+  {
+    "question": "The majestic Brihadisvara Temple in Thanjavur, outstanding for its Dravidian architecture, was built by which emperor?",
+    "option_a": "Rajaraja Chola I",
+    "option_b": "Mahendravarman I",
+    "option_c": "Krishna I",
+    "option_d": "Harihara I",
+    "correct_answer": "a",
+    "explanation": "The Brihadisvara Temple (also called Rajarajeswaram) was built by the Chola king Rajaraja Chola I between 1003 and 1010 AD. [Memory Trick: The 'king of kings' Rajaraja built the 'Brihad' (colossal) temple.]"
+  },
+  {
+    "question": "Which dance form is characterized by elaborate, heavy green facial makeup, colossal headgears, and dramatic mime?",
+    "option_a": "Kathak",
+    "option_b": "Kathakali",
+    "option_c": "Sattriya",
+    "option_d": "Kuchipudi",
+    "correct_answer": "b",
+    "explanation": "Kathakali is a major classical dance-drama from Kerala known for its storytelling, highly stylized gestures, custom makeup, and large green face masks called 'paccha'. [Memory Trick: 'Katha' (story) + 'Kali' (play) played with deep green and red face makeup in Kerala.]"
+  },
+  {
+    "question": "'Kuchipudi' classical dance originates from a village of the same name located in which state?",
+    "option_a": "Tamil Nadu",
+    "option_b": "Andhra Pradesh",
+    "option_c": "Karnataka",
+    "option_d": "Odisha",
+    "correct_answer": "b",
+    "explanation": "Kuchipudi originates from the Kuchipudi village in Krishna district of Andhra Pradesh, characterized by fast footwork and dramatic expressions. [Memory Trick: Imagine preparing 'Kachhi Puri' (uncooked bread) in the dark because of being 'Andha' (Andhra).]"
+  },
+  {
+    "question": "With which Indian state is the famous Warli folk painting historically associated?",
+    "option_a": "Gujarat",
+    "option_b": "Maharashtra",
+    "option_c": "Madhya Pradesh",
+    "option_d": "Rajasthan",
+    "correct_answer": "b",
+    "explanation": "Warli painting is a style of tribal art created mostly by the tribal people from the North Sahyadri Range in Maharashtra, using geometric shapes like circles, triangles, and squares. [Memory Trick: Mumbai's famous location 'Worli' is in 'Maharashtra'—matches 'Warli' painting!]"
+  },
+  {
+    "question": "The annual cultural extravaganza 'Hornbill Festival' is celebrated in which North-Eastern state?",
+    "option_a": "Manipur",
+    "option_b": "Meghalaya",
+    "option_c": "Nagaland",
+    "option_d": "Mizoram",
+    "correct_answer": "c",
+    "explanation": "The Hornbill Festival is held from December 1st to 10th every year in Nagaland to promote cultural heritage, inter-tribal interaction, and tourism. [Memory Trick: A 'Naga' (snake) wearing a cap like a 'Hornbill' bird.]"
+  },
+  {
+    "question": "Which of the following is a traditional shadow puppet theatre form of Andhra Pradesh?",
+    "option_a": "Tholu Bommalata",
+    "option_b": "Togalu Gombeyaata",
+    "option_c": "Ravanachhaya",
+    "option_d": "Putul Nach",
+    "correct_answer": "a",
+    "explanation": "Tholu Bommalata is a shadow puppet theatre of Andhra Pradesh where puppets are made of leather and cast colorful shadows on a backlit screen. [Memory Trick: 'Tholu' means leather in Telugu, and 'Bommalata' means dance of puppets in the land of Andhra.]"
+  },
+  {
+    "question": "The breathtaking Kailasa Temple at Ellora, carved out of a single monolithic rock from top to bottom, was built by which dynasty?",
+    "option_a": "Gupta Dynasty",
+    "option_b": "Rashtrakuta Dynasty",
+    "option_c": "Chalukya Dynasty",
+    "option_d": "Pallava Dynasty",
+    "correct_answer": "b",
+    "explanation": "The Kailasa Temple (Cave 16) at Ellora was built by the Rashtrakuta King Krishna I in the 8th century, demonstrating incredible engineering. [Memory Trick: Carving a mountain from top to bottom is a task of a giant 'Rashtrakuta' (national power).]"
+  },
+  {
+    "question": "Who among the following was the famous Chola ruler who commissioned the beautiful Shore Temple at Mahabalipuram?",
+    "option_a": "Rajaraja Chola I",
+    "option_b": "Narasimhavarman II (Rajasimhas)",
+    "option_c": "Mahendravarman I",
+    "option_d": "Aditya Chola I",
+    "correct_answer": "b",
+    "explanation": "The Shore Temple at Mahabalipuram was built in the 8th century under the reign of the Pallava King Narasimhavarman II (Rajasimha), which marks the peak of structural temple architecture of Pallavas. [Memory Trick: A Narasimha (Lion) on the seashore of Pallava capital protecting Mahabalipuram.]"
+  },
+  {
+    "question": "Which musical instrument is associated with the legendary maestro Pandit Shivkumar Sharma?",
+    "option_a": "Santoor",
+    "option_b": "Sitar",
+    "option_c": "Sarod",
+    "option_d": "Shehnai",
+    "correct_answer": "a",
+    "explanation": "Pandit Shivkumar Sharma was a legendary Indian classical musician who elevated the Santoor, a folk instrument from Jammu and Kashmir, to classical concert status. [Memory Trick: Shiv (Lord Shiva) lives in the cold 'Santoor' snowy mountains of Kashmir.]"
+  },
+  {
+    "question": "Which of the following is the chief deity worshipped in Hindustani and Carnatic devotional songs composed by Saint Tyagaraja?",
+    "option_a": "Lord Krishna",
+    "option_b": "Lord Rama",
+    "option_c": "Lord Shiva",
+    "option_d": "Goddess Durga",
+    "correct_answer": "b",
+    "explanation": "Saint Tyagaraja, one of the Trinity of Carnatic Music, composed thousands of devotional songs mostly in Telugu in praise of Lord Rama. [Memory Trick: Tyagaraja was 'Ragi' (devoted) to king 'Rama'.]"
+  },
+  {
+    "question": "Pattachitra is a traditional scroll painting form that belongs to which Indian state?",
+    "option_a": "Odisha",
+    "option_b": "Rajasthan",
+    "option_c": "Gujarat",
+    "option_d": "Kerala",
+    "correct_answer": "a",
+    "explanation": "Pattachitra is a traditional scroll painting form based in Odisha and West Bengal, portraying stories of Lord Jagannath on cloth (patta). [Memory Trick: 'Patta' paint on canvas for Lord Jagannath of 'Odisha' who rises in his chariot.]"
+  },
+  {
+    "question": "Which emperor is considered the golden era patron of Mughal miniature paintings, under whom focus shifted from manuscripts to individual portraits?",
+    "option_a": "Akbar",
+    "option_b": "Jahangir",
+    "option_c": "Shah Jahan",
+    "option_d": "Humayun",
+    "correct_answer": "b",
+    "explanation": "Jahangir was deeply passionate about painting. Under his patronage, the Mughal painting school achieved its aesthetic zenith, focusing on fine lines, nature, birds, and portraiture. [Memory Trick: Jahangir is a lover of 'Jahan' (world)'s natural beauty - birds and flowers in miniatures.]"
+  },
+  {
+    "question": "The famous folk dance 'Ghoomar', performed by women during festivals, is native to which state?",
+    "option_a": "Gujarat",
+    "option_b": "Haryana",
+    "option_c": "Rajasthan",
+    "option_d": "Punjab",
+    "correct_answer": "c",
+    "explanation": "Ghoomar is a traditional folk dance of Rajasthan, originally performed by Bhil tribe to worship Goddess Saraswati, later adopted by Rajput clans. [Memory Trick: Royal ladies 'Ghoom' (spin) in giant colorful ghagras in Rajasthan's deserts.]"
+  },
+  {
+    "question": "The unique prehistoric cave paintings in Bhimbetka Rock Shelters, showcasing early human life, are located in which state?",
+    "option_a": "Chhattisgarh",
+    "option_b": "Madhya Pradesh",
+    "option_c": "Jharkhand",
+    "option_d": "Maharashtra",
+    "correct_answer": "b",
+    "explanation": "Bhimbetka rock shelters in Madhya Pradesh are a UNESCO World Heritage site containing outstanding rock shelters with paintings spanning from Mesolithic to historical times. [Memory Trick: 'Bhim' sat in the middle ('Madhya') of India to paint these prehistoric walls.]"
+  },
+  {
+    "question": "In which city is the 'National School of Drama' (NSD), India's premier theatre training institute, located?",
+    "option_a": "Mumbai",
+    "option_b": "Kolkata",
+    "option_c": "New Delhi",
+    "option_d": "Pune",
+    "correct_answer": "c",
+    "explanation": "The National School of Drama is one of the foremost theatre training institutions in the world, established in 1959 by the Sangeet Natak Akademi and situated in New Delhi. [Memory Trick: All the central political 'drama' happens in the capital, 'New Delhi'!]"
+  },
+  {
+    "question": "The masterfully carved Chola bronze statues of Lord Nataraja were produced using which technological process?",
+    "option_a": "Sand casting",
+    "option_b": "Lost-wax casting (Cire Perdue)",
+    "option_c": "Die casting",
+    "option_d": "Repoussé and chasing",
+    "correct_answer": "b",
+    "explanation": "Chola bronzes, including the famous cosmic dancer Lord Nataraja, were made using the 'lost-wax process' where a wax model is melted out and molten bronze is poured in. [Memory Trick: The wax was 'Lost' (lost-wax) so the eternal bronze Nataraja could be found.]"
+  },
+  {
+    "question": "Which of the following temple style architectures is characterized by a central tower called 'Shikhara' and is predominant in North India?",
+    "option_a": "Dravida Style",
+    "option_b": "Nagara Style",
+    "option_c": "Vesara Style",
+    "option_d": "Pagal style",
+    "correct_answer": "b",
+    "explanation": "The Nagara style of temple architecture is predominant in Northern India, characterized by its beehive-shaped curvilinear tower (Sikhara). [Memory Trick: North Indians reside in 'Nagar' (towns) = 'Nagara' style.]"
+  },
+  {
+    "question": "The legendary singer 'Tansen', one of the 'Navaratnas' in Emperor Akbar's court, was a master of which Indian classical music form?",
+    "option_a": "Khayal",
+    "option_b": "Dhrupad",
+    "option_c": "Thumri",
+    "option_d": "Ghazal",
+    "correct_answer": "b",
+    "explanation": "Tansen was a legendary exponent of the Dhrupad style, the oldest surviving genre of Hindustani classical vocal music. [Memory Trick: Tansen sang so strongly that his 'Dhrup' (pole star) concentration could light lamps.]"
+  },
+  {
+    "question": "The magnificent group of temples at Khajuraho, famous for their Nagara-style architecture and erotic sculptures, were built by which dynasty?",
+    "option_a": "Paramara Dynasty",
+    "option_b": "Chandela Dynasty",
+    "option_c": "Solanki Dynasty",
+    "option_d": "Rashtrakuta Dynasty",
+    "correct_answer": "b",
+    "explanation": "The Khajuraho temples in Madhya Pradesh were constructed by the rulers of the Chandela Dynasty between 950 and 1050 AD. [Memory Trick: 'Chanda' (Moon) shone on the 'Khajur' (dates) trees in 'Chandela' territory.]"
+  },
+  {
+    "question": "Vesara style temple architecture represents a hybrid/intermediate combination of which two main architectural styles?",
+    "option_a": "Nagara and Dravida",
+    "option_b": "Buddhist and Islamic",
+    "option_c": "Indo-Aryan and European",
+    "option_d": "Gandhara and Mathura",
+    "correct_answer": "a",
+    "explanation": "The Vesara style is a hybrid style of Indian temple architecture that combines features of the Nagara (North) and Dravida (South) styles, popularized by the Chalukyas. [Memory Trick: 'Vesara' acts as a bridge ('Vyas' or 'via') between North (Nagara) and South (Dravida).]"
+  },
+  {
+    "question": "With which traditional performance art of Kerala is the ritualistic, multi-character Sanskrit temple theatre 'Koodiyattam' classified?",
+    "option_a": "Kathakali",
+    "option_b": "Kutiyattam",
+    "option_c": "Theyyam",
+    "option_d": "Chakyar Koothu",
+    "correct_answer": "b",
+    "explanation": "Koodiyattam is Kerala's oldest Sanskrit temple drama form, recognized by UNESCO as a Masterpiece of the Oral and Intangible Heritage of Humanity. [Memory Trick: Sanskrit actors play 'Koodi' (together) in the ancient temple theater.]"
+  },
+  {
+    "question": "Which of the following is a famous textile embroidery craft native to Lucknow, Uttar Pradesh?",
+    "option_a": "Kantha work",
+    "option_b": "Phulkari",
+    "option_c": "Chikankari",
+    "option_d": "Zardosi",
+    "correct_answer": "c",
+    "explanation": "Chikankari is a delicate and artfully done traditional hand embroidery style from Lucknow. [Memory Trick: Lucknowites consume 'Chikan' and wear 'Chikankari' shirts to keep cool.]"
+  },
+  {
+    "question": "Which of the following dance styles is an intense, storytelling solo presentation of classical dance from Kerala, known as the 'Dance of the Enchantress'?",
+    "option_a": "Kathakali",
+    "option_b": "Mohiniyattam",
+    "option_c": "Kuchipudi",
+    "option_d": "Bharatanatyam",
+    "correct_answer": "b",
+    "explanation": "Mohiniyattam is characterized by graceful, swaying body movements mimicking palm trees, representing 'Mohini'—the mythical enchantress avatar of Vishnu. [Memory Trick: 'Mohini' means one who 'Mohs' (enchants) you with graceful sweeps.]"
+  },
+  {
+    "question": "The famous string puppetry form of Rajasthan, which features wooden heads and operates using strings tied to the puppeteer's fingers, is called?",
+    "option_a": "Kathputli",
+    "option_b": "Kundhei",
+    "option_c": "Bommalattam",
+    "option_d": "Gombeyatta",
+    "correct_answer": "a",
+    "explanation": "Kathputli is a string puppet performance native to Rajasthan. 'Kath' means wood and 'Putli' means doll. [Memory Trick: Wooden ('Kath') dolls ('Putli') dancing for the Rajput kings.]"
+  },
+  {
+    "question": "With which Indian state is the ancient, semi-classical martial dance 'Chhau' primarily associated (performed in three distinct regional branches)?",
+    "option_a": "Jharkhand, Odisha, and West Bengal",
+    "option_b": "Kerala, Tamil Nadu, and Karnataka",
+    "option_c": "Rajasthan, Gujarat, and Punjab",
+    "option_d": "Assam, Manipur, and Nagaland",
+    "correct_answer": "a",
+    "explanation": "Chhau has three sub-genres: Purulia Chhau (West Bengal), Seraikella Chhau (Jharkhand), and Mayurbhanj Chhau (Odisha), featuring acrobatic martial arts moves. [Memory Trick: Imagine shouting 'Chhau!' while jumping over borders of Bengal, Jharkhand, and Odisha.]"
+  },
+  {
+    "question": "Which ancient school of Indian philosophy, founded by Sage Kapila, is centered on the dualism of Purusha (consciousness) and Prakriti (matter)?",
+    "option_a": "Yoga",
+    "option_b": "Samkhya",
+    "option_c": "Nyaya",
+    "option_d": "Vaisheshika",
+    "correct_answer": "b",
+    "explanation": "Samkhya philosophy is dualist, identifying spirit/consciousness (Purusha) and matter/nature (Prakriti) as the dual ultimate realities. [Memory Trick: 'Samkhya' sounds like 'Sankhya' (number/calculation) analyzing dual factors of life.]"
+  },
+  {
+    "question": "Who was the pioneering female Indian painter of Hungarian-Indian descent often referred to as the 'India's Frida Kahlo'?",
+    "option_a": "Amrita Sher-Gil",
+    "option_b": "Anjolie Ela Menon",
+    "option_c": "Nalini Malani",
+    "option_d": "Arpita Singh",
+    "correct_answer": "a",
+    "explanation": "Amrita Sher-Gil (1913-1941) was an eminent vanguard Hungarian-Indian painter, famous for portraying Indian peasants with melancholic, deep colors of European oil training. [Memory Trick: Her paintings are 'Amrit' (nectar) for Indian art history.]"
+  },
+  {
+    "question": "Which great poet-saint compiled the 'Bijak', a prominent spiritual text featuring a treasury of poetic couplets (Dohe)?",
+    "option_a": "Saint Kabir",
+    "option_b": "Saint Ravidas",
+    "option_c": "Tulsidas",
+    "option_d": "Guru Nanak",
+    "correct_answer": "a",
+    "explanation": "The Bijak is the best-known compilation of the verses and compositions of Saint Kabir, who advocated formless spiritual monotheism. [Memory Trick: Kabir sowed the 'Beej' (seed) of social reform through his 'Bijak'.]"
+  },
+  {
+    "question": "Which of the following folk theatre forms is a lively popular performance of Maharashtra featuring high-energy Lavani dance beats?",
+    "option_a": "Tamasha",
+    "option_b": "Nautanki",
+    "option_c": "Jatra",
+    "option_d": "Bhavai",
+    "correct_answer": "a",
+    "explanation": "Tamasha is a traditional Marathi folk theatre form, often utilizing energetic music and female-led Lavani dance. [Memory Trick: In Marathi culture, 'Tamasha' is a celebratory musical play (not an argument!).]"
+  },
+  {
+    "question": "Which art style under the Gandhara school of art is profoundly characterized by Greco-Roman artistic styles blended with Buddhist themes?",
+    "option_a": "Indo-Scythian Art",
+    "option_b": "Indo-Greek Art",
+    "option_c": "Indo-Persian Art",
+    "option_d": "Mauryan Art",
+    "correct_answer": "b",
+    "explanation": "The Gandhara School of Art combined Greek techniques of body drapery and muscular form with indigenous Buddhist iconography (Indo-Greek art). [Memory Trick: 'Alexander the Great' walked with Greek ('Indo-Greek') styles down the 'Gandhara' valley.]"
+  },
+  {
+    "question": "The world heritage monument 'Gopurams' inside Dravidian temple structures refers to which specific architectural feature?",
+    "option_a": "The innermost sanctum housing the deity",
+    "option_b": "The columned assembly hall",
+    "option_c": "The monumental entrance gateway of the temple complex",
+    "option_d": "The temple water tank",
+    "correct_answer": "c",
+    "explanation": "Gopurams are highly decorated, towering entrance gateways characteristic of Dravidian temple architecture in South India. [Memory Trick: 'Go-Puram' means 'Go' inside the giant monumental gateway to reach the town.]"
+  },
+  {
+    "question": "Which traditional scroll painting style of Rajasthan features large canvases outlining local folk hero-deities like Pabuji and Devnarayan?",
+    "option_a": "Phad paintings",
+    "option_b": "Pichwai paintings",
+    "option_c": "Kalamkari",
+    "option_d": "Cheriyal scrolls",
+    "correct_answer": "a",
+    "explanation": "Phad paintings are large scroll paintings on canvas done in Rajasthan, depicting folk deities and transported by nomadic priests (Bhopas). [Memory Trick: Priests read the history of heroes on canvas 'Phadi' (Phad) by lantern light.]"
+  },
+  {
+    "question": "With which dance genre is the legendary Guru Kelucharan Mohapatra, who single-handedly revived the ancient dance tradition in the 20th century, associated?",
+    "option_a": "Bharatanatyam",
+    "option_b": "Odissi",
+    "option_c": "Kathakali",
+    "option_d": "Manipuri",
+    "correct_answer": "b",
+    "explanation": "Guru Kelucharan Mohapatra was an legendary Odissi dancer and guru, instrumental in organizing and reviving the classic Odissi dance form. [Memory Trick: Kelucharan 'Mohapatra' danced in 'Odisha' along the sea waves = Odissi.]"
+  },
+  {
+    "question": "The majestic 'Buland Darwaza' at Fatehpur Sikri was constructed by Emperor Akbar to celebrate his victory over which region?",
+    "option_a": "Bengal",
+    "option_b": "Gujarat",
+    "option_c": "Deccan",
+    "option_d": "Kashmir",
+    "correct_answer": "b",
+    "explanation": "Akbar built the grand 'Buland Darwaza' (highest gateway) in 1601 to commemorate his successful military conquest of Gujarat. [Memory Trick: Akbar felt very 'Buland' (powerful) after capturing wealthy maritime 'Gujarat'.]"
+  },
+  {
+    "question": "Which classical dance of Northeast India is highly devotional, centering on 'Raslila' (love of Radha-Krishna) and known for its soft, fluid wrist movements?",
+    "option_a": "Sattriya",
+    "option_b": "Manipuri",
+    "option_c": "Bihu",
+    "option_d": "Chhau",
+    "correct_answer": "b",
+    "explanation": "Manipuri dance is specialized for its devotional themes and fluid movements, where dancers wear cylindrical stiff skirts called 'patloi'. [Memory Trick: Dancers glide gracefully like beautiful 'Mani' (gems) in cylindrical skirts of Manipur.]"
+  },
+  {
+    "question": "The 'Basohli painting' style, known for its intense vibrant colors and use of beetle-wing casings for luster, is the earliest school of which art style?",
+    "option_a": "Rajasthani Miniature",
+    "option_b": "Pahari Miniature",
+    "option_c": "Mughal Miniature",
+    "option_d": "Deccani Art",
+    "correct_answer": "b",
+    "explanation": "Basohli, located in Jammu and Kashmir, was the earliest known center of Pahari miniature painting, famed for its passionate expression and bold color palette. [Memory Trick: 'Basohli' lies on the hills ('Pahad' = Pahari) near the Ravi river, making it Pahari.]"
+  },
+  {
+    "question": "Which traditional stringed instrument is played by Carnatic musicians like Mysore Manjunath, styled in European fashion but adapted for classic Indian ragas?",
+    "option_a": "Violin",
+    "option_b": "Mandolin",
+    "option_c": "Guitar",
+    "option_d": "Sitar",
+    "correct_answer": "a",
+    "explanation": "The Violin was introduced to Carnatic music in the 18th century by Baluswami Dikshitar and is now an integral solo and accompaniment instrument in Carnatic concerts. [Memory Trick: Carnatic violinists play high-speed scales inside South Indian temples with a European 'Violin'.]"
+  },
+  {
+    "question": "The exquisite Mughal monument 'Itimad-ud-Daulah's Tomb' in Agra is historically significant for being the first to extensively use which architectural feature?",
+    "option_a": "True dome architecture",
+    "option_b": "Pietra Dura (stone inlay work in marble)",
+    "option_c": "Double-layered minarets",
+    "option_d": "Red sandstone fortifications",
+    "correct_answer": "b",
+    "explanation": "The Tomb of Itimad-ud-Daulah (often called 'Baby Taj') was built by Nur Jahan for her father. It was the first Mughal structure to make widespread use of Pietra Dura inlay. [Memory Trick: Noor Jahan decorated her father's tomb with precious 'Dura' (Pietra Dura) stone jewelry.]"
+  }
+]

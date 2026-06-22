@@ -1,128 +1,412 @@
-{
-  "title": "Sports General Knowledge",
-  "title_hi": "खेल सामान्य ज्ञान",
-  "icon": "🏆",
-  "slug": "sports",
-  "questions": [
-    {
-      "id": 1,
-      "q": "The FIFA World Cup is held every how many years?",
-      "opts": [
-        "2",
-        "3",
-        "4",
-        "5"
-      ],
-      "ans": 2,
-      "exp": "The FIFA World Cup is held every 4 years. It is the world's most prestigious football (soccer) tournament. Brazil has won it the most times (5 times)."
-    },
-    {
-      "id": 2,
-      "q": "How many players are there in a cricket team?",
-      "opts": [
-        "9",
-        "10",
-        "11",
-        "12"
-      ],
-      "ans": 2,
-      "exp": "A cricket team consists of 11 players. The team bats and fields with 11 players. A substitute fielder can field but cannot bat or bowl."
-    },
-    {
-      "id": 3,
-      "q": "The Olympic Games are held every how many years?",
-      "opts": [
-        "2",
-        "3",
-        "4",
-        "5"
-      ],
-      "ans": 2,
-      "exp": "The Summer Olympic Games are held every 4 years. The Winter Olympics are also held every 4 years, staggered 2 years apart from the Summer Olympics."
-    },
-    {
-      "id": 4,
-      "q": "Sachin Tendulkar's jersey number in ODI cricket was?",
-      "opts": [
-        "8",
-        "9",
-        "10",
-        "12"
-      ],
-      "ans": 2,
-      "exp": "Sachin Tendulkar wore jersey number 10 in ODI cricket. He is the highest run-scorer in both Test and ODI cricket and the first player to score 100 international centuries."
-    },
-    {
-      "id": 5,
-      "q": "Which country has won the most Olympic gold medals in history?",
-      "opts": [
-        "China",
-        "Russia",
-        "UK",
-        "USA"
-      ],
-      "ans": 3,
-      "exp": "The United States has won the most Olympic gold medals in history. As of 2024, the USA has won over 1,000 gold medals at the Summer Olympics."
-    },
-    {
-      "id": 6,
-      "q": "The Wimbledon Championship is associated with which sport?",
-      "opts": [
-        "Cricket",
-        "Badminton",
-        "Tennis",
-        "Golf"
-      ],
-      "ans": 2,
-      "exp": "Wimbledon is the oldest and most prestigious tennis tournament in the world. It has been held at the All England Club in London since 1877 and is played on grass courts."
-    },
-    {
-      "id": 7,
-      "q": "Abhinav Bindra won a gold medal in which sport at the 2008 Olympics?",
-      "opts": [
-        "Archery",
-        "Shooting",
-        "Boxing",
-        "Wrestling"
-      ],
-      "ans": 1,
-      "exp": "Abhinav Bindra won India's first-ever individual Olympic gold medal in the 10m Air Rifle event at the 2008 Beijing Olympics. He is the only Indian to win an individual Olympic gold medal."
-    },
-    {
-      "id": 8,
-      "q": "The term 'Googly' is associated with which sport?",
-      "opts": [
-        "Cricket",
-        "Football",
-        "Tennis",
-        "Badminton"
-      ],
-      "ans": 0,
-      "exp": "A 'Googly' is a type of delivery in cricket bowled by a right-arm leg-spin bowler that turns the opposite way to a leg-break. It is designed to deceive the batsman."
-    },
-    {
-      "id": 9,
-      "q": "How many holes are there in a standard golf course?",
-      "opts": [
-        "9",
-        "12",
-        "18",
-        "24"
-      ],
-      "ans": 2,
-      "exp": "A standard golf course has 18 holes. Each hole has a tee area, fairway, rough, and a green with a cup. The objective is to get the ball into the cup with as few strokes as possible."
-    },
-    {
-      "id": 10,
-      "q": "The Durand Cup is related to which sport?",
-      "opts": [
-        "Hockey",
-        "Cricket",
-        "Football",
-        "Polo"
-      ],
-      "ans": 2,
-      "exp": "The Durand Cup is India's oldest and Asia's third oldest football tournament. It was established in 1888 by Sir Mortimer Durand, the then Foreign Secretary of India."
-    }
-  ]
-}
+[
+  {
+    "question": "In which ancient civilization did the Olympic Games originate, held originally to honor the supreme god Zeus?",
+    "option_a": "Ancient Rome",
+    "option_b": "Ancient Greece",
+    "option_c": "Ancient Egypt",
+    "option_d": "Mesopotamia",
+    "correct_answer": "b",
+    "explanation": "The ancient Olympic Games began in Olympia, Greece, in 776 BCE and were held every four years until abolished by Byzantine Emperor Theodosius I in 393 CE. [Memory Trick: The land of Greek gods ('Greece') initiated the highest peak of athletic worship!]",
+    "id": "sp-q1"
+  },
+  {
+    "question": "How many active players from each team are allowed on the pitch during a standard association football (soccer) match?",
+    "option_a": "9 players",
+    "option_b": "11 players",
+    "option_c": "12 players",
+    "option_d": "10 players",
+    "correct_answer": "b",
+    "explanation": "A standard football match is played between two teams, each containing 11 players, including one designated goalkeeper. [Memory Trick: Soccer teams have two '1' legs side by side = '11' players running in unison!]",
+    "id": "sp-q2"
+  },
+  {
+    "question": "Which nation has won the highest number of FIFA Men's World Cup titles in soccer history, as of 2026?",
+    "option_a": "Germany",
+    "option_b": "Italy",
+    "option_c": "Brazil",
+    "option_d": "Argentina",
+    "correct_answer": "c",
+    "explanation": "Brazil has won the FIFA World Cup five times (1958, 1962, 1970, 1994, and 2002), making them the most successful nation in World Cup history. [Memory Trick: 'B'-razil was 'B'-est at raising 'B'-all five times!]",
+    "id": "sp-q3"
+  },
+  {
+    "question": "Who is globally recognized as the founder and 'Father of the Modern Olympic Games'?",
+    "option_a": "Pierre de Coubertin",
+    "option_b": "James Naismith",
+    "option_c": "Thomas Bach",
+    "option_d": "Demetrius Vikelas",
+    "correct_answer": "a",
+    "explanation": "Baron Pierre de Coubertin founded the International Olympic Committee (IOC) in 1894, leading to the first modern games in Athens in 1896. [Memory Trick: To bring nations to a mutual playground, he 'coupled' ('Coubertin') them in harmony!]",
+    "id": "sp-q4"
+  },
+  {
+    "question": "Which intellectual game features tactical terms such as 'En Passant', 'Castling', and 'Stalemate'?",
+    "option_a": "Chess",
+    "option_b": "Bridge",
+    "option_c": "Checkers",
+    "option_d": "Backgammon",
+    "correct_answer": "a",
+    "explanation": "Chess is an 8x8 grid board game featuring special maneuvers like castling (king protection) and en passant (pawn capture). [Memory Trick: Protect your 'Chest' (or 'Chess') from a sudden side-strike!]",
+    "id": "sp-q5"
+  },
+  {
+    "question": "What is the official length of a standard cricket pitch, measured exactly between the opposing stumps?",
+    "option_a": "20 yards",
+    "option_b": "22 yards",
+    "option_c": "24 yards",
+    "option_d": "18 yards",
+    "correct_answer": "b",
+    "explanation": "A cricket pitch is a rectangular area exactly 22 yards (20.12 meters or 66 feet) long, containing wickets at each end. [Memory Trick: To hit a 'two-two' double boundary, you need a '22'-yard sprint!]",
+    "id": "sp-q6"
+  },
+  {
+    "question": "Which historic sprinter is the only person to win three consecutive Olympic gold medals in both the 100m and 200m sprints?",
+    "option_a": "Usain Bolt",
+    "option_b": "Carl Lewis",
+    "option_c": "Yohan Blake",
+    "option_d": "Michael Johnson",
+    "correct_answer": "a",
+    "explanation": "Jamaican sprinter Usain Bolt achieved the legendary 'triple-double' at the 2008, 2012, and 2016 Olympics, cementing his status as the fastest man alive. [Memory Trick: He struck like a lightning 'Bolt' across three generations!]",
+    "id": "sp-q7"
+  },
+  {
+    "question": "Which of the four major Grand Slam tennis tournaments is famously played on red clay courts, demanding high endurance?",
+    "option_a": "Wimbledon",
+    "option_b": "French Open (Roland Garros)",
+    "option_c": "US Open",
+    "option_d": "Australian Open",
+    "correct_answer": "b",
+    "explanation": "The French Open, held at Stade Roland Garros in Paris, is the only Grand Slam tournament played on slow clay courts. [Memory Trick: Think of red clay bricks used to build 'French' villas!]",
+    "id": "sp-q8"
+  },
+  {
+    "question": "Whose birth anniversary on August 29th is celebrated as National Sports Day (Rashtriya Khel Divas) in India?",
+    "option_a": "Major Dhyan Chand",
+    "option_b": "Milkha Singh",
+    "option_c": "K.D. Jadhav",
+    "option_d": "Sachin Tendulkar",
+    "correct_answer": "a",
+    "explanation": "Major Dhyan Chand was India's legendary hockey player whose magical ball control earned him three Olympic gold medals (1928, 1932, and 1936). [Memory Trick: He played with his hockey stick as if meditating ('Dhyan') with eyes shut!]",
+    "id": "sp-q9"
+  },
+  {
+    "question": "Who was the first Indian woman to win an individual Olympic medal in history, winning Bronze at the 2000 Sydney Olympics?",
+    "option_a": "Karnam Malleswari",
+    "option_b": "Mary Kom",
+    "option_c": "Saina Nehwal",
+    "option_d": "P.T. Usha",
+    "correct_answer": "a",
+    "explanation": "Weightlifter Karnam Malleswari won Bronze in the 69 kg weight category in Sydney 2000, creating a watershed moment for Indian women athletes. [Memory Trick: A woman of pure 'Iron' or steel who 'Karn-ed' (earned) fame by lifting 'Mallas' (heavy weights)!]",
+    "id": "sp-q10"
+  },
+  {
+    "question": "Which racket sport utilizes scoring and technical terms like 'Double Fault', 'Deuce', and 'Ace'?",
+    "option_a": "Squash",
+    "option_b": "Tennis",
+    "option_c": "Table Tennis",
+    "option_d": "Badminton",
+    "correct_answer": "b",
+    "explanation": "Tennis utilizes 'Ace' for an unreturnable serve, 'Deuce' for a 40-40 tie, and 'Double Fault' for two sequential failed serves. [Memory Trick: Tennis needs a 'Ten'-sion strings net that makes two ('Deuce') sides struggle for advantage!]",
+    "id": "sp-q11"
+  },
+  {
+    "question": "In which combat sport do participants utilize defensive and offensive maneuvers like 'Uppercut', 'Hook', and 'Jab'?",
+    "option_a": "Wrestling",
+    "option_b": "Boxing",
+    "option_c": "Judo",
+    "option_d": "Fencing",
+    "correct_answer": "b",
+    "explanation": "Boxing rules define standard punches including the straight jab, side hook, and rising vertical uppercut to score points or achieve a knockout. [Memory Trick: Punching gloves packed in a 'Box' (Boxing) ready to deliver a 'Jab'!]",
+    "id": "sp-q12"
+  },
+  {
+    "question": "Which nation won the inaugural ICC Men's T20 World Cup held in South Africa in 2007?",
+    "option_a": "Pakistan",
+    "option_b": "India",
+    "option_c": "Australia",
+    "option_d": "South Africa",
+    "correct_answer": "b",
+    "explanation": "India, led by youngsters and captain MS Dhoni, defeated Pakistan in a thrilling final in Johannesburg to win the first T20 World Cup in 2007. [Memory Trick: The young brigade sparked a 'T20' revolution across a proud 'India'!]",
+    "id": "sp-q13"
+  },
+  {
+    "question": "Which iconic sports stadium in London, England, is widely revered as the 'Mecca of Cricket'?",
+    "option_a": "Lord's Cricket Ground",
+    "option_b": "The Oval",
+    "option_c": "Melbourne Cricket Ground",
+    "option_d": "Eden Gardens",
+    "correct_answer": "a",
+    "explanation": "Lord's is called the Mecca of Cricket due to its history, museum, and prestige, established by Thomas Lord in 1814. [Memory Trick: The ultimate place of worship for cricket enthusiasts is home to the 'Lords' of English culture!]",
+    "id": "sp-q14"
+  },
+  {
+    "question": "How many interlocking rings are featured on the official Olympic flag, representing the unity of five inhabited continents?",
+    "option_a": "5 rings",
+    "option_b": "6 rings",
+    "option_c": "4 rings",
+    "option_d": "7 rings",
+    "correct_answer": "a",
+    "explanation": "The Olympic flag designed by Coubertin has five interlocking rings of Blue, Yellow, Black, Green, and Red on a white background, representing the five continents. [Memory Trick: We have '5' major active continents gathered on a single flag!]",
+    "id": "sp-q15"
+  },
+  {
+    "question": "Who was the first Indian athlete to win an individual Olympic Gold medal, achieving it in the 10m Air Rifle event in 2008?",
+    "option_a": "Abhinav Bindra",
+    "option_b": "Rajyavardhan Singh Rathore",
+    "option_c": "Neeraj Chopra",
+    "option_d": "Gagan Narang",
+    "correct_answer": "a",
+    "explanation": "Abhinav Bindra shot the highest score to win India's historic first individual gold at the Beijing 2008 Olympics. [Memory Trick: He had 'Abhinav' (novel/rare) absolute concentration to hit the exact center of the target!]",
+    "id": "sp-q16"
+  },
+  {
+    "question": "Which Indian track and field pioneer, who narrowly missed an Olympic medal in 1984, was famously nicknamed the 'Payyoli Express'?",
+    "option_a": "P.T. Usha",
+    "option_b": "Sprint Queen Hima Das",
+    "option_c": "Dutee Chand",
+    "option_d": "Shiny Wilson",
+    "correct_answer": "a",
+    "explanation": "Pilavullakandi Thekkeparambil Usha (P.T. Usha), born in Payyoli, Kerala, dominated Asian athletics in the 1980s. [Memory Trick: A railway engine running at full stream = 'Usha' (dawn) of Indian sprinting!]",
+    "id": "sp-q17"
+  },
+  {
+    "question": "The prestigious biennial golf team matches known as the 'Ryder Cup' are played between teams representing which geographic regions?",
+    "option_a": "USA and Europe",
+    "option_b": "USA and Asia-Pacific",
+    "option_c": "UK and Commonwealth nations",
+    "option_d": "Europe and Rest of World",
+    "correct_answer": "a",
+    "explanation": "The Ryder Cup is an elite men's golf competition contested biennially between a team from the United States and a team from Europe. [Memory Trick: Golfers 'Ride' ('Ryder') across the Atlantic to battle between US and Europe!]",
+    "id": "sp-q18"
+  },
+  {
+    "question": "In a standard game of professional basketball, how many points are awarded for a field goal scored from inside the three-point arc?",
+    "option_a": "2 points",
+    "option_b": "1 point",
+    "option_c": "3 points",
+    "option_d": "4 points",
+    "correct_answer": "a",
+    "explanation": "A basket made inside of the arc is worth two points, while a direct free throw is worth 1 point. [Memory Trick: Inside the arc, it is a standard 'double' point basket = 2 points!]",
+    "id": "sp-q19"
+  },
+  {
+    "question": "What is the standard weight of a professional leather cricket ball as per ICC regulations?",
+    "option_a": "5.5 to 5.75 ounces",
+    "option_b": "6.0 to 6.25 ounces",
+    "option_c": "4.5 to 4.75 ounces",
+    "option_d": "5.0 to 5.25 ounces",
+    "correct_answer": "a",
+    "explanation": "In men's cricket, the ball must weigh between 5.5 and 5.75 ounces (155.9 to 163 grams). [Memory Trick: Nearly 'five and a half' (5.5) ounces of hard packed leather!]",
+    "id": "sp-q20"
+  },
+  {
+    "question": "Which city has been selected to host the Summer Olympic Games in the year 2028?",
+    "option_a": "Los Angeles, USA",
+    "option_b": "Paris, France",
+    "option_c": "Brisbane, Australia",
+    "option_d": "Tokyo, Japan",
+    "correct_answer": "a",
+    "explanation": "Paris hosted the 2024 Olympic Games, and the baton has been passed to Los Angeles (LA28) for the 2028 Summer games. [Memory Trick: 'LA' (Angels city) will gather sports stars under the California sun in 2028!]",
+    "id": "sp-q21"
+  },
+  {
+    "question": "Who was the legendary goalkeeper, nicknamed 'The Black Spider', considered by many as the greatest goalkeeper in soccer history?",
+    "option_a": "Lev Yashin",
+    "option_b": "Gordon Banks",
+    "option_c": "Oliver Kahn",
+    "option_d": "Dino Zoff",
+    "correct_answer": "a",
+    "explanation": "Soviet goalkeeper Lev Yashin is the only goalkeeper in history to win the Ballon d'Or (1963), famous for playing in all-black and wearing a flat cap. [Memory Trick: He had eight arms ('Spider') to block shots like a net-weaving 'Yashin'!]",
+    "id": "sp-q22"
+  },
+  {
+    "question": "Which nation won the inaugural FIFA Men's World Cup tournament held in 1930?",
+    "option_a": "Uruguay",
+    "option_b": "Argentina",
+    "option_c": "Brazil",
+    "option_d": "France",
+    "correct_answer": "a",
+    "explanation": "Uruguay hosted and won the first ever FIFA World Cup in 1930, defeating Argentina in the final in Montevideo. [Memory Trick: 'U'-ruguay said 'U'-nitedly we will keep the first historic cup home!]",
+    "id": "sp-q23"
+  },
+  {
+    "question": "The Ranji Trophy and Vijay Hazare Trophy are premier domestic tournaments of which sport in India?",
+    "option_a": "Cricket",
+    "option_b": "Football (Soccer)",
+    "option_c": "Field Hockey",
+    "option_d": "Kabaddi",
+    "correct_answer": "a",
+    "explanation": "The Ranji Trophy is the premier first-class domestic cricket championship in India, while the Vijay Hazare is the premier List A (one-day) tournament. [Memory Trick: King 'Ranji' was India's first great international test 'Cricket' aristocrat!]",
+    "id": "sp-q24"
+  },
+  {
+    "question": "The Thomas Cup (men) and Uber Cup (women) are the most prestigious international team championships in which racket sport?",
+    "option_a": "Badminton",
+    "option_b": "Tennis",
+    "option_c": "Table Tennis",
+    "option_d": "Squash",
+    "correct_answer": "a",
+    "explanation": "The Thomas Cup and Uber Cup represent the pinnacle of international team badminton competition, contested by world national teams. [Memory Trick: Shuttlecocks fly high to win the global 'Thomas' and 'Uber' taxi ride to victory!]",
+    "id": "sp-q25"
+  },
+  {
+    "question": "What is the official distance of a standard Olympic marathon race in kilometers?",
+    "option_a": "42.195 km",
+    "option_b": "40.000 km",
+    "option_c": "45.150 km",
+    "option_d": "38.500 km",
+    "correct_answer": "a",
+    "explanation": "A marathon is officially 42.195 kilometers (26 miles 385 yards), standardized from the 1908 London Olympics path. [Memory Trick: To finish, running 'forty-two' (42) and a tiny fraction is the ultimate test!]",
+    "id": "sp-q26"
+  },
+  {
+    "question": "Which Indian female boxing icon is celebrated as 'Magnificent Mary' having won a historic six World Amateur Boxing Championships?",
+    "option_a": "Mary Kom",
+    "option_b": "Nikhat Zareen",
+    "option_c": "Lovlina Borgohain",
+    "option_d": "Sarita Devi",
+    "correct_answer": "a",
+    "explanation": "Mary Kom (Chungneijang Mery Kom Hmangte) is the first female boxer to win a medal in each of the first seven World Championships. [Memory Trick: A mother of three who rose from Manipur to become the ultimate ring 'Queen' Mary!]",
+    "id": "sp-q27"
+  },
+  {
+    "question": "In cricket terminology, what is it called when a batsman is dismissed on the very first ball they face?",
+    "option_a": "Golden Duck",
+    "option_b": "Diamond Duck",
+    "option_c": "Silver Duck",
+    "option_d": "Royal Duck",
+    "correct_answer": "a",
+    "explanation": "A batsman out on the first ball is a 'Golden Duck'. Out on zero without facing any ball is a 'Diamond Duck'. [Memory Trick: The first ball is 'Golden' but leads to a silent 'quack' back to pavilion!]",
+    "id": "sp-q28"
+  },
+  {
+    "question": "Which is the oldest football tournament in Asia, played first in Shimla in 1888?",
+    "option_a": "Durand Cup",
+    "option_b": "I-League",
+    "option_c": "IFA Shield",
+    "option_d": "Santosh Trophy",
+    "correct_answer": "a",
+    "explanation": "The Durand Cup, founded by Sir Mortimer Durand in Shimla, is the oldest running football tournament in Asia and the third oldest in the world. [Memory Trick: The tournament has 'dured' ('Durand' / endured) for over 130 years!]",
+    "id": "sp-q29"
+  },
+  {
+    "question": "How many active court players make up a standard playing team on the mat in professional Kabaddi?",
+    "option_a": "7 players",
+    "option_b": "9 players",
+    "option_c": "11 players",
+    "option_d": "8 players",
+    "correct_answer": "a",
+    "explanation": "A Kabaddi team consists of 12 players, but only 7 players are permitted on the court during active play. [Memory Trick: Seven defenders holding hands on the court to catch a single raider!]",
+    "id": "sp-q30"
+  },
+  {
+    "question": "What is the standard regulation diameter of a professional basketball hoop/rim in inches?",
+    "option_a": "18 inches",
+    "option_b": "20 inches",
+    "option_c": "16 inches",
+    "option_d": "22 inches",
+    "correct_answer": "a",
+    "explanation": "All official basketball hoops have a rim diameter of exactly 18 inches (45.72 cm), allowing up to two basketballs to slip side-by-side. [Memory Trick: To fit a giant standard basketball, you need an '18'-inch steel halo!]",
+    "id": "sp-q31"
+  },
+  {
+    "question": "Which country is historically recognized as the birthplace of the modern racket sport Badminton, where British officers formulated its initial rules in the 1870s?",
+    "option_a": "India (Pune)",
+    "option_b": "China",
+    "option_c": "England",
+    "option_d": "Denmark",
+    "correct_answer": "a",
+    "explanation": "Badminton originated in Pune, India, where it was called 'Poona'. British garrison officers took the rules back to Gloucestershire, England. [Memory Trick: Poona was our historic 'Poona' shuttlecock origin site!]",
+    "id": "sp-q32"
+  },
+  {
+    "question": "The historic Santosh Trophy is a premier Indian national championship in which popular team sport?",
+    "option_a": "Football (Soccer)",
+    "option_b": "Field Hockey",
+    "option_c": "Cricket",
+    "option_d": "Volleyball",
+    "correct_answer": "a",
+    "explanation": "The Santosh Trophy is an annual Indian football tournament contested by regional state associations and government institutions since 1941. [Memory Trick: Getting total 'Santosh' (satisfaction) by kicking the ball cleanly into the goalpost!]",
+    "id": "sp-q33"
+  },
+  {
+    "question": "In a standard game of professional Snooker, how many red balls are initially arranged on the table?",
+    "option_a": "15 red balls",
+    "option_b": "10 red balls",
+    "option_c": "21 red balls",
+    "option_d": "12 red balls",
+    "correct_answer": "a",
+    "explanation": "Snooker uses 22 balls: 1 white cue ball, 15 red balls worth 1 point each, and 6 colored balls worth different points (2 to 7). [Memory Trick: A triangular pile of 'fifteen' (15) red targets waiting for the break!]",
+    "id": "sp-q34"
+  },
+  {
+    "question": "Which professional sport utilizes a conical projectile made of goose feathers or nylon, known as a 'shuttlecock'?",
+    "option_a": "Badminton",
+    "option_b": "Tennis",
+    "option_c": "Squash",
+    "option_d": "Lacrosse",
+    "correct_answer": "a",
+    "explanation": "Badminton is played with a shuttlecock, which must contain exactly 16 goose feathers or a synthetic nylon equivalent. [Memory Trick: The bird flew into a 'Bad' corner but got smashed back with a racket!]",
+    "id": "sp-q35"
+  },
+  {
+    "question": "Who holds the record for the highest number of Grand Slam singles titles in men's professional tennis history?",
+    "option_a": "Novak Djokovic",
+    "option_b": "Rafael Nadal",
+    "option_c": "Roger Federer",
+    "option_d": "Pete Sampras",
+    "correct_answer": "a",
+    "explanation": "Novak Djokovic has won 24 Grand Slam singles titles, passing Rafael Nadal (22) and Roger Federer (20). [Memory Trick: 'Novak' means new, and he became the ultimate new giant of tennis history!]",
+    "id": "sp-q36"
+  },
+  {
+    "question": "Which country won the inaugural cricket World Cup held in England in 1975?",
+    "option_a": "West Indies",
+    "option_b": "Australia",
+    "option_c": "England",
+    "option_d": "India",
+    "correct_answer": "a",
+    "explanation": "The West Indies won the first two Cricket World Cups in 1975 and 1979 under captain Clive Lloyd. [Memory Trick: The mighty, towering 'Windies' dominated the early years of limited overs cricket!]",
+    "id": "sp-q37"
+  },
+  {
+    "question": "Which prestigious sport utilizes scoring terms like 'Birdie', 'Eagle', and 'Bogey' to record standard performance against par?",
+    "option_a": "Golf",
+    "option_b": "Archery",
+    "option_c": "Shooting",
+    "option_d": "Polo",
+    "correct_answer": "a",
+    "explanation": "A Birdie is 1 stroke under par, an Eagle is 2 strokes under par, and a Bogey is 1 stroke over par on a golf hole. [Memory Trick: Winged creatures ('Birdie', 'Eagle') fly 'under' par to reach the final green hole!]",
+    "id": "sp-q38"
+  },
+  {
+    "question": "In which southern Indian state did the ancient martial art form 'Kalaripayattu' originate?",
+    "option_a": "Kerala",
+    "option_b": "Tamil Nadu",
+    "option_c": "Karnataka",
+    "option_d": "Andhra Pradesh",
+    "correct_answer": "a",
+    "explanation": "Kalaripayattu is an ancient Indian martial art originating from Kerala, containing flexible kicks, sword fights, and healing arts. [Memory Trick: Kalaripayattu has absolute 'Ker-a'-smatic moves, originating in tropical 'Kerala'!]",
+    "id": "sp-q39"
+  },
+  {
+    "question": "What is the official Latin motto of the modern Olympic Games, updated in 2021 to include 'Together'?",
+    "option_a": "Citius, Altius, Fortius - Communiter",
+    "option_b": "Amor Vincit Omnia",
+    "option_c": "Carpe Diem - Primus",
+    "option_d": "Citius, Altius, Fortius - Unitis",
+    "correct_answer": "a",
+    "explanation": "The official motto is 'Citius, Altius, Fortius – Communiter', which translates from Latin to 'Faster, Higher, Stronger – Together'. [Memory Trick: 'C'-itius 'A'-ltius 'F'-ortius 'C'-ommuniter (CAF-C) = Faster, Higher, Stronger - Together!]",
+    "id": "sp-q40"
+  },
+  {
+    "question": "In which sport is the term 'Hat-trick' historically originated prior to being used in soccer?",
+    "option_a": "Cricket",
+    "option_b": "Association Football",
+    "option_c": "Rugby",
+    "option_d": "Polo",
+    "correct_answer": "a",
+    "explanation": "The term 'Hat-trick' originated in 1858 in Cricket, when bowler H.H. Stephenson took three consecutive wickets, and fans bought him a new hat. [Memory Trick: Bowlers take 3 wickets in row, and the crowd tips its 'Hat' to their 'trick'!]",
+    "id": "sp-q41"
+  }
+]

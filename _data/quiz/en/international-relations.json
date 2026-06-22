@@ -1,128 +1,317 @@
-{
-  "title": "International Relations",
-  "title_hi": "अंतरराष्ट्रीय संबंध",
-  "icon": "🌏",
-  "slug": "international-relations",
-  "questions": [
-    {
-      "id": 1,
-      "q": "India's foreign policy is based on the principle of?",
-      "opts": [
-        "Non-violence",
-        "Panchsheel",
-        "Democracy",
-        "Secularism"
-      ],
-      "ans": 1,
-      "exp": "India's foreign policy is based on Panchsheel (Five Principles of Peaceful Coexistence), articulated by PM Nehru and China's Zhou Enlai in 1954: mutual respect, non-aggression, non-interference, equality, and peaceful coexistence."
-    },
-    {
-      "id": 2,
-      "q": "BRICS is a grouping of which countries?",
-      "opts": [
-        "Brazil, Russia, India, China, South Africa",
-        "Britain, Russia, Italy, Canada, Spain",
-        "Brazil, Romania, India, China, Sudan",
-        "Bangladesh, Russia, India, China, South Africa"
-      ],
-      "ans": 0,
-      "exp": "BRICS is a grouping of Brazil, Russia, India, China, and South Africa. These are major emerging economies. In 2024, BRICS expanded to include Egypt, Ethiopia, Iran, Saudi Arabia, and UAE."
-    },
-    {
-      "id": 3,
-      "q": "The term 'Cold War' refers to?",
-      "opts": [
-        "War fought in cold regions",
-        "Political tension without direct military conflict",
-        "Economic sanctions",
-        "Cultural warfare"
-      ],
-      "ans": 1,
-      "exp": "The Cold War (1947–1991) was a geopolitical tension between the USA and Soviet Union, involving political, economic, and military rivalry without direct armed conflict between the two superpowers."
-    },
-    {
-      "id": 4,
-      "q": "The Non-Aligned Movement was founded in?",
-      "opts": [
-        "1954",
-        "1961",
-        "1965",
-        "1971"
-      ],
-      "ans": 1,
-      "exp": "The Non-Aligned Movement was founded in 1961 in Belgrade. India's PM Nehru, Egypt's Nasser, and Yugoslavia's Tito were key founders. It allowed developing nations to avoid aligning with either the USA or USSR during the Cold War."
-    },
-    {
-      "id": 5,
-      "q": "India became a permanent observer at the Arctic Council in?",
-      "opts": [
-        "2009",
-        "2012",
-        "2013",
-        "2015"
-      ],
-      "ans": 2,
-      "exp": "India became an observer state at the Arctic Council in 2013. The Arctic Council is an intergovernmental forum promoting cooperation in the Arctic region."
-    },
-    {
-      "id": 6,
-      "q": "The Indus Waters Treaty was signed between India and?",
-      "opts": [
-        "Bangladesh",
-        "Nepal",
-        "Pakistan",
-        "China"
-      ],
-      "ans": 2,
-      "exp": "The Indus Waters Treaty was signed on 19 September 1960 between India and Pakistan, brokered by the World Bank. It allocates 3 eastern rivers to India and 3 western rivers to Pakistan."
-    },
-    {
-      "id": 7,
-      "q": "India's 'Act East Policy' focuses on engagement with?",
-      "opts": [
-        "Middle East",
-        "Southeast Asia and East Asia",
-        "Africa",
-        "Europe"
-      ],
-      "ans": 1,
-      "exp": "India's 'Act East Policy' (formerly Look East Policy) focuses on economic, strategic, and cultural engagement with Southeast Asian and East Asian countries. It was revived and renamed by PM Modi in 2014."
-    },
-    {
-      "id": 8,
-      "q": "The Simla Agreement (1972) was signed between India and?",
-      "opts": [
-        "China",
-        "Nepal",
-        "Bangladesh",
-        "Pakistan"
-      ],
-      "ans": 3,
-      "exp": "The Simla Agreement was signed on 2 July 1972 between Indian PM Indira Gandhi and Pakistani PM Zulfikar Ali Bhutto, following the 1971 war. It established the Line of Control in Jammu & Kashmir."
-    },
-    {
-      "id": 9,
-      "q": "India is a founding member of which organization?",
-      "opts": [
-        "WTO",
-        "SAARC",
-        "NAM",
-        "G7"
-      ],
-      "ans": 2,
-      "exp": "India is a founding member of the Non-Aligned Movement (NAM), established in 1961. India played a key role in articulating the philosophy of non-alignment through PM Nehru."
-    },
-    {
-      "id": 10,
-      "q": "The Quad (Quadrilateral Security Dialogue) comprises?",
-      "opts": [
-        "USA, India, Australia, Japan",
-        "USA, UK, Australia, Canada",
-        "USA, India, China, Japan",
-        "USA, India, Australia, South Korea"
-      ],
-      "ans": 0,
-      "exp": "The Quad comprises the United States, India, Australia, and Japan. It is an informal strategic dialogue focused on maintaining a free and open Indo-Pacific region, particularly in response to China's growing influence."
-    }
-  ]
-}
+[
+  {
+    "question": "The historic Panchsheel Agreement, outlining five principles of peaceful coexistence, was signed in 1954 between India and which nation?",
+    "option_a": "Pakistan",
+    "option_b": "China",
+    "option_c": "Nepal",
+    "option_d": "Soviet Union",
+    "correct_answer": "b",
+    "explanation": "The Panchsheel Agreement was signed on April 29, 1954, by Prime Minister Jawaharlal Nehru and Chinese Premier Zhou Enlai, focusing on mutual respect for sovereignty and non-aggression. [Memory Trick: 'Panch'-sheel has five letters in 'China' which represents the bilateral pact of 1954.]"
+  },
+  {
+    "question": "The first official summit of the Non-Aligned Movement (NAM) was held in 1961 in which global city?",
+    "option_a": "Belgrade, Yugoslavia",
+    "option_b": "Bandung, Indonesia",
+    "option_c": "Cairo, Egypt",
+    "option_d": "New Delhi, India",
+    "correct_answer": "a",
+    "explanation": "The summit of NAM took place in September 1961 in Belgrade, spearheaded by Yugoslavia's Josip Broz Tito, India's Jawaharlal Nehru, and Egypt's Gamal Abdel Nasser. [Memory Trick: Non-aligned nations wanted to build a secure 'Bel'-grade (Beautiful grade/shield) protecting themselves from cold war blocs.]"
+  },
+  {
+    "question": "The Shimla Agreement of 1972, which converted the ceasefire line into the Line of Control (LoC), was signed between:",
+    "option_a": "Lal Bahadur Shastri and Ayub Khan",
+    "option_b": "Indira Gandhi and Zulfikar Ali Bhutto",
+    "option_c": "Atal Bihari Vajpayee and Pervez Musharraf",
+    "option_d": "Jawaharlal Nehru and Liaquat Ali Khan",
+    "correct_answer": "b",
+    "explanation": "The treaty was signed on July 2, 1972, in Shimla, Himachal Pradesh following the Bangladesh Liberation War of 1971. [Memory Trick: 'Indira' of India and 'Bhutto' of Pakistan met in the hills of 'Shimla' ('Simla') to resolve 1971 scars.]"
+  },
+  {
+    "question": "The Tashkent Declaration, signed in January 1966 to resolve the Indo-Pakistani War of 1965, was mediated by which nation?",
+    "option_a": "Soviet Union",
+    "option_b": "United States",
+    "option_c": "United Kingdom",
+    "option_d": "China",
+    "correct_answer": "a",
+    "explanation": "The peace declaration was signed on January 10, 1966, by Prime Minister Lal Bahadur Shastri and Pakistani President Ayub Khan under Soviet mediation in Tashkent (present-day Uzbekistan). [Memory Trick: The 'Soviet' premier mediated the pact in the historic cotton country 'Tash-kent'.]"
+  },
+  {
+    "question": "Which boundary line demarcates the border between northeast India and the Tibet region of China?",
+    "option_a": "Radcliffe Line",
+    "option_b": "MacMahon Line",
+    "option_c": "Durand Line",
+    "option_d": "Sir Creek Line",
+    "correct_answer": "b",
+    "explanation": "The McMahon Line is the effective boundary between Northeast India and Tibet, proposed by Sir Henry McMahon at the Simla Convention in 1914. [Memory Trick: 'Mac'-Mahon line protects 'Mani'-pur and Arunachal in the Eastern hills.]"
+  },
+  {
+    "question": "The historic Indus Water Treaty of 1960, allocating river runs between India and Pakistan, was mediated by which international body?",
+    "option_a": "United Nations",
+    "option_b": "World Bank",
+    "option_c": "International Court of Justice",
+    "option_d": "Asian Development Bank",
+    "correct_answer": "b",
+    "explanation": "Signed in Karachi on September 19, 1960, by PM Nehru and President Ayub Khan, the treaty dividing the six Indus basin rivers was brokered by the World Bank. [Memory Trick: Managing water systems for billions requires massive funding = World 'Bank' mediation.]"
+  },
+  {
+    "question": "The 'Gujral Doctrine' of Indian foreign policy is most fundamentally based on which principle?",
+    "option_a": "Non-reciprocal unilateral accommodation and generosity towards smaller neighbors",
+    "option_b": "Nuclear deterrence and massive retaliation",
+    "option_c": "Strategic alignment with Western superpowers",
+    "option_d": "Aggressive mercantilism in Southeast Asian trade",
+    "correct_answer": "a",
+    "explanation": "Formulated by PM I.K. Gujral in 1996, the doctrine states that India, as the largest country of South Asia, does not ask for reciprocity from neighbors like Bhutan, Bangladesh, Nepal, and Maldives, but gives unilaterally in goodwill. [Memory Trick: 'Gujral' sounds like 'Guzarish' (polite goodwill) which means generous assistance without expecting payback.]"
+  },
+  {
+    "question": "India's flagship conference on geopolitics and geo-economics, organized annually by the MEA and Observer Research Foundation, is called:",
+    "option_a": "Raisina Dialogue",
+    "option_b": "Davos Forum",
+    "option_c": "Shangri-La Dialogue",
+    "option_d": "Delhi Summit",
+    "correct_answer": "a",
+    "explanation": "The Raisina Dialogue, held in New Delhi since 2016, is named after Raisina Hill, the seat of the Government of India. [Memory Trick: The Ministry of External Affairs sits on 'Raisina' Hill, therefore 'Raisina' Dialogue.]"
+  },
+  {
+    "question": "India has partnered with Iran and Afghanistan to bypass Pakistani territory and access Central Asian networks through which strategic port?",
+    "option_a": "Gwadar Port",
+    "option_b": "Chabahar Port",
+    "option_c": "Sittwe Port",
+    "option_d": "Hambantota Port",
+    "correct_answer": "b",
+    "explanation": "Chabahar Port is located on the Gulf of Oman in Iran. It provides India alternate access to Afghanistan and Central Asia, bypassing Pakistan. [Memory Trick: Chabahar is India's 'Chabi' (key) to bypass hurdles to Central Asia.]"
+  },
+  {
+    "question": "The 'Quadrilateral Security Dialogue' (QUAD), fostering a free and open Indo-Pacific, comprises which four Nations?",
+    "option_a": "India, USA, Japan, Australia",
+    "option_b": "India, UK, France, Germany",
+    "option_c": "US, Israel, India, UAE",
+    "option_d": "USA, Canada, Japan, UK",
+    "correct_answer": "a",
+    "explanation": "The QUAD is an informal strategic forum comprising United States, Japan, Australia, and India, initially pitched by Japanese PM Shinzo Abe in 2007. [Memory Trick: Quad corners are US-Japan in the Pacific, and Australia-India in the Oceans.]"
+  },
+  {
+    "question": "The West Asian Quad grouping, often referred to as 'I2U2', includes which countries?",
+    "option_a": "India, Israel, USA, UAE",
+    "option_b": "India, Iran, USA, UK",
+    "option_c": "Israel, Italy, Ukraine, Uganda",
+    "option_d": "India, Indonesia, USA, UAE",
+    "correct_answer": "a",
+    "explanation": "I2U2 stands for India and Israel (I2), United States and United Arab Emirates (U2). [Memory Trick: I-2 (India, Israel) + U-2 (USA, UAE) = I2U2.]"
+  },
+  {
+    "question": "India's transition from the 'Look East Policy' to the more proactive 'Act East Policy' was formally announced in which year?",
+    "option_a": "1991",
+    "option_b": "2004",
+    "option_c": "2014",
+    "option_d": "2019",
+    "correct_answer": "c",
+    "explanation": "The 'Act East Policy' was launched by PM Narendra Modi at the East Asia Summit in Myanmar in November 2014, shifting focus from mere economic relations to security and strategic linkages. [Memory Trick: PM took office in '14' (2014) and started immediate 'Action' ('Act East').]"
+  },
+  {
+    "question": "The 'Durand Line' forms the international border between which two South Asian neighbors?",
+    "option_a": "India and China",
+    "option_b": "Pakistan and Afghanistan",
+    "option_c": "India and Pakistan",
+    "option_d": "Afghanistan and Iran",
+    "correct_answer": "b",
+    "explanation": "The Durand Line boundary was established in 1893 by Sir Mortimer Durand and Afghan Amir Abdur Rahman Khan, dividing Pak-Afghan territories and cutting ethnic Pashtun lands. [Memory Trick: Pashtuns find it hard to 'Endure' (Durand) the division of their community.]"
+  },
+  {
+    "question": "Under the UN Convention on the Law of the Sea (UNCLOS), an 'Exclusive Economic Zone' (EEZ) extends to how many nautical miles from the baseline?",
+    "option_a": "12 nautical miles",
+    "option_b": "24 nautical miles",
+    "option_c": "150 nautical miles",
+    "option_d": "200 nautical miles",
+    "correct_answer": "d",
+    "explanation": "An EEZ grants a sovereign state exclusive rights to explore and exploit marine resources up to 200 nautical miles from its coast. Territorial sea is 12 NM. [Memory Trick: Double century ('200') is hit when you cruise deep into the economic ocean.]"
+  },
+  {
+    "question": "The high-altitude territorial dispute involving Kalapani, Limpiyadhura, and Lipulekh recently strained India's relations with which friendly neighbor?",
+    "option_a": "Nepal",
+    "option_b": "Bhutan",
+    "option_c": "Bangladesh",
+    "option_d": "Myanmar",
+    "correct_answer": "a",
+    "explanation": "Nepal claimed Kalapani, Lipulekh, and Limpiyadhura in its updated political map in 2020, asserting historical borders under the 1816 Sugauli Treaty. [Memory Trick: 'Kalapani' boundary is high up towards 'Nepal' foothills.]"
+  },
+  {
+    "question": "The '123 Agreement', signed in 2008, established civil nuclear cooperation between India and which major global power?",
+    "option_a": "United States of America",
+    "option_b": "Russian Federation",
+    "option_c": "Republic of France",
+    "option_d": "United Kingdom",
+    "correct_answer": "a",
+    "explanation": "The Indo-US Civil Nuclear Deal was made possible by Section 123 of the US Atomic Energy Act of 1954, allowing trade of atomic fuels despite India not being an NPT signee. [Memory Trick: '1-2-3' is the count before 'US' (USA) turned on the green signal for atomic fuels.]"
+  },
+  {
+    "question": "In which historic year did India and Pakistan simultaneously attain full permanent membership of the Shanghai Cooperation Organisation (SCO)?",
+    "option_a": "2015",
+    "option_b": "2017",
+    "option_c": "2019",
+    "option_d": "2021",
+    "correct_answer": "b",
+    "explanation": "India and Pakistan joined the SCO as full members on June 9, 2017 at the Astana Summit in Kazakhstan. [Memory Trick: Double membership addition in Year '17' (2017) to maintain regional balance.]"
+  },
+  {
+    "question": "The geostrategic maritime theory 'String of Pearls' is frequently associated with whose expanding footprint in the Indian Ocean?",
+    "option_a": "People's Republic of China",
+    "option_b": "United States Navy",
+    "option_c": "Indian Navy",
+    "option_d": "French Navy",
+    "correct_answer": "a",
+    "explanation": "The 'String of Pearls' refers to a network of Chinese military and commercial facilities along sea lines of communication, encircling India (from Gwadar to Hambantota). [Memory Trick: China strings shiny 'Pearls' of ports around India's neck.]"
+  },
+  {
+    "question": "Which agreement, signed in 2015, enabled India and Bangladesh to exchange enclaves and resolve their complex land border disputes?",
+    "option_a": "Land Boundary Agreement (LBA)",
+    "option_b": "Ganges Treaty",
+    "option_c": "Shimla Accord",
+    "option_d": "Dhaka Protocol",
+    "correct_answer": "a",
+    "explanation": "The Land Boundary Agreement was ratified by the 100th Constitutional Amendment Act, allowing exchange of 111 Indian enclaves to Bangladesh and 51 enclaves to India. [Memory Trick: 'L-B-A' directly resolves the Land Boundary Alignment.]"
+  },
+  {
+    "question": "The 'Raisina Dialogue' on geopolitics is organized by the Ministry of External Affairs in collaboration with which independent think tank?",
+    "option_a": "Observer Research Foundation (ORF)",
+    "option_b": "NITI Aayog",
+    "option_c": "ICWA (Indian Council of World Affairs)",
+    "option_d": "CPPR",
+    "correct_answer": "a",
+    "explanation": "The ORF acts as the core joint convener of this flagship global policy discussion event. [Memory Trick: 'O-R-F' is the official research partner of MEA on Raisina Hill.]"
+  },
+  {
+    "question": "What is the primary geostrategic objective of the proposed International North-South Transport Corridor (INSTC)?",
+    "option_a": "Fostering multi-modal transit routes linking India (Mumbai) to Russia (Moscow) via Iran",
+    "option_b": "Connecting northeast Indian states through Bangladesh sea lanes exclusively",
+    "option_c": "Establishing a direct bullet train route from Myanmar to Thailand",
+    "option_d": "Managing high-altitude flights across the Tibetan Plateau",
+    "correct_answer": "a",
+    "explanation": "INSTC is a 7,200-km multi-mode network of ship, rail, and road routes for moving freight between India, Iran, Azerbaijan, and Russia, bypassing the Suez Canal. [Memory Trick: North (Russia) to South (India/Mumbai) transit corridor = INSTC.]"
+  },
+  {
+    "question": "Which sovereign nations are formal members of the G4 group seeking permanent seats in the UNSC?",
+    "option_a": "India, Brazil, Germany, Japan",
+    "option_b": "India, South Africa, Egypt, Nigeria",
+    "option_c": "India, Israel, Australia, Singapore",
+    "option_d": "Brazil, Germany, India, Russia",
+    "correct_answer": "a",
+    "explanation": "The G4 nations support each other's bids for permanent seats on the United Nations Security Council: India, Brazil, Germany, and Japan. [Memory Trick: 'G4' is the club of four industrial giants: 'I'-ndia, 'B'-razil, 'G'-ermany, 'J'-apan (IBGJ).]"
+  },
+  {
+    "question": "The Vienna Convention on Diplomatic Relations, establishing the rules of diplomatic immunity, was adopted in which year?",
+    "option_a": "1945",
+    "option_b": "1961",
+    "option_c": "1973",
+    "option_d": "1982",
+    "correct_answer": "b",
+    "explanation": "The treaty defining the codes of diplomatic missions and immunities was adopted in April 1961 in Vienna. [Memory Trick: NAM was born in '61 and the diplomatic rules of Vienna were also coded in '61 (1961).]"
+  },
+  {
+    "question": "The Teesta River water-sharing dispute remains a sensitive bilateral issue between India and which neighbor?",
+    "option_a": "Bangladesh",
+    "option_b": "Nepal",
+    "option_c": "Bhutan",
+    "option_d": "Myanmar",
+    "correct_answer": "a",
+    "explanation": "The Teesta River flows through Sikkim and West Bengal before entering Bangladesh. Sharing its dry-season flow is a major point of negotiation between New Delhi and Dhaka. [Memory Trick: 'Teesta' has 'T' for 'Tension' with 'Tista' delta users of Bangladesh.]"
+  },
+  {
+    "question": "The bilateral naval exercise 'Malabar' began in 1992 between India and the US, but has now expanded to include which other countries?",
+    "option_a": "Japan and Australia",
+    "option_b": "Japan and South Korea",
+    "option_c": "United Kingdom and France",
+    "option_d": "Russia and Vietnam",
+    "correct_answer": "a",
+    "explanation": "Malabar began as a bilateral US-India exercise but expanded with Japan's entry in 2015, and Australia's inclusion in 2020, making it a QUAD exercise now. [Memory Trick: Malabar has the active presence of 'QUAD' naval fleets.]"
+  },
+  {
+    "question": "Which of the following describes the geostrategic 'Doklam Plateau', which witnessed a tense military standoff in 2017?",
+    "option_a": "A high-altitude trijunction between Bhutan, India, and China",
+    "option_b": "A disputed marshy run between Gujarat and Sindh",
+    "option_c": "An island cluster in the Bay of Bengal",
+    "option_d": "A deep valley in the Ladakh range",
+    "correct_answer": "a",
+    "explanation": "Doklam is a plateau area near Chumbi Valley on the Bhutan-China border, close to India's Siliguri corridor, which saw a 73-day standoff between Indian and Chinese troops in 2017. [Memory Trick: 'D-o-k'-lam is the high 'Dock' (junction) of Bhutan, India, and China.]"
+  },
+  {
+    "question": "The 'Ashgabat Agreement', which India officially joined in 2018, is fundamentally related to:",
+    "option_a": "An international transit corridor facilitating transport of goods between Central Asia and the Persian Gulf",
+    "option_b": "Nuclear disarmament guidelines",
+    "option_c": "Space debris coordination",
+    "option_d": "Bilateral migration controls",
+    "correct_answer": "a",
+    "explanation": "The Ashgabat Agreement is a transit corridor signed by Oman, Iran, Turkmenistan, Uzbekistan, and Kazakhstan, which India joined to boost Central Asian connectivity. [Memory Trick: 'Ashgabat' is Turkmenistan's capital, unlocking the paths to 'Asia' transits.]"
+  },
+  {
+    "question": "The disputed uninhabited island of Kachchatheevu was formally ceded to Sri Lanka by India under a bilateral treaty in:",
+    "option_a": "1974",
+    "option_b": "1984",
+    "option_c": "1991",
+    "option_d": "1999",
+    "correct_answer": "a",
+    "explanation": "Kachchatheevu, a 285-acre uninhabited island in the Palk Strait, was recognized as part of Sri Lankan territory under the 1974 boundary agreement signed by PM Indira Gandhi. [Memory Trick: Ceded the 'Kachcha' (raw) island back in '74 (1974).]"
+  },
+  {
+    "question": "Which defense agreement signed in 2020 allows India and the US to share highly precise geospatial and satellite map data?",
+    "option_a": "BECA",
+    "option_b": "LEMOA",
+    "option_c": "COMCASA",
+    "option_d": "GSOMIA",
+    "correct_answer": "a",
+    "explanation": "The Basic Exchange and Cooperation Agreement (BECA) is the last of the four foundational agreements enabling sharing of high-grade satellite mapping data. [Memory Trick: 'B-E-C-A' is like a 'Beacon' (BE-CA) map guiding satellite coordinates.]"
+  },
+  {
+    "question": "The Kaladan Multi-Modal Transit Transport consensus aims to connect Kolkata with which strategic port in Myanmar?",
+    "option_a": "Sittwe Port",
+    "option_b": "Kyaukpyu Port",
+    "option_c": "Yangon Port",
+    "option_d": "Dawei Port",
+    "correct_answer": "a",
+    "explanation": "The Kaladan project connects Kolkata (India) to Sittwe deep-water port in Rakhine State, Myanmar, and then moves along the Kaladan River to Mizoram. [Memory Trick: We 'Sit' ('Sittwe') under the Kaladan bamboo shelter.]"
+  },
+  {
+    "question": "The geopolitical campaign 'India Out', which sought the removal of Indian military personnel, took place in which island nation?",
+    "option_a": "Maldives",
+    "option_b": "Mauritius",
+    "option_c": "Seychelles",
+    "option_d": "Sri Lanka",
+    "correct_answer": "a",
+    "explanation": "The 'India Out' campaign was championed by opposition parties in Maldives, led by Mohamed Muizzu, affecting traditional 'Neighborhood First' policies. [Memory Trick: Maldives has beautiful coral beaches but faced 'India Out' storm waves.]"
+  },
+  {
+    "question": "The historic 'Friendship Treaty' of 1971, providing security coordination during the Bangladesh Liberation War, was signed between India and:",
+    "option_a": "Soviet Union (USSR)",
+    "option_b": "United States of America",
+    "option_c": "United Kingdom",
+    "option_d": "Republic of France",
+    "correct_answer": "a",
+    "explanation": "The Indo-Soviet Treaty of Peace, Friendship and Cooperation was signed in August 1971 for a period of 20 years, acting as a crucial defense shield against US-China-Pak axis. [Memory Trick: Old Russian 'Soviet' friends ('Friendship Treaty') stood of great help in 1971.]"
+  },
+  {
+    "question": "The 'Sir Creek dispute' involves a 96-km long estuary and tidal marshland disputed between India and Pakistan in which physical region?",
+    "option_a": "Rann of Kutch (Gujarat)",
+    "option_b": "Sundarbans Delta (West Bengal)",
+    "option_c": "Kargil ridges (Ladakh)",
+    "option_d": "Siachen Glacier",
+    "correct_answer": "a",
+    "explanation": "Sir Creek is a tidal channel in the Rann of Kutch, separating Gujarat (India) from Sindh (Pakistan), disputed because of marine fishing resources. [Memory Trick: Sir Creek is a marshy 'Creek' where 'Kutch' camels don't swim easily.]"
+  },
+  {
+    "question": "Which multi-lateral export control group controls chemical and biological weapons, which India joined as its 43rd member in 2018?",
+    "option_a": "Australia Group",
+    "option_b": "Wassenaar Arrangement",
+    "option_c": "Missile Technology Control Regime (MTCR)",
+    "option_d": "Nuclear Suppliers Group (NSG)",
+    "correct_answer": "a",
+    "explanation": "The Australia Group is an informal forum that seeks to prevent the proliferation of chemical and biological weapons. India joined in January 2018. [Memory Trick: Kangaroo's 'Australia' protects forest greens from chemical bioweapons!]"
+  },
+  {
+    "question": "The geostrategic 'Nine-Dash Line', which frequently disrupts international waters consensus, is claimed by which country?",
+    "option_a": "China",
+    "option_b": "Vietnam",
+    "option_c": "Philippines",
+    "option_d": "Japan",
+    "correct_answer": "a",
+    "explanation": "The 'Nine-Dash Line' refers to the historical line used by China to claim sovereignty over major portions of the South China Sea. [Memory Trick: China puts 'Nine dashes' of red ink over South Asian oceans.]"
+  }
+]

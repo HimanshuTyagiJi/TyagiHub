@@ -1,128 +1,435 @@
-{
-  "title": "Indian Economy",
-  "title_hi": "भारतीय अर्थव्यवस्था",
-  "icon": "💰",
-  "slug": "indian-economy",
-  "questions": [
-    {
-      "id": 1,
-      "q": "The Reserve Bank of India was established in?",
-      "opts": [
-        "1930",
-        "1935",
-        "1947",
-        "1950"
-      ],
-      "ans": 1,
-      "exp": "The Reserve Bank of India (RBI) was established on 1 April 1935 under the Reserve Bank of India Act, 1934. It is the central bank and regulatory body of India."
-    },
-    {
-      "id": 2,
-      "q": "India's first Five Year Plan started in?",
-      "opts": [
-        "1947",
-        "1950",
-        "1951",
-        "1956"
-      ],
-      "ans": 2,
-      "exp": "India's First Five Year Plan was launched in 1951 under Prime Minister Jawaharlal Nehru. It focused on agricultural development and was largely successful."
-    },
-    {
-      "id": 3,
-      "q": "GST was implemented in India on?",
-      "opts": [
-        "1 April 2017",
-        "1 July 2017",
-        "1 January 2017",
-        "15 August 2017"
-      ],
-      "ans": 1,
-      "exp": "Goods and Services Tax (GST) was implemented in India on 1 July 2017. It replaced multiple indirect taxes and created a unified national market."
-    },
-    {
-      "id": 4,
-      "q": "Which is the largest commercial bank in India?",
-      "opts": [
-        "Punjab National Bank",
-        "HDFC Bank",
-        "State Bank of India",
-        "Bank of Baroda"
-      ],
-      "ans": 2,
-      "exp": "State Bank of India (SBI) is the largest commercial bank in India by assets, deposits, branches, customers, and employees. It has over 22,000 branches across India."
-    },
-    {
-      "id": 5,
-      "q": "The NITI Aayog replaced which body?",
-      "opts": [
-        "Finance Commission",
-        "Planning Commission",
-        "RBI",
-        "SEBI"
-      ],
-      "ans": 1,
-      "exp": "NITI Aayog (National Institution for Transforming India) replaced the Planning Commission on 1 January 2015. It serves as a policy think tank for the Government of India."
-    },
-    {
-      "id": 6,
-      "q": "India's economic liberalization policy was introduced in?",
-      "opts": [
-        "1985",
-        "1989",
-        "1991",
-        "1995"
-      ],
-      "ans": 2,
-      "exp": "India's economic liberalization policy was introduced in 1991 under Finance Minister Manmohan Singh and PM Narasimha Rao. It opened India's economy to foreign investment and market forces."
-    },
-    {
-      "id": 7,
-      "q": "The headquarters of the World Bank is located in?",
-      "opts": [
-        "New York",
-        "Geneva",
-        "Washington D.C.",
-        "London"
-      ],
-      "ans": 2,
-      "exp": "The World Bank Group is headquartered in Washington D.C., USA. It provides financial and technical assistance to developing countries worldwide."
-    },
-    {
-      "id": 8,
-      "q": "India's currency is managed by?",
-      "opts": [
-        "Finance Ministry",
-        "SEBI",
-        "RBI",
-        "Ministry of Commerce"
-      ],
-      "ans": 2,
-      "exp": "The Reserve Bank of India (RBI) manages India's currency. It has the sole authority to issue currency notes of all denominations except one rupee notes, which are issued by the Finance Ministry."
-    },
-    {
-      "id": 9,
-      "q": "Which index measures inflation at the retail level in India?",
-      "opts": [
-        "WPI",
-        "CPI",
-        "GDP Deflator",
-        "PPI"
-      ],
-      "ans": 1,
-      "exp": "Consumer Price Index (CPI) measures inflation at the retail level in India. It tracks changes in prices of goods and services consumed by households."
-    },
-    {
-      "id": 10,
-      "q": "Make in India initiative was launched in?",
-      "opts": [
-        "2013",
-        "2014",
-        "2015",
-        "2016"
-      ],
-      "ans": 1,
-      "exp": "Make in India was launched on 25 September 2014 by Prime Minister Narendra Modi. Its aim is to encourage multinational and domestic companies to manufacture their products in India."
-    }
-  ]
-}
+[
+  {
+    "question": "The second Five-Year Plan of India (1956–1961), which prioritized rapid industrialization and heavy industries, was based on whose academic model?",
+    "option_a": "Harrod-Domar Model",
+    "option_b": "P.C. Mahalanobis Model",
+    "option_c": "Gadgil Formula",
+    "option_d": "Chakravarty Model",
+    "correct_answer": "b",
+    "explanation": "The Second Plan was formulated by statistician Prasanta Chandra Mahalanobis. It emphasized state-supported heavy and capital goods industries to build self-sufficiency. [Memory Trick: He who holds the grand 'Mahan' (great) blueprint for factories = 'Mahalanobis'.]"
+  },
+  {
+    "question": "The Reserve Bank of India (RBI), the state's apex monetary authority, was established on April 1, 1935, based on the recommendation of which commission?",
+    "option_a": "Hilton Young Commission",
+    "option_b": "Simon Commission",
+    "option_c": "Keynes Commission",
+    "option_d": "Kothari Commission",
+    "correct_answer": "a",
+    "explanation": "The RBI was established in 1935 in Calcutta under the RBI Act 1934, following the recommendations of the Hilton Young Commission (or Royal Commission on Indian Currency and Finance). It was nationalized in 1949. [Memory Trick: A 'young' person checking into 'Hilton' needs lots of 'currency/money' = 'Hilton Young' recommended RBI.]"
+  },
+  {
+    "question": "What does the 'Gini Coefficient', extensively utilized in nationwide economic research matrices, measure?",
+    "option_a": "Rate of Inflation",
+    "option_b": "Income Inequality",
+    "option_c": "Percentage of Unemployed Citizens",
+    "option_d": "Gross Domestic Product growth",
+    "correct_answer": "b",
+    "explanation": "The Gini Coefficient (ranging from 0 to 1) measures the degree of income inequality or wealth distribution within a nation, where 0 indicates perfect equality and 1 indicates perfect inequality. [Memory Trick: Imagine the rich getting their wishing 'Genie' (Gini) while the poor get nothing, creating a wealth gap.]"
+  },
+  {
+    "question": "The Goods and Services Tax (GST), a comprehensive indirect tax on manufacture and consumption, came into effect in India on which date?",
+    "option_a": "April 1, 2016",
+    "option_b": "July 1, 2017",
+    "option_c": "October 2, 2017",
+    "option_d": "January 1, 2018",
+    "correct_answer": "b",
+    "explanation": "GST was introduced in India from July 1, 2017, through the 101st Constitutional Amendment Act, replacing multiple federal and state indirect taxes with a unified national market. [Memory Trick: In July ('7th' month) of 20'17', a 'one tax' revolution joined the nation together.]"
+  },
+  {
+    "question": "Which of the following is designated as a 'Direct Tax' in the modern Indian taxation structure?",
+    "option_a": "Customs Duty",
+    "option_b": "Goods and Services Tax",
+    "option_c": "Corporation Tax",
+    "option_d": "Excise Duty",
+    "correct_answer": "c",
+    "explanation": "Direct taxes are paid directly by individuals or organizations to the government (e.g., Income Tax, Corporation Tax). Indirect taxes are passed to consumers (e.g., GST, Excise, Customs). [Memory Trick: 'Corporates' pay their taxes 'Directly' out of their bank vaults = Corporation Tax is Direct.]"
+  },
+  {
+    "question": "The very first Five-Year Plan of independent India (1951–1956), which heavily prioritized agriculture, was built on whose model?",
+    "option_a": "P.C. Mahalanobis Model",
+    "option_b": "Harrod-Domar Model",
+    "option_c": "Bombay Plan",
+    "option_d": "Gandhian Model",
+    "correct_answer": "b",
+    "explanation": "The First Five-Year Plan was based on the Harrod-Domar model (with slight modifications). It focused on savings, capital accumulation, and intensive investments in agriculture and irrigation. [Memory Trick: To sow crops on barren lands, the 'first' farmer must work 'Hard' and plow 'Dome' soils = 'Har-rod Domar' model.]"
+  },
+  {
+    "question": "Under the sovereign framework of India, the term 'Mixed Economy' is best defined as which of the following?",
+    "option_a": "Co-existence of large-scale agriculture and trade",
+    "option_b": "Co-existence of the public (state) sector and private sector",
+    "option_c": "Complete control of all production by regional states and cooperatives",
+    "option_d": "Merging of domestic markets with foreign financial conglomerates",
+    "correct_answer": "b",
+    "explanation": "A mixed economy combines elements of both capitalist and socialist systems, allowing private businesses and state enterprises to operate side by side, which has been India's guiding economic philosophy. [Memory Trick: 'Mixed' means a perfect blend of 'My private shop' and the 'Government office'.]"
+  },
+  {
+    "question": "Who was the legendary visionary who first estimated the National Income of India in 1867–1868, documenting the drain of wealth?",
+    "option_a": "Mahadev Govind Ranade",
+    "option_b": "Dadabhai Naoroji",
+    "option_c": "Gopal Krishna Gokhale",
+    "option_d": "Romesh Chunder Dutt",
+    "correct_answer": "b",
+    "explanation": "Dadabhai Naoroji, known as the 'Grand Old Man of India', estimated India's national income in his landmark book 'Poverty and Un-British Rule in India' (1867), showing that the British were draining India's wealth. [Memory Trick: The wise 'Dada' (Grandfather) calculated the family's total lost wealth first.]"
+  },
+  {
+    "question": "In India, which organization is currently responsible for estimating and publishing the national 'Poverty Line' indicators?",
+    "option_a": "Reserve Bank of India",
+    "option_b": "NITI Aayog (formerly Planning Commission)",
+    "option_c": "Central Statistics Office",
+    "option_d": "NABARD",
+    "correct_answer": "b",
+    "explanation": "NITI Aayog (previously the Planning Commission) estimates the poverty line based on data collected by the National Sample Survey Office (NSSO), utilizing commodity basket consumption indices. [Memory Trick: To eradicate poverty, you need a high-power 'Policy' planning center = 'NITI' Aayog.]"
+  },
+  {
+    "question": "Who serves as the ex-officio Chairman of the highly critical six-member Monetary Policy Committee (MPC) of India?",
+    "option_a": "Union Finance Minister",
+    "option_b": "Governor of the Reserve Bank of India",
+    "option_c": "Deputy Governor in charge of monetary policy",
+    "option_d": "Chief Economic Adviser of India",
+    "correct_answer": "b",
+    "explanation": "The MPC of India is responsible for fixing the benchmark interest rate (Repo rate). It is chaired by the Governor of the Reserve Bank of India (RBI). [Memory Trick: The absolute supreme commander of the banking vault (RBI Governor) steers the monetary wheel.]"
+  },
+  {
+    "question": "Under India's historic agricultural development initiatives, the 'Blue Revolution' was launched to accelerate production of which sector?",
+    "option_a": "Fertilizers",
+    "option_b": "Fish and Aquaculture",
+    "option_c": "Oilseeds",
+    "option_d": "Indigo crops",
+    "correct_answer": "b",
+    "explanation": "The Blue Revolution is related to the rapid growth and management of fish and aquaculture, initiated during the 7th Five-Year Plan. [Memory Trick: The vast 'Blue' ocean is the native home of swimming 'Fish'.]"
+  },
+  {
+    "question": "The 'Yellow Revolution' in Indian economic history was engineered to stimulate the production of which agricultural product?",
+    "option_a": "Poultry and Eggs",
+    "option_b": "Oilseeds",
+    "option_c": "Bananas",
+    "option_d": "Pulses",
+    "correct_answer": "b",
+    "explanation": "The Yellow Revolution was launched under the Technology Mission in 1986 to increase oilseeds production, particularly mustard and sunflower seeds. [Memory Trick: The golden field of blooming mustard is intensely 'Yellow' = Oilseeds.]"
+  },
+  {
+    "question": "The 'Golden Revolution' in India is primarily associated with the massive production boost of which sector?",
+    "option_a": "Gold Mining",
+    "option_b": "Horticulture, Honey, and Fruits",
+    "option_c": "Jute Textiles",
+    "option_d": "Wheat cultivation",
+    "correct_answer": "b",
+    "explanation": "The Golden Revolution took place between 1991 and 2003, focusing on horticulture, honey bee production, and fruit cultivation. Nirpakh Tutej is considered its father. [Memory Trick: Honey has a shimmering 'Golden' syrup look, and sweet fruits are precious like gold.]"
+  },
+  {
+    "question": "Who is universally celebrated as the pioneer and 'Father of the Green Revolution' in India?",
+    "option_a": "Dr. Norman Borlaug",
+    "option_b": "Dr. M.S. Swaminathan",
+    "option_c": "Dr. Verghese Kurien",
+    "option_d": "C. Subramaniam",
+    "correct_answer": "b",
+    "explanation": "M.S. Swaminathan introduced high-yielding varieties of wheat and rice to India in the late 1960s, turning India from a food-deficit country into a self-sufficient grain exporter. [Memory Trick: A wise 'Swami' (spiritual master) blessed our crop fields with green 'Swami-nathan' grains.]"
+  },
+  {
+    "question": "Who is famously regarded as the 'Father of the White Revolution' and launched 'Operation Flood' in India in 1970?",
+    "option_a": "Dr. M.S. Swaminathan",
+    "option_b": "Dr. Verghese Kurien",
+    "option_c": "Chidambaram Subramaniam",
+    "option_d": "Sam Pitroda",
+    "correct_answer": "b",
+    "explanation": "Dr. Verghese Kurien created Amul and engineered the White Revolution (Operation Flood), making India the world's largest milk producer. [Memory Trick: Pure white 'Curd' (Kurien) is made from fresh milk = 'Kurien' is White Revolution's father.]"
+  },
+  {
+    "question": "In the year 1955, the Imperial Bank of India was nationalized and renamed as which premier banking institution?",
+    "option_a": "Reserve Bank of India",
+    "option_b": "State Bank of India",
+    "option_c": "Punjab National Bank",
+    "option_d": "Bank of Baroda",
+    "correct_answer": "b",
+    "explanation": "The Imperial Bank of India (established in 1921 by merging three Presidency banks) was nationalized in 1955 under the State Bank of India Act, forming the SBI to support national rural banking. [Memory Trick: The grand 'Imperial' master surrendered his crown to become a servant of the 'State' = State Bank of India.]"
+  },
+  {
+    "question": "While high-denomination legal currency notes are signed by the RBI Governor, who signs the one-rupee currency note in India?",
+    "option_a": "President of India",
+    "option_b": "Finance Secretary of India",
+    "option_c": "Union Finance Minister",
+    "option_d": "Governor of RBI",
+    "correct_answer": "b",
+    "explanation": "Under the Coinage Act, the one-rupee note is issued by the Ministry of Finance, not the RBI, thus bearing the signature of the Finance Secretary of India. [Memory Trick: A tiny 'One' rupee note can be managed by the department 'Secretary' directly, without bothering the boss Governor.]"
+  },
+  {
+    "question": "The global multilateral body 'World Trade Organization' (WTO), which replaced GATT in 1995, is headquartered in which city?",
+    "option_a": "New York, USA",
+    "option_b": "Geneva, Switzerland",
+    "option_c": "Paris, France",
+    "option_d": "Washington D.C., USA",
+    "correct_answer": "b",
+    "explanation": "The WTO was established on January 1, 1995, following the Marrakesh Agreement. It is headquartered in Geneva, Switzerland, to regulate international trade. [Memory Trick: Merchants travel to the peaceful 'Genie' valley of 'Geneva' to sign fair trade treaties.]"
+  },
+  {
+    "question": "What is the classic monetary phenomenon called when prices rise because aggregate demand significantly outpaces aggregate supply?",
+    "option_a": "Cost-Push Inflation",
+    "option_b": "Demand-Pull Inflation",
+    "option_c": "Stagflation",
+    "option_d": "Hyperinflation",
+    "correct_answer": "b",
+    "explanation": "Demand-pull inflation occurs when aggregate demand for goods and services in an economy rises more rapidly than its productive capacity, often described as 'too much money chasing too few goods'. [Memory Trick: High customer 'Demand' pulls the prices upward like a string.]"
+  },
+  {
+    "question": "Which of the following base year periods is currently utilized by the Indian government for tracking consumer price index and real GDP?",
+    "option_a": "2004–2005",
+    "option_b": "2011–2012",
+    "option_c": "2015–2016",
+    "option_d": "1999–2000",
+    "correct_answer": "b",
+    "explanation": "In 2015, the Ministry of Statistics and Programme Implementation (MoSPI) revised the base year for GDP calculations from 2004-05 to 2011-12. [Memory Trick: The famous year '11-12' (2011-12) where India won the cricket World Cup is the baseline year of economic measuring.]"
+  },
+  {
+    "question": "What is the key structural difference between 'Real GDP' and 'Nominal GDP' indicators in macroeconomic metrics?",
+    "option_a": "Real GDP excludes agricultural output entirely",
+    "option_b": "Real GDP is adjusted to remove the distortions of inflation",
+    "option_c": "Nominal GDP excludes foreign investment revenues",
+    "option_d": "Real GDP includes only manufacturing sectors",
+    "correct_answer": "b",
+    "explanation": "Nominal GDP is calculated at current market prices, whereas Real GDP is calculated at constant base-year prices, effectively adjusting for inflation to show actual production growth. [Memory Trick: 'Real' growth is the absolute output count, unaffected by changes in price tags.]"
+  },
+  {
+    "question": "An economy experiencing 'Stagflation' is characterized by which of the following painful combination of indicators?",
+    "option_a": "High growth, low inflation, and low unemployment",
+    "option_b": "Stagnant or low growth combined with high inflation and high unemployment",
+    "option_c": "High inflation paired with negative interest rates",
+    "option_d": "Severe drop in currency value with trade balance surplus",
+    "correct_answer": "b",
+    "explanation": "Stagflation is an economic anomaly where persistent high inflation occurs simultaneously with high unemployment and stagnant economic demand. [Memory Trick: 'Stag' (stagnation of growth) + 'Flation' (high inflation) = Stagflation.]"
+  },
+  {
+    "question": "Why would a sovereign country's central bank deliberately execute a 'Devaluation' of its local currency?",
+    "option_a": "To curb runaway hyperinflation",
+    "option_b": "To make domestic exports cheaper and imports costlier",
+    "option_c": "To repay international IMF loans with lower nominal values",
+    "option_d": "To attract hot money speculative real estate investments",
+    "correct_answer": "b",
+    "explanation": "Devaluation reduces the value of a currency relative to other currencies, making domestic goods cheaper for foreigners (boosting exports) and foreign goods more expensive (discouraging imports). [Memory Trick: Drop the currency's value so foreign buyers rush in to scoop up 'cheap domestic products' on sale.]"
+  },
+  {
+    "question": "Which represents the first commercial bank of India established and managed purely by an Indian board of directors in 1881?",
+    "option_a": "Oudh Commercial Bank",
+    "option_b": "Punjab National Bank",
+    "option_c": "Allahabad Bank",
+    "option_d": "Imperial Bank of India",
+    "correct_answer": "a",
+    "explanation": "Oudh Commercial Bank was established in 1881 in Faizabad with limited Indian management. PNB was founded later in 1894 as the first fully Indian-owned bank. [Memory Trick: 'Oudh' (Faizabad) is the 'oldest' commercial point for Indian banking entrepreneurs.]"
+  },
+  {
+    "question": "Which of the following represents the largest commercial public sector bank in modern India by assets and branches?",
+    "option_a": "Bank of Baroda",
+    "option_b": "Punjab National Bank",
+    "option_c": "State Bank of India",
+    "option_d": "HDFC Bank",
+    "correct_answer": "c",
+    "explanation": "The State Bank of India is a Fortune 500 company and the largest public sector multinational bank in India, holding over a 23% market share in total assets. [Memory Trick: The 'State' (SBI) is the big giant of public finance.]"
+  },
+  {
+    "question": "Which of the following best defines the 'Repo Rate' in RBI's monetary management toolset?",
+    "option_a": "The rate at which public deposits are commercialized by banks",
+    "option_b": "The rate at which the RBI lends money to commercial banks for short-term needs",
+    "option_c": "The rate at which commercial banks file corporate income tax returns",
+    "option_d": "The long-term interest rate applied to foreign exchange treasury bonds",
+    "correct_answer": "b",
+    "explanation": "Repo rate (Repurchase Option) is the rate at which the central bank (RBI) lends short-term funds to commercial banks against government securities to control liquidity. [Memory Trick: 'Repo' = 'RBI' 'Repurchases' securities to give financial cash loans to commercial banks.]"
+  },
+  {
+    "question": "The 'Reverse Repo Rate' is a crucial monetary tool defined by which of the following?",
+    "option_a": "The rate at which citizens return banking credits to the RBI",
+    "option_b": "The rate at which the RBI absorbs liquidity by taking deposits from commercial banks",
+    "option_c": "The conversion penalty rate applied on importing foreign capital stocks",
+    "option_d": "The penal rate charged on defaulting micro-finance borrowers",
+    "correct_answer": "b",
+    "explanation": "Reverse Repo Rate is the benchmark rate at which the RBI borrows or parking excess money from commercial banks, helping to drain excess liquidity from the market. [Memory Trick: The flow of cash goes in 'Reverse' — from commercial banks back to the RBI vault.]"
+  },
+  {
+    "question": "The percentage of net demand and time liabilities (NDTL) that a bank must maintain as cash reserves with the RBI is defined as what?",
+    "option_a": "Statutory Liquidity Ratio (SLR)",
+    "option_b": "Cash Reserve Ratio (CRR)",
+    "option_c": "Marginal Standing Facility (MSF)",
+    "option_d": "Capital Adequacy Ratio",
+    "correct_answer": "b",
+    "explanation": "The Cash Reserve Ratio (CRR) is the specified minimum percentage of total deposits (NDTL) that commercial banks must keep in the form of liquid cash reserves with the RBI. [Memory Trick: CRR = 'Cash' 'Reserved' with the 'R'egulating RBI central bank.]"
+  },
+  {
+    "question": "What is the requirement called where commercial banks must maintain a certain percentage of their deposits in liquid form, like gold or government securities, with themselves?",
+    "option_a": "Cash Reserve Ratio (CRR)",
+    "option_b": "Statutory Liquidity Ratio (SLR)",
+    "option_c": "Open Market Operations (OMO)",
+    "option_d": "Bank Rate",
+    "correct_answer": "b",
+    "explanation": "The Statutory Liquidity Ratio (SLR) requires banks to maintain a share of NDTL in safe liquid assets like gold, cash, or approved securities locally in their own vaults. [Memory Trick: SLR = 'S'elf 'L'iquid 'R'eserve kept in bank's own safe box.]"
+  },
+  {
+    "question": "A landmark step in Indian planning occurred on January 1, 2015, when the historic Planning Commission was officially replaced by which think-tank?",
+    "option_a": "NITI Aayog",
+    "option_b": "National Development Council",
+    "option_c": "Finance Commission of India",
+    "option_d": "Financial Stability and Development Council",
+    "correct_answer": "a",
+    "explanation": "The National Institution for Transforming India (NITI Aayog) was set up on Jan 1, 2015, to foster cooperative federalism and serve as a state policy think-tank. [Memory Trick: Out with central commands, in with modern 'Policy' (NITI in Sanskrit means ethics/policy) guidance.]"
+  },
+  {
+    "question": "Who serves as the ex-officio Chairman of the government think-tank NITI Aayog?",
+    "option_a": "President of India",
+    "option_b": "Prime Minister of India",
+    "option_c": "Union Minister of Finance",
+    "option_d": "Governor of the Reserve Bank of India",
+    "correct_answer": "b",
+    "explanation": "The Prime Minister of India serves as the ex-officio Chairman of NITI Aayog, while a Vice-Chairman is appointed for day-to-day administrative execution. [Memory Trick: The nation's 'Prime' political captain (PM) steers this supreme planning body.]"
+  },
+  {
+    "question": "Under macroeconomic accounting, 'Primary Deficit' is mathematically defined as which of the following?",
+    "option_a": "Fiscal Deficit minus Inflation indexation",
+    "option_b": "Fiscal Deficit minus Interest Payments on past borrowings",
+    "option_c": "Revenue Deficit minus capital gains",
+    "option_d": "Total expenditure minus tax revenue receipts",
+    "correct_answer": "b",
+    "explanation": "Primary Deficit measures the borrowing requirements of the government for current expenses, excluding the burden of interest payments on past debt. (Primary Deficit = Fiscal Deficit - Interest Payments). [Memory Trick: Clear the historical 'Interest' drag to check our actual contemporary deficit gap.]"
+  },
+  {
+    "question": "A comprehensive 'Balance of Payments' (BOP) ledger of a sovereign country is composed of which accounts?",
+    "option_a": "Fiscal Account and Capital Account",
+    "option_b": "Current Account and Capital Account",
+    "option_c": "Trade Surplus Account and Revenue Account",
+    "option_d": "External Debt and Internal Revenue Ledger",
+    "correct_answer": "b",
+    "explanation": "The BOP is a systematic summary of all economic transactions of a nation with the rest of the world, comprising the Current Account (goods/services/transfers) and Capital Account (investments/loans). [Memory Trick: Global transactions are made either as daily 'Current' shop purchases or long-term 'Capital' asset deals.]"
+  },
+  {
+    "question": "'Laissez-faire', a founding French terminology in economics, refers to which structural concept?",
+    "option_a": "Complete centralization of agricultural output by state communes",
+    "option_b": "A free-market system with minimal state regulation and intervention",
+    "option_c": "Heavy protective export customs on foreign manufacturer cartels",
+    "option_d": "Direct cash transfer schemes to marginal labor cadres",
+    "correct_answer": "b",
+    "explanation": "Laissez-faire ('let it go') is an economic philosophy advocating for free markets, competition, and zero government intervention. [Memory Trick: 'Laissez-faire' says 'Leave us alone' to buy and sell freely.]"
+  },
+  {
+    "question": "In 1991, India faced a severe Balance of Payments crisis, prompting which major economic reform scheme?",
+    "option_a": "Abolition of all national income taxes",
+    "option_b": "LPG (Liberalization, Privatization, and Globalization)",
+    "option_c": "Nationalization of all private retail banks",
+    "option_d": "Pegging of Rupee directly to gold standard reserves",
+    "option_neutral": "b",
+    "correct_answer": "b",
+    "explanation": "Faced with a depletion of foreign reserves to just two weeks, the government under PM P.V. Narasimha Rao and Finance Minister Manmohan Singh launched major LPG (Liberalization, Privatization, and Globalization) reforms. [Memory Trick: To fuel up the stalling economic engine, turn on the clean 'L-P-G' cylinder of freedom.]"
+  },
+  {
+    "question": "The 'Lorenz Curve', a key graphical tool in macroeconomics, displays the cumulative relationship between which of the following variables?",
+    "option_a": "Tax rates and total tax collection revenues",
+    "option_b": "Population groups and cumulative share of national income received",
+    "option_c": "Unemployment trends and consumer price inflation",
+    "option_d": "Import expenditures and export earnings",
+    "correct_answer": "b",
+    "explanation": "The Lorenz Curve (developed by Max O. Lorenz in 1905) graphically represents the distribution of wealth or income. The Gini Coefficient is calculated as the area between the line of perfect equality and the Lorenz curve. [Memory Trick: The curved 'Line of Lorenz' dips down to show how unevenly the national income pie is sliced.]"
+  },
+  {
+    "question": "The 'Phillips Curve' represents which of the following historic economic tradeoffs?",
+    "option_a": "As tax rates increase, tax evasion rises",
+    "option_b": "An inverse relationship between inflation and unemployment rates",
+    "option_c": "A positive correlation between tariff blocks and domestic savings",
+    "option_d": "The direct relation between money supply and interest rates",
+    "correct_answer": "b",
+    "explanation": "The Phillips Curve shows that in the short term, inflation and unemployment have an inverse relationship; higher inflation is correlated with lower unemployment and vice versa. [Memory Trick: 'P-H-I-L-I-P-S' = 'P'rice (inflation) rises when 'S'lack (unemployment) goes down.]"
+  },
+  {
+    "question": "Who coined the classic historical phrase 'Hindu Rate of Growth' to describe the slow annual growth rate of 3.5% of the Indian economy from the 1950s to the 1980s?",
+    "option_a": "Dr. Amartya Sen",
+    "option_b": "Professor Raj Krishna",
+    "option_c": "Dr. Montek Singh Ahluwalia",
+    "option_d": "Dr. Manmohan Singh",
+    "correct_answer": "b",
+    "explanation": "Professor Raj Krishna coined 'Hindu Rate of Growth' in 1978 to highlight the stagnant 3.5% annual GDP growth of India under socialist policies, which lagged behind other developing nations. [Memory Trick: 'Raj' Krishna pointed out our slow-moving economic chariot under old rules.]"
+  },
+  {
+    "question": "The Securities and Exchange Board of India (SEBI) was established in 1988 but received full statutory powers in which year?",
+    "option_a": "1990",
+    "option_b": "1992",
+    "option_c": "1995",
+    "option_d": "2000",
+    "correct_answer": "b",
+    "explanation": "SEBI was established in 1988 as a non-statutory body, but was given independent statutory powers on April 12, 1992, through the SEBI Act, 1992, following stock market scandals. [Memory Trick: To protect share retail buyers, SEBI was given steel 'Teeth' (statutory) in the breakthrough year '92' (1992).]"
+  },
+  {
+    "question": "The Small Industries Development Bank of India (SIDBI), the principal financial institution for MSMEs, is headquartered in which city?",
+    "option_a": "Mumbai",
+    "option_b": "Lucknow",
+    "option_c": "New Delhi",
+    "option_d": "Kolkata",
+    "correct_answer": "b",
+    "explanation": "SIDBI was established on April 2, 1990, under an Act of Parliament. Unlike most financial giants which sit in Mumbai, SIDBI is headquartered in Lucknow, Uttar Pradesh. [Memory Trick: Small businesses have good 'luck' (Lucknow) securing SIDBI loans.]"
+  },
+  {
+    "question": "The National Bank for Agriculture and Rural Development (NABARD) was established in 1982 based on the recommendations of which committee?",
+    "option_a": "Shivaraman Committee",
+    "option_b": "Narasimham Committee",
+    "option_c": "Urjit Patel Committee",
+    "option_d": "Kelkar Committee",
+    "correct_answer": "a",
+    "explanation": "NABARD was set up on July 12, 1982, on the recommendations of the B. Shivaraman Committee to provide credit flow for agricultural development and cottage industries. [Memory Trick: Rural farming needs the blessings of Lord 'Shiva' = Shivaraman Committee formed NABARD.]"
+  },
+  {
+    "question": "Under the 'Lead Bank Scheme' introduced by the RBI in late 1969, what was the primary district-level mandate for designated commercial banks?",
+    "option_a": "Adopt a specific district to specialize in giving business loans to large corporate players",
+    "option_b": "Serve as a pacesetter and coordinator for credit planning and banking expansion in an assigned district",
+    "option_c": "Solely print local physical currency notes in times of national crisis",
+    "option_d": "Nationalize all regional agricultural cooperative societies",
+    "correct_answer": "b",
+    "explanation": "The Lead Bank Scheme was introduced to assign particular districts to individual commercial banks, which would 'lead' the credit planning, survey resource potential, and expand banking inclusion. [Memory Trick: Each district is assigned a 'Lead' shepherd bank to guide and expand local financial access.]"
+  },
+  {
+    "question": "In economic policy, the process of 'Disinvestment' of public sector enterprises (PSEs) is best defined as which of the following?",
+    "option_a": "Closing down loss-making government factories and laying off workers",
+    "option_b": "Selling a portion of government-held equity shares of PSEs to private buyers or the public",
+    "option_c": "Merging distinct public banks into a single nationwide administrative body",
+    "option_d": "Reinvesting all tax receipts strictly back into coal power plants",
+    "correct_answer": "b",
+    "explanation": "Disinvestment refers to the dilution or sale of government stakes in public sector enterprises to generate non-debt capital and improve corporate efficiency. [Memory Trick: Government 'un-does' (Dis-) its 'investment' by selling some factory shares to private owners.]"
+  },
+  {
+    "question": "What is the physical holding site called where the RBI stores large emergency reserves of banknotes and coins for distribution to local commercial banks?",
+    "option_a": "Currency Chest",
+    "option_b": "Treasury Vaults",
+    "option_c": "Exchange Depot",
+    "option_d": "Monetary Depot",
+    "correct_answer": "a",
+    "explanation": "A Currency Chest is a select branch locker of a bank selected by the RBI to store massive reserves of currency on its behalf, maintaining system liquidity in the region. [Memory Trick: A giant locked 'Chest' filled with fresh currency notes and gold blocks.]"
+  },
+  {
+    "question": "Which of the following is the parent ministry responsible for preparing, presenting, and executing the Annual Union Budget of India?",
+    "option_a": "Ministry of Commerce and Industry",
+    "option_b": "Ministry of Finance",
+    "option_c": "NITI Aayog",
+    "option_d": "Prime Minister's Office",
+    "correct_answer": "b",
+    "explanation": "The Department of Economic Affairs under the Ministry of Finance is the nodal agency responsible for preparing the Union Budget, which is presented annually by the Finance Minister. [Memory Trick: The keys to the nation's treasury chest belong to the Ministry of 'Finance'.]"
+  },
+  {
+    "question": "Which economic sector is the largest contributor to India's Gross Domestic Product (GDP) by revenue and value addition in modern times?",
+    "option_a": "Agriculture and allied activities",
+    "option_b": "Services Sector (Tertiary)",
+    "option_c": "Manufacturing and heavy industries (Secondary)",
+    "option_d": "Mining and Quarrying",
+    "correct_answer": "b",
+    "explanation": "The Services sector (Tertiary sector) is the largest contributor to India's GDP, accounting for over 53% of its gross value added, whereas agriculture employs the highest share of the population. [Memory Trick: India's tech talent and banking 'services' make the biggest contribution to our wallet.]"
+  },
+  {
+    "question": "The term 'Hindu Rate of Growth' was coined to compare India's GDP expansion against which historical era's economic performance?",
+    "option_a": "Pre-colonial wealthy golden era",
+    "option_b": "The post-independence era of slow 3.5% growth from 1950 to 1980",
+    "option_c": "Sovereign trade growth under British mercantilism",
+    "option_d": "Post-1991 rapid double-digit service sector growth",
+    "correct_answer": "b",
+    "explanation": "The 'Hindu Rate of Growth' was Raj Krishna's critique of India's low annual GDP growth Rate of 3.5% which was witnessed under strict socialist controls between 1950 and 1980. [Memory Trick: A slow, sluggish crawl of 3.5% resembling a static, conservative system of the 1950-80s.]"
+  },
+  {
+    "question": "Which represents a completely non-tax source of revenue for the Union Government of India?",
+    "option_a": "Customs duties on luxury imports",
+    "option_b": "Dividends and profits from public sector undertakings (PSUs)",
+    "option_c": "Goods and Services Tax (GST)",
+    "option_d": "Securities Transaction Tax",
+    "correct_answer": "b",
+    "explanation": "Non-tax revenue includes receipts from sources other than taxes, such as dividends/profits from PSUs, interest receipts, and fees/penalties collected. [Memory Trick: Government receives direct corporate 'profits' from its own enterprises, without taxing anyone's pocket.]"
+  }
+]

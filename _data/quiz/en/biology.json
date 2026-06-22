@@ -1,128 +1,389 @@
-{
-  "title": "Biology",
-  "title_hi": "जीव विज्ञान",
-  "icon": "🧬",
-  "slug": "biology",
-  "questions": [
-    {
-      "id": 1,
-      "q": "The basic unit of life is?",
-      "opts": [
-        "Tissue",
-        "Organ",
-        "Cell",
-        "Atom"
-      ],
-      "ans": 2,
-      "exp": "The cell is the basic structural and functional unit of all living organisms. Robert Hooke first discovered and named cells in 1665 while looking at cork under a microscope."
-    },
-    {
-      "id": 2,
-      "q": "DNA stands for?",
-      "opts": [
-        "Deoxyribose Nucleic Acid",
-        "Deoxyribonucleic Acid",
-        "Di-Nitrogen Acid",
-        "Double Nitrogen Acid"
-      ],
-      "ans": 1,
-      "exp": "DNA stands for Deoxyribonucleic Acid. It is the molecule that carries genetic information in living organisms. Its double helix structure was discovered by Watson and Crick in 1953."
-    },
-    {
-      "id": 3,
-      "q": "Which organ produces insulin?",
-      "opts": [
-        "Liver",
-        "Kidney",
-        "Pancreas",
-        "Spleen"
-      ],
-      "ans": 2,
-      "exp": "Insulin is produced by the beta cells in the islets of Langerhans in the pancreas. Insulin regulates blood sugar levels. Insufficient insulin production leads to diabetes mellitus."
-    },
-    {
-      "id": 4,
-      "q": "How many chambers does the human heart have?",
-      "opts": [
-        "2",
-        "3",
-        "4",
-        "5"
-      ],
-      "ans": 2,
-      "exp": "The human heart has 4 chambers: two upper chambers called atria (left atrium and right atrium) and two lower chambers called ventricles (left ventricle and right ventricle)."
-    },
-    {
-      "id": 5,
-      "q": "Which blood group is called the universal donor?",
-      "opts": [
-        "A",
-        "B",
-        "AB",
-        "O"
-      ],
-      "ans": 3,
-      "exp": "Blood group O negative (O-) is called the universal donor because it can be donated to any blood group. AB positive is the universal recipient as it can receive from all blood groups."
-    },
-    {
-      "id": 6,
-      "q": "Photosynthesis occurs in which part of the plant?",
-      "opts": [
-        "Root",
-        "Stem",
-        "Leaf",
-        "Flower"
-      ],
-      "ans": 2,
-      "exp": "Photosynthesis primarily occurs in the leaves, in the chloroplasts. Chlorophyll (the green pigment) absorbs sunlight to convert CO₂ and water into glucose and oxygen."
-    },
-    {
-      "id": 7,
-      "q": "The longest bone in the human body is?",
-      "opts": [
-        "Spine",
-        "Humerus",
-        "Femur",
-        "Tibia"
-      ],
-      "ans": 2,
-      "exp": "The femur (thigh bone) is the longest, heaviest, and strongest bone in the human body. It can support up to 30 times the body weight."
-    },
-    {
-      "id": 8,
-      "q": "Which vitamin is produced by the skin in sunlight?",
-      "opts": [
-        "Vitamin A",
-        "Vitamin B",
-        "Vitamin C",
-        "Vitamin D"
-      ],
-      "ans": 3,
-      "exp": "Vitamin D is produced in the skin when exposed to ultraviolet B (UVB) rays from sunlight. It is essential for calcium absorption and bone health."
-    },
-    {
-      "id": 9,
-      "q": "The process by which plants lose water through leaves is called?",
-      "opts": [
-        "Photosynthesis",
-        "Transpiration",
-        "Respiration",
-        "Absorption"
-      ],
-      "ans": 1,
-      "exp": "Transpiration is the process by which plants lose water vapor through their leaves (mainly through stomata). It helps in the upward movement of water and minerals from roots to leaves."
-    },
-    {
-      "id": 10,
-      "q": "The study of fungi is called?",
-      "opts": [
-        "Botany",
-        "Mycology",
-        "Virology",
-        "Entomology"
-      ],
-      "ans": 1,
-      "exp": "Mycology is the branch of biology that deals with the study of fungi. Fungi include mushrooms, yeasts, and molds. They play an important role in decomposition and nutrient cycling."
-    }
-  ]
-}
+[
+  {
+    "question": "Which cellular organelle is universally referred to as the 'Powerhouse of the Cell' for producing adenosine triphosphate (ATP)?",
+    "option_a": "Ribosome",
+    "option_b": "Mitochondria",
+    "option_c": "Golgi Apparatus",
+    "option_d": "Lysosome",
+    "correct_answer": "b",
+    "explanation": "Mitochondria convert chemical energy from food into ATP through cellular respiration. [Memory Trick: 'Mighty' Mitochondria supply all the 'Might' (power) to cell actions!]"
+  },
+  {
+    "question": "Which double-stranded macromolecule, discovered to have a double-helix structure by Watson and Crick in 1953, carries primary genetic instruction?",
+    "option_a": "RNA",
+    "option_b": "DNA (Deoxyribonucleic Acid)",
+    "option_c": "Protein",
+    "option_d": "Glycogen",
+    "correct_answer": "b",
+    "explanation": "DNA carries genetic instruction for development, functioning, growth, and replication of all organisms. [Memory Trick: Genetic traits run in our 'D'eepest 'N'ature 'A'lways = DNA.]"
+  },
+  {
+    "question": "Which pigment inside plant chloroplasts absorbs light energy during synthesis of organic food in photosynthesis?",
+    "option_a": "Chlorophyll",
+    "option_b": "Carotenoid",
+    "option_c": "Anthocyanin",
+    "option_d": "Hemoglobin",
+    "correct_answer": "a",
+    "explanation": "Chlorophyll is a green pigment found in plants that absorbs blue and red wavelengths of light for photosynthesis. [Memory Trick: Green plants 'Chlor' (color) their 'phylls' (leaves) with 'Chlorophyll'.]"
+  },
+  {
+    "question": "Which gas is primarily absorbed by terrestrial plants during the day for the photosynthetic process?",
+    "option_a": "Oxygen",
+    "option_b": "Carbon Dioxide",
+    "option_c": "Nitrogen",
+    "option_d": "Argon",
+    "correct_answer": "b",
+    "explanation": "Plants take in Carbon Dioxide (CO2) from the atmosphere and release Oxygen (O2) as an essential byproduct of photosynthesis. [Memory Trick: Plants swallow the 'heavy carbon burden' to puff out fresh, clean air!]"
+  },
+  {
+    "question": "Which biological term refers to the maintenance of a stable internal temperature and biochemical environment within living organisms?",
+    "option_a": "Homeostasis",
+    "option_b": "Metabolism",
+    "option_c": "Osmosis",
+    "option_d": "Glycolysis",
+    "correct_answer": "a",
+    "explanation": "Homeostasis is the auto-regulation process by which biological systems maintain stability while adjusting to external conditions. [Memory Trick: Staying relaxed at 'Home' with a stable, steady status = 'Homeo'-stasis!]"
+  },
+  {
+    "question": "What is the primary function of red blood cells (erythrocytes) in the human body blood circulation channel?",
+    "option_a": "To fight infections",
+    "option_b": "To clot wounds",
+    "option_c": "To transport oxygen",
+    "option_d": "To synthesize vitamins",
+    "correct_answer": "c",
+    "explanation": "Red blood cells contain iron-rich hemoglobin, which selectively binds to and transports oxygen from the lungs to the tissues. [Memory Trick: Red vascular fire engines rush down life channels carrying 'O2 oxygen capsules'!]"
+  },
+  {
+    "question": "Which microscale structures inside human kidneys act as the primary filtering units of waste products?",
+    "option_a": "Nephrons",
+    "option_b": "Neurons",
+    "option_c": "Alveoli",
+    "option_d": "Villi",
+    "correct_answer": "a",
+    "explanation": "Each kidney contains around one million nephrons that filter blood, remove waste, and maintain electrolyte balance. [Memory Trick: 'N'ephrons handle 'N'asty waste filtration from the blood!]"
+  },
+  {
+    "question": "Which class of simple proteins acts as biological catalysts, accelerating biochemical reactions inside living organisms without themselves being consumed?",
+    "option_a": "Hormones",
+    "option_b": "Enzymes",
+    "option_c": "Antibodies",
+    "option_d": "Lipids",
+    "correct_answer": "b",
+    "explanation": "Enzymes lower the activation energy required to initiate vital chemical reactions. [Memory Trick: 'En'-gines of chemical speeds = EN-zymes!]"
+  },
+  {
+    "question": "Which vital human organ is the only one capable of natural cellular regeneration from as little as 25% of its original healthy mass?",
+    "option_a": "Heart",
+    "option_b": "Brain",
+    "option_c": "Liver",
+    "option_d": "Pancreas",
+    "correct_answer": "c",
+    "explanation": "The human liver possesses remarkable regenerative properties, allowing it to fully rebuild itself following disease or surgical resection. [Memory Trick: The liver 'Lives'-on and rebuilds itself!]"
+  },
+  {
+    "question": "Which acid is standardly synthesized inside the human stomach to facilitate digestion and kill harmful ingested bacteria?",
+    "option_a": "Sulfuric Acid",
+    "option_b": "Hydrochloric Acid (HCl)",
+    "option_c": "Nitric Acid",
+    "option_d": "Acetic Acid",
+    "correct_answer": "b",
+    "explanation": "Gastric glands secrete Hydrochloric Acid (HCl) to create an acidic pH of 1.5 to 3.5, essential for enzyme activation and disinfection. [Memory Trick: 'H'ighly 'C'orrosive 'L'iquid inside your belly!]"
+  },
+  {
+    "question": "What is the genetic substance carrying the hereditary layout of virus genomes that do not possess double-stranded DNA?",
+    "option_a": "Lipopolysaccharide",
+    "option_b": "RNA (Ribonucleic Acid)",
+    "option_c": "Glycoprotein",
+    "option_d": "Peptidoglycan",
+    "correct_answer": "b",
+    "explanation": "Many viral pathogens, such as Influenza, HIV, and Coronaviruses, utilize single- or double-stranded RNA as their primary genetic template. [Memory Trick: 'R'apid 'R'etroviruses rely heavily on 'R'NA!]"
+  },
+  {
+    "question": "Which chemical element forms the core central coordinator of a green chlorophyll molecule, corresponding to iron's role in blood hemoglobin?",
+    "option_a": "Calcium",
+    "option_b": "Magnesium",
+    "option_c": "Zinc",
+    "option_d": "Copper",
+    "correct_answer": "b",
+    "explanation": "Chlorophyll molecules contain a central magnesium atom surrounded by a nitrogen-containing porphyrin ring. [Memory Trick: Plants need 'M'agic 'G'reen mineral power = Mg (Magnesium)!]"
+  },
+  {
+    "question": "What is the longest and strongest bone situated inside the anatomical framework of the human body?",
+    "option_a": "Tibia",
+    "option_b": "Femur",
+    "option_c": "Humerus",
+    "option_d": "Fibula",
+    "correct_answer": "b",
+    "explanation": "The femur, or thigh bone, supports human body weight and extends from the hip socket down to the knee joint. [Memory Trick: Think of a 'Firm-structural' leg pillars = Femur!]"
+  },
+  {
+    "question": "Which non-blooming, spore-producing botanical organisms belong to the separate kingdom of Fungi?",
+    "option_a": "Ferns",
+    "option_b": "Mushrooms",
+    "option_c": "Mosses",
+    "option_d": "Algae",
+    "correct_answer": "b",
+    "explanation": "Mushrooms are spore-bearing fruiting bodies of eukaryotic fungi, lacking chlorophyll. [Memory Trick: 'Mush'-rooms thrive in dark, mushy soils without photosynthesis!]"
+  },
+  {
+    "question": "What is the basic, structurally independent structural unit of all living organisms?",
+    "option_a": "Tissue",
+    "option_b": "Cell",
+    "option_c": "Organ",
+    "option_d": "Protein",
+    "correct_answer": "b",
+    "explanation": "The cell is the basic structural, functional, and biological unit of all known organisms. [Memory Trick: A busy 'Cell'-phone network connects the vast body matrix!]"
+  },
+  {
+    "question": "Which standard hormone, secreted by specialized beta cells of the pancreas, regulates glucose concentrations in the bloodstream?",
+    "option_a": "Glucagon",
+    "option_b": "Insulin",
+    "option_c": "Adrenaline",
+    "option_d": "Thyroxine",
+    "correct_answer": "b",
+    "explanation": "Insulin enables cells to take up glucose from blood circulation, lowering blood sugar levels. [Memory Trick: Insulin keeps glucose locked 'In'-side the cells!]"
+  },
+  {
+    "question": "Which gas is an essential metabolic waste product of aerobic respiration, exhaled continuously by humans?",
+    "option_a": "Carbon Monoxide",
+    "option_b": "Carbon Dioxide",
+    "option_c": "Methane",
+    "option_d": "Hydrogen",
+    "correct_answer": "b",
+    "explanation": "Aerobic respiration breaks down glucose with oxygen, releasing Carbon Dioxide (CO2) and H2O as metabolic exhaust. [Memory Trick: Humans breathe 'In' oxygen and exhaust 'CO2' smoke!]"
+  },
+  {
+    "question": "What type of cellular division results in four daughter cells, each containing exactly half the chromosome pool of the parent cell?",
+    "option_a": "Mitosis",
+    "option_b": "Meiosis",
+    "option_c": "Binary Fission",
+    "option_d": "Budding",
+    "correct_answer": "b",
+    "explanation": "Meiosis occurs in reproductive tissue to generate sperm and egg gametes containing half-set haploid chromosomes. [Memory Trick: 'Me'-iosis creates the tiny pieces that made 'Me'!]"
+  },
+  {
+    "question": "Which primary vector transmits the Plasmodium parasite, the causative pathogen of Malaria disease, into the human bloodstream?",
+    "option_a": "Aedes Mosquito",
+    "option_b": "Anopheles Mosquito",
+    "option_c": "Tsetse Fly",
+    "option_d": "Tick",
+    "correct_answer": "b",
+    "explanation": "The female Anopheles mosquito transmits Plasmodium sporozoites via salivary glands during a blood meal. [Memory Trick: 'An'-opheles acts as the 'An'-tagonist of Malaria stories!]"
+  },
+  {
+    "question": "Which plant vascular tissue is dedicated to transporting water and dissolved mineral solutes upwards from roots to foliage?",
+    "option_a": "Phloem",
+    "option_b": "Xylem",
+    "option_c": "Cambium",
+    "option_d": "Pith",
+    "correct_answer": "b",
+    "explanation": "Xylem cells form rigid pipelines conducting water upward from root systems by negative capillary tension. [Memory Trick: 'X'ylem transports 'X'-tra 'water', while 'P'hloem transports 'F'ood (Ph-F)!]"
+  },
+  {
+    "question": "What is the primary anatomical site of nutrient absorption during human digestive system movements?",
+    "option_a": "Stomach",
+    "option_b": "Small Intestine",
+    "option_c": "Large Intestine",
+    "option_d": "Esophagus",
+    "correct_answer": "b",
+    "explanation": "The small intestine uses microscale villi to maximize surface area, absorbing 90% of nutrients from digested food. [Memory Trick: Think of 'Small' channels completing the 'Big' work of absorption!]"
+  },
+  {
+    "question": "Which class of macromolecules, synthesized on cellular ribosomes, comprises complex chains of amino acid residues?",
+    "option_a": "Lipids",
+    "option_b": "Carbohydrates",
+    "option_c": "Proteins",
+    "option_d": "Nucleic Acids",
+    "correct_answer": "c",
+    "explanation": "Proteins are polymer structures made of amino acid monomers linked together by strong peptide bonds. [Memory Trick: 'Pro'-teins build 'Pro'-fessional muscles!]"
+  },
+  {
+    "question": "Which component of human blood lacks a nucleus and is specialized to trigger clotting at wound sites?",
+    "option_a": "Lymphocytes",
+    "option_b": "Platelets (Thrombocytes)",
+    "option_c": "Monocytes",
+    "option_d": "Eosinophils",
+    "correct_answer": "b",
+    "explanation": "Platelets clump together at tissue damage locations, forming sticky plugs to recruit fibrin nets and prevent bleeding. [Memory Trick: Blood 'Plat'-elets act like tiny round 'plates' blocking the leaks!]"
+  },
+  {
+    "question": "Who is globally recognized as the historic founder/Father of genetics for his meticulous crossing experiments on garden pea plants?",
+    "option_a": "Charles Darwin",
+    "option_b": "Gregor Mendel",
+    "option_c": "Louis Pasteur",
+    "option_d": "Jean-Baptiste Lamarck",
+    "correct_answer": "b",
+    "explanation": "Johann Gregor Mendel established inheritance rules (dominance, segregation) in 1866 using pea traits. [Memory Trick: 'Men'-del worked to discover how traits are passed to young 'Men' and women!]"
+  },
+  {
+    "question": "Which chemical base is exclusively found in RNA, replacing the thymine base standardly present in DNA structures?",
+    "option_a": "Adenine",
+    "option_b": "Uracil",
+    "option_c": "Guanine",
+    "option_d": "Cytosine",
+    "correct_answer": "b",
+    "explanation": "DNA contains bases A, T, C, G; RNA replaces Thymine (T) with Uracil (U). [Memory Trick: RNA has 'U' (Uracil) inside its standard spelling block!]"
+  },
+  {
+    "question": "What represents the standard total chromosome count in a healthy, diploid human non-reproductive cell?",
+    "option_a": "23",
+    "option_b": "46",
+    "option_c": "92",
+    "option_d": "48",
+    "correct_answer": "b",
+    "explanation": "Normal human somatic cells contain 23 pairs of chromosomes, leading to a total sum of 46 chromosomes. [Memory Trick: Human blueprints have 23 mom pieces + 23 dad pieces = 46 overall!]"
+  },
+  {
+    "question": "Which organelle of eukaryotic cells contains digestive hydrolytic enzymes capable of recycling worn-out cellular subcomponents?",
+    "option_a": "Endoplasmic Reticulum",
+    "option_b": "Lysosome",
+    "option_c": "Peroxisome",
+    "option_d": "Centrosome",
+    "correct_answer": "b",
+    "explanation": "Lysosomes are acidic compartments containing hydrolases that digest macromolecules, microbes, and debris. [Memory Trick: Lysosomes act like 'Lysol' spray, dissolving and cleaning up messy waste!]"
+  },
+  {
+    "question": "Which gaseous biological ripening agent acts as a hormone to trigger the softening and color change of hanging fruits?",
+    "option_a": "Methane",
+    "option_b": "Ethylene",
+    "option_c": "Carbon Dioxide",
+    "option_d": "Nitrous Oxide",
+    "correct_answer": "b",
+    "explanation": "Ethylene gas coordinates biochemical ripening pathways across plants. [Memory Trick: Fruits 'Ethyl'-ate themselves to grow soft and sweet!]"
+  },
+  {
+    "question": "Which biological division includes the single-celled eukaryotic microorganisms commonly utilized in baking and brewing processes?",
+    "option_a": "Bacteria",
+    "option_b": "Yeasts (Fungi)",
+    "option_c": "Protozoa",
+    "option_d": "Viruses",
+    "correct_answer": "b",
+    "explanation": "Yeast is a microscopic, single-celled fungus that converts simple carbohydrates into alcohol and CO2 by fermentation. [Memory Trick: Bakeries 'Y'ell for 'Y'east to raise soft bread!]"
+  },
+  {
+    "question": "Which fundamental metabolic pathway involves the anaerobic conversion of one glucose molecule into two pyruvate units inside the cytosol?",
+    "option_a": "Krebs Cycle",
+    "option_b": "Glycolysis",
+    "option_c": "Electron Transport Chain",
+    "option_d": "Calvin Cycle",
+    "correct_answer": "b",
+    "explanation": "Glycolysis is the ancient pathway splitting sugar (glyco-) to yield ATP and pyruvate. [Memory Trick: 'Glyco' (sugar) + 'lysis' (splitting) = Glycolysis!]"
+  },
+  {
+    "question": "What is the primary organic compound forming the cellular wall structure of terrestrial plant cells?",
+    "option_a": "Starch",
+    "option_b": "Cellulose",
+    "option_c": "Chitin",
+    "option_d": "Glycogen",
+    "correct_answer": "b",
+    "explanation": "Cellulose is an insoluble polysaccharide containing beta-glucose chains that provides structural rigidity. [Memory Trick: 'Cell'-ulose builds plant 'Cell' walls like protective woody fibers!]"
+  },
+  {
+    "question": "What is the specialized scientific term describing the mutualistic symbiotic connection between fungal hyphae and plant roots?",
+    "option_a": "Lichen",
+    "option_b": "Mycorrhiza",
+    "option_c": "Parasitism",
+    "option_d": "Epiphytism",
+    "correct_answer": "b",
+    "explanation": "Mycorrhizae enhance plant hydric and mineral absorption while receiving photosynthetic carbon products from hosts. [Memory Trick: 'Myco' (fungal) + 'rhiza' (root) = Mycorrhiza connection!]"
+  },
+  {
+    "question": "Which cranial nerve coordinates human visual transmissions, traveling directly from retina receptors to the brain's occipital lobe?",
+    "option_a": "Olfactory Nerve",
+    "option_b": "Optic Nerve",
+    "option_c": "Vagus Nerve",
+    "option_d": "Facial Nerve",
+    "correct_answer": "b",
+    "explanation": "The second cranial nerve (optic nerve) carries visual impulses from retina cells to brain processing centers. [Memory Trick: Cameras use 'Optic'-al lenses; eyes use 'Optic' nerves!]"
+  },
+  {
+    "question": "Which trace mineral serves as the core functional coordinator inside the oxygen-binding hemoglobin molecules of human red blood cells?",
+    "option_a": "Calcium",
+    "option_b": "Iron",
+    "option_c": "Potassium",
+    "option_d": "Iodine",
+    "correct_answer": "b",
+    "explanation": "Each polypeptide chain in hemoglobin holds a heme group featuring a central coordinate iron (Fe) ion. [Memory Trick: Steel-tough 'Iron' carries oxygen molecules through your blood veins!]"
+  },
+  {
+    "question": "Which hormone, secreted by suprarenal glands, triggers immediate physiological changes typical of 'fight-or-flight' stress responses?",
+    "option_a": "Insulin",
+    "option_b": "Adrenaline (Epinephrine)",
+    "option_c": "Estrogen",
+    "option_d": "Melatonin",
+    "correct_answer": "b",
+    "explanation": "Adrenaline increases heart rate, dilates respiratory pathways, and mobilizes glycogen to ready muscles during danger. [Memory Trick: Ride down an 'Adrenaline' rollercoaster and feel the rush!]"
+  },
+  {
+    "question": "Which ecological standard describes the specific role and physical space occupied by an organism within its community ecosystem?",
+    "option_a": "Habitat",
+    "option_b": "Niche",
+    "option_c": "Biome",
+    "option_d": "Biosphere",
+    "correct_answer": "b",
+    "explanation": "A niche encompasses all biotic and abiotic resources utilized by a species, defining its job in the ecosystem. [Memory Trick: Find your comfortable 'Niche' to do your special work!]"
+  },
+  {
+    "question": "Which structural macromolecule forms the hard external skeletons of jointed insects and the cell walls of fungi?",
+    "option_a": "Keratin",
+    "option_b": "Chitin",
+    "option_c": "Collagen",
+    "option_d": "Gelatin",
+    "correct_answer": "b",
+    "explanation": "Chitin is a modified nitrogenous polysaccharide providing strength and toughness to fungal structures and insect shells. [Memory Trick: Bug shells are made of hard 'Chi'-tin (sounds like tight-skin)!]"
+  },
+  {
+    "question": "Which human biological coordinate maintains critical balance, posture, and motor coordination behind the cerebrum base?",
+    "option_a": "Medulla Oblongata",
+    "option_b": "Cerebellum",
+    "option_c": "Hypothalamus",
+    "option_d": "Thalamus",
+    "correct_answer": "b",
+    "explanation": "The cerebellum coordinates voluntary muscular sequences and governs equilibrium/stance control adjustments. [Memory Trick: A gymnast needs 'Cere-Bell-um' to walk along thin balance 'bells'!]"
+  },
+  {
+    "question": "Which cells situated inside plant leaf surfaces form double-sided gates regulating opening of gas-exchange stomata pores?",
+    "option_a": "Mesophyll Cells",
+    "option_b": "Guard Cells",
+    "option_c": "Epidermal Cells",
+    "option_d": "Tracheids",
+    "correct_answer": "b",
+    "explanation": "Guard cells swell or shrink by osmosis to dilate or shut stomatal apertures depending on moisture pressure. [Memory Trick: Tight 'Guard' cells stand duty as gatekeepers of gas gates!]"
+  },
+  {
+    "question": "Which biological phenomenon explains the movement of solvent liquid across semipermeable membranes from diluted to concentrated chemical pools?",
+    "option_a": "Diffusion",
+    "option_b": "Osmosis",
+    "option_c": "Active Transport",
+    "option_d": "Phagocytosis",
+    "correct_answer": "b",
+    "explanation": "Osmosis is the spontaneous motion of water molecules to balance solute differences across barrier membranes. [Memory Trick: Water flows freely via 'O'-smosis to dilute 'O'-verloaded salt pools!]"
+  },
+  {
+    "question": "Which vector acts as the main vector transmitting dengue virus pathology into human physical hosts?",
+    "option_a": "Anopheles Mosquito",
+    "option_b": "Aedes Mosquito",
+    "option_c": "Fleas",
+    "option_d": "Lice",
+    "correct_answer": "b",
+    "explanation": "Aedes aegypti mosquitoes carry Dengue, Zika, and Yellow Fever viruses, biting primarily in daylight hours. [Memory Trick: 'Ae'-des mosquitoes are daytime 'Ae'-rial attackers!]"
+  },
+  {
+    "question": "Which macromolecule found in red blood cells is responsible for carrying oxygen and contains iron?",
+    "option_a": "Myoglobin",
+    "option_b": "Hemoglobin",
+    "option_c": "Albumin",
+    "option_d": "Globulin",
+    "correct_answer": "b",
+    "explanation": "Hemoglobin is the iron-containing oxygen transport metalloprotein in the red blood cells of all vertebrates. [Memory Trick: 'Hemo'-globin transports 'O2' throughout the global blood system!]"
+  },
+  {
+    "question": "What is the primary organ responsible for speech and vocal sound generation in the human neck anatomy?",
+    "option_a": "Pharynx",
+    "option_b": "Larynx (Voice Box)",
+    "option_c": "Trachea",
+    "option_d": "Esophagus",
+    "correct_answer": "b",
+    "explanation": "The larynx contains the vocal cords that vibrate to create sounds as air is pushed past them during exhalation. [Memory Trick: The 'L'-arynx sings sweet 'L'-yrics!]"
+  }
+]

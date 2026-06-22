@@ -1,128 +1,182 @@
-{
-  "title": "Transport & Communication",
-  "title_hi": "परिवहन और संचार",
-  "icon": "🚆",
-  "slug": "transport",
-  "questions": [
-    {
-      "id": 1,
-      "q": "The first railway line in India was inaugurated in?",
-      "opts": [
-        "1847",
-        "1853",
-        "1860",
-        "1870"
-      ],
-      "ans": 1,
-      "exp": "The first railway line in India was inaugurated on 16 April 1853 between Bori Bunder (Mumbai) and Thane, covering 34 km. It was operated by the Great Indian Peninsula Railway."
-    },
-    {
-      "id": 2,
-      "q": "The longest national highway in India is?",
-      "opts": [
-        "NH 44",
-        "NH 48",
-        "NH 27",
-        "NH 52"
-      ],
-      "ans": 0,
-      "exp": "NH 44 is the longest national highway in India, stretching 3,745 km from Srinagar in the north to Kanyakumari in the south. It passes through multiple states and major cities."
-    },
-    {
-      "id": 3,
-      "q": "India's first metro rail was started in which city?",
-      "opts": [
-        "Mumbai",
-        "New Delhi",
-        "Chennai",
-        "Kolkata"
-      ],
-      "ans": 3,
-      "exp": "Kolkata Metro, inaugurated on 24 October 1984, was India's first metro rail system. It runs between Dum Dum and Tollygunge. Delhi Metro (2002) is now India's largest metro network."
-    },
-    {
-      "id": 4,
-      "q": "The world's first commercial airline flight took place in?",
-      "opts": [
-        "1900",
-        "1914",
-        "1920",
-        "1927"
-      ],
-      "ans": 1,
-      "exp": "The world's first commercial airline flight was on 1 January 1914 between St. Petersburg and Tampa, Florida, USA. It was operated by the St. Petersburg-Tampa Airboat Line."
-    },
-    {
-      "id": 5,
-      "q": "BSNL stands for?",
-      "opts": [
-        "Bharat Sanchar Network Limited",
-        "Bharat Sanchar Nigam Limited",
-        "Bharat Satellite Network Limited",
-        "Bharat Software Network Limited"
-      ],
-      "ans": 1,
-      "exp": "BSNL stands for Bharat Sanchar Nigam Limited. It is a public sector telecommunications company owned by the Government of India, providing telephone, broadband, and mobile services."
-    },
-    {
-      "id": 6,
-      "q": "The Grand Trunk Road was built by?",
-      "opts": [
-        "Ashoka",
-        "Akbar",
-        "Sher Shah Suri",
-        "Shah Jahan"
-      ],
-      "ans": 2,
-      "exp": "The Grand Trunk Road (GT Road) was built by Sher Shah Suri in the 16th century. It runs from Kabul (Afghanistan) to Chittagong (Bangladesh), passing through major cities of the Indian subcontinent."
-    },
-    {
-      "id": 7,
-      "q": "India's first satellite communication was through?",
-      "opts": [
-        "INSAT-1B",
-        "ARYABHATA",
-        "APPLE",
-        "INSAT-1A"
-      ],
-      "ans": 2,
-      "exp": "APPLE (Ariane Passenger Payload Experiment), launched in 1981, was India's first experimental geostationary communication satellite. INSAT-1B (1983) was India's first operational communication satellite."
-    },
-    {
-      "id": 8,
-      "q": "The Rajdhani Express connects Delhi to?",
-      "opts": [
-        "Only Mumbai",
-        "Only Kolkata",
-        "State capitals across India",
-        "Only Chennai"
-      ],
-      "ans": 2,
-      "exp": "The Rajdhani Express is a series of fast passenger trains connecting New Delhi with various state capitals and major cities across India. The first Rajdhani Express ran between Delhi and Howrah in 1969."
-    },
-    {
-      "id": 9,
-      "q": "5G technology was first commercially launched in India in?",
-      "opts": [
-        "2020",
-        "2021",
-        "2022",
-        "2023"
-      ],
-      "ans": 2,
-      "exp": "5G technology was commercially launched in India on 1 October 2022 by Prime Minister Narendra Modi at the India Mobile Congress. Reliance Jio and Airtel were the first operators to launch 5G services."
-    },
-    {
-      "id": 10,
-      "q": "The Panama Canal connects which two oceans?",
-      "opts": [
-        "Atlantic and Indian",
-        "Pacific and Indian",
-        "Atlantic and Pacific",
-        "Pacific and Arctic"
-      ],
-      "ans": 2,
-      "exp": "The Panama Canal connects the Atlantic Ocean and the Pacific Ocean, cutting through Panama. It was opened in 1914 and is one of the most important waterways in the world, saving ships thousands of miles."
-    }
-  ]
-}
+[
+  {
+    "question": "The first commercial passenger train route in India was inaugurated on April 16, 1853. Which two destinations did it connect?",
+    "option_a": "Bombay (Bori Bunder) and Thane",
+    "option_b": "Howrah and Hooghly",
+    "option_c": "Madras and Arkonam",
+    "option_d": "Delhi and Meerut",
+    "correct_answer": "a",
+    "explanation": "In 1853, under Governor-General Lord Dalhousie, the first passenger train ran for 34 kilometers between Bombay (Bori Bunder) and Thane, powered by three steam locomotives: Sahib, Sindh, and Sultan. [Memory Trick: 'Bombay to Thane' (B-T) is the legendary beginning of Indian Railways in year 18-5-3.]"
+  },
+  {
+    "question": "National Waterway 1 (NW-1), the longest functional inland waterway in India, stretches between which of the following terminal points?",
+    "option_a": "Prayagraj (Allahabad) and Haldia",
+    "option_b": "Sadiya and Dhubri",
+    "option_c": "Kollam and Kottapuram",
+    "option_d": "Kakinada and Puducherry",
+    "correct_answer": "a",
+    "explanation": "NW-1 is 1,620 km long and runs along the Ganges-Bhagirathi-Hooghly river system, connecting Prayagraj (UP) with Haldia (WB). [Memory Trick: 'Pray' (Prayagraj) to 'Halve' (Haldia) the distance on the holy Ganges.]"
+  },
+  {
+    "question": "The 'Golden Quadrilateral', a massive national highway network initiated under PM Atal Bihari Vajpayee, connects which four major metropolitan cities of India?",
+    "option_a": "Delhi, Mumbai, Chennai, and Kolkata",
+    "option_b": "Delhi, Ahmedabad, Mumbai, and Bengaluru",
+    "option_c": "Delhi, Jaipur, Mumbai, and Hyderabad",
+    "option_d": "Delhi, Lucknow, Patna, and Kolkata",
+    "correct_answer": "a",
+    "explanation": "The Golden Quadrilateral connects India's four principal economic hubs: Delhi (North), Mumbai (West), Chennai (South), and Kolkata (East), spanning over 5,846 kilometers. [Memory Trick: 'D-M-C-K' (Delhi-Mumbai-Chennai-Kolkata) forms the core diamond frame of modern Indian roadways.]"
+  },
+  {
+    "question": "Which of the following is India's longest National Highway, spanning from Srinagar in the north to Kanyakumari in the south?",
+    "option_a": "NH 44",
+    "option_b": "NH 7",
+    "option_c": "NH 16",
+    "option_d": "NH 2",
+    "correct_answer": "a",
+    "explanation": "NH 44 (formerly NH 7) is the longest highway in India, covering a distance of 3,745 km and passing through eleven states. [Memory Trick: 'Double 4' (44) takes you from topmost tip to southernmost shore smoothly.]"
+  },
+  {
+    "question": "The Postal Index Number (PIN) code system was introduced in India to simplify mail delivery. What is the total digit count of a standard PIN code, and what does the first digit represent?",
+    "option_a": "6 digits; First digit represents the geographical region",
+    "option_b": "5 digits; First digit represents the state delivery circle",
+    "option_c": "6 digits; First digit represents the district sorting office",
+    "option_d": "8 digits; First digit represents the zonal dispatch center",
+    "correct_answer": "a",
+    "explanation": "The 6-digit PIN system was introduced on August 15, 1972, by Shri Bhaji Velankar. The first digit represents one of the nine postal regions in India. [Memory Trick: Six-digit 'PIN' code begins with a 'Region' locator (1 to 9), carving up the national sub-delivery zones.]"
+  },
+  {
+    "question": "Which major public seaport in India is historically notable as the country's first corporatized port, managed as a registered corporate enterprise rather than a public trust?",
+    "option_a": "Kamarajar Port (Ennore)",
+    "option_b": "Jawaharlal Nehru Port (JNPT)",
+    "option_c": "Syama Prasad Mookerjee Port (Kolkata)",
+    "option_d": "Deendayal Port (Kandla)",
+    "correct_answer": "a",
+    "explanation": "Kamarajar Port Limited, located near Chennai, was originally founded as Ennore Port. It is the only corporatized major port owned by the government. [Memory Trick: 'Ennore' (Kamarajar) made 'Corporate History' by stepping away from traditional port trusts.]"
+  },
+  {
+    "question": "India's first commercial aviation flight made global history in February 1911 by delivering the world's first official airmail. Between which two towns was this flight conducted?",
+    "option_a": "Allahabad and Naini",
+    "option_b": "Bombay and Karachi",
+    "option_c": "Calcutta and Dhaka",
+    "option_d": "Delhi and Lahore",
+    "correct_answer": "a",
+    "explanation": "French pilot Henri Peququet flew a Humber biplane carrying 6,500 letters from Allahabad to Naini (a short distance of 10 km) in February 1911, launching the world's first airmail service. [Memory Trick: 'Allahabad's sky' sent letters to 'Naini' (A-N) to mark global aviation birth.]"
+  },
+  {
+    "question": "The world's highest railway bridge, spanning the deep gorge of the Chenab River, is a structural marvel constructed in which state/UT of India?",
+    "option_a": "Jammu & Kashmir",
+    "option_b": "Himachal Pradesh",
+    "option_c": "Uttarakhand",
+    "option_d": "Sikkim",
+    "correct_answer": "a",
+    "explanation": "The Chenab Rail Bridge stands at an incredible height of 359 meters (1,178 feet) above the riverbed, making it taller than the Eiffel Tower. It is part of the Udhampur-Srinagar-Baramulla Rail Link (USBRL). [Memory Trick: High Himalayan snow rivers of Jammu & Kashmir are crossed by the towering 'Chenab' steel arch.]"
+  },
+  {
+    "question": "The 'Sagarmala Programme', a major policy initiative of the Government of India, is primarily aimed at which sectoral modernization?",
+    "option_a": "Port-led development and coastal infrastructure expansion",
+    "option_b": "Broadband optical fiber connectivity across rural hills",
+    "option_c": "Inland waterways cargo capacity enhancement in non-tidal rivers",
+    "option_d": "High-altitude strategic military border roads",
+    "correct_answer": "a",
+    "explanation": "Sagarmala focuses on port modernization, port connectivity, port-led industrialization, and coastal community development. [Memory Trick: 'Sagar' means Ocean, so 'Sagarmala' is a necklace of modernized shipping ports along the coastline.]"
+  },
+  {
+    "question": "The internet services were first launched publicly in India on August 15, 1995, by which public enterprise?",
+    "option_a": "Videsh Sanchar Nigam Limited (VSNL)",
+    "option_b": "Bharat Sanchar Nigam Limited (BSNL)",
+    "option_c": "Mahanagar Telephone Nigam Limited (MTNL)",
+    "option_d": "Tata Communications Limited",
+    "correct_answer": "a",
+    "explanation": "VSNL launched the Gateway Internet Access Services (GIAS) in India on Independence Day, August 15, 1995, introducing dial-up access. [Memory Trick: 'V-S-N-L' (Videsh/Foreign network bridge) brought the global internet gateway inside Indian borders.]"
+  },
+  {
+    "question": "Which of the following is India's first ever underwater metro route, running beneath a major riverbed, which was fully commissioned in 2024?",
+    "option_a": "Kolkata Metro (East-West Corridor under the Hooghly River)",
+    "option_b": "Mumbai Metro (under Thane Creek)",
+    "option_c": "Kochi Water Metro networks",
+    "option_d": "Chennai Metro (under the Cooum River)",
+    "correct_answer": "a",
+    "explanation": "Kolkata Metro's Howrah Maidan to Esplanade section travels through an engineering masterpiece tunnel 16 meters below the Hooghly riverbed. [Memory Trick: Oldest Metro 'Kolkata' pioneered the deepest underwater route under the historic 'Hooghly' river.]"
+  },
+  {
+    "question": "The first native shipping postage stamp of India, known as the 'Scinde Dawk', was introduced in which year during major East India Company reforms?",
+    "option_a": "1852",
+    "option_b": "1840",
+    "option_c": "1857",
+    "option_d": "1864",
+    "correct_answer": "a",
+    "explanation": "The Scinde Dawk was a red sealing-wax wafer stamp introduced in the Sindh region in 1852 by Sir Bartle Frere, becoming Asia's first adhesive postage stamp. [Memory Trick: Before the railway lines started in 1853, the 'Scinde Dawk' postage stamp was pressed in '1852'.]"
+  },
+  {
+    "question": "Which massive sea bridge, officially named 'Atal Bihari Vajpayee Sewri-Nhava Sheva Atal Setu', is currently India's longest sea bridge?",
+    "option_a": "Mumbai Trans Harbour Link (MTHL)",
+    "option_b": "Bandra-Worli Sea Link",
+    "option_c": "Pamban Bridge",
+    "option_d": "Vikram Shila Setu",
+    "correct_answer": "a",
+    "explanation": "Atal Setu is a 6-lane, 21.8 km-long sea bridge connecting Mumbai (Sewri) with Navi Mumbai (Chirle), significantly trimming transit times. [Memory Trick: 'Atal Setu' (MTHL) spans across the Arabian Sea waves to bridge Mumbai harbor seamlessly.]"
+  },
+  {
+    "question": "What is the primary objective of India's 'Bharatmala Pariyojana' project, launched by the Ministry of Road Transport and Highways?",
+    "option_a": "Developing national highways, economic corridors, and strategic border roads",
+    "option_b": "Double-tracking all broad-gauge railway bridges",
+    "option_c": "Constructing municipal multi-modal transit hubs in northeast states",
+    "option_d": "Providing optical fiber links to mountainous regions",
+    "correct_answer": "a",
+    "explanation": "Bharatmala focuses on optimizing efficiency of road freight and passenger movement, building border and international connectivity paths. [Memory Trick: 'Bharatmala' creates a robust physical garland of state-of-the-art 'Roadways' across all state borders.]"
+  },
+  {
+    "question": "Which of the following ports is India's largest and cleanest fully mechanized container port, historically known as Nhava Sheva?",
+    "option_a": "Jawaharlal Nehru Port Authority (JNPA)",
+    "option_b": "Deendayal Port (Kandla)",
+    "option_c": "Mormugao Port (Goa)",
+    "option_d": "Visakhapatnam Port",
+    "correct_answer": "a",
+    "explanation": "JN Port (Nhava Sheva), located east of Mumbai, handles over half of India's containerized cargo, serving as a massive gateway of shipping line networks. [Memory Trick: 'Nhava Sheva' in Mumbai harbors is 'J-N-P-T' (JNPA), the crown of industrial shipping.]"
+  },
+  {
+    "question": "The historic 'Grand Trunk Road' (GT Road), reconstructed by Sher Shah Suri, originally integrated major trade routes connecting which points?",
+    "option_a": "Kabul/Peshawar to Sonargaon (Kolkata/Bangladesh regions)",
+    "option_b": "Delhi to Madras coastline",
+    "option_c": "Kashmir to Mumbai harbors",
+    "option_d": "Sindh to Surat business corridors",
+    "correct_answer": "a",
+    "explanation": "Sher Shah Suri rebuilt and extended the royal road of the Maurya Empire, connecting Sonargaon (now Bangladesh), through Delhi, to Peshawar (now Pakistan) and Kabul. [Memory Trick: 'G-T Road' of Sher Shah Suri bound the extreme 'East' (Bengal) and 'North-West' (Kabul/Peshawar) of the subcontinent.]"
+  },
+  {
+    "question": "Cochin International Airport (CIAL) in Kerala won elite global acclaim and the UN Champion of the Earth award in 2018 for what remarkable feat?",
+    "option_a": "Becoming the world's first fully solar-powered airport",
+    "option_b": "Constructing the longest floating concrete runway in Asia",
+    "option_c": "Introducing fully automated drone boarding protocols",
+    "option_d": "Recycling 100% of municipal plastic aviation waste",
+    "correct_answer": "a",
+    "explanation": "CIAL is fully powered by its dedicated solar plants, with over 46,000 solar panels, making it completely energy neutral and green. [Memory Trick: Coastal 'Cochin' captured the 'Sun' to power all local airport aviation circles.]"
+  },
+  {
+    "question": "What is 'NavIC' (Navigation with Indian Constellation), developed by ISRO, classified as in global technology standards?",
+    "option_a": "An independent, regional satellite navigation system",
+    "option_b": "A deep-ocean exploration communication sonar network",
+    "option_c": "An international air traffic control radar system",
+    "option_d": "A highly-encrypted railway military block communication system",
+    "correct_answer": "a",
+    "explanation": "NavIC (formerly IRNSS) provides highly accurate real-time positioning and timing services over India and a region extending 1,500 km around its borders. [Memory Trick: 'NavIC' (Navigator) is India's own regional 'GPS' guard in the skies.]"
+  },
+  {
+    "question": "Dedicated Freight Corridors (DFCs) have been constructed in India to split freight transport from passenger train routes. Which international developmental bank is the major funding partner for the Eastern DFC (EDFC)?",
+    "option_a": "World Bank",
+    "option_b": "Japan International Cooperation Agency (JICA)",
+    "option_c": "Asian Development Bank (ADB)",
+    "option_d": "New Development Bank (NDB)",
+    "correct_answer": "a",
+    "explanation": "The Eastern DFC (Ludhiana to Dankuni) is majorly funded by the World Bank. The Western DFC (Dadri to JNPT) is funded by Japan's JICA. [Memory Trick: 'World Bank' backed the 'Eastern' corridor (EDFC), while 'Japan/JICA' supported the 'Western' container corridor.]"
+  },
+  {
+    "question": "India's first upcoming and fully approved High-Speed Rail Corridor (Bullet Train) is designed to connect which two cities?",
+    "option_a": "Mumbai and Ahmedabad",
+    "option_b": "Delhi and Varanasi",
+    "option_c": "Bengaluru and Chennai",
+    "option_d": "Delhi and Amritsar",
+    "correct_answer": "a",
+    "explanation": "The 508-km Mumbai-Ahmedabad High-Speed Rail corridor is under construction under joint venture with Japan, featuring Shinkansen technology. [Memory Trick: Financial hub 'Mumbai' and business heart 'Ahmedabad' (M-A) are bound by the elite bullet speed tracks.]"
+  }
+]

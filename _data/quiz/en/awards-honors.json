@@ -1,128 +1,228 @@
-{
-  "title": "Awards & Honors",
-  "title_hi": "पुरस्कार और सम्मान",
-  "icon": "🏅",
-  "slug": "awards-honors",
-  "questions": [
-    {
-      "id": 1,
-      "q": "The Nobel Peace Prize is awarded in which city?",
-      "opts": [
-        "Stockholm",
-        "Oslo",
-        "Geneva",
-        "Copenhagen"
-      ],
-      "ans": 1,
-      "exp": "The Nobel Peace Prize is awarded in Oslo, Norway. All other Nobel Prizes (Physics, Chemistry, Medicine, Literature, Economics) are awarded in Stockholm, Sweden."
-    },
-    {
-      "id": 2,
-      "q": "Mother Teresa received the Nobel Peace Prize in?",
-      "opts": [
-        "1975",
-        "1979",
-        "1982",
-        "1985"
-      ],
-      "ans": 1,
-      "exp": "Mother Teresa received the Nobel Peace Prize in 1979 for her work with the poor and destitute in Calcutta (Kolkata), India. She founded the Missionaries of Charity in 1950."
-    },
-    {
-      "id": 3,
-      "q": "The Bharat Ratna is awarded for?",
-      "opts": [
-        "Military service",
-        "Exceptional service or performance of the highest order",
-        "Excellence in sports",
-        "Excellence in arts"
-      ],
-      "ans": 1,
-      "exp": "The Bharat Ratna is India's highest civilian award. It is awarded for exceptional service/performance of the highest order, without distinction of race, occupation, position, or sex."
-    },
-    {
-      "id": 4,
-      "q": "The first recipient of the Bharat Ratna was?",
-      "opts": [
-        "Jawaharlal Nehru",
-        "C. Rajagopalachari",
-        "M. Visvesvaraya",
-        "B.R. Ambedkar"
-      ],
-      "ans": 1,
-      "exp": "C. Rajagopalachari (Rajaji) was one of the first recipients of Bharat Ratna in 1954, along with C.V. Raman and S. Radhakrishnan. He was also the first and last Indian Governor-General."
-    },
-    {
-      "id": 5,
-      "q": "The Man Booker Prize is awarded for?",
-      "opts": [
-        "Science",
-        "Economics",
-        "Literature",
-        "Peace"
-      ],
-      "ans": 2,
-      "exp": "The Booker Prize (formerly Man Booker Prize) is a prestigious literary prize awarded annually for the best original novel written in English and published in the UK or Ireland."
-    },
-    {
-      "id": 6,
-      "q": "The Arjuna Award is given for?",
-      "opts": [
-        "Outstanding performance in sports",
-        "Excellence in academics",
-        "Contribution to literature",
-        "Services to the nation"
-      ],
-      "ans": 0,
-      "exp": "The Arjuna Award is given by the Government of India to recognize outstanding achievement in sports. It was instituted in 1961. Recipients get a statuette of Arjuna, a certificate, and a cash prize."
-    },
-    {
-      "id": 7,
-      "q": "The Oscar Award is officially known as?",
-      "opts": [
-        "Grammy Award",
-        "Academy Award",
-        "Golden Globe",
-        "BAFTA Award"
-      ],
-      "ans": 1,
-      "exp": "The Oscar Award is officially known as the Academy Award of Merit, presented by the Academy of Motion Picture Arts and Sciences (AMPAS) since 1929."
-    },
-    {
-      "id": 8,
-      "q": "The Pulitzer Prize is awarded in the field of?",
-      "opts": [
-        "Science",
-        "Journalism and Literature",
-        "Economics",
-        "Peace"
-      ],
-      "ans": 1,
-      "exp": "The Pulitzer Prize is awarded annually for excellence in journalism, literary achievements, and musical composition in the United States. It was established in 1917."
-    },
-    {
-      "id": 9,
-      "q": "Which Indian won the Nobel Prize in Economics in 2019?",
-      "opts": [
-        "Amartya Sen",
-        "Raghuram Rajan",
-        "Abhijit Banerjee",
-        "Manmohan Singh"
-      ],
-      "ans": 2,
-      "exp": "Abhijit Banerjee (along with Esther Duflo and Michael Kremer) won the Nobel Prize in Economics in 2019 for their experimental approach to alleviating global poverty."
-    },
-    {
-      "id": 10,
-      "q": "The Dronacharya Award is given to?",
-      "opts": [
-        "Outstanding athletes",
-        "Sports coaches",
-        "Sports journalists",
-        "Sports administrators"
-      ],
-      "ans": 1,
-      "exp": "The Dronacharya Award is given by the Government of India to eminent coaches who have successfully trained sportspersons or teams and enabled them to achieve outstanding results in international competitions."
-    }
-  ]
-}
+[
+  {
+    "question": "The Bharat Ratna, India's highest civilian award, was instituted in 1954. Who among the following was NOT among the first three recipients?",
+    "option_a": "Dr. Sarvepalli Radhakrishnan",
+    "option_b": "C. Rajagopalachari",
+    "option_c": "Dr. C. V. Raman",
+    "option_d": "Dr. Rajendra Prasad",
+    "correct_answer": "d",
+    "explanation": "In 1954, the first three recipients were philosopher Dr. S. Radhakrishnan, statesman C. Rajagopalachari, and scientist Dr. C.V. Raman. Dr. Rajendra Prasad received it later in 1962. [Memory Trick: The first three Nobel/genius minds of 1954 form the triple 'R' club: Radhakrishnan, Rajagopalachari, Raman.]"
+  },
+  {
+    "question": "The Nobel Peace Prize, unlike other Nobel Prizes awarded in Stockholm, Sweden, is presented in which city?",
+    "option_a": "Oslo, Norway",
+    "option_b": "Geneva, Switzerland",
+    "option_c": "Copenhagen, Denmark",
+    "option_d": "Paris, France",
+    "correct_answer": "a",
+    "explanation": "According to Alfred Nobel's will, the Nobel Peace Prize is awarded in Oslo, Norway, by a committee appointed by the Norwegian Parliament, while other prizes are awarded in Stockholm. [Memory Trick: You go to 'Os-lo' (peaceful snowy city) to seek 'Peace' (Nobel Peace Prize).]"
+  },
+  {
+    "question": "Geetanjali Shree's novel 'Tomb of Sand', translated by Daisy Rockwell, made history in 2022 by winning which prestigious award?",
+    "option_a": "International Booker Prize",
+    "option_b": "The Booker Prize",
+    "option_c": "Pulitzer Prize for Fiction",
+    "option_d": "Women's Prize for Fiction",
+    "correct_answer": "a",
+    "explanation": "'Tomb of Sand' (originally 'Ret Samadhi') was the first book written in an Indian language (Hindi) to win the International Booker Prize, sharing the cash reward equally between the author and translator. [Memory Trick: Geetanjali won 'International' (globe-trotting) laurels for her Hindi sand 'Tomb' (Tomb of Sand).]"
+  },
+  {
+    "question": "Who was the first Indian to win an Academy Award (Oscar) in 1983 for Costume Design in the movie 'Gandhi'?",
+    "option_a": "Bhanu Athaiya",
+    "option_b": "Satyajit Ray",
+    "option_c": "A. R. Rahman",
+    "option_d": "Gulzar",
+    "correct_answer": "a",
+    "explanation": "Bhanu Athaiya won the Oscar for Best Costume Design for Richard Attenborough's biographical film 'Gandhi' in 1983. [Memory Trick: 'Bhanu' (Sun) shone bright in Hollywood, dressing up Gandhi elegantly.]"
+  },
+  {
+    "question": "The Jnanpith Award, India's highest literary honor, can only be awarded to authors writing in languages of the 8th Schedule of the Constitution and which other language?",
+    "option_a": "English",
+    "option_b": "Sanskrit",
+    "option_c": "Rajasthani",
+    "option_d": "Bhojpuri",
+    "correct_answer": "a",
+    "explanation": "Initially restricted to Schedule 8 languages, Jnanpith was later opened to English. Amitav Ghosh became the first English author to win it in 2018. [Memory Trick: 'Jnanpith' is the peak of knowledge ('Jnan'), accepting 22 Indian languages plus 'English' literature.]"
+  },
+  {
+    "question": "The Sahitya Akademi Awards are presented annually for outstanding books across how many regional languages in India?",
+    "option_a": "22",
+    "option_b": "24",
+    "option_c": "20",
+    "option_d": "18",
+    "correct_answer": "b",
+    "explanation": "Sahitya Akademi recognizes books in 24 languages: the 22 languages of the Eighth Schedule, plus English and Rajasthani. [Memory Trick: 'Double Dozen' ('24') literary prizes are distributed by the National Academy of Letters.]"
+  },
+  {
+    "question": "The prestigious Dadasaheb Phalke Award, the highest award in Indian Cinema, is presented by which wing of the Union Government?",
+    "option_a": "Directorate of Film Festivals (under Ministry of Information & Broadcasting)",
+    "option_b": "National Film Development Corporation (NFDC)",
+    "option_c": "Central Board of Film Certification (CBFC)",
+    "option_d": "Sangeet Natak Akademi",
+    "correct_answer": "a",
+    "explanation": "First introduced in 1969 to honor the Father of Indian Cinema Dadasaheb Phalke, the award is presented at the National Film Awards ceremony by the Directorate of Film Festivals. [Memory Trick: National awards and Phalke honors are held by 'Information and Broadcasting' ('I&B') Ministry.]"
+  },
+  {
+    "question": "The Gandhi Peace Prize, instituted by the Government of India in 1995 on Gandhi's 125th birth anniversary, is open to:",
+    "option_a": "Individuals and groups regardless of nationality, race, language, or gender",
+    "option_b": "Only Indian citizens of outstanding track record",
+    "option_c": "Only SAARC nation leaders advocating peace",
+    "option_d": "Only non-governmental social trust structures",
+    "correct_answer": "a",
+    "explanation": "The Gandhi Peace Prize is an international award open to all persons regardless of nationality, creed, or gender. First awarded to Julius Nyerere of Tanzania. [Memory Trick: Gandhi's message of peace belongs to the 'All' (Universal global family).]"
+  },
+  {
+    "question": "The highest civilian national sporting honor of India, formerly called Rajiv Gandhi Khel Ratna, is currently named after which legend?",
+    "option_a": "Major Dhyan Chand",
+    "option_b": "Milkha Singh",
+    "option_c": "Balbir Singh Sr.",
+    "option_d": "Sachin Tendulkar",
+    "correct_answer": "a",
+    "explanation": "The award was renamed in August 2021 as the Major Dhyan Chand Khel Ratna Award, honoring the legendary hockey wizard. [Memory Trick: Hockey magic wizard 'Dhyan' Chand inspires high-focus attention ('Dhyan') in sports.]"
+  },
+  {
+    "question": "Which of the following represents the highest wartime military gallantry medal in India?",
+    "option_a": "Param Vir Chakra",
+    "option_b": "Maha Vir Chakra",
+    "option_c": "Ashok Chakra",
+    "option_d": "Kirti Chakra",
+    "correct_answer": "a",
+    "explanation": "The Param Vir Chakra (PVC) is India's highest wartime military decoration, awarded for conspicuous bravery in the presence of the enemy. Ashok Chakra is the peacetime equivalent. [Memory Trick: 'Param' means 'Ultimate' wartime brave warrior.]"
+  },
+  {
+    "question": "The Shanti Swarup Bhatnagar Prize is awarded annually by CSIR for outstanding research achievements in which field?",
+    "option_a": "Science and Technology",
+    "option_b": "Classical Vocal Music",
+    "option_c": "Sports Coaching",
+    "option_d": "Environmental Conservation Journalism",
+    "option_answer": "a",
+    "correct_answer": "a",
+    "explanation": "Named after the founding director of CSIR, Dr. Shanti Swarup Bhatnagar, the prize recognizes outstanding young scientists under 45 in seven disciplines. [Memory Trick: 'Bhatnagar' was a genius scientist who built 'S-S-B' lab networks.]"
+  },
+  {
+    "question": "The Ramon Magsaysay Award, often called Asia's Nobel Prize, was established in 1957 in memory of the President of which nation?",
+    "option_a": "Philippines",
+    "option_b": "Indonesia",
+    "option_c": "Malaysia",
+    "option_d": "Thailand",
+    "correct_answer": "a",
+    "explanation": "The award was established to perpetuate President Ramon Magsaysay's example of integrity in public service, administered from Manila, Philippines. [Memory Trick: Manila, 'Philippines' honors Ramon 'Magsaysay' for public service integrity.]"
+  },
+  {
+    "question": "The Abel Prize, awarded annually by the King of Norway to outstanding thinkers, is considered the Nobel equivalent of which discipline?",
+    "option_a": "Mathematics",
+    "option_b": "Architecture",
+    "option_c": "Music",
+    "option_d": "Economic modeling",
+    "correct_answer": "a",
+    "explanation": "The Abel Prize was established in 2001 to honor Niels Henrik Abel, recognizing outstanding work in Mathematics. [Memory Trick: If you are 'Abel' (Able) to solve complex geometry and integration, you win the Abel Prize!]"
+  },
+  {
+    "question": "The Fields Medal, awarded every four years by the International Mathematical Union, has what unique restriction on its recipients?",
+    "option_a": "Recipients must be under 40 years of age",
+    "option_b": "Recipients must belong to developing nations",
+    "option_c": "Recipients must have written a book in French",
+    "option_d": "Recipients must not hold a university chair",
+    "correct_answer": "a",
+    "explanation": "The Fields Medal is awarded to researchers who have made outstanding contributions, with a strict age limit of under 40 on January 1st of the award year. [Memory Trick: Young geniuses are deployed to mathematical 'Fields' before turning '40'.]"
+  },
+  {
+    "question": "The Pritzker Prize, administered by the Hyatt Foundation, is the most prestigious global award recognizing excellence in which field?",
+    "option_a": "Architecture",
+    "option_b": "Aviation Engineering",
+    "option_c": "Classical Dance",
+    "option_d": "Journalism",
+    "correct_answer": "a",
+    "explanation": "Established in 1979 by Jay A. Pritzker, this prize honors a living architect whose built work demonstrates talent, vision, and commitment. [Memory Trick: You need high-standard 'bricks' and structures to win the 'Pritzker' (Pritz-brick) Architecture prize.]"
+  },
+  {
+    "question": "The Goldman Environmental Prize, which honors grassroots environmental heroes from six geographic regions, is famously called the:",
+    "option_a": "Green Nobel",
+    "option_b": "Blue Planet Prize",
+    "option_c": "Tyler Prize",
+    "option_d": "Sasakawa Award",
+    "correct_answer": "a",
+    "explanation": "Headquartered in San Francisco, the Goldman Environmental Prize recognizes grassroots environmental activists, famously dubbed the 'Green Nobel'. [Memory Trick: 'Goldman' green forests are precious, therefore = 'Green Nobel'.]"
+  },
+  {
+    "question": "The prestigious Saraswati Samman, Vyas Samman, and Bihari Puraskar are major literary awards instituted by which corporate foundation?",
+    "option_a": "K. K. Birla Foundation",
+    "option_b": "Tata Trusts",
+    "option_c": "Infosys Foundation",
+    "option_d": "Reliance Foundation",
+    "correct_answer": "a",
+    "explanation": "These literary awards were instituted in 1991 by the K. K. Birla Foundation to promote literature and cultural heritage of India. [Memory Trick: 'Birla' (K.K. Birla) built a grand spiritual library for Saraswati and Vyas.]"
+  },
+  {
+    "question": "The ancient literary award 'Jnanpith' was first presented in 1965 to which legendary writer?",
+    "option_a": "G. Sankara Kurup",
+    "option_b": "Sumitranandan Pant",
+    "option_c": "Ramdhari Singh Dinkar",
+    "option_d": "Tarashankar Bandyopadhyay",
+    "correct_answer": "a",
+    "explanation": "The first Jnanpith Award was won by Malayalam writer G. Sankara Kurup in 1965 for his poetry collection 'Odakkuzhal' (The Bamboo Flute). [Memory Trick: 'Sankara' (Kurup) played his bamboo flute to win the first Jnanpith knowledge shield.]"
+  },
+  {
+    "question": "The Turing Award, often called the Nobel Prize of Computing, is presented annually by which international association?",
+    "option_a": "Association for Computing Machinery (ACM)",
+    "option_b": "IEEE Computer Society",
+    "option_c": "Microsoft Research Foundation",
+    "option_d": "ITU Board",
+    "correct_answer": "a",
+    "explanation": "The ACM A.M. Turing Award is named after Alan Turing, recognizing technical contributions of lasting importance in computer science. [Memory Trick: 'A-C-M' handles the core 'Computing' algorithms of Turing machines.]"
+  },
+  {
+    "question": "The Ashok Chakra, India's highest peacetime military gallantry medal, is equivalent to which wartime medal?",
+    "option_a": "Param Vir Chakra",
+    "option_b": "Maha Vir Chakra",
+    "option_c": "Vir Chakra",
+    "option_d": "Sena Medal",
+    "correct_answer": "a",
+    "explanation": "The Ashok Chakra is awarded for valor, courageous action, or self-sacrifice away from the battlefield (peacetime), corresponding to the Param Vir Chakra. [Memory Trick: 'Ashok' (Ashoka's peace wheel) represents the prime counterpart of 'Param' Vir Chakra.]"
+  },
+  {
+    "question": "The Indira Gandhi Prize for Peace, Disarmament and Development (instituted in 1986) carries a cash prize of how lakh Indian Rupees?",
+    "option_a": "25 Lakhs",
+    "option_b": "10 Lakhs",
+    "option_c": "50 Lakhs",
+    "option_d": "1 Crore",
+    "correct_answer": "a",
+    "explanation": "This award is presented annually by the Indira Gandhi Memorial Trust, carrying a cash prize of 25 lakh Indian Rupees and a trophy. [Memory Trick: Silver jubilee ('25' Lakhs) prize amount for global peace.]"
+  },
+  {
+    "question": "The Tyler Prize for Environmental Achievement is administered by which academic institution?",
+    "option_a": "University of Southern California",
+    "option_b": "Columbia University",
+    "option_c": "Oxford University",
+    "option_d": "Stanford university",
+    "correct_answer": "a",
+    "explanation": "The Tyler Prize was established in 1973 and is administered by the University of Southern California (USC) to recognize environmental science achievements. [Memory Trick: 'Tyler' walks on the sunny shores of 'Southern California' (USC).]"
+  },
+  {
+    "question": "The Fields Medal in Mathematics is presented during the International Congress of Mathematicians (ICM) which meets once every:",
+    "option_a": "4 years",
+    "option_b": "2 years",
+    "option_c": "5 years",
+    "option_d": "6 years",
+    "correct_answer": "a",
+    "explanation": "Like the Olympics, the ICM and Fields Medal presentations are organized every four years. [Memory Trick: Olympic 'Fields' are green every 4 years = Fields Medal structure.]"
+  },
+  {
+    "question": "Which of the following literary prizes is awarded to a writer for a single book written in English and published in the UK or Ireland?",
+    "option_a": "The Booker Prize",
+    "option_b": "International Booker Prize",
+    "option_c": "Pulitzer Prize for Fiction",
+    "option_d": "National Book Award",
+    "correct_answer": "a",
+    "explanation": "The Booker Prize is for a single novel written in English and published in the UK, while the International Booker Prize is for work translated into English. [Memory Trick: Core 'Booker' is for books originally written in 'English' print.]"
+  },
+  {
+    "question": "The prestigious Goldman Environmental Prize, recognizing grassroots green warriors, is presented annually in which city?",
+    "option_a": "San Francisco, USA",
+    "option_b": "London, UK",
+    "option_c": "Stockholm, Sweden",
+    "option_d": "Nairobi, Kenya",
+    "correct_answer": "a",
+    "explanation": "The Goldman Environmental Foundation is based in San Francisco, California, hosting dynamic award programs there. [Memory Trick: 'Golden' Gate Bridge is in 'San Francisco' which hosts the Goldman environmental awards.]"
+  }
+]

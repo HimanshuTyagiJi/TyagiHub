@@ -1,128 +1,412 @@
-{
-  "title": "Books & Authors",
-  "title_hi": "पुस्तकें और लेखक",
-  "icon": "📚",
-  "slug": "books-authors",
-  "questions": [
-    {
-      "id": 1,
-      "q": "Who wrote 'Discovery of India'?",
-      "opts": [
-        "Mahatma Gandhi",
-        "Subhas Chandra Bose",
-        "Jawaharlal Nehru",
-        "Rabindranath Tagore"
-      ],
-      "ans": 2,
-      "exp": "'Discovery of India' was written by Jawaharlal Nehru while he was imprisoned in Ahmednagar Fort (1942–1946). It traces India's history from ancient times to the modern era."
-    },
-    {
-      "id": 2,
-      "q": "The book 'Wings of Fire' is the autobiography of?",
-      "opts": [
-        "Manmohan Singh",
-        "APJ Abdul Kalam",
-        "Atal Bihari Vajpayee",
-        "Narendra Modi"
-      ],
-      "ans": 1,
-      "exp": "'Wings of Fire' is the autobiography of Dr. APJ Abdul Kalam, written with Arun Tiwari. It covers his early life, career at ISRO and DRDO, and his role in India's missile development program."
-    },
-    {
-      "id": 3,
-      "q": "Who wrote 'Gitanjali'?",
-      "opts": [
-        "Bankim Chandra Chattopadhyay",
-        "Rabindranath Tagore",
-        "Subramania Bharati",
-        "Michael Madhusudan Datta"
-      ],
-      "ans": 1,
-      "exp": "'Gitanjali' (Song Offerings) was written by Rabindranath Tagore. Its English translation won him the Nobel Prize in Literature in 1913, making him the first non-European Nobel laureate in literature."
-    },
-    {
-      "id": 4,
-      "q": "'Arthashastra' deals with which subject?",
-      "opts": [
-        "Philosophy",
-        "Statecraft and Economics",
-        "Mathematics",
-        "Astronomy"
-      ],
-      "ans": 1,
-      "exp": "The Arthashastra, written by Chanakya (Kautilya), deals with statecraft, economic policy, and military strategy. It covers taxation, law, foreign policy, and war."
-    },
-    {
-      "id": 5,
-      "q": "Who wrote 'My Country My Life'?",
-      "opts": [
-        "Narendra Modi",
-        "Atal Bihari Vajpayee",
-        "L.K. Advani",
-        "Murli Manohar Joshi"
-      ],
-      "ans": 2,
-      "exp": "'My Country My Life' is the autobiography of L.K. Advani, written in 2008. It covers his political journey, the Jana Sangh, the Emergency period, and the Ram Mandir movement."
-    },
-    {
-      "id": 6,
-      "q": "The book 'Midnight's Children' was written by?",
-      "opts": [
-        "Arundhati Roy",
-        "Salman Rushdie",
-        "Vikram Seth",
-        "Amitav Ghosh"
-      ],
-      "ans": 1,
-      "exp": "'Midnight's Children' was written by Salman Rushdie in 1981. It won the Booker Prize and the Booker of Bookers. The story follows children born at the moment of India's independence."
-    },
-    {
-      "id": 7,
-      "q": "Who wrote 'The God of Small Things'?",
-      "opts": [
-        "Kiran Desai",
-        "Jhumpa Lahiri",
-        "Arundhati Roy",
-        "Anita Desai"
-      ],
-      "ans": 2,
-      "exp": "'The God of Small Things' was written by Arundhati Roy in 1997. It won the Booker Prize that year. Set in Kerala, it explores the lives of fraternal twins affected by the caste system."
-    },
-    {
-      "id": 8,
-      "q": "'Panchatantra' was written by?",
-      "opts": [
-        "Valmiki",
-        "Vishnu Sharma",
-        "Chanakya",
-        "Kalidasa"
-      ],
-      "ans": 1,
-      "exp": "The Panchatantra was written by Vishnu Sharma (c. 300 BCE). It is a collection of fables in Sanskrit that teaches principles of statecraft and human conduct through animal stories."
-    },
-    {
-      "id": 9,
-      "q": "Who wrote the play 'Andha Yug'?",
-      "opts": [
-        "Mohan Rakesh",
-        "Dharamvir Bharati",
-        "Bhisham Sahni",
-        "Mahadevi Verma"
-      ],
-      "ans": 1,
-      "exp": "'Andha Yug' (The Blind Age) is a Hindi verse play written by Dharamvir Bharati in 1954. It is based on the last day of the Kurukshetra War and explores themes of war, destruction, and moral decay."
-    },
-    {
-      "id": 10,
-      "q": "'Ignited Minds' was written by?",
-      "opts": [
-        "Narendra Modi",
-        "APJ Abdul Kalam",
-        "Manmohan Singh",
-        "Amartya Sen"
-      ],
-      "ans": 1,
-      "exp": "'Ignited Minds: Unleashing the Power Within India' was written by APJ Abdul Kalam in 2002. It envisions a developed India by 2020 and calls upon the youth to work toward this goal."
-    }
-  ]
-}
+[
+  {
+    "question": "Which legendary Indian novelist, known as 'Upanyas Samrat' (Emperor of Novels), wrote the masterpiece realist novel 'Godaan' (The Gift of a Cow) in 1936?",
+    "option_a": "Munshi Premchand",
+    "option_b": "Rabindranath Tagore",
+    "option_c": "Sarat Chandra Chattopadhyay",
+    "option_d": "Mulk Raj Anand",
+    "correct_answer": "a",
+    "explanation": "Munshi Premchand wrote 'Godaan', which beautifully yet painfully depicts the socio-economic struggles of the Indian peasantry through the protagonist Hori. [Memory Trick: The ultimate 'Prem' (love) and respect of common village peasants was perfectly 'chan'-neled into literature by Premchand!]",
+    "id": "ba-q1"
+  },
+  {
+    "question": "Who penned the inspiring autobiographical book 'Wings of Fire', tracing his journey from Rameswaram to becoming the President of India?",
+    "option_a": "Dr. APJ Abdul Kalam",
+    "option_b": "Dr. B.R. Ambedkar",
+    "option_c": "Pranab Mukherjee",
+    "option_d": "Jawaharlal Nehru",
+    "correct_answer": "a",
+    "explanation": "'Wings of Fire' is the joint autobiography of Dr. APJ Abdul Kalam and Arun Tiwari, capturing Kalam's humble beginnings and leadership in India's space and missile program. [Memory Trick: The Missile Man of India has the fiery vision to give India's youth 'Wings of Fire'!]",
+    "id": "ba-q2"
+  },
+  {
+    "question": "Which historic leader, during his imprisonment in Ahmadnagar Fort prison (1942–1946), drafted the famous classic 'The Discovery of India'?",
+    "option_a": "Mahatma Gandhi",
+    "option_b": "Jawaharlal Nehru",
+    "option_c": "Subhas Chandra Bose",
+    "option_d": "Sardar Vallabhbhai Patel",
+    "correct_answer": "b",
+    "explanation": "Jawaharlal Nehru wrote 'The Discovery of India' to reflect on India's rich history, philosophy, and cultural synthesis from the Upanishads to the British Raj. [Memory Trick: The first Prime Minister of free India ('Nehru') set out to officially 'Discover' and introduce India to the modern world!]",
+    "id": "ba-q3"
+  },
+  {
+    "question": "Who composed the poetry collection 'Gitanjali', which earned him the prestigious Nobel Prize in Literature in 1913, making him the first non-European laureate?",
+    "option_a": "Rabindranath Tagore",
+    "option_b": "Bankim Chandra Chattopadhyay",
+    "option_c": "Michael Madhusudan Dutt",
+    "option_d": "Sri Aurobindo",
+    "correct_answer": "a",
+    "explanation": "Rabindranath Tagore's 'Gitanjali' (Song Offerings) is a collection of deeply spiritual poems, translated into English with an introduction by W.B. Yeats. [Memory Trick: 'Gita-anjali' means offering ('Anjali') of songs ('Gita') that touch the heart, sung by Rabindra'-nath' (lord of the sun)!]",
+    "id": "ba-q4"
+  },
+  {
+    "question": "Which book written by Bankim Chandra Chattopadhyay in 1882 became highly influential during the Indian Independence struggle and contains our national song 'Vande Mataram'?",
+    "option_a": "Anandamath",
+    "option_b": "Durgeshnandini",
+    "option_c": "Kapalkundala",
+    "option_d": "Devdas",
+    "correct_answer": "a",
+    "explanation": "'Anandamath' is a novel set against the backdrop of the Sannyasi Rebellion in Bengal during the late 18th century, housing the song Vande Mataram. [Memory Trick: An abbey ('Math') of pure bliss ('Ananda') where freedom fighters chant patriotic hymns of national devotion!]",
+    "id": "ba-q5"
+  },
+  {
+    "question": "Whose world-famous autobiography 'The Story of My Experiments with Truth' was originally written in Gujarati and published in weekly installments?",
+    "option_a": "Mahatma Gandhi",
+    "option_b": "Vinoba Bhave",
+    "option_c": "Gopal Krishna Gokhale",
+    "option_d": "Bal Gangadhar Tilak",
+    "correct_answer": "a",
+    "explanation": "Mohandas Karamchand Gandhi wrote his spiritual and moral struggles in 'My Experiments with Truth' from childhood memories to 1921. [Memory Trick: The apostle of non-violence and absolute 'Truth' = Mahatma Gandhi!]",
+    "id": "ba-q6"
+  },
+  {
+    "question": "Who created the fictional town of 'Malgudi' and wrote widely acclaimed classics like 'Swami and Friends' and 'The Guide'?",
+    "option_a": "R.K. Narayan",
+    "option_b": "Ruskun Bond",
+    "option_c": "Mulk Raj Anand",
+    "option_d": "Raja Rao",
+    "correct_answer": "a",
+    "explanation": "Rasipuram Krishnaswami Iyer Narayanaswami (R.K. Narayan) is renowned for his simple and humorous stories of daily life in Malgudi. [Memory Trick: Small town kids look at the majestic 'Narayan' (Lord) in local temples while learning lessons under trees!]",
+    "id": "ba-q7"
+  },
+  {
+    "question": "Which major Indian novel, written by Khushwant Singh in 1956, captures the tragic human trauma of India's Partition through the fictional border village of Mano Majra?",
+    "option_a": "Train to Pakistan",
+    "option_b": "Tamas",
+    "option_c": "The Shadow Lines",
+    "option_d": "A Bend in the Ganges",
+    "correct_answer": "a",
+    "explanation": "'Train to Pakistan' provides a chilling, realistic human perspective on the violence of Partition in the Punjab, depicting peaceful villagers turned into enemies. [Memory Trick: 'Singh' (Khushwant) was 'happy' ('Khush') in united India, until the tragic partition 'Train' tore through his land!]",
+    "id": "ba-q8"
+  },
+  {
+    "question": "Who penned the internationally phenomenally successful seven-part 'Harry Potter' fantasy novel series?",
+    "option_a": "J.K. Rowling",
+    "option_b": "J.R.R. Tolkien",
+    "option_c": "George R.R. Martin",
+    "option_d": "C.S. Lewis",
+    "correct_answer": "a",
+    "explanation": "British author Joanne Kathleen Rowling (J.K. Rowling) wrote the adventure of the young wizard Harry Potter, becoming one of the best-selling series in history. [Memory Trick: 'JK' (Just Kidding) - Magic isn't real, but 'Rowling' keeps us rolling in our magic wizard dreams!]",
+    "id": "ba-q9"
+  },
+  {
+    "question": "Which female Indian author made history as the first citizen residing in India to win the prestigious Man Booker Prize in 1997 for her novel 'The God of Small Things'?",
+    "option_a": "Arundhati Roy",
+    "option_b": "Kiran Desai",
+    "option_c": "Anita Desai",
+    "option_d": "Jhumpa Lahiri",
+    "correct_answer": "a",
+    "explanation": "Arundhati Roy won the Man Booker Prize for her semi-autobiographical debut novel set in Kerala, charting childhood trauma and social caste structures. [Memory Trick: 'Roy'-al writing on how 'Small' things govern our giant human hearts!]",
+    "id": "ba-q10"
+  },
+  {
+    "question": "Who wrote 'The Republic', a foundational philosophical work on justice, the order of states, and the concept of rule by Philosopher-kings?",
+    "option_a": "Plato",
+    "option_b": "Aristotle",
+    "option_c": "Socrates",
+    "option_d": "Cicero",
+    "correct_answer": "a",
+    "explanation": "Plato, a student of Socrates, wrote 'The Republic' in Socratic dialogue format around 375 BCE to define justice and ideal citizenship. [Memory Trick: To make a perfect 'Republic', you need a flat, solid 'Plate' ('Plato') of equal rights to build on!]",
+    "id": "ba-q11"
+  },
+  {
+    "question": "Which legendary Russian author penned the epic historical masterpieces 'War and Peace' and 'Anna Karenina'?",
+    "option_a": "Leo Tolstoy",
+    "option_b": "Fyodor Dostoevsky",
+    "option_c": "Anton Chekhov",
+    "option_d": "Maxim Gorky",
+    "correct_answer": "a",
+    "explanation": "Count Leo Tolstoy is regarded as a giant of world realist literature, known for his philosophical ideas on non-violent resistance. [Memory Trick: A giant 'Leo' (lion) of Russian writing who told us ('Tol'-stoy) the real story of 'War and Peace'!]",
+    "id": "ba-q12"
+  },
+  {
+    "question": "Which eminent scientific book published in 1859 by Charles Darwin introduced the concept of natural selection and evolutionary biology?",
+    "option_a": "On the Origin of Species",
+    "option_b": "The Descent of Man",
+    "option_c": "The Double Helix",
+    "option_d": "Silent Spring",
+    "correct_answer": "a",
+    "explanation": "Charles Darwin’s 'On the Origin of Species' revolutionized biology by establishing that all species of life have descended from common ancestors. [Memory Trick: Darwin went to 'Origin' islands to study different 'Species' of finches!]",
+    "id": "ba-q13"
+  },
+  {
+    "question": "Which iconic Bengali novelist wrote 'Devdas' (1917) and 'Parineeta' (1914), both of which were adapted into legendary Indian films multiple times?",
+    "option_a": "Sarat Chandra Chattopadhyay",
+    "option_b": "Bankim Chandra Chattopadhyay",
+    "option_c": "Satyajit Ray",
+    "option_d": "Tarashankar Bandyopadhyay",
+    "correct_answer": "a",
+    "explanation": "Sarat Chandra Chattopadhyay wrote intense emotional dramas exploring domestic life and caste conflicts, highly valued for sensitive character portrayals. [Memory Trick: Poor 'Devdas' was in 'Sarat' (crisis/agony) of love, weeping under a 'Chandra' (moonlit) tree!]",
+    "id": "ba-q14"
+  },
+  {
+    "question": "Who wrote the famous lyrical Hindi poetry collection 'Madhushala' (The Tavern), utilizing the metaphor of wine to describe life's philosophy?",
+    "option_a": "Harivansh Rai Bachchan",
+    "option_b": "Ramdhari Singh Dinkar",
+    "option_c": "Maithili Sharan Gupt",
+    "option_d": "Suryakant Tripathi Nirala",
+    "correct_answer": "a",
+    "explanation": "Harivansh Rai Bachchan, an influential Hindi poet of the Chhayavaad movement, wrote Madhushala in 1935, which became a beloved recital classic. [Memory Trick: The patriarch of the 'Bachchan' dynasty holding a musical cup of sweet Hindi poetry!]",
+    "id": "ba-q15"
+  },
+  {
+    "question": "Which novel by Vikram Seth is a monumental 1,349-page work depicting Post-independence India, focusing on a mother's search for a groom for her daughter?",
+    "option_a": "A Suitable Boy",
+    "option_b": "The Golden Gate",
+    "option_c": "An Equal Music",
+    "option_d": "The Shadow Lines",
+    "correct_answer": "a",
+    "explanation": "'A Suitable Boy' is one of the longest English novels ever published, offering a panoramic look at family and multi-faith dynamics in India near 1951. [Memory Trick: Lata's family seeks 'A Suitable Boy' across a 'Vikram'-sized geographic landscape!]",
+    "id": "ba-q16"
+  },
+  {
+    "question": "Which social realist debut novel by Aravind Adiga won the Man Booker Prize in 2008, showcasing class struggle through the protagonist Balram Halwai?",
+    "option_a": "The White Tiger",
+    "option_b": "Last Man in Tower",
+    "option_c": "Selection Day",
+    "option_d": "The Blue Umbrella",
+    "correct_answer": "a",
+    "explanation": "'The White Tiger' provides a dark, satirical narrative of India’s class divisions, tracing a village boy's rise from tea shop worker to wealthy entrepreneur. [Memory Trick: Balram is a rare, fierce, and lone 'White Tiger' escaping the dark cages of social poverty!]",
+    "id": "ba-q17"
+  },
+  {
+    "question": "Which eminent book was compiled by Dr. Rajendra Prasad, India's first President, analyzing the partition crisis and Hindu-Muslim demographics?",
+    "option_a": "India Divided",
+    "option_b": "The Discovery of India",
+    "option_c": "Poverty and Un-British Rule in India",
+    "option_d": "The Indian Struggle",
+    "correct_answer": "a",
+    "explanation": "'India Divided' was written in 1946, where Dr. Rajendra Prasad argued against partition, proposing federal alternatives for unified growth. [Memory Trick: Our first president 'Rajendra' watched India get 'Divided' with deep administrative pain!]",
+    "id": "ba-q18"
+  },
+  {
+    "question": "Which collection of poems earned Sarojini Naidu the elegant title 'Nightingale of India' (Bharat Kokila)?",
+    "option_a": "The Golden Threshold",
+    "option_b": "Gitanjali",
+    "option_c": "The Broken Wing",
+    "option_d": "My Experiments with Truth",
+    "correct_answer": "a",
+    "explanation": "Sarojini Naidu's debut poetry collection, 'The Golden Threshold' (1905), captured natural beauty and folklore in musical verse. [Memory Trick: At the dawn of national freedom, Naidu stood at 'The Golden Threshold' singing sweet melodies!]",
+    "id": "ba-q19"
+  },
+  {
+    "question": "What is the title of the famous autobiography of anti-apartheid leader Nelson Mandela, published in 1994?",
+    "option_a": "Long Walk to Freedom",
+    "option_b": "Freedom from Fear",
+    "option_c": "Dreams from My Father",
+    "option_d": "Walk on Water",
+    "correct_answer": "a",
+    "explanation": "'Long Walk to Freedom' charts Mandela's 27-year imprisonment in Robben Island and his eventual presidency in South Africa. [Memory Trick: Fighting segregation takes a very 'Long Walk' to achieve ultimate 'Freedom'!]",
+    "id": "ba-q20"
+  },
+  {
+    "question": "Which iconic dramatist wrote 'Hamlet', 'Macbeth', 'King Lear', and 'Othello' during the Elizabethan and Jacobean eras?",
+    "option_a": "William Shakespeare",
+    "option_b": "Christopher Marlowe",
+    "option_c": "Ben Jonson",
+    "option_d": "John Milton",
+    "correct_answer": "a",
+    "explanation": "William Shakespeare is globally recognized as the greatest English-language playwright, writing tragedies that explore human ambition and madness. [Memory Trick: A legendary bard who 'shakes' the dramatic 'spear' of English vocabulary!]",
+    "id": "ba-q21"
+  },
+  {
+    "question": "Which Indian author wrote 'An Era of Darkness: The British Empire in India' (2016), exposing the economic and cultural exploitation during the colonial era?",
+    "option_a": "Shashi Tharoor",
+    "option_b": "Ramachandra Guha",
+    "option_c": "Amartya Sen",
+    "option_d": "Chetan Bhagat",
+    "correct_answer": "a",
+    "explanation": "Shashi Tharoor's 'An Era of Darkness' details the destruction of Indian industries under British rule, winning the Sahitya Akademi Award. [Memory Trick: Tharoor uses heavy vocab ('Shashi') to pierce the historical 'Darkness' of colonial exploitation!]",
+    "id": "ba-q22"
+  },
+  {
+    "question": "Who wrote 'Satyarth Prakash' (The Light of Truth) in 1875, advocating for the return to the pure wisdom of the Vedas?",
+    "option_a": "Swami Dayanand Saraswati",
+    "option_b": "Swami Vivekananda",
+    "option_c": "Raja Ram Mohan Roy",
+    "option_d": "Sri Aurobindo",
+    "correct_answer": "a",
+    "explanation": "Swami Dayanand Saraswati, the founder of Arya Samaj, authored this theological treatise to champion public reform and Vedic studies. [Memory Trick: The rising 'Day' (Dayanand) brings the 'Satyarth' (Truth-meaning) 'Prakash' (Light) to wash away ignorance!]",
+    "id": "ba-q23"
+  },
+  {
+    "question": "Which acclaimed female Hindi poet won the Jnanpith Award in 1982 for her poetry collection titled 'Yama'?",
+    "option_a": "Mahadevi Varma",
+    "option_b": "Subhadra Kumari Chauhan",
+    "option_c": "Amrita Pritam",
+    "option_d": "Krishna Sobti",
+    "correct_answer": "a",
+    "explanation": "Mahadevi Varma, a prominent figure in the 'Chhayavaad' school of Hindi literature, is often termed the 'Modern Mira'. [Memory Trick: The 'Maha' (great) goddess 'Devi' of Hindi literature singing the sorrowful verses of 'Yama'!]",
+    "id": "ba-q24"
+  },
+  {
+    "question": "Who is the creator of the famous children's characters 'Rusty' and wrote warm stories of the Himalayan foothills in 'The Blue Umbrella'?",
+    "option_a": "Ruskin Bond",
+    "option_b": "Mulk Raj Anand",
+    "option_c": "R.K. Laxman",
+    "option_d": "Vikram Chandra",
+    "correct_answer": "a",
+    "explanation": "Ruskin Bond is a prolific Indian author of British descent, living in Landour, Mussoorie, deeply adored for children's literature. [Memory Trick: Nature-loving writer living on hilltops with a warm 'Bond' with the green forests!]",
+    "id": "ba-q25"
+  },
+  {
+    "question": "Which historic courtier wrote 'Akbarnama' (The Book of Akbar) and 'Ain-i-Akbari' in classical Persian?",
+    "option_a": "Abu'l-Fazl",
+    "option_b": "Badauni",
+    "option_c": "Faizi",
+    "option_d": "Birbal",
+    "correct_answer": "a",
+    "explanation": "Abu'l-Fazl was one of the 'Navaratnas' (Nine Jewels) of Akbar’s court, compiling official court chronicles in three volumes. [Memory Trick: 'Abu'l' is the noble scribe who used his sweet 'pen' to praise 'Akbar's' achievements!]",
+    "id": "ba-q26"
+  },
+  {
+    "question": "Who authored 'Das Kapital' in 1867, detailing the critical analysis of capitalist economies and class struggle?",
+    "option_a": "Karl Marx",
+    "option_b": "Friedrich Engels",
+    "option_c": "Vladimir Lenin",
+    "option_d": "Adam Smith",
+    "correct_answer": "a",
+    "explanation": "German philosopher Karl Marx wrote 'Das Kapital' (Capital) as a foundational document of communist and socialist economic theory. [Memory Trick: Marx drew a red line ('Marx') against corporate owners of 'Capital'!]",
+    "id": "ba-q27"
+  },
+  {
+    "question": "Which classical author composed the immortal epic poetics on the wars of Troy in 'The Iliad' and 'The Odyssey' in ancient Greece?",
+    "option_a": "Homer",
+    "option_b": "Virgil",
+    "option_c": "Aristophanes",
+    "option_d": "Sophocles",
+    "correct_answer": "a",
+    "explanation": "Homer is the semi-legendary blind poet of ancient Greece, revered for codifying ancient oral mythologies. [Memory Trick: He makes a cozy 'Home' ('Homer') for the epic tales of heroes returning from Trojan seas!]",
+    "id": "ba-q28"
+  },
+  {
+    "question": "Who penned 'Midnight's Children' in 1981, winning the Booker of Bookers Prize for its magical realist narrative of partition and post-colonial India?",
+    "option_a": "Salman Rushdie",
+    "option_b": "Amitav Ghosh",
+    "option_c": "Upamanyu Chatterjee",
+    "option_d": "Rohinton Mistry",
+    "correct_answer": "a",
+    "explanation": "Salman Rushdie became a world literary star with 'Midnight's Children', linking the births of children at the stroke of 1947 independence with mystical powers. [Memory Trick: 'Salman' caught the magic of the independence night in a 'Rush' ('Rush'-die) of words!]",
+    "id": "ba-q29"
+  },
+  {
+    "question": "Who wrote 'We, the People' and is celebrated as one of India's most brilliant jurists, specializing in Constitutional law challenges?",
+    "option_a": "Nani Palkhivala",
+    "option_b": "Fali S. Nariman",
+    "option_c": "Harish Salve",
+    "option_d": "Ram Jethmalani",
+    "correct_answer": "a",
+    "explanation": "Nanabhoy 'Nani' Palkhivala was an eminent jurist and liberal economist who analyzed union budgets and citizen rights in 'We, the People'. [Memory Trick: Just like grandmother ('Nani') guides the family, 'Nani' Palkhivala protected the Constitution for We standard citizens!]",
+    "id": "ba-q30"
+  },
+  {
+    "question": "Which Nobel laureate economist, specializing in welfare studies, wrote 'The Argumentative Indian' (2005) on our history of public debate?",
+    "option_a": "Amartya Sen",
+    "option_b": "Abhijit Banerjee",
+    "option_c": "Raghuram Rajan",
+    "option_d": "Manmohan Singh",
+    "correct_answer": "a",
+    "explanation": "Amartya Sen won the Nobel in Economics in 1998; his book defends India’s age-old tradition of pluralism, skepticism, and intellectual debate. [Memory Trick: An immortal ('Amartya') voice proving that discussion makes logical 'Sen'-se!]",
+    "id": "ba-q31"
+  },
+  {
+    "question": "Who authored 'Pride and Prejudice' (1813), a brilliant masterpiece of romantic fiction evaluating class, matchmaking, and social conventions?",
+    "option_a": "Jane Austen",
+    "option_b": "Charlotte Bronte",
+    "option_c": "Emily Bronte",
+    "option_d": "Mary Shelley",
+    "correct_answer": "a",
+    "explanation": "Jane Austen satirical masterpiece highlights the relationship between Elizabeth Bennet and Mr. Darcy in Georgian society. [Memory Trick: Aunt ('Austen') Jane writes clever tea-time books on marriage 'Pride and Prejudice'!]",
+    "id": "ba-q32"
+  },
+  {
+    "question": "Which Sanskrit poet of the 7th century, serving in the court of Harshavardhana, wrote the world's first complete novel, 'Kadambari'?",
+    "option_a": "Banabhatta",
+    "option_b": "Dandin",
+    "option_c": "Subandhu",
+    "option_d": "Bhavabhuti",
+    "correct_answer": "a",
+    "explanation": "Banabhatta wrote 'Harshacharita' and 'Kadambari', a complex romance novel featuring a story within a story, completed by his son. [Memory Trick: He fires sharp 'Bana' (arrows) of beautiful Sanskrit descriptions!]",
+    "id": "ba-q33"
+  },
+  {
+    "question": "Who wrote 'Panchatantra' (The Five Principles) around 300 BCE, using animal parables to instruct young royal princes?",
+    "option_a": "Vishnu Sharma",
+    "option_b": "Somadeva",
+    "option_c": "Narayana Pandit",
+    "option_d": "Kshemendra",
+    "correct_answer": "a",
+    "explanation": "Pandit Vishnu Sharma collected the clever tales to quickly teach the principles of statecraft ('Niti') to three dull princes within six months. [Memory Trick: 'Vishnu' the protector sent 'Sharma' (scholarly comfort) to the standard royal classroom!]",
+    "id": "ba-q34"
+  },
+  {
+    "question": "Which poet-saint composed 'Ramcharitmanas' in Awadhi dialect, bringing the story of Lord Rama to common households in the 16th century?",
+    "option_a": "Tulsidas",
+    "option_b": "Kabirdas",
+    "option_c": "Surdas",
+    "option_d": "Ravidas",
+    "correct_answer": "a",
+    "explanation": "Goswami Tulsidas translated Valmiki's Sanskrit epic into direct Awadhi verse, enriching North Indian folk devotionalism. [Memory Trick: Placing holy basil 'Tulsi' (Tulsidas) leaves on the epic path of Lord Rama!]",
+    "id": "ba-q35"
+  },
+  {
+    "question": "Which 11th-century epic anthology of stories, legends, and fairy tales in Sanskrit was composed by Somadeva for Kashmiri Queen Suryamati?",
+    "option_a": "Kathasaritsagara",
+    "option_b": "Panchatantra",
+    "option_c": "Hitopadesha",
+    "option_d": "Brihatkatha",
+    "correct_answer": "a",
+    "explanation": "'Kathasaritsagara' means the Ocean of Rivers of Stories, containing 350 tales based on Gunadhya's lost Brihatkatha. [Memory Trick: An ocean ('Sagara') of rivers ('Sarit') of clever folk 'Katha' (Stories)!]",
+    "id": "ba-q36"
+  },
+  {
+    "question": "Who penned 'The Inheritance of Loss', which won the Man Booker Prize in 2007, capturing migration, geography, and globalization issues?",
+    "option_a": "Kiran Desai",
+    "option_b": "Anita Desai",
+    "option_c": "Jhumpa Lahiri",
+    "option_d": "Chitra Banerjee Divakaruni",
+    "correct_answer": "a",
+    "explanation": "Kiran Desai's novel explores the life of an embittered retired judge and his granddaughter in Kalimpong, showing colonial legacies. [Memory Trick: A ray of sun 'Kiran' cutting through the rainy mountain 'Loss' of the Himalayas!]",
+    "id": "ba-q37"
+  },
+  {
+    "question": "Which grand novel by Amitav Ghosh, the first recipient of the Jnanpith Award in English (2018), is the first book of the famous Ibis Trilogy?",
+    "option_a": "Sea of Poppies",
+    "option_b": "River of Smoke",
+    "option_c": "Flood of Fire",
+    "option_d": "The Glass Palace",
+    "correct_answer": "a",
+    "explanation": "'Sea of Poppies' deals with opium trade and colonial transport of indentured laborers across the Indian Ocean prior to the Opium Wars. [Memory Trick: Ships sailing on a dark 'Sea' of red 'Poppies' (poppy seeds)!]",
+    "id": "ba-q38"
+  },
+  {
+    "question": "Who wrote 'Kamayani' (1936), an epic Hindi poem celebrating human emotions, cosmic flood, and Manu's survival?",
+    "option_a": "Jaishankar Prasad",
+    "option_b": "Suryakant Tripathi Nirala",
+    "option_c": "Sumitranandan Pant",
+    "option_d": "Maithili Sharan Gupt",
+    "correct_answer": "a",
+    "explanation": "Jaishankar Prasad's 'Kamayani' is considered the crown jewel of modern Hindi poetry, representing the psychological transition from intellect to faith. [Memory Trick: Praying to 'Jai'-'Shankar' at the peak of the epic Himalayan flood!]",
+    "id": "ba-q39"
+  },
+  {
+    "question": "Which historic leader was the author of the Hindi book 'The Indian Struggle 1920–1942', detailing the freedom war phases?",
+    "option_a": "Subhas Chandra Bose",
+    "option_b": "Lala Lajpat Rai",
+    "option_c": "Chandra Shekhar Azad",
+    "option_d": "Bhagat Singh",
+    "correct_answer": "a",
+    "explanation": "Subhas Chandra Bose wrote 'The Indian Struggle' during his European exile, analyzing the various phases, pacts, and movements of the freedom campaign. [Memory Trick: The grand leader Netaji Subhas Bose marching ahead in the ultimate 'Indian Struggle'!]",
+    "id": "ba-q40"
+  },
+  {
+    "question": "Which iconic book by Chetan Bhagat, released in 2004, follows the lives of three IIT students and inspired the Bollywood blockbuster film '3 Idiots'?",
+    "option_a": "Five Point Someone",
+    "option_b": "One Night @ the Call Center",
+    "option_c": "The 3 Mistakes of My Life",
+    "option_d": "2 States",
+    "correct_answer": "a",
+    "explanation": "Chetan Bhagat's debut novel 'Five Point Someone: What not to do at IIT' critiqued the rigid academic grading system, capturing youth culture. [Memory Trick: Getting a low GPA of 'Five Point' was a tragedy that became a highly funny book!]",
+    "id": "ba-q41"
+  }
+]

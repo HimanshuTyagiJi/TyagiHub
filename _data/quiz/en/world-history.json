@@ -1,128 +1,137 @@
-{
-  "title": "World History",
-  "title_hi": "विश्व इतिहास",
-  "icon": "🌍",
-  "slug": "world-history",
-  "questions": [
-    {
-      "id": 1,
-      "q": "The French Revolution began in which year?",
-      "opts": [
-        "1776",
-        "1789",
-        "1799",
-        "1815"
-      ],
-      "ans": 1,
-      "exp": "The French Revolution began in 1789 with the storming of the Bastille on 14 July 1789. It ended the French monarchy and established the First French Republic."
-    },
-    {
-      "id": 2,
-      "q": "World War I started in which year?",
-      "opts": [
-        "1910",
-        "1914",
-        "1916",
-        "1918"
-      ],
-      "ans": 1,
-      "exp": "World War I started in 1914 following the assassination of Archduke Franz Ferdinand of Austria. It ended in 1918 with the Allied victory."
-    },
-    {
-      "id": 3,
-      "q": "The United Nations was established in?",
-      "opts": [
-        "1944",
-        "1945",
-        "1946",
-        "1947"
-      ],
-      "ans": 1,
-      "exp": "The United Nations was established on 24 October 1945, after World War II. It replaced the League of Nations and currently has 193 member states."
-    },
-    {
-      "id": 4,
-      "q": "Who was the first man to walk on the Moon?",
-      "opts": [
-        "Yuri Gagarin",
-        "Buzz Aldrin",
-        "Neil Armstrong",
-        "John Glenn"
-      ],
-      "ans": 2,
-      "exp": "Neil Armstrong became the first human to walk on the Moon on 21 July 1969 during NASA's Apollo 11 mission. His words: 'One small step for man, one giant leap for mankind.'"
-    },
-    {
-      "id": 5,
-      "q": "The Renaissance began in which country?",
-      "opts": [
-        "France",
-        "England",
-        "Italy",
-        "Germany"
-      ],
-      "ans": 2,
-      "exp": "The Renaissance (meaning 'rebirth') began in Italy in the 14th century. It was a period of cultural, artistic, and intellectual revival that later spread across Europe."
-    },
-    {
-      "id": 6,
-      "q": "The Cold War was primarily between which two countries?",
-      "opts": [
-        "USA and China",
-        "USA and USSR",
-        "UK and USSR",
-        "USA and Germany"
-      ],
-      "ans": 1,
-      "exp": "The Cold War (1947–1991) was a geopolitical rivalry between the United States and the Soviet Union (USSR). It ended with the dissolution of the USSR in 1991."
-    },
-    {
-      "id": 7,
-      "q": "The Berlin Wall fell in which year?",
-      "opts": [
-        "1985",
-        "1987",
-        "1989",
-        "1991"
-      ],
-      "ans": 2,
-      "exp": "The Berlin Wall fell on 9 November 1989. It had divided East and West Berlin since 1961. Its fall symbolized the end of the Cold War and led to German reunification."
-    },
-    {
-      "id": 8,
-      "q": "Who wrote 'The Communist Manifesto'?",
-      "opts": [
-        "Lenin and Stalin",
-        "Marx and Engels",
-        "Trotsky and Lenin",
-        "Mao and Marx"
-      ],
-      "ans": 1,
-      "exp": "'The Communist Manifesto' was written by Karl Marx and Friedrich Engels in 1848. It describes the class struggle and the need for a communist revolution."
-    },
-    {
-      "id": 9,
-      "q": "The American Declaration of Independence was signed in?",
-      "opts": [
-        "1774",
-        "1775",
-        "1776",
-        "1777"
-      ],
-      "ans": 2,
-      "exp": "The American Declaration of Independence was signed on 4 July 1776. This date is celebrated as Independence Day in the United States."
-    },
-    {
-      "id": 10,
-      "q": "World War II ended in which year?",
-      "opts": [
-        "1943",
-        "1944",
-        "1945",
-        "1946"
-      ],
-      "ans": 2,
-      "exp": "World War II ended in 1945. Germany surrendered on 8 May 1945 (V-E Day) and Japan surrendered on 2 September 1945 (V-J Day) after atomic bombs were dropped on Hiroshima and Nagasaki."
-    }
-  ]
-}
+[
+  {
+    "question": "The French Revolution, which popularized the values of liberty, equality, and fraternity, officially started with the storming of Bastille prison in which year?",
+    "option_a": "1776",
+    "option_b": "1789",
+    "option_c": "1799",
+    "option_d": "1815",
+    "correct_answer": "b",
+    "explanation": "The storming of the Bastille fortress-prison on July 14, 1789, marked the flashpoint of the French Revolution against King Louis XVI, opening the path for modern democratic values. [Memory Trick: In 17-89, count continuously '8-9' to match French citizens standing in line for freedom.]"
+  },
+  {
+    "question": "Which historic charter of constitutional rights, constraining the absolute power of the monarch, was signed by King John of England at Runnymede in 1215?",
+    "option_a": "The Bill of Rights",
+    "option_b": "Magna Carta",
+    "option_c": "Petition of Right",
+    "option_d": "The Declaration of Arbroath",
+    "correct_answer": "b",
+    "explanation": "Magna Carta ('Great Charter') was signed by King John on June 15, 1215, establishing the crucial constitutional principle that everybody, including the king, is subject to the supreme rule of law. [Memory Trick: The ultimate 'Magnet' of human rights that pulled the king's power down = 'Magna' Carta.]"
+  },
+  {
+    "question": "The 'Boston Tea Party', a famous prelude rebellion to the American Revolutionary War, occurred in which year?",
+    "option_a": "1773",
+    "option_b": "1776",
+    "option_c": "1783",
+    "option_d": "1789",
+    "correct_answer": "a",
+    "explanation": "The Boston Tea Party took place on December 16, 1773, when American colonists disguised as Mohawk Indians dumped 342 chests of British tea into the Boston harbor to protest tea taxes without colonial representation. [Memory Trick: Dumped tea because 3 elements ('tea, tax, trial') made colonists raise hands in glee in 1773.]"
+  },
+  {
+    "question": "The historic Bolshevik Revolution (October Revolution) in Russia, which installed Lenin as head of the world's first socialist state, took place in which year?",
+    "option_a": "1905",
+    "option_b": "1914",
+    "option_c": "1917",
+    "option_d": "1922",
+    "correct_answer": "c",
+    "explanation": "The Bolshevik Revolution occurred in November 1917 (October in Julian calendar) when Vladimir Lenin led the overthrow of the provisional government, initiating the creation of the Soviet Union. [Memory Trick: Vladimir Lenin seized absolute power and became the primary player in '17' = 1917.]"
+  },
+  {
+    "question": "The Treaty of Versailles, which placed severe reparations on Germany and formally concluded World War I, was signed in which year?",
+    "option_a": "1914",
+    "option_b": "1918",
+    "option_c": "1919",
+    "option_d": "1939",
+    "correct_answer": "c",
+    "explanation": "The Treaty of Versailles was signed on June 28, 1919, exactly five years after the assassination of Archduke Franz Ferdinand, establishing the League of Nations and redrawing boundary lines in Central Europe. [Memory Trick: Peace treaty ending World War One was signed to prevent World War Two in Nineteen-Nineteen.]"
+  },
+  {
+    "question": "The capture of Constantinople by the Ottoman Empire, which marked the end of the Byzantine Empire and is considered the transition to the Renaissance, occurred in which year?",
+    "option_a": "1453",
+    "option_b": "1492",
+    "option_c": "1517",
+    "option_d": "1347",
+    "correct_answer": "a",
+    "explanation": "In 1453, Sultan Mehmed II conquered Constantinople, the capital of the Eastern Roman (Byzantine) Empire. This led to the closure of traditional trade routes to Asia, prompting European powers to seek maritime alternatives, starting the Age of Discovery. [Memory Trick: Constantinople's fall in 'Fifty-Three' (1453) set European ships sailing free.]"
+  },
+  {
+    "question": "The United States Declaration of Independence, drafted primarily by Thomas Jefferson, was formally adopted by the Second Continental Congress on which historic date?",
+    "option_a": "July 4, 1776",
+    "option_b": "September 17, 1787",
+    "option_c": "November 23, 1783",
+    "option_d": "April 19, 1775",
+    "correct_answer": "a",
+    "explanation": "On July 4, 1776, the Continental Congress adopted the Declaration of Independence in Philadelphia, declaring the thirteen American colonies free from British rule. Jefferson was its primary author. [Memory Trick: July Four ('7/4') in '76' set the American liberty mix.]"
+  },
+  {
+    "question": "The Industrial Revolution, which transformed rural, agrarian societies into industrialized, urban ones, began in Great Britain in which century?",
+    "option_a": "16th Century",
+    "option_b": "17th Century",
+    "option_c": "18th Century",
+    "option_d": "19th Century",
+    "correct_answer": "c",
+    "explanation": "The Industrial Revolution began in Great Britain in the mid-18th century (the 1700s), powered by steam engines (James Watt), coal, and automated textile manufacturing, later spreading across the globe. [Memory Trick: The 'Eighteenth' century saw the rise of heavy steam 'Engines' in Britain.]"
+  },
+  {
+    "question": "The French military leader Napoleon Bonaparte was finally defeated by a coalition force led by the Duke of Wellington in the Battle of Waterloo in which year?",
+    "option_a": "1805",
+    "option_b": "1812",
+    "option_c": "1815",
+    "option_d": "1821",
+    "correct_answer": "c",
+    "explanation": "Napoleon was decisively defeated on June 18, 1815, near Waterloo in present-day Belgium, by the British-led and Prussian armies. This ended the Napoleonic Wars and led to his exile to St. Helena. [Memory Trick: Napoleon met his Waterloo in eighteen-fifteen ('15') and was never seen again on the scene.]"
+  },
+  {
+    "question": "Which prominent statesman, known as the 'Iron Chancellor', was the chief architect of the Unification of Germany, officially proclaimed in 1871?",
+    "option_a": "Kaiser Wilhelm II",
+    "option_b": "Otto von Bismarck",
+    "option_c": "Klemens von Metternich",
+    "option_d": "Adolf Hitler",
+    "correct_answer": "b",
+    "explanation": "Otto von Bismarck, Prime Minister of Prussia, united Germany through a series of successful wars against Denmark, Austria, and France, leading to the proclamation of the German Empire in January 1871. [Memory Trick: The 'Iron' Chancellor used 'Blood and Iron' ('Bismarck') to weld Germany together.]"
+  },
+  {
+    "question": "The Fall of the Berlin Wall, which symbolised the impending collapse of communist regimes and the end of the Cold War, occurred in which historic year?",
+    "option_a": "1985",
+    "option_b": "1989",
+    "option_c": "1991",
+    "option_d": "1993",
+    "correct_answer": "b",
+    "explanation": "On November 9, 1989, East Germany announced that citizens could travel to West Berlin, leading to the joyful dismantling of the wall that had divided Berlin since 1961, paving the way for Germany's reunification. [Memory Trick: The wall came down in '89' because freedom was online.]"
+  },
+  {
+    "question": "The Peace of Westphalia, which concluded the Thirty Years' War in Europe and laid the foundations of modern state sovereignty, was signed in which year?",
+    "option_a": "1648",
+    "option_b": "1555",
+    "option_c": "1713",
+    "option_d": "1688",
+    "correct_answer": "a",
+    "explanation": "Signed in 1648, the Peace of Westphalia established the principle of 'co-existence of sovereign states', recognized territorial integrity, and allowed rulers to choose the religion of their states. [Memory Trick: Sovereignty became 'Great & Late' when signed in '48' = 1648.]"
+  },
+  {
+    "question": "The 'Meiji Restoration', which returned practical imperial rule to Japan under Emperor Meiji and initiated rapid modernization, occurred in which year?",
+    "option_a": "1853",
+    "option_b": "1868",
+    "option_c": "1894",
+    "option_d": "1904",
+    "correct_answer": "b",
+    "explanation": "Proclaimed in 1868, the Meiji Restoration ended the Tokugawa Shogunate and restored imperial authority. Japan quickly transformed from an isolated feudal state into a global industrial and military power. [Memory Trick: Meiji made Japan 'Great' with an industrial 'Date' in 'sixty-eight' = 1868.]"
+  },
+  {
+    "question": "Who was the legendary Renaissance polymath of the 15th-16th century who painted iconic masterpieces such as 'Mona Lisa' and 'The Last Supper'?",
+    "option_a": "Michelangelo",
+    "option_b": "Raphael",
+    "option_c": "Leonardo da Vinci",
+    "option_d": "Donatello",
+    "correct_answer": "c",
+    "explanation": "Leonardo da Vinci (1452–1519) was the quintessential 'Renaissance Man', excelling as an artist, scientist, anatomist, and engineer, representing the peak of Renaissance humanism. [Memory Trick: The ultimate genius 'Leonardo' painted the serene 'Mona Lisa'.]"
+  },
+  {
+    "question": "The Italian explorer Christopher Columbus, sailing under the Spanish crown, first landed in the Bahamas (Americas) in which historic year?",
+    "option_a": "1453",
+    "option_b": "1492",
+    "option_c": "1519",
+    "option_d": "1588",
+    "correct_answer": "b",
+    "explanation": "In October 1492, Columbus's expedition reached the island of San Salvador, thinking he had reached the East Indies. This initiated intense European exploration and colonization of the Americas. [Memory Trick: Columbus sailed the ocean blue in fourteen-hundred-ninety-two (1492).]"
+  }
+]

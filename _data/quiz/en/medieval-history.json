@@ -1,128 +1,137 @@
-{
-  "title": "Medieval Indian History",
-  "title_hi": "मध्यकालीन भारतीय इतिहास",
-  "icon": "🕌",
-  "slug": "medieval-history",
-  "questions": [
-    {
-      "id": 1,
-      "q": "Who founded the Delhi Sultanate?",
-      "opts": [
-        "Muhammad Ghori",
-        "Qutb-ud-din Aibak",
-        "Iltutmish",
-        "Balban"
-      ],
-      "ans": 1,
-      "exp": "Qutb-ud-din Aibak founded the Delhi Sultanate in 1206 AD after the death of Muhammad Ghori. He established the Slave Dynasty, the first dynasty of the Delhi Sultanate."
-    },
-    {
-      "id": 2,
-      "q": "The Qutb Minar was built by which ruler?",
-      "opts": [
-        "Akbar",
-        "Qutb-ud-din Aibak",
-        "Humayun",
-        "Shah Jahan"
-      ],
-      "ans": 1,
-      "exp": "The Qutb Minar was started by Qutb-ud-din Aibak and completed by Iltutmish. It is a UNESCO World Heritage Site in Delhi."
-    },
-    {
-      "id": 3,
-      "q": "Who was the first woman ruler of the Delhi Sultanate?",
-      "opts": [
-        "Noor Jahan",
-        "Razia Sultana",
-        "Chand Bibi",
-        "Durgavati"
-      ],
-      "ans": 1,
-      "exp": "Razia Sultana (1236–1240) was the first and only woman ruler of the Delhi Sultanate. She was the daughter of Iltutmish who appointed her as his successor."
-    },
-    {
-      "id": 4,
-      "q": "The Battle of Panipat (First) was fought between whom?",
-      "opts": [
-        "Babur and Rana Sanga",
-        "Babur and Ibrahim Lodi",
-        "Akbar and Hemu",
-        "Humayun and Sher Shah"
-      ],
-      "ans": 1,
-      "exp": "The First Battle of Panipat (1526) was fought between Babur and Ibrahim Lodi. Babur's victory established the Mughal Empire in India."
-    },
-    {
-      "id": 5,
-      "q": "Akbar's famous policy of religious tolerance was called?",
-      "opts": [
-        "Din-i-Ilahi",
-        "Sulh-i-Kul",
-        "Ibadat Khana",
-        "Mahzar"
-      ],
-      "ans": 0,
-      "exp": "Din-i-Ilahi (Divine Faith) was Akbar's syncretic religion founded in 1582. It combined elements of Islam, Hinduism, Zoroastrianism, and Christianity."
-    },
-    {
-      "id": 6,
-      "q": "Who built the Taj Mahal?",
-      "opts": [
-        "Akbar",
-        "Jehangir",
-        "Shah Jahan",
-        "Aurangzeb"
-      ],
-      "ans": 2,
-      "exp": "The Taj Mahal was built by Mughal Emperor Shah Jahan in memory of his wife Mumtaz Mahal. It was completed in 1653 and is a UNESCO World Heritage Site."
-    },
-    {
-      "id": 7,
-      "q": "The Vijayanagara Empire was founded in which year?",
-      "opts": [
-        "1206",
-        "1336",
-        "1526",
-        "1556"
-      ],
-      "ans": 1,
-      "exp": "The Vijayanagara Empire was founded in 1336 by Harihara I and Bukka Raya I. It was one of the greatest Hindu empires of medieval India."
-    },
-    {
-      "id": 8,
-      "q": "Who was Sher Shah Suri?",
-      "opts": [
-        "A Mughal general",
-        "A Afghan king who defeated Humayun",
-        "A Rajput king",
-        "A Maratha ruler"
-      ],
-      "ans": 1,
-      "exp": "Sher Shah Suri defeated Humayun in 1540 and established the Sur Empire. He introduced significant administrative reforms including the Grand Trunk Road."
-    },
-    {
-      "id": 9,
-      "q": "The Bhakti Movement in South India was started by?",
-      "opts": [
-        "Kabir",
-        "Mirabai",
-        "Alvars and Nayanmars",
-        "Tukaram"
-      ],
-      "ans": 2,
-      "exp": "The Bhakti Movement in South India was pioneered by the Alvars (Vaishnava saints) and Nayanmars (Shaiva saints) between the 6th and 9th centuries CE."
-    },
-    {
-      "id": 10,
-      "q": "The last major ruler of the Mughal Empire was?",
-      "opts": [
-        "Aurangzeb",
-        "Bahadur Shah I",
-        "Muhammad Shah",
-        "Bahadur Shah Zafar"
-      ],
-      "ans": 3,
-      "exp": "Bahadur Shah Zafar (1837–1857) was the last Mughal Emperor. He was exiled to Rangoon after the 1857 revolt and died there in 1862."
-    }
-  ]
-}
+[
+  {
+    "question": "Who initiated the construction of the famous Qutub Minar in Delhi near the end of the 12th century?",
+    "option_a": "Iltutmish",
+    "option_b": "Qutb-ud-din Aibak",
+    "option_c": "Alauddin Khalji",
+    "option_d": "Firoz Shah Tughlaq",
+    "correct_answer": "b",
+    "explanation": "The Qutub Minar was commissioned by Qutb-ud-din Aibak in 1199 CE. It was built to honor the famous Sufi saint Qutbuddin Bakhtiar Kaki. Aibak could only complete the basement level before his death. Later, Iltutmish added three more stories, and after a lightning strike in 1368, Firoz Shah Tughlaq replaced the top story and added two more. [Memory Trick: The building 'Qutub' Minar was started by 'Qutb'-ud-din himself.]"
+  },
+  {
+    "question": "The decisive Second Battle of Tarain, which established primary Muslim rule in North India, was fought in which year?",
+    "option_a": "1191",
+    "option_b": "1192",
+    "option_c": "1206",
+    "option_d": "1526",
+    "correct_answer": "b",
+    "explanation": "The Second Battle of Tarain was fought in 1192 CE between Mu'izz al-Din Muhammad Ghori and Prithviraj Chauhan. Unlike the First Battle in 1191 (won by Chauhan), Ghori utilized superior cavalry tactics to defeat the Rajput forces, establishing the foundations of Muslim rule in North India. [Memory Trick: Ghori won in '92' because Chauhan's fortune did not hold 'Nice & True' = 1192.]"
+  },
+  {
+    "question": "Which sultan of Delhi introduced the market control regulatory system and economic pricing reforms?",
+    "option_a": "Balban",
+    "option_b": "Muhammad bin Tughlaq",
+    "option_c": "Alauddin Khalji",
+    "option_d": "Sikandar Lodi",
+    "correct_answer": "c",
+    "explanation": "Alauddin Khalji (1296–1316 CE) introduced strict market reforms and price control measures to maintain a massive standing army. He created officers called Shahna-i-Mandi to inspect markets and ensure fair trade practice. [Memory Trick: Control 'prices' and 'stocks' to keep everyone 'Khush' = 'Khalji'.]"
+  },
+  {
+    "question": "The historic Vijayanagara Empire was founded on the banks of which river in 1336 CE?",
+    "option_a": "Krishna",
+    "option_b": "Tungabhadra",
+    "option_c": "Kaveri",
+    "option_d": "Godavari",
+    "correct_answer": "b",
+    "explanation": "The Vijayanagara Empire was founded in 1336 CE by two brothers, Harihara and Bukka, of the Sangama dynasty, on the banks of the Tungabhadra River. They were mentored by sage Vidyaranya. [Memory Trick: To become 'Vijayi' (Victorious), grab a 'Tunga' (spear) with both hands = 'Tungabhadra'.]"
+  },
+  {
+    "question": "Who was the author of the famous Telugu text 'Amuktamalyada', an epic poem on statecraft?",
+    "option_a": "Devaraya II",
+    "option_b": "Krishnadevaraya",
+    "option_c": "Tenali Rama",
+    "option_d": "Allasani Peddana",
+    "correct_answer": "b",
+    "explanation": "Krishnadevaraya, the greatest ruler of the Tuluva dynasty of Vijayanagara, composed 'Amuktamalyada' in Telugu, which discusses kingly duties and state organization. He also patronized the Ashtadiggajas (eight classical poets). [Memory Trick: King 'Krishnadevaraya' wrote about statecraft because he was an absolute 'Deva' of literature.]"
+  },
+  {
+    "question": "The Mughal Empire was established in India after Babur defeated Ibrahim Lodi in the First Battle of Panipat in which year?",
+    "option_a": "1526",
+    "option_b": "1556",
+    "option_c": "1761",
+    "option_d": "1504",
+    "correct_answer": "a",
+    "explanation": "Babur defeated Ibrahim Lodi, the last Sultan of Delhi, at the First Battle of Panipat on April 21, 1526. Babur used gunpowder firearms and field artillery (Tulughma method), which were introduced in North India for the first time. [Memory Trick: Babur 'took' Delhi in fifteen-twenty-'six' (1526) by destroying Lodi's defense mix.]"
+  },
+  {
+    "question": "Which medieval ruler introduced the silver coin called 'Rupia' and built the famous Grand Trunk Road connecting Calcutta to Peshawar?",
+    "option_a": "Akbar",
+    "option_b": "Sher Shah Suri",
+    "option_c": "Alauddin Khalji",
+    "option_d": "Humayun",
+    "correct_answer": "b",
+    "explanation": "Sher Shah Suri (founder of the Sur Empire) ruled from 1540 to 1545. He introduced the silver 'Rupia' (weighing 178 grains) and organized a highly efficient postal system. He rebuilt the Grand Trunk Road (Sadak-e-Azam). [Memory Trick: A 'Sher' (lion) loves precious silver coins ('Rupia') on his private 'Trunk' road = Sher Shah Suri.]"
+  },
+  {
+    "question": "The Mughal Emperor Akbar promulgated a syncretic religious path called 'Din-i-Ilahi' (Divine Faith) in which year?",
+    "option_a": "1556",
+    "option_b": "1582",
+    "option_c": "1576",
+    "option_d": "1601",
+    "correct_answer": "b",
+    "explanation": "Din-i-Ilahi was introduced by Akbar in 1582 CE, aiming to merge the best elements of the religions of his empire. It promoted moral virtues, tolerance, and monotheism, but had very few followers, with Birbal being the only Hindu to accept it. [Memory Trick: Akbar's divine faith ('Din-i-Ilahi') brought 'Great' peace to the 'Eight-Two' system = 1582.]"
+  },
+  {
+    "question": "Who was the first and only Muslim woman ruler of the Delhi Sultanate, ascending the throne in 1236 CE?",
+    "option_a": "Chand Bibi",
+    "option_b": "Razia Sultana",
+    "option_c": "Nur Jahan",
+    "option_d": "Mumtaz Mahal",
+    "correct_answer": "b",
+    "explanation": "Razia Sultana, daughter of Shams-ud-din Iltutmish, ruled Delhi from 1236 to 1240 CE. She rejected the traditional veil (Purda), wore male attire, led armies, and administered justice directly. [Memory Trick: She was a 'Royal' ('Razia') queen among several male sultans.]"
+  },
+  {
+    "question": "Which Delhi Sultan is famously known for shifting his capital from Delhi to Daulatabad (Devagiri) in 1327 CE to secure better control over South India?",
+    "option_a": "Ghiyas-ud-din Tughlaq",
+    "option_b": "Muhammad bin Tughlaq",
+    "option_c": "Firoz Shah Tughlaq",
+    "option_d": "Alauddin Khalji",
+    "correct_answer": "b",
+    "explanation": "Muhammad bin Tughlaq, known as a visionary yet controversial Sultan, ordered the entire population of Delhi to march to Daulatabad in 1327 CE. The project failed due to severe heat, lack of water, and plague, leading him to order a retreat. [Memory Trick: The elite 'Bin' Tughlaq loved traveling between Delhi and Daulatabad = Muhammad 'bin' Tughlaq.]"
+  },
+  {
+    "question": "Mahmud of Ghazni looted and destroyed the sacred Somnath Temple of Gujarat in which year during his sixteenth raid of India?",
+    "option_a": "1001",
+    "option_b": "1025",
+    "option_c": "1191",
+    "option_d": "1030",
+    "correct_answer": "b",
+    "explanation": "Mahmud of Ghazni launched seventeen raids into India to plunder its wealth. His sixteenth raid in 1025-1026 CE targeted the wealthy Somnath temple in Gujarat, where he plundered vast riches and shattered the sacred jyotirlinga. [Memory Trick: He took 'Two-Five' (25) camel loads of gold after destroying Somnath in 1025.]"
+  },
+  {
+    "question": "In 1665 CE, the Treaty of Purandar was signed between Chhatrapati Shivaji Maharaj and which Mughal commander representing Emperor Aurangzeb?",
+    "option_a": "Shaista Khan",
+    "option_b": "Mirza Raja Jai Singh",
+    "option_c": "Afzal Khan",
+    "option_d": "Jaswant Singh",
+    "correct_answer": "b",
+    "explanation": "The Treaty of Purandar was signed on June 11, 1665, between Shivaji Maharaj and Mirza Raja Jai Singh, forced by the siege of Purandar fort. Shivaji had to surrender 23 of his forts to the Mughals and visit Agra. [Memory Trick: Jai Singh represented the Mughal 'Victor' ('Jai') to negotiate with the Marathas = Mirza Raja Jai Singh.]"
+  },
+  {
+    "question": "Who was the founder of Sikhism and the first of the ten Sikh Gurus, born in 1469 CE in Talwandi (now Nankana Sahib)?",
+    "option_a": "Guru Angad Dev",
+    "option_b": "Guru Gobind Singh",
+    "option_c": "Guru Nanak Dev",
+    "option_d": "Guru Arjun Dev",
+    "correct_answer": "c",
+    "explanation": "Guru Nanak Dev established Sikhism in the late 15th century, preaching the message of one universal God, equality, and compassion. He introduced the institutionalized community kitchen, the 'Langar'. [Memory Trick: The root 'Nanak' of Sikhism brought the first light of spiritual peace in 1469.]"
+  },
+  {
+    "question": "The medieval saint Kabir Das, who composed the famous 'Bijak' containing mystic verses and dohas, was a disciple of which spiritual guru?",
+    "option_a": "Ramananda",
+    "option_b": "Ramanujacharya",
+    "option_c": "Tulsidas",
+    "option_d": "Chaitanya Mahaprabhu",
+    "correct_answer": "a",
+    "explanation": "Kabir Das, a prominent 15th-century Bhakti poet and weaver of Varanasi, advocated spiritual unity and rejected religious dogmas. He was a disciple of Ramananda, a pioneer of the Bhakti movement in Northern India. [Memory Trick: Kabir learned spiritual secrets directly from Lord 'Rama's advocate' Ramananda.]"
+  },
+  {
+    "question": "The 'Khalsa Panth', a warrior community of faithful Sikhs, was established by Guru Gobind Singh at Anandpur Sahib in which historic year?",
+    "option_a": "1606",
+    "option_b": "1675",
+    "option_c": "1699",
+    "option_d": "1708",
+    "correct_answer": "c",
+    "explanation": "Guru Gobind Singh, the tenth Sikh Guru, created the Khalsa on Baisakhi Day in 1699 CE. He introduced the Five Ks (Kesh, Kangha, Kara, Kachera, Kirpan) and the titles 'Singh' (Lion) and 'Kaur' (Princess). [Memory Trick: In 16-99, the community of warriors was formed to defend 'Nice-Nice' values = 1699.]"
+  }
+]

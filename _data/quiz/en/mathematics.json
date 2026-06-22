@@ -1,128 +1,389 @@
-{
-  "title": "Mathematics",
-  "title_hi": "गणित",
-  "icon": "🔢",
-  "slug": "mathematics",
-  "questions": [
-    {
-      "id": 1,
-      "q": "The value of π (pi) is approximately?",
-      "opts": [
-        "3.14159",
-        "3.14152",
-        "3.14169",
-        "3.14199"
-      ],
-      "ans": 0,
-      "exp": "The value of π (pi) is approximately 3.14159. It is the ratio of a circle's circumference to its diameter. Pi is an irrational and transcendental number."
-    },
-    {
-      "id": 2,
-      "q": "What is the square root of 144?",
-      "opts": [
-        "11",
-        "12",
-        "13",
-        "14"
-      ],
-      "ans": 1,
-      "exp": "The square root of 144 is 12, because 12 × 12 = 144. The square root is the inverse operation of squaring a number."
-    },
-    {
-      "id": 3,
-      "q": "Which number is neither prime nor composite?",
-      "opts": [
-        "0",
-        "1",
-        "2",
-        "4"
-      ],
-      "ans": 1,
-      "exp": "1 is neither prime nor composite. A prime number has exactly 2 factors (1 and itself), while a composite number has more than 2 factors. 1 has only 1 factor."
-    },
-    {
-      "id": 4,
-      "q": "A triangle with all three sides equal is called?",
-      "opts": [
-        "Scalene",
-        "Isosceles",
-        "Equilateral",
-        "Right-angled"
-      ],
-      "ans": 2,
-      "exp": "A triangle with all three sides equal is called an equilateral triangle. All angles in an equilateral triangle are also equal, each measuring 60°."
-    },
-    {
-      "id": 5,
-      "q": "The sum of angles in a triangle is?",
-      "opts": [
-        "90°",
-        "180°",
-        "270°",
-        "360°"
-      ],
-      "ans": 1,
-      "exp": "The sum of all interior angles in a triangle is always 180°. This is a fundamental theorem of Euclidean geometry."
-    },
-    {
-      "id": 6,
-      "q": "What is the LCM of 4 and 6?",
-      "opts": [
-        "2",
-        "8",
-        "12",
-        "24"
-      ],
-      "ans": 2,
-      "exp": "The Least Common Multiple (LCM) of 4 and 6 is 12. LCM is the smallest positive integer that is divisible by both numbers."
-    },
-    {
-      "id": 7,
-      "q": "The formula for the area of a circle is?",
-      "opts": [
-        "2πr",
-        "πr²",
-        "πd",
-        "2πr²"
-      ],
-      "ans": 1,
-      "exp": "The area of a circle is πr², where r is the radius and π is approximately 3.14159. The circumference of a circle is 2πr."
-    },
-    {
-      "id": 8,
-      "q": "How many sides does a pentagon have?",
-      "opts": [
-        "4",
-        "5",
-        "6",
-        "7"
-      ],
-      "ans": 1,
-      "exp": "A pentagon has 5 sides and 5 angles. The sum of interior angles of a pentagon is 540°. A regular pentagon has all sides and angles equal."
-    },
-    {
-      "id": 9,
-      "q": "What is 15% of 200?",
-      "opts": [
-        "20",
-        "25",
-        "30",
-        "35"
-      ],
-      "ans": 2,
-      "exp": "15% of 200 = (15/100) × 200 = 30. Percentage calculations are fundamental in everyday mathematics and competitive exams."
-    },
-    {
-      "id": 10,
-      "q": "The Pythagoras theorem states: In a right triangle, a² + b² = ?",
-      "opts": [
-        "c",
-        "c²",
-        "2c",
-        "c³"
-      ],
-      "ans": 1,
-      "exp": "The Pythagoras theorem states that in a right-angled triangle, the square of the hypotenuse (c) equals the sum of squares of the other two sides: a² + b² = c²."
-    }
-  ]
-}
+[
+  {
+    "question": "Who is historically considered the founder of modern geometry, renowned for compiling 'The Elements' in 300 BCE?",
+    "option_a": "Pythagoras",
+    "option_b": "Euclid",
+    "option_c": "Archimedes",
+    "option_d": "René Descartes",
+    "correct_answer": "b",
+    "explanation": "Euclid of Alexandria was a Greek mathematician who pioneered deductive geometry and laid down the 5 famous postulates in his treatise 'The Elements'. [Memory Trick: Geometry is all about 'lines' and 'keys' to locate things, solved by 'Euclid' (U-key-lid).]"
+  },
+  {
+    "question": "Which genius Indian mathematician introduced the revolutionary concept of zero ('shunya') and the decimal place value system to the world in his 499 CE treatise?",
+    "option_a": "Brahmagupta",
+    "option_b": "Aryabhata",
+    "option_c": "Bhaskara I",
+    "option_d": "Ramanujan",
+    "correct_answer": "b",
+    "explanation": "Aryabhata formulated the decimal place-value system and zero as a placeholder in his astronomical manual 'Aryabhatiya' in 499 CE. [Memory Trick: Aryabhata was 'No. 1' (First astronomer-genius) to teach the world '0' (zero) place value!]"
+  },
+  {
+    "question": "What mathematical term describes a positive integer that is equal to the sum of its proper positive divisors, excluding the number itself?",
+    "option_a": "Prime Number",
+    "option_b": "Composite Number",
+    "option_c": "Perfect Number",
+    "option_d": "Fibonacci Number",
+    "correct_answer": "c",
+    "explanation": "A Perfect Number (like 6 or 28) equals the sum of its divisors (e.g., 6 = 1 + 2 + 3). [Memory Trick: When everything adds up to exactly equal itself, it is absolutely 'Perfect'.]"
+  },
+  {
+    "question": "What is the sum of the interior angles of a standard hexagon?",
+    "option_a": "360 degrees",
+    "option_b": "540 degrees",
+    "option_c": "720 degrees",
+    "option_d": "900 degrees",
+    "correct_answer": "c",
+    "explanation": "The formula for sum of interior angles is (n - 2) * 180. For a hexagon (n=6), (6-2)*180 = 720. [Memory Trick: A pentagon is 540, add another 180 to roll into the '720' hex-zone!]"
+  },
+  {
+    "question": "Which ancient Greek mathematician famously calculated the circumference of the Earth using shadows cast by the sun at noon in two cities?",
+    "option_a": "Eratosthenes",
+    "option_b": "Aristotle",
+    "option_c": "Ptolemy",
+    "option_d": "Hipparchus",
+    "correct_answer": "a",
+    "explanation": "Eratosthenes calculated Earth's circumference around 240 BCE using shadow angles in Alexandria and Syene. [Memory Trick: 'Era-to-sthenes' discovered the 'Era' of 'Earth-steps' and planetary measurement!]"
+  },
+  {
+    "question": "What is the value of Euler's number (e), a fundamental mathematical constant, rounded to three decimal places?",
+    "option_a": "3.141",
+    "option_b": "1.618",
+    "option_c": "2.718",
+    "option_d": "1.414",
+    "correct_answer": "c",
+    "explanation": "Euler's number 'e' is approximately 2.71828. [Memory Trick: 'e' sounds like 'E'asy 'Second' = starts with 2, followed by 'lucky 7' and 18 = 2.718!]"
+  },
+  {
+    "question": "Which sequence starts with 0 and 1, where each subsequent number is the sum of the preceding two?",
+    "option_a": "Arithmetic Sequence",
+    "option_b": "Geometric Sequence",
+    "option_c": "Fibonacci Sequence",
+    "option_d": "Harmonic Sequence",
+    "correct_answer": "c",
+    "explanation": "The Fibonacci sequence starts as 0, 1, 1, 2, 3, 5, 8, 13... [Memory Trick: 'Fib'-onacci folds numbers on top of each other 'Fib-by-block'!]"
+  },
+  {
+    "question": "A prime number has exactly how many distinct positive factors?",
+    "option_a": "One",
+    "option_b": "Two",
+    "option_c": "Infinite",
+    "option_d": "Three",
+    "correct_answer": "b",
+    "explanation": "A prime number is divisible only by 1 and itself, meaning it has exactly two distinct factors. [Memory Trick: Primes are 'exclusive duos' - only myself and number 1!]"
+  },
+  {
+    "question": "What mathematical constant is represented by the ratio of a circle's circumference to its diameter?",
+    "option_a": "Golden Ratio (phi)",
+    "option_b": "Pi (π)",
+    "option_c": "Euler's constant",
+    "option_d": "Theta (θ)",
+    "correct_answer": "b",
+    "explanation": "Pi (π) is approximately 3.14159, defining the ratio of circumference to diameter of any circle. [Memory Trick: Eating a circular 'Pi' covers the whole rim divided by the middle slice!]"
+  },
+  {
+    "question": "What is the name of the coordinates system that uses distance from a fixed point and angle from a fixed direction?",
+    "option_a": "Cartesian Coordinates",
+    "option_b": "Polar Coordinates",
+    "option_c": "Spherical Coordinates",
+    "option_d": "Cylindrical Coordinates",
+    "correct_answer": "b",
+    "explanation": "Polar coordinates represent points in a 2D plane as (r, θ), measuring radius and angular coordinates. [Memory Trick: Imagine navigation at the North 'Polar' ice block searching via angular compass degree views!]"
+  },
+  {
+    "question": "If two events are independent, the probability of both occurring together is found by doing what to their individual probabilities?",
+    "option_a": "Adding them",
+    "option_b": "Subtracting them",
+    "option_c": "Multiplying them",
+    "option_d": "Dividing them",
+    "correct_answer": "c",
+    "explanation": "For independent events A and B, P(A and B) = P(A) * P(B). [Memory Trick: Independent events demand 'multiplication' to see their combined double-luck impact!]"
+  },
+  {
+    "question": "What is the highest possible value of the sine function for any real angle?",
+    "option_a": "0",
+    "option_b": "0.5",
+    "option_c": "1",
+    "option_d": "Infinity",
+    "correct_answer": "c",
+    "explanation": "The sine function (sin θ) oscillates continuously in a wave pattern between the peak boundaries of -1 and +1. [Memory Trick: 'Sin' waves never cross the '1' roof line!]"
+  },
+  {
+    "question": "Which mathematical field, co-invented by Isaac Newton and Gottfried Leibniz, studies continuous rates of change?",
+    "option_a": "Calculus",
+    "option_b": "Topology",
+    "option_c": "Set Theory",
+    "option_d": "Statistics",
+    "correct_answer": "a",
+    "explanation": "Calculus comprises differential and integral subdivisions tracking dynamic changes of values over continuous intervals. [Memory Trick: 'Cal'-culates continuous curves and changes!]"
+  },
+  {
+    "question": "What does the Latin prefix 'cent' represent in units of quantitative measurements?",
+    "option_a": "Ten",
+    "option_b": "One Hundred",
+    "option_c": "One Thousand",
+    "option_d": "One Million",
+    "correct_answer": "b",
+    "explanation": "'Cent' means 100, seen in century (100 years), centimeter, etc. [Memory Trick: A shiny 'cent' is 1/100 of a dollar bill!]"
+  },
+  {
+    "question": "What is the degree of a quadratic equation?",
+    "option_a": "1",
+    "option_b": "2",
+    "option_c": "3",
+    "option_d": "4",
+    "correct_answer": "b",
+    "explanation": "A quadratic equation always features a variable raised to the maximum exponent/power of 2 (e.g., ax^2 + bx + c = 0). [Memory Trick: 'Quad' means square, which is power of 'Two'!]"
+  },
+  {
+    "question": "What is the binary representation of the decimal number 10?",
+    "option_a": "1001",
+    "option_b": "1010",
+    "option_c": "1100",
+    "option_d": "1111",
+    "correct_answer": "b",
+    "explanation": "Decimal 10 is calculated as 8 + 0 + 2 + 0, which translates to 1010 in binary code base. [Memory Trick: Binary ten looks like a friendly repeating sequence '10... 10'!]"
+  },
+  {
+    "question": "Which Greek letter is standardly used to denote the sum of a series of terms?",
+    "option_a": "Alpha (α)",
+    "option_b": "Sigma (Σ)",
+    "option_c": "Delta (Δ)",
+    "option_d": "Omega (Ω)",
+    "correct_answer": "b",
+    "explanation": "Capital Sigma (Σ) serves as the universal mathematical symbol representing summation. [Memory Trick: 'S'-igma stands for 'S'-um!]"
+  },
+  {
+    "question": "An angle measuring exactly 180 degrees is referred to as what type of angle?",
+    "option_a": "Acute Angle",
+    "option_b": "Obtuse Angle",
+    "option_c": "Right Angle",
+    "option_d": "Straight Angle",
+    "correct_answer": "d",
+    "explanation": "An angle of 180 degrees forms a completely straight coordinate line. [Memory Trick: 180 degrees is straight as a flat ruler: 'Straight' angle!]"
+  },
+  {
+    "question": "What is the golden ratio constant (phi, φ) approximately equal to?",
+    "option_a": "1.414",
+    "option_b": "1.618",
+    "option_c": "3.141",
+    "option_d": "2.718",
+    "correct_answer": "b",
+    "explanation": "The golden ratio is the positive root of x^2 - x - 1 = 0, which is approximately 1.61803. [Memory Trick: Beauty is '1.618' times better with Golden ratios!]"
+  },
+  {
+    "question": "What do we call a polygon with exactly nine sides?",
+    "option_a": "Heptagon",
+    "option_b": "Octagon",
+    "option_c": "Nonagon",
+    "option_d": "Decagon",
+    "correct_answer": "c",
+    "explanation": "A nine-sided polygon is a nonagon. [Memory Trick: 'N'onagon has 'N'ine sides!]"
+  },
+  {
+    "question": "In a right-angled triangle, the sine of an angle is equivalent to which ratio?",
+    "option_a": "Opposite / Hypotenuse",
+    "option_b": "Adjacent / Hypotenuse",
+    "option_c": "Opposite / Adjacent",
+    "option_d": "Hypotenuse / Opposite",
+    "correct_answer": "a",
+    "explanation": "Based on SOH-CAH-TOA trigonometry principles, Sine = Opposite / Hypotenuse. [Memory Trick: 'S'ine 'O'ver 'H'ypotenuse = SOH!]"
+  },
+  {
+    "question": "Who published the famous 'Incompleteness Theorems' in 1931, proving that no mathematical system is completely self-contained?",
+    "option_a": "Alan Turing",
+    "option_b": "Kurt Gödel",
+    "option_c": "David Hilbert",
+    "option_d": "Bertrand Russell",
+    "correct_answer": "b",
+    "explanation": "Kurt Gödel showed that in any consistent axiomatic math system, there are true statements that cannot be proven. [Memory Trick: Gödel 'goaded' math into accepting its own limits of incompleteness!]"
+  },
+  {
+    "question": "What is the multiplicative identity of real numbers?",
+    "option_a": "0",
+    "option_b": "1",
+    "option_c": "-1",
+    "option_d": "Infinity",
+    "correct_answer": "b",
+    "explanation": "Any number multiplied by 1 retains its original numeric value unchanged. [Memory Trick: Number '1' leaves everyone with their exact 'identity' intact!]"
+  },
+  {
+    "question": "What is the sum of the first five prime numbers?",
+    "option_a": "15",
+    "option_b": "17",
+    "option_c": "26",
+    "option_d": "28",
+    "correct_answer": "d",
+    "explanation": "The first five prime numbers are 2, 3, 5, 7, and 11. Summing them yields 2+3+5+7+11 = 28. [Memory Trick: A perfect number '28' is the sum of the first five primes!]"
+  },
+  {
+    "question": "Which notation uses powers of ten to express extremely large or small numbers in standardized forms?",
+    "option_a": "Scientific Notation",
+    "option_b": "Binary Notation",
+    "option_c": "Exponential Growth",
+    "option_d": "Hexadecimal Code",
+    "correct_answer": "a",
+    "explanation": "Scientific notation writes numbers as a coefficients between 1 and 10 multiplied by a power of 10. [Memory Trick: 'Scientists' love utilizing small '10^x' scripts to measure stars!]"
+  },
+  {
+    "question": "What statistical measure represents the value that appears most frequently in a dataset?",
+    "option_a": "Mean",
+    "option_b": "Median",
+    "option_c": "Mode",
+    "option_d": "Range",
+    "correct_answer": "c",
+    "explanation": "The mode is the number that repeats the most often in an array. [Memory Trick: 'Mo'-de occurs 'Mo'-st frequently!]"
+  },
+  {
+    "question": "What is the value of 5 factorial (5!)?",
+    "option_a": "24",
+    "option_b": "60",
+    "option_c": "120",
+    "option_d": "720",
+    "correct_answer": "c",
+    "explanation": "5! is 5 * 4 * 3 * 2 * 1 = 120. [Memory Trick: Factorials grow quickly; five fingers tick exact '120' beats!]"
+  },
+  {
+    "question": "An algebraic expression containing exactly three terms is called what?",
+    "option_a": "Monomial",
+    "option_b": "Binomial",
+    "option_c": "Trinomial",
+    "option_d": "Polynomial",
+    "correct_answer": "c",
+    "explanation": "A trinomial consists of three algebraic terms (e.g., ax^2 + bx + c). [Memory Trick: A 'Tri'-cycle has 3 wheels, 'Tri'-nomial has 3 terms!]"
+  },
+  {
+    "question": "What is the probability of flipping a fair coin three times and getting three tails?",
+    "option_a": "1/2",
+    "option_b": "1/4",
+    "option_c": "1/6",
+    "option_d": "1/8",
+    "correct_answer": "d",
+    "explanation": "The probability is (1/2) * (1/2) * (1/2) = 1/8. [Memory Trick: Double the denominator: 2, 4, 8 to hit three tails!]"
+  },
+  {
+    "question": "What is the derivative of any constant number with respect to x?",
+    "option_a": "0",
+    "option_b": "1",
+    "option_c": "The constant itself",
+    "option_d": "Infinity",
+    "correct_answer": "a",
+    "explanation": "Since constants do not change, their rate of change (derivative) is exactly zero. [Memory Trick: A static brick wall has 'Zero' rate of motion/running change!]"
+  },
+  {
+    "question": "What mathematical system is founded on set operations using basic logic gates like AND, OR, and NOT?",
+    "option_a": "Vector Algebra",
+    "option_b": "Boolean Algebra",
+    "option_c": "Linear Programming",
+    "option_d": "Rational Mechanics",
+    "correct_answer": "b",
+    "explanation": "Boolean algebra operates on binary variables (True/False or 1/0) using standard logic operations, created by George Boole. [Memory Trick: 'Bool'ean variables can only be 'boldly' true or false!]"
+  },
+  {
+    "question": "What theorem states that in any right triangle, the square of the longest side equals the sum of squares of the other two sides?",
+    "option_a": "Fermat's Theorem",
+    "option_b": "Pythagorean Theorem",
+    "option_c": "Thales's Theorem",
+    "option_d": "Euler's Formula",
+    "correct_answer": "b",
+    "explanation": "The Pythagorean Theorem states a^2 + b^2 = c^2 for any right-angled triangle. [Memory Trick: Python shapes triangles along 'Pythagor'-ean coordinates!]"
+  },
+  {
+    "question": "Which mathematician solved Fermat's Last Theorem in 1994, completing a proof that had baffled researchers for 350 years?",
+    "option_a": "Alan Turing",
+    "option_b": "Andrew Wiles",
+    "option_c": "John Nash",
+    "option_d": "Srinivasa Ramanujan",
+    "correct_answer": "b",
+    "explanation": "British mathematician Sir Andrew Wiles published the formal proof of Fermat's Last Theorem using modern elliptic curves. [Memory Trick: He used his extreme 'Wiles' (clever strategy) to untie Fermat's knot!]"
+  },
+  {
+    "question": "If a triangle has side lengths of 3, 4, and 5 units, what type of triangle is it?",
+    "option_a": "Equilateral Triangle",
+    "option_b": "Right-Angled Triangle",
+    "option_c": "Obtuse Triangle",
+    "option_d": "Isosceles Triangle",
+    "correct_answer": "b",
+    "explanation": "Since 3^2 + 4^2 = 9 + 16 = 25 = 5^2, it is a Pythagorean triplet, forming a right-angled triangle. [Memory Trick: Standard '3-4-5' layout is the builder's favorite to check 'Right' corners!]"
+  },
+  {
+    "question": "What is the base of the hexadecimal number system?",
+    "option_a": "2",
+    "option_b": "8",
+    "option_c": "10",
+    "option_d": "16",
+    "correct_answer": "d",
+    "explanation": "Hexadecimal uses base-16, containing digits 0-9 and letters A-F to signify values up to 15. [Memory Trick: 'Hexa' (6) + 'Decimal' (10) = Sixteen '16' base!]"
+  },
+  {
+    "question": "What is the square root of 225?",
+    "option_a": "12",
+    "option_b": "15",
+    "option_c": "25",
+    "option_d": "35",
+    "correct_answer": "b",
+    "explanation": "15 * 15 equals 225. [Memory Trick: 5-ending squares always have double fives, '15' meets 225!]"
+  },
+  {
+    "question": "What do we call two lines in a flat 2D plane that never cross, regardless of how far they are extended?",
+    "option_a": "Perpendicular Lines",
+    "option_b": "Parallel Lines",
+    "option_c": "Intersecting Lines",
+    "option_d": "Secant Lines",
+    "correct_answer": "b",
+    "explanation": "Parallel lines maintain an equidistant spacing and never meet. [Memory Trick: The three central 'l' letters in 'ParaLLeL' show parallel lines side-by-side!]"
+  },
+  {
+    "question": "Which parameter describes the standard deviation squared of a mathematical statistical dataset?",
+    "option_a": "Mean",
+    "option_b": "Median",
+    "option_c": "Variance",
+    "option_d": "Covariance",
+    "correct_answer": "c",
+    "explanation": "Variance measures how far a set of numbers are spread out from their average. It's the square of standard deviation. [Memory Trick: Square the deviation to watch the actual 'Variance' expand!]"
+  },
+  {
+    "question": "In modular arithmetic, what is the value of 25 mod 7?",
+    "option_a": "1",
+    "option_b": "2",
+    "option_c": "3",
+    "option_d": "4",
+    "correct_answer": "d",
+    "explanation": "25 divided by 7 is 3 with a remainder of 4 (7 * 3 = 21, 25 - 21 = 4). [Memory Trick: 25 has 4 units left over beyond the 21 boundary!]"
+  },
+  {
+    "question": "What is the value of any real non-zero number raised to the power of 0?",
+    "option_a": "0",
+    "option_b": "1",
+    "option_c": "The number itself",
+    "option_d": "Undefined",
+    "correct_answer": "b",
+    "explanation": "By definition, x^0 = 1 for any non-zero real number. [Memory Trick: Flattening any power to zero leaves a baseline of exactly '1' solid unit!]"
+  },
+  {
+    "question": "Which century-old hypothesis concerns the distribution of prime numbers along critical coordinate boundaries, unsolved with a $1M Millennium Prize?",
+    "option_a": "Goldbach's Conjecture",
+    "option_b": "Collatz Conjecture",
+    "option_c": "Riemann Hypothesis",
+    "option_d": "Poincaré Conjecture",
+    "correct_answer": "c",
+    "explanation": "The Riemann Hypothesis proposes that all non-trivial zeros of the Riemann zeta function have a real part equal to 1/2. [Memory Trick: 'Riemann' map traces 'R'-ecurrent prime number paths!]"
+  },
+  {
+    "question": "How many degrees does a full circle traverse?",
+    "option_a": "180",
+    "option_b": "270",
+    "option_c": "360",
+    "option_d": "400",
+    "correct_answer": "c",
+    "explanation": "A circle describes a complete 360-degree rotation. [Memory Trick: Turning fully around lands you back at the '360' peak point!]"
+  },
+  {
+    "question": "A prime number larger than 2 must always be what?",
+    "option_a": "An even number",
+    "option_b": "An odd number",
+    "option_c": "A negative number",
+    "option_d": "A composite number",
+    "correct_answer": "b",
+    "explanation": "Since any even number larger than 2 is divisible by 2, all higher primes must be odd numbers. [Memory Trick: 2 is the ONLY even prime - the rest are odd outlaws!]"
+  }
+]

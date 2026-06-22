@@ -1,128 +1,412 @@
-{
-  "title": "Famous Personalities",
-  "title_hi": "प्रसिद्ध व्यक्तित्व",
-  "icon": "👤",
-  "slug": "famous-personalities",
-  "questions": [
-    {
-      "id": 1,
-      "q": "Who is known as the 'Father of the Nation' in India?",
-      "opts": [
-        "Jawaharlal Nehru",
-        "Sardar Patel",
-        "Mahatma Gandhi",
-        "Subhas Chandra Bose"
-      ],
-      "ans": 2,
-      "exp": "Mahatma Gandhi (Mohandas Karamchand Gandhi) is known as the 'Father of the Nation' in India. He led India's independence movement through non-violent civil disobedience."
-    },
-    {
-      "id": 2,
-      "q": "Who was the first woman Prime Minister of India?",
-      "opts": [
-        "Pratibha Patil",
-        "Indira Gandhi",
-        "Sonia Gandhi",
-        "Sarojini Naidu"
-      ],
-      "ans": 1,
-      "exp": "Indira Gandhi was the first and only woman Prime Minister of India. She served as PM from 1966 to 1977 and again from 1980 until her assassination on 31 October 1984."
-    },
-    {
-      "id": 3,
-      "q": "APJ Abdul Kalam was known as the 'Missile Man of India' for his work in?",
-      "opts": [
-        "Defense research",
-        "Space exploration",
-        "Nuclear weapons",
-        "Satellite technology"
-      ],
-      "ans": 0,
-      "exp": "Dr. APJ Abdul Kalam was known as the 'Missile Man of India' for his crucial role in developing India's ballistic missile and launch vehicle programs. He also served as India's 11th President (2002–2007)."
-    },
-    {
-      "id": 4,
-      "q": "Who wrote the book 'My Experiments with Truth'?",
-      "opts": [
-        "Jawaharlal Nehru",
-        "Subhas Chandra Bose",
-        "Mahatma Gandhi",
-        "B.R. Ambedkar"
-      ],
-      "ans": 2,
-      "exp": "'My Experiments with Truth' (originally in Gujarati as Satyana Prayogo) is the autobiography of Mahatma Gandhi. It covers his life from childhood to 1921."
-    },
-    {
-      "id": 5,
-      "q": "Rabindranath Tagore was the first Asian to win the Nobel Prize in which field?",
-      "opts": [
-        "Peace",
-        "Economics",
-        "Physics",
-        "Literature"
-      ],
-      "ans": 3,
-      "exp": "Rabindranath Tagore won the Nobel Prize in Literature in 1913 for his collection of poems 'Gitanjali'. He was the first non-European to win this prize."
-    },
-    {
-      "id": 6,
-      "q": "Who founded the Indian National Army (INA)?",
-      "opts": [
-        "Bhagat Singh",
-        "Subhas Chandra Bose",
-        "Lal Bahadur Shastri",
-        "Bal Gangadhar Tilak"
-      ],
-      "ans": 1,
-      "exp": "Subhas Chandra Bose founded and led the Indian National Army (Azad Hind Fauj) during World War II to overthrow British rule in India with Axis support."
-    },
-    {
-      "id": 7,
-      "q": "Who is the first Indian-origin woman to go to space?",
-      "opts": [
-        "Sunita Williams",
-        "Kalpana Chawla",
-        "Rakhi Sharma",
-        "Indira Gandhi"
-      ],
-      "ans": 1,
-      "exp": "Kalpana Chawla was the first Indian-origin woman to go to space. She flew aboard the Space Shuttle Columbia in 1997. She died in the Columbia disaster in 2003 during her second space mission."
-    },
-    {
-      "id": 8,
-      "q": "C.V. Raman won the Nobel Prize for which discovery?",
-      "opts": [
-        "Raman Effect",
-        "Nuclear fission",
-        "Theory of Relativity",
-        "Quantum mechanics"
-      ],
-      "ans": 0,
-      "exp": "C.V. Raman won the Nobel Prize in Physics in 1930 for the discovery of the Raman Effect (the scattering of light). He was the first Asian to win a Nobel Prize in science."
-    },
-    {
-      "id": 9,
-      "q": "Who is known as the 'Nightingale of India'?",
-      "opts": [
-        "Indira Gandhi",
-        "Sarojini Naidu",
-        "Lata Mangeshkar",
-        "M.S. Subbulakshmi"
-      ],
-      "ans": 1,
-      "exp": "Sarojini Naidu is known as the 'Nightingale of India' for her literary work. She was also the first woman President of the Indian National Congress and the first woman Governor of an Indian state."
-    },
-    {
-      "id": 10,
-      "q": "Who designed the national flag of India?",
-      "opts": [
-        "Jawaharlal Nehru",
-        "Mahatma Gandhi",
-        "Pingali Venkayya",
-        "B.R. Ambedkar"
-      ],
-      "ans": 2,
-      "exp": "Pingali Venkayya designed the national flag of India. He was a freedom fighter from Andhra Pradesh. He designed the basic layout of the flag with saffron, white, and green colors."
-    }
-  ]
-}
+[
+  {
+    "question": "Which prominent Indian freedom fighter and first Deputy Prime Minister of India is globally revered as the 'Iron Man of India'?",
+    "option_a": "Sardar Vallabhbhai Patel",
+    "option_b": "Lala Lajpat Rai",
+    "option_c": "Bal Gangadhar Tilak",
+    "option_d": "Subhas Chandra Bose",
+    "correct_answer": "a",
+    "explanation": "Sardar Vallabhbhai Patel integrated over 560 princely states into the Indian Union, earning the title 'Iron Man of India' and 'Bismarck of India'. [Memory Trick: He welded India with steel-strong resolve like iron ('Vallabhbhai' - the 'Valiant' metal bond)!]",
+    "id": "fp-q1"
+  },
+  {
+    "question": "Which visionary leader and eminent social reformer served as the chief architect of the Constitution of India?",
+    "option_a": "Dr. B.R. Ambedkar",
+    "option_b": "Dr. Rajendra Prasad",
+    "option_c": "Alladi Krishnaswamy Iyer",
+    "option_d": "K.M. Munshi",
+    "correct_answer": "a",
+    "explanation": "Bhimrao Ramji Ambedkar served as the Chairman of the Drafting Committee, ensuring minority rights and progressive social frameworks in the Constitution. [Memory Trick: 'Bhim' represents colossal strength, suitable for the standard giant task of writing our Constitution!]",
+    "id": "fp-q2"
+  },
+  {
+    "question": "Who was affectionately known as the 'Nightingale of India' (Bharat Kokila) for her lyrical poetry and oratorical skills?",
+    "option_a": "Sarojini Naidu",
+    "option_b": "Annie Besant",
+    "option_c": "Aruna Asaf Ali",
+    "option_d": "Vijayalakshmi Pandit",
+    "correct_answer": "a",
+    "explanation": "Sarojini Naidu was a leading Indian poet and the first woman to become a state Governor in independent India (Uttar Pradesh). [Memory Trick: 'Saroj'-ini sings with 'Swar' (sweet musical notes) like a Nightingale!]",
+    "id": "fp-q3"
+  },
+  {
+    "question": "Which humanitarian icon was awarded the Nobel Peace Prize in 1979 for her selfless service to the destitutes of Kolkata through the Missionaries of Charity?",
+    "option_a": "Mother Teresa",
+    "option_b": "Florence Nightingale",
+    "option_c": "Jane Addams",
+    "option_d": "Aung San Suu Kyi",
+    "correct_answer": "a",
+    "explanation": "Mother Teresa, born in modern Macedonia, arrived in India in 1929 and dedicated her entire life to caring for 'the poorest of the poor'. [Memory Trick: A loving, universal 'Mother' who brought soothing medicine to the suffering streets of India!]",
+    "id": "fp-q4"
+  },
+  {
+    "question": "Which Italian Renaissance polymath painted the world-famous masterpieces 'Mona Lisa' and 'The Last Supper'?",
+    "option_a": "Leonardo da Vinci",
+    "option_b": "Michelangelo",
+    "option_c": "Raphael",
+    "option_d": "Donatello",
+    "correct_answer": "a",
+    "explanation": "Leonardo da Vinci epitomized the Renaissance man, excelling as a painter, scientist, anatomist, engineer, and theorist. [Memory Trick: 'Leo' is the king of paintings, who 'won' ('Vinci') the ultimate crown of universal genius!]",
+    "id": "fp-q5"
+  },
+  {
+    "question": "Which prominent Pashtun freedom leader and close ally of Mahatma Gandhi was widely known as the 'Frontier Gandhi'?",
+    "option_a": "Khan Abdul Ghaffar Khan",
+    "option_b": "Liaquat Ali Khan",
+    "option_c": "Maulana Abul Kalam Azad",
+    "option_d": "Muhammad Ali Jinnah",
+    "correct_answer": "a",
+    "explanation": "Khan Abdul Ghaffar Khan founded the non-violent 'Khudai Khidmatgar' (Servants of God) movement on the North-West Frontier. [Memory Trick: Standing at the absolute border frontier, 'Ghaffar' guarded non-violence with Gandhan ideals!]",
+    "id": "fp-q6"
+  },
+  {
+    "question": "Which world-renowned theoretical physicist developed the Special and General Theories of Relativity?",
+    "option_a": "Albert Einstein",
+    "option_b": "Isaac Newton",
+    "option_c": "Niels Bohr",
+    "option_d": "Max Planck",
+    "correct_answer": "a",
+    "explanation": "Albert Einstein revolutionized our understanding of space, time, gravity, and light, also formulating the mass-energy equivalence equation E = mc^2. [Memory Trick: The ultimate 'Stone' ('Einstein') of cosmic intelligence who cracked relative gravity!]",
+    "id": "fp-q7"
+  },
+  {
+    "question": "Who was known as 'Punjab Kesari' (The Lion of Punjab) and played a leading role in the Lal-Bal-Pal trio of nationalist leaders?",
+    "option_a": "Lala Lajpat Rai",
+    "option_b": "Bhagat Singh",
+    "option_c": "Bipin Chandra Pal",
+    "option_d": "Bal Gangadhar Tilak",
+    "correct_answer": "a",
+    "explanation": "Lala Lajpat Rai was a fiery nationalist leader who succumbed to injuries received during a protest against the Simon Commission in 1928. [Memory Trick: The 'Lion' of Punjab who led-with-fury ('Lajpat') against British batons!]",
+    "id": "fp-q8"
+  },
+  {
+    "question": "Which charismatic young warrior-king from Macedonia established an empire stretching from Greece to Egypt and northwest India in the 4th century BCE?",
+    "option_a": "Alexander the Great",
+    "option_b": "Julius Caesar",
+    "option_c": "Cyrus the Great",
+    "option_d": "Hannibal Barca",
+    "correct_answer": "a",
+    "explanation": "Alexander III of Macedon, educated by Aristotle, conquered the Persian Empire but turned back at the Hyphasis River (Beas) in India. [Memory Trick: He set out to conquer 'All' corners of the 'ex'-otic world = 'Alex'-ander!]",
+    "id": "fp-q9"
+  },
+  {
+    "question": "Who was famously given the title 'Gurudev' by Mahatma Gandhi, in admiration of his vast literary and artistic genius?",
+    "option_a": "Rabindranath Tagore",
+    "option_b": "Subramania Bharati",
+    "option_c": "Swami Vivekananda",
+    "option_d": "Dadabhai Naoroji",
+    "correct_answer": "a",
+    "explanation": "Rabindranath Tagore was a poet, philosopher, and social reformer who redefined Bengali literature and music, establishing Visva-Bharati University. [Memory Trick: 'Gurudev' represents the ultimate cosmic teacher of song and prose, our Tagore!]",
+    "id": "fp-q10"
+  },
+  {
+    "question": "Which prominent African-American civil rights leader delivered the legendary 'I Have a Dream' speech during the March on Washington in 1963?",
+    "option_a": "Martin Luther King Jr.",
+    "option_b": "Malcolm X",
+    "option_c": "Nelson Mandela",
+    "option_d": "Rosa Parks",
+    "correct_answer": "a",
+    "explanation": "Martin Luther King Jr. advocated for racial justice through non-violent civil disobedience, earning the Nobel Peace Prize in 1964. [Memory Trick: He ruled the hearts of the civil rights marchers like a benevolent 'King' with a dream!]",
+    "id": "fp-q11"
+  },
+  {
+    "question": "Who is historically celebrated inside science as the 'Father of Computers', designing the early mechanical 'Analytical Engine'?",
+    "option_a": "Charles Babbage",
+    "option_b": "Alan Turing",
+    "option_c": "John von Neumann",
+    "option_d": "Ada Lovelace",
+    "correct_answer": "a",
+    "explanation": "English polymath Charles Babbage invented the Difference Engine and designed the first general-purpose programmable computer, the Analytical Engine. [Memory Trick: Early computing is full of mechanical valves and 'Babb-ling' gear parts = 'Babb-age'!]",
+    "id": "fp-q12"
+  },
+  {
+    "question": "Which Indian spiritual philosopher delivered a historic speech on Hindu tolerance and global brotherhood at the World Parliament of Religions in Chicago in 1893?",
+    "option_a": "Swami Vivekananda",
+    "option_b": "Ramakrishna Paramahansa",
+    "option_c": "Swami Dayanand Saraswati",
+    "option_d": "Paramahansa Yogananda",
+    "correct_answer": "a",
+    "explanation": "Swami Vivekananda introduced Indian Vedanta philosophy to the Western world, starting his speech with 'Sisters and Brothers of America'. [Memory Trick: A monk with radiant 'Vivek' (supreme wisdom) and infinite 'Ananda' (divine joy)!]",
+    "id": "fp-q13"
+  },
+  {
+    "question": "Which legendary nationalist leader was addressed as 'Netaji' (Respected Leader) by his followers and established the Azad Hind Fauj?",
+    "option_a": "Subhas Chandra Bose",
+    "option_b": "Chandra Shekhar Azad",
+    "option_c": "Bhagat Singh",
+    "option_d": "Bal Gangadhar Tilak",
+    "correct_answer": "a",
+    "explanation": "Netaji Subhas Chandra Bose escaped British surveillance, traveled to Germany and Japan, and led the Indian National Army to achieve complete swaraj. [Memory Trick: The grand field commander ('Netaji') whose 'Bose' (boss) attitude terrified colonial rulers!]",
+    "id": "fp-q14"
+  },
+  {
+    "question": "Who served as the first woman Prime Minister of India, known internationally for her tough leadership and decisive military decisions?",
+    "option_a": "Indira Gandhi",
+    "option_b": "Pratibha Patil",
+    "option_c": "Sushma Swaraj",
+    "option_d": "Sarojini Naidu",
+    "correct_answer": "a",
+    "explanation": "Indira Priyadarshini Gandhi served as PM from 1966 to 1977 and 1980 to 1984, guiding India to victory in the 1971 war and creating Bangladesh. [Memory Trick: The 'Indra' (supreme thunderbolt) of politics who ruled with a firm hand!]",
+    "id": "fp-q15"
+  },
+  {
+    "question": "Who was the first human to step onto the surface of the Moon during the historic Apollo 11 mission on July 20, 1969?",
+    "option_a": "Neil Armstrong",
+    "option_b": "Buzz Aldrin",
+    "option_c": "Yuri Gagarin",
+    "option_d": "Michael Collins",
+    "correct_answer": "a",
+    "explanation": "Neil Alden Armstrong was the commander of Apollo 11, declaring: 'That's one small step for man, one giant leap for mankind'. [Memory Trick: He used his strong 'Arm' to plant the flag and make a firm 'strong' mark on moon dust!]",
+    "id": "fp-q16"
+  },
+  {
+    "question": "Who was celebrated as 'The Lady with the Lamp' during the Crimean War, revolutionizing modern nursing practices?",
+    "option_a": "Florence Nightingale",
+    "option_b": "Mother Teresa",
+    "option_c": "Clara Barton",
+    "option_d": "Marie Curie",
+    "correct_answer": "a",
+    "explanation": "Florence Nightingale organized care for wounded soldiers, making nightly rounds with an oil lamp, and established the first modern nursing school. [Memory Trick: She walked through 'Florence' hospital camps in the 'Night' with her glowing 'lamp'!]",
+    "id": "fp-q17"
+  },
+  {
+    "question": "Which pioneer visionary industrialist founded the Tata Group in 1868, laying the foundation of India's steel and textile industries?",
+    "option_a": "Jamsetji Tata",
+    "option_b": "J.R.D. Tata",
+    "option_c": "Ratan Tata",
+    "option_d": "Dorabji Tata",
+    "correct_answer": "a",
+    "explanation": "Jamsetji Nusserwanji Tata founded the empress mills and planned the city of Jamshedpur, becoming one of the world's greatest modern philanthropists. [Memory Trick: The original 'Jam'-setji planted the sweet 'Jam' of self-reliant industrial factories in India!]",
+    "id": "fp-q18"
+  },
+  {
+    "question": "Who was the first Indian citizen to travel into outer space, orbiting the Earth aboard Soviet spacecraft Soyuz T-11 in 1984?",
+    "option_a": "Rakesh Sharma",
+    "option_b": "Kalpana Chawla",
+    "option_c": "Sunita Williams",
+    "option_d": "Ravish Malhotra",
+    "correct_answer": "a",
+    "explanation": "Squadron Leader Rakesh Sharma spent seven days in space, famously telling PM Indira Gandhi that India looked 'Saare Jahan Se Achha' from above. [Memory Trick: The 'Sharma' boy who became our cosmic pioneer, bringing space 'Raksha' (comfort) to our dreams!]",
+    "id": "fp-q19"
+  },
+  {
+    "question": "Which brave queen of Jhansi became a legendary symbol of resistance against British Rule in India during the 1857 Uprising?",
+    "option_a": "Rani Lakshmibai",
+    "option_b": "Rani Chennamma",
+    "option_c": "Begum Hazrat Mahal",
+    "option_d": "Rani Durgavati",
+    "correct_answer": "a",
+    "explanation": "Rani Lakshmibai fought valiantly against General Hugh Rose's forces to protect Jhansi from annexation under the Doctrine of Lapse. [Memory Trick: Jhansi's warrior queen rode with her sword, bringing true 'Lakshmi' (victory) to our freedom story!]",
+    "id": "fp-q20"
+  },
+  {
+    "question": "Who was the first woman to win a Nobel Prize and remains the only person in history to win Nobel Prizes in two different scientific fields?",
+    "option_a": "Marie Curie",
+    "option_b": "Lise Meitner",
+    "option_c": "Rosalind Franklin",
+    "option_d": "Dorothy Hodgkin",
+    "correct_answer": "a",
+    "explanation": "Polish-born physicist Marie Sklodowska Curie won in Physics (1903, radioactivity) and Chemistry (1911, radium-polonium isolation). [Memory Trick: She had extreme 'Curie'-osity to extract glowing radium from heavy raw rocks!]",
+    "id": "fp-q21"
+  },
+  {
+    "question": "Which legendary French emperor and military tactician conquered most of Europe before his final defeat at the Battle of Waterloo in 1815?",
+    "option_a": "Napoleon Bonaparte",
+    "option_b": "Charlemagne",
+    "option_c": "Louis XIV",
+    "option_d": "Charles de Gaulle",
+    "correct_answer": "a",
+    "explanation": "Napoleon Bonaparte instituted legal reforms (Napoleonic Code) but met his ultimate Waterloo defeat against the Duke of Wellington. [Memory Trick: A short conqueror who put a permanent 'Nap' (sleep) on royal European dynasties!]",
+    "id": "fp-q22"
+  },
+  {
+    "question": "Which Swedish chemist and engineer invented dynamite and bequeathed his vast fortune to establish the Nobel Prizes?",
+    "option_a": "Alfred Nobel",
+    "option_b": "Jons Jacob Berzelius",
+    "option_c": "Carl Wilhelm Scheele",
+    "option_d": "Svante Arrhenius",
+    "correct_answer": "a",
+    "explanation": "Alfred Nobel accumulated wealth through 355 patents including dynamite, writing in his will to honor progress in Physics, Chemistry, Medicine, Literature, and Peace. [Memory Trick: He turned a dangerous blast into a 'Noble' global legacy of peace and science!]",
+    "id": "fp-q23"
+  },
+  {
+    "question": "Who was the brilliant ancient Greek philosopher who tutorized Alexander the Great and founded the Peripatetic school of philosophy?",
+    "option_a": "Aristotle",
+    "option_b": "Plato",
+    "option_c": "Socrates",
+    "option_d": "Pythagoras",
+    "correct_answer": "a",
+    "explanation": "Aristotle was a student of Plato, writing on physics, biology, logic, aesthetics, politics, and government, shaping Western philosophy. [Memory Trick: His ideas on classification are the 'Aris-tocratic' standard of scientific logic!]",
+    "id": "fp-q24"
+  },
+  {
+    "question": "Who was the first woman to be elected President of the Indian National Congress in 1917, also co-founding the Home Rule League?",
+    "option_a": "Sarojini Naidu",
+    "option_b": "Annie Besant",
+    "option_c": "Nellie Sengupta",
+    "option_d": "Kadambini Ganguly",
+    "correct_answer": "b",
+    "explanation": "Irish-born Annie Besant was a prominent theosophist, activist, and writer who championed Indian self-rule. [Memory Trick: An 'Annie'-gent woman who gave her 'Best' ('Besant') to secure Home Rule for India!]",
+    "id": "fp-q25"
+  },
+  {
+    "question": "Which world-renowned civil rights icon and anti-apartheid leader served as South Africa's first black President?",
+    "option_a": "Nelson Mandela",
+    "option_b": "Desmond Tutu",
+    "option_c": "Steve Biko",
+    "option_d": "Kofi Annan",
+    "correct_answer": "a",
+    "explanation": "Nelson Rolihlahla Mandela was imprisoned for 27 years (largely on Robben Island) before leading South Africa to multi-racial democracy. [Memory Trick: The grand 'Man'-dela who unified races and became the nation's father!]",
+    "id": "fp-q26"
+  },
+  {
+    "question": "Who was the celebrated queen of ancient Egypt, famously allied politically and romantically with Julius Caesar and Mark Antony?",
+    "option_a": "Cleopatra VII",
+    "option_b": "Nefertiti",
+    "option_c": "Hatshepsut",
+    "option_d": "Sobekneferu",
+    "correct_answer": "a",
+    "explanation": "Cleopatra VII Philopator was the last active ruler of the Ptolemaic Kingdom of Egypt, famous for her intellect, charisma, and diplomatic alliances. [Memory Trick: She used her 'Cle-ver' mind to rule 'Pat'-ronized kingdoms along the Nile!]",
+    "id": "fp-q27"
+  },
+  {
+    "question": "Which legendary passenger civil rights activist made history by refusing to vacate her bus seat in Montgomery, Alabama, in December 1955?",
+    "option_a": "Rosa Parks",
+    "option_b": "Harriet Tubman",
+    "option_c": "Sojourner Truth",
+    "option_d": "Coretta Scott King",
+    "correct_answer": "a",
+    "explanation": "Rosa Parks' arrest sparked the Montgomery Bus Boycott, a pivotal campaign of the American Civil Rights Movement led by MLK. [Memory Trick: She sat firm in the local 'Park'ed bus, refusing to yield to racial rules!]",
+    "id": "fp-q28"
+  },
+  {
+    "question": "Who is revered as the 'Grand Old Man of India' and wrote 'Poverty and Un-British Rule in India' to explain the drainage of Indian wealth?",
+    "option_a": "Dadabhai Naoroji",
+    "option_b": "Gopal Krishna Gokhale",
+    "option_c": "Surendranath Banerjee",
+    "option_d": "Dinshaw Wacha",
+    "correct_answer": "a",
+    "explanation": "Dadabhai Naoroji was a co-founder of the INC and became the first Asian to be elected to the British House of Commons in 1892. [Memory Trick: The supportive elder 'Dada' (grandfather) of our early freedom campaign!]",
+    "id": "fp-q29"
+  },
+  {
+    "question": "Which Genoese explorer completed four historic voyages across the Atlantic Ocean, launching the European colonization of the Americas?",
+    "option_a": "Christopher Columbus",
+    "option_b": "Vasco da Gama",
+    "option_c": "Ferdinand Magellan",
+    "option_d": "Amerigo Vespucci",
+    "correct_answer": "a",
+    "explanation": "Columbus sailed under the Spanish Crown in 1492, landing in the Bahamas and thinking he had discovered a new route to India. [Memory Trick: He set out to find 'Col-onies' but stumbled upon 'Columbus' islands in the West!]",
+    "id": "fp-q30"
+  },
+  {
+    "question": "Which iconic computer scientist and entrepreneur co-founded Microsoft in 1975, leading the personal computer revolution?",
+    "option_a": "Bill Gates",
+    "option_b": "Steve Jobs",
+    "option_c": "Paul Allen",
+    "option_d": "Larry Page",
+    "correct_answer": "a",
+    "explanation": "Bill Gates and Paul Allen built Microsoft into the world's largest PC software company, with Gates later focusing on massive global health philanthropy. [Memory Trick: He opened the digital 'Gates' of operating systems across our desks!]",
+    "id": "fp-q31"
+  },
+  {
+    "question": "Who was the great ancient king who founded the Maurya Empire, unifying the diverse Indian subcontinent with the guidance of Chanakya?",
+    "option_a": "Chandragupta Maurya",
+    "option_b": "Ashoka the Great",
+    "option_c": "Samudragupta",
+    "option_d": "Bindusara",
+    "correct_answer": "a",
+    "explanation": "Chandragupta Maurya overthrew the Nanda dynasty and defeated Seleucus Nicator, establishing a vast centralized empire. [Memory Trick: His crown was as bright as the 'Chandra' (Moon) rising over unified India!]",
+    "id": "fp-q32"
+  },
+  {
+    "question": "Which Roman general and dictator was famously assassinated by senators, led by Brutus, on the Ides of March in 44 BCE?",
+    "option_a": "Julius Caesar",
+    "option_b": "Augustus",
+    "option_c": "Nero",
+    "option_d": "Caligula",
+    "correct_answer": "a",
+    "explanation": "Julius Caesar consolidated absolute power in Rome, leading to a conspiracy of senators who stabbed him to death to preserve the Republic. [Memory Trick: The supreme 'Caesar' (ruler) who fell victim to a sharp senate betrayal!]",
+    "id": "fp-q33"
+  },
+  {
+    "question": "Which legendary sitar virtuoso popularized traditional Indian classical music globally, playing at Monterey and Woodstock festivals?",
+    "option_a": "Pandit Ravi Shankar",
+    "option_b": "Ustad Bismillah Khan",
+    "option_c": "Ustad Zakir Hussain",
+    "option_d": "Pandit Shivkumar Sharma",
+    "correct_answer": "a",
+    "explanation": "Pandit Ravi Shankar was an internationally celebrated sitarist who collaborated with George Harrison of the Beatles, taking raga music to Western youth. [Memory Trick: He brought the soft musical dawn ('Ravi' means Sun) of sitar strings to the world!]",
+    "id": "fp-q34"
+  },
+  {
+    "question": "Who was the simple, heroic French peasant girl who led the French army to victories during the Hundred Years' War before being burned at the stake in 1431?",
+    "option_a": "Joan of Arc",
+    "option_b": "Marie Antoinette",
+    "option_c": "Charlotte Corday",
+    "option_d": "Eleanor of Aquitaine",
+    "correct_answer": "a",
+    "explanation": "Joan of Arc rose from an illiterate peasant girl claiming divine visions, leading the French to lift the Siege of Orleans, later canonized as a saint. [Memory Trick: A maiden who defended France with a sacred 'Arc' of iron-willed faith!]",
+    "id": "fp-q35"
+  },
+  {
+    "question": "Which Chinese philosopher and teacher developed the ethical and social guidelines of Conficious thought, deeply impacting East Asian civilization?",
+    "option_a": "Confucius (Kong Fuzi)",
+    "option_b": "Laozi",
+    "option_c": "Mencius",
+    "option_d": "Sun Tzu",
+    "correct_answer": "a",
+    "explanation": "Confucius emphasized personal and governmental morality, correctness of social relationships, justice, and sincerity (Lǐ and Rén). [Memory Trick: He taught us 'Conf-idence' in social order and family respect = 'Conf-ucius'!]",
+    "id": "fp-q36"
+  },
+  {
+    "question": "Which dynamic female intellectual and social reformer served as the first woman Prime Minister of the United Kingdom, nicknamed the 'Iron Lady'?",
+    "option_a": "Margaret Thatcher",
+    "option_b": "Theresa May",
+    "option_c": "Liz Truss",
+    "option_d": "Angela Merkel",
+    "correct_answer": "a",
+    "explanation": "Margaret Thatcher served from 1979 to 1990, introducing strong free-market policies, deregulation, and privatisation, known as Thatcherism. [Memory Trick: She was a tough leader who 'Thatched' and rebuilt the UK economy with iron determination!]",
+    "id": "fp-q37"
+  },
+  {
+    "question": "Which historic leader of the Mongol Empire is renowned for uniting nomadic tribes and creating the largest contiguous empire in history?",
+    "option_a": "Genghis Khan",
+    "option_b": "Kublai Khan",
+    "option_c": "Timur (Tamerlane)",
+    "option_d": "Babar",
+    "correct_answer": "a",
+    "explanation": "Genghis Khan founded the Mongol Empire in 1206 through brutal campaigns but also modern paper currency and trade post links. [Memory Trick: The 'Gen-erall' of nomadic tribes who shook the medieval world with terrifying cavalry charges!]",
+    "id": "fp-q38"
+  },
+  {
+    "question": "Which celebrated Indian industrialist and aviator was India's first ever licensed pilot and served as Tata chairman for over fifty years?",
+    "option_a": "J.R.D. Tata",
+    "option_b": "Ratan Tata",
+    "option_c": "Jamsetji Tata",
+    "option_d": "Naval Tata",
+    "correct_answer": "a",
+    "explanation": "Jehangir Ratanji Dadabhoy Tata founded Tata Airlines (now Air India) and is celebrated as the Father of Indian Civil Aviation, receiving the Bharat Ratna. [Memory Trick: The ultimate pilot who 'J'-etsetted Tata industries into the modern sky!]",
+    "id": "fp-q39"
+  },
+  {
+    "question": "Which German social reformer launched the Protestant Reformation in 1517 by nailing his 'Ninety-Five Theses' onto the Wittenberg Castle church door?",
+    "option_a": "Martin Luther",
+    "option_b": "John Calvin",
+    "option_c": "Ulrich Zwingli",
+    "option_d": "Erasmus",
+    "correct_answer": "a",
+    "explanation": "Martin Luther challenged the Roman Catholic practices regarding indulgences and papal authority, translating the Bible into vernacular German. [Memory Trick: He wrote critical ('Luther') thoughts to rebuild the Christian church structure!]",
+    "id": "fp-q40"
+  },
+  {
+    "question": "Who was the supreme leader, thinker, and father of the Indian nation who advocated non-violence (Satyagraha) and led the Dandi March in 1930?",
+    "option_a": "Mahatma Gandhi",
+    "option_b": "Jawaharlal Nehru",
+    "option_c": "Subhas Chandra Bose",
+    "option_d": "Sardar Patel",
+    "correct_answer": "a",
+    "explanation": "Mohandas Karamchand Gandhi led India to independence from British rule using non-violent resistance, inspiring civil rights movements worldwide. [Memory Trick: The gentle grandfather in a simple dhoti ('Mahatma' - Great Soul) who shook the foundations of the British Empire!]",
+    "id": "fp-q41"
+  }
+]

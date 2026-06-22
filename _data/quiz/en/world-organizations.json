@@ -1,128 +1,407 @@
-{
-  "title": "World Organizations",
-  "title_hi": "विश्व संगठन",
-  "icon": "🤝",
-  "slug": "world-organizations",
-  "questions": [
-    {
-      "id": 1,
-      "q": "The United Nations was founded in which year?",
-      "opts": [
-        "1942",
-        "1944",
-        "1945",
-        "1947"
-      ],
-      "ans": 2,
-      "exp": "The United Nations was founded on 24 October 1945, with 51 original member states. It replaced the League of Nations. Currently 193 countries are members of the UN."
-    },
-    {
-      "id": 2,
-      "q": "WHO stands for?",
-      "opts": [
-        "World Health Office",
-        "World Health Organisation",
-        "World Humanitarian Organisation",
-        "World Health Organisation"
-      ],
-      "ans": 1,
-      "exp": "WHO stands for World Health Organization. It was established on 7 April 1948 (World Health Day). Its headquarters is in Geneva, Switzerland. It leads global health responses."
-    },
-    {
-      "id": 3,
-      "q": "The headquarters of NATO is located in?",
-      "opts": [
-        "Washington D.C.",
-        "London",
-        "Brussels",
-        "Paris"
-      ],
-      "ans": 2,
-      "exp": "NATO (North Atlantic Treaty Organization) headquarters is located in Brussels, Belgium. NATO was founded in 1949. It is a military alliance of 32 member countries from Europe and North America."
-    },
-    {
-      "id": 4,
-      "q": "UNICEF stands for?",
-      "opts": [
-        "United Nations International Children's Emergency Fund",
-        "Universal Children's Emergency Fund",
-        "United Nations International Child Education Fund",
-        "United Nations Children's Fund"
-      ],
-      "ans": 3,
-      "exp": "UNICEF stands for United Nations Children's Fund (originally United Nations International Children's Emergency Fund). It was created in 1946 and works for children's rights, health, education, and protection worldwide."
-    },
-    {
-      "id": 5,
-      "q": "The G20 is a forum of?",
-      "opts": [
-        "20 richest countries",
-        "19 countries + European Union",
-        "20 most populous countries",
-        "20 nuclear powers"
-      ],
-      "ans": 1,
-      "exp": "G20 (Group of Twenty) is an intergovernmental forum of 19 countries and the European Union. It represents about 85% of global GDP, 75% of international trade, and 2/3 of the world's population."
-    },
-    {
-      "id": 6,
-      "q": "IMF stands for?",
-      "opts": [
-        "International Money Fund",
-        "International Monetary Fund",
-        "International Market Fund",
-        "International Management Fund"
-      ],
-      "ans": 1,
-      "exp": "IMF stands for International Monetary Fund. Founded in 1944, it works to foster global monetary cooperation, secure financial stability, facilitate international trade, and promote economic growth."
-    },
-    {
-      "id": 7,
-      "q": "The International Court of Justice is located in?",
-      "opts": [
-        "New York",
-        "Geneva",
-        "Vienna",
-        "The Hague"
-      ],
-      "ans": 3,
-      "exp": "The International Court of Justice (ICJ) is the principal judicial organ of the United Nations, located in The Hague, Netherlands. It settles legal disputes between countries and gives advisory opinions."
-    },
-    {
-      "id": 8,
-      "q": "SAARC was established in which year?",
-      "opts": [
-        "1980",
-        "1985",
-        "1987",
-        "1990"
-      ],
-      "ans": 1,
-      "exp": "SAARC (South Asian Association for Regional Cooperation) was established on 8 December 1985 in Dhaka, Bangladesh. It has 8 member states: Afghanistan, Bangladesh, Bhutan, India, Maldives, Nepal, Pakistan, and Sri Lanka."
-    },
-    {
-      "id": 9,
-      "q": "The Red Cross was founded by?",
-      "opts": [
-        "Florence Nightingale",
-        "Henry Dunant",
-        "Albert Schweitzer",
-        "Mother Teresa"
-      ],
-      "ans": 1,
-      "exp": "Henry Dunant founded the International Red Cross in 1863. He was inspired by the suffering of wounded soldiers at the Battle of Solferino in 1859. He won the first Nobel Peace Prize in 1901."
-    },
-    {
-      "id": 10,
-      "q": "WTO replaced which organization?",
-      "opts": [
-        "UNCTAD",
-        "IMF",
-        "GATT",
-        "IBRD"
-      ],
-      "ans": 2,
-      "exp": "The World Trade Organization (WTO) replaced the General Agreement on Tariffs and Trade (GATT) on 1 January 1995. WTO governs international trade rules and currently has 164 member countries."
-    }
-  ]
-}
+[
+  {
+    "question": "The United Nations Organization (UNO) was officially established in which year?",
+    "option_a": "1942",
+    "option_b": "1945",
+    "option_c": "1948",
+    "option_d": "1950",
+    "correct_answer": "b",
+    "explanation": "The United Nations was officially established on October 24, 1945, after the UN Charter was ratified by the five permanent members of the Security Council and a majority of other signees. [Memory Trick: 'UN' represents the global 'unity' established right after World War II ('45) wrapped up!]"
+  },
+  {
+    "question": "Which of the following treaties led to the official creation of the European Union (EU) on November 1, 1993?",
+    "option_a": "Treaty of Rome",
+    "option_b": "Maastricht Treaty",
+    "option_c": "Treaty of Lisbon",
+    "option_d": "Treaty of Versailles",
+    "correct_answer": "b",
+    "explanation": "The Maastricht Treaty, signed in February 1992 and entering into force on November 1, 1993, formally established the European Union and paved the way for the Euro currency. [Memory Trick: The 'Mast' (Maastricht) flag of European integration was hoisted high in '93.]"
+  },
+  {
+    "question": "The headquarters of the World Trade Organization (WTO) is located in which city?",
+    "option_a": "New York, USA",
+    "option_b": "Geneva, Switzerland",
+    "option_c": "Paris, France",
+    "option_d": "Vienna, Austria",
+    "correct_answer": "b",
+    "explanation": "The WTO, which replaced GATT in 1995, is headquartered in Geneva, Switzerland. [Memory Trick: Geneva is a 'Generous' trade junction for WTO global agreements.]"
+  },
+  {
+    "question": "The Bretton Woods Conference of 1944 led to the establishment of which twin financial organizations?",
+    "option_a": "IMF and World Bank",
+    "option_b": "WTO and UNCTAD",
+    "option_c": "ADB and AIIB",
+    "option_d": "OECD and WEF",
+    "correct_answer": "a",
+    "explanation": "The IMF (International Monetary Fund) and the IBRD (the core of the World Bank Group) were conceived at the Bretton Woods Conference in New Hampshire, USA to rebuild post-war economies. [Memory Trick: 'Bretton' has 'B' for Bank and 'M' (from woods) for Money (IMF).]"
+  },
+  {
+    "question": "'Special Drawing Rights' (SDR), often called 'paper gold', is an international reserve asset created by which organization?",
+    "option_a": "World Bank",
+    "option_b": "International Monetary Fund (IMF)",
+    "option_c": "World Trade Organization (WTO)",
+    "option_d": "Federal Reserve System",
+    "correct_answer": "b",
+    "explanation": "SDR was created by the IMF in 1969 as a supplementary international reserve asset based on five currencies: US Dollar, Euro, Chinese Renminbi, Japanese Yen, and British Pound Sterling. [Memory Trick: SDR stands for 'Super Drawing Rights' in the 'IMF' drawing bank.]"
+  },
+  {
+    "question": "The Financial Action Task Force (FATF), known for maintaining global grey and blacklists, is headquartered in which city?",
+    "option_a": "Paris, France",
+    "option_b": "London, UK",
+    "option_c": "Washington DC, USA",
+    "option_d": "Geneva, Switzerland",
+    "correct_answer": "a",
+    "explanation": "FATF was established in 1989 by the G7 summit in Paris to combat money laundering and terror financing. It is housed at the OECD headquarters in Paris. [Memory Trick: If you are dirty, you 'Wash' your money, but FATF forces clean audits in 'Paris' fashion capitals.]"
+  },
+  {
+    "question": "Where is the headquarters of the International Court of Justice (ICJ) located?",
+    "option_a": "The Hague, Netherlands",
+    "option_b": "Geneva, Switzerland",
+    "option_c": "New York, USA",
+    "option_d": "Vienna, Austria",
+    "correct_answer": "a",
+    "explanation": "The ICJ is the principal judicial organ of the UN, established in June 1945. It is the only principal UN organ not located in New York; it resides in the Peace Palace in The Hague, Netherlands. [Memory Trick: You go to 'The Hague' to seek 'Justice' (ICJ) regarding international disputes.]"
+  },
+  {
+    "question": "The International Atomic Energy Agency (IAEA), advocating 'Atoms for Peace', has its headquarters in:",
+    "option_a": "Vienna, Austria",
+    "option_b": "Geneva, Switzerland",
+    "option_c": "Nairobi, Kenya",
+    "option_d": "Brussels, Belgium",
+    "correct_answer": "a",
+    "explanation": "The IAEA is headquartered in the Vienna International Centre in Vienna, Austria, established in 1957. [Memory Trick: Nuclear 'Atoms' can be converted to secure energy in 'Vienna' (V-energy).]"
+  },
+  {
+    "question": "Which of the following reports is published annually by the World Economic Forum (WEF)?",
+    "option_a": "Global Gender Gap Report",
+    "option_b": "World Economic Outlook",
+    "option_c": "Human Development Report",
+    "option_d": "World Development Report",
+    "correct_answer": "a",
+    "explanation": "The World Economic Forum publishes the Global Gender Gap Report and the Global Risks Report. IMF publishes World Economic Outlook, UNDP publishes HDR, and World Bank publishes World Development Report. [Memory Trick: 'Forum' gathers gender representatives to discuss 'Economic' gaps.]"
+  },
+  {
+    "question": "The 'Bangkok Declaration' of August 8, 1967 led to the founding of which regional organization?",
+    "option_a": "ASEAN",
+    "option_b": "SAARC",
+    "option_c": "BIMSTEC",
+    "option_d": "SCO",
+    "correct_answer": "a",
+    "explanation": "ASEAN (Association of Southeast Asian Nations) was established in Bangkok, Thailand with the signing of the Bangkok Declaration by Indonesia, Malaysia, Philippines, Singapore, and Thailand. [Memory Trick: 'Bang-kok' (bangles/coconut bells) sounds Asian = ASEAN.]"
+  },
+  {
+    "question": "The SAARC Secretariat is officially established and located in which city?",
+    "option_a": "Kathmandu, Nepal",
+    "option_b": "Dhaka, Bangladesh",
+    "option_c": "New Delhi, India",
+    "option_d": "Colombo, Sri Lanka",
+    "correct_answer": "a",
+    "explanation": "The South Asian Association for Regional Cooperation (SAARC) was founded in Dhaka in 1985, but its permanent secretariat is located in Kathmandu, Nepal. [Memory Trick: 'S-A-A-R-C' matches the mountain peaks of 'Kath-mandu'.]"
+  },
+  {
+    "question": "Which UN body is responsible for designating the official 'World Heritage Sites' to preserve cultural and natural locations?",
+    "option_a": "UNESCO",
+    "option_b": "UNEP",
+    "option_c": "UNDP",
+    "option_d": "UNICEF",
+    "correct_answer": "a",
+    "explanation": "The World Heritage Committee of UNESCO (United Nations Educational, Scientific and Cultural Organization), based in Paris, manages the designation of World Heritage Sites. [Memory Trick: 'ESCO' (Education, Science, Culture Org) is obviously in charge of 'Heritage' culture.]"
+  },
+  {
+    "question": "The specialized agency of the United Nations focusing on labor standards and social justice, which is also the oldest UN agency, is:",
+    "option_a": "International Labour Organization (ILO)",
+    "option_b": "WHO",
+    "option_c": "UNIDO",
+    "option_d": "FAO",
+    "correct_answer": "a",
+    "explanation": "The ILO was created in 1919 by the Treaty of Versailles, making it older than the United Nations itself, which later absorbed it as a specialized agency. [Memory Trick: 'versail-les' (Versailles) has 'L' for Labour (ILO) in 1919.]"
+  },
+  {
+    "question": "Where is the headquarters of the North Atlantic Treaty Organization (NATO) located?",
+    "option_a": "Brussels, Belgium",
+    "option_b": "London, UK",
+    "option_c": "Washington DC, USA",
+    "option_d": "Berlin, Germany",
+    "correct_answer": "a",
+    "explanation": "NATO, established in 1949, relocated its political headquarters to Brussels, Belgium in 1967. [Memory Trick: NATO soldiers love 'Brussels sprouts' and chocolates!]"
+  },
+  {
+    "question": "Amnesty International, a famous non-governmental organization awarded the Nobel Peace Prize, works in which of the following areas?",
+    "option_a": "Human Rights and Civil Liberties Protection",
+    "option_b": "Nuclear Non-Proliferation",
+    "option_c": "Global Climate Change",
+    "option_d": "Free Trade Promotion",
+    "correct_answer": "a",
+    "explanation": "Amnesty International is a London-based NGO focused on human rights protection, fighting torture, and releasing prisoners of conscience. [Memory Trick: 'Amnesty' means pardon or relief, which you give to victims of 'Human Rights' abuse.]"
+  },
+  {
+    "question": "The United Nations Environment Programme (UNEP) is unique among major UN bodies for having its headquarters in which global city?",
+    "option_a": "Nairobi, Kenya",
+    "option_b": "Geneva, Switzerland",
+    "option_c": "Bonn, Germany",
+    "option_d": "Rome, Italy",
+    "correct_answer": "a",
+    "explanation": "UNEP was established in 1972 after the Stockholm Conference. It is headquartered in Nairobi, Kenya, making it the first UN agency to be located in a developing nation. [Memory Trick: Environment = Wild nature of African Safaris = Kenya (Nairobi).]"
+  },
+  {
+    "question": "Which international body maintains the 'Red List of Threatened Species' to monitor global biodiversity health?",
+    "option_a": "IUCN",
+    "option_b": "WWF",
+    "option_c": "UNEP",
+    "option_d": "CITES",
+    "correct_answer": "a",
+    "explanation": "The International Union for Conservation of Nature (IUCN), headquartered in Gland, Switzerland, publishes the Red List, categorizing species from Least Concern to Extinct. [Memory Trick: 'Union' for 'Conservation' of 'Nature' obviously publishes the conservation status: RED LIST.]"
+  },
+  {
+    "question": "The Shanghai Cooperation Organisation (SCO) Secretariat is headquartered in which city?",
+    "option_a": "Beijing, China",
+    "option_b": "Shanghai, China",
+    "option_c": "Moscow, Russia",
+    "option_d": "Tashkent, Uzbekistan",
+    "correct_answer": "a",
+    "explanation": "Despite being named 'Shanghai Cooperation Organisation', the permanent secretariat of the SCO is located in Beijing, China, while its RATS (Regional Anti-Terrorist Structure) organ is in Tashkent. [Memory Trick: SCO has 'C' for Capital (Beijing) where the secretariat sits.]"
+  },
+  {
+    "question": "Which of the following UN agencies is headquartered in Rome, Italy, focusing on food security and agricultural productivity?",
+    "option_a": "FAO",
+    "option_b": "WHO",
+    "option_c": "ILO",
+    "option_d": "UNCTAD",
+    "correct_answer": "a",
+    "explanation": "The Food and Agriculture Organization (FAO), founded in 1945, is headquartered in Rome, Italy. [Memory Trick: Rome is famous for 'Pasta' (Italian food) = Food and Agriculture Organization (FAO).]"
+  },
+  {
+    "question": "The INTERPOL (International Criminal Police Organization) has its general secretariat based in which city?",
+    "option_a": "Lyon, France",
+    "option_b": "Paris, France",
+    "option_c": "The Hague, Netherlands",
+    "option_d": "London, UK",
+    "correct_answer": "a",
+    "explanation": "INTERPOL is headquartered in Lyon, France, acting as the second-largest international organization after the UN by members. [Memory Trick: Interpol agents chase criminals like 'Lions' = Lyon.]"
+  },
+  {
+    "question": "The Asian Development Bank (ADB), founded in 1966 to reduce poverty in Asia-Pacific, is headquartered in:",
+    "option_a": "Manila (Mandaluyong), Philippines",
+    "option_b": "Jakarta, Indonesia",
+    "option_c": "New Delhi, India",
+    "option_d": "Beijing, China",
+    "correct_answer": "a",
+    "explanation": "The ADB is headquartered in Mandaluyong, metro Manila, Philippines. The President of ADB is traditionally from Japan. [Memory Trick: Development in Asia requires 'Money' (Manila) as fuel.]"
+  },
+  {
+    "question": "Which of the following countries is NOT a permanent member of the United Nations Security Council (UNSC)?",
+    "option_a": "Germany",
+    "option_b": "France",
+    "option_c": "China",
+    "option_d": "United Kingdom",
+    "correct_answer": "a",
+    "explanation": "The five permanent members of the UNSC (P5) are: United States, United Kingdom, France, Russia, and China. Germany is part of the G4 seeking permanent membership. [Memory Trick: Think of FRUCU (France, Russia, UK, China, US) which excludes Germany.]"
+  },
+  {
+    "question": "The 'Maastricht Treaty' is most fundamentally related to which international currency system?",
+    "option_a": "The Euro",
+    "option_b": "The US Dollar standard",
+    "option_c": "SDR baskets",
+    "option_d": "The British Pound",
+    "correct_answer": "a",
+    "explanation": "The treaty established the convergence criteria for EU states to adopt the unified single currency, the 'Euro'. [Memory Trick: 'Euro' coins were minted under the Mast (Maastricht) currency guidelines.]"
+  },
+  {
+    "question": "The 'New Development Bank' (NDB), formerly called the BRICS Development Bank, has its headquarters in which city?",
+    "option_a": "Shanghai, China",
+    "option_b": "New Delhi, India",
+    "option_c": "Moscow, Russia",
+    "option_d": "Johannesburg, South Africa",
+    "correct_answer": "a",
+    "explanation": "The NDB was established by BRICS nations in 2014, with its headquarters in Shanghai, China. [Memory Trick: BRICS nations joined hands to build a New Bank in 'Shanghai' skyscrapers.]"
+  },
+  {
+    "question": "The OPEC (Organization of the Petroleum Exporting Countries) was founded in 1960 at the Baghdad Conference, but its headquarters is in which non-OPEC city?",
+    "option_a": "Vienna, Austria",
+    "option_b": "Riyadh, Saudi Arabia",
+    "option_c": "Baghdad, Iraq",
+    "option_d": "Doha, Qatar",
+    "correct_answer": "a",
+    "explanation": "OPEC headquarters was in Geneva, Switzerland, before moving to Vienna, Austria in 1965, despite Austria not being an oil-exporting member. [Memory Trick: OPEC 'oil' proceeds were securely parked in 'Vienna' (wealthy Austria capital).]"
+  },
+  {
+    "question": "The United Nations High Commissioner for Refugees (UNHCR) has won how many Nobel Peace Prizes for its humanitarian work?",
+    "option_a": "Two",
+    "option_b": "One",
+    "option_c": "Three",
+    "option_d": "None",
+    "correct_answer": "a",
+    "explanation": "UNHCR was awarded the Nobel Peace Prize twice, in 1954 and 1981, for helping refugees globally. [Memory Trick: UNHCR protects 'Two' legs of a moving refugee = Two Nobel Prizes.]"
+  },
+  {
+    "question": "Where is the head office of the World Wildlife Fund (WWF), famous for its Giant Panda logo, located?",
+    "option_a": "Gland, Switzerland",
+    "option_b": "London, UK",
+    "option_c": "Nairobi, Kenya",
+    "option_d": "Stockholm, Sweden",
+    "correct_answer": "a",
+    "explanation": "Founded in 1961, WWF has its headquarters in Gland, Switzerland, sharing office spaces with IUCN. [Memory Trick: Pandas love eating sweet 'Glands' (shoots) of bamboo plants in Gland, Switzerland.]"
+  },
+  {
+    "question": "Which of the following represents the main objective of the International Monetary Fund (IMF)?",
+    "option_a": "Secure financial stability and provide short-term balance-of-payment assistance",
+    "option_b": "Finance long-term infrastructure and development projects",
+    "option_c": "Regulate high-seas shipping lane policies",
+    "option_d": "Enforce nuclear non-proliferation agreements",
+    "correct_answer": "a",
+    "explanation": "IMF focuses on macroeconomic stability, exchange rates, and short-term balance of payments crisis assistance, while World Bank focuses on long-term development. [Memory Trick: 'IMF' is the 'Emergency Financial ICU' for currency crashes.]"
+  },
+  {
+    "question": "In which city is the headquarters of the International Maritime Organization (IMO) situated?",
+    "option_a": "London, United Kingdom",
+    "option_b": "Geneva, Switzerland",
+    "option_c": "New York, USA",
+    "option_d": "Copenhagen, Denmark",
+    "correct_answer": "a",
+    "explanation": "The IMO, a specialized UN agency regulating shipping safety and preventing sea pollution, is headquartered in London. [Memory Trick: 'IMO' governs 'Ocean' routes, and Britain was historically the Queen of Oceans (London).]"
+  },
+  {
+    "question": "The 'Universal Postal Union' (UPU), which coordinates international postal rates and services, is based in which city?",
+    "option_a": "Bern, Switzerland",
+    "option_b": "Vienna, Austria",
+    "option_c": "Brussels, Belgium",
+    "option_d": "Geneva, Switzerland",
+    "correct_answer": "a",
+    "explanation": "Established by the Treaty of Bern in 1874, the UPU is headquartered in Bern, Switzerland. [Memory Trick: You 'Burn' (Bern) the stamp when you post a letter!]"
+  },
+  {
+    "question": "Which organization comprises 19 countries and the European Union, representing the world's major advanced and emerging economies?",
+    "option_a": "G20",
+    "option_b": "G7",
+    "option_c": "OECD",
+    "option_d": "AEC",
+    "correct_answer": "a",
+    "explanation": "The G20 (Group of Twenty) is a premier forum for international economic cooperation, comprising 19 sovereign states, the European Union, and recently the African Union. [Memory Trick: 'G20' is the 'Twenty' giant economic players on the turf.]"
+  },
+  {
+    "question": "The UNESCO-administered Biosphere Reserves program, aiming to build balanced relationships between humans and the environment, is known by which acronym?",
+    "option_a": "MAB",
+    "option_b": "UNFCCC",
+    "option_c": "CBD",
+    "option_d": "REDD+",
+    "correct_answer": "a",
+    "explanation": "UNESCO launched the Man and the Biosphere (MAB) Programme in 1971 to promote interdisciplinary research on ecological relationships. [Memory Trick: 'M-A-B' = 'Man' 'And' 'Biosphere' balances.]"
+  },
+  {
+    "question": "The World Intellectual Property Organization (WIPO), which protects patents and copyrights, has its headquarters in which city?",
+    "option_a": "Geneva, Switzerland",
+    "option_b": "New York, USA",
+    "option_c": "Munich, Germany",
+    "option_d": "Paris, France",
+    "correct_answer": "a",
+    "explanation": "WIPO is headquartered in Geneva, Switzerland, administering international trademark and patent registration treaties. [Memory Trick: Intellectual geniuses register 'Patents' in 'Geneva's' creative chambers.]"
+  },
+  {
+    "question": "Which specialized UN agency issues aviation safety guidelines, airspace boundaries, and security standards?",
+    "option_a": "ICAO",
+    "option_b": "IMO",
+    "option_c": "WMO",
+    "option_d": "ITU",
+    "correct_answer": "a",
+    "explanation": "ICAO (International Civil Aviation Organization), headquartered in Montreal, Canada, governs the principles of international air navigation. [Memory Trick: 'ICAO' has 'A' for Aviation, based in snowy flying zones of 'Canada' (Montreal).]"
+  },
+  {
+    "question": "The International Telecommunication Union (ITU), coordinating global radio spectrums and satellite orbits, is based in:",
+    "option_a": "Geneva, Switzerland",
+    "option_b": "Stockholm, Sweden",
+    "option_c": "Tokyo, Japan",
+    "option_d": "London, UK",
+    "correct_answer": "a",
+    "explanation": "Founded in 1865 as the International Telegraph Union, the ITU is headquartered in Geneva, Switzerland. [Memory Trick: Signals 'In-Tune' (ITU) are synchronized from Geneva's towers.]"
+  },
+  {
+    "question": "The Asian Infrastructure Investment Bank (AIIB) officially began operations in 2016 from its headquarters in:",
+    "option_a": "Beijing, China",
+    "option_b": "Shanghai, China",
+    "option_c": "New Delhi, India",
+    "option_d": "Singapore",
+    "correct_answer": "a",
+    "explanation": "AIIB is a multilateral development bank proposed by China, headquartered in Beijing. [Memory Trick: 'A-I-I-B' has its 'I's' focused on building 'Beijing' super infrastructures.]"
+  },
+  {
+    "question": "The United Nations Entity for Gender Equality and the Empowerment of Women is briefly called:",
+    "option_a": "UN-Women",
+    "option_b": "UNFPA",
+    "option_c": "CEDAW",
+    "option_d": "UNICEF",
+    "correct_answer": "a",
+    "explanation": "UN-Women is the dedicated UN entity established in 2010 to accelerate gender equality and women's empowerment, based in New York. [Memory Trick: Dedicated 'Women' champions of the 'UN' = UN-Women.]"
+  },
+  {
+    "question": "The World Food Programme (WFP), which won the Nobel Peace Prize in 2020 for food security efforts, is headquartered in which city?",
+    "option_a": "Rome, Italy",
+    "option_b": "Geneva, Switzerland",
+    "option_c": "Paris, France",
+    "option_d": "New York, USA",
+    "correct_answer": "a",
+    "explanation": "WFP is the food-assistance branch of the UN, based in Rome, Italy, along with FAO and IFAD. [Memory Trick: Empty 'Stomachs' get Italian 'Pasta' from Rome WFP distributions.]"
+  },
+  {
+    "question": "Which of the following organizations publishes the 'Global Financial Stability Report'?",
+    "option_a": "IMF",
+    "option_b": "World Bank",
+    "option_c": "G20 Secretariat",
+    "option_d": "Federal Reserve",
+    "correct_answer": "a",
+    "explanation": "The Global Financial Stability Report is published bi-annually by the International Monetary Fund (IMF), focusing on global market risks. [Memory Trick: IMF stabilizes 'Financial' systems, so it writes the Stability Report.]"
+  },
+  {
+    "question": "The executive head of the United Nations is the Secretary-General, who is currently appointed for a term of how many years?",
+    "option_a": "5 years",
+    "option_b": "4 years",
+    "option_c": "6 years",
+    "option_d": "7 years",
+    "correct_answer": "a",
+    "explanation": "The UN Secretary-General is appointed by the General Assembly on recommendation of the Security Council for a renewable term of 5 years. [Memory Trick: High 'Five' (5) to the Secretary-General leading the UN!]"
+  },
+  {
+    "question": "Where is the headquarters of the Organisation for Economic Co-operation and Development (OECD) situated?",
+    "option_a": "Paris, France",
+    "option_b": "Munich, Germany",
+    "option_c": "Geneva, Switzerland",
+    "option_d": "Brussels, Belgium",
+    "correct_answer": "a",
+    "explanation": "OECD is headquartered in Paris, France (at Chateau de la Muette), established in 1961 to stimulate economic progress. [Memory Trick: Economists love eating buttery 'Croissants' in Paris OECD headquarters.]"
+  },
+  {
+    "question": "Which international body is responsible for monitoring civil nuclear programs under the Nuclear Non-Proliferation Treaty (NPT) safeguards?",
+    "option_a": "IAEA",
+    "option_b": "UNSC",
+    "option_c": "CTBTO",
+    "option_d": "NATO",
+    "correct_answer": "a",
+    "explanation": "The IAEA (Vienna) conducts regular inspectoral sweeps to ensure countries do not siphon nuclear fuel for atomic weapons. [Memory Trick: 'A' in 'IAEA' stands for 'Atomic' watchdog.]"
+  },
+  {
+    "question": "The Group of Seven (G7), representing leading industrialized democracies, emerged after the exclusion of which nation in 2014?",
+    "option_a": "Russia",
+    "option_b": "China",
+    "option_c": "India",
+    "option_d": "Brazil",
+    "correct_answer": "a",
+    "explanation": "The G8 was established in 1997 with Russia's entry, but Russia was suspended in 2014 following the annexation of Crimea, returning it to G7. [Memory Trick: G8 became 'G7' by letting go of 'R' (Russia) or G-Russia.]"
+  },
+  {
+    "question": "The United Nations Conference on Trade and Development (UNCTAD), driving sustainable trade policies, has its permanent seat in:",
+    "option_a": "Geneva, Switzerland",
+    "option_b": "Paris, France",
+    "option_c": "New York, USA",
+    "option_d": "Nairobi, Kenya",
+    "correct_answer": "a",
+    "explanation": "UNCTAD, established in 1964 as a permanent organ of the UN General Assembly, is headquartered in Geneva. [Memory Trick: UNCTAD is like 'UN' trade 'Tact' ('TAD') discussed in Geneva.]"
+  },
+  {
+    "question": "Which global forum is responsible for managing the systemic financial risks of central banks through the 'Basel Accords'?",
+    "option_a": "BCBS (Basel Committee on Banking Supervision)",
+    "option_b": "IMF",
+    "option_c": "World Bank",
+    "option_d": "WTO",
+    "correct_answer": "a",
+    "explanation": "The BCBS, housed at the Bank for International Settlements (BIS) in Basel, Switzerland, issues banking capital requirements (Basel I, II, III). [Memory Trick: 'Basel' committee is obviously responsible for banking stability standard 'Basel' Accords.]"
+  }
+]

@@ -1,128 +1,389 @@
-{
-  "title": "Space & Universe",
-  "title_hi": "अंतरिक्ष और ब्रह्मांड",
-  "icon": "🚀",
-  "slug": "space-universe",
-  "questions": [
-    {
-      "id": 1,
-      "q": "Who was the first human to go to space?",
-      "opts": [
-        "Neil Armstrong",
-        "Buzz Aldrin",
-        "Yuri Gagarin",
-        "Alan Shepard"
-      ],
-      "ans": 2,
-      "exp": "Yuri Gagarin of the Soviet Union became the first human to travel to space on 12 April 1961. His spacecraft Vostok 1 completed one orbit of the Earth in 108 minutes."
-    },
-    {
-      "id": 2,
-      "q": "The largest planet in our solar system is?",
-      "opts": [
-        "Saturn",
-        "Mars",
-        "Jupiter",
-        "Uranus"
-      ],
-      "ans": 2,
-      "exp": "Jupiter is the largest planet in our solar system. It is so large that all other planets in the solar system could fit inside it. Jupiter is a gas giant with 95 known moons."
-    },
-    {
-      "id": 3,
-      "q": "India's first satellite was named?",
-      "opts": [
-        "Bhaskara",
-        "Rohini",
-        "Aryabhata",
-        "INSAT"
-      ],
-      "ans": 2,
-      "exp": "Aryabhata was India's first satellite, launched on 19 April 1975 by the Soviet Union. It was named after the ancient Indian mathematician and astronomer Aryabhata."
-    },
-    {
-      "id": 4,
-      "q": "The nearest star to Earth (other than the Sun) is?",
-      "opts": [
-        "Sirius",
-        "Proxima Centauri",
-        "Betelgeuse",
-        "Vega"
-      ],
-      "ans": 1,
-      "exp": "Proxima Centauri is the nearest known star to Earth (other than the Sun), at a distance of about 4.24 light-years. It is a red dwarf star in the Alpha Centauri system."
-    },
-    {
-      "id": 5,
-      "q": "How many planets are in our solar system?",
-      "opts": [
-        "7",
-        "8",
-        "9",
-        "10"
-      ],
-      "ans": 1,
-      "exp": "There are 8 planets in our solar system: Mercury, Venus, Earth, Mars, Jupiter, Saturn, Uranus, and Neptune. Pluto was reclassified as a dwarf planet in 2006 by the IAU."
-    },
-    {
-      "id": 6,
-      "q": "ISRO stands for?",
-      "opts": [
-        "Indian Space Research Organisation",
-        "Indian Scientific Research Organisation",
-        "Indian Space and Research Organisation",
-        "Indian Satellite Research Organisation"
-      ],
-      "ans": 0,
-      "exp": "ISRO stands for Indian Space Research Organisation. It was founded on 15 August 1969. Its headquarters is in Bengaluru. ISRO has successfully launched numerous satellites and space missions."
-    },
-    {
-      "id": 7,
-      "q": "The Chandrayaan-3 mission successfully landed on the Moon in?",
-      "opts": [
-        "2021",
-        "2022",
-        "2023",
-        "2024"
-      ],
-      "ans": 2,
-      "exp": "Chandrayaan-3 successfully landed on the Moon's south pole on 23 August 2023, making India the first country to land near the lunar south pole. The lander was named Vikram and the rover was Pragyan."
-    },
-    {
-      "id": 8,
-      "q": "A light-year is a unit of?",
-      "opts": [
-        "Time",
-        "Distance",
-        "Speed",
-        "Mass"
-      ],
-      "ans": 1,
-      "exp": "A light-year is a unit of distance, equal to the distance light travels in one year (about 9.46 × 10¹² km). It is used to express distances between stars and galaxies."
-    },
-    {
-      "id": 9,
-      "q": "The Big Bang Theory explains?",
-      "opts": [
-        "Evolution of species",
-        "Origin of the Universe",
-        "Formation of Earth",
-        "Origin of life"
-      ],
-      "ans": 1,
-      "exp": "The Big Bang Theory is the prevailing cosmological model explaining the origin of the Universe. It proposes that the Universe began from an extremely hot and dense state about 13.8 billion years ago."
-    },
-    {
-      "id": 10,
-      "q": "Which planet is known as the Red Planet?",
-      "opts": [
-        "Venus",
-        "Mars",
-        "Jupiter",
-        "Mercury"
-      ],
-      "ans": 1,
-      "exp": "Mars is known as the Red Planet because of its reddish appearance, caused by iron oxide (rust) on its surface. Mars has the largest volcano (Olympus Mons) and the deepest canyon in the solar system."
-    }
-  ]
-}
+[
+  {
+    "question": "What is the approximate age of our Universe, as calculated by modern cosmological measurements?",
+    "option_a": "4.5 billion years",
+    "option_b": "9.1 billion years",
+    "option_c": "13.8 billion years",
+    "option_d": "20.2 billion years",
+    "correct_answer": "c",
+    "explanation": "According to the Planck satellite data, the universe is approximately 13.8 billion years old, expanding since the Big Bang. [Memory Trick: '1-3-8' (Billion) - one big bang, three dimensions, eight planets orbiting!]"
+  },
+  {
+    "question": "Which celestial body in our solar system is known for having a prominent 'Great Red Spot', which is actually a giant high-pressure storm?",
+    "option_a": "Mars",
+    "option_b": "Saturn",
+    "option_c": "Jupiter",
+    "option_d": "Neptune",
+    "correct_answer": "c",
+    "explanation": "Jupiter's Great Red Spot is an anticyclonic storm wider than Earth, which has raged for at least 300 years. [Memory Trick: 'Ju'-peter is 'Gigantic' and has 'Ju'-icy Red Spot!]"
+  },
+  {
+    "question": "Who formulated the laws of planetary motion, showing that planets orbit the Sun in ellipses?",
+    "option_a": "Galileo Galilei",
+    "option_b": "Johannes Kepler",
+    "option_c": "Nicolaus Copernicus",
+    "option_d": "Isaac Newton",
+    "correct_answer": "b",
+    "explanation": "Johannes Kepler published his laws of planetary motion in the early 17th century, correcting Copernicus' circular orbit theories. [Memory Trick: Planets 'Kept'-ler orbiting around in neat ellipses!]"
+  },
+  {
+    "question": "Which Renaissance astronomer popularized the heliocentric theory, placing the Sun, rather than the Earth, at the center of the universe?",
+    "option_a": "Galileo Galilei",
+    "option_b": "Nicolaus Copernicus",
+    "option_c": "Tycho Brahe",
+    "option_d": "Giordano Bruno",
+    "correct_answer": "b",
+    "explanation": "Copernicus published 'De revolutionibus orbium coelestium' in 1543, starting the Copernican revolution in astronomy. [Memory Trick: Copernicus 'Copied' the Sun's central crown and set it correctly!]"
+  },
+  {
+    "question": "What is the name of the largest volcano and shield mountain in our entire Solar System, located on Mars?",
+    "option_a": "Olympus Mons",
+    "option_b": "Mauna Kea",
+    "option_c": "Mount Vesuvius",
+    "option_d": "Maxwell Montes",
+    "correct_answer": "a",
+    "explanation": "Olympus Mons on Mars is three times higher than Mount Everest, measuring about 22 km in height. [Memory Trick: 'Olympus' is a mountain of 'Olympian' gods on Mars!]"
+  },
+  {
+    "question": "Which country launched Sputnik 1, the world's first artificial satellite, in October 1957?",
+    "option_a": "United States",
+    "option_b": "Soviet Union (USSR)",
+    "option_c": "United Kingdom",
+    "option_d": "Germany",
+    "correct_answer": "b",
+    "explanation": "The Soviet Union launched Sputnik 1 on October 4, 1957, beginning the Space Race era. [Memory Trick: 'Sputnik' has a Russian flavor; it went up in a 'Soviet' rocket!]"
+  },
+  {
+    "question": "What is the name of the large spiral galaxy closest to our own Milky Way?",
+    "option_a": "Andromeda Galaxy",
+    "option_b": "Triangulum Galaxy",
+    "option_c": "Sombrero Galaxy",
+    "option_d": "Large Magellanic Cloud",
+    "correct_answer": "a",
+    "explanation": "Andromeda (M31) is the nearest major spiral galaxy to us, roughly 2.5 million light-years away. [Memory Trick: 'Andromeda' is our next-door neighbor 'Andrea'!]"
+  },
+  {
+    "question": "Which moon of Saturn is famous for having a dense, nitrogen-rich orange atmosphere and lakes of liquid methane?",
+    "option_a": "Enceladus",
+    "option_b": "Titan",
+    "option_c": "Mimas",
+    "option_d": "Europa",
+    "correct_answer": "b",
+    "explanation": "Titan is Saturn's largest moon and the only moon in our solar system with a dense, cloud-bearing atmosphere. [Memory Trick: 'Titan' is a 'Titanic' moon with thick orange gas armor!]"
+  },
+  {
+    "question": "Which of the following is the brightest star in our night sky, also known as the Dog Star?",
+    "option_a": "Sirius",
+    "option_b": "Betelgeuse",
+    "option_c": "Alpha Centauri",
+    "option_d": "Polaris",
+    "correct_answer": "a",
+    "explanation": "Sirius A, in the constellation Canis Major, is the brightest star, gleaming blue-white. [Memory Trick: Sirius is 'Seriously' bright in the night sky!]"
+  },
+  {
+    "question": "Who was the first human to travel into space, orbiting Earth in Vostok 1 on April 12, 1961?",
+    "option_a": "Alan Shepard",
+    "option_b": "Yuri Gagarin",
+    "option_c": "John Glenn",
+    "option_d": "Neil Armstrong",
+    "correct_answer": "b",
+    "explanation": "Soviet cosmonaut Yuri Gagarin made a single orbit around Earth, lasting 108 minutes, marking human spaceflight history. [Memory Trick: 'Yuri' was 'Year'-ning to go to space first!]"
+  },
+  {
+    "question": "Who was the first person to walk on the Moon, during the Apollo 11 mission on July 20, 1969?",
+    "option_a": "Buzz Aldrin",
+    "option_b": "Michael Collins",
+    "option_c": "Neil Armstrong",
+    "option_d": "Yuri Gagarin",
+    "correct_answer": "c",
+    "explanation": "Neil Armstrong took 'one small step for [a] man, one giant leap for mankind' onto the lunar surface in 1969. [Memory Trick: His leg/arm was 'Strong' enough to take the first step!]"
+  },
+  {
+    "question": "Which planet is the hottest in our Solar System due to a runaway greenhouse effect trapping heat?",
+    "option_a": "Mercury",
+    "option_b": "Venus",
+    "option_c": "Mars",
+    "option_d": "Jupiter",
+    "correct_answer": "b",
+    "explanation": "Though Mercury is closer to the Sun, Venus has a dense carbon dioxide atmosphere that traps heat, creating temperatures near 475°C. [Memory Trick: Venus is the 'Ve'-hemently hot radiator of the solar system!]"
+  },
+  {
+    "question": "What is the astronomical term for the outer boundary of a Black Hole, beyond which nothing can escape the gravity, not even light?",
+    "option_a": "Singularity",
+    "option_b": "Event Horizon",
+    "option_c": "Accretion Disk",
+    "option_d": "Roche Limit",
+    "correct_answer": "b",
+    "explanation": "The Event Horizon is the point of no return around a black hole, marking the threshold speed equal to the speed of light. [Memory Trick: Once you pass the 'Horizon', no 'Event' can bring you back!]"
+  },
+  {
+    "question": "Approximately how long does it take for light emitted from the Sun to reach Earth's surface?",
+    "option_a": "8.3 seconds",
+    "option_b": "8.3 minutes",
+    "option_c": "8.3 hours",
+    "option_d": "1.2 seconds",
+    "correct_answer": "b",
+    "explanation": "Light travels at 300,000 km/s. Given Earth's distance of ~150M km, light takes 500 seconds (or 8.3 minutes) to arrive. [Memory Trick: Think of '8' planets, and '3' minutes of delay = 8.3 minutes!]"
+  },
+  {
+    "question": "Which planet in our solar system has the most prominent, complex, and extensive ring system made of ice and rock dust?",
+    "option_a": "Jupiter",
+    "option_b": "Saturn",
+    "option_c": "Uranus",
+    "option_d": "Neptune",
+    "correct_answer": "b",
+    "explanation": "Saturn has seven primary rings made of millions of ice particles orbiting the gas giant in a flat plane. [Memory Trick: Saturn is the 'S'-pectacular lord of the rings!]"
+  },
+  {
+    "question": "Which legendary space telescope, launched by NASA in 1990, has captured deep-space imagery for over three decades?",
+    "option_a": "Hubble Space Telescope",
+    "option_b": "Kepler Space Telescope",
+    "option_c": "Chandra X-ray Observatory",
+    "option_d": "James Webb Space Telescope",
+    "correct_answer": "a",
+    "explanation": "The Hubble Space Telescope was carried into orbit in 1990 and revolutionized astrophysics. [Memory Trick: Hubble created a big 'Hub'ub (news) with beautiful galaxy photos!]"
+  },
+  {
+    "question": "What is the primary state of matter making up our Sun and other stars?",
+    "option_a": "Gas",
+    "option_b": "Liquid",
+    "option_c": "Plasma",
+    "option_d": "Solid",
+    "correct_answer": "c",
+    "explanation": "The Sun consists of superheated, highly ionized gas called plasma, bound together by gravitational force. [Memory Trick: A hot 'Plas'-ter (Plasma) of atoms boiling on the Sun!]"
+  },
+  {
+    "question": "What is the speed of light in a vacuum, a constant denoted by the letter 'c'?",
+    "option_a": "300,000 km/s",
+    "option_b": "300,000 m/s",
+    "option_c": "150,000 km/s",
+    "option_d": "1,000,000 km/s",
+    "correct_answer": "a",
+    "explanation": "The speed of light in a vacuum is exactly 299,792,458 meters per second, or roughly 300,000 kilometers per second. [Memory Trick: '3' followed by '5' zeros of km speed!]"
+  },
+  {
+    "question": "Which country became the first to successfully land a spacecraft near the rugged lunar South Pole, during the Chang'e/Chandrayaan missions?",
+    "option_a": "Russia",
+    "option_b": "United States",
+    "option_c": "China",
+    "option_d": "India",
+    "correct_answer": "d",
+    "explanation": "India's Chandrayaan-3 successfully touched down near the lunar South Pole on August 23, 2023. [Memory Trick: India's 'Chandra'-yaan brought the light of victory to the dark South lunar pole!]"
+  },
+  {
+    "question": "In astronomy, what are the four outer gas-dominated planets (Jupiter, Saturn, Uranus, Neptune) collectively called?",
+    "option_a": "Gas Giants",
+    "option_b": "Terrestrial Planets",
+    "option_c": "Rocky Planets",
+    "option_d": "Super-Earths",
+    "correct_answer": "a",
+    "explanation": "Gas Giants have massive hydrogen and helium atmospheres wrapping small rocky cores, unlike terrestrial planets. [Memory Trick: Gigantic bags of planetary 'Gas' (Gas Giants)!]"
+  },
+  {
+    "question": "Which planet is nicknamed 'Evening Star' or 'Morning Star' because of its bright appearance just after sunset or before sunrise?",
+    "option_a": "Venus",
+    "option_b": "Mars",
+    "option_c": "Mercury",
+    "option_d": "Jupiter",
+    "correct_answer": "a",
+    "explanation": "Venus reflects 70% of sunlight courtesy of sulfuric acid clouds, making it the most lustrous planet seen from Earth. [Memory Trick: A beautiful 'Venus' (Goddess) shining in the 'Evening'!]"
+  },
+  {
+    "question": "Which unit of astronomical distance is equivalent to approximately 3.26 light-years?",
+    "option_a": "Astronomical Unit (AU)",
+    "option_b": "Parsec",
+    "option_c": "Megameter",
+    "option_d": "Kiloparsec",
+    "correct_answer": "b",
+    "explanation": "A Parsec (parallax second) represents the distance at which one astronomical unit subtends an angle of one arcsecond. [Memory Trick: 'Par'-sec lets us 'Par'-take in deep-space measurements beyond mere light-years!]"
+  },
+  {
+    "question": "What is the theoretical boundary at the very center of a black hole, where density is infinite and space-time curvature is infinite?",
+    "option_a": "Event Horizon",
+    "option_b": "Singularity",
+    "option_c": "Wormhole",
+    "option_d": "Schwarzschild Radius",
+    "correct_answer": "b",
+    "explanation": "According to General Relativity, a singularity is a point of infinite gravitational density where math equations fail. [Memory Trick: A 'Single' (Singularity) point of infinite crushing force!]"
+  },
+  {
+    "question": "Which infrared space telescope, launched in Dec 2021, is the primary scientific successor to the Hubble Space Telescope?",
+    "option_a": "James Webb Space Telescope (JWST)",
+    "option_b": "Kepler Space Telescope",
+    "option_c": "Spitzer Space Telescope",
+    "option_d": "Nancy Grace Roman Telescope",
+    "correct_answer": "a",
+    "explanation": "The James Webb Space Telescope uses a golden honeycomb mirror to observe the oldest stars and galaxies in infrared light. [Memory Trick: 'James Webb' woven gold webs to catch the earliest sparks of creation!]"
+  },
+  {
+    "question": "What is the largest moon in our entire Solar System, larger than the planet Mercury, orbiting Jupiter?",
+    "option_a": "Titan",
+    "option_b": "Ganymede",
+    "option_c": "Europa",
+    "option_d": "Callisto",
+    "correct_answer": "b",
+    "explanation": "Ganymede is Jupiter's largest moon, with its own magnetic field and heavy underground ocean ice. [Memory Trick: 'Gany'-mede is 'Gi'-gantic, beating Mercury in size!]"
+  },
+  {
+    "question": "The main asteroid belt of our solar system is situated between the orbits of which two planets?",
+    "option_a": "Venus and Earth",
+    "option_b": "Earth and Mars",
+    "option_c": "Mars and Jupiter",
+    "option_d": "Jupiter and Saturn",
+    "correct_answer": "c",
+    "explanation": "Thousands of rocky minor planets sit in orbit between Mars and Jupiter, prevented from coalescing into a planet by Jupiter's gravity. [Memory Trick: 'M'-ars 'A'-steroids 'J'-upiter. MAJ-or asteroid group in the middle!]"
+  },
+  {
+    "question": "Who discovered the planet Uranus in 1781 using a home-built reflecting telescope?",
+    "option_a": "William Herschel",
+    "option_b": "Johannes Kepler",
+    "option_c": "Edwin Hubble",
+    "option_d": "Christian Huygens",
+    "correct_answer": "a",
+    "explanation": "Sir William Herschel discovered Uranus in 1781, initially wanting to name it Georgium Sidus after King George III. [Memory Trick: 'Herschel' saw Uranus and 'heard'-shel (her-shell) of the system’s expansion!]"
+  },
+  {
+    "question": "In which controversial year did the International Astronomical Union (IAU) reclassify Pluto as a 'Dwarf Planet'?",
+    "option_a": "1999",
+    "option_b": "2001",
+    "option_c": "2006",
+    "option_d": "2010",
+    "correct_answer": "c",
+    "explanation": "The IAU voted on Pluto's status in Prague in August 2006, deciding it had not cleared its orbital neighborhood. [Memory Trick: In '06, we 'nix' (06) Pluto from the major planet catalog!]"
+  },
+  {
+    "question": "Which planet of our solar system rotates on its side, with an extreme axial tilt of 98 degrees?",
+    "option_a": "Saturn",
+    "option_b": "Uranus",
+    "option_c": "Jupiter",
+    "option_d": "Venus",
+    "correct_answer": "b",
+    "explanation": "Uranus rotates almost perpendicular to its orbit, likely due to a collision with an Earth-sized protoplanet in antiquity. [Memory Trick: 'U'-ranus was 'un'-balanced and fell on its side!]"
+  },
+  {
+    "question": "To which stellar spiral arm of our Milky Way galaxy does our solar system belong?",
+    "option_a": "Perseus Arm",
+    "option_b": "Sagittarius Arm",
+    "option_c": "Orion Arm (Orion-Cygnus)",
+    "option_d": "Centaurus Arm",
+    "correct_answer": "c",
+    "explanation": "The solar system sits in a minor spiral arm of the Milky Way, known as the Orion-Cygnus Arm, between Sagittarius and Perseus. [Memory Trick: We are wrapped under the arm of the great star hunter 'Orion'!]"
+  },
+  {
+    "question": "Due to solar wind pressure, in what direction does a comet's dusty tail always point?",
+    "option_a": "Towards the Sun",
+    "option_b": "Away from the Sun",
+    "option_c": "Perpendicular to the orbit",
+    "option_d": "Along the direction of motion",
+    "correct_answer": "b",
+    "explanation": "Radiation pressure and solar winds push dust and gas particles straight away from the Sun, forming the tail. [Memory Trick: The Sun blew the comet's 'hair' straight back, 'away' from its face!]"
+  },
+  {
+    "question": "Which NASA spacecraft completed the historic first flyby of Pluto in July 2015, capturing detailed images of its heart-shaped plain?",
+    "option_a": "Voyager 1",
+    "option_b": "New Horizons",
+    "option_c": "Pioneer 10",
+    "option_d": "Cassini",
+    "correct_answer": "b",
+    "explanation": "The New Horizons spacecraft launched in 2006 and crossed Pluto in 2015, discovering Sputnik Planitia water-ice ice sheets. [Memory Trick: Seeking 'New Horizons' beyond the known planetary boundaries!]"
+  },
+  {
+    "question": "What is the name of the spherical cloud of icy planetesimals believed to surround our solar system at a distance of up to 100,000 AU?",
+    "option_a": "Kuiper Belt",
+    "option_b": "Oort Cloud",
+    "option_c": "Hills Cloud",
+    "option_d": "Van Allen Belt",
+    "correct_answer": "b",
+    "explanation": "The Oort Cloud is the theoretical origin region of long-period comets, named after Dutch astronomer Jan Oort. [Memory Trick: 'Ooh'-rt! It's so far and cold 'Ooh' out there!]"
+  },
+  {
+    "question": "Which of the following is the nearest star system to our Sun, at a distance of about 4.24 light-years?",
+    "option_a": "Alpha Centauri",
+    "option_b": "Sirius",
+    "option_c": "Barnard's Star",
+    "option_d": "Proxima Centauri",
+    "correct_answer": "d",
+    "explanation": "Proxima Centauri is a red dwarf star belonging to the Alpha Centauri AB system, measuring as the absolute closest neighbor. [Memory Trick: 'Proxima' is in extreme 'proximity' to us!]"
+  },
+  {
+    "question": "Why were planetary nebulae historically given that name by early astronomers?",
+    "option_a": "They are born from dying planets",
+    "option_b": "They looked round and green like Uranus in early telescopes",
+    "option_c": "They always orbit stars like planets",
+    "option_d": "They contain giant gas planets inside",
+    "correct_answer": "b",
+    "explanation": "William Herschel coined the term because their greenish-round glow resembled the planet Uranus he had discovered. [Memory Trick: It was a 'planetary' optical illusion!]"
+  },
+  {
+    "question": "What cosmological observation first proved that the universe is actively expanding, as cataloged by Edwin Hubble in 1929?",
+    "option_a": "Blue-shift of distant stars",
+    "option_b": "Red-shift of distant galaxies",
+    "option_c": "Gravitational lensing",
+    "option_d": "Solar eclipses",
+    "correct_answer": "b",
+    "explanation": "The light waves of retreating galaxies are stretched out towards the longer, red end of the spectrum, proving expansion. [Memory Trick: Red lights say 'Go' far away from us!]"
+  },
+  {
+    "question": "What is the name of the outer visible boundary layer of the Sun, from which light is radiated?",
+    "option_a": "Corona",
+    "option_b": "Chromosphere",
+    "option_c": "Photosphere",
+    "option_d": "Convective Zone",
+    "correct_answer": "c",
+    "explanation": "The Photosphere is the Sun's visible surface, measuring around 500 km thick with temperature averaging 5,500°C. [Memory Trick: This is where the Sun shoots 'Photos' (photons) of light to Earth!]"
+  },
+  {
+    "question": "What are the dark, cooler patches appearing on the Sun's photosphere caused by concentrated magnetic field lines?",
+    "option_a": "Solar Flares",
+    "option_b": "Sunspots",
+    "option_c": "Coronal mass ejections",
+    "option_d": "Granules",
+    "correct_answer": "b",
+    "explanation": "Sunspots are temporary cooling zones on the solar field, appearing darker because they are cooler than surrounding plasma. [Memory Trick: Little cooling freckle 'spots' on the face of the Sun!]"
+  },
+  {
+    "question": "Which planet in our solar system boasts the fastest measured atmospheric wind speeds, exceeding 2,100 km/h?",
+    "option_a": "Jupiter",
+    "option_b": "Saturn",
+    "option_c": "Uranus",
+    "option_d": "Neptune",
+    "correct_answer": "d",
+    "explanation": "Neptune's deep cold atmosphere acts like friction-free slide, driving winds up with supersonic momentum. [Memory Trick: 'Neptune' is the blue wind machine of the outer ring!]"
+  },
+  {
+    "question": "Mars has two tiny moons. One is Deimos (panic); what is the other moon, named after the Greek personification of fear?",
+    "option_a": "Phobos",
+    "option_b": "Titan",
+    "option_c": "Europa",
+    "option_d": "Ganymede",
+    "correct_answer": "a",
+    "explanation": "Mars' moons are named after the sons of Ares: Phobos (Fear) and Deimos (Terror or Dread). [Memory Trick: 'Phobia' (extreme fear) comes from the name 'Phobos'!]"
+  },
+  {
+    "question": "What is the primary elements/isotopes fuel that sustains the nuclear fusion process inside our Sun?",
+    "option_a": "Helium fusing to Carbon",
+    "option_b": "Hydrogen fusing to Helium",
+    "option_c": "Uranium splitting into Lead",
+    "option_d": "Carbon fusing into Oxygen",
+    "correct_answer": "b",
+    "explanation": "Main sequence stars fuse millions of tons of hydrogen nuclei into helium every second, releasing massive thermal energy. [Memory Trick: 'Hydrogen' (H) is element #1, starting the galactic fire!]"
+  },
+  {
+    "question": "What is the physical force that keeps artificial satellites in a stable orbital loop around the Earth?",
+    "option_a": "Centrifugal Force",
+    "option_b": "Electromagnetic Force",
+    "option_c": "Gravitational Attraction",
+    "option_d": "Atmospheric Friction",
+    "correct_answer": "c",
+    "explanation": "Earth's gravitational pull accelerates the satellite inward, while its forward momentum makes it miss the planet, keeping it in perpetual orbit. [Memory Trick: Gravity acts like invisible holding hand 'attracting' satellite orbits!]"
+  },
+  {
+    "question": "What is the continuous flow of charged particles (electrons and protons) sweeping out from the Sun's corona into the solar system called?",
+    "option_a": "Solar Wind",
+    "option_b": "Coronal Rain",
+    "option_c": "Magnetic Tide",
+    "option_d": "Cosmic Ray Shower",
+    "correct_answer": "a",
+    "explanation": "The Solar wind travels at supersonic speeds, shaping planetary magnetospheres and creating aurorae when hitting planetary atmospheres. [Memory Trick: A hot breezy 'wind' rushing off the Sun's crown!]"
+  }
+]
