@@ -1,697 +1,729 @@
 ---
 layout: default
-title: "Learn — Free Courses, Quizzes & Tutorials"
-description: "Free learning platform for Indian students. GK quizzes, coding tutorials, maths practice for SSC, Banking, Railway exams."
-keywords: "free online learning India, GK quiz, coding tutorial Hindi, maths practice, SSC banking exam prep"
+title: "GK Quiz - Free General Knowledge Questions, MCQ Test & Exam Practice"
+description: "Play free GK Quiz with 33+ categories covering History, Geography, Science, Polity, Economics, Sports, Environment, Computer, Current Affairs and more. Practice unlimited MCQs with answers for SSC, UPSC, Railway, Banking, Police, Defence and competitive exams in Hindi and English."
+keywords: "GK Quiz, General Knowledge Quiz, Free GK Test, GK Questions and Answers, MCQ Quiz, SSC GK, UPSC GK, Railway GK, Banking GK, Police Exam GK, Competitive Exam Quiz, History Quiz, Geography Quiz, Science Quiz, Computer GK, Current Affairs Quiz, Hindi GK, English GK, Online Quiz, Mock Test, Practice Test, General Awareness"
+lang_switch: false
+extra_css:
+  - /assets/css/gk-quiz.css
+extra_js:
+  - /assets/js/gk-quiz.js
 ---
+<div class="quiz-page">
 
-<style>
-  /* Base Structure & Wrapper */
-  .learn-wrapper {
-    padding-top: var(--nav-height);
-  }
-  .learn-hero {
-    padding: var(--space-16) 0 var(--space-12);
-    background: var(--clr-bg-2);
-    border-bottom: 1px solid var(--clr-border);
-  }
-  .learn-hero__title {
-    font-size: clamp(2rem, 5vw, 3.5rem);
-    font-weight: var(--fw-black);
-    letter-spacing: -0.03em;
-    color: var(--clr-heading);
-    margin-bottom: var(--space-4);
-  }
-  .learn-hero__desc {
-    font-size: var(--fs-md);
-    color: var(--clr-text-2);
-    max-width: 55ch;
-    line-height: var(--lh-loose);
-  }
-  .blog-card__desc {
-    font-size: var(--fs-sm);
-    color: var(--clr-text-3);
-    margin-top: var(--space-2);
-  }
-
-  /* SVG Thumb Wrapper & Full Width Dynamic Artwork with Aspect Ratio */
-  .blog-card__thumb {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    aspect-ratio: 2 / 1;
-    position: relative;
-    overflow: hidden;
-  }
-  
-  /* Full Width SVG Canvas and Smooth Auto Interaction Setup */
-  .blog-card__thumb svg {
-    width: 100%;
-    height: 100%;
-    transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), filter 0.3s ease;
-    display: block;
-  }
-
-  .blog-card:hover .blog-card__thumb svg {
-    transform: scale(1.04);
-  }
-
-  /* --- Continuous CSS Animations (Real Time Auto-Animations) --- */
-
-  /* 1. Globe Rotation (GK) */
-  @keyframes rotateGlobe {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-  }
-  .animate-globe-slow {
-    animation: rotateGlobe 30s linear infinite;
-    transform-origin: 32px 32px;
-  }
-
-  /* Needle Wandering Pulse */
-  @keyframes needleWander {
-    0%, 100% { transform: rotate(0deg); }
-    30% { transform: rotate(-15deg); }
-    70% { transform: rotate(20deg); }
-  }
-  .animate-needle {
-    animation: needleWander 6s ease-in-out infinite;
-    transform-origin: 32px 32px;
-  }
-
-  /* 2. Swaying / Oscillation (Maths Drawing Compass & grid) */
-  @keyframes mathSway {
-    0%, 100% { transform: rotate(-4deg) translateY(0); }
-    50% { transform: rotate(4deg) translateY(-2px); }
-  }
-  .animate-math-compass {
-    animation: mathSway 5s ease-in-out infinite;
-    transform-origin: 32px 32px;
-  }
-
-  /* 3. Hexagon Scaling & Flask Bubbling (Formulae) */
-  @keyframes hexPulse {
-    0%, 100% { transform: scale(1) rotate(0deg); opacity: 0.25; }
-    50% { transform: scale(1.05) rotate(5deg); opacity: 0.45; }
-  }
-  .animate-hex-pulse {
-    animation: hexPulse 10s ease-in-out infinite;
-    transform-origin: 32px 32px;
-  }
-
-  @keyframes bubbleUp {
-    0% { transform: translateY(4px) scale(0.8); opacity: 0; }
-    40% { opacity: 0.8; }
-    80% { transform: translateY(-16px) scale(1.2); opacity: 0; }
-    100% { transform: translateY(-20px) scale(0.6); opacity: 0; }
-  }
-  .bubble-1 { animation: bubbleUp 3s infinite ease-in; transform-origin: center; }
-  .bubble-2 { animation: bubbleUp 4s infinite ease-in; animation-delay: 1.2s; transform-origin: center; }
-  .bubble-3 { animation: bubbleUp 2.5s infinite ease-in; animation-delay: 0.6s; transform-origin: center; }
-
-  /* Double Helix / Chemistry Ring Rotation */
-  @keyframes chemistryRing {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(-360deg); }
-  }
-  .animate-chem-ring {
-    animation: chemistryRing 20s linear infinite;
-    transform-origin: 32px 32px;
-  }
-
-  /* 4. Quill / Calligraphy Writing Drift (Language) */
-  @keyframes quillDraw {
-    0%, 100% { transform: translate(0, 0) rotate(0deg); }
-    20% { transform: translate(3px, -3px) rotate(3deg); }
-    40% { transform: translate(-1px, -4px) rotate(-1deg); }
-    60% { transform: translate(4px, 1px) rotate(4deg); }
-    80% { transform: translate(1px, -2px) rotate(2deg); }
-  }
-  .animate-quill {
-    animation: quillDraw 5s ease-in-out infinite;
-    transform-origin: center;
-  }
-
-  /* 5. Interlocking Gear Cycles (Conversion) */
-  @keyframes gearSpinClockwise {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-  }
-  @keyframes gearSpinCounter {
-    0% { transform: rotate(360deg); }
-    100% { transform: rotate(0deg); }
-  }
-  .animate-gear-large {
-    animation: gearSpinClockwise 12s linear infinite;
-    transform-origin: 25px 35px;
-  }
-  .animate-gear-small {
-    animation: gearSpinCounter 8s linear infinite;
-    transform-origin: 44px 22px;
-  }
-
-  /* Premium Live Dynamic Ticker Badge for Cards */
-  .ticker-box {
-    position: absolute;
-    bottom: 12px;
-    left: 50%;
-    transform: translateX(-50%);
-    background: rgba(255, 255, 255, 0.94);
-    border: 1px solid rgba(0, 0, 0, 0.08);
-    padding: 3px 12px;
-    border-radius: 9999px;
-    font-family: var(--font-mono), monospace;
-    font-size: 0.68rem;
-    font-weight: 600;
-    color: inherit;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    white-space: nowrap;
-    pointer-events: none;
-    z-index: 5;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  }
-
-  /* Dark mode auto-adjust wrapper compatibility */
-  @media (prefers-color-scheme: dark) {
-    .ticker-box {
-      background: rgba(15, 23, 42, 0.94);
-      border-color: rgba(255, 255, 255, 0.08);
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
-    }
-  }
-
-  .ticker-text {
-    display: inline-block;
-    opacity: 0;
-    transform: translateY(5px);
-    transition: opacity 0.35s ease, transform 0.35s ease;
-  }
-  .ticker-text.active {
-    opacity: 1;
-    transform: translateY(0);
-  }
-
-  /* Interactive card focus & elegant hover effect */
-  .blog-card {
-    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease;
-  }
-  .blog-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 12px 24px -10px rgba(0, 0, 0, 0.1);
-  }
-
-  /* Bright active tag status dot */
-  .status-dot {
-    display: inline-block;
-    width: 6px;
-    height: 6px;
-    background-color: currentColor;
-    border-radius: 50%;
-    margin-right: 6px;
-    animation: pulseGlow 1.5s infinite ease-in-out;
-  }
-  @keyframes pulseGlow {
-    0%, 100% { opacity: 0.4; transform: scale(0.9); }
-    50% { opacity: 1; transform: scale(1.2); }
-  }
-
-  /* Semantic Color Coding gradients */
-  .blog-card__thumb--gk { 
-    background: linear-gradient(135deg, rgba(62, 207, 207, 0.16), rgba(62, 207, 207, 0.04)); 
-    color: #0891b2; 
-  }
-  .blog-card__thumb--maths { 
-    background: linear-gradient(135deg, rgba(245, 166, 35, 0.16), rgba(245, 166, 35, 0.04)); 
-    color: #ea580c; 
-  }
-  .blog-card__thumb--formulae { 
-    background: linear-gradient(135deg, rgba(239, 68, 68, 0.16), rgba(239, 68, 68, 0.04)); 
-    color: #dc2626; 
-  }
-  .blog-card__thumb--language { 
-    background: linear-gradient(135deg, rgba(16, 185, 129, 0.16), rgba(16, 185, 129, 0.04)); 
-    color: #16a34a; 
-  }
-  .blog-card__thumb--conversion { 
-    background: linear-gradient(135deg, rgba(59, 130, 246, 0.16), rgba(59, 130, 246, 0.04)); 
-    color: #2563eb; 
-  }
-</style>
-
-<div class="learn-wrapper">
-  
-  <section class="learn-hero">
+  <div class="quiz-hero"> 
     <div class="container">
-      <div class="section-label" aria-hidden="true">TyagiHub Learn</div>
-      <h1 class="learn-hero__title">Learn. Practice. Succeed.</h1>
-      <p class="learn-hero__desc">
-        Free courses and quizzes for competitive exams, coding, and mathematics. Hindi &amp; English both.
+      <h1 class="quiz-hero__title">GK Quiz Hub</h1>
+      <p class="quiz-hero__sub">
+        Competitive exam preparation — SSC, Banking, Railway, UPSC.<br>
+        33 categories · Hindi &amp; English · Free forever.
       </p>
-    </div>
-  </section>
 
-  <section class="section">
-    <div class="container">
-      <div class="grid-3">
+      <div class="lang-toggle" role="group" aria-label="Language selection">
+        <button class="lang-toggle__btn active" data-lang="en">
+          <svg width="20" height="14" viewBox="0 0 30 20" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <rect width="30" height="20" fill="#138808"/>
+            <rect width="30" height="13.33" y="0" fill="#FFFFFF"/>
+            <rect width="30" height="6.66" y="0" fill="#FF9933"/>
+            <circle cx="15" cy="10" r="2.2" fill="none" stroke="#000080" stroke-width="0.4"/>
+            <circle cx="15" cy="10" r="0.25" fill="#000080"/>
+          </svg>
+          <span>English</span>
+        </button>
 
-         <!-- 1. GK Quiz Practice -->
-        <a href="/gk-quiz/" class="blog-card reveal">
-          <div class="blog-card__thumb blog-card__thumb--gk" aria-hidden="true">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 160" fill="none">
-              <!-- Grid background -->
-              <g stroke="currentColor" stroke-width="1" opacity="0.08">
-                <line x1="0" y1="40" x2="320" y2="40" />
-                <line x1="0" y1="80" x2="320" y2="80" />
-                <line x1="0" y1="120" x2="320" y2="120" />
-                <line x1="80" y1="0" x2="80" y2="160" />
-                <line x1="160" y1="0" x2="160" y2="160" />
-                <line x1="240" y1="0" x2="240" y2="160" />
-                <circle cx="160" cy="80" r="70" stroke-dasharray="4 4" />
-              </g>
-              
-              <!-- Left: Detailed Globe Grid (Animated) -->
-              <g class="animate-globe-slow" style="transform-origin: 75px 80px;">
-                <circle cx="75" cy="80" r="36" stroke="currentColor" stroke-width="1.8" />
-                <path d="M39 80h72" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
-                <path d="M75 44v72" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
-                <!-- Latitude/Longitude curves -->
-                <path d="M43.5 62c9-2.7 18-3.6 31.5-3.6s22.5.9 31.5 3.6" stroke="currentColor" stroke-width="1" stroke-linecap="round" opacity="0.6" />
-                <path d="M43.5 98c9 2.7 18 3.6 31.5 3.6s22.5-.9 31.5-3.6" stroke="currentColor" stroke-width="1" stroke-linecap="round" opacity="0.6" />
-                <path d="M57 48.5c2.7 9 3.6 18 3.6 31.5s-.9 22.5-3.6 31.5" stroke="currentColor" stroke-width="1" stroke-linecap="round" opacity="0.6" />
-                <path d="M93 48.5c-2.7 9-3.6 18-3.6 31.5s.9 22.5 3.6 31.5" stroke="currentColor" stroke-width="1" stroke-linecap="round" opacity="0.6" />
-              </g>
+        <button class="lang-toggle__btn" data-lang="hi">
+          <svg width="20" height="14" viewBox="0 0 30 20" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <rect width="30" height="20" fill="#138808"/>
+            <rect width="30" height="13.33" y="0" fill="#FFFFFF"/>
+            <rect width="30" height="6.66" y="0" fill="#FF9933"/>
+            <circle cx="15" cy="10" r="2.2" fill="none" stroke="#000080" stroke-width="0.4"/>
+            <circle cx="15" cy="10" r="0.25" fill="#000080"/>
+          </svg>
+          <span>हिन्दी</span>
+        </button>
+      </div>
 
-              <!-- Elegant Laurel Wreath wrapping around the globe -->
-              <path d="M35 94a32 32 0 0 1-4-21 32 32 0 0 1 14-27" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" opacity="0.55" />
-              <path d="M115 94a32 32 0 0 0 4-21 32 32 0 0 0-14-27" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" opacity="0.55" />
-              
-              <!-- Right: Elegant Compass Dial -->
-              <circle cx="240" cy="80" r="32" stroke="currentColor" stroke-width="1" stroke-dasharray="3 3" opacity="0.3" />
-              <circle cx="240" cy="80" r="24" stroke="currentColor" stroke-width="1.5" opacity="0.5" />
-              <text x="240" y="42" font-size="7.5" font-family="sans-serif" font-weight="900" fill="currentColor" text-anchor="middle" opacity="0.75">N</text>
-              <text x="240" y="125" font-size="7.5" font-family="sans-serif" font-weight="900" fill="currentColor" text-anchor="middle" opacity="0.75">S</text>
-              <text x="202" y="83" font-size="7.5" font-family="sans-serif" font-weight="900" fill="currentColor" text-anchor="middle" opacity="0.75">W</text>
-              <text x="278" y="83" font-size="7.5" font-family="sans-serif" font-weight="900" fill="currentColor" text-anchor="middle" opacity="0.75">E</text>
-
-              <!-- Compass Needle -->
-              <g class="animate-needle" style="transform-origin: 240px 80px;">
-                <polygon points="240,56 244,80 240,84 236,80" fill="currentColor" />
-                <polygon points="240,104 236,80 240,84 244,80" fill="none" stroke="currentColor" stroke-width="1.5" />
-              </g>
-              <circle cx="240" cy="80" r="3.5" fill="#ffffff" stroke="currentColor" stroke-width="1.5" />
-
-              <!-- Decorative connecting links (Constellation effect) -->
-              <path d="M117 80h85" stroke="currentColor" stroke-width="1" stroke-dasharray="5 5" opacity="0.25" />
-              <polygon points="160,80 164,76 160,72 156,76" fill="currentColor" opacity="0.4" />
-            </svg>
-            <!-- Auto-rotating Trivia Facts -->
-            <div class="ticker-box" id="ticker-gk">
-              <span class="status-dot"></span>
-              <span class="ticker-text active">GK Fact Loading...</span>
-            </div>
-          </div>
-          <div class="blog-card__body">
-            <span class="blog-card__tag">GK &amp; Current Affairs</span>
-            <h2 class="blog-card__title">GK Quiz Practice</h2>
-            <p class="blog-card__desc">500+ questions for SSC, Banking, Railway, State PSC</p>
-          </div>
-        </a>
-
-        <!-- 2. Maths & Aptitude Practice (Renamed & Enhanced with Live Questions) -->
-        <a href="/learn/maths/" class="blog-card reveal reveal-delay-1">
-          <div class="blog-card__thumb blog-card__thumb--maths" aria-hidden="true">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 160" fill="none">
-              <!-- Coordinate Grid Background -->
-              <g stroke="currentColor" stroke-width="1" opacity="0.08">
-                <!-- Grid Horizontal Lines -->
-                <line x1="0" y1="20" x2="320" y2="20" stroke-dasharray="2 2" />
-                <line x1="0" y1="40" x2="320" y2="40" />
-                <line x1="0" y1="60" x2="320" y2="60" stroke-dasharray="2 2" />
-                <line x1="0" y1="80" x2="320" y2="80" stroke-width="1.5" />
-                <line x1="0" y1="100" x2="320" y2="100" stroke-dasharray="2 2" />
-                <line x1="0" y1="120" x2="320" y2="120" />
-                <line x1="0" y1="140" x2="320" y2="140" stroke-dasharray="2 2" />
-                <!-- Grid Vertical Lines -->
-                <line x1="40" y1="0" x2="40" y2="160" />
-                <line x1="80" y1="0" x2="80" y2="160" stroke-dasharray="2 2" />
-                <line x1="120" y1="0" x2="120" y2="160" />
-                <line x1="160" y1="0" x2="160" y2="160" stroke-width="1.5" />
-                <line x1="200" y1="0" x2="200" y2="160" stroke-dasharray="2 2" />
-                <line x1="240" y1="0" x2="240" y2="160" />
-                <line x1="280" y1="0" x2="280" y2="160" stroke-dasharray="2 2" />
-              </g>
-
-              <!-- Beautiful Glowing Trigonometric Wave -->
-              <path d="M15 80 Q 52.5 15, 90 80 T 165 80 T 240 80 T 305 80" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" opacity="0.8" />
-              <path d="M15 80 Q 52.5 15, 90 80 T 165 80 T 240 80 T 305 80" stroke="currentColor" stroke-width="6" stroke-linecap="round" opacity="0.15" />
-              
-              <!-- Golden Spiral / Fibonnaci Arc as beautiful background element -->
-              <path d="M260 120 A 10 10 0 0 1 270 110 A 20 20 0 0 1 290 130 A 40 40 0 0 1 250 170" stroke="currentColor" stroke-width="1" opacity="0.15" stroke-linecap="round" />
-
-              <!-- Geometric Triangle & Circle on Right Hand Side -->
-              <g opacity="0.4" stroke="currentColor" stroke-width="1.5">
-                <polygon points="230,120 280,120 260,70" />
-                <circle cx="251.5" cy="103" r="12" />
-                <path d="M260 70 L260 120" stroke-dasharray="2 2" />
-                <!-- Right angle marker -->
-                <rect x="256" y="116" width="4" height="4" />
-              </g>
-
-              <!-- Central-Left: Compass & Protractor with pendulum mathSway motion -->
-              <g class="animate-math-compass" style="transform-origin: 90px 40px;">
-                <!-- Academic Compass Tool legs -->
-                <path d="M90 40 L70 100M90 40 L110 100" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
-                <!-- Center pivot hinge -->
-                <circle cx="90" cy="40" r="3.5" fill="#ffffff" stroke="currentColor" stroke-width="2.2" />
-                <!-- Arch divider pencil path -->
-                <path d="M64 105 A 36 36 0 0 0 116 105" stroke="currentColor" stroke-width="1" stroke-dasharray="3 3" opacity="0.7" />
-                <circle cx="70" cy="100" r="2" fill="currentColor" />
-              </g>
-
-              <!-- Floating Math Formula Overlays -->
-              <text x="35" y="45" font-family="monospace" font-size="9.5" font-weight="bold" fill="currentColor" opacity="0.65">π ≈ 3.1415</text>
-              <text x="210" y="45" font-family="monospace" font-size="9.5" font-weight="bold" fill="currentColor" opacity="0.65">f(x) = ∫ e^x dx</text>
-              <text x="140" y="135" font-family="monospace" font-size="9.5" font-weight="bold" fill="currentColor" opacity="0.65">a² + b² = c²</text>
-              <text x="25" y="135" font-family="monospace" font-size="9.5" font-weight="bold" fill="currentColor" opacity="0.65">log₂(64) = 6</text>
-            </svg>
-            <!-- Auto-rotating Maths Questions & Solutions -->
-            <div class="ticker-box" id="ticker-maths">
-              <span class="status-dot"></span>
-              <span class="ticker-text active">Math Question Loading...</span>
-            </div>
-          </div>
-          <div class="blog-card__body">
-            <span class="blog-card__tag">Mathematics &amp; Logic</span>
-            <h2 class="blog-card__title">Maths &amp; Aptitude Hub</h2>
-            <p class="blog-card__desc">Step-by-step shortcuts &amp; practices in Hindi &amp; English</p>
-          </div>
-        </a>
-
-        <!-- 3. Formula Hub -->
-        <a href="/learn/formulae/" class="blog-card reveal reveal-delay-2">
-          <div class="blog-card__thumb blog-card__thumb--formulae" aria-hidden="true">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 160" fill="none">
-              <!-- Technical Molecular Mesh Background -->
-              <g stroke="currentColor" stroke-width="1" opacity="0.08">
-                <!-- Hexagonal benzoid web layout -->
-                <polygon points="120,40 140,51.5 140,75 120,86.5 100,75 100,51.5" />
-                <polygon points="140,51.5 160,40 180,51.5 180,75 160,86.5 140,75" />
-                <polygon points="140,75 160,86.5 160,110 140,121.5 120,110 120,86.5" />
-                <polygon points="100,75 120,86.5 120,110 100,121.5 80,110 80,86.5" />
-                <!-- Connecting lines -->
-                <line x1="120" y1="40" x2="120" y2="10" />
-                <line x1="160" y1="40" x2="160" y2="10" />
-                <line x1="100" y1="51.5" x2="70" y2="35" />
-                <line x1="180" y1="51.5" x2="210" y2="35" />
-              </g>
-
-              <!-- Central Left: Orbiting Atomic Core (Animated Chem Ring) -->
-              <g class="animate-chem-ring" style="transform-origin: 80px 80px;">
-                <!-- Elliptical electron shells -->
-                <ellipse cx="80" cy="80" rx="42" ry="12" stroke="currentColor" stroke-width="1.2" transform="rotate(35 80 80)" opacity="0.4" />
-                <ellipse cx="80" cy="80" rx="42" ry="12" stroke="currentColor" stroke-width="1.2" transform="rotate(-35 80 80)" opacity="0.4" />
-                <ellipse cx="80" cy="80" rx="42" ry="12" stroke="currentColor" stroke-width="1.2" transform="rotate(90 80 80)" opacity="0.2" />
-                <!-- Nucleus sphere and protons -->
-                <circle cx="80" cy="80" r="8" fill="currentColor" opacity="0.2" />
-                <circle cx="77" cy="78" r="4.5" fill="currentColor" />
-                <circle cx="84" cy="82" r="4" fill="currentColor" opacity="0.8" />
-                <circle cx="79" cy="83" r="3.5" fill="currentColor" />
-                <!-- Electrons orbiting -->
-                <circle cx="45" cy="55" r="2.5" fill="currentColor" />
-                <circle cx="115" cy="105" r="2.5" fill="currentColor" />
-                <circle cx="112" cy="58" r="2" fill="currentColor" />
-              </g>
-
-              <!-- Central Right: Animated laboratory chemical beaker/flask -->
-              <g stroke="currentColor" stroke-width="2" stroke-linejoin="round">
-                <!-- Upper Neck & Rim -->
-                <path d="M210 40h20" stroke-width="2.5" />
-                <path d="M215 40v20l-25 45a8 8 0 0 0 7 12h46a8 8 0 0 0 7-12l-25-45V40" fill="currentColor" fill-opacity="0.05" />
-                <!-- Waves liquid boundary -->
-                <path d="M196 95c6-1.5 12 1.5 18 .5s12-1.5 18-.5s6 1 12 0" stroke-width="1.5" fill="none" opacity="0.75" />
-              </g>
-              <!-- Inside Fluid styling -->
-              <path d="M195 99 L197 105a8 8 0 0 0 7 12h46a8 8 0 0 0 7-12l2-6 Z" fill="currentColor" opacity="0.12" />
-
-              <!-- Molecular particles bubbling inside (Continuous staggered ascending nodes) -->
-              <circle cx="212" cy="108" r="2" fill="currentColor" class="bubble-1" />
-              <circle cx="228" cy="90" r="3" fill="currentColor" class="bubble-2" />
-              <circle cx="218" cy="75" r="1.5" fill="currentColor" class="bubble-3" />
-              <circle cx="224" cy="55" r="2" fill="currentColor" class="bubble-1" style="animation-delay: 1.5s;" />
-
-              <!-- Physics Equations & Chemical Formulas Overlay -->
-              <text x="15" y="40" font-family="monospace" font-size="10.5" font-weight="black" fill="currentColor">E = mc²</text>
-              <text x="252" y="45" font-family="monospace" font-size="9" font-weight="black" fill="currentColor" opacity="0.65">H₂O ⇌ H⁺+OH⁻</text>
-              <text x="135" y="140" font-family="monospace" font-size="10.5" font-weight="black" fill="currentColor">F = m · a</text>
-              <text x="15" y="130" font-family="monospace" font-size="9.5" font-weight="black" fill="currentColor" opacity="0.5">PV = nRT</text>
-            </svg>
-            <!-- Auto-rotating Scientific & Chemistry Core Formulas -->
-            <div class="ticker-box" id="ticker-formulae">
-              <span class="status-dot"></span>
-              <span class="ticker-text active">Formula Loading...</span>
-            </div>
-          </div>
-          <div class="blog-card__body">
-            <span class="blog-card__tag">Formula Hub</span>
-            <h2 class="blog-card__title">All Formulae</h2>
-            <p class="blog-card__desc">Physics, Maths &amp; Chemistry formulas for quick revision</p>
-          </div>
-        </a>
-
-        <!-- 4. Vyakaran & Vocab -->
-        <a href="/learn/vyakaran/" class="blog-card reveal">
-          <div class="blog-card__thumb blog-card__thumb--language" aria-hidden="true">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 160" fill="none">
-              <!-- Grid background representing school notebook margins -->
-              <g stroke="currentColor" stroke-width="1" opacity="0.08">
-                <line x1="0" y1="30" x2="320" y2="30" />
-                <line x1="0" y1="60" x2="320" y2="60" />
-                <line x1="0" y1="90" x2="320" y2="90" />
-                <line x1="0" y1="120" x2="320" y2="120" />
-                <line x1="50" y1="0" x2="50" y2="160" stroke-width="1.5" />
-              </g>
-
-              <!-- Central Left: Luxury Majestic Open Book -->
-              <g stroke="currentColor" stroke-width="2" stroke-linejoin="round">
-                <!-- Book Covers & Leaves background -->
-                <path d="M45 110c12-3 26-5 40 1c14-6 28-4 40-1l4-64c-12-3-26-5-40 1c-14-6-28-4-40-1z" fill="currentColor" fill-opacity="0.05" />
-                <!-- Spine partition -->
-                <line x1="85" y1="52" x2="85" y2="111" stroke-width="2.5" />
-                <!-- Paper text lines simulator lines -->
-                <line x1="54" y1="62" x2="76" y2="62" stroke-width="1.2" opacity="0.5" />
-                <line x1="54" y1="72" x2="76" y2="72" stroke-width="1.2" opacity="0.5" />
-                <line x1="54" y1="82" x2="76" y2="82" stroke-width="1.2" opacity="0.5" />
-                <line x1="54" y1="92" x2="70" y2="92" stroke-width="1.2" opacity="0.5" />
-
-                <line x1="94" y1="62" x2="116" y2="62" stroke-width="1.2" opacity="0.5" />
-                <line x1="94" y1="72" x2="116" y2="72" stroke-width="1.2" opacity="0.5" />
-                <line x1="94" y1="82" x2="116" y2="82" stroke-width="1.2" opacity="0.5" />
-                <line x1="94" y1="92" x2="110" y2="92" stroke-width="1.2" opacity="0.5" />
-              </g>
-
-              <!-- Glowing Calligraphic Alphabets & Ink Splashes -->
-              <!-- Hindi Devnagari "अ" -->
-              <text x="155" y="60" font-family="serif" font-size="28" font-weight="900" fill="currentColor" opacity="0.85">अ</text>
-              <!-- Hindi Devnagari "क" -->
-              <text x="180" y="115" font-family="serif" font-size="25" font-weight="800" fill="currentColor" opacity="0.65">क</text>
-              <!-- Sanskrit Word Signifying Grammar / Words -->
-              <text x="145" y="145" font-family="serif" font-size="11" font-weight="bold" fill="currentColor" opacity="0.45" letter-spacing="1">व्याकरणम्</text>
-              <!-- English 'A' / Vocabulary representing bilingual prep -->
-              <text x="270" y="130" font-family="serif" font-size="22" font-weight="900" fill="currentColor" opacity="0.4">Ω</text>
-
-              <!-- Central Right: Calligraphy Quill Ink Pen drafting text (Animated) -->
-              <g class="animate-quill" style="transform-origin: 242px 75px;">
-                <!-- Feather Shaft & Pen Body -->
-                <path d="M285 30 C275 45 258 60 242 75 L238 79 L235 83 L239 82 L244 80 L260 64 C276 48 290 38 295 33 Z" fill="currentColor" opacity="0.2" />
-                <!-- Pen nib line -->
-                <path d="M285 30 C275 45 258 60 242 75 L238 79 L235 83 L239 82 L244 80 L260 64 C276 48 290 38 295 33 Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" />
-                <path d="M239 82l2-2" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
-                <!-- Glowing tip drop of ink -->
-                <circle cx="234" cy="84" r="1.5" fill="currentColor" />
-              </g>
-              
-              <!-- Floating calligraphic strokes behind feather -->
-              <path d="M210 95 Q 225 80, 235 84 T 255 75" stroke="currentColor" stroke-width="1.5" stroke-dasharray="2 2" stroke-linecap="round" opacity="0.6" />
-            </svg>
-            <!-- Auto-rotating Hindi Vyakaran Grammar & Vocabulary Rules -->
-            <div class="ticker-box" id="ticker-vyakaran">
-              <span class="status-dot"></span>
-              <span class="ticker-text active">Vyakaran Loading...</span>
-            </div>
-          </div>
-          <div class="blog-card__body">
-            <span class="blog-card__tag">Language</span>
-            <h2 class="blog-card__title">Vyakaran &amp; Vocab</h2>
-            <p class="blog-card__desc">Complete Hindi Vyakaran, Synonyms and Antonyms</p>
-          </div>
-        </a>
-
-         <!-- 5. Conversion Hub -->
-        <a href="/learn/conversion/" class="blog-card reveal reveal-delay-1">
-          <div class="blog-card__thumb blog-card__thumb--conversion" aria-hidden="true">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 160" fill="none">
-              <!-- Technical Mechanical Drafting Blueprint Grid -->
-              <g stroke="currentColor" stroke-width="1" opacity="0.08">
-                <!-- Circular measuring guidelines -->
-                <circle cx="160" cy="80" r="40" />
-                <circle cx="160" cy="80" r="70" stroke-dasharray="4 2" />
-                <line x1="0" y1="80" x2="320" y2="80" />
-                <line x1="160" y1="0" x2="160" y2="160" />
-                <line x1="40" y1="40" x2="280" y2="140" stroke-dasharray="3 3" />
-                <line x1="40" y1="120" x2="280" y2="40" stroke-dasharray="3 3" />
-              </g>
-
-              <!-- Dynamic cyclical transfer arrow loops -->
-              <path d="M35 105 A 72 72 0 0 1 285 55" stroke="currentColor" stroke-width="1.8" stroke-dasharray="4 3" stroke-linecap="round" opacity="0.45" />
-              <path d="M285 55l-8-6m8 6l-1 10" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" opacity="0.8" />
-
-              <path d="M285 55 A 72 72 0 0 1 35 105" stroke="currentColor" stroke-width="1.8" stroke-dasharray="4 3" stroke-linecap="round" opacity="0.45" />
-              <path d="M35 105l8 6m-8-6l1-10" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" opacity="0.8" />
-
-              <!-- Left Side: Large Driving Gear (Animated) -->
-              <g class="animate-gear-large" style="transform-origin: 105px 85px;">
-                <circle cx="105" cy="85" r="22" stroke="currentColor" stroke-width="2.5" fill="currentColor" fill-opacity="0.05" />
-                <circle cx="105" cy="85" r="10" stroke="currentColor" stroke-width="1.5" stroke-dasharray="3 2" />
-                <!-- Gear teeth teeth points -->
-                <path d="M105 53 v10 M105 107 v10 M73 85 h10 M137 85 h10 M82 62 l7 7 M121 101 l7 7 M82 108 l7-7 M121 69 l7-7" stroke="currentColor" stroke-width="4.5" stroke-linecap="round" />
-              </g>
-
-              <!-- Center-Top: Medium Driven Gear (Animated Counter Spinner) -->
-              <g class="animate-gear-small" style="transform-origin: 153px 52px;">
-                <circle cx="153" cy="52" r="14" stroke="currentColor" stroke-width="2" fill="currentColor" fill-opacity="0.05" />
-                <!-- Gear teeth teeth points -->
-                <path d="M153 32 v6 M153 66 v6 M133 52 h6 M167 52 h6 M139 38 l4 4 M163 62 l4 4 M139 66 l4-4 M163 38 l4-4" stroke="currentColor" stroke-width="3" stroke-linecap="round" />
-              </g>
-
-              <!-- Center-Bottom: Small Auxiliary Gear (Animated Clockwise Spinner) -->
-              <g class="animate-gear-large" style="transform-origin: 195px 95px;">
-                <circle cx="195" cy="95" r="10" stroke="currentColor" stroke-width="1.8" fill="currentColor" fill-opacity="0.05" />
-                <!-- Gear teeth teeth points -->
-                <path d="M195 81 v4 M195 105 v4 M181 95 h4 M209 95 h4" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" />
-              </g>
-
-              <!-- Floating Conversion Metrics Scale & Units Labels -->
-              <!-- Celsius <-> Fahrenheit -->
-              <text x="35" y="45" font-family="monospace" font-size="10" font-weight="black" fill="currentColor" opacity="0.85">°C ⇄ °F</text>
-              <!-- Kilograms <-> Pounds -->
-              <text x="245" y="115" font-family="monospace" font-size="10" font-weight="black" fill="currentColor" opacity="0.85">Kg ⇄ Lb</text>
-              <!-- Miles <-> Kilometers -->
-              <text x="250" y="45" font-family="monospace" font-size="9" font-weight="black" fill="currentColor" opacity="0.5">Mi ⇄ Km</text>
-              <!-- Digital Storage limits -->
-              <text x="35" y="135" font-family="monospace" font-size="9.5" font-weight="black" fill="currentColor" opacity="0.6">1 GB = 1024 MB</text>
-            </svg>
-            <!-- Auto-rotating Weight, Speed, Temperature Unit Conversions -->
-            <div class="ticker-box" id="ticker-conversion">
-              <span class="status-dot"></span>
-              <span class="ticker-text active">Conversion Loading...</span>
-            </div>
-          </div>
-          <div class="blog-card__body">
-            <span class="blog-card__tag">Quick Tools</span>
-            <h2 class="blog-card__title">Conversion Hub</h2>
-            <p class="blog-card__desc">Unit &amp; data conversion tables for fast calculations</p>
-          </div>
-        </a>
-
+      <div class="quiz-stats">
+        <div>
+          <div class="quiz-stat__num">33</div>
+          <div class="quiz-stat__label">Categories</div>
+        </div>
+        <div>
+          <div class="quiz-stat__num" id="total-global-questions">0+</div>
+          <div class="quiz-stat__label">Questions</div>
+        </div>
+        <div>
+          <div class="quiz-stat__num">Free</div>
+          <div class="quiz-stat__label">Forever</div>
+        </div>
       </div>
     </div>
-  </section>
+  </div>
+
+  <div class="quiz-content">
+
+    <div style="max-width:480px; margin:0 auto var(--space-8); position:relative;">
+      <span style="position:absolute;left:16px;top:50%;transform:translateY(-50%);color:var(--clr-text-3);">🔍</span>
+      <input type="search" id="quiz-search-input"
+             style="width:100%;padding:var(--space-3) var(--space-5) var(--space-3) 44px;background:var(--clr-surface);border:1.5px solid var(--clr-border-2);border-radius:var(--radius-full);font-family:var(--font-body);font-size:var(--fs-base);color:var(--clr-text);outline:none;"
+             placeholder="Search categories...">
+    </div>
+
+    <div data-lang-section="en">
+      <div class="quiz-section">
+        <h2 class="quiz-section__title">🏆 Exam Corner</h2>
+        <div class="exam-corner">
+          <a href="{{ site.url }}/gk-quiz/ssc/" class="exam-card">
+            <div class="exam-card__icon">🎯</div>
+            <div class="exam-card__name">SSC Exams</div>
+            <div class="exam-card__desc">CGL, CHSL, MTS — practice topic-wise</div>
+          </a>
+          <a href="{{ site.url }}/gk-quiz/banking/" class="exam-card">
+            <div class="exam-card__icon">🏦</div>
+            <div class="exam-card__name">Banking</div>
+            <div class="exam-card__desc">IBPS PO, Clerk, SBI — curated GK sets</div>
+          </a>
+          <a href="{{ site.url }}/gk-quiz/railway/" class="exam-card">
+            <div class="exam-card__icon">🚆</div>
+            <div class="exam-card__name">Railway</div>
+            <div class="exam-card__desc">RRB NTPC, Group D — GK practice</div>
+          </a>
+          <a href="{{ site.url }}/gk-quiz/upsc/" class="exam-card">
+            <div class="exam-card__icon">🏛️</div>
+            <div class="exam-card__name">UPSC</div>
+            <div class="exam-card__desc">Prelims GK — History, Polity, Economy</div>
+          </a>
+        </div>
+      </div>
+
+      <div class="quiz-section">
+        <h2 class="quiz-section__title">📚 All Quiz Topics</h2>
+        <div class="quiz-grid">
+
+          <a href="{{ site.url }}/gk-quiz/ancient-indian-history/" class="quiz-cat-card" data-quiz-file="ancient-indian-history" data-quiz-lang="en">
+            <div class="quiz-cat-card__icon">🏛️</div>
+            <div class="quiz-cat-card__content">
+              <div class="quiz-cat-card__name">Ancient Indian History</div>
+              <div class="quiz-cat-card__count js-quiz-count">Loading...</div>
+            </div>
+            <span class="quiz-cat-card__arrow">→</span>
+          </a>
+
+          <a href="{{ site.url }}/gk-quiz/medieval-indian-history/" class="quiz-cat-card" data-quiz-file="medieval-history" data-quiz-lang="en">
+            <div class="quiz-cat-card__icon">🕌</div>
+            <div class="quiz-cat-card__content">
+              <div class="quiz-cat-card__name">Medieval Indian History</div>
+              <div class="quiz-cat-card__count js-quiz-count">Loading...</div>
+            </div>
+            <span class="quiz-cat-card__arrow">→</span>
+          </a>
+
+          <a href="{{ site.url }}/gk-quiz/modern-indian-history/" class="quiz-cat-card" data-quiz-file="modern-history" data-quiz-lang="en">
+            <div class="quiz-cat-card__icon">🇮🇳</div>
+            <div class="quiz-cat-card__content">
+              <div class="quiz-cat-card__name">Modern Indian History</div>
+              <div class="quiz-cat-card__count js-quiz-count">Loading...</div>
+            </div>
+            <span class="quiz-cat-card__arrow">→</span>
+          </a>
+
+          <a href="{{ site.url }}/gk-quiz/world-history/" class="quiz-cat-card" data-quiz-file="world-history" data-quiz-lang="en">
+            <div class="quiz-cat-card__icon">🌍</div>
+            <div class="quiz-cat-card__content">
+              <div class="quiz-cat-card__name">World History</div>
+              <div class="quiz-cat-card__count js-quiz-count">Loading...</div>
+            </div>
+            <span class="quiz-cat-card__arrow">→</span>
+          </a>
+
+          <a href="{{ site.url }}/gk-quiz/indian-constitution/" class="quiz-cat-card" data-quiz-file="indian-constitution" data-quiz-lang="en">
+            <div class="quiz-cat-card__icon">⚖️</div>
+            <div class="quiz-cat-card__content">
+              <div class="quiz-cat-card__name">Indian Government & Constitution</div>
+              <div class="quiz-cat-card__count js-quiz-count">Loading...</div>
+            </div>
+            <span class="quiz-cat-card__arrow">→</span>
+          </a>
+
+          <a href="{{ site.url }}/gk-quiz/indian-economy/" class="quiz-cat-card" data-quiz-file="indian-economy" data-quiz-lang="en">
+            <div class="quiz-cat-card__icon">💰</div>
+            <div class="quiz-cat-card__content">
+              <div class="quiz-cat-card__name">Indian Economy</div>
+              <div class="quiz-cat-card__count js-quiz-count">Loading...</div>
+            </div>
+            <span class="quiz-cat-card__arrow">→</span>
+          </a>
+
+          <a href="{{ site.url }}/gk-quiz/environment/" class="quiz-cat-card" data-quiz-file="environment" data-quiz-lang="en">
+            <div class="quiz-cat-card__icon">🌿</div>
+            <div class="quiz-cat-card__content">
+              <div class="quiz-cat-card__name">Environment & Biodiversity</div>
+              <div class="quiz-cat-card__count js-quiz-count">Loading...</div>
+            </div>
+            <span class="quiz-cat-card__arrow">→</span>
+          </a>
+
+          <a href="{{ site.url }}/gk-quiz/indian-art-culture/" class="quiz-cat-card" data-quiz-file="indian-art-culture" data-quiz-lang="en">
+            <div class="quiz-cat-card__icon">🎭</div>
+            <div class="quiz-cat-card__content">
+              <div class="quiz-cat-card__name">Indian Art & Culture</div>
+              <div class="quiz-cat-card__count js-quiz-count">Loading...</div>
+            </div>
+            <span class="quiz-cat-card__arrow">→</span>
+          </a>
+
+          <a href="{{ site.url }}/gk-quiz/physics/" class="quiz-cat-card" data-quiz-file="physics" data-quiz-lang="en">
+            <div class="quiz-cat-card__icon">⚡</div>
+            <div class="quiz-cat-card__content">
+              <div class="quiz-cat-card__name">Physics</div>
+              <div class="quiz-cat-card__count js-quiz-count">Loading...</div>
+            </div>
+            <span class="quiz-cat-card__arrow">→</span>
+          </a>
+
+          <a href="{{ site.url }}/gk-quiz/chemistry/" class="quiz-cat-card" data-quiz-file="chemistry" data-quiz-lang="en">
+            <div class="quiz-cat-card__icon">🧪</div>
+            <div class="quiz-cat-card__content">
+              <div class="quiz-cat-card__name">Chemistry</div>
+              <div class="quiz-cat-card__count js-quiz-count">Loading...</div>
+            </div>
+            <span class="quiz-cat-card__arrow">→</span>
+          </a>
+
+          <a href="{{ site.url }}/gk-quiz/mathematics/" class="quiz-cat-card" data-quiz-file="mathematics" data-quiz-lang="en">
+            <div class="quiz-cat-card__icon">🔢</div>
+            <div class="quiz-cat-card__content">
+              <div class="quiz-cat-card__name">Mathematics</div>
+              <div class="quiz-cat-card__count js-quiz-count">Loading...</div>
+            </div>
+            <span class="quiz-cat-card__arrow">→</span>
+          </a>
+
+          <a href="{{ site.url }}/gk-quiz/biology/" class="quiz-cat-card" data-quiz-file="biology" data-quiz-lang="en">
+            <div class="quiz-cat-card__icon">🧬</div>
+            <div class="quiz-cat-card__content">
+              <div class="quiz-cat-card__name">Biology</div>
+              <div class="quiz-cat-card__count js-quiz-count">Loading...</div>
+            </div>
+            <span class="quiz-cat-card__arrow">→</span>
+          </a>
+
+          <a href="{{ site.url }}/gk-quiz/computer/" class="quiz-cat-card" data-quiz-file="computer" data-quiz-lang="en">
+            <div class="quiz-cat-card__icon">💻</div>
+            <div class="quiz-cat-card__content">
+              <div class="quiz-cat-card__name">Computer</div>
+              <div class="quiz-cat-card__count js-quiz-count">Loading...</div>
+            </div>
+            <span class="quiz-cat-card__arrow">→</span>
+          </a>
+
+          <a href="{{ site.url }}/gk-quiz/sanskrit/" class="quiz-cat-card" data-quiz-file="sanskrit" data-quiz-lang="en">
+            <div class="quiz-cat-card__icon">📜</div>
+            <div class="quiz-cat-card__content">
+              <div class="quiz-cat-card__name">Sanskrit</div>
+              <div class="quiz-cat-card__count js-quiz-count">Loading...</div>
+            </div>
+            <span class="quiz-cat-card__arrow">→</span>
+          </a>
+
+          <a href="{{ site.url }}/gk-quiz/science-technology/" class="quiz-cat-card" data-quiz-file="science-technology" data-quiz-lang="en">
+            <div class="quiz-cat-card__icon">🔬</div>
+            <div class="quiz-cat-card__content">
+              <div class="quiz-cat-card__name">Science & Technology</div>
+              <div class="quiz-cat-card__count js-quiz-count">Loading...</div>
+            </div>
+            <span class="quiz-cat-card__arrow">→</span>
+          </a>
+
+          <a href="{{ site.url }}/gk-quiz/books-authors/" class="quiz-cat-card" data-quiz-file="books-authors" data-quiz-lang="en">
+            <div class="quiz-cat-card__icon">📚</div>
+            <div class="quiz-cat-card__content">
+              <div class="quiz-cat-card__name">Books & Authors</div>
+              <div class="quiz-cat-card__count js-quiz-count">Loading...</div>
+            </div>
+            <span class="quiz-cat-card__arrow">→</span>
+          </a>
+
+          <a href="{{ site.url }}/gk-quiz/sports/" class="quiz-cat-card" data-quiz-file="sports" data-quiz-lang="en">
+            <div class="quiz-cat-card__icon">🏆</div>
+            <div class="quiz-cat-card__content">
+              <div class="quiz-cat-card__name">Sports General Knowledge</div>
+              <div class="quiz-cat-card__count js-quiz-count">Loading...</div>
+            </div>
+            <span class="quiz-cat-card__arrow">→</span>
+          </a>
+
+          <a href="{{ site.url }}/gk-quiz/famous-personalities/" class="quiz-cat-card" data-quiz-file="famous-personalities" data-quiz-lang="en">
+            <div class="quiz-cat-card__icon">👤</div>
+            <div class="quiz-cat-card__content">
+              <div class="quiz-cat-card__name">Famous Personalities</div>
+              <div class="quiz-cat-card__count js-quiz-count">Loading...</div>
+            </div>
+            <span class="quiz-cat-card__arrow">→</span>
+          </a>
+
+          <a href="{{ site.url }}/gk-quiz/technology-inventions/" class="quiz-cat-card" data-quiz-file="technology-inventions" data-quiz-lang="en">
+            <div class="quiz-cat-card__icon">💡</div>
+            <div class="quiz-cat-card__content">
+              <div class="quiz-cat-card__name">Technology & Inventions</div>
+              <div class="quiz-cat-card__count js-quiz-count">Loading...</div>
+            </div>
+            <span class="quiz-cat-card__arrow">→</span>
+          </a>
+
+          <a href="{{ site.url }}/gk-quiz/space-universe/" class="quiz-cat-card" data-quiz-file="space-universe" data-quiz-lang="en">
+            <div class="quiz-cat-card__icon">🚀</div>
+            <div class="quiz-cat-card__content">
+              <div class="quiz-cat-card__name">Space & Universe</div>
+              <div class="quiz-cat-card__count js-quiz-count">Loading...</div>
+            </div>
+            <span class="quiz-cat-card__arrow">→</span>
+          </a>
+
+          <a href="{{ site.url }}/gk-quiz/indian-geography/" class="quiz-cat-card" data-quiz-file="indian-geography" data-quiz-lang="en">
+            <div class="quiz-cat-card__icon">🗺️</div>
+            <div class="quiz-cat-card__content">
+              <div class="quiz-cat-card__name">Indian Geography</div>
+              <div class="quiz-cat-card__count js-quiz-count">Loading...</div>
+            </div>
+            <span class="quiz-cat-card__arrow">→</span>
+          </a>
+
+          <a href="{{ site.url }}/gk-quiz/world-geography/" class="quiz-cat-card" data-quiz-file="world-geography" data-quiz-lang="en">
+            <div class="quiz-cat-card__icon">🌐</div>
+            <div class="quiz-cat-card__content">
+              <div class="quiz-cat-card__name">World Geography</div>
+              <div class="quiz-cat-card__count js-quiz-count">Loading...</div>
+            </div>
+            <span class="quiz-cat-card__arrow">→</span>
+          </a>
+
+          <a href="{{ site.url }}/gk-quiz/indian-festivals/" class="quiz-cat-card" data-quiz-file="indian-festivals" data-quiz-lang="en">
+            <div class="quiz-cat-card__icon">🪔</div>
+            <div class="quiz-cat-card__content">
+              <div class="quiz-cat-card__name">Indian Festivals & Traditions</div>
+              <div class="quiz-cat-card__count js-quiz-count">Loading...</div>
+            </div>
+            <span class="quiz-cat-card__arrow">→</span>
+          </a>
+
+          <a href="{{ site.url }}/gk-quiz/world-organizations/" class="quiz-cat-card" data-quiz-file="world-organizations" data-quiz-lang="en">
+            <div class="quiz-cat-card__icon">🤝</div>
+            <div class="quiz-cat-card__content">
+              <div class="quiz-cat-card__name">World Organizations</div>
+              <div class="quiz-cat-card__count js-quiz-count">Loading...</div>
+            </div>
+            <span class="quiz-cat-card__arrow">→</span>
+          </a>
+
+          <a href="{{ site.url }}/gk-quiz/international-relations/" class="quiz-cat-card" data-quiz-file="international-relations" data-quiz-lang="en">
+            <div class="quiz-cat-card__icon">🌏</div>
+            <div class="quiz-cat-card__content">
+              <div class="quiz-cat-card__name">International Relations</div>
+              <div class="quiz-cat-card__count js-quiz-count">Loading...</div>
+            </div>
+            <span class="quiz-cat-card__arrow">→</span>
+          </a>
+
+          <a href="{{ site.url }}/gk-quiz/awards-honors/" class="quiz-cat-card" data-quiz-file="awards-honors" data-quiz-lang="en">
+            <div class="quiz-cat-card__icon">🏅</div>
+            <div class="quiz-cat-card__content">
+              <div class="quiz-cat-card__name">Awards & Honors</div>
+              <div class="quiz-cat-card__count js-quiz-count">Loading...</div>
+            </div>
+            <span class="quiz-cat-card__arrow">→</span>
+          </a>
+
+          <a href="{{ site.url }}/gk-quiz/indian-defense/" class="quiz-cat-card" data-quiz-file="indian-defense" data-quiz-lang="en">
+            <div class="quiz-cat-card__icon">🛡️</div>
+            <div class="quiz-cat-card__content">
+              <div class="quiz-cat-card__name">Indian Defense</div>
+              <div class="quiz-cat-card__count js-quiz-count">Loading...</div>
+            </div>
+            <span class="quiz-cat-card__arrow">→</span>
+          </a>
+
+          <a href="{{ site.url }}/gk-quiz/important-dates/" class="quiz-cat-card" data-quiz-file="important-dates" data-quiz-lang="en">
+            <div class="quiz-cat-card__icon">📅</div>
+            <div class="quiz-cat-card__content">
+              <div class="quiz-cat-card__name">Important Dates & Events</div>
+              <div class="quiz-cat-card__count js-quiz-count">Loading...</div>
+            </div>
+            <span class="quiz-cat-card__arrow">→</span>
+          </a>
+
+          <a href="{{ site.url }}/gk-quiz/transport/" class="quiz-cat-card" data-quiz-file="transport" data-quiz-lang="en">
+            <div class="quiz-cat-card__icon">🚆</div>
+            <div class="quiz-cat-card__content">
+              <div class="quiz-cat-card__name">Transport & Communication</div>
+              <div class="quiz-cat-card__count js-quiz-count">Loading...</div>
+            </div>
+            <span class="quiz-cat-card__arrow">→</span>
+          </a>
+
+          <a href="{{ site.url }}/gk-quiz/famous-monuments/" class="quiz-cat-card" data-quiz-file="famous-monuments" data-quiz-lang="en">
+            <div class="quiz-cat-card__icon">🏯</div>
+            <div class="quiz-cat-card__content">
+              <div class="quiz-cat-card__name">Famous Monuments</div>
+              <div class="quiz-cat-card__count js-quiz-count">Loading...</div>
+            </div>
+            <span class="quiz-cat-card__arrow">→</span>
+          </a>
+
+          <a href="{{ site.url }}/gk-quiz/wildlife/" class="quiz-cat-card" data-quiz-file="wildlife" data-quiz-lang="en">
+            <div class="quiz-cat-card__icon">🐯</div>
+            <div class="quiz-cat-card__content">
+              <div class="quiz-cat-card__name">Wildlife & National Parks</div>
+              <div class="quiz-cat-card__count js-quiz-count">Loading...</div>
+            </div>
+            <span class="quiz-cat-card__arrow">→</span>
+          </a>
+
+          <a href="{{ site.url }}/gk-quiz/rivers/" class="quiz-cat-card" data-quiz-file="rivers" data-quiz-lang="en">
+            <div class="quiz-cat-card__icon">🏞️</div>
+            <div class="quiz-cat-card__content">
+              <div class="quiz-cat-card__name">Rivers & Lakes</div>
+              <div class="quiz-cat-card__count js-quiz-count">Loading...</div>
+            </div>
+            <span class="quiz-cat-card__arrow">→</span>
+          </a>
+
+          <a href="{{ site.url }}/gk-quiz/disasters/" class="quiz-cat-card" data-quiz-file="disasters" data-quiz-lang="en">
+            <div class="quiz-cat-card__icon">⚠️</div>
+            <div class="quiz-cat-card__content">
+              <div class="quiz-cat-card__name">Disasters & Accidents</div>
+              <div class="quiz-cat-card__count js-quiz-count">Loading...</div>
+            </div>
+            <span class="quiz-cat-card__arrow">→</span>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div data-lang-section="hi" style="display:none;">
+      <div class="quiz-section">
+        <h2 class="quiz-section__title">🏆 परीक्षा कॉर्नर</h2>
+        <div class="exam-corner">
+          <a href="{{ site.url }}/gk-quiz/hi/ssc/" class="exam-card">
+            <div class="exam-corner__icon">🎯</div>
+            <div class="exam-card__name">SSC परीक्षा</div>
+            <div class="exam-card__desc">CGL, CHSL, MTS — विषयवार अभ्यास</div>
+          </a>
+          <a href="{{ site.url }}/gk-quiz/hi/banking/" class="exam-card">
+            <div class="exam-corner__icon">🏦</div>
+            <div class="exam-card__name">बैंकिंग</div>
+            <div class="exam-card__desc">IBPS PO, Clerk, SBI — GK प्रश्न</div>
+          </a>
+          <a href="{{ site.url }}/gk-quiz/hi/railway/" class="exam-card">
+            <div class="exam-corner__icon">🚆</div>
+            <div class="exam-card__name">रेलवे</div>
+            <div class="exam-card__desc">RRB NTPC, Group D — GK अभ्यास</div>
+          </a>
+          <a href="{{ site.url }}/gk-quiz/hi/upsc/" class="exam-card">
+            <div class="exam-corner__icon">🏛️</div>
+            <div class="exam-card__name">UPSC</div>
+            <div class="exam-card__desc">Prelims GK — इतिहास, राजव्यवस्था</div>
+          </a>
+        </div>
+      </div>
+
+      <div class="quiz-section">
+        <h2 class="quiz-section__title">📚 सभी विषय</h2>
+        <div class="quiz-grid">
+
+          <a href="{{ site.url }}/hi/gk-quiz/prachin-bharatiya-itihas/" class="quiz-cat-card" data-quiz-file="ancient-indian-history" data-quiz-lang="hi">
+            <div class="quiz-cat-card__icon">🏛️</div>
+            <div class="quiz-cat-card__content">
+              <div class="quiz-cat-card__name">प्राचीन भारतीय इतिहास</div>
+              <div class="quiz-cat-card__count js-quiz-count">Loading...</div>
+            </div>
+            <span class="quiz-cat-card__arrow">→</span>
+          </a>
+
+          <a href="{{ site.url }}/hi/gk-quiz/madhyakalin-bharatiya-itihas/" class="quiz-cat-card" data-quiz-file="medieval-history" data-quiz-lang="hi">
+            <div class="quiz-cat-card__icon">🕌</div>
+            <div class="quiz-cat-card__content">
+              <div class="quiz-cat-card__name">मध्यकालीन भारतीय इतिहास</div>
+              <div class="quiz-cat-card__count js-quiz-count">Loading...</div>
+            </div>
+            <span class="quiz-cat-card__arrow">→</span>
+          </a>
+
+          <a href="{{ site.url }}/hi/gk-quiz/aadhunik-bharatiya-itihas/" class="quiz-cat-card" data-quiz-file="modern-history" data-quiz-lang="hi">
+            <div class="quiz-cat-card__icon">🇮🇳</div>
+            <div class="quiz-cat-card__content">
+              <div class="quiz-cat-card__name">आधुनिक भारतीय इतिहास</div>
+              <div class="quiz-cat-card__count js-quiz-count">Loading...</div>
+            </div>
+            <span class="quiz-cat-card__arrow">→</span>
+          </a>
+
+          <a href="{{ site.url }}/hi/gk-quiz/vishwa-itihas/" class="quiz-cat-card" data-quiz-file="world-history" data-quiz-lang="hi">
+            <div class="quiz-cat-card__icon">🌍</div>
+            <div class="quiz-cat-card__content">
+              <div class="quiz-cat-card__name">विश्व इतिहास</div>
+              <div class="quiz-cat-card__count js-quiz-count">Loading...</div>
+            </div>
+            <span class="quiz-cat-card__arrow">→</span>
+          </a>
+
+          <a href="{{ site.url }}/hi/gk-quiz/samvidhan/" class="quiz-cat-card" data-quiz-file="indian-constitution" data-quiz-lang="hi">
+            <div class="quiz-cat-card__icon">⚖️</div>
+            <div class="quiz-cat-card__content">
+              <div class="quiz-cat-card__name">भारतीय सरकार और संविधान</div>
+              <div class="quiz-cat-card__count js-quiz-count">Loading...</div>
+            </div>
+            <span class="quiz-cat-card__arrow">→</span>
+          </a>
+
+          <a href="{{ site.url }}/hi/gk-quiz/arthavyavastha/" class="quiz-cat-card" data-quiz-file="indian-economy" data-quiz-lang="hi">
+            <div class="quiz-cat-card__icon">💰</div>
+            <div class="quiz-cat-card__content">
+              <div class="quiz-cat-card__name">भारतीय अर्थव्यवस्था</div>
+              <div class="quiz-cat-card__count js-quiz-count">Loading...</div>
+            </div>
+            <span class="quiz-cat-card__arrow">→</span>
+          </a>
+
+          <a href="{{ site.url }}/hi/gk-quiz/paryavaran/" class="quiz-cat-card" data-quiz-file="environment" data-quiz-lang="hi">
+            <div class="quiz-cat-card__icon">🌿</div>
+            <div class="quiz-cat-card__content">
+              <div class="quiz-cat-card__name">पर्यावरण और जैव विविधता</div>
+              <div class="quiz-cat-card__count js-quiz-count">Loading...</div>
+            </div>
+            <span class="quiz-cat-card__arrow">→</span>
+          </a>
+
+          <a href="{{ site.url }}/hi/gk-quiz/kala-sanskriti/" class="quiz-cat-card" data-quiz-file="indian-art-culture" data-quiz-lang="hi">
+            <div class="quiz-cat-card__icon">🎭</div>
+            <div class="quiz-cat-card__content">
+              <div class="quiz-cat-card__name">भारतीय कला और संस्कृति</div>
+              <div class="quiz-cat-card__count js-quiz-count">Loading...</div>
+            </div>
+            <span class="quiz-cat-card__arrow">→</span>
+          </a>
+
+          <a href="{{ site.url }}/hi/gk-quiz/bhautiki/" class="quiz-cat-card" data-quiz-file="physics" data-quiz-lang="hi">
+            <div class="quiz-cat-card__icon">⚡</div>
+            <div class="quiz-cat-card__content">
+              <div class="quiz-cat-card__name">भौतिकी</div>
+              <div class="quiz-cat-card__count js-quiz-count">Loading...</div>
+            </div>
+            <span class="quiz-cat-card__arrow">→</span>
+          </a>
+
+          <a href="{{ site.url }}/hi/gk-quiz/rasayan/" class="quiz-cat-card" data-quiz-file="chemistry" data-quiz-lang="hi">
+            <div class="quiz-cat-card__icon">🧪</div>
+            <div class="quiz-cat-card__content">
+              <div class="quiz-cat-card__name">रसायन विज्ञान</div>
+              <div class="quiz-cat-card__count js-quiz-count">Loading...</div>
+            </div>
+            <span class="quiz-cat-card__arrow">→</span>
+          </a>
+
+          <a href="{{ site.url }}/hi/gk-quiz/ganit/" class="quiz-cat-card" data-quiz-file="mathematics" data-quiz-lang="hi">
+            <div class="quiz-cat-card__icon">🔢</div>
+            <div class="quiz-cat-card__content">
+              <div class="quiz-cat-card__name">गणित</div>
+              <div class="quiz-cat-card__count js-quiz-count">Loading...</div>
+            </div>
+            <span class="quiz-cat-card__arrow">→</span>
+          </a>
+
+          <a href="{{ site.url }}/hi/gk-quiz/jeev-vigyan/" class="quiz-cat-card" data-quiz-file="biology" data-quiz-lang="hi">
+            <div class="quiz-cat-card__icon">🧬</div>
+            <div class="quiz-cat-card__content">
+              <div class="quiz-cat-card__name">जीव विज्ञान</div>
+              <div class="quiz-cat-card__count js-quiz-count">Loading...</div>
+            </div>
+            <span class="quiz-cat-card__arrow">→</span>
+          </a>
+
+          <a href="{{ site.url }}/hi/gk-quiz/computer/" class="quiz-cat-card" data-quiz-file="computer" data-quiz-lang="hi">
+            <div class="quiz-cat-card__icon">💻</div>
+            <div class="quiz-cat-card__content">
+              <div class="quiz-cat-card__name">कंप्यूटर</div>
+              <div class="quiz-cat-card__count js-quiz-count">Loading...</div>
+            </div>
+            <span class="quiz-cat-card__arrow">→</span>
+          </a>
+
+          <a href="{{ site.url }}/hi/gk-quiz/vigyan-taknik/" class="quiz-cat-card" data-quiz-file="science-technology" data-quiz-lang="hi">
+            <div class="quiz-cat-card__icon">🔬</div>
+            <div class="quiz-cat-card__content">
+              <div class="quiz-cat-card__name">विज्ञान और प्रौद्योगिकी</div>
+              <div class="quiz-cat-card__count js-quiz-count">Loading...</div>
+            </div>
+            <span class="quiz-cat-card__arrow">→</span>
+          </a>
+
+          <a href="{{ site.url }}/hi/gk-quiz/khel/" class="quiz-cat-card" data-quiz-file="sports" data-quiz-lang="hi">
+            <div class="quiz-cat-card__icon">🏆</div>
+            <div class="quiz-cat-card__content">
+              <div class="quiz-cat-card__name">खेल सामान्य ज्ञान</div>
+              <div class="quiz-cat-card__count js-quiz-count">Loading...</div>
+            </div>
+            <span class="quiz-cat-card__arrow">→</span>
+          </a>
+
+          <a href="{{ site.url }}/hi/gk-quiz/antariksh/" class="quiz-cat-card" data-quiz-file="space-universe" data-quiz-lang="hi">
+            <div class="quiz-cat-card__icon">🚀</div>
+            <div class="quiz-cat-card__content">
+              <div class="quiz-cat-card__name">अंतरिक्ष और ब्रह्मांड</div>
+              <div class="quiz-cat-card__count js-quiz-count">Loading...</div>
+            </div>
+            <span class="quiz-cat-card__arrow">→</span>
+          </a>
+
+          <a href="{{ site.url }}/hi/gk-quiz/bhartiya-bhugol/" class="quiz-cat-card" data-quiz-file="indian-geography" data-quiz-lang="hi">
+            <div class="quiz-cat-card__icon">🗺️</div>
+            <div class="quiz-cat-card__content">
+              <div class="quiz-cat-card__name">भारतीय भूगोल</div>
+              <div class="quiz-cat-card__count js-quiz-count">Loading...</div>
+            </div>
+            <span class="quiz-cat-card__arrow">→</span>
+          </a>
+
+          <a href="{{ site.url }}/hi/gk-quiz/vishwa-bhugol/" class="quiz-cat-card" data-quiz-file="world-geography" data-quiz-lang="hi">
+            <div class="quiz-cat-card__icon">🌐</div>
+            <div class="quiz-cat-card__content">
+              <div class="quiz-cat-card__name">विश्व भूगोल</div>
+              <div class="quiz-cat-card__count js-quiz-count">Loading...</div>
+            </div>
+            <span class="quiz-cat-card__arrow">→</span>
+          </a>
+
+          <a href="{{ site.url }}/hi/gk-quiz/tyohar/" class="quiz-cat-card" data-quiz-file="indian-festivals" data-quiz-lang="hi">
+            <div class="quiz-cat-card__icon">🪔</div>
+            <div class="quiz-cat-card__content">
+              <div class="quiz-cat-card__name">भारतीय त्यौहार और परंपराएँ</div>
+              <div class="quiz-cat-card__count js-quiz-count">Loading...</div>
+            </div>
+            <span class="quiz-cat-card__arrow">→</span>
+          </a>
+
+          <a href="{{ site.url }}/hi/gk-quiz/puraskaar/" class="quiz-cat-card" data-quiz-file="awards-honors" data-quiz-lang="hi">
+            <div class="quiz-cat-card__icon">🏅</div>
+            <div class="quiz-cat-card__content">
+              <div class="quiz-cat-card__name">पुरस्कार और सम्मान</div>
+              <div class="quiz-cat-card__count js-quiz-count">Loading...</div>
+            </div>
+            <span class="quiz-cat-card__arrow">→</span>
+          </a>
+
+          <a href="{{ site.url }}/hi/gk-quiz/raksha/" class="quiz-cat-card" data-quiz-file="indian-defense" data-quiz-lang="hi">
+            <div class="quiz-cat-card__icon">🛡️</div>
+            <div class="quiz-cat-card__content">
+              <div class="quiz-cat-card__name">भारतीय रक्षा</div>
+              <div class="quiz-cat-card__count js-quiz-count">Loading...</div>
+            </div>
+            <span class="quiz-cat-card__arrow">→</span>
+          </a>
+
+          <a href="{{ site.url }}/hi/gk-quiz/nadiyan/" class="quiz-cat-card" data-quiz-file="rivers" data-quiz-lang="hi">
+            <div class="quiz-cat-card__icon">🏞️</div>
+            <div class="quiz-cat-card__content">
+              <div class="quiz-cat-card__name">नदियाँ और झीलें</div>
+              <div class="quiz-cat-card__count js-quiz-count">Loading...</div>
+            </div>
+            <span class="quiz-cat-card__arrow">→</span>
+          </a>
+
+          <a href="{{ site.url }}/hi/gk-quiz/vanya-jeev/" class="quiz-cat-card" data-quiz-file="wildlife" data-quiz-lang="hi">
+            <div class="quiz-cat-card__icon">🐯</div>
+            <div class="quiz-cat-card__content">
+              <div class="quiz-cat-card__name">वन्यजीव और राष्ट्रीय उद्यान</div>
+              <div class="quiz-cat-card__count js-quiz-count">Loading...</div>
+            </div>
+            <span class="quiz-cat-card__arrow">→</span>
+          </a>
+
+          <a href="{{ site.url }}/hi/gk-quiz/aapda/" class="quiz-cat-card" data-quiz-file="disasters" data-quiz-lang="hi">
+            <div class="quiz-cat-card__icon">⚠️</div>
+            <div class="quiz-cat-card__content">
+              <div class="quiz-cat-card__name">आपदाएँ और दुर्घटनाएँ</div>
+              <div class="quiz-cat-card__count js-quiz-count">Loading...</div>
+            </div>
+            <span class="quiz-cat-card__arrow">→</span>
+          </a>
+        </div>
+      </div>
+    </div>
+
+  </div>
 </div>
 
-<!-- Auto loop rotation scripts for maximum user experience -->
-<script>
-  document.addEventListener("DOMContentLoaded", function () {
-    // 1. All category item datasets matching the user requirement
-    const gkFacts = [
-      "Constitution has 448 Articles",
-      " Kaziranga: One-horned Rhinos",
-      "Sravana Belgola Monolithic Statue",
-      "RBI established in April 1935",
-      "Wular Lake: Largest fresh water",
-      "Quit India launched: Aug 1942",
-      "Sarnath: Lion Capital of Ashoka"
-    ];
-
-    const mathQuestions = [
-      "Solve: 3x - 7 = 11 ➜ x = 6",
-      "SI: P=₹2000, R=5%, T=2y ➜ SI=₹200",
-      "Speed: 72 km/h ➜ 20 m/s",
-      "Solve: log₂ 64 ➜ 6",
-      "If x+y=8, xy=15 ➜ x²+y²=34",
-      "Average: 10, 20, 30, 40, 50 ➜ 30",
-      "Solve: x² - 5x + 6 = 0 ➜ x = 2, 3"
-    ];
-
-    const formulas = [
-      "Energy: E = m · c²",
-      "Ohm's Law: V = I · R",
-      "Maths: a² + b² = c²",
-      "Benzene Ring: C₆H₆",
-      "Force: F = m · a",
-      "Water Ion: H₂O ⇌ H⁺ + OH⁻",
-      "Trig: sin²θ + cos²θ = 1"
-    ];
-
-    const vyakaranRules = [
-      "संधि: हिम + आलय = हिमालय (दीर्घ)",
-      "पर्यायवाची: सूर्य = रवि, दिनकर, भानु",
-      "समास: यथाशक्ति = शक्ति के अनुसार",
-      "विलोम शब्द: अमृत ↔ विष",
-      "अनेक शब्द: जो सब जानता हो = सर्वज्ञ",
-      "विभक्ति: कर्ता ने, कर्म को, करण से"
-    ];
-
-    const conversions = [
-      "Scale: 1 Kg = 2.204 Lbs",
-      "Scale: 1 Inch = 2.54 Cm",
-      "Scale: 1 Mile = 1.609 Km",
-      "Scale: 0°C = 32°F (Freezing)",
-      "Scale: 1 HP = 746 Watts",
-      "Scale: 1 Liter = 1000 mL",
-      "Scale: 1 GB = 1024 MB"
-    ];
-
-    // Helper function to handle seamless fade and scale transitions for each element
-    function setupCardTicker(elementId, dataset, intervalMs) {
-      const container = document.getElementById(elementId);
-      if (!container) return;
-      const textSpan = container.querySelector(".ticker-text");
-      if (!textSpan) return;
-
-      let currentIndex = 0;
-      
-      // Initialize with first item
-      textSpan.textContent = dataset[0];
-
-      setInterval(() => {
-        // Transition Out
-        textSpan.style.opacity = "0";
-        textSpan.style.transform = "translateY(-5px) scale(0.95)";
-
-        setTimeout(() => {
-          // Switch index
-          currentIndex = (currentIndex + 1) % dataset.length;
-          textSpan.textContent = dataset[currentIndex];
-          
-          // Transition In
-          textSpan.style.transform = "translateY(5px) scale(0.95)";
-          setTimeout(() => {
-            textSpan.style.opacity = "1";
-            textSpan.style.transform = "translateY(0) scale(1)";
-          }, 50);
-        }, 350); // wait for fadeout transition duration
-      }, intervalMs);
-    }
-
-    // Trigger sequential auto animations with staggered intervals for maximum professional look!
-    setupCardTicker("ticker-gk", gkFacts, 4500);         // 4.5s
-    setupCardTicker("ticker-maths", mathQuestions, 4000);   // 4.0s
-    setupCardTicker("ticker-formulae", formulas, 3500);       // 3.5s
-    setupCardTicker("ticker-vyakaran", vyakaranRules, 4200);   // 4.2s
-    setupCardTicker("ticker-conversion", conversions, 3800); // 3.8s
-  });
+<script id="jekyll-quiz-counts-repo" type="application/json">
+{
+  "en": {
+    "ancient-indian-history": {% assign f = site.data.quiz.en.ancient-indian-history %}{% if f.questions %}{{ f.questions.size }}{% elsif f.size %}{{ f.size }}{% else %}0{% endif %},
+    "medieval-history": {% assign f = site.data.quiz.en.medieval-history %}{% if f.questions %}{{ f.questions.size }}{% elsif f.size %}{{ f.size }}{% else %}0{% endif %},
+    "modern-history": {% assign f = site.data.quiz.en.modern-history %}{% if f.questions %}{{ f.questions.size }}{% elsif f.size %}{{ f.size }}{% else %}0{% endif %},
+    "world-history": {% assign f = site.data.quiz.en.world-history %}{% if f.questions %}{{ f.questions.size }}{% elsif f.size %}{{ f.size }}{% else %}0{% endif %},
+    "indian-constitution": {% assign f = site.data.quiz.en.indian-constitution %}{% if f.questions %}{{ f.questions.size }}{% elsif f.size %}{{ f.size }}{% else %}0{% endif %},
+    "indian-economy": {% assign f = site.data.quiz.en.indian-economy %}{% if f.questions %}{{ f.questions.size }}{% elsif f.size %}{{ f.size }}{% else %}0{% endif %},
+    "environment": {% assign f = site.data.quiz.en.environment %}{% if f.questions %}{{ f.questions.size }}{% elsif f.size %}{{ f.size }}{% else %}0{% endif %},
+    "indian-art-culture": {% assign f = site.data.quiz.en.indian-art-culture %}{% if f.questions %}{{ f.questions.size }}{% elsif f.size %}{{ f.size }}{% else %}0{% endif %},
+    "physics": {% assign f = site.data.quiz.en.physics %}{% if f.questions %}{{ f.questions.size }}{% elsif f.size %}{{ f.size }}{% else %}0{% endif %},
+    "chemistry": {% assign f = site.data.quiz.en.chemistry %}{% if f.questions %}{{ f.questions.size }}{% elsif f.size %}{{ f.size }}{% else %}0{% endif %},
+    "mathematics": {% assign f = site.data.quiz.en.mathematics %}{% if f.questions %}{{ f.questions.size }}{% elsif f.size %}{{ f.size }}{% else %}0{% endif %},
+    "biology": {% assign f = site.data.quiz.en.biology %}{% if f.questions %}{{ f.questions.size }}{% elsif f.size %}{{ f.size }}{% else %}0{% endif %},
+    "computer": {% assign f = site.data.quiz.en.computer %}{% if f.questions %}{{ f.questions.size }}{% elsif f.size %}{{ f.size }}{% else %}0{% endif %},
+    "sanskrit": {% assign f = site.data.quiz.en.sanskrit %}{% if f.questions %}{{ f.questions.size }}{% elsif f.size %}{{ f.size }}{% else %}0{% endif %},
+    "science-technology": {% assign f = site.data.quiz.en.science-technology %}{% if f.questions %}{{ f.questions.size }}{% elsif f.size %}{{ f.size }}{% else %}0{% endif %},
+    "books-authors": {% assign f = site.data.quiz.en.books-authors %}{% if f.questions %}{{ f.questions.size }}{% elsif f.size %}{{ f.size }}{% else %}0{% endif %},
+    "sports": {% assign f = site.data.quiz.en.sports %}{% if f.questions %}{{ f.questions.size }}{% elsif f.size %}{{ f.size }}{% else %}0{% endif %},
+    "famous-personalities": {% assign f = site.data.quiz.en.famous-personalities %}{% if f.questions %}{{ f.questions.size }}{% elsif f.size %}{{ f.size }}{% else %}0{% endif %},
+    "technology-inventions": {% assign f = site.data.quiz.en.technology-inventions %}{% if f.questions %}{{ f.questions.size }}{% elsif f.size %}{{ f.size }}{% else %}0{% endif %},
+    "space-universe": {% assign f = site.data.quiz.en.space-universe %}{% if f.questions %}{{ f.questions.size }}{% elsif f.size %}{{ f.size }}{% else %}0{% endif %},
+    "indian-geography": {% assign f = site.data.quiz.en.indian-geography %}{% if f.questions %}{{ f.questions.size }}{% elsif f.size %}{{ f.size }}{% else %}0{% endif %},
+    "world-geography": {% assign f = site.data.quiz.en.world-geography %}{% if f.questions %}{{ f.questions.size }}{% elsif f.size %}{{ f.size }}{% else %}0{% endif %},
+    "indian-festivals": {% assign f = site.data.quiz.en.indian-festivals %}{% if f.questions %}{{ f.questions.size }}{% elsif f.size %}{{ f.size }}{% else %}0{% endif %},
+    "world-organizations": {% assign f = site.data.quiz.en.world-organizations %}{% if f.questions %}{{ f.questions.size }}{% elsif f.size %}{{ f.size }}{% else %}0{% endif %},
+    "international-relations": {% assign f = site.data.quiz.en.international-relations %}{% if f.questions %}{{ f.questions.size }}{% elsif f.size %}{{ f.size }}{% else %}0{% endif %},
+    "awards-honors": {% assign f = site.data.quiz.en.awards-honors %}{% if f.questions %}{{ f.questions.size }}{% elsif f.size %}{{ f.size }}{% else %}0{% endif %},
+    "indian-defense": {% assign f = site.data.quiz.en.indian-defense %}{% if f.questions %}{{ f.questions.size }}{% elsif f.size %}{{ f.size }}{% else %}0{% endif %},
+    "important-dates": {% assign f = site.data.quiz.en.important-dates %}{% if f.questions %}{{ f.questions.size }}{% elsif f.size %}{{ f.size }}{% else %}0{% endif %},
+    "transport": {% assign f = site.data.quiz.en.transport %}{% if f.questions %}{{ f.questions.size }}{% elsif f.size %}{{ f.size }}{% else %}0{% endif %},
+    "famous-monuments": {% assign f = site.data.quiz.en.famous-monuments %}{% if f.questions %}{{ f.questions.size }}{% elsif f.size %}{{ f.size }}{% else %}0{% endif %},
+    "wildlife": {% assign f = site.data.quiz.en.wildlife %}{% if f.questions %}{{ f.questions.size }}{% elsif f.size %}{{ f.size }}{% else %}0{% endif %},
+    "rivers": {% assign f = site.data.quiz.en.rivers %}{% if f.questions %}{{ f.questions.size }}{% elsif f.size %}{{ f.size }}{% else %}0{% endif %},
+    "disasters": {% assign f = site.data.quiz.en.disasters %}{% if f.questions %}{{ f.questions.size }}{% elsif f.size %}{{ f.size }}{% else %}0{% endif %}
+  },
+  "hi": {
+    "ancient-indian-history": {% assign f = site.data.quiz.hi.ancient-indian-history %}{% if f.questions %}{{ f.questions.size }}{% elsif f.size %}{{ f.size }}{% else %}0{% endif %},
+    "medieval-history": {% assign f = site.data.quiz.hi.medieval-history %}{% if f.questions %}{{ f.questions.size }}{% elsif f.size %}{{ f.size }}{% else %}0{% endif %},
+    "modern-history": {% assign f = site.data.quiz.hi.modern-history %}{% if f.questions %}{{ f.questions.size }}{% elsif f.size %}{{ f.size }}{% else %}0{% endif %},
+    "world-history": {% assign f = site.data.quiz.hi.world-history %}{% if f.questions %}{{ f.questions.size }}{% elsif f.size %}{{ f.size }}{% else %}0{% endif %},
+    "indian-constitution": {% assign f = site.data.quiz.hi.indian-constitution %}{% if f.questions %}{{ f.questions.size }}{% elsif f.size %}{{ f.size }}{% else %}0{% endif %},
+    "indian-economy": {% assign f = site.data.quiz.hi.indian-economy %}{% if f.questions %}{{ f.questions.size }}{% elsif f.size %}{{ f.size }}{% else %}0{% endif %},
+    "environment": {% assign f = site.data.quiz.hi.environment %}{% if f.questions %}{{ f.questions.size }}{% elsif f.size %}{{ f.size }}{% else %}0{% endif %},
+    "indian-art-culture": {% assign f = site.data.quiz.hi.indian-art-culture %}{% if f.questions %}{{ f.questions.size }}{% elsif f.size %}{{ f.size }}{% else %}0{% endif %},
+    "physics": {% assign f = site.data.quiz.hi.physics %}{% if f.questions %}{{ f.questions.size }}{% elsif f.size %}{{ f.size }}{% else %}0{% endif %},
+    "chemistry": {% assign f = site.data.quiz.hi.chemistry %}{% if f.questions %}{{ f.questions.size }}{% elsif f.size %}{{ f.size }}{% else %}0{% endif %},
+    "mathematics": {% assign f = site.data.quiz.hi.mathematics %}{% if f.questions %}{{ f.questions.size }}{% elsif f.size %}{{ f.size }}{% else %}0{% endif %},
+    "biology": {% assign f = site.data.quiz.hi.biology %}{% if f.questions %}{{ f.questions.size }}{% elsif f.size %}{{ f.size }}{% else %}0{% endif %},
+    "computer": {% assign f = site.data.quiz.hi.computer %}{% if f.questions %}{{ f.questions.size }}{% elsif f.size %}{{ f.size }}{% else %}0{% endif %},
+    "sanskrit": {% assign f = site.data.quiz.hi.sanskrit %}{% if f.questions %}{{ f.questions.size }}{% elsif f.size %}{{ f.size }}{% else %}0{% endif %},
+    "science-technology": {% assign f = site.data.quiz.hi.science-technology %}{% if f.questions %}{{ f.questions.size }}{% elsif f.size %}{{ f.size }}{% else %}0{% endif %},
+    "books-authors": {% assign f = site.data.quiz.hi.books-authors %}{% if f.questions %}{{ f.questions.size }}{% elsif f.size %}{{ f.size }}{% else %}0{% endif %},
+    "sports": {% assign f = site.data.quiz.hi.sports %}{% if f.questions %}{{ f.questions.size }}{% elsif f.size %}{{ f.size }}{% else %}0{% endif %},
+    "famous-personalities": {% assign f = site.data.quiz.hi.famous-personalities %}{% if f.questions %}{{ f.questions.size }}{% elsif f.size %}{{ f.size }}{% else %}0{% endif %},
+    "technology-inventions": {% assign f = site.data.quiz.hi.technology-inventions %}{% if f.questions %}{{ f.questions.size }}{% elsif f.size %}{{ f.size }}{% else %}0{% endif %},
+    "space-universe": {% assign f = site.data.quiz.hi.space-universe %}{% if f.questions %}{{ f.questions.size }}{% elsif f.size %}{{ f.size }}{% else %}0{% endif %},
+    "indian-geography": {% assign f = site.data.quiz.hi.indian-geography %}{% if f.questions %}{{ f.questions.size }}{% elsif f.size %}{{ f.size }}{% else %}0{% endif %},
+    "world-geography": {% assign f = site.data.quiz.hi.world-geography %}{% if f.questions %}{{ f.questions.size }}{% elsif f.size %}{{ f.size }}{% else %}0{% endif %},
+    "indian-festivals": {% assign f = site.data.quiz.hi.indian-festivals %}{% if f.questions %}{{ f.questions.size }}{% elsif f.size %}{{ f.size }}{% else %}0{% endif %},
+    "world-organizations": {% assign f = site.data.quiz.hi.world-organizations %}{% if f.questions %}{{ f.questions.size }}{% elsif f.size %}{{ f.size }}{% else %}0{% endif %},
+    "international-relations": {% assign f = site.data.quiz.hi.international-relations %}{% if f.questions %}{{ f.questions.size }}{% elsif f.size %}{{ f.size }}{% else %}0{% endif %},
+    "awards-honors": {% assign f = site.data.quiz.hi.awards-honors %}{% if f.questions %}{{ f.questions.size }}{% elsif f.size %}{{ f.size }}{% else %}0{% endif %},
+    "indian-defense": {% assign f = site.data.quiz.hi.indian-defense %}{% if f.questions %}{{ f.questions.size }}{% elsif f.size %}{{ f.size }}{% else %}0{% endif %},
+    "important-dates": {% assign f = site.data.quiz.hi.important-dates %}{% if f.questions %}{{ f.questions.size }}{% elsif f.size %}{{ f.size }}{% else %}0{% endif %},
+    "transport": {% assign f = site.data.quiz.hi.transport %}{% if f.questions %}{{ f.questions.size }}{% elsif f.size %}{{ f.size }}{% else %}0{% endif %},
+    "famous-monuments": {% assign f = site.data.quiz.hi.famous-monuments %}{% if f.questions %}{{ f.questions.size }}{% elsif f.size %}{{ f.size }}{% else %}0{% endif %},
+    "wildlife": {% assign f = site.data.quiz.hi.wildlife %}{% if f.questions %}{{ f.questions.size }}{% elsif f.size %}{{ f.size }}{% else %}0{% endif %},
+    "rivers": {% assign f = site.data.quiz.hi.rivers %}{% if f.questions %}{{ f.questions.size }}{% elsif f.size %}{{ f.size }}{% else %}0{% endif %},
+    "disasters": {% assign f = site.data.quiz.hi.disasters %}{% if f.questions %}{{ f.questions.size }}{% elsif f.size %}{{ f.size }}{% else %}0{% endif %}
+  }
+}
 </script>
