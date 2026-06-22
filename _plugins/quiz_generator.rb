@@ -1,10 +1,10 @@
 # _plugins/quiz_generator.rb
 # TyagiHub GK Quiz — Build-time paginated page generator
-# Reads JSON from _data/gk/*.json and generates fully rendered static HTML pages.
+# Reads JSON from _data/quiz/ containing aligned lists.
 # Google gets complete pre-rendered HTML — no JS fetch needed.
- 
+
 require 'json'
- 
+
 module TyagiHub
   class QuizPage < Jekyll::Page
     def initialize(site, base, dir, filename, data_override)
@@ -26,21 +26,23 @@ module TyagiHub
     def generate(site)
       qpp = (site.config.dig('quiz', 'questions_per_page') || 2).to_i
 
+      en_cats_map = {}
+      hi_cats_map = {}
+      
+      (site.config.dig('categories', 'english') || []).each { |c| en_cats_map[c['id']] = c }
+      (site.config.dig('categories', 'hindi') || []).each { |c| hi_cats_map[c['id']] = c }
+
       # ----------------------------------------------------------------
       # Process ENGLISH categories
       # ----------------------------------------------------------------
       (site.config.dig('categories', 'english') || []).each do |cat|
-       questions = load_questions(site, cat['data_file'])
+        questions = load_questions(site, 'en', cat['data_file'])
         next if questions.empty?
 
         total_pages = (questions.size.to_f / qpp).ceil
-        base_url    = cat['url']   # e.g. /gk/ancient-indian-history/
+        base_url    = cat['url']
 
-        # Find the Hindi counterpart (same index in hindi array)
-        hi_cats     = site.config.dig('categories', 'hindi') || []
-        en_cats     = site.config.dig('categories', 'english') || []
-        cat_index   = en_cats.index { |c| c['id'] == cat['id'] }
-        hi_cat      = cat_index ? hi_cats[cat_index] : nil
+        hi_cat      = hi_cats_map[cat['id']]
         hi_base_url = hi_cat ? hi_cat['url'] : nil
 
         total_pages.times do |page_idx|
@@ -48,10 +50,8 @@ module TyagiHub
           page_start = page_idx * qpp
           page_qs    = questions[page_start, qpp]
 
-          # URL: page 1 → /gk/ancient-indian-history/
-          #      page 2 → /gk/ancient-indian-history/page-2/
           if page_num == 1
-            dir      = base_url.sub(/^\//, '')     # strip leading slash for dir
+            dir      = base_url.sub(/^\//, '')
             filename = 'index.html'
             page_url = base_url
           else
@@ -60,42 +60,38 @@ module TyagiHub
             page_url = "#{base_url}page-#{page_num}/"
           end
 
-          # Build hi counterpart URL
           hi_page_url = nil
           if hi_base_url
             hi_page_url = page_num == 1 ? hi_base_url : "#{hi_base_url}page-#{page_num}/"
           end
 
-          # SEO Title & Description
           seo_title = build_seo_title(cat['title'], page_num, total_pages, 'en')
           seo_desc  = build_seo_desc(cat['title'], page_num, qpp, page_start, questions.size, 'en', cat['description'])
-
-          # Breadcrumb schema
-          schema = breadcrumb_schema(site.config['url'], cat['title'], page_url, page_num)
+          schema    = breadcrumb_schema(site.config['url'], cat['title'], page_url, page_num)
 
           page_data = {
-            'layout'           => 'quiz-player',
-            'title'            => seo_title,
-            'seo_title'        => seo_title,
-            'seo_description'  => seo_desc,
-            'description'      => seo_desc,
-            'lang'             => 'en',
-           'categories_config' => site.config['categories'],
-            'category_id'      => cat['id'],
-            'category_title'   => cat['title'],
-            'category_url'     => base_url,
-            'questions'        => page_qs,
-            'page_num'         => page_num,
-            'total_pages'      => total_pages,
-            'total_questions'  => questions.size,
-            'qpp'              => qpp,
-            'page_start_index' => page_start,
-            'base_url'         => base_url,
-            'canonical_url'    => page_url,
-            'lang_en_url'      => page_url,
-            'lang_hi_url'      => hi_page_url,
-            'schema_json'      => schema,
-            'section' => 'gkquiz',
+            'layout'            => 'quiz-player',
+            'title'             => seo_title,
+            'seo_title'         => seo_title,
+            'seo_description'   => seo_desc,
+            'description'       => seo_desc,
+            'lang'              => 'en',
+            'categories_config' => site.config['categories'],
+            'category_id'       => cat['id'],
+            'category_title'    => cat['title'],
+            'category_url'      => base_url,
+            'questions'         => page_qs,
+            'page_num'          => page_num,
+            'total_pages'       => total_pages,
+            'total_questions'   => questions.size,
+            'qpp'               => qpp,
+            'page_start_index'  => page_start,
+            'base_url'          => base_url,
+            'canonical_url'     => page_url,
+            'lang_en_url'       => page_url,
+            'lang_hi_url'       => hi_page_url,
+            'schema_json'       => schema,
+            'section'           => 'gkquiz',
           }
 
           quiz_page = QuizPage.new(site, site.source, dir, filename, page_data)
@@ -108,16 +104,13 @@ module TyagiHub
       # Process HINDI categories
       # ----------------------------------------------------------------
       (site.config.dig('categories', 'hindi') || []).each do |cat|
-        questions = load_questions(site, cat['data_file'])
+        questions = load_questions(site, 'hi', cat['data_file'])
         next if questions.empty?
 
         total_pages = (questions.size.to_f / qpp).ceil
-        base_url    = cat['url']   # e.g. /hi/gk/prachin-bharatiya-itihas/
+        base_url    = cat['url']
 
-        en_cats     = site.config.dig('categories', 'english') || []
-        hi_cats     = site.config.dig('categories', 'hindi') || []
-        cat_index   = hi_cats.index { |c| c['id'] == cat['id'] }
-        en_cat      = cat_index ? en_cats[cat_index] : nil
+        en_cat      = en_cats_map[cat['id']]
         en_base_url = en_cat ? en_cat['url'] : nil
 
         total_pages.times do |page_idx|
@@ -145,28 +138,28 @@ module TyagiHub
           schema    = breadcrumb_schema(site.config['url'], cat['title'], page_url, page_num)
 
           page_data = {
-            'layout'           => 'quiz-player',
-            'title'            => seo_title,
-            'seo_title'        => seo_title,
-            'seo_description'  => seo_desc,
-            'description'      => seo_desc,
-            'lang'             => 'hi',
-           'categories_config' => site.config['categories'],
-            'category_id'      => cat['id'],
-            'category_title'   => cat['title'],
-            'category_url'     => base_url,
-            'questions'        => page_qs,
-            'page_num'         => page_num,
-            'total_pages'      => total_pages,
-            'total_questions'  => questions.size,
-            'qpp'              => qpp,
-            'page_start_index' => page_start,
-            'base_url'         => base_url,
-            'canonical_url'    => page_url,
-            'lang_en_url'      => en_page_url,
-            'lang_hi_url'      => page_url,
-            'schema_json'      => schema,
-            'section'          => 'gkquiz',
+            'layout'            => 'quiz-player',
+            'title'             => seo_title,
+            'seo_title'         => seo_title,
+            'seo_description'   => seo_desc,
+            'description'       => seo_desc,
+            'lang'              => 'hi',
+            'categories_config' => site.config['categories'],
+            'category_id'       => cat['id'],
+            'category_title'    => cat['title'],
+            'category_url'      => base_url,
+            'questions'         => page_qs,
+            'page_num'          => page_num,
+            'total_pages'       => total_pages,
+            'total_questions'   => questions.size,
+            'qpp'               => qpp,
+            'page_start_index'  => page_start,
+            'base_url'          => base_url,
+            'canonical_url'     => page_url,
+            'lang_en_url'       => en_page_url,
+            'lang_hi_url'       => page_url,
+            'schema_json'       => schema,
+            'section'           => 'gkquiz',
           }
 
           quiz_page = QuizPage.new(site, site.source, dir, filename, page_data)
@@ -178,23 +171,16 @@ module TyagiHub
 
     private
 
-    def load_questions(site, data_file)
-      # data_file format: "gk/ancient-history-en"
-      parts = data_file.split('/')
-      data  = site.data
-      parts.each { |p| data = data[p] rescue nil; break if data.nil? }
+    def load_questions(site, lang, data_file)
+      data = site.data.dig('quiz', lang, data_file)
       data.is_a?(Array) ? data : []
     end
 
     def build_seo_title(cat_title, page_num, total_pages, lang)
       if lang == 'hi'
-        page_num == 1 ?
-          "#{cat_title} GK प्रश्नोत्तरी | TyagiHub" :
-          "#{cat_title} GK Quiz - पृष्ठ #{page_num}/#{total_pages} | TyagiHub"
+        page_num == 1 ? "#{cat_title} GK प्रश्नोत्तरी | TyagiHub" : "#{cat_title} GK Quiz - पृष्ठ #{page_num}/#{total_pages} | TyagiHub"
       else
-        page_num == 1 ?
-          "#{cat_title} GK Quiz Questions | TyagiHub" :
-          "#{cat_title} GK Quiz - Page #{page_num} of #{total_pages} | TyagiHub"
+        page_num == 1 ? "#{cat_title} GK Quiz Questions | TyagiHub" : "#{cat_title} GK Quiz - Page #{page_num} of #{total_pages} | TyagiHub"
       end
     end
 
@@ -211,7 +197,7 @@ module TyagiHub
     def breadcrumb_schema(site_url, cat_title, page_url, page_num)
       items = [
         { "@type" => "ListItem", "position" => 1, "name" => "Home",     "item" => site_url + "/" },
-        { "@type" => "ListItem", "position" => 2, "name" => "GK Quiz",  "item" => site_url + "/gk/" },
+        { "@type" => "ListItem", "position" => 2, "name" => "GK Quiz",  "item" => site_url + "/gk-quiz/" },
         { "@type" => "ListItem", "position" => 3, "name" => cat_title,  "item" => site_url + page_url },
       ]
       if page_num > 1
