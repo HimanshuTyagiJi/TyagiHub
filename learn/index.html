@@ -34,21 +34,26 @@ keywords: "free online learning India, GK quiz, coding tutorial Hindi, maths pra
     margin-top: var(--space-2);
   }
 
-  /* SVG Thumb Wrapper & Absolute Center Alignment */
+  /* SVG Thumb Wrapper & Full Width Dynamic Artwork */
   .blog-card__thumb {
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 160px;
+    height: 165px;
     position: relative;
     overflow: hidden;
   }
   
-  /* Powerful SVG Dimensions and Smooth Animation Setup */
+  /* Full Width SVG Canvas and Smooth Auto Interaction Setup */
   .blog-card__thumb svg {
-    width: 64px;
-    height: 64px;
+    width: 100%;
+    height: 100%;
     transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), filter 0.3s ease;
+    display: block;
+  }
+
+  .blog-card:hover .blog-card__thumb svg {
+    transform: scale(1.04);
   }
 
   /* --- Continuous CSS Animations (Real Time Auto-Animations) --- */
@@ -255,36 +260,52 @@ keywords: "free online learning India, GK quiz, coding tutorial Hindi, maths pra
          <!-- 1. GK Quiz Practice -->
         <a href="/gk-quiz/" class="blog-card reveal" role="listitem">
           <div class="blog-card__thumb blog-card__thumb--gk" aria-hidden="true">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
-              <!-- Background glowing circles -->
-              <circle cx="32" cy="32" r="28" stroke="currentColor" stroke-width="1" stroke-dasharray="4 4" opacity="0.25" />
-              <!-- Detailed Globe Grid (Animated) -->
-              <g class="animate-globe-slow">
-                <circle cx="32" cy="32" r="20" stroke="currentColor" stroke-width="2" />
-                <path d="M12 32h40" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
-                <path d="M32 12v40" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 160" fill="none">
+              <!-- Grid background -->
+              <g stroke="currentColor" stroke-width="1" opacity="0.08">
+                <line x1="0" y1="40" x2="320" y2="40" />
+                <line x1="0" y1="80" x2="320" y2="80" />
+                <line x1="0" y1="120" x2="320" y2="120" />
+                <line x1="80" y1="0" x2="80" y2="160" />
+                <line x1="160" y1="0" x2="160" y2="160" />
+                <line x1="240" y1="0" x2="240" y2="160" />
+                <circle cx="160" cy="80" r="70" stroke-dasharray="4 4" />
+              </g>
+              
+              <!-- Left: Detailed Globe Grid (Animated) -->
+              <g class="animate-globe-slow" style="transform-origin: 75px 80px;">
+                <circle cx="75" cy="80" r="36" stroke="currentColor" stroke-width="1.8" />
+                <path d="M39 80h72" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+                <path d="M75 44v72" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
                 <!-- Latitude/Longitude curves -->
-                <path d="M14.5 22c5-1.5 10-2 17.5-2s12.5.5 17.5 2" stroke="currentColor" stroke-width="1" stroke-linecap="round" opacity="0.6" />
-                <path d="M14.5 42c5 1.5 10 2 17.5 2s12.5-.5 17.5-2" stroke="currentColor" stroke-width="1" stroke-linecap="round" opacity="0.6" />
-                <path d="M22 14.5c1.5 5 2 10 2 17.5s-.5 12.5-2 17.5" stroke="currentColor" stroke-width="1" stroke-linecap="round" opacity="0.6" />
-                <path d="M42 14.5c-1.5 5-2 10-2 17.5s.5 12.5 2 17.5" stroke="currentColor" stroke-width="1" stroke-linecap="round" opacity="0.6" />
+                <path d="M43.5 62c9-2.7 18-3.6 31.5-3.6s22.5.9 31.5 3.6" stroke="currentColor" stroke-width="1" stroke-linecap="round" opacity="0.6" />
+                <path d="M43.5 98c9 2.7 18 3.6 31.5 3.6s22.5-.9 31.5-3.6" stroke="currentColor" stroke-width="1" stroke-linecap="round" opacity="0.6" />
+                <path d="M57 48.5c2.7 9 3.6 18 3.6 31.5s-.9 22.5-3.6 31.5" stroke="currentColor" stroke-width="1" stroke-linecap="round" opacity="0.6" />
+                <path d="M93 48.5c-2.7 9-3.6 18-3.6 31.5s.9 22.5 3.6 31.5" stroke="currentColor" stroke-width="1" stroke-linecap="round" opacity="0.6" />
               </g>
+
               <!-- Elegant Laurel Wreath wrapping around the globe -->
-              <path d="M10 40a18 18 0 0 1-2-12 18 18 0 0 1 8-15" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" opacity="0.7" />
-              <path d="M54 40a18 18 0 0 0 2-12 18 18 0 0 0-8-15" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" opacity="0.7" />
-              <!-- Laurel Leaves -->
-              <path d="M6 31c2-1 4 0 4 2s-2 2-4 0" fill="currentColor" opacity="0.8" />
-              <path d="M8 21c1-2 3-2 4 0s-1 3-4 0" fill="currentColor" opacity="0.8" />
-              <path d="M12 13c0-2 2-3 3-1s0 3-3 1" fill="currentColor" opacity="0.8" />
-              <path d="M58 31c-2-1-4 0-4 2s2 2 4 0" fill="currentColor" opacity="0.8" />
-              <path d="M56 21c-1-2-3-2-4 0s1 3 4 0" fill="currentColor" opacity="0.8" />
-              <path d="M52 13c0-2-2-3-3-1s0 3 3 1" fill="currentColor" opacity="0.8" />
-              <!-- Bright glowing modern compass needle (Animated) -->
-              <g class="animate-needle">
-                <polygon points="32,20 35,32 32,35 29,32" fill="currentColor" />
-                <polygon points="32,44 29,32 32,35 35,32" fill="none" stroke="currentColor" stroke-width="1.5" />
+              <path d="M35 94a32 32 0 0 1-4-21 32 32 0 0 1 14-27" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" opacity="0.55" />
+              <path d="M115 94a32 32 0 0 0 4-21 32 32 0 0 0-14-27" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" opacity="0.55" />
+              
+              <!-- Right: Elegant Compass Dial -->
+              <circle cx="240" cy="80" r="32" stroke="currentColor" stroke-width="1" stroke-dasharray="3 3" opacity="0.3" />
+              <circle cx="240" cy="80" r="24" stroke="currentColor" stroke-width="1.5" opacity="0.5" />
+              <text x="240" y="42" font-size="7.5" font-family="sans-serif" font-weight="900" fill="currentColor" text-anchor="middle" opacity="0.75">N</text>
+              <text x="240" y="125" font-size="7.5" font-family="sans-serif" font-weight="900" fill="currentColor" text-anchor="middle" opacity="0.75">S</text>
+              <text x="202" y="83" font-size="7.5" font-family="sans-serif" font-weight="900" fill="currentColor" text-anchor="middle" opacity="0.75">W</text>
+              <text x="278" y="83" font-size="7.5" font-family="sans-serif" font-weight="900" fill="currentColor" text-anchor="middle" opacity="0.75">E</text>
+
+              <!-- Compass Needle -->
+              <g class="animate-needle" style="transform-origin: 240px 80px;">
+                <polygon points="240,56 244,80 240,84 236,80" fill="currentColor" />
+                <polygon points="240,104 236,80 240,84 244,80" fill="none" stroke="currentColor" stroke-width="1.5" />
               </g>
-              <circle cx="32" cy="32" r="2.5" fill="#ffffff" stroke="currentColor" stroke-width="1" />
+              <circle cx="240" cy="80" r="3.5" fill="#ffffff" stroke="currentColor" stroke-width="1.5" />
+
+              <!-- Decorative connecting links (Constellation effect) -->
+              <path d="M117 80h85" stroke="currentColor" stroke-width="1" stroke-dasharray="5 5" opacity="0.25" />
+              <polygon points="160,80 164,76 160,72 156,76" fill="currentColor" opacity="0.4" />
             </svg>
             <!-- Auto-rotating Trivia Facts -->
             <div class="ticker-box" id="ticker-gk">
@@ -302,27 +323,59 @@ keywords: "free online learning India, GK quiz, coding tutorial Hindi, maths pra
         <!-- 2. Maths & Aptitude Practice (Renamed & Enhanced with Live Questions) -->
         <a href="/learn/maths/" class="blog-card reveal reveal-delay-1" role="listitem">
           <div class="blog-card__thumb blog-card__thumb--maths" aria-hidden="true">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
-              <!-- Geometric drawing grid backlayer -->
-              <rect x="10" y="10" width="44" height="44" rx="6" stroke="currentColor" stroke-width="1.5" opacity="0.2" stroke-dasharray="3 3"/>
-              <!-- Compass Drawing Axis with arc (Swaying pendulum) -->
-              <g class="animate-math-compass">
-                <path d="M18 42 A 18 18 0 0 1 46 42" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-dasharray="2 2" />
-                <!-- Elegant Academic Ruler (diagonal) -->
-                <rect x="14" y="22" width="36" height="8" rx="1.5" transform="rotate(-30 32 32)" fill="currentColor" opacity="0.15" stroke="currentColor" stroke-width="1.5" />
-                <path d="M22 23.5l1.5 2.5m3-3.2l1.5 2.5m3-3.2l1.5 2.5m3-3.2l1.5 2.5m3-3.2l1.5 2.5m3-3.2l1.5 2.5" stroke="currentColor" stroke-width="1" stroke-linecap="round" transform="rotate(-30 32 32)" />
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 160" fill="none">
+              <!-- Coordinate Grid Background -->
+              <g stroke="currentColor" stroke-width="1" opacity="0.08">
+                <!-- Grid Horizontal Lines -->
+                <line x1="0" y1="20" x2="320" y2="20" stroke-dasharray="2 2" />
+                <line x1="0" y1="40" x2="320" y2="40" />
+                <line x1="0" y1="60" x2="320" y2="60" stroke-dasharray="2 2" />
+                <line x1="0" y1="80" x2="320" y2="80" stroke-width="1.5" />
+                <line x1="0" y1="100" x2="320" y2="100" stroke-dasharray="2 2" />
+                <line x1="0" y1="120" x2="320" y2="120" />
+                <line x1="0" y1="140" x2="320" y2="140" stroke-dasharray="2 2" />
+                <!-- Grid Vertical Lines -->
+                <line x1="40" y1="0" x2="40" y2="160" />
+                <line x1="80" y1="0" x2="80" y2="160" stroke-dasharray="2 2" />
+                <line x1="120" y1="0" x2="120" y2="160" />
+                <line x1="160" y1="0" x2="160" y2="160" stroke-width="1.5" />
+                <line x1="200" y1="0" x2="200" y2="160" stroke-dasharray="2 2" />
+                <line x1="240" y1="0" x2="240" y2="160" />
+                <line x1="280" y1="0" x2="280" y2="160" stroke-dasharray="2 2" />
               </g>
-              <!-- Math Symbols: Square Root, Sigma, Division, Pi -->
-              <!-- Pi Symbol -->
-              <path d="M16 18h10M19 18v10M23 18v10c0 2 1.5 2 2 2" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-              <!-- Square Root of X -->
-              <path d="M38 46h3l2-6 3 10h5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-              <!-- division dots and bar -->
-              <circle cx="48" cy="16" r="1.5" fill="currentColor" />
-              <line x1="44" y1="20" x2="52" y2="20" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
-              <circle cx="48" cy="24" r="1.5" fill="currentColor" />
-              <!-- Plus sign -->
-              <path d="M16 44h6M19 41v6" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+
+              <!-- Beautiful Glowing Trigonometric Wave -->
+              <path d="M15 80 Q 52.5 15, 90 80 T 165 80 T 240 80 T 305 80" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" opacity="0.8" />
+              <path d="M15 80 Q 52.5 15, 90 80 T 165 80 T 240 80 T 305 80" stroke="currentColor" stroke-width="6" stroke-linecap="round" opacity="0.15" />
+              
+              <!-- Golden Spiral / Fibonnaci Arc as beautiful background element -->
+              <path d="M260 120 A 10 10 0 0 1 270 110 A 20 20 0 0 1 290 130 A 40 40 0 0 1 250 170" stroke="currentColor" stroke-width="1" opacity="0.15" stroke-linecap="round" />
+
+              <!-- Geometric Triangle & Circle on Right Hand Side -->
+              <g opacity="0.4" stroke="currentColor" stroke-width="1.5">
+                <polygon points="230,120 280,120 260,70" />
+                <circle cx="251.5" cy="103" r="12" />
+                <path d="M260 70 L260 120" stroke-dasharray="2 2" />
+                <!-- Right angle marker -->
+                <rect x="256" y="116" width="4" height="4" />
+              </g>
+
+              <!-- Central-Left: Compass & Protractor with pendulum mathSway motion -->
+              <g class="animate-math-compass" style="transform-origin: 90px 40px;">
+                <!-- Academic Compass Tool legs -->
+                <path d="M90 40 L70 100M90 40 L110 100" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+                <!-- Center pivot hinge -->
+                <circle cx="90" cy="40" r="3.5" fill="#ffffff" stroke="currentColor" stroke-width="2.2" />
+                <!-- Arch divider pencil path -->
+                <path d="M64 105 A 36 36 0 0 0 116 105" stroke="currentColor" stroke-width="1" stroke-dasharray="3 3" opacity="0.7" />
+                <circle cx="70" cy="100" r="2" fill="currentColor" />
+              </g>
+
+              <!-- Floating Math Formula Overlays -->
+              <text x="35" y="45" font-family="monospace" font-size="9.5" font-weight="bold" fill="currentColor" opacity="0.65">π ≈ 3.1415</text>
+              <text x="210" y="45" font-family="monospace" font-size="9.5" font-weight="bold" fill="currentColor" opacity="0.65">f(x) = ∫ e^x dx</text>
+              <text x="140" y="135" font-family="monospace" font-size="9.5" font-weight="bold" fill="currentColor" opacity="0.65">a² + b² = c²</text>
+              <text x="25" y="135" font-family="monospace" font-size="9.5" font-weight="bold" fill="currentColor" opacity="0.65">log₂(64) = 6</text>
             </svg>
             <!-- Auto-rotating Maths Questions & Solutions -->
             <div class="ticker-box" id="ticker-maths">
@@ -340,27 +393,60 @@ keywords: "free online learning India, GK quiz, coding tutorial Hindi, maths pra
         <!-- 3. Formula Hub -->
         <a href="/learn/formulae/" class="blog-card reveal reveal-delay-2" role="listitem">
           <div class="blog-card__thumb blog-card__thumb--formulae" aria-hidden="true">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
-              <!-- Geometric multi-layer hexagon casing (Animated pulse) -->
-              <polygon points="32,6 55,19 55,45 32,58 9,45 9,19" class="animate-hex-pulse" stroke="currentColor" stroke-width="1" />
-              <!-- Lab Flask holding molecules -->
-              <path d="M25 15h14M28 15v8l-10 18a4 4 0 0 0 3.5 6h21a4 4 0 0 0 3.5-6L36 23v-8" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" />
-              <!-- Liquid Level within the flask -->
-              <path d="M21 38c3-1.5 6 1.5 9 .5s4-1.5 7-.5s4 1 5-.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" opacity="0.7" />
-              
-              <!-- Atoms / Orbiting Rings in background (Animated chem ring) -->
-              <g class="animate-chem-ring">
-                <ellipse cx="32" cy="32" rx="20" ry="6" stroke="currentColor" stroke-width="1" transform="rotate(30 32 32)" opacity="0.3" />
-                <ellipse cx="32" cy="32" rx="20" ry="6" stroke="currentColor" stroke-width="1" transform="rotate(-30 32 32)" opacity="0.3" />
-                <circle cx="15" cy="22" r="2" fill="currentColor" />
-                <circle cx="49" cy="22" r="2" fill="currentColor" />
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 160" fill="none">
+              <!-- Technical Molecular Mesh Background -->
+              <g stroke="currentColor" stroke-width="1" opacity="0.08">
+                <!-- Hexagonal benzoid web layout -->
+                <polygon points="120,40 140,51.5 140,75 120,86.5 100,75 100,51.5" />
+                <polygon points="140,51.5 160,40 180,51.5 180,75 160,86.5 140,75" />
+                <polygon points="140,75 160,86.5 160,110 140,121.5 120,110 120,86.5" />
+                <polygon points="100,75 120,86.5 120,110 100,121.5 80,110 80,86.5" />
+                <!-- Connecting lines -->
+                <line x1="120" y1="40" x2="120" y2="10" />
+                <line x1="160" y1="40" x2="160" y2="10" />
+                <line x1="100" y1="51.5" x2="70" y2="35" />
+                <line x1="180" y1="51.5" x2="210" y2="35" />
               </g>
-              <circle cx="32" cy="48" r="2.5" fill="currentColor" />
-              
-              <!-- Molecular nodes bubbling inside (Staggered continuous rises) -->
-              <circle cx="28" cy="42" r="1.5" fill="currentColor" class="bubble-1" />
-              <circle cx="35" cy="35" r="2.2" fill="currentColor" class="bubble-2" />
-              <circle cx="31" cy="29" r="1.2" fill="currentColor" class="bubble-3" />
+
+              <!-- Central Left: Orbiting Atomic Core (Animated Chem Ring) -->
+              <g class="animate-chem-ring" style="transform-origin: 80px 80px;">
+                <!-- Elliptical electron shells -->
+                <ellipse cx="80" cy="80" rx="42" ry="12" stroke="currentColor" stroke-width="1.2" transform="rotate(35 80 80)" opacity="0.4" />
+                <ellipse cx="80" cy="80" rx="42" ry="12" stroke="currentColor" stroke-width="1.2" transform="rotate(-35 80 80)" opacity="0.4" />
+                <ellipse cx="80" cy="80" rx="42" ry="12" stroke="currentColor" stroke-width="1.2" transform="rotate(90 80 80)" opacity="0.2" />
+                <!-- Nucleus sphere and protons -->
+                <circle cx="80" cy="80" r="8" fill="currentColor" opacity="0.2" />
+                <circle cx="77" cy="78" r="4.5" fill="currentColor" />
+                <circle cx="84" cy="82" r="4" fill="currentColor" opacity="0.8" />
+                <circle cx="79" cy="83" r="3.5" fill="currentColor" />
+                <!-- Electrons orbiting -->
+                <circle cx="45" cy="55" r="2.5" fill="currentColor" />
+                <circle cx="115" cy="105" r="2.5" fill="currentColor" />
+                <circle cx="112" cy="58" r="2" fill="currentColor" />
+              </g>
+
+              <!-- Central Right: Animated laboratory chemical beaker/flask -->
+              <g stroke="currentColor" stroke-width="2" stroke-linejoin="round">
+                <!-- Upper Neck & Rim -->
+                <path d="M210 40h20" stroke-width="2.5" />
+                <path d="M215 40v20l-25 45a8 8 0 0 0 7 12h46a8 8 0 0 0 7-12l-25-45V40" fill="currentColor" fill-opacity="0.05" />
+                <!-- Waves liquid boundary -->
+                <path d="M196 95c6-1.5 12 1.5 18 .5s12-1.5 18-.5s6 1 12 0" stroke-width="1.5" fill="none" opacity="0.75" />
+              </g>
+              <!-- Inside Fluid styling -->
+              <path d="M195 99 L197 105a8 8 0 0 0 7 12h46a8 8 0 0 0 7-12l2-6 Z" fill="currentColor" opacity="0.12" />
+
+              <!-- Molecular particles bubbling inside (Continuous staggered ascending nodes) -->
+              <circle cx="212" cy="108" r="2" fill="currentColor" class="bubble-1" />
+              <circle cx="228" cy="90" r="3" fill="currentColor" class="bubble-2" />
+              <circle cx="218" cy="75" r="1.5" fill="currentColor" class="bubble-3" />
+              <circle cx="224" cy="55" r="2" fill="currentColor" class="bubble-1" style="animation-delay: 1.5s;" />
+
+              <!-- Physics Equations & Chemical Formulas Overlay -->
+              <text x="15" y="40" font-family="monospace" font-size="10.5" font-weight="black" fill="currentColor">E = mc²</text>
+              <text x="252" y="45" font-family="monospace" font-size="9" font-weight="black" fill="currentColor" opacity="0.65">H₂O ⇌ H⁺+OH⁻</text>
+              <text x="135" y="140" font-family="monospace" font-size="10.5" font-weight="black" fill="currentColor">F = m · a</text>
+              <text x="15" y="130" font-family="monospace" font-size="9.5" font-weight="black" fill="currentColor" opacity="0.5">PV = nRT</text>
             </svg>
             <!-- Auto-rotating Scientific & Chemistry Core Formulas -->
             <div class="ticker-box" id="ticker-formulae">
@@ -378,21 +464,57 @@ keywords: "free online learning India, GK quiz, coding tutorial Hindi, maths pra
         <!-- 4. Vyakaran & Vocab -->
         <a href="/learn/vyakaran/" class="blog-card reveal" role="listitem">
           <div class="blog-card__thumb blog-card__thumb--language" aria-hidden="true">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
-              <!-- Premium Open Book outline -->
-              <path d="M8 48c6-1.5 16-3 24 1 8-4 18-2.5 24-1V14c-6-1.5-16-3-24 1-8-4-18-2.5-24-1z" stroke="currentColor" stroke-width="2" stroke-linejoin="round" />
-              <!-- Center dividing spine -->
-              <line x1="32" y1="15" x2="32" y2="49" stroke="currentColor" stroke-width="2" />
-              <!-- Text lines representing Sanskrit / Hindi calligraphic roots -->
-              <path d="M14 20h10M14 26H24M14 32h7M38 20h11M38 26h11M41 32h8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" opacity="0.5" />
-              <!-- Masterfully crafted Calligraphy Pen / Feather quill drafting letters (Animated) -->
-              <g class="animate-quill">
-                <path d="M52 10 L44 26 L41 29 L38 31 L39 28 L41 25 L49 9 z" fill="currentColor" opacity="0.15" />
-                <path d="M52 10 L44 26 L41 29 L38 31 L39 28 L41 25 L49 9 Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" />
-                <path d="M38 31l2-2" stroke="currentColor" stroke-width="1.5" />
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 160" fill="none">
+              <!-- Grid background representing school notebook margins -->
+              <g stroke="currentColor" stroke-width="1" opacity="0.08">
+                <line x1="0" y1="30" x2="320" y2="30" />
+                <line x1="0" y1="60" x2="320" y2="60" />
+                <line x1="0" y1="90" x2="320" y2="90" />
+                <line x1="0" y1="120" x2="320" y2="120" />
+                <line x1="50" y1="0" x2="50" y2="160" stroke-width="1.5" />
               </g>
-              <!-- Ink droplet symbolizing learning/creativity -->
-              <path d="M33 21c-1-1-3 0-3 2s2 3 3 1" fill="currentColor" opacity="0.8" />
+
+              <!-- Central Left: Luxury Majestic Open Book -->
+              <g stroke="currentColor" stroke-width="2" stroke-linejoin="round">
+                <!-- Book Covers & Leaves background -->
+                <path d="M45 110c12-3 26-5 40 1c14-6 28-4 40-1l4-64c-12-3-26-5-40 1c-14-6-28-4-40-1z" fill="currentColor" fill-opacity="0.05" />
+                <!-- Spine partition -->
+                <line x1="85" y1="52" x2="85" y2="111" stroke-width="2.5" />
+                <!-- Paper text lines simulator lines -->
+                <line x1="54" y1="62" x2="76" y2="62" stroke-width="1.2" opacity="0.5" />
+                <line x1="54" y1="72" x2="76" y2="72" stroke-width="1.2" opacity="0.5" />
+                <line x1="54" y1="82" x2="76" y2="82" stroke-width="1.2" opacity="0.5" />
+                <line x1="54" y1="92" x2="70" y2="92" stroke-width="1.2" opacity="0.5" />
+
+                <line x1="94" y1="62" x2="116" y2="62" stroke-width="1.2" opacity="0.5" />
+                <line x1="94" y1="72" x2="116" y2="72" stroke-width="1.2" opacity="0.5" />
+                <line x1="94" y1="82" x2="116" y2="82" stroke-width="1.2" opacity="0.5" />
+                <line x1="94" y1="92" x2="110" y2="92" stroke-width="1.2" opacity="0.5" />
+              </g>
+
+              <!-- Glowing Calligraphic Alphabets & Ink Splashes -->
+              <!-- Hindi Devnagari "अ" -->
+              <text x="155" y="60" font-family="serif" font-size="28" font-weight="900" fill="currentColor" opacity="0.85">अ</text>
+              <!-- Hindi Devnagari "क" -->
+              <text x="180" y="115" font-family="serif" font-size="25" font-weight="800" fill="currentColor" opacity="0.65">क</text>
+              <!-- Sanskrit Word Signifying Grammar / Words -->
+              <text x="145" y="145" font-family="serif" font-size="11" font-weight="bold" fill="currentColor" opacity="0.45" letter-spacing="1">व्याकरणम्</text>
+              <!-- English 'A' / Vocabulary representing bilingual prep -->
+              <text x="270" y="130" font-family="serif" font-size="22" font-weight="900" fill="currentColor" opacity="0.4">Ω</text>
+
+              <!-- Central Right: Calligraphy Quill Ink Pen drafting text (Animated) -->
+              <g class="animate-quill" style="transform-origin: 242px 75px;">
+                <!-- Feather Shaft & Pen Body -->
+                <path d="M285 30 C275 45 258 60 242 75 L238 79 L235 83 L239 82 L244 80 L260 64 C276 48 290 38 295 33 Z" fill="currentColor" opacity="0.2" />
+                <!-- Pen nib line -->
+                <path d="M285 30 C275 45 258 60 242 75 L238 79 L235 83 L239 82 L244 80 L260 64 C276 48 290 38 295 33 Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" />
+                <path d="M239 82l2-2" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+                <!-- Glowing tip drop of ink -->
+                <circle cx="234" cy="84" r="1.5" fill="currentColor" />
+              </g>
+              
+              <!-- Floating calligraphic strokes behind feather -->
+              <path d="M210 95 Q 225 80, 235 84 T 255 75" stroke="currentColor" stroke-width="1.5" stroke-dasharray="2 2" stroke-linecap="round" opacity="0.6" />
             </svg>
             <!-- Auto-rotating Hindi Vyakaran Grammar & Vocabulary Rules -->
             <div class="ticker-box" id="ticker-vyakaran">
@@ -410,27 +532,56 @@ keywords: "free online learning India, GK quiz, coding tutorial Hindi, maths pra
          <!-- 5. Conversion Hub -->
         <a href="/learn/conversion/" class="blog-card reveal reveal-delay-1" role="listitem">
           <div class="blog-card__thumb blog-card__thumb--conversion" aria-hidden="true">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
-              <!-- Mechanical interlocking gears symbolizing conversion process (Animated) -->
-              <!-- Large gear -->
-              <g class="animate-gear-large">
-                <circle cx="25" cy="35" r="11" stroke="currentColor" stroke-width="2" fill="currentColor" fill-opacity="0.05" />
-                <path d="M25 21v3M25 46v3M11 35h3M46 35h3M15 25l2 2M33 43l2 2M15 45l2-2M33 27l2-2" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" />
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 160" fill="none">
+              <!-- Technical Mechanical Drafting Blueprint Grid -->
+              <g stroke="currentColor" stroke-width="1" opacity="0.08">
+                <!-- Circular measuring guidelines -->
+                <circle cx="160" cy="80" r="40" />
+                <circle cx="160" cy="80" r="70" stroke-dasharray="4 2" />
+                <line x1="0" y1="80" x2="320" y2="80" />
+                <line x1="160" y1="0" x2="160" y2="160" />
+                <line x1="40" y1="40" x2="280" y2="140" stroke-dasharray="3 3" />
+                <line x1="40" y1="120" x2="280" y2="40" stroke-dasharray="3 3" />
               </g>
-              <!-- Small gear -->
-              <g class="animate-gear-small">
-                <circle cx="44" cy="22" r="7" stroke="currentColor" stroke-width="1.8" fill="currentColor" fill-opacity="0.05" />
-                <path d="M44 12v3M44 29v3M34 22h3M51 22h3" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+
+              <!-- Dynamic cyclical transfer arrow loops -->
+              <path d="M35 105 A 72 72 0 0 1 285 55" stroke="currentColor" stroke-width="1.8" stroke-dasharray="4 3" stroke-linecap="round" opacity="0.45" />
+              <path d="M285 55l-8-6m8 6l-1 10" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" opacity="0.8" />
+
+              <path d="M285 55 A 72 72 0 0 1 35 105" stroke="currentColor" stroke-width="1.8" stroke-dasharray="4 3" stroke-linecap="round" opacity="0.45" />
+              <path d="M35 105l8 6m-8-6l1-10" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" opacity="0.8" />
+
+              <!-- Left Side: Large Driving Gear (Animated) -->
+              <g class="animate-gear-large" style="transform-origin: 105px 85px;">
+                <circle cx="105" cy="85" r="22" stroke="currentColor" stroke-width="2.5" fill="currentColor" fill-opacity="0.05" />
+                <circle cx="105" cy="85" r="10" stroke="currentColor" stroke-width="1.5" stroke-dasharray="3 2" />
+                <!-- Gear teeth teeth points -->
+                <path d="M105 53 v10 M105 107 v10 M73 85 h10 M137 85 h10 M82 62 l7 7 M121 101 l7 7 M82 108 l7-7 M121 69 l7-7" stroke="currentColor" stroke-width="4.5" stroke-linecap="round" />
               </g>
-              <!-- Dynamic cycle conversion arrows -->
-              <path d="M12 24a20 20 0 0 1 34-8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-dasharray="4 2" />
-              <path d="M52 38a20 20 0 0 1-32 10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-dasharray="4 2" />
-              <!-- Arrow tips -->
-              <path d="M41 16h5v5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-              <path d="M23 48h-5v-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-              <!-- Floating Unit labels (e.g. scales of measurement "Kg", "m") -->
-              <path d="M48 40h4M50 38v4" stroke="currentColor" stroke-width="1" stroke-linecap="round" opacity="0.6" />
-              <path d="M14 14h4M16 12v4" stroke="currentColor" stroke-width="1" stroke-linecap="round" opacity="0.6" />
+
+              <!-- Center-Top: Medium Driven Gear (Animated Counter Spinner) -->
+              <g class="animate-gear-small" style="transform-origin: 153px 52px;">
+                <circle cx="153" cy="52" r="14" stroke="currentColor" stroke-width="2" fill="currentColor" fill-opacity="0.05" />
+                <!-- Gear teeth teeth points -->
+                <path d="M153 32 v6 M153 66 v6 M133 52 h6 M167 52 h6 M139 38 l4 4 M163 62 l4 4 M139 66 l4-4 M163 38 l4-4" stroke="currentColor" stroke-width="3" stroke-linecap="round" />
+              </g>
+
+              <!-- Center-Bottom: Small Auxiliary Gear (Animated Clockwise Spinner) -->
+              <g class="animate-gear-large" style="transform-origin: 195px 95px;">
+                <circle cx="195" cy="95" r="10" stroke="currentColor" stroke-width="1.8" fill="currentColor" fill-opacity="0.05" />
+                <!-- Gear teeth teeth points -->
+                <path d="M195 81 v4 M195 105 v4 M181 95 h4 M209 95 h4" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" />
+              </g>
+
+              <!-- Floating Conversion Metrics Scale & Units Labels -->
+              <!-- Celsius <-> Fahrenheit -->
+              <text x="35" y="45" font-family="monospace" font-size="10" font-weight="black" fill="currentColor" opacity="0.85">°C ⇄ °F</text>
+              <!-- Kilograms <-> Pounds -->
+              <text x="245" y="115" font-family="monospace" font-size="10" font-weight="black" fill="currentColor" opacity="0.85">Kg ⇄ Lb</text>
+              <!-- Miles <-> Kilometers -->
+              <text x="250" y="45" font-family="monospace" font-size="9" font-weight="black" fill="currentColor" opacity="0.5">Mi ⇄ Km</text>
+              <!-- Digital Storage limits -->
+              <text x="35" y="135" font-family="monospace" font-size="9.5" font-weight="black" fill="currentColor" opacity="0.6">1 GB = 1024 MB</text>
             </svg>
             <!-- Auto-rotating Weight, Speed, Temperature Unit Conversions -->
             <div class="ticker-box" id="ticker-conversion">
@@ -485,7 +636,7 @@ keywords: "free online learning India, GK quiz, coding tutorial Hindi, maths pra
     ];
 
     const vyakaranRules = [
-      "संधि: हिम + आलय = हिमालय (दीर्घ)",
+      "संधि: हिम + आलय =  हिमालय (दीर्घ)",
       "पर्यायवाची: सूर्य = रवि, दिनकर, भानु",
       "समास: यथाशक्ति = शक्ति के अनुसार",
       "विलोम शब्द: अमृत ↔ विष",
