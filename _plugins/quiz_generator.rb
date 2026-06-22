@@ -1,6 +1,6 @@
 # _plugins/quiz_generator.rb
 # TyagiHub GK Quiz — Build-time paginated page generator
-# Reads JSON from _data/quiz/ containing aligned lists.
+# Reads JSON from _data/quiz/[lang]/*.json and generates fully rendered static HTML pages.
 # Google gets complete pre-rendered HTML — no JS fetch needed.
 
 require 'json'
@@ -26,9 +26,9 @@ module TyagiHub
     def generate(site)
       qpp = (site.config.dig('quiz', 'questions_per_page') || 2).to_i
 
+      # Map to match counterparts using category ID strings cleanly
       en_cats_map = {}
       hi_cats_map = {}
-      
       (site.config.dig('categories', 'english') || []).each { |c| en_cats_map[c['id']] = c }
       (site.config.dig('categories', 'hindi') || []).each { |c| hi_cats_map[c['id']] = c }
 
@@ -172,6 +172,7 @@ module TyagiHub
     private
 
     def load_questions(site, lang, data_file)
+      # Secure data resolution targeting _data/quiz/[en|hi]/[file].json
       data = site.data.dig('quiz', lang, data_file)
       data.is_a?(Array) ? data : []
     end
