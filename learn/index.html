@@ -3,6 +3,7 @@ layout: default
 title: "Learn — Free Courses, Quizzes & Tutorials"
 description: "Free learning platform for Indian students. GK quizzes, coding tutorials, maths practice for SSC, Banking, Railway exams."
 keywords: "free online learning India, GK quiz, coding tutorial Hindi, maths practice, SSC banking exam prep"
+lang: false
 ---
 
 <style>
@@ -34,12 +35,13 @@ keywords: "free online learning India, GK quiz, coding tutorial Hindi, maths pra
     margin-top: var(--space-2);
   }
 
-  /* SVG Thumb Wrapper & Full Width Dynamic Artwork */
+  /* SVG Thumb Wrapper & Full Width Dynamic Artwork with Aspect Ratio */
   .blog-card__thumb {
     display: flex;
     align-items: center;
     justify-content: center;
-    
+    width: 100%;
+    aspect-ratio: 2 / 1;
     position: relative;
     overflow: hidden;
   }
@@ -255,10 +257,10 @@ keywords: "free online learning India, GK quiz, coding tutorial Hindi, maths pra
 
   <section class="section">
     <div class="container">
-      <div class="grid-3" role="list">
+      <div class="grid-3">
 
          <!-- 1. GK Quiz Practice -->
-        <a href="/gk-quiz/" class="blog-card reveal" role="listitem">
+        <a href="/gk-quiz/" class="blog-card reveal">
           <div class="blog-card__thumb blog-card__thumb--gk" aria-hidden="true">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 160" fill="none">
               <!-- Grid background -->
@@ -321,7 +323,7 @@ keywords: "free online learning India, GK quiz, coding tutorial Hindi, maths pra
         </a>
 
         <!-- 2. Maths & Aptitude Practice (Renamed & Enhanced with Live Questions) -->
-        <a href="/learn/maths/" class="blog-card reveal reveal-delay-1" role="listitem">
+        <a href="/learn/maths/" class="blog-card reveal reveal-delay-1">
           <div class="blog-card__thumb blog-card__thumb--maths" aria-hidden="true">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 160" fill="none">
               <!-- Coordinate Grid Background -->
@@ -391,7 +393,7 @@ keywords: "free online learning India, GK quiz, coding tutorial Hindi, maths pra
         </a>
 
         <!-- 3. Formula Hub -->
-        <a href="/learn/formulae/" class="blog-card reveal reveal-delay-2" role="listitem">
+        <a href="/learn/formulae/" class="blog-card reveal reveal-delay-2">
           <div class="blog-card__thumb blog-card__thumb--formulae" aria-hidden="true">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 160" fill="none">
               <!-- Technical Molecular Mesh Background -->
@@ -462,7 +464,7 @@ keywords: "free online learning India, GK quiz, coding tutorial Hindi, maths pra
         </a>
 
         <!-- 4. Vyakaran & Vocab -->
-        <a href="/learn/vyakaran/" class="blog-card reveal" role="listitem">
+        <a href="/learn/vyakaran/" class="blog-card reveal">
           <div class="blog-card__thumb blog-card__thumb--language" aria-hidden="true">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 160" fill="none">
               <!-- Grid background representing school notebook margins -->
@@ -530,7 +532,7 @@ keywords: "free online learning India, GK quiz, coding tutorial Hindi, maths pra
         </a>
 
          <!-- 5. Conversion Hub -->
-        <a href="/learn/conversion/" class="blog-card reveal reveal-delay-1" role="listitem">
+        <a href="/learn/conversion/" class="blog-card reveal reveal-delay-1">
           <div class="blog-card__thumb blog-card__thumb--conversion" aria-hidden="true">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 160" fill="none">
               <!-- Technical Mechanical Drafting Blueprint Grid -->
@@ -636,7 +638,7 @@ keywords: "free online learning India, GK quiz, coding tutorial Hindi, maths pra
     ];
 
     const vyakaranRules = [
-      "संधि: हिम + आलय =  हिमालय (दीर्घ)",
+      "संधि: हिम + आलय = हिमालय (दीर्घ)",
       "पर्यायवाची: सूर्य = रवि, दिनकर, भानु",
       "समास: यथाशक्ति = शक्ति के अनुसार",
       "विलोम शब्द: अमृत ↔ विष",
