@@ -1,24 +1,4 @@
-.skip-link { position: absolute; top: -40px; left: 0; background: var(--primary-base); color: var(--text-inverse); padding: 8px 16px; border-radius: 0 0 var(--radius-sm) 0; z-index: 9999; font-size: 14px; }
-.skip-link:focus { top: 0; }
-.site-header { position: sticky; top: 0; z-index: var(--z-nav); background: var(--bg-surface); border-bottom: 2px solid var(--primary-base); box-shadow: var(--shadow-1); height: 64px; }
-.site-header .header-inner { display: flex; align-items: center; justify-content: space-between; max-width: 100%; height: 100%; padding: 0 20px; gap: 12px; }
-.site-header .header-left { display: flex; align-items: center; gap: 12px; }
-.site-header .menu-toggle { display: none; background: none; border: none; cursor: pointer; padding: 8px; border-radius: var(--radius-sm); color: var(--text-paragraph); transition: all var(--ease-fast); }
-.site-header .menu-toggle:hover { background: var(--bg-input); }
-@media (max-width: 1023px) { .site-header .menu-toggle { display: flex; align-items: center; } }
-.site-header .menu-toggle svg { width: 22px; height: 22px; }
-.site-header .site-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
-.site-header .site-logo:hover { text-decoration: none; }
-.site-header .site-logo .logo-icon { width: 38px; height: 38px; background: linear-gradient(135deg, var(--primary-base), var(--primary-hover)); border-radius: 10px; display: flex; align-items: center; justify-content: center; color: var(--text-inverse); font-weight: 800; font-size: 16px; letter-spacing: -0.5px; flex-shrink: 0; }
-.site-header .site-logo .brand-name { display: block; font-weight: 800; font-size: 18px; color: var(--text-heading); line-height: 1.1; }
-.site-header .site-logo .brand-name span { color: var(--primary-base); }
-.site-header .site-logo .brand-tagline { display: block; font-size: 11px; color: var(--text-muted); letter-spacing: 0.3px; }
-.site-header .header-right { display: flex; align-items: center; gap: 8px; }
-.site-header .lang-switcher { display: flex; background: var(--bg-input); border-radius: 20px; padding: 3px; gap: 2px; }
-.site-header .lang-switcher a { display: inline-block; padding: 5px 12px; border-radius: 16px; font-size: 13px; font-weight: 600; color: var(--clr-text-2); text-decoration: none; transition: all var(--ease-fast); }
-.site-header .lang-switcher a.active, .site-header .lang-switcher a:hover { background: var(--bg-surface); color: var(--primary-base); box-shadow: var(--shadow-1); text-decoration: none; }
-.site-header .lang-switcher a.active { color: var(--primary-base); }
-@media (max-width: 639px) { .site-header .header-cta { display: none; } }
+
 .page-wrapper { margin-top: 90px; display: flex; min-height: calc(100vh - 64px); position: relative; }
 .sidebar-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,.45); z-index: 89; transition: opacity var(--ease-normal); }
 .sidebar-overlay.active { display: block; }
@@ -91,16 +71,6 @@
 .pagination-wrapper .pagination span.disabled { border: 1.5px solid var(--bg-table-stripe); color: var(--text-muted); cursor: not-allowed; }
 .pagination-wrapper .pagination span.ellipsis { border: none; color: var(--text-muted); min-width: 20px; }
 
-.btn { display: inline-flex; align-items: center; gap: 6px; padding: 9px 18px; border-radius: var(--radius-sm); font-size: 14px; font-weight: 600; cursor: pointer; border: none; text-decoration: none; transition: all var(--ease-normal); }
-.btn-primary { background: var(--primary-base); color: var(--text-inverse); }
-.btn-primary:hover { background: var(--primary-hover); color: var(--text-inverse); text-decoration: none; }
-.btn-outline { background: transparent; border: 1.5px solid var(--border-table); color: var(--text-paragraph); }
-.btn-outline:hover { border-color: var(--primary-base); color: var(--primary-base); text-decoration: none; }
-.btn-sm { padding: 6px 14px; font-size: 13px; }
-
-.text-center { text-align: center; }
-.mt-4 { margin-top: 16px; }
-.mb-4 { margin-bottom: 16px; }
 
 .score-strip { display: flex; align-items: center; gap: 14px; background: var(--bg-input); border: 1px solid var(--border-table); border-radius: var(--radius-sm); padding: 12px 18px; margin-bottom: 20px; flex-wrap: wrap; }
 .score-strip .score-label { font-size: 13px; font-weight: 600; color: var(--primary-base); }
