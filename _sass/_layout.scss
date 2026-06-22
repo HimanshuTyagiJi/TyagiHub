@@ -14,7 +14,7 @@
 .gk-sidebar .nav-section { padding: 12px 0; }
 .gk-sidebar .nav-section .nav-section-label { padding: 6px 16px; font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.2px; color: var(--text-muted); display: flex; align-items: center; gap: 6px; }
 .gk-sidebar .nav-section .nav-section-label::after { content: ''; flex: 1; height: 1px; background: var(--border-table); }
-.gk-sidebar .nav-item { display: block; padding: 15px 16px; color: var(--text-paragraph); text-decoration: none; font-size: 14px; font-weight: 500; border-left: 3px solid transparent; transition: all var(--ease-fast); position: relative; }
+.gk-sidebar .nav-item { display: block; padding: 15px 16px; color: var(--text-paragraph); text-decoration: none; border-left: 3px solid transparent; transition: all var(--ease-fast); position: relative; }
 .gk-sidebar .nav-item .nav-item-icon { margin-right: 8px; opacity: .7; }
 .gk-sidebar .nav-item .nav-item-count { position: absolute; right: 12px; top: 50%; transform: translateY(-50%); background: var(--bg-input); color: var(--text-muted); font-size: 11px; font-weight: 600; padding: 1px 7px; border-radius: 10px; }
 .gk-sidebar .nav-item:hover { background: var(--bg-table); color: var(--primary-base); border-left-color: var(--bg-input); text-decoration: none; }
@@ -82,7 +82,7 @@ quiz-right-sidebar { width: 280px; flex-shrink: 0; margin-left: 24px; }
 @media (max-width: 1023px) { .main-content { width: 100%; flex: 0 0 100%; } .quiz-right-sidebar { width: 100%; flex: 0 0 100%; margin: 24px 0 0; order: 999; } }
 .gk-sidebar-right { width: 280px; flex-shrink: 0; margin-left: 24px; position: fixed; right: 0; top: 62px; height: calc(100vh - 60px); overflow-y: auto; padding: 15px; background: var(--bg-surface) !important; border-left: 1px solid var(--border-table); box-shadow: var(--shadow-1); z-index: var(--z-card); border-radius: 8px; }
 .gk-sidebar-right .sidebar-section { margin-bottom: 18px; }
-.gk-sidebar-right .sidebar-title { display: flex; align-items: center; gap: 10px; font-size: 14px; font-weight: 700; color: var(--text-heading); margin-bottom: 10px; }
+.gk-sidebar-right .sidebar-title { display: flex; align-items: center; gap: 10px; font-size: 18px; font-weight: 700; color: var(--text-heading); margin-bottom: 10px; }
 .gk-sidebar-right .sidebar-icon { width: 18px; height: 18px; color: var(--primary-base); }
 
 .gk-sidebar-right .app-card, .gk-sidebar-right .sidebar-link-card, .gk-sidebar-right .telegram-card, .gk-sidebar-right .random-quiz-btn { display: flex; align-items: center; text-decoration: none; background: var(--bg-table-stripe); border: 1px solid var(--border-table); border-radius: 14px; padding: 14px; transition: all var(--ease-normal); color: var(--text-heading); }
@@ -126,7 +126,7 @@ quiz-right-sidebar { width: 280px; flex-shrink: 0; margin-left: 24px; }
 .related-categories a:hover { background: var(--primary-base); border-color: var(--primary-base); color: var(--text-inverse); transform: translateY(-1px); }
 
 .breadcrumb { display: flex; align-items: center; flex-wrap: wrap; gap: 8px; margin-bottom: 20px; }
-.breadcrumb a { display: inline-flex; align-items: center; padding: 7px 14px; background: var(--bg-table-stripe); border: 1px solid var(--border-table); border-radius: 999px; font-size: 13px; font-weight: 600; color: var(--primary-base); text-decoration: none; transition: all var(--ease-fast); }
+.breadcrumb a { display: inline-flex; align-items: center; padding: 7px 14px; background: var(--bg-table-stripe); border: 1px solid var(--border-table); border-radius: 999px; font-size: 18px; font-weight: 600; color: var(--primary-base); text-decoration: none; transition: all var(--ease-fast); }
 .breadcrumb a:hover { background: var(--primary-base); border-color: var(--primary-base); color: var(--text-inverse); }
 .breadcrumb .sep { color: var(--text-muted); font-weight: 700; }
 .breadcrumb .current { display: inline-flex; align-items: center; padding: 7px 14px; background: var(--bg-success); border: 1px solid var(--border-success); border-radius: 999px; font-size: 18px; font-weight: 700; color: var(--text-success); }
