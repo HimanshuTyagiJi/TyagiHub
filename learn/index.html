@@ -51,57 +51,187 @@ keywords: "free online learning India, GK quiz, coding tutorial Hindi, maths pra
     transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), filter 0.3s ease;
   }
 
-  /* --- Advanced Micro-Animations on Hover --- */
-  
-  /* 1. GK Quiz: Gentle pulsing scale and glow */
-  .blog-card:hover .blog-card__thumb--gk svg {
-    transform: scale(1.15);
-    filter: drop-shadow(0 0 8px rgba(8, 145, 178, 0.5));
+  /* --- Continuous CSS Animations (Real Time Auto-Animations) --- */
+
+  /* 1. Globe Rotation (GK) */
+  @keyframes rotateGlobe {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
   }
-  
-  /* 2. Maths: Subtle rotation like a shaking calculator/grid */
-  .blog-card:hover .blog-card__thumb--maths svg {
-    transform: rotate(5deg) scale(1.1);
-    filter: drop-shadow(0 0 8px rgba(234, 88, 12, 0.5));
-  }
-  
-  /* 3. Formulae: Geometric float effect */
-  .blog-card:hover .blog-card__thumb--formulae svg {
-    transform: translateY(-6px) scale(1.1);
-    filter: drop-shadow(0 0 8px rgba(220, 38, 38, 0.5));
-  }
-  
-  /* 4. Vyakaran: Pen drawing/writing drift */
-  .blog-card:hover .blog-card__thumb--language svg {
-    transform: translateX(4px) translateY(-4px) scale(1.05);
-    filter: drop-shadow(0 0 8px rgba(22, 163, 74, 0.5));
-  }
-  
-  /* 5. Conversion: Dynamic spinning effect for arrows */
-  .blog-card:hover .blog-card__thumb--conversion svg {
-    transform: rotate(180deg) scale(1.1);
-    filter: drop-shadow(0 0 8px rgba(37, 99, 235, 0.5));
+  .animate-globe-slow {
+    animation: rotateGlobe 30s linear infinite;
+    transform-origin: 32px 32px;
   }
 
-  /* Semantic Gradient Backgrounds & Dynamic SVG Color Coding */
+  /* Needle Wandering Pulse */
+  @keyframes needleWander {
+    0%, 100% { transform: rotate(0deg); }
+    30% { transform: rotate(-15deg); }
+    70% { transform: rotate(20deg); }
+  }
+  .animate-needle {
+    animation: needleWander 6s ease-in-out infinite;
+    transform-origin: 32px 32px;
+  }
+
+  /* 2. Swaying / Oscillation (Maths Drawing Compass & grid) */
+  @keyframes mathSway {
+    0%, 100% { transform: rotate(-4deg) translateY(0); }
+    50% { transform: rotate(4deg) translateY(-2px); }
+  }
+  .animate-math-compass {
+    animation: mathSway 5s ease-in-out infinite;
+    transform-origin: 32px 32px;
+  }
+
+  /* 3. Hexagon Scaling & Flask Bubbling (Formulae) */
+  @keyframes hexPulse {
+    0%, 100% { transform: scale(1) rotate(0deg); opacity: 0.25; }
+    50% { transform: scale(1.05) rotate(5deg); opacity: 0.45; }
+  }
+  .animate-hex-pulse {
+    animation: hexPulse 10s ease-in-out infinite;
+    transform-origin: 32px 32px;
+  }
+
+  @keyframes bubbleUp {
+    0% { transform: translateY(4px) scale(0.8); opacity: 0; }
+    40% { opacity: 0.8; }
+    80% { transform: translateY(-16px) scale(1.2); opacity: 0; }
+    100% { transform: translateY(-20px) scale(0.6); opacity: 0; }
+  }
+  .bubble-1 { animation: bubbleUp 3s infinite ease-in; transform-origin: center; }
+  .bubble-2 { animation: bubbleUp 4s infinite ease-in; animation-delay: 1.2s; transform-origin: center; }
+  .bubble-3 { animation: bubbleUp 2.5s infinite ease-in; animation-delay: 0.6s; transform-origin: center; }
+
+  /* Double Helix / Chemistry Ring Rotation */
+  @keyframes chemistryRing {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(-360deg); }
+  }
+  .animate-chem-ring {
+    animation: chemistryRing 20s linear infinite;
+    transform-origin: 32px 32px;
+  }
+
+  /* 4. Quill / Calligraphy Writing Drift (Language) */
+  @keyframes quillDraw {
+    0%, 100% { transform: translate(0, 0) rotate(0deg); }
+    20% { transform: translate(3px, -3px) rotate(3deg); }
+    40% { transform: translate(-1px, -4px) rotate(-1deg); }
+    60% { transform: translate(4px, 1px) rotate(4deg); }
+    80% { transform: translate(1px, -2px) rotate(2deg); }
+  }
+  .animate-quill {
+    animation: quillDraw 5s ease-in-out infinite;
+    transform-origin: center;
+  }
+
+  /* 5. Interlocking Gear Cycles (Conversion) */
+  @keyframes gearSpinClockwise {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+  @keyframes gearSpinCounter {
+    0% { transform: rotate(360deg); }
+    100% { transform: rotate(0deg); }
+  }
+  .animate-gear-large {
+    animation: gearSpinClockwise 12s linear infinite;
+    transform-origin: 25px 35px;
+  }
+  .animate-gear-small {
+    animation: gearSpinCounter 8s linear infinite;
+    transform-origin: 44px 22px;
+  }
+
+  /* Premium Live Dynamic Ticker Badge for Cards */
+  .ticker-box {
+    position: absolute;
+    bottom: 12px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(255, 255, 255, 0.94);
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    padding: 3px 12px;
+    border-radius: 9999px;
+    font-family: var(--font-mono), monospace;
+    font-size: 0.68rem;
+    font-weight: 600;
+    color: inherit;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    white-space: nowrap;
+    pointer-events: none;
+    z-index: 5;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  /* Dark mode auto-adjust wrapper compatibility */
+  @media (prefers-color-scheme: dark) {
+    .ticker-box {
+      background: rgba(15, 23, 42, 0.94);
+      border-color: rgba(255, 255, 255, 0.08);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+    }
+  }
+
+  .ticker-text {
+    display: inline-block;
+    opacity: 0;
+    transform: translateY(5px);
+    transition: opacity 0.35s ease, transform 0.35s ease;
+  }
+  .ticker-text.active {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Interactive card focus & elegant hover effect */
+  .blog-card {
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease;
+  }
+  .blog-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 24px -10px rgba(0, 0, 0, 0.1);
+  }
+
+  /* Bright active tag status dot */
+  .status-dot {
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    background-color: currentColor;
+    border-radius: 50%;
+    margin-right: 6px;
+    animation: pulseGlow 1.5s infinite ease-in-out;
+  }
+  @keyframes pulseGlow {
+    0%, 100% { opacity: 0.4; transform: scale(0.9); }
+    50% { opacity: 1; transform: scale(1.2); }
+  }
+
+  /* Semantic Color Coding gradients */
   .blog-card__thumb--gk { 
-    background: linear-gradient(135deg, rgba(62, 207, 207, 0.2), rgba(62, 207, 207, 0.05)); 
+    background: linear-gradient(135deg, rgba(62, 207, 207, 0.16), rgba(62, 207, 207, 0.04)); 
     color: #0891b2; 
   }
   .blog-card__thumb--maths { 
-    background: linear-gradient(135deg, rgba(245, 166, 35, 0.2), rgba(245, 166, 35, 0.05)); 
+    background: linear-gradient(135deg, rgba(245, 166, 35, 0.16), rgba(245, 166, 35, 0.04)); 
     color: #ea580c; 
   }
   .blog-card__thumb--formulae { 
-    background: linear-gradient(135deg, rgba(239, 68, 68, 0.2), rgba(239, 68, 68, 0.05)); 
+    background: linear-gradient(135deg, rgba(239, 68, 68, 0.16), rgba(239, 68, 68, 0.04)); 
     color: #dc2626; 
   }
   .blog-card__thumb--language { 
-    background: linear-gradient(135deg, rgba(16, 185, 129, 0.2), rgba(16, 185, 129, 0.05)); 
+    background: linear-gradient(135deg, rgba(16, 185, 129, 0.16), rgba(16, 185, 129, 0.04)); 
     color: #16a34a; 
   }
   .blog-card__thumb--conversion { 
-    background: linear-gradient(135deg, rgba(59, 130, 246, 0.2), rgba(59, 130, 246, 0.05)); 
+    background: linear-gradient(135deg, rgba(59, 130, 246, 0.16), rgba(59, 130, 246, 0.04)); 
     color: #2563eb; 
   }
 </style>
@@ -122,13 +252,45 @@ keywords: "free online learning India, GK quiz, coding tutorial Hindi, maths pra
     <div class="container">
       <div class="grid-3" role="list">
 
+         <!-- 1. GK Quiz Practice -->
         <a href="/gk-quiz/" class="blog-card reveal" role="listitem">
           <div class="blog-card__thumb blog-card__thumb--gk" aria-hidden="true">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l9-5-9-5-9 5 9 5z" />
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z" />
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 5.25v3.5M12 14v4" />
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
+              <!-- Background glowing circles -->
+              <circle cx="32" cy="32" r="28" stroke="currentColor" stroke-width="1" stroke-dasharray="4 4" opacity="0.25" />
+              <!-- Detailed Globe Grid (Animated) -->
+              <g class="animate-globe-slow">
+                <circle cx="32" cy="32" r="20" stroke="currentColor" stroke-width="2" />
+                <path d="M12 32h40" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+                <path d="M32 12v40" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+                <!-- Latitude/Longitude curves -->
+                <path d="M14.5 22c5-1.5 10-2 17.5-2s12.5.5 17.5 2" stroke="currentColor" stroke-width="1" stroke-linecap="round" opacity="0.6" />
+                <path d="M14.5 42c5 1.5 10 2 17.5 2s12.5-.5 17.5-2" stroke="currentColor" stroke-width="1" stroke-linecap="round" opacity="0.6" />
+                <path d="M22 14.5c1.5 5 2 10 2 17.5s-.5 12.5-2 17.5" stroke="currentColor" stroke-width="1" stroke-linecap="round" opacity="0.6" />
+                <path d="M42 14.5c-1.5 5-2 10-2 17.5s.5 12.5 2 17.5" stroke="currentColor" stroke-width="1" stroke-linecap="round" opacity="0.6" />
+              </g>
+              <!-- Elegant Laurel Wreath wrapping around the globe -->
+              <path d="M10 40a18 18 0 0 1-2-12 18 18 0 0 1 8-15" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" opacity="0.7" />
+              <path d="M54 40a18 18 0 0 0 2-12 18 18 0 0 0-8-15" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" opacity="0.7" />
+              <!-- Laurel Leaves -->
+              <path d="M6 31c2-1 4 0 4 2s-2 2-4 0" fill="currentColor" opacity="0.8" />
+              <path d="M8 21c1-2 3-2 4 0s-1 3-4 0" fill="currentColor" opacity="0.8" />
+              <path d="M12 13c0-2 2-3 3-1s0 3-3 1" fill="currentColor" opacity="0.8" />
+              <path d="M58 31c-2-1-4 0-4 2s2 2 4 0" fill="currentColor" opacity="0.8" />
+              <path d="M56 21c-1-2-3-2-4 0s1 3 4 0" fill="currentColor" opacity="0.8" />
+              <path d="M52 13c0-2-2-3-3-1s0 3 3 1" fill="currentColor" opacity="0.8" />
+              <!-- Bright glowing modern compass needle (Animated) -->
+              <g class="animate-needle">
+                <polygon points="32,20 35,32 32,35 29,32" fill="currentColor" />
+                <polygon points="32,44 29,32 32,35 35,32" fill="none" stroke="currentColor" stroke-width="1.5" />
+              </g>
+              <circle cx="32" cy="32" r="2.5" fill="#ffffff" stroke="currentColor" stroke-width="1" />
             </svg>
+            <!-- Auto-rotating Trivia Facts -->
+            <div class="ticker-box" id="ticker-gk">
+              <span class="status-dot"></span>
+              <span class="ticker-text active">GK Fact Loading...</span>
+            </div>
           </div>
           <div class="blog-card__body">
             <span class="blog-card__tag">GK &amp; Current Affairs</span>
@@ -137,40 +299,106 @@ keywords: "free online learning India, GK quiz, coding tutorial Hindi, maths pra
           </div>
         </a>
 
+        <!-- 2. Maths & Aptitude Practice (Renamed & Enhanced with Live Questions) -->
         <a href="/learn/maths/" class="blog-card reveal reveal-delay-1" role="listitem">
           <div class="blog-card__thumb blog-card__thumb--maths" aria-hidden="true">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <rect width="16" height="18" x="4" y="3" rx="2" stroke-width="2" />
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h8M8 11h2M14 11h2M8 15h2M14 15h2" />
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
+              <!-- Geometric drawing grid backlayer -->
+              <rect x="10" y="10" width="44" height="44" rx="6" stroke="currentColor" stroke-width="1.5" opacity="0.2" stroke-dasharray="3 3"/>
+              <!-- Compass Drawing Axis with arc (Swaying pendulum) -->
+              <g class="animate-math-compass">
+                <path d="M18 42 A 18 18 0 0 1 46 42" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-dasharray="2 2" />
+                <!-- Elegant Academic Ruler (diagonal) -->
+                <rect x="14" y="22" width="36" height="8" rx="1.5" transform="rotate(-30 32 32)" fill="currentColor" opacity="0.15" stroke="currentColor" stroke-width="1.5" />
+                <path d="M22 23.5l1.5 2.5m3-3.2l1.5 2.5m3-3.2l1.5 2.5m3-3.2l1.5 2.5m3-3.2l1.5 2.5m3-3.2l1.5 2.5" stroke="currentColor" stroke-width="1" stroke-linecap="round" transform="rotate(-30 32 32)" />
+              </g>
+              <!-- Math Symbols: Square Root, Sigma, Division, Pi -->
+              <!-- Pi Symbol -->
+              <path d="M16 18h10M19 18v10M23 18v10c0 2 1.5 2 2 2" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+              <!-- Square Root of X -->
+              <path d="M38 46h3l2-6 3 10h5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+              <!-- division dots and bar -->
+              <circle cx="48" cy="16" r="1.5" fill="currentColor" />
+              <line x1="44" y1="20" x2="52" y2="20" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+              <circle cx="48" cy="24" r="1.5" fill="currentColor" />
+              <!-- Plus sign -->
+              <path d="M16 44h6M19 41v6" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
             </svg>
+            <!-- Auto-rotating Maths Questions & Solutions -->
+            <div class="ticker-box" id="ticker-maths">
+              <span class="status-dot"></span>
+              <span class="ticker-text active">Math Question Loading...</span>
+            </div>
           </div>
           <div class="blog-card__body">
-            <span class="blog-card__tag">Mathematics</span>
-            <h2 class="blog-card__title">Maths Practice Portal</h2>
-            <p class="blog-card__desc">Step-by-step solutions in Hindi and English</p>
+            <span class="blog-card__tag">Mathematics &amp; Logic</span>
+            <h2 class="blog-card__title">Maths &amp; Aptitude Hub</h2>
+            <p class="blog-card__desc">Step-by-step shortcuts &amp; practices in Hindi &amp; English</p>
           </div>
         </a>
 
+        <!-- 3. Formula Hub -->
         <a href="/learn/formulae/" class="blog-card reveal reveal-delay-2" role="listitem">
           <div class="blog-card__thumb blog-card__thumb--formulae" aria-hidden="true">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3L2 21h20L12 3z" />
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 14h6" />
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
+              <!-- Geometric multi-layer hexagon casing (Animated pulse) -->
+              <polygon points="32,6 55,19 55,45 32,58 9,45 9,19" class="animate-hex-pulse" stroke="currentColor" stroke-width="1" />
+              <!-- Lab Flask holding molecules -->
+              <path d="M25 15h14M28 15v8l-10 18a4 4 0 0 0 3.5 6h21a4 4 0 0 0 3.5-6L36 23v-8" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" />
+              <!-- Liquid Level within the flask -->
+              <path d="M21 38c3-1.5 6 1.5 9 .5s4-1.5 7-.5s4 1 5-.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" opacity="0.7" />
+              
+              <!-- Atoms / Orbiting Rings in background (Animated chem ring) -->
+              <g class="animate-chem-ring">
+                <ellipse cx="32" cy="32" rx="20" ry="6" stroke="currentColor" stroke-width="1" transform="rotate(30 32 32)" opacity="0.3" />
+                <ellipse cx="32" cy="32" rx="20" ry="6" stroke="currentColor" stroke-width="1" transform="rotate(-30 32 32)" opacity="0.3" />
+                <circle cx="15" cy="22" r="2" fill="currentColor" />
+                <circle cx="49" cy="22" r="2" fill="currentColor" />
+              </g>
+              <circle cx="32" cy="48" r="2.5" fill="currentColor" />
+              
+              <!-- Molecular nodes bubbling inside (Staggered continuous rises) -->
+              <circle cx="28" cy="42" r="1.5" fill="currentColor" class="bubble-1" />
+              <circle cx="35" cy="35" r="2.2" fill="currentColor" class="bubble-2" />
+              <circle cx="31" cy="29" r="1.2" fill="currentColor" class="bubble-3" />
             </svg>
+            <!-- Auto-rotating Scientific & Chemistry Core Formulas -->
+            <div class="ticker-box" id="ticker-formulae">
+              <span class="status-dot"></span>
+              <span class="ticker-text active">Formula Loading...</span>
+            </div>
           </div>
           <div class="blog-card__body">
             <span class="blog-card__tag">Formula Hub</span>
             <h2 class="blog-card__title">All Formulae</h2>
-            <p class="blog-card__desc">Physics &amp; Maths core formulas for quick revision</p>
+            <p class="blog-card__desc">Physics, Maths &amp; Chemistry formulas for quick revision</p>
           </div>
         </a>
 
+        <!-- 4. Vyakaran & Vocab -->
         <a href="/learn/vyakaran/" class="blog-card reveal" role="listitem">
           <div class="blog-card__thumb blog-card__thumb--language" aria-hidden="true">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 20h9M3 20l7-14 7 14M5 16h10" />
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 4v4M15 6h4" />
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
+              <!-- Premium Open Book outline -->
+              <path d="M8 48c6-1.5 16-3 24 1 8-4 18-2.5 24-1V14c-6-1.5-16-3-24 1-8-4-18-2.5-24-1z" stroke="currentColor" stroke-width="2" stroke-linejoin="round" />
+              <!-- Center dividing spine -->
+              <line x1="32" y1="15" x2="32" y2="49" stroke="currentColor" stroke-width="2" />
+              <!-- Text lines representing Sanskrit / Hindi calligraphic roots -->
+              <path d="M14 20h10M14 26H24M14 32h7M38 20h11M38 26h11M41 32h8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" opacity="0.5" />
+              <!-- Masterfully crafted Calligraphy Pen / Feather quill drafting letters (Animated) -->
+              <g class="animate-quill">
+                <path d="M52 10 L44 26 L41 29 L38 31 L39 28 L41 25 L49 9 z" fill="currentColor" opacity="0.15" />
+                <path d="M52 10 L44 26 L41 29 L38 31 L39 28 L41 25 L49 9 Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" />
+                <path d="M38 31l2-2" stroke="currentColor" stroke-width="1.5" />
+              </g>
+              <!-- Ink droplet symbolizing learning/creativity -->
+              <path d="M33 21c-1-1-3 0-3 2s2 3 3 1" fill="currentColor" opacity="0.8" />
             </svg>
+            <!-- Auto-rotating Hindi Vyakaran Grammar & Vocabulary Rules -->
+            <div class="ticker-box" id="ticker-vyakaran">
+              <span class="status-dot"></span>
+              <span class="ticker-text active">Vyakaran Loading...</span>
+            </div>
           </div>
           <div class="blog-card__body">
             <span class="blog-card__tag">Language</span>
@@ -179,11 +407,36 @@ keywords: "free online learning India, GK quiz, coding tutorial Hindi, maths pra
           </div>
         </a>
 
+         <!-- 5. Conversion Hub -->
         <a href="/learn/conversion/" class="blog-card reveal reveal-delay-1" role="listitem">
           <div class="blog-card__thumb blog-card__thumb--conversion" aria-hidden="true">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 1121.21 7.89M21 20v-5h-.581m0 0a8.003 8.003 0 01-15.357-2" />
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
+              <!-- Mechanical interlocking gears symbolizing conversion process (Animated) -->
+              <!-- Large gear -->
+              <g class="animate-gear-large">
+                <circle cx="25" cy="35" r="11" stroke="currentColor" stroke-width="2" fill="currentColor" fill-opacity="0.05" />
+                <path d="M25 21v3M25 46v3M11 35h3M46 35h3M15 25l2 2M33 43l2 2M15 45l2-2M33 27l2-2" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" />
+              </g>
+              <!-- Small gear -->
+              <g class="animate-gear-small">
+                <circle cx="44" cy="22" r="7" stroke="currentColor" stroke-width="1.8" fill="currentColor" fill-opacity="0.05" />
+                <path d="M44 12v3M44 29v3M34 22h3M51 22h3" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+              </g>
+              <!-- Dynamic cycle conversion arrows -->
+              <path d="M12 24a20 20 0 0 1 34-8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-dasharray="4 2" />
+              <path d="M52 38a20 20 0 0 1-32 10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-dasharray="4 2" />
+              <!-- Arrow tips -->
+              <path d="M41 16h5v5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+              <path d="M23 48h-5v-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+              <!-- Floating Unit labels (e.g. scales of measurement "Kg", "m") -->
+              <path d="M48 40h4M50 38v4" stroke="currentColor" stroke-width="1" stroke-linecap="round" opacity="0.6" />
+              <path d="M14 14h4M16 12v4" stroke="currentColor" stroke-width="1" stroke-linecap="round" opacity="0.6" />
             </svg>
+            <!-- Auto-rotating Weight, Speed, Temperature Unit Conversions -->
+            <div class="ticker-box" id="ticker-conversion">
+              <span class="status-dot"></span>
+              <span class="ticker-text active">Conversion Loading...</span>
+            </div>
           </div>
           <div class="blog-card__body">
             <span class="blog-card__tag">Quick Tools</span>
@@ -196,3 +449,97 @@ keywords: "free online learning India, GK quiz, coding tutorial Hindi, maths pra
     </div>
   </section>
 </div>
+
+<!-- Auto loop rotation scripts for maximum user experience -->
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    // 1. All category item datasets matching the user requirement
+    const gkFacts = [
+      "Constitution has 448 Articles",
+      " Kaziranga: One-horned Rhinos",
+      "Sravana Belgola Monolithic Statue",
+      "RBI established in April 1935",
+      "Wular Lake: Largest fresh water",
+      "Quit India launched: Aug 1942",
+      "Sarnath: Lion Capital of Ashoka"
+    ];
+
+    const mathQuestions = [
+      "Solve: 3x - 7 = 11 ➜ x = 6",
+      "SI: P=₹2000, R=5%, T=2y ➜ SI=₹200",
+      "Speed: 72 km/h ➜ 20 m/s",
+      "Solve: log₂ 64 ➜ 6",
+      "If x+y=8, xy=15 ➜ x²+y²=34",
+      "Average: 10, 20, 30, 40, 50 ➜ 30",
+      "Solve: x² - 5x + 6 = 0 ➜ x = 2, 3"
+    ];
+
+    const formulas = [
+      "Energy: E = m · c²",
+      "Ohm's Law: V = I · R",
+      "Maths: a² + b² = c²",
+      "Benzene Ring: C₆H₆",
+      "Force: F = m · a",
+      "Water Ion: H₂O ⇌ H⁺ + OH⁻",
+      "Trig: sin²θ + cos²θ = 1"
+    ];
+
+    const vyakaranRules = [
+      "संधि: हिम + आलय = हिमालय (दीर्घ)",
+      "पर्यायवाची: सूर्य = रवि, दिनकर, भानु",
+      "समास: यथाशक्ति = शक्ति के अनुसार",
+      "विलोम शब्द: अमृत ↔ विष",
+      "अनेक शब्द: जो सब जानता हो = सर्वज्ञ",
+      "विभक्ति: कर्ता ने, कर्म को, करण से"
+    ];
+
+    const conversions = [
+      "Scale: 1 Kg = 2.204 Lbs",
+      "Scale: 1 Inch = 2.54 Cm",
+      "Scale: 1 Mile = 1.609 Km",
+      "Scale: 0°C = 32°F (Freezing)",
+      "Scale: 1 HP = 746 Watts",
+      "Scale: 1 Liter = 1000 mL",
+      "Scale: 1 GB = 1024 MB"
+    ];
+
+    // Helper function to handle seamless fade and scale transitions for each element
+    function setupCardTicker(elementId, dataset, intervalMs) {
+      const container = document.getElementById(elementId);
+      if (!container) return;
+      const textSpan = container.querySelector(".ticker-text");
+      if (!textSpan) return;
+
+      let currentIndex = 0;
+      
+      // Initialize with first item
+      textSpan.textContent = dataset[0];
+
+      setInterval(() => {
+        // Transition Out
+        textSpan.style.opacity = "0";
+        textSpan.style.transform = "translateY(-5px) scale(0.95)";
+
+        setTimeout(() => {
+          // Switch index
+          currentIndex = (currentIndex + 1) % dataset.length;
+          textSpan.textContent = dataset[currentIndex];
+          
+          // Transition In
+          textSpan.style.transform = "translateY(5px) scale(0.95)";
+          setTimeout(() => {
+            textSpan.style.opacity = "1";
+            textSpan.style.transform = "translateY(0) scale(1)";
+          }, 50);
+        }, 350); // wait for fadeout transition duration
+      }, intervalMs);
+    }
+
+    // Trigger sequential auto animations with staggered intervals for maximum professional look!
+    setupCardTicker("ticker-gk", gkFacts, 4500);         // 4.5s
+    setupCardTicker("ticker-maths", mathQuestions, 4000);   // 4.0s
+    setupCardTicker("ticker-formulae", formulas, 3500);       // 3.5s
+    setupCardTicker("ticker-vyakaran", vyakaranRules, 4200);   // 4.2s
+    setupCardTicker("ticker-conversion", conversions, 3800); // 3.8s
+  });
+</script>
