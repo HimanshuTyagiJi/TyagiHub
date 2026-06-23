@@ -20,8 +20,8 @@ layout: default
     
     <div class="quick-filters font-mono">
       <span>Language:</span>
-      <a href="/learn/formulas/mathematics/" class="filter-btn {% if page.lang == 'en' %}active-filter{% endif %}">English Portal</a>
-      <a href="/learn/formulas/mathematics-hi/" class="filter-btn {% if page.lang == 'hi' %}active-filter{% endif %}">हिंदी पोर्टल</a>
+      <a href="{{ '/learn/formulas/mathematics.html' | relative_url }}" class="filter-btn {% if page.lang == 'en' %}active-filter{% endif %}">English Portal</a>
+      <a href="{{ '/learn/formulas/mathematics-hi.html' | relative_url }}" class="filter-btn {% if page.lang == 'hi' %}active-filter{% endif %}">हिंदी पोर्टल</a>
     </div>
 
     <div class="quick-filters" style="margin-top: 15px;">
@@ -35,7 +35,7 @@ layout: default
   </div>
 
   <div class="formula-layout">
-    {% assign formula_data = site.data.formulas[page.subject_data] %}
+    {% assign formula_data = page.formulas_list %}
     
     {% for category in formula_data %}
       <div class="category-section">
