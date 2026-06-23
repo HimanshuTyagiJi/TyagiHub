@@ -1,127 +1,4840 @@
-
 [
   {
-    "category_en": "Algebra & Core Math",
-    "category_hi": "बीजगणित और मुख्य गणित",
+    "category_en": "Algebra",
+    "category_hi": "बीजगणित (Algebra)",
     "category_icon": "📐",
     "items": [
       {
-        "id": "algebraic_identity_1",
-        "classes": ["9", "10"],
-        "exams": ["cbse", "up_board"],
-        "latex": "(a + b)^2 = a^2 + 2ab + b^2",
+        "id": "polynomial",
+        "classes": [
+          "9"
+        ],
+        "exams": [
+          "cbse",
+          "up_board"
+        ],
+        "latex": "P(x) = a_n x^n + a_{n-1} x^{n-1} + \\\\dots + a_1 x + a_0",
         "en": {
-          "title": "Square of a Sum",
-          "desc": "Basic algebraic identity used for expanding square brackets."
+          "title": "Polynomial Definition",
+          "desc": "A mathematical expression consisting of variables and coefficients combined using addition, subtraction, and multiplication."
         },
         "hi": {
-          "title": "योग का वर्ग",
-          "desc": "Basic algebraic identity jiska upyog brackets ko expand karne ke liye hota hai."
+          "title": "बहुपद की परिभाषा (Polynomial)",
+          "desc": "वह गणितीय व्यंजक जिसमें चरों के घात केवल धनात्मक और पूर्णांक होते हैं।"
         }
       },
       {
-        "id": "herons_formula",
-        "classes": ["9"],
-        "exams": ["cbse", "up_board"],
-        "latex": "Area = \\sqrt{s(s-a)(s-b)(s-c)}",
+        "id": "polynomial_value",
+        "classes": [
+          "9"
+        ],
+        "exams": [
+          "cbse",
+          "up_board"
+        ],
+        "latex": "P(k) = a_n k^n + a_{n-1} k^{n-1} + \\\\dots + a_0",
         "en": {
-          "title": "Heron's Formula",
-          "desc": "Used to find the area of a triangle when lengths of all three sides are known."
+          "title": "Value of a Polynomial",
+          "desc": "The value obtained by substituting a real number k for the variable x in the polynomial P(x)."
         },
         "hi": {
-          "title": "हीरोन का सूत्र",
-          "desc": "Tribhuj (triangle) ka kshetrafal nikalne ke liye jab teeno sides pata hon."
+          "title": "बहुपद का मान (Value of Polynomial)",
+          "desc": "चर x के स्थान पर वास्तविक संख्या k रखने पर बहुपद P(x) से प्राप्त होने वाला मान।"
         }
       },
       {
-        "id": "quadratic_formula",
-        "classes": ["10", "11", "12"],
-        "exams": ["cbse", "up_board", "jee"],
-        "latex": "x = \\frac{-b \\pm \\sqrt{b^2 - 4ac}}{2a}",
+        "id": "zero",
+        "classes": [
+          "9"
+        ],
+        "exams": [
+          "cbse",
+          "up_board"
+        ],
+        "latex": "P(\\\\alpha) = 0 \\\\iff \\\\alpha \\\\text{ is a zero of } P(x)",
         "en": {
-          "title": "Quadratic Formula",
-          "desc": "Used to find the roots of a quadratic equation $ax^2 + bx + c = 0$."
+          "title": "Zero of a Polynomial",
+          "desc": "A real number alpha is a zero of polynomial P(x) if and only if P(alpha) = 0."
         },
         "hi": {
-          "title": "द्विघात सूत्र",
-          "desc": "Quadratic equation ke roots nikalne ka standard formula."
+          "title": "बहुपद के शून्य (Zero of Polynomial)",
+          "desc": "चर का वह विशिष्ट मान जिसे बहुपद में रखने पर पूरे बहुपद का मान शून्य हो जाता है।"
         }
       },
       {
-        "id": "trig_identity_1",
-        "classes": ["10", "11", "12"],
-        "exams": ["cbse", "up_board", "jee"],
-        "latex": "\\sin^2\\theta + \\cos^2\\theta = 1",
+        "id": "linear",
+        "classes": [
+          "9"
+        ],
+        "exams": [
+          "cbse",
+          "up_board"
+        ],
+        "latex": "P(x) = ax + b \\\\quad (a \\\\neq 0)",
         "en": {
-          "title": "Pythagorean Trigonometric Identity",
-          "desc": "The fundamental identity connecting sine and cosine."
+          "title": "Linear Polynomial",
+          "desc": "A polynomial of degree one, forming a straight line when graphed."
         },
         "hi": {
-          "title": "त्रिकोणमितीय सर्वसमिका",
-          "desc": "Sine aur Cosine ke beech ka sabse basic aur zaroori rishta."
+          "title": "एक-घात (Linear) बहुपद",
+          "desc": "अधिकतम एक घात वाला बहुपद, जिसका आरेख सदैव एक सरल रेखा होता है।"
+        }
+      },
+      {
+        "id": "quadratic",
+        "classes": [
+          "9"
+        ],
+        "exams": [
+          "cbse",
+          "up_board"
+        ],
+        "latex": "P(x) = ax^2 + bx + c \\\\quad (a \\\\neq 0)",
+        "en": {
+          "title": "Quadratic Polynomial",
+          "desc": "A polynomial of degree two, forming a parabola when graphed."
+        },
+        "hi": {
+          "title": "दो-घात (Quadratic) बहुपद",
+          "desc": "अधिकतम दो घात वाला बहुपद, जिसका आरेख परवलय (Parabola) होता है।"
+        }
+      },
+      {
+        "id": "degree",
+        "classes": [
+          "9"
+        ],
+        "exams": [
+          "cbse",
+          "up_board"
+        ],
+        "latex": "\\\\text{Degree}(P(x)) = n \\\\quad (\\\\text{where } a_n \\\\neq 0)",
+        "en": {
+          "title": "Degree of a Polynomial",
+          "desc": "The highest exponential power of the variable in any non-zero term of the polynomial."
+        },
+        "hi": {
+          "title": "बहुपद की घात (Degree)",
+          "desc": "किसी बहुपद में उपस्थित चर की अधिकतम घात को उसकी डिग्री या घात कहते हैं।"
+        }
+      },
+      {
+        "id": "x_a",
+        "classes": [
+          "9",
+          "11"
+        ],
+        "exams": [
+          "cbse",
+          "up_board",
+          "jee"
+        ],
+        "latex": "P(a) = 0 \\\\iff (x - a) \\\\text{ is a factor of } P(x)",
+        "en": {
+          "title": "Factor Theorem",
+          "desc": "A theorem linking factors and zeros of a polynomial: (x-a) is a factor if and only if P(a) = 0."
+        },
+        "hi": {
+          "title": "गुणनखंड प्रमेय (Factor Theorem)",
+          "desc": "यदि किसी बहुपद P(x) में P(a) = 0 हो, तो (x - a) उस बहुपद का एक गुणनखंड होता है।"
+        }
+      },
+      {
+        "id": "a2_b2",
+        "classes": [
+          "9"
+        ],
+        "exams": [
+          "cbse",
+          "up_board"
+        ],
+        "latex": "(a + b)^{2} - 2ab",
+        "en": {
+          "title": "a2 + b2",
+          "desc": "Standard algebraic representation and mathematical formula for studying a2 + b2."
+        },
+        "hi": {
+          "title": "a2 + b2 (a2 + b2)",
+          "desc": "a2 + b2 ज्ञात करने और विभिन्न परीक्षा प्रश्नों को हल करने का मुख्य सूत्र और व्याख्या।"
+        }
+      },
+      {
+        "id": "a_b",
+        "classes": [
+          "9",
+          "12"
+        ],
+        "exams": [
+          "cbse",
+          "up_board",
+          "jee"
+        ],
+        "latex": "a^{2} - 2ab + b^{2}",
+        "en": {
+          "title": "a - b",
+          "desc": "Standard algebraic representation and mathematical formula for studying a - b."
+        },
+        "hi": {
+          "title": "(a - b)2 (a - b)",
+          "desc": "(a - b)2 ज्ञात करने और विभिन्न परीक्षा प्रश्नों को हल करने का मुख्य सूत्र और व्याख्या।"
+        }
+      },
+      {
+        "id": "a_b_c_2",
+        "classes": [
+          "9"
+        ],
+        "exams": [
+          "cbse",
+          "up_board"
+        ],
+        "latex": "a^{2} + b^{2} + c^{2} + 2ab + 2bc + 2ca",
+        "en": {
+          "title": "a + b + c",
+          "desc": "Standard algebraic representation and mathematical formula for studying a + b + c."
+        },
+        "hi": {
+          "title": "(a + b + c)2 (a + b + c)",
+          "desc": "(a + b + c)2 ज्ञात करने और विभिन्न परीक्षा प्रश्नों को हल करने का मुख्य सूत्र और व्याख्या।"
+        }
+      },
+      {
+        "id": "a_b_c",
+        "classes": [
+          "9",
+          "12"
+        ],
+        "exams": [
+          "cbse",
+          "up_board",
+          "jee"
+        ],
+        "latex": "a^{2} + b^{2} + c^{2} - 2ab + 2bc - 2ca",
+        "en": {
+          "title": "a - b - c",
+          "desc": "Standard algebraic representation and mathematical formula for studying a - b - c."
+        },
+        "hi": {
+          "title": "(a - b - c)2 (a - b - c)",
+          "desc": "(a - b - c)2 ज्ञात करने और विभिन्न परीक्षा प्रश्नों को हल करने का मुख्य सूत्र और व्याख्या।"
+        }
+      },
+      {
+        "id": "a_b_3",
+        "classes": [
+          "9"
+        ],
+        "exams": [
+          "cbse",
+          "up_board"
+        ],
+        "latex": "a^{3} + 3a^{2}b + 3ab^{2} + b^{3}",
+        "en": {
+          "title": "a + b",
+          "desc": "Standard algebraic representation and mathematical formula for studying a + b."
+        },
+        "hi": {
+          "title": "(a + b)3 (a + b)",
+          "desc": "(a + b)3 ज्ञात करने और विभिन्न परीक्षा प्रश्नों को हल करने का मुख्य सूत्र और व्याख्या।"
+        }
+      },
+      {
+        "id": "a3_b3",
+        "classes": [
+          "9"
+        ],
+        "exams": [
+          "cbse",
+          "up_board"
+        ],
+        "latex": "(a - b)(a^{2} + ab + b^{2})",
+        "en": {
+          "title": "a3 - b3",
+          "desc": "Standard algebraic representation and mathematical formula for studying a3 - b3."
+        },
+        "hi": {
+          "title": "a3 - b3 (a3 - b3)",
+          "desc": "a3 - b3 ज्ञात करने और विभिन्न परीक्षा प्रश्नों को हल करने का मुख्य सूत्र और व्याख्या।"
+        }
+      },
+      {
+        "id": "a_b_4",
+        "classes": [
+          "9"
+        ],
+        "exams": [
+          "cbse",
+          "up_board"
+        ],
+        "latex": "a^{4} + 4a^{3}b + 6a^{2}b^{2} + 4ab^{3} + b^{4}",
+        "en": {
+          "title": "a + b",
+          "desc": "Standard algebraic representation and mathematical formula for studying a + b."
+        },
+        "hi": {
+          "title": "(a + b)4 (a + b)",
+          "desc": "(a + b)4 ज्ञात करने और विभिन्न परीक्षा प्रश्नों को हल करने का मुख्य सूत्र और व्याख्या।"
+        }
+      },
+      {
+        "id": "a4_b4",
+        "classes": [
+          "9"
+        ],
+        "exams": [
+          "cbse",
+          "up_board"
+        ],
+        "latex": "(a - b)(a + b)(a^{2} + b^{2})",
+        "en": {
+          "title": "a4 - b4",
+          "desc": "Standard algebraic representation and mathematical formula for studying a4 - b4."
+        },
+        "hi": {
+          "title": "a4 - b4 (a4 - b4)",
+          "desc": "a4 - b4 ज्ञात करने और विभिन्न परीक्षा प्रश्नों को हल करने का मुख्य सूत्र और व्याख्या।"
+        }
+      },
+      {
+        "id": "a5_b5",
+        "classes": [
+          "9"
+        ],
+        "exams": [
+          "cbse",
+          "up_board"
+        ],
+        "latex": "(a - b)(a^{4} + a^{3}b + a^{2}b^{2} + ab^{3} + b^{4})",
+        "en": {
+          "title": "a5 - b5",
+          "desc": "Standard algebraic representation and mathematical formula for studying a5 - b5."
+        },
+        "hi": {
+          "title": "a5 - b5 (a5 - b5)",
+          "desc": "a5 - b5 ज्ञात करने और विभिन्न परीक्षा प्रश्नों को हल करने का मुख्य सूत्र और व्याख्या।"
+        }
+      },
+      {
+        "id": "x_y_z_2",
+        "classes": [
+          "9"
+        ],
+        "exams": [
+          "cbse",
+          "up_board"
+        ],
+        "latex": "x^{2} + y^{2} + z^{2} + 2xy + 2yz + 2xz",
+        "en": {
+          "title": "x + y + z",
+          "desc": "Standard algebraic representation and mathematical formula for studying x + y + z."
+        },
+        "hi": {
+          "title": "(x + y + z)2 (x + y + z)",
+          "desc": "(x + y + z)2 ज्ञात करने और विभिन्न परीक्षा प्रश्नों को हल करने का मुख्य सूत्र और व्याख्या।"
+        }
+      },
+      {
+        "id": "x_y_z",
+        "classes": [
+          "9"
+        ],
+        "exams": [
+          "cbse",
+          "up_board"
+        ],
+        "latex": "x^{2} + y^{2} + z^{2} - 2xy + 2yz - 2xz",
+        "en": {
+          "title": "x - y - z",
+          "desc": "Standard algebraic representation and mathematical formula for studying x - y - z."
+        },
+        "hi": {
+          "title": "(x - y - z)2 (x - y - z)",
+          "desc": "(x - y - z)2 ज्ञात करने और विभिन्न परीक्षा प्रश्नों को हल करने का मुख्य सूत्र और व्याख्या।"
+        }
+      },
+      {
+        "id": "x3_y3_z3_3xyz",
+        "classes": [
+          "9"
+        ],
+        "exams": [
+          "cbse",
+          "up_board"
+        ],
+        "latex": "(x + y + z)(x^{2} + y^{2} + z^{2} - xy - yz - xz)",
+        "en": {
+          "title": "x3 + y3 + z3 - 3xyz",
+          "desc": "Standard algebraic representation and mathematical formula for studying x3 + y3 + z3 - 3xyz."
+        },
+        "hi": {
+          "title": "x3 + y3 + z3 - 3xyz (x3 + y3 + z3 - 3xyz)",
+          "desc": "x3 + y3 + z3 - 3xyz ज्ञात करने और विभिन्न परीक्षा प्रश्नों को हल करने का मुख्य सूत्र और व्याख्या।"
+        }
+      },
+      {
+        "id": "x2_y2_z2_xy_yz_zx",
+        "classes": [
+          "9"
+        ],
+        "exams": [
+          "cbse",
+          "up_board"
+        ],
+        "latex": "1/2 [(x - y)^{2} + (y - z)^{2} + (z - x)^{2}]",
+        "en": {
+          "title": "x2 + y2 + z2 - xy - yz - zx",
+          "desc": "Standard algebraic representation and mathematical formula for studying x2 + y2 + z2 - xy - yz - zx."
+        },
+        "hi": {
+          "title": "x2 + y2 + z2 - xy - yz - zx (x2 + y2 + z2 - xy - yz - zx)",
+          "desc": "x2 + y2 + z2 - xy - yz - zx ज्ञात करने और विभिन्न परीक्षा प्रश्नों को हल करने का मुख्य सूत्र और व्याख्या।"
+        }
+      },
+      {
+        "id": "x2_y2_z2_2",
+        "classes": [
+          "9"
+        ],
+        "exams": [
+          "cbse",
+          "up_board"
+        ],
+        "latex": "x^{4} + y^{4} + z^{4} + 2(x^{2}y^{2} + y^{2}z^{2} + z^{2}x^{2}) + 2(x^{2}yz + xy^{2}z + xyz^{2})",
+        "en": {
+          "title": "x2 + y2 + z2",
+          "desc": "Standard algebraic representation and mathematical formula for studying x2 + y2 + z2."
+        },
+        "hi": {
+          "title": "(x2 + y2 + z2)2 (x2 + y2 + z2)",
+          "desc": "(x2 + y2 + z2)2 ज्ञात करने और विभिन्न परीक्षा प्रश्नों को हल करने का मुख्य सूत्र और व्याख्या।"
+        }
+      },
+      {
+        "id": "a_b_c_3",
+        "classes": [
+          "9"
+        ],
+        "exams": [
+          "cbse",
+          "up_board"
+        ],
+        "latex": "a^{3} + b^{3} + c^{3} + 3(a^{2}b + ab^{2} + b^{2}c + bc^{2} + c^{2}a + ac^{2}) + 6abc",
+        "en": {
+          "title": "a + b + c",
+          "desc": "Standard algebraic representation and mathematical formula for studying a + b + c."
+        },
+        "hi": {
+          "title": "(a + b + c)3 (a + b + c)",
+          "desc": "(a + b + c)3 ज्ञात करने और विभिन्न परीक्षा प्रश्नों को हल करने का मुख्य सूत्र और व्याख्या।"
+        }
+      },
+      {
+        "id": "x_y_2_x_y_2",
+        "classes": [
+          "9"
+        ],
+        "exams": [
+          "cbse",
+          "up_board"
+        ],
+        "latex": "(x^{2} - y^{2})^{2}",
+        "en": {
+          "title": "x + y",
+          "desc": "Standard algebraic representation and mathematical formula for studying x + y."
+        },
+        "hi": {
+          "title": "(x + y)2(x - y)2 (x + y)",
+          "desc": "(x + y)2(x - y)2 ज्ञात करने और विभिन्न परीक्षा प्रश्नों को हल करने का मुख्य सूत्र और व्याख्या।"
+        }
+      },
+      {
+        "id": "a_b_2_a_b_2",
+        "classes": [
+          "9"
+        ],
+        "exams": [
+          "cbse",
+          "up_board"
+        ],
+        "latex": "(a^{2} - b^{2})^{2}",
+        "en": {
+          "title": "a + b",
+          "desc": "Standard algebraic representation and mathematical formula for studying a + b."
+        },
+        "hi": {
+          "title": "(a + b)2(a - b)2 (a + b)",
+          "desc": "(a + b)2(a - b)2 ज्ञात करने और विभिन्न परीक्षा प्रश्नों को हल करने का मुख्य सूत्र और व्याख्या।"
+        }
+      },
+      {
+        "id": "x_y_z_3",
+        "classes": [
+          "9"
+        ],
+        "exams": [
+          "cbse",
+          "up_board"
+        ],
+        "latex": "x^{3} + y^{3} + z^{3} + 3(x^{2}y + xy^{2} + y^{2}z + yz^{2} + z^{2}x + zx^{2}) + 6xyz",
+        "en": {
+          "title": "x + y + z",
+          "desc": "Standard algebraic representation and mathematical formula for studying x + y + z."
+        },
+        "hi": {
+          "title": "(x + y + z)3 (x + y + z)",
+          "desc": "(x + y + z)3 ज्ञात करने और विभिन्न परीक्षा प्रश्नों को हल करने का मुख्य सूत्र और व्याख्या।"
+        }
+      },
+      {
+        "id": "a_b_c_d_2",
+        "classes": [
+          "9"
+        ],
+        "exams": [
+          "cbse",
+          "up_board"
+        ],
+        "latex": "a^{2} + b^{2} + c^{2} + d^{2} + 2(ab + ac + ad + bc + bd + cd)",
+        "en": {
+          "title": "a + b + c + d",
+          "desc": "Standard algebraic representation and mathematical formula for studying a + b + c + d."
+        },
+        "hi": {
+          "title": "(a + b + c + d)2 (a + b + c + d)",
+          "desc": "(a + b + c + d)2 ज्ञात करने और विभिन्न परीक्षा प्रश्नों को हल करने का मुख्य सूत्र और व्याख्या।"
+        }
+      },
+      {
+        "id": "ax_b_0",
+        "classes": [
+          "9"
+        ],
+        "exams": [
+          "cbse",
+          "up_board"
+        ],
+        "latex": "ax + b = 0 \\\\quad (a \\\\neq 0)",
+        "en": {
+          "title": "Linear Equation in One Variable",
+          "desc": "An algebraic equation of degree one involving a single variable."
+        },
+        "hi": {
+          "title": "एक चर में रैखिक समीकरण",
+          "desc": "एक ही अज्ञात चर वाला समीकरण जिसे सरल करके चर का मान निकाला जा सकता है।"
+        }
+      },
+      {
+        "id": "x_ba",
+        "classes": [
+          "9"
+        ],
+        "exams": [
+          "cbse",
+          "up_board"
+        ],
+        "latex": "x = -\\\\frac{b}{a}",
+        "en": {
+          "title": "Solution of Linear Equation",
+          "desc": "The unique solution to the standard linear equation ax + b = 0."
+        },
+        "hi": {
+          "title": "रैखिक समीकरण का हल",
+          "desc": "रैखिक समीकरण ax + b = 0 का एकमात्र अद्वितीय मान हल।"
+        }
+      },
+      {
+        "id": "onto",
+        "classes": [
+          "12"
+        ],
+        "exams": [
+          "cbse",
+          "up_board",
+          "jee"
+        ],
+        "latex": "\\\\forall y \\\\in B, \\\\; \\\\exists x \\\\in A \\\\text{ such that } f(x) = y",
+        "en": {
+          "title": "Onto Function (Surjection)",
+          "desc": "A function where every element in the codomain has at least one pre-image in the domain."
+        },
+        "hi": {
+          "title": "आच्छादक फलन (Onto Function)",
+          "desc": "सहप्रांत (Codomain) के प्रत्येक अवयव का प्रांत (Domain) में कम से कम एक पूर्व-प्रतिबिंब उपलब्ध होने की स्थिति।"
+        }
+      },
+      {
+        "id": "one_one",
+        "classes": [
+          "12"
+        ],
+        "exams": [
+          "cbse",
+          "up_board",
+          "jee"
+        ],
+        "latex": "f(x_1) = f(x_2) \\\\implies x_1 = x_2",
+        "en": {
+          "title": "One-to-One Function (Injection)",
+          "desc": "A function that maps distinct domain elements to distinct codomain elements."
+        },
+        "hi": {
+          "title": "एकैकी फलन (One-One Function)",
+          "desc": "वह फलन जहाँ प्रांत के किन्हीं भी दो अलग-अलग अवयवों के प्रतिबिंब समान नहीं होते हैं।"
+        }
+      },
+      {
+        "id": "bijective",
+        "classes": [
+          "12"
+        ],
+        "exams": [
+          "cbse",
+          "up_board",
+          "jee"
+        ],
+        "latex": "f: A \\\\to B \\\\text{ is bijective } \\\\iff f \\\\text{ is injective and surjective}",
+        "en": {
+          "title": "Bijective Function (Bijection)",
+          "desc": "A function that is both injective (one-to-one) and surjective (onto)."
+        },
+        "hi": {
+          "title": "एकैकी आच्छादक फलन (Bijective Function)",
+          "desc": "ऐसा फलन जो एकैकी (One-One) और आच्छादक (Onto) दोनों होता है।"
+        }
+      },
+      {
+        "id": "constant",
+        "classes": [
+          "12"
+        ],
+        "exams": [
+          "cbse",
+          "up_board",
+          "jee"
+        ],
+        "latex": "f(x) = c \\\\quad (\\\\forall x \\\\in A)",
+        "en": {
+          "title": "Constant Function",
+          "desc": "A function whose output value is the same constant for every input value."
+        },
+        "hi": {
+          "title": "अचर फलन (Constant Function)",
+          "desc": "ऐसा फलन जिसका मान स्वतंत्र चर के बदलने पर भी सदैव एक स्थिर अंक ही रहता है।"
         }
       }
     ]
   },
   {
-    "category_en": "Advanced Mathematics",
-    "category_hi": "उच्च गणित",
+    "category_en": "Geometry & Vectors",
+    "category_hi": "ज्यामिति और वेक्टर (Geometry & Vectors)",
+    "category_icon": "🏛️",
+    "items": [
+      {
+        "id": "x_y",
+        "classes": [
+          "9"
+        ],
+        "exams": [
+          "cbse",
+          "up_board"
+        ],
+        "latex": "(x, y)",
+        "en": {
+          "title": "2D Cartesian Coordinate Representation",
+          "desc": "An ordered pair defining a unique point in a 2D Cartesian coordinate system."
+        },
+        "hi": {
+          "title": "निर्देशांक निरूपण",
+          "desc": "किसी समतल धरातल पर किसी बिंदु की सटीक स्थिति (x, y) दर्शाने का मानक गणितीय रूप।"
+        }
+      },
+      {
+        "id": "0_0",
+        "classes": [
+          "9"
+        ],
+        "exams": [
+          "cbse",
+          "up_board"
+        ],
+        "latex": "O(0, 0)",
+        "en": {
+          "title": "Origin Coordinate",
+          "desc": "The geometric reference point where the abscissa and ordinate axes intersect."
+        },
+        "hi": {
+          "title": "मूल बिंदु निर्देशांक (Origin)",
+          "desc": "वह केंद्रीय बिंदु जहाँ x-अक्ष और y-अक्ष एक-दूसरे को प्रतिच्छेद (0, 0) करते हैं।"
+        }
+      },
+      {
+        "id": "quadrants",
+        "classes": [
+          "9"
+        ],
+        "exams": [
+          "cbse",
+          "up_board"
+        ],
+        "latex": "\\\\text{Quadrant I: }(x>0, y>0), \\\\; \\\\text{II: }(x<0, y>0), \\\\; \\\\text{III: }(x<0, y<0), \\\\; \\\\text{IV: }(x>0, y<0)",
+        "en": {
+          "title": "Cartesian Quadrants",
+          "desc": "The four regions of the Cartesian plane segmented by the analytical coordinate axes."
+        },
+        "hi": {
+          "title": "चतुर्थांश (Quadrants)",
+          "desc": "कार्तीय तल में अक्षों द्वारा विभाजित चार मुख्य क्षेत्र जिनमें धनात्मक/ऋणात्मक बिंदु होते हैं।"
+        }
+      },
+      {
+        "id": "x2_x1",
+        "classes": [
+          "9"
+        ],
+        "exams": [
+          "cbse",
+          "up_board"
+        ],
+        "latex": "d = \\\\sqrt{(x_2 - x_1)^2 + (y_2 - y_1)^2}",
+        "en": {
+          "title": "Analytical Distance Formula",
+          "desc": "Finds the exact Euclidean distance between two coordinate positions on a flat plane."
+        },
+        "hi": {
+          "title": "दूरी सूत्र (Distance Formula)",
+          "desc": "द्विविमीय समतल पर किन्हीं दो दिए गए बिंदुओं के बीच की न्यूनतम दूरी ज्ञात करने का प्रमुख सूत्र।"
+        }
+      },
+      {
+        "id": "x1_x2_2_y1_y2_2",
+        "classes": [
+          "9"
+        ],
+        "exams": [
+          "cbse",
+          "up_board"
+        ],
+        "latex": "M\\\\left(\\\\frac{x_1 + x_2}{2}, \\\\frac{y_1 + y_2}{2}\\\\right)",
+        "en": {
+          "title": "Line Midpoint Formula",
+          "desc": "Calculates coordinates of the exact center of a line segment joining two known endpoints."
+        },
+        "hi": {
+          "title": "मध्य बिंदु सूत्र (Midpoint Formula)",
+          "desc": "दो बिंदुओं को मिलाने वाले रेखाखंड के मध्य बिंदु के निर्देशांक निकालने का सूत्र।"
+        }
+      },
+      {
+        "id": "complementary_angles",
+        "classes": [
+          "9"
+        ],
+        "exams": [
+          "cbse",
+          "up_board"
+        ],
+        "latex": "\\\\theta_1 + \\\\theta_2 = 90^\\\\circ",
+        "en": {
+          "title": "Complementary Angles Theorem",
+          "desc": "Two distinct plane geometric angles whose individual physical addition sums to exactly 90 degrees."
+        },
+        "hi": {
+          "title": "पूरक कोण (Complementary Angles)",
+          "desc": "ऐसे दो कोण जिनका योग ठीक समकोण (90°) के समतुल्य होता है।"
+        }
+      },
+      {
+        "id": "supplementary_angles",
+        "classes": [
+          "9"
+        ],
+        "exams": [
+          "cbse",
+          "up_board"
+        ],
+        "latex": "\\\\theta_1 + \\\\theta_2 = 180^\\\\circ",
+        "en": {
+          "title": "Supplementary Angles Theorem",
+          "desc": "Two distinct plane geometric angles whose individual physical addition sums to exactly 180 degrees."
+        },
+        "hi": {
+          "title": "संपूरक कोण (Supplementary Angles)",
+          "desc": "ऐसे दो कोण जिनका योग ठीक एक सरल रेखा (180°) के समतुल्य होता है।"
+        }
+      },
+      {
+        "id": "parallel_lines",
+        "classes": [
+          "9"
+        ],
+        "exams": [
+          "cbse",
+          "up_board"
+        ],
+        "latex": "दो रेखाएँ जो कभी एक-दूसरे को नहीं काटतीं, उन्हें समानांतर रेखाएँ कहते हैं।",
+        "en": {
+          "title": "Parallel Lines",
+          "desc": "Standard algebraic representation and mathematical formula for studying Parallel Lines."
+        },
+        "hi": {
+          "title": "समानांतर रेखाएँ (Parallel Lines) (Parallel Lines)",
+          "desc": "समानांतर रेखाएँ (Parallel Lines) ज्ञात करने और विभिन्न परीक्षा प्रश्नों को हल करने का मुख्य सूत्र और व्याख्या।"
+        }
+      },
+      {
+        "id": "intersecting_lines",
+        "classes": [
+          "9"
+        ],
+        "exams": [
+          "cbse",
+          "up_board"
+        ],
+        "latex": "दो रेखाएँ जो एक बिंदु पर मिलती हैं, उन्हें काटती रेखाएँ कहते हैं।",
+        "en": {
+          "title": "Intersecting Lines",
+          "desc": "Standard trigonometric values and properties of angles."
+        },
+        "hi": {
+          "title": "काटती रेखाएँ (Intersecting Lines) (Intersecting Lines)",
+          "desc": "कोणों के विभिन्न मानों के लिए प्रमुख त्रिकोणमितीय अनुपातों का मान।"
+        }
+      },
+      {
+        "id": "alternate_angles",
+        "classes": [
+          "9"
+        ],
+        "exams": [
+          "cbse",
+          "up_board"
+        ],
+        "latex": "दो समानांतर रेखाओं को एक ट्रांसवर्सल रेखा द्वारा काटा जाता है, ट्रांसवर्सल रेखा से बने कोण आंतर कोण कहलाते हैं।",
+        "en": {
+          "title": "Alternate Angles",
+          "desc": "Standard algebraic representation and mathematical formula for studying Alternate Angles."
+        },
+        "hi": {
+          "title": "आंतर कोण (Alternate Angles) (Alternate Angles)",
+          "desc": "आंतर कोण (Alternate Angles) ज्ञात करने और विभिन्न परीक्षा प्रश्नों को हल करने का मुख्य सूत्र और व्याख्या।"
+        }
+      },
+      {
+        "id": "30_60_90_",
+        "classes": [
+          "9"
+        ],
+        "exams": [
+          "cbse",
+          "up_board"
+        ],
+        "latex": "ां 30^\\\\circ और 60^\\\\circ समकुच कोण हैं, जिनका योग 90^\\\\circ",
+        "en": {
+          "title": "30° + 60° = 90°",
+          "desc": "Standard algebraic representation and mathematical formula for studying 30° + 60° = 90°."
+        },
+        "hi": {
+          "title": "30° + 60° = 90° (30° + 60° = 90°)",
+          "desc": "30° + 60° = 90° ज्ञात करने और विभिन्न परीक्षा प्रश्नों को हल करने का मुख्य सूत्र और व्याख्या।"
+        }
+      },
+      {
+        "id": "110_70_180_",
+        "classes": [
+          "9"
+        ],
+        "exams": [
+          "cbse",
+          "up_board"
+        ],
+        "latex": "ां 110^\\\\circ और 70^\\\\circ पूरक कोण हैं, जिनका योग 180^\\\\circ",
+        "en": {
+          "title": "110° + 70° = 180°",
+          "desc": "Standard algebraic representation and mathematical formula for studying 110° + 70° = 180°."
+        },
+        "hi": {
+          "title": "110° + 70° = 180° (110° + 70° = 180°)",
+          "desc": "110° + 70° = 180° ज्ञात करने और विभिन्न परीक्षा प्रश्नों को हल करने का मुख्य सूत्र और व्याख्या।"
+        }
+      },
+      {
+        "id": "ab_cd",
+        "classes": [
+          "9"
+        ],
+        "exams": [
+          "cbse",
+          "up_board"
+        ],
+        "latex": "⟶ ट्रांसवर्सल रेखा: EF",
+        "en": {
+          "title": "⟶ रेखाएँ AB || CD",
+          "desc": "Standard algebraic representation and mathematical formula for studying ⟶ रेखाएँ AB || CD."
+        },
+        "hi": {
+          "title": "⟶ रेखाएँ AB || CD (⟶ रेखाएँ AB || CD)",
+          "desc": "⟶ रेखाएँ AB || CD ज्ञात करने और विभिन्न परीक्षा प्रश्नों को हल करने का मुख्य सूत्र और व्याख्या।"
+        }
+      },
+      {
+        "id": "_",
+        "classes": [
+          "9",
+          "11"
+        ],
+        "exams": [
+          "cbse",
+          "up_board",
+          "jee"
+        ],
+        "latex": "\\\\Rightarrow \\\\angle 3 = \\\\angle 4 (अनुकूली कोण)",
+        "en": {
+          "title": "आंतर कोण",
+          "desc": "Standard algebraic representation and mathematical formula for studying आंतर कोण."
+        },
+        "hi": {
+          "title": "⇒ ∠1 = ∠2 (आंतर कोण) (आंतर कोण)",
+          "desc": "⇒ ∠1 = ∠2 (आंतर कोण) ज्ञात करने और विभिन्न परीक्षा प्रश्नों को हल करने का मुख्य सूत्र और व्याख्या।"
+        }
+      },
+      {
+        "id": "ab_cd_p",
+        "classes": [
+          "9"
+        ],
+        "exams": [
+          "cbse",
+          "up_board"
+        ],
+        "latex": "\\\\Rightarrow रेखाएँ AB और CD P पर मिलती हैं।",
+        "en": {
+          "title": "⇒ AB ∩ CD = P",
+          "desc": "Standard algebraic representation and mathematical formula for studying ⇒ AB ∩ CD = P."
+        },
+        "hi": {
+          "title": "⇒ AB ∩ CD = P (⇒ AB ∩ CD = P)",
+          "desc": "⇒ AB ∩ CD = P ज्ञात करने और विभिन्न परीक्षा प्रश्नों को हल करने का मुख्य सूत्र और व्याख्या।"
+        }
+      },
+      {
+        "id": "1_rad",
+        "classes": [
+          "9"
+        ],
+        "exams": [
+          "cbse",
+          "up_board"
+        ],
+        "latex": "\\\\frac{180^\\\\circ}{\\\\pi} \\\\approx 57^\\\\circ 17'45\"",
+        "en": {
+          "title": "1 rad",
+          "desc": "Standard algebraic representation and mathematical formula for studying 1 rad."
+        },
+        "hi": {
+          "title": "1 rad (1 rad)",
+          "desc": "1 rad ज्ञात करने और विभिन्न परीक्षा प्रश्नों को हल करने का मुख्य सूत्र और व्याख्या।"
+        }
+      },
+      {
+        "id": "1_",
+        "classes": [
+          "9"
+        ],
+        "exams": [
+          "cbse",
+          "up_board"
+        ],
+        "latex": "\\\\frac{\\\\pi}{180}rad \\\\approx 0.017453",
+        "en": {
+          "title": "1°",
+          "desc": "Standard algebraic representation and mathematical formula for studying 1°."
+        },
+        "hi": {
+          "title": "1° (1°)",
+          "desc": "1° ज्ञात करने और विभिन्न परीक्षा प्रश्नों को हल करने का मुख्य सूत्र और व्याख्या।"
+        }
+      },
+      {
+        "id": "2",
+        "classes": [
+          "9",
+          "10",
+          "11"
+        ],
+        "exams": [
+          "cbse",
+          "up_board",
+          "jee"
+        ],
+        "latex": "(\\\\text{p})^{2} + (\\\\text{b})^{2}",
+        "en": {
+          "title": "कर्ण",
+          "desc": "Standard algebraic representation and mathematical formula for studying कर्ण."
+        },
+        "hi": {
+          "title": "(कर्ण)2 (कर्ण)",
+          "desc": "(कर्ण)2 ज्ञात करने और विभिन्न परीक्षा प्रश्नों को हल करने का मुख्य सूत्र और व्याख्या।"
+        }
+      },
+      {
+        "id": "trig_cos_0",
+        "classes": [
+          "9",
+          "10"
+        ],
+        "exams": [
+          "cbse",
+          "up_board"
+        ],
+        "latex": "\\\\cos(0^\\\\circ) = 1",
+        "en": {
+          "title": "COS ratio at 0°",
+          "desc": "The exact numerical trigonometric value of the COS function for angle 0°."
+        },
+        "hi": {
+          "title": "Cosecant (csc θ) का मान 0° पर (COS ratio at 0°)",
+          "desc": "कोण 0° के लिए Cosecant (csc θ) त्रिकोणमितीय अनुपात का सरल ज्यामितीय मान।"
+        }
+      },
+      {
+        "id": "trig_cos_30",
+        "classes": [
+          "9",
+          "10"
+        ],
+        "exams": [
+          "cbse",
+          "up_board"
+        ],
+        "latex": "\\\\cos(30^\\\\circ) = \\\\frac{\\\\sqrt{3}}{2}",
+        "en": {
+          "title": "COS ratio at 30°",
+          "desc": "The exact numerical trigonometric value of the COS function for angle 30°."
+        },
+        "hi": {
+          "title": "Cosecant (csc θ) का मान 30° पर (COS ratio at 30°)",
+          "desc": "कोण 30° के लिए Cosecant (csc θ) त्रिकोणमितीय अनुपात का सरल ज्यामितीय मान।"
+        }
+      },
+      {
+        "id": "trig_cos_45",
+        "classes": [
+          "9",
+          "10"
+        ],
+        "exams": [
+          "cbse",
+          "up_board"
+        ],
+        "latex": "\\\\cos(45^\\\\circ) = \\\\frac{1}{\\\\sqrt{2}}",
+        "en": {
+          "title": "COS ratio at 45°",
+          "desc": "The exact numerical trigonometric value of the COS function for angle 45°."
+        },
+        "hi": {
+          "title": "Cosecant (csc θ) का मान 45° पर (COS ratio at 45°)",
+          "desc": "कोण 45° के लिए Cosecant (csc θ) त्रिकोणमितीय अनुपात का सरल ज्यामितीय मान।"
+        }
+      },
+      {
+        "id": "trig_cos_60",
+        "classes": [
+          "9",
+          "10"
+        ],
+        "exams": [
+          "cbse",
+          "up_board"
+        ],
+        "latex": "\\\\cos(60^\\\\circ) = \\\\frac{1}{2}",
+        "en": {
+          "title": "COS ratio at 60°",
+          "desc": "The exact numerical trigonometric value of the COS function for angle 60°."
+        },
+        "hi": {
+          "title": "Cosecant (csc θ) का मान 60° पर (COS ratio at 60°)",
+          "desc": "कोण 60° के लिए Cosecant (csc θ) त्रिकोणमितीय अनुपात का सरल ज्यामितीय मान।"
+        }
+      },
+      {
+        "id": "trig_cos_90",
+        "classes": [
+          "9",
+          "10"
+        ],
+        "exams": [
+          "cbse",
+          "up_board"
+        ],
+        "latex": "\\\\cos(90^\\\\circ) = 0",
+        "en": {
+          "title": "COS ratio at 90°",
+          "desc": "The exact numerical trigonometric value of the COS function for angle 90°."
+        },
+        "hi": {
+          "title": "Cosecant (csc θ) का मान 90° पर (COS ratio at 90°)",
+          "desc": "कोण 90° के लिए Cosecant (csc θ) त्रिकोणमितीय अनुपात का सरल ज्यामितीय मान।"
+        }
+      },
+      {
+        "id": "sin2_cos2",
+        "classes": [
+          "9",
+          "10"
+        ],
+        "exams": [
+          "cbse",
+          "up_board"
+        ],
+        "latex": "\\\\sin^2\\\\theta + \\\\cos^2\\\\theta = 1",
+        "en": {
+          "title": "Fundamental Pythagorean Identity",
+          "desc": "The core trigonometric identity relating sine and cosine squared."
+        },
+        "hi": {
+          "title": "साइन-कॉस पायथागॉरियन सर्वसमिका",
+          "desc": "त्रिकोणमिति का आधारभूत सूत्र जो साइन वर्ग और कॉस वर्ग का योग 1 दर्शाता है।"
+        }
+      },
+      {
+        "id": "sec2_tan2",
+        "classes": [
+          "9",
+          "10"
+        ],
+        "exams": [
+          "cbse",
+          "up_board"
+        ],
+        "latex": "\\\\sec^2\\\\theta - \\\\tan^2\\\\theta = 1",
+        "en": {
+          "title": "Secant-Tangent Identity",
+          "desc": "Pythagorean identity relating secant squared and tangent squared."
+        },
+        "hi": {
+          "title": "सेक-टैन सर्वसमिका",
+          "desc": "त्रिकोणमितीय सर्वसमिका जो सेक वर्ग और टैन वर्ग के अंतर को 1 सिद्ध करती है।"
+        }
+      },
+      {
+        "id": "cosec2_cot2",
+        "classes": [
+          "9",
+          "10"
+        ],
+        "exams": [
+          "cbse",
+          "up_board"
+        ],
+        "latex": "\\\\csc^2\\\\theta - \\\\cot^2\\\\theta = 1",
+        "en": {
+          "title": "Cosecant-Cotangent Identity",
+          "desc": "Pythagorean identity relating cosecant squared and cotangent squared."
+        },
+        "hi": {
+          "title": "कोसेक-कोट सर्वसमिका",
+          "desc": "त्रिकोणमितीय सर्वसमिका जो कोसेक वर्ग और कोट वर्ग के अंतर को 1 सिद्ध करती है।"
+        }
+      },
+      {
+        "id": "csc",
+        "classes": [
+          "9",
+          "10"
+        ],
+        "exams": [
+          "cbse",
+          "up_board"
+        ],
+        "latex": "-csc( \\\\theta )",
+        "en": {
+          "title": "-θ",
+          "desc": "Standard algebraic representation and mathematical formula for studying -θ."
+        },
+        "hi": {
+          "title": "csc(-θ) (-θ)",
+          "desc": "csc(-θ) ज्ञात करने और विभिन्न परीक्षा प्रश्नों को हल करने का मुख्य सूत्र और व्याख्या।"
+        }
+      },
+      {
+        "id": "90",
+        "classes": [
+          "9",
+          "10"
+        ],
+        "exams": [
+          "cbse",
+          "up_board"
+        ],
+        "latex": "cos( \\\\theta )",
+        "en": {
+          "title": "90 - θ",
+          "desc": "Standard algebraic representation and mathematical formula for studying 90 - θ."
+        },
+        "hi": {
+          "title": "90 - θ (90 - θ)",
+          "desc": "90 - θ ज्ञात करने और विभिन्न परीक्षा प्रश्नों को हल करने का मुख्य सूत्र और व्याख्या।"
+        }
+      },
+      {
+        "id": "180",
+        "classes": [
+          "9",
+          "10"
+        ],
+        "exams": [
+          "cbse",
+          "up_board"
+        ],
+        "latex": "sin( \\\\theta )",
+        "en": {
+          "title": "180 - θ",
+          "desc": "Standard algebraic representation and mathematical formula for studying 180 - θ."
+        },
+        "hi": {
+          "title": "180 - θ (180 - θ)",
+          "desc": "180 - θ ज्ञात करने और विभिन्न परीक्षा प्रश्नों को हल करने का मुख्य सूत्र और व्याख्या।"
+        }
+      },
+      {
+        "id": "quadrilateral",
+        "classes": [
+          "9"
+        ],
+        "exams": [
+          "cbse",
+          "up_board"
+        ],
+        "latex": "360^\\\\circ",
+        "en": {
+          "title": "चतुर्भुज के कोणों का योग",
+          "desc": "Standard algebraic representation and mathematical formula for studying चतुर्भुज के कोणों का योग."
+        },
+        "hi": {
+          "title": "चतुर्भुज के कोणों का योग (चतुर्भुज के कोणों का योग)",
+          "desc": "चतुर्भुज के कोणों का योग ज्ञात करने और विभिन्न परीक्षा प्रश्नों को हल करने का मुख्य सूत्र और व्याख्या।"
+        }
+      },
+      {
+        "id": "quadrilateral_area",
+        "classes": [
+          "9"
+        ],
+        "exams": [
+          "cbse",
+          "up_board"
+        ],
+        "latex": "\\\\text{b} \\\\times",
+        "en": {
+          "title": "सामान्य चतुर्भुज का क्षेत्रफल",
+          "desc": "Formula to calculate the area of the given geometric shape."
+        },
+        "hi": {
+          "title": "सामान्य चतुर्भुज का क्षेत्रफल (सामान्य चतुर्भुज का क्षेत्रफल)",
+          "desc": "दिए गए ज्यामितीय आकार का क्षेत्रफल (Area) ज्ञात करने का मुख्य सूत्र।"
+        }
+      },
+      {
+        "id": "rectangle_area",
+        "classes": [
+          "9"
+        ],
+        "exams": [
+          "cbse",
+          "up_board"
+        ],
+        "latex": "\\\\times चौड़ाई",
+        "en": {
+          "title": "आयत का क्षेत्रफल",
+          "desc": "Formula to calculate the area of the given geometric shape."
+        },
+        "hi": {
+          "title": "आयत का क्षेत्रफल (आयत का क्षेत्रफल)",
+          "desc": "दिए गए ज्यामितीय आकार का क्षेत्रफल (Area) ज्ञात करने का मुख्य सूत्र।"
+        }
+      },
+      {
+        "id": "rectangle_perimeter",
+        "classes": [
+          "9"
+        ],
+        "exams": [
+          "cbse",
+          "up_board"
+        ],
+        "latex": "2 \\\\times ( + चौड़ाई)",
+        "en": {
+          "title": "आयत का परिमाप",
+          "desc": "Formula to calculate the perimeter/circumference of the geometric boundary."
+        },
+        "hi": {
+          "title": "आयत का परिमाप (आयत का परिमाप)",
+          "desc": "ज्यामितीय आकृति की सीमा का परिमाप या परिधि (Perimeter / Circumference) निकालने का सूत्र।"
+        }
+      },
+      {
+        "id": "quadrilateral_perimeter",
+        "classes": [
+          "9"
+        ],
+        "exams": [
+          "cbse",
+          "up_board"
+        ],
+        "latex": "2 \\\\times (a + b)",
+        "en": {
+          "title": "समांतर चतुर्भुज का परिमाप",
+          "desc": "Formula to calculate the perimeter/circumference of the geometric boundary."
+        },
+        "hi": {
+          "title": "समांतर चतुर्भुज का परिमाप (समांतर चतुर्भुज का परिमाप)",
+          "desc": "ज्यामितीय आकृति की सीमा का परिमाप या परिधि (Perimeter / Circumference) निकालने का सूत्र।"
+        }
+      },
+      {
+        "id": "square_area",
+        "classes": [
+          "9"
+        ],
+        "exams": [
+          "cbse",
+          "up_board"
+        ],
+        "latex": "(पक्ष)^{2}",
+        "en": {
+          "title": "वर्ग का क्षेत्रफल",
+          "desc": "Formula to calculate the area of the given geometric shape."
+        },
+        "hi": {
+          "title": "वर्ग का क्षेत्रफल (वर्ग का क्षेत्रफल)",
+          "desc": "दिए गए ज्यामितीय आकार का क्षेत्रफल (Area) ज्ञात करने का मुख्य सूत्र।"
+        }
+      },
+      {
+        "id": "square_perimeter",
+        "classes": [
+          "9"
+        ],
+        "exams": [
+          "cbse",
+          "up_board"
+        ],
+        "latex": "4 \\\\times (पक्ष)",
+        "en": {
+          "title": "वर्ग का परिमाप",
+          "desc": "Formula to calculate the perimeter/circumference of the geometric boundary."
+        },
+        "hi": {
+          "title": "वर्ग का परिमाप (वर्ग का परिमाप)",
+          "desc": "ज्यामितीय आकृति की सीमा का परिमाप या परिधि (Perimeter / Circumference) निकालने का सूत्र।"
+        }
+      },
+      {
+        "id": "rhombus",
+        "classes": [
+          "9"
+        ],
+        "exams": [
+          "cbse",
+          "up_board"
+        ],
+        "latex": "\\\\frac{1}{2} \\\\times (वि\\\\text{h}_1 \\\\times वि\\\\text{h}_2)",
+        "en": {
+          "title": "Rhombus",
+          "desc": "Formula to calculate the area of the given geometric shape."
+        },
+        "hi": {
+          "title": "रम्बस (Rhombus) का क्षेत्रफल (Rhombus)",
+          "desc": "दिए गए ज्यामितीय आकार का क्षेत्रफल (Area) ज्ञात करने का मुख्य सूत्र।"
+        }
+      },
+      {
+        "id": "circle_circumference",
+        "classes": [
+          "9"
+        ],
+        "exams": [
+          "cbse",
+          "up_board"
+        ],
+        "latex": "2 \\\\pi r",
+        "en": {
+          "title": "वृत्त की परिधि",
+          "desc": "Formula to calculate the perimeter/circumference of the geometric boundary."
+        },
+        "hi": {
+          "title": "वृत्त की परिधि (वृत्त की परिधि)",
+          "desc": "ज्यामितीय आकृति की सीमा का परिमाप या परिधि (Perimeter / Circumference) निकालने का सूत्र।"
+        }
+      },
+      {
+        "id": "circle_area",
+        "classes": [
+          "9"
+        ],
+        "exams": [
+          "cbse",
+          "up_board"
+        ],
+        "latex": "\\\\pi r^{2}",
+        "en": {
+          "title": "वृत्त का क्षेत्रफल",
+          "desc": "Formula to calculate the area of the given geometric shape."
+        },
+        "hi": {
+          "title": "वृत्त का क्षेत्रफल (वृत्त का क्षेत्रफल)",
+          "desc": "दिए गए ज्यामितीय आकार का क्षेत्रफल (Area) ज्ञात करने का मुख्य सूत्र।"
+        }
+      },
+      {
+        "id": "diameter",
+        "classes": [
+          "9"
+        ],
+        "exams": [
+          "cbse",
+          "up_board"
+        ],
+        "latex": "2r",
+        "en": {
+          "title": "Diameter",
+          "desc": "Standard algebraic representation and mathematical formula for studying Diameter."
+        },
+        "hi": {
+          "title": "व्यास (Diameter) (Diameter)",
+          "desc": "व्यास (Diameter) ज्ञात करने और विभिन्न परीक्षा प्रश्नों को हल करने का मुख्य सूत्र और व्याख्या।"
+        }
+      },
+      {
+        "id": "radius",
+        "classes": [
+          "9"
+        ],
+        "exams": [
+          "cbse",
+          "up_board"
+        ],
+        "latex": "\\\\frac{d}{2}",
+        "en": {
+          "title": "Radius",
+          "desc": "Standard algebraic representation and mathematical formula for studying Radius."
+        },
+        "hi": {
+          "title": "त्रिज्या (Radius) (Radius)",
+          "desc": "त्रिज्या (Radius) ज्ञात करने और विभिन्न परीक्षा प्रश्नों को हल करने का मुख्य सूत्र और व्याख्या।"
+        }
+      },
+      {
+        "id": "sector_area",
+        "classes": [
+          "9"
+        ],
+        "exams": [
+          "cbse",
+          "up_board"
+        ],
+        "latex": "\\\\frac{\\\\theta}{360} \\\\times \\\\pi r^{2}",
+        "en": {
+          "title": "Sector Area",
+          "desc": "Formula to calculate the area of the given geometric shape."
+        },
+        "hi": {
+          "title": "वृत्त खंड का क्षेत्रफल (Sector Area) (Sector Area)",
+          "desc": "दिए गए ज्यामितीय आकार का क्षेत्रफल (Area) ज्ञात करने का मुख्य सूत्र।"
+        }
+      },
+      {
+        "id": "circle",
+        "classes": [
+          "9"
+        ],
+        "exams": [
+          "cbse",
+          "up_board"
+        ],
+        "latex": "\\\\frac{C}{2 \\\\pi}",
+        "en": {
+          "title": "वृत्त का अर्द्धव्यास",
+          "desc": "Standard algebraic representation and mathematical formula for studying वृत्त का अर्द्धव्यास."
+        },
+        "hi": {
+          "title": "वृत्त का अर्द्धव्यास (वृत्त का अर्द्धव्यास)",
+          "desc": "वृत्त का अर्द्धव्यास ज्ञात करने और विभिन्न परीक्षा प्रश्नों को हल करने का मुख्य सूत्र और व्याख्या।"
+        }
+      },
+      {
+        "id": "a_b_i_j_k",
+        "classes": [
+          "12"
+        ],
+        "exams": [
+          "cbse",
+          "up_board",
+          "jee"
+        ],
+        "latex": "सदिश योग",
+        "en": {
+          "title": "a_1 + b_1",
+          "desc": "Standard algebraic representation and mathematical formula for studying a_1 + b_1."
+        },
+        "hi": {
+          "title": "A + B = (a_1 + b_1)i + (a_2 + b_2)j + (a_3 + b_3)k (a_1 + b_1)",
+          "desc": "A + B = (a_1 + b_1)i + (a_2 + b_2)j + (a_3 + b_3)k ज्ञात करने और विभिन्न परीक्षा प्रश्नों को हल करने का मुख्य सूत्र और व्याख्या।"
+        }
+      },
+      {
+        "id": "ka_1",
+        "classes": [
+          "12"
+        ],
+        "exams": [
+          "cbse",
+          "up_board",
+          "jee"
+        ],
+        "latex": "सदिश का स्लर गुणन",
+        "en": {
+          "title": "ka_1",
+          "desc": "Standard algebraic representation and mathematical formula for studying ka_1."
+        },
+        "hi": {
+          "title": "kA = (ka_1)i + (ka_2)j + (ka_3)k (ka_1)",
+          "desc": "kA = (ka_1)i + (ka_2)j + (ka_3)k ज्ञात करने और विभिन्न परीक्षा प्रश्नों को हल करने का मुख्य सूत्र और व्याख्या।"
+        }
+      },
+      {
+        "id": "a_1_2_a_2_2_a_3_2",
+        "classes": [
+          "12"
+        ],
+        "exams": [
+          "cbse",
+          "up_board",
+          "jee"
+        ],
+        "latex": "सदिश का परिमाण",
+        "en": {
+          "title": "a_1^2 + a_2^2 + a_3^2",
+          "desc": "Standard algebraic representation and mathematical formula for studying a_1^2 + a_2^2 + a_3^2."
+        },
+        "hi": {
+          "title": "|A| = (a_1^2 + a_2^2 + a_3^2) (a_1^2 + a_2^2 + a_3^2)",
+          "desc": "|A| = (a_1^2 + a_2^2 + a_3^2) ज्ञात करने और विभिन्न परीक्षा प्रश्नों को हल करने का मुख्य सूत्र और व्याख्या।"
+        }
+      },
+      {
+        "id": "a_b_j",
+        "classes": [
+          "12"
+        ],
+        "exams": [
+          "cbse",
+          "up_board",
+          "jee"
+        ],
+        "latex": "क्रॉस प्रोडक्ट (डिटर्मिनेंट )",
+        "en": {
+          "title": "A × B = |i j k| |a_1 a_2 a_3| |b_1 b_2 b_3|",
+          "desc": "Standard algebraic representation and mathematical formula for studying A × B = |i j k| |a_1 a_2 a_3| |b_1 b_2 b_3|."
+        },
+        "hi": {
+          "title": "A × B = |i j k| |a_1 a_2 a_3| |b_1 b_2 b_3| (A × B = |i j k| |a_1 a_2 a_3| |b_1 b_2 b_3|)",
+          "desc": "A × B = |i j k| |a_1 a_2 a_3| |b_1 b_2 b_3| ज्ञात करने और विभिन्न परीक्षा प्रश्नों को हल करने का मुख्य सूत्र और व्याख्या।"
+        }
+      },
+      {
+        "id": "_a_b_a_b_sin_",
+        "classes": [
+          "12"
+        ],
+        "exams": [
+          "cbse",
+          "up_board",
+          "jee"
+        ],
+        "latex": "क्रॉस प्रोडक्ट का परिमाण",
+        "en": {
+          "title": "|A × B| = |A||B|sinθ",
+          "desc": "Standard trigonometric values and properties of angles."
+        },
+        "hi": {
+          "title": "|A × B| = |A||B|sinθ (|A × B| = |A||B|sinθ)",
+          "desc": "कोणों के विभिन्न मानों के लिए प्रमुख त्रिकोणमितीय अनुपातों का मान।"
+        }
+      },
+      {
+        "id": "a_b_c_a_c_b_a_b_c",
+        "classes": [
+          "12"
+        ],
+        "exams": [
+          "cbse",
+          "up_board",
+          "jee"
+        ],
+        "latex": "सदिश त्रिपथ गुणनफल",
+        "en": {
+          "title": "B × C",
+          "desc": "Standard algebraic representation and mathematical formula for studying B × C."
+        },
+        "hi": {
+          "title": "A × (B × C) = (A · C)B – (A · B)C (B × C)",
+          "desc": "A × (B × C) = (A · C)B – (A · B)C ज्ञात करने और विभिन्न परीक्षा प्रश्नों को हल करने का मुख्य सूत्र और व्याख्या।"
+        }
+      },
+      {
+        "id": "i_j_k",
+        "classes": [
+          "12"
+        ],
+        "exams": [
+          "cbse",
+          "up_board",
+          "jee"
+        ],
+        "latex": "दो बिंदुओं बीच का सदिश",
+        "en": {
+          "title": "x_2 – x_1",
+          "desc": "Standard algebraic representation and mathematical formula for studying x_2 – x_1."
+        },
+        "hi": {
+          "title": "AB̅ = (x_2 – x_1)i + (y_2 – y_1)j + (z_2 – z_1)k (x_2 – x_1)",
+          "desc": "AB̅ = (x_2 – x_1)i + (y_2 – y_1)j + (z_2 – z_1)k ज्ञात करने और विभिन्न परीक्षा प्रश्नों को हल करने का मुख्य सूत्र और व्याख्या।"
+        }
+      },
+      {
+        "id": "xi_yj_zk",
+        "classes": [
+          "12"
+        ],
+        "exams": [
+          "cbse",
+          "up_board",
+          "jee"
+        ],
+        "latex": "स्थिति सदिश",
+        "en": {
+          "title": "OP̅ = xi + yj + zk",
+          "desc": "Standard algebraic representation and mathematical formula for studying OP̅ = xi + yj + zk."
+        },
+        "hi": {
+          "title": "OP̅ = xi + yj + zk (OP̅ = xi + yj + zk)",
+          "desc": "OP̅ = xi + yj + zk ज्ञात करने और विभिन्न परीक्षा प्रश्नों को हल करने का मुख्य सूत्र और व्याख्या।"
+        }
+      },
+      {
+        "id": "area_of_a_area",
+        "classes": [
+          "12"
+        ],
+        "exams": [
+          "cbse",
+          "up_board",
+          "jee"
+        ],
+        "latex": "Length \\\\times Width \\\\times चौड़ाई",
+        "en": {
+          "title": "Area of a Rectangleआयत का क्षेत्रफल",
+          "desc": "Formula to calculate the area of the given geometric shape."
+        },
+        "hi": {
+          "title": "Area of a Rectangleआयत का क्षेत्रफल (Area of a Rectangleआयत का क्षेत्रफल)",
+          "desc": "दिए गए ज्यामितीय आकार का क्षेत्रफल (Area) ज्ञात करने का मुख्य सूत्र।"
+        }
+      },
+      {
+        "id": "perimeter_of_a_perimeter",
+        "classes": [
+          "12"
+        ],
+        "exams": [
+          "cbse",
+          "up_board",
+          "jee"
+        ],
+        "latex": "2 \\\\times (Length + Width)2 \\\\times ( + चौड़ाई)",
+        "en": {
+          "title": "Perimeter of a Rectangleआयत का परिमाप",
+          "desc": "Formula to calculate the perimeter/circumference of the geometric boundary."
+        },
+        "hi": {
+          "title": "Perimeter of a Rectangleआयत का परिमाप (Perimeter of a Rectangleआयत का परिमाप)",
+          "desc": "ज्यामितीय आकृति की सीमा का परिमाप या परिधि (Perimeter / Circumference) निकालने का सूत्र।"
+        }
+      },
+      {
+        "id": "area_of_a_quadrilateral_area",
+        "classes": [
+          "12"
+        ],
+        "exams": [
+          "cbse",
+          "up_board",
+          "jee"
+        ],
+        "latex": "Base \\\\times Height\\\\text{b} \\\\times",
+        "en": {
+          "title": "Area of a Parallelogramसमांतर चतुर्भुज का क्षेत्रफल",
+          "desc": "Formula to calculate the area of the given geometric shape."
+        },
+        "hi": {
+          "title": "Area of a Parallelogramसमांतर चतुर्भुज का क्षेत्रफल (Area of a Parallelogramसमांतर चतुर्भुज का क्षेत्रफल)",
+          "desc": "दिए गए ज्यामितीय आकार का क्षेत्रफल (Area) ज्ञात करने का मुख्य सूत्र।"
+        }
+      },
+      {
+        "id": "perimeter_of_a_quadrilateral_perimeter",
+        "classes": [
+          "12"
+        ],
+        "exams": [
+          "cbse",
+          "up_board",
+          "jee"
+        ],
+        "latex": "2 \\\\times (Base + Side)2 \\\\times (\\\\text{b} + पार्श्व)",
+        "en": {
+          "title": "Perimeter of a Parallelogramसमांतर चतुर्भुज का परिमाप",
+          "desc": "Formula to calculate the perimeter/circumference of the geometric boundary."
+        },
+        "hi": {
+          "title": "Perimeter of a Parallelogramसमांतर चतुर्भुज का परिमाप (Perimeter of a Parallelogramसमांतर चतुर्भुज का परिमाप)",
+          "desc": "ज्यामितीय आकृति की सीमा का परिमाप या परिधि (Perimeter / Circumference) निकालने का सूत्र।"
+        }
+      },
+      {
+        "id": "area_of_a_sector_of_a_area_area",
+        "classes": [
+          "12"
+        ],
+        "exams": [
+          "cbse",
+          "up_board",
+          "jee"
+        ],
+        "latex": "\\\\frac{1}{2} \\\\times Radius^{2} \\\\times \\\\theta (in radians) \\\\frac{1}{2} \\\\times r^{2} \\\\times \\\\theta (रेडियन में)",
+        "en": {
+          "title": "Area of a Sector of a Circleवृत्त के क्षेत्रफल का क्षेत्रफल",
+          "desc": "Formula to calculate the area of the given geometric shape."
+        },
+        "hi": {
+          "title": "Area of a Sector of a Circleवृत्त के क्षेत्रफल का क्षेत्रफल (Area of a Sector of a Circleवृत्त के क्षेत्रफल का क्षेत्रफल)",
+          "desc": "दिए गए ज्यामितीय आकार का क्षेत्रफल (Area) ज्ञात करने का मुख्य सूत्र।"
+        }
+      },
+      {
+        "id": "area_of_a_segment_of_a_area",
+        "classes": [
+          "12"
+        ],
+        "exams": [
+          "cbse",
+          "up_board",
+          "jee"
+        ],
+        "latex": "Area of Sector - Area of Triangle का - त्रिभुज का",
+        "en": {
+          "title": "Area of a Segment of a Circleवृत्त के खंड का क्षेत्रफल",
+          "desc": "Formula to calculate the area of the given geometric shape."
+        },
+        "hi": {
+          "title": "Area of a Segment of a Circleवृत्त के खंड का क्षेत्रफल (Area of a Segment of a Circleवृत्त के खंड का क्षेत्रफल)",
+          "desc": "दिए गए ज्यामितीय आकार का क्षेत्रफल (Area) ज्ञात करने का मुख्य सूत्र।"
+        }
+      },
+      {
+        "id": "circumference_of_a_circumference",
+        "classes": [
+          "12"
+        ],
+        "exams": [
+          "cbse",
+          "up_board",
+          "jee"
+        ],
+        "latex": "2 \\\\times \\\\pi \\\\times Radius2 \\\\times \\\\pi \\\\times r",
+        "en": {
+          "title": "Circumference of a Circleवृत्त का परिधि",
+          "desc": "Formula to calculate the perimeter/circumference of the geometric boundary."
+        },
+        "hi": {
+          "title": "Circumference of a Circleवृत्त का परिधि (Circumference of a Circleवृत्त का परिधि)",
+          "desc": "ज्यामितीय आकृति की सीमा का परिमाप या परिधि (Perimeter / Circumference) निकालने का सूत्र।"
+        }
+      },
+      {
+        "id": "surface_area_of_a_area",
+        "classes": [
+          "12"
+        ],
+        "exams": [
+          "cbse",
+          "up_board",
+          "jee"
+        ],
+        "latex": "\\\\pi \\\\times Diameter \\\\pi \\\\times d",
+        "en": {
+          "title": "Surface Area of a Circleवृत्त का सतह क्षेत्रफल",
+          "desc": "Formula to calculate the area of the given geometric shape."
+        },
+        "hi": {
+          "title": "Surface Area of a Circleवृत्त का सतह क्षेत्रफल (Surface Area of a Circleवृत्त का सतह क्षेत्रफल)",
+          "desc": "दिए गए ज्यामितीय आकार का क्षेत्रफल (Area) ज्ञात करने का मुख्य सूत्र।"
+        }
+      },
+      {
+        "id": "perimeter_of_an_perimeter",
+        "classes": [
+          "12"
+        ],
+        "exams": [
+          "cbse",
+          "up_board",
+          "jee"
+        ],
+        "latex": "2 \\\\times \\\\pi \\\\times sqrt((a^{2} + b^{2}) / 2)2 \\\\times \\\\pi \\\\times sqrt((a^{2} + b^{2}) / 2)",
+        "en": {
+          "title": "Perimeter of an Ellipseअंडाकार का परिमाप",
+          "desc": "Formula to calculate the perimeter/circumference of the geometric boundary."
+        },
+        "hi": {
+          "title": "Perimeter of an Ellipseअंडाकार का परिमाप (Perimeter of an Ellipseअंडाकार का परिमाप)",
+          "desc": "ज्यामितीय आकृति की सीमा का परिमाप या परिधि (Perimeter / Circumference) निकालने का सूत्र।"
+        }
+      },
+      {
+        "id": "area_of_a_regular_area",
+        "classes": [
+          "12"
+        ],
+        "exams": [
+          "cbse",
+          "up_board",
+          "jee"
+        ],
+        "latex": "\\\\frac{1}{2} \\\\times Perimeter \\\\times Apothem \\\\frac{1}{2} \\\\times परिमाप \\\\times अपोथेम",
+        "en": {
+          "title": "Area of a Regular Polygonनियमित बहुभुज का क्षेत्रफल",
+          "desc": "Formula to calculate the area of the given geometric shape."
+        },
+        "hi": {
+          "title": "Area of a Regular Polygonनियमित बहुभुज का क्षेत्रफल (Area of a Regular Polygonनियमित बहुभुज का क्षेत्रफल)",
+          "desc": "दिए गए ज्यामितीय आकार का क्षेत्रफल (Area) ज्ञात करने का मुख्य सूत्र।"
+        }
+      },
+      {
+        "id": "perimeter_of_a_regular_perimeter",
+        "classes": [
+          "12"
+        ],
+        "exams": [
+          "cbse",
+          "up_board",
+          "jee"
+        ],
+        "latex": "Number of Sides \\\\times Sideपार्श्वों संख्या \\\\times पार्श्व",
+        "en": {
+          "title": "Perimeter of a Regular Polygonनियमित बहुभुज का परिमाप",
+          "desc": "Formula to calculate the perimeter/circumference of the geometric boundary."
+        },
+        "hi": {
+          "title": "Perimeter of a Regular Polygonनियमित बहुभुज का परिमाप (Perimeter of a Regular Polygonनियमित बहुभुज का परिमाप)",
+          "desc": "ज्यामितीय आकृति की सीमा का परिमाप या परिधि (Perimeter / Circumference) निकालने का सूत्र।"
+        }
+      },
+      {
+        "id": "area_of_a_circular_area",
+        "classes": [
+          "12"
+        ],
+        "exams": [
+          "cbse",
+          "up_board",
+          "jee"
+        ],
+        "latex": "-",
+        "en": {
+          "title": "Area of a Circular Ringवृत्ताकार वलय का क्षेत्रफल",
+          "desc": "Formula to calculate the area of the given geometric shape."
+        },
+        "hi": {
+          "title": "Area of a Circular Ringवृत्ताकार वलय का क्षेत्रफल (Area of a Circular Ringवृत्ताकार वलय का क्षेत्रफल)",
+          "desc": "दिए गए ज्यामितीय आकार का क्षेत्रफल (Area) ज्ञात करने का मुख्य सूत्र।"
+        }
+      },
+      {
+        "id": "perimeter_of_a_circular_perimeter",
+        "classes": [
+          "12"
+        ],
+        "exams": [
+          "cbse",
+          "up_board",
+          "jee"
+        ],
+        "latex": "2 \\\\pi (R + r)2 \\\\pi (R + r)",
+        "en": {
+          "title": "Perimeter of a Circular Ringवृत्ताकार वलय का परिमाप",
+          "desc": "Formula to calculate the perimeter/circumference of the geometric boundary."
+        },
+        "hi": {
+          "title": "Perimeter of a Circular Ringवृत्ताकार वलय का परिमाप (Perimeter of a Circular Ringवृत्ताकार वलय का परिमाप)",
+          "desc": "ज्यामितीय आकृति की सीमा का परिमाप या परिधि (Perimeter / Circumference) निकालने का सूत्र।"
+        }
+      },
+      {
+        "id": "perimeter_of_a_sector_of_a_perimeter",
+        "classes": [
+          "12"
+        ],
+        "exams": [
+          "cbse",
+          "up_board",
+          "jee"
+        ],
+        "latex": "2r + ( \\\\theta /360)2 \\\\pi r2r + ( \\\\theta /360)2 \\\\pi r",
+        "en": {
+          "title": "Perimeter of a Sector of a Circleवृत्त के सेक्टर का परिमाप",
+          "desc": "Formula to calculate the perimeter/circumference of the geometric boundary."
+        },
+        "hi": {
+          "title": "Perimeter of a Sector of a Circleवृत्त के सेक्टर का परिमाप (Perimeter of a Sector of a Circleवृत्त के सेक्टर का परिमाप)",
+          "desc": "ज्यामितीय आकृति की सीमा का परिमाप या परिधि (Perimeter / Circumference) निकालने का सूत्र।"
+        }
+      },
+      {
+        "id": "area_of_an_area",
+        "classes": [
+          "12"
+        ],
+        "exams": [
+          "cbse",
+          "up_board",
+          "jee"
+        ],
+        "latex": "-",
+        "en": {
+          "title": "Area of an Annulusअंगुलाकार का क्षेत्रफल",
+          "desc": "Formula to calculate the area of the given geometric shape."
+        },
+        "hi": {
+          "title": "Area of an Annulusअंगुलाकार का क्षेत्रफल (Area of an Annulusअंगुलाकार का क्षेत्रफल)",
+          "desc": "दिए गए ज्यामितीय आकार का क्षेत्रफल (Area) ज्ञात करने का मुख्य सूत्र।"
+        }
+      },
+      {
+        "id": "perimeter_of_an_ellipse_approx_perimeter",
+        "classes": [
+          "12"
+        ],
+        "exams": [
+          "cbse",
+          "up_board",
+          "jee"
+        ],
+        "latex": "\\\\pi [3(a + b) - ((3a + b)(a + 3b))] \\\\pi [3(a + b) - ((3a + b)(a + 3b))]",
+        "en": {
+          "title": "approx.",
+          "desc": "Formula to calculate the perimeter/circumference of the geometric boundary."
+        },
+        "hi": {
+          "title": "Perimeter of an Ellipse (approx.)दीर्घवृत्त का परिमाप (अनुमानित) (approx.)",
+          "desc": "ज्यामितीय आकृति की सीमा का परिमाप या परिधि (Perimeter / Circumference) निकालने का सूत्र।"
+        }
+      },
+      {
+        "id": "area_of_an_irregular_area",
+        "classes": [
+          "12"
+        ],
+        "exams": [
+          "cbse",
+          "up_board",
+          "jee"
+        ],
+        "latex": "-",
+        "en": {
+          "title": "Area of an Irregular Polygonअनियमित बहुभुज का क्षेत्रफल",
+          "desc": "Formula to calculate the area of the given geometric shape."
+        },
+        "hi": {
+          "title": "Area of an Irregular Polygonअनियमित बहुभुज का क्षेत्रफल (Area of an Irregular Polygonअनियमित बहुभुज का क्षेत्रफल)",
+          "desc": "दिए गए ज्यामितीय आकार का क्षेत्रफल (Area) ज्ञात करने का मुख्य सूत्र।"
+        }
+      },
+      {
+        "id": "perimeter_of_an_irregular_perimeter",
+        "classes": [
+          "12"
+        ],
+        "exams": [
+          "cbse",
+          "up_board",
+          "jee"
+        ],
+        "latex": "\\\\Sigma ((x_{i+1} - x_{i})^{2} + (y_{i+1} - y_{i})^{2}) \\\\Sigma ((x_{i+1} - x_{i})^{2} + (y_{i+1} - y_{i})^{2})",
+        "en": {
+          "title": "Perimeter of an Irregular Polygonअनियमित बहुभुज का परिमाप",
+          "desc": "Formula to calculate the perimeter/circumference of the geometric boundary."
+        },
+        "hi": {
+          "title": "Perimeter of an Irregular Polygonअनियमित बहुभुज का परिमाप (Perimeter of an Irregular Polygonअनियमित बहुभुज का परिमाप)",
+          "desc": "ज्यामितीय आकृति की सीमा का परिमाप या परिधि (Perimeter / Circumference) निकालने का सूत्र।"
+        }
+      },
+      {
+        "id": "volume_of_a_volume",
+        "classes": [
+          "12"
+        ],
+        "exams": [
+          "cbse",
+          "up_board",
+          "jee"
+        ],
+        "latex": "Side^{3}भुजा^{3}",
+        "en": {
+          "title": "Volume of a Cubeघन का आयतन",
+          "desc": "Formula to calculate the three-dimensional volume of the shape."
+        },
+        "hi": {
+          "title": "Volume of a Cubeघन का आयतन (Volume of a Cubeघन का आयतन)",
+          "desc": "त्रिविमीय (3D) आकृति का कुल आयतन (Volume) ज्ञात करने का प्रमुख सूत्र।"
+        }
+      },
+      {
+        "id": "surface_area_of_a_rectangular_area",
+        "classes": [
+          "12"
+        ],
+        "exams": [
+          "cbse",
+          "up_board",
+          "jee"
+        ],
+        "latex": "2 \\\\times (Length \\\\times Width + Width \\\\times Height + Height \\\\times Length)2 \\\\times ( \\\\times चौड़ाई + चौड़ाई \\\\times + \\\\times )",
+        "en": {
+          "title": "Surface Area of a Rectangular Prismआयताकार प्रिज्म का सतह क्षेत्रफल",
+          "desc": "Formula to calculate the area of the given geometric shape."
+        },
+        "hi": {
+          "title": "Surface Area of a Rectangular Prismआयताकार प्रिज्म का सतह क्षेत्रफल (Surface Area of a Rectangular Prismआयताकार प्रिज्म का सतह क्षेत्रफल)",
+          "desc": "दिए गए ज्यामितीय आकार का क्षेत्रफल (Area) ज्ञात करने का मुख्य सूत्र।"
+        }
+      },
+      {
+        "id": "volume_of_a_rectangular_volume",
+        "classes": [
+          "12"
+        ],
+        "exams": [
+          "cbse",
+          "up_board",
+          "jee"
+        ],
+        "latex": "Length \\\\times Width \\\\times Height \\\\times चौड़ाई \\\\times",
+        "en": {
+          "title": "Volume of a Rectangular Prismआयताकार प्रिज्म का आयतन",
+          "desc": "Formula to calculate the three-dimensional volume of the shape."
+        },
+        "hi": {
+          "title": "Volume of a Rectangular Prismआयताकार प्रिज्म का आयतन (Volume of a Rectangular Prismआयताकार प्रिज्म का आयतन)",
+          "desc": "त्रिविमीय (3D) आकृति का कुल आयतन (Volume) ज्ञात करने का प्रमुख सूत्र।"
+        }
+      },
+      {
+        "id": "surface_area_of_a_triangular_area",
+        "classes": [
+          "12"
+        ],
+        "exams": [
+          "cbse",
+          "up_board",
+          "jee"
+        ],
+        "latex": "Base Area \\\\times Perimeter of Base \\\\times Height\\\\text{b} \\\\times \\\\text{b} परिमाप \\\\times",
+        "en": {
+          "title": "Surface Area of a Triangular Prismत्रिभुजाकार प्रिज्म का सतह क्षेत्रफल",
+          "desc": "Formula to calculate the area of the given geometric shape."
+        },
+        "hi": {
+          "title": "Surface Area of a Triangular Prismत्रिभुजाकार प्रिज्म का सतह क्षेत्रफल (Surface Area of a Triangular Prismत्रिभुजाकार प्रिज्म का सतह क्षेत्रफल)",
+          "desc": "दिए गए ज्यामितीय आकार का क्षेत्रफल (Area) ज्ञात करने का मुख्य सूत्र।"
+        }
+      },
+      {
+        "id": "volume_of_a_triangular_volume",
+        "classes": [
+          "12"
+        ],
+        "exams": [
+          "cbse",
+          "up_board",
+          "jee"
+        ],
+        "latex": "\\\\frac{1}{2} \\\\times Base \\\\times Height \\\\times Length \\\\frac{1}{2} \\\\times \\\\text{b} \\\\times \\\\times",
+        "en": {
+          "title": "Volume of a Triangular Prismत्रिभुजाकार प्रिज्म का आयतन",
+          "desc": "Formula to calculate the three-dimensional volume of the shape."
+        },
+        "hi": {
+          "title": "Volume of a Triangular Prismत्रिभुजाकार प्रिज्म का आयतन (Volume of a Triangular Prismत्रिभुजाकार प्रिज्म का आयतन)",
+          "desc": "त्रिविमीय (3D) आकृति का कुल आयतन (Volume) ज्ञात करने का प्रमुख सूत्र।"
+        }
+      },
+      {
+        "id": "surface_area_of_a_hexagonal_area",
+        "classes": [
+          "12"
+        ],
+        "exams": [
+          "cbse",
+          "up_board",
+          "jee"
+        ],
+        "latex": "6 \\\\times Side Length \\\\times Height + 2 \\\\times Base Area6 \\\\times भुजा \\\\times + 2 \\\\times \\\\text{b}",
+        "en": {
+          "title": "Surface Area of a Hexagonal Prismषट्कोणीय प्रिज्म का सतह क्षेत्रफल",
+          "desc": "Formula to calculate the area of the given geometric shape."
+        },
+        "hi": {
+          "title": "Surface Area of a Hexagonal Prismषट्कोणीय प्रिज्म का सतह क्षेत्रफल (Surface Area of a Hexagonal Prismषट्कोणीय प्रिज्म का सतह क्षेत्रफल)",
+          "desc": "दिए गए ज्यामितीय आकार का क्षेत्रफल (Area) ज्ञात करने का मुख्य सूत्र।"
+        }
+      },
+      {
+        "id": "volume_of_a_hexagonal_volume",
+        "classes": [
+          "12"
+        ],
+        "exams": [
+          "cbse",
+          "up_board",
+          "jee"
+        ],
+        "latex": "Base Area \\\\times Height\\\\text{b} \\\\times",
+        "en": {
+          "title": "Volume of a Hexagonal Prismषट्कोणीय प्रिज्म का आयतन",
+          "desc": "Formula to calculate the three-dimensional volume of the shape."
+        },
+        "hi": {
+          "title": "Volume of a Hexagonal Prismषट्कोणीय प्रिज्म का आयतन (Volume of a Hexagonal Prismषट्कोणीय प्रिज्म का आयतन)",
+          "desc": "त्रिविमीय (3D) आकृति का कुल आयतन (Volume) ज्ञात करने का प्रमुख सूत्र।"
+        }
+      },
+      {
+        "id": "surface_area_of_a_octagonal_area",
+        "classes": [
+          "12"
+        ],
+        "exams": [
+          "cbse",
+          "up_board",
+          "jee"
+        ],
+        "latex": "8 \\\\times Side Length \\\\times Height + 2 \\\\times Base Area8 \\\\times भुजा \\\\times + 2 \\\\times \\\\text{b}",
+        "en": {
+          "title": "Surface Area of a Octagonal Prismअष्टकोणीय प्रिज्म का सतह क्षेत्रफल",
+          "desc": "Formula to calculate the area of the given geometric shape."
+        },
+        "hi": {
+          "title": "Surface Area of a Octagonal Prismअष्टकोणीय प्रिज्म का सतह क्षेत्रफल (Surface Area of a Octagonal Prismअष्टकोणीय प्रिज्म का सतह क्षेत्रफल)",
+          "desc": "दिए गए ज्यामितीय आकार का क्षेत्रफल (Area) ज्ञात करने का मुख्य सूत्र।"
+        }
+      },
+      {
+        "id": "volume_of_a_octagonal_volume",
+        "classes": [
+          "12"
+        ],
+        "exams": [
+          "cbse",
+          "up_board",
+          "jee"
+        ],
+        "latex": "Base Area \\\\times Height\\\\text{b} \\\\times",
+        "en": {
+          "title": "Volume of a Octagonal Prismअष्टकोणीय प्रिज्म का आयतन",
+          "desc": "Formula to calculate the three-dimensional volume of the shape."
+        },
+        "hi": {
+          "title": "Volume of a Octagonal Prismअष्टकोणीय प्रिज्म का आयतन (Volume of a Octagonal Prismअष्टकोणीय प्रिज्म का आयतन)",
+          "desc": "त्रिविमीय (3D) आकृति का कुल आयतन (Volume) ज्ञात करने का प्रमुख सूत्र।"
+        }
+      },
+      {
+        "id": "surface_area_of_an_area",
+        "classes": [
+          "12"
+        ],
+        "exams": [
+          "cbse",
+          "up_board",
+          "jee"
+        ],
+        "latex": "4 \\\\times \\\\pi \\\\times ((a^{p} \\\\times b^{p} + a^{p} \\\\times c^{p} + b^{p} \\\\times c^{p})/3)^{1/p} 4 \\\\times \\\\pi \\\\times ((a^{p} \\\\times b^{p} + a^{p} \\\\times c^{p} + b^{p} \\\\times c^{p})/3)^{1/p}",
+        "en": {
+          "title": "Surface Area of an Ellipsoidदीर्घवृत्ताकार का सतह क्षेत्रफल",
+          "desc": "Formula to calculate the area of the given geometric shape."
+        },
+        "hi": {
+          "title": "Surface Area of an Ellipsoidदीर्घवृत्ताकार का सतह क्षेत्रफल (Surface Area of an Ellipsoidदीर्घवृत्ताकार का सतह क्षेत्रफल)",
+          "desc": "दिए गए ज्यामितीय आकार का क्षेत्रफल (Area) ज्ञात करने का मुख्य सूत्र।"
+        }
+      },
+      {
+        "id": "volume_of_an_volume",
+        "classes": [
+          "12"
+        ],
+        "exams": [
+          "cbse",
+          "up_board",
+          "jee"
+        ],
+        "latex": "\\\\frac{4}{3} \\\\times \\\\pi \\\\times a \\\\times b \\\\times c \\\\frac{4}{3} \\\\times \\\\pi \\\\times a \\\\times b \\\\times c",
+        "en": {
+          "title": "Volume of an Ellipsoidदीर्घवृत्ताकार का आयतन",
+          "desc": "Formula to calculate the three-dimensional volume of the shape."
+        },
+        "hi": {
+          "title": "Volume of an Ellipsoidदीर्घवृत्ताकार का आयतन (Volume of an Ellipsoidदीर्घवृत्ताकार का आयतन)",
+          "desc": "त्रिविमीय (3D) आकृति का कुल आयतन (Volume) ज्ञात करने का प्रमुख सूत्र।"
+        }
+      },
+      {
+        "id": "surface_area_of_a_right_circular_area",
+        "classes": [
+          "12"
+        ],
+        "exams": [
+          "cbse",
+          "up_board",
+          "jee"
+        ],
+        "latex": "\\\\pi \\\\times r \\\\times (r + l) \\\\pi \\\\times r \\\\times (r + l)",
+        "en": {
+          "title": "Surface Area of a Right Circular Coneसमचतुर्भुज शंकु का सतह क्षेत्रफल",
+          "desc": "Formula to calculate the area of the given geometric shape."
+        },
+        "hi": {
+          "title": "Surface Area of a Right Circular Coneसमचतुर्भुज शंकु का सतह क्षेत्रफल (Surface Area of a Right Circular Coneसमचतुर्भुज शंकु का सतह क्षेत्रफल)",
+          "desc": "दिए गए ज्यामितीय आकार का क्षेत्रफल (Area) ज्ञात करने का मुख्य सूत्र।"
+        }
+      },
+      {
+        "id": "volume_of_a_right_circular_volume",
+        "classes": [
+          "12"
+        ],
+        "exams": [
+          "cbse",
+          "up_board",
+          "jee"
+        ],
+        "latex": "\\\\frac{1}{3} \\\\times \\\\pi \\\\times r^{2} \\\\times h \\\\frac{1}{3} \\\\times \\\\pi \\\\times r^{2} \\\\times h",
+        "en": {
+          "title": "Volume of a Right Circular Coneसमचतुर्भुज शंकु का आयतन",
+          "desc": "Formula to calculate the three-dimensional volume of the shape."
+        },
+        "hi": {
+          "title": "Volume of a Right Circular Coneसमचतुर्भुज शंकु का आयतन (Volume of a Right Circular Coneसमचतुर्भुज शंकु का आयतन)",
+          "desc": "त्रिविमीय (3D) आकृति का कुल आयतन (Volume) ज्ञात करने का प्रमुख सूत्र।"
+        }
+      },
+      {
+        "id": "surface_area_of_a_hollow_area",
+        "classes": [
+          "12"
+        ],
+        "exams": [
+          "cbse",
+          "up_board",
+          "jee"
+        ],
+        "latex": "4 \\\\times \\\\pi \\\\times (R^{2} + r^{2})4 \\\\times \\\\pi \\\\times (R^{2} + r^{2})",
+        "en": {
+          "title": "Surface Area of a Hollow Sphereखोखले गोले का सतह क्षेत्रफल",
+          "desc": "Formula to calculate the area of the given geometric shape."
+        },
+        "hi": {
+          "title": "Surface Area of a Hollow Sphereखोखले गोले का सतह क्षेत्रफल (Surface Area of a Hollow Sphereखोखले गोले का सतह क्षेत्रफल)",
+          "desc": "दिए गए ज्यामितीय आकार का क्षेत्रफल (Area) ज्ञात करने का मुख्य सूत्र।"
+        }
+      },
+      {
+        "id": "volume_of_a_hollow_volume",
+        "classes": [
+          "12"
+        ],
+        "exams": [
+          "cbse",
+          "up_board",
+          "jee"
+        ],
+        "latex": "( \\\\frac{4}{3} ) \\\\times \\\\pi \\\\times (R^{3} - r^{3}) ( \\\\frac{4}{3} ) \\\\times \\\\pi \\\\times (R^{3} - r^{3})",
+        "en": {
+          "title": "Volume of a Hollow Sphereखोखले गोले का आयतन",
+          "desc": "Formula to calculate the three-dimensional volume of the shape."
+        },
+        "hi": {
+          "title": "Volume of a Hollow Sphereखोखले गोले का आयतन (Volume of a Hollow Sphereखोखले गोले का आयतन)",
+          "desc": "त्रिविमीय (3D) आकृति का कुल आयतन (Volume) ज्ञात करने का प्रमुख सूत्र।"
+        }
+      },
+      {
+        "id": "surface_area_of_a_frustum_of_a_area",
+        "classes": [
+          "12"
+        ],
+        "exams": [
+          "cbse",
+          "up_board",
+          "jee"
+        ],
+        "latex": "\\\\pi \\\\times (R + r) \\\\times (R - r)^{2} + h^{2} + \\\\pi \\\\times R^{2} + \\\\pi \\\\times r^{2} \\\\pi \\\\times (R + r) \\\\times (R - r)^{2} + h^{2} + \\\\pi \\\\times R^{2} + \\\\pi \\\\times r^{2}",
+        "en": {
+          "title": "Surface Area of a Frustum of a Coneशंकु के फ्रस्ट्रम का सतह क्षेत्रफल",
+          "desc": "Formula to calculate the area of the given geometric shape."
+        },
+        "hi": {
+          "title": "Surface Area of a Frustum of a Coneशंकु के फ्रस्ट्रम का सतह क्षेत्रफल (Surface Area of a Frustum of a Coneशंकु के फ्रस्ट्रम का सतह क्षेत्रफल)",
+          "desc": "दिए गए ज्यामितीय आकार का क्षेत्रफल (Area) ज्ञात करने का मुख्य सूत्र।"
+        }
+      },
+      {
+        "id": "surface_area_of_a_trapezoidal_area",
+        "classes": [
+          "12"
+        ],
+        "exams": [
+          "cbse",
+          "up_board",
+          "jee"
+        ],
+        "latex": "h \\\\times (a + b) + l \\\\times (a + b + ((a - b)^{2} + h^{2}) + 2l \\\\times h h \\\\times (a + b) + l \\\\times (a + b + ((a - b)^{2} + h^{2}) ) + 2l \\\\times h",
+        "en": {
+          "title": "Surface Area of a Trapezoidal Prismसमलंब प्रिज्म का सतह क्षेत्रफल",
+          "desc": "Formula to calculate the area of the given geometric shape."
+        },
+        "hi": {
+          "title": "Surface Area of a Trapezoidal Prismसमलंब प्रिज्म का सतह क्षेत्रफल (Surface Area of a Trapezoidal Prismसमलंब प्रिज्म का सतह क्षेत्रफल)",
+          "desc": "दिए गए ज्यामितीय आकार का क्षेत्रफल (Area) ज्ञात करने का मुख्य सूत्र।"
+        }
+      },
+      {
+        "id": "volume_of_a_trapezoidal_volume",
+        "classes": [
+          "12"
+        ],
+        "exams": [
+          "cbse",
+          "up_board",
+          "jee"
+        ],
+        "latex": "( \\\\frac{1}{2} ) \\\\times (a + b) \\\\times h \\\\times l ( \\\\frac{1}{2} ) \\\\times (a + b) \\\\times h \\\\times l",
+        "en": {
+          "title": "Volume of a Trapezoidal Prismसमलंब प्रिज्म का आयतन",
+          "desc": "Formula to calculate the three-dimensional volume of the shape."
+        },
+        "hi": {
+          "title": "Volume of a Trapezoidal Prismसमलंब प्रिज्म का आयतन (Volume of a Trapezoidal Prismसमलंब प्रिज्म का आयतन)",
+          "desc": "त्रिविमीय (3D) आकृति का कुल आयतन (Volume) ज्ञात करने का प्रमुख सूत्र।"
+        }
+      }
+    ]
+  },
+  {
+    "category_en": "Trigonometry",
+    "category_hi": "त्रिकोणमिति (Trigonometry)",
+    "category_icon": "🔺",
+    "items": [
+      {
+        "id": "sin",
+        "classes": [
+          "9",
+          "10"
+        ],
+        "exams": [
+          "cbse",
+          "up_board"
+        ],
+        "latex": "\\\\sin\\\\theta = \\\\frac{\\\\text{Perpendicular}}{\\\\text{Hypotenuse}}",
+        "en": {
+          "title": "Sine Ratio (sin θ)",
+          "desc": "Trigonometric ratio of perpendicular side over hypotenuse side."
+        },
+        "hi": {
+          "title": "ज्या अनुपात (sin θ)",
+          "desc": "समकोण त्रिभुज की सम्मुख भुजा (लम्ब) और कर्ण का अनुपात।"
+        }
+      },
+      {
+        "id": "cos",
+        "classes": [
+          "9",
+          "10"
+        ],
+        "exams": [
+          "cbse",
+          "up_board"
+        ],
+        "latex": "\\\\cos\\\\theta = \\\\frac{\\\\text{Base}}{\\\\text{Hypotenuse}}",
+        "en": {
+          "title": "Cosine Ratio (cos θ)",
+          "desc": "Trigonometric ratio of adjacent side (base) over hypotenuse side."
+        },
+        "hi": {
+          "title": "कोज्या अनुपात (cos θ)",
+          "desc": "समकोण त्रिभुज की संलग्न भुजा (आधार) और कर्ण का अनुपात।"
+        }
+      },
+      {
+        "id": "tan",
+        "classes": [
+          "9",
+          "10"
+        ],
+        "exams": [
+          "cbse",
+          "up_board"
+        ],
+        "latex": "\\\\tan\\\\theta = \\\\frac{\\\\text{Perpendicular}}{\\\\text{Base}}",
+        "en": {
+          "title": "Tangent Ratio (tan θ)",
+          "desc": "Trigonometric ratio of perpendicular side over adjacent side."
+        },
+        "hi": {
+          "title": "स्पर्शज्या अनुपात (tan θ)",
+          "desc": "सम्मुख भुजा (लम्ब) और संलग्न भुजा (आधार) का अनुपात।"
+        }
+      },
+      {
+        "id": "cosec",
+        "classes": [
+          "9",
+          "10"
+        ],
+        "exams": [
+          "cbse",
+          "up_board"
+        ],
+        "latex": "\\\\csc\\\\theta = \\\\frac{\\\\text{Hypotenuse}}{\\\\text{Perpendicular}}",
+        "en": {
+          "title": "Cosecant Ratio (csc θ)",
+          "desc": "Trigonometric ratio of hypotenuse side over perpendicular side, reciprocal of sine."
+        },
+        "hi": {
+          "title": "व्युत्क्रम ज्या अनुपात (cosec θ)",
+          "desc": "समकोण त्रिभुज में कर्ण और लम्ब का अनुपात, जो साइन का व्युत्क्रम होता है।"
+        }
+      },
+      {
+        "id": "sec",
+        "classes": [
+          "9",
+          "10"
+        ],
+        "exams": [
+          "cbse",
+          "up_board"
+        ],
+        "latex": "\\\\sec\\\\theta = \\\\frac{\\\\text{Hypotenuse}}{\\\\text{Base}}",
+        "en": {
+          "title": "Secant Ratio (sec θ)",
+          "desc": "Trigonometric ratio of hypotenuse side over adjacent side (base), reciprocal of cosine."
+        },
+        "hi": {
+          "title": "व्युत्क्रम कोज्या अनुपात (sec θ)",
+          "desc": "समकोण त्रिभुज में कर्ण और आधार का अनुपात, जो कॉस का व्युत्क्रम होता है।"
+        }
+      },
+      {
+        "id": "cot",
+        "classes": [
+          "9",
+          "10"
+        ],
+        "exams": [
+          "cbse",
+          "up_board"
+        ],
+        "latex": "\\\\cot\\\\theta = \\\\frac{\\\\text{Base}}{\\\\text{Perpendicular}}",
+        "en": {
+          "title": "Cotangent Ratio (cot θ)",
+          "desc": "Trigonometric ratio of adjacent side over perpendicular side, reciprocal of tangent."
+        },
+        "hi": {
+          "title": "व्युत्क्रम स्पर्शज्या अनुपात (cot θ)",
+          "desc": "समकोण त्रिभुज में आधार और लम्ब का अनुपात, जो टैंक का व्युत्क्रम होता है।"
+        }
+      },
+      {
+        "id": "trig_sin_0",
+        "classes": [
+          "9",
+          "10"
+        ],
+        "exams": [
+          "cbse",
+          "up_board"
+        ],
+        "latex": "\\\\sin(0^\\\\circ) = 0",
+        "en": {
+          "title": "SIN ratio at 0°",
+          "desc": "The exact numerical trigonometric value of the SIN function for angle 0°."
+        },
+        "hi": {
+          "title": "Sine (sin θ) का मान 0° पर (SIN ratio at 0°)",
+          "desc": "कोण 0° के लिए Sine (sin θ) त्रिकोणमितीय अनुपात का सरल ज्यामितीय मान।"
+        }
+      },
+      {
+        "id": "trig_sin_30",
+        "classes": [
+          "9",
+          "10"
+        ],
+        "exams": [
+          "cbse",
+          "up_board"
+        ],
+        "latex": "\\\\sin(30^\\\\circ) = \\\\frac{1}{2}",
+        "en": {
+          "title": "SIN ratio at 30°",
+          "desc": "The exact numerical trigonometric value of the SIN function for angle 30°."
+        },
+        "hi": {
+          "title": "Sine (sin θ) का मान 30° पर (SIN ratio at 30°)",
+          "desc": "कोण 30° के लिए Sine (sin θ) त्रिकोणमितीय अनुपात का सरल ज्यामितीय मान।"
+        }
+      },
+      {
+        "id": "trig_sin_45",
+        "classes": [
+          "9",
+          "10"
+        ],
+        "exams": [
+          "cbse",
+          "up_board"
+        ],
+        "latex": "\\\\sin(45^\\\\circ) = \\\\frac{1}{\\\\sqrt{2}}",
+        "en": {
+          "title": "SIN ratio at 45°",
+          "desc": "The exact numerical trigonometric value of the SIN function for angle 45°."
+        },
+        "hi": {
+          "title": "Sine (sin θ) का मान 45° पर (SIN ratio at 45°)",
+          "desc": "कोण 45° के लिए Sine (sin θ) त्रिकोणमितीय अनुपात का सरल ज्यामितीय मान।"
+        }
+      },
+      {
+        "id": "trig_sin_60",
+        "classes": [
+          "9",
+          "10"
+        ],
+        "exams": [
+          "cbse",
+          "up_board"
+        ],
+        "latex": "\\\\sin(60^\\\\circ) = \\\\frac{\\\\sqrt{3}}{2}",
+        "en": {
+          "title": "SIN ratio at 60°",
+          "desc": "The exact numerical trigonometric value of the SIN function for angle 60°."
+        },
+        "hi": {
+          "title": "Sine (sin θ) का मान 60° पर (SIN ratio at 60°)",
+          "desc": "कोण 60° के लिए Sine (sin θ) त्रिकोणमितीय अनुपात का सरल ज्यामितीय मान।"
+        }
+      },
+      {
+        "id": "trig_sin_90",
+        "classes": [
+          "9",
+          "10"
+        ],
+        "exams": [
+          "cbse",
+          "up_board"
+        ],
+        "latex": "\\\\sin(90^\\\\circ) = 1",
+        "en": {
+          "title": "SIN ratio at 90°",
+          "desc": "The exact numerical trigonometric value of the SIN function for angle 90°."
+        },
+        "hi": {
+          "title": "Sine (sin θ) का मान 90° पर (SIN ratio at 90°)",
+          "desc": "कोण 90° के लिए Sine (sin θ) त्रिकोणमितीय अनुपात का सरल ज्यामितीय मान।"
+        }
+      },
+      {
+        "id": "trig_tan_0",
+        "classes": [
+          "9",
+          "10"
+        ],
+        "exams": [
+          "cbse",
+          "up_board"
+        ],
+        "latex": "\\\\tan(0^\\\\circ) = 0",
+        "en": {
+          "title": "TAN ratio at 0°",
+          "desc": "The exact numerical trigonometric value of the TAN function for angle 0°."
+        },
+        "hi": {
+          "title": "Tangent (tan θ) का मान 0° पर (TAN ratio at 0°)",
+          "desc": "कोण 0° के लिए Tangent (tan θ) त्रिकोणमितीय अनुपात का सरल ज्यामितीय मान।"
+        }
+      },
+      {
+        "id": "trig_tan_30",
+        "classes": [
+          "9",
+          "10"
+        ],
+        "exams": [
+          "cbse",
+          "up_board"
+        ],
+        "latex": "\\\\tan(30^\\\\circ) = \\\\frac{1}{\\\\sqrt{3}}",
+        "en": {
+          "title": "TAN ratio at 30°",
+          "desc": "The exact numerical trigonometric value of the TAN function for angle 30°."
+        },
+        "hi": {
+          "title": "Tangent (tan θ) का मान 30° पर (TAN ratio at 30°)",
+          "desc": "कोण 30° के लिए Tangent (tan θ) त्रिकोणमितीय अनुपात का सरल ज्यामितीय मान।"
+        }
+      },
+      {
+        "id": "trig_tan_45",
+        "classes": [
+          "9",
+          "10"
+        ],
+        "exams": [
+          "cbse",
+          "up_board"
+        ],
+        "latex": "\\\\tan(45^\\\\circ) = 1",
+        "en": {
+          "title": "TAN ratio at 45°",
+          "desc": "The exact numerical trigonometric value of the TAN function for angle 45°."
+        },
+        "hi": {
+          "title": "Tangent (tan θ) का मान 45° पर (TAN ratio at 45°)",
+          "desc": "कोण 45° के लिए Tangent (tan θ) त्रिकोणमितीय अनुपात का सरल ज्यामितीय मान।"
+        }
+      },
+      {
+        "id": "trig_tan_60",
+        "classes": [
+          "9",
+          "10"
+        ],
+        "exams": [
+          "cbse",
+          "up_board"
+        ],
+        "latex": "\\\\tan(60^\\\\circ) = \\\\sqrt{3}",
+        "en": {
+          "title": "TAN ratio at 60°",
+          "desc": "The exact numerical trigonometric value of the TAN function for angle 60°."
+        },
+        "hi": {
+          "title": "Tangent (tan θ) का मान 60° पर (TAN ratio at 60°)",
+          "desc": "कोण 60° के लिए Tangent (tan θ) त्रिकोणमितीय अनुपात का सरल ज्यामितीय मान।"
+        }
+      },
+      {
+        "id": "trig_tan_90",
+        "classes": [
+          "9",
+          "10"
+        ],
+        "exams": [
+          "cbse",
+          "up_board"
+        ],
+        "latex": "\\\\tan(90^\\\\circ) = \\\\infty",
+        "en": {
+          "title": "TAN ratio at 90°",
+          "desc": "The exact numerical trigonometric value of the TAN function for angle 90°."
+        },
+        "hi": {
+          "title": "Tangent (tan θ) का मान 90° पर (TAN ratio at 90°)",
+          "desc": "कोण 90° के लिए Tangent (tan θ) त्रिकोणमितीय अनुपात का सरल ज्यामितीय मान।"
+        }
+      },
+      {
+        "id": "trig_sec_0",
+        "classes": [
+          "9",
+          "10"
+        ],
+        "exams": [
+          "cbse",
+          "up_board"
+        ],
+        "latex": "\\\\sec(0^\\\\circ) = 1",
+        "en": {
+          "title": "SEC ratio at 0°",
+          "desc": "The exact numerical trigonometric value of the SEC function for angle 0°."
+        },
+        "hi": {
+          "title": "Secant (sec θ) का मान 0° पर (SEC ratio at 0°)",
+          "desc": "कोण 0° के लिए Secant (sec θ) त्रिकोणमितीय अनुपात का सरल ज्यामितीय मान।"
+        }
+      },
+      {
+        "id": "trig_sec_30",
+        "classes": [
+          "9",
+          "10"
+        ],
+        "exams": [
+          "cbse",
+          "up_board"
+        ],
+        "latex": "\\\\sec(30^\\\\circ) = \\\\frac{2}{\\\\sqrt{3}}",
+        "en": {
+          "title": "SEC ratio at 30°",
+          "desc": "The exact numerical trigonometric value of the SEC function for angle 30°."
+        },
+        "hi": {
+          "title": "Secant (sec θ) का मान 30° पर (SEC ratio at 30°)",
+          "desc": "कोण 30° के लिए Secant (sec θ) त्रिकोणमितीय अनुपात का सरल ज्यामितीय मान।"
+        }
+      },
+      {
+        "id": "trig_sec_45",
+        "classes": [
+          "9",
+          "10"
+        ],
+        "exams": [
+          "cbse",
+          "up_board"
+        ],
+        "latex": "\\\\sec(45^\\\\circ) = \\\\sqrt{2}",
+        "en": {
+          "title": "SEC ratio at 45°",
+          "desc": "The exact numerical trigonometric value of the SEC function for angle 45°."
+        },
+        "hi": {
+          "title": "Secant (sec θ) का मान 45° पर (SEC ratio at 45°)",
+          "desc": "कोण 45° के लिए Secant (sec θ) त्रिकोणमितीय अनुपात का सरल ज्यामितीय मान।"
+        }
+      },
+      {
+        "id": "trig_sec_60",
+        "classes": [
+          "9",
+          "10"
+        ],
+        "exams": [
+          "cbse",
+          "up_board"
+        ],
+        "latex": "\\\\sec(60^\\\\circ) = 2",
+        "en": {
+          "title": "SEC ratio at 60°",
+          "desc": "The exact numerical trigonometric value of the SEC function for angle 60°."
+        },
+        "hi": {
+          "title": "Secant (sec θ) का मान 60° पर (SEC ratio at 60°)",
+          "desc": "कोण 60° के लिए Secant (sec θ) त्रिकोणमितीय अनुपात का सरल ज्यामितीय मान।"
+        }
+      },
+      {
+        "id": "trig_sec_90",
+        "classes": [
+          "9",
+          "10"
+        ],
+        "exams": [
+          "cbse",
+          "up_board"
+        ],
+        "latex": "\\\\sec(90^\\\\circ) = \\\\infty",
+        "en": {
+          "title": "SEC ratio at 90°",
+          "desc": "The exact numerical trigonometric value of the SEC function for angle 90°."
+        },
+        "hi": {
+          "title": "Secant (sec θ) का मान 90° पर (SEC ratio at 90°)",
+          "desc": "कोण 90° के लिए Secant (sec θ) त्रिकोणमितीय अनुपात का सरल ज्यामितीय मान।"
+        }
+      }
+    ]
+  },
+  {
+    "category_en": "Mensuration",
+    "category_hi": "क्षेत्रमिति (Mensuration)",
+    "category_icon": "📦",
+    "items": [
+      {
+        "id": "triangle_area_height",
+        "classes": [
+          "9"
+        ],
+        "exams": [
+          "cbse",
+          "up_board"
+        ],
+        "latex": "A = \\\\frac{1}{2} \\\\times b \\\\times h",
+        "en": {
+          "title": "Triangle Area (Base & Height)",
+          "desc": "Core geometric area calculation for any triangle of known base size and perpendicular height."
+        },
+        "hi": {
+          "title": "त्रिभुज का क्षेत्रफल (आधार और ऊँचाई)",
+          "desc": "किसी भी त्रिभुज का क्षेत्रफल ज्ञात करने का बुनियादी नियम जब आधार और ऊँचाई ज्ञात हो।"
+        }
+      },
+      {
+        "id": "triangle_area",
+        "classes": [
+          "9"
+        ],
+        "exams": [
+          "cbse",
+          "up_board"
+        ],
+        "latex": "A = \\\\frac{\\\\sqrt{3}}{4} a^2",
+        "en": {
+          "title": "Equilateral Triangle Area",
+          "desc": "Simplified area equation specifically for triangles where all three side lengths are equal to a."
+        },
+        "hi": {
+          "title": "समबाहु त्रिभुज का क्षेत्रफल",
+          "desc": "समान भुजाओं वाले त्रिभुज का कुल क्षेत्रफल निकालने का त्वरित सूत्र।"
+        }
+      },
+      {
+        "id": "area",
+        "classes": [
+          "9"
+        ],
+        "exams": [
+          "cbse",
+          "up_board"
+        ],
+        "latex": "A = \\\\frac{1}{2} \\\\pi r^2",
+        "en": {
+          "title": "Area of a Semicircle",
+          "desc": "Total enclosed area of exactly half a geometric circle of radius r."
+        },
+        "hi": {
+          "title": "अर्धवृत्त का क्षेत्रफल",
+          "desc": "त्रिज्या r वाले वृत्त के ठीक आधे हिस्से का कुल आंतरिक सतह क्षेत्रफल।"
+        }
+      },
+      {
+        "id": "circumference",
+        "classes": [
+          "9"
+        ],
+        "exams": [
+          "cbse",
+          "up_board"
+        ],
+        "latex": "P = \\\\pi r + 2r",
+        "en": {
+          "title": "Semicircle Perimeter",
+          "desc": "Total perimeter along the curved arc and diameter of a secure semicircle."
+        },
+        "hi": {
+          "title": "अर्धवृत्त की परिधि (Perimeter)",
+          "desc": "अर्धवृत्त के घुमावदार भाग और उसके व्यास की लंबाई का कुल योगफल।"
+        }
+      },
+      {
+        "id": "cube",
+        "classes": [
+          "9"
+        ],
+        "exams": [
+          "cbse",
+          "up_board"
+        ],
+        "latex": "V = a^3 \\\\quad \\\\text{and} \\\\quad A = 6a^2",
+        "en": {
+          "title": "Cube Volume & Surface Area",
+          "desc": "Three-dimensional properties of a regular hexahedron cubical prism of side length a."
+        },
+        "hi": {
+          "title": "घन का आयतन और पृष्ठ क्षेत्रफल",
+          "desc": "समान कोर लंबाई वाले त्रि-विमीय घन का कुल आयतन और छह फलकों का क्षेत्रफल।"
+        }
+      },
+      {
+        "id": "volume",
+        "classes": [
+          "9"
+        ],
+        "exams": [
+          "cbse",
+          "up_board"
+        ],
+        "latex": "V = l \\\\times w \\\\times h",
+        "en": {
+          "title": "Rectangular Prism/Cuboid Volume",
+          "desc": "Volume enclosed by six rectangular faces with length, width and height values."
+        },
+        "hi": {
+          "title": "घनाभ का आयतन (Volume of Cuboid)",
+          "desc": "लंबाई, चौड़ाई और ऊँचाई वाले त्रि-विमीय घनाभ के भीतर की कुल स्थान क्षमता।"
+        }
+      },
+      {
+        "id": "cuboid",
+        "classes": [
+          "9"
+        ],
+        "exams": [
+          "cbse",
+          "up_board"
+        ],
+        "latex": "A = 2(lw + lh + wh)",
+        "en": {
+          "title": "Total Surface Area of Cuboid",
+          "desc": "Calculates combined geometric surface area of all six rectangular sides of an envelope."
+        },
+        "hi": {
+          "title": "घनाभ का कुल सतह क्षेत्रफल",
+          "desc": "घनाभ के सभी छह बाहरी आयताकार फलकों का संयुक्त कुल पृष्ठीय क्षेत्रफल।"
+        }
+      },
+      {
+        "id": "sphere",
+        "classes": [
+          "9"
+        ],
+        "exams": [
+          "cbse",
+          "up_board"
+        ],
+        "latex": "V = \\\\frac{4}{3}\\\\pi r^3 \\\\quad \\\\text{and} \\\\quad S = 4\\\\pi r^2",
+        "en": {
+          "title": "Sphere Metrics (Volume & Surface)",
+          "desc": "Calculations for total volume capacity and exterior surface area of a solid globe of radius r."
+        },
+        "hi": {
+          "title": "गोले का आयतन और क्षेत्रफल",
+          "desc": "पूर्णतः गोल ठोस आकृति का कुल आयतन और बाहरी पृष्ठ क्षेत्रफल निकालने का सूत्र।"
+        }
+      },
+      {
+        "id": "hemisphere",
+        "classes": [
+          "9"
+        ],
+        "exams": [
+          "cbse",
+          "up_board"
+        ],
+        "latex": "V = \\\\frac{2}{3}\\\\pi r^3 \\\\quad \\\\text{and} \\\\quad A_{\\\\text{total}} = 3\\\\pi r^2",
+        "en": {
+          "title": "Hemisphere Metrics",
+          "desc": "Half sphere volume and total surface area including solid flat circular bottom surface."
+        },
+        "hi": {
+          "title": "अर्धगोले का आयतन और पृष्ठीय क्षेत्रफल",
+          "desc": "वृत्ताकार आधार सहित कटे हुए अर्धगोले का आंतरिक आयतन और कुल क्षेत्रफल।"
+        }
+      },
+      {
+        "id": "cone",
+        "classes": [
+          "9"
+        ],
+        "exams": [
+          "cbse",
+          "up_board"
+        ],
+        "latex": "पृष्ठ",
+        "en": {
+          "title": "Cone",
+          "desc": "Standard algebraic representation and mathematical formula for studying Cone."
+        },
+        "hi": {
+          "title": "शंकु (Cone) (Cone)",
+          "desc": "शंकु (Cone) ज्ञात करने और विभिन्न परीक्षा प्रश्नों को हल करने का मुख्य सूत्र और व्याख्या।"
+        }
+      },
+      {
+        "id": "cylinder",
+        "classes": [
+          "9"
+        ],
+        "exams": [
+          "cbse",
+          "up_board"
+        ],
+        "latex": "पृष्ठ",
+        "en": {
+          "title": "Cylinder",
+          "desc": "Standard algebraic representation and mathematical formula for studying Cylinder."
+        },
+        "hi": {
+          "title": "बेलन (Cylinder) (Cylinder)",
+          "desc": "बेलन (Cylinder) ज्ञात करने और विभिन्न परीक्षा प्रश्नों को हल करने का मुख्य सूत्र और व्याख्या।"
+        }
+      }
+    ]
+  },
+  {
+    "category_en": "Statistics & Probability",
+    "category_hi": "सांख्यिकी और प्रायिकता (Statistics & Probability)",
     "category_icon": "📊",
     "items": [
       {
-        "id": "arithmetic_progression_nth",
-        "classes": ["10", "11"],
-        "exams": ["cbse", "up_board"],
-        "latex": "a_n = a + (n - 1)d",
+        "id": "mean",
+        "classes": [
+          "9",
+          "10"
+        ],
+        "exams": [
+          "cbse",
+          "up_board"
+        ],
+        "latex": "\\\\bar{x} = \\\\frac{\\\\sum_{i=1}^{n} x_i}{n}",
         "en": {
-          "title": "n-th Term of an AP",
-          "desc": "Finds the specific term in an Arithmetic Progression."
+          "title": "Arithmetic Mean",
+          "desc": "Simplest average calculated by summing up raw values and dividing by count."
         },
         "hi": {
-          "title": "समांतर श्रेणी का n-वां पद",
-          "desc": "Arithmetic Progression (AP) mein kisi bhi number ka term nikalne ke liye."
+          "title": "अंकगणितीय माध्य (Mean)",
+          "desc": "दिए गए सभी प्रेक्षणों (आंकड़ों) के कुल योग और उनकी कुल संख्या का सरल अनुपात।"
         }
       },
       {
-        "id": "binomial_theorem",
-        "classes": ["11", "12"],
-        "exams": ["jee", "cbse"],
-        "latex": "(x+y)^n = \\sum_{k=0}^{n} \\binom{n}{k} x^{n-k} y^k",
+        "id": "mean_for_grouped_data",
+        "classes": [
+          "9",
+          "10"
+        ],
+        "exams": [
+          "cbse",
+          "up_board"
+        ],
+        "latex": "\\\\bar{x} = \\\\frac{\\\\sum f_i x_i}{\\\\sum f_i}",
         "en": {
-          "title": "Binomial Theorem",
-          "desc": "Describes the algebraic expansion of powers of a binomial."
+          "title": "Weighted Grouped Mean",
+          "desc": "Finds mean for values summarized in grouped frequency statistics classes."
         },
         "hi": {
-          "title": "द्विपद प्रमेय",
-          "desc": "Binomial ke powers ko expand karne ka mathematical tarika."
+          "title": "वर्गीकृत आंकड़ों का माध्य",
+          "desc": "वर्गीकृत बारम्बारता बंटन सारणी के आंकड़ों का समांतर माध्य निकालने का सूत्र।"
         }
       },
       {
-        "id": "derivative_power_rule",
-        "classes": ["11", "12"],
-        "exams": ["jee", "cbse", "up_board"],
-        "latex": "\\frac{d}{dx}(x^n) = n x^{n-1}",
+        "id": "median",
+        "classes": [
+          "9",
+          "10"
+        ],
+        "exams": [
+          "cbse",
+          "up_board"
+        ],
+        "latex": "\\\\text{Median} = l + \\\\left(\\\\frac{\\\\frac{N}{2} - CF}{f}\\\\right)h",
         "en": {
-          "title": "Power Rule of Differentiation",
-          "desc": "Fundamental calculus formula to find the derivative of a power function."
+          "title": "Median of Grouped Frequency Data",
+          "desc": "Finds positional central value of a grouped distribution with cumulative frequency boundary."
         },
         "hi": {
-          "title": "अवकलन का पावर रूल",
-          "desc": "Calculus ka basic formula kisi variable ki power ko differentiate karne ke liye."
+          "title": "वर्गीकृत आंकड़ों की माध्यिका (Median)",
+          "desc": "संबद्ध संचयी बारम्बारता वक्र से केंद्रीय स्थिति का वर्ग माध्य निकालने का सूत्र।"
         }
       },
       {
-        "id": "integration_parts",
-        "classes": ["12"],
-        "exams": ["jee", "cbse", "up_board"],
-        "latex": "\\int u \\, dv = u v - \\int v \\, du",
+        "id": "mode",
+        "classes": [
+          "9",
+          "10"
+        ],
+        "exams": [
+          "cbse",
+          "up_board"
+        ],
+        "latex": "\\\\text{Mode} = l + \\\\left(\\\\frac{f_1 - f_0}{2f_1 - f_0 - f_2}\\\\right)h",
         "en": {
-          "title": "Integration by Parts",
-          "desc": "Advanced calculus theorem used to integrate the product of two functions."
+          "title": "Mode of Grouped frequency Data",
+          "desc": "Finds peak value corresponding to the maximum observation density class intervals."
         },
         "hi": {
-          "title": "खंडशः समाकलन",
-          "desc": "Do alag-alag functions ke product ka integration (समाकलन) karne ke liye."
+          "title": "वर्गीकृत आंकड़ों का बहुलक (Mode)",
+          "desc": "वह सीमा मान जिसकी बारम्बारता दिए गए वर्गीकरण में सर्वाधिक चरम पर होती है।"
+        }
+      },
+      {
+        "id": "probability",
+        "classes": [
+          "9"
+        ],
+        "exams": [
+          "cbse",
+          "up_board"
+        ],
+        "latex": "P(E) = \\\\frac{n(E)}{n(S)}",
+        "en": {
+          "title": "Classical Probability Formula",
+          "desc": "Ratio of cardinal size of event outcomes and complete sample space elements."
+        },
+        "hi": {
+          "title": "प्रायिकता की परिभाषा",
+          "desc": "किसी अभीष्ट घटना के अनुकूल परिणामों और कुल संभव परिणामों की संख्या का अनुपात।"
+        }
+      },
+      {
+        "id": "e",
+        "classes": [
+          "9"
+        ],
+        "exams": [
+          "cbse",
+          "up_board"
+        ],
+        "latex": "\\\\le",
+        "en": {
+          "title": "E",
+          "desc": "Standard algebraic representation and mathematical formula for studying E."
+        },
+        "hi": {
+          "title": "0 ≤ किसी घटना की प्रायिकता P(E) (E)",
+          "desc": "0 ≤ किसी घटना की प्रायिकता P(E) ज्ञात करने और विभिन्न परीक्षा प्रश्नों को हल करने का मुख्य सूत्र और व्याख्या।"
+        }
+      },
+      {
+        "id": "step_deviation_method",
+        "classes": [
+          "10"
+        ],
+        "exams": [
+          "cbse",
+          "up_board"
+        ],
+        "latex": "\\\\bar{x} = a + h \\\\cdot \\\\left(\\\\frac{\\\\sum f_i u_i}{\\\\sum f_i}\\\\right) \\\\quad \\\\text{where } u_i = \\\\frac{x_i - a}{h}",
+        "en": {
+          "title": "Step Deviation Method",
+          "desc": "Shortened computation for grouped mean using custom assumed mean offset."
+        },
+        "hi": {
+          "title": "पद विचलन विधि (Step Deviation)",
+          "desc": "बड़ी संख्याओं में त्रुटियों से बचने के लिए काल्पनिक माध्य मान मानकर औसत निकालने का त्वरित रूप।"
+        }
+      },
+      {
+        "id": "variance",
+        "classes": [
+          "10"
+        ],
+        "exams": [
+          "cbse",
+          "up_board"
+        ],
+        "latex": "\\\\sigma^2 = \\\\frac{\\\\sum (x_i - \\\\bar{x})^2}{N}",
+        "en": {
+          "title": "Population Variance",
+          "desc": "Measures dispersion along statistical data points around their mean standard offset."
+        },
+        "hi": {
+          "title": "प्रसरण (Variance)",
+          "desc": "सभी संख्यात्मक आंकड़ों के उनके समांतर माध्य से विचलनों के वर्गों का समांतर माध्य।"
+        }
+      },
+      {
+        "id": "standard_deviation",
+        "classes": [
+          "10"
+        ],
+        "exams": [
+          "cbse",
+          "up_board"
+        ],
+        "latex": "\\\\sigma = \\\\sqrt{\\\\frac{\\\\sum (x_i - \\\\bar{x})^2}{N}}",
+        "en": {
+          "title": "Standard Deviation (SD)",
+          "desc": "The absolute square root of variance metric, showing average physical dispersion offset."
+        },
+        "hi": {
+          "title": "मानक विचलन (Standard Deviation)",
+          "desc": "प्रसरण का धनात्मक वर्गमूल जो आंकड़ों के फैलाव या बिखराव का सटीक पैमाना देता है।"
+        }
+      },
+      {
+        "id": "coefficient_of_variation",
+        "classes": [
+          "10"
+        ],
+        "exams": [
+          "cbse",
+          "up_board"
+        ],
+        "latex": "\\\\text{C.V.} = \\\\left(\\\\frac{\\\\sigma}{\\\\bar{x}}\\\\right) \\\\times 100",
+        "en": {
+          "title": "Coefficient of Variation",
+          "desc": "Normalized relative statistical dispersion measure expressed as a percentage of mean."
+        },
+        "hi": {
+          "title": "विचरण गुणांक (Coefficient of Variation)",
+          "desc": "मानक विचलन और माध्य का प्रतिशत अनुपात जो सापेक्षिक स्थिरता या परिवर्तनशीलता दर्शाता है।"
+        }
+      },
+      {
+        "id": "skewness",
+        "classes": [
+          "10"
+        ],
+        "exams": [
+          "cbse",
+          "up_board"
+        ],
+        "latex": "\\\\frac{\\\\Sigma (x - \\\\mu )^{3}}{n \\\\times \\\\sigma ^{3}}",
+        "en": {
+          "title": "Skewness",
+          "desc": "Standard algebraic representation and mathematical formula for studying Skewness."
+        },
+        "hi": {
+          "title": "विकृति (Skewness) (Skewness)",
+          "desc": "विकृति (Skewness) ज्ञात करने और विभिन्न परीक्षा प्रश्नों को हल करने का मुख्य सूत्र और व्याख्या।"
+        }
+      },
+      {
+        "id": "kurtosis",
+        "classes": [
+          "10"
+        ],
+        "exams": [
+          "cbse",
+          "up_board"
+        ],
+        "latex": "\\\\frac{\\\\Sigma (x - \\\\mu )^{4}}{n \\\\times \\\\sigma ^{4}}",
+        "en": {
+          "title": "Kurtosis",
+          "desc": "Standard algebraic representation and mathematical formula for studying Kurtosis."
+        },
+        "hi": {
+          "title": "कुर्टोसिस (Kurtosis) (Kurtosis)",
+          "desc": "कुर्टोसिस (Kurtosis) ज्ञात करने और विभिन्न परीक्षा प्रश्नों को हल करने का मुख्य सूत्र और व्याख्या।"
+        }
+      },
+      {
+        "id": "correlation",
+        "classes": [
+          "10"
+        ],
+        "exams": [
+          "cbse",
+          "up_board"
+        ],
+        "latex": "r = \\\\frac{\\\\Sigma (x - x̄)(y - ȳ)}{\\\\sqrt{( \\\\Sigma (x - x̄)^{2} \\\\times \\\\Sigma (y - ȳ)^{2})}}",
+        "en": {
+          "title": "Correlation",
+          "desc": "Standard algebraic representation and mathematical formula for studying Correlation."
+        },
+        "hi": {
+          "title": "संबंध (Correlation) (Correlation)",
+          "desc": "संबंध (Correlation) ज्ञात करने और विभिन्न परीक्षा प्रश्नों को हल करने का मुख्य सूत्र और व्याख्या।"
+        }
+      },
+      {
+        "id": "regression",
+        "classes": [
+          "10"
+        ],
+        "exams": [
+          "cbse",
+          "up_board"
+        ],
+        "latex": "y = a + bx",
+        "en": {
+          "title": "Regression",
+          "desc": "Standard algebraic representation and mathematical formula for studying Regression."
+        },
+        "hi": {
+          "title": "प्रतिगमन (Regression) (Regression)",
+          "desc": "प्रतिगमन (Regression) ज्ञात करने और विभिन्न परीक्षा प्रश्नों को हल करने का मुख्य सूत्र और व्याख्या।"
+        }
+      },
+      {
+        "id": "least_square_method",
+        "classes": [
+          "10"
+        ],
+        "exams": [
+          "cbse",
+          "up_board"
+        ],
+        "latex": "\\\\frac{\\\\Sigma y}{\\\\Sigma x} , \\\\frac{\\\\Sigma xy}{\\\\Sigma x^{2}}",
+        "en": {
+          "title": "Least Square Method",
+          "desc": "Standard algebraic representation and mathematical formula for studying Least Square Method."
+        },
+        "hi": {
+          "title": "लघुत्तम वर्ग विधि (Least Square Method) (Least Square Method)",
+          "desc": "लघुत्तम वर्ग विधि (Least Square Method) ज्ञात करने और विभिन्न परीक्षा प्रश्नों को हल करने का मुख्य सूत्र और व्याख्या।"
+        }
+      },
+      {
+        "id": "probability_of_an_event",
+        "classes": [
+          "10"
+        ],
+        "exams": [
+          "cbse",
+          "up_board"
+        ],
+        "latex": "P(E) = \\\\frac{सफल घटनाओं संख्या}{कुल घटनाओं संख्या}",
+        "en": {
+          "title": "Probability of an event",
+          "desc": "Standard algebraic representation and mathematical formula for studying Probability of an event."
+        },
+        "hi": {
+          "title": "घटना की प्रायिकता (Probability of an event) (Probability of an event)",
+          "desc": "घटना की प्रायिकता (Probability of an event) ज्ञात करने और विभिन्न परीक्षा प्रश्नों को हल करने का मुख्य सूत्र और व्याख्या।"
+        }
+      },
+      {
+        "id": "probability_of_complementary_events",
+        "classes": [
+          "10"
+        ],
+        "exams": [
+          "cbse",
+          "up_board"
+        ],
+        "latex": "P(E') = 1 - P(E)",
+        "en": {
+          "title": "Probability of complementary events",
+          "desc": "Standard algebraic representation and mathematical formula for studying Probability of complementary events."
+        },
+        "hi": {
+          "title": "पूरक घटनाओं की प्रायिकता (Probability of complementary events) (Probability of complementary events)",
+          "desc": "पूरक घटनाओं की प्रायिकता (Probability of complementary events) ज्ञात करने और विभिन्न परीक्षा प्रश्नों को हल करने का मुख्य सूत्र और व्याख्या।"
+        }
+      },
+      {
+        "id": "addition_rule",
+        "classes": [
+          "10"
+        ],
+        "exams": [
+          "cbse",
+          "up_board"
+        ],
+        "latex": "P(A \\\\cup B) = P(A) + P(B) - P(A \\\\cap B)",
+        "en": {
+          "title": "Addition Rule",
+          "desc": "Standard algebraic representation and mathematical formula for studying Addition Rule."
+        },
+        "hi": {
+          "title": "योग नियम (Addition Rule) (Addition Rule)",
+          "desc": "योग नियम (Addition Rule) ज्ञात करने और विभिन्न परीक्षा प्रश्नों को हल करने का मुख्य सूत्र और व्याख्या।"
+        }
+      },
+      {
+        "id": "multiplication_rule",
+        "classes": [
+          "10"
+        ],
+        "exams": [
+          "cbse",
+          "up_board"
+        ],
+        "latex": "P(A \\\\cap B) = P(A) \\\\times P(B|A)",
+        "en": {
+          "title": "Multiplication Rule",
+          "desc": "Standard algebraic representation and mathematical formula for studying Multiplication Rule."
+        },
+        "hi": {
+          "title": "गुणा नियम (Multiplication Rule) (Multiplication Rule)",
+          "desc": "गुणा नियम (Multiplication Rule) ज्ञात करने और विभिन्न परीक्षा प्रश्नों को हल करने का मुख्य सूत्र और व्याख्या।"
+        }
+      },
+      {
+        "id": "conditional_probability",
+        "classes": [
+          "10"
+        ],
+        "exams": [
+          "cbse",
+          "up_board"
+        ],
+        "latex": "P(A|B) = \\\\frac{P(A \\\\cap B)}{P(B)}",
+        "en": {
+          "title": "Conditional Probability",
+          "desc": "Standard algebraic representation and mathematical formula for studying Conditional Probability."
+        },
+        "hi": {
+          "title": "सशर्त प्रायिकता (Conditional Probability) (Conditional Probability)",
+          "desc": "सशर्त प्रायिकता (Conditional Probability) ज्ञात करने और विभिन्न परीक्षा प्रश्नों को हल करने का मुख्य सूत्र और व्याख्या।"
+        }
+      },
+      {
+        "id": "bayes_theorem",
+        "classes": [
+          "10"
+        ],
+        "exams": [
+          "cbse",
+          "up_board"
+        ],
+        "latex": "P(A|B) = \\\\frac{P(B|A) \\\\times P(A)}{P(B)}",
+        "en": {
+          "title": "Bayes Theorem",
+          "desc": "Standard algebraic representation and mathematical formula for studying Bayes Theorem."
+        },
+        "hi": {
+          "title": "बायेस का प्रमेय (Bayes Theorem) (Bayes Theorem)",
+          "desc": "बायेस का प्रमेय (Bayes Theorem) ज्ञात करने और विभिन्न परीक्षा प्रश्नों को हल करने का मुख्य सूत्र और व्याख्या।"
+        }
+      },
+      {
+        "id": "total_probability_theorem",
+        "classes": [
+          "10"
+        ],
+        "exams": [
+          "cbse",
+          "up_board"
+        ],
+        "latex": "P(B) = \\\\Sigma P(B|A_{i}) \\\\times P(A_{i})",
+        "en": {
+          "title": "Total Probability Theorem",
+          "desc": "Standard algebraic representation and mathematical formula for studying Total Probability Theorem."
+        },
+        "hi": {
+          "title": "कुल प्रायिकता प्रमेय (Total Probability Theorem) (Total Probability Theorem)",
+          "desc": "कुल प्रायिकता प्रमेय (Total Probability Theorem) ज्ञात करने और विभिन्न परीक्षा प्रश्नों को हल करने का मुख्य सूत्र और व्याख्या।"
+        }
+      },
+      {
+        "id": "trial",
+        "classes": [
+          "10"
+        ],
+        "exams": [
+          "cbse",
+          "up_board"
+        ],
+        "latex": "P(X = k) = \\\\frac{nCk \\\\times p^{k} \\\\times (1 - p)^{n-k}}{n}",
+        "en": {
+          "title": "Bernoulli's Trial",
+          "desc": "Standard algebraic representation and mathematical formula for studying Bernoulli's Trial."
+        },
+        "hi": {
+          "title": "बर्नोली का परीक्षण (Bernoulli's Trial) (Bernoulli's Trial)",
+          "desc": "बर्नोली का परीक्षण (Bernoulli's Trial) ज्ञात करने और विभिन्न परीक्षा प्रश्नों को हल करने का मुख्य सूत्र और व्याख्या।"
+        }
+      },
+      {
+        "id": "binomial_distribution",
+        "classes": [
+          "10"
+        ],
+        "exams": [
+          "cbse",
+          "up_board"
+        ],
+        "latex": "P(X = k) = \\\\frac{nCk \\\\times p^{k} \\\\times (1 - p)^{n-k}}{n}",
+        "en": {
+          "title": "Binomial Distribution",
+          "desc": "Standard algebraic representation and mathematical formula for studying Binomial Distribution."
+        },
+        "hi": {
+          "title": "बाइनोमियल वितरण (Binomial Distribution) (Binomial Distribution)",
+          "desc": "बाइनोमियल वितरण (Binomial Distribution) ज्ञात करने और विभिन्न परीक्षा प्रश्नों को हल करने का मुख्य सूत्र और व्याख्या।"
+        }
+      },
+      {
+        "id": "poisson_distribution",
+        "classes": [
+          "10"
+        ],
+        "exams": [
+          "cbse",
+          "up_board"
+        ],
+        "latex": "P(X = k) = \\\\frac{\\\\lambda ^{k} \\\\times e^{- \\\\lambda}}{k!}",
+        "en": {
+          "title": "Poisson Distribution",
+          "desc": "Standard algebraic representation and mathematical formula for studying Poisson Distribution."
+        },
+        "hi": {
+          "title": "पॉइसन वितरण (Poisson Distribution) (Poisson Distribution)",
+          "desc": "पॉइसन वितरण (Poisson Distribution) ज्ञात करने और विभिन्न परीक्षा प्रश्नों को हल करने का मुख्य सूत्र और व्याख्या।"
+        }
+      },
+      {
+        "id": "normal_distribution",
+        "classes": [
+          "10"
+        ],
+        "exams": [
+          "cbse",
+          "up_board"
+        ],
+        "latex": "P(X = x) = \\\\frac{1}{\\\\sigma \\\\sqrt{2 \\\\pi}} \\\\times e^{-(x - \\\\mu )^{2} / 2 \\\\sigma ^{2}}",
+        "en": {
+          "title": "Normal Distribution",
+          "desc": "Standard algebraic representation and mathematical formula for studying Normal Distribution."
+        },
+        "hi": {
+          "title": "सामान्य वितरण (Normal Distribution) (Normal Distribution)",
+          "desc": "सामान्य वितरण (Normal Distribution) ज्ञात करने और विभिन्न परीक्षा प्रश्नों को हल करने का मुख्य सूत्र और व्याख्या।"
+        }
+      },
+      {
+        "id": "expected_value",
+        "classes": [
+          "10"
+        ],
+        "exams": [
+          "cbse",
+          "up_board"
+        ],
+        "latex": "E(X) = \\\\Sigma x \\\\times P(x)",
+        "en": {
+          "title": "Expected Value",
+          "desc": "Standard algebraic representation and mathematical formula for studying Expected Value."
+        },
+        "hi": {
+          "title": "अपेक्षित मान (Expected Value) (Expected Value)",
+          "desc": "अपेक्षित मान (Expected Value) ज्ञात करने और विभिन्न परीक्षा प्रश्नों को हल करने का मुख्य सूत्र और व्याख्या।"
+        }
+      },
+      {
+        "id": "5_15_10",
+        "classes": [
+          "12"
+        ],
+        "exams": [
+          "cbse",
+          "up_board",
+          "jee"
+        ],
+        "latex": "(-10)^{2} = 100",
+        "en": {
+          "title": "5 - 15 = -10",
+          "desc": "Standard algebraic representation and mathematical formula for studying 5 - 15 = -10."
+        },
+        "hi": {
+          "title": "5 - 15 = -10 (5 - 15 = -10)",
+          "desc": "5 - 15 = -10 ज्ञात करने और विभिन्न परीक्षा प्रश्नों को हल करने का मुख्य सूत्र और व्याख्या।"
+        }
+      },
+      {
+        "id": "10_15_5",
+        "classes": [
+          "12"
+        ],
+        "exams": [
+          "cbse",
+          "up_board",
+          "jee"
+        ],
+        "latex": "(-5)^{2} = 25",
+        "en": {
+          "title": "10 - 15 = -5",
+          "desc": "Standard algebraic representation and mathematical formula for studying 10 - 15 = -5."
+        },
+        "hi": {
+          "title": "10 - 15 = -5 (10 - 15 = -5)",
+          "desc": "10 - 15 = -5 ज्ञात करने और विभिन्न परीक्षा प्रश्नों को हल करने का मुख्य सूत्र और व्याख्या।"
+        }
+      },
+      {
+        "id": "15_15_0",
+        "classes": [
+          "12"
+        ],
+        "exams": [
+          "cbse",
+          "up_board",
+          "jee"
+        ],
+        "latex": "0^{2} = 0",
+        "en": {
+          "title": "15 - 15 = 0",
+          "desc": "Standard algebraic representation and mathematical formula for studying 15 - 15 = 0."
+        },
+        "hi": {
+          "title": "15 - 15 = 0 (15 - 15 = 0)",
+          "desc": "15 - 15 = 0 ज्ञात करने और विभिन्न परीक्षा प्रश्नों को हल करने का मुख्य सूत्र और व्याख्या।"
+        }
+      },
+      {
+        "id": "20_15_5",
+        "classes": [
+          "12"
+        ],
+        "exams": [
+          "cbse",
+          "up_board",
+          "jee"
+        ],
+        "latex": "5^{2} = 25",
+        "en": {
+          "title": "20 - 15 = 5",
+          "desc": "Standard algebraic representation and mathematical formula for studying 20 - 15 = 5."
+        },
+        "hi": {
+          "title": "20 - 15 = 5 (20 - 15 = 5)",
+          "desc": "20 - 15 = 5 ज्ञात करने और विभिन्न परीक्षा प्रश्नों को हल करने का मुख्य सूत्र और व्याख्या।"
+        }
+      },
+      {
+        "id": "25_15_10",
+        "classes": [
+          "12"
+        ],
+        "exams": [
+          "cbse",
+          "up_board",
+          "jee"
+        ],
+        "latex": "10^{2} = 100",
+        "en": {
+          "title": "25 - 15 = 10",
+          "desc": "Standard algebraic representation and mathematical formula for studying 25 - 15 = 10."
+        },
+        "hi": {
+          "title": "25 - 15 = 10 (25 - 15 = 10)",
+          "desc": "25 - 15 = 10 ज्ञात करने और विभिन्न परीक्षा प्रश्नों को हल करने का मुख्य सूत्र और व्याख्या।"
+        }
+      },
+      {
+        "id": "5",
+        "classes": [
+          "12"
+        ],
+        "exams": [
+          "cbse",
+          "up_board",
+          "jee"
+        ],
+        "latex": "2 − 5 = −3",
+        "en": {
+          "title": "5",
+          "desc": "Standard algebraic representation and mathematical formula for studying 5."
+        },
+        "hi": {
+          "title": "5 (5)",
+          "desc": "5 ज्ञात करने और विभिन्न परीक्षा प्रश्नों को हल करने का मुख्य सूत्र और व्याख्या।"
+        }
+      },
+      {
+        "id": "2_5",
+        "classes": [
+          "12"
+        ],
+        "exams": [
+          "cbse",
+          "up_board",
+          "jee"
+        ],
+        "latex": "(1 \\\\times 2.5) = 2.5",
+        "en": {
+          "title": "2.5",
+          "desc": "Standard algebraic representation and mathematical formula for studying 2.5."
+        },
+        "hi": {
+          "title": "2.5 (2.5)",
+          "desc": "2.5 ज्ञात करने और विभिन्न परीक्षा प्रश्नों को हल करने का मुख्य सूत्र और व्याख्या।"
+        }
+      },
+      {
+        "id": "7_5",
+        "classes": [
+          "12"
+        ],
+        "exams": [
+          "cbse",
+          "up_board",
+          "jee"
+        ],
+        "latex": "(3 \\\\times 7.5) = 22.5",
+        "en": {
+          "title": "7.5",
+          "desc": "Standard algebraic representation and mathematical formula for studying 7.5."
+        },
+        "hi": {
+          "title": "7.5 (7.5)",
+          "desc": "7.5 ज्ञात करने और विभिन्न परीक्षा प्रश्नों को हल करने का मुख्य सूत्र और व्याख्या।"
+        }
+      },
+      {
+        "id": "xi_yi",
+        "classes": [
+          "12"
+        ],
+        "exams": [
+          "cbse",
+          "up_board",
+          "jee"
+        ],
+        "latex": "50",
+        "en": {
+          "title": "xi − x̄",
+          "desc": "Standard algebraic representation and mathematical formula for studying xi − x̄."
+        },
+        "hi": {
+          "title": "∑(xi − x̄)(yi − ȳ) (xi − x̄)",
+          "desc": "∑(xi − x̄)(yi − ȳ) ज्ञात करने और विभिन्न परीक्षा प्रश्नों को हल करने का मुख्य सूत्र और व्याख्या।"
+        }
+      },
+      {
+        "id": "_3",
+        "classes": [
+          "12"
+        ],
+        "exams": [
+          "cbse",
+          "up_board",
+          "jee"
+        ],
+        "latex": "(−3)^{2} = 9",
+        "en": {
+          "title": "−3",
+          "desc": "Standard algebraic representation and mathematical formula for studying −3."
+        },
+        "hi": {
+          "title": "−3 (−3)",
+          "desc": "−3 ज्ञात करने और विभिन्न परीक्षा प्रश्नों को हल करने का मुख्य सूत्र और व्याख्या।"
+        }
+      },
+      {
+        "id": "_1",
+        "classes": [
+          "12"
+        ],
+        "exams": [
+          "cbse",
+          "up_board",
+          "jee"
+        ],
+        "latex": "(−1)^{2} = 1",
+        "en": {
+          "title": "−1",
+          "desc": "Standard algebraic representation and mathematical formula for studying −1."
+        },
+        "hi": {
+          "title": "−1 (−1)",
+          "desc": "−1 ज्ञात करने और विभिन्न परीक्षा प्रश्नों को हल करने का मुख्य सूत्र और व्याख्या।"
+        }
+      },
+      {
+        "id": "1",
+        "classes": [
+          "12"
+        ],
+        "exams": [
+          "cbse",
+          "up_board",
+          "jee"
+        ],
+        "latex": "(1)^{2} = 1",
+        "en": {
+          "title": "1",
+          "desc": "Standard algebraic representation and mathematical formula for studying 1."
+        },
+        "hi": {
+          "title": "1 (1)",
+          "desc": "1 ज्ञात करने और विभिन्न परीक्षा प्रश्नों को हल करने का मुख्य सूत्र और व्याख्या।"
+        }
+      },
+      {
+        "id": "3",
+        "classes": [
+          "12"
+        ],
+        "exams": [
+          "cbse",
+          "up_board",
+          "jee"
+        ],
+        "latex": "(3)^{2} = 9",
+        "en": {
+          "title": "3",
+          "desc": "Standard algebraic representation and mathematical formula for studying 3."
+        },
+        "hi": {
+          "title": "3 (3)",
+          "desc": "3 ज्ञात करने और विभिन्न परीक्षा प्रश्नों को हल करने का मुख्य सूत्र और व्याख्या।"
+        }
+      },
+      {
+        "id": "xi_2",
+        "classes": [
+          "12"
+        ],
+        "exams": [
+          "cbse",
+          "up_board",
+          "jee"
+        ],
+        "latex": "20",
+        "en": {
+          "title": "xi − x̄",
+          "desc": "Standard algebraic representation and mathematical formula for studying xi − x̄."
+        },
+        "hi": {
+          "title": "∑(xi − x̄)2 (xi − x̄)",
+          "desc": "∑(xi − x̄)2 ज्ञात करने और विभिन्न परीक्षा प्रश्नों को हल करने का मुख्य सूत्र और व्याख्या।"
+        }
+      },
+      {
+        "id": "yi_2",
+        "classes": [
+          "12"
+        ],
+        "exams": [
+          "cbse",
+          "up_board",
+          "jee"
+        ],
+        "latex": "125",
+        "en": {
+          "title": "yi − ȳ",
+          "desc": "Standard algebraic representation and mathematical formula for studying yi − ȳ."
+        },
+        "hi": {
+          "title": "∑(yi − ȳ)2 (yi − ȳ)",
+          "desc": "∑(yi − ȳ)2 ज्ञात करने और विभिन्न परीक्षा प्रश्नों को हल करने का मुख्य सूत्र और व्याख्या।"
+        }
+      },
+      {
+        "id": "10_18",
+        "classes": [
+          "12"
+        ],
+        "exams": [
+          "cbse",
+          "up_board",
+          "jee"
+        ],
+        "latex": "(−8)^{2} = 64",
+        "en": {
+          "title": "10 − 18 = −8",
+          "desc": "Standard algebraic representation and mathematical formula for studying 10 − 18 = −8."
+        },
+        "hi": {
+          "title": "10 − 18 = −8 (10 − 18 = −8)",
+          "desc": "10 − 18 = −8 ज्ञात करने और विभिन्न परीक्षा प्रश्नों को हल करने का मुख्य सूत्र और व्याख्या।"
+        }
+      },
+      {
+        "id": "12_18",
+        "classes": [
+          "12"
+        ],
+        "exams": [
+          "cbse",
+          "up_board",
+          "jee"
+        ],
+        "latex": "(−6)^{2} = 36",
+        "en": {
+          "title": "12 − 18 = −6",
+          "desc": "Standard algebraic representation and mathematical formula for studying 12 − 18 = −6."
+        },
+        "hi": {
+          "title": "12 − 18 = −6 (12 − 18 = −6)",
+          "desc": "12 − 18 = −6 ज्ञात करने और विभिन्न परीक्षा प्रश्नों को हल करने का मुख्य सूत्र और व्याख्या।"
+        }
+      },
+      {
+        "id": "23_18_5",
+        "classes": [
+          "12"
+        ],
+        "exams": [
+          "cbse",
+          "up_board",
+          "jee"
+        ],
+        "latex": "(5)^{2} = 25",
+        "en": {
+          "title": "23 − 18 = 5",
+          "desc": "Standard algebraic representation and mathematical formula for studying 23 − 18 = 5."
+        },
+        "hi": {
+          "title": "23 − 18 = 5 (23 − 18 = 5)",
+          "desc": "23 − 18 = 5 ज्ञात करने और विभिन्न परीक्षा प्रश्नों को हल करने का मुख्य सूत्र और व्याख्या।"
+        }
+      },
+      {
+        "id": "16_18",
+        "classes": [
+          "12"
+        ],
+        "exams": [
+          "cbse",
+          "up_board",
+          "jee"
+        ],
+        "latex": "(−2)^{2} = 4",
+        "en": {
+          "title": "16 − 18 = −2",
+          "desc": "Standard algebraic representation and mathematical formula for studying 16 − 18 = −2."
+        },
+        "hi": {
+          "title": "16 − 18 = −2 (16 − 18 = −2)",
+          "desc": "16 − 18 = −2 ज्ञात करने और विभिन्न परीक्षा प्रश्नों को हल करने का मुख्य सूत्र और व्याख्या।"
+        }
+      },
+      {
+        "id": "21_18_3",
+        "classes": [
+          "12"
+        ],
+        "exams": [
+          "cbse",
+          "up_board",
+          "jee"
+        ],
+        "latex": "(3)^{2} = 9",
+        "en": {
+          "title": "21 − 18 = 3",
+          "desc": "Standard algebraic representation and mathematical formula for studying 21 − 18 = 3."
+        },
+        "hi": {
+          "title": "21 − 18 = 3 (21 − 18 = 3)",
+          "desc": "21 − 18 = 3 ज्ञात करने और विभिन्न परीक्षा प्रश्नों को हल करने का मुख्य सूत्र और व्याख्या।"
+        }
+      }
+    ]
+  },
+  {
+    "category_en": "Arithmetic & Number System",
+    "category_hi": "अंकगणित और संख्या प्रणाली (Arithmetic & Number System)",
+    "category_icon": "🔢",
+    "items": [
+      {
+        "id": "u",
+        "classes": [
+          "11"
+        ],
+        "exams": [
+          "cbse",
+          "up_board",
+          "jee"
+        ],
+        "latex": "A \\\\cup B = \\\\{x \\\\mid x \\\\in A \\\\text{ or } x \\\\in B\\\\}",
+        "en": {
+          "title": "Union of Sets",
+          "desc": "Combined set containing all distinct elements that are in set A, set B, or both."
+        },
+        "hi": {
+          "title": "समुच्चयों का संघ (Union)",
+          "desc": "ऐसा संयुक्त समुच्चय जिसमें समुच्चयों A और B के सभी विशिष्ट अवयव समाहित होते हैं।"
+        }
+      }
+    ]
+  },
+  {
+    "category_en": "Calculus",
+    "category_hi": "कलन शास्त्र (Calculus)",
+    "category_icon": "📈",
+    "items": [
+      {
+        "id": "xn",
+        "classes": [
+          "11"
+        ],
+        "exams": [
+          "cbse",
+          "up_board",
+          "jee"
+        ],
+        "latex": "\\\\lim_{x \\\\to a} x^n = a^n",
+        "en": {
+          "title": "Direct Limit of Power Monomial",
+          "desc": "Evaluates standard continuous monomial function target directly at evaluation origin a."
+        },
+        "hi": {
+          "title": "नियत बिंदु पर सीधे सीमा का मान",
+          "desc": "सतत फलन में चर राशि x की घात का प्रत्यक्ष सीमा मान निकालने का सूत्र।"
+        }
+      },
+      {
+        "id": "xn_anx_a",
+        "classes": [
+          "11"
+        ],
+        "exams": [
+          "cbse",
+          "up_board",
+          "jee"
+        ],
+        "latex": "\\\\lim_{x \\\\to a} \\\\frac{x^n - a^n}{x - a} = n a^{n-1}",
+        "en": {
+          "title": "Standard Power Limit Theorem",
+          "desc": "Essential limit formula used to prove the power rule derivative for polynomials."
+        },
+        "hi": {
+          "title": "घात सीमा प्रमेय (Power Limit Theorem)",
+          "desc": "सीमा का आधारभूत प्रमेय जो घात फलकों के अवकलन नियमों की व्युत्पत्ति में सहायक होता है।"
+        }
+      },
+      {
+        "id": "1_x_n_1x",
+        "classes": [
+          "11"
+        ],
+        "exams": [
+          "cbse",
+          "up_board",
+          "jee"
+        ],
+        "latex": "\\\\lim_{x \\\\to 0} \\\\frac{(1+x)^n - 1}{x} = n",
+        "en": {
+          "title": "Binomial Expansion Limit Quotient",
+          "desc": "Basic continuous derivative equivalent of the standard binomial expansion when fraction variable goes to zero."
+        },
+        "hi": {
+          "title": "द्विपद प्रसार संबद्ध सीमा",
+          "desc": "अल्पवृद्धि दर के सापेक्ष द्विपद फलकों के सरल सीमा निष्कर्षण का सूत्र।"
+        }
+      },
+      {
+        "id": "lim_x_y_z",
+        "classes": [
+          "11",
+          "12"
+        ],
+        "exams": [
+          "cbse",
+          "up_board",
+          "jee"
+        ],
+        "latex": "lim x + lim y - lim z",
+        "en": {
+          "title": "x + y - z",
+          "desc": "Standard algebraic representation and mathematical formula for studying x + y - z."
+        },
+        "hi": {
+          "title": "lim(x + y - z) (x + y - z)",
+          "desc": "lim(x + y - z) ज्ञात करने और विभिन्न परीक्षा प्रश्नों को हल करने का मुख्य सूत्र और व्याख्या।"
+        }
+      },
+      {
+        "id": "xyz",
+        "classes": [
+          "11",
+          "12"
+        ],
+        "exams": [
+          "cbse",
+          "up_board",
+          "jee"
+        ],
+        "latex": "lim x \\\\times lim y \\\\times lim z",
+        "en": {
+          "title": "xyz",
+          "desc": "Standard algebraic representation and mathematical formula for studying xyz."
+        },
+        "hi": {
+          "title": "lim(xyz) (xyz)",
+          "desc": "lim(xyz) ज्ञात करने और विभिन्न परीक्षा प्रश्नों को हल करने का मुख्य सूत्र और व्याख्या।"
+        }
+      },
+      {
+        "id": "xy",
+        "classes": [
+          "11",
+          "12"
+        ],
+        "exams": [
+          "cbse",
+          "up_board",
+          "jee"
+        ],
+        "latex": "\\\\frac{lim x}{lim y}",
+        "en": {
+          "title": "xy",
+          "desc": "Standard algebraic representation and mathematical formula for studying xy."
+        },
+        "hi": {
+          "title": "lim(xy) (xy)",
+          "desc": "lim(xy) ज्ञात करने और विभिन्न परीक्षा प्रश्नों को हल करने का मुख्य सूत्र और व्याख्या।"
+        }
+      },
+      {
+        "id": "sin_xx",
+        "classes": [
+          "11"
+        ],
+        "exams": [
+          "cbse",
+          "up_board",
+          "jee"
+        ],
+        "latex": "\\\\lim_{x \\\\to 0} \\\\frac{\\\\sin x}{x} = 1",
+        "en": {
+          "title": "Fundamental Squeeze Limit",
+          "desc": "Standard limit of sine quotient evaluated as variable goes to 0."
+        },
+        "hi": {
+          "title": "त्रिकोणमितीय सीमा का मूलभूत नियम",
+          "desc": "कोण शून्य की ओर प्रवृत्त होने पर साइन कोण और उसी कोण के अनुपात का सीमा मान 1 होता है।"
+        }
+      },
+      {
+        "id": "tan_xx",
+        "classes": [
+          "11"
+        ],
+        "exams": [
+          "cbse",
+          "up_board",
+          "jee"
+        ],
+        "latex": "\\\\lim_{x \\\\to 0} \\\\frac{\\\\tan x}{x} = 1",
+        "en": {
+          "title": "Tangent Derivative Limit Quotient",
+          "desc": "Standard trigonometric limit of tangent division quotient as variable goes to 0."
+        },
+        "hi": {
+          "title": "टैंजेंट सीमा का मानक नियम",
+          "desc": "कोण शून्य की ओर बढ़ने पर स्पर्शज्या फलन टैनx और x के बीच का मानक सीमा अनुपात।"
+        }
+      },
+      {
+        "id": "1_cos",
+        "classes": [
+          "11"
+        ],
+        "exams": [
+          "cbse",
+          "up_board",
+          "jee"
+        ],
+        "latex": "\\\\lim_{x \\\\to 0} \\\\frac{1 - \\\\cos x}{x^2} = \\\\frac{1}{2}",
+        "en": {
+          "title": "Trigonometric Quadratic Squeeze Limit",
+          "desc": "Calculus quadratic limit showing deceleration rate of cosine difference near zero."
+        },
+        "hi": {
+          "title": "द्विघातीय साइन-कॉस रूपांतरित सीमा",
+          "desc": "सीमा का वह मान जो (1 - cos x) और x के वर्ग के बीच का सटीक आधा मान अनुपात दर्शता है।"
+        }
+      },
+      {
+        "id": "ax",
+        "classes": [
+          "11"
+        ],
+        "exams": [
+          "cbse",
+          "up_board",
+          "jee"
+        ],
+        "latex": "\\\\frac{a}{b}",
+        "en": {
+          "title": "ax",
+          "desc": "Standard trigonometric values and properties of angles."
+        },
+        "hi": {
+          "title": "limx→0 sin(ax)bx (ax)",
+          "desc": "कोणों के विभिन्न मानों के लिए प्रमुख त्रिकोणमितीय अनुपातों का मान।"
+        }
+      },
+      {
+        "id": "1x",
+        "classes": [
+          "11"
+        ],
+        "exams": [
+          "cbse",
+          "up_board",
+          "jee"
+        ],
+        "latex": "\\\\lim_{x \\\\to \\\\infty} \\\\frac{1}{x} = 0",
+        "en": {
+          "title": "Hyperbolic Limit at Infinity",
+          "desc": "Standard property showing rational hyperbolic fractions converge cleanly to absolute zero."
+        },
+        "hi": {
+          "title": "अनंत पर सीमा का ह्रास",
+          "desc": "अतिपरवलयिक फलन का वह गुण जिसके अनुसार चर का मान अनंत होने पर मान शून्य की ओर घिसटता है।"
+        }
+      },
+      {
+        "id": "1xn_n_0",
+        "classes": [
+          "11"
+        ],
+        "exams": [
+          "cbse",
+          "up_board",
+          "jee"
+        ],
+        "latex": "0",
+        "en": {
+          "title": "n > 0",
+          "desc": "Standard algebraic representation and mathematical formula for studying n > 0."
+        },
+        "hi": {
+          "title": "limx→∞ 1xn (n > 0) (n > 0)",
+          "desc": "limx→∞ 1xn (n > 0) ज्ञात करने और विभिन्न परीक्षा प्रश्नों को हल करने का मुख्य सूत्र और व्याख्या।"
+        }
+      },
+      {
+        "id": "xx_1",
+        "classes": [
+          "11"
+        ],
+        "exams": [
+          "cbse",
+          "up_board",
+          "jee"
+        ],
+        "latex": "1",
+        "en": {
+          "title": "limx→∞ xx + 1",
+          "desc": "Standard algebraic representation and mathematical formula for studying limx→∞ xx + 1."
+        },
+        "hi": {
+          "title": "limx→∞ xx + 1 (limx→∞ xx + 1)",
+          "desc": "limx→∞ xx + 1 ज्ञात करने और विभिन्न परीक्षा प्रश्नों को हल करने का मुख्य सूत्र और व्याख्या।"
+        }
+      },
+      {
+        "id": "axn_bxn",
+        "classes": [
+          "11"
+        ],
+        "exams": [
+          "cbse",
+          "up_board",
+          "jee"
+        ],
+        "latex": "\\\\frac{a}{b}",
+        "en": {
+          "title": "limx→∞ axn + ...bxn + ...",
+          "desc": "Standard algebraic representation and mathematical formula for studying limx→∞ axn + ...bxn + ...."
+        },
+        "hi": {
+          "title": "limx→∞ axn + ...bxn + ... (limx→∞ axn + ...bxn + ...)",
+          "desc": "limx→∞ axn + ...bxn + ... ज्ञात करने और विभिन्न परीक्षा प्रश्नों को हल करने का मुख्य सूत्र और व्याख्या।"
+        }
+      },
+      {
+        "id": "x",
+        "classes": [
+          "11",
+          "12"
+        ],
+        "exams": [
+          "cbse",
+          "up_board",
+          "jee"
+        ],
+        "latex": "f(x) निरंतर है (Continuous at x = a)",
+        "en": {
+          "title": "x",
+          "desc": "Standard algebraic representation and mathematical formula for studying x."
+        },
+        "hi": {
+          "title": "यदि limx→a f(x) = f(a) (x)",
+          "desc": "यदि limx→a f(x) = f(a) ज्ञात करने और विभिन्न परीक्षा प्रश्नों को हल करने का मुख्य सूत्र और व्याख्या।"
+        }
+      },
+      {
+        "id": "a",
+        "classes": [
+          "11",
+          "12"
+        ],
+        "exams": [
+          "cbse",
+          "up_board",
+          "jee"
+        ],
+        "latex": "f(x) निरंतर है",
+        "en": {
+          "title": "a",
+          "desc": "Standard algebraic representation and mathematical formula for studying a."
+        },
+        "hi": {
+          "title": "यदि Left-hand limit = Right-hand limit = f(a) (a)",
+          "desc": "यदि Left-hand limit = Right-hand limit = f(a) ज्ञात करने और विभिन्न परीक्षा प्रश्नों को हल करने का मुख्य सूत्र और व्याख्या।"
+        }
+      },
+      {
+        "id": "lhl",
+        "classes": [
+          "11"
+        ],
+        "exams": [
+          "cbse",
+          "up_board",
+          "jee"
+        ],
+        "latex": "lim_{x \\\\rightarrow a⁻} f(x)",
+        "en": {
+          "title": "LHL",
+          "desc": "Standard algebraic representation and mathematical formula for studying LHL."
+        },
+        "hi": {
+          "title": "Left-hand Limit (LHL) (LHL)",
+          "desc": "Left-hand Limit (LHL) ज्ञात करने और विभिन्न परीक्षा प्रश्नों को हल करने का मुख्य सूत्र और व्याख्या।"
+        }
+      },
+      {
+        "id": "rhl",
+        "classes": [
+          "11"
+        ],
+        "exams": [
+          "cbse",
+          "up_board",
+          "jee"
+        ],
+        "latex": "lim_{x \\\\rightarrow a⁺} f(x)",
+        "en": {
+          "title": "RHL",
+          "desc": "Standard algebraic representation and mathematical formula for studying RHL."
+        },
+        "hi": {
+          "title": "Right-hand Limit (RHL) (RHL)",
+          "desc": "Right-hand Limit (RHL) ज्ञात करने और विभिन्न परीक्षा प्रश्नों को हल करने का मुख्य सूत्र और व्याख्या।"
+        }
+      },
+      {
+        "id": "lhl_rhl",
+        "classes": [
+          "11"
+        ],
+        "exams": [
+          "cbse",
+          "up_board",
+          "jee"
+        ],
+        "latex": "limit मौजूद (exists)",
+        "en": {
+          "title": "यदि LHL = RHL",
+          "desc": "Standard algebraic representation and mathematical formula for studying यदि LHL = RHL."
+        },
+        "hi": {
+          "title": "यदि LHL = RHL (यदि LHL = RHL)",
+          "desc": "यदि LHL = RHL ज्ञात करने और विभिन्न परीक्षा प्रश्नों को हल करने का मुख्य सूत्र और व्याख्या।"
+        }
+      },
+      {
+        "id": "lim_ex",
+        "classes": [
+          "11",
+          "12"
+        ],
+        "exams": [
+          "cbse",
+          "up_board",
+          "jee"
+        ],
+        "latex": "\\\\infty",
+        "en": {
+          "title": "lim ex",
+          "desc": "Standard algebraic representation and mathematical formula for studying lim ex."
+        },
+        "hi": {
+          "title": "lim ex (lim ex)",
+          "desc": "lim ex ज्ञात करने और विभिन्न परीक्षा प्रश्नों को हल करने का मुख्य सूत्र और व्याख्या।"
+        }
+      },
+      {
+        "id": "lim_e_x",
+        "classes": [
+          "11",
+          "12"
+        ],
+        "exams": [
+          "cbse",
+          "up_board",
+          "jee"
+        ],
+        "latex": "0",
+        "en": {
+          "title": "lim e-x",
+          "desc": "Standard algebraic representation and mathematical formula for studying lim e-x."
+        },
+        "hi": {
+          "title": "lim e-x (lim e-x)",
+          "desc": "lim e-x ज्ञात करने और विभिन्न परीक्षा प्रश्नों को हल करने का मुख्य सूत्र और व्याख्या।"
+        }
+      },
+      {
+        "id": "lim_ln_x_x",
+        "classes": [
+          "11"
+        ],
+        "exams": [
+          "cbse",
+          "up_board",
+          "jee"
+        ],
+        "latex": "- \\\\infty",
+        "en": {
+          "title": "x → 0⁺",
+          "desc": "Standard algebraic representation and mathematical formula for studying x → 0⁺."
+        },
+        "hi": {
+          "title": "lim ln x (x → 0⁺) (x → 0⁺)",
+          "desc": "lim ln x (x → 0⁺) ज्ञात करने और विभिन्न परीक्षा प्रश्नों को हल करने का मुख्य सूत्र और व्याख्या।"
+        }
+      },
+      {
+        "id": "lim_xn_x_0_n_0",
+        "classes": [
+          "11"
+        ],
+        "exams": [
+          "cbse",
+          "up_board",
+          "jee"
+        ],
+        "latex": "0",
+        "en": {
+          "title": "x → 0, n > 0",
+          "desc": "Standard algebraic representation and mathematical formula for studying x → 0, n > 0."
+        },
+        "hi": {
+          "title": "lim xn (x → 0, n > 0) (x → 0, n > 0)",
+          "desc": "lim xn (x → 0, n > 0) ज्ञात करने और विभिन्न परीक्षा प्रश्नों को हल करने का मुख्य सूत्र और व्याख्या।"
+        }
+      },
+      {
+        "id": "lim_xx",
+        "classes": [
+          "11"
+        ],
+        "exams": [
+          "cbse",
+          "up_board",
+          "jee"
+        ],
+        "latex": "0",
+        "en": {
+          "title": "lim xx!",
+          "desc": "Standard algebraic representation and mathematical formula for studying lim xx!."
+        },
+        "hi": {
+          "title": "lim xx! (lim xx!)",
+          "desc": "lim xx! ज्ञात करने और विभिन्न परीक्षा प्रश्नों को हल करने का मुख्य सूत्र और व्याख्या।"
+        }
+      },
+      {
+        "id": "lim_1_kx_x",
+        "classes": [
+          "11",
+          "12"
+        ],
+        "exams": [
+          "cbse",
+          "up_board",
+          "jee"
+        ],
+        "latex": "e^{k}, (e = 2.71)",
+        "en": {
+          "title": "1 + kx",
+          "desc": "Standard algebraic representation and mathematical formula for studying 1 + kx."
+        },
+        "hi": {
+          "title": "lim (1 + kx)x (1 + kx)",
+          "desc": "lim (1 + kx)x ज्ञात करने और विभिन्न परीक्षा प्रश्नों को हल करने का मुख्य सूत्र और व्याख्या।"
+        }
+      },
+      {
+        "id": "1_1x",
+        "classes": [
+          "11",
+          "12"
+        ],
+        "exams": [
+          "cbse",
+          "up_board",
+          "jee"
+        ],
+        "latex": "\\\\frac{1}{e}",
+        "en": {
+          "title": "1 - 1x",
+          "desc": "Standard algebraic representation and mathematical formula for studying 1 - 1x."
+        },
+        "hi": {
+          "title": "lim (1 - 1x)x (1 - 1x)",
+          "desc": "lim (1 - 1x)x ज्ञात करने और विभिन्न परीक्षा प्रश्नों को हल करने का मुख्य सूत्र और व्याख्या।"
+        }
+      },
+      {
+        "id": "xx_e_x",
+        "classes": [
+          "11"
+        ],
+        "exams": [
+          "cbse",
+          "up_board",
+          "jee"
+        ],
+        "latex": "2 \\\\pi",
+        "en": {
+          "title": "xx e-x",
+          "desc": "Standard algebraic representation and mathematical formula for studying xx e-x."
+        },
+        "hi": {
+          "title": "lim (xx e-x) (xx e-x)",
+          "desc": "lim (xx e-x) ज्ञात करने और विभिन्न परीक्षा प्रश्नों को हल करने का मुख्य सूत्र और व्याख्या।"
+        }
+      },
+      {
+        "id": "lim_loga_1_1x",
+        "classes": [
+          "11",
+          "12"
+        ],
+        "exams": [
+          "cbse",
+          "up_board",
+          "jee"
+        ],
+        "latex": "log_{a} e",
+        "en": {
+          "title": "1 + 1x",
+          "desc": "Standard algebraic representation and mathematical formula for studying 1 + 1x."
+        },
+        "hi": {
+          "title": "lim loga(1 + 1x) (1 + 1x)",
+          "desc": "lim loga(1 + 1x) ज्ञात करने और विभिन्न परीक्षा प्रश्नों को हल करने का मुख्य सूत्र और व्याख्या।"
+        }
+      },
+      {
+        "id": "lim_loge_x",
+        "classes": [
+          "11"
+        ],
+        "exams": [
+          "cbse",
+          "up_board",
+          "jee"
+        ],
+        "latex": "1",
+        "en": {
+          "title": "1+x",
+          "desc": "Standard algebraic representation and mathematical formula for studying 1+x."
+        },
+        "hi": {
+          "title": "lim loge(1+x)x (1+x)",
+          "desc": "lim loge(1+x)x ज्ञात करने और विभिन्न परीक्षा प्रश्नों को हल करने का मुख्य सूत्र और व्याख्या।"
+        }
+      },
+      {
+        "id": "lim_xsin_x",
+        "classes": [
+          "11",
+          "12"
+        ],
+        "exams": [
+          "cbse",
+          "up_board",
+          "jee"
+        ],
+        "latex": "1",
+        "en": {
+          "title": "lim xsin x",
+          "desc": "Standard trigonometric values and properties of angles."
+        },
+        "hi": {
+          "title": "lim xsin x (lim xsin x)",
+          "desc": "कोणों के विभिन्न मानों के लिए प्रमुख त्रिकोणमितीय अनुपातों का मान।"
+        }
+      },
+      {
+        "id": "lim_xtan_x",
+        "classes": [
+          "11",
+          "12"
+        ],
+        "exams": [
+          "cbse",
+          "up_board",
+          "jee"
+        ],
+        "latex": "1",
+        "en": {
+          "title": "lim xtan x",
+          "desc": "Standard trigonometric values and properties of angles."
+        },
+        "hi": {
+          "title": "lim xtan x (lim xtan x)",
+          "desc": "कोणों के विभिन्न मानों के लिए प्रमुख त्रिकोणमितीय अनुपातों का मान।"
+        }
+      },
+      {
+        "id": "lim_1_cos_xx",
+        "classes": [
+          "11",
+          "12"
+        ],
+        "exams": [
+          "cbse",
+          "up_board",
+          "jee"
+        ],
+        "latex": "0",
+        "en": {
+          "title": "lim 1 - cos xx",
+          "desc": "Standard trigonometric values and properties of angles."
+        },
+        "hi": {
+          "title": "lim 1 - cos xx (lim 1 - cos xx)",
+          "desc": "कोणों के विभिन्न मानों के लिए प्रमुख त्रिकोणमितीय अनुपातों का मान।"
+        }
+      },
+      {
+        "id": "lim_1_cos_xx2",
+        "classes": [
+          "11",
+          "12"
+        ],
+        "exams": [
+          "cbse",
+          "up_board",
+          "jee"
+        ],
+        "latex": "\\\\frac{1}{2}",
+        "en": {
+          "title": "lim 1 - cos xx2",
+          "desc": "Standard trigonometric values and properties of angles."
+        },
+        "hi": {
+          "title": "lim 1 - cos xx2 (lim 1 - cos xx2)",
+          "desc": "कोणों के विभिन्न मानों के लिए प्रमुख त्रिकोणमितीय अनुपातों का मान।"
+        }
+      },
+      {
+        "id": "0",
+        "classes": [
+          "11"
+        ],
+        "exams": [
+          "cbse",
+          "up_board",
+          "jee"
+        ],
+        "latex": "0",
+        "en": {
+          "title": "θ → 0",
+          "desc": "Standard algebraic representation and mathematical formula for studying θ → 0."
+        },
+        "hi": {
+          "title": "θ → 0 (θ → 0)",
+          "desc": "θ → 0 ज्ञात करने और विभिन्न परीक्षा प्रश्नों को हल करने का मुख्य सूत्र और व्याख्या।"
+        }
+      },
+      {
+        "id": "180_",
+        "classes": [
+          "11"
+        ],
+        "exams": [
+          "cbse",
+          "up_board",
+          "jee"
+        ],
+        "latex": "0",
+        "en": {
+          "title": "180°",
+          "desc": "Standard algebraic representation and mathematical formula for studying 180°."
+        },
+        "hi": {
+          "title": "θ → π (180°) (180°)",
+          "desc": "θ → π (180°) ज्ञात करने और विभिन्न परीक्षा प्रश्नों को हल करने का मुख्य सूत्र और व्याख्या।"
+        }
+      },
+      {
+        "id": "lim_ln_x",
+        "classes": [
+          "12"
+        ],
+        "exams": [
+          "cbse",
+          "up_board",
+          "jee"
+        ],
+        "latex": "- \\\\infty",
+        "en": {
+          "title": "lim ln x",
+          "desc": "Standard algebraic representation and mathematical formula for studying lim ln x."
+        },
+        "hi": {
+          "title": "lim ln x (lim ln x)",
+          "desc": "lim ln x ज्ञात करने और विभिन्न परीक्षा प्रश्नों को हल करने का मुख्य सूत्र और व्याख्या।"
+        }
+      },
+      {
+        "id": "lim_xn",
+        "classes": [
+          "12"
+        ],
+        "exams": [
+          "cbse",
+          "up_board",
+          "jee"
+        ],
+        "latex": "0 (n>0)",
+        "en": {
+          "title": "lim xn",
+          "desc": "Standard algebraic representation and mathematical formula for studying lim xn."
+        },
+        "hi": {
+          "title": "lim xn (lim xn)",
+          "desc": "lim xn ज्ञात करने और विभिन्न परीक्षा प्रश्नों को हल करने का मुख्य सूत्र और व्याख्या।"
+        }
+      },
+      {
+        "id": "lim_x_x",
+        "classes": [
+          "12"
+        ],
+        "exams": [
+          "cbse",
+          "up_board",
+          "jee"
+        ],
+        "latex": "e",
+        "en": {
+          "title": "x!",
+          "desc": "Standard algebraic representation and mathematical formula for studying x!."
+        },
+        "hi": {
+          "title": "lim x (x!) (x!)",
+          "desc": "lim x (x!) ज्ञात करने और विभिन्न परीक्षा प्रश्नों को हल करने का मुख्य सूत्र और व्याख्या।"
+        }
+      },
+      {
+        "id": "lim_xx_ex_1x",
+        "classes": [
+          "12"
+        ],
+        "exams": [
+          "cbse",
+          "up_board",
+          "jee"
+        ],
+        "latex": "e",
+        "en": {
+          "title": "2πx xx ex",
+          "desc": "Standard algebraic representation and mathematical formula for studying 2πx xx ex."
+        },
+        "hi": {
+          "title": "lim ( 2πx xx ex ) 1x (2πx xx ex)",
+          "desc": "lim ( 2πx xx ex ) 1x ज्ञात करने और विभिन्न परीक्षा प्रश्नों को हल करने का मुख्य सूत्र और व्याख्या।"
+        }
+      },
+      {
+        "id": "lim_xx_e_x_x",
+        "classes": [
+          "12"
+        ],
+        "exams": [
+          "cbse",
+          "up_board",
+          "jee"
+        ],
+        "latex": "(2 \\\\pi )",
+        "en": {
+          "title": "2π",
+          "desc": "Standard algebraic representation and mathematical formula for studying 2π."
+        },
+        "hi": {
+          "title": "lim xx e-x x / (2π) (2π)",
+          "desc": "lim xx e-x x / (2π) ज्ञात करने और विभिन्न परीक्षा प्रश्नों को हल करने का मुख्य सूत्र और व्याख्या।"
+        }
+      },
+      {
+        "id": "lim_loge_1_x_x",
+        "classes": [
+          "12"
+        ],
+        "exams": [
+          "cbse",
+          "up_board",
+          "jee"
+        ],
+        "latex": "1",
+        "en": {
+          "title": "1 + x",
+          "desc": "Standard algebraic representation and mathematical formula for studying 1 + x."
+        },
+        "hi": {
+          "title": "lim loge(1 + x) / x (1 + x)",
+          "desc": "lim loge(1 + x) / x ज्ञात करने और विभिन्न परीक्षा प्रश्नों को हल करने का मुख्य सूत्र और व्याख्या।"
+        }
+      },
+      {
+        "id": "lim_arcsin_xx",
+        "classes": [
+          "12"
+        ],
+        "exams": [
+          "cbse",
+          "up_board",
+          "jee"
+        ],
+        "latex": "1",
+        "en": {
+          "title": "lim arcsin xx",
+          "desc": "Standard trigonometric values and properties of angles."
+        },
+        "hi": {
+          "title": "lim arcsin xx (lim arcsin xx)",
+          "desc": "कोणों के विभिन्न मानों के लिए प्रमुख त्रिकोणमितीय अनुपातों का मान।"
+        }
+      },
+      {
+        "id": "lim_arctan_xx",
+        "classes": [
+          "12"
+        ],
+        "exams": [
+          "cbse",
+          "up_board",
+          "jee"
+        ],
+        "latex": "1",
+        "en": {
+          "title": "lim arctan xx",
+          "desc": "Standard trigonometric values and properties of angles."
+        },
+        "hi": {
+          "title": "lim arctan xx (lim arctan xx)",
+          "desc": "कोणों के विभिन्न मानों के लिए प्रमुख त्रिकोणमितीय अनुपातों का मान।"
+        }
+      },
+      {
+        "id": "arccos_x",
+        "classes": [
+          "12"
+        ],
+        "exams": [
+          "cbse",
+          "up_board",
+          "jee"
+        ],
+        "latex": "2",
+        "en": {
+          "title": "arccos x",
+          "desc": "Standard trigonometric values and properties of angles."
+        },
+        "hi": {
+          "title": "lim (arccos x)21 - x (arccos x)",
+          "desc": "कोणों के विभिन्न मानों के लिए प्रमुख त्रिकोणमितीय अनुपातों का मान।"
         }
       }
     ]
