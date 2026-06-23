@@ -1,1 +1,129 @@
 
+[
+  {
+    "category_en": "Algebra & Core Math",
+    "category_hi": "बीजगणित और मुख्य गणित",
+    "category_icon": "📐",
+    "items": [
+      {
+        "id": "algebraic_identity_1",
+        "classes": ["9", "10"],
+        "exams": ["cbse", "up_board"],
+        "latex": "(a + b)^2 = a^2 + 2ab + b^2",
+        "en": {
+          "title": "Square of a Sum",
+          "desc": "Basic algebraic identity used for expanding square brackets."
+        },
+        "hi": {
+          "title": "योग का वर्ग",
+          "desc": "Basic algebraic identity jiska upyog brackets ko expand karne ke liye hota hai."
+        }
+      },
+      {
+        "id": "herons_formula",
+        "classes": ["9"],
+        "exams": ["cbse", "up_board"],
+        "latex": "Area = \\sqrt{s(s-a)(s-b)(s-c)}",
+        "en": {
+          "title": "Heron's Formula",
+          "desc": "Used to find the area of a triangle when lengths of all three sides are known."
+        },
+        "hi": {
+          "title": "हीरोन का सूत्र",
+          "desc": "Tribhuj (triangle) ka kshetrafal nikalne ke liye jab teeno sides pata hon."
+        }
+      },
+      {
+        "id": "quadratic_formula",
+        "classes": ["10", "11", "12"],
+        "exams": ["cbse", "up_board", "jee"],
+        "latex": "x = \\frac{-b \\pm \\sqrt{b^2 - 4ac}}{2a}",
+        "en": {
+          "title": "Quadratic Formula",
+          "desc": "Used to find the roots of a quadratic equation $ax^2 + bx + c = 0$."
+        },
+        "hi": {
+          "title": "द्विघात सूत्र",
+          "desc": "Quadratic equation ke roots nikalne ka standard formula."
+        }
+      },
+      {
+        "id": "trig_identity_1",
+        "classes": ["10", "11", "12"],
+        "exams": ["cbse", "up_board", "jee"],
+        "latex": "\\sin^2\\theta + \\cos^2\\theta = 1",
+        "en": {
+          "title": "Pythagorean Trigonometric Identity",
+          "desc": "The fundamental identity connecting sine and cosine."
+        },
+        "hi": {
+          "title": "त्रिकोणमितीय सर्वसमिका",
+          "desc": "Sine aur Cosine ke beech ka sabse basic aur zaroori rishta."
+        }
+      }
+    ]
+  },
+  {
+    "category_en": "Advanced Mathematics",
+    "category_hi": "उच्च गणित",
+    "category_icon": "📊",
+    "items": [
+      {
+        "id": "arithmetic_progression_nth",
+        "classes": ["10", "11"],
+        "exams": ["cbse", "up_board"],
+        "latex": "a_n = a + (n - 1)d",
+        "en": {
+          "title": "n-th Term of an AP",
+          "desc": "Finds the specific term in an Arithmetic Progression."
+        },
+        "hi": {
+          "title": "समांतर श्रेणी का n-वां पद",
+          "desc": "Arithmetic Progression (AP) mein kisi bhi number ka term nikalne ke liye."
+        }
+      },
+      {
+        "id": "binomial_theorem",
+        "classes": ["11", "12"],
+        "exams": ["jee", "cbse"],
+        "latex": "(x+y)^n = \\sum_{k=0}^{n} \\binom{n}{k} x^{n-k} y^k",
+        "en": {
+          "title": "Binomial Theorem",
+          "desc": "Describes the algebraic expansion of powers of a binomial."
+        },
+        "hi": {
+          "title": "द्विपद प्रमेय",
+          "desc": "Binomial ke powers ko expand karne ka mathematical tarika."
+        }
+      },
+      {
+        "id": "derivative_power_rule",
+        "classes": ["11", "12"],
+        "exams": ["jee", "cbse", "up_board"],
+        "latex": "\\frac{d}{dx}(x^n) = n x^{n-1}",
+        "en": {
+          "title": "Power Rule of Differentiation",
+          "desc": "Fundamental calculus formula to find the derivative of a power function."
+        },
+        "hi": {
+          "title": "अवकलन का पावर रूल",
+          "desc": "Calculus ka basic formula kisi variable ki power ko differentiate karne ke liye."
+        }
+      },
+      {
+        "id": "integration_parts",
+        "classes": ["12"],
+        "exams": ["jee", "cbse", "up_board"],
+        "latex": "\\int u \\, dv = u v - \\int v \\, du",
+        "en": {
+          "title": "Integration by Parts",
+          "desc": "Advanced calculus theorem used to integrate the product of two functions."
+        },
+        "hi": {
+          "title": "खंडशः समाकलन",
+          "desc": "Do alag-alag functions ke product ka integration (समाकलन) karne ke liye."
+        }
+      }
+    ]
+  }
+]
