@@ -3,7 +3,6 @@ layout: default
 title: "Learn — Free Courses, Quizzes & Tutorials"
 description: "Free learning platform for Indian students. GK quizzes, coding tutorials, maths practice for SSC, Banking, Railway exams."
 keywords: "free online learning India, GK quiz, coding tutorial Hindi, maths practice, SSC banking exam prep"
-lang: false
 ---
 
 <style>
@@ -241,26 +240,139 @@ lang: false
     background: linear-gradient(135deg, rgba(59, 130, 246, 0.16), rgba(59, 130, 246, 0.04)); 
     color: #2563eb; 
   }
+  .blog-card__thumb--maths-formulas { 
+    background: linear-gradient(135deg, rgba(99, 102, 241, 0.16), rgba(99, 102, 241, 0.04)); 
+    color: #4f46e5; 
+  }
+  .blog-card__thumb--physics-formulas { 
+    background: linear-gradient(135deg, rgba(244, 63, 94, 0.16), rgba(244, 63, 94, 0.04)); 
+    color: #e11d48; 
+  }
+  .blog-card__thumb--chemistry-formulas { 
+    background: linear-gradient(135deg, rgba(16, 185, 129, 0.16), rgba(16, 185, 129, 0.04)); 
+    color: #059669; 
+  }
+  .blog-card__thumb--commerce-accounts { 
+    background: linear-gradient(135deg, rgba(13, 148, 136, 0.16), rgba(13, 148, 136, 0.04)); 
+    color: #0d9488; 
+  }
+  .blog-card__thumb--commerce-economics { 
+    background: linear-gradient(135deg, rgba(37, 99, 235, 0.16), rgba(37, 99, 235, 0.04)); 
+    color: #1d4ed8; 
+  }
+
+  /* Responsive layouts & headings */
+  .grid-2 {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--space-6);
+  }
+  @media (min-width: 768px) {
+    .grid-2 {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  .section-title-sub {
+    font-size: var(--fs-lg, 1.5rem);
+    font-weight: 700;
+    color: var(--clr-heading);
+    margin-top: var(--space-12);
+    margin-bottom: var(--space-6);
+    border-bottom: 2px solid var(--clr-border);
+    padding-bottom: var(--space-2);
+  }
+
+  /* Language Switch Button */
+  .lang-switch-wrapper {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: var(--space-4);
+  }
+  .lang-switch-btn {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    padding: var(--space-2) var(--space-4);
+    background: var(--clr-bg-3, #f1f5f9);
+    border: 1px solid var(--clr-border, #e2e8f0);
+    border-radius: 9999px;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--clr-text, #334155);
+    transition: all 0.3s ease;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  }
+  .lang-switch-btn:hover {
+    background: var(--clr-bg-1, #e2e8f0);
+    border-color: #cbd5e1;
+  }
+  
+  /* Multilingual Toggle displays */
+  .lang-hi {
+    display: none !important;
+  }
+  body.show-hi .lang-en {
+    display: none !important;
+  }
+  body.show-hi .lang-hi {
+    display: block !important;
+  }
+  body.show-hi span.lang-hi, body.show-hi strong.lang-hi, body.show-hi em.lang-hi, body.show-hi svg.lang-hi {
+    display: inline-flex !important;
+  }
+  body.show-hi .lang-switch-btn {
+    border-color: #2563eb;
+    color: #1d4ed8;
+    background: rgba(37, 99, 235, 0.05);
+  }
 </style>
 
 <div class="learn-wrapper">
   
   <section class="learn-hero">
     <div class="container">
-      <div class="section-label" aria-hidden="true">TyagiHub Learn</div>
-      <h1 class="learn-hero__title">Learn. Practice. Succeed.</h1>
+      <div class="section-label" aria-hidden="true">
+        <span class="lang-en">TyagiHub Learn</span>
+        <span class="lang-hi">त्यागीहब सीखें</span>
+      </div>
+      <h1 class="learn-hero__title">
+        <span class="lang-en">Learn. Practice. Succeed.</span>
+        <span class="lang-hi">सीखें. अभ्यास करें. सफल हों.</span>
+      </h1>
       <p class="learn-hero__desc">
-        Free courses and quizzes for competitive exams, coding, and mathematics. Hindi &amp; English both.
+        <span class="lang-en">Free courses and quizzes for competitive exams, science formulas, and commerce subjects. Dual language support.</span>
+        <span class="lang-hi">प्रतियोगी परीक्षाओं, विज्ञान के सूत्रों और कॉमर्स विषयों के लिए सर्वश्रेष्ठ फ्री कोर्स और क्विज हब।</span>
       </p>
+
+      <div class="lang-switch-wrapper">
+        <button id="lang-toggle-btn" class="lang-switch-btn" aria-label="Toggle language — भाषा बदलें">
+          <svg style="width: 16px; height: 16px;" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 0A18.015 18.015 0 0110 14.582M10 14.582c-1.293 1.07-3.078 1.712-5 1.712m5-1.712a17.915 17.915 0 003.5-4.582m0 0H20m-3-3a13.528 13.528 0 003-3m-3 3a13.528 13.528 0 013 3m-3-3v14" />
+          </svg>
+          <span class="lang-en">हिन्दी में देखें</span>
+          <span class="lang-hi">English version</span>
+        </button>
+      </div>
     </div>
   </section>
 
   <section class="section">
     <div class="container">
-      <div class="grid-3">
 
-         <!-- 1. GK Quiz Practice -->
-        <a href="/gk-quiz/" class="blog-card reveal">
+      <!-- SECTION 1: Competitive & General Study -->
+      <h2 class="section-title-sub" style="display: flex; align-items: center; gap: 10px;">
+        <svg style="width:24px; height:24px; color:#3b82f6;" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
+        <span class="lang-en">Competitive &amp; General Study</span>
+        <span class="lang-hi">प्रतियोगी परीक्षा और सामान्य अध्ययन</span>
+      </h2>
+      
+      <div class="grid-3" style="margin-bottom: var(--space-12);">
+
+        <!-- 1. GK Quiz Practice -->
+        <a href="/gk-quiz/" class="blog-card reveal" aria-label="Practice General Knowledge Quizzes — सामान्य ज्ञान क्विज का अभ्यास करें">
           <div class="blog-card__thumb blog-card__thumb--gk" aria-hidden="true">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 160" fill="none">
               <!-- Grid background -->
@@ -279,24 +391,17 @@ lang: false
                 <circle cx="75" cy="80" r="36" stroke="currentColor" stroke-width="1.8" />
                 <path d="M39 80h72" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
                 <path d="M75 44v72" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
-                <!-- Latitude/Longitude curves -->
                 <path d="M43.5 62c9-2.7 18-3.6 31.5-3.6s22.5.9 31.5 3.6" stroke="currentColor" stroke-width="1" stroke-linecap="round" opacity="0.6" />
                 <path d="M43.5 98c9 2.7 18 3.6 31.5 3.6s22.5-.9 31.5-3.6" stroke="currentColor" stroke-width="1" stroke-linecap="round" opacity="0.6" />
-                <path d="M57 48.5c2.7 9 3.6 18 3.6 31.5s-.9 22.5-3.6 31.5" stroke="currentColor" stroke-width="1" stroke-linecap="round" opacity="0.6" />
-                <path d="M93 48.5c-2.7 9-3.6 18-3.6 31.5s.9 22.5 3.6 31.5" stroke="currentColor" stroke-width="1" stroke-linecap="round" opacity="0.6" />
               </g>
 
-              <!-- Elegant Laurel Wreath wrapping around the globe -->
+              <!-- Laurel Wreath -->
               <path d="M35 94a32 32 0 0 1-4-21 32 32 0 0 1 14-27" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" opacity="0.55" />
               <path d="M115 94a32 32 0 0 0 4-21 32 32 0 0 0-14-27" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" opacity="0.55" />
               
               <!-- Right: Elegant Compass Dial -->
               <circle cx="240" cy="80" r="32" stroke="currentColor" stroke-width="1" stroke-dasharray="3 3" opacity="0.3" />
               <circle cx="240" cy="80" r="24" stroke="currentColor" stroke-width="1.5" opacity="0.5" />
-              <text x="240" y="42" font-size="7.5" font-family="sans-serif" font-weight="900" fill="currentColor" text-anchor="middle" opacity="0.75">N</text>
-              <text x="240" y="125" font-size="7.5" font-family="sans-serif" font-weight="900" fill="currentColor" text-anchor="middle" opacity="0.75">S</text>
-              <text x="202" y="83" font-size="7.5" font-family="sans-serif" font-weight="900" fill="currentColor" text-anchor="middle" opacity="0.75">W</text>
-              <text x="278" y="83" font-size="7.5" font-family="sans-serif" font-weight="900" fill="currentColor" text-anchor="middle" opacity="0.75">E</text>
 
               <!-- Compass Needle -->
               <g class="animate-needle" style="transform-origin: 240px 80px;">
@@ -304,301 +409,453 @@ lang: false
                 <polygon points="240,104 236,80 240,84 244,80" fill="none" stroke="currentColor" stroke-width="1.5" />
               </g>
               <circle cx="240" cy="80" r="3.5" fill="#ffffff" stroke="currentColor" stroke-width="1.5" />
-
-              <!-- Decorative connecting links (Constellation effect) -->
               <path d="M117 80h85" stroke="currentColor" stroke-width="1" stroke-dasharray="5 5" opacity="0.25" />
-              <polygon points="160,80 164,76 160,72 156,76" fill="currentColor" opacity="0.4" />
             </svg>
-            <!-- Auto-rotating Trivia Facts -->
             <div class="ticker-box" id="ticker-gk">
               <span class="status-dot"></span>
-              <span class="ticker-text active">GK Fact Loading...</span>
+              <span class="ticker-text active">Fact Loading...</span>
             </div>
           </div>
           <div class="blog-card__body">
-            <span class="blog-card__tag">GK &amp; Current Affairs</span>
-            <h2 class="blog-card__title">GK Quiz Practice</h2>
-            <p class="blog-card__desc">500+ questions for SSC, Banking, Railway, State PSC</p>
+            <span class="blog-card__tag">
+              <span class="lang-en">GK &amp; Quizzes</span>
+              <span class="lang-hi">सामान्य ज्ञान एवं क्विज</span>
+            </span>
+            <h2 class="blog-card__title">
+              <span class="lang-en">GK Quiz Practice</span>
+              <span class="lang-hi">जीके क्विज प्रैक्टिस</span>
+            </h2>
+            <p class="blog-card__desc">
+              <span class="lang-en">500+ questions for SSC, Banking, Railway &amp; State Quizzes</span>
+              <span class="lang-hi">SSC, बैंकिंग और रेलवे परीक्षा हेतु महत्वपूर्ण प्रश्नावली</span>
+            </p>
           </div>
         </a>
 
-        <!-- 2. Maths & Aptitude Practice (Renamed & Enhanced with Live Questions) -->
-        <a href="/learn/maths/" class="blog-card reveal reveal-delay-1">
+        <!-- 2. Maths & Aptitude Practice -->
+        <a href="/learn/maths/" class="blog-card reveal" aria-label="Learn Maths and Aptitude short tricks — गणित और योग्यता ट्रिक्स सीखें">
           <div class="blog-card__thumb blog-card__thumb--maths" aria-hidden="true">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 160" fill="none">
               <!-- Coordinate Grid Background -->
               <g stroke="currentColor" stroke-width="1" opacity="0.08">
-                <!-- Grid Horizontal Lines -->
-                <line x1="0" y1="20" x2="320" y2="20" stroke-dasharray="2 2" />
                 <line x1="0" y1="40" x2="320" y2="40" />
-                <line x1="0" y1="60" x2="320" y2="60" stroke-dasharray="2 2" />
                 <line x1="0" y1="80" x2="320" y2="80" stroke-width="1.5" />
-                <line x1="0" y1="100" x2="320" y2="100" stroke-dasharray="2 2" />
                 <line x1="0" y1="120" x2="320" y2="120" />
-                <line x1="0" y1="140" x2="320" y2="140" stroke-dasharray="2 2" />
-                <!-- Grid Vertical Lines -->
-                <line x1="40" y1="0" x2="40" y2="160" />
-                <line x1="80" y1="0" x2="80" y2="160" stroke-dasharray="2 2" />
-                <line x1="120" y1="0" x2="120" y2="160" />
+                <line x1="80" y1="0" x2="80" y2="160" />
                 <line x1="160" y1="0" x2="160" y2="160" stroke-width="1.5" />
-                <line x1="200" y1="0" x2="200" y2="160" stroke-dasharray="2 2" />
                 <line x1="240" y1="0" x2="240" y2="160" />
-                <line x1="280" y1="0" x2="280" y2="160" stroke-dasharray="2 2" />
               </g>
 
-              <!-- Beautiful Glowing Trigonometric Wave -->
+              <!-- Trigonometric Wave -->
               <path d="M15 80 Q 52.5 15, 90 80 T 165 80 T 240 80 T 305 80" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" opacity="0.8" />
               <path d="M15 80 Q 52.5 15, 90 80 T 165 80 T 240 80 T 305 80" stroke="currentColor" stroke-width="6" stroke-linecap="round" opacity="0.15" />
-              
-              <!-- Golden Spiral / Fibonnaci Arc as beautiful background element -->
-              <path d="M260 120 A 10 10 0 0 1 270 110 A 20 20 0 0 1 290 130 A 40 40 0 0 1 250 170" stroke="currentColor" stroke-width="1" opacity="0.15" stroke-linecap="round" />
 
-              <!-- Geometric Triangle & Circle on Right Hand Side -->
+              <!-- Geometric Triangle -->
               <g opacity="0.4" stroke="currentColor" stroke-width="1.5">
                 <polygon points="230,120 280,120 260,70" />
                 <circle cx="251.5" cy="103" r="12" />
-                <path d="M260 70 L260 120" stroke-dasharray="2 2" />
-                <!-- Right angle marker -->
-                <rect x="256" y="116" width="4" height="4" />
               </g>
 
-              <!-- Central-Left: Compass & Protractor with pendulum mathSway motion -->
               <g class="animate-math-compass" style="transform-origin: 90px 40px;">
-                <!-- Academic Compass Tool legs -->
                 <path d="M90 40 L70 100M90 40 L110 100" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
-                <!-- Center pivot hinge -->
                 <circle cx="90" cy="40" r="3.5" fill="#ffffff" stroke="currentColor" stroke-width="2.2" />
-                <!-- Arch divider pencil path -->
                 <path d="M64 105 A 36 36 0 0 0 116 105" stroke="currentColor" stroke-width="1" stroke-dasharray="3 3" opacity="0.7" />
-                <circle cx="70" cy="100" r="2" fill="currentColor" />
               </g>
-
-              <!-- Floating Math Formula Overlays -->
-              <text x="35" y="45" font-family="monospace" font-size="9.5" font-weight="bold" fill="currentColor" opacity="0.65">π ≈ 3.1415</text>
-              <text x="210" y="45" font-family="monospace" font-size="9.5" font-weight="bold" fill="currentColor" opacity="0.65">f(x) = ∫ e^x dx</text>
-              <text x="140" y="135" font-family="monospace" font-size="9.5" font-weight="bold" fill="currentColor" opacity="0.65">a² + b² = c²</text>
-              <text x="25" y="135" font-family="monospace" font-size="9.5" font-weight="bold" fill="currentColor" opacity="0.65">log₂(64) = 6</text>
             </svg>
-            <!-- Auto-rotating Maths Questions & Solutions -->
             <div class="ticker-box" id="ticker-maths">
               <span class="status-dot"></span>
               <span class="ticker-text active">Math Question Loading...</span>
             </div>
           </div>
           <div class="blog-card__body">
-            <span class="blog-card__tag">Mathematics &amp; Logic</span>
-            <h2 class="blog-card__title">Maths &amp; Aptitude Hub</h2>
-            <p class="blog-card__desc">Step-by-step shortcuts &amp; practices in Hindi &amp; English</p>
+            <span class="blog-card__tag">
+              <span class="lang-en">Maths &amp; Logic</span>
+              <span class="lang-hi">गणित और रीज़निंग</span>
+            </span>
+            <h2 class="blog-card__title">
+              <span class="lang-en">Maths &amp; Aptitude Hub</span>
+              <span class="lang-hi">गणित और योग्यता हब</span>
+            </h2>
+            <p class="blog-card__desc">
+              <span class="lang-en">Shortcuts, tricks and step-by-step calculations</span>
+              <span class="lang-hi">चुटकियों में हल करने के आसान शॉर्टकट्स और बुनियादी कॉन्सेप्ट</span>
+            </p>
           </div>
         </a>
 
-        <!-- 3. Formula Hub -->
-        <a href="/learn/formulae/" class="blog-card reveal reveal-delay-2">
-          <div class="blog-card__thumb blog-card__thumb--formulae" aria-hidden="true">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 160" fill="none">
-              <!-- Technical Molecular Mesh Background -->
-              <g stroke="currentColor" stroke-width="1" opacity="0.08">
-                <!-- Hexagonal benzoid web layout -->
-                <polygon points="120,40 140,51.5 140,75 120,86.5 100,75 100,51.5" />
-                <polygon points="140,51.5 160,40 180,51.5 180,75 160,86.5 140,75" />
-                <polygon points="140,75 160,86.5 160,110 140,121.5 120,110 120,86.5" />
-                <polygon points="100,75 120,86.5 120,110 100,121.5 80,110 80,86.5" />
-                <!-- Connecting lines -->
-                <line x1="120" y1="40" x2="120" y2="10" />
-                <line x1="160" y1="40" x2="160" y2="10" />
-                <line x1="100" y1="51.5" x2="70" y2="35" />
-                <line x1="180" y1="51.5" x2="210" y2="35" />
-              </g>
-
-              <!-- Central Left: Orbiting Atomic Core (Animated Chem Ring) -->
-              <g class="animate-chem-ring" style="transform-origin: 80px 80px;">
-                <!-- Elliptical electron shells -->
-                <ellipse cx="80" cy="80" rx="42" ry="12" stroke="currentColor" stroke-width="1.2" transform="rotate(35 80 80)" opacity="0.4" />
-                <ellipse cx="80" cy="80" rx="42" ry="12" stroke="currentColor" stroke-width="1.2" transform="rotate(-35 80 80)" opacity="0.4" />
-                <ellipse cx="80" cy="80" rx="42" ry="12" stroke="currentColor" stroke-width="1.2" transform="rotate(90 80 80)" opacity="0.2" />
-                <!-- Nucleus sphere and protons -->
-                <circle cx="80" cy="80" r="8" fill="currentColor" opacity="0.2" />
-                <circle cx="77" cy="78" r="4.5" fill="currentColor" />
-                <circle cx="84" cy="82" r="4" fill="currentColor" opacity="0.8" />
-                <circle cx="79" cy="83" r="3.5" fill="currentColor" />
-                <!-- Electrons orbiting -->
-                <circle cx="45" cy="55" r="2.5" fill="currentColor" />
-                <circle cx="115" cy="105" r="2.5" fill="currentColor" />
-                <circle cx="112" cy="58" r="2" fill="currentColor" />
-              </g>
-
-              <!-- Central Right: Animated laboratory chemical beaker/flask -->
-              <g stroke="currentColor" stroke-width="2" stroke-linejoin="round">
-                <!-- Upper Neck & Rim -->
-                <path d="M210 40h20" stroke-width="2.5" />
-                <path d="M215 40v20l-25 45a8 8 0 0 0 7 12h46a8 8 0 0 0 7-12l-25-45V40" fill="currentColor" fill-opacity="0.05" />
-                <!-- Waves liquid boundary -->
-                <path d="M196 95c6-1.5 12 1.5 18 .5s12-1.5 18-.5s6 1 12 0" stroke-width="1.5" fill="none" opacity="0.75" />
-              </g>
-              <!-- Inside Fluid styling -->
-              <path d="M195 99 L197 105a8 8 0 0 0 7 12h46a8 8 0 0 0 7-12l2-6 Z" fill="currentColor" opacity="0.12" />
-
-              <!-- Molecular particles bubbling inside (Continuous staggered ascending nodes) -->
-              <circle cx="212" cy="108" r="2" fill="currentColor" class="bubble-1" />
-              <circle cx="228" cy="90" r="3" fill="currentColor" class="bubble-2" />
-              <circle cx="218" cy="75" r="1.5" fill="currentColor" class="bubble-3" />
-              <circle cx="224" cy="55" r="2" fill="currentColor" class="bubble-1" style="animation-delay: 1.5s;" />
-
-              <!-- Physics Equations & Chemical Formulas Overlay -->
-              <text x="15" y="40" font-family="monospace" font-size="10.5" font-weight="black" fill="currentColor">E = mc²</text>
-              <text x="252" y="45" font-family="monospace" font-size="9" font-weight="black" fill="currentColor" opacity="0.65">H₂O ⇌ H⁺+OH⁻</text>
-              <text x="135" y="140" font-family="monospace" font-size="10.5" font-weight="black" fill="currentColor">F = m · a</text>
-              <text x="15" y="130" font-family="monospace" font-size="9.5" font-weight="black" fill="currentColor" opacity="0.5">PV = nRT</text>
-            </svg>
-            <!-- Auto-rotating Scientific & Chemistry Core Formulas -->
-            <div class="ticker-box" id="ticker-formulae">
-              <span class="status-dot"></span>
-              <span class="ticker-text active">Formula Loading...</span>
-            </div>
-          </div>
-          <div class="blog-card__body">
-            <span class="blog-card__tag">Formula Hub</span>
-            <h2 class="blog-card__title">All Formulae</h2>
-            <p class="blog-card__desc">Physics, Maths &amp; Chemistry formulas for quick revision</p>
-          </div>
-        </a>
-
-        <!-- 4. Vyakaran & Vocab -->
-        <a href="/learn/vyakaran/" class="blog-card reveal">
+        <!-- 3. Language & Hindi Vyakaran -->
+        <a href="/learn/vyakaran/" class="blog-card reveal" aria-label="Learn Hindi Vyakaran and Grammar — हिंदी व्याकरण और वाक्य शुद्धि सीखें">
           <div class="blog-card__thumb blog-card__thumb--language" aria-hidden="true">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 160" fill="none">
-              <!-- Grid background representing school notebook margins -->
+              <!-- Grid notebook lines -->
               <g stroke="currentColor" stroke-width="1" opacity="0.08">
                 <line x1="0" y1="30" x2="320" y2="30" />
                 <line x1="0" y1="60" x2="320" y2="60" />
                 <line x1="0" y1="90" x2="320" y2="90" />
-                <line x1="0" y1="120" x2="320" y2="120" />
                 <line x1="50" y1="0" x2="50" y2="160" stroke-width="1.5" />
               </g>
 
-              <!-- Central Left: Luxury Majestic Open Book -->
+              <!-- Open Book Graphic -->
               <g stroke="currentColor" stroke-width="2" stroke-linejoin="round">
-                <!-- Book Covers & Leaves background -->
                 <path d="M45 110c12-3 26-5 40 1c14-6 28-4 40-1l4-64c-12-3-26-5-40 1c-14-6-28-4-40-1z" fill="currentColor" fill-opacity="0.05" />
-                <!-- Spine partition -->
                 <line x1="85" y1="52" x2="85" y2="111" stroke-width="2.5" />
-                <!-- Paper text lines simulator lines -->
-                <line x1="54" y1="62" x2="76" y2="62" stroke-width="1.2" opacity="0.5" />
-                <line x1="54" y1="72" x2="76" y2="72" stroke-width="1.2" opacity="0.5" />
-                <line x1="54" y1="82" x2="76" y2="82" stroke-width="1.2" opacity="0.5" />
-                <line x1="54" y1="92" x2="70" y2="92" stroke-width="1.2" opacity="0.5" />
-
-                <line x1="94" y1="62" x2="116" y2="62" stroke-width="1.2" opacity="0.5" />
-                <line x1="94" y1="72" x2="116" y2="72" stroke-width="1.2" opacity="0.5" />
-                <line x1="94" y1="82" x2="116" y2="82" stroke-width="1.2" opacity="0.5" />
-                <line x1="94" y1="92" x2="110" y2="92" stroke-width="1.2" opacity="0.5" />
               </g>
 
-              <!-- Glowing Calligraphic Alphabets & Ink Splashes -->
-              <!-- Hindi Devnagari "अ" -->
+              <!-- Devnagari letters -->
               <text x="155" y="60" font-family="serif" font-size="28" font-weight="900" fill="currentColor" opacity="0.85">अ</text>
-              <!-- Hindi Devnagari "क" -->
               <text x="180" y="115" font-family="serif" font-size="25" font-weight="800" fill="currentColor" opacity="0.65">क</text>
-              <!-- Sanskrit Word Signifying Grammar / Words -->
-              <text x="145" y="145" font-family="serif" font-size="11" font-weight="bold" fill="currentColor" opacity="0.45" letter-spacing="1">व्याकरणम्</text>
-              <!-- English 'A' / Vocabulary representing bilingual prep -->
-              <text x="270" y="130" font-family="serif" font-size="22" font-weight="900" fill="currentColor" opacity="0.4">Ω</text>
+              <text x="145" y="145" font-family="serif" font-size="11" font-weight="bold" fill="currentColor" opacity="0.45" letter-spacing="1">व्याकरण</text>
 
-              <!-- Central Right: Calligraphy Quill Ink Pen drafting text (Animated) -->
+              <!-- Quill draft pen -->
               <g class="animate-quill" style="transform-origin: 242px 75px;">
-                <!-- Feather Shaft & Pen Body -->
                 <path d="M285 30 C275 45 258 60 242 75 L238 79 L235 83 L239 82 L244 80 L260 64 C276 48 290 38 295 33 Z" fill="currentColor" opacity="0.2" />
-                <!-- Pen nib line -->
                 <path d="M285 30 C275 45 258 60 242 75 L238 79 L235 83 L239 82 L244 80 L260 64 C276 48 290 38 295 33 Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" />
-                <path d="M239 82l2-2" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
-                <!-- Glowing tip drop of ink -->
                 <circle cx="234" cy="84" r="1.5" fill="currentColor" />
               </g>
-              
-              <!-- Floating calligraphic strokes behind feather -->
-              <path d="M210 95 Q 225 80, 235 84 T 255 75" stroke="currentColor" stroke-width="1.5" stroke-dasharray="2 2" stroke-linecap="round" opacity="0.6" />
             </svg>
-            <!-- Auto-rotating Hindi Vyakaran Grammar & Vocabulary Rules -->
             <div class="ticker-box" id="ticker-vyakaran">
               <span class="status-dot"></span>
-              <span class="ticker-text active">Vyakaran Loading...</span>
+              <span class="ticker-text active">Vyakaran loading...</span>
             </div>
           </div>
           <div class="blog-card__body">
-            <span class="blog-card__tag">Language</span>
-            <h2 class="blog-card__title">Vyakaran &amp; Vocab</h2>
-            <p class="blog-card__desc">Complete Hindi Vyakaran, Synonyms and Antonyms</p>
+            <span class="blog-card__tag">
+              <span class="lang-en">Language</span>
+              <span class="lang-hi">भाषा ज्ञान</span>
+            </span>
+            <h2 class="blog-card__title">
+              <span class="lang-en">Hindi Vyakaran</span>
+              <span class="lang-hi">हिंदी व्याकरण</span>
+            </h2>
+            <p class="blog-card__desc">
+              <span class="lang-en">From basic Sangya &amp; Sarnam to complex Sandhi &amp; Samas</span>
+              <span class="lang-hi">संज्ञा, सर्वनाम से लेकर संधि, समास और महत्वपूर्ण शब्दकोश</span>
+            </p>
           </div>
         </a>
 
-         <!-- 5. Conversion Hub -->
-        <a href="/learn/conversion/" class="blog-card reveal reveal-delay-1">
+        <!-- 4. Unit Conversion Hub -->
+        <a href="/learn/conversion/" class="blog-card reveal" aria-label="Use Unit Conversion calculator and metrics — मात्रक एवं इकाइयाँ कन्वर्शन हब">
           <div class="blog-card__thumb blog-card__thumb--conversion" aria-hidden="true">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 160" fill="none">
-              <!-- Technical Mechanical Drafting Blueprint Grid -->
+              <!-- Grid line markers -->
               <g stroke="currentColor" stroke-width="1" opacity="0.08">
-                <!-- Circular measuring guidelines -->
                 <circle cx="160" cy="80" r="40" />
-                <circle cx="160" cy="80" r="70" stroke-dasharray="4 2" />
                 <line x1="0" y1="80" x2="320" y2="80" />
                 <line x1="160" y1="0" x2="160" y2="160" />
-                <line x1="40" y1="40" x2="280" y2="140" stroke-dasharray="3 3" />
-                <line x1="40" y1="120" x2="280" y2="40" stroke-dasharray="3 3" />
               </g>
 
-              <!-- Dynamic cyclical transfer arrow loops -->
+              <!-- Dynamic circular transfer loop -->
               <path d="M35 105 A 72 72 0 0 1 285 55" stroke="currentColor" stroke-width="1.8" stroke-dasharray="4 3" stroke-linecap="round" opacity="0.45" />
-              <path d="M285 55l-8-6m8 6l-1 10" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" opacity="0.8" />
-
+              <path d="M285 55l-8-6m8 6l-1 10" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" opacity="0.8" />
               <path d="M285 55 A 72 72 0 0 1 35 105" stroke="currentColor" stroke-width="1.8" stroke-dasharray="4 3" stroke-linecap="round" opacity="0.45" />
-              <path d="M35 105l8 6m-8-6l1-10" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" opacity="0.8" />
+              <path d="M35 105l8 6m-8-6l1-10" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" opacity="0.8" />
 
-              <!-- Left Side: Large Driving Gear (Animated) -->
+              <!-- Gears Large & Small -->
               <g class="animate-gear-large" style="transform-origin: 105px 85px;">
-                <circle cx="105" cy="85" r="22" stroke="currentColor" stroke-width="2.5" fill="currentColor" fill-opacity="0.05" />
-                <circle cx="105" cy="85" r="10" stroke="currentColor" stroke-width="1.5" stroke-dasharray="3 2" />
-                <!-- Gear teeth teeth points -->
-                <path d="M105 53 v10 M105 107 v10 M73 85 h10 M137 85 h10 M82 62 l7 7 M121 101 l7 7 M82 108 l7-7 M121 69 l7-7" stroke="currentColor" stroke-width="4.5" stroke-linecap="round" />
+                <circle cx="105" cy="85" r="22" stroke="currentColor" stroke-width="2.5" fill="none" />
+                <path d="M105 53 v10 M105 107 v10 M73 85 h10 M137 85 h10" stroke="currentColor" stroke-width="4.5" />
               </g>
-
-              <!-- Center-Top: Medium Driven Gear (Animated Counter Spinner) -->
               <g class="animate-gear-small" style="transform-origin: 153px 52px;">
-                <circle cx="153" cy="52" r="14" stroke="currentColor" stroke-width="2" fill="currentColor" fill-opacity="0.05" />
-                <!-- Gear teeth teeth points -->
-                <path d="M153 32 v6 M153 66 v6 M133 52 h6 M167 52 h6 M139 38 l4 4 M163 62 l4 4 M139 66 l4-4 M163 38 l4-4" stroke="currentColor" stroke-width="3" stroke-linecap="round" />
+                <circle cx="153" cy="52" r="14" stroke="currentColor" stroke-width="2" fill="none" />
+                <path d="M153 32 v6 M153 66 v6 M133 52 h6 M167 52 h6" stroke="currentColor" stroke-width="3" />
               </g>
 
-              <!-- Center-Bottom: Small Auxiliary Gear (Animated Clockwise Spinner) -->
-              <g class="animate-gear-large" style="transform-origin: 195px 95px;">
-                <circle cx="195" cy="95" r="10" stroke="currentColor" stroke-width="1.8" fill="currentColor" fill-opacity="0.05" />
-                <!-- Gear teeth teeth points -->
-                <path d="M195 81 v4 M195 105 v4 M181 95 h4 M209 95 h4" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" />
-              </g>
-
-              <!-- Floating Conversion Metrics Scale & Units Labels -->
-              <!-- Celsius <-> Fahrenheit -->
+              <!-- Scale Text markers -->
               <text x="35" y="45" font-family="monospace" font-size="10" font-weight="black" fill="currentColor" opacity="0.85">°C ⇄ °F</text>
-              <!-- Kilograms <-> Pounds -->
               <text x="245" y="115" font-family="monospace" font-size="10" font-weight="black" fill="currentColor" opacity="0.85">Kg ⇄ Lb</text>
-              <!-- Miles <-> Kilometers -->
-              <text x="250" y="45" font-family="monospace" font-size="9" font-weight="black" fill="currentColor" opacity="0.5">Mi ⇄ Km</text>
-              <!-- Digital Storage limits -->
-              <text x="35" y="135" font-family="monospace" font-size="9.5" font-weight="black" fill="currentColor" opacity="0.6">1 GB = 1024 MB</text>
             </svg>
-            <!-- Auto-rotating Weight, Speed, Temperature Unit Conversions -->
             <div class="ticker-box" id="ticker-conversion">
               <span class="status-dot"></span>
-              <span class="ticker-text active">Conversion Loading...</span>
+              <span class="ticker-text active">Units Loading...</span>
             </div>
           </div>
           <div class="blog-card__body">
-            <span class="blog-card__tag">Quick Tools</span>
-            <h2 class="blog-card__title">Conversion Hub</h2>
-            <p class="blog-card__desc">Unit &amp; data conversion tables for fast calculations</p>
+            <span class="blog-card__tag">
+              <span class="lang-en">Tools</span>
+              <span class="lang-hi">त्वरित समाधान टूल्स</span>
+            </span>
+            <h2 class="blog-card__title">
+              <span class="lang-en">Conversion Hub</span>
+              <span class="lang-hi">कन्वर्शन हब</span>
+            </h2>
+            <p class="blog-card__desc">
+              <span class="lang-en">Temperature, weight, metric measurements and data sizes</span>
+              <span class="lang-hi">विभिन्न इकाई मापक (किलोग्राम, सेल्सियस, पाउंड) आसान कैलकुलेटर</span>
+            </p>
           </div>
         </a>
 
       </div>
+
+
+      <!-- SECTION 2: PCM (Science & Tech) Formulas -->
+      <h2 class="section-title-sub" style="display: flex; align-items: center; gap: 10px;">
+        <svg style="width:24px; height:24px; color:#4f46e5;" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M19.428 15.428a2 2 0 0 0-1.022-.547l-2.387-.477a6 6 0 0 0-3.86.517l-.318.158a6 6 0 0 1-3.86.517L6.05 15.21a2 2 0 0 0-1.806.547M8 4h8l-1 1v5.172a2 2 0 0 0 .586 1.414l5 5c1.26 1.26.367 3.414-1.414 3.414H4.828c-1.78 0-2.674-2.154-1.414-3.414l5-5A2 2 0 0 0 9 10.172V5L8 4z"/></svg>
+        <span class="lang-en">PCM (Science &amp; Tech) Formulas</span>
+        <span class="lang-hi">विज्ञान और गणित (PCM) फॉर्मूले</span>
+      </h2>
+
+      <div class="grid-3" style="margin-bottom: var(--space-12);">
+
+        <!-- 5. Mathematics Formulas -->
+        <a href="/learn/maths-formulas/" class="blog-card reveal" aria-label="Explore Mathematics Formulas — गणित के सभी महत्वपूर्ण सूत्रों का संग्रह">
+          <div class="blog-card__thumb blog-card__thumb--maths-formulas" aria-hidden="true">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 160" fill="none">
+              <!-- Grid background -->
+              <g stroke="currentColor" stroke-width="1" opacity="0.08">
+                <line x1="0" y1="40" x2="320" y2="40" />
+                <line x1="0" y1="80" x2="320" y2="80" />
+                <line x1="0" y1="120" x2="320" y2="120" />
+                <line x1="80" y1="0" x2="80" y2="160" />
+                <line x1="160" y1="0" x2="160" y2="160" />
+                <line x1="240" y1="0" x2="240" y2="160" />
+              </g>
+              <!-- Glowing math curve -->
+              <path d="M40 120 C 100 100, 120 40, 160 40 S 220 120, 280 20" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" opacity="0.8" />
+              <path d="M40 120 C 100 100, 120 40, 160 40 S 220 120, 280 20" stroke="currentColor" stroke-width="6" stroke-linecap="round" opacity="0.1" />
+              
+              <!-- Math Symbols -->
+              <text x="50" y="55" font-family="monospace" font-size="12" font-weight="900" fill="currentColor">∑</text>
+              <text x="65" y="50" font-family="monospace" font-size="8" font-weight="700" fill="currentColor">i=1</text>
+              <text x="230" y="110" font-family="monospace" font-size="13" font-weight="900" fill="currentColor" opacity="0.85">f'(x)</text>
+
+              <!-- Central Math Matrix -->
+              <g transform="translate(135, 60)" stroke="currentColor" stroke-width="1.5" opacity="0.7">
+                <path d="M0 0 H5 V30 H0 M25 0 H20 V30 H25" fill="none" />
+                <text x="8" y="12" font-family="sans-serif" font-size="9" fill="currentColor" stroke="none" font-weight="bold">a</text>
+                <text x="16" y="12" font-family="sans-serif" font-size="9" fill="currentColor" stroke="none" font-weight="bold">b</text>
+                <text x="8" y="24" font-family="sans-serif" font-size="9" fill="currentColor" stroke="none" font-weight="bold">c</text>
+                <text x="16" y="24" font-family="sans-serif" font-size="9" fill="currentColor" stroke="none" font-weight="bold">d</text>
+              </g>
+            </svg>
+            <div class="ticker-box" id="ticker-maths-formulas">
+              <span class="status-dot"></span>
+              <span class="ticker-text active">Math Formula Loading...</span>
+            </div>
+          </div>
+          <div class="blog-card__body">
+            <span class="blog-card__tag">
+              <span class="lang-en">Mathematics</span>
+              <span class="lang-hi">गणित शास्त्र</span>
+            </span>
+            <h2 class="blog-card__title">
+              <span class="lang-en">Math Formulas</span>
+              <span class="lang-hi">मैथ्स फॉर्मूला बैंक</span>
+            </h2>
+            <p class="blog-card__desc">
+              <span class="lang-en">Algebra, Trigonometry, Calculus &amp; Geometry matrices</span>
+              <span class="lang-hi">त्रिकोणमिति, कैलकुलस, बीजगणित एवं रेखागणित के मूल नियम</span>
+            </p>
+          </div>
+        </a>
+
+        <!-- 6. Physics Formulas -->
+        <a href="/learn/physics-formulas/" class="blog-card reveal" aria-label="Explore Physics Formulas — भौतिक विज्ञान के महत्वपूर्ण सूत्र">
+          <div class="blog-card__thumb blog-card__thumb--physics-formulas" aria-hidden="true">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 160" fill="none">
+              <!-- Grid background -->
+              <g stroke="currentColor" stroke-width="1" opacity="0.08">
+                <line x1="0" y1="40" x2="320" y2="40" />
+                <line x1="0" y1="80" x2="320" y2="80" />
+                <line x1="0" y1="120" x2="320" y2="120" />
+                <line x1="80" y1="0" x2="80" y2="160" />
+                <line x1="160" y1="0" x2="160" y2="160" />
+              </g>
+              <!-- Waves oscillation -->
+              <path d="M20 80 C 60 20, 100 140, 140 80 S 220 20, 260 80 T 300 80" stroke="currentColor" stroke-width="2" opacity="0.8" />
+              <path d="M20 80 C 60 140, 100 20, 140 80 S 220 140, 260 80 T 300 80" stroke="currentColor" stroke-width="1.5" stroke-dasharray="3 3" opacity="0.4" />
+              
+              <!-- Pendulum -->
+              <g class="animate-math-compass" style="transform-origin: 160px 20px;">
+                <line x1="160" y1="20" x2="160" y2="90" stroke="currentColor" stroke-width="1.5" opacity="0.7" />
+                <circle cx="160" cy="90" r="10" fill="currentColor" />
+              </g>
+              <circle cx="140" cy="90" r="10" fill="currentColor" opacity="0.3" />
+              <circle cx="180" cy="90" r="10" fill="currentColor" opacity="0.3" />
+
+              <text x="35" y="45" font-family="monospace" font-size="11" font-weight="900" fill="currentColor">E = mc²</text>
+              <text x="220" y="130" font-family="monospace" font-size="9" fill="currentColor" opacity="0.7">F = G(m1·m2)/r²</text>
+            </svg>
+            <div class="ticker-box" id="ticker-physics-formulas">
+              <span class="status-dot"></span>
+              <span class="ticker-text active">Physics Formula Loading...</span>
+            </div>
+          </div>
+          <div class="blog-card__body">
+            <span class="blog-card__tag">
+              <span class="lang-en">Physics</span>
+              <span class="lang-hi">भौतिक शास्त्र</span>
+            </span>
+            <h2 class="blog-card__title">
+              <span class="lang-en">Physics Formulas</span>
+              <span class="lang-hi">फिजिक्स फॉर्मूला बैंक</span>
+            </h2>
+            <p class="blog-card__desc">
+              <span class="lang-en">Mechanics, electromagnetism, and optics principles</span>
+              <span class="lang-hi">गतिकी, ऊष्मागतिकी, प्रकाशिकी और विद्युत क्षेत्र के समीकरण</span>
+            </p>
+          </div>
+        </a>
+
+        <!-- 7. Chemistry Formulas -->
+        <a href="/learn/chemistry-formulas/" class="blog-card reveal" aria-label="Explore Chemistry Formulas — रसायन विज्ञान के महत्वपूर्ण रासायनिक समीकरण">
+          <div class="blog-card__thumb blog-card__thumb--chemistry-formulas" aria-hidden="true">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 160" fill="none">
+              <!-- Benzene web layout background -->
+              <g stroke="currentColor" stroke-width="1" opacity="0.08">
+                <polygon points="120,40 140,51.5 140,75 120,86.5 100,75 100,51.5" />
+                <polygon points="140,51.5 160,40 180,51.5 180,75 160,86.5 140,75" />
+                <polygon points="140,75 160,86.5 160,110 140,121.5 120,110 120,86.5" />
+              </g>
+
+              <!-- Atom loop -->
+              <g class="animate-chem-ring" style="transform-origin: 80px 80px;">
+                <ellipse cx="80" cy="80" rx="42" ry="12" stroke="currentColor" stroke-width="1.2" transform="rotate(35 80 80)" opacity="0.4" />
+                <ellipse cx="80" cy="80" rx="42" ry="12" stroke="currentColor" stroke-width="1.2" transform="rotate(-35 80 80)" opacity="0.4" />
+                <circle cx="80" cy="80" r="6" fill="currentColor" />
+              </g>
+
+              <!-- Beaker -->
+              <g stroke="currentColor" stroke-width="2" stroke-linejoin="round">
+                <path d="M210 40h20.5" stroke-width="2.5" />
+                <path d="M215 40v20l-25 45a8 8 0 0 0 7 12h46a8 8 0 0 0 7-12l-25-45V40" fill="currentColor" fill-opacity="0.05" />
+              </g>
+              <circle cx="212" cy="108" r="2" fill="currentColor" class="bubble-1" />
+              <circle cx="228" cy="90" r="3" fill="currentColor" class="bubble-2" />
+
+              <text x="20" y="45" font-family="monospace" font-size="11" font-weight="900" fill="currentColor">H₂SO₄</text>
+              <text x="240" y="55" font-family="monospace" font-size="10" font-weight="900" fill="currentColor" opacity="0.7">C₆H₁₂O₆</text>
+            </svg>
+            <div class="ticker-box" id="ticker-chemistry-formulas">
+              <span class="status-dot"></span>
+              <span class="ticker-text active">Chemistry Formula Loading...</span>
+            </div>
+          </div>
+          <div class="blog-card__body">
+            <span class="blog-card__tag">
+              <span class="lang-en">Chemistry</span>
+              <span class="lang-hi">रसायन शास्त्र</span>
+            </span>
+            <h2 class="blog-card__title">
+              <span class="lang-en">Chemistry Formulas</span>
+              <span class="lang-hi">केमिस्ट्री समीकरण बैंक</span>
+            </h2>
+            <p class="blog-card__desc">
+              <span class="lang-en">Acid structures, inorganic formulas &amp; balancing guides</span>
+              <span class="lang-hi">रासायनिक सूत्र, आवर्त सारणी संकेत और संतुलित करने की गाइड</span>
+            </p>
+          </div>
+        </a>
+
+      </div>
+
+
+      <!-- SECTION 3: Commerce Hub -->
+      <h2 class="section-title-sub" style="display: flex; align-items: center; gap: 10px;">
+        <svg style="width:24px; height:24px; color:#0d9488;" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0z"/></svg>
+        <span class="lang-en">Commerce Hub &amp; Economics</span>
+        <span class="lang-hi">कॉमर्स हब और अर्थशास्त्र</span>
+      </h2>
+
+      <div class="grid-2" style="margin-bottom: var(--space-8);">
+
+        <!-- 8. Accountancy & Finance Formulas -->
+        <a href="/learn/commerce/accounts/" class="blog-card reveal" aria-label="Explore Accountancy and Finance Formulas — लेखांकन और वित्तीय सूत्र">
+          <div class="blog-card__thumb blog-card__thumb--commerce-accounts" aria-hidden="true">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 160" fill="none">
+              <!-- Grid background -->
+              <g stroke="currentColor" stroke-width="1" opacity="0.08">
+                <line x1="0" y1="40" x2="320" y2="40" />
+                <line x1="0" y1="80" x2="320" y2="80" />
+                <line x1="0" y1="120" x2="320" y2="120" />
+                <line x1="80" y1="0" x2="80" y2="160" />
+                <line x1="160" y1="0" x2="160" y2="160" />
+              </g>
+              
+              <!-- Ledger scales balancing -->
+              <g class="animate-needle" style="transform-origin: 160px 80px;">
+                <line x1="160" y1="40" x2="160" y2="120" stroke="currentColor" stroke-width="3" stroke-linecap="round" />
+                <line x1="90" y1="60" x2="230" y2="100" stroke="currentColor" stroke-width="3" stroke-linecap="round" />
+                <line x1="90" y1="60" x2="70" y2="100" stroke="currentColor" stroke-width="1.5" />
+                <line x1="90" y1="60" x2="110" y2="100" stroke="currentColor" stroke-width="1.5" />
+                <path d="M60 100 H120" stroke="currentColor" stroke-width="2" />
+                <line x1="230" y1="100" x2="210" y2="140" stroke="currentColor" stroke-width="1.5" />
+                <line x1="230" y1="100" x2="250" y2="140" stroke="currentColor" stroke-width="1.5" />
+                <path d="M200 140 H260" stroke="currentColor" stroke-width="2" />
+              </g>
+              <circle cx="160" cy="80" r="5" fill="#ffffff" stroke="currentColor" stroke-width="2" />
+              
+              <text x="35" y="45" font-family="monospace" font-size="11" font-weight="900" fill="currentColor">Assets = Liabilities + Equity</text>
+              <text x="35" y="135" font-family="monospace" font-size="10" font-weight="900" fill="currentColor" opacity="0.8">Debit ⇄ Credit</text>
+            </svg>
+            <div class="ticker-box" id="ticker-commerce-accounts">
+              <span class="status-dot"></span>
+              <span class="ticker-text active">Accounting Formula Loading...</span>
+            </div>
+          </div>
+          <div class="blog-card__body">
+            <span class="blog-card__tag">
+              <span class="lang-en">Accountancy</span>
+              <span class="lang-hi">बहीखाता एवं लेखांकन</span>
+            </span>
+            <h2 class="blog-card__title">
+              <span class="lang-en">Accountancy &amp; Finance</span>
+              <span class="lang-hi">अकाउंटेंसी और फाइनेंस</span>
+            </h2>
+            <p class="blog-card__desc">
+              <span class="lang-en">Balanced ledger entries, financial ratios, valuation and depreciation codes</span>
+              <span class="lang-hi">बैलेंस शीट मिलान, वित्तीय दर गणना, नकद प्रवाह एवं ह्रास गणना सूत्र</span>
+            </p>
+          </div>
+        </a>
+
+        <!-- 9. Economics & Statistics -->
+        <a href="/learn/commerce/economics/" class="blog-card reveal" aria-label="Explore Economics and Statistics curves — अर्थशास्त्र और सांख्यिकी मूल सिद्धांत">
+          <div class="blog-card__thumb blog-card__thumb--commerce-economics" aria-hidden="true">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 160" fill="none">
+              <!-- Grid background -->
+              <g stroke="currentColor" stroke-width="1" opacity="0.08">
+                <line x1="0" y1="40" x2="320" y2="40" />
+                <line x1="0" y1="80" x2="320" y2="80" />
+                <line x1="0" y1="120" x2="320" y2="120" />
+              </g>
+              <!-- Demand & Supply Intersection template -->
+              <path d="M60 40 Q 140 100, 260 120" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" opacity="0.8" />
+              <path d="M60 120 Q 140 100, 260 40" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" opacity="0.8" stroke-dasharray="2 2" />
+              
+              <circle cx="160" cy="88" r="4" fill="#ffffff" stroke="currentColor" stroke-width="2" />
+              <line x1="160" y1="88" x2="160" y2="140" stroke="currentColor" stroke-dasharray="3 3" opacity="0.5" />
+              <line x1="160" y1="88" x2="30" y2="88" stroke="currentColor" stroke-dasharray="3 3" opacity="0.5" />
+              
+              <text x="50" y="30" font-family="sans-serif" font-size="8" font-weight="bold" fill="currentColor">Demand (D)</text>
+              <text x="210" y="30" font-family="sans-serif" font-size="8" font-weight="bold" fill="currentColor">Supply (S)</text>
+              
+              <text x="30" y="145" font-family="monospace" font-size="9" font-weight="900" fill="currentColor">GDP = C + I + G + (X - M)</text>
+            </svg>
+            <div class="ticker-box" id="ticker-commerce-economics">
+              <span class="status-dot"></span>
+              <span class="ticker-text active">Economics Fact Loading...</span>
+            </div>
+          </div>
+          <div class="blog-card__body">
+            <span class="blog-card__tag">
+              <span class="lang-en">Economics</span>
+              <span class="lang-hi">अर्थशास्त्र व सांख्यिकी</span>
+            </span>
+            <h2 class="blog-card__title">
+              <span class="lang-en">Economics &amp; Stats</span>
+              <span class="lang-hi">इकोनॉमिक्स और स्टैट्स</span>
+            </h2>
+            <p class="blog-card__desc">
+              <span class="lang-en">Macro &amp; micro economics, supply curves, elasticity and general statistics</span>
+              <span class="lang-hi">समष्टि व व्यष्टि अर्थशास्त्र के नियम, मांग-आपूर्ति सिद्धांत, मुद्रास्फीति एवं सांख्यिकी</span>
+            </p>
+          </div>
+        </a>
+
+      </div>
+
     </div>
   </section>
 </div>
@@ -609,7 +866,7 @@ lang: false
     // 1. All category item datasets matching the user requirement
     const gkFacts = [
       "Constitution has 448 Articles",
-      " Kaziranga: One-horned Rhinos",
+      "Kaziranga: One-horned Rhinos",
       "Sravana Belgola Monolithic Statue",
       "RBI established in April 1935",
       "Wular Lake: Largest fresh water",
@@ -627,18 +884,8 @@ lang: false
       "Solve: x² - 5x + 6 = 0 ➜ x = 2, 3"
     ];
 
-    const formulas = [
-      "Energy: E = m · c²",
-      "Ohm's Law: V = I · R",
-      "Maths: a² + b² = c²",
-      "Benzene Ring: C₆H₆",
-      "Force: F = m · a",
-      "Water Ion: H₂O ⇌ H⁺ + OH⁻",
-      "Trig: sin²θ + cos²θ = 1"
-    ];
-
     const vyakaranRules = [
-      "संधि: हिम + आलय = हिमालय (दीर्घ)",
+      "संधि: हिम + आलय =  हिमालय (दीर्घ)",
       "पर्यायवाची: सूर्य = रवि, दिनकर, भानु",
       "समास: यथाशक्ति = शक्ति के अनुसार",
       "विलोम शब्द: अमृत ↔ विष",
@@ -654,6 +901,49 @@ lang: false
       "Scale: 1 HP = 746 Watts",
       "Scale: 1 Liter = 1000 mL",
       "Scale: 1 GB = 1024 MB"
+    ];
+
+    const mathsFormulas = [
+      "Quadratic: x = (-b±√(b²-4ac))/2a",
+      "Trig: sin²θ + cos²θ = 1",
+      "Euler's ID: e^(iπ) + 1 = 0",
+      "Log ID: log(ab) = log a + log b",
+      "Sphere Vol: V = (4/3)πr³",
+      "Deriv: d/dx(ln x) = 1/x"
+    ];
+
+    const physicsFormulas = [
+      "Relativity: E = m · c²",
+      "Newton's 2nd: F = m · a",
+      "Ohm's Law: V = I · R",
+      "Gravity: F = G(m1m2)/r²",
+      "Kinematics: v² = u² + 2as",
+      "Frequency: f = 1/T"
+    ];
+
+    const chemistryFormulas = [
+      "Ideal Gas Law: P·V = n·R·T",
+      "pH Formula: pH = -log[H⁺]",
+      "Molecule: Glucose = C₆H₁₂O₆",
+      "Stoichiometry: n = m / M",
+      "Sulfuric Acid: H₂SO₄",
+      "Water equilibrium: Kw = 10⁻¹⁴"
+    ];
+
+    const commerceAccounts = [
+      "Equation: Assets = Liab + Equity",
+      "Net Income: Revenue - Expenses",
+      "Gross Margin: (Gross Profit)/Sales",
+      "CR: Current Assets / Current Liab",
+      "NPV: CF_t / (1 + r)^t - Initial"
+    ];
+
+    const commerceEconomics = [
+      "GDP: C + I + G + (X - M)",
+      "Elasticity: %ΔQd / %ΔP",
+      "Inflation: (CPI_t - CPI_t-1)/CPI_t-1",
+      "Money Multiplier: 1 / Reserve Ratio",
+      "Equilibrium: Qd = Qs"
     ];
 
     // Helper function to handle seamless fade and scale transitions for each element
@@ -688,11 +978,37 @@ lang: false
       }, intervalMs);
     }
 
-    // Trigger sequential auto animations with staggered intervals for maximum professional look!
-    setupCardTicker("ticker-gk", gkFacts, 4500);         // 4.5s
-    setupCardTicker("ticker-maths", mathQuestions, 4000);   // 4.0s
-    setupCardTicker("ticker-formulae", formulas, 3500);       // 3.5s
-    setupCardTicker("ticker-vyakaran", vyakaranRules, 4200);   // 4.2s
-    setupCardTicker("ticker-conversion", conversions, 3800); // 3.8s
+    // Trigger sequential auto animations with staggered intervals
+    setupCardTicker("ticker-gk", gkFacts, 4500);
+    setupCardTicker("ticker-maths", mathQuestions, 4000);
+    setupCardTicker("ticker-vyakaran", vyakaranRules, 4200);
+    setupCardTicker("ticker-conversion", conversions, 3800);
+    setupCardTicker("ticker-maths-formulas", mathsFormulas, 4100);
+    setupCardTicker("ticker-physics-formulas", physicsFormulas, 4300);
+    setupCardTicker("ticker-chemistry-formulas", chemistryFormulas, 3900);
+    setupCardTicker("ticker-commerce-accounts", commerceAccounts, 4400);
+    setupCardTicker("ticker-commerce-economics", commerceEconomics, 4200);
+
+    // Bilingual Toggle switch logic
+    const toggleBtn = document.getElementById("lang-toggle-btn");
+    if (toggleBtn) {
+      toggleBtn.addEventListener("click", function() {
+        document.body.classList.toggle("show-hi");
+        const isActive = document.body.classList.contains("show-hi");
+        try {
+          localStorage.setItem("tyagihub-prefer-hi", isActive ? "true" : "false");
+        } catch (e) {
+          console.warn("Storage not accessible:", e);
+        }
+      });
+      
+      try {
+        if (localStorage.getItem("tyagihub-prefer-hi") === "true") {
+          document.body.classList.add("show-hi");
+        }
+      } catch (e) {
+        console.warn("Storage not accessible:", e);
+      }
+    }
   });
 </script>
