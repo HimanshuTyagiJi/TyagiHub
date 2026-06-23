@@ -3,9 +3,144 @@ layout: default
 section: learn
 learn_type: formula
 permalink: /learn/chemistry-formulas/
-extra_css:
-  - /assets/css/learn-left-side.css
 ---
+
+<style>
+    /* Responsive Core Layout */
+    .tyagihub-main-layout {
+        display: grid;
+        grid-template-columns: 280px 1fr 280px;
+        gap: 24px;
+        max-width: 1440px;
+        margin: 20px auto;
+        padding: 0 15px;
+        align-items: start;
+    }
+
+    .th-left-col-wrapper {
+        position: sticky;
+        top: 20px;
+    }
+
+    /* DESKTOP SIDEBAR: Default Layout Open State */
+    .th-left-sidebar {
+        background: rgba(128, 128, 128, 0.04);
+        border: 1px solid rgba(128, 128, 128, 0.15);
+        border-radius: 12px;
+        padding: 20px 15px;
+        max-height: calc(100vh - 40px);
+        overflow-y: auto;
+    }
+
+    .th-sidebar-title {
+        font-family: 'Baloo 2', sans-serif;
+        font-size: 1.2rem;
+        font-weight: 700;
+        margin-bottom: 18px;
+        border-bottom: 2px solid rgba(128, 128, 128, 0.15);
+        padding-bottom: 6px;
+    }
+
+    .th-left-nav {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+    .th-left-nav li {
+        margin-bottom: 8px;
+    }
+    .th-left-nav a {
+        display: block;
+        padding: 10px 16px;
+        color: inherit;
+        text-decoration: none;
+        border-radius: 8px;
+        font-size: 0.98rem;
+        line-height: 1.5;
+        font-weight: 500;
+        transition: all 0.2s ease;
+    }
+    .th-left-nav a:hover {
+        background: rgba(128, 128, 128, 0.12);
+        padding-left: 20px;
+    }
+    .th-left-nav a.active {
+        background: #1e6fd9 !important;
+        color: #ffffff !important;
+        font-weight: 700;
+    }
+
+    /* MOBILE TOGGLE TRIGGER BUTTON */
+    .th-mobile-menu-trigger {
+        display: none; /* Hidden on Desktop */
+        width: 100%;
+        padding: 14px 15px;
+        background: #1e6fd9;
+        color: #ffffff;
+        border: none;
+        border-radius: 8px;
+        font-family: 'Hind', sans-serif;
+        font-size: 1rem;
+        font-weight: 600;
+        cursor: pointer;
+        margin-bottom: 12px;
+        text-align: left;
+    }
+
+    /* TABLE AND CENTER LAYOUT STYLE */
+    .th-center-content {
+        min-width: 0;
+    }
+    #table-search-input {
+        width: 100%;
+        padding: 12px;
+        margin-bottom: 20px;
+        border-radius: 6px;
+        border: 1px solid rgba(128, 128, 128, 0.3);
+        background: transparent;
+        color: inherit;
+    }
+    .table-container table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+    .table-container th, .table-container td {
+        border: 1px solid rgba(128, 128, 128, 0.2);
+        padding: 12px;
+    }
+
+    /* RESPONSIVE MEDIA BREAKPOINTS */
+    @media (max-width: 1024px) {
+        .tyagihub-main-layout {
+            grid-template-columns: 260px 1fr;
+        }
+        .th-right-sidebar { display: none; }
+    }
+
+    @media (max-width: 768px) {
+        .tyagihub-main-layout {
+            grid-template-columns: 1fr;
+        }
+        .th-left-col-wrapper {
+            position: static;
+        }
+        /* Display Toggle Trigger Button on Mobile Phones */
+        .th-mobile-menu-trigger {
+            display: block;
+        }
+        /* Mobile Drawer State Overrides */
+        .th-left-sidebar {
+            display: none; /* Default Closed State */
+            max-height: none;
+            overflow: visible;
+            margin-bottom: 15px;
+        }
+        /* Forced Click Active Toggle Class */
+        .th-left-sidebar.mobile-open {
+            display: block !important; /* Forces block display open on click execution */
+        }
+    }
+</style>
 
 <div class="tyagihub-main-layout">
 
@@ -19,7 +154,6 @@ extra_css:
 
 
     <main class="th-center-content">
-        
         <div class="class-header-main">
             <h1>🧪 Chemistry Formulas Directory</h1>
             <p>Class 9th to 12th Complete Chemical Formulas</p>
@@ -53,7 +187,6 @@ extra_css:
                 </tbody>
             </table>
         </div>
-
     </main>
 
 
@@ -69,15 +202,15 @@ extra_css:
 </div>
 
 <script>
-// 1. Mobile Responsive Navigation Drawer Toggle
+// 1. Foolproof Mobile Drawer Navigation Toggle Link Action
 function toggleMobileSidebar() {
-    const sidebar = document.getElementById("tyagihubLeftSidebar");
+    // Selects the included sidebar element loaded from selector loop
+    const sidebar = document.querySelector(".th-left-sidebar");
     const triggerBtn = document.querySelector(".th-mobile-menu-trigger span");
     
     if (sidebar) {
         sidebar.classList.toggle("mobile-open");
         
-        // Dynamic label toggling adjustment
         if (sidebar.classList.contains("mobile-open")) {
             triggerBtn.innerText = "Hide Navigation Menu";
         } else {
@@ -88,12 +221,11 @@ function toggleMobileSidebar() {
 </script>
 
 <script>
-// 2. Real-time Live Content Filter & Auto Serial Re-Indexing
+// 2. Search & Auto-Indexing
 document.addEventListener("DOMContentLoaded", function () {
     const searchInput = document.getElementById("table-search-input");
     const tableBody = document.querySelector("#myTable tbody");
 
-    // Initialize indexing on system boot
     updateSerialNumbers();
 
     if (searchInput) {
@@ -109,8 +241,6 @@ document.addEventListener("DOMContentLoaded", function () {
                     row.style.display = "none";
                 }
             });
-            
-            // Recalculate index bounds for match entries
             updateSerialNumbers();
         });
     }
