@@ -35,7 +35,7 @@ layout: default
   </div>
 
   <div class="formula-layout">
-    {% assign formula_data = site.data.formulas[page.subject_data] %}
+  {% assign formula_data = site.data[page.subject_data] %}
     
     {% for category in formula_data %}
       <div class="category-section">
