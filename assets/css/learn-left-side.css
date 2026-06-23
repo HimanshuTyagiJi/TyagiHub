@@ -1,0 +1,145 @@
+/* ═══════════════════════════════════════════════
+   TYAGIHUB GLOBAL LEFT SIDEBAR & MOBILE TOGGLE CSS
+   Theme: Variable Adaptive (Light/Dark Compatible)
+   ═══════════════════════════════════════════════ */
+
+/* Responsive Layout Grid Base */
+.tyagihub-main-layout {
+    display: grid;
+    grid-template-columns: 280px 1fr 280px;
+    gap: 24px;
+    max-width: 1440px;
+    margin: 62px auto;
+    padding: 0;
+    left:0;
+    align-items: start;
+  
+}
+
+/* LEFT SIDEBAR CORE MASTER */
+.th-left-sidebar {
+    background: rgba(128, 128, 128, 0.04);
+    border: 1px solid rgba(128, 128, 128, 0.15);
+    border-radius: 12px;
+    padding: 20px 15px;
+    position: sticky;
+    
+    /* Strict Inner Scroll Setup */
+    max-height: calc(100vh - 40px);
+    overflow-y: auto;
+    scrollbar-width: thin; /* Firefox clear scroll */
+}
+
+/* Webkit Scrollbar Styling for Sidebar Inner Scroll */
+.th-left-sidebar::-webkit-scrollbar {
+    width: 5px;
+}
+.th-left-sidebar::-webkit-scrollbar-thumb {
+    background: rgba(128, 128, 128, 0.3);
+    border-radius: 10px;
+}
+
+.th-sidebar-title {
+    font-family: 'Baloo 2', sans-serif;
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-bottom: 18px;
+    border-bottom: 2px solid rgba(128, 128, 128, 0.15);
+    padding-bottom: 6px;
+    letter-spacing: 0.5px;
+}
+
+/* Navigation Links Engine */
+.th-left-nav {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+.th-left-nav li {
+    margin-bottom: 8px; /* Gap managing between list items */
+}
+.th-left-nav a {
+    display: block;
+    padding: 10px 16px;
+    color: inherit;
+    text-decoration: none;
+    border-radius: 8px;
+    font-size: 0.98rem;
+    line-height: 1.5; /* Line height control */
+    font-weight: 500;
+    transition: all 0.2s ease;
+}
+
+/* Hover State - Dynamic Neutral Soft Background */
+.th-left-nav a:hover {
+    background: rgba(128, 128, 128, 0.12);
+    padding-left: 20px; /* Slight push animation on hover */
+}
+
+/* Active State - Strict Premium Blue Background */
+.th-left-nav a.active {
+    background: #1e6fd9 !important; /* Fixed corporate blue color */
+    color: #ffffff !important;      /* Text becomes pure white for visibility */
+    font-weight: 700;
+    box-shadow: 0 4px 12px rgba(30, 111, 217, 0.25);
+}
+
+/* MOBILE TOGGLE TRIGGER BUTTON (Hidden on Desktop) */
+.th-mobile-menu-trigger {
+    display: none;
+    width: 100%;
+    padding: 12px 15px;
+    background: #1e6fd9;
+    color: #ffffff;
+    border: none;
+    border-radius: 8px;
+    font-family: 'Hind', sans-serif;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    margin-bottom: 15px;
+    text-align: left;
+    align-items: center;
+    gap: 10px;
+}
+
+/* ═══════════════════════════════════════════════
+   RESPONSIVE MEDIA QUERIES (THE COMPACT TRIGGER)
+   ═══════════════════════════════════════════════ */
+@media (max-width: 1024px) {
+    .tyagihub-main-layout {
+        grid-template-columns: 260px 1fr; /* Right drops on tablet */
+    }
+}
+
+@media (max-width: 768px) {
+    .tyagihub-main-layout {
+        grid-template-columns: 1fr; /* Single column flow for mobile layout */
+        margin-top: 60px;
+    }
+    
+    /* Show Mobile Menu Bar Button */
+    .th-mobile-menu-trigger {
+        display: flex;
+    }
+
+    /* Transform Sidebar into Mobile Draw-Collapse Box */
+    .th-left-sidebar {
+        position: static;
+        max-height: 0;
+        padding: 0 15px;
+        overflow: hidden;
+        border: none;
+        background: rgba(128, 128, 128, 0.02);
+        transition: max-height 0.3s cubic-bezier(0, 1, 0, 1), padding 0.3s ease, border 0.1s;
+    }
+
+    /* Active Responsive Class trigger via JS */
+    .th-left-sidebar.mobile-open {
+        max-height: 400px; /* Expands open gracefully */
+        overflow-y: auto;
+        padding: 20px 15px;
+        border: 1px solid rgba(128, 128, 128, 0.15);
+        margin-bottom: 20px;
+    }
+}
