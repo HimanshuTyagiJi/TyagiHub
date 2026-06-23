@@ -1,0 +1,72 @@
+---
+layout: default
+---
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js" 
+        onload="renderMathInElement(document.body, {delimiters: [{left: '$$', right: '$$', display: true}, {left: '$', right: '$', display: false}, {left: '\\\\(', right: '\\\\)', display: false}, {left: '\\\\[', right: '\\\\]', display: true}]});"></script>
+
+<link rel="stylesheet" href="{{ '/assets/css/formulas.css' | relative_url }}">
+<script src="{{ '/assets/js/formulas.js' | relative_url }}" defer></script>
+
+<div class="formula-hub-container">
+  
+  <div class="formula-header">
+    <h1>{% if page.lang == 'hi' %}गणित सूत्र बैंक (Maths Formulas){% else %}Mathematics Formula Bank{% endif %}</h1>
+    
+    <div class="search-wrapper">
+      <input type="text" id="formula-search" placeholder="{% if page.lang == 'hi' %}सूत्र खोजें (जैसे: Polynomial, Distance...){% else %}Search formulas (e.g., Polynomial, Distance...){% endif %}" />
+    </div>
+    
+    <div class="quick-filters font-mono">
+      <span>Language:</span>
+      <a href="/learn/formulas/mathematics/" class="filter-btn {% if page.lang == 'en' %}active-filter{% endif %}">English Portal</a>
+      <a href="/learn/formulas/mathematics-hi/" class="filter-btn {% if page.lang == 'hi' %}active-filter{% endif %}">हिंदी पोर्टल</a>
+    </div>
+
+    <div class="quick-filters" style="margin-top: 15px;">
+      <span>Filter by Class:</span>
+      <button onclick="setFilter('class', '9')" data-filter-class="9" class="filter-btn">Class 9</button>
+      <button onclick="setFilter('class', '10')" data-filter-class="10" class="filter-btn">Class 10</button>
+      <button onclick="setFilter('class', '11')" data-filter-class="11" class="filter-btn">Class 11</button>
+      <button onclick="setFilter('class', '12')" data-filter-class="12" class="filter-btn">Class 12</button>
+      <button onclick="clearFilters()" class="filter-btn clear-btn">{% if page.lang == 'hi' %}साफ़ करें{% else %}Clear All{% endif %}</button>
+    </div>
+  </div>
+
+  <div class="formula-layout">
+    {% assign formula_data = site.data.formulas[page.subject_data] %}
+    
+    {% for category in formula_data %}
+      <div class="category-section">
+        <h2>{{ category.category_icon }} {% if page.lang == 'hi' %}{{ category.category_hi }}{% else %}{{ category.category_en }}{% endif %}</h2>
+        
+        <div class="cards-grid">
+          {% for item in category.items %}
+            <div class="formula-card" 
+                 data-classes="{{ item.classes | join: ',' }}" 
+                 data-exams="{{ item.exams | join: ',' }}">
+              
+              <h3 class="formula-title">{{ item[page.lang].title }}</h3>
+              
+              <div class="math-box">
+                $$ {{ item.latex }} $$
+              </div>
+              
+              <p class="formula-desc">{{ item[page.lang].desc }}</p>
+              
+              <div class="card-tags">
+                {% for cl in item.classes %}
+                  <span class="tag class-tag">Class {{ cl }}</span>
+                {% endfor %}
+                {% for ex in item.exams %}
+                  <span class="tag exam-tag" style="background: var(--clr-accent-light, #fff3e0); color: var(--clr-accent, #e65100); margin-left: 4px; text-transform: uppercase;">{{ ex }}</span>
+                {% endfor %}
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+</div>
