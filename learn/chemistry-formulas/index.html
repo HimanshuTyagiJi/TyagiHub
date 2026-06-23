@@ -4,14 +4,18 @@ section: learn
 learn_type: formula
 permalink: /learn/chemistry-formulas/
 extra_css:
-
   - /assets/css/learn-left-side.css
-
 ---
 
 <div class="tyagihub-main-layout">
 
-    {% include left-sidebar-selector.html %}
+    <div class="th-left-col-wrapper">
+        <button class="th-mobile-menu-trigger" onclick="toggleMobileSidebar()">
+            ☰ <span>Show Navigation Menu</span>
+        </button>
+
+        {% include left-sidebar-selector.html %}
+    </div>
 
 
     <main class="th-center-content">
@@ -62,7 +66,10 @@ extra_css:
         {% endcase %}
     </aside>
 
-</div> <script>
+</div>
+
+<script>
+// 1. Mobile Responsive Navigation Drawer Toggle
 function toggleMobileSidebar() {
     const sidebar = document.getElementById("tyagihubLeftSidebar");
     const triggerBtn = document.querySelector(".th-mobile-menu-trigger span");
@@ -78,11 +85,15 @@ function toggleMobileSidebar() {
         }
     }
 }
-</script><script>
+</script>
+
+<script>
+// 2. Real-time Live Content Filter & Auto Serial Re-Indexing
 document.addEventListener("DOMContentLoaded", function () {
     const searchInput = document.getElementById("table-search-input");
     const tableBody = document.querySelector("#myTable tbody");
 
+    // Initialize indexing on system boot
     updateSerialNumbers();
 
     if (searchInput) {
@@ -98,6 +109,8 @@ document.addEventListener("DOMContentLoaded", function () {
                     row.style.display = "none";
                 }
             });
+            
+            // Recalculate index bounds for match entries
             updateSerialNumbers();
         });
     }
