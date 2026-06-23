@@ -63,6 +63,22 @@ extra_css:
     </aside>
 
 </div> <script>
+function toggleMobileSidebar() {
+    const sidebar = document.getElementById("tyagihubLeftSidebar");
+    const triggerBtn = document.querySelector(".th-mobile-menu-trigger span");
+    
+    if (sidebar) {
+        sidebar.classList.toggle("mobile-open");
+        
+        // Dynamic label toggling adjustment
+        if (sidebar.classList.contains("mobile-open")) {
+            triggerBtn.innerText = "Hide Navigation Menu";
+        } else {
+            triggerBtn.innerText = "Show Navigation Menu";
+        }
+    }
+}
+</script><script>
 document.addEventListener("DOMContentLoaded", function () {
     const searchInput = document.getElementById("table-search-input");
     const tableBody = document.querySelector("#myTable tbody");
