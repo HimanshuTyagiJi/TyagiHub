@@ -52,6 +52,7 @@ include:
   - _pages
   - robots.txt
   - sitemap.xml
+  - _data          # <-- BAS YEH EK LINE ISI BLOCK KE NICHE JOD DE
 
 # =============================================================
 # TyagiHub - Clean Config (No Conflicts)
