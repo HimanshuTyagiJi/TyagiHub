@@ -1,0 +1,18 @@
+{% case page.learn_type %}
+
+  {% when "formula" %}
+    {% include sidebars/left-formula-sidebar.html %}
+
+  {% when "vyakaran" %}
+    {% include sidebars/left-vyakaran-sidebar.html %}
+
+  {% when "conversion" %}
+    {% include sidebars/left-conversion-sidebar.html %}
+
+  {% when "notes" %}
+    {% include sidebars/left-notes-sidebar.html %}
+
+  {% else %}
+    {% include sidebars/left-default-learn-sidebar.html %}
+
+{% endcase %}
