@@ -177,18 +177,14 @@ permalink: /learn/chemistry-formulas/
     }
 </style>
 
-<div class="sidebar-overlay" id="sidebarOverlay" onclick="toggleMobileSidebar()"></div>
-
 <div class="tyagihub-main-layout">
 
     <div class="th-left-col-wrapper">
         <button class="th-mobile-menu-trigger" onclick="toggleMobileSidebar()">
             ☰ <span>Menu</span>
         </button>
-
         {% include left-sidebar-selector.html %}
     </div>
-
 
     <main class="th-center-content">
         <div class="class-header-main">
@@ -209,23 +205,17 @@ permalink: /learn/chemistry-formulas/
                     </tr>
                 </thead>
                 <tbody>
+                    {% for compound in site.data.chemistry_compounds %}
                     <tr class="searchable-row">
-                        <td></td>
-                        <td>Acetaldehyde</td>
-                        <td>C<sub>2</sub>H<sub>4</sub>O</td>
-                        <td>एसीटैल्डिहाइड</td>
+                        <td></td> <td>{{ compound.en_name }}</td>
+                        <td>{{ compound.formula }}</td>
+                        <td>{{ compound.hi_name }}</td>
                     </tr>
-                    <tr class="searchable-row">
-                        <td></td>
-                        <td>Acetamide</td>
-                        <td>C<sub>2</sub>H<sub>5</sub>NO</td>
-                        <td>एसिटामाइड</td>
-                    </tr>
+                    {% endfor %}
                 </tbody>
             </table>
         </div>
     </main>
-
 
     <aside class="th-right-sidebar">
         {% case page.section %}
@@ -239,16 +229,11 @@ permalink: /learn/chemistry-formulas/
 </div>
 
 <script>
-// Corrected Lateral Drawer Slide Animation Logic with Backdrop Shadow
 function toggleMobileSidebar() {
     const sidebar = document.querySelector(".th-left-sidebar");
-    const overlay = document.getElementById("sidebarOverlay");
     const triggerBtn = document.querySelector(".th-mobile-menu-trigger span");
-    
     if (sidebar) {
         sidebar.classList.toggle("mobile-open");
-        overlay.classList.toggle("active");
-        
         if (sidebar.classList.contains("mobile-open")) {
             triggerBtn.innerText = "Hide Navigation Menu";
         } else {
@@ -259,7 +244,6 @@ function toggleMobileSidebar() {
 </script>
 
 <script>
-// Search and Auto-indexing Setup
 document.addEventListener("DOMContentLoaded", function () {
     const searchInput = document.getElementById("table-search-input");
     const tableBody = document.querySelector("#myTable tbody");
