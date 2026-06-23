@@ -6,7 +6,7 @@ permalink: /learn/chemistry-formulas/
 ---
 
 <style>
-    /* Responsive Core Layout */
+    /* Responsive Core Layout Layout */
     .tyagihub-main-layout {
         display: grid;
         grid-template-columns: 280px 1fr 280px;
@@ -15,11 +15,13 @@ permalink: /learn/chemistry-formulas/
         margin: 20px auto;
         padding: 0 15px;
         align-items: start;
+        position: relative;
     }
 
     .th-left-col-wrapper {
         position: sticky;
         top: 20px;
+        z-index: 999;
     }
 
     /* DESKTOP SIDEBAR: Default Layout Open State */
@@ -70,7 +72,7 @@ permalink: /learn/chemistry-formulas/
         font-weight: 700;
     }
 
-    /* MOBILE TOGGLE TRIGGER BUTTON */
+    /* MOBILE TOGGLE TRIGGER BAR */
     .th-mobile-menu-trigger {
         display: none; /* Hidden on Desktop */
         width: 100%;
@@ -85,6 +87,19 @@ permalink: /learn/chemistry-formulas/
         cursor: pointer;
         margin-bottom: 12px;
         text-align: left;
+    }
+
+    /* BACKDROP OVERLAY SHADE FOR MOBILE DRAWER */
+    .sidebar-overlay {
+        display: none;
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.4);
+        z-index: 998;
+        transition: opacity 0.3s ease;
+    }
+    .sidebar-overlay.active {
+        display: block;
     }
 
     /* TABLE AND CENTER LAYOUT STYLE */
@@ -124,23 +139,45 @@ permalink: /learn/chemistry-formulas/
         .th-left-col-wrapper {
             position: static;
         }
-        /* Display Toggle Trigger Button on Mobile Phones */
         .th-mobile-menu-trigger {
             display: block;
         }
-        /* Mobile Drawer State Overrides */
+
+        /* HARDCORE SIDEBAR LEFT-TO-RIGHT DRAWER OVERLAY */
         .th-left-sidebar {
-            display: none; /* Default Closed State */
-            max-height: none;
-            overflow: visible;
-            margin-bottom: 15px;
+            position: fixed;
+            top: 0;
+            left: -320px; /* Kept completely out of viewport on load */
+            width: 300px;  /* Exact 50% to 60% screen width constraint fixed */
+            height: 100vh;
+            max-height: 100vh;
+            z-index: 999;
+            /* Adaptive surface contrast for light/dark templates */
+            background: var(--bg-surface, #ffffff);
+            border: none;
+            border-right: 1px solid rgba(128, 128, 128, 0.2);
+            border-radius: 0 12px 12px 0;
+            box-shadow: 4px 0 24px rgba(0,0,0,0.15);
+            transition: left 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            display: block !important;
         }
-        /* Forced Click Active Toggle Class */
+
+        /* Left-To-Right Slide Open Execution Class */
         .th-left-sidebar.mobile-open {
-            display: block !important; /* Forces block display open on click execution */
+            left: 0 !important; /* Slide in smoothly onto view screen */
+        }
+        
+        /* Fallback safety for themes whose color properties are raw injected */
+        [data-theme="dark"] .th-left-sidebar {
+            background: #121212 !important;
+        }
+        [data-theme="light"] .th-left-sidebar {
+            background: #ffffff !important;
         }
     }
 </style>
+
+<div class="sidebar-overlay" id="sidebarOverlay" onclick="toggleMobileSidebar()"></div>
 
 <div class="tyagihub-main-layout">
 
@@ -202,14 +239,15 @@ permalink: /learn/chemistry-formulas/
 </div>
 
 <script>
-// 1. Foolproof Mobile Drawer Navigation Toggle Link Action
+// Corrected Lateral Drawer Slide Animation Logic with Backdrop Shadow
 function toggleMobileSidebar() {
-    // Selects the included sidebar element loaded from selector loop
     const sidebar = document.querySelector(".th-left-sidebar");
+    const overlay = document.getElementById("sidebarOverlay");
     const triggerBtn = document.querySelector(".th-mobile-menu-trigger span");
     
     if (sidebar) {
         sidebar.classList.toggle("mobile-open");
+        overlay.classList.toggle("active");
         
         if (sidebar.classList.contains("mobile-open")) {
             triggerBtn.innerText = "Hide Navigation Menu";
@@ -221,7 +259,7 @@ function toggleMobileSidebar() {
 </script>
 
 <script>
-// 2. Search & Auto-Indexing
+// Search and Auto-indexing Setup
 document.addEventListener("DOMContentLoaded", function () {
     const searchInput = document.getElementById("table-search-input");
     const tableBody = document.querySelector("#myTable tbody");
