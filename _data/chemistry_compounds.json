@@ -1,0 +1,22 @@
+[
+  {
+    "en_name": "Acetaldehyde",
+    "formula": "C<sub>2</sub>H<sub>4</sub>O",
+    "hi_name": "एसीटैल्डिहाइड"
+  },
+  {
+    "en_name": "Acetamide",
+    "formula": "C<sub>2</sub>H<sub>5</sub>NO",
+    "hi_name": "एसिटामाइड"
+  },
+  {
+    "en_name": "Acetate",
+    "formula": "CH<sub>3</sub>COO<sup>–</sup>",
+    "hi_name": "एसीटेट"
+  },
+  {
+    "en_name": "Acetic acid",
+    "formula": "CH<sub>3</sub>COOH",
+    "hi_name": "एसीटिक अम्ल"
+  }
+]
