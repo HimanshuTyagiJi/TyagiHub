@@ -1,0 +1,98 @@
+---
+layout: default
+section: learn
+learn_type: formula
+permalink: /learn/chemistry-formulas/
+---
+
+<div class="tyagihub-main-layout">
+
+    {% include left-sidebar-selector.html %}
+
+
+    <main class="th-center-content">
+        
+        <div class="class-header-main">
+            <h1>🧪 Chemistry Formulas Directory</h1>
+            <p>Class 9th to 12th Complete Chemical Formulas</p>
+        </div>
+
+        <input type="text" id="table-search-input" placeholder="Type to search formulas..." />
+
+        <div class="table-container stacked-on-mobile">
+            <table id="myTable">
+                <thead>
+                    <tr>
+                        <th>S.No.</th>
+                        <th>Compound Name</th>
+                        <th>Molecular Formula</th>
+                        <th>यौगिक नाम</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="searchable-row">
+                        <td></td>
+                        <td>Acetaldehyde</td>
+                        <td>C<sub>2</sub>H<sub>4</sub>O</td>
+                        <td>एसीटैल्डिहाइड</td>
+                    </tr>
+                    <tr class="searchable-row">
+                        <td></td>
+                        <td>Acetamide</td>
+                        <td>C<sub>2</sub>H<sub>5</sub>NO</td>
+                        <td>एसिटामाइड</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+    </main>
+
+
+    <aside class="th-right-sidebar">
+        {% case page.section %}
+          {% when "learn" %}
+            {% include sidebars/learn-sidebar.html %}
+          {% else %}
+            {% include sidebars/default-sidebar.html %}
+        {% endcase %}
+    </aside>
+
+</div> <script>
+document.addEventListener("DOMContentLoaded", function () {
+    const searchInput = document.getElementById("table-search-input");
+    const tableBody = document.querySelector("#myTable tbody");
+
+    updateSerialNumbers();
+
+    if (searchInput) {
+        searchInput.addEventListener("input", function (e) {
+            const query = e.target.value.toLowerCase().trim();
+            const rows = tableBody.querySelectorAll(".searchable-row");
+
+            rows.forEach(row => {
+                const text = row.innerText.toLowerCase();
+                if (text.includes(query)) {
+                    row.style.display = "";
+                } else {
+                    row.style.display = "none";
+                }
+            });
+            updateSerialNumbers();
+        });
+    }
+
+    function updateSerialNumbers() {
+        const rows = tableBody.querySelectorAll(".searchable-row");
+        let currentIdx = 1;
+        rows.forEach(row => {
+            if (row.style.display !== "none") {
+                if (row.cells[0]) {
+                    row.cells[0].innerText = currentIdx + ".";
+                    currentIdx++;
+                }
+            }
+        });
+    }
+});
+</script>
