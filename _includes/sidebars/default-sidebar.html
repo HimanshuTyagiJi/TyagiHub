@@ -1,14 +1,242 @@
-<aside class="right-sidebar" aria-label="Sidebar">
+<aside class="th-right-sidebar-engine" aria-label="Interactive Hub">
 
-  <div class="box">
-    🚀 TyagiHub
+  <div class="th-premium-widget-card">
+    <div class="th-widget-header-row">
+      <span class="th-widget-header-icon">🎯</span>
+      <h3 class="th-widget-main-heading">Quiz & Test Hub</h3>
+    </div>
+    <div class="th-widget-link-grid">
+      <a href="/quizzes/math-test/" class="th-widget-action-link">
+        <div class="th-link-flex">
+          <span class="th-link-emoji">📊</span>
+          <div class="th-link-text-block">
+            <span class="th-link-main-title">Mathematics Quiz Test</span>
+            <span class="th-link-sub-desc">Chapter-wise mock exams & speed tests</span>
+          </div>
+        </div>
+      </a>
+      <a href="/quizzes/chemistry-practice/" class="th-widget-action-link">
+        <div class="th-link-flex">
+          <span class="th-link-emoji">🧪</span>
+          <div class="th-link-text-block">
+            <span class="th-link-main-title">Chemistry Practice Portal</span>
+            <span class="th-link-sub-desc">Equation balancing & formula drills</span>
+          </div>
+        </div>
+      </a>
+      <a href="/quizzes/gk-booster/" class="th-widget-action-link">
+        <div class="th-link-flex">
+          <span class="th-link-emoji">🌐</span>
+          <div class="th-link-text-block">
+            <span class="th-link-main-title">GK Quiz General Booster</span>
+            <span class="th-link-sub-desc">Current affairs & static general knowledge</span>
+          </div>
+        </div>
+      </a>
+    </div>
   </div>
 
-  <div class="app-card">
-    <div class="app-details">
-      <span class="app-name">Welcome to TyagiHub</span>
-      <span class="app-meta">Explore tools, learning and quizzes</span>
+  <div class="th-premium-widget-card workflow-highlight">
+    <div class="th-widget-header-row">
+      <span class="th-widget-header-icon">🛠️</span>
+      <h3 class="th-widget-main-heading">Core Workflow</h3>
+    </div>
+    <p class="th-widget-card-paragraph">Access advanced web utilities, production syntax encoders, and custom formatting scripts inside our unified workspace.</p>
+    <a href="/tools/" class="th-premium-console-btn">
+      <span>Launch Developer Tools</span> ➔
+    </a>
+  </div>
+
+  <div class="th-premium-widget-card community-box">
+    <div class="th-widget-header-row">
+      <span class="th-widget-header-icon">📱</span>
+      <h3 class="th-widget-main-heading">Connect with Hub</h3>
+    </div>
+    <p class="th-widget-card-paragraph" style="margin-bottom: 12px;">Join our primary networks for real-time cyber protection tips, study hacks, and instantaneous tool releases.</p>
+    
+    <div class="th-social-icons-wrapper">
+      <a href="https://t.me/your_telegram_channel" class="th-social-icon-btn telegram-btn" target="_blank" aria-label="Telegram">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/></svg>
+      </a>
+      <a href="https://instagram.com/your_profile" class="th-social-icon-btn instagram-btn" target="_blank" aria-label="Instagram">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>
+      </a>
+      <a href="https://youtube.com/your_channel" class="th-social-icon-btn youtube-btn" target="_blank" aria-label="YouTube">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"/><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"/></svg>
+      </a>
     </div>
   </div>
 
 </aside>
+
+<style>
+  .th-right-sidebar-engine {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  }
+
+  .th-premium-widget-card {
+    background: var(--bg-3, rgba(128, 128, 128, 0.04));
+    border: 1px solid rgba(128, 128, 128, 0.15);
+    border-radius: 10px;
+    padding: 14px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.01);
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .th-premium-widget-card:hover {
+    border-color: rgba(30, 111, 217, 0.25);
+    box-shadow: 0 4px 12px rgba(30, 111, 217, 0.05);
+  }
+
+  .th-premium-widget-card.workflow-highlight {
+    background: linear-gradient(180deg, rgba(30, 111, 217, 0.03), transparent);
+    border-color: rgba(30, 111, 217, 0.18);
+  }
+
+  .th-premium-widget-card.community-box {
+    background: linear-gradient(180deg, rgba(46, 125, 50, 0.02), transparent);
+    border-color: rgba(46, 125, 50, 0.15);
+  }
+
+  .th-widget-header-row {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-bottom: 12px;
+    border-bottom: 1px solid rgba(128, 128, 128, 0.1);
+    padding-bottom: 6px;
+  }
+
+  .th-widget-header-icon {
+    font-size: 0.95rem;
+  }
+
+  .th-widget-main-heading {
+    font-size: 0.82rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin: 0;
+    opacity: 0.85;
+  }
+
+  .th-widget-card-paragraph {
+    font-size: 0.82rem;
+    line-height: 1.45;
+    margin: 0 0 12px 0;
+    opacity: 0.8;
+  }
+
+  .th-widget-link-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .th-widget-action-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    padding: 8px;
+    border-radius: 6px;
+    background: rgba(128, 128, 128, 0.02);
+    border: 1px solid transparent;
+    transition: all 0.15s ease;
+  }
+
+  .th-widget-action-link:hover {
+    background: rgba(30, 111, 217, 0.06);
+    border-color: rgba(30, 111, 217, 0.15);
+    transform: translateX(2px);
+  }
+
+  .th-link-flex {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .th-link-emoji {
+    font-size: 1.05rem;
+    margin-top: 1px;
+  }
+
+  .th-link-text-block {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .th-link-main-title {
+    font-size: 0.84rem;
+    font-weight: 600;
+    line-height: 1.3;
+  }
+
+  .th-link-sub-desc {
+    font-size: 0.74rem;
+    opacity: 0.65;
+    margin-top: 2px;
+    line-height: 1.2;
+  }
+
+  .th-premium-console-btn {
+    display: block;
+    text-align: center;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 8px 12px;
+    background: #1e6fd9;
+    color: #ffffff !important;
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-decoration: none;
+    border-radius: 5px;
+    box-shadow: 0 2px 6px rgba(30, 111, 217, 0.15);
+    transition: background 0.15s ease, transform 0.1s ease;
+  }
+
+  .th-premium-console-btn:hover {
+    background: #1552a0;
+    transform: translateY(-0.5px);
+  }
+
+  .th-social-icons-wrapper {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+    margin-top: 10px;
+  }
+
+  .th-social-icon-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px 0;
+    border-radius: 6px;
+    color: #ffffff !important;
+    text-decoration: none;
+    transition: opacity 0.2s ease, transform 0.1s ease;
+  }
+
+  .th-social-icon-btn:hover {
+    opacity: 0.9;
+    transform: translateY(-1px);
+  }
+
+  /* Solid Brand Color Definitions */
+  .telegram-btn  { background: #0088cc; }
+  .instagram-btn { background: #e1306c; } /* Crisp Instagram Pink/Red brand color */
+  .youtube-btn   { background: #ff0000; }
+
+  @media (max-width: 768px) {
+    .th-left-sidebar {
+      background: #ffffff !important;
+    }
+    [data-theme="dark"] .th-left-sidebar {
+      background: #1c1c1e !important;
+    }
+  }
+</style>
