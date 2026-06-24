@@ -41,7 +41,7 @@ lang_toggle: false
         max-height: calc(100vh - 40px);
         overflow-y: auto;
         scrollbar-width: thin !important;
-        z-index: 1000;
+        z-index: 1004; /* Forced layer above standard contents */
     }
 
     [data-theme="dark"] .th-left-sidebar {
@@ -99,7 +99,7 @@ lang_toggle: false
     }
 
     /* ========================================================
-       3. MOBILE TRIGGER BAR & COMPACT DRAWER
+       3. MOBILE TRIGGER BAR & DRAWER OVERRIDES
        ======================================================== */
     .th-mobile-menu-trigger {
         display: none;
@@ -251,7 +251,6 @@ lang_toggle: false
             display: block;
         }
 
-        /* OVERLAY SHADE REMOVED COMPLETELY - PURE SMOOTH DRAWER */
         .th-left-sidebar {
             position: fixed;
             top: 0;
@@ -259,7 +258,7 @@ lang_toggle: false
             width: 280px;
             height: 100vh;
             max-height: 100vh;
-            z-index: 1003; 
+            z-index: 1005; 
             border: none;
             border-right: 1px solid rgba(128, 128, 128, 0.2);
             border-radius: 0 12px 12px 0;
@@ -349,7 +348,7 @@ lang_toggle: false
 <div class="tyagihub-main-layout">
 
     <div class="th-left-col-wrapper">
-        <button class="th-mobile-menu-trigger" onclick="toggleMobileSidebar()">
+        <button class="th-mobile-menu-trigger" onclick="toggleMobileSidebar(event)">
             ☰ <span>Menu</span>
         </button>
         {% include left-sidebar-selector.html %}
@@ -412,7 +411,9 @@ lang_toggle: false
 </div>
 
 <script>
-function toggleMobileSidebar() {
+// Toggle Function with event propagation stop rule
+function toggleMobileSidebar(event) {
+    if(event) event.stopPropagation(); 
     const sidebar = document.querySelector(".th-left-sidebar");
     const triggerBtn = document.querySelector(".th-mobile-menu-trigger span");
     if (sidebar) {
@@ -424,6 +425,22 @@ function toggleMobileSidebar() {
         }
     }
 }
+
+// PURE DYNAMIC OUTSIDE CLICK ENGINE DETECTOR 
+document.addEventListener("click", function (event) {
+    const sidebar = document.querySelector(".th-left-sidebar");
+    const menuTrigger = document.querySelector(".th-mobile-menu-trigger");
+    
+    // Check validation states context safely
+    if (sidebar && sidebar.classList.contains("mobile-open")) {
+        // If click targeting area resides completely outside sidebar layout bounds
+        if (!sidebar.contains(event.target) && (!menuTrigger || !menuTrigger.contains(event.target))) {
+            sidebar.classList.remove("mobile-open");
+            const triggerBtn = document.querySelector(".th-mobile-menu-trigger span");
+            if (triggerBtn) triggerBtn.innerText = "Show Navigation Menu";
+        }
+    }
+});
 </script>
 
 <script>
