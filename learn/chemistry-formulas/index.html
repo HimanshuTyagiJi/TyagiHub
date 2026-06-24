@@ -3,6 +3,8 @@ layout: default
 section: learn
 learn_type: formula
 permalink: /learn/chemistry-formulas/
+language_switch: false
+lang_toggle: false
 ---
 
 <style>
@@ -216,7 +218,7 @@ permalink: /learn/chemistry-formulas/
     }
 
     /* ========================================================
-       5. MEDIA QUERIES & STRICT DRAWER INTERACTION RULES
+       5. RESPONSIVE MEDIA BREAKPOINTS
        ======================================================== */
     @media (max-width: 1024px) {
         .tyagihub-main-layout {
@@ -267,11 +269,12 @@ permalink: /learn/chemistry-formulas/
     }
 
     /* ========================================================
-       6. STENCH-FREE BRANDED PRINT SETUP (HEADER-FOOTER REMOVED)
+       6. PRODUCTION-GRADE HIGH-PRIORITY PRINT STYLING
        ======================================================== */
     @media print {
+        /* Kill all peripheral containers, including standard header/footer selectors */
         nav, footer, .th-left-col-wrapper, .th-right-sidebar, #table-search-input, 
-        .th-action-bar, .th-load-more-container, header, .header, .top-nav {
+        .th-action-bar, .th-load-more-container, header, .header, .top-nav, .lang-switcher, #google_translate_element {
             display: none !important;
         }
 
@@ -299,25 +302,27 @@ permalink: /learn/chemistry-formulas/
             min-width: 100% !important;
         }
 
-        /* Show ALL hidden entries during PDF export */
+        /* Forces layout engine to extract full row objects */
         #myTable tbody tr {
             display: table-row !important;
         }
 
-        /* STRICT CENTRIC WATERMARK FOR TYAGIHUB.AVIF BRANDING */
+        /* INJECT CENTRIC STRICT WATERMARK IN PRINT LAYOUT */
         body::before {
             content: "";
             position: fixed;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%) rotate(-30deg);
-            width: 350px;
-            height: 350px;
-            background-image: url('/assets/images/tyagihub.avif') !important;
+            width: 400px;
+            height: 400px;
+            background-image: url('https://tyagihub.in/assets/images/tyagihub.avif') !important;
             background-size: contain;
             background-repeat: no-repeat;
             background-position: center;
-            opacity: 0.08 !important; /* Premium clean opacity blur shadow */
+            opacity: 0.08 !important;
+            -webkit-print-color-adjust: exact !important; /* Forces color rendering inside printers */
+            print-color-adjust: exact !important;
             z-index: -9999;
             pointer-events: none;
         }
@@ -343,7 +348,7 @@ permalink: /learn/chemistry-formulas/
 
         <div class="th-action-bar">
             <input type="text" id="table-search-input" placeholder="Type to search formulas..." />
-            <button class="th-print-btn" onclick="window.print()">
+            <button class="th-print-btn" onclick="triggerPrintWithFullSNo()">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align: middle; margin-right: 4px;"><path d="M6 9V2h12v7M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><path d="M6 14h12v8H6z"/></svg>
                 Print / PDF
             </button>
@@ -436,14 +441,9 @@ document.addEventListener("DOMContentLoaded", function () {
                 currentVisibleCount = 100;
                 renderRowsPagination();
             }
-            updateSerialNumbers();
+            updateSerialNumbers(false); // standard UI mode indexing
         });
     }
-
-    // Dynamic S.No compilation right before trigger layout processes printing sheets
-    window.addEventListener("beforeprint", function() {
-        updateSerialNumbers();
-    });
 });
 
 function renderRowsPagination() {
@@ -464,7 +464,7 @@ function renderRowsPagination() {
     } else {
         if(loadMoreWrapper) loadMoreWrapper.style.display = "block";
     }
-    updateSerialNumbers();
+    updateSerialNumbers(false);
 }
 
 function showNextBatch() {
@@ -472,17 +472,25 @@ function showNextBatch() {
     renderRowsPagination();
 }
 
-function updateSerialNumbers() {
+// Master Indexing System: forceAll prints continuous sequence till 450+ bypassing viewport limits
+function updateSerialNumbers(forceAll = false) {
     const rows = document.querySelectorAll("#myTable tbody .searchable-row");
     let currentIdx = 1;
     rows.forEach(row => {
-        // In print mode, all rows become visible, so count everything perfectly
-        if (row.style.display !== "none") {
+        if (forceAll || row.style.display !== "none") {
             if (row.cells[0]) {
                 row.cells[0].innerText = currentIdx + ".";
                 currentIdx++;
             }
         }
     });
+}
+
+// Intercepts print command, expands indexes fully across all 450+ items, then launches layout prompt
+function triggerPrintWithFullSNo() {
+    updateSerialNumbers(true); // Forced full re-indexing routine execution
+    setTimeout(function() {
+        window.print();
+    }, 50);
 }
 </script>
