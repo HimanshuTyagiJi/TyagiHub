@@ -32,7 +32,7 @@ lang_toggle: false
        2. DESKTOP SIDEBAR CONFIGURATION
        ======================================================== */
     .th-left-sidebar {
-        background: #ffffff; /* Default Solid Background to prevent transparency bleed */
+        background: #ffffff;
         border: 1px solid rgba(128, 128, 128, 0.15);
         border-radius: 12px;
         padding: 16px 12px;
@@ -44,7 +44,6 @@ lang_toggle: false
         z-index: 1000;
     }
 
-    /* Dark theme safety fallbacks */
     [data-theme="dark"] .th-left-sidebar {
         background: #1e1e1e;
     }
@@ -100,7 +99,7 @@ lang_toggle: false
     }
 
     /* ========================================================
-       3. MOBILE TRIGGER BAR & FULL LEFT SIDE OVERLAY DRAWER
+       3. MOBILE TRIGGER BAR & COMPACT DRAWER
        ======================================================== */
     .th-mobile-menu-trigger {
         display: none;
@@ -115,18 +114,6 @@ lang_toggle: false
         cursor: pointer;
         margin-top: 62px;
         text-align: left;
-    }
-
-    .sidebar-overlay {
-        display: none;
-        position: fixed;
-        inset: 0;
-        background: rgba(0, 0, 0, 0.5);
-        z-index: 1002; 
-        transition: opacity 0.3s ease;
-    }
-    .sidebar-overlay.active {
-        display: block;
     }
 
     /* ========================================================
@@ -264,7 +251,7 @@ lang_toggle: false
             display: block;
         }
 
-        /* HARDCORE FIXED OPAQUE OVERLAY SIDEBAR DRAWER */
+        /* OVERLAY SHADE REMOVED COMPLETELY - PURE SMOOTH DRAWER */
         .th-left-sidebar {
             position: fixed;
             top: 0;
@@ -279,8 +266,6 @@ lang_toggle: false
             box-shadow: 6px 0 24px rgba(0,0,0,0.3);
             transition: left 0.3s cubic-bezier(0.16, 1, 0.3, 1);
             padding-top: 24px;
-            
-            /* FORCE 100% OPAQUE COLOR TO STOP TRANSPARENCY BLEEDING */
             background: #ffffff !important; 
         }
 
@@ -361,8 +346,6 @@ lang_toggle: false
     }
 </style>
 
-<div class="sidebar-overlay" id="sidebarOverlay" onclick="toggleMobileSidebar()"></div>
-
 <div class="tyagihub-main-layout">
 
     <div class="th-left-col-wrapper">
@@ -431,11 +414,9 @@ lang_toggle: false
 <script>
 function toggleMobileSidebar() {
     const sidebar = document.querySelector(".th-left-sidebar");
-    const overlay = document.getElementById("sidebarOverlay");
     const triggerBtn = document.querySelector(".th-mobile-menu-trigger span");
     if (sidebar) {
         sidebar.classList.toggle("mobile-open");
-        overlay.classList.toggle("active");
         if (sidebar.classList.contains("mobile-open")) {
             triggerBtn.innerText = "Hide Navigation Menu";
         } else {
