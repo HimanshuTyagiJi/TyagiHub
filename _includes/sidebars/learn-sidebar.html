@@ -52,7 +52,7 @@
       <span class="th-widget-header-icon">📱</span>
       <h3 class="th-widget-main-heading">Connect with Hub</h3>
     </div>
-    <p class="th-widget-card-paragraph" style="margin-bottom: 12px;">Join our primary networks for real-time cyber protection tips, study hacks, and instantaneous tool releases.</p>
+    <p class="th-widget-card-paragraph" style="margin-bottom: 12px;">Join our networks for safe digital tips, study resources, and platform code updates.</p>
     
     <div class="th-social-icons-wrapper">
       <a href="https://t.me/your_telegram_channel" class="th-social-icon-btn telegram-btn" target="_blank" aria-label="Telegram">
@@ -66,41 +66,29 @@
       </a>
     </div>
   </div>
-
 </aside>
 
 <style>
   .th-right-sidebar-engine {
     display: flex;
     flex-direction: column;
-    gap: 14px;position:fixed;
+    gap: 14px;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   }
-
   .th-premium-widget-card {
     background: var(--bg-3, rgba(128, 128, 128, 0.04));
     border: 1px solid rgba(128, 128, 128, 0.15);
     border-radius: 10px;
     padding: 14px;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.01);
-    transition: border-color 0.2s ease, box-shadow 0.2s ease;
   }
-
-  .th-premium-widget-card:hover {
-    border-color: rgba(30, 111, 217, 0.25);
-    box-shadow: 0 4px 12px rgba(30, 111, 217, 0.05);
-  }
-
   .th-premium-widget-card.workflow-highlight {
     background: linear-gradient(180deg, rgba(30, 111, 217, 0.03), transparent);
     border-color: rgba(30, 111, 217, 0.18);
   }
-
   .th-premium-widget-card.community-box {
     background: linear-gradient(180deg, rgba(46, 125, 50, 0.02), transparent);
     border-color: rgba(46, 125, 50, 0.15);
   }
-
   .th-widget-header-row {
     display: flex;
     align-items: center;
@@ -109,33 +97,23 @@
     border-bottom: 1px solid rgba(128, 128, 128, 0.1);
     padding-bottom: 6px;
   }
-
-  .th-widget-header-icon {
-    font-size: 0.95rem;
-  }
-
   .th-widget-main-heading {
     font-size: 0.82rem;
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.5px;
     margin: 0;
-    opacity: 0.85;
   }
-
   .th-widget-card-paragraph {
     font-size: 0.82rem;
     line-height: 1.45;
     margin: 0 0 12px 0;
-    opacity: 0.8;
   }
-
   .th-widget-link-grid {
     display: flex;
     flex-direction: column;
     gap: 6px;
   }
-
   .th-widget-action-link {
     text-decoration: none;
     color: inherit;
@@ -144,44 +122,25 @@
     border-radius: 6px;
     background: rgba(128, 128, 128, 0.02);
     border: 1px solid transparent;
-    transition: all 0.15s ease;
   }
-
   .th-widget-action-link:hover {
     background: rgba(30, 111, 217, 0.06);
     border-color: rgba(30, 111, 217, 0.15);
-    transform: translateX(2px);
   }
-
   .th-link-flex {
     display: flex;
     align-items: flex-start;
     gap: 10px;
   }
-
-  .th-link-emoji {
-    font-size: 1.05rem;
-    margin-top: 1px;
-  }
-
-  .th-link-text-block {
-    display: flex;
-    flex-direction: column;
-  }
-
   .th-link-main-title {
     font-size: 0.84rem;
     font-weight: 600;
-    line-height: 1.3;
   }
-
   .th-link-sub-desc {
     font-size: 0.74rem;
     opacity: 0.65;
     margin-top: 2px;
-    line-height: 1.2;
   }
-
   .th-premium-console-btn {
     display: block;
     text-align: center;
@@ -194,22 +153,12 @@
     font-weight: 600;
     text-decoration: none;
     border-radius: 5px;
-    box-shadow: 0 2px 6px rgba(30, 111, 217, 0.15);
-    transition: background 0.15s ease, transform 0.1s ease;
   }
-
-  .th-premium-console-btn:hover {
-    background: #1552a0;
-    transform: translateY(-0.5px);
-  }
-
   .th-social-icons-wrapper {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 8px;
-    margin-top: 10px;
   }
-
   .th-social-icon-btn {
     display: flex;
     align-items: center;
@@ -218,39 +167,8 @@
     border-radius: 6px;
     color: #ffffff !important;
     text-decoration: none;
-    transition: opacity 0.2s ease, transform 0.1s ease;
   }
-
-  .th-social-icon-btn:hover {
-    opacity: 0.9;
-    transform: translateY(-1px);
-  }
-
-  /* Solid Brand Color Definitions */
   .telegram-btn  { background: #0088cc; }
-  .instagram-btn { background: #e1306c; } /* Crisp Instagram Pink/Red brand color */
+  .instagram-btn { background: #e1306c; }
   .youtube-btn   { background: #ff0000; }
-
-  @media (max-width: 768px) {
-    .th-left-sidebar {
-      background: #ffffff !important;
-    }
-    [data-theme="dark"] .th-left-sidebar {
-      background: #1c1c1e !important;
-    }
-  }  @media (max-width: 768px) {
-      
-       
-      
-
-        /* 100% FIXED: MOBILE VISIBILITY RE-ENGAGED AT THE BOTTOM */
-        aside.th-right-sidebar { 
-            display: block !important; /* Forces element to stay alive on mobile */
-            width: 100% !important;
-            order: 3; /* Places it securely at the very bottom beneath the center main table */
-            margin-top: 20px;
-        }
-
-      
-    }
 </style>
