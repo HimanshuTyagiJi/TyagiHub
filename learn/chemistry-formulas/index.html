@@ -35,7 +35,7 @@ lang_toggle: false
         background: rgba(128, 128, 128, 0.04);
         border: 1px solid rgba(128, 128, 128, 0.15);
         border-radius: 12px;
-        padding: 20px 15px;
+        padding: 16px 12px; /* Thoda padding kam kiya space ke liye */
         position: fixed;
         width: 250px;
         max-height: calc(100vh - 40px);
@@ -58,9 +58,9 @@ lang_toggle: false
 
     .th-sidebar-title {
         font-family: 'Baloo 2', sans-serif;
-        font-size: 1.2rem;
+        font-size: 1.1rem; /* Bada font kam kiya (1.2rem -> 1.1rem) */
         font-weight: 700;
-        margin-bottom: 18px;
+        margin-bottom: 14px;
         border-bottom: 2px solid rgba(128, 128, 128, 0.15);
         padding-bottom: 6px;
     }
@@ -71,22 +71,22 @@ lang_toggle: false
         margin: 0;
     }
     .th-left-nav li {
-        margin-bottom: 8px;
+        margin-bottom: 6px;
     }
     .th-left-nav a {
         display: block;
-        padding: 10px 16px;
+        padding: 8px 14px; /* Link spacing tight ki */
         color: inherit;
         text-decoration: none;
         border-radius: 8px;
-        font-size: 0.98rem;
-        line-height: 1.5;
+        font-size: 0.92rem; /* Navigation font size kam kiya (0.98rem -> 0.92rem) */
+        line-height: 1.4;
         font-weight: 500;
         transition: all 0.2s ease;
     }
     .th-left-nav a:hover {
         background: rgba(128, 128, 128, 0.12);
-        padding-left: 20px;
+        padding-left: 18px;
     }
     .th-left-nav a.active {
         background: #1e6fd9 !important;
@@ -105,10 +105,10 @@ lang_toggle: false
         border: none;
         border-radius: 8px;
         font-family: 'Hind', sans-serif;
-        font-size: 1rem;
+        font-size: 0.95rem;
         font-weight: 600;
         cursor: pointer;
-        margin-top: 62px; /* Kept exact 62px spacing alignment as user setup */
+        margin-top: 62px;
         text-align: left;
     }
 
@@ -117,7 +117,7 @@ lang_toggle: false
         position: fixed;
         inset: 0;
         background: rgba(0, 0, 0, 0.4);
-        z-index: 998;
+        z-index: 1002; /* Sidebar ke theek upar taaki pure content ko block kare */
         transition: opacity 0.3s ease;
     }
     .sidebar-overlay.active {
@@ -143,25 +143,27 @@ lang_toggle: false
     #table-search-input {
         flex: 1;
         width: 100%;
-        padding: 12px;
+        padding: 10px 12px;
         margin-bottom: 0;
         border-radius: 6px;
         border: 1px solid rgba(128, 128, 128, 0.3);
         background: transparent;
         color: inherit;
+        font-size: 0.92rem;
     }
 
     .th-print-btn {
         display: inline-flex;
         align-items: center;
         gap: 8px;
-        padding: 12px 20px;
+        padding: 10px 16px;
         background: #2e7d32;
         color: #ffffff;
         border: none;
         border-radius: 6px;
         font-weight: 600;
         font-family: 'Hind', sans-serif;
+        font-size: 0.92rem;
         cursor: pointer;
         transition: background 0.2s;
     }
@@ -185,9 +187,20 @@ lang_toggle: false
         border-collapse: collapse;
         min-width: 600px;
     }
-    .table-container th, .table-container td {
+    
+    /* Sleek Table Font Size Adjustments */
+    .table-container th {
+        background: rgba(128, 128, 128, 0.06);
+        font-size: 0.92rem; /* Headings thoda compact */
+        font-weight: 700;
         border: 1px solid rgba(128, 128, 128, 0.2);
-        padding: 12px;
+        padding: 10px 12px;
+    }
+    
+    .table-container td {
+        border: 1px solid rgba(128, 128, 128, 0.2);
+        padding: 10px 12px;
+        font-size: 0.9rem; /* Data rows ka font size compact kiya */
     }
 
     /* Zebra Striping Engine: Alternate row color */
@@ -204,13 +217,14 @@ lang_toggle: false
         margin: 25px 0;
     }
     .th-load-more-btn {
-        padding: 12px 32px;
+        padding: 10px 28px;
         background: #1e6fd9;
         color: #ffffff;
         border: none;
         border-radius: 25px;
         font-weight: 600;
         font-family: 'Hind', sans-serif;
+        font-size: 0.92rem;
         cursor: pointer;
         box-shadow: 0 4px 12px rgba(30, 111, 217, 0.2);
         transition: all 0.2s;
@@ -240,7 +254,7 @@ lang_toggle: false
     @media (max-width: 768px) {
         .tyagihub-main-layout {
             grid-template-columns: 1fr;
-            margin: 62px auto; /* Locked 62px layout gap consistency */
+            margin: 62px auto;
         }
         .th-left-col-wrapper {
             position: static;
@@ -253,11 +267,11 @@ lang_toggle: false
         .th-left-sidebar {
             position: fixed;
             top: 0;
-            left: -320px; /* Secure default structural hidden state */
+            left: -320px;
             width: 300px;
             height: 100vh;
             max-height: 100vh;
-            z-index: 1001;
+            z-index: 1003; /* Overlay ke upar taaki link click ho sakein */
             background: var(--bg-surface, #ffffff);
             border: none;
             border-right: 1px solid rgba(128, 128, 128, 0.2);
@@ -266,7 +280,6 @@ lang_toggle: false
             transition: left 0.3s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
-        /* Runtime Slide Open Class rule overrides */
         .th-left-sidebar.mobile-open {
             left: 0 !important;
             display: block !important;
@@ -415,6 +428,7 @@ lang_toggle: false
 </div>
 
 <script>
+// Mobile Sidebar Close Engine via Overlay Click Bound Context
 function toggleMobileSidebar() {
     const sidebar = document.querySelector(".th-left-sidebar");
     const overlay = document.getElementById("sidebarOverlay");
