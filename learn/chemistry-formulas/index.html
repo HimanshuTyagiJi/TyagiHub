@@ -32,7 +32,7 @@ lang_toggle: false
        2. DESKTOP SIDEBAR CONFIGURATION
        ======================================================== */
     .th-left-sidebar {
-        background: rgba(128, 128, 128, 0.04);
+        background: #ffffff; /* Default Solid Background to prevent transparency bleed */
         border: 1px solid rgba(128, 128, 128, 0.15);
         border-radius: 12px;
         padding: 16px 12px;
@@ -42,6 +42,11 @@ lang_toggle: false
         overflow-y: auto;
         scrollbar-width: thin !important;
         z-index: 1000;
+    }
+
+    /* Dark theme safety fallbacks */
+    [data-theme="dark"] .th-left-sidebar {
+        background: #1e1e1e;
     }
 
     .th-left-sidebar::-webkit-scrollbar {
@@ -117,7 +122,7 @@ lang_toggle: false
         position: fixed;
         inset: 0;
         background: rgba(0, 0, 0, 0.5);
-        z-index: 1002; /* Kept behind drawer but over body content */
+        z-index: 1002; 
         transition: opacity 0.3s ease;
     }
     .sidebar-overlay.active {
@@ -197,7 +202,7 @@ lang_toggle: false
     .table-container td {
         border: 1px solid rgba(128, 128, 128, 0.2);
         padding: 10px 12px;
-        font-size: 0.9rem; /* Perfectly optimized smaller font size */
+        font-size: 0.9rem;
     }
 
     #myTable tbody tr:nth-child(even) {
@@ -259,35 +264,33 @@ lang_toggle: false
             display: block;
         }
 
-        /* STRICT LEFT HAND OVERLAY SIDEBAR DRAWER */
+        /* HARDCORE FIXED OPAQUE OVERLAY SIDEBAR DRAWER */
         .th-left-sidebar {
             position: fixed;
             top: 0;
-            left: -320px; /* Hidden standard structural layout offset state */
+            left: -320px; 
             width: 280px;
             height: 100vh;
             max-height: 100vh;
-            z-index: 1003; /* Kept perfectly in front of everything on left side */
-            background: var(--bg-surface, #ffffff);
+            z-index: 1003; 
             border: none;
             border-right: 1px solid rgba(128, 128, 128, 0.2);
             border-radius: 0 12px 12px 0;
-            box-shadow: 4px 0 24px rgba(0,0,0,0.2);
+            box-shadow: 6px 0 24px rgba(0,0,0,0.3);
             transition: left 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-            padding-top: 20px;
+            padding-top: 24px;
+            
+            /* FORCE 100% OPAQUE COLOR TO STOP TRANSPARENCY BLEEDING */
+            background: #ffffff !important; 
         }
 
-        /* Slide right into active view area over the left screen */
         .th-left-sidebar.mobile-open {
             left: 0 !important;
             display: block !important;
         }
         
         [data-theme="dark"] .th-left-sidebar {
-            background: #121212 !important;
-        }
-        [data-theme="light"] .th-left-sidebar {
-            background: #ffffff !important;
+            background: #1c1c1e !important;
         }
     }
 
@@ -358,7 +361,6 @@ lang_toggle: false
     }
 </style>
 
-<!-- Backdrop overlay (Triggers toggle closing flow context on clicking out) -->
 <div class="sidebar-overlay" id="sidebarOverlay" onclick="toggleMobileSidebar()"></div>
 
 <div class="tyagihub-main-layout">
@@ -427,7 +429,6 @@ lang_toggle: false
 </div>
 
 <script>
-// Mobile Sidebar Toggling and Left Overlay State Controller
 function toggleMobileSidebar() {
     const sidebar = document.querySelector(".th-left-sidebar");
     const overlay = document.getElementById("sidebarOverlay");
