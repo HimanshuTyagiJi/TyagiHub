@@ -9,7 +9,7 @@ lang_toggle: false
 
 <style>
     /* ========================================================
-       1. CORE RESPONSIVE GRID LAYOUT
+       1. CORE RESPONSIVE GRID LAYOUT (DESKTOP)
        ======================================================== */
     .tyagihub-main-layout {
         display: grid;
@@ -29,19 +29,19 @@ lang_toggle: false
     }
 
     /* ========================================================
-       2. DESKTOP SIDEBAR CONFIGURATION
+       2. DESKTOP LEFT SIDEBAR CONFIGURATION
        ======================================================== */
     .th-left-sidebar {
-        
+        background: #ffffff;
         border: 1px solid rgba(128, 128, 128, 0.15);
         border-radius: 12px;
         padding: 16px 12px;
         position: fixed;
-        left:0;
+        width: 250px;
         max-height: calc(100vh - 40px);
         overflow-y: auto;
         scrollbar-width: thin !important;
-        z-index: 1004; /* Forced layer above standard contents */
+        z-index: 1004;
     }
 
     [data-theme="dark"] .th-left-sidebar {
@@ -99,7 +99,7 @@ lang_toggle: false
     }
 
     /* ========================================================
-       3. MOBILE TRIGGER BAR & DRAWER OVERRIDES
+       3. MOBILE TRIGGER BAR
        ======================================================== */
     .th-mobile-menu-trigger {
         display: none;
@@ -112,12 +112,12 @@ lang_toggle: false
         font-size: 0.95rem;
         font-weight: 600;
         cursor: pointer;
-        position:fixed;
+        margin-top: 62px;
         text-align: left;
     }
 
     /* ========================================================
-       4. CENTER CORE SYSTEM & COMPACT TABLE FONTS
+       4. CENTER CONTENT & COMPACT TABLE FONTS
        ======================================================== */
     .th-center-content {
         min-width: 0;
@@ -223,37 +223,63 @@ lang_toggle: false
     }
 
     /* ========================================================
-       5. DYNAMIC PRINT WATERMARK SYSTEM
+       5. RIGHT SIDEBAR WRAPPER (DESKTOP TARGET)
        ======================================================== */
+    .th-right-sidebar-wrapper {
+        display: block;
+    }
+
     .th-print-watermark {
         display: none;
     }
 
     /* ========================================================
-       6. RESPONSIVE MEDIA BREAKPOINTS
+       6. RESPONSIVE LAYOUT ENGINE (BREAKPOINTS)
        ======================================================== */
     @media (max-width: 1024px) {
         .tyagihub-main-layout {
             grid-template-columns: 260px 1fr;
         }
-        .th-right-sidebar { display: none; }
+        .th-right-sidebar-wrapper { display: none; }
     }
 
     @media (max-width: 768px) {
+        /* HARD OVERRIDE TO CONVERT GRID TO A VERTICAL PILE HOLE FLOW */
         .tyagihub-main-layout {
-            grid-template-columns: 1fr;
+            display: flex !important;
+            flex-direction: column !important;
             margin: 62px auto;
+            gap: 20px;
         }
+        
         .th-left-col-wrapper {
             position: static;
+            width: 100%;
+            order: 1; /* Trigger menu at top view bounds */
         }
+        
         .th-mobile-menu-trigger {
             display: block;
+            width: 100%;
         }
 
+        main.th-center-content {
+            width: 100%;
+            order: 2; /* Main formulas list goes middle stack */
+        }
+
+        /* FORCE 100% VISIBILITY AT THE BOTTOM ON MOBILE SHEETS */
+        .th-right-sidebar-wrapper { 
+            display: block !important; 
+            width: 100% !important;
+            order: 3; /* Locks down safely at the bottom under table content! */
+            margin-top: 20px;
+        }
+
+        /* Pure Opaque Closed-by-Default Left Menu Drawer context */
         .th-left-sidebar {
             position: fixed;
-            
+            top: 0;
             left: -320px; 
             width: 280px;
             height: 100vh;
@@ -279,10 +305,10 @@ lang_toggle: false
     }
 
     /* ========================================================
-       7. PRODUCTION-GRADE HIGH-PRIORITY PRINT STYLING
+       7. HIGH-PRIORITY PRINT OVERRIDES
        ======================================================== */
     @media print {
-        nav, footer, .th-left-col-wrapper, .th-right-sidebar, #table-search-input, 
+        nav, footer, .th-left-col-wrapper, .th-right-sidebar-wrapper, #table-search-input, 
         .th-action-bar, .th-load-more-container, header, .header, .top-nav, .lang-switcher, #google_translate_element {
             display: none !important;
         }
@@ -399,7 +425,7 @@ lang_toggle: false
         </div>
     </main>
 
-    <aside class="th-right-sidebar">
+    <aside class="th-right-sidebar-wrapper">
         {% case page.section %}
           {% when "learn" %}
             {% include sidebars/learn-sidebar.html %}
@@ -411,7 +437,6 @@ lang_toggle: false
 </div>
 
 <script>
-// Toggle Function with event propagation stop rule
 function toggleMobileSidebar(event) {
     if(event) event.stopPropagation(); 
     const sidebar = document.querySelector(".th-left-sidebar");
@@ -426,14 +451,11 @@ function toggleMobileSidebar(event) {
     }
 }
 
-// PURE DYNAMIC OUTSIDE CLICK ENGINE DETECTOR 
 document.addEventListener("click", function (event) {
     const sidebar = document.querySelector(".th-left-sidebar");
     const menuTrigger = document.querySelector(".th-mobile-menu-trigger");
     
-    // Check validation states context safely
     if (sidebar && sidebar.classList.contains("mobile-open")) {
-        // If click targeting area resides completely outside sidebar layout bounds
         if (!sidebar.contains(event.target) && (!menuTrigger || !menuTrigger.contains(event.target))) {
             sidebar.classList.remove("mobile-open");
             const triggerBtn = document.querySelector(".th-mobile-menu-trigger span");
