@@ -177,6 +177,16 @@ permalink: /learn/chemistry-formulas/
             background: #ffffff !important;
         }
     }
+    /* Zebra Striping: Har ek row ko skip karke soft dynamic color dega */
+#myTable tbody tr:nth-child(even) {
+    background: rgba(128, 128, 128, 0.04) !important;
+}
+
+/* Hover karne par row highlight hogi */
+#myTable tbody tr:hover {
+    background: rgba(30, 111, 217, 0.08) !important; /* Soft TyagiHub Blue on hover */
+    transition: background 0.15s ease;
+}
 </style>
 
 <div class="tyagihub-main-layout">
