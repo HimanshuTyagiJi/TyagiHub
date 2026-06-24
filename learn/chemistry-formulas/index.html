@@ -36,6 +36,19 @@ permalink: /learn/chemistry-formulas/
         scrollbar-width: thin !important;
     }
 
+    /* Sleek Webkit Scrollbar for Sidebar Inner Scroll */
+    .th-left-sidebar::-webkit-scrollbar {
+        width: 4px !important;
+        height: 4px !important;
+    }
+    .th-left-sidebar::-webkit-scrollbar-track {
+        background: transparent !important;
+    }
+    .th-left-sidebar::-webkit-scrollbar-thumb {
+        background: rgba(128, 128, 128, 0.2) !important;
+        border-radius: 10px !important;
+    }
+
     .th-sidebar-title {
         font-family: 'Baloo 2', sans-serif;
         font-size: 1.2rem;
@@ -77,8 +90,7 @@ permalink: /learn/chemistry-formulas/
     /* MOBILE TOGGLE TRIGGER BAR */
     .th-mobile-menu-trigger {
         display: none; /* Hidden on Desktop */
-        
-        padding: 5px 5px;
+        padding: 10px 15px;
         background: #1e6fd9;
         color: #ffffff;
         border: none;
@@ -108,22 +120,85 @@ permalink: /learn/chemistry-formulas/
     .th-center-content {
         min-width: 0;
     }
+
+    /* Top Action Bar Structure */
+    .th-action-bar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 20px;
+        gap: 15px;
+    }
+
     #table-search-input {
+        flex: 1;
         width: 100%;
         padding: 12px;
-        margin-bottom: 20px;
+        margin-bottom: 0;
         border-radius: 6px;
         border: 1px solid rgba(128, 128, 128, 0.3);
         background: transparent;
         color: inherit;
     }
+
+    .th-print-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 12px 20px;
+        background: #2e7d32;
+        color: #ffffff;
+        border: none;
+        border-radius: 6px;
+        font-weight: 600;
+        font-family: 'Hind', sans-serif;
+        cursor: pointer;
+        transition: background 0.2s;
+    }
+    .th-print-btn:hover {
+        background: #1b5e20;
+    }
+
+    /* Horizontal Table Overflow Scroll Wrapper */
+    .th-table-wrapper {
+        width: 100%;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        margin-bottom: 20px;
+        border: 1px solid rgba(128, 128, 128, 0.15);
+        border-radius: 8px;
+    }
+
     .table-container table {
         width: 100%;
         border-collapse: collapse;
+        min-width: 600px; /* Protects layout on narrow mobile displays */
     }
     .table-container th, .table-container td {
         border: 1px solid rgba(128, 128, 128, 0.2);
         padding: 12px;
+    }
+
+    /* Pagination Controller Styles */
+    .th-load-more-container {
+        text-align: center;
+        margin: 25px 0;
+    }
+    .th-load-more-btn {
+        padding: 12px 32px;
+        background: #1e6fd9;
+        color: #ffffff;
+        border: none;
+        border-radius: 25px;
+        font-weight: 600;
+        font-family: 'Hind', sans-serif;
+        cursor: pointer;
+        box-shadow: 0 4px 12px rgba(30, 111, 217, 0.2);
+        transition: all 0.2s;
+    }
+    .th-load-more-btn:hover {
+        background: #1552a0;
+        transform: translateY(-1px);
     }
 
     /* RESPONSIVE MEDIA BREAKPOINTS */
@@ -137,6 +212,7 @@ permalink: /learn/chemistry-formulas/
     @media (max-width: 768px) {
         .tyagihub-main-layout {
             grid-template-columns: 1fr;
+            margin-top: 20px;
         }
         .th-left-col-wrapper {
             position: static;
@@ -177,17 +253,60 @@ permalink: /learn/chemistry-formulas/
             background: #ffffff !important;
         }
     }
-    /* Zebra Striping: Har ek row ko skip karke soft dynamic color dega */
-#myTable tbody tr:nth-child(even) {
-    background: var(--bg-3);
-}
 
-/* Hover karne par row highlight hogi */
-#myTable tbody tr:hover {
-    background: rgba(30, 111, 217, 0.08) !important; /* Soft TyagiHub Blue on hover */
-    transition: background 0.15s ease;
-}
+    /* Zebra Striping: Har ek row ko skip karke soft dynamic color dega */
+    #myTable tbody tr:nth-child(even) {
+        background: var(--bg-3, rgba(128, 128, 128, 0.04));
+    }
+
+    /* Hover karne par row highlight hogi */
+    #myTable tbody tr:hover {
+        background: rgba(30, 111, 217, 0.08) !important; /* Soft TyagiHub Blue on hover */
+        transition: background 0.15s ease;
+    }
+
+    /* MASTER PRINT & LOGO WATERMARK SETUPS */
+    @media print {
+        nav, footer, .th-left-col-wrapper, .th-right-sidebar, #table-search-input, .th-action-bar, .th-load-more-container {
+            display: none !important;
+        }
+        body, .tyagihub-main-layout, .th-center-content {
+            margin: 0 !important;
+            padding: 0 !important;
+            background: #ffffff !important;
+            color: #000000 !important;
+        }
+        .th-table-wrapper {
+            overflow: visible !important;
+            border: none !important;
+        }
+        #myTable {
+            width: 100% !important;
+            min-width: 100% !important;
+        }
+        #myTable tbody tr {
+            display: table-row !important; /* Forced open all entries on print extraction */
+        }
+        body::before {
+            content: "";
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotate(-30deg);
+            width: 400px;
+            height: 400px;
+            background-image: url('/assets/images/logo.png'); /* Dynamic site logo asset watermark */
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            opacity: 0.07 !important;
+            z-index: -9999;
+            pointer-events: none;
+        }
+    }
 </style>
+
+<div class="sidebar-overlay" id="sidebarOverlay" onclick="toggleMobileSidebar()"></div>
 
 <div class="tyagihub-main-layout">
 
@@ -204,9 +323,15 @@ permalink: /learn/chemistry-formulas/
             <p>Class 9th to 12th Complete Chemical Formulas</p>
         </div>
 
-        <input type="text" id="table-search-input" placeholder="Type to search formulas..." />
+        <div class="th-action-bar">
+            <input type="text" id="table-search-input" placeholder="Type to search formulas..." />
+            <button class="th-print-btn" onclick="window.print()">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align: middle; margin-right: 4px;"><path d="M6 9V2h12v7M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><path d="M6 14h12v8H6z"/></svg>
+                Print / PDF
+            </button>
+        </div>
 
-        <div class="table-container stacked-on-mobile">
+        <div class="th-table-wrapper table-container">
             <table id="myTable">
                 <thead>
                     <tr>
@@ -219,13 +344,18 @@ permalink: /learn/chemistry-formulas/
                 <tbody>
                     {% for compound in site.data.chemistry_compounds %}
                     <tr class="searchable-row">
-                        <td></td> <td>{{ compound.en_name }}</td>
+                        <td></td> 
+                        <td>{{ compound.en_name }}</td>
                         <td>{{ compound.formula }}</td>
                         <td>{{ compound.hi_name }}</td>
                     </tr>
                     {% endfor %}
                 </tbody>
             </table>
+        </div>
+
+        <div class="th-load-more-container" id="loadMoreWrapper">
+            <button class="th-load-more-btn" onclick="showNextBatch()">Show More (+100 Rows)</button>
         </div>
     </main>
 
@@ -241,11 +371,14 @@ permalink: /learn/chemistry-formulas/
 </div>
 
 <script>
+// Lateral Drawer Shift Controller Action
 function toggleMobileSidebar() {
     const sidebar = document.querySelector(".th-left-sidebar");
+    const overlay = document.getElementById("sidebarOverlay");
     const triggerBtn = document.querySelector(".th-mobile-menu-trigger span");
     if (sidebar) {
         sidebar.classList.toggle("mobile-open");
+        overlay.classList.toggle("active");
         if (sidebar.classList.contains("mobile-open")) {
             triggerBtn.innerText = "Hide Navigation Menu";
         } else {
@@ -256,40 +389,78 @@ function toggleMobileSidebar() {
 </script>
 
 <script>
+let currentVisibleCount = 100;
+const batchSize = 100;
+
 document.addEventListener("DOMContentLoaded", function () {
     const searchInput = document.getElementById("table-search-input");
     const tableBody = document.querySelector("#myTable tbody");
 
-    updateSerialNumbers();
+    // Initialize pagination render chunk bounds
+    renderRowsPagination();
 
     if (searchInput) {
         searchInput.addEventListener("input", function (e) {
             const query = e.target.value.toLowerCase().trim();
             const rows = tableBody.querySelectorAll(".searchable-row");
+            const loadMoreWrapper = document.getElementById("loadMoreWrapper");
 
-            rows.forEach(row => {
-                const text = row.innerText.toLowerCase();
-                if (text.includes(query)) {
-                    row.style.display = "";
-                } else {
-                    row.style.display = "none";
-                }
-            });
+            if (query !== "") {
+                loadMoreWrapper.style.display = "none"; // Hide button under query operations
+                rows.forEach(row => {
+                    const text = row.innerText.toLowerCase();
+                    if (text.includes(query)) {
+                        row.style.display = "";
+                    } else {
+                        row.style.display = "none";
+                    }
+                });
+            } else {
+                loadMoreWrapper.style.display = "block";
+                currentVisibleCount = 100;
+                renderRowsPagination();
+            }
             updateSerialNumbers();
         });
     }
-
-    function updateSerialNumbers() {
-        const rows = tableBody.querySelectorAll(".searchable-row");
-        let currentIdx = 1;
-        rows.forEach(row => {
-            if (row.style.display !== "none") {
-                if (row.cells[0]) {
-                    row.cells[0].innerText = currentIdx + ".";
-                    currentIdx++;
-                }
-            }
-        });
-    }
 });
+
+function renderRowsPagination() {
+    const rows = document.querySelectorAll("#myTable tbody .searchable-row");
+    const loadMoreWrapper = document.getElementById("loadMoreWrapper");
+    let totalRows = rows.length;
+
+    for (let i = 0; i < totalRows; i++) {
+        if (i < currentVisibleCount) {
+            rows[i].style.display = "";
+        } else {
+            rows[i].style.display = "none";
+        }
+    }
+
+    if (currentVisibleCount >= totalRows) {
+        if(loadMoreWrapper) loadMoreWrapper.style.display = "none";
+    } else {
+        if(loadMoreWrapper) loadMoreWrapper.style.display = "block";
+    }
+    updateSerialNumbers();
+}
+
+function showNextBatch() {
+    currentVisibleCount += batchSize;
+    renderRowsPagination();
+}
+
+function updateSerialNumbers() {
+    const rows = document.querySelectorAll("#myTable tbody .searchable-row");
+    let currentIdx = 1;
+    rows.forEach(row => {
+        if (row.style.display !== "none") {
+            if (row.cells[0]) {
+                row.cells[0].innerText = currentIdx + ".";
+                currentIdx++;
+            }
+        }
+    });
+}
 </script>
