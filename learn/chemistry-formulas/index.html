@@ -23,7 +23,7 @@ permalink: /learn/chemistry-formulas/
     .th-left-col-wrapper {
         position: sticky;
         top: 20px;
-        z-index: 1000; /* Restored classic z-index context */
+        z-index: 1000;
     }
 
     /* ========================================================
@@ -35,14 +35,13 @@ permalink: /learn/chemistry-formulas/
         border-radius: 12px;
         padding: 20px 15px;
         position: fixed;
-        width: 250px; /* Locked compact width */
+        width: 250px;
         max-height: calc(100vh - 40px);
         overflow-y: auto;
         scrollbar-width: thin !important;
         z-index: 1000;
     }
 
-    /* Strict Webkit target overrides for tiny scrollbar width */
     .th-left-sidebar::-webkit-scrollbar {
         width: 4px !important;
         height: 4px !important;
@@ -97,7 +96,7 @@ permalink: /learn/chemistry-formulas/
        3. MOBILE TRIGGER BAR & DRAW COMPONENT OVERRIDES
        ======================================================== */
     .th-mobile-menu-trigger {
-        display: none; /* Hidden on Desktop */
+        display: none;
         padding: 10px 15px;
         background: #1e6fd9;
         color: #ffffff;
@@ -167,7 +166,6 @@ permalink: /learn/chemistry-formulas/
         background: #1b5e20;
     }
 
-    /* Wrapper that handles horizontal overflow swipe safely on mobile */
     .th-table-wrapper {
         width: 100%;
         overflow-x: auto;
@@ -180,23 +178,22 @@ permalink: /learn/chemistry-formulas/
     .table-container table {
         width: 100%;
         border-collapse: collapse;
-        min-width: 600px; /* Retains inline properties safely without squishing content */
+        min-width: 600px;
     }
     .table-container th, .table-container td {
         border: 1px solid rgba(128, 128, 128, 0.2);
         padding: 12px;
     }
 
-    /* Stripe rows according to your custom bg-3 mapping token context */
+    /* Zebra Striping Engine: Pure clean alternate colors */
     #myTable tbody tr:nth-child(even) {
-        background: var(--bg-3, rgba(128, 128, 128, 0.04));
+        background: var(--bg-3, rgba(128, 128, 128, 0.04)) !important;
     }
     #myTable tbody tr:hover {
         background: rgba(30, 111, 217, 0.08) !important;
         transition: background 0.15s ease;
     }
 
-    /* Load more buttons interface elements */
     .th-load-more-container {
         text-align: center;
         margin: 25px 0;
@@ -247,7 +244,7 @@ permalink: /learn/chemistry-formulas/
             width: 300px;
             height: 100vh;
             max-height: 100vh;
-            z-index: 1001; /* Layered slightly above regular context */
+            z-index: 1001;
             background: var(--bg-surface, #ffffff);
             border: none;
             border-right: 1px solid rgba(128, 128, 128, 0.2);
@@ -270,10 +267,9 @@ permalink: /learn/chemistry-formulas/
     }
 
     /* ========================================================
-       6. PRODUCTION-GRADE CLEAN EXTRACTED PRINT AND PDF DESIGN
+       6. STENCH-FREE BRANDED PRINT SETUP (HEADER-FOOTER REMOVED)
        ======================================================== */
     @media print {
-        /* Completely strips out layout elements like buttons, sidebars, headers, footers */
         nav, footer, .th-left-col-wrapper, .th-right-sidebar, #table-search-input, 
         .th-action-bar, .th-load-more-container, header, .header, .top-nav {
             display: none !important;
@@ -303,25 +299,25 @@ permalink: /learn/chemistry-formulas/
             min-width: 100% !important;
         }
 
-        /* Displays all chunk elements during extraction */
+        /* Show ALL hidden entries during PDF export */
         #myTable tbody tr {
             display: table-row !important;
         }
 
-        /* STRICT CENTRIC WATERMARK FOR EXTRACTED BRANDING */
+        /* STRICT CENTRIC WATERMARK FOR TYAGIHUB.AVIF BRANDING */
         body::before {
             content: "";
             position: fixed;
             top: 50%;
             left: 50%;
-            transform: translate(-50%, -50%) rotate(-30deg); /* Absolute central alignment fixed */
+            transform: translate(-50%, -50%) rotate(-30deg);
             width: 350px;
             height: 350px;
-            background-image: url('/assets/images/tyagihub.avif'); /* Targeted local brand profile format */
+            background-image: url('/assets/images/tyagihub.avif') !important;
             background-size: contain;
             background-repeat: no-repeat;
             background-position: center;
-            opacity: 0.08 !important; /* Extremely soft visibility to secure text read-bounds */
+            opacity: 0.08 !important; /* Premium clean opacity blur shadow */
             z-index: -9999;
             pointer-events: none;
         }
@@ -393,7 +389,6 @@ permalink: /learn/chemistry-formulas/
 </div>
 
 <script>
-// Mobile Drawer Control Router
 function toggleMobileSidebar() {
     const sidebar = document.querySelector(".th-left-sidebar");
     const overlay = document.getElementById("sidebarOverlay");
@@ -418,7 +413,6 @@ document.addEventListener("DOMContentLoaded", function () {
     const searchInput = document.getElementById("table-search-input");
     const tableBody = document.querySelector("#myTable tbody");
 
-    // Initialize display pagination states on boot
     renderRowsPagination();
 
     if (searchInput) {
@@ -428,7 +422,7 @@ document.addEventListener("DOMContentLoaded", function () {
             const loadMoreWrapper = document.getElementById("loadMoreWrapper");
 
             if (query !== "") {
-                loadMoreWrapper.style.display = "none"; // Bypasses chunk bounds during queries
+                loadMoreWrapper.style.display = "none";
                 rows.forEach(row => {
                     const text = row.innerText.toLowerCase();
                     if (text.includes(query)) {
@@ -445,6 +439,11 @@ document.addEventListener("DOMContentLoaded", function () {
             updateSerialNumbers();
         });
     }
+
+    // Dynamic S.No compilation right before trigger layout processes printing sheets
+    window.addEventListener("beforeprint", function() {
+        updateSerialNumbers();
+    });
 });
 
 function renderRowsPagination() {
@@ -477,6 +476,7 @@ function updateSerialNumbers() {
     const rows = document.querySelectorAll("#myTable tbody .searchable-row");
     let currentIdx = 1;
     rows.forEach(row => {
+        // In print mode, all rows become visible, so count everything perfectly
         if (row.style.display !== "none") {
             if (row.cells[0]) {
                 row.cells[0].innerText = currentIdx + ".";
