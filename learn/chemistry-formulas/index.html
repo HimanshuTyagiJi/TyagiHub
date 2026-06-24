@@ -3,7 +3,7 @@ layout: default
 section: learn
 learn_type: formula
 permalink: /learn/chemistry-formulas/
-lang_switch: false
+language_switch: false
 lang_toggle: false
 ---
 
@@ -187,7 +187,7 @@ lang_toggle: false
         padding: 12px;
     }
 
-    /* Zebra Striping Engine: Pure clean alternate colors */
+    /* Zebra Striping Engine: Alternate row color screen mode ke liye */
     #myTable tbody tr:nth-child(even) {
         background: var(--bg-3, rgba(128, 128, 128, 0.04)) !important;
     }
@@ -269,10 +269,10 @@ lang_toggle: false
     }
 
     /* ========================================================
-       6. PRODUCTION-GRADE HIGH-PRIORITY PRINT STYLING
+       6. BULLETPROOF TEXT-BASED PRINT & WATERMARK SETUP
        ======================================================== */
     @media print {
-        /* Kill all peripheral containers, including standard header/footer selectors */
+        /* Faltu elements gayab */
         nav, footer, .th-left-col-wrapper, .th-right-sidebar, #table-search-input, 
         .th-action-bar, .th-load-more-container, header, .header, .top-nav, .lang-switcher, #google_translate_element {
             display: none !important;
@@ -284,6 +284,7 @@ lang_toggle: false
             background: #ffffff !important;
             color: #000000 !important;
             display: block !important;
+            position: relative !important;
         }
 
         .class-header-main {
@@ -300,31 +301,42 @@ lang_toggle: false
         #myTable {
             width: 100% !important;
             min-width: 100% !important;
+            background: transparent !important;
         }
 
-        /* Forces layout engine to extract full row objects */
+        /* Table cells transparent taaki peeche ka text watermark saaf chamke */
+        #myTable tr, #myTable td, #myTable th {
+            background: transparent !important;
+            -webkit-print-color-adjust: exact !important;
+            print-color-adjust: exact !important;
+        }
+
+        /* Print mode ke liye light nth alternating colors */
+        #myTable tbody tr:nth-child(even) {
+            background: rgba(0, 0, 0, 0.03) !important;
+        }
+
         #myTable tbody tr {
             display: table-row !important;
         }
 
-        /* INJECT CENTRIC STRICT WATERMARK IN PRINT LAYOUT */
+        /* 100% GUARANTEED CSS TEXT WATERMARK ENGINE */
         body::before {
-            content: "";
+            content: "TYAGIHUB"; /* Yahan apna manpasand text likh sakte ho */
             position: fixed;
             top: 50%;
             left: 50%;
-            transform: translate(-50%, -50%) rotate(-30deg);
-            width: 400px;
-            height: 400px;
-            background-image: url('https://tyagihub.in/assets/images/tyagihub.avif') !important;
-            background-size: contain;
-            background-repeat: no-repeat;
-            background-position: center;
-            opacity: 0.08 !important;
-            -webkit-print-color-adjust: exact !important; /* Forces color rendering inside printers */
-            print-color-adjust: exact !important;
+            transform: translate(-50%, -50%) rotate(-35deg);
+            font-family: 'Baloo 2', 'Hind', sans-serif !important;
+            font-size: 90px; /* Bada branding text size */
+            font-weight: 900;
+            letter-spacing: 12px;
+            color: rgba(0, 0, 0, 0.05) !important; /* Ekdum halka color taaki text padhne mein dikkat na ho */
             z-index: -9999;
             pointer-events: none;
+            white-space: nowrap;
+            -webkit-print-color-adjust: exact !important;
+            print-color-adjust: exact !important;
         }
     }
 </style>
@@ -441,7 +453,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 currentVisibleCount = 100;
                 renderRowsPagination();
             }
-            updateSerialNumbers(false); // standard UI mode indexing
+            updateSerialNumbers(false);
         });
     }
 });
@@ -472,7 +484,6 @@ function showNextBatch() {
     renderRowsPagination();
 }
 
-// Master Indexing System: forceAll prints continuous sequence till 450+ bypassing viewport limits
 function updateSerialNumbers(forceAll = false) {
     const rows = document.querySelectorAll("#myTable tbody .searchable-row");
     let currentIdx = 1;
@@ -486,9 +497,8 @@ function updateSerialNumbers(forceAll = false) {
     });
 }
 
-// Intercepts print command, expands indexes fully across all 450+ items, then launches layout prompt
 function triggerPrintWithFullSNo() {
-    updateSerialNumbers(true); // Forced full re-indexing routine execution
+    updateSerialNumbers(true); // Pure 450+ rows ko print layout trigger hone se pehle full S.No index karega
     setTimeout(function() {
         window.print();
     }, 50);
