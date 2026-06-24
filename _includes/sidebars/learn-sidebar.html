@@ -69,12 +69,36 @@
 </aside>
 
 <style>
+  /* ------------------------------- */
+  /* Mobile First Styles (Default)   */
+  /* ------------------------------- */
   .th-right-sidebar-engine {
     display: flex;
     flex-direction: column;
     gap: 14px;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    
+    /* मोबाइल पर यह बिल्कुल नॉर्मल रहेगा */
+    position: relative;
+    top: auto;
+    width: 100%;
   }
+
+  /* ------------------------------- */
+  /* Desktop Only Styles (>= 992px)  */
+  /* ------------------------------- */
+  @media (min-width: 992px) {
+    .th-right-sidebar-engine {
+      position: -webkit-sticky; /* Safari Browser Compatibility */
+      position: sticky;        /* स्क्रोल करने पर फिक्स हो जाएगा */
+      top: 20px;               /* स्क्रीन के ऊपर से 20 पिक्सल की दूरी पर रुकेगा */
+      z-index: 100;            /* लेयर को ऊपर रखने के लिए */
+    }
+  }
+
+  /* ------------------------------- */
+  /* Styling Elements                */
+  /* ------------------------------- */
   .th-premium-widget-card {
     background: var(--bg-3, rgba(128, 128, 128, 0.04));
     border: 1px solid rgba(128, 128, 128, 0.15);
