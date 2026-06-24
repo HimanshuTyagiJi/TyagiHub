@@ -6,7 +6,1015 @@ permalink: /learn/chemistry-formulas/
 lang_switch: false
 lang_toggle: false
 ---
+<div id="root">
+            <div id="chem-formula-hero-wrapper" style="max-width: 100%; margin: 20px auto;">
+                <canvas id="chemFormulaHeroCanvas" width="1600" height="650"
+                    style="width: 100%; height: auto; display: block; border-radius: 18px;" role="img"
+                    aria-label="Colorful chemistry formula illustration with beakers, molecules and important formulas like H2O, NaCl and H2SO4 with gklearnstudy watermark"></canvas>
+            </div>
+            
+            <header class="education-header">
+                <div class="header-content">
+                    <div class="header-icon">
+                        <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" role="img"
+                            aria-labelledby="header-title">
+                            <title id="header-title">Animated atoms bonding icon</title>
+                            <circle cx="100" cy="100" r="80" fill="#4338ca" />
+                            <g class="atom-particle" style="--delay: 0s;">
+                                <circle cx="100" cy="35" r="8" fill="#a5b4fc" />
+                            </g>
+                            <g class="atom-particle" style="--delay: 0.5s;">
+                                <circle cx="155" cy="65" r="8" fill="#a5b4fc" />
+                            </g>
+                            <g class="atom-particle" style="--delay: 1s;">
+                                <circle cx="155" cy="135" r="8" fill="#a5b4fc" />
+                            </g>
+                            <g class="atom-particle" style="--delay: 1.5s;">
+                                <circle cx="100" cy="165" r="8" fill="#a5b4fc" />
+                            </g>
+                            <g class="atom-particle" style="--delay: 2s;">
+                                <circle cx="45" cy="135" r="8" fill="#a5b4fc" />
+                            </g>
+                            <g class="atom-particle" style="--delay: 2.5s;">
+                                <circle cx="45" cy="65" r="8" fill="#a5b4fc" />
+                            </g>
+                            <text x="100" y="105" class="header-svg-text">H₂O</text>
+                        </svg>
+                    </div>
+                    <div class="header-text">
+                        <h1>All Chemical Formulas in Hindi & English</h1>
+                        <p class="education-description">
+                            Below you will find a complete list of important chemical formulas. These have been
+                            illustrated with <strong>SVG animations</strong> so that you can understand and memorize
+                            them more easily. The
+                            collection covers everything from simple compounds like <code>H₂O</code> to more complex
+                            organic compounds such as <code>C₆H₁₂O₆</code>. All content is available in both Hindi and
+                            English, and the layout
+                            is fully responsive for smooth reading on mobile as well as desktop devices.
+                        </p>
+                    </div>
+                </div>
+            </header>
+            
+              <style>
+                :root {
+                    --primary-color: #4f46e5;
+                    --primary-light: #6366f1;
+                    --primary-dark: #4338ca;
+                    --text-dark: #111827;
+                    --text-light: #f9fafb;
+                    --bg-light: #f9fafb;
+                    --bg-card: #ffffff;
+                    --border-color: #e5e7eb;
 
+                    /* Atom Colors */
+                    --metal-color: #f59e0b;
+                    /* Amber */
+                    --nonmetal-color: #ef4444;
+                    /* Red */
+                    --h-atom-color: #60a5fa;
+                    /* Blue */
+                    --o-atom-color: #22d3ee;
+                    /* Cyan */
+                    --c-atom-color: #374151;
+                    /* Gray */
+                    --n-atom-color: #a78bfa;
+                    /* Violet */
+                    --s-atom-color: #facc15;
+                    /* Yellow */
+                }
+
+                /* ========================================================
+                   HEADER RESPONSIVE CONFIGURATION (AS REQUESTED)
+                   ======================================================== */
+                .education-header {
+                    width: 100%;
+                    margin: 24px auto;
+                    box-sizing: border-box;
+                    border:2px solid #ccc;
+                    border-radius:25px;
+                }
+
+                /* Mobile First Style: लोगो ऊपर रहेगा और कंटेंट नीचे */
+                .header-content {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    text-align: center;
+                    gap: 1.5rem;
+                    max-width: 1000px;
+                    margin: 0 auto;
+                    padding: 0 15px;
+                }
+
+                /* Desktop View Override: 768px से ऊपर लेफ्ट में लोगो और राइट में कंटेंट */
+                @media (min-width: 768px) {
+                    .header-content {
+                        flex-direction: row;
+                        align-items: flex-start;
+                        text-align: left;
+                    }
+                    .header-icon {
+                        flex-shrink: 0; /* लोगो सिकुड़ेगा नहीं */
+                    }
+                }
+
+                .header-icon svg {
+                    width: 150px;
+                    height: 150px;
+                }
+
+                .header-svg-text {
+                    font-size: 50px;
+                    font-weight: bold;
+                    fill: #fff;
+                    text-anchor: middle;
+                    dominant-baseline: middle;
+                }
+
+                .atom-particle {
+                    transform-origin: 100px 100px;
+                    animation: rotate 4s linear infinite;
+                    animation-delay: var(--delay);
+                }
+
+                @keyframes rotate {
+                    from {
+                        transform: rotate(0deg) translateX(65px) rotate(0deg);
+                    }
+
+                    to {
+                        transform: rotate(360deg) translateX(65px) rotate(-360deg);
+                    }
+                }
+
+                .header-text h1 {
+                    margin: 0;
+                    font-size: 2.5rem;
+                    font-weight: 800;
+                }
+
+                .header-text p {
+                    margin: 0.5rem 0 0;
+                    font-size: 1.1rem;
+                    opacity: 0.9;
+                }
+
+                .header-text .hindi-title {
+                    font-size: 1.5rem;
+                    font-weight: 700;
+                }
+
+                /* Examples Grid */
+                .examples-heading {
+                    margin-top: 3rem;
+                    padding-top: 1rem;
+                }
+
+                .examples-grid {
+                    display: grid;
+                    grid-template-columns: 1fr;
+                    gap: 1.5rem;
+                }
+
+                .card {
+                    background-color: var(--bg-card);
+                    border-radius: 12px;
+                    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+                    padding: 1rem;
+                    margin: 0;
+                    display: flex;
+                    flex-direction: column;
+                    transition: transform 0.2s ease, box-shadow 0.2s ease;
+                }
+
+                .card:hover {
+                    transform: translateY(-5px);
+                    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
+                }
+
+                .card svg {
+                    width: 100%;
+                    height: 120px;
+                    margin-bottom: 1rem;
+                }
+
+                .card figcaption {
+                    text-align: center;
+                }
+
+                .card h3 {
+                    margin: 0 0 0.25rem;
+                    font-size: 1.5rem;
+                    font-family: monospace;
+                    color: var(--primary-dark);
+                }
+
+                .card .names {
+                    font-size: 1rem;
+                    margin: 0 0 0.5rem;
+                    color: #374151;
+                }
+
+                .card p {
+                    margin: 0;
+                    font-size: 0.95rem;
+                    color: #4b5563;
+                    line-height: 1.5;
+                }
+
+                /* Atom & SVG Styles */
+                .atom-label,
+                .atom-label-sm {
+                    font-size: 14px;
+                    fill: var(--text-light);
+                    text-anchor: middle;
+                    font-weight: 600;
+                    dominant-baseline: middle;
+                }
+
+                .atom-label-sm {
+                    font-size: 12px;
+                }
+
+                .metal {
+                    fill: var(--metal-color);
+                }
+
+                .nonmetal {
+                    fill: var(--nonmetal-color);
+                }
+
+                .h-atom {
+                    fill: var(--h-atom-color);
+                }
+
+                .o-atom {
+                    fill: var(--o-atom-color);
+                }
+
+                .c-atom {
+                    fill: var(--c-atom-color);
+                }
+
+                .n-atom {
+                    fill: var(--n-atom-color);
+                }
+
+                .s-atom {
+                    fill: var(--s-atom-color);
+                }
+
+                .formula-text {
+                    font-size: 1.2rem;
+                    font-weight: 700;
+                    font-family: monospace;
+                    fill: var(--text-dark);
+                    text-anchor: middle;
+                    opacity: 0;
+                    animation: fade-in 1s ease 1.5s forwards;
+                }
+
+                .bond {
+                    stroke: #9ca3af;
+                    stroke-width: 2px;
+                    stroke-linecap: round;
+                }
+
+                /* Animations */
+                @keyframes fade-in {
+                    from {
+                        opacity: 0;
+                    }
+
+                    to {
+                        opacity: 1;
+                    }
+                }
+
+                .bond-fade {
+                    opacity: 0;
+                    animation: fade-in 0.5s ease 1s forwards;
+                }
+
+                .atom-move-right {
+                    animation: move-right 1.5s ease-out forwards;
+                }
+
+                @keyframes move-right {
+                    from {
+                        transform: translateX(0);
+                    }
+
+                    to {
+                        transform: translateX(40px);
+                    }
+                }
+
+                .atom-move-left {
+                    animation: move-left 1.5s ease-out forwards;
+                }
+
+                @keyframes move-left {
+                    from {
+                        transform: translateX(0);
+                    }
+
+                    to {
+                        transform: translateX(-40px);
+                    }
+                }
+
+                .atom-move-right-sm {
+                    animation: move-right-sm 1s ease-out forwards;
+                }
+
+                @keyframes move-right-sm {
+                    to {
+                        transform: translateX(20px);
+                    }
+                }
+
+                .atom-move-left-sm {
+                    animation: move-left-sm 1s ease-out forwards;
+                }
+
+                @keyframes move-left-sm {
+                    to {
+                        transform: translateX(-20px);
+                    }
+                }
+
+                .atom-move-down-left {
+                    animation: move-down-left 1.5s ease-out forwards;
+                }
+
+                @keyframes move-down-left {
+                    to {
+                        transform: translate(20px, 30px);
+                    }
+                }
+
+                .atom-move-down-right {
+                    animation: move-down-right 1.5s ease-out forwards;
+                }
+
+                @keyframes move-down-right {
+                    to {
+                        transform: translate(-20px, 30px);
+                    }
+                }
+
+                .atom-move-in-down {
+                    animation: move-in-down 1.5s ease-out forwards;
+                }
+
+                @keyframes move-in-down {
+                    to {
+                        transform: translateY(20px);
+                    }
+                }
+
+                .atom-move-in-up {
+                    animation: move-in-up 1.5s ease-out forwards;
+                }
+
+                @keyframes move-in-up {
+                    to {
+                        transform: translateY(-20px);
+                    }
+                }
+
+                .atom-move-in-right {
+                    animation: move-in-right 1.5s ease-out forwards;
+                }
+
+                @keyframes move-in-right {
+                    to {
+                        transform: translateX(30px);
+                    }
+                }
+
+                .atom-move-in-left {
+                    animation: move-in-left 1.5s ease-out forwards;
+                }
+
+                @keyframes move-in-left {
+                    to {
+                        transform: translateX(-30px);
+                    }
+                }
+
+                .atom-move-in-diag-bl {
+                    animation: move-in-diag-bl 1.5s ease-out forwards;
+                }
+
+                @keyframes move-in-diag-bl {
+                    to {
+                        transform: translate(30px, 30px);
+                    }
+                }
+
+                .atom-move-in-diag-br {
+                    animation: move-in-diag-br 1.5s ease-out forwards;
+                }
+
+                @keyframes move-in-diag-br {
+                    to {
+                        transform: translate(-30px, 30px);
+                    }
+                }
+
+                .atom-group {
+                    opacity: 0;
+                }
+
+                @keyframes form-ethanol {
+                    from {
+                        opacity: 0;
+                        transform: scale(0.8) rotate(-15deg);
+                    }
+
+                    to {
+                        opacity: 1;
+                        transform: scale(1) rotate(0deg);
+                    }
+                }
+
+                /* Responsive Design Drop-ins */
+                @media (min-width: 640px) {
+                    .examples-grid {
+                        grid-template-columns: repeat(2, 1fr);
+                    }
+                }
+
+                @media (min-width: 1024px) {
+                    .examples-grid {
+                        grid-template-columns: repeat(4, 1fr);
+                    }
+                }
+            </style>
+
+     
+                 
+            <h2 class="examples-heading">Common Examples (उदाहरण)</h2>
+            <div class="examples-grid">
+                <figure class="card">
+                    <svg viewBox="0 0 200 120" aria-labelledby="nacl-title">
+                        <title id="nacl-title">Sodium and Chlorine atoms bonding to form NaCl</title>
+                        <g class="atom-move-right">
+                            <circle cx="40" cy="60" r="18" class="metal" />
+                            <text x="40" y="65" class="atom-label">Na</text>
+                        </g>
+                        <g class="atom-move-left">
+                            <circle cx="160" cy="60" r="22" class="nonmetal" />
+                            <text x="160" y="65" class="atom-label">Cl</text>
+                        </g>
+                        <text x="100" y="110" class="formula-text">NaCl</text>
+                    </svg>
+                    <figcaption>
+                        <h3>NaCl</h3>
+                        <p class="names"><strong>Sodium Chloride</strong> (साधारण नमक)</p>
+                        <p>An ionic bond between a metal (Na) and a non-metal (Cl). Forms table salt.</p>
+                    </figcaption>
+                </figure>
+
+                <figure class="card">
+                    <svg viewBox="0 0 200 120" aria-labelledby="h2o-title">
+                        <title id="h2o-title">Two Hydrogen atoms and one Oxygen atom bonding to form H₂O (Water)</title>
+                        <g class="atom-move-down-left">
+                            <circle cx="60" cy="30" r="12" class="h-atom" />
+                            <text x="60" y="34" class="atom-label-sm">H</text>
+                        </g>
+                        <g class="atom-move-down-right">
+                            <circle cx="140" cy="30" r="12" class="h-atom" />
+                            <text x="140" y="34" class="atom-label-sm">H</text>
+                        </g>
+                        <circle cx="100" cy="70" r="20" class="o-atom" />
+                        <text x="100" y="75" class="atom-label">O</text>
+                        <text x="100" y="110" class="formula-text">H₂O</text>
+                    </svg>
+                    <figcaption>
+                        <h3>H₂O</h3>
+                        <p class="names"><strong>Water</strong> (पानी)</p>
+                        <p>Two hydrogen atoms share electrons with one oxygen atom.</p>
+                    </figcaption>
+                </figure>
+
+                <figure class="card">
+                    <svg viewBox="0 0 200 120" aria-labelledby="co2-title">
+                        <title id="co2-title">One Carbon and two Oxygen atoms bonding to form CO₂</title>
+                        <line x1="78" y1="60" x2="48" y2="60" class="bond bond-fade" />
+                        <line x1="78" y1="65" x2="48" y2="65" class="bond bond-fade" />
+                        <line x1="122" y1="60" x2="152" y2="60" class="bond bond-fade" />
+                        <line x1="122" y1="65" x2="152" y2="65" class="bond bond-fade" />
+                        <g class="atom-move-right-sm">
+                            <circle cx="40" cy="62" r="16" class="o-atom" />
+                            <text x="40" y="67" class="atom-label">O</text>
+                        </g>
+                        <g class="atom-move-left-sm">
+                            <circle cx="160" cy="62" r="16" class="o-atom" />
+                            <text x="160" y="67" class="atom-label">O</text>
+                        </g>
+                        <circle cx="100" cy="62" r="18" class="c-atom" />
+                        <text x="100" y="67" class="atom-label">C</text>
+                        <text x="100" y="110" class="formula-text">CO₂</text>
+                    </svg>
+                    <figcaption>
+                        <h3>CO₂</h3>
+                        <p class="names"><strong>Carbon Dioxide</strong> (कार्बन डाईऑक्साइड)</p>
+                        <p>One carbon atom forms a double bond with two oxygen atoms.</p>
+                    </figcaption>
+                </figure>
+
+                <figure class="card">
+                    <svg viewBox="0 0 200 120" aria-labelledby="hcl-title">
+                        <title id="hcl-title">Hydrogen and Chlorine atoms bonding to form HCl</title>
+                        <g class="atom-move-right">
+                            <circle cx="40" cy="60" r="12" class="h-atom" />
+                            <text x="40" y="64" class="atom-label-sm">H</text>
+                        </g>
+                        <g class="atom-move-left">
+                            <circle cx="160" cy="60" r="22" class="nonmetal" />
+                            <text x="160" y="65" class="atom-label">Cl</text>
+                        </g>
+                        <text x="100" y="110" class="formula-text">HCl</text>
+                    </svg>
+                    <figcaption>
+                        <h3>HCl</h3>
+                        <p class="names"><strong>Hydrogen Chloride</strong> (हाइड्रोजन क्लोराइड)</p>
+                        <p>A simple acid. When in water, it forms Hydrochloric Acid.</p>
+                    </figcaption>
+                </figure>
+
+                <figure class="card">
+                    <svg viewBox="0 0 200 120" aria-labelledby="ch4-title">
+                        <title id="ch4-title">One Carbon and four Hydrogen atoms bonding to form CH₄ (Methane)</title>
+                        <line x1="100" y1="65" x2="100" y2="90" class="bond bond-fade" />
+                        <line x1="100" y1="65" x2="100" y2="40" class="bond bond-fade" />
+                        <line x1="100" y1="65" x2="70" y2="65" class="bond bond-fade" />
+                        <line x1="100" y1="65" x2="130" y2="65" class="bond bond-fade" />
+                        <g class="atom-move-in-down">
+                            <circle cx="100" cy="20" r="10" class="h-atom" />
+                            <text x="100" y="24" class="atom-label-sm">H</text>
+                        </g>
+                        <g class="atom-move-in-up">
+                            <circle cx="100" cy="110" r="10" class="h-atom" />
+                            <text x="100" y="114" class="atom-label-sm">H</text>
+                        </g>
+                        <g class="atom-move-in-right">
+                            <circle cx="40" cy="65" r="10" class="h-atom" />
+                            <text x="40" y="69" class="atom-label-sm">H</text>
+                        </g>
+                        <g class="atom-move-in-left">
+                            <circle cx="160" cy="65" r="10" class="h-atom" />
+                            <text x="160" y="69" class="atom-label-sm">H</text>
+                        </g>
+                        <circle cx="100" cy="65" r="18" class="c-atom" />
+                        <text x="100" y="70" class="atom-label">C</text>
+                        <text x="100" y="115" class="formula-text">CH₄</text>
+                    </svg>
+                    <figcaption>
+                        <h3>CH₄</h3>
+                        <p class="names"><strong>Methane</strong> (मीथेन)</p>
+                        <p>The simplest organic compound, a primary component of natural gas.</p>
+                    </figcaption>
+                </figure>
+
+                <figure class="card">
+                    <svg viewBox="0 0 200 120" aria-labelledby="nh3-title">
+                        <title id="nh3-title">One Nitrogen and three Hydrogen atoms bonding to form NH₃ (Ammonia)
+                        </title>
+                        <g class="atom-move-in-diag-bl">
+                            <circle cx="50" cy="30" r="10" class="h-atom" />
+                            <text x="50" y="34" class="atom-label-sm">H</text>
+                        </g>
+                        <g class="atom-move-in-down">
+                            <circle cx="100" cy="30" r="10" class="h-atom" />
+                            <text x="100" y="34" class="atom-label-sm">H</text>
+                        </g>
+                        <g class="atom-move-in-diag-br">
+                            <circle cx="150" cy="30" r="10" class="h-atom" />
+                            <text x="150" y="34" class="atom-label-sm">H</text>
+                        </g>
+                        <circle cx="100" cy="70" r="19" class="n-atom" />
+                        <text x="100" y="75" class="atom-label">N</text>
+                        <text x="100" y="115" class="formula-text">NH₃</text>
+                    </svg>
+                    <figcaption>
+                        <h3>NH₃</h3>
+                        <p class="names"><strong>Ammonia</strong> (अमोनिया)</p>
+                        <p>A common gas with a pungent smell, used in fertilizers and cleaners.</p>
+                    </figcaption>
+                </figure>
+
+                <figure class="card">
+                    <svg viewBox="0 0 200 120" aria-labelledby="h2so4-title">
+                        <title id="h2so4-title">Atoms bonding to form H₂SO₄ (Sulfuric Acid)</title>
+                        <g class="atom-move-in-down">
+                            <circle cx="100" cy="20" r="12" class="o-atom" />
+                            <text x="100" y="24" class="atom-label-sm">O</text>
+                        </g>
+                        <g class="atom-move-in-up">
+                            <circle cx="100" cy="100" r="12" class="o-atom" />
+                            <text x="100" y="104" class="atom-label-sm">O</text>
+                        </g>
+                        <g class="atom-move-in-right">
+                            <circle cx="20" cy="60" r="10" class="h-atom" />
+                            <text x="20" y="64" class="atom-label-sm">H</text>
+                        </g>
+                        <g class="atom-move-in-left">
+                            <circle cx="180" cy="60" r="10" class="h-atom" />
+                            <text x="180" y="64" class="atom-label-sm">H</text>
+                        </g>
+                        <g class="atom-move-in-right">
+                            <circle cx="50" cy="60" r="12" class="o-atom" />
+                            <text x="50" y="64" class="atom-label-sm">O</text>
+                        </g>
+                        <g class="atom-move-in-left">
+                            <circle cx="150" cy="60" r="12" class="o-atom" />
+                            <text x="150" y="64" class="atom-label-sm">O</text>
+                        </g>
+                        <circle cx="100" cy="60" r="18" class="s-atom" />
+                        <text x="100" y="65" class="atom-label">S</text>
+                        <text x="100" y="115" class="formula-text">H₂SO₄</text>
+                    </svg>
+                    <figcaption>
+                        <h3>H₂SO₄</h3>
+                        <p class="names"><strong>Sulfuric Acid</strong> (सल्फ्यूरिक एसिड)</p>
+                        <p>A highly corrosive and strong mineral acid. Known as 'oil of vitriol'.</p>
+                    </figcaption>
+                </figure>
+
+                <figure class="card">
+                    <svg viewBox="0 0 200 120" aria-labelledby="ethanol-title">
+                        <title id="ethanol-title">Atoms bonding to form C₂H₅OH (Ethanol)</title>
+                        <g class="atom-group" style="animation: form-ethanol 1.5s ease-out forwards;">
+                            <circle cx="70" cy="60" r="14" class="c-atom" />
+                            <text x="70" y="64" class="atom-label-sm">C</text>
+                            <circle cx="110" cy="60" r="14" class="c-atom" />
+                            <text x="110" y="64" class="atom-label-sm">C</text>
+                            <circle cx="45" cy="45" r="10" class="h-atom" />
+                            <text x="45" y="49" class="atom-label-sm">H</text>
+                            <circle cx="45" cy="75" r="10" class="h-atom" />
+                            <text x="45" y="79" class="atom-label-sm">H</text>
+                            <circle cx="135" cy="45" r="10" class="h-atom" />
+                            <text x="135" y="49" class="atom-label-sm">H</text>
+                            <circle cx="135" cy="75" r="10" class="h-atom" />
+                            <text x="135" y="79" class="atom-label-sm">H</text>
+                            <circle cx="90" cy="35" r="10" class="h-atom" />
+                            <text x="90" y="39" class="atom-label-sm">H</text>
+                            <circle cx="150" cy="60" r="12" class="o-atom" />
+                            <text x="150" y="64" class="atom-label-sm">O</text>
+                            <circle cx="170" cy="45" r="10" class="h-atom" />
+                            <text x="170" y="49" class="atom-label-sm">H</text>
+                        </g>
+                        <text x="100" y="115" class="formula-text">C₂H₅OH</text>
+                    </svg>
+                    <figcaption>
+                        <h3>C₂H₅OH</h3>
+                        <p class="names"><strong>Ethanol</strong> (इथेनॉल)</p>
+                        <p>The type of alcohol found in alcoholic beverages. Also used as a solvent.</p>
+                    </figcaption>
+                </figure>
+            </div> 
+</div>
+
+    <script>
+        (function () {
+            var canvas = document.getElementById("chemFormulaHeroCanvas");
+            if (!canvas || !canvas.getContext) return;
+
+            var ctx = canvas.getContext("2d");
+
+            function roundedRectPath(ctx, x, y, w, h, r) {
+                if (w < 2 * r) r = w / 2;
+                if (h < 2 * r) r = h / 2;
+                ctx.beginPath();
+                ctx.moveTo(x + r, y);
+                ctx.arcTo(x + w, y, x + w, y + h, r);
+                ctx.arcTo(x + w, y + h, x, y + h, r);
+                ctx.arcTo(x, y + h, x, y, r);
+                ctx.arcTo(x, y, x + w, y, r);
+                ctx.closePath();
+            }
+
+            var bg = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
+            bg.addColorStop(0, "#041424");
+            bg.addColorStop(0.5, "#111b3c");
+            bg.addColorStop(1, "#241144");
+            ctx.fillStyle = bg;
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            ctx.save();
+            ctx.globalAlpha = 0.14;
+            ctx.fillStyle = "#ffffff";
+            for (var i = 0; i < 200; i++) {
+                var x = Math.random() * canvas.width;
+                var y = Math.random() * canvas.height;
+                var s = Math.random() * 3;
+                ctx.beginPath();
+                ctx.arc(x, y, s, 0, Math.PI * 2);
+                ctx.fill();
+            }
+            ctx.restore();
+
+            ctx.save();
+            ctx.globalAlpha = 0.05;
+            ctx.translate(canvas.width / 2, canvas.height / 2);
+            ctx.rotate(-0.32);
+            ctx.fillStyle = "#ffffff";
+            ctx.textAlign = "center";
+            ctx.font = "bold 200px Arial";
+            ctx.fillText("gklearnstudy", 0, 50);
+            ctx.restore();
+
+            ctx.save();
+            ctx.globalAlpha = 0.12;
+            ctx.fillStyle = "#ffffff";
+            ctx.textAlign = "left";
+            ctx.font = "bold 60px Arial";
+            ctx.fillText("gklearnstudy", 40, canvas.height - 40);
+            ctx.textAlign = "right";
+            ctx.fillText("gklearnstudy", canvas.width - 40, canvas.height - 40);
+            ctx.restore();
+
+            var panelX = 80;
+            var panelY = 90;
+            var panelW = 780;
+            var panelH = 430;
+
+            roundedRectPath(ctx, panelX, panelY, panelW, panelH, 32);
+            var panelGrad = ctx.createLinearGradient(panelX, panelY, panelX + panelW, panelY + panelH);
+            panelGrad.addColorStop(0, "rgba(255,255,255,0.22)");
+            panelGrad.addColorStop(1, "rgba(255,255,255,0.06)");
+            ctx.fillStyle = panelGrad;
+            ctx.fill();
+
+            ctx.strokeStyle = "rgba(255,255,255,0.4)";
+            ctx.lineWidth = 2;
+            ctx.stroke();
+
+            ctx.save();
+            ctx.fillStyle = "#ffffff";
+            ctx.textAlign = "left";
+
+            ctx.font = "bold 50px Arial";
+            ctx.fillText("Important Chemical Formulas", panelX + 30, panelY + 60);
+
+            ctx.font = "bold 34px Arial";
+            ctx.fillText("For NEET · JEE · Board Exams", panelX + 30, panelY + 105);
+
+            ctx.globalAlpha = 0.95;
+            ctx.font = "22px Arial";
+            var text =
+                "Quick visual sheet of some of the most important chemistry formulas: " +
+                "molecular, ionic and acid–base equations that students repeatedly use " +
+                "in school and competitive exams.";
+
+            var words = text.split(" ");
+            var line = "";
+            var xText = panelX + 30;
+            var yText = panelY + 145;
+            var maxWidth = panelW - 60;
+
+            for (var n = 0; n < words.length; n++) {
+                var testLine = line + words[n] + " ";
+                var metrics = ctx.measureText(testLine);
+                if (metrics.width > maxWidth && n > 0) {
+                    ctx.fillText(line, xText, yText);
+                    line = words[n] + " ";
+                    yText += 28;
+                } else {
+                    line = testLine;
+                }
+            }
+            ctx.fillText(line, xText, yText);
+
+            yText += 50;
+            ctx.font = "22px Arial";
+            var bullets = [
+                "• Molecular formulas (e.g., H₂O, CO₂, C₂H₆O)",
+                "• Ionic compounds (e.g., NaCl, CaCO₃, KNO₃)",
+                "• Acids, bases and salts (e.g., HCl, NaOH, Na₂SO₄)",
+                "• Organic functional groups and common reagents"
+            ];
+            bullets.forEach(function (b) {
+                ctx.fillText(b, xText, yText);
+                yText += 30;
+            });
+
+            ctx.restore();
+
+            function drawBeaker(x, y, w, h, liquidColor, bubblesColor) {
+                ctx.save();
+                roundedRectPath(ctx, x, y, w, h, 18);
+                ctx.strokeStyle = "rgba(255,255,255,0.7)";
+                ctx.lineWidth = 2;
+                ctx.stroke();
+
+                var liquidHeight = h * 0.55;
+                var liquidY = y + h - liquidHeight;
+                roundedRectPath(ctx, x + 4, liquidY, w - 8, liquidHeight - 4, 14);
+                var lg = ctx.createLinearGradient(x, liquidY, x, liquidY + liquidHeight);
+                lg.addColorStop(0, liquidColor);
+                lg.addColorStop(1, "rgba(0,0,0,0.25)");
+                ctx.fillStyle = lg;
+                ctx.fill();
+
+                ctx.fillStyle = bubblesColor;
+                for (var i = 0; i < 6; i++) {
+                    var bx = x + w * (0.2 + 0.6 * Math.random());
+                    var by = liquidY + liquidHeight * (0.2 + 0.7 * Math.random());
+                    var br = 3 + Math.random() * 4;
+                    ctx.beginPath();
+                    ctx.arc(bx, by, br, 0, Math.PI * 2);
+                    ctx.fill();
+                }
+
+                ctx.restore();
+            }
+
+            function drawFlask(x, y, size, liquidColor, glowColor) {
+                ctx.save();
+
+                var rg = ctx.createRadialGradient(
+                    x, y + size * 0.3, size * 0.1,
+                    x, y + size * 0.3, size * 0.8
+                );
+                rg.addColorStop(0, glowColor);
+                rg.addColorStop(1, "rgba(0,0,0,0)");
+                ctx.fillStyle = rg;
+                ctx.beginPath();
+                ctx.arc(x, y + size * 0.3, size * 0.8, 0, Math.PI * 2);
+                ctx.fill();
+
+                ctx.strokeStyle = "rgba(255,255,255,0.8)";
+                ctx.lineWidth = 2;
+                ctx.beginPath();
+                ctx.moveTo(x - size * 0.15, y);
+                ctx.lineTo(x - size * 0.1, y + size * 0.3);
+                ctx.lineTo(x + size * 0.1, y + size * 0.3);
+                ctx.lineTo(x + size * 0.15, y);
+                ctx.stroke();
+
+                ctx.beginPath();
+                ctx.arc(x, y + size * 0.5, size * 0.35, 0.2 * Math.PI, 0.8 * Math.PI);
+                ctx.stroke();
+
+                ctx.beginPath();
+                ctx.moveTo(x - size * 0.25, y + size * 0.55);
+                ctx.quadraticCurveTo(x, y + size * 0.45, x + size * 0.25, y + size * 0.55);
+                ctx.lineTo(x + size * 0.2, y + size * 0.65);
+                ctx.quadraticCurveTo(x, y + size * 0.7, x - size * 0.2, y + size * 0.65);
+                ctx.closePath();
+                ctx.fillStyle = liquidColor;
+                ctx.fill();
+
+                ctx.restore();
+            }
+
+            drawBeaker(panelX + panelW - 210, panelY + panelH - 150, 180, 130, "rgba(129,212,250,0.85)", "rgba(255,255,255,0.9)");
+            drawFlask(panelX + 150, panelY + panelH - 200, 120, "rgba(255,138,128,0.9)", "rgba(255,138,128,0.35)");
+
+            function drawFormulaCard(x, y, colorTop, colorBottom, heading, formula, note) {
+                roundedRectPath(ctx, x, y, 260, 140, 22);
+                var cg = ctx.createLinearGradient(x, y, x + 260, y + 140);
+                cg.addColorStop(0, colorTop);
+                cg.addColorStop(1, colorBottom);
+                ctx.fillStyle = cg;
+                ctx.fill();
+
+                ctx.strokeStyle = "rgba(0,0,0,0.22)";
+                ctx.lineWidth = 1.5;
+                ctx.stroke();
+
+                ctx.save();
+                ctx.textAlign = "left";
+                ctx.fillStyle = "rgba(0,0,0,0.8)";
+
+                ctx.font = "bold 20px Arial";
+                ctx.fillText(heading, x + 18, y + 30);
+
+                ctx.font = "bold 42px Arial";
+                ctx.fillText(formula, x + 18, y + 75);
+
+                ctx.font = "18px Arial";
+                ctx.fillText(note, x + 18, y + 105);
+
+                ctx.restore();
+            }
+
+            var rightBaseX = 920;
+            var row1Y = 145;
+            var row2Y = 320;
+            var row3Y = 495;
+
+            drawFormulaCard(
+                rightBaseX,
+                row1Y,
+                "rgba(255,204,128,0.95)",
+                "rgba(255,171,145,0.95)",
+                "Water",
+                "H₂O",
+                "Neutral molecule formed by H⁺ and OH⁻."
+            );
+
+            drawFormulaCard(
+                rightBaseX + 280,
+                row1Y,
+                "rgba(144,202,249,0.95)",
+                "rgba(129,212,250,0.95)",
+                "Table Salt",
+                "NaCl",
+                "Ionic compound of Na⁺ and Cl⁻."
+            );
+
+            drawFormulaCard(
+                rightBaseX + 560,
+                row1Y,
+                "rgba(206,147,216,0.95)",
+                "rgba(171,71,188,0.95)",
+                "Sulfuric Acid",
+                "H₂SO₄",
+                "Strong diprotic mineral acid."
+            );
+
+            drawFormulaCard(
+                rightBaseX,
+                row2Y,
+                "rgba(165,214,167,0.95)",
+                "rgba(129,199,132,0.95)",
+                "Carbon Dioxide",
+                "CO₂",
+                "Product of respiration & combustion."
+            );
+
+            drawFormulaCard(
+                rightBaseX + 280,
+                row2Y,
+                "rgba(255,224,130,0.95)",
+                "rgba(255,213,79,0.95)",
+                "Calcium Carbonate",
+                "CaCO₃",
+                "Found in chalk, marble, shells."
+            );
+
+            drawFormulaCard(
+                rightBaseX + 560,
+                row2Y,
+                "rgba(255,171,145,0.95)",
+                "rgba(255,138,128,0.95)",
+                "Acetic Acid",
+                "CH₃COOH",
+                "Main acid in vinegar (weak acid)."
+            );
+
+            drawFormulaCard(
+                rightBaseX,
+                row3Y,
+                "rgba(179,229,252,0.95)",
+                "rgba(79,195,247,0.95)",
+                "Ammonia",
+                "NH₃",
+                "Important base & fertilizer compound."
+            );
+
+            drawFormulaCard(
+                rightBaseX + 280,
+                row3Y,
+                "rgba(248,187,208,0.95)",
+                "rgba(244,143,177,0.95)",
+                "Glucose",
+                "C₆H₁₂O₆",
+                "Basic energy source in living cells."
+            );
+
+            drawFormulaCard(
+                rightBaseX + 560,
+                row3Y,
+                "rgba(200,230,201,0.95)",
+                "rgba(174,213,129,0.95)",
+                "Sodium Hydroxide",
+                "NaOH",
+                "Strong base used in many reactions."
+            );
+
+            ctx.save();
+            ctx.textAlign = "left";
+            ctx.fillStyle = "#ffffff";
+            ctx.font = "bold 28px Arial";
+            ctx.fillText("Sample Balanced Equations", panelX + 30, canvas.height - 95);
+
+            ctx.font = "22px Arial";
+            ctx.globalAlpha = 0.96;
+            ctx.fillText("2H₂  +  O₂  →  2H₂O", panelX + 30, canvas.height - 60);
+            ctx.fillText("CaCO₃  →  CaO  +  CO₂", panelX + 380, canvas.height - 60);
+            ctx.fillText("NaOH  +  HCl  →  NaCl  +  H₂O", panelX + 720, canvas.height - 60);
+            ctx.restore();
+
+        })();
+    </script>
 <style>
     /* ========================================================
        1. CORE RESPONSIVE GRID LAYOUT (DESKTOP)
