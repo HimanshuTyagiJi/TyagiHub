@@ -6,7 +6,9 @@ permalink: /learn/chemistry-formulas/
 ---
 
 <style>
-    /* Responsive Core Layout Layout */
+    /* ========================================================
+       1. CORE RESPONSIVE GRID LAYOUT
+       ======================================================== */
     .tyagihub-main-layout {
         display: grid;
         grid-template-columns: 280px 1fr 280px;
@@ -21,22 +23,26 @@ permalink: /learn/chemistry-formulas/
     .th-left-col-wrapper {
         position: sticky;
         top: 20px;
-        z-index: 999;
+        z-index: 1000; /* Restored classic z-index context */
     }
 
-    /* DESKTOP SIDEBAR: Default Layout Open State */
+    /* ========================================================
+       2. DESKTOP SIDEBAR WITH SLEEK OVERFLOW SCROLLBAR
+       ======================================================== */
     .th-left-sidebar {
         background: rgba(128, 128, 128, 0.04);
         border: 1px solid rgba(128, 128, 128, 0.15);
         border-radius: 12px;
         padding: 20px 15px;
         position: fixed;
+        width: 250px; /* Locked compact width */
         max-height: calc(100vh - 40px);
         overflow-y: auto;
         scrollbar-width: thin !important;
+        z-index: 1000;
     }
 
-    /* Sleek Webkit Scrollbar for Sidebar Inner Scroll */
+    /* Strict Webkit target overrides for tiny scrollbar width */
     .th-left-sidebar::-webkit-scrollbar {
         width: 4px !important;
         height: 4px !important;
@@ -87,7 +93,9 @@ permalink: /learn/chemistry-formulas/
         font-weight: 700;
     }
 
-    /* MOBILE TOGGLE TRIGGER BAR */
+    /* ========================================================
+       3. MOBILE TRIGGER BAR & DRAW COMPONENT OVERRIDES
+       ======================================================== */
     .th-mobile-menu-trigger {
         display: none; /* Hidden on Desktop */
         padding: 10px 15px;
@@ -103,7 +111,6 @@ permalink: /learn/chemistry-formulas/
         text-align: left;
     }
 
-    /* BACKDROP OVERLAY SHADE FOR MOBILE DRAWER */
     .sidebar-overlay {
         display: none;
         position: fixed;
@@ -116,12 +123,13 @@ permalink: /learn/chemistry-formulas/
         display: block;
     }
 
-    /* TABLE AND CENTER LAYOUT STYLE */
+    /* ========================================================
+       4. CENTER CORE SYSTEM: HORIZONTAL SCROLL TABLE & BUTTONS
+       ======================================================== */
     .th-center-content {
         min-width: 0;
     }
 
-    /* Top Action Bar Structure */
     .th-action-bar {
         display: flex;
         justify-content: space-between;
@@ -159,7 +167,7 @@ permalink: /learn/chemistry-formulas/
         background: #1b5e20;
     }
 
-    /* Horizontal Table Overflow Scroll Wrapper */
+    /* Wrapper that handles horizontal overflow swipe safely on mobile */
     .th-table-wrapper {
         width: 100%;
         overflow-x: auto;
@@ -172,14 +180,23 @@ permalink: /learn/chemistry-formulas/
     .table-container table {
         width: 100%;
         border-collapse: collapse;
-        min-width: 600px; /* Protects layout on narrow mobile displays */
+        min-width: 600px; /* Retains inline properties safely without squishing content */
     }
     .table-container th, .table-container td {
         border: 1px solid rgba(128, 128, 128, 0.2);
         padding: 12px;
     }
 
-    /* Pagination Controller Styles */
+    /* Stripe rows according to your custom bg-3 mapping token context */
+    #myTable tbody tr:nth-child(even) {
+        background: var(--bg-3, rgba(128, 128, 128, 0.04));
+    }
+    #myTable tbody tr:hover {
+        background: rgba(30, 111, 217, 0.08) !important;
+        transition: background 0.15s ease;
+    }
+
+    /* Load more buttons interface elements */
     .th-load-more-container {
         text-align: center;
         margin: 25px 0;
@@ -201,7 +218,9 @@ permalink: /learn/chemistry-formulas/
         transform: translateY(-1px);
     }
 
-    /* RESPONSIVE MEDIA BREAKPOINTS */
+    /* ========================================================
+       5. MEDIA QUERIES & STRICT DRAWER INTERACTION RULES
+       ======================================================== */
     @media (max-width: 1024px) {
         .tyagihub-main-layout {
             grid-template-columns: 260px 1fr;
@@ -221,16 +240,14 @@ permalink: /learn/chemistry-formulas/
             display: block;
         }
 
-        /* HARDCORE SIDEBAR LEFT-TO-RIGHT DRAWER OVERLAY */
         .th-left-sidebar {
             position: fixed;
             top: 0;
-            left: -320px; /* Kept completely out of viewport on load */
-            width: 300px;  /* Exact 50% to 60% screen width constraint fixed */
+            left: -320px;
+            width: 300px;
             height: 100vh;
             max-height: 100vh;
-            z-index: 999;
-            /* Adaptive surface contrast for light/dark templates */
+            z-index: 1001; /* Layered slightly above regular context */
             background: var(--bg-surface, #ffffff);
             border: none;
             border-right: 1px solid rgba(128, 128, 128, 0.2);
@@ -240,12 +257,10 @@ permalink: /learn/chemistry-formulas/
             display: block !important;
         }
 
-        /* Left-To-Right Slide Open Execution Class */
         .th-left-sidebar.mobile-open {
-            left: 0 !important; /* Slide in smoothly onto view screen */
+            left: 0 !important;
         }
         
-        /* Fallback safety for themes whose color properties are raw injected */
         [data-theme="dark"] .th-left-sidebar {
             background: #121212 !important;
         }
@@ -254,52 +269,59 @@ permalink: /learn/chemistry-formulas/
         }
     }
 
-    /* Zebra Striping: Har ek row ko skip karke soft dynamic color dega */
-    #myTable tbody tr:nth-child(even) {
-        background: var(--bg-3, rgba(128, 128, 128, 0.04));
-    }
-
-    /* Hover karne par row highlight hogi */
-    #myTable tbody tr:hover {
-        background: rgba(30, 111, 217, 0.08) !important; /* Soft TyagiHub Blue on hover */
-        transition: background 0.15s ease;
-    }
-
-    /* MASTER PRINT & LOGO WATERMARK SETUPS */
+    /* ========================================================
+       6. PRODUCTION-GRADE CLEAN EXTRACTED PRINT AND PDF DESIGN
+       ======================================================== */
     @media print {
-        nav, footer, .th-left-col-wrapper, .th-right-sidebar, #table-search-input, .th-action-bar, .th-load-more-container {
+        /* Completely strips out layout elements like buttons, sidebars, headers, footers */
+        nav, footer, .th-left-col-wrapper, .th-right-sidebar, #table-search-input, 
+        .th-action-bar, .th-load-more-container, header, .header, .top-nav {
             display: none !important;
         }
+
         body, .tyagihub-main-layout, .th-center-content {
             margin: 0 !important;
             padding: 0 !important;
             background: #ffffff !important;
             color: #000000 !important;
+            display: block !important;
         }
+
+        .class-header-main {
+            display: block !important;
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
         .th-table-wrapper {
             overflow: visible !important;
             border: none !important;
         }
+
         #myTable {
             width: 100% !important;
             min-width: 100% !important;
         }
+
+        /* Displays all chunk elements during extraction */
         #myTable tbody tr {
-            display: table-row !important; /* Forced open all entries on print extraction */
+            display: table-row !important;
         }
+
+        /* STRICT CENTRIC WATERMARK FOR EXTRACTED BRANDING */
         body::before {
             content: "";
             position: fixed;
             top: 50%;
             left: 50%;
-            transform: translate(-50%, -50%) rotate(-30deg);
-            width: 400px;
-            height: 400px;
-            background-image: url('/assets/images/logo.png'); /* Dynamic site logo asset watermark */
+            transform: translate(-50%, -50%) rotate(-30deg); /* Absolute central alignment fixed */
+            width: 350px;
+            height: 350px;
+            background-image: url('/assets/images/tyagihub.avif'); /* Targeted local brand profile format */
             background-size: contain;
             background-repeat: no-repeat;
             background-position: center;
-            opacity: 0.07 !important;
+            opacity: 0.08 !important; /* Extremely soft visibility to secure text read-bounds */
             z-index: -9999;
             pointer-events: none;
         }
@@ -371,7 +393,7 @@ permalink: /learn/chemistry-formulas/
 </div>
 
 <script>
-// Lateral Drawer Shift Controller Action
+// Mobile Drawer Control Router
 function toggleMobileSidebar() {
     const sidebar = document.querySelector(".th-left-sidebar");
     const overlay = document.getElementById("sidebarOverlay");
@@ -396,7 +418,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const searchInput = document.getElementById("table-search-input");
     const tableBody = document.querySelector("#myTable tbody");
 
-    // Initialize pagination render chunk bounds
+    // Initialize display pagination states on boot
     renderRowsPagination();
 
     if (searchInput) {
@@ -406,7 +428,7 @@ document.addEventListener("DOMContentLoaded", function () {
             const loadMoreWrapper = document.getElementById("loadMoreWrapper");
 
             if (query !== "") {
-                loadMoreWrapper.style.display = "none"; // Hide button under query operations
+                loadMoreWrapper.style.display = "none"; // Bypasses chunk bounds during queries
                 rows.forEach(row => {
                     const text = row.innerText.toLowerCase();
                     if (text.includes(query)) {
