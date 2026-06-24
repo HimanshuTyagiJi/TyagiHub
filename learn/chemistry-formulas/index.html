@@ -108,7 +108,7 @@ lang_toggle: false
         font-size: 1rem;
         font-weight: 600;
         cursor: pointer;
-        margin-top: 62px;
+        margin-top: 62px; /* Kept exact 62px spacing alignment as user setup */
         text-align: left;
     }
 
@@ -129,7 +129,7 @@ lang_toggle: false
        ======================================================== */
     .th-center-content {
         min-width: 0;
-        position: relative; /* Anchor container for precise absolute watermarks */
+        position: relative;
     }
 
     .th-action-bar {
@@ -224,11 +224,64 @@ lang_toggle: false
        5. DYNAMIC PRINT WATERMARK CSS RULES
        ======================================================== */
     .th-print-watermark {
-        display: none; /* Hidden on standard UI screen layout */
+        display: none;
     }
 
     /* ========================================================
-       6. PRODUCTION-GRADE HIGH-PRIORITY PRINT STYLING
+       6. RESPONSIVE MEDIA BREAKPOINTS
+       ======================================================== */
+    @media (max-width: 1024px) {
+        .tyagihub-main-layout {
+            grid-template-columns: 260px 1fr;
+        }
+        .th-right-sidebar { display: none; }
+    }
+
+    @media (max-width: 768px) {
+        .tyagihub-main-layout {
+            grid-template-columns: 1fr;
+            margin: 62px auto; /* Locked 62px layout gap consistency */
+        }
+        .th-left-col-wrapper {
+            position: static;
+        }
+        .th-mobile-menu-trigger {
+            display: block;
+        }
+
+        /* HARDCORE SIDEBAR LEFT-TO-RIGHT DRAWER OVERLAY */
+        .th-left-sidebar {
+            position: fixed;
+            top: 0;
+            left: -320px; /* Secure default structural hidden state */
+            width: 300px;
+            height: 100vh;
+            max-height: 100vh;
+            z-index: 1001;
+            background: var(--bg-surface, #ffffff);
+            border: none;
+            border-right: 1px solid rgba(128, 128, 128, 0.2);
+            border-radius: 0 12px 12px 0;
+            box-shadow: 4px 0 24px rgba(0,0,0,0.15);
+            transition: left 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        /* Runtime Slide Open Class rule overrides */
+        .th-left-sidebar.mobile-open {
+            left: 0 !important;
+            display: block !important;
+        }
+        
+        [data-theme="dark"] .th-left-sidebar {
+            background: #121212 !important;
+        }
+        [data-theme="light"] .th-left-sidebar {
+            background: #ffffff !important;
+        }
+    }
+
+    /* ========================================================
+       7. PRODUCTION-GRADE HIGH-PRIORITY PRINT STYLING
        ======================================================== */
     @media print {
         nav, footer, .th-left-col-wrapper, .th-right-sidebar, #table-search-input, 
@@ -261,7 +314,6 @@ lang_toggle: false
             background: transparent !important;
         }
 
-        /* Forces cell content transparency to let background strings bleed clearly */
         #myTable tr, #myTable td, #myTable th {
             background: transparent !important;
             -webkit-print-color-adjust: exact !important;
@@ -276,7 +328,6 @@ lang_toggle: false
             display: table-row !important;
         }
 
-        /* Displays the runtime generated text blocks safely in print mode */
         .th-print-watermark {
             display: block !important;
             position: absolute;
@@ -455,38 +506,27 @@ function updateSerialNumbers(forceAll = false) {
     });
 }
 
-// ========================================================
-// ADVANCED RUNTIME MULTI-PAGE TEXT WATERMARK INJECTION ENGINE
-// ========================================================
 function executeDynamicPrintEngine() {
-    // 1. Force recalculate and write full indexing loops up to 450+ items
     updateSerialNumbers(true);
 
-    // 2. Clear out any old printed residue blocks before rebuilding layout
     const injectorBox = document.getElementById("watermarkInjectorBox");
     injectorBox.innerHTML = "";
 
-    // 3. Smart calculation script to distribute text watermarks based on exact table height
     const mainLayoutHeight = document.getElementById("printCenterContainer").offsetHeight;
-    
-    // Assumed standard printable height per A4 page chunk (~950px to 1050px grid size)
     const estimatedPageHeight = 1000; 
     const totalEstimatedPages = Math.ceil(mainLayoutHeight / estimatedPageHeight);
 
-    // Run custom matrix generation to stack text labels exactly in the center of every single A4 layout
     for (let i = 0; i < totalEstimatedPages; i++) {
         let watermarkDiv = document.createElement("div");
         watermarkDiv.className = "th-print-watermark";
         watermarkDiv.innerText = "TYAGIHUB";
         
-        // Exact position lock mapping offset to trap watermarks inside page bounding boxes
         let targetTopOffset = (i * estimatedPageHeight) + (estimatedPageHeight / 2);
         watermarkDiv.style.top = targetTopOffset + "px";
         
         injectorBox.appendChild(watermarkDiv);
     }
 
-    // 4. Delay context by 80ms to secure rendering pipeline sync, then summon printer window
     setTimeout(function() {
         window.print();
     }, 80);
