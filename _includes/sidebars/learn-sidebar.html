@@ -69,36 +69,30 @@
 </aside>
 
 <style>
-  /* ------------------------------- */
-  /* Mobile First Styles (Default)   */
-  /* ------------------------------- */
+  /* MOBILE FIRST (Default) - मोबाइल पर बिल्कुल नॉर्मल दिखेगा */
   .th-right-sidebar-engine {
     display: flex;
     flex-direction: column;
     gap: 14px;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-    
-    /* मोबाइल पर यह बिल्कुल नॉर्मल रहेगा */
     position: relative;
     top: auto;
+    right: auto;
     width: 100%;
   }
 
-  /* ------------------------------- */
-  /* Desktop Only Styles (>= 992px)  */
-  /* ------------------------------- */
+  /* DESKTOP ONLY (992px या उससे बड़ी स्क्रीन पर FIXED रहेगा) */
   @media (min-width: 992px) {
     .th-right-sidebar-engine {
-      position: -webkit-sticky; /* Safari Browser Compatibility */
-      position: sticky;        /* स्क्रोल करने पर फिक्स हो जाएगा */
-      top: 20px;               /* स्क्रीन के ऊपर से 20 पिक्सल की दूरी पर रुकेगा */
-      z-index: 100;            /* लेयर को ऊपर रखने के लिए */
+      position: fixed;   /* आपकी डिमांड के मुताबिक प्योर Fixed */
+      top: 20px;         /* ऊपर से दूरी */
+      right: 20px;       /* राइट साइड में फिक्स करने के लिए */
+      width: 300px;      /* डेस्कटॉप पर साइडबार की चौड़ाई (इसे आप अपने हिसाब से बदल सकते हैं) */
+      z-index: 999;      /* ताकि यह हमेशा बाकी एलिमेंट्स के ऊपर दिखे */
     }
   }
 
-  /* ------------------------------- */
-  /* Styling Elements                */
-  /* ------------------------------- */
+  /* बाकी डिज़ाइन की CSS */
   .th-premium-widget-card {
     background: var(--bg-3, rgba(128, 128, 128, 0.04));
     border: 1px solid rgba(128, 128, 128, 0.15);
