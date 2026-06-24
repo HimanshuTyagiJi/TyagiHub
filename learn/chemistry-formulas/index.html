@@ -25,23 +25,21 @@ lang_toggle: false
     .th-left-col-wrapper {
         position: sticky;
         top: 20px;
-        z-index: 1000;
+        z-index: 1; /* यहाँ z-index को कम किया गया है ताकि डेस्कटॉप पर फ़ुटर हाइड न हो */
     }
 
     /* ========================================================
        2. DESKTOP LEFT SIDEBAR CONFIGURATION
        ======================================================== */
     .th-left-sidebar {
-       
-       
+        background: var(--clr-bg-2);
         border-radius: 12px;
         padding: 16px 12px;
         position: fixed;
-      left:0;
+        left: 0;
         max-height: calc(100vh - 40px);
         overflow-y: auto;
         scrollbar-width: thin !important;
-      
     }
 
     [data-theme="dark"] .th-left-sidebar {
@@ -112,7 +110,6 @@ lang_toggle: false
         font-size: 0.95rem;
         font-weight: 600;
         cursor: pointer;
-       
         text-align: left;
     }
 
@@ -254,8 +251,8 @@ lang_toggle: false
         
         .th-left-col-wrapper {
             position: static;
-           
             order: 1; /* Trigger menu at top view bounds */
+            z-index: 1001; /* मोबाइल पर फ़िक्स मेनू ड्रॉअर को ऊपर रखने के लिए */
         }
         
         .th-mobile-menu-trigger {
@@ -281,17 +278,15 @@ lang_toggle: false
             position: fixed;
             top: 62px;
             left: -320px; 
-          
             height: 100vh;
             max-height: 100vh;
-           
             border: none;
             border-right: 1px solid rgba(128, 128, 128, 0.2);
             border-radius: 0 12px 12px 0;
             box-shadow: 6px 0 24px rgba(0,0,0,0.3);
             transition: left 0.3s cubic-bezier(0.16, 1, 0.3, 1);
             padding-top: 24px;
-          
+            z-index: 1001; /* ताकि मोबाइल ड्रॉअर सब चीज़ों के ऊपर खुले */
         }
 
         .th-left-sidebar.mobile-open {
