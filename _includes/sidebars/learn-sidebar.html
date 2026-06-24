@@ -73,7 +73,7 @@
   .th-right-sidebar-engine {
     display: flex;
     flex-direction: column;
-    gap: 14px;
+    gap: 14px;position:fixed;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   }
 
@@ -238,5 +238,19 @@
     [data-theme="dark"] .th-left-sidebar {
       background: #1c1c1e !important;
     }
-  }
+  }  @media (max-width: 768px) {
+      
+       
+      
+
+        /* 100% FIXED: MOBILE VISIBILITY RE-ENGAGED AT THE BOTTOM */
+        aside.th-right-sidebar { 
+            display: block !important; /* Forces element to stay alive on mobile */
+            width: 100% !important;
+            order: 3; /* Places it securely at the very bottom beneath the center main table */
+            margin-top: 20px;
+        }
+
+      
+    }
 </style>
