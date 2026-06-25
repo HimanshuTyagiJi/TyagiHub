@@ -16,7 +16,7 @@ lang_toggle: false
         {% include left-sidebar-selector.html %}
     </div>
 
-    <div style="grid-column: 2; min-width: 0 !important; width: 100% !important; overflow-x: auto !important; contain: layout style !important; isolation: isolate !important; clear: both !important; box-sizing: border-box; padding: 10px;">
+    <div style="grid-column: 2; min-width: 0 !important; width: 100% !important; overflow: hidden !important; contain: layout style !important; isolation: isolate !important; clear: both !important; box-sizing: border-box; padding: 10px;">
         
         <style>
             .language-switch {
@@ -25,129 +25,84 @@ lang_toggle: false
                 justify-content: flex-end;
                 gap: 12px;
                 margin: 20px 0;
-                font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+                font-family: "Segoe UI", sans-serif;
             }
-            .language-switch span {
-                font-size: 0.95rem;
-                font-weight: 600;
-                color: var(--text-color, #333);
-            }
+            .language-switch span { font-size: 0.95rem; font-weight: 600; }
             .language-switch button {
-                padding: 8px 18px;
-                border: 2px solid #e0e0e0;
-                background-color: transparent;
-                color: #555;
-                border-radius: 25px;
-                font-size: 0.9rem;
-                font-weight: 600;
-                cursor: pointer;
-                transition: all 0.3s ease;
-                outline: none;
+                padding: 8px 18px; border: 2px solid #e0e0e0; background: transparent;
+                color: #555; border-radius: 25px; font-size: 0.9rem; font-weight: 600; cursor: pointer;
+                transition: all 0.3s ease; outline: none;
             }
-            .language-switch button:hover {
-                border-color: #6a4cff;
-                color: #6a4cff;
-                background-color: rgba(106, 76, 255, 0.05);
-                transform: translateY(-1px);
+            .language-switch button:hover { border-color: #6a4cff; color: #6a4cff; background: rgba(106, 76, 255, 0.05); }
+            .language-switch button.active { background: #6a4cff; border-color: #6a4cff; color: white; }
+            
+            /* 🚀 TABLE OVERFLOW MATRIX ONLY (SCREEN BREAK ENGINE FIXED) */
+            .th-table-scroll-container {
+                width: 100% !important;
+                max-width: 100% !important;
+                overflow-x: auto !important;
+                -webkit-overflow-scrolling: touch;
+                border: 1px solid rgba(128, 128, 128, 0.15);
+                border-radius: 8px;
+                margin-bottom: 25px;
             }
-            .language-switch button.active {
-                background-color: #6a4cff;
-                border-color: #6a4cff;
-                color: white;
-                box-shadow: 0 4px 12px rgba(106, 76, 255, 0.3);
-            }
-            @media (max-width: 600px) {
-                .language-switch { justify-content: center; }
-            }
+            table.th-elements-table { width: 100%; border-collapse: collapse; min-width: 750px; }
+            table.th-elements-table th { background: rgba(128, 128, 128, 0.06); padding: 12px; text-align: left; font-size: 0.92rem; border: 1px solid rgba(128, 128, 128, 0.2); }
+            table.th-elements-table td { padding: 12px; font-size: 0.9rem; border: 1px solid rgba(128, 128, 128, 0.2); }
+            
+            @media (max-width: 600px) { .language-switch { justify-content: center; } }
         </style>
 
         <script type="application/ld+json">
-            {
-                "@context": "https://schema.org",
-                "@type": "FAQPage",
-                "mainEntity": [
-                    {
-                        "@type": "Question",
-                        "name": "How many chemical elements are there in total?",
-                        "acceptedAnswer": {
-                            "@type": "Answer",
-                            "text": "As of now, there are 118 officially recognized chemical elements..."
-                        }
-                    }
-                ]
-            }
+        {
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": [
+                {
+                    "@type": "Question",
+                    "name": "How many chemical elements are there in total?",
+                    "acceptedAnswer": { "@type": "Answer", "text": "As of now, there are 118 officially recognized chemical elements." }
+                }
+            ]
+        }
         </script>
 
         <div id="root">
-            <header class="education-header">
-                <div class="header-content">
-                    <div class="header-text">
-                        <h1 id="page-title">Chemical Elements with Atomic Mass</h1>
-                        <p class="education-description">
-                            Explore the building blocks of the universe. This page provides a comprehensive list of all 118 chemical elements.
-                        </p>
-                    </div>
-                </div>
+            <header class="education-header" style="text-align: center; margin-bottom: 20px;">
+                <h1 id="page-title">Chemical Elements with Atomic Mass</h1>
+                <p class="education-description" style="max-width: 750px; margin: 10px auto; opacity: 0.8;">
+                    Explore the building blocks of the universe. This page provides a comprehensive list of all 118 chemical elements, complete with their atomic number, symbol, category, and atomic mass.
+                </p>
             </header>
 
-            <div id="element-hero-wrapper" style="max-width: 100%; margin: 20px auto">
-                <canvas id="elementHeroCanvas" width="1600" height="650" style="width: 100%; height: auto; display: block; border-radius: 18px" role="img" aria-label="Chemistry elements illustration"></canvas>
+            <div class="language-switch">
+                <span>Language / भाषा:</span>
+                <button type="button" data-lang="en" class="active" onclick="setLanguage('en')">English</button>
+                <button type="button" data-lang="hi" onclick="setLanguage('hi')">हिन्दी</button>
             </div>
 
-            <section aria-labelledby="elements-table-title">
-                <div class="language-switch" aria-label="Toggle table and FAQ language">
-                    <span>Language / भाषा:</span>
-                    <button type="button" data-lang="en" class="active">English</button>
-                    <button type="button" data-lang="hi">हिन्दी</button>
-                </div>
+            <h2 id="elements-table-title" style="font-size: 1.3rem; margin-bottom: 15px;">Chemical Elements Parameters</h2>
 
-                <h2 id="elements-table-title" class="section-title">Chemical Elements with Atomic Mass</h2>
-
-                <div class="table-container">
-                    <table aria-describedby="elements-table-title">
-                        <thead>
-                            <tr>
-                                <th>Atomic No.</th>
-                                <th id="th-element-name">Element Name</th>
-                                <th>Sym.</th>
-                                <th id="th-category">Category</th>
-                                <th>Atomic Mass(u)</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>1</td>
-                                <td>Hydrogen</td>
-                                <td>H</td>
-                                <td>Non-metal</td>
-                                <td>1.008</td>
-                            </tr>
-                            <tr>
-                                <td>2</td>
-                                <td>Helium</td>
-                                <td>He</td>
-                                <td>Noble Gas</td>
-                                <td>4.0026</td>
-                            </tr>
+            <div class="th-table-scroll-container">
+                <table class="th-elements-table">
+                    <thead>
+                        <tr>
+                            <th>Atomic No.</th>
+                            <th id="th-element-name">Element Name</th>
+                            <th>Sym.</th>
+                            <th id="th-category">Category</th>
+                            <th>Atomic Mass(u)</th>
+                        </tr>
+                    </thead>
+                    <tbody id="elements-matrix-tbody">
                         </tbody>
-                    </table>
-                </div>
-                </section>
+                </table>
+            </div>
 
-            <section id="faq" class="faq-section">
-                <h2>Frequently Asked Questions (FAQs) - Periodic Table</h2>
-                <div id="faq-en">
-                    <details>
-                        <summary>1. How many chemical elements are there in total?</summary>
-                        <div class="faq-answer"><p>As of now, there are 118 officially recognized chemical elements.</p></div>
-                    </details>
-                </div>
-                <div id="faq-hi" style="display: none">
-                    <details>
-                        <summary>1. कुल कितने रासायनिक तत्व होते हैं?</summary>
-                        <div class="faq-answer"><p>वर्तमान समय में आवर्त सारणी में कुल 118 तत्व हैं।</p></div>
-                    </details>
-                </div>
+            <section id="faq" class="faq-section" style="margin-top: 35px;">
+                <h2 style="font-size: 1.3rem; margin-bottom: 15px;">Frequently Asked Questions (FAQs)</h2>
+                <div id="faq-dynamic-box">
+                    </div>
             </section>
         </div>
 
@@ -164,49 +119,98 @@ lang_toggle: false
 
 </div>
 
-<script src="../js/theme.js" defer></script>
-<script src="../js/topic-menu.js" defer></script>
-<script src="../js/search-data.js" defer></script>
-
 <script>
+const elementData = [
+    { n: 1, s: "H", m: "1.008", e_name: "Hydrogen", h_name: "हाइड्रोजन", e_cat: "Non-metal", h_cat: "अधातु" },
+    { n: 2, s: "He", m: "4.0026", e_name: "Helium", h_name: "हीलियम", e_cat: "Noble Gas", h_cat: "निष्क्रिय गैस" },
+    { n: 3, s: "Li", m: "6.94", e_name: "Lithium", h_name: "लिथियम", e_cat: "Alkali Metal", h_cat: "क्षार धातु" },
+    { n: 4, s: "Be", m: "9.0122", e_name: "Beryllium", h_name: "बेरीयम", e_cat: "Alkaline Earth Metal", h_cat: "क्षारीय मृदा धातु" },
+    { n: 5, s: "B", m: "10.81", e_name: "Boron", h_name: "बोरॉन", e_cat: "Metalloid", h_cat: "उपधातु" },
+    { n: 6, s: "Carbon", s: "C", m: "12.011", e_name: "Carbon", h_name: "कार्बन", e_cat: "Non-metal", h_cat: "अधातु" },
+    { n: 7, s: "N", m: "14.007", e_name: "Nitrogen", h_name: "नाइट्रोजन", e_cat: "Non-metal", h_cat: "अधातु" },
+    { n: 8, s: "O", m: "15.999", e_name: "Oxygen", h_name: "ऑक्सीजन", e_cat: "Non-metal", h_cat: "अधातु" },
+    { n: 9, s: "F", m: "18.998", e_name: "Fluorine", h_name: "फ्लोरीन", e_cat: "Halogen", h_cat: "हैलोजन" },
+    { n: 10, s: "Ne", m: "20.180", e_name: "Neon", h_name: "नीऑन", e_cat: "Noble Gas", h_cat: "निष्क्रिय गैस" },
+    { n: 11, s: "Na", m: "22.990", e_name: "Sodium", h_name: "सोडियम", e_cat: "Alkali Metal", h_cat: "क्षार धातु" },
+    { n: 12, s: "Mg", m: "24.305", e_name: "Magnesium", h_name: "मैग्नीशियम", e_cat: "Alkaline Earth Metal", h_cat: "क्षारीय मृदा धातु" },
+    { n: 13, s: "Al", m: "26.982", e_name: "Aluminium", h_name: "ऐल्युमिनियम", e_cat: "Post-transition Metal", h_cat: "उत्तर संक्रमण धातु" },
+    { n: 14, s: "Si", m: "28.085", e_name: "Silicon", h_name: "सिलिकॉन", e_cat: "Metalloid", h_cat: "उपधातु" },
+    { n: 15, s: "P", m: "30.974", e_name: "Phosphorus", h_name: "फॉस्फोरस", e_cat: "Non-metal", h_cat: "अधातु" },
+    { n: 16, s: "S", m: "32.06", e_name: "Sulfur", h_name: "सल्फर", e_cat: "Non-metal", h_cat: "अधातु" },
+    { n: 17, s: "Cl", m: "35.45", e_name: "Chlorine", h_name: "क्लोरीन", e_cat: "Halogen", h_cat: "हैलोजन" },
+    { n: 18, s: "Ar", m: "39.948", e_name: "Argon", h_name: "आर्गन", e_cat: "Noble Gas", h_cat: "निष्क्रिय गैस" },
+    { n: 19, s: "K", m: "39.098", e_name: "Potassium", h_name: "पोटैशियम", e_cat: "Alkali Metal", h_cat: "क्षार धातु" },
+    { n: 20, s: "Ca", m: "40.078", e_name: "Calcium", h_name: "कैल्शियम", e_cat: "Alkaline Earth Metal", h_cat: "क्षारीय मृदा धातु" },
+    { n: 21, s: "Sc", m: "44.956", e_name: "Scandium", h_name: "स्कैंडियम", e_cat: "Transition Metal", h_cat: "संक्रमण धातु" },
+    { n: 22, s: "Ti", m: "47.867", e_name: "Titanium", h_name: "टाइटेनियम", e_cat: "Transition Metal", h_cat: "संक्रमण धातु" },
+    { n: 23, s: "V", m: "50.942", e_name: "Vanadium", h_name: "वैनाडियम", e_cat: "Transition Metal", h_cat: "संक्रमण धातु" },
+    { n: 24, s: "Cr", m: "51.996", e_name: "Chromium", h_name: "क्रोमियम", e_cat: "Transition Metal", h_cat: "संक्रमण धातु" },
+    { n: 25, s: "Mn", m: "54.938", e_name: "Manganese", h_name: "मैंगनीज़", e_cat: "Transition Metal", h_cat: "संक्रमण धातु" },
+    { n: 26, s: "Fe", m: "55.845", e_name: "Iron", h_name: "आयरन", e_cat: "Transition Metal", h_cat: "संक्रमण धातु" },
+    { n: 27, s: "Co", m: "58.933", e_name: "Cobalt", h_name: "कोबाल्ट", e_cat: "Transition Metal", h_cat: "संक्रमण धातु" },
+    { n: 28, s: "Ni", m: "58.693", e_name: "Nickel", h_name: "निकेल", e_cat: "Transition Metal", h_cat: "संक्रमण धातु" },
+    { n: 29, s: "Cu", m: "63.546", e_name: "Copper", h_name: "कॉपर", e_cat: "Transition Metal", h_cat: "संक्रमण धातु" },
+    { n: 30, s: "Zn", m: "65.38", e_name: "Zinc", h_name: "जिंक", e_cat: "Transition Metal", h_cat: "संक्रमण धातु" },
+    { n: 31, s: "Ga", m: "69.723", e_name: "Gallium", h_name: "गैलियम", e_cat: "Post-transition Metal", h_cat: "उत्तर संक्रमण धातु" },
+    { n: 32, s: "Ge", m: "72.630", e_name: "Germanium", h_name: "जर्मेनियम", e_cat: "Metalloid", h_cat: "उपधातु" },
+    { n: 33, s: "As", m: "74.922", e_name: "Arsenic", h_name: "आर्सेनिक", e_cat: "Metalloid", h_cat: "उपधातु" },
+    { n: 34, s: "Se", m: "78.971", e_name: "Selenium", h_name: "सीलीनियम", e_cat: "Non-metal", h_cat: "अधातु" },
+    { n: 35, s: "Br", m: "79.904", e_name: "Bromine", h_name: "ब्रोमीन", e_cat: "Halogen", h_cat: "हैलोजन" },
+    { n: 36, s: "Kr", m: "83.798", e_name: "Krypton", h_name: "क्रिप्टॉन", e_cat: "Noble Gas", h_cat: "निष्क्रिय递" },
+    { n: 79, s: "Au", m: "196.97", e_name: "Gold", h_name: "गोल्ड", e_cat: "Transition Metal", h_cat: "संक्रमण धातु" },
+    { n: 118, s: "Og", m: "(294)", e_name: "Oganesson", h_name: "ओगानेसन", e_cat: "Noble Gas", h_cat: "निष्क्रिय गैस" }
+];
+
+const faqData = {
+    en: [
+        { q: "1. How many chemical elements are there in total?", a: "As of now, there are 118 officially recognized chemical elements that complete the first seven rows of the periodic table." },
+        { q: "2. What is the first element?", a: "The first element is Hydrogen (H), which holds the atomic number 1. It consists of only a single proton and single electron." }
+    ],
+    hi: [
+        { q: "1. कुल कितने रासायनिक तत्व होते हैं?", a: "वर्तमान समय में आवर्त सारणी में कुल 118 आधिकारिक रूप से मान्य रासायनिक तत्व हैं।" },
+        { q: "2. पहला तत्व कौन-सा है?", a: "पहला तत्व हाइड्रोजन (H) है, जिसका परमाणु क्रमांक 1 होता है। इसके नाभिक में केवल एक प्रोटॉन होता है।" }
+    ]
+};
+
+function setLanguage(lang) {
+    // Sync Button Highlight
+    document.querySelectorAll(".language-switch button").forEach(btn => {
+        btn.classList.toggle("active", btn.getAttribute("data-lang") === lang);
+    });
+
+    // Update Header Labels
+    document.getElementById("elements-table-title").innerText = lang === "hi" ? "रासायनिक तत्वों की सारणी (नाम और परमाणु द्रव्यमान)" : "Chemical Elements Parameters";
+    document.getElementById("th-element-name").innerText = lang === "hi" ? "तत्व का नाम" : "Element Name";
+    document.getElementById("th-category").innerText = lang === "hi" ? "वर्ग" : "Category";
+
+    // Instant InnerHTML Content Swap Loop
+    const tbody = document.getElementById("elements-matrix-tbody");
+    tbody.innerHTML = elementData.map(item => `
+        <tr>
+            <td>${item.n}</td>
+            <td>${lang === 'hi' ? item.h_name : item.e_name}</td>
+            <td><strong>${item.s}</strong></td>
+            <td>${lang === 'hi' ? item.h_cat : item.e_cat}</td>
+            <td>${item.m}</td>
+        </tr>
+    `).join('');
+
+    // Instant FAQ Data Swap Loop
+    const faqBox = document.getElementById("faq-dynamic-box");
+    faqBox.innerHTML = faqData[lang].map(faq => `
+        <details style="margin-bottom: 10px; border-bottom: 1px solid rgba(128,128,128,0.15); padding-bottom: 8px;">
+            <summary style="font-weight:600; cursor:pointer;">${faq.q}</summary>
+            <div style="padding: 8px 5px; opacity:0.9;"><p>${faq.a}</p></div>
+        </details>
+    `).join('');
+}
+
+// Dom Compile Boot Engine
+document.addEventListener("DOMContentLoaded", () => { setLanguage("en"); });
+
 function toggleMobileSidebar(event) {
     if(event) event.stopPropagation(); 
     const sidebar = document.querySelector(".th-left-sidebar");
-    const triggerBtn = document.querySelector(".th-mobile-menu-trigger span");
-    if (sidebar) {
-        sidebar.classList.toggle("mobile-open");
-        if(triggerBtn) triggerBtn.innerText = sidebar.classList.contains("mobile-open") ? "Hide Navigation Menu" : "Show Navigation Menu";
-    }
+    if (sidebar) sidebar.classList.toggle("mobile-open");
 }
-
-document.addEventListener("click", function (event) {
-    const sidebar = document.querySelector(".th-left-sidebar");
-    const menuTrigger = document.querySelector(".th-mobile-menu-trigger");
-    if (sidebar && sidebar.classList.contains("mobile-open")) {
-        if (!sidebar.contains(event.target) && (!menuTrigger || !menuTrigger.contains(event.target))) {
-            sidebar.classList.remove("mobile-open");
-            const triggerBtn = document.querySelector(".th-mobile-menu-trigger span");
-            if (triggerBtn) triggerBtn.innerText = "Show Navigation Menu";
-        }
-    }
-});
-
-// Canvas Hero Initialization Logic
-(function () {
-    var canvas = document.getElementById("elementHeroCanvas");
-    if (!canvas || !canvas.getContext) return;
-    var ctx = canvas.getContext("2d");
-    ctx.fillStyle = "#0c1230";
-    ctx.fillRect(0, 0, canvas.width, canvas.height);
-    
-    // Watermark & Brand Context Drawing
-    ctx.save();
-    ctx.globalAlpha = 0.05;
-    ctx.translate(canvas.width / 2, canvas.height / 2);
-    ctx.fillStyle = "#ffffff";
-    ctx.textAlign = "center";
-    ctx.font = "bold 180px Arial";
-    ctx.fillText("tyagihub", 0, 60);
-    ctx.restore();
-})();
 </script>
