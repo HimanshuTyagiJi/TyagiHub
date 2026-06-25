@@ -17,7 +17,7 @@ lang_toggle: false
     </div>
 
     <div style="grid-column: 2; min-width: 0 !important; width: 100% !important; overflow: hidden !important; contain: layout style !important; isolation: isolate !important; clear: both !important; box-sizing: border-box; padding: 10px;">
-        
+
         <style>
             .language-switch {
                 display: flex;
@@ -34,9 +34,8 @@ lang_toggle: false
                 transition: all 0.3s ease; outline: none;
             }
             .language-switch button:hover { border-color: #6a4cff; color: #6a4cff; background: rgba(106, 76, 255, 0.05); }
-            .language-switch button.active { background: #6a4cff; border-color: #6a4cff; color: white; }
-            
-            /* 🚀 TABLE OVERFLOW MATRIX ONLY (SCREEN BREAK ENGINE FIXED) */
+            .language-switch button.active { background: #6a4cff; border-color: #6a4cff; color: white; box-shadow: 0 4px 12px rgba(106,76,255,0.3); }
+
             .th-table-scroll-container {
                 width: 100% !important;
                 max-width: 100% !important;
@@ -46,11 +45,23 @@ lang_toggle: false
                 border-radius: 8px;
                 margin-bottom: 25px;
             }
-            table.th-elements-table { width: 100%; border-collapse: collapse; min-width: 750px; }
-            table.th-elements-table th { background: rgba(128, 128, 128, 0.06); padding: 12px; text-align: left; font-size: 0.92rem; border: 1px solid rgba(128, 128, 128, 0.2); }
-            table.th-elements-table td { padding: 12px; font-size: 0.9rem; border: 1px solid rgba(128, 128, 128, 0.2); }
-            
-            @media (max-width: 600px) { .language-switch { justify-content: center; } }
+            table.th-elements-table { width: 100%; border-collapse: collapse; min-width: 600px; }
+            table.th-elements-table th { background: rgba(128, 128, 128, 0.08); padding: 12px 14px; text-align: left; font-size: 0.92rem; border: 1px solid rgba(128, 128, 128, 0.2); white-space: nowrap; }
+            table.th-elements-table td { padding: 10px 14px; font-size: 0.9rem; border: 1px solid rgba(128, 128, 128, 0.15); }
+            table.th-elements-table tr:nth-child(even) td { background: rgba(128,128,128,0.03); }
+
+            .elem-hero-wrap { width: 100%; margin: 20px auto 28px; }
+            .elem-hero-wrap canvas { width: 100%; height: auto; display: block; border-radius: 14px; }
+
+            .atom-svg-wrap { display: flex; justify-content: center; margin-bottom: 8px; }
+
+            .faq-item { margin-bottom: 10px; border-bottom: 1px solid rgba(128,128,128,0.15); padding-bottom: 8px; }
+            .faq-item summary { font-weight: 600; cursor: pointer; padding: 4px 0; }
+            .faq-item div { padding: 8px 5px; opacity: 0.9; }
+
+            @media (max-width: 600px) {
+                .language-switch { justify-content: center; }
+            }
         </style>
 
         <script type="application/ld+json">
@@ -61,19 +72,78 @@ lang_toggle: false
                 {
                     "@type": "Question",
                     "name": "How many chemical elements are there in total?",
-                    "acceptedAnswer": { "@type": "Answer", "text": "As of now, there are 118 officially recognized chemical elements." }
+                    "acceptedAnswer": { "@type": "Answer", "text": "As of now, there are 118 officially recognized chemical elements that complete the first seven rows of the periodic table." }
+                },
+                {
+                    "@type": "Question",
+                    "name": "What is the first element?",
+                    "acceptedAnswer": { "@type": "Answer", "text": "The first element is Hydrogen (H), which holds the atomic number 1. It has just one proton in its nucleus, making it the simplest and lightest of all elements." }
+                },
+                {
+                    "@type": "Question",
+                    "name": "What is the last element?",
+                    "acceptedAnswer": { "@type": "Answer", "text": "The last known element is Oganesson (Og), with atomic number 118. It is a synthetic, superheavy element created in a laboratory and is extremely unstable." }
                 }
             ]
         }
         </script>
 
         <div id="root">
+
             <header class="education-header" style="text-align: center; margin-bottom: 20px;">
+
+                <!-- Atom SVG Animation -->
+                <div class="atom-svg-wrap">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 220" style="width:130px;" role="img" aria-labelledby="atom-title-th">
+                        <title id="atom-title-th">Animated Atom</title>
+                        <defs>
+                            <radialGradient id="th-nucleus-grad" cx="50%" cy="50%" r="50%">
+                                <stop offset="0%" stop-color="#fff" />
+                                <stop offset="100%" stop-color="#8b5cf6" />
+                            </radialGradient>
+                            <filter id="th-glow">
+                                <feGaussianBlur stdDeviation="3.5" result="blur" />
+                                <feMerge><feMergeNode in="blur" /><feMergeNode in="SourceGraphic" /></feMerge>
+                            </filter>
+                        </defs>
+                        <g filter="url(#th-glow)">
+                            <circle cx="110" cy="110" r="18" fill="url(#th-nucleus-grad)" />
+                            <ellipse cx="110" cy="110" rx="80" ry="30" stroke="#a78bfa" stroke-width="2.5" fill="none">
+                                <animateTransform attributeName="transform" type="rotate" from="0 110 110" to="360 110 110" dur="10s" repeatCount="indefinite" />
+                            </ellipse>
+                            <ellipse cx="110" cy="110" rx="80" ry="30" stroke="#60a5fa" stroke-width="2.5" fill="none" transform="rotate(60 110 110)">
+                                <animateTransform attributeName="transform" type="rotate" from="60 110 110" to="420 110 110" dur="12s" repeatCount="indefinite" />
+                            </ellipse>
+                            <ellipse cx="110" cy="110" rx="80" ry="30" stroke="#9333ea" stroke-width="2.5" fill="none" transform="rotate(-60 110 110)">
+                                <animateTransform attributeName="transform" type="rotate" from="-60 110 110" to="300 110 110" dur="14s" repeatCount="indefinite" />
+                            </ellipse>
+                            <circle r="5" fill="#fff">
+                                <animateMotion dur="6s" repeatCount="indefinite" rotate="auto"
+                                    path="M190,110 A80,30 0 1,1 30,110 A80,30 0 1,1 190,110" />
+                            </circle>
+                            <circle r="5" fill="#fff">
+                                <animateMotion dur="7s" begin="-2s" repeatCount="indefinite" rotate="auto"
+                                    path="M110,30 A30,80 0 1,1 110,190 A30,80 0 1,1 110,30" />
+                            </circle>
+                            <circle r="5" fill="#fff">
+                                <animateMotion dur="8s" begin="-4s" repeatCount="indefinite" rotate="auto"
+                                    path="M170,40 A70,60 0 1,1 50,180 A70,60 0 1,1 170,40" />
+                            </circle>
+                        </g>
+                    </svg>
+                </div>
+
                 <h1 id="page-title">Chemical Elements with Atomic Mass</h1>
                 <p class="education-description" style="max-width: 750px; margin: 10px auto; opacity: 0.8;">
-                    Explore the building blocks of the universe. This page provides a comprehensive list of all 118 chemical elements, complete with their atomic number, symbol, category, and atomic mass.
+                    Explore the building blocks of the universe. A comprehensive list of all 118 chemical elements — atomic number, symbol, category, and atomic mass. Perfect for NEET, JEE, and CBSE students.
                 </p>
             </header>
+
+            <!-- Canvas Hero -->
+            <div class="elem-hero-wrap">
+                <canvas id="thElementHeroCanvas" width="1400" height="560" role="img"
+                    aria-label="Chemical elements illustration with formulas"></canvas>
+            </div>
 
             <div class="language-switch">
                 <span>Language / भाषा:</span>
@@ -84,29 +154,28 @@ lang_toggle: false
             <h2 id="elements-table-title" style="font-size: 1.3rem; margin-bottom: 15px;">Chemical Elements Parameters</h2>
 
             <div class="th-table-scroll-container">
-                <table class="th-elements-table">
+                <table class="th-elements-table" aria-describedby="elements-table-title">
                     <thead>
                         <tr>
                             <th>Atomic No.</th>
                             <th id="th-element-name">Element Name</th>
                             <th>Sym.</th>
                             <th id="th-category">Category</th>
-                            <th>Atomic Mass(u)</th>
+                            <th>Atomic Mass (u)</th>
                         </tr>
                     </thead>
-                    <tbody id="elements-matrix-tbody">
-                        </tbody>
+                    <tbody id="elements-matrix-tbody"></tbody>
                 </table>
             </div>
 
             <section id="faq" class="faq-section" style="margin-top: 35px;">
-                <h2 style="font-size: 1.3rem; margin-bottom: 15px;">Frequently Asked Questions (FAQs)</h2>
-                <div id="faq-dynamic-box">
-                    </div>
+                <h2 style="font-size: 1.3rem; margin-bottom: 15px;" id="faq-heading">Frequently Asked Questions (FAQs)</h2>
+                <div id="faq-dynamic-box"></div>
             </section>
-        </div>
 
-    </div>
+        </div><!-- /#root -->
+
+    </div><!-- grid-column 2 -->
 
     <aside class="th-right-sidebar-wrapper">
         {% case page.section %}
@@ -117,73 +186,199 @@ lang_toggle: false
         {% endcase %}
     </aside>
 
-</div>
+</div><!-- /.tyagihub-main-layout -->
 
 <script>
+/* ============================================================
+   ELEMENT DATA — All 118 Elements
+   ============================================================ */
 const elementData = [
-    { n: 1, s: "H", m: "1.008", e_name: "Hydrogen", h_name: "हाइड्रोजन", e_cat: "Non-metal", h_cat: "अधातु" },
-    { n: 2, s: "He", m: "4.0026", e_name: "Helium", h_name: "हीलियम", e_cat: "Noble Gas", h_cat: "निष्क्रिय गैस" },
-    { n: 3, s: "Li", m: "6.94", e_name: "Lithium", h_name: "लिथियम", e_cat: "Alkali Metal", h_cat: "क्षार धातु" },
-    { n: 4, s: "Be", m: "9.0122", e_name: "Beryllium", h_name: "बेरीयम", e_cat: "Alkaline Earth Metal", h_cat: "क्षारीय मृदा धातु" },
-    { n: 5, s: "B", m: "10.81", e_name: "Boron", h_name: "बोरॉन", e_cat: "Metalloid", h_cat: "उपधातु" },
-    { n: 6, s: "Carbon", s: "C", m: "12.011", e_name: "Carbon", h_name: "कार्बन", e_cat: "Non-metal", h_cat: "अधातु" },
-    { n: 7, s: "N", m: "14.007", e_name: "Nitrogen", h_name: "नाइट्रोजन", e_cat: "Non-metal", h_cat: "अधातु" },
-    { n: 8, s: "O", m: "15.999", e_name: "Oxygen", h_name: "ऑक्सीजन", e_cat: "Non-metal", h_cat: "अधातु" },
-    { n: 9, s: "F", m: "18.998", e_name: "Fluorine", h_name: "फ्लोरीन", e_cat: "Halogen", h_cat: "हैलोजन" },
-    { n: 10, s: "Ne", m: "20.180", e_name: "Neon", h_name: "नीऑन", e_cat: "Noble Gas", h_cat: "निष्क्रिय गैस" },
-    { n: 11, s: "Na", m: "22.990", e_name: "Sodium", h_name: "सोडियम", e_cat: "Alkali Metal", h_cat: "क्षार धातु" },
-    { n: 12, s: "Mg", m: "24.305", e_name: "Magnesium", h_name: "मैग्नीशियम", e_cat: "Alkaline Earth Metal", h_cat: "क्षारीय मृदा धातु" },
-    { n: 13, s: "Al", m: "26.982", e_name: "Aluminium", h_name: "ऐल्युमिनियम", e_cat: "Post-transition Metal", h_cat: "उत्तर संक्रमण धातु" },
-    { n: 14, s: "Si", m: "28.085", e_name: "Silicon", h_name: "सिलिकॉन", e_cat: "Metalloid", h_cat: "उपधातु" },
-    { n: 15, s: "P", m: "30.974", e_name: "Phosphorus", h_name: "फॉस्फोरस", e_cat: "Non-metal", h_cat: "अधातु" },
-    { n: 16, s: "S", m: "32.06", e_name: "Sulfur", h_name: "सल्फर", e_cat: "Non-metal", h_cat: "अधातु" },
-    { n: 17, s: "Cl", m: "35.45", e_name: "Chlorine", h_name: "क्लोरीन", e_cat: "Halogen", h_cat: "हैलोजन" },
-    { n: 18, s: "Ar", m: "39.948", e_name: "Argon", h_name: "आर्गन", e_cat: "Noble Gas", h_cat: "निष्क्रिय गैस" },
-    { n: 19, s: "K", m: "39.098", e_name: "Potassium", h_name: "पोटैशियम", e_cat: "Alkali Metal", h_cat: "क्षार धातु" },
-    { n: 20, s: "Ca", m: "40.078", e_name: "Calcium", h_name: "कैल्शियम", e_cat: "Alkaline Earth Metal", h_cat: "क्षारीय मृदा धातु" },
-    { n: 21, s: "Sc", m: "44.956", e_name: "Scandium", h_name: "स्कैंडियम", e_cat: "Transition Metal", h_cat: "संक्रमण धातु" },
-    { n: 22, s: "Ti", m: "47.867", e_name: "Titanium", h_name: "टाइटेनियम", e_cat: "Transition Metal", h_cat: "संक्रमण धातु" },
-    { n: 23, s: "V", m: "50.942", e_name: "Vanadium", h_name: "वैनाडियम", e_cat: "Transition Metal", h_cat: "संक्रमण धातु" },
-    { n: 24, s: "Cr", m: "51.996", e_name: "Chromium", h_name: "क्रोमियम", e_cat: "Transition Metal", h_cat: "संक्रमण धातु" },
-    { n: 25, s: "Mn", m: "54.938", e_name: "Manganese", h_name: "मैंगनीज़", e_cat: "Transition Metal", h_cat: "संक्रमण धातु" },
-    { n: 26, s: "Fe", m: "55.845", e_name: "Iron", h_name: "आयरन", e_cat: "Transition Metal", h_cat: "संक्रमण धातु" },
-    { n: 27, s: "Co", m: "58.933", e_name: "Cobalt", h_name: "कोबाल्ट", e_cat: "Transition Metal", h_cat: "संक्रमण धातु" },
-    { n: 28, s: "Ni", m: "58.693", e_name: "Nickel", h_name: "निकेल", e_cat: "Transition Metal", h_cat: "संक्रमण धातु" },
-    { n: 29, s: "Cu", m: "63.546", e_name: "Copper", h_name: "कॉपर", e_cat: "Transition Metal", h_cat: "संक्रमण धातु" },
-    { n: 30, s: "Zn", m: "65.38", e_name: "Zinc", h_name: "जिंक", e_cat: "Transition Metal", h_cat: "संक्रमण धातु" },
-    { n: 31, s: "Ga", m: "69.723", e_name: "Gallium", h_name: "गैलियम", e_cat: "Post-transition Metal", h_cat: "उत्तर संक्रमण धातु" },
-    { n: 32, s: "Ge", m: "72.630", e_name: "Germanium", h_name: "जर्मेनियम", e_cat: "Metalloid", h_cat: "उपधातु" },
-    { n: 33, s: "As", m: "74.922", e_name: "Arsenic", h_name: "आर्सेनिक", e_cat: "Metalloid", h_cat: "उपधातु" },
-    { n: 34, s: "Se", m: "78.971", e_name: "Selenium", h_name: "सीलीनियम", e_cat: "Non-metal", h_cat: "अधातु" },
-    { n: 35, s: "Br", m: "79.904", e_name: "Bromine", h_name: "ब्रोमीन", e_cat: "Halogen", h_cat: "हैलोजन" },
-    { n: 36, s: "Kr", m: "83.798", e_name: "Krypton", h_name: "क्रिप्टॉन", e_cat: "Noble Gas", h_cat: "निष्क्रिय递" },
-    { n: 79, s: "Au", m: "196.97", e_name: "Gold", h_name: "गोल्ड", e_cat: "Transition Metal", h_cat: "संक्रमण धातु" },
-    { n: 118, s: "Og", m: "(294)", e_name: "Oganesson", h_name: "ओगानेसन", e_cat: "Noble Gas", h_cat: "निष्क्रिय गैस" }
+    { n:1,   s:"H",  m:"1.008",   e_name:"Hydrogen",      h_name:"हाइड्रोजन",       e_cat:"Non-metal",             h_cat:"अधातु" },
+    { n:2,   s:"He", m:"4.0026",  e_name:"Helium",         h_name:"हीलियम",           e_cat:"Noble Gas",             h_cat:"निष्क्रिय गैस" },
+    { n:3,   s:"Li", m:"6.94",    e_name:"Lithium",        h_name:"लिथियम",           e_cat:"Alkali Metal",          h_cat:"क्षार धातु" },
+    { n:4,   s:"Be", m:"9.0122",  e_name:"Beryllium",      h_name:"बेरीलियम",         e_cat:"Alkaline Earth Metal",  h_cat:"क्षारीय मृदा धातु" },
+    { n:5,   s:"B",  m:"10.81",   e_name:"Boron",          h_name:"बोरॉन",            e_cat:"Metalloid",             h_cat:"उपधातु" },
+    { n:6,   s:"C",  m:"12.011",  e_name:"Carbon",         h_name:"कार्बन",           e_cat:"Non-metal",             h_cat:"अधातु" },
+    { n:7,   s:"N",  m:"14.007",  e_name:"Nitrogen",       h_name:"नाइट्रोजन",        e_cat:"Non-metal",             h_cat:"अधातु" },
+    { n:8,   s:"O",  m:"15.999",  e_name:"Oxygen",         h_name:"ऑक्सीजन",          e_cat:"Non-metal",             h_cat:"अधातु" },
+    { n:9,   s:"F",  m:"18.998",  e_name:"Fluorine",       h_name:"फ्लोरीन",          e_cat:"Halogen",               h_cat:"हैलोजन" },
+    { n:10,  s:"Ne", m:"20.180",  e_name:"Neon",           h_name:"नीऑन",             e_cat:"Noble Gas",             h_cat:"निष्क्रिय गैस" },
+    { n:11,  s:"Na", m:"22.990",  e_name:"Sodium",         h_name:"सोडियम",           e_cat:"Alkali Metal",          h_cat:"क्षार धातु" },
+    { n:12,  s:"Mg", m:"24.305",  e_name:"Magnesium",      h_name:"मैग्नीशियम",       e_cat:"Alkaline Earth Metal",  h_cat:"क्षारीय मृदा धातु" },
+    { n:13,  s:"Al", m:"26.982",  e_name:"Aluminium",      h_name:"ऐल्युमिनियम",      e_cat:"Post-transition Metal", h_cat:"उत्तर संक्रमण धातु" },
+    { n:14,  s:"Si", m:"28.085",  e_name:"Silicon",        h_name:"सिलिकॉन",          e_cat:"Metalloid",             h_cat:"उपधातु" },
+    { n:15,  s:"P",  m:"30.974",  e_name:"Phosphorus",     h_name:"फॉस्फोरस",         e_cat:"Non-metal",             h_cat:"अधातु" },
+    { n:16,  s:"S",  m:"32.06",   e_name:"Sulfur",         h_name:"सल्फर",            e_cat:"Non-metal",             h_cat:"अधातु" },
+    { n:17,  s:"Cl", m:"35.45",   e_name:"Chlorine",       h_name:"क्लोरीन",          e_cat:"Halogen",               h_cat:"हैलोजन" },
+    { n:18,  s:"Ar", m:"39.948",  e_name:"Argon",          h_name:"आर्गन",            e_cat:"Noble Gas",             h_cat:"निष्क्रिय गैस" },
+    { n:19,  s:"K",  m:"39.098",  e_name:"Potassium",      h_name:"पोटैशियम",         e_cat:"Alkali Metal",          h_cat:"क्षार धातु" },
+    { n:20,  s:"Ca", m:"40.078",  e_name:"Calcium",        h_name:"कैल्शियम",         e_cat:"Alkaline Earth Metal",  h_cat:"क्षारीय मृदा धातु" },
+    { n:21,  s:"Sc", m:"44.956",  e_name:"Scandium",       h_name:"स्कैंडियम",        e_cat:"Transition Metal",      h_cat:"संक्रमण धातु" },
+    { n:22,  s:"Ti", m:"47.867",  e_name:"Titanium",       h_name:"टाइटेनियम",        e_cat:"Transition Metal",      h_cat:"संक्रमण धातु" },
+    { n:23,  s:"V",  m:"50.942",  e_name:"Vanadium",       h_name:"वैनाडियम",         e_cat:"Transition Metal",      h_cat:"संक्रमण धातु" },
+    { n:24,  s:"Cr", m:"51.996",  e_name:"Chromium",       h_name:"क्रोमियम",         e_cat:"Transition Metal",      h_cat:"संक्रमण धातु" },
+    { n:25,  s:"Mn", m:"54.938",  e_name:"Manganese",      h_name:"मैंगनीज़",         e_cat:"Transition Metal",      h_cat:"संक्रमण धातु" },
+    { n:26,  s:"Fe", m:"55.845",  e_name:"Iron",           h_name:"आयरन",             e_cat:"Transition Metal",      h_cat:"संक्रमण धातु" },
+    { n:27,  s:"Co", m:"58.933",  e_name:"Cobalt",         h_name:"कोबाल्ट",          e_cat:"Transition Metal",      h_cat:"संक्रमण धातु" },
+    { n:28,  s:"Ni", m:"58.693",  e_name:"Nickel",         h_name:"निकेल",            e_cat:"Transition Metal",      h_cat:"संक्रमण धातु" },
+    { n:29,  s:"Cu", m:"63.546",  e_name:"Copper",         h_name:"कॉपर",             e_cat:"Transition Metal",      h_cat:"संक्रमण धातु" },
+    { n:30,  s:"Zn", m:"65.38",   e_name:"Zinc",           h_name:"जिंक",             e_cat:"Transition Metal",      h_cat:"संक्रमण धातु" },
+    { n:31,  s:"Ga", m:"69.723",  e_name:"Gallium",        h_name:"गैलियम",           e_cat:"Post-transition Metal", h_cat:"उत्तर संक्रमण धातु" },
+    { n:32,  s:"Ge", m:"72.630",  e_name:"Germanium",      h_name:"जर्मेनियम",        e_cat:"Metalloid",             h_cat:"उपधातु" },
+    { n:33,  s:"As", m:"74.922",  e_name:"Arsenic",        h_name:"आर्सेनिक",         e_cat:"Metalloid",             h_cat:"उपधातु" },
+    { n:34,  s:"Se", m:"78.971",  e_name:"Selenium",       h_name:"सीलीनियम",         e_cat:"Non-metal",             h_cat:"अधातु" },
+    { n:35,  s:"Br", m:"79.904",  e_name:"Bromine",        h_name:"ब्रोमीन",          e_cat:"Halogen",               h_cat:"हैलोजन" },
+    { n:36,  s:"Kr", m:"83.798",  e_name:"Krypton",        h_name:"क्रिप्टॉन",        e_cat:"Noble Gas",             h_cat:"निष्क्रिय गैस" },
+    { n:37,  s:"Rb", m:"85.468",  e_name:"Rubidium",       h_name:"रूबिडियम",         e_cat:"Alkali Metal",          h_cat:"क्षार धातु" },
+    { n:38,  s:"Sr", m:"87.62",   e_name:"Strontium",      h_name:"स्ट्रोंशियम",      e_cat:"Alkaline Earth Metal",  h_cat:"क्षारीय मृदा धातु" },
+    { n:39,  s:"Y",  m:"88.906",  e_name:"Yttrium",        h_name:"इट्रियम",          e_cat:"Transition Metal",      h_cat:"संक्रमण धातु" },
+    { n:40,  s:"Zr", m:"91.224",  e_name:"Zirconium",      h_name:"ज़िरकोनियम",       e_cat:"Transition Metal",      h_cat:"संक्रमण धातु" },
+    { n:41,  s:"Nb", m:"92.906",  e_name:"Niobium",        h_name:"नाइओबियम",         e_cat:"Transition Metal",      h_cat:"संक्रमण धातु" },
+    { n:42,  s:"Mo", m:"95.95",   e_name:"Molybdenum",     h_name:"मॉलिब्डेनम",       e_cat:"Transition Metal",      h_cat:"संक्रमण धातु" },
+    { n:43,  s:"Tc", m:"(98)",    e_name:"Technetium",     h_name:"टेक्नीशियम",       e_cat:"Transition Metal",      h_cat:"संक्रमण धातु" },
+    { n:44,  s:"Ru", m:"101.07",  e_name:"Ruthenium",      h_name:"रुथेनियम",         e_cat:"Transition Metal",      h_cat:"संक्रमण धातु" },
+    { n:45,  s:"Rh", m:"102.91",  e_name:"Rhodium",        h_name:"रॉडियम",           e_cat:"Transition Metal",      h_cat:"संक्रमण धातु" },
+    { n:46,  s:"Pd", m:"106.42",  e_name:"Palladium",      h_name:"पैलाडियम",         e_cat:"Transition Metal",      h_cat:"संक्रमण धातु" },
+    { n:47,  s:"Ag", m:"107.87",  e_name:"Silver",         h_name:"सिल्वर",           e_cat:"Transition Metal",      h_cat:"संक्रमण धातु" },
+    { n:48,  s:"Cd", m:"112.41",  e_name:"Cadmium",        h_name:"कैडमियम",          e_cat:"Transition Metal",      h_cat:"संक्रमण धातु" },
+    { n:49,  s:"In", m:"114.82",  e_name:"Indium",         h_name:"इंडियम",           e_cat:"Post-transition Metal", h_cat:"उत्तर संक्रमण धातु" },
+    { n:50,  s:"Sn", m:"118.71",  e_name:"Tin",            h_name:"टिन",              e_cat:"Post-transition Metal", h_cat:"उत्तर संक्रमण धातु" },
+    { n:51,  s:"Sb", m:"121.76",  e_name:"Antimony",       h_name:"एंटिमनी",          e_cat:"Metalloid",             h_cat:"उपधातु" },
+    { n:52,  s:"Te", m:"127.60",  e_name:"Tellurium",      h_name:"टेल्यूरियम",       e_cat:"Metalloid",             h_cat:"उपधातु" },
+    { n:53,  s:"I",  m:"126.90",  e_name:"Iodine",         h_name:"आयोडीन",           e_cat:"Halogen",               h_cat:"हैलोजन" },
+    { n:54,  s:"Xe", m:"131.29",  e_name:"Xenon",          h_name:"ज़ेनॉन",           e_cat:"Noble Gas",             h_cat:"निष्क्रिय गैस" },
+    { n:55,  s:"Cs", m:"132.91",  e_name:"Caesium",        h_name:"सीज़ियम",          e_cat:"Alkali Metal",          h_cat:"क्षार धातु" },
+    { n:56,  s:"Ba", m:"137.33",  e_name:"Barium",         h_name:"बैरियम",           e_cat:"Alkaline Earth Metal",  h_cat:"क्षारीय मृदा धातु" },
+    { n:57,  s:"La", m:"138.91",  e_name:"Lanthanum",      h_name:"लैंथेनम",          e_cat:"Lanthanide",            h_cat:"लैंथेनाइड" },
+    { n:58,  s:"Ce", m:"140.12",  e_name:"Cerium",         h_name:"सेरियम",           e_cat:"Lanthanide",            h_cat:"लैंथेनाइड" },
+    { n:59,  s:"Pr", m:"140.91",  e_name:"Praseodymium",   h_name:"प्रासियोडिमियम",   e_cat:"Lanthanide",            h_cat:"लैंथेनाइड" },
+    { n:60,  s:"Nd", m:"144.24",  e_name:"Neodymium",      h_name:"नीओडिमियम",        e_cat:"Lanthanide",            h_cat:"लैंथेनाइड" },
+    { n:61,  s:"Pm", m:"(145)",   e_name:"Promethium",     h_name:"प्रॉमेथियम",       e_cat:"Lanthanide",            h_cat:"लैंथेनाइड" },
+    { n:62,  s:"Sm", m:"150.36",  e_name:"Samarium",       h_name:"समेरियम",          e_cat:"Lanthanide",            h_cat:"लैंथेनाइड" },
+    { n:63,  s:"Eu", m:"151.96",  e_name:"Europium",       h_name:"यूरोपियम",         e_cat:"Lanthanide",            h_cat:"लैंथेनाइड" },
+    { n:64,  s:"Gd", m:"157.25",  e_name:"Gadolinium",     h_name:"गैडोलिनियम",       e_cat:"Lanthanide",            h_cat:"लैंथेनाइड" },
+    { n:65,  s:"Tb", m:"158.93",  e_name:"Terbium",        h_name:"टर्बियम",          e_cat:"Lanthanide",            h_cat:"लैंथेनाइड" },
+    { n:66,  s:"Dy", m:"162.50",  e_name:"Dysprosium",     h_name:"डिस्प्रोसियम",     e_cat:"Lanthanide",            h_cat:"लैंथेनाइड" },
+    { n:67,  s:"Ho", m:"164.93",  e_name:"Holmium",        h_name:"होल्मियम",         e_cat:"Lanthanide",            h_cat:"लैंथेनाइड" },
+    { n:68,  s:"Er", m:"167.26",  e_name:"Erbium",         h_name:"एर्बियम",          e_cat:"Lanthanide",            h_cat:"लैंथेनाइड" },
+    { n:69,  s:"Tm", m:"168.93",  e_name:"Thulium",        h_name:"थुलियम",           e_cat:"Lanthanide",            h_cat:"लैंथेनाइड" },
+    { n:70,  s:"Yb", m:"173.05",  e_name:"Ytterbium",      h_name:"इट्टरबियम",        e_cat:"Lanthanide",            h_cat:"लैंथेनाइड" },
+    { n:71,  s:"Lu", m:"174.97",  e_name:"Lutetium",       h_name:"ल्यूटेटियम",       e_cat:"Lanthanide",            h_cat:"लैंथेनाइड" },
+    { n:72,  s:"Hf", m:"178.49",  e_name:"Hafnium",        h_name:"हैफ्नियम",         e_cat:"Transition Metal",      h_cat:"संक्रमण धातु" },
+    { n:73,  s:"Ta", m:"180.95",  e_name:"Tantalum",       h_name:"टैंटलम",           e_cat:"Transition Metal",      h_cat:"संक्रमण धातु" },
+    { n:74,  s:"W",  m:"183.84",  e_name:"Tungsten",       h_name:"टंगस्टन",          e_cat:"Transition Metal",      h_cat:"संक्रमण धातु" },
+    { n:75,  s:"Re", m:"186.21",  e_name:"Rhenium",        h_name:"रेनियम",           e_cat:"Transition Metal",      h_cat:"संक्रमण धातु" },
+    { n:76,  s:"Os", m:"190.23",  e_name:"Osmium",         h_name:"ऑस्मियम",          e_cat:"Transition Metal",      h_cat:"संक्रमण धातु" },
+    { n:77,  s:"Ir", m:"192.22",  e_name:"Iridium",        h_name:"इरिडियम",          e_cat:"Transition Metal",      h_cat:"संक्रमण धातु" },
+    { n:78,  s:"Pt", m:"195.08",  e_name:"Platinum",       h_name:"प्लेटिनम",         e_cat:"Transition Metal",      h_cat:"संक्रमण धातु" },
+    { n:79,  s:"Au", m:"196.97",  e_name:"Gold",           h_name:"गोल्ड",            e_cat:"Transition Metal",      h_cat:"संक्रमण धातु" },
+    { n:80,  s:"Hg", m:"200.59",  e_name:"Mercury",        h_name:"मर्करी",           e_cat:"Transition Metal",      h_cat:"संक्रमण धातु" },
+    { n:81,  s:"Tl", m:"204.38",  e_name:"Thallium",       h_name:"थैलियम",           e_cat:"Post-transition Metal", h_cat:"उत्तर संक्रमण धातु" },
+    { n:82,  s:"Pb", m:"207.2",   e_name:"Lead",           h_name:"लेड",              e_cat:"Post-transition Metal", h_cat:"उत्तर संक्रमण धातु" },
+    { n:83,  s:"Bi", m:"208.98",  e_name:"Bismuth",        h_name:"बिस्मथ",           e_cat:"Post-transition Metal", h_cat:"उत्तर संक्रमण धातु" },
+    { n:84,  s:"Po", m:"(209)",   e_name:"Polonium",       h_name:"पोलोनियम",         e_cat:"Metalloid",             h_cat:"उपधातु" },
+    { n:85,  s:"At", m:"(210)",   e_name:"Astatine",       h_name:"एस्टेटीन",         e_cat:"Halogen",               h_cat:"हैलोजन" },
+    { n:86,  s:"Rn", m:"(222)",   e_name:"Radon",          h_name:"रेडॉन",            e_cat:"Noble Gas",             h_cat:"निष्क्रिय गैस" },
+    { n:87,  s:"Fr", m:"(223)",   e_name:"Francium",       h_name:"फ्रैंशियम",        e_cat:"Alkali Metal",          h_cat:"क्षार धातु" },
+    { n:88,  s:"Ra", m:"(226)",   e_name:"Radium",         h_name:"रेडियम",           e_cat:"Alkaline Earth Metal",  h_cat:"क्षारीय मृदा धातु" },
+    { n:89,  s:"Ac", m:"(227)",   e_name:"Actinium",       h_name:"एक्टिनियम",        e_cat:"Actinide",              h_cat:"ऐक्टिनाइड" },
+    { n:90,  s:"Th", m:"232.04",  e_name:"Thorium",        h_name:"थोरियम",           e_cat:"Actinide",              h_cat:"ऐक्टिनाइड" },
+    { n:91,  s:"Pa", m:"231.04",  e_name:"Protactinium",   h_name:"प्रोटैक्टिनियम",   e_cat:"Actinide",              h_cat:"ऐक्टिनाइड" },
+    { n:92,  s:"U",  m:"238.03",  e_name:"Uranium",        h_name:"यूरेनियम",         e_cat:"Actinide",              h_cat:"ऐक्टिनाइड" },
+    { n:93,  s:"Np", m:"(237)",   e_name:"Neptunium",      h_name:"नेप्ट्यूनियम",     e_cat:"Actinide",              h_cat:"ऐक्टिनाइड" },
+    { n:94,  s:"Pu", m:"(244)",   e_name:"Plutonium",      h_name:"प्लूटोनियम",       e_cat:"Actinide",              h_cat:"ऐक्टिनाइड" },
+    { n:95,  s:"Am", m:"(243)",   e_name:"Americium",      h_name:"अमेरिसियम",        e_cat:"Actinide",              h_cat:"ऐक्टिनाइड" },
+    { n:96,  s:"Cm", m:"(247)",   e_name:"Curium",         h_name:"क्यूरीयम",         e_cat:"Actinide",              h_cat:"ऐक्टिनाइड" },
+    { n:97,  s:"Bk", m:"(247)",   e_name:"Berkelium",      h_name:"बर्केलियम",        e_cat:"Actinide",              h_cat:"ऐक्टिनाइड" },
+    { n:98,  s:"Cf", m:"(251)",   e_name:"Californium",    h_name:"कैलिफ़ोर्नियम",    e_cat:"Actinide",              h_cat:"ऐक्टिनाइड" },
+    { n:99,  s:"Es", m:"(252)",   e_name:"Einsteinium",    h_name:"आइंस्टीनियम",      e_cat:"Actinide",              h_cat:"ऐक्टिनाइड" },
+    { n:100, s:"Fm", m:"(257)",   e_name:"Fermium",        h_name:"फर्मियम",          e_cat:"Actinide",              h_cat:"ऐक्टिनाइड" },
+    { n:101, s:"Md", m:"(258)",   e_name:"Mendelevium",    h_name:"मेंडेलीवियम",      e_cat:"Actinide",              h_cat:"ऐक्टिनाइड" },
+    { n:102, s:"No", m:"(259)",   e_name:"Nobelium",       h_name:"नोबेलियम",         e_cat:"Actinide",              h_cat:"ऐक्टिनाइड" },
+    { n:103, s:"Lr", m:"(266)",   e_name:"Lawrencium",     h_name:"लॉरेंसियम",        e_cat:"Actinide",              h_cat:"ऐक्टिनाइड" },
+    { n:104, s:"Rf", m:"(267)",   e_name:"Rutherfordium",  h_name:"रदरफोर्डियम",      e_cat:"Transition Metal",      h_cat:"संक्रमण धातु" },
+    { n:105, s:"Db", m:"(268)",   e_name:"Dubnium",        h_name:"डबनियम",           e_cat:"Transition Metal",      h_cat:"संक्रमण धातु" },
+    { n:106, s:"Sg", m:"(271)",   e_name:"Seaborgium",     h_name:"सीबोर्गियम",       e_cat:"Transition Metal",      h_cat:"संक्रमण धातु" },
+    { n:107, s:"Bh", m:"(272)",   e_name:"Bohrium",        h_name:"बोहरियम",          e_cat:"Transition Metal",      h_cat:"संक्रमण धातु" },
+    { n:108, s:"Hs", m:"(270)",   e_name:"Hassium",        h_name:"हैसियम",           e_cat:"Transition Metal",      h_cat:"संक्रमण धातु" },
+    { n:109, s:"Mt", m:"(276)",   e_name:"Meitnerium",     h_name:"माइटनरियम",        e_cat:"Unknown",               h_cat:"अज्ञात" },
+    { n:110, s:"Ds", m:"(281)",   e_name:"Darmstadtium",   h_name:"डार्मस्टेडटियम",   e_cat:"Unknown",               h_cat:"अज्ञात" },
+    { n:111, s:"Rg", m:"(282)",   e_name:"Roentgenium",    h_name:"रॉन्टजेनियम",      e_cat:"Unknown",               h_cat:"अज्ञात" },
+    { n:112, s:"Cn", m:"(285)",   e_name:"Copernicium",    h_name:"कोपर्निसियम",      e_cat:"Transition Metal",      h_cat:"संक्रमण धातु" },
+    { n:113, s:"Nh", m:"(286)",   e_name:"Nihonium",       h_name:"निहोनियम",         e_cat:"Unknown",               h_cat:"अज्ञात" },
+    { n:114, s:"Fl", m:"(289)",   e_name:"Flerovium",      h_name:"फ़्लेरोवियम",      e_cat:"Post-transition Metal", h_cat:"उत्तर संक्रमण धातु" },
+    { n:115, s:"Mc", m:"(290)",   e_name:"Moscovium",      h_name:"मास्कोवियम",       e_cat:"Unknown",               h_cat:"अज्ञात" },
+    { n:116, s:"Lv", m:"(293)",   e_name:"Livermorium",    h_name:"लिवरमोरियम",       e_cat:"Post-transition Metal", h_cat:"उत्तर संक्रमण धातु" },
+    { n:117, s:"Ts", m:"(294)",   e_name:"Tennessine",     h_name:"टेनेसिन",          e_cat:"Halogen",               h_cat:"हैलोजन" },
+    { n:118, s:"Og", m:"(294)",   e_name:"Oganesson",      h_name:"ओगानेसन",          e_cat:"Noble Gas",             h_cat:"निष्क्रिय गैस" }
 ];
 
+/* ============================================================
+   FAQ DATA
+   ============================================================ */
 const faqData = {
     en: [
-        { q: "1. How many chemical elements are there in total?", a: "As of now, there are 118 officially recognized chemical elements that complete the first seven rows of the periodic table." },
-        { q: "2. What is the first element?", a: "The first element is Hydrogen (H), which holds the atomic number 1. It consists of only a single proton and single electron." }
+        { q:"1. How many chemical elements are there in total?", a:"As of now, there are 118 officially recognized chemical elements that complete the first seven rows of the periodic table. While elements up to 94 exist naturally on Earth, elements 95–118 have only been synthesized in laboratories." },
+        { q:"2. What is the first element?", a:"The first element is Hydrogen (H), atomic number 1. It has just one proton in its nucleus, making it the simplest and lightest of all elements. It is also the most abundant element in the universe." },
+        { q:"3. What is the last element?", a:"The last known element is Oganesson (Og), atomic number 118. It is a synthetic, superheavy element and is extremely unstable. It is named after nuclear physicist Yuri Oganessian." },
+        { q:"4. What is the lightest element?", a:"Hydrogen (H) is the lightest element, with an atomic mass of about 1.008 u. Its most common isotope, protium, consists of only a single proton and a single electron, with no neutrons." },
+        { q:"5. What is the heaviest element?", a:"The heaviest known element is Oganesson (Og), atomic number 118, with an atomic mass of approximately 294 u. It is synthetic and only a few atoms have ever been created." },
+        { q:"6. How many groups are in the periodic table?", a:"The periodic table has 18 vertical columns known as groups. Elements within the same group share similar chemical properties because they have the same number of valence electrons." },
+        { q:"7. How many periods are in the periodic table?", a:"There are 7 horizontal rows in the periodic table, called periods. All elements in the same period have the same number of electron shells." },
+        { q:"8. What are the Lanthanide and Actinide series?", a:"The Lanthanide series (elements 57–71) and the Actinide series (elements 89–103) are placed at the bottom of the periodic table. They are f-block elements. Lanthanides are rare-earth metals; Actinides are all radioactive." },
+        { q:"9. Which element floats on water?", a:"Alkali metals like Lithium (Li), Sodium (Na), and Potassium (K) are less dense than water and can float on it, but they react vigorously and dangerously with water." },
+        { q:"10. Which are the Noble Gases?", a:"Noble Gases are in Group 18: Helium (He), Neon (Ne), Argon (Ar), Krypton (Kr), Xenon (Xe), Radon (Rn), and Oganesson (Og). Their outermost electron shells are completely full, making them very stable and low in reactivity." },
+        { q:"11. What is the most abundant element in the Earth's crust?", a:"Oxygen (O) is the most abundant element by mass in the Earth's crust, making up about 46.6%. The second most abundant is Silicon (Si)." },
+        { q:"12. Which element is most abundant in the human body?", a:"Oxygen is also the most abundant element in the human body by mass (~65%), primarily because our bodies are about 60% water (H₂O)." },
+        { q:"13. What is the most reactive metal?", a:"Francium (Fr) is considered the most reactive metal, but it is extremely rare and radioactive. Cesium (Cs) is the most reactive stable metal." },
+        { q:"14. Are all elements stable?", a:"No. All elements with an atomic number greater than 83 (Bismuth) are entirely radioactive. Technetium (43) and Promethium (61) also have no stable isotopes." },
+        { q:"15. Can new elements be discovered?", a:"Yes, but today discovery usually means creation. New elements are synthesized in particle accelerators. Scientists are currently working on creating elements 119 and 120." }
     ],
     hi: [
-        { q: "1. कुल कितने रासायनिक तत्व होते हैं?", a: "वर्तमान समय में आवर्त सारणी में कुल 118 आधिकारिक रूप से मान्य रासायनिक तत्व हैं।" },
-        { q: "2. पहला तत्व कौन-सा है?", a: "पहला तत्व हाइड्रोजन (H) है, जिसका परमाणु क्रमांक 1 होता है। इसके नाभिक में केवल एक प्रोटॉन होता है।" }
+        { q:"1. कुल कितने रासायनिक तत्व होते हैं?", a:"वर्तमान में आवर्त सारणी में कुल 118 आधिकारिक रूप से मान्य रासायनिक तत्व हैं। लगभग 94 तक के तत्व पृथ्वी पर प्राकृतिक रूप से पाए जाते हैं, जबकि 95 से 118 तक के तत्व प्रयोगशाला में बनाए गए हैं।" },
+        { q:"2. पहला तत्व कौन-सा है?", a:"पहला तत्व हाइड्रोजन (H) है, जिसका परमाणु क्रमांक 1 है। इसके नाभिक में केवल एक प्रोटॉन होता है। यह ब्रह्मांड में सबसे अधिक मात्रा में पाया जाने वाला तत्व है।" },
+        { q:"3. आखिरी तत्व कौन-सा है?", a:"अभी तक ज्ञात अंतिम तत्व ओगानेसन (Og) है, जिसका परमाणु क्रमांक 118 है। यह एक कृत्रिम और अत्यंत अस्थिर तत्व है, जिसका नाम परमाणु भौतिकविद यूरी ओगानेसियन के सम्मान में रखा गया है।" },
+        { q:"4. सबसे हल्का तत्व कौन-सा है?", a:"सबसे हल्का तत्व हाइड्रोजन (H) है, जिसका परमाणु द्रव्यमान लगभग 1.008 u होता है। इसका सामान्य समस्थानिक प्रोटियम केवल एक प्रोटॉन और एक इलेक्ट्रॉन से बना होता है।" },
+        { q:"5. सबसे भारी तत्व कौन-सा है?", a:"सबसे भारी ज्ञात तत्व ओगानेसन (Og) है, जिसका परमाणु क्रमांक 118 और परमाणु द्रव्यमान लगभग 294 u है। यह पूर्णतः कृत्रिम तत्व है।" },
+        { q:"6. आवर्त सारणी में कुल कितने समूह होते हैं?", a:"आवर्त सारणी में कुल 18 ऊर्ध्वाधर स्तंभ होते हैं जिन्हें समूह कहा जाता है। एक ही समूह के तत्वों के बाह्यतम कक्षक में समान संयोजक इलेक्ट्रॉन होते हैं।" },
+        { q:"7. आवर्त कितने होते हैं?", a:"आवर्त सारणी में 7 क्षैतिज पंक्तियाँ होती हैं जिन्हें आवर्त कहा जाता है। एक ही आवर्त के सभी तत्वों में इलेक्ट्रॉन स्तर की संख्या समान होती है।" },
+        { q:"8. लैंथेनाइड और ऐक्टिनाइड श्रेणी क्या है?", a:"लैंथेनाइड श्रेणी (तत्व 57–71) और ऐक्टिनाइड श्रेणी (तत्व 89–103) f-ब्लॉक के तत्व हैं। लैंथेनाइड को दुर्लभ मृदा धातु कहते हैं जबकि ऐक्टिनाइड के सभी समस्थानिक रेडियोधर्मी होते हैं।" },
+        { q:"9. कौन-सा तत्व पानी पर तैर सकता है?", a:"लिथियम (Li), सोडियम (Na) और पोटैशियम (K) जैसी क्षार धातुएँ पानी से कम घनत्व वाली होती हैं और पानी पर तैरती हैं, लेकिन पानी के साथ तीव्र और विस्फोटक अभिक्रिया भी करती हैं।" },
+        { q:"10. निष्क्रिय गैसें कौन-सी हैं?", a:"समूह 18 के तत्व — हीलियम (He), नीयॉन (Ne), आर्गन (Ar), क्रिप्टॉन (Kr), ज़ेनॉन (Xe), रेडॉन (Rn) और ओगानेसन (Og) — निष्क्रिय गैसें हैं। इनके बाहरी कक्षक में इलेक्ट्रॉन पूर्ण होते हैं इसलिए ये बहुत स्थिर होती हैं।" },
+        { q:"11. पृथ्वी की भूपर्पटी में सबसे अधिक पाया जाने वाला तत्व कौन-सा है?", a:"पृथ्वी की भूपर्पटी में द्रव्यमान के आधार पर सबसे अधिक पाया जाने वाला तत्व ऑक्सीजन (O) है, जो लगभग 46.6% भाग बनाता है। दूसरा सबसे प्रचुर तत्व सिलिकॉन (Si) है।" },
+        { q:"12. मानव शरीर में सबसे अधिक पाया जाने वाला तत्व कौन-सा है?", a:"मानव शरीर में भी ऑक्सीजन सबसे अधिक (~65%) पाई जाती है, क्योंकि हमारा शरीर लगभग 60% पानी (H₂O) से बना है।" },
+        { q:"13. सबसे अधिक क्रियाशील धातु कौन-सी है?", a:"फ्रैंशियम (Fr) को सबसे अधिक क्रियाशील धातु माना जाता है, लेकिन यह बहुत दुर्लभ और रेडियोधर्मी है। सीज़ियम (Cs) सबसे अधिक क्रियाशील स्थिर धातु है।" },
+        { q:"14. क्या सभी तत्व स्थिर होते हैं?", a:"नहीं। जिन तत्वों का परमाणु क्रमांक 83 (बिस्मथ) से अधिक होता है, उनके सभी समस्थानिक रेडियोधर्मी होते हैं। टेक्नीशियम (43) और प्रॉमेथियम (61) के कोई भी स्थिर समस्थानिक नहीं पाए जाते।" },
+        { q:"15. क्या आज भी नए तत्व खोजे जा सकते हैं?", a:"हाँ, लेकिन अब खोज का अर्थ अधिकतर निर्माण होता है। नए तत्व कण त्वरकों में भारी नाभिकों पर हल्के नाभिकों की बमबारी करके बनाए जाते हैं। वैज्ञानिक अभी 119 और 120 तत्व बनाने का प्रयास कर रहे हैं।" }
     ]
 };
 
+/* ============================================================
+   LANGUAGE SWITCH
+   ============================================================ */
 function setLanguage(lang) {
-    // Sync Button Highlight
     document.querySelectorAll(".language-switch button").forEach(btn => {
         btn.classList.toggle("active", btn.getAttribute("data-lang") === lang);
     });
 
-    // Update Header Labels
-    document.getElementById("elements-table-title").innerText = lang === "hi" ? "रासायनिक तत्वों की सारणी (नाम और परमाणु द्रव्यमान)" : "Chemical Elements Parameters";
-    document.getElementById("th-element-name").innerText = lang === "hi" ? "तत्व का नाम" : "Element Name";
-    document.getElementById("th-category").innerText = lang === "hi" ? "वर्ग" : "Category";
+    const title = document.getElementById("elements-table-title");
+    const thName = document.getElementById("th-element-name");
+    const thCat  = document.getElementById("th-category");
+    const faqHead = document.getElementById("faq-heading");
 
-    // Instant InnerHTML Content Swap Loop
+    if (lang === "hi") {
+        if (title)   title.textContent   = "रासायनिक तत्वों की सारणी (नाम और परमाणु द्रव्यमान)";
+        if (thName)  thName.textContent  = "तत्व का नाम";
+        if (thCat)   thCat.textContent   = "वर्ग";
+        if (faqHead) faqHead.textContent = "अक्सर पूछे जाने वाले प्रश्न (FAQs)";
+    } else {
+        if (title)   title.textContent   = "Chemical Elements Parameters";
+        if (thName)  thName.textContent  = "Element Name";
+        if (thCat)   thCat.textContent   = "Category";
+        if (faqHead) faqHead.textContent = "Frequently Asked Questions (FAQs)";
+    }
+
+    // Render table rows
     const tbody = document.getElementById("elements-matrix-tbody");
     tbody.innerHTML = elementData.map(item => `
         <tr>
@@ -195,22 +390,172 @@ function setLanguage(lang) {
         </tr>
     `).join('');
 
-    // Instant FAQ Data Swap Loop
+    // Render FAQs
     const faqBox = document.getElementById("faq-dynamic-box");
     faqBox.innerHTML = faqData[lang].map(faq => `
-        <details style="margin-bottom: 10px; border-bottom: 1px solid rgba(128,128,128,0.15); padding-bottom: 8px;">
-            <summary style="font-weight:600; cursor:pointer;">${faq.q}</summary>
-            <div style="padding: 8px 5px; opacity:0.9;"><p>${faq.a}</p></div>
+        <details class="faq-item">
+            <summary>${faq.q}</summary>
+            <div><p>${faq.a}</p></div>
         </details>
     `).join('');
 }
 
-// Dom Compile Boot Engine
 document.addEventListener("DOMContentLoaded", () => { setLanguage("en"); });
 
+/* ============================================================
+   CANVAS HERO
+   ============================================================ */
+(function () {
+    var canvas = document.getElementById("thElementHeroCanvas");
+    if (!canvas || !canvas.getContext) return;
+    var ctx = canvas.getContext("2d");
+    var W = canvas.width, H = canvas.height;
+
+    function roundedRect(ctx, x, y, w, h, r) {
+        if (w < 2*r) r = w/2;
+        if (h < 2*r) r = h/2;
+        ctx.beginPath();
+        ctx.moveTo(x+r, y);
+        ctx.arcTo(x+w, y, x+w, y+h, r);
+        ctx.arcTo(x+w, y+h, x,   y+h, r);
+        ctx.arcTo(x,   y+h, x,   y,   r);
+        ctx.arcTo(x,   y,   x+w, y,   r);
+        ctx.closePath();
+    }
+
+    // Background gradient
+    var bg = ctx.createLinearGradient(0, 0, W, H);
+    bg.addColorStop(0,   "#0c1230");
+    bg.addColorStop(0.5, "#151f4b");
+    bg.addColorStop(1,   "#211244");
+    ctx.fillStyle = bg;
+    ctx.fillRect(0, 0, W, H);
+
+    // Stars
+    ctx.save();
+    ctx.globalAlpha = 0.12;
+    ctx.fillStyle = "#ffffff";
+    for (var i = 0; i < 160; i++) {
+        ctx.beginPath();
+        ctx.arc(Math.random()*W, Math.random()*H, Math.random()*2.5, 0, Math.PI*2);
+        ctx.fill();
+    }
+    ctx.restore();
+
+    // Watermark
+    ctx.save();
+    ctx.globalAlpha = 0.05;
+    ctx.fillStyle = "#ffffff";
+    ctx.textAlign = "center";
+    ctx.font = "bold 190px Arial";
+    ctx.translate(W/2, H/2);
+    ctx.rotate(-0.3);
+    ctx.fillText("gklearnstudy", 0, 50);
+    ctx.restore();
+
+    // Corner watermarks
+    ctx.save();
+    ctx.globalAlpha = 0.10;
+    ctx.fillStyle = "#ffffff";
+    ctx.font = "bold 52px Arial";
+    ctx.textAlign = "left";
+    ctx.fillText("gklearnstudy", 30, H-28);
+    ctx.textAlign = "right";
+    ctx.fillText("gklearnstudy", W-30, H-28);
+    ctx.restore();
+
+    // Left info panel
+    roundedRect(ctx, 60, 60, 640, 380, 28);
+    var panelGrad = ctx.createLinearGradient(60, 60, 700, 440);
+    panelGrad.addColorStop(0, "rgba(255,255,255,0.18)");
+    panelGrad.addColorStop(1, "rgba(255,255,255,0.05)");
+    ctx.fillStyle = panelGrad;
+    ctx.fill();
+    ctx.strokeStyle = "rgba(255,255,255,0.30)";
+    ctx.lineWidth = 1.5;
+    ctx.stroke();
+
+    // Panel text
+    ctx.fillStyle = "#ffffff";
+    ctx.textAlign = "left";
+    ctx.font = "bold 40px Arial";
+    ctx.fillText("Chemical Elements", 90, 130);
+    ctx.font = "bold 32px Arial";
+    ctx.fillText("Atomic Number & Mass", 90, 172);
+
+    ctx.globalAlpha = 0.88;
+    ctx.font = "19px Arial";
+    var desc = "A complete reference of all 118 elements with symbols, atomic numbers, categories and atomic masses. Ideal for NEET, JEE & CBSE students.";
+    var words = desc.split(" "), line = "", lx = 90, ly = 214, mw = 590;
+    for (var w = 0; w < words.length; w++) {
+        var test = line + words[w] + " ";
+        if (ctx.measureText(test).width > mw && w > 0) {
+            ctx.fillText(line, lx, ly); line = words[w] + " "; ly += 27;
+        } else { line = test; }
+    }
+    ctx.fillText(line, lx, ly);
+    ctx.globalAlpha = 1;
+
+    // Atom graphic in panel
+    var cx = 200, cy = 340;
+    ctx.save();
+    ctx.globalAlpha = 0.85;
+    ctx.strokeStyle = "rgba(255,255,255,0.55)"; ctx.lineWidth = 2;
+    ctx.beginPath(); ctx.ellipse(cx, cy, 95, 40, 0, 0, Math.PI*2); ctx.stroke();
+    ctx.beginPath(); ctx.ellipse(cx, cy, 95, 40, Math.PI/3, 0, Math.PI*2); ctx.stroke();
+    ctx.beginPath(); ctx.ellipse(cx, cy, 95, 40, -Math.PI/3, 0, Math.PI*2); ctx.stroke();
+    ctx.fillStyle = "#ffeb3b";
+    ctx.beginPath(); ctx.arc(cx, cy, 14, 0, Math.PI*2); ctx.fill();
+    ctx.fillStyle = "#fff";
+    [[cx+95,cy],[cx-95,cy],[cx,cy+40]].forEach(function(p){
+        ctx.beginPath(); ctx.arc(p[0], p[1], 5, 0, Math.PI*2); ctx.fill();
+    });
+    ctx.restore();
+
+    // Famous formulas
+    ctx.fillStyle = "#ffffff"; ctx.textAlign = "left"; ctx.globalAlpha = 0.92;
+    ctx.font = "bold 24px Arial";
+    ctx.fillText("Famous Formulas", 390, 310);
+    ctx.font = "20px Arial";
+    ctx.fillText("H\u2082O  \u2192  Water", 390, 340);
+    ctx.fillText("CO\u2082  \u2192  Carbon Dioxide", 390, 368);
+    ctx.fillText("NaCl \u2192  Table Salt", 390, 396);
+    ctx.globalAlpha = 1;
+
+    // Element cards — right side
+    function drawCard(x, y, color, z, sym, name, mass) {
+        roundedRect(ctx, x, y, 185, 115, 14);
+        ctx.fillStyle = color; ctx.fill();
+        ctx.strokeStyle = "rgba(0,0,0,0.12)"; ctx.lineWidth = 1.2; ctx.stroke();
+        ctx.fillStyle = "rgba(0,0,0,0.65)";
+        ctx.font = "15px Arial"; ctx.textAlign = "left";
+        ctx.fillText("Z = "+z, x+12, y+22);
+        ctx.textAlign = "right";
+        ctx.fillText("~"+mass+" u", x+173, y+22);
+        ctx.textAlign = "left";
+        ctx.font = "bold 44px Arial";
+        ctx.fillText(sym, x+14, y+72);
+        ctx.font = "17px Arial";
+        ctx.fillText(name, x+14, y+96);
+    }
+
+    var rx = 740, gap = 210, gy = 65;
+    drawCard(rx,        gy,       "#ffcc80", 1,  "H",  "Hydrogen",  "1.008");
+    drawCard(rx+gap,    gy,       "#80deea", 8,  "O",  "Oxygen",   "15.999");
+    drawCard(rx+gap*2,  gy,       "#b39ddb", 26, "Fe", "Iron",     "55.845");
+    drawCard(rx,        gy+145,   "#ffe082", 11, "Na", "Sodium",   "22.990");
+    drawCard(rx+gap,    gy+145,   "#a5d6a7", 17, "Cl", "Chlorine", "35.45");
+    drawCard(rx+gap*2,  gy+145,   "#ffab91", 6,  "C",  "Carbon",   "12.011");
+    drawCard(rx,        gy+290,   "#ce93d8", 7,  "N",  "Nitrogen", "14.007");
+    drawCard(rx+gap,    gy+290,   "#90caf9", 79, "Au", "Gold",    "196.97");
+    drawCard(rx+gap*2,  gy+290,   "#ffe0b2", 12, "Mg", "Magnesium","24.305");
+
+})();
+
+/* Sidebar toggle */
 function toggleMobileSidebar(event) {
-    if(event) event.stopPropagation(); 
-    const sidebar = document.querySelector(".th-left-sidebar");
+    if (event) event.stopPropagation();
+    var sidebar = document.querySelector(".th-left-sidebar");
     if (sidebar) sidebar.classList.toggle("mobile-open");
 }
 </script>
