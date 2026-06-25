@@ -1,4 +1,3 @@
-
 ---
 layout: default
 section: learn
@@ -7,18 +6,18 @@ permalink: /learn/chemistry/reactions-hindi/
 lang_switch: false
 lang_toggle: false
 ---
- 
+
 <div class="tyagihub-main-layout">
- 
+
     <div class="th-left-col-wrapper">
         <button class="th-mobile-menu-trigger" onclick="toggleMobileSidebar(event)">
             ☰ <span>Menu</span>
         </button>
         {% include left-sidebar-selector.html %}
     </div>
- 
+
     <div style="grid-column: 2; min-width: 0 !important; width: 100% !important; overflow: hidden !important; contain: layout style !important; isolation: isolate !important; clear: both !important; box-sizing: border-box; padding: 10px;">
-      
+
         <style>
             /* ── Reaction Type Cards ── */
             .th-reaction-grid {
@@ -38,7 +37,7 @@ lang_toggle: false
             .th-reaction-card h3 { margin-top: 0; color: var(--accent-color, #6a4cff); }
             .th-reaction-card .svg-icon { height: 90px; margin-bottom: 0.8rem; }
             .th-reaction-card code { font-size: 0.88rem; }
- 
+
             /* ── Search + Table ── */
             .th-search-wrap { margin: 1.5rem 0 1rem; }
             .th-search-wrap input {
@@ -48,7 +47,7 @@ lang_toggle: false
                 transition: border-color 0.2s;
             }
             .th-search-wrap input:focus { border-color: #6a4cff; box-shadow: 0 0 0 3px rgba(106,76,255,0.12); }
- 
+
             .th-table-scroll {
                 width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch;
                 border: 1px solid rgba(128,128,128,0.15); border-radius: 8px; margin-bottom: 20px;
@@ -68,7 +67,7 @@ lang_toggle: false
             .th-req { font-family: monospace; background: rgba(0,0,0,0.04); border: 1px solid rgba(0,180,0,0.35);
                       border-radius: 5px; padding: 6px 10px; display: block; margin: 6px 0; font-size: 0.88rem; }
             .th-rexp { font-size: 0.88rem; opacity: 0.85; line-height: 1.5; margin: 0; }
- 
+
             .th-load-wrap { text-align: center; margin: 1.5rem 0; }
             .th-load-btn {
                 background: #6a4cff; color: white; padding: 0.75rem 2rem;
@@ -76,7 +75,7 @@ lang_toggle: false
                 transition: background 0.2s, transform 0.2s;
             }
             .th-load-btn:hover { background: #5238e0; transform: translateY(-2px); }
- 
+
             /* ── Modal ── */
             .th-modal-overlay {
                 position: fixed; inset: 0; background: rgba(0,0,0,0.7);
@@ -100,540 +99,247 @@ lang_toggle: false
                                 justify-content: center; align-items: center; }
             #th-modal-visual svg { width: 100%; height: 100%; }
             .th-modal-box h3 { font-size: 1.1rem; margin: 1.2rem 0 0.4rem; }
- 
+
             /* ── Canvas wrap ── */
             .th-reaction-canvas-wrap { width: 100%; margin: 20px 0 28px; }
             .th-reaction-canvas-wrap canvas { width: 100%; height: auto; display: block; border-radius: 16px; }
- 
+
             /* ── Atom SVG ── */
             .th-atom-center { display: flex; justify-content: center; margin-bottom: 8px; }
         </style>
- 
+
         <script type="application/ld+json">
         {
             "@context": "https://schema.org",
             "@type": "Article",
-            "headline": "Types of Chemical Reactions with Examples",
-            "description": "Learn all about types of chemical reactions in chemistry with definitions, examples, FAQs and important notes. Useful for NEET, JEE and board exams.",
+            "headline": "रासायनिक अभिक्रियाओं के प्रकार और उदाहरण",
+            "description": "रसायन विज्ञान में रासायनिक अभिक्रियाओं के प्रकार, परिभाषाएं, उदाहरण और FAQ। NEET, JEE और बोर्ड परीक्षाओं के लिए उपयोगी।",
             "image": "https://tyagihub.com/images/chemistry.png",
             "author": { "@type": "Organization", "name": "TyagiHub" },
-            "url": "/learn/chemistry/reactions/"
+            "url": "/learn/chemistry/reactions-hindi/"
         }
         </script>
 
-       <div id="root">
-      <header class="education-header">
-        <div class="header-content">
+        <div id="root">
 
-          <!-- SVG Reaction Animation -->
-          <div class="header-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 200" role="img"
-              aria-labelledby="reaction-title-svg">
-              <title id="reaction-title-svg">Animated Chemical Reaction - pouring beakers</title>
-              <defs>
-                <linearGradient id="liquid1" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="0%" stop-color="#3b82f6" />
-                  <stop offset="100%" stop-color="#60a5fa" />
-                </linearGradient>
-                <linearGradient id="liquid2" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="0%" stop-color="#f59e0b" />
-                  <stop offset="100%" stop-color="#fcd34d" />
-                </linearGradient>
-                <linearGradient id="reaction-mix" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="0%" stop-color="#8b5cf6" />
-                  <stop offset="100%" stop-color="#a78bfa" />
-                </linearGradient>
-              </defs>
+            <!-- Header -->
+            <header class="education-header" style="text-align:center; margin-bottom:20px;">
 
-              <style>
-                .glass {
-                  fill: rgba(255, 255, 255, 0.06);
-                  stroke: #c7d2fe;
-                  stroke-width: 2;
-                }
+                <!-- Animated Beaker SVG -->
+                <div class="th-atom-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 200" style="width:180px;" role="img" aria-labelledby="th-reaction-svg-title">
+                        <title id="th-reaction-svg-title">Animated Chemical Reaction - pouring beakers</title>
+                        <defs>
+                            <linearGradient id="th-liq1" x1="0" y1="0" x2="0" y2="1">
+                                <stop offset="0%" stop-color="#3b82f6"/>
+                                <stop offset="100%" stop-color="#60a5fa"/>
+                            </linearGradient>
+                            <linearGradient id="th-liq2" x1="0" y1="0" x2="0" y2="1">
+                                <stop offset="0%" stop-color="#f59e0b"/>
+                                <stop offset="100%" stop-color="#fcd34d"/>
+                            </linearGradient>
+                            <linearGradient id="th-mix" x1="0" y1="0" x2="0" y2="1">
+                                <stop offset="0%" stop-color="#8b5cf6"/>
+                                <stop offset="100%" stop-color="#a78bfa"/>
+                            </linearGradient>
+                        </defs>
+                        <style>
+                            .th-glass { fill:rgba(255,255,255,0.06); stroke:#c7d2fe; stroke-width:2; }
+                            .th-sm-glass { fill:rgba(255,255,255,0.05); stroke:#c7d2fe; stroke-width:1.6; }
+                            .th-stream { stroke-linecap:round; stroke-linejoin:round; opacity:0.95; }
+                            .th-bubble { fill:#ffffff; opacity:0.9; }
+                            .th-tilt-l { transform-origin:45px 60px; animation:thTiltL 5s ease-in-out infinite; }
+                            .th-tilt-r { transform-origin:175px 60px; animation:thTiltR 5s ease-in-out infinite; }
+                            @keyframes thTiltL { 0%,100%{transform:rotate(0deg)} 40%,60%{transform:rotate(45deg)} }
+                            @keyframes thTiltR { 0%,100%{transform:rotate(0deg)} 40%,60%{transform:rotate(-45deg)} }
+                            .th-shimmer { stroke-opacity:0; animation:thShim 5s ease-in-out infinite; }
+                            @keyframes thShim { 0%,35%,100%{stroke-opacity:0} 45%,55%{stroke-opacity:1} }
+                        </style>
+                        <g class="th-tilt-l">
+                            <path class="th-sm-glass" d="M10 70 V 25 H 50 V 70 Z"/>
+                            <rect x="12" y="40" width="36" height="22" fill="url(#th-liq1)"/>
+                            <path class="th-stream th-shimmer" d="M50 25 C 70 45, 85 70, 105 100" stroke="url(#th-liq1)" stroke-width="8" fill="none"/>
+                        </g>
+                        <g class="th-tilt-r">
+                            <path class="th-sm-glass" d="M170 70 V 25 H 210 V 70 Z"/>
+                            <rect x="172" y="40" width="36" height="22" fill="url(#th-liq2)"/>
+                            <path class="th-stream th-shimmer" d="M170 25 C 150 45, 135 70, 115 100" stroke="url(#th-liq2)" stroke-width="8" fill="none"/>
+                        </g>
+                        <path class="th-glass" d="M60 160 V 85 H 160 V 160 A 8 8 0 0 0 168 168 H 52 A 8 8 0 0 0 60 160 Z"/>
+                        <rect x="62" y="150" width="96" height="10" fill="url(#th-mix)">
+                            <animate attributeName="y" values="150;110;110;150" dur="6s" repeatCount="indefinite"/>
+                            <animate attributeName="height" values="10;50;50;10" dur="6s" repeatCount="indefinite"/>
+                        </rect>
+                        <circle class="th-bubble" cx="82" cy="150" r="3">
+                            <animate attributeName="cy" values="150;125;110" dur="2s" repeatCount="indefinite"/>
+                        </circle>
+                        <circle class="th-bubble" cx="110" cy="150" r="4">
+                            <animate attributeName="cy" values="150;130;105" dur="2.6s" repeatCount="indefinite"/>
+                        </circle>
+                        <circle class="th-bubble" cx="132" cy="150" r="2.5">
+                            <animate attributeName="cy" values="150;128;108" dur="2.2s" repeatCount="indefinite"/>
+                        </circle>
+                    </svg>
+                </div>
 
-                .small-glass {
-                  fill: rgba(255, 255, 255, 0.05);
-                  stroke: #c7d2fe;
-                  stroke-width: 1.6;
-                }
+                <h1>रासायनिक अभिक्रियाएं और समीकरण</h1>
+                <p class="education-description" style="max-width:750px; margin:10px auto; opacity:0.8;">
+                    एक रासायनिक अभिक्रिया एक ऐसी प्रक्रिया है जो रासायनिक पदार्थों के एक समूह को दूसरे में रूपांतरित करती है। स्पष्ट परिभाषाओं, उदाहरणों और व्यापक सूची के साथ मूलभूत प्रकारों का अन्वेषण करें — NEET, JEE और बोर्ड परीक्षाओं के लिए आदर्श।
+                </p>
+            </header>
 
-                .stream {
-                  stroke-linecap: round;
-                  stroke-linejoin: round;
-                  opacity: 0.95;
-                }
+            <!-- Canvas Hero -->
+            <div class="th-reaction-canvas-wrap">
+                <canvas id="thReactionCanvas" width="1400" height="520" role="img"
+                    aria-label="महत्वपूर्ण रासायनिक अभिक्रिया 2H2 + O2 = 2H2O हिंदी और अंग्रेजी में tyagihub वॉटरमार्क के साथ"></canvas>
+            </div>
 
-                .bubble {
-                  fill: #ffffff;
-                  opacity: 0.9;
-                }
+            <!-- Reaction Type Cards -->
+            <section style="margin-top:30px;">
+                <h2 style="font-size:1.3rem; margin-bottom:8px;">रासायनिक अभिक्रियाओं के प्रकार</h2>
+                <p style="opacity:0.8; margin-bottom:0;">रासायनिक अभिक्रियाओं को होने वाले परिवर्तनों के आधार पर वर्गीकृत किया जाता है। इन श्रेणियों को समझने से उत्पादों की भविष्यवाणी और आणविक प्रक्रियाओं को समझने में मदद मिलती है।</p>
+                <div class="th-reaction-grid">
 
-                .tilt-left {
-                  transform-origin: 45px 60px;
-                  animation: tiltLeft 5s ease-in-out infinite;
-                }
+                    <div class="th-reaction-card">
+                        <svg class="svg-icon" viewBox="0 0 100 100">
+                            <style>.rc1{stroke:#3b82f6;stroke-width:4;fill:none;animation:thCombine 2s ease-in-out infinite alternate}.rc2{stroke:#93c5fd;stroke-width:4;fill:none;animation:thCombine 2s ease-in-out infinite alternate-reverse}@keyframes thCombine{to{transform:translateX(15px)}}</style>
+                            <circle class="rc1" cx="30" cy="50" r="15"/>
+                            <circle class="rc2" cx="70" cy="50" r="15"/>
+                            <text font-family="sans-serif" font-size="28" fill="#2563eb" x="50" y="58" text-anchor="middle">+</text>
+                        </svg>
+                        <h3>संयोजन अभिक्रिया</h3>
+                        <p>दो या अधिक अभिकारक मिलकर एक उत्पाद बनाते हैं। (A + B → AB)</p>
+                        <code>2H₂ + O₂ → 2H₂O</code>
+                    </div>
 
-                .tilt-right {
-                  transform-origin: 175px 60px;
-                  animation: tiltRight 5s ease-in-out infinite;
-                }
+                    <div class="th-reaction-card">
+                        <svg class="svg-icon" viewBox="0 0 100 100">
+                            <style>.rp{fill:#8b5cf6;animation:thSplit 2s ease-in-out infinite alternate}.rc{stroke:#c4b5fd;fill:none;stroke-width:4}@keyframes thSplit{to{transform:scale(0.8) rotate(15deg)}}</style>
+                            <circle class="rp" cx="50" cy="50" r="20"/>
+                            <circle class="rc" cx="30" cy="50" r="10"/>
+                            <circle class="rc" cx="70" cy="50" r="10"/>
+                        </svg>
+                        <h3>वियोजन अभिक्रिया</h3>
+                        <p>एक यौगिक सरल पदार्थों में टूट जाता है। (AB → A + B)</p>
+                        <code>2HgO → 2Hg + O₂</code>
+                    </div>
 
-                @keyframes tiltLeft {
+                    <div class="th-reaction-card">
+                        <svg class="svg-icon" viewBox="0 0 100 100">
+                            <style>.da{fill:#f97316;animation:thDisplace 2.5s ease-in-out infinite}.db{fill:#3b82f6}.dc{fill:#93c5fd}@keyframes thDisplace{0%,100%{transform:translateX(0)}50%{transform:translateX(30px)}}</style>
+                            <circle class="da" cx="20" cy="50" r="12"/>
+                            <circle class="db" cx="60" cy="50" r="12"/>
+                            <circle class="dc" cx="80" cy="50" r="10"/>
+                        </svg>
+                        <h3>विस्थापन अभिक्रिया</h3>
+                        <p>अधिक अभिक्रियाशील तत्व कम अभिक्रियाशील को विस्थापित करता है। (A + BC → AC + B)</p>
+                        <code>Zn + CuSO₄ → ZnSO₄ + Cu</code>
+                    </div>
 
-                  0%,
-                  100% {
-                    transform: rotate(0deg);
-                  }
+                    <div class="th-reaction-card">
+                        <svg class="svg-icon" viewBox="0 0 100 100">
+                            <style>.sab,.scd{animation:thSwap 3s ease-in-out infinite}.scd{animation-delay:-1.5s}@keyframes thSwap{50%{transform:translateY(15px)}60%{opacity:0}70%{transform:translateY(-15px);opacity:0}80%{opacity:1}100%{transform:translateY(0)}}</style>
+                            <g class="sab"><circle fill="#3b82f6" cx="30" cy="50" r="10"/><circle fill="#93c5fd" cx="50" cy="50" r="10"/></g>
+                            <g class="scd"><circle fill="#f97316" cx="70" cy="50" r="10"/><circle fill="#fcd34d" cx="90" cy="50" r="10"/></g>
+                        </svg>
+                        <h3>द्विविस्थापन अभिक्रिया</h3>
+                        <p>दो यौगिकों के आयन दो नए यौगिक बनाने के लिए स्थान बदलते हैं। (AB + CD → AD + CB)</p>
+                        <code>AgNO₃ + NaCl → AgCl↓ + NaNO₃</code>
+                    </div>
 
-                  40%,
-                  60% {
-                    transform: rotate(45deg);
-                  }
-                }
+                </div>
+            </section>
 
-                @keyframes tiltRight {
+            <!-- Reactions Table -->
+            <section style="margin-top:36px;">
+                <h2 style="font-size:1.3rem; margin-bottom:8px;">रासायनिक अभिक्रियाओं की विस्तृत सूची</h2>
+                <div class="th-search-wrap">
+                    <input type="text" id="th-search-input" placeholder="नाम, समीकरण या कीवर्ड से खोजें…" aria-label="अभिक्रिया खोजें"/>
+                </div>
+                <div class="th-table-scroll">
+                    <table class="th-reactions-tbl" id="thReactionsTable">
+                        <thead>
+                            <tr><th>अभिक्रिया का विवरण</th></tr>
+                        </thead>
+                        <tbody id="thReactionsTbody"></tbody>
+                    </table>
+                </div>
+                <div class="th-load-wrap">
+                    <button class="th-load-btn" id="thLoadMoreBtn">और लोड करें</button>
+                </div>
+            </section>
 
-                  0%,
-                  100% {
-                    transform: rotate(0deg);
-                  }
+            <!-- FAQ -->
+            <section class="faq-section" style="margin-top:36px;" id="faq">
+                <h2 style="font-size:1.3rem; margin-bottom:15px;">अक्सर पूछे जाने वाले प्रश्न (FAQ)</h2>
 
-                  40%,
-                  60% {
-                    transform: rotate(-45deg);
-                  }
-                }
+                <details class="th-faq-item">
+                    <summary>1. रासायनिक अभिक्रिया क्या है?</summary>
+                    <div class="th-faq-ans"><p>रासायनिक अभिक्रिया एक ऐसी प्रक्रिया है जिसमें रासायनिक बंधों के टूटने और बनने से अभिकारक उत्पादों में बदल जाते हैं। इस प्रक्रिया में ऊर्जा या तो निकलती है या अवशोषित होती है।</p></div>
+                </details>
+                <details class="th-faq-item">
+                    <summary>2. रासायनिक अभिक्रियाओं के मुख्य प्रकार क्या हैं?</summary>
+                    <div class="th-faq-ans"><p>मुख्य प्रकार हैं — संयोजन, वियोजन, एकल विस्थापन, द्विविस्थापन, दहन, उदासीनीकरण और रेडॉक्स अभिक्रियाएं।</p></div>
+                </details>
+                <details class="th-faq-item">
+                    <summary>3. दैनिक जीवन में रासायनिक अभिक्रियाओं का क्या महत्व है?</summary>
+                    <div class="th-faq-ans"><p>रासायनिक अभिक्रियाएं खाना पकाने, सफाई, विनिर्माण, चिकित्सा और ऊर्जा उत्पादन में महत्वपूर्ण भूमिका निभाती हैं। पाचन, प्रकाश संश्लेषण और ईंधन जलाना इसके रोजमर्रा के उदाहरण हैं।</p></div>
+                </details>
+                <details class="th-faq-item">
+                    <summary>4. रासायनिक समीकरण को कैसे संतुलित करते हैं?</summary>
+                    <div class="th-faq-ans"><p>गुणांकों को समायोजित करें (सबस्क्रिप्ट नहीं) ताकि दोनों तरफ प्रत्येक तत्व के परमाणुओं की संख्या बराबर हो। यह द्रव्यमान संरक्षण के नियम का पालन करता है।</p></div>
+                </details>
+                <details class="th-faq-item">
+                    <summary>5. ऊष्माक्षेपी अभिक्रिया क्या है?</summary>
+                    <div class="th-faq-ans"><p>ऊष्माक्षेपी अभिक्रिया में ऊष्मा ऊर्जा निकलती है। उदाहरण — दहन, लोहे में जंग और अम्ल-क्षार की अभिक्रिया।</p></div>
+                </details>
+                <details class="th-faq-item">
+                    <summary>6. ऊष्माशोषी अभिक्रिया क्या है?</summary>
+                    <div class="th-faq-ans"><p>ऊष्माशोषी अभिक्रिया में परिवेश से ऊष्मा अवशोषित होती है। उदाहरण — कैल्शियम कार्बोनेट का वियोजन, प्रकाश संश्लेषण और जल का विद्युत अपघटन।</p></div>
+                </details>
+                <details class="th-faq-item">
+                    <summary>7. रासायनिक अभिक्रिया में उत्प्रेरक क्या होता है?</summary>
+                    <div class="th-faq-ans"><p>उत्प्रेरक एक ऐसा पदार्थ है जो अभिक्रिया की दर बढ़ाता है, स्वयं खर्च हुए बिना। यह सक्रियण ऊर्जा घटाता है। उदाहरण — H₂O₂ के वियोजन में MnO₂।</p></div>
+                </details>
+                <details class="th-faq-item">
+                    <summary>8. तापमान की रासायनिक अभिक्रियाओं में क्या भूमिका है?</summary>
+                    <div class="th-faq-ans"><p>उच्च तापमान अणुओं की गतिज ऊर्जा बढ़ाता है, जिससे टकराव की आवृत्ति और ऊर्जा बढ़ती है — अभिक्रिया दर सामान्यतः बढ़ जाती है। 10°C वृद्धि से कई अभिक्रियाओं की दर लगभग दोगुनी हो जाती है।</p></div>
+                </details>
+                <details class="th-faq-item">
+                    <summary>9. रेडॉक्स अभिक्रिया क्या है?</summary>
+                    <div class="th-faq-ans"><p>रेडॉक्स (ऑक्सीकरण-अपचयन) अभिक्रिया में इलेक्ट्रॉनों का एक साथ स्थानांतरण होता है। एक पदार्थ ऑक्सीकृत (इलेक्ट्रॉन खोता है) और दूसरा अपचयित (इलेक्ट्रॉन प्राप्त करता है) होता है। उदाहरण: Zn + CuSO₄ → ZnSO₄ + Cu।</p></div>
+                </details>
+                <details class="th-faq-item">
+                    <summary>10. वास्तविक जीवन में रासायनिक अभिक्रियाओं के उदाहरण क्या हैं?</summary>
+                    <div class="th-faq-ans"><p>ईंधन का दहन, पौधों में प्रकाश संश्लेषण, लोहे में जंग, बेकिंग सोडा से CO₂ निकलना (बेकिंग में) और खाना पकाना — ये सब रोजमर्रा की रासायनिक अभिक्रियाएं हैं।</p></div>
+                </details>
+                <details class="th-faq-item">
+                    <summary>11. रासायनिक अभिक्रियाएं पर्यावरण को कैसे प्रभावित करती हैं?</summary>
+                    <div class="th-faq-ans"><p>अभिक्रियाएं प्रदूषण (दहन से CO₂, NOx) कर सकती हैं या पर्यावरण को लाभ (प्रकाश संश्लेषण द्वारा CO₂ अवशोषण, हरित ऊर्जा) दे सकती हैं।</p></div>
+                </details>
+                <details class="th-faq-item">
+                    <summary>12. कार्बनिक और अकार्बनिक अभिक्रियाओं में क्या अंतर है?</summary>
+                    <div class="th-faq-ans"><p>कार्बनिक अभिक्रियाओं में कार्बन-आधारित यौगिक (हाइड्रोकार्बन, अल्कोहल, एस्टर) शामिल होते हैं, जबकि अकार्बनिक अभिक्रियाओं में खनिज, धातु, लवण और गैर-कार्बन यौगिक होते हैं।</p></div>
+                </details>
+                <details class="th-faq-item">
+                    <summary>13. रासायनिक साम्यावस्था क्या है?</summary>
+                    <div class="th-faq-ans"><p>रासायनिक साम्यावस्था वह अवस्था है जहां अग्र और पश्च अभिक्रियाएं समान दर पर होती हैं, इसलिए अभिकारकों और उत्पादों की सांद्रता स्थिर रहती है। यह गतिशील, स्थैतिक नहीं है।</p></div>
+                </details>
+                <details class="th-faq-item">
+                    <summary>14. रासायनिक अभिक्रिया के संकेत क्या हैं?</summary>
+                    <div class="th-faq-ans"><p>दृश्यमान संकेत — रंग परिवर्तन, तापमान परिवर्तन (गर्म या ठंडा), गैस उत्पादन (बुलबुले), अवक्षेप का बनना, गंध में परिवर्तन और प्रकाश उत्सर्जन।</p></div>
+                </details>
+                <details class="th-faq-item">
+                    <summary>15. दाब की रासायनिक अभिक्रियाओं में क्या भूमिका है?</summary>
+                    <div class="th-faq-ans"><p>दाब मुख्यतः गैसीय अभिक्रियाओं को प्रभावित करता है। दाब बढ़ाने से गैसों की सांद्रता बढ़ती है, टकराव आवृत्ति और अभिक्रिया दर बढ़ती है। यह साम्यावस्था को भी प्रभावित कर सकता है (ले शातेलिए का सिद्धांत)।</p></div>
+                </details>
 
-                .stream-shimmer {
-                  stroke-opacity: 0;
-                  animation: shimmer 5s ease-in-out infinite;
-                }
+            </section>
 
-                @keyframes shimmer {
-
-                  0%,
-                  35%,
-                  100% {
-                    stroke-opacity: 0;
-                  }
-
-                  45%,
-                  55% {
-                    stroke-opacity: 1;
-                  }
-                }
-              </style>
-
-              <!-- Left beaker -->
-              <g class="tilt-left">
-                <path class="small-glass" d="M10 70 V 25 H 50 V 70 Z"></path>
-                <rect x="12" y="40" width="36" height="22" fill="url(#liquid1)"></rect>
-                <path class="stream stream-shimmer" d="M50 25 C 70 45, 85 70, 105 100" stroke="url(#liquid1)"
-                  stroke-width="8" fill="none"></path>
-              </g>
-
-              <!-- Right beaker -->
-              <g class="tilt-right">
-                <path class="small-glass" d="M170 70 V 25 H 210 V 70 Z"></path>
-                <rect x="172" y="40" width="36" height="22" fill="url(#liquid2)"></rect>
-                <path class="stream stream-shimmer" d="M170 25 C 150 45, 135 70, 115 100" stroke="url(#liquid2)"
-                  stroke-width="8" fill="none"></path>
-              </g>
-
-              <!-- Main beaker -->
-              <path class="glass" d="M60 160 V 85 H 160 V 160 A 8 8 0 0 0 168 168 H 52 A 8 8 0 0 0 60 160 Z"></path>
-              <rect id="mainLiquid" class="main-liquid" x="62" y="150" width="96" height="10" fill="url(#reaction-mix)">
-                <animate attributeName="y" values="150;110;110;150" dur="6s" repeatCount="indefinite" />
-                <animate attributeName="height" values="10;50;50;10" dur="6s" repeatCount="indefinite" />
-              </rect>
-
-              <!-- Bubbles -->
-              <circle class="bubble" cx="82" cy="150" r="3">
-                <animate attributeName="cy" values="150;125;110" dur="2s" repeatCount="indefinite" />
-              </circle>
-              <circle class="bubble" cx="110" cy="150" r="4">
-                <animate attributeName="cy" values="150;130;105" dur="2.6s" repeatCount="indefinite" />
-              </circle>
-              <circle class="bubble" cx="132" cy="150" r="2.5">
-                <animate attributeName="cy" values="150;128;108" dur="2.2s" repeatCount="indefinite" />
-              </circle>
-            </svg>
-          </div>
-
-          <!-- Text Content -->
-          <div class="header-text">
-            <h1>रासायनिक अभिक्रियाएं और समीकरण</h1>
-            <p>
-              एक रासायनिक अभिक्रिया एक ऐसी प्रक्रिया है जो रासायनिक पदार्थों के एक समूह को दूसरे में रासायनिक रूप से बदल
-              देती है। यह पृष्ठ छात्रों के लिए स्पष्ट परिभाषाओं, उदाहरणों और एक व्यापक सूची के साथ अभिक्रियाओं के मूलभूत
-              प्रकारों की पड़ताल करता है।
-            </p>
-          </div>
-        </div>
-
-       
-      <div id="reaction-image-wrap">
-        <canvas id="reactionCanvas" width="1400" height="520" role="img"
-          aria-label="Important chemical reaction 2H2 + O2 gives 2H2O shown in English and Hindi with gklearnstudy watermark"></canvas>
-      </div>
-      <style>
-        .header-content {
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          gap: 1.5rem;
-          max-width: 1000px;
-          margin: 0 auto;
-          padding: 1rem;
-        }
-
-        .header-icon svg {
-          width: 220px;
-          height: auto;
-          max-width: 100%;
-        }
-
-
-        .header-text h1 {
-          text-align: center;
-          margin: 0;
-          font-size: 1.8rem;
-          font-weight: 800;
-        }
-
-        .header-text p {
-          margin-top: 0.5rem;
-          font-size: 1rem;
-          color: #374151;
-          line-height: 1.5;
-        }
-
-        /* Desktop Layout */
-        @media (min-width: 768px) {
-          .header-content {
-            flex-direction: row;
-            align-items: center;
-            text-align: left;
-          }
-
-          .header-icon {
-            flex: 0 0 280px;
-            text-align: center;
-          }
-
-          .header-icon svg {
-            width: 100%;
-            max-width: 280px;
-          }
-
-          .header-text {
-            flex: 1;
-          }
-        }
-      </style>
-      <style>
-        #reaction-image-wrap {
-          max-width: 100%;
-          margin: 20px auto;
-          padding: 0 10px;
-        }
-
-        #reactionCanvas {
-          width: 100%;
-          height: auto;
-          display: block;
-          border-radius: 20px;
-        }
-      </style>
-
-
-      <section class="topic-section">
-        <h2>रासायनिक अभिक्रियाओं के प्रकार</h2>
-        <p>रासायनिक अभिक्रियाओं को होने वाले परिवर्तनों के आधार पर वर्गीकृत किया जाता है। इन श्रेणियों को समझने से
-          अभिक्रिया के उत्पादों की भविष्यवाणी करने और आणविक स्तर पर होने वाली प्रक्रियाओं को समझने में मदद मिलती है।</p>
-        <div class="reaction-type-grid">
-          <div class="reaction-card">
-            <svg class="svg-icon" viewBox="0 0 100 100">
-              <style>
-                .r-plus {
-                  font-family: sans-serif;
-                  font-size: 30px;
-                  fill: #2563eb
-                }
-
-                .r-circle {
-                  stroke-width: 4;
-                  animation: combine 2s ease-in-out infinite alternate
-                }
-
-                .c1 {
-                  stroke: #3b82f6
-                }
-
-                .c2 {
-                  stroke: #93c5fd
-                }
-
-                @keyframes combine {
-                  to {
-                    transform: translateX(15px)
-                  }
-                }
-              </style>
-              <circle class="r-circle c1" cx="30" cy="50" r="15" fill="none" />
-              <circle class="r-circle c2" cx="70" cy="50" r="15" fill="none"
-                style="animation-direction:alternate-reverse" /><text class="r-plus" x="50" y="58"
-                text-anchor="middle">+</text>
-            </svg>
-            <h3>संयोजन अभिक्रिया</h3>
-            <p>दो या दो से अधिक अभिकारक मिलकर एक एकल, अधिक जटिल उत्पाद बनाते हैं। (A + B → AB)</p>
-            <code>2H₂ + O₂ → 2H₂O</code>
-          </div>
-          <div class="reaction-card">
-            <svg class="svg-icon" viewBox="0 0 100 100">
-              <style>
-                .r-parent {
-                  fill: #8b5cf6;
-                  animation: split 2s ease-in-out infinite alternate
-                }
-
-                .r-child {
-                  stroke: #c4b5fd;
-                  fill: none;
-                  stroke-width: 4
-                }
-
-                @keyframes split {
-                  to {
-                    transform: scale(0.8) rotate(15deg)
-                  }
-                }
-              </style>
-              <circle class="r-parent" cx="50" cy="50" r="20" />
-              <circle class="r-child" cx="30" cy="50" r="10" />
-              <circle class="r-child" cx="70" cy="50" r="10" />
-            </svg>
-            <h3>वियोजन (अपघटन) अभिक्रिया</h3>
-            <p>एक एकल यौगिक दो या दो से अधिक सरल पदार्थों में टूट जाता है। (AB → A + B)</p>
-            <code>2HgO → 2Hg + O₂</code>
-          </div>
-          <div class="reaction-card">
-            <svg class="svg-icon" viewBox="0 0 100 100">
-              <style>
-                .displace-a {
-                  fill: #f97316;
-                  animation: displace 2.5s ease-in-out infinite
-                }
-
-                .displace-b {
-                  fill: #3b82f6
-                }
-
-                .displace-c {
-                  fill: #93c5fd
-                }
-
-                @keyframes displace {
-
-                  0%,
-                  100% {
-                    transform: translateX(0)
-                  }
-
-                  50% {
-                    transform: translateX(30px)
-                  }
-                }
-              </style>
-              <circle class="displace-a" cx="20" cy="50" r="12" />
-              <circle class="displace-b" cx="60" cy="50" r="12" />
-              <circle class="displace-c" cx="80" cy="50" r="10" />
-            </svg>
-            <h3>विस्थापन अभिक्रिया</h3>
-            <p>एक अधिक अभिक्रियाशील तत्व अपने यौगिक से कम अभिक्रियाशील तत्व को विस्थापित कर देता है। (A + BC → AC + B)
-            </p>
-            <code>Zn + CuSO₄ → ZnSO₄ + Cu</code>
-          </div>
-          <div class="reaction-card">
-            <svg class="svg-icon" viewBox="0 0 100 100">
-              <style>
-                .swap-ab,
-                .swap-cd {
-                  animation: swap-places 3s ease-in-out infinite
-                }
-
-                .swap-cd {
-                  animation-delay: -1.5s
-                }
-
-                @keyframes swap-places {
-                  50% {
-                    transform: translateY(15px)
-                  }
-
-                  60% {
-                    opacity: 0
-                  }
-
-                  70% {
-                    transform: translateY(-15px);
-                    opacity: 0
-                  }
-
-                  80% {
-                    opacity: 1
-                  }
-
-                  100% {
-                    transform: translateY(0)
-                  }
-                }
-              </style>
-              <g class="swap-ab">
-                <circle fill="#3b82f6" cx="30" cy="50" r="10" />
-                <circle fill="#93c5fd" cx="50" cy="50" r="10" />
-              </g>
-              <g class="swap-cd">
-                <circle fill="#f97316" cx="70" cy="50" r="10" />
-                <circle fill="#fcd34d" cx="90" cy="50" r="10" />
-              </g>
-            </svg>
-            <h3>द्विविस्थापन अभिक्रिया</h3>
-            <p>दो यौगिकों के आयन दो नए यौगिक बनाने के लिए स्थान बदलते हैं। (AB + CD → AD + CB)</p>
-            <code>AgNO₃ + NaCl → AgCl + NaNO₃</code>
-          </div>
-        </div>
-      </section>
-
-      <section class="topic-section">
-        <h2>रासायनिक अभिक्रियाओं की विस्तृत सूची</h2>
-        <div id="table-search-wrapper">
-          <input type="text" id="table-search-input" placeholder="अभिक्रियाओं को नाम या अभिकारक से खोजें..."
-            aria-label="अभिक्रिया तालिका खोजें" />
-        </div>
-        <div class="table-container">
-          <table id="reactionsTable">
-            <thead>
-              <tr>
-                <th>अभिक्रिया का विवरण</th>
-              </tr>
-            </thead>
-            <tbody>
-              <!-- पंक्तियाँ जावास्क्रिप्ट द्वारा गतिशील रूप से लोड की जाएंगी -->
-            </tbody>
-          </table>
-        </div>
-        <div id="load-more-container">
-          <button id="loadMoreBtn">और लोड करें</button>
-        </div>
-      </section>
-
-      <section class="faq-section">
-        <h2>रासायनिक अभिक्रियाओं के बारे में अक्सर पूछे जाने वाले प्रश्न</h2>
-        <details>
-          <summary>1. रासायनिक अभिक्रिया क्या है?</summary>
-          <div class="faq-answer">
-            <p>एक रासायनिक अभिक्रिया एक ऐसी प्रक्रिया है जिसमें रासायनिक बंधों के टूटने और बनने से अभिकारक उत्पादों में
-              बदल जाते हैं।</p>
-          </div>
-        </details>
-        <details>
-          <summary>2. रासायनिक अभिक्रियाओं के मुख्य प्रकार क्या हैं?</summary>
-          <div class="faq-answer">
-            <p>मुख्य प्रकार संश्लेषण, अपघटन, एकल विस्थापन, द्विविस्थापन, दहन और रेडॉक्स अभिक्रियाएं हैं।</p>
-          </div>
-        </details>
-        <details>
-          <summary>3. दैनिक जीवन में रासायनिक अभिक्रियाओं का क्या महत्व है?</summary>
-          <div class="faq-answer">
-            <p>रासायनिक अभिक्रियाएं खाना पकाने, सफाई, विनिर्माण, चिकित्सा और ऊर्जा उत्पादन में महत्वपूर्ण भूमिका निभाती
-              हैं।</p>
-          </div>
-        </details>
-        <details>
-          <summary>4. आप एक रासायनिक समीकरण को कैसे संतुलित करते हैं?</summary>
-          <div class="faq-answer">
-            <p>एक रासायनिक समीकरण को संतुलित करने के लिए, गुणांकों को समायोजित करें ताकि यह सुनिश्चित हो सके कि प्रत्येक
-              तत्व के लिए परमाणुओं की संख्या दोनों तरफ बराबर हो।</p>
-          </div>
-        </details>
-        <details>
-          <summary>5. ऊष्माक्षेपी अभिक्रिया क्या है?</summary>
-          <div class="faq-answer">
-            <p>ऊष्माक्षेपी अभिक्रिया एक रासायनिक अभिक्रिया है जो ऊष्मा छोड़ती है।</p>
-          </div>
-        </details>
-        <details>
-          <summary>6. ऊष्माशोषी अभिक्रिया क्या है?</summary>
-          <div class="faq-answer">
-            <p>ऊष्माशोषी अभिक्रिया एक रासायनिक अभिक्रिया है जो ऊष्मा को अवशोषित करती है।</p>
-          </div>
-        </details>
-        <details>
-          <summary>7. एक रासायनिक अभिक्रिया में उत्प्रेरक क्या है?</summary>
-          <div class="faq-answer">
-            <p>एक उत्प्रेरक एक ऐसा पदार्थ है जो प्रक्रिया में स्वयं खर्च हुए बिना एक रासायनिक अभिक्रिया को तेज करता है।
-            </p>
-          </div>
-        </details>
-        <details>
-          <summary>8. रासायनिक अभिक्रियाओं में तापमान की क्या भूमिका है?</summary>
-          <div class="faq-answer">
-            <p>तापमान रासायनिक अभिक्रियाओं की दर को प्रभावित करता है; उच्च तापमान आम तौर पर अभिक्रिया दर को बढ़ाता है।
-            </p>
-          </div>
-        </details>
-        <details>
-          <summary>9. रेडॉक्स अभिक्रिया क्या है?</summary>
-          <div class="faq-answer">
-            <p>एक रेडॉक्स अभिक्रिया एक रासायनिक अभिक्रिया है जहां ऑक्सीकरण और अपचयन एक साथ होते हैं।</p>
-          </div>
-        </details>
-        <details>
-          <summary>10. वास्तविक जीवन की रासायनिक अभिक्रियाओं के उदाहरण क्या हैं?</summary>
-          <div class="faq-answer">
-            <p>उदाहरणों में दहन (ईंधन का जलना), पौधों में प्रकाश संश्लेषण और लोहे में जंग लगना शामिल है।</p>
-          </div>
-        </details>
-        <details>
-          <summary>11. रासायनिक अभिक्रियाएं पर्यावरण को कैसे प्रभावित करती हैं?</summary>
-          <div class="faq-answer">
-            <p>रासायनिक अभिक्रियाएं प्रदूषण या हरित ऊर्जा उत्पादन के माध्यम से पर्यावरण पर सकारात्मक और नकारात्मक दोनों
-              तरह से प्रभाव डाल सकती हैं।</p>
-          </div>
-        </details>
-        <details>
-          <summary>12. कार्बनिक और अकार्बनिक अभिक्रियाओं में क्या अंतर है?</summary>
-          <div class="faq-answer">
-            <p>कार्बनिक अभिक्रियाओं में कार्बन-आधारित यौगिक शामिल होते हैं, जबकि अकार्बनिक अभिक्रियाओं में खनिज, धातु और
-              गैर-कार्बन-आधारित तत्व शामिल होते हैं।</p>
-          </div>
-        </details>
-        <details>
-          <summary>13. रासायनिक साम्यावस्था क्या है?</summary>
-          <div class="faq-answer">
-            <p>रासायनिक साम्यावस्था एक ऐसी अवस्था है जहां अग्र और पश्च अभिक्रियाएं समान दर पर होती हैं।</p>
-          </div>
-        </details>
-        <details>
-          <summary>14. रासायनिक अभिक्रिया के संकेत क्या हैं?</summary>
-          <div class="faq-answer">
-            <p>संकेतों में रंग परिवर्तन, तापमान परिवर्तन, गैस का उत्पादन और अवक्षेप का बनना शामिल है।</p>
-          </div>
-        </details>
-        <details>
-          <summary>15. रासायनिक अभिक्रियाओं में दाब की क्या भूमिका है?</summary>
-          <div class="faq-answer">
-            <p>दाब अभिक्रियाओं को प्रभावित कर सकता है, विशेष रूप से गैसों के लिए, अभिक्रिया दर को बढ़ाकर या साम्यावस्था
-              को स्थानांतरित करके।</p>
-          </div>
-        </details>
-      </section> 
         </div><!-- /#root -->
- 
+
     </div><!-- grid-column 2 -->
- 
+
     <aside class="th-right-sidebar-wrapper">
         {% case page.section %}
           {% when "learn" %}
@@ -642,176 +348,95 @@ lang_toggle: false
             {% include sidebars/default-sidebar.html %}
         {% endcase %}
     </aside>
- 
+
 </div><!-- /.tyagihub-main-layout -->
- 
+
 <!-- MODAL -->
 <div id="thReactionModal" class="th-modal-overlay">
     <div class="th-modal-box">
         <button id="thModalClose" class="th-modal-close" aria-label="Close">&times;</button>
         <h2 id="th-modal-title" style="margin-top:0;"></h2>
         <div id="th-modal-visual"></div>
-        <h3>Balanced Equation</h3>
+        <h3>संतुलित समीकरण</h3>
         <div id="th-modal-equation" style="font-family:monospace; background:rgba(0,0,0,0.05); padding:10px 14px; border-radius:6px; border:1px solid rgba(0,180,0,0.3);"></div>
-        <h3>Reaction Conditions</h3>
+        <h3>अभिक्रिया की शर्तें</h3>
         <p id="th-modal-conditions"></p>
-        <h3>Explanation</h3>
+        <h3>स्पष्टीकरण</h3>
         <p id="th-modal-explanation"></p>
     </div>
 </div>
 
-  
+<script>
+/* ============================================================
+   CANVAS HERO
+   ============================================================ */
+(function(){
+    var canvas = document.getElementById("thReactionCanvas");
+    if (!canvas || !canvas.getContext) return;
+    var ctx = canvas.getContext("2d");
+    var W = canvas.width, H = canvas.height;
 
-  <script>
-    (function () {
-      var canvas = document.getElementById("reactionCanvas");
-      if (!canvas || !canvas.getContext) return;
-
-      var ctx = canvas.getContext("2d");
-
-      function roundedRectPath(ctx, x, y, w, h, r) {
-        if (w < 2 * r) r = w / 2;
-        if (h < 2 * r) r = h / 2;
+    function rrp(ctx, x, y, w, h, r) {
+        if (w<2*r) r=w/2; if (h<2*r) r=h/2;
         ctx.beginPath();
-        ctx.moveTo(x + r, y);
-        ctx.arcTo(x + w, y, x + w, y + h, r);
-        ctx.arcTo(x + w, y + h, x, y + h, r);
-        ctx.arcTo(x, y + h, x, y, r);
-        ctx.arcTo(x, y, x + w, y, r);
-        ctx.closePath();
-      }
+        ctx.moveTo(x+r,y); ctx.arcTo(x+w,y,x+w,y+h,r); ctx.arcTo(x+w,y+h,x,y+h,r);
+        ctx.arcTo(x,y+h,x,y,r); ctx.arcTo(x,y,x+w,y,r); ctx.closePath();
+    }
 
-      // ===== BACKGROUND =====
-      var bg = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
-      bg.addColorStop(0, "#132033");
-      bg.addColorStop(0.5, "#171d3f");
-      bg.addColorStop(1, "#1f0f3a");
-      ctx.fillStyle = bg;
-      ctx.fillRect(0, 0, canvas.width, canvas.height);
+    var bg = ctx.createLinearGradient(0,0,W,H);
+    bg.addColorStop(0,"#132033"); bg.addColorStop(0.5,"#171d3f"); bg.addColorStop(1,"#1f0f3a");
+    ctx.fillStyle = bg; ctx.fillRect(0,0,W,H);
 
-      // soft dots
-      ctx.save();
-      ctx.globalAlpha = 0.15;
-      ctx.fillStyle = "#ffffff";
-      for (var i = 0; i < 150; i++) {
-        var x = Math.random() * canvas.width;
-        var y = Math.random() * canvas.height;
-        var s = Math.random() * 3;
-        ctx.beginPath();
-        ctx.arc(x, y, s, 0, Math.PI * 2);
-        ctx.fill();
-      }
-      ctx.restore();
+    ctx.save(); ctx.globalAlpha=0.15; ctx.fillStyle="#fff";
+    for(var i=0;i<150;i++){ctx.beginPath();ctx.arc(Math.random()*W,Math.random()*H,Math.random()*3,0,Math.PI*2);ctx.fill();}
+    ctx.restore();
 
-      // diagonal watermark
-      ctx.save();
-      ctx.translate(canvas.width / 2, canvas.height / 2);
-      ctx.rotate(-0.32);
-      ctx.globalAlpha = 0.09;
-      ctx.fillStyle = "#ffffff";
-      ctx.font = "bold 180px Arial";
-      ctx.textAlign = "center";
-      ctx.fillText("GKLEARNSTUDY", 0, 60);
-      ctx.restore();
+    ctx.save(); ctx.translate(W/2,H/2); ctx.rotate(-0.32); ctx.globalAlpha=0.07;
+    ctx.fillStyle="#fff"; ctx.font="bold 200px Arial"; ctx.textAlign="center";
+    ctx.fillText("TYAGIHUB",0,70); ctx.restore();
 
-      // top main heading
-      ctx.fillStyle = "#ffffff";
-      ctx.font = "bold 48px Arial";
-      ctx.textAlign = "left";
-      ctx.fillText("Important Chemical Reaction", 60, 80);
+    ctx.fillStyle="#fff"; ctx.font="bold 46px Arial"; ctx.textAlign="left";
+    ctx.fillText("महत्वपूर्ण रासायनिक अभिक्रियाएं", 60, 78);
+    ctx.font="bold 28px Arial"; ctx.fillStyle="#7cf0ff";
+    ctx.fillText("Important Chemical Reactions (Hindi + English)", 60, 122);
 
-      ctx.font = "bold 30px Arial";
-      ctx.fillStyle = "#7cf0ff";
-      ctx.fillText("महत्वपूर्ण रासायनिक अभिक्रिया (Hindi + English)", 60, 125);
+    var bx=60, by=158, bw=W-120, bh=256;
+    rrp(ctx,bx,by,bw,bh,26);
+    var bgrad=ctx.createLinearGradient(bx,by,bx+bw,by+bh);
+    bgrad.addColorStop(0,"rgba(255,255,255,0.18)"); bgrad.addColorStop(1,"rgba(255,255,255,0.06)");
+    ctx.fillStyle=bgrad; ctx.fill();
+    ctx.strokeStyle="rgba(255,255,255,0.42)"; ctx.lineWidth=2; ctx.stroke();
 
-      // reaction main box
-      var boxX = 60;
-      var boxY = 160;
-      var boxW = canvas.width - 120;
-      var boxH = 260;
+    ctx.fillStyle="#fff"; ctx.font="bold 40px Arial"; ctx.textAlign="left";
+    ctx.fillText("2H\u2082 + O\u2082 \u2192 2H\u2082O", bx+40, by+88);
+    ctx.font="22px Arial"; ctx.fillStyle="#cfe7ff";
+    ctx.fillText("Formation of Water (Combination Reaction)", bx+40, by+126);
+    ctx.fillStyle="#fffbd1"; ctx.font="bold 28px Arial";
+    ctx.fillText("जल का निर्माण – संयोजन अभिक्रिया", bx+40, by+180);
+    ctx.font="22px Arial"; ctx.fillStyle="#ffe6aa";
+    ctx.fillText("2H\u2082 (हाइड्रोजन) + O\u2082 (ऑक्सीजन) \u2192 2H\u2082O (जल)", bx+40, by+220);
 
-      roundedRectPath(ctx, boxX, boxY, boxW, boxH, 28);
-      var boxGrad = ctx.createLinearGradient(boxX, boxY, boxX + boxW, boxY + boxH);
-      boxGrad.addColorStop(0, "rgba(255,255,255,0.18)");
-      boxGrad.addColorStop(1, "rgba(255,255,255,0.06)");
-      ctx.fillStyle = boxGrad;
-      ctx.fill();
-
-      ctx.strokeStyle = "rgba(255,255,255,0.45)";
-      ctx.lineWidth = 2;
-      ctx.stroke();
-
-      // English reaction
-      ctx.save();
-      ctx.textAlign = "left";
-
-      ctx.fillStyle = "#ffffff";
-      ctx.font = "bold 42px Arial";
-      ctx.fillText("2H₂ + O₂ → 2H₂O", boxX + 40, boxY + 90);
-
-      ctx.font = "24px Arial";
-      ctx.fillStyle = "#cfe7ff";
-      ctx.fillText("Formation of Water (Combination Reaction)", boxX + 40, boxY + 130);
-
-      // Hindi reaction
-      ctx.fillStyle = "#fffbd1";
-      ctx.font = "bold 30px Arial";
-      ctx.fillText("जल (Water) का निर्माण – संयोजन अभिक्रिया", boxX + 40, boxY + 185);
-
-      ctx.font = "24px Arial";
-      ctx.fillStyle = "#ffe6aa";
-      ctx.fillText("2H₂ (हाइड्रोजन) + O₂ (ऑक्सीजन) → 2H₂O (जल)", boxX + 40, boxY + 225);
-
-      ctx.restore();
-
-      // small decorative molecules (simple circles + bonds)
-      function drawMolecule(cx, cy, scale) {
-        ctx.save();
-        ctx.translate(cx, cy);
-        ctx.scale(scale, scale);
-        ctx.strokeStyle = "rgba(124,240,255,0.8)";
-        ctx.lineWidth = 3;
-
-        ctx.beginPath();
-        ctx.moveTo(-25, 0);
-        ctx.lineTo(0, -20);
-        ctx.lineTo(25, 0);
-        ctx.stroke();
-
-        ctx.fillStyle = "#7cf0ff";
-        ctx.beginPath();
-        ctx.arc(-25, 0, 8, 0, Math.PI * 2);
-        ctx.fill();
-
-        ctx.beginPath();
-        ctx.arc(25, 0, 8, 0, Math.PI * 2);
-        ctx.fill();
-
-        ctx.fillStyle = "#ffffff";
-        ctx.beginPath();
-        ctx.arc(0, -20, 10, 0, Math.PI * 2);
-        ctx.fill();
-
+    function drawMol(cx,cy,sc){
+        ctx.save(); ctx.translate(cx,cy); ctx.scale(sc,sc);
+        ctx.strokeStyle="rgba(124,240,255,0.8)"; ctx.lineWidth=3;
+        ctx.beginPath(); ctx.moveTo(-25,0); ctx.lineTo(0,-20); ctx.lineTo(25,0); ctx.stroke();
+        ctx.fillStyle="#7cf0ff";
+        ctx.beginPath(); ctx.arc(-25,0,8,0,Math.PI*2); ctx.fill();
+        ctx.beginPath(); ctx.arc(25,0,8,0,Math.PI*2); ctx.fill();
+        ctx.fillStyle="#fff"; ctx.beginPath(); ctx.arc(0,-20,10,0,Math.PI*2); ctx.fill();
         ctx.restore();
-      }
+    }
+    drawMol(W-260,118,1.1); drawMol(W-200,188,0.9); drawMol(W-300,258,0.8);
 
-      drawMolecule(canvas.width - 260, 120, 1.1);
-      drawMolecule(canvas.width - 200, 190, 0.9);
-      drawMolecule(canvas.width - 300, 260, 0.8);
+    ctx.save(); ctx.globalAlpha=0.16; ctx.fillStyle="#fff"; ctx.font="bold 56px Arial";
+    ctx.textAlign="left"; ctx.fillText("tyagihub", 80, H-36);
+    ctx.textAlign="right"; ctx.fillText("tyagihub", W-80, H-36);
+    ctx.restore();
+})();
 
-      // bottom watermark text
-      ctx.save();
-      ctx.globalAlpha = 0.18;
-      ctx.fillStyle = "#ffffff";
-      ctx.font = "bold 60px Arial";
-      ctx.textAlign = "left";
-      ctx.fillText("gklearnstudy", 80, canvas.height - 40);
-      ctx.textAlign = "right";
-      ctx.fillText("gklearnstudy", canvas.width - 80, canvas.height - 40);
-      ctx.restore();
-    })();
-  
-
+/* ============================================================
+   REACTION DATA (Hindi — 20 Reactions)
+   ============================================================ */
       const reactionData = [
         // Combination Reactions (25)
         {
@@ -2315,8 +1940,6 @@ lang_toggle: false
         },
       ];
 
-
-     
 /* ============================================================
    TABLE LOGIC
    ============================================================ */
@@ -2331,10 +1954,10 @@ document.addEventListener("DOMContentLoaded", function () {
     var mEq       = document.getElementById("th-modal-equation");
     var mCond     = document.getElementById("th-modal-conditions");
     var mExp      = document.getElementById("th-modal-explanation");
- 
+
     var PER_PAGE  = 80;
     var shown     = 0;
- 
+
     var allRows = reactionData.map(function(r, i){
         var tr = document.createElement("tr");
         tr.dataset.idx = i;
@@ -2346,7 +1969,7 @@ document.addEventListener("DOMContentLoaded", function () {
             '</td>';
         return { el: tr, data: r };
     });
- 
+
     function render() {
         var q = searchIn.value.toLowerCase().trim();
         var filtered = q
@@ -2356,38 +1979,38 @@ document.addEventListener("DOMContentLoaded", function () {
                        row.data.explanation.toLowerCase().includes(q);
               })
             : allRows;
- 
+
         tbody.innerHTML = "";
         var slice = filtered.slice(0, shown);
         slice.forEach(function(row){ tbody.appendChild(row.el); });
- 
+
         loadBtn.style.display = (shown >= filtered.length) ? "none" : "block";
     }
- 
+
     loadBtn.addEventListener("click", function(){ shown += PER_PAGE; render(); });
     searchIn.addEventListener("input", function(){ shown = PER_PAGE; render(); });
- 
+
     function svgFor(type) {
         var t = (type || "").toLowerCase();
-        if (t.includes("combination")) return '<svg viewBox="0 0 100 100"><style>.rc1{stroke:#3b82f6;stroke-width:4;fill:none;animation:thCombine 2s ease-in-out infinite alternate}.rc2{stroke:#93c5fd;stroke-width:4;fill:none;animation:thCombine 2s ease-in-out infinite alternate-reverse}@keyframes thCombine{to{transform:translateX(12px)}}</style><circle class="rc1" cx="30" cy="50" r="15"/><circle class="rc2" cx="70" cy="50" r="15"/><text font-family="sans-serif" font-size="28" fill="#2563eb" x="50" y="58" text-anchor="middle">+</text></svg>';
-        if (t.includes("decomp")) return '<svg viewBox="0 0 100 100"><style>.rp{fill:#8b5cf6;animation:thSp 2s ease-in-out infinite alternate}.rc{stroke:#c4b5fd;fill:none;stroke-width:4}@keyframes thSp{to{transform:scale(0.8) rotate(15deg)}}</style><circle class="rp" cx="50" cy="50" r="20"/><circle class="rc" cx="30" cy="50" r="10"/><circle class="rc" cx="70" cy="50" r="10"/></svg>';
-        if (t.includes("displacement")) return '<svg viewBox="0 0 100 100"><style>.da{fill:#f97316;animation:thDis 2.5s ease-in-out infinite}.db{fill:#3b82f6}.dc{fill:#93c5fd}@keyframes thDis{0%,100%{transform:translateX(0)}50%{transform:translateX(30px)}}</style><circle class="da" cx="20" cy="50" r="12"/><circle class="db" cx="60" cy="50" r="12"/><circle class="dc" cx="80" cy="50" r="10"/></svg>';
-        if (t.includes("double") || t.includes("precipitation")) return '<svg viewBox="0 0 100 100"><style>.sab,.scd{animation:thSw 3s ease-in-out infinite}.scd{animation-delay:-1.5s}@keyframes thSw{50%{transform:translateY(15px)}60%{opacity:0}70%{transform:translateY(-15px);opacity:0}80%{opacity:1}100%{transform:translateY(0)}}</style><g class="sab"><circle fill="#3b82f6" cx="30" cy="50" r="10"/><circle fill="#93c5fd" cx="50" cy="50" r="10"/></g><g class="scd"><circle fill="#f97316" cx="70" cy="50" r="10"/><circle fill="#fcd34d" cx="90" cy="50" r="10"/></g></svg>';
-        if (t.includes("combustion") || t.includes("organic")) return '<svg viewBox="0 0 100 100"><style>.fl{fill:#FF9800;transform-origin:bottom;animation:burn 1s infinite}.fl2{fill:#FFC107;animation-delay:-0.2s}@keyframes burn{0%,100%{transform:scaleY(1)}50%{transform:scaleY(1.2)}}</style><path class="fl fl2" d="M50,90 C20,90 40,20 50,20 C60,20 80,90 50,90 Z"/><path class="fl" d="M50,90 C30,90 45,30 50,30 C55,30 70,90 50,90 Z"/></svg>';
+        if (t.includes("संयोजन")) return '<svg viewBox="0 0 100 100"><style>.rc1{stroke:#3b82f6;stroke-width:4;fill:none;animation:thCombine 2s ease-in-out infinite alternate}.rc2{stroke:#93c5fd;stroke-width:4;fill:none;animation:thCombine 2s ease-in-out infinite alternate-reverse}@keyframes thCombine{to{transform:translateX(12px)}}</style><circle class="rc1" cx="30" cy="50" r="15"/><circle class="rc2" cx="70" cy="50" r="15"/><text font-family="sans-serif" font-size="28" fill="#2563eb" x="50" y="58" text-anchor="middle">+</text></svg>';
+        if (t.includes("वियोजन")) return '<svg viewBox="0 0 100 100"><style>.rp{fill:#8b5cf6;animation:thSp 2s ease-in-out infinite alternate}.rc{stroke:#c4b5fd;fill:none;stroke-width:4}@keyframes thSp{to{transform:scale(0.8) rotate(15deg)}}</style><circle class="rp" cx="50" cy="50" r="20"/><circle class="rc" cx="30" cy="50" r="10"/><circle class="rc" cx="70" cy="50" r="10"/></svg>';
+        if (t.includes("विस्थापन")) return '<svg viewBox="0 0 100 100"><style>.da{fill:#f97316;animation:thDis 2.5s ease-in-out infinite}.db{fill:#3b82f6}.dc{fill:#93c5fd}@keyframes thDis{0%,100%{transform:translateX(0)}50%{transform:translateX(30px)}}</style><circle class="da" cx="20" cy="50" r="12"/><circle class="db" cx="60" cy="50" r="12"/><circle class="dc" cx="80" cy="50" r="10"/></svg>';
+        if (t.includes("द्विविस्थापन")) return '<svg viewBox="0 0 100 100"><style>.sab,.scd{animation:thSw 3s ease-in-out infinite}.scd{animation-delay:-1.5s}@keyframes thSw{50%{transform:translateY(15px)}60%{opacity:0}70%{transform:translateY(-15px);opacity:0}80%{opacity:1}100%{transform:translateY(0)}}</style><g class="sab"><circle fill="#3b82f6" cx="30" cy="50" r="10"/><circle fill="#93c5fd" cx="50" cy="50" r="10"/></g><g class="scd"><circle fill="#f97316" cx="70" cy="50" r="10"/><circle fill="#fcd34d" cx="90" cy="50" r="10"/></g></svg>';
+        if (t.includes("कार्बनिक") || t.includes("उदासीनीकरण")) return '<svg viewBox="0 0 100 100"><style>.fl{fill:#FF9800;transform-origin:bottom;animation:burn 1s infinite}.fl2{fill:#FFC107;animation-delay:-0.2s}@keyframes burn{0%,100%{transform:scaleY(1)}50%{transform:scaleY(1.2)}}</style><path class="fl fl2" d="M50,90 C20,90 40,20 50,20 C60,20 80,90 50,90 Z"/><path class="fl" d="M50,90 C30,90 45,30 50,30 C55,30 70,90 50,90 Z"/></svg>';
         return '<svg viewBox="0 0 100 100"><circle cx="50" cy="50" r="30" fill="none" stroke="#6a4cff" stroke-width="4"/><text x="50" y="58" text-anchor="middle" font-size="30" fill="#6a4cff">\u21C4</text></svg>';
     }
- 
+
     function openModal(idx) {
         var r = reactionData[idx]; if(!r) return;
         mTitle.textContent   = r.name;
         mVisual.innerHTML    = svgFor(r.type);
         mEq.innerHTML        = r.equation;
-        mCond.textContent    = r.conditions || "Standard conditions.";
+        mCond.textContent    = r.conditions || "सामान्य परिस्थितियां।";
         mExp.textContent     = r.explanation;
         modal.classList.add("visible");
     }
     function closeModal() { modal.classList.remove("visible"); }
- 
+
     tbody.addEventListener("click", function(e){
         var tr = e.target.closest("tr");
         if (tr && tr.dataset.idx !== undefined) openModal(parseInt(tr.dataset.idx, 10));
@@ -2395,11 +2018,11 @@ document.addEventListener("DOMContentLoaded", function () {
     mClose.addEventListener("click", closeModal);
     modal.addEventListener("click", function(e){ if(e.target===modal) closeModal(); });
     document.addEventListener("keydown", function(e){ if(e.key==="Escape" && modal.classList.contains("visible")) closeModal(); });
- 
+
     shown = PER_PAGE;
     render();
 });
- 
+
 /* Sidebar toggle */
 function toggleMobileSidebar(event) {
     if (event) event.stopPropagation();
