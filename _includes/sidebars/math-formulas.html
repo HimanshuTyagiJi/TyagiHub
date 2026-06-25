@@ -1,0 +1,653 @@
+<aside class="th-left-sidebar w-full" id="tyagihubLeftSidebar">
+
+  {% if page.permalink contains "chemistry" %}
+    
+    <div class="th-sidebar-title">🧪 Chemistry Hub</div>
+    <ul class="th-left-nav" style="margin-bottom: 20px;">
+        <li><a href="{{ site.url }}/learn/chemistry/chemical-compounds-table/" class="{% if page.permalink contains 'chemical-compounds-table' %}active{% endif %}">Chemical Compounds Table</a></li>
+        <li><a href="{{ site.url }}/learn/chemistry/periodic-table/" class="{% if page.permalink contains 'periodic-table' %}active{% endif %}">📊 Periodic Table</a></li>
+        <li><a href="{{ site.url }}/learn/chemistry/elements-name/" class="{% if page.permalink contains 'elements-name' %}active{% endif %}">⚛️ Elements & Valency</a></li>
+        <li><a href="{{ site.url }}/learn/chemistry/reactions/" class="{% if page.permalink contains 'reactions' %}{% unless page.permalink contains 'hindi' %}active{% endunless %}{% endif %}">⚡ Name Reactions (Eng)</a></li>
+        <li><a href="{{ site.url }}/learn/chemistry/reactions-hindi/" class="{% if page.permalink contains 'reactions-hindi' %}active{% endif %}">🔥 नाम अभिक्रियाएं (Hindi)</a></li>
+        
+        {% if page.permalink contains 'chemistry' and page.permalink contains 'chemical-compounds-table' == false and page.permalink contains 'periodic-table' == false and page.permalink contains 'elements-name' == false and page.permalink contains 'reactions' == false %}
+        <li><a href="{{ site.url }}{{ page.permalink }}" class="active">📘 Current Chapter Theory</a></li>
+        {% endif %}
+    </ul>
+
+    <div class="th-sidebar-title">📐 Mathematics Hub</div>
+    <ul class="th-left-nav" style="margin-bottom: 20px;">
+        <li><a href="{{ site.url }}/learn/mathematics-formulas/#class-9">Class 9th Maths</a></li>
+        <li><a href="{{ site.url }}/learn/mathematics-formulas/#class-10">Class 10th Maths</a></li>
+        <li><a href="{{ site.url }}/learn/mathematics-formulas/#class-11">Class 11th Maths</a></li>
+        <li><a href="{{ site.url }}/learn/mathematics-formulas/#class-12">Class 12th Maths</a></li>
+    </ul>
+
+    <div class="th-sidebar-title">🌌 Physics Formulas</div>
+    <ul class="th-left-nav" style="margin-bottom: 20px;">
+        <li><a href="{{ site.url }}/learn/all-physics-formulas/?class=9" class="{% if page.url contains 'class=9' %}active{% endif %}">Class 9th Physics</a></li>
+        <li><a href="{{ site.url }}/learn/all-physics-formulas/?class=10" class="{% if page.url contains 'class=10' %}active{% endif %}">Class 10th Physics</a></li>
+        <li><a href="{{ site.url }}/learn/all-physics-formulas/?class=11" class="{% if page.url contains 'class=11' %}active{% endif %}">Class 11th Physics</a></li>
+        <li><a href="{{ site.url }}/learn/all-physics-formulas/?class=12" class="{% if page.url contains 'class=12' %}active{% endif %}">Class 12th Physics</a></li>
+    </ul>
+
+    <div class="th-sidebar-title">💼 Commerce &amp; Aptitude</div>
+    <ul class="th-left-nav">
+        <li><a href="{{ site.url }}/learn/commerce-formulas/">Commercial Maths &amp; Tricks</a></li>
+    </ul>
+
+  {% elsif page.permalink contains "mathematics" %}
+    
+    <div class="space-y-6">
+        <div class="th-sidebar-title font-sans text-indigo-400 font-bold uppercase tracking-wider text-xs border-b border-slate-800/60 pb-3 flex items-center gap-2">
+            📐 <span class="hindi">गणित सूत्र बैंक</span>
+            <span class="english">Mathematics Hub</span>
+        </div>
+
+        <div id="math-sidebar-classes" class="flex flex-col gap-5">
+            
+            <div class="th-class-section flex flex-col gap-2" id="sidebar-class-group-9" data-class="9" style="order: 9;">
+                <a href="/learn/maths-formulas/?class=9" onclick="if(window.filterMathsClass){window.filterMathsClass('9'); return false;}" class="th-class-header flex items-center justify-between p-2.5 rounded-xl font-sans font-bold text-xs hover:bg-slate-800/40 text-slate-400 hover:text-slate-200 transition-all border border-transparent">
+                    <span class="flex items-center gap-1.5">
+                        📂 <span class="hindi">कक्षा 9वीं गणित</span><span class="english">Class 9th Maths</span>
+                    </span>
+                    <span class="active-dot hidden text-indigo-400">●</span>
+                </a>
+                <ul class="th-chapters-list space-y-1.5 pl-4 hidden">
+                    <li><a href="#chapter-real-numbers" class="th-chapter-link-item block text-[11px] py-1 text-slate-400 hover:text-slate-200 transition-colors border-l border-slate-800 hover:border-indigo-500/50 pl-2.5 rounded-r"><span class="hindi">वास्तविक संख्याएँ</span><span class="english">Real Numbers</span></a></li>
+                    <li><a href="#chapter-polynomials" class="th-chapter-link-item block text-[11px] py-1 text-slate-400 hover:text-slate-200 transition-colors border-l border-slate-800 hover:border-indigo-500/50 pl-2.5 rounded-r"><span class="hindi">बहुपद</span><span class="english">Polynomials</span></a></li>
+                    <li><a href="#chapter-coordinate-geometry" class="th-chapter-link-item block text-[11px] py-1 text-slate-400 hover:text-slate-200 transition-colors border-l border-slate-800 hover:border-indigo-500/50 pl-2.5 rounded-r"><span class="hindi">निर्देशांक ज्यामिति</span><span class="english">Coordinate Geometry</span></a></li>
+                    <li><a href="#chapter-linear-equations" class="th-chapter-link-item block text-[11px] py-1 text-slate-400 hover:text-slate-200 transition-colors border-l border-slate-800 hover:border-indigo-500/50 pl-2.5 rounded-r"><span class="hindi">दो चरों वाले रैखिक समीकरण</span><span class="english">Linear Equations</span></a></li>
+                    <li><a href="#chapter-euclids-geometry" class="th-chapter-link-item block text-[11px] py-1 text-slate-400 hover:text-slate-200 transition-colors border-l border-slate-800 hover:border-indigo-500/50 pl-2.5 rounded-r"><span class="hindi">यूक्लिड की ज्यामिति का परिचय</span><span class="english">Euclid's Geometry</span></a></li>
+                    <li><a href="#chapter-lines-and-angles" class="th-chapter-link-item block text-[11px] py-1 text-slate-400 hover:text-slate-200 transition-colors border-l border-slate-800 hover:border-indigo-500/50 pl-2.5 rounded-r"><span class="hindi">रेखाएँ और कोण</span><span class="english">Lines and Angles</span></a></li>
+                    <li><a href="#chapter-triangles" class="th-chapter-link-item block text-[11px] py-1 text-slate-400 hover:text-slate-200 transition-colors border-l border-slate-800 hover:border-indigo-500/50 pl-2.5 rounded-r"><span class="hindi">त्रिभुज</span><span class="english">Triangles</span></a></li>
+                    <li><a href="#chapter-quadrilaterals" class="th-chapter-link-item block text-[11px] py-1 text-slate-400 hover:text-slate-200 transition-colors border-l border-slate-800 hover:border-indigo-500/50 pl-2.5 rounded-r"><span class="hindi">चतुर्भुज</span><span class="english">Quadrilaterals</span></a></li>
+                    <li><a href="#chapter-circles" class="th-chapter-link-item block text-[11px] py-1 text-slate-400 hover:text-slate-200 transition-colors border-l border-slate-800 hover:border-indigo-500/50 pl-2.5 rounded-r"><span class="hindi">वृत्त</span><span class="english">Circles</span></a></li>
+                    <li><a href="#chapter-herons-formula" class="th-chapter-link-item block text-[11px] py-1 text-slate-400 hover:text-slate-200 transition-colors border-l border-slate-800 hover:border-indigo-500/50 pl-2.5 rounded-r"><span class="hindi">हेरॉन का सूत्र</span><span class="english">Heron's Formula</span></a></li>
+                    <li><a href="#chapter-surface-areas-volumes" class="th-chapter-link-item block text-[11px] py-1 text-slate-400 hover:text-slate-200 transition-colors border-l border-slate-800 hover:border-indigo-500/50 pl-2.5 rounded-r"><span class="hindi">पृष्ठीय क्षेत्रफल और आयतन</span><span class="english">Surface Areas & Volumes</span></a></li>
+                    <li><a href="#chapter-statistics" class="th-chapter-link-item block text-[11px] py-1 text-slate-400 hover:text-slate-200 transition-colors border-l border-slate-800 hover:border-indigo-500/50 pl-2.5 rounded-r"><span class="hindi">सांख्यिकी</span><span class="english">Statistics</span></a></li>
+                </ul>
+            </div>
+
+            <div class="th-class-section flex flex-col gap-2" id="sidebar-class-group-10" data-class="10" style="order: 10;">
+                <a href="/learn/maths-formulas/?class=10" onclick="if(window.filterMathsClass){window.filterMathsClass('10'); return false;}" class="th-class-header flex items-center justify-between p-2.5 rounded-xl font-sans font-bold text-xs hover:bg-slate-800/40 text-slate-400 hover:text-slate-200 transition-all border border-transparent">
+                    <span class="flex items-center gap-1.5">
+                        📂 <span class="hindi">कक्षा 10वीं गणित</span><span class="english">Class 10th Maths</span>
+                    </span>
+                    <span class="active-dot hidden text-indigo-400">●</span>
+                </a>
+                <ul class="th-chapters-list space-y-1.5 pl-4 hidden">
+                    <li><a href="#chapter-real-numbers" class="th-chapter-link-item block text-[11px] py-1 text-slate-400 hover:text-slate-200 transition-colors border-l border-slate-800 hover:border-indigo-500/50 pl-2.5 rounded-r"><span class="hindi">वास्तविक संख्याएँ</span><span class="english">Real Numbers</span></a></li>
+                    <li><a href="#chapter-polynomials" class="th-chapter-link-item block text-[11px] py-1 text-slate-400 hover:text-slate-200 transition-colors border-l border-slate-800 hover:border-indigo-500/50 pl-2.5 rounded-r"><span class="hindi">बहुपद</span><span class="english">Polynomials</span></a></li>
+                    <li><a href="#chapter-linear-equations-pair" class="th-chapter-link-item block text-[11px] py-1 text-slate-400 hover:text-slate-200 transition-colors border-l border-slate-800 hover:border-indigo-500/50 pl-2.5 rounded-r"><span class="hindi">दो चरों वाले रैखिक समीकरणों का युग्म</span><span class="english">Pair of Linear Equations</span></a></li>
+                    <li><a href="#chapter-quadratic-equations" class="th-chapter-link-item block text-[11px] py-1 text-slate-400 hover:text-slate-200 transition-colors border-l border-slate-800 hover:border-indigo-500/50 pl-2.5 rounded-r"><span class="hindi">द्विघात समीकरण</span><span class="english">Quadratic Equations</span></a></li>
+                    <li><a href="#chapter-arithmetic-progressions" class="th-chapter-link-item block text-[11px] py-1 text-slate-400 hover:text-slate-200 transition-colors border-l border-slate-800 hover:border-indigo-500/50 pl-2.5 rounded-r"><span class="hindi">समांतर श्रेढ़ियाँ</span><span class="english">Arithmetic Progressions</span></a></li>
+                    <li><a href="#chapter-triangles" class="th-chapter-link-item block text-[11px] py-1 text-slate-400 hover:text-slate-200 transition-colors border-l border-slate-800 hover:border-indigo-500/50 pl-2.5 rounded-r"><span class="hindi">त्रिभुज</span><span class="english">Triangles</span></a></li>
+                    <li><a href="#chapter-coordinate-geometry" class="th-chapter-link-item block text-[11px] py-1 text-slate-400 hover:text-slate-200 transition-colors border-l border-slate-800 hover:border-indigo-500/50 pl-2.5 rounded-r"><span class="hindi">निर्देशांक ज्यामिति</span><span class="english">Coordinate Geometry</span></a></li>
+                    <li><a href="#chapter-trigonometry-intro" class="th-chapter-link-item block text-[11px] py-1 text-slate-400 hover:text-slate-200 transition-colors border-l border-slate-800 hover:border-indigo-500/50 pl-2.5 rounded-r"><span class="hindi">त्रिकोणमिति का परिचय</span><span class="english">Introduction to Trigonometry</span></a></li>
+                    <li><a href="#chapter-trigonometry-applications" class="th-chapter-link-item block text-[11px] py-1 text-slate-400 hover:text-slate-200 transition-colors border-l border-slate-800 hover:border-indigo-500/50 pl-2.5 rounded-r"><span class="hindi">त्रिकोणमिति के कुछ अनुप्रयोग</span><span class="english">Applications of Trigonometry</span></a></li>
+                    <li><a href="#chapter-circles" class="th-chapter-link-item block text-[11px] py-1 text-slate-400 hover:text-slate-200 transition-colors border-l border-slate-800 hover:border-indigo-500/50 pl-2.5 rounded-r"><span class="hindi">वृत्त</span><span class="english">Circles</span></a></li>
+                    <li><a href="#chapter-areas-related-to-circles" class="th-chapter-link-item block text-[11px] py-1 text-slate-400 hover:text-slate-200 transition-colors border-l border-slate-800 hover:border-indigo-500/50 pl-2.5 rounded-r"><span class="hindi">वृत्तों से संबंधित क्षेत्रफल</span><span class="english">Areas Related to Circles</span></a></li>
+                    <li><a href="#chapter-surface-areas-volumes" class="th-chapter-link-item block text-[11px] py-1 text-slate-400 hover:text-slate-200 transition-colors border-l border-slate-800 hover:border-indigo-500/50 pl-2.5 rounded-r"><span class="hindi">पृष्ठीय क्षेत्रफल और आयतन</span><span class="english">Surface Areas & Volumes</span></a></li>
+                    <li><a href="#chapter-statistics" class="th-chapter-link-item block text-[11px] py-1 text-slate-400 hover:text-slate-200 transition-colors border-l border-slate-800 hover:border-indigo-500/50 pl-2.5 rounded-r"><span class="hindi">सांख्यिकी</span><span class="english">Statistics</span></a></li>
+                    <li><a href="#chapter-probability" class="th-chapter-link-item block text-[11px] py-1 text-slate-400 hover:text-slate-200 transition-colors border-l border-slate-800 hover:border-indigo-500/50 pl-2.5 rounded-r"><span class="hindi">प्रायिकता</span><span class="english">Probability</span></a></li>
+                </ul>
+            </div>
+
+            <div class="th-class-section flex flex-col gap-2" id="sidebar-class-group-11" data-class="11" style="order: 11;">
+                <a href="/learn/maths-formulas/?class=11" onclick="if(window.filterMathsClass){window.filterMathsClass('11'); return false;}" class="th-class-header flex items-center justify-between p-2.5 rounded-xl font-sans font-bold text-xs hover:bg-slate-800/40 text-slate-400 hover:text-slate-200 transition-all border border-transparent">
+                    <span class="flex items-center gap-1.5">
+                        📂 <span class="hindi">कक्षा 11वीं गणित</span><span class="english">Class 11th Maths</span>
+                    </span>
+                    <span class="active-dot hidden text-indigo-400">●</span>
+                </a>
+                <ul class="th-chapters-list space-y-1.5 pl-4 hidden">
+                    <li><a href="#chapter-sets" class="th-chapter-link-item block text-[11px] py-1 text-slate-400 hover:text-slate-200 transition-colors border-l border-slate-800 hover:border-indigo-500/50 pl-2.5 rounded-r"><span class="hindi">समुच्चय</span><span class="english">Sets</span></a></li>
+                    <li><a href="#chapter-relations-functions" class="th-chapter-link-item block text-[11px] py-1 text-slate-400 hover:text-slate-200 transition-colors border-l border-slate-800 hover:border-indigo-500/50 pl-2.5 rounded-r"><span class="hindi">संबंध एवं फलन</span><span class="english">Relations and Functions</span></a></li>
+                    <li><a href="#chapter-trigonometric-functions" class="th-chapter-link-item block text-[11px] py-1 text-slate-400 hover:text-slate-200 transition-colors border-l border-slate-800 hover:border-indigo-500/50 pl-2.5 rounded-r"><span class="hindi">त्रिकोणमितीय फलन</span><span class="english">Trigonometric Functions</span></a></li>
+                    <li><a href="#chapter-complex-numbers" class="th-chapter-link-item block text-[11px] py-1 text-slate-400 hover:text-slate-200 transition-colors border-l border-slate-800 hover:border-indigo-500/50 pl-2.5 rounded-r"><span class="hindi">समिश्र संख्याएँ और द्विघातीय समीकरण</span><span class="english">Complex Numbers</span></a></li>
+                    <li><a href="#chapter-linear-inequalities" class="th-chapter-link-item block text-[11px] py-1 text-slate-400 hover:text-slate-200 transition-colors border-l border-slate-800 hover:border-indigo-500/50 pl-2.5 rounded-r"><span class="hindi">रैखिक असमिकाएँ</span><span class="english">Linear Inequalities</span></a></li>
+                    <li><a href="#chapter-permutations-combinations" class="th-chapter-link-item block text-[11px] py-1 text-slate-400 hover:text-slate-200 transition-colors border-l border-slate-800 hover:border-indigo-500/50 pl-2.5 rounded-r"><span class="hindi">क्रमचय और संचय</span><span class="english">Permutations & Combinations</span></a></li>
+                    <li><a href="#chapter-binomial-theorem" class="th-chapter-link-item block text-[11px] py-1 text-slate-400 hover:text-slate-200 transition-colors border-l border-slate-800 hover:border-indigo-500/50 pl-2.5 rounded-r"><span class="hindi">द्विपद प्रमेय</span><span class="english">Binomial Theorem</span></a></li>
+                    <li><a href="#chapter-sequences-series" class="th-chapter-link-item block text-[11px] py-1 text-slate-400 hover:text-slate-200 transition-colors border-l border-slate-800 hover:border-indigo-500/50 pl-2.5 rounded-r"><span class="hindi">अनुक्रम तथा श्रेणी</span><span class="english">Sequences and Series</span></a></li>
+                    <li><a href="#chapter-straight-lines" class="th-chapter-link-item block text-[11px] py-1 text-slate-400 hover:text-slate-200 transition-colors border-l border-slate-800 hover:border-indigo-500/50 pl-2.5 rounded-r"><span class="hindi">सरल रेखाएँ</span><span class="english">Straight Lines</span></a></li>
+                    <li><a href="#chapter-conic-sections" class="th-chapter-link-item block text-[11px] py-1 text-slate-400 hover:text-slate-200 transition-colors border-l border-slate-800 hover:border-indigo-500/50 pl-2.5 rounded-r"><span class="hindi">शंकु परिच्छेद</span><span class="english">Conic Sections</span></a></li>
+                    <li><a href="#chapter-3d-geometry-intro" class="th-chapter-link-item block text-[11px] py-1 text-slate-400 hover:text-slate-200 transition-colors border-l border-slate-800 hover:border-indigo-500/50 pl-2.5 rounded-r"><span class="hindi">त्रिविमीय ज्यामिति का परिचय</span><span class="english">Three Dimensional Geometry</span></a></li>
+                    <li><a href="#chapter-limits-derivatives" class="th-chapter-link-item block text-[11px] py-1 text-slate-400 hover:text-slate-200 transition-colors border-l border-slate-800 hover:border-indigo-500/50 pl-2.5 rounded-r"><span class="hindi">सीमा और अवकलज</span><span class="english">Limits and Derivatives</span></a></li>
+                    <li><a href="#chapter-statistics" class="th-chapter-link-item block text-[11px] py-1 text-slate-400 hover:text-slate-200 transition-colors border-l border-slate-800 hover:border-indigo-500/50 pl-2.5 rounded-r"><span class="hindi">सांख्यिकी</span><span class="english">Statistics</span></a></li>
+                    <li><a href="#chapter-probability" class="th-chapter-link-item block text-[11px] py-1 text-slate-400 hover:text-slate-200 transition-colors border-l border-slate-800 hover:border-indigo-500/50 pl-2.5 rounded-r"><span class="hindi">प्रायिकता</span><span class="english">Probability</span></a></li>
+                </ul>
+            </div>
+
+            <div class="th-class-section flex flex-col gap-2" id="sidebar-class-group-12" data-class="12" style="order: 12;">
+                <a href="/learn/maths-formulas/?class=12" onclick="if(window.filterMathsClass){window.filterMathsClass('12'); return false;}" class="th-class-header flex items-center justify-between p-2.5 rounded-xl font-sans font-bold text-xs hover:bg-slate-800/40 text-slate-400 hover:text-slate-200 transition-all border border-transparent">
+                    <span class="flex items-center gap-1.5">
+                        📂 <span class="hindi">कक्षा 12वीं गणित</span><span class="english">Class 12th Maths</span>
+                    </span>
+                    <span class="active-dot hidden text-indigo-400">●</span>
+                </a>
+                <ul class="th-chapters-list space-y-1.5 pl-4 hidden">
+                    <li><a href="#chapter-relations-functions" class="th-chapter-link-item block text-[11px] py-1 text-slate-400 hover:text-slate-200 transition-colors border-l border-slate-800 hover:border-indigo-500/50 pl-2.5 rounded-r"><span class="hindi">संबंध एवं फलन</span><span class="english">Relations and Functions</span></a></li>
+                    <li><a href="#chapter-inverse-trigonometric" class="th-chapter-link-item block text-[11px] py-1 text-slate-400 hover:text-slate-200 transition-colors border-l border-slate-800 hover:border-indigo-500/50 pl-2.5 rounded-r"><span class="hindi">प्रतिलोम त्रिकोणमितीय फलन</span><span class="english">Inverse Trigonometric Functions</span></a></li>
+                    <li><a href="#chapter-matrices" class="th-chapter-link-item block text-[11px] py-1 text-slate-400 hover:text-slate-200 transition-colors border-l border-slate-800 hover:border-indigo-500/50 pl-2.5 rounded-r"><span class="hindi">आव्यूह</span><span class="english">Matrices</span></a></li>
+                    <li><a href="#chapter-determinants" class="th-chapter-link-item block text-[11px] py-1 text-slate-400 hover:text-slate-200 transition-colors border-l border-slate-800 hover:border-indigo-500/50 pl-2.5 rounded-r"><span class="hindi">सारणिक</span><span class="english">Determinants</span></a></li>
+                    <li><a href="#chapter-continuity-differentiability" class="th-chapter-link-item block text-[11px] py-1 text-slate-400 hover:text-slate-200 transition-colors border-l border-slate-800 hover:border-indigo-500/50 pl-2.5 rounded-r"><span class="hindi">सांतत्य तथा अवकलनीयता</span><span class="english">Continuity & Differentiability</span></a></li>
+                    <li><a href="#chapter-derivatives-applications" class="th-chapter-link-item block text-[11px] py-1 text-slate-400 hover:text-slate-200 transition-colors border-l border-slate-800 hover:border-indigo-500/50 pl-2.5 rounded-r"><span class="hindi">अवकलज के अनुप्रयोग</span><span class="english">Application of Derivatives</span></a></li>
+                    <li><a href="#chapter-integrals" class="th-chapter-link-item block text-[11px] py-1 text-slate-400 hover:text-slate-200 transition-colors border-l border-slate-800 hover:border-indigo-500/50 pl-2.5 rounded-r"><span class="hindi">समाकलन</span><span class="english">Integrals</span></a></li>
+                    <li><a href="#chapter-integrals-applications" class="th-chapter-link-item block text-[11px] py-1 text-slate-400 hover:text-slate-200 transition-colors border-l border-slate-800 hover:border-indigo-500/50 pl-2.5 rounded-r"><span class="hindi">समाकलनों के अनुप्रयोग</span><span class="english">Application of Integrals</span></a></li>
+                    <li><a href="#chapter-differential-equations" class="th-chapter-link-item block text-[11px] py-1 text-slate-400 hover:text-slate-200 transition-colors border-l border-slate-800 hover:border-indigo-500/50 pl-2.5 rounded-r"><span class="hindi">अवकल समीकरण</span><span class="english">Differential Equations</span></a></li>
+                    <li><a href="#chapter-vector-algebra" class="th-chapter-link-item block text-[11px] py-1 text-slate-400 hover:text-slate-200 transition-colors border-l border-slate-800 hover:border-indigo-500/50 pl-2.5 rounded-r"><span class="hindi">सदिश बीजगणित</span><span class="english">Vector Algebra</span></a></li>
+                    <li><a href="#chapter-3d-geometry" class="th-chapter-link-item block text-[11px] py-1 text-slate-400 hover:text-slate-200 transition-colors border-l border-slate-800 hover:border-indigo-500/50 pl-2.5 rounded-r"><span class="hindi">त्रिविमीय ज्यामिति</span><span class="english">Three Dimensional Geometry</span></a></li>
+                    <li><a href="#chapter-linear-programming" class="th-chapter-link-item block text-[11px] py-1 text-slate-400 hover:text-slate-200 transition-colors border-l border-slate-800 hover:border-indigo-500/50 pl-2.5 rounded-r"><span class="hindi">रैखिक प्रोग्रामन</span><span class="english">Linear Programming</span></a></li>
+                    <li><a href="#chapter-probability" class="th-chapter-link-item block text-[11px] py-1 text-slate-400 hover:text-slate-200 transition-colors border-l border-slate-800 hover:border-indigo-500/50 pl-2.5 rounded-r"><span class="hindi">प्रायिकता</span><span class="english">Probability</span></a></li>
+                </ul>
+            </div>
+
+        </div>
+    </div>
+
+  {% else %}
+    
+    <div class="th-sidebar-title">🌌 Physics Formulas</div>
+    <ul class="th-left-nav" style="margin-bottom: 20px;">
+        <li><a href="{{ site.url }}/learn/all-physics-formulas/?class=9" class="{% if page.url contains 'class=9' %}active{% endif %}">Class 9th Physics</a></li>
+        <li><a href="{{ site.url }}/learn/all-physics-formulas/?class=10" class="{% if page.url contains 'class=10' %}active{% endif %}">Class 10th Physics</a></li>
+        <li><a href="{{ site.url }}/learn/all-physics-formulas/?class=11" class="{% if page.url contains 'class=11' %}active{% endif %}">Class 11th Physics</a></li>
+        <li><a href="{{ site.url }}/learn/all-physics-formulas/?class=12" class="{% if page.url contains 'class=12' %}active{% endif %}">Class 12th Physics</a></li>
+    </ul>
+
+    <div class="th-sidebar-title">💼 Commerce &amp; Aptitude</div>
+    <ul class="th-left-nav" style="margin-bottom: 20px;">
+        <li><a href="{{ site.url }}/learn/commerce-formulas/">Commercial Maths &amp; Tricks</a></li>
+    </ul>
+
+    <div class="th-sidebar-title">📐 Mathematics Hub</div>
+    <ul class="th-left-nav" style="margin-bottom: 20px;">
+        <li><a href="{{ site.url }}/learn/mathematics-formulas/#class-9">Class 9th Maths</a></li>
+        <li><a href="{{ site.url }}/learn/mathematics-formulas/#class-10">Class 10th Maths</a></li>
+        <li><a href="{{ site.url }}/learn/mathematics-formulas/#class-11">Class 11th Maths</a></li>
+        <li><a href="{{ site.url }}/learn/mathematics-formulas/#class-12">Class 12th Maths</a></li>
+    </ul>
+
+    <div class="th-sidebar-title">🧪 Chemistry Hub</div>
+    <ul class="th-left-nav">
+        <li><a href="{{ site.url }}/learn/chemistry/chemical-compounds-table/">Chemical Compounds Table</a></li>
+        <li><a href="{{ site.url }}/learn/chemistry/periodic-table/">📊 Periodic Table</a></li>
+        <li><a href="{{ site.url }}/learn/chemistry/elements-name/">⚛️ Elements & Valency</a></li>
+        <li><a href="{{ site.url }}/learn/chemistry/reactions/">⚡ Name Reactions (Eng)</a></li>
+        <li><a href="{{ site.url }}/learn/chemistry/reactions-hindi/">🔥 नाम अभिक्रियाएं (Hindi)</a></li>
+    </ul>
+
+  {% endif %}
+
+</aside>
+<style>
+    /* ========================================================
+       1. CORE RESPONSIVE GRID LAYOUT (DESKTOP)
+       ======================================================== */
+    .tyagihub-main-layout {
+        display: grid;
+        grid-template-columns: 280px 1fr 280px;
+       
+        margin: 62px auto;
+        padding: 0 15px;
+        align-items: start;
+        position: relative;
+    }
+
+    .th-left-col-wrapper {
+        position: sticky;
+       
+        z-index: 1; /* यहाँ z-index को कम किया गया है ताकि डेस्कटॉप पर फ़ुटर हाइड न हो */
+    }
+
+    /* ========================================================
+       2. DESKTOP LEFT SIDEBAR CONFIGURATION
+       ======================================================== */
+    .th-left-sidebar {
+        background: var(--clr-bg-2);
+        border-radius: 12px;
+        padding: 16px 12px;
+        position: fixed;
+        left: 0;
+        max-height: calc(100vh - 40px);
+        overflow-y: auto;
+        scrollbar-width: thin !important;
+    }
+
+    [data-theme="dark"] .th-left-sidebar {
+        background: #1e1e1e;
+    }
+
+    .th-left-sidebar::-webkit-scrollbar {
+        width: 4px !important;
+        height: 4px !important;
+    }
+    .th-left-sidebar::-webkit-scrollbar-track {
+        background: transparent !important;
+    }
+    .th-left-sidebar::-webkit-scrollbar-thumb {
+        background: rgba(128, 128, 128, 0.2) !important;
+        border-radius: 10px !important;
+    }
+
+    .th-sidebar-title {
+        font-family: 'Baloo 2', sans-serif;
+        font-size: 1.1rem;
+        font-weight: 700;
+        margin-bottom: 14px;
+        border-bottom: 2px solid rgba(128, 128, 128, 0.15);
+        padding-bottom: 6px;
+    }
+
+    .th-left-nav {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+    .th-left-nav li {
+        margin-bottom: 6px;
+    }
+    .th-left-nav a {
+        display: block;
+        padding: 8px 14px;
+        color: inherit;
+        text-decoration: none;
+        border-radius: 8px;
+        font-size: 0.92rem;
+        line-height: 1.4;
+        font-weight: 500;
+        transition: all 0.2s ease;
+    }
+    .th-left-nav a:hover {
+        background: rgba(128, 128, 128, 0.12);
+        padding-left: 18px;
+    }
+    .th-left-nav a.active {
+        background: #1e6fd9 !important;
+        color: #ffffff !important;
+        font-weight: 700;
+    }
+
+    /* ========================================================
+       3. MOBILE TRIGGER BAR
+       ======================================================== */
+    .th-mobile-menu-trigger {
+        display: none;
+        padding: 10px 15px;
+        background: #1e6fd9;
+        color: #ffffff;
+        border: none;
+        border-radius: 8px;
+        font-family: 'Hind', sans-serif;
+        font-size: 0.95rem;
+        font-weight: 600;
+        cursor: pointer;
+        text-align: left;
+    }
+
+    /* ========================================================
+       4. CENTER CONTENT & COMPACT TABLE FONTS
+       ======================================================== */
+    .th-center-content {
+        min-width: 0;
+        position: relative;
+    }
+
+    .th-action-bar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 20px;
+        gap: 15px;
+    }
+
+    #table-search-input {
+        flex: 1;
+        width: 100%;
+        padding: 10px 12px;
+        margin-bottom: 0;
+        border-radius: 6px;
+        border: 1px solid rgba(128, 128, 128, 0.3);
+        background: transparent;
+        color: inherit;
+        font-size: 0.92rem;
+    }
+
+    .th-print-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 10px 16px;
+        background: #2e7d32;
+        color: #ffffff;
+        border: none;
+        border-radius: 6px;
+        font-weight: 600;
+        font-family: 'Hind', sans-serif;
+        font-size: 0.92rem;
+        cursor: pointer;
+        transition: background 0.2s;
+    }
+    .th-print-btn:hover {
+        background: #1b5e20;
+    }
+
+    .th-table-wrapper {
+        width: 100%;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        margin-bottom: 20px;
+        border: 1px solid rgba(128, 128, 128, 0.15);
+        border-radius: 8px;
+        position: relative;
+        z-index: 2;
+    }
+
+    .table-container table {
+        width: 100%;
+        border-collapse: collapse;
+        min-width: 600px;
+    }
+    .table-container th {
+        background: rgba(128, 128, 128, 0.06);
+        font-size: 0.92rem;
+        font-weight: 700;
+        border: 1px solid rgba(128, 128, 128, 0.2);
+        padding: 10px 12px;
+    }
+    .table-container td {
+        border: 1px solid rgba(128, 128, 128, 0.2);
+        padding: 10px 12px;
+        font-size: 0.9rem;
+    }
+
+    #myTable tbody tr:nth-child(even) {
+        background: var(--bg-3, rgba(128, 128, 128, 0.04)) !important;
+    }
+    #myTable tbody tr:hover {
+        background: rgba(30, 111, 217, 0.08) !important;
+        transition: background 0.15s ease;
+    }
+
+    .th-load-more-container {
+        text-align: center;
+        margin: 25px 0;
+    }
+    .th-load-more-btn {
+        padding: 10px 28px;
+        background: #1e6fd9;
+        color: #ffffff;
+        border: none;
+        border-radius: 25px;
+        font-weight: 600;
+        font-family: 'Hind', sans-serif;
+        font-size: 0.92rem;
+        cursor: pointer;
+        box-shadow: 0 4px 12px rgba(30, 111, 217, 0.2);
+        transition: all 0.2s;
+    }
+    .th-load-more-btn:hover {
+        background: #1552a0;
+        transform: translateY(-1px);
+    }
+
+    /* ========================================================
+       5. RIGHT SIDEBAR WRAPPER (DESKTOP TARGET)
+       ======================================================== */
+    .th-right-sidebar-wrapper {
+        display: block;
+    }
+
+    .th-print-watermark {
+        display: none;
+    }
+
+    /* ========================================================
+       6. RESPONSIVE LAYOUT ENGINE (BREAKPOINTS)
+       ======================================================== */
+    @media (max-width: 1024px) {
+        .tyagihub-main-layout {
+            grid-template-columns: 260px 1fr;
+        }
+        .th-right-sidebar-wrapper { display: none; }
+    }
+
+    @media (max-width: 768px) {
+        /* HARD OVERRIDE TO CONVERT GRID TO A VERTICAL PILE HOLE FLOW */
+        .tyagihub-main-layout {
+            display: flex !important;
+            flex-direction: column !important;
+            margin: 62px auto;
+            gap: 20px;
+        }
+        
+        .th-left-col-wrapper {
+            position: fixed;
+            order: 1; /* Trigger menu at top view bounds */
+            z-index: 1001; /* मोबाइल पर फ़िक्स मेनू ड्रॉअर को ऊपर रखने के लिए */
+        }
+        
+        .th-mobile-menu-trigger {
+            display: block;
+            width: 100%;
+        }
+
+        main.th-center-content {
+            width: 100%;
+            order: 2; /* Main formulas list goes middle stack */
+        }
+
+        /* FORCE 100% VISIBILITY AT THE BOTTOM ON MOBILE SHEETS */
+        .th-right-sidebar-wrapper { 
+            display: block !important; 
+            width: 100% !important;
+            order: 3; /* Locks down safely at the bottom under table content! */
+            margin-top: 20px;
+        }
+
+        /* Pure Opaque Closed-by-Default Left Menu Drawer context */
+        .th-left-sidebar {
+            position: fixed;
+            top: 62px;
+            left: -320px; 
+            height: 100vh;
+            max-height: 100vh;
+            border: none;
+            border-right: 1px solid rgba(128, 128, 128, 0.2);
+            border-radius: 0 12px 12px 0;
+            box-shadow: 6px 0 24px rgba(0,0,0,0.3);
+            transition: left 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            padding-top: 24px;
+            z-index: 1001; /* ताकि मोबाइल ड्रॉअर सब चीज़ों के ऊपर खुले */
+        }
+
+        .th-left-sidebar.mobile-open {
+            left: 0 !important;
+            display: block !important;
+        }
+        
+        [data-theme="dark"] .th-left-sidebar {
+            background: #1c1c1e !important;
+        }
+    }
+
+    /* ========================================================
+       7. HIGH-PRIORITY PRINT OVERRIDES
+       ======================================================== */
+    @media print {
+        nav, footer, .th-left-col-wrapper, .th-right-sidebar-wrapper, #table-search-input, 
+        .th-action-bar, .th-load-more-container, header, .header, .top-nav, .lang-switcher, #google_translate_element {
+            display: none !important;
+        }
+
+        body, .tyagihub-main-layout, .th-center-content {
+            margin: 0 !important;
+            padding: 0 !important;
+            background: #ffffff !important;
+            color: #000000 !important;
+            display: block !important;
+        }
+
+        .class-header-main {
+            display: block !important;
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        .th-table-wrapper {
+            overflow: visible !important;
+            border: none !important;
+        }
+
+        #myTable {
+            width: 100% !important;
+            min-width: 100% !important;
+            background: transparent !important;
+        }
+
+        #myTable tr, #myTable td, #myTable th {
+            background: transparent !important;
+            -webkit-print-color-adjust: exact !important;
+            print-color-adjust: exact !important;
+        }
+
+        #myTable tbody tr:nth-child(even) {
+            background: rgba(0, 0, 0, 0.03) !important;
+        }
+
+        #myTable tbody tr {
+            display: table-row !important;
+        }
+
+        .th-print-watermark {
+            display: block !important;
+            position: absolute;
+            left: 50%;
+            transform: translate(-50%, -50%) rotate(-35deg);
+            font-family: 'Baloo 2', 'Hind', sans-serif !important;
+            font-size: 85px;
+            font-weight: 900;
+            letter-spacing: 10px;
+            color: rgba(0, 0, 0, 0.04) !important;
+            z-index: -1;
+            white-space: nowrap;
+            pointer-events: none;
+            -webkit-print-color-adjust: exact !important;
+            print-color-adjust: exact !important;
+        }
+    }@media print {
+    .no-print {
+        display: none !important;
+    }
+}/* ========================================================
+   🎯 TERE HINDI FAQ SECTION KA COMPLETE CSS BLOCK
+   ======================================================== */
+
+/* Main Container Section */
+.faq-section {
+    background: var(--bg-2, rgba(128, 128, 128, 0.03));
+    border: 1px solid rgba(128, 128, 128, 0.15);
+    border-radius: 12px;
+    padding: 20px;
+    font-family: inherit; /* TyagiHub ka core font face use karega */
+}
+
+/* Section Title (H2) */
+.faq-section h2 {
+    color: inherit;
+    font-weight: 700;
+    border-bottom: 2px solid rgba(106, 76, 255, 0.2);
+    padding-bottom: 6px;
+}
+
+/* Individual Accordion Item (Details Tag) */
+.th-faq-item {
+    background: var(--bg-3, rgba(128, 128, 128, 0.04));
+    border: 1px solid rgba(128, 128, 128, 0.12);
+    border-radius: 8px;
+    margin-bottom: 10px;
+    overflow: hidden;
+    transition: all 0.2s ease-in-out;
+}
+
+/* Hover effect item ke upar */
+.th-faq-item:hover {
+    border-color: #6a4cff;
+    background: rgba(106, 76, 255, 0.01);
+}
+
+/* Jab details/accordion open ho tab active state */
+.th-faq-item[open] {
+    border-color: #6a4cff;
+    box-shadow: 0 4px 12px rgba(106, 76, 255, 0.06);
+}
+
+/* Clickable Header (Summary Tag) */
+.th-faq-item summary {
+    padding: 14px 16px;
+    font-size: 0.98rem;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    user-select: none;
+    outline: none;
+    list-style: none; /* Removes default arrow button */
+}
+
+/* Webkit chrome default arrow cleaner */
+.th-faq-item summary::-webkit-details-marker {
+    display: none;
+}
+
+/* Custom CSS Arrow dynamic placement */
+.th-faq-item summary::after {
+    content: "↓";
+    font-size: 1.1rem;
+    color: #6a4cff;
+    transition: transform 0.2s ease;
+    font-weight: bold;
+}
+
+/* Rotation engine when dropdown opens */
+.th-faq-item[open] summary::after {
+    transform: rotate(-180deg);
+}
+
+/* Answer Container Block Style */
+.th-faq-ans {
+    padding: 0 16px 14px 16px;
+    border-top: 1px solid rgba(128, 128, 128, 0.1);
+    background: rgba(0, 0, 0, 0.01);
+}
+
+/* Paragraph tag configuration within answer window */
+.th-faq-ans p {
+    margin: 10px 0 0 0;
+    font-size: 0.92rem;
+    line-height: 1.6;
+    opacity: 0.88;
+    color: inherit;
+}
+</style><!-- 🚀 PHYSICS QUERY PARAMETER AUTO-ACTIVE HIGHLIGHTER ENGINE -->
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    // Current URL ke parameters nikaalo (e.g., ?class=10)
+    const currentUrlParams = window.location.search; 
+    
+    if (currentUrlParams) {
+        // Sidebar ke andar saare links dhoondho
+        const sidebarLinks = document.querySelectorAll("#tyagihubLeftSidebar .th-left-nav a");
+        
+        sidebarLinks.forEach(link => {
+            // Agar link ke href ke pichhe ka part exact current params se match hota h
+            if (link.href.includes(currentUrlParams)) {
+                // Purane kisi bhi hardcoded active class ko hatao aur ispar thonko
+                link.classList.add("active");
+            }
+        });
+    }
+});
+</script>
