@@ -22,11 +22,69 @@ lang_toggle: false
         <style>
             /* ── Core Themes & Layouts ── */
             :root {
-                --primary-color: #4f46e5;
-                --primary-hover: #4338ca;
-                --accent-color: #06b6d4;
-                --card-bg: #ffffff;
-                --border-color: rgba(128, 128, 128, 0.15);
+                --primary-color: var(--primary-base, #4f46e5);
+                --primary-hover: var(--primary-hover, #4338ca);
+                --accent-color: var(--clr-accent, #06b6d4);
+                --card-bg: var(--bg-surface, var(--clr-surface, #ffffff));
+                --border-color: var(--border-2, var(--clr-border, rgba(128, 128, 128, 0.15)));
+            }
+
+            /* ── Theme Adaptations (Style overrides for perfect Dark Mode compatibility) ── */
+            .th-formula-card {
+                background: var(--bg-surface, var(--clr-surface, #ffffff)) !important;
+                border: 1px solid var(--border-2, var(--clr-border, rgba(128, 128, 128, 0.12))) !important;
+                color: var(--text-paragraph, var(--clr-text, #1e293b)) !important;
+            }
+            .th-formula-card h3, .th-formula-card h3 * {
+                color: var(--text-heading, var(--clr-heading, #1e293b)) !important;
+            }
+            .th-formula-card .formula {
+                color: var(--primary-color, #4f46e5) !important;
+            }
+            .th-formula-card [style*="color: #475569"],
+            .th-formula-card [style*="color:#475569"],
+            .th-formula-card div[style*="font-size: 0.8rem"] {
+                color: var(--text-paragraph, var(--clr-text-2, #475569)) !important;
+            }
+            .th-formula-card [style*="border-top: 1px solid rgba(128,128,128,0.08)"],
+            .th-formula-card [style*="border-bottom: 1px solid rgba(128,128,128,0.08)"] {
+                border-color: var(--border-2, var(--clr-border, rgba(128,128,128,0.08))) !important;
+            }
+            .th-formula-card [style*="background: rgba(128,128,128,0.03)"],
+            .th-formula-card [style*="background:rgba(128,128,128,0.03)"] {
+                background: var(--bg-body, var(--clr-bg-2, rgba(128, 128, 128, 0.03))) !important;
+                border-color: var(--border-2, var(--clr-border, rgba(128, 128, 128, 0.08))) !important;
+            }
+            .th-formula-card button[style*="background: rgba(128,128,128,0.05)"],
+            .th-formula-card button[style*="background:rgba(128,128,128,0.05)"] {
+                background: var(--bg-body, var(--clr-bg-2, rgba(128, 128, 128, 0.05))) !important;
+                border-color: var(--border-2, var(--clr-border, rgba(128, 128, 128, 0.12))) !important;
+                color: var(--text-paragraph, var(--clr-text-2, #64748b)) !important;
+            }
+            
+            /* Root-level elements outside cards */
+            #physics-root h1, #physics-root h1 * {
+                color: var(--text-heading, var(--clr-heading, #1e293b)) !important;
+            }
+            #physics-root h2, #physics-root h2 * {
+                color: var(--text-heading, var(--clr-heading, #0f172a)) !important;
+                border-color: var(--border-2, var(--clr-border, rgba(79, 70, 229, 0.15))) !important;
+            }
+            #physics-root p[style*="color: #64748b"], #physics-root p[style*="color:#64748b"] {
+                color: var(--text-muted, var(--clr-text-2, #64748b)) !important;
+            }
+            #physics-root p[style*="color: #475569"], #physics-root p[style*="color:#475569"] {
+                color: var(--text-paragraph, var(--clr-text, #475569)) !important;
+            }
+
+            /* Live Keyword Search Input adjustments */
+            #th-physics-search {
+                background: var(--bg-input, var(--bg-surface, var(--clr-surface, #ffffff))) !important;
+                color: var(--text-paragraph, var(--clr-text, #1e293b)) !important;
+                border-color: var(--border-2, var(--clr-border, rgba(128, 128, 128, 0.15))) !important;
+            }
+            #th-physics-search::placeholder {
+                color: var(--text-muted, var(--clr-text-3, #94a3b8)) !important;
             }
 
             /* ── Language Toggles ── */
@@ -116,17 +174,17 @@ lang_toggle: false
                 align-items: center;
                 gap: 6px;
                 padding: 6px 14px;
-                background: rgba(128, 128, 128, 0.06);
-                border: 1px solid rgba(128, 128, 128, 0.1);
+                background: var(--bg-surface, var(--clr-surface, rgba(128, 128, 128, 0.06))) !important;
+                border: 1px solid var(--border-2, var(--clr-border, rgba(128, 128, 128, 0.1))) !important;
                 border-radius: 20px;
                 font-size: 0.82rem;
-                color: inherit;
+                color: var(--text-paragraph, var(--clr-text, inherit)) !important;
                 text-decoration: none;
                 transition: all 0.2s;
             }
             .th-chapter-link:hover {
-                background: rgba(79, 70, 229, 0.08);
-                border-color: rgba(79, 70, 229, 0.25);
+                background: var(--hover-bg-1, var(--clr-surface-2, rgba(79, 70, 229, 0.08))) !important;
+                border-color: var(--primary-color, rgba(79, 70, 229, 0.25)) !important;
                 transform: translateY(-1px);
             }
 
@@ -134,6 +192,19 @@ lang_toggle: false
             .class-tab-btn {
                 position: relative;
                 transition: all 0.2s;
+                background: var(--bg-body, var(--clr-bg-2, #f3f4f6)) !important;
+                color: var(--text-paragraph, var(--clr-text-2, #374151)) !important;
+                border: 1px solid var(--border-2, var(--clr-border, rgba(128, 128, 128, 0.15))) !important;
+                cursor: pointer;
+            }
+            .class-tab-btn:hover {
+                background: var(--hover-bg-1, var(--clr-surface-2, #e5e7eb)) !important;
+                color: var(--hover-text-1, var(--clr-text, #111827)) !important;
+            }
+            .class-tab-btn.active {
+                background: var(--primary-color, #4f46e5) !important;
+                color: #ffffff !important;
+                border-color: var(--primary-color, #4f46e5) !important;
             }
             .class-tab-btn.active::after {
                 content: '';
@@ -142,7 +213,7 @@ lang_toggle: false
                 left: 20%;
                 width: 60%;
                 height: 3px;
-                background: var(--primary-color);
+                background: #ffffff !important;
                 border-radius: 99px;
             }
 
@@ -159,6 +230,44 @@ lang_toggle: false
                 width: 100%;
                 height: auto;
                 display: block;
+            }
+
+            /* Mobile Sidebar styles for menu sliding drawer if global style isn't loaded */
+            @media (max-width: 1024px) {
+                .th-left-col-wrapper {
+                    position: fixed !important;
+                    top: 0;
+                    left: -280px;
+                    width: 280px;
+                    height: 100vh;
+                    z-index: 1100;
+                    background: var(--bg-surface, var(--clr-surface, #ffffff));
+                    box-shadow: 4px 0 24px rgba(0, 0, 0, 0.15);
+                    transition: left 0.3s ease;
+                    overflow-y: auto;
+                    display: block !important;
+                }
+                .th-left-col-wrapper.mobile-open {
+                    left: 0 !important;
+                }
+                .th-mobile-menu-trigger {
+                    position: fixed !important;
+                    top: 15px;
+                    left: 15px;
+                    z-index: 1050;
+                    display: flex !important;
+                    align-items: center;
+                    gap: 6px;
+                    background: var(--primary-color, #4f46e5);
+                    color: white;
+                    border: none;
+                    padding: 8px 14px;
+                    border-radius: 12px;
+                    box-shadow: 0 4px 12px rgba(79, 70, 229, 0.3);
+                    cursor: pointer;
+                    font-weight: 700;
+                    font-size: 0.85rem;
+                }
             }
         </style>
 
@@ -251,10 +360,6 @@ lang_toggle: false
                         <button onclick="filterPhysicsClass('12')" id="class-tab-12" class="class-tab-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-bold bg-gray-100 text-gray-700 hover:bg-gray-200" style="cursor: pointer; border: none;">
                             <span class="hindi">कक्षा 12 (Class 12)</span>
                             <span class="english">Class 12</span>
-                        </button>
-                        <button onclick="filterPhysicsClass('all')" id="class-tab-all" class="class-tab-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-bold bg-gray-100 text-gray-700 hover:bg-gray-200" style="cursor: pointer; border: none;">
-                            <span class="hindi">सभी कक्षाएं (All Classes)</span>
-                            <span class="english">All Classes</span>
                         </button>
                     </div>
 
@@ -388,10 +493,54 @@ lang_toggle: false
 <!-- ── CORE INTERACTIVE JAVASCRIPT ENGINE ── -->
 <script>
 /* ============================================================
-   GLOBALS & LOCAL STORAGE MANAGEMENT
+   GLOBALS & LOCAL STORAGE MANAGEMENT WITH DEEP LINKING
    ============================================================ */
-var activePhysicsClass = localStorage.getItem("physics_active_class") || "9";
+function getClassFromUrl() {
+    var params = new URLSearchParams(window.location.search);
+    var classVal = params.get('class');
+    if (classVal) return classVal;
+
+    // Direct parameter fallback (e.g. ?class9, ?class10)
+    var search = window.location.search.toLowerCase();
+    if (search.indexOf('class9') !== -1) return '9';
+    if (search.indexOf('class10') !== -1) return '10';
+    if (search.indexOf('class11') !== -1) return '11';
+    if (search.indexOf('class12') !== -1) return '12';
+
+    // Hash fallback
+    var hash = window.location.hash.toLowerCase();
+    if (hash.indexOf('class9') !== -1 || hash.indexOf('class-9') !== -1) return '9';
+    if (hash.indexOf('class10') !== -1 || hash.indexOf('class-10') !== -1) return '10';
+    if (hash.indexOf('class11') !== -1 || hash.indexOf('class-11') !== -1) return '11';
+    if (hash.indexOf('class12') !== -1 || hash.indexOf('class-12') !== -1) return '12';
+
+    return null;
+}
+
+var activePhysicsClass = getClassFromUrl() || localStorage.getItem("physics_active_class") || "9";
 var activeAppLanguage = localStorage.getItem("language") || "hindi";
+
+/* ============================================================
+   MOBILE SIDEBAR SLIDING NAV DRAWER
+   ============================================================ */
+function toggleMobileSidebar(event) {
+    if (event) event.stopPropagation();
+    var sidebar = document.querySelector(".th-left-sidebar") || document.querySelector(".th-sidebar") || document.querySelector(".th-left-col-wrapper");
+    if (sidebar) {
+        sidebar.classList.toggle("mobile-open");
+    }
+}
+
+// Close sidebar when clicking outside of it
+document.addEventListener("click", function(event) {
+    var sidebar = document.querySelector(".th-left-sidebar") || document.querySelector(".th-sidebar") || document.querySelector(".th-left-col-wrapper");
+    var trigger = document.querySelector(".th-mobile-menu-trigger");
+    if (sidebar && sidebar.classList.contains("mobile-open")) {
+        if (!sidebar.contains(event.target) && (!trigger || !trigger.contains(event.target))) {
+            sidebar.classList.remove("mobile-open");
+        }
+    }
+});
 
 /* ============================================================
    CANVAS HERO GENERATION (Bilingual & Watermarked)
@@ -527,25 +676,25 @@ function toggleAppLanguage(lang) {
     var btnEn = document.getElementById("lang-btn-en");
     if (lang === "hindi") {
         if (btnHi) {
-            btnHi.style.background = "#4f46e5";
+            btnHi.style.background = "var(--primary-color, #4f46e5)";
             btnHi.style.color = "#ffffff";
-            btnHi.style.borderColor = "#4f46e5";
+            btnHi.style.borderColor = "var(--primary-color, #4f46e5)";
         }
         if (btnEn) {
             btnEn.style.background = "transparent";
-            btnEn.style.color = "#475569";
-            btnEn.style.borderColor = "rgba(128,128,128,0.2)";
+            btnEn.style.color = "var(--text-paragraph, var(--clr-text-2, #475569))";
+            btnEn.style.borderColor = "var(--border-2, var(--clr-border, rgba(128,128,128,0.2)))";
         }
     } else {
         if (btnEn) {
-            btnEn.style.background = "#4f46e5";
+            btnEn.style.background = "var(--primary-color, #4f46e5)";
             btnEn.style.color = "#ffffff";
-            btnEn.style.borderColor = "#4f46e5";
+            btnEn.style.borderColor = "var(--primary-color, #4f46e5)";
         }
         if (btnHi) {
             btnHi.style.background = "transparent";
-            btnHi.style.color = "#475569";
-            btnHi.style.borderColor = "rgba(128,128,128,0.2)";
+            btnHi.style.color = "var(--text-paragraph, var(--clr-text-2, #475569))";
+            btnHi.style.borderColor = "var(--border-2, var(--clr-border, rgba(128,128,128,0.2)))";
         }
     }
 }
@@ -556,6 +705,14 @@ function toggleAppLanguage(lang) {
 function filterPhysicsClass(classNum) {
     activePhysicsClass = classNum;
     localStorage.setItem("physics_active_class", classNum);
+
+    // Deep link integration: update the URL search query dynamically without page reload
+    try {
+        var newUrl = window.location.protocol + "//" + window.location.host + window.location.pathname + "?class=" + classNum;
+        window.history.replaceState({ path: newUrl }, '', newUrl);
+    } catch(e) {
+        console.error("URL update failed: ", e);
+    }
 
     // Update Tabs UI
     document.querySelectorAll('.class-tab-btn').forEach(function(btn) {
