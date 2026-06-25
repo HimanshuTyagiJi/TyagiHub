@@ -455,5 +455,95 @@
     .no-print {
         display: none !important;
     }
+}/* ========================================================
+   🎯 TERE HINDI FAQ SECTION KA COMPLETE CSS BLOCK
+   ======================================================== */
+
+/* Main Container Section */
+.faq-section {
+    background: var(--bg-2, rgba(128, 128, 128, 0.03));
+    border: 1px solid rgba(128, 128, 128, 0.15);
+    border-radius: 12px;
+    padding: 20px;
+    font-family: inherit; /* TyagiHub ka core font face use karega */
+}
+
+/* Section Title (H2) */
+.faq-section h2 {
+    color: inherit;
+    font-weight: 700;
+    border-bottom: 2px solid rgba(106, 76, 255, 0.2);
+    padding-bottom: 6px;
+}
+
+/* Individual Accordion Item (Details Tag) */
+.th-faq-item {
+    background: var(--bg-3, rgba(128, 128, 128, 0.04));
+    border: 1px solid rgba(128, 128, 128, 0.12);
+    border-radius: 8px;
+    margin-bottom: 10px;
+    overflow: hidden;
+    transition: all 0.2s ease-in-out;
+}
+
+/* Hover effect item ke upar */
+.th-faq-item:hover {
+    border-color: #6a4cff;
+    background: rgba(106, 76, 255, 0.01);
+}
+
+/* Jab details/accordion open ho tab active state */
+.th-faq-item[open] {
+    border-color: #6a4cff;
+    box-shadow: 0 4px 12px rgba(106, 76, 255, 0.06);
+}
+
+/* Clickable Header (Summary Tag) */
+.th-faq-item summary {
+    padding: 14px 16px;
+    font-size: 0.98rem;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    user-select: none;
+    outline: none;
+    list-style: none; /* Removes default arrow button */
+}
+
+/* Webkit chrome default arrow cleaner */
+.th-faq-item summary::-webkit-details-marker {
+    display: none;
+}
+
+/* Custom CSS Arrow dynamic placement */
+.th-faq-item summary::after {
+    content: "↓";
+    font-size: 1.1rem;
+    color: #6a4cff;
+    transition: transform 0.2s ease;
+    font-weight: bold;
+}
+
+/* Rotation engine when dropdown opens */
+.th-faq-item[open] summary::after {
+    transform: rotate(-180deg);
+}
+
+/* Answer Container Block Style */
+.th-faq-ans {
+    padding: 0 16px 14px 16px;
+    border-top: 1px solid rgba(128, 128, 128, 0.1);
+    background: rgba(0, 0, 0, 0.01);
+}
+
+/* Paragraph tag configuration within answer window */
+.th-faq-ans p {
+    margin: 10px 0 0 0;
+    font-size: 0.92rem;
+    line-height: 1.6;
+    opacity: 0.88;
+    color: inherit;
 }
 </style>
