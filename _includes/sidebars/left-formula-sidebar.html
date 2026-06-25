@@ -553,4 +553,23 @@
     opacity: 0.88;
     color: inherit;
 }
-</style>
+</style><!-- 🚀 PHYSICS QUERY PARAMETER AUTO-ACTIVE HIGHLIGHTER ENGINE -->
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    // Current URL ke parameters nikaalo (e.g., ?class=10)
+    const currentUrlParams = window.location.search; 
+    
+    if (currentUrlParams) {
+        // Sidebar ke andar saare links dhoondho
+        const sidebarLinks = document.querySelectorAll("#tyagihubLeftSidebar .th-left-nav a");
+        
+        sidebarLinks.forEach(link => {
+            // Agar link ke href ke pichhe ka part exact current params se match hota h
+            if (link.href.includes(currentUrlParams)) {
+                // Purane kisi bhi hardcoded active class ko hatao aur ispar thonko
+                link.classList.add("active");
+            }
+        });
+    }
+});
+</script>
