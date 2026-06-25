@@ -629,7 +629,10 @@ lang_toggle: false
               को स्थानांतरित करके।</p>
           </div>
         </details>
-      </section> </div><!-- grid-column 2 -->
+      </section> 
+        </div><!-- /#root -->
+ 
+    </div><!-- grid-column 2 -->
  
     <aside class="th-right-sidebar-wrapper">
         {% case page.section %}
@@ -657,27 +660,7 @@ lang_toggle: false
     </div>
 </div>
 
-   <script>
-    // sirf is canvas par right-click / drag / select disable
-    document.addEventListener("DOMContentLoaded", function () {
-      var c = document.getElementById("reactionCanvas");
-      if (!c) return;
-
-      c.addEventListener("contextmenu", function (e) {
-        e.preventDefault();
-      });
-
-      c.addEventListener("mousedown", function (e) {
-        e.preventDefault();
-      });
-
-      c.onselectstart = function () {
-        return false;
-      };
-
-      c.setAttribute("draggable", "false");
-    });
-  </script>
+  
 
   <script>
     (function () {
@@ -827,92 +810,7 @@ lang_toggle: false
       ctx.fillText("gklearnstudy", canvas.width - 80, canvas.height - 40);
       ctx.restore();
     })();
-  </script>
-  <script>
-    document.addEventListener("DOMContentLoaded", () => {
-
-      /**
-       * Formats a chemical equation string by wrapping numbers in <sub> tags.
-       * This ensures that subscripts are rendered correctly across all browsers and devices,
-       * avoiding issues with font support for Unicode subscript characters.
-       * e.g., "H2O" becomes "H<sub>2</sub>O"
-       * @param {string} equation The chemical equation string.
-       * @returns {string} The HTML formatted equation string.
-       */
-      function formatEquation(equation) {
-        // Use regex to find numbers that follow a letter or a closing parenthesis
-        // and wrap them in <sub> tags.
-        return equation.replace(/([a-zA-Z\)])(\d+)/g, '$1<sub>$2</sub>');
-      }
-
-      /**
-       * Displays reactions on the page, optionally filtering by type.
-       * @param {string} filterType The type of reaction to display, or 'all'.
-       */
-      function displayReactions(filterType = 'all') {
-        const grid = document.getElementById('reactions-grid');
-        grid.innerHTML = ''; // Clear existing cards
-
-        const filteredData = (filterType === 'all')
-          ? reactionData
-          : reactionData.filter(reaction => reaction.type === filterType);
-
-        if (filteredData.length === 0) {
-          grid.innerHTML = '<p>No reactions found for this category.</p>';
-          return;
-        }
-
-        filteredData.forEach(reaction => {
-          const card = document.createElement('div');
-          card.className = 'reaction-card';
-
-          const nameEl = document.createElement('h3');
-          nameEl.textContent = reaction.name;
-
-          const tagsEl = document.createElement('div');
-          tagsEl.className = 'tags';
-          tagsEl.innerHTML = `
-      <span class="tag">${reaction.type}</span>
-      <span class="tag tag-condition">${reaction.conditions}</span>
-    `;
-
-          const equationEl = document.createElement('div');
-          equationEl.className = 'equation';
-          // Use the formatEquation function and innerHTML to render subscripts
-          equationEl.innerHTML = formatEquation(reaction.equation);
-
-          const explanationEl = document.createElement('p');
-          explanationEl.className = 'explanation';
-          explanationEl.textContent = reaction.explanation;
-
-          card.appendChild(nameEl);
-          card.appendChild(tagsEl);
-          card.appendChild(equationEl);
-          card.appendChild(explanationEl);
-
-          grid.appendChild(card);
-        });
-      }
-
-      document.addEventListener('DOMContentLoaded', () => {
-        // Initial display of all reactions
-        displayReactions();
-
-        // Set up filter button event listeners
-        const filterButtons = document.querySelectorAll('.filter-btn');
-        filterButtons.forEach(button => {
-          button.addEventListener('click', () => {
-            // Manage active state
-            filterButtons.forEach(btn => btn.classList.remove('active'));
-            button.classList.add('active');
-
-            // Filter and display
-            const filterType = button.getAttribute('data-type');
-            displayReactions(filterType);
-          });
-        });
-      });
-
+  
 
       const reactionData = [
         // Combination Reactions (25)
@@ -2418,125 +2316,94 @@ lang_toggle: false
       ];
 
 
-      const tableBody = document.querySelector('#reactionsTable tbody');
-      const searchInput = document.getElementById('table-search-input');
-      const loadMoreBtn = document.getElementById('loadMoreBtn');
-      const modal = document.getElementById('reaction-modal');
-      const modalCloseBtn = document.getElementById('modal-close-btn');
-
-      const modalTitle = document.getElementById('modal-title');
-      const modalVisual = document.getElementById('modal-visual');
-      const modalEquation = document.getElementById('modal-equation');
-      const modalConditions = document.getElementById('modal-conditions');
-      const modalExplanation = document.getElementById('modal-explanation');
-
-      const allRowsData = [];
-      reactionData.forEach((reaction, index) => {
-        const row = document.createElement('tr');
-        row.dataset.reactionIndex = index;
-        row.innerHTML = `
-                        <td>
-                            <p class="reaction-name">${index + 1}. ${reaction.name}</p>
-                            <p class="reaction-equation"><code>${reaction.equation.replace(/→/g, '&rarr;')}</code></p>
-                            <p class="reaction-explanation">${reaction.explanation}</p>
-                        </td>
-                    `;
-        allRowsData.push({ element: row, data: reaction });
-      });
-
-      const rowsPerPage = 90;
-      let visibleRowsCount = 0;
-
-      function displayRows() {
-        const query = searchInput.value.toLowerCase().trim();
-
-        const filteredRows = allRowsData.filter(item =>
-          item.data.name.toLowerCase().includes(query) ||
-          item.data.equation.toLowerCase().includes(query) ||
-          item.data.explanation.toLowerCase().includes(query)
-        );
-
-        tableBody.innerHTML = ''; // Clear current rows
-
-        const rowsToShow = filteredRows.slice(0, visibleRowsCount);
-        rowsToShow.forEach(item => tableBody.appendChild(item.element));
-
-        if (visibleRowsCount >= filteredRows.length) {
-          loadMoreBtn.style.display = 'none';
-        } else {
-          loadMoreBtn.style.display = 'block';
-        }
-      }
-
-      loadMoreBtn.addEventListener('click', () => {
-        visibleRowsCount += rowsPerPage;
-        displayRows();
-      });
-
-      searchInput.addEventListener('input', () => {
-        visibleRowsCount = rowsPerPage; // Reset for new search
-        displayRows();
-      });
-
-      function getReactionSVG(reactionType) {
-        const type = (reactionType || '').toLowerCase();
-        if (type.includes('संयोजन')) {
-          return `<svg viewBox="0 0 100 100"><style>.r-plus{font-family:sans-serif;font-size:30px;fill:#2563eb}.r-circle{stroke-width:4;animation:combine 2s ease-in-out infinite alternate}.c1{stroke:#3b82f6}.c2{stroke:#93c5fd}@keyframes combine{to{transform:translateX(15px)}}</style><circle class="r-circle c1" cx="30" cy="50" r="15" fill="none"/><circle class="r-circle c2" cx="70" cy="50" r="15" fill="none" style="animation-direction:alternate-reverse"/><text class="r-plus" x="50" y="58" text-anchor="middle">+</text></svg>`;
-        }
-        if (type.includes('वियोजन')) {
-          return `<svg viewBox="0 0 100 100"><style>.r-parent{fill:#8b5cf6;animation:split 2s ease-in-out infinite alternate}.r-child{stroke:#c4b5fd;fill:none;stroke-width:4}@keyframes split{to{transform:scale(0.8) rotate(15deg)}}</style><circle class="r-parent" cx="50" cy="50" r="20"/><circle class="r-child" cx="30" cy="50" r="10"/><circle class="r-child" cx="70" cy="50" r="10"/></svg>`;
-        }
-        if (type.includes('विस्थापन')) {
-          return `<svg viewBox="0 0 100 100"><style>.displace-a{fill:#f97316;animation:displace 2.5s ease-in-out infinite}.displace-b{fill:#3b82f6}.displace-c{fill:#93c5fd}@keyframes displace{0%,100%{transform:translateX(0)}50%{transform:translateX(30px)}}</style><circle class="displace-a" cx="20" cy="50" r="12"/><circle class="displace-b" cx="60" cy="50" r="12"/><circle class="displace-c" cx="80" cy="50" r="10"/></svg>`;
-        }
-        if (type.includes('अवक्षेपण') || type.includes('द्वि')) {
-          return `<svg viewBox="0 0 100 100"><style>.swap-ab,.swap-cd{animation:swap-places 3s ease-in-out infinite}.swap-cd{animation-delay:-1.5s}@keyframes swap-places{50%{transform:translateY(15px)}60%{opacity:0}70%{transform:translateY(-15px);opacity:0}80%{opacity:1}100%{transform:translateY(0)}}</style><g class="swap-ab"><circle fill="#3b82f6" cx="30" cy="50" r="10"/><circle fill="#93c5fd" cx="50" cy="50" r="10"/></g><g class="swap-cd"><circle fill="#f97316" cx="70" cy="50" r="10"/><circle fill="#fcd34d" cx="90" cy="50" r="10"/></g></svg>`;
-        }
-        if (type.includes('दहन')) {
-          return `<svg viewBox="0 0 100 100"><style>.flame{fill:#FF9800;transform-origin:bottom;animation:burn 1s infinite}.flame-outer{fill:#FFC107;animation-delay:-0.2s}@keyframes burn{0%,100%{transform:scaleY(1)}50%{transform:scaleY(1.2)}}</style><path class="flame flame-outer" d="M50,90 C20,90 40,20 50,20 C60,20 80,90 50,90 Z"/><path class="flame" d="M50,90 C30,90 45,30 50,30 C55,30 70,90 50,90 Z"/></svg>`;
-        }
-        // Default generic reaction
-        return `<svg viewBox="0 0 200 200"><defs><linearGradient id="l1" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#3b82f6"/><stop offset="100%" stop-color="#60a5fa"/></linearGradient><linearGradient id="l2" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#f59e0b"/><stop offset="100%" stop-color="#fcd34d"/></linearGradient><linearGradient id="lm" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#8b5cf6"/><stop offset="100%" stop-color="#a78bfa"/></linearGradient></defs><style>.bg{fill:rgba(224,231,255,0.5);stroke:#a5b4fc;stroke-width:3;}.ba{animation:pa 5s ease-in-out infinite;transform-origin:40px 140px;}.bb{animation:pb 5s ease-in-out infinite;transform-origin:160px 140px;}.s{fill-opacity:0;stroke-linecap:round;animation:sf 5s ease-in-out infinite;}.ml{animation:fm 5s ease-in-out infinite;}.bub{fill:#fff;animation:rise 1s ease-in infinite;}@keyframes pa{0%,100%{transform:rotate(0deg)}40%,60%{transform:rotate(45deg)}}@keyframes pb{0%,100%{transform:rotate(0deg)}40%,60%{transform:rotate(-45deg)}}@keyframes sf{0%,35%,100%{fill-opacity:0}45%,55%{fill-opacity:0.8}}@keyframes fm{0%{height:10px;y:150px}35%{height:10px;y:150px}65%{height:50px;y:110px}100%{height:10px;y:150px}}@keyframes rise{from{cy:150;opacity:1}to{cy:100;opacity:0}}</style><path class="bg" d="M60 160 V 80 H 140 V 160 A 10 10 0 0 0 150 170 H 50 A 10 10 0 0 0 60 160 Z"/><rect class="ml" x="62" y="150" width="76" height="10" fill="url(#lm)"/><circle class="bub" cx="80" cy="150" r="3"><animate attributeName="cy" begin="2.5s" dur="1s" repeatCount="indefinite" from="150" to="110"/></circle><circle class="bub" cx="120" cy="150" r="4"><animate attributeName="cy" begin="2.8s" dur="1.2s" repeatCount="indefinite" from="150" to="110"/></circle><circle class="bub" cx="100" cy="150" r="2"><animate attributeName="cy" begin="2.6s" dur="0.8s" repeatCount="indefinite" from="150" to="110"/></circle><g class="ba"><path class="bg" d="M20 70 V 20 H 60 V 70 Z"/><rect x="22" y="45" width="36" height="23" fill="url(#l1)"/><path class="s" d="M 60 20 Q 80 40 100 80" stroke-width="8" stroke="url(#l1)"/></g><g class="bb"><path class="bg" d="M140 70 V 20 H 180 V 70 Z"/><rect x="142" y="45" width="36" height="23" fill="url(#l2)"/><path class="s" d="M 140 20 Q 120 40 100 80" stroke-width="8" stroke="url(#l2)"/></g></svg>`;
-      }
-
-      function openModal(reactionIndex) {
-        const reaction = reactionData[reactionIndex];
-        if (!reaction) return;
-
-        modalTitle.textContent = reaction.name;
-        modalVisual.innerHTML = getReactionSVG(reaction.type);
-        modalEquation.innerHTML = `<code>${reaction.equation.replace(/→/g, '&rarr;')}</code>`;
-        modalConditions.textContent = reaction.conditions || 'मानक स्थितियाँ जब तक अन्यथा निर्दिष्ट न हो।';
-        modalExplanation.textContent = reaction.explanation;
-        modal.classList.add('visible');
-      }
-
-      function closeModal() {
-        modal.classList.remove('visible');
-      }
-
-      tableBody.addEventListener('click', (e) => {
-        const row = e.target.closest('tr');
-        if (row && row.dataset.reactionIndex) {
-          openModal(parseInt(row.dataset.reactionIndex, 10));
-        }
-      });
-
-      modalCloseBtn.addEventListener('click', closeModal);
-      modal.addEventListener('click', (e) => {
-        if (e.target === modal) {
-          closeModal();
-        }
-      });
-      document.addEventListener('keydown', (e) => {
-        if (e.key === "Escape" && modal.classList.contains('visible')) {
-          closeModal();
-        }
-      });
-
-
-      // Initial load
-      visibleRowsCount = rowsPerPage;
-      displayRows();
+     
+/* ============================================================
+   TABLE LOGIC
+   ============================================================ */
+document.addEventListener("DOMContentLoaded", function () {
+    var tbody     = document.getElementById("thReactionsTbody");
+    var searchIn  = document.getElementById("th-search-input");
+    var loadBtn   = document.getElementById("thLoadMoreBtn");
+    var modal     = document.getElementById("thReactionModal");
+    var mClose    = document.getElementById("thModalClose");
+    var mTitle    = document.getElementById("th-modal-title");
+    var mVisual   = document.getElementById("th-modal-visual");
+    var mEq       = document.getElementById("th-modal-equation");
+    var mCond     = document.getElementById("th-modal-conditions");
+    var mExp      = document.getElementById("th-modal-explanation");
+ 
+    var PER_PAGE  = 80;
+    var shown     = 0;
+ 
+    var allRows = reactionData.map(function(r, i){
+        var tr = document.createElement("tr");
+        tr.dataset.idx = i;
+        tr.innerHTML =
+            '<td>' +
+            '<p class="th-rname">' + (i+1) + '. ' + r.name + ' <em style="font-weight:400;font-size:0.8rem;opacity:0.7;">(' + r.type + ')</em></p>' +
+            '<code class="th-req">' + r.equation + '</code>' +
+            '<p class="th-rexp">' + r.explanation + '</p>' +
+            '</td>';
+        return { el: tr, data: r };
     });
-  </script>
+ 
+    function render() {
+        var q = searchIn.value.toLowerCase().trim();
+        var filtered = q
+            ? allRows.filter(function(row){
+                return row.data.name.toLowerCase().includes(q) ||
+                       row.data.type.toLowerCase().includes(q) ||
+                       row.data.explanation.toLowerCase().includes(q);
+              })
+            : allRows;
+ 
+        tbody.innerHTML = "";
+        var slice = filtered.slice(0, shown);
+        slice.forEach(function(row){ tbody.appendChild(row.el); });
+ 
+        loadBtn.style.display = (shown >= filtered.length) ? "none" : "block";
+    }
+ 
+    loadBtn.addEventListener("click", function(){ shown += PER_PAGE; render(); });
+    searchIn.addEventListener("input", function(){ shown = PER_PAGE; render(); });
+ 
+    function svgFor(type) {
+        var t = (type || "").toLowerCase();
+        if (t.includes("combination")) return '<svg viewBox="0 0 100 100"><style>.rc1{stroke:#3b82f6;stroke-width:4;fill:none;animation:thCombine 2s ease-in-out infinite alternate}.rc2{stroke:#93c5fd;stroke-width:4;fill:none;animation:thCombine 2s ease-in-out infinite alternate-reverse}@keyframes thCombine{to{transform:translateX(12px)}}</style><circle class="rc1" cx="30" cy="50" r="15"/><circle class="rc2" cx="70" cy="50" r="15"/><text font-family="sans-serif" font-size="28" fill="#2563eb" x="50" y="58" text-anchor="middle">+</text></svg>';
+        if (t.includes("decomp")) return '<svg viewBox="0 0 100 100"><style>.rp{fill:#8b5cf6;animation:thSp 2s ease-in-out infinite alternate}.rc{stroke:#c4b5fd;fill:none;stroke-width:4}@keyframes thSp{to{transform:scale(0.8) rotate(15deg)}}</style><circle class="rp" cx="50" cy="50" r="20"/><circle class="rc" cx="30" cy="50" r="10"/><circle class="rc" cx="70" cy="50" r="10"/></svg>';
+        if (t.includes("displacement")) return '<svg viewBox="0 0 100 100"><style>.da{fill:#f97316;animation:thDis 2.5s ease-in-out infinite}.db{fill:#3b82f6}.dc{fill:#93c5fd}@keyframes thDis{0%,100%{transform:translateX(0)}50%{transform:translateX(30px)}}</style><circle class="da" cx="20" cy="50" r="12"/><circle class="db" cx="60" cy="50" r="12"/><circle class="dc" cx="80" cy="50" r="10"/></svg>';
+        if (t.includes("double") || t.includes("precipitation")) return '<svg viewBox="0 0 100 100"><style>.sab,.scd{animation:thSw 3s ease-in-out infinite}.scd{animation-delay:-1.5s}@keyframes thSw{50%{transform:translateY(15px)}60%{opacity:0}70%{transform:translateY(-15px);opacity:0}80%{opacity:1}100%{transform:translateY(0)}}</style><g class="sab"><circle fill="#3b82f6" cx="30" cy="50" r="10"/><circle fill="#93c5fd" cx="50" cy="50" r="10"/></g><g class="scd"><circle fill="#f97316" cx="70" cy="50" r="10"/><circle fill="#fcd34d" cx="90" cy="50" r="10"/></g></svg>';
+        if (t.includes("combustion") || t.includes("organic")) return '<svg viewBox="0 0 100 100"><style>.fl{fill:#FF9800;transform-origin:bottom;animation:burn 1s infinite}.fl2{fill:#FFC107;animation-delay:-0.2s}@keyframes burn{0%,100%{transform:scaleY(1)}50%{transform:scaleY(1.2)}}</style><path class="fl fl2" d="M50,90 C20,90 40,20 50,20 C60,20 80,90 50,90 Z"/><path class="fl" d="M50,90 C30,90 45,30 50,30 C55,30 70,90 50,90 Z"/></svg>';
+        return '<svg viewBox="0 0 100 100"><circle cx="50" cy="50" r="30" fill="none" stroke="#6a4cff" stroke-width="4"/><text x="50" y="58" text-anchor="middle" font-size="30" fill="#6a4cff">\u21C4</text></svg>';
+    }
+ 
+    function openModal(idx) {
+        var r = reactionData[idx]; if(!r) return;
+        mTitle.textContent   = r.name;
+        mVisual.innerHTML    = svgFor(r.type);
+        mEq.innerHTML        = r.equation;
+        mCond.textContent    = r.conditions || "Standard conditions.";
+        mExp.textContent     = r.explanation;
+        modal.classList.add("visible");
+    }
+    function closeModal() { modal.classList.remove("visible"); }
+ 
+    tbody.addEventListener("click", function(e){
+        var tr = e.target.closest("tr");
+        if (tr && tr.dataset.idx !== undefined) openModal(parseInt(tr.dataset.idx, 10));
+    });
+    mClose.addEventListener("click", closeModal);
+    modal.addEventListener("click", function(e){ if(e.target===modal) closeModal(); });
+    document.addEventListener("keydown", function(e){ if(e.key==="Escape" && modal.classList.contains("visible")) closeModal(); });
+ 
+    shown = PER_PAGE;
+    render();
+});
+ 
+/* Sidebar toggle */
+function toggleMobileSidebar(event) {
+    if (event) event.stopPropagation();
+    var sidebar = document.querySelector(".th-left-sidebar");
+    if (sidebar) sidebar.classList.toggle("mobile-open");
+}
+</script>
