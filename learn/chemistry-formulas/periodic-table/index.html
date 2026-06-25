@@ -11,23 +11,14 @@ extra_css:
 extra_js:
   - /assets/js/periodic-table.js
 ---
- <div class="tyagihub-main-layout">
+<div class="tyagihub-main-layout">
 
     <div class="th-left-col-wrapper">
         <button class="th-mobile-menu-trigger" onclick="toggleMobileSidebar(event)">
             ☰ <span>Menu</span>
         </button>
         {% include left-sidebar-selector.html %}
- 
-       <aside class="th-right-sidebar-wrapper">
-        {% case page.section %}
-          {% when "learn" %}
-            {% include sidebars/learn-sidebar.html %}
-          {% else %}
-            {% include sidebars/default-sidebar.html %}
-        {% endcase %}
-    </aside>
-
+ </div>
    
         <div id="root"><!-- jahan image chahiye wahan ye wrapper + canvas daal do -->
             <div id="ptable-wrapper" style="max-width: 100%; margin: 20px auto;">
@@ -761,9 +752,9 @@ extra_js:
             </section>
  
         </div>
-    </div></div>
+    </div>
  
-    <aside class="th-right-sidebar-wrapper">
+     <aside class="th-right-sidebar-wrapper">
         {% case page.section %}
           {% when "learn" %}
             {% include sidebars/learn-sidebar.html %}
@@ -771,3 +762,6 @@ extra_js:
             {% include sidebars/default-sidebar.html %}
         {% endcase %}
     </aside>
+
+</div>
+
