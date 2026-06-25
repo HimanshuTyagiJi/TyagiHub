@@ -1,0 +1,709 @@
+---
+layout: default
+section: learn
+learn_type: formula
+permalink: /learn/chemistry/reactions/
+lang_switch: false
+lang_toggle: false
+---
+
+<div class="tyagihub-main-layout">
+
+    <div class="th-left-col-wrapper">
+        <button class="th-mobile-menu-trigger" onclick="toggleMobileSidebar(event)">
+            ☰ <span>Menu</span>
+        </button>
+        {% include left-sidebar-selector.html %}
+    </div>
+
+    <div style="grid-column: 2; min-width: 0 !important; width: 100% !important; overflow: hidden !important; contain: layout style !important; isolation: isolate !important; clear: both !important; box-sizing: border-box; padding: 10px;">
+
+        <style>
+            /* ── Reaction Type Cards ── */
+            .th-reaction-grid {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+                gap: 1.5rem;
+                margin-top: 1.5rem;
+            }
+            .th-reaction-card {
+                border-radius: 12px;
+                padding: 1.4rem;
+                text-align: center;
+                border: 1px solid rgba(128,128,128,0.2);
+                transition: transform 0.2s ease, box-shadow 0.2s ease;
+            }
+            .th-reaction-card:hover { transform: translateY(-4px); box-shadow: 0 6px 20px rgba(0,0,0,0.15); }
+            .th-reaction-card h3 { margin-top: 0; color: var(--accent-color, #6a4cff); }
+            .th-reaction-card .svg-icon { height: 90px; margin-bottom: 0.8rem; }
+            .th-reaction-card code { font-size: 0.88rem; }
+
+            /* ── Search + Table ── */
+            .th-search-wrap { margin: 1.5rem 0 1rem; }
+            .th-search-wrap input {
+                width: 100%; padding: 0.75rem 1.4rem; font-size: 1rem;
+                border-radius: 25px; border: 1px solid rgba(128,128,128,0.3);
+                background: transparent; box-sizing: border-box; outline: none;
+                transition: border-color 0.2s;
+            }
+            .th-search-wrap input:focus { border-color: #6a4cff; box-shadow: 0 0 0 3px rgba(106,76,255,0.12); }
+
+            .th-table-scroll {
+                width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch;
+                border: 1px solid rgba(128,128,128,0.15); border-radius: 8px; margin-bottom: 20px;
+            }
+            table.th-reactions-tbl { width: 100%; border-collapse: collapse; min-width: 500px; }
+            table.th-reactions-tbl th {
+                background: rgba(128,128,128,0.07); padding: 12px 14px;
+                font-size: 0.92rem; border: 1px solid rgba(128,128,128,0.18); text-align: left;
+            }
+            table.th-reactions-tbl td {
+                padding: 12px 14px; font-size: 0.9rem;
+                border: 1px solid rgba(128,128,128,0.12); vertical-align: top;
+            }
+            table.th-reactions-tbl tbody tr { cursor: pointer; }
+            table.th-reactions-tbl tbody tr:hover { background: rgba(106,76,255,0.06); }
+            .th-rname { font-weight: 700; color: #b44400; font-size: 1rem; margin-bottom: 4px; }
+            .th-req { font-family: monospace; background: rgba(0,0,0,0.04); border: 1px solid rgba(0,180,0,0.35);
+                      border-radius: 5px; padding: 6px 10px; display: block; margin: 6px 0; font-size: 0.88rem; }
+            .th-rexp { font-size: 0.88rem; opacity: 0.85; line-height: 1.5; margin: 0; }
+
+            .th-load-wrap { text-align: center; margin: 1.5rem 0; }
+            .th-load-btn {
+                background: #6a4cff; color: white; padding: 0.75rem 2rem;
+                border-radius: 25px; border: none; font-size: 1rem; cursor: pointer;
+                transition: background 0.2s, transform 0.2s;
+            }
+            .th-load-btn:hover { background: #5238e0; transform: translateY(-2px); }
+
+            /* ── Modal ── */
+            .th-modal-overlay {
+                position: fixed; inset: 0; background: rgba(0,0,0,0.7);
+                display: flex; justify-content: center; align-items: center;
+                z-index: 1002; opacity: 0; visibility: hidden;
+                transition: opacity 0.3s ease, visibility 0s linear 0.3s;
+            }
+            .th-modal-overlay.visible { opacity: 1; visibility: visible; transition: opacity 0.3s ease; }
+            .th-modal-box {
+                background: var(--card-bg, #fff); padding: 2rem; border-radius: 12px;
+                width: 90%; max-width: 680px; max-height: 90vh; overflow-y: auto;
+                position: relative; transform: scale(0.9); transition: transform 0.3s ease;
+            }
+            .th-modal-overlay.visible .th-modal-box { transform: scale(1); }
+            .th-modal-close {
+                position: absolute; top: 0.8rem; right: 1rem; font-size: 2.2rem;
+                background: none; border: none; cursor: pointer; line-height: 1; opacity: 0.6;
+            }
+            .th-modal-close:hover { opacity: 1; }
+            #th-modal-visual { height: 130px; margin: 1rem auto; display: flex;
+                                justify-content: center; align-items: center; }
+            #th-modal-visual svg { width: 100%; height: 100%; }
+            .th-modal-box h3 { font-size: 1.1rem; margin: 1.2rem 0 0.4rem; }
+
+            /* ── Canvas wrap ── */
+            .th-reaction-canvas-wrap { width: 100%; margin: 20px 0 28px; }
+            .th-reaction-canvas-wrap canvas { width: 100%; height: auto; display: block; border-radius: 16px; }
+
+            /* ── Atom SVG ── */
+            .th-atom-center { display: flex; justify-content: center; margin-bottom: 8px; }
+        </style>
+
+        <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "Article",
+            "headline": "Types of Chemical Reactions with Examples",
+            "description": "Learn all about types of chemical reactions in chemistry with definitions, examples, FAQs and important notes. Useful for NEET, JEE and board exams.",
+            "image": "https://tyagihub.com/images/chemistry.png",
+            "author": { "@type": "Organization", "name": "TyagiHub" },
+            "url": "/learn/chemistry/reactions/"
+        }
+        </script>
+
+        <div id="root">
+
+            <!-- Header -->
+            <header class="education-header" style="text-align:center; margin-bottom:20px;">
+
+                <!-- Animated Beaker SVG -->
+                <div class="th-atom-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 200" style="width:180px;" role="img" aria-labelledby="th-reaction-svg-title">
+                        <title id="th-reaction-svg-title">Animated Chemical Reaction - pouring beakers</title>
+                        <defs>
+                            <linearGradient id="th-liq1" x1="0" y1="0" x2="0" y2="1">
+                                <stop offset="0%" stop-color="#3b82f6"/>
+                                <stop offset="100%" stop-color="#60a5fa"/>
+                            </linearGradient>
+                            <linearGradient id="th-liq2" x1="0" y1="0" x2="0" y2="1">
+                                <stop offset="0%" stop-color="#f59e0b"/>
+                                <stop offset="100%" stop-color="#fcd34d"/>
+                            </linearGradient>
+                            <linearGradient id="th-mix" x1="0" y1="0" x2="0" y2="1">
+                                <stop offset="0%" stop-color="#8b5cf6"/>
+                                <stop offset="100%" stop-color="#a78bfa"/>
+                            </linearGradient>
+                        </defs>
+                        <style>
+                            .th-glass { fill:rgba(255,255,255,0.06); stroke:#c7d2fe; stroke-width:2; }
+                            .th-sm-glass { fill:rgba(255,255,255,0.05); stroke:#c7d2fe; stroke-width:1.6; }
+                            .th-stream { stroke-linecap:round; stroke-linejoin:round; opacity:0.95; }
+                            .th-bubble { fill:#ffffff; opacity:0.9; }
+                            .th-tilt-l { transform-origin:45px 60px; animation:thTiltL 5s ease-in-out infinite; }
+                            .th-tilt-r { transform-origin:175px 60px; animation:thTiltR 5s ease-in-out infinite; }
+                            @keyframes thTiltL { 0%,100%{transform:rotate(0deg)} 40%,60%{transform:rotate(45deg)} }
+                            @keyframes thTiltR { 0%,100%{transform:rotate(0deg)} 40%,60%{transform:rotate(-45deg)} }
+                            .th-shimmer { stroke-opacity:0; animation:thShim 5s ease-in-out infinite; }
+                            @keyframes thShim { 0%,35%,100%{stroke-opacity:0} 45%,55%{stroke-opacity:1} }
+                        </style>
+                        <g class="th-tilt-l">
+                            <path class="th-sm-glass" d="M10 70 V 25 H 50 V 70 Z"/>
+                            <rect x="12" y="40" width="36" height="22" fill="url(#th-liq1)"/>
+                            <path class="th-stream th-shimmer" d="M50 25 C 70 45, 85 70, 105 100" stroke="url(#th-liq1)" stroke-width="8" fill="none"/>
+                        </g>
+                        <g class="th-tilt-r">
+                            <path class="th-sm-glass" d="M170 70 V 25 H 210 V 70 Z"/>
+                            <rect x="172" y="40" width="36" height="22" fill="url(#th-liq2)"/>
+                            <path class="th-stream th-shimmer" d="M170 25 C 150 45, 135 70, 115 100" stroke="url(#th-liq2)" stroke-width="8" fill="none"/>
+                        </g>
+                        <path class="th-glass" d="M60 160 V 85 H 160 V 160 A 8 8 0 0 0 168 168 H 52 A 8 8 0 0 0 60 160 Z"/>
+                        <rect x="62" y="150" width="96" height="10" fill="url(#th-mix)">
+                            <animate attributeName="y" values="150;110;110;150" dur="6s" repeatCount="indefinite"/>
+                            <animate attributeName="height" values="10;50;50;10" dur="6s" repeatCount="indefinite"/>
+                        </rect>
+                        <circle class="th-bubble" cx="82" cy="150" r="3">
+                            <animate attributeName="cy" values="150;125;110" dur="2s" repeatCount="indefinite"/>
+                        </circle>
+                        <circle class="th-bubble" cx="110" cy="150" r="4">
+                            <animate attributeName="cy" values="150;130;105" dur="2.6s" repeatCount="indefinite"/>
+                        </circle>
+                        <circle class="th-bubble" cx="132" cy="150" r="2.5">
+                            <animate attributeName="cy" values="150;128;108" dur="2.2s" repeatCount="indefinite"/>
+                        </circle>
+                    </svg>
+                </div>
+
+                <h1>Chemical Reactions &amp; Equations</h1>
+                <p class="education-description" style="max-width:750px; margin:10px auto; opacity:0.8;">
+                    A chemical reaction is a process that leads to the chemical transformation of one set of substances to another. Explore fundamental types with clear definitions, examples, and a comprehensive list — ideal for NEET, JEE, and board exams.
+                </p>
+            </header>
+
+            <!-- Canvas Hero -->
+            <div class="th-reaction-canvas-wrap">
+                <canvas id="thReactionCanvas" width="1400" height="520" role="img"
+                    aria-label="Important chemical reaction 2H2 + O2 gives 2H2O shown in English and Hindi with tyagihub watermark"></canvas>
+            </div>
+
+            <!-- Reaction Type Cards -->
+            <section style="margin-top:30px;">
+                <h2 style="font-size:1.3rem; margin-bottom:8px;">Types of Chemical Reactions</h2>
+                <p style="opacity:0.8; margin-bottom:0;">Chemical reactions are classified based on the changes occurring. Understanding these categories helps predict products and comprehend molecular-level processes.</p>
+                <div class="th-reaction-grid">
+
+                    <div class="th-reaction-card">
+                        <svg class="svg-icon" viewBox="0 0 100 100">
+                            <style>.rc1{stroke:#3b82f6;stroke-width:4;fill:none;animation:thCombine 2s ease-in-out infinite alternate}.rc2{stroke:#93c5fd;stroke-width:4;fill:none;animation:thCombine 2s ease-in-out infinite alternate-reverse}@keyframes thCombine{to{transform:translateX(15px)}}</style>
+                            <circle class="rc1" cx="30" cy="50" r="15"/>
+                            <circle class="rc2" cx="70" cy="50" r="15"/>
+                            <text font-family="sans-serif" font-size="28" fill="#2563eb" x="50" y="58" text-anchor="middle">+</text>
+                        </svg>
+                        <h3>Combination Reaction</h3>
+                        <p>Two or more reactants combine to form a single product. (A + B → AB)</p>
+                        <code>2H₂ + O₂ → 2H₂O</code>
+                    </div>
+
+                    <div class="th-reaction-card">
+                        <svg class="svg-icon" viewBox="0 0 100 100">
+                            <style>.rp{fill:#8b5cf6;animation:thSplit 2s ease-in-out infinite alternate}.rc{stroke:#c4b5fd;fill:none;stroke-width:4}@keyframes thSplit{to{transform:scale(0.8) rotate(15deg)}}</style>
+                            <circle class="rp" cx="50" cy="50" r="20"/>
+                            <circle class="rc" cx="30" cy="50" r="10"/>
+                            <circle class="rc" cx="70" cy="50" r="10"/>
+                        </svg>
+                        <h3>Decomposition Reaction</h3>
+                        <p>A compound breaks down into simpler substances. (AB → A + B)</p>
+                        <code>2HgO → 2Hg + O₂</code>
+                    </div>
+
+                    <div class="th-reaction-card">
+                        <svg class="svg-icon" viewBox="0 0 100 100">
+                            <style>.da{fill:#f97316;animation:thDisplace 2.5s ease-in-out infinite}.db{fill:#3b82f6}.dc{fill:#93c5fd}@keyframes thDisplace{0%,100%{transform:translateX(0)}50%{transform:translateX(30px)}}</style>
+                            <circle class="da" cx="20" cy="50" r="12"/>
+                            <circle class="db" cx="60" cy="50" r="12"/>
+                            <circle class="dc" cx="80" cy="50" r="10"/>
+                        </svg>
+                        <h3>Displacement Reaction</h3>
+                        <p>A more reactive element displaces a less reactive element. (A + BC → AC + B)</p>
+                        <code>Zn + CuSO₄ → ZnSO₄ + Cu</code>
+                    </div>
+
+                    <div class="th-reaction-card">
+                        <svg class="svg-icon" viewBox="0 0 100 100">
+                            <style>.sab,.scd{animation:thSwap 3s ease-in-out infinite}.scd{animation-delay:-1.5s}@keyframes thSwap{50%{transform:translateY(15px)}60%{opacity:0}70%{transform:translateY(-15px);opacity:0}80%{opacity:1}100%{transform:translateY(0)}}</style>
+                            <g class="sab"><circle fill="#3b82f6" cx="30" cy="50" r="10"/><circle fill="#93c5fd" cx="50" cy="50" r="10"/></g>
+                            <g class="scd"><circle fill="#f97316" cx="70" cy="50" r="10"/><circle fill="#fcd34d" cx="90" cy="50" r="10"/></g>
+                        </svg>
+                        <h3>Double Displacement</h3>
+                        <p>Ions of two compounds exchange places to form two new compounds. (AB + CD → AD + CB)</p>
+                        <code>AgNO₃ + NaCl → AgCl↓ + NaNO₃</code>
+                    </div>
+
+                </div>
+            </section>
+
+            <!-- Reactions Table -->
+            <section style="margin-top:36px;">
+                <h2 style="font-size:1.3rem; margin-bottom:8px;">Comprehensive List of Chemical Reactions</h2>
+                <div class="th-search-wrap">
+                    <input type="text" id="th-search-input" placeholder="Search by name, equation, or keyword…" aria-label="Search reactions"/>
+                </div>
+                <div class="th-table-scroll">
+                    <table class="th-reactions-tbl" id="thReactionsTable">
+                        <thead>
+                            <tr><th>Reaction Details</th></tr>
+                        </thead>
+                        <tbody id="thReactionsTbody"></tbody>
+                    </table>
+                </div>
+                <div class="th-load-wrap">
+                    <button class="th-load-btn" id="thLoadMoreBtn">Load More</button>
+                </div>
+            </section>
+
+            <!-- FAQ -->
+            <section class="faq-section" style="margin-top:36px;" id="faq">
+                <h2 style="font-size:1.3rem; margin-bottom:15px;">Frequently Asked Questions (FAQs)</h2>
+
+                <details class="th-faq-item">
+                    <summary>1. What is a chemical reaction?</summary>
+                    <div class="th-faq-ans"><p>A chemical reaction is a process where reactants are transformed into products by breaking and forming chemical bonds. Energy is either released or absorbed during this process.</p></div>
+                </details>
+                <details class="th-faq-item">
+                    <summary>2. What are the main types of chemical reactions?</summary>
+                    <div class="th-faq-ans"><p>The main types are combination, decomposition, single displacement, double displacement, combustion, neutralization, and redox reactions.</p></div>
+                </details>
+                <details class="th-faq-item">
+                    <summary>3. What is the importance of chemical reactions in daily life?</summary>
+                    <div class="th-faq-ans"><p>Chemical reactions play a crucial role in cooking, cleaning, manufacturing, medicine, and energy production. Digestion, photosynthesis, and burning fuel are everyday examples.</p></div>
+                </details>
+                <details class="th-faq-item">
+                    <summary>4. How do you balance a chemical equation?</summary>
+                    <div class="th-faq-ans"><p>Adjust the coefficients (not subscripts) so the number of atoms of each element is equal on both sides of the equation. This follows the law of conservation of mass.</p></div>
+                </details>
+                <details class="th-faq-item">
+                    <summary>5. What is an exothermic reaction?</summary>
+                    <div class="th-faq-ans"><p>An exothermic reaction releases heat energy to the surroundings. Examples include combustion, rusting of iron, and the reaction of acids with bases.</p></div>
+                </details>
+                <details class="th-faq-item">
+                    <summary>6. What is an endothermic reaction?</summary>
+                    <div class="th-faq-ans"><p>An endothermic reaction absorbs heat from the surroundings. Examples include decomposition of calcium carbonate, photosynthesis, and electrolysis of water.</p></div>
+                </details>
+                <details class="th-faq-item">
+                    <summary>7. What is a catalyst in a chemical reaction?</summary>
+                    <div class="th-faq-ans"><p>A catalyst is a substance that speeds up a chemical reaction without being consumed in the process. It lowers the activation energy. Example: MnO₂ in decomposition of H₂O₂.</p></div>
+                </details>
+                <details class="th-faq-item">
+                    <summary>8. What is the role of temperature in chemical reactions?</summary>
+                    <div class="th-faq-ans"><p>Higher temperatures increase the kinetic energy of molecules, increasing collision frequency and energy — generally increasing reaction rates. A 10°C rise roughly doubles the rate for many reactions.</p></div>
+                </details>
+                <details class="th-faq-item">
+                    <summary>9. What is a redox reaction?</summary>
+                    <div class="th-faq-ans"><p>A redox (reduction-oxidation) reaction involves simultaneous transfer of electrons. One species is oxidized (loses electrons) and another is reduced (gains electrons). Example: Zn + CuSO₄ → ZnSO₄ + Cu.</p></div>
+                </details>
+                <details class="th-faq-item">
+                    <summary>10. What are examples of real-life chemical reactions?</summary>
+                    <div class="th-faq-ans"><p>Combustion of fuels, photosynthesis in plants, rusting of iron, baking of bread (CO₂ from baking soda), and cooking food all involve everyday chemical reactions.</p></div>
+                </details>
+                <details class="th-faq-item">
+                    <summary>11. How do chemical reactions impact the environment?</summary>
+                    <div class="th-faq-ans"><p>Reactions can cause pollution (combustion producing CO₂, NOx) or benefit the environment (photosynthesis removing CO₂, green energy production). Understanding them helps control environmental damage.</p></div>
+                </details>
+                <details class="th-faq-item">
+                    <summary>12. What are the differences between organic and inorganic reactions?</summary>
+                    <div class="th-faq-ans"><p>Organic reactions involve carbon-based compounds (hydrocarbons, alcohols, esters), while inorganic reactions involve minerals, metals, salts, and non-carbon-based compounds.</p></div>
+                </details>
+                <details class="th-faq-item">
+                    <summary>13. What is chemical equilibrium?</summary>
+                    <div class="th-faq-ans"><p>Chemical equilibrium is the state where the forward and reverse reactions occur at the same rate, so the concentrations of reactants and products remain constant. It is a dynamic, not static, state.</p></div>
+                </details>
+                <details class="th-faq-item">
+                    <summary>14. What are the signs of a chemical reaction?</summary>
+                    <div class="th-faq-ans"><p>Observable signs include: color change, temperature change (hot or cold), gas production (bubbles), precipitate formation, change in smell, and emission of light.</p></div>
+                </details>
+                <details class="th-faq-item">
+                    <summary>15. What is the role of pressure in chemical reactions?</summary>
+                    <div class="th-faq-ans"><p>Pressure mainly affects gaseous reactions. Increasing pressure increases the concentration of gases, raising collision frequency and reaction rate. It can also shift equilibrium (Le Chatelier's principle).</p></div>
+                </details>
+
+            </section>
+
+        </div><!-- /#root -->
+
+    </div><!-- grid-column 2 -->
+
+    <aside class="th-right-sidebar-wrapper">
+        {% case page.section %}
+          {% when "learn" %}
+            {% include sidebars/learn-sidebar.html %}
+          {% else %}
+            {% include sidebars/default-sidebar.html %}
+        {% endcase %}
+    </aside>
+
+</div><!-- /.tyagihub-main-layout -->
+
+<!-- MODAL -->
+<div id="thReactionModal" class="th-modal-overlay">
+    <div class="th-modal-box">
+        <button id="thModalClose" class="th-modal-close" aria-label="Close">&times;</button>
+        <h2 id="th-modal-title" style="margin-top:0;"></h2>
+        <div id="th-modal-visual"></div>
+        <h3>Balanced Equation</h3>
+        <div id="th-modal-equation" style="font-family:monospace; background:rgba(0,0,0,0.05); padding:10px 14px; border-radius:6px; border:1px solid rgba(0,180,0,0.3);"></div>
+        <h3>Reaction Conditions</h3>
+        <p id="th-modal-conditions"></p>
+        <h3>Explanation</h3>
+        <p id="th-modal-explanation"></p>
+    </div>
+</div>
+
+<script>
+/* ============================================================
+   CANVAS HERO
+   ============================================================ */
+(function(){
+    var canvas = document.getElementById("thReactionCanvas");
+    if (!canvas || !canvas.getContext) return;
+    var ctx = canvas.getContext("2d");
+    var W = canvas.width, H = canvas.height;
+
+    function rrp(ctx, x, y, w, h, r) {
+        if (w<2*r) r=w/2; if (h<2*r) r=h/2;
+        ctx.beginPath();
+        ctx.moveTo(x+r,y); ctx.arcTo(x+w,y,x+w,y+h,r); ctx.arcTo(x+w,y+h,x,y+h,r);
+        ctx.arcTo(x,y+h,x,y,r); ctx.arcTo(x,y,x+w,y,r); ctx.closePath();
+    }
+
+    var bg = ctx.createLinearGradient(0,0,W,H);
+    bg.addColorStop(0,"#132033"); bg.addColorStop(0.5,"#171d3f"); bg.addColorStop(1,"#1f0f3a");
+    ctx.fillStyle = bg; ctx.fillRect(0,0,W,H);
+
+    ctx.save(); ctx.globalAlpha=0.15; ctx.fillStyle="#fff";
+    for(var i=0;i<150;i++){ctx.beginPath();ctx.arc(Math.random()*W,Math.random()*H,Math.random()*3,0,Math.PI*2);ctx.fill();}
+    ctx.restore();
+
+    ctx.save(); ctx.translate(W/2,H/2); ctx.rotate(-0.32); ctx.globalAlpha=0.07;
+    ctx.fillStyle="#fff"; ctx.font="bold 200px Arial"; ctx.textAlign="center";
+    ctx.fillText("TYAGIHUB",0,70); ctx.restore();
+
+    ctx.fillStyle="#fff"; ctx.font="bold 46px Arial"; ctx.textAlign="left";
+    ctx.fillText("Important Chemical Reactions", 60, 78);
+    ctx.font="bold 28px Arial"; ctx.fillStyle="#7cf0ff";
+    ctx.fillText("महत्वपूर्ण रासायनिक अभिक्रिया (Hindi + English)", 60, 122);
+
+    var bx=60, by=158, bw=W-120, bh=256;
+    rrp(ctx,bx,by,bw,bh,26);
+    var bgrad=ctx.createLinearGradient(bx,by,bx+bw,by+bh);
+    bgrad.addColorStop(0,"rgba(255,255,255,0.18)"); bgrad.addColorStop(1,"rgba(255,255,255,0.06)");
+    ctx.fillStyle=bgrad; ctx.fill();
+    ctx.strokeStyle="rgba(255,255,255,0.42)"; ctx.lineWidth=2; ctx.stroke();
+
+    ctx.fillStyle="#fff"; ctx.font="bold 40px Arial"; ctx.textAlign="left";
+    ctx.fillText("2H\u2082 + O\u2082 \u2192 2H\u2082O", bx+40, by+88);
+    ctx.font="22px Arial"; ctx.fillStyle="#cfe7ff";
+    ctx.fillText("Formation of Water (Combination Reaction)", bx+40, by+126);
+    ctx.fillStyle="#fffbd1"; ctx.font="bold 28px Arial";
+    ctx.fillText("जल का निर्माण – संयोजन अभिक्रिया", bx+40, by+180);
+    ctx.font="22px Arial"; ctx.fillStyle="#ffe6aa";
+    ctx.fillText("2H\u2082 (हाइड्रोजन) + O\u2082 (ऑक्सीजन) \u2192 2H\u2082O (जल)", bx+40, by+220);
+
+    function drawMol(cx,cy,sc){
+        ctx.save(); ctx.translate(cx,cy); ctx.scale(sc,sc);
+        ctx.strokeStyle="rgba(124,240,255,0.8)"; ctx.lineWidth=3;
+        ctx.beginPath(); ctx.moveTo(-25,0); ctx.lineTo(0,-20); ctx.lineTo(25,0); ctx.stroke();
+        ctx.fillStyle="#7cf0ff";
+        ctx.beginPath(); ctx.arc(-25,0,8,0,Math.PI*2); ctx.fill();
+        ctx.beginPath(); ctx.arc(25,0,8,0,Math.PI*2); ctx.fill();
+        ctx.fillStyle="#fff"; ctx.beginPath(); ctx.arc(0,-20,10,0,Math.PI*2); ctx.fill();
+        ctx.restore();
+    }
+    drawMol(W-260,118,1.1); drawMol(W-200,188,0.9); drawMol(W-300,258,0.8);
+
+    ctx.save(); ctx.globalAlpha=0.16; ctx.fillStyle="#fff"; ctx.font="bold 56px Arial";
+    ctx.textAlign="left"; ctx.fillText("tyagihub", 80, H-36);
+    ctx.textAlign="right"; ctx.fillText("tyagihub", W-80, H-36);
+    ctx.restore();
+})();
+
+/* ============================================================
+   REACTION DATA
+   ============================================================ */
+const reactionData = [
+    // ── COMBINATION (25) ──
+    { name:"Formation of Magnesium Oxide", type:"Combination", conditions:"Burning in air", equation:"2Mg(s) + O<sub>2</sub>(g) → 2MgO(s)", explanation:"Magnesium ribbon burns in oxygen to form magnesium oxide, a white powder. Highly exothermic — produces bright white light." },
+    { name:"Formation of Calcium Hydroxide (Slaked Lime)", type:"Combination", conditions:"Aqueous solution", equation:"CaO(s) + H<sub>2</sub>O(l) → Ca(OH)<sub>2</sub>(aq)", explanation:"Calcium oxide (quicklime) reacts vigorously with water, releasing large heat, to produce calcium hydroxide (slaked lime)." },
+    { name:"Formation of Ammonia (Haber Process)", type:"Combination", conditions:"High Pressure, 450°C, Fe Catalyst", equation:"N<sub>2</sub>(g) + 3H<sub>2</sub>(g) ⇌ 2NH<sub>3</sub>(g)", explanation:"Nitrogen and hydrogen combine under specific conditions to form ammonia. Reversible, exothermic industrial process." },
+    { name:"Formation of Hydrochloric Acid", type:"Combination", conditions:"Sunlight", equation:"H<sub>2</sub>(g) + Cl<sub>2</sub>(g) → 2HCl(g)", explanation:"Hydrogen and chlorine react in diffused sunlight (photochemical reaction) to form hydrogen chloride gas." },
+    { name:"Formation of Carbon Dioxide", type:"Combination", conditions:"Combustion", equation:"C(s) + O<sub>2</sub>(g) → CO<sub>2</sub>(g)", explanation:"Carbon burns completely in oxygen to form carbon dioxide gas. Complete combustion reaction." },
+    { name:"Formation of Sulfur Trioxide (Contact Process)", type:"Combination", conditions:"450°C, V₂O₅ catalyst", equation:"2SO<sub>2</sub>(g) + O<sub>2</sub>(g) ⇌ 2SO<sub>3</sub>(g)", explanation:"SO₂ is oxidized with oxygen over vanadium pentoxide to form SO₃ — key step in industrial sulfuric acid production." },
+    { name:"Formation of Water", type:"Combination", conditions:"Electric spark or heat", equation:"2H<sub>2</sub>(g) + O<sub>2</sub>(g) → 2H<sub>2</sub>O(l)", explanation:"Hydrogen burns in oxygen to form water. Highly exothermic, used in rocket fuel." },
+    { name:"Reaction of Sodium with Chlorine", type:"Combination", conditions:"Room temperature", equation:"2Na(s) + Cl<sub>2</sub>(g) → 2NaCl(s)", explanation:"Sodium reacts vigorously with chlorine to form sodium chloride (table salt). Redox reaction." },
+    { name:"Formation of Iron(III) Chloride", type:"Combination", conditions:"Heating", equation:"2Fe(s) + 3Cl<sub>2</sub>(g) → 2FeCl<sub>3</sub>(s)", explanation:"Iron reacts with excess chlorine upon heating to form brownish-black iron(III) chloride." },
+    { name:"Iron and Sulfur Reaction", type:"Combination", conditions:"Heat", equation:"Fe(s) + S(s) → FeS(s)", explanation:"Iron reacts with sulfur to form iron(II) sulfide. Iron is oxidized, sulfur is reduced." },
+    { name:"Sodium and Oxygen Reaction", type:"Combination", conditions:"Heat", equation:"4Na(s) + O<sub>2</sub>(g) → 2Na<sub>2</sub>O(s)", explanation:"Sodium reacts with oxygen to form sodium oxide. Sodium is oxidized." },
+    { name:"Aluminum and Bromine Reaction", type:"Combination", conditions:"Room temperature", equation:"2Al(s) + 3Br<sub>2</sub>(g) → 2AlBr<sub>3</sub>(s)", explanation:"Aluminum reacts with bromine to form aluminum bromide. Aluminum is oxidized." },
+    { name:"Formation of Phosphorus Pentachloride", type:"Combination", conditions:"Room temperature", equation:"PCl<sub>3</sub>(l) + Cl<sub>2</sub>(g) → PCl<sub>5</sub>(s)", explanation:"Phosphorus trichloride reacts with chlorine gas to form solid phosphorus pentachloride." },
+    { name:"Formation of Ammonium Chloride", type:"Combination", conditions:"Gas phase", equation:"NH<sub>3</sub>(g) + HCl(g) → NH<sub>4</sub>Cl(s)", explanation:"Ammonia and HCl gas react to form white solid ammonium chloride — visible as white smoke." },
+    { name:"Formation of Carbon Monoxide", type:"Combination", conditions:"Limited Oxygen", equation:"2C(s) + O<sub>2</sub>(g) → 2CO(g)", explanation:"Carbon burns in limited oxygen (incomplete combustion) to form toxic carbon monoxide." },
+    { name:"Formation of Nitric Oxide", type:"Combination", conditions:"High Temperature (Lightning)", equation:"N<sub>2</sub>(g) + O<sub>2</sub>(g) → 2NO(g)", explanation:"Nitrogen and oxygen combine at very high temperatures (lightning, engines) to form nitric oxide." },
+    { name:"Formation of Calcium Carbonate from Metal Oxide", type:"Combination", conditions:"Heating", equation:"CaO(s) + CO<sub>2</sub>(g) → CaCO<sub>3</sub>(s)", explanation:"Basic calcium oxide reacts with acidic CO₂ gas to form calcium carbonate." },
+    { name:"Potassium and Bromine Reaction", type:"Combination", conditions:"Room temperature", equation:"2K(s) + Br<sub>2</sub>(l) → 2KBr(s)", explanation:"Potassium reacts with bromine to form potassium bromide. Potassium is oxidized." },
+    { name:"Sodium and Iodine Reaction", type:"Combination", conditions:"Gentle heat", equation:"2Na(s) + I<sub>2</sub>(s) → 2NaI(s)", explanation:"Sodium reacts with iodine to form sodium iodide. Sodium is oxidized." },
+    { name:"Sodium and Sulfur Reaction", type:"Combination", conditions:"Heat", equation:"2Na(s) + S(s) → Na<sub>2</sub>S(s)", explanation:"Sodium reacts with sulfur to form sodium sulfide." },
+    { name:"Lithium and Bromine Reaction", type:"Combination", conditions:"Room temperature", equation:"2Li(s) + Br<sub>2</sub>(l) → 2LiBr(s)", explanation:"Lithium reacts with bromine to form lithium bromide." },
+    { name:"Lithium and Sulfur Reaction", type:"Combination", conditions:"Heat", equation:"2Li(s) + S(s) → Li<sub>2</sub>S(s)", explanation:"Lithium reacts with sulfur to form lithium sulfide." },
+    { name:"Wurtz Reaction", type:"Combination", conditions:"Dry ether, Na", equation:"2CH<sub>3</sub>Br + 2Na → CH<sub>3</sub>-CH<sub>3</sub> + 2NaBr", explanation:"Two alkyl halide molecules react with sodium in dry ether to form an alkane with double the carbons." },
+    { name:"Formation of Hydrate (CuSO₄)", type:"Combination", conditions:"Water vapour", equation:"CuSO<sub>4</sub>(s) + 5H<sub>2</sub>O(g) → CuSO<sub>4</sub>·5H<sub>2</sub>O(s)", explanation:"Anhydrous white copper sulfate absorbs water to form blue hydrated copper sulfate." },
+    { name:"Formation of Ozone", type:"Combination", conditions:"UV light / electric discharge", equation:"3O<sub>2</sub>(g) → 2O<sub>3</sub>(g)", explanation:"Oxygen molecules combine under UV radiation or electric discharge to form ozone, which protects Earth from UV rays." },
+
+    // ── DECOMPOSITION (20) ──
+    { name:"Decomposition of Calcium Carbonate", type:"Decomposition", conditions:"Heating (~1000°C)", equation:"CaCO<sub>3</sub>(s) → CaO(s) + CO<sub>2</sub>(g)", explanation:"Limestone decomposes on strong heating into quicklime and CO₂. Thermal decomposition." },
+    { name:"Decomposition of Lead(II) Nitrate", type:"Decomposition", conditions:"Strong heating", equation:"2Pb(NO<sub>3</sub>)<sub>2</sub>(s) → 2PbO(s) + 4NO<sub>2</sub>(g) + O<sub>2</sub>(g)", explanation:"Lead nitrate decomposes into yellow PbO, brown NO₂ fumes, and colourless O₂." },
+    { name:"Decomposition of Water (Electrolysis)", type:"Decomposition", conditions:"Electric current", equation:"2H<sub>2</sub>O(l) → 2H<sub>2</sub>(g) + O<sub>2</sub>(g)", explanation:"Water is split into hydrogen (cathode) and oxygen (anode) by electrolysis." },
+    { name:"Decomposition of Silver Chloride", type:"Decomposition", conditions:"Sunlight", equation:"2AgCl(s) → 2Ag(s) + Cl<sub>2</sub>(g)", explanation:"White AgCl decomposes into grey Ag and chlorine in sunlight. Used in black-and-white photography." },
+    { name:"Decomposition of Ferrous Sulfate", type:"Decomposition", conditions:"Heating", equation:"2FeSO<sub>4</sub>(s) → Fe<sub>2</sub>O<sub>3</sub>(s) + SO<sub>2</sub>(g) + SO<sub>3</sub>(g)", explanation:"Green ferrous sulfate decomposes to reddish-brown Fe₂O₃, SO₂ and SO₃ gases." },
+    { name:"Decomposition of Hydrogen Peroxide", type:"Decomposition", conditions:"Sunlight or MnO₂", equation:"2H<sub>2</sub>O<sub>2</sub>(aq) → 2H<sub>2</sub>O(l) + O<sub>2</sub>(g)", explanation:"H₂O₂ slowly decomposes to water and oxygen. MnO₂ catalyst accelerates it." },
+    { name:"Decomposition of Potassium Chlorate", type:"Decomposition", conditions:"Heating with MnO₂", equation:"2KClO<sub>3</sub>(s) → 2KCl(s) + 3O<sub>2</sub>(g)", explanation:"KClO₃ with MnO₂ catalyst decomposes to KCl and O₂. Common lab method for preparing oxygen." },
+    { name:"Decomposition of Copper(II) Carbonate", type:"Decomposition", conditions:"Heating", equation:"CuCO<sub>3</sub>(s) → CuO(s) + CO<sub>2</sub>(g)", explanation:"Green CuCO₃ decomposes on heating to black CuO and CO₂." },
+    { name:"Decomposition of Zinc Carbonate", type:"Decomposition", conditions:"Heating", equation:"ZnCO<sub>3</sub>(s) → ZnO(s) + CO<sub>2</sub>(g)", explanation:"ZnCO₃ decomposes to ZnO (yellow when hot, white when cold) and CO₂." },
+    { name:"Decomposition of Ammonium Dichromate", type:"Decomposition", conditions:"Heating", equation:"(NH<sub>4</sub>)<sub>2</sub>Cr<sub>2</sub>O<sub>7</sub>(s) → Cr<sub>2</sub>O<sub>3</sub>(s) + N<sub>2</sub>(g) + 4H<sub>2</sub>O(g)", explanation:"Famous 'volcano' experiment. Orange salt decomposes to green Cr₂O₃, N₂, and water vapour." },
+    { name:"Decomposition of Sodium Bicarbonate", type:"Decomposition", conditions:"Heating (>50°C)", equation:"2NaHCO<sub>3</sub>(s) → Na<sub>2</sub>CO<sub>3</sub>(s) + H<sub>2</sub>O(g) + CO<sub>2</sub>(g)", explanation:"Baking soda decomposes releasing CO₂ — causes dough to rise in baking." },
+    { name:"Decomposition of Mercuric Oxide", type:"Decomposition", conditions:"Heating", equation:"2HgO(s) → 2Hg(l) + O<sub>2</sub>(g)", explanation:"Red HgO decomposes to liquid mercury and oxygen. Historically important in discovery of oxygen." },
+    { name:"Decomposition of Copper(II) Hydroxide", type:"Decomposition", conditions:"Gentle Heating", equation:"Cu(OH)<sub>2</sub>(s) → CuO(s) + H<sub>2</sub>O(l)", explanation:"Blue Cu(OH)₂ precipitate decomposes to black CuO and water on gentle heating." },
+    { name:"Decomposition of Carbonic Acid", type:"Decomposition", conditions:"Aqueous", equation:"H<sub>2</sub>CO<sub>3</sub>(aq) → H<sub>2</sub>O(l) + CO<sub>2</sub>(g)", explanation:"Carbonic acid is unstable and readily decomposes — why carbonated drinks fizz." },
+    { name:"Decomposition of Ammonium Nitrate", type:"Decomposition", conditions:"Careful heating", equation:"NH<sub>4</sub>NO<sub>3</sub>(s) → N<sub>2</sub>O(g) + 2H<sub>2</sub>O(g)", explanation:"Ammonium nitrate decomposes gently to nitrous oxide and water. Explosive at high temperatures." },
+    { name:"Electrolysis of Molten Sodium Chloride", type:"Decomposition", conditions:"Electric current, molten", equation:"2NaCl(l) → 2Na(l) + Cl<sub>2</sub>(g)", explanation:"Down's process: molten NaCl is electrolyzed producing sodium metal and chlorine gas." },
+    { name:"Electrolysis of Copper(II) Sulfate", type:"Decomposition", conditions:"Electric current", equation:"2CuSO<sub>4</sub>(aq) + 2H<sub>2</sub>O(l) → 2Cu(s) + O<sub>2</sub>(g) + 2H<sub>2</sub>SO<sub>4</sub>(aq)", explanation:"Cu is deposited at cathode; O₂ and H₂SO₄ form at anode." },
+    { name:"Decomposition of Silver Bromide", type:"Decomposition", conditions:"Sunlight", equation:"2AgBr(s) → 2Ag(s) + Br<sub>2</sub>(g)", explanation:"Pale yellow AgBr photolytically decomposes — principle used in photographic films." },
+    { name:"Decomposition of Nitrous Oxide", type:"Decomposition", conditions:"Strong heating", equation:"2N<sub>2</sub>O(g) → 2N<sub>2</sub>(g) + O<sub>2</sub>(g)", explanation:"Nitrous oxide (laughing gas) decomposes to nitrogen and oxygen on strong heating." },
+    { name:"Decomposition of Nickel(II) Carbonate", type:"Decomposition", conditions:"Heating", equation:"NiCO<sub>3</sub>(s) → NiO(s) + CO<sub>2</sub>(g)", explanation:"Light green NiCO₃ decomposes to green-black NiO and CO₂." },
+
+    // ── DISPLACEMENT (20) ──
+    { name:"Zinc and Copper Sulfate Reaction", type:"Displacement", conditions:"Aqueous solution", equation:"Zn(s) + CuSO<sub>4</sub>(aq) → Cu(s) + ZnSO<sub>4</sub>(aq)", explanation:"Zinc (more reactive) displaces copper from CuSO₄. Blue solution fades as copper deposits." },
+    { name:"Iron and Copper Sulfate Reaction", type:"Displacement", conditions:"Aqueous solution", equation:"Fe(s) + CuSO<sub>4</sub>(aq) → Cu(s) + FeSO<sub>4</sub>(aq)", explanation:"Iron nail in blue CuSO₄ gets a reddish copper coating. Solution turns light green (FeSO₄)." },
+    { name:"Chlorine and Potassium Bromide Reaction", type:"Displacement", conditions:"Aqueous solution", equation:"Cl<sub>2</sub>(aq) + 2KBr(aq) → 2KCl(aq) + Br<sub>2</sub>(aq)", explanation:"Chlorine (more reactive) displaces bromine from KBr. Solution turns yellowish-brown (Br₂)." },
+    { name:"Reaction of Sodium with Water", type:"Displacement", conditions:"Cold water", equation:"2Na(s) + 2H<sub>2</sub>O(l) → 2NaOH(aq) + H<sub>2</sub>(g)", explanation:"Sodium reacts violently with water, displacing hydrogen. Highly exothermic; H₂ may catch fire." },
+    { name:"Magnesium and Hydrochloric Acid", type:"Displacement", conditions:"Aqueous solution", equation:"Mg(s) + 2HCl(aq) → MgCl<sub>2</sub>(aq) + H<sub>2</sub>(g)", explanation:"Magnesium displaces hydrogen from hydrochloric acid, forming MgCl₂ and H₂ gas." },
+    { name:"Displacement of Silver by Copper", type:"Displacement", conditions:"Aqueous solution", equation:"Cu(s) + 2AgNO<sub>3</sub>(aq) → Cu(NO<sub>3</sub>)<sub>2</sub>(aq) + 2Ag(s)", explanation:"Copper displaces silver from AgNO₃. Silver crystals form; copper dissolves." },
+    { name:"Potassium and Water Reaction", type:"Displacement", conditions:"Room temperature", equation:"2K(s) + 2H<sub>2</sub>O(l) → 2KOH(aq) + H<sub>2</sub>(g)", explanation:"Potassium reacts violently with water. Heat ignites hydrogen producing a lilac flame." },
+    { name:"Zinc and Sulfuric Acid Reaction", type:"Displacement", conditions:"Aqueous acid", equation:"Zn(s) + H<sub>2</sub>SO<sub>4</sub>(aq) → ZnSO<sub>4</sub>(aq) + H<sub>2</sub>(g)", explanation:"Zinc reacts with dilute H₂SO₄ to form zinc sulfate and hydrogen gas (bubbles)." },
+    { name:"Aluminum and Hydrochloric Acid", type:"Displacement", conditions:"Aqueous solution", equation:"2Al(s) + 6HCl(aq) → 2AlCl<sub>3</sub>(aq) + 3H<sub>2</sub>(g)", explanation:"Aluminum displaces hydrogen from HCl, forming AlCl₃ solution and H₂ gas." },
+    { name:"Calcium and Water Reaction", type:"Displacement", conditions:"Cold water", equation:"Ca(s) + 2H<sub>2</sub>O(l) → Ca(OH)<sub>2</sub>(aq) + H<sub>2</sub>(g)", explanation:"Calcium reacts steadily with cold water producing Ca(OH)₂ and hydrogen gas." },
+    { name:"Fluorine and Sodium Chloride Reaction", type:"Displacement", conditions:"Aqueous solution", equation:"F<sub>2</sub>(g) + 2NaCl(aq) → 2NaF(aq) + Cl<sub>2</sub>(g)", explanation:"Fluorine (most reactive halogen) displaces chlorine from NaCl solution." },
+    { name:"Bromine and Potassium Iodide Reaction", type:"Displacement", conditions:"Aqueous solution", equation:"Br<sub>2</sub>(aq) + 2KI(aq) → 2KBr(aq) + I<sub>2</sub>(aq)", explanation:"Bromine displaces iodine from KI. Solution turns brown (I₂)." },
+    { name:"Reaction of Magnesium with Steam", type:"Displacement", conditions:"High temp steam", equation:"Mg(s) + H<sub>2</sub>O(g) → MgO(s) + H<sub>2</sub>(g)", explanation:"Magnesium burns in steam, displacing hydrogen and forming white MgO." },
+    { name:"Reaction of Zinc with Steam", type:"Displacement", conditions:"High temp steam", equation:"Zn(s) + H<sub>2</sub>O(g) → ZnO(s) + H<sub>2</sub>(g)", explanation:"Hot zinc reacts with steam to displace hydrogen and form zinc oxide." },
+    { name:"Thermite Reaction", type:"Displacement", conditions:"High temp ignition", equation:"2Al(s) + Fe<sub>2</sub>O<sub>3</sub>(s) → Al<sub>2</sub>O<sub>3</sub>(s) + 2Fe(l)", explanation:"Highly exothermic — aluminum displaces iron from Fe₂O₃. Used for welding railway tracks." },
+    { name:"Reaction of Iron with Steam", type:"Displacement", conditions:"Red hot iron, steam", equation:"3Fe(s) + 4H<sub>2</sub>O(g) ⇌ Fe<sub>3</sub>O<sub>4</sub>(s) + 4H<sub>2</sub>(g)", explanation:"Red-hot iron reacts reversibly with steam to form magnetite and hydrogen." },
+    { name:"Magnesium and Zinc Nitrate Reaction", type:"Displacement", conditions:"Aqueous solution", equation:"Mg(s) + Zn(NO<sub>3</sub>)<sub>2</sub>(aq) → Mg(NO<sub>3</sub>)<sub>2</sub>(aq) + Zn(s)", explanation:"Magnesium (more reactive) displaces zinc from zinc nitrate solution." },
+    { name:"Lead and Silver Nitrate Reaction", type:"Displacement", conditions:"Aqueous solution", equation:"Pb(s) + 2AgNO<sub>3</sub>(aq) → Pb(NO<sub>3</sub>)<sub>2</sub>(aq) + 2Ag(s)", explanation:"Lead displaces silver from AgNO₃ solution, forming Pb(NO₃)₂ and solid silver." },
+    { name:"Reaction of Lead with Copper(II) Chloride", type:"Displacement", conditions:"Aqueous solution", equation:"Pb(s) + CuCl<sub>2</sub>(aq) → PbCl<sub>2</sub>(aq) + Cu(s)", explanation:"Lead (more reactive) displaces copper from CuCl₂ forming PbCl₂ and solid copper." },
+    { name:"Iron displaces Copper (from Chloride)", type:"Displacement", conditions:"Aqueous solution", equation:"Fe(s) + CuCl<sub>2</sub>(aq) → FeCl<sub>2</sub>(aq) + Cu(s)", explanation:"Iron displaces copper from CuCl₂ solution. Iron is oxidized, copper is reduced." },
+
+    // ── DOUBLE DISPLACEMENT / PRECIPITATION (15) ──
+    { name:"Barium Chloride and Sodium Sulfate", type:"Double Displacement", conditions:"Aqueous solution", equation:"BaCl<sub>2</sub>(aq) + Na<sub>2</sub>SO<sub>4</sub>(aq) → BaSO<sub>4</sub>(s)↓ + 2NaCl(aq)", explanation:"Thick white precipitate of barium sulfate forms. Classic precipitation reaction." },
+    { name:"Lead(II) Nitrate and Potassium Iodide", type:"Double Displacement", conditions:"Aqueous solution", equation:"Pb(NO<sub>3</sub>)<sub>2</sub>(aq) + 2KI(aq) → PbI<sub>2</sub>(s)↓ + 2KNO<sub>3</sub>(aq)", explanation:"Vibrant yellow precipitate of lead(II) iodide forms — visually stunning reaction." },
+    { name:"Silver Nitrate and Sodium Chloride", type:"Double Displacement", conditions:"Aqueous solution", equation:"AgNO<sub>3</sub>(aq) + NaCl(aq) → AgCl(s)↓ + NaNO<sub>3</sub>(aq)", explanation:"White curdy precipitate of AgCl forms — classic test for chloride ions." },
+    { name:"Copper(II) Sulfate and Sodium Hydroxide", type:"Double Displacement", conditions:"Aqueous solution", equation:"CuSO<sub>4</sub>(aq) + 2NaOH(aq) → Cu(OH)<sub>2</sub>(s)↓ + Na<sub>2</sub>SO<sub>4</sub>(aq)", explanation:"Blue CuSO₄ + NaOH gives pale blue gelatinous Cu(OH)₂ precipitate." },
+    { name:"Ferric Chloride and Ammonium Hydroxide", type:"Double Displacement", conditions:"Aqueous solution", equation:"FeCl<sub>3</sub>(aq) + 3NH<sub>4</sub>OH(aq) → Fe(OH)<sub>3</sub>(s)↓ + 3NH<sub>4</sub>Cl(aq)", explanation:"Reddish-brown gelatinous precipitate of iron(III) hydroxide forms." },
+    { name:"Calcium Chloride and Sodium Carbonate", type:"Double Displacement", conditions:"Aqueous solution", equation:"CaCl<sub>2</sub>(aq) + Na<sub>2</sub>CO<sub>3</sub>(aq) → CaCO<sub>3</sub>(s)↓ + 2NaCl(aq)", explanation:"White CaCO₃ precipitate — main component of limestone and chalk." },
+    { name:"Barium Chloride and Sulfuric Acid", type:"Double Displacement", conditions:"Aqueous solution", equation:"BaCl<sub>2</sub>(aq) + H<sub>2</sub>SO<sub>4</sub>(aq) → BaSO<sub>4</sub>(s)↓ + 2HCl(aq)", explanation:"Dense white BaSO₄ precipitate forms, insoluble even in acids." },
+    { name:"Limewater Test for Carbon Dioxide", type:"Double Displacement", conditions:"Gas through solution", equation:"Ca(OH)<sub>2</sub>(aq) + CO<sub>2</sub>(g) → CaCO<sub>3</sub>(s)↓ + H<sub>2</sub>O(l)", explanation:"CO₂ turns limewater milky — standard test for carbon dioxide." },
+    { name:"Lead(II) Acetate and Hydrogen Sulfide", type:"Double Displacement", conditions:"Aqueous/Gas", equation:"Pb(CH<sub>3</sub>COO)<sub>2</sub>(aq) + H<sub>2</sub>S(g) → PbS(s)↓ + 2CH<sub>3</sub>COOH(aq)", explanation:"Black PbS precipitate forms — test for H₂S gas." },
+    { name:"Cadmium Nitrate and Sodium Sulfide", type:"Double Displacement", conditions:"Aqueous solution", equation:"Cd(NO<sub>3</sub>)<sub>2</sub>(aq) + Na<sub>2</sub>S(aq) → CdS(s)↓ + 2NaNO<sub>3</sub>(aq)", explanation:"Bright yellow CdS precipitate — used as cadmium yellow pigment." },
+    { name:"Potassium Chromate and Silver Nitrate", type:"Double Displacement", conditions:"Aqueous solution", equation:"K<sub>2</sub>CrO<sub>4</sub>(aq) + 2AgNO<sub>3</sub>(aq) → Ag<sub>2</sub>CrO<sub>4</sub>(s)↓ + 2KNO<sub>3</sub>(aq)", explanation:"Brick-red Ag₂CrO₄ precipitate — used in Mohr's method for chloride determination." },
+    { name:"Sodium Phosphate and Calcium Chloride", type:"Double Displacement", conditions:"Aqueous solution", equation:"2Na<sub>3</sub>PO<sub>4</sub>(aq) + 3CaCl<sub>2</sub>(aq) → Ca<sub>3</sub>(PO<sub>4</sub>)<sub>2</sub>(s)↓ + 6NaCl(aq)", explanation:"White Ca₃(PO₄)₂ precipitate — major component of bones and teeth." },
+    { name:"Zinc Sulfate and Ammonium Sulfide", type:"Double Displacement", conditions:"Aqueous solution", equation:"ZnSO<sub>4</sub>(aq) + (NH<sub>4</sub>)<sub>2</sub>S(aq) → ZnS(s)↓ + (NH<sub>4</sub>)<sub>2</sub>SO<sub>4</sub>(aq)", explanation:"White zinc sulfide precipitate forms." },
+    { name:"Magnesium Chloride and Silver Nitrate", type:"Double Displacement", conditions:"Aqueous solution", equation:"MgCl<sub>2</sub>(aq) + 2AgNO<sub>3</sub>(aq) → 2AgCl(s)↓ + Mg(NO<sub>3</sub>)<sub>2</sub>(aq)", explanation:"White AgCl precipitate — demonstrates insoluble silver halide precipitation." },
+    { name:"Aluminum Sulfate and Calcium Hydroxide", type:"Double Displacement", conditions:"Aqueous solution", equation:"Al<sub>2</sub>(SO<sub>4</sub>)<sub>3</sub>(aq) + 3Ca(OH)<sub>2</sub>(aq) → 2Al(OH)<sub>3</sub>(s)↓ + 3CaSO<sub>4</sub>(s)↓", explanation:"Two precipitates form: gelatinous Al(OH)₃ and white CaSO₄." },
+
+    // ── NEUTRALIZATION (10) ──
+    { name:"Hydrochloric Acid and Sodium Hydroxide", type:"Neutralization", conditions:"Aqueous solution", equation:"HCl(aq) + NaOH(aq) → NaCl(aq) + H<sub>2</sub>O(l)", explanation:"Strong acid + strong base → neutral salt (NaCl) + water. Final pH = 7." },
+    { name:"Sulfuric Acid and Potassium Hydroxide", type:"Neutralization", conditions:"Aqueous solution", equation:"H<sub>2</sub>SO<sub>4</sub>(aq) + 2KOH(aq) → K<sub>2</sub>SO<sub>4</sub>(aq) + 2H<sub>2</sub>O(l)", explanation:"Strong acid + strong base → potassium sulfate and water." },
+    { name:"Acetic Acid and Sodium Hydroxide", type:"Neutralization", conditions:"Aqueous solution", equation:"CH<sub>3</sub>COOH(aq) + NaOH(aq) → CH<sub>3</sub>COONa(aq) + H<sub>2</sub>O(l)", explanation:"Weak acid + strong base → basic salt (sodium acetate). Final pH > 7." },
+    { name:"Nitric Acid and Calcium Hydroxide", type:"Neutralization", conditions:"Aqueous solution", equation:"2HNO<sub>3</sub>(aq) + Ca(OH)<sub>2</sub>(aq) → Ca(NO<sub>3</sub>)<sub>2</sub>(aq) + 2H<sub>2</sub>O(l)", explanation:"Strong acid + strong base → calcium nitrate and water." },
+    { name:"Hydrochloric Acid and Ammonia", type:"Neutralization", conditions:"Aqueous solution", equation:"HCl(aq) + NH<sub>3</sub>(aq) → NH<sub>4</sub>Cl(aq)", explanation:"Strong acid + weak base → acidic salt (ammonium chloride). Final pH < 7." },
+    { name:"Phosphoric Acid and Sodium Hydroxide", type:"Neutralization", conditions:"Aqueous solution", equation:"H<sub>3</sub>PO<sub>4</sub>(aq) + 3NaOH(aq) → Na<sub>3</sub>PO<sub>4</sub>(aq) + 3H<sub>2</sub>O(l)", explanation:"Complete neutralization of triprotic phosphoric acid with NaOH." },
+    { name:"Acid with Metal Oxide (CuO)", type:"Neutralization", conditions:"Aqueous solution", equation:"2HCl(aq) + CuO(s) → CuCl<sub>2</sub>(aq) + H<sub>2</sub>O(l)", explanation:"HCl neutralizes black CuO to form green CuCl₂ solution and water." },
+    { name:"Acid with Metal Carbonate (CaCO₃)", type:"Neutralization", conditions:"Aqueous solution", equation:"2HCl(aq) + CaCO<sub>3</sub>(s) → CaCl<sub>2</sub>(aq) + H<sub>2</sub>O(l) + CO<sub>2</sub>(g)", explanation:"Acid + carbonate → salt + water + CO₂ gas (effervescence)." },
+    { name:"Carbonic Acid and Potassium Hydroxide", type:"Neutralization", conditions:"Aqueous solution", equation:"H<sub>2</sub>CO<sub>3</sub>(aq) + 2KOH(aq) → K<sub>2</sub>CO<sub>3</sub>(aq) + 2H<sub>2</sub>O(l)", explanation:"Weak carbonic acid neutralized by strong KOH to form potassium carbonate." },
+    { name:"Hydrofluoric Acid and Silicon Dioxide", type:"Neutralization", conditions:"Aqueous solution", equation:"4HF(aq) + SiO<sub>2</sub>(s) → SiF<sub>4</sub>(g) + 2H<sub>2</sub>O(l)", explanation:"HF reacts with glass (SiO₂). Used to etch glass. Unique neutralization reaction." },
+
+    // ── REDOX (20) ──
+    { name:"Oxidation of Copper", type:"Redox", conditions:"Heating", equation:"2Cu(s) + O<sub>2</sub>(g) → 2CuO(s)", explanation:"Copper gains oxygen to form black CuO coating. Copper is oxidized, O₂ is reduced." },
+    { name:"Rusting of Iron", type:"Redox", conditions:"Oxygen + water present", equation:"4Fe(s) + 3O<sub>2</sub>(g) + 6H<sub>2</sub>O(l) → 4Fe(OH)<sub>3</sub>(s)", explanation:"Iron oxidizes in presence of oxygen and moisture to form rust (Fe(OH)₃)." },
+    { name:"Reduction of Copper(II) Oxide by Hydrogen", type:"Redox", conditions:"Heat", equation:"CuO(s) + H<sub>2</sub>(g) → Cu(s) + H<sub>2</sub>O(g)", explanation:"Black CuO is reduced by H₂ to form copper and water vapour. Classic redox." },
+    { name:"Oxidation of Ammonia (Ostwald Process)", type:"Redox", conditions:"Pt/Rh catalyst, 900°C", equation:"4NH<sub>3</sub>(g) + 5O<sub>2</sub>(g) → 4NO(g) + 6H<sub>2</sub>O(g)", explanation:"Catalytic oxidation of ammonia to nitric oxide — first step in HNO₃ production." },
+    { name:"Reaction of H₂S with Chlorine", type:"Redox", conditions:"Aqueous/Gas", equation:"H<sub>2</sub>S(g) + Cl<sub>2</sub>(g) → 2HCl(aq) + S(s)", explanation:"Cl₂ oxidizes H₂S to elemental sulfur; Cl₂ is reduced to HCl." },
+    { name:"Bleaching Action of Chlorine", type:"Redox", conditions:"Aqueous solution", equation:"Cl<sub>2</sub>(g) + H<sub>2</sub>O(l) → HCl(aq) + HClO(aq)", explanation:"Cl₂ in water produces HOCl — a powerful oxidizing agent used for bleaching." },
+    { name:"Disproportionation of H₂O₂", type:"Redox", conditions:"Aqueous solution", equation:"2H<sub>2</sub>O<sub>2</sub>(aq) → 2H<sub>2</sub>O(l) + O<sub>2</sub>(g)", explanation:"H₂O₂ simultaneously oxidized to O₂ and reduced to H₂O. Disproportionation reaction." },
+    { name:"Reaction of Manganese Dioxide with HCl", type:"Redox", conditions:"Heating", equation:"MnO<sub>2</sub>(s) + 4HCl(aq) → MnCl<sub>2</sub>(aq) + Cl<sub>2</sub>(g) + 2H<sub>2</sub>O(l)", explanation:"Lab preparation of Cl₂ gas. MnO₂ oxidizes HCl to Cl₂; MnO₂ is reduced." },
+    { name:"Reduction of Fe₂O₃ with Carbon", type:"Redox", conditions:"Blast Furnace", equation:"2Fe<sub>2</sub>O<sub>3</sub>(s) + 3C(s) → 4Fe(s) + 3CO<sub>2</sub>(g)", explanation:"Iron ore (Fe₂O₃) reduced by carbon to iron metal in steelmaking." },
+    { name:"Daniell Cell Reaction", type:"Redox", conditions:"Electrochemical cell", equation:"Zn(s) + Cu<sup>2+</sup>(aq) → Zn<sup>2+</sup>(aq) + Cu(s)", explanation:"Zinc oxidized at anode; Cu²⁺ reduced at cathode — generates electric current." },
+    { name:"Copper with Dilute Nitric Acid", type:"Redox", conditions:"Dilute HNO₃", equation:"3Cu(s) + 8HNO<sub>3</sub>(aq) → 3Cu(NO<sub>3</sub>)<sub>2</sub>(aq) + 2NO(g) + 4H<sub>2</sub>O(l)", explanation:"Cu dissolves in dilute HNO₃ producing colourless NO gas (turns brown in air)." },
+    { name:"Zinc with Concentrated Nitric Acid", type:"Redox", conditions:"Conc. HNO₃", equation:"Zn(s) + 4HNO<sub>3</sub>(aq) → Zn(NO<sub>3</sub>)<sub>2</sub>(aq) + 2NO<sub>2</sub>(g) + 2H<sub>2</sub>O(l)", explanation:"Zn reacts with conc. HNO₃. Brown NO₂ gas produced; HNO₃ acts as oxidizer." },
+    { name:"Permanganate Titration of Iron(II)", type:"Redox", conditions:"Acidic (H₂SO₄) solution", equation:"MnO<sub>4</sub><sup>-</sup> + 5Fe<sup>2+</sup> + 8H<sup>+</sup> → Mn<sup>2+</sup> + 5Fe<sup>3+</sup> + 4H<sub>2</sub>O", explanation:"Purple MnO₄⁻ oxidizes green Fe²⁺ to Fe³⁺; reduced to colourless Mn²⁺. Self-indicating." },
+    { name:"Reaction of SO₂ with H₂S (Claus Process)", type:"Redox", conditions:"Gas phase", equation:"SO<sub>2</sub>(g) + 2H<sub>2</sub>S(g) → 3S(s) + 2H<sub>2</sub>O(l)", explanation:"SO₂ oxidizes H₂S to elemental sulfur. Used in industrial sulfur recovery." },
+    { name:"Disproportionation of Cl₂ in Base", type:"Redox", conditions:"Cold dilute NaOH", equation:"Cl<sub>2</sub>(g) + 2NaOH(aq) → NaCl(aq) + NaClO(aq) + H<sub>2</sub>O(l)", explanation:"Cl₂ disproportionates: reduced to Cl⁻ (-1) and oxidized to ClO⁻ (+1)." },
+    { name:"Reduction of Fe₂O₃ with Hydrogen", type:"Redox", conditions:"Heat", equation:"Fe<sub>2</sub>O<sub>3</sub>(s) + 3H<sub>2</sub>(g) → 2Fe(s) + 3H<sub>2</sub>O(g)", explanation:"H₂ reduces iron oxide to iron metal and water vapour." },
+    { name:"Disproportionation of Phosphorus", type:"Redox", conditions:"Conc. NaOH, Heat", equation:"P<sub>4</sub>(s) + 3NaOH(aq) + 3H<sub>2</sub>O(l) → PH<sub>3</sub>(g) + 3NaH<sub>2</sub>PO<sub>2</sub>(aq)", explanation:"White phosphorus disproportionates to phosphine (−3) and hypophosphite (+1) in NaOH." },
+    { name:"Iodometry Titration", type:"Redox", conditions:"Aqueous solution", equation:"I<sub>2</sub>(aq) + 2S<sub>2</sub>O<sub>3</sub><sup>2-</sup>(aq) → 2I<sup>-</sup>(aq) + S<sub>4</sub>O<sub>6</sub><sup>2-</sup>(aq)", explanation:"I₂ titrated with sodium thiosulfate. I₂ reduced to I⁻; thiosulfate oxidized to tetrathionate." },
+    { name:"Reduction of Copper(II) Chloride", type:"Redox", conditions:"Heat + H₂", equation:"CuCl<sub>2</sub>(aq) + H<sub>2</sub>(g) → Cu(s) + 2HCl(aq)", explanation:"H₂ reduces CuCl₂ to solid copper and HCl." },
+    { name:"Oxidation of Copper by Conc. H₂SO₄", type:"Redox", conditions:"Hot conc. H₂SO₄", equation:"Cu(s) + 2H<sub>2</sub>SO<sub>4</sub>(aq) → CuSO<sub>4</sub>(aq) + SO<sub>2</sub>(g) + 2H<sub>2</sub>O(l)", explanation:"Copper dissolves in hot conc. H₂SO₄, producing CuSO₄ and SO₂ gas." },
+
+    // ── ORGANIC — COMBUSTION (11) ──
+    { name:"Combustion of Methane", type:"Organic", conditions:"Heat/Spark", equation:"CH<sub>4</sub>(g) + 2O<sub>2</sub>(g) → CO<sub>2</sub>(g) + 2H<sub>2</sub>O(g)", explanation:"Complete combustion of methane (natural gas) produces CO₂ and water with large energy release." },
+    { name:"Combustion of Ethanol", type:"Organic", conditions:"Ignition", equation:"C<sub>2</sub>H<sub>5</sub>OH(l) + 3O<sub>2</sub>(g) → 2CO<sub>2</sub>(g) + 3H<sub>2</sub>O(g)", explanation:"Ethanol burns with a blue flame producing CO₂ and water. Used as biofuel." },
+    { name:"Combustion of Propane", type:"Organic", conditions:"Ignition", equation:"C<sub>3</sub>H<sub>8</sub>(g) + 5O<sub>2</sub>(g) → 3CO<sub>2</sub>(g) + 4H<sub>2</sub>O(g)", explanation:"Propane (used in BBQs) burns to produce CO₂ and water." },
+    { name:"Combustion of Butane", type:"Organic", conditions:"Ignition", equation:"2C<sub>4</sub>H<sub>10</sub>(g) + 13O<sub>2</sub>(g) → 8CO<sub>2</sub>(g) + 10H<sub>2</sub>O(g)", explanation:"Butane (component of LPG) burns in oxygen to form CO₂ and water." },
+    { name:"Combustion of Ethene", type:"Organic", conditions:"Ignition", equation:"C<sub>2</sub>H<sub>4</sub>(g) + 3O<sub>2</sub>(g) → 2CO<sub>2</sub>(g) + 2H<sub>2</sub>O(g)", explanation:"Ethylene undergoes complete combustion to form CO₂ and water." },
+    { name:"Combustion of Octane", type:"Organic", conditions:"Ignition", equation:"2C<sub>8</sub>H<sub>18</sub>(g) + 25O<sub>2</sub>(g) → 16CO<sub>2</sub>(g) + 18H<sub>2</sub>O(g)", explanation:"Octane (main component of gasoline) burns in internal combustion engines." },
+    { name:"Combustion of Ethyne (Acetylene)", type:"Organic", conditions:"Ignition", equation:"2C<sub>2</sub>H<sub>2</sub>(g) + 5O<sub>2</sub>(g) → 4CO<sub>2</sub>(g) + 2H<sub>2</sub>O(g)", explanation:"Acetylene + O₂ produces very high-temperature flame — used in oxy-acetylene welding." },
+    { name:"Combustion of Glucose (Respiration)", type:"Organic", conditions:"Cellular", equation:"C<sub>6</sub>H<sub>12</sub>O<sub>6</sub>(s) + 6O<sub>2</sub>(g) → 6CO<sub>2</sub>(g) + 6H<sub>2</sub>O(l)", explanation:"Overall equation for cellular respiration — glucose burned to produce energy (ATP)." },
+    { name:"Combustion of Pentane", type:"Organic", conditions:"Ignition", equation:"C<sub>5</sub>H<sub>12</sub>(g) + 8O<sub>2</sub>(g) → 5CO<sub>2</sub>(g) + 6H<sub>2</sub>O(g)", explanation:"Volatile pentane hydrocarbon combusts to form CO₂ and water." },
+    { name:"Combustion of Hexane", type:"Organic", conditions:"Ignition", equation:"2C<sub>6</sub>H<sub>14</sub>(g) + 19O<sub>2</sub>(g) → 12CO<sub>2</sub>(g) + 14H<sub>2</sub>O(g)", explanation:"Hexane (component of gasoline) combusts exothermically." },
+    { name:"Combustion of Heptane", type:"Organic", conditions:"Ignition", equation:"C<sub>7</sub>H<sub>16</sub>(g) + 11O<sub>2</sub>(g) → 7CO<sub>2</sub>(g) + 8H<sub>2</sub>O(g)", explanation:"Heptane combustion is a standard reference for octane rating in fuels." },
+
+    // ── ORGANIC — NAMED REACTIONS (selected important ones) ──
+    { name:"Chlorination of Methane (Free Radical)", type:"Organic", conditions:"UV Light", equation:"CH<sub>4</sub>(g) + Cl<sub>2</sub>(g) → CH<sub>3</sub>Cl(g) + HCl(g)", explanation:"Free-radical substitution: one H in methane replaced by Cl in UV light. Continues to give CH₂Cl₂, CHCl₃, CCl₄." },
+    { name:"Hydrogenation of Ethene", type:"Organic", conditions:"Ni/Pd/Pt catalyst, Heat", equation:"CH<sub>2</sub>=CH<sub>2</sub>(g) + H<sub>2</sub>(g) → CH<sub>3</sub>-CH<sub>3</sub>(g)", explanation:"H₂ added across the double bond of ethene to form ethane. Used to convert oils to margarine." },
+    { name:"Bromination of Ethene", type:"Organic", conditions:"CCl₄, Room temp", equation:"CH<sub>2</sub>=CH<sub>2</sub>(g) + Br<sub>2</sub> → CH<sub>2</sub>Br-CH<sub>2</sub>Br(l)", explanation:"Ethene decolorizes reddish-brown bromine in addition reaction. Classic test for unsaturation." },
+    { name:"Hydration of Ethene (Industrial Ethanol)", type:"Organic", conditions:"H₃PO₄ catalyst, High Temp/Pressure", equation:"CH<sub>2</sub>=CH<sub>2</sub>(g) + H<sub>2</sub>O(g) ⇌ CH<sub>3</sub>CH<sub>2</sub>OH(g)", explanation:"Industrial production of ethanol by direct hydration of ethene with steam." },
+    { name:"Polymerization of Ethene", type:"Organic", conditions:"High Temp/Pressure, Catalyst", equation:"n(CH<sub>2</sub>=CH<sub>2</sub>) → [-CH<sub>2</sub>-CH<sub>2</sub>-]<sub>n</sub>", explanation:"Ethene monomers undergo addition polymerization to form poly(ethene) — polythene." },
+    { name:"Esterification (Fischer)", type:"Organic", conditions:"Conc. H₂SO₄, Heat", equation:"CH<sub>3</sub>COOH(l) + C<sub>2</sub>H<sub>5</sub>OH(l) ⇌ CH<sub>3</sub>COOC<sub>2</sub>H<sub>5</sub>(l) + H<sub>2</sub>O(l)", explanation:"Ethanoic acid + ethanol → ethyl ethanoate (fruity ester) + water. Reversible reaction." },
+    { name:"Saponification (Ester Hydrolysis)", type:"Organic", conditions:"NaOH(aq), Heat", equation:"CH<sub>3</sub>COOC<sub>2</sub>H<sub>5</sub>(l) + NaOH(aq) → CH<sub>3</sub>COONa(aq) + C<sub>2</sub>H<sub>5</sub>OH(aq)", explanation:"Alkaline hydrolysis of ester to form sodium salt + alcohol. Used to make soap from fats." },
+    { name:"Nitration of Benzene", type:"Organic", conditions:"Conc. HNO₃ + Conc. H₂SO₄, <55°C", equation:"C<sub>6</sub>H<sub>6</sub> + HNO<sub>3</sub> → C<sub>6</sub>H<sub>5</sub>NO<sub>2</sub> + H<sub>2</sub>O", explanation:"Electrophilic aromatic substitution introducing -NO₂ group. H₂SO₄ generates NO₂⁺ electrophile." },
+    { name:"Halogenation of Benzene (Chlorination)", type:"Organic", conditions:"Cl₂ + anhydrous AlCl₃", equation:"C<sub>6</sub>H<sub>6</sub> + Cl<sub>2</sub> → C<sub>6</sub>H<sub>5</sub>Cl + HCl", explanation:"Benzene reacts with Cl₂ in presence of Lewis acid AlCl₃ to form chlorobenzene. EAS reaction." },
+    { name:"Friedel-Crafts Alkylation", type:"Organic", conditions:"CH₃Cl + anhydrous AlCl₃", equation:"C<sub>6</sub>H<sub>6</sub> + CH<sub>3</sub>Cl → C<sub>6</sub>H<sub>5</sub>CH<sub>3</sub> + HCl", explanation:"Methyl group from chloromethane attached to benzene ring to form toluene." },
+    { name:"Friedel-Crafts Acylation", type:"Organic", conditions:"CH₃COCl + anhydrous AlCl₃", equation:"C<sub>6</sub>H<sub>6</sub> + CH<sub>3</sub>COCl → C<sub>6</sub>H<sub>5</sub>COCH<sub>3</sub> + HCl", explanation:"Acyl group from acyl chloride attached to benzene ring — forms acetophenone (ketone)." },
+    { name:"Dehydration of Ethanol", type:"Organic", conditions:"Conc. H₂SO₄, 170°C", equation:"CH<sub>3</sub>CH<sub>2</sub>OH(l) → CH<sub>2</sub>=CH<sub>2</sub>(g) + H<sub>2</sub>O(l)", explanation:"Ethanol dehydrated by conc. H₂SO₄ to form ethene. Elimination reaction." },
+    { name:"Oxidation of Primary Alcohol (Ethanol)", type:"Organic", conditions:"Acidified K₂Cr₂O₇ or KMnO₄", equation:"CH<sub>3</sub>CH<sub>2</sub>OH → CH<sub>3</sub>CHO → CH<sub>3</sub>COOH", explanation:"Primary alcohol oxidized first to aldehyde (ethanal) then to carboxylic acid (ethanoic acid)." },
+    { name:"Sandmeyer Reaction", type:"Organic", conditions:"CuCl/HCl or CuBr/HBr", equation:"C<sub>6</sub>H<sub>5</sub>N<sub>2</sub><sup>+</sup>Cl<sup>-</sup> → C<sub>6</sub>H<sub>5</sub>Cl", explanation:"Diazonium group replaced by halide using copper(I) salt catalyst." },
+    { name:"Diazotisation Reaction", type:"Organic", conditions:"NaNO₂ + HCl, 0-5°C", equation:"C<sub>6</sub>H<sub>5</sub>NH<sub>2</sub> → C<sub>6</sub>H<sub>5</sub>N<sub>2</sub><sup>+</sup>Cl<sup>-</sup>", explanation:"Primary aromatic amine treated with NaNO₂ + HCl at low temperature forms diazonium salt." },
+    { name:"Coupling Reaction (Azo Dye)", type:"Organic", conditions:"Mildly alkaline", equation:"C<sub>6</sub>H<sub>5</sub>N<sub>2</sub><sup>+</sup>Cl<sup>-</sup> + C<sub>6</sub>H<sub>5</sub>OH → C<sub>6</sub>H<sub>5</sub>-N=N-C<sub>6</sub>H<sub>4</sub>-OH", explanation:"Diazonium salt couples with phenol/aniline to form brightly coloured azo dye compounds." },
+    { name:"Grignard Reagent Formation", type:"Organic", conditions:"Dry ether", equation:"CH<sub>3</sub>Br + Mg → CH<sub>3</sub>MgBr", explanation:"Alkyl halide + Mg in dry ether → Grignard reagent (alkyl magnesium halide). Versatile in synthesis." },
+    { name:"Decarboxylation", type:"Organic", conditions:"Soda lime (NaOH+CaO), Heat", equation:"CH<sub>3</sub>COONa → CH<sub>4</sub> + Na<sub>2</sub>CO<sub>3</sub>", explanation:"Sodium salt of carboxylic acid heated with soda lime produces alkane with one less carbon." },
+    { name:"Kolbe's Reaction", type:"Organic", conditions:"CO₂ pressure, NaOH, then H⁺", equation:"C<sub>6</sub>H<sub>5</sub>OH → o-C<sub>6</sub>H<sub>4</sub>(OH)COOH", explanation:"Sodium phenoxide + CO₂ under pressure → salicylic acid (2-hydroxybenzoic acid). EAS reaction." },
+    { name:"Reimer-Tiemann Reaction", type:"Organic", conditions:"CHCl₃ + NaOH, then H⁺", equation:"C<sub>6</sub>H<sub>5</sub>OH → o-C<sub>6</sub>H<sub>4</sub>(OH)CHO", explanation:"Phenol + CHCl₃ + NaOH → salicylaldehyde (CHO group introduced at ortho position)." },
+    { name:"Aldol Condensation", type:"Organic", conditions:"Dilute NaOH", equation:"2CH<sub>3</sub>CHO ⇌ CH<sub>3</sub>CH(OH)CH<sub>2</sub>CHO", explanation:"Two aldehyde molecules (with α-H) condense in dilute base to form β-hydroxy aldehyde." },
+    { name:"Cannizzaro Reaction", type:"Organic", conditions:"Conc. NaOH", equation:"2HCHO → CH<sub>3</sub>OH + HCOONa", explanation:"Aldehydes without α-H undergo self-oxidation-reduction in conc. alkali. One oxidized, one reduced." },
+    { name:"Diels-Alder Reaction", type:"Organic", conditions:"Heat", equation:"Butadiene + Ethene → Cyclohexene", explanation:"[4+2] cycloaddition: conjugated diene + dienophile → six-membered ring. Powerful ring-forming tool." },
+    { name:"SN1 Reaction (Tertiary Halide)", type:"Organic", conditions:"Protic solvent, weak nucleophile", equation:"(CH<sub>3</sub>)<sub>3</sub>C-Br + H<sub>2</sub>O → (CH<sub>3</sub>)<sub>3</sub>C-OH + HBr", explanation:"Two-step substitution via planar carbocation. Favoured by tertiary substrates. Gives racemic mixture." },
+    { name:"SN2 Reaction (Primary Halide)", type:"Organic", conditions:"Aprotic solvent, strong nucleophile", equation:"CH<sub>3</sub>Br + NaOH → CH<sub>3</sub>OH + NaBr", explanation:"One-step backside attack by nucleophile displacing leaving group. Inversion of stereochemistry (Walden inversion)." },
+    { name:"Markovnikov's Rule Addition", type:"Organic", conditions:"Addition to unsymmetrical alkene", equation:"CH<sub>3</sub>CH=CH<sub>2</sub> + HBr → CH<sub>3</sub>CH(Br)CH<sub>3</sub>", explanation:"H attaches to carbon already having more H atoms (more stable carbocation intermediate forms)." },
+    { name:"Anti-Markovnikov Addition (Peroxide Effect)", type:"Organic", conditions:"HBr + Peroxide", equation:"CH<sub>3</sub>CH=CH<sub>2</sub> + HBr → CH<sub>3</sub>CH<sub>2</sub>CH<sub>2</sub>Br", explanation:"Free-radical mechanism in presence of peroxides gives anti-Markovnikov product — Br on terminal carbon." },
+    { name:"Tollens' Test (Silver Mirror)", type:"Organic", conditions:"[Ag(NH₃)₂]⁺, gentle heat", equation:"RCHO + 2[Ag(NH<sub>3</sub>)<sub>2</sub>]<sup>+</sup> + 3OH<sup>-</sup> → RCOO<sup>-</sup> + 2Ag(s)↓ + 4NH<sub>3</sub> + 2H<sub>2</sub>O", explanation:"Aldehyde reduces Ag⁺ to metallic silver (silver mirror on test tube). Distinguishes aldehydes from ketones." },
+    { name:"Fehling's Test", type:"Organic", conditions:"Fehling's solution (Cu²⁺), heat", equation:"RCHO + 2Cu<sup>2+</sup> + 5OH<sup>-</sup> → RCOO<sup>-</sup> + Cu<sub>2</sub>O(s)↓ + 3H<sub>2</sub>O", explanation:"Blue Cu²⁺ reduced to red Cu₂O precipitate by aldehyde. Test for reducing sugars and aldehydes." },
+    { name:"Iodoform Test", type:"Organic", conditions:"I₂ + NaOH", equation:"CH<sub>3</sub>COR + 3I<sub>2</sub> + 4NaOH → RCOONa + CHI<sub>3</sub>(s)↓ + 3NaI + 3H<sub>2</sub>O", explanation:"Yellow iodoform (CHI₃) precipitate with antiseptic smell. Test for methyl ketones." },
+    { name:"Hofmann Bromamide Degradation", type:"Organic", conditions:"Br₂ + NaOH", equation:"CH<sub>3</sub>CONH<sub>2</sub> + Br<sub>2</sub> + 4NaOH → CH<sub>3</sub>NH<sub>2</sub> + Na<sub>2</sub>CO<sub>3</sub> + 2NaBr + 2H<sub>2</sub>O", explanation:"Primary amide → primary amine with one less carbon. Used to step down homologous series." },
+    { name:"Carbylamine Reaction (Isocyanide Test)", type:"Organic", conditions:"CHCl₃ + alcoholic KOH, Heat", equation:"C<sub>2</sub>H<sub>5</sub>NH<sub>2</sub> + CHCl<sub>3</sub> + 3KOH → C<sub>2</sub>H<sub>5</sub>NC + 3KCl + 3H<sub>2</sub>O", explanation:"Primary amines produce foul-smelling isocyanides (carbylamines). Test for primary amines." },
+    { name:"Williamson Ether Synthesis", type:"Organic", conditions:"Heat", equation:"C<sub>2</sub>H<sub>5</sub>ONa + CH<sub>3</sub>I → C<sub>2</sub>H<sub>5</sub>OCH<sub>3</sub> + NaI", explanation:"Sodium alkoxide + primary alkyl halide → ether via SN2 mechanism. Makes symmetrical and unsymmetrical ethers." },
+    { name:"Hell-Volhard-Zelinsky (HVZ) Reaction", type:"Organic", conditions:"Br₂/Red P, then H₂O", equation:"CH<sub>3</sub>COOH → BrCH<sub>2</sub>COOH", explanation:"Carboxylic acids with α-H are brominated at alpha position using Br₂ and red phosphorus." },
+    { name:"Polymerization of Vinyl Chloride (PVC)", type:"Organic", conditions:"Free radical initiator", equation:"n(CH<sub>2</sub>=CHCl) → [-CH<sub>2</sub>-CHCl-]<sub>n</sub>", explanation:"Vinyl chloride monomers polymerize to form PVC — widely used for pipes, flooring, insulation." },
+    { name:"Polymerization of Tetrafluoroethene (PTFE)", type:"Organic", conditions:"High pressure, radical initiator", equation:"n(CF<sub>2</sub>=CF<sub>2</sub>) → [-CF<sub>2</sub>-CF<sub>2</sub>-]<sub>n</sub>", explanation:"TFE polymerizes to form PTFE (Teflon) — famous for non-stick properties." },
+    { name:"Ozonolysis of Alkene", type:"Organic", conditions:"1. O₃, 2. Zn/H₂O", equation:"(CH<sub>3</sub>)<sub>2</sub>C=C(CH<sub>3</sub>)<sub>2</sub> → 2(CH<sub>3</sub>)<sub>2</sub>C=O", explanation:"Alkene cleaved at double bond by ozone. Reductive workup gives aldehydes/ketones — used to determine double bond position." },
+    { name:"Hydroboration-Oxidation", type:"Organic", conditions:"1. BH₃/THF, 2. H₂O₂/NaOH", equation:"CH<sub>3</sub>CH=CH<sub>2</sub> → CH<sub>3</sub>CH<sub>2</sub>CH<sub>2</sub>OH", explanation:"Converts alkene to alcohol. Anti-Markovnikov addition of water (OH goes to less substituted carbon)." },
+    { name:"Wittig Reaction", type:"Organic", conditions:"Base", equation:"CH<sub>2</sub>=P(C<sub>6</sub>H<sub>5</sub>)<sub>3</sub> + CH<sub>2</sub>O → CH<sub>2</sub>=CH<sub>2</sub> + O=P(C<sub>6</sub>H<sub>5</sub>)<sub>3</sub>", explanation:"Carbonyl (C=O) converted to alkene (C=C) using phosphorus ylide. Reliable alkene synthesis." },
+    { name:"Suzuki Coupling", type:"Organic", conditions:"Pd catalyst, Base", equation:"C<sub>6</sub>H<sub>5</sub>B(OH)<sub>2</sub> + C<sub>6</sub>H<sub>5</sub>Br → C<sub>6</sub>H<sub>5</sub>-C<sub>6</sub>H<sub>5</sub>", explanation:"Pd-catalyzed cross-coupling of organoboron compound with aryl halide. One of most important C-C bond-forming reactions." },
+    { name:"Gabriel Synthesis (Primary Amines)", type:"Organic", conditions:"1. Base, 2. R-X, 3. Hydrazine", equation:"Potassium Phthalimide + C<sub>2</sub>H<sub>5</sub>Br → C<sub>2</sub>H<sub>5</sub>NH<sub>2</sub>", explanation:"Prepares primary amines from primary alkyl halides without over-alkylation. Uses phthalimide as protected ammonia source." }
+];
+
+/* ============================================================
+   TABLE LOGIC
+   ============================================================ */
+document.addEventListener("DOMContentLoaded", function () {
+    var tbody     = document.getElementById("thReactionsTbody");
+    var searchIn  = document.getElementById("th-search-input");
+    var loadBtn   = document.getElementById("thLoadMoreBtn");
+    var modal     = document.getElementById("thReactionModal");
+    var mClose    = document.getElementById("thModalClose");
+    var mTitle    = document.getElementById("th-modal-title");
+    var mVisual   = document.getElementById("th-modal-visual");
+    var mEq       = document.getElementById("th-modal-equation");
+    var mCond     = document.getElementById("th-modal-conditions");
+    var mExp      = document.getElementById("th-modal-explanation");
+
+    var PER_PAGE  = 80;
+    var shown     = 0;
+
+    var allRows = reactionData.map(function(r, i){
+        var tr = document.createElement("tr");
+        tr.dataset.idx = i;
+        tr.innerHTML =
+            '<td>' +
+            '<p class="th-rname">' + (i+1) + '. ' + r.name + ' <em style="font-weight:400;font-size:0.8rem;opacity:0.7;">(' + r.type + ')</em></p>' +
+            '<code class="th-req">' + r.equation + '</code>' +
+            '<p class="th-rexp">' + r.explanation + '</p>' +
+            '</td>';
+        return { el: tr, data: r };
+    });
+
+    function render() {
+        var q = searchIn.value.toLowerCase().trim();
+        var filtered = q
+            ? allRows.filter(function(row){
+                return row.data.name.toLowerCase().includes(q) ||
+                       row.data.type.toLowerCase().includes(q) ||
+                       row.data.explanation.toLowerCase().includes(q);
+              })
+            : allRows;
+
+        tbody.innerHTML = "";
+        var slice = filtered.slice(0, shown);
+        slice.forEach(function(row){ tbody.appendChild(row.el); });
+
+        loadBtn.style.display = (shown >= filtered.length) ? "none" : "block";
+    }
+
+    loadBtn.addEventListener("click", function(){ shown += PER_PAGE; render(); });
+    searchIn.addEventListener("input", function(){ shown = PER_PAGE; render(); });
+
+    function svgFor(type) {
+        var t = (type || "").toLowerCase();
+        if (t.includes("combination")) return '<svg viewBox="0 0 100 100"><style>.rc1{stroke:#3b82f6;stroke-width:4;fill:none;animation:thCombine 2s ease-in-out infinite alternate}.rc2{stroke:#93c5fd;stroke-width:4;fill:none;animation:thCombine 2s ease-in-out infinite alternate-reverse}@keyframes thCombine{to{transform:translateX(12px)}}</style><circle class="rc1" cx="30" cy="50" r="15"/><circle class="rc2" cx="70" cy="50" r="15"/><text font-family="sans-serif" font-size="28" fill="#2563eb" x="50" y="58" text-anchor="middle">+</text></svg>';
+        if (t.includes("decomp")) return '<svg viewBox="0 0 100 100"><style>.rp{fill:#8b5cf6;animation:thSp 2s ease-in-out infinite alternate}.rc{stroke:#c4b5fd;fill:none;stroke-width:4}@keyframes thSp{to{transform:scale(0.8) rotate(15deg)}}</style><circle class="rp" cx="50" cy="50" r="20"/><circle class="rc" cx="30" cy="50" r="10"/><circle class="rc" cx="70" cy="50" r="10"/></svg>';
+        if (t.includes("displacement")) return '<svg viewBox="0 0 100 100"><style>.da{fill:#f97316;animation:thDis 2.5s ease-in-out infinite}.db{fill:#3b82f6}.dc{fill:#93c5fd}@keyframes thDis{0%,100%{transform:translateX(0)}50%{transform:translateX(30px)}}</style><circle class="da" cx="20" cy="50" r="12"/><circle class="db" cx="60" cy="50" r="12"/><circle class="dc" cx="80" cy="50" r="10"/></svg>';
+        if (t.includes("double") || t.includes("precipitation")) return '<svg viewBox="0 0 100 100"><style>.sab,.scd{animation:thSw 3s ease-in-out infinite}.scd{animation-delay:-1.5s}@keyframes thSw{50%{transform:translateY(15px)}60%{opacity:0}70%{transform:translateY(-15px);opacity:0}80%{opacity:1}100%{transform:translateY(0)}}</style><g class="sab"><circle fill="#3b82f6" cx="30" cy="50" r="10"/><circle fill="#93c5fd" cx="50" cy="50" r="10"/></g><g class="scd"><circle fill="#f97316" cx="70" cy="50" r="10"/><circle fill="#fcd34d" cx="90" cy="50" r="10"/></g></svg>';
+        if (t.includes("combustion") || t.includes("organic")) return '<svg viewBox="0 0 100 100"><style>.fl{fill:#FF9800;transform-origin:bottom;animation:burn 1s infinite}.fl2{fill:#FFC107;animation-delay:-0.2s}@keyframes burn{0%,100%{transform:scaleY(1)}50%{transform:scaleY(1.2)}}</style><path class="fl fl2" d="M50,90 C20,90 40,20 50,20 C60,20 80,90 50,90 Z"/><path class="fl" d="M50,90 C30,90 45,30 50,30 C55,30 70,90 50,90 Z"/></svg>';
+        return '<svg viewBox="0 0 100 100"><circle cx="50" cy="50" r="30" fill="none" stroke="#6a4cff" stroke-width="4"/><text x="50" y="58" text-anchor="middle" font-size="30" fill="#6a4cff">\u21C4</text></svg>';
+    }
+
+    function openModal(idx) {
+        var r = reactionData[idx]; if(!r) return;
+        mTitle.textContent   = r.name;
+        mVisual.innerHTML    = svgFor(r.type);
+        mEq.innerHTML        = r.equation;
+        mCond.textContent    = r.conditions || "Standard conditions.";
+        mExp.textContent     = r.explanation;
+        modal.classList.add("visible");
+    }
+    function closeModal() { modal.classList.remove("visible"); }
+
+    tbody.addEventListener("click", function(e){
+        var tr = e.target.closest("tr");
+        if (tr && tr.dataset.idx !== undefined) openModal(parseInt(tr.dataset.idx, 10));
+    });
+    mClose.addEventListener("click", closeModal);
+    modal.addEventListener("click", function(e){ if(e.target===modal) closeModal(); });
+    document.addEventListener("keydown", function(e){ if(e.key==="Escape" && modal.classList.contains("visible")) closeModal(); });
+
+    shown = PER_PAGE;
+    render();
+});
+
+/* Sidebar toggle */
+function toggleMobileSidebar(event) {
+    if (event) event.stopPropagation();
+    var sidebar = document.querySelector(".th-left-sidebar");
+    if (sidebar) sidebar.classList.toggle("mobile-open");
+}
+</script>
