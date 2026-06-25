@@ -232,44 +232,7 @@ lang_toggle: false
                 display: block;
             }
 
-            /* Mobile Sidebar styles for menu sliding drawer if global style isn't loaded */
-            @media (max-width: 1024px) {
-                .th-left-col-wrapper {
-                    position: fixed !important;
-                    top: 0;
-                    left: -280px;
-                    width: 280px;
-                    height: 100vh;
-                    z-index: 1100;
-                    background: var(--bg-surface, var(--clr-surface, #ffffff));
-                    box-shadow: 4px 0 24px rgba(0, 0, 0, 0.15);
-                    transition: left 0.3s ease;
-                    overflow-y: auto;
-                    display: block !important;
-                }
-                .th-left-col-wrapper.mobile-open {
-                    left: 0 !important;
-                }
-                .th-mobile-menu-trigger {
-                    position: fixed !important;
-                    top: 15px;
-                    left: 15px;
-                    z-index: 1050;
-                    display: flex !important;
-                    align-items: center;
-                    gap: 6px;
-                    background: var(--primary-color, #4f46e5);
-                    color: white;
-                    border: none;
-                    padding: 8px 14px;
-                    border-radius: 12px;
-                    box-shadow: 0 4px 12px rgba(79, 70, 229, 0.3);
-                    cursor: pointer;
-                    font-weight: 700;
-                    font-size: 0.85rem;
-                }
-            }
-        </style>
+      </style>
 
         <!-- ── SEO ARTICLE SCHEMAS ── -->
         <script type="application/ld+json">
