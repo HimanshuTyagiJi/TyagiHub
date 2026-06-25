@@ -1,0 +1,724 @@
+---
+layout: default
+section: learn
+learn_type: formula
+permalink: /learn/all-physics-formulas/
+lang_switch: false
+lang_toggle: false
+---
+
+<div class="tyagihub-main-layout">
+
+    <div class="th-left-col-wrapper">
+        <button class="th-mobile-menu-trigger" onclick="toggleMobileSidebar(event)">
+            ☰ <span>Menu</span>
+        </button>
+        {% include left-sidebar-selector.html %}
+    </div>
+
+    <div style="grid-column: 2; min-width: 0 !important; width: 100% !important; overflow: hidden !important; contain: layout style !important; isolation: isolate !important; clear: both !important; box-sizing: border-box; padding: 10px;">
+
+        <!-- ── CUSTOM STYLES FOR FORMULA AND UI ELEMENTS ── -->
+        <style>
+            /* ── Core Themes & Layouts ── */
+            :root {
+                --primary-color: #4f46e5;
+                --primary-hover: #4338ca;
+                --accent-color: #06b6d4;
+                --card-bg: #ffffff;
+                --border-color: rgba(128, 128, 128, 0.15);
+            }
+
+            /* ── Language Toggles ── */
+            body.lang-hindi .english {
+                display: none !important;
+            }
+            body.lang-hindi .hindi {
+                display: inline-block !important;
+            }
+            body.lang-english .hindi {
+                display: none !important;
+            }
+            body.lang-english .english {
+                display: inline-block !important;
+            }
+
+            /* ── Formula Card UI ── */
+            .th-formula-card {
+                background: var(--card-bg);
+                border: 1px solid var(--border-color);
+                border-radius: 16px;
+                padding: 1.25rem;
+                transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                position: relative;
+                overflow: hidden;
+            }
+            .th-formula-card:hover {
+                transform: translateY(-2px);
+                box-shadow: 0 10px 25px rgba(79, 70, 229, 0.08);
+                border-color: rgba(79, 70, 229, 0.3);
+            }
+
+            /* ── Advanced HTML Formula Typography ── */
+            .formula {
+                font-family: 'Times New Roman', Times, serif;
+                font-size: 1.2rem;
+                line-height: 1.6;
+                white-space: nowrap;
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                user-select: all;
+            }
+            .frac {
+                display: inline-block;
+                vertical-align: middle;
+                margin: 0 0.25em;
+                text-align: center;
+            }
+            .frac > span {
+                display: block;
+                padding: 0 0.15em;
+            }
+            .frac span.bottom {
+                border-top: 1px solid currentColor;
+            }
+            .rootwrapfrac {
+                display: inline-block;
+                vertical-align: middle;
+                position: relative;
+                margin-left: 0.2em;
+            }
+            .rootwrapfrac::before {
+                content: '√';
+                position: absolute;
+                top: -0.25em;
+                left: -0.15em;
+                font-size: 1.8em;
+                line-height: 1;
+            }
+            .rootwrapfrac .num {
+                display: block;
+                padding-left: 0.6em;
+            }
+            .rootwrapfrac .den {
+                display: block;
+                border-top: 1px solid currentColor;
+                padding-left: 0.6em;
+            }
+
+            /* ── Quick Chapters Navigator ── */
+            .th-chapter-link {
+                display: inline-flex;
+                align-items: center;
+                gap: 6px;
+                padding: 6px 14px;
+                background: rgba(128, 128, 128, 0.06);
+                border: 1px solid rgba(128, 128, 128, 0.1);
+                border-radius: 20px;
+                font-size: 0.82rem;
+                color: inherit;
+                text-decoration: none;
+                transition: all 0.2s;
+            }
+            .th-chapter-link:hover {
+                background: rgba(79, 70, 229, 0.08);
+                border-color: rgba(79, 70, 229, 0.25);
+                transform: translateY(-1px);
+            }
+
+            /* ── Navigation Tabs ── */
+            .class-tab-btn {
+                position: relative;
+                transition: all 0.2s;
+            }
+            .class-tab-btn.active::after {
+                content: '';
+                position: absolute;
+                bottom: -2px;
+                left: 20%;
+                width: 60%;
+                height: 3px;
+                background: var(--primary-color);
+                border-radius: 99px;
+            }
+
+            /* ── Watermark Canvas Background ── */
+            .th-canvas-hero-wrap {
+                width: 100%;
+                margin: 15px 0 25px;
+                position: relative;
+                border-radius: 20px;
+                overflow: hidden;
+                box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+            }
+            .th-canvas-hero-wrap canvas {
+                width: 100%;
+                height: auto;
+                display: block;
+            }
+        </style>
+
+        <!-- ── SEO ARTICLE SCHEMAS ── -->
+        <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "Article",
+            "headline": "भौतिकी के महत्वपूर्ण सूत्र - Class 9, 10, 11, 12",
+            "description": "कक्षा 9वीं, 10वीं, 11वीं और 12वीं भौतिक विज्ञान (Physics) के सभी आवश्यक सूत्र, परिभाषाएं और अध्याय-वार विस्तृत सूची।",
+            "image": "https://tyagihub.com/images/physics.png",
+            "author": { "@type": "Organization", "name": "TyagiHub" },
+            "url": "/learn/physics/formulas-hindi/"
+        }
+        </script>
+
+        <div id="physics-root">
+
+            <!-- ── HEADER SECTION ── -->
+            <header style="text-align: center; margin-bottom: 24px;">
+                <div style="display: flex; justify-content: center; margin-bottom: 12px;">
+                    <!-- Animated Physics Atom/Magnet SVG -->
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" style="width: 120px; height: 120px;" role="img" aria-label="Animated Physics Icon">
+                        <defs>
+                            <linearGradient id="orbit-grad" x1="0" y1="0" x2="1" y2="1">
+                                <stop offset="0%" stop-color="#4f46e5" />
+                                <stop offset="100%" stop-color="#06b6d4" />
+                            </linearGradient>
+                        </defs>
+                        <circle cx="100" cy="100" r="16" fill="url(#orbit-grad)" />
+                        <!-- Orbit 1 -->
+                        <ellipse cx="100" cy="100" rx="80" ry="25" fill="none" stroke="url(#orbit-grad)" stroke-width="2.5" transform="rotate(30 100 100)">
+                            <animateTransform attributeName="transform" type="rotate" values="30 100 100; 390 100 100" dur="8s" repeatCount="indefinite" />
+                        </ellipse>
+                        <!-- Orbit 2 -->
+                        <ellipse cx="100" cy="100" rx="80" ry="25" fill="none" stroke="url(#orbit-grad)" stroke-width="2.5" transform="rotate(-30 100 100)">
+                            <animateTransform attributeName="transform" type="rotate" values="-30 100 100; 330 100 100" dur="8s" repeatCount="indefinite" />
+                        </ellipse>
+                        <!-- Orbit 3 -->
+                        <ellipse cx="100" cy="100" rx="80" ry="25" fill="none" stroke="url(#orbit-grad)" stroke-width="2.5" transform="rotate(90 100 100)">
+                            <animateTransform attributeName="transform" type="rotate" values="90 100 100; 450 100 100" dur="8s" repeatCount="indefinite" />
+                        </ellipse>
+                        <!-- Tiny electrons -->
+                        <circle cx="100" cy="20" r="5" fill="#f43f5e" />
+                    </svg>
+                </div>
+
+                <h1 style="font-size: 2.25rem; font-weight: 800; color: #1e293b; margin-bottom: 6px;">
+                    <span class="hindi">भौतिकी के सभी सूत्र (Physics Formula Bank)</span>
+                    <span class="english">Physics Formula Bank</span>
+                </h1>
+                <p style="max-width: 720px; margin: 0 auto 15px; font-size: 0.95rem; color: #64748b; line-height: 1.5;">
+                    <span class="hindi">कक्षा 9, 10, 11, और 12 के लिए अध्याय-वार भौतिक विज्ञान के महत्वपूर्ण सूत्रों का सर्वश्रेष्ठ संग्रह। बोर्ड परीक्षा, JEE और NEET की तैयारी के लिए अत्यधिक उपयोगी।</span>
+                    <span class="english">The ultimate collection of physics formulas for classes 9, 10, 11, and 12, organized by chapters. Highly useful for board exams, JEE, and NEET preparation.</span>
+                </p>
+
+                <!-- Language Toggle Button -->
+                <div style="display: flex; justify-content: center; gap: 8px; margin-top: 10px;">
+                    <button onclick="toggleAppLanguage('hindi')" id="lang-btn-hi" class="px-4 py-1.5 rounded-full text-xs font-bold border transition duration-150" style="cursor: pointer;">
+                        हिन्दी (Hindi)
+                    </button>
+                    <button onclick="toggleAppLanguage('english')" id="lang-btn-en" class="px-4 py-1.5 rounded-full text-xs font-bold border transition duration-150" style="cursor: pointer;">
+                        English
+                    </button>
+                </div>
+            </header>
+
+            <!-- ── WATERMARK CANVAS HERO BANNER ── -->
+            <div class="th-canvas-hero-wrap">
+                <canvas id="thPhysicsCanvas" width="1400" height="420" aria-label="Physics Formula Hub Banner"></canvas>
+            </div>
+
+            <!-- ── INTERACTIVE DYNAMIC FILTERS ── -->
+            <div style="background: rgba(128,128,128,0.04); border: 1px solid var(--border-color); border-radius: 20px; padding: 1.25rem; margin-bottom: 24px;">
+                <!-- Class Selection Tabs -->
+                <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 12px; margin-bottom: 12px;">
+                    <div style="display: flex; flex-wrap: wrap; gap: 6px;">
+                        <button onclick="filterPhysicsClass('9')" id="class-tab-9" class="class-tab-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-bold bg-indigo-600 text-white" style="cursor: pointer; border: none;">
+                            <span class="hindi">कक्षा 9 (Class 9)</span>
+                            <span class="english">Class 9</span>
+                        </button>
+                        <button onclick="filterPhysicsClass('10')" id="class-tab-10" class="class-tab-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-bold bg-gray-100 text-gray-700 hover:bg-gray-200" style="cursor: pointer; border: none;">
+                            <span class="hindi">कक्षा 10 (Class 10)</span>
+                            <span class="english">Class 10</span>
+                        </button>
+                        <button onclick="filterPhysicsClass('11')" id="class-tab-11" class="class-tab-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-bold bg-gray-100 text-gray-700 hover:bg-gray-200" style="cursor: pointer; border: none;">
+                            <span class="hindi">कक्षा 11 (Class 11)</span>
+                            <span class="english">Class 11</span>
+                        </button>
+                        <button onclick="filterPhysicsClass('12')" id="class-tab-12" class="class-tab-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-bold bg-gray-100 text-gray-700 hover:bg-gray-200" style="cursor: pointer; border: none;">
+                            <span class="hindi">कक्षा 12 (Class 12)</span>
+                            <span class="english">Class 12</span>
+                        </button>
+                        <button onclick="filterPhysicsClass('all')" id="class-tab-all" class="class-tab-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-bold bg-gray-100 text-gray-700 hover:bg-gray-200" style="cursor: pointer; border: none;">
+                            <span class="hindi">सभी कक्षाएं (All Classes)</span>
+                            <span class="english">All Classes</span>
+                        </button>
+                    </div>
+
+                    <!-- Verified Syllabus Tag -->
+                    <div style="display: flex; align-items: center; gap: 6px; font-size: 0.75rem; color: #16a34a; font-weight: 700; background: rgba(22, 163, 74, 0.08); padding: 6px 12px; border-radius: 12px; border: 1px solid rgba(22,163,74,0.15);">
+                        <span>✔</span>
+                        <span class="hindi">नवीनतम NCERT पाठ्यक्रम सत्यापित</span>
+                        <span class="english">Latest NCERT Syllabus Verified</span>
+                    </div>
+                </div>
+
+                <!-- Live Keyword Search -->
+                <div style="position: relative; width: 100%;">
+                    <input type="text" id="th-physics-search" oninput="handlePhysicsSearch()" placeholder="Search formula by title, keyword, or description..." 
+                           style="width: 100%; padding: 0.75rem 1.25rem; font-size: 0.9rem; border-radius: 12px; border: 1px solid var(--border-color); background: #ffffff; outline: none; box-sizing: border-box; transition: border-color 0.2s;" />
+                </div>
+            </div>
+
+            <!-- ── QUICK CHAPTER DIRECTORY LINKS ── -->
+            <div id="th-quick-nav-wrap" style="margin-bottom: 24px; display: none;">
+                <p style="font-size: 0.82rem; font-weight: 700; color: #475569; margin-bottom: 8px;">
+                    <span class="hindi">⚡ अध्याय सूची (Quick Links):</span>
+                    <span class="english">⚡ Chapters List:</span>
+                </p>
+                <div id="th-quick-chapters-container" style="display: flex; flex-wrap: wrap; gap: 8px;"></div>
+            </div>
+
+            <!-- ── FORMULAS DYNAMIC CONTAINER ── -->
+            <div id="th-physics-formulas-wrapper" style="min-height: 200px;">
+                {% for category in site.data.formula.physics %}
+                    <!-- Calculate unique classes for this category to filter easily -->
+                    {% assign cat_classes = "" %}
+                    {% for item in category.items %}
+                        {% for cl in item.classes %}
+                            {% unless cat_classes contains cl %}
+                                {% assign cat_classes = cat_classes | append: cl | append: "," %}
+                            {% endunless %}
+                        {% endfor %}
+                    {% endfor %}
+
+                    <section class="th-chapter-section mb-10" data-cat-classes="{{ cat_classes }}" style="display: none; scroll-margin-top: 20px;" id="chapter-{{ category.category_en | slugify }}">
+                        <!-- Category Header -->
+                        <h2 style="font-size: 1.35rem; font-weight: 800; color: #0f172a; border-bottom: 2px solid rgba(79, 70, 229, 0.15); padding-bottom: 8px; margin-bottom: 16px; display: flex; align-items: center; gap: 8px;">
+                            <span style="font-size: 1.6rem;">{{ category.category_icon }}</span>
+                            <span>
+                                <span class="hindi">{{ category.category_hi }}</span>
+                                <span class="english">{{ category.category_en }}</span>
+                            </span>
+                        </h2>
+
+                        <!-- Grid of Formulas -->
+                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px;">
+                            {% for item in category.items %}
+                                {% assign item_classes = item.classes | join: "," %}
+                                <div class="th-formula-card" data-item-classes="{{ item_classes }}" data-search-keys="{{ item.en.title | downcase }} {{ item.hi.title | downcase }} {{ item.en.desc | downcase }} {{ item.hi.desc | downcase }} {{ category.category_en | downcase }} {{ category.category_hi | downcase }}">
+                                    
+                                    <!-- Card Header -->
+                                    <div style="display: flex; align-items: center; justify-content: space-between; font-size: 0.72rem; color: #94a3b8; border-bottom: 1px solid rgba(128,128,128,0.08); padding-bottom: 8px; margin-bottom: 10px;">
+                                        <span style="font-family: monospace; font-weight: 700; color: #64748b;">#{{ item.id | upcase }}</span>
+                                        <div style="display: flex; gap: 4px;">
+                                            {% for cl in item.classes %}
+                                                <span style="background: rgba(79, 70, 229, 0.08); color: #4f46e5; border: 1px solid rgba(79, 70, 229, 0.15); padding: 2px 6px; border-radius: 6px; font-weight: 700;">Class {{ cl }}</span>
+                                            {% endfor %}
+                                        </div>
+                                    </div>
+
+                                    <!-- Core Content -->
+                                    <div style="flex-grow: 1; display: flex; flex-direction: column;">
+                                        <h3 style="font-size: 1.05rem; font-weight: 800; color: #1e293b; margin-bottom: 8px; line-height: 1.3;">
+                                            <span class="hindi">{{ item.hi.title }}</span>
+                                            <span class="english">{{ item.en.title }}</span>
+                                        </h3>
+
+                                        <!-- Pre-compiled Super High Fidelity HTML Formula Box -->
+                                        <div style="background: rgba(128,128,128,0.03); border: 1px solid rgba(128,128,128,0.08); border-radius: 12px; padding: 14px; margin: 8px 0; text-align: center; display: flex; align-items: center; justify-content: center; min-height: 85px; overflow-x: auto; box-sizing: border-box;">
+                                            <div class="formula text-indigo-700">
+                                                {{ item.formula_html }}
+                                            </div>
+                                        </div>
+
+                                        <!-- Descriptions -->
+                                        <div style="font-size: 0.8rem; color: #475569; line-height: 1.5; margin-top: 6px; flex-grow: 1;">
+                                            <div class="hindi" style="display: block;">{{ item.hi.desc }}</div>
+                                            <div class="english" style="display: block;">{{ item.en.desc }}</div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Card Actions Footer -->
+                                    <div style="border-top: 1px solid rgba(128,128,128,0.08); padding-top: 10px; margin-top: 12px; display: flex; align-items: center; justify-content: space-between; font-size: 0.72rem; color: #64748b;">
+                                        <span style="font-weight: 500;">TyagiHub Study Suite</span>
+                                        <button onclick="copyPhysicsFormulaText(this, '{{ item.en.title | escape }}', '{{ item.formula_html | strip_html | strip_newlines | escape }}')" 
+                                                style="background: rgba(128,128,128,0.05); border: 1px solid rgba(128,128,128,0.12); padding: 5px 8px; border-radius: 8px; cursor: pointer; transition: all 0.2s; display: flex; align-items: center; justify-content: center;" title="Copy Formula">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>
+                                        </button>
+                                    </div>
+
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </section>
+                {% endfor %}
+            </div>
+
+            <!-- ── NO RESULTS PLACEHOLDER ── -->
+            <div id="th-no-formulas-view" style="display: none; text-align: center; padding: 40px 20px; border: 1px dashed var(--border-color); border-radius: 20px; background: rgba(128,128,128,0.02); margin-top: 20px;">
+                <p style="font-size: 1.1rem; font-weight: 700; color: #475569; margin: 0 0 8px 0;">
+                    <span class="hindi">कोई सूत्र नहीं मिला</span>
+                    <span class="english">No Formulas Found</span>
+                </p>
+                <p style="font-size: 0.85rem; color: #64748b; margin: 0;">
+                    <span class="hindi">कृपया एक अलग खोज शब्द का प्रयास करें।</span>
+                    <span class="english">Please try a different search keyword.</span>
+                </p>
+            </div>
+
+        </div><!-- /#physics-root -->
+
+    </div><!-- grid-column 2 -->
+
+    <aside class="th-right-sidebar-wrapper">
+        {% case page.section %}
+          {% when "learn" %}
+            {% include sidebars/learn-sidebar.html %}
+          {% else %}
+            {% include sidebars/default-sidebar.html %}
+        {% endcase %}
+    </aside>
+
+</div><!-- /.tyagihub-main-layout -->
+
+<!-- ── CORE INTERACTIVE JAVASCRIPT ENGINE ── -->
+<script>
+/* ============================================================
+   GLOBALS & LOCAL STORAGE MANAGEMENT
+   ============================================================ */
+var activePhysicsClass = localStorage.getItem("physics_active_class") || "9";
+var activeAppLanguage = localStorage.getItem("language") || "hindi";
+
+/* ============================================================
+   CANVAS HERO GENERATION (Bilingual & Watermarked)
+   ============================================================ */
+function renderPhysicsHeroCanvas() {
+    var canvas = document.getElementById("thPhysicsCanvas");
+    if (!canvas || !canvas.getContext) return;
+    var ctx = canvas.getContext("2d");
+    var W = canvas.width, H = canvas.height;
+
+    // Background Gradient (Cyber Slate Theme)
+    var bg = ctx.createLinearGradient(0, 0, W, H);
+    bg.addColorStop(0, "#0b0f19"); 
+    bg.addColorStop(0.5, "#0e172a"); 
+    bg.addColorStop(1, "#1e1b4b");
+    ctx.fillStyle = bg; 
+    ctx.fillRect(0, 0, W, H);
+
+    // Decorative Space Particles
+    ctx.save(); 
+    ctx.globalAlpha = 0.18; 
+    ctx.fillStyle = "#ffffff";
+    for (var i = 0; i < 160; i++) {
+        ctx.beginPath();
+        ctx.arc(Math.random() * W, Math.random() * H, Math.random() * 2.5, 0, Math.PI * 2);
+        ctx.fill();
+    }
+    ctx.restore();
+
+    // Subtle Brand Watermark Background to Prevent Plagiarism
+    ctx.save(); 
+    ctx.translate(W / 2, H / 2); 
+    ctx.rotate(-0.15); 
+    ctx.globalAlpha = 0.05;
+    ctx.fillStyle = "#ffffff"; 
+    ctx.font = "bold 150px sans-serif"; 
+    ctx.textAlign = "center";
+    ctx.fillText("TYAGIHUB", 0, 50); 
+    ctx.restore();
+
+    // Canvas Title & Subtitle
+    ctx.fillStyle = "#ffffff"; 
+    ctx.font = "bold 44px sans-serif"; 
+    ctx.textAlign = "left";
+    ctx.fillText("भौतिकी के मूल सूत्र", 65, 80);
+
+    ctx.font = "bold 24px sans-serif"; 
+    ctx.fillStyle = "#38bdf8";
+    ctx.fillText("Complete Physics Formulas • Classes 9, 10, 11, 12", 65, 122);
+
+    // Beautiful Rounded Outer Box
+    var bx = 65, by = 160, bw = W - 130, bh = 200;
+    ctx.beginPath();
+    var r = 18;
+    ctx.moveTo(bx + r, by);
+    ctx.arcTo(bx + bw, by, bx + bw, by + bh, r);
+    ctx.arcTo(bx + bw, by + bh, bx, by + bh, r);
+    ctx.arcTo(bx, by + bh, bx, by, r);
+    ctx.arcTo(bx, by, bx + bw, by, r);
+    ctx.closePath();
+    
+    var bgrad = ctx.createLinearGradient(bx, by, bx + bw, by + bh);
+    bgrad.addColorStop(0, "rgba(255, 255, 255, 0.12)"); 
+    bgrad.addColorStop(1, "rgba(255, 255, 255, 0.04)");
+    ctx.fillStyle = bgrad; 
+    ctx.fill();
+    ctx.strokeStyle = "rgba(255, 255, 255, 0.25)"; 
+    ctx.lineWidth = 1.5; 
+    ctx.stroke();
+
+    // Showcase Equation (Einstein's Mass-Energy Equivalence)
+    ctx.fillStyle = "#ffffff"; 
+    ctx.font = "bold 38px 'Times New Roman', serif";
+    ctx.fillText("E = mc²", bx + 45, by + 75);
+
+    ctx.font = "italic 20px sans-serif"; 
+    ctx.fillStyle = "#bae6fd";
+    ctx.fillText("Mass-Energy Equivalence Principle (द्रव्यमान-ऊर्जा तुल्यता सिद्धांत)", bx + 45, by + 115);
+
+    ctx.font = "16px sans-serif"; 
+    ctx.fillStyle = "#94a3b8";
+    ctx.fillText("E = energy (ऊर्जा),  m = mass (द्रव्यमान),  c = speed of light (प्रकाश की चाल)", bx + 45, by + 155);
+
+    // Decorative Rotating Magnet Graphic
+    function drawCoils(cx, cy, radius, numPoints) {
+        ctx.save();
+        ctx.translate(cx, cy);
+        ctx.strokeStyle = "rgba(56, 189, 248, 0.7)";
+        ctx.lineWidth = 2.5;
+        ctx.beginPath();
+        for (var i = 0; i < numPoints; i++) {
+            var angle = (i / numPoints) * Math.PI * 2;
+            var r = radius + Math.sin(angle * 8) * 12;
+            var x = Math.cos(angle) * r;
+            var y = Math.sin(angle) * r;
+            if (i === 0) ctx.moveTo(x, y);
+            else ctx.lineTo(x, y);
+        }
+        ctx.closePath();
+        ctx.stroke();
+        
+        ctx.fillStyle = "#f43f5e";
+        ctx.beginPath();
+        ctx.arc(0, 0, 8, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.restore();
+    }
+    drawCoils(W - 220, 150, 60, 200);
+
+    // Watermark at Bottom Right
+    ctx.save(); 
+    ctx.globalAlpha = 0.15; 
+    ctx.fillStyle = "#ffffff"; 
+    ctx.font = "bold 44px sans-serif";
+    ctx.textAlign = "right"; 
+    ctx.fillText("tyagihub.com", W - 70, H - 40);
+    ctx.restore();
+}
+
+/* ============================================================
+   BILINGUAL TRANSLATION SYSTEM
+   ============================================================ */
+function toggleAppLanguage(lang) {
+    activeAppLanguage = lang;
+    localStorage.setItem("language", lang);
+
+    // Update Body classes for selective CSS hiding
+    document.body.classList.remove("lang-hindi", "lang-english");
+    document.body.classList.add("lang-" + lang);
+
+    // Update active button state styling
+    var btnHi = document.getElementById("lang-btn-hi");
+    var btnEn = document.getElementById("lang-btn-en");
+    if (lang === "hindi") {
+        if (btnHi) {
+            btnHi.style.background = "#4f46e5";
+            btnHi.style.color = "#ffffff";
+            btnHi.style.borderColor = "#4f46e5";
+        }
+        if (btnEn) {
+            btnEn.style.background = "transparent";
+            btnEn.style.color = "#475569";
+            btnEn.style.borderColor = "rgba(128,128,128,0.2)";
+        }
+    } else {
+        if (btnEn) {
+            btnEn.style.background = "#4f46e5";
+            btnEn.style.color = "#ffffff";
+            btnEn.style.borderColor = "#4f46e5";
+        }
+        if (btnHi) {
+            btnHi.style.background = "transparent";
+            btnHi.style.color = "#475569";
+            btnHi.style.borderColor = "rgba(128,128,128,0.2)";
+        }
+    }
+}
+
+/* ============================================================
+   DYNAMIC MULTI-CLASS FILTER ENGINE (High Performance)
+   ============================================================ */
+function filterPhysicsClass(classNum) {
+    activePhysicsClass = classNum;
+    localStorage.setItem("physics_active_class", classNum);
+
+    // Update Tabs UI
+    document.querySelectorAll('.class-tab-btn').forEach(function(btn) {
+        var tabId = btn.getAttribute('id');
+        if (tabId === 'class-tab-' + classNum) {
+            btn.classList.add('active', 'bg-indigo-600', 'text-white');
+            btn.classList.remove('bg-gray-100', 'text-gray-700', 'hover:bg-gray-200');
+        } else {
+            btn.classList.remove('active', 'bg-indigo-600', 'text-white');
+            btn.classList.add('bg-gray-100', 'text-gray-700', 'hover:bg-gray-200');
+        }
+    });
+
+    applyGlobalFilters();
+    generateChapterDirectory(classNum);
+}
+
+/* ============================================================
+   LIVE DYNAMIC SEARCH ENGINE
+   ============================================================ */
+function handlePhysicsSearch() {
+    applyGlobalFilters();
+}
+
+/* ============================================================
+   GLOBAL COMBO FILTER (Class + Search)
+   ============================================================ */
+function applyGlobalFilters() {
+    var searchQuery = document.getElementById("th-physics-search").value.toLowerCase().trim();
+    var hasAnyVisibleFormula = false;
+
+    var sections = document.querySelectorAll('.th-chapter-section');
+    sections.forEach(function(section) {
+        var catClasses = section.getAttribute('data-cat-classes').split(',');
+        
+        // Quick preliminary filter on chapter level if in single-class mode
+        var classMatchOnChapter = (activePhysicsClass === 'all') || catClasses.includes(activePhysicsClass);
+
+        var visibleItemsInChapter = 0;
+        var cards = section.querySelectorAll('.th-formula-card');
+        
+        cards.forEach(function(card) {
+            var cardClasses = card.getAttribute('data-item-classes').split(',');
+            var matchesClass = (activePhysicsClass === 'all') || cardClasses.includes(activePhysicsClass);
+
+            var searchKeys = card.getAttribute('data-search-keys');
+            var matchesSearch = !searchQuery || searchKeys.includes(searchQuery);
+
+            if (matchesClass && matchesSearch) {
+                card.style.display = 'flex';
+                visibleItemsInChapter++;
+            } else {
+                card.style.display = 'none';
+            }
+        });
+
+        if (classMatchOnChapter && visibleItemsInChapter > 0) {
+            section.style.display = 'block';
+            hasAnyVisibleFormula = true;
+        } else {
+            section.style.display = 'none';
+        }
+    });
+
+    // Toggle No-Results State
+    var noResultsView = document.getElementById("th-no-formulas-view");
+    if (noResultsView) {
+        noResultsView.style.display = hasAnyVisibleFormula ? 'none' : 'block';
+    }
+}
+
+/* ============================================================
+   DYNAMIC MINI-CHAPTERS QUICK-LINKS NAVIGATOR
+   ============================================================ */
+function generateChapterDirectory(classNum) {
+    var quickNavWrap = document.getElementById("th-quick-nav-wrap");
+    var container = document.getElementById("th-quick-chapters-container");
+    if (!container) return;
+
+    container.innerHTML = ""; // Clear existing quick links
+
+    var sections = document.querySelectorAll('.th-chapter-section');
+    var totalVisibleChapters = 0;
+
+    sections.forEach(function(section) {
+        var catClasses = section.getAttribute('data-cat-classes').split(',');
+        var matchesClass = (classNum === 'all') || catClasses.includes(classNum);
+
+        if (matchesClass) {
+            var h2 = section.querySelector('h2');
+            var hindiText = h2.querySelector('.hindi').innerText;
+            var englishText = h2.querySelector('.english').innerText;
+            var icon = h2.querySelector('span:first-child').innerText;
+            var id = section.getAttribute('id');
+
+            // Create Link Node
+            var a = document.createElement('a');
+            a.className = "th-chapter-link";
+            a.href = "#" + id;
+            a.innerHTML = "<span>" + icon + "</span>" +
+                          "<span class='hindi'>" + hindiText + "</span>" +
+                          "<span class='english'>" + englishText + "</span>";
+            
+            // Add click-smooth scroll behavior
+            a.onclick = function(e) {
+                e.preventDefault();
+                var targetEl = document.getElementById(id);
+                if (targetEl) {
+                    targetEl.scrollIntoView({ behavior: 'smooth' });
+                }
+            };
+
+            container.appendChild(a);
+            totalVisibleChapters++;
+        }
+    });
+
+    if (totalVisibleChapters > 1 && quickNavWrap) {
+        quickNavWrap.style.display = "block";
+    } else if (quickNavWrap) {
+        quickNavWrap.style.display = "none";
+    }
+}
+
+/* ============================================================
+   UTILITY: COPY FORMULA CONTENT IN PLAIN TEXT
+   ============================================================ */
+function copyPhysicsFormulaText(button, title, formulaHtml) {
+    // Format copying text beautifully for students
+    var plainText = title + ": " + formulaHtml + " — Study via TyagiHub (tyagihub.com)";
+    
+    navigator.clipboard.writeText(plainText).then(function() {
+        // Dynamic tick feedback
+        var origHtml = button.innerHTML;
+        button.innerHTML = "<svg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='#16a34a' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'><polyline points='20 6 9 17 4 12'/></svg>";
+        button.style.borderColor = "#16a34a";
+        button.style.background = "rgba(22, 163, 74, 0.08)";
+        
+        setTimeout(function() {
+            button.innerHTML = origHtml;
+            button.style.borderColor = "rgba(128,128,128,0.12)";
+            button.style.background = "rgba(128,128,128,0.05)";
+        }, 1600);
+    }).catch(function() {
+        alert("Failed to copy. Please select the formula box directly.");
+    });
+}
+
+/* ============================================================
+   INITIALIZATION TRIGGER
+   ============================================================ */
+document.addEventListener("DOMContentLoaded", function() {
+    // 1. Initialize language
+    toggleAppLanguage(activeAppLanguage);
+
+    // 2. Render Canvas Hero
+    try {
+        renderPhysicsHeroCanvas();
+    } catch(err) {
+        console.error("Hero canvas error: ", err);
+    }
+
+    // 3. Initialize filters with default active class
+    filterPhysicsClass(activePhysicsClass);
+});
+</script>
