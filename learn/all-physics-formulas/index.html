@@ -1,4 +1,3 @@
- 
 ---
 layout: default
 section: learn
@@ -285,7 +284,7 @@ lang_toggle: false
 
             <!-- ── FORMULAS DYNAMIC CONTAINER ── -->
             <div id="th-physics-formulas-wrapper" style="min-height: 200px;">
-                {% for category in site.data.formula.physics %}
+                {% for category in site.data.formulas.physics %}
                     <!-- Calculate unique classes for this category to filter easily -->
                     {% assign cat_classes = "" %}
                     {% for item in category.items %}
@@ -740,7 +739,7 @@ function loadPhysicsFormulasDevFallback(callback) {
         </div>
     `;
 
-    fetch('/_data/formula/physics.json')
+    fetch('/assets/formulas/physics.json')
         .then(function(res) {
             if (!res.ok) throw new Error("File not found");
             return res.json();
