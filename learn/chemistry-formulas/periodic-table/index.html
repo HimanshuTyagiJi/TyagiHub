@@ -19,7 +19,15 @@ extra_js:
         </button>
         {% include left-sidebar-selector.html %}
  
-   
+       <aside class="th-right-sidebar-wrapper">
+        {% case page.section %}
+          {% when "learn" %}
+            {% include sidebars/learn-sidebar.html %}
+          {% else %}
+            {% include sidebars/default-sidebar.html %}
+        {% endcase %}
+    </aside>
+
    
         <div id="root"><!-- jahan image chahiye wahan ye wrapper + canvas daal do -->
             <div id="ptable-wrapper" style="max-width: 100%; margin: 20px auto;">
