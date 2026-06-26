@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width,initial-scale=1.0">
-  <title>{% if page.title %}{{ page.title }} | {{ site.title }}{% else %}{{ site.title }} | {{ site.tagline }}{% endif %}</title>class="tc-card-pfp"
+  <title>{% if page.title %}{{ page.title }} | {{ site.title }}{% else %}{{ site.title }} | {{ site.tagline }}{% endif %}</title>
   <meta name="description" content="{% if page.description %}{{ page.description }}{% else %}{{ site.description }}{% endif %}">
   <meta name="keywords" content="{% if page.keywords %}{{ page.keywords }}{% else %}TyagiHub,Tyagi MultiTech,learn,tools,editor,apps,stock,shield{% endif %}">
   <meta name="author" content="{{ site.author.name }}">
@@ -511,7 +511,8 @@
     var safeName    = String(c.name).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
 
     var html = '<div class="tc-card ' + (c.parentId !== "0" ? "reply " : "") + (c.pending ? "pending" : "") + '">'
-      + '<div><img src="' + c.pic + '" class="tc-card-pfp" alt="' + safeName + '" onerror="this.src=\'https://tyagihub.in/assets/images/icon-192.png\'">'
+      + '<div><img src="' + c.pic + '" class="tc-card-pfp" onerror="this.src=\'https://tyagihub.in/assets/images/icon-192.png\'">'
+      + '<span style="font-weight:bold;font-size:14px;">' + safeName + '</span>'
       + (c.isAdmin ? '<span class="tc-admin-badge">ADMIN ⭐</span>' : '')
       + starStr
       + '<small style="float:right;color:#999;">' + c.date + '</small></div>'
@@ -563,7 +564,7 @@
 })();
 </script>
 
- <script src="https://accounts.google.com/gsi/client" async defer></script>
+<script src="https://accounts.google.com/gsi/client" async defer></script>
 {% endif %}
   {% include footer.html %}
   <script src="{{ site.url }}/assets/js/main.js" defer="defer"></script>
