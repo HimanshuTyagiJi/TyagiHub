@@ -511,8 +511,7 @@
     var safeName    = String(c.name).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
 
     var html = '<div class="tc-card ' + (c.parentId !== "0" ? "reply " : "") + (c.pending ? "pending" : "") + '">'
-      + '<div><img src="${userPfp || card.userPfp}" class="tc-card-pfp" alt="${userName || card.userName || 'Google User'}" onerror="this.src='https://tyagihub.in/assets/images/icon-192.png'">'
-      + '<span style="font-weight:bold;font-size:14px;">' + safeName + '</span>'
+      + '<div><img src="' + c.userPfp + '" class="tc-card-pfp" alt="' + safeName + '" onerror="this.src=\'https://tyagihub.in/assets/images/icon-192.png\'">'+ '<span style="font-weight:bold;font-size:14px;">' + safeName + '</span>'
       + (c.isAdmin ? '<span class="tc-admin-badge">ADMIN ⭐</span>' : '')
       + starStr
       + '<small style="float:right;color:#999;">' + c.date + '</small></div>'
