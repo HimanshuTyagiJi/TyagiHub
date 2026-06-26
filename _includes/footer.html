@@ -16,10 +16,9 @@
       <div class="footer__social">
   <a href="https://t.me/TyagiHubs" class="footer__link" target="_blank" rel="noopener" aria-label="Telegram">Telegram</a>
   <a href="https://youtube.com/@TyagiHubs" class="footer__link" target="_blank" rel="noopener" aria-label="YouTube">YouTube</a>
-  <a href="https://arattai.com/TyagiHub" class="footer__link" target="_blank" rel="noopener" aria-label="Arattai">Arattai</a>
+  <a href="https://aratt.ai/@tyagihub" class="footer__link" target="_blank" rel="noopener" aria-label="Arattai">Arattai</a>
   <a href="https://instagram.com/TyagiHub" class="footer__link" target="_blank" rel="noopener" aria-label="Instagram">Instagram</a>
-  <a href="https://linkedin.com/in/HimanshuTyagi" class="footer__link" target="_blank" rel="noopener" aria-label="LinkedIn">LinkedIn</a>
-</div>
+  </div>
       </div>
 
       <!-- Column 2: Explore -->
@@ -63,19 +62,21 @@
       <!-- Column 4: For You -->
       <div>
         <div class="footer__col-title">{% if page.lang == "hi" %}आपके लिए{% else %}For You{% endif %}</div>
-        <ul class="footer__links">
-          {% if page.lang == "hi" %}
-            <li><a href="{{ site.url }}/hi/about/" class="footer__link">हमारे बारे में</a></li>
-            <li><a href="{{ site.url }}/hi/formulas/" class="footer__link">सभी सूत्र (Formulas)</a></li>
-            <li><a href="{{ site.url }}/hi/cheatsheets/" class="footer__link">चीटशिट्स (Cheatsheets)</a></li>
-            <li><a href="{{ site.url }}/hi/shortcuts/" class="footer__link">शॉर्टकट कीज</a></li>
-          {% else %}
-            <li><a href="{{ site.url }}/about/" class="footer__link">About Us</a></li>
-            <li><a href="{{ site.url }}/formulas/" class="footer__link">All Formulas</a></li>
-            <li><a href="{{ site.url }}/cheatsheets/" class="footer__link">Coding Cheatsheets</a></li>
-            <li><a href="{{ site.url }}/shortcuts/" class="footer__link">Shortcut Keys</a></li>
-          {% endif %}
-        </ul>
+     <ul class="footer__links">
+  {% if page.lang == "hi" %}
+    <li><a href="{{ site.url }}/hi/about/" class="footer__link">हमारे बारे में</a></li>
+    <!-- 🎯 Hindi link connected to learn page id section -->
+    <li><a href="{{ site.url }}/hi/learn/#pcm-formulas" class="footer__link">सभी सूत्र (Formulas)</a></li>
+    <li><a href="{{ site.url }}/hi/cheatsheets/" class="footer__link">चीटशिट्स (Cheatsheets)</a></li>
+    <li><a href="{{ site.url }}/hi/shortcuts/" class="footer__link">शॉर्टकट कीज</a></li>
+  {% else %}
+    <li><a href="{{ site.url }}/about/" class="footer__link">About Us</a></li>
+    <!-- 🎯 English link connected to learn page id section -->
+    <li><a href="{{ site.url }}/learn/#pcm-formulas" class="footer__link">All Formulas</a></li>
+    <li><a href="{{ site.url }}/cheatsheets/" class="footer__link">Coding Cheatsheets</a></li>
+    <li><a href="{{ site.url }}/shortcuts/" class="footer__link">Shortcut Keys</a></li>
+  {% endif %}
+</ul>
       </div>
 
       <!-- Column 5: Legal -->
