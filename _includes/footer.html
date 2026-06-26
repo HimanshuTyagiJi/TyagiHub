@@ -62,19 +62,19 @@
       <!-- Column 4: For You -->
       <div>
         <div class="footer__col-title">{% if page.lang == "hi" %}आपके लिए{% else %}For You{% endif %}</div>
-     <ul class="footer__links">
+   <ul class="footer__links">
   {% if page.lang == "hi" %}
     <li><a href="{{ site.url }}/hi/about/" class="footer__link">हमारे बारे में</a></li>
-    <!-- 🎯 Hindi link connected to learn page id section -->
     <li><a href="{{ site.url }}/hi/learn/#pcm-formulas" class="footer__link">सभी सूत्र (Formulas)</a></li>
-    <li><a href="{{ site.url }}/hi/cheatsheets/" class="footer__link">चीटशिट्स (Cheatsheets)</a></li>
-    <li><a href="{{ site.url }}/hi/shortcuts/" class="footer__link">शॉर्टकट कीज</a></li>
+    <!-- ⏳ Coming Soon for Hindi -->
+    <li><a href="#" class="footer__link" onclick="TyagiHub.Toast.show('चीटशिट्स जल्द आ रहा है!', 'info'); return false;">चीटशिट्स (Coming Soon)</a></li>
+    <li><a href="#" class="footer__link" onclick="TyagiHub.Toast.show('शॉर्टकट कीज जल्द आ रहा है!', 'info'); return false;">शॉर्टकट कीज (Coming Soon)</a></li>
   {% else %}
     <li><a href="{{ site.url }}/about/" class="footer__link">About Us</a></li>
-    <!-- 🎯 English link connected to learn page id section -->
     <li><a href="{{ site.url }}/learn/#pcm-formulas" class="footer__link">All Formulas</a></li>
-    <li><a href="{{ site.url }}/cheatsheets/" class="footer__link">Coding Cheatsheets</a></li>
-    <li><a href="{{ site.url }}/shortcuts/" class="footer__link">Shortcut Keys</a></li>
+    <!-- ⏳ Coming Soon for English -->
+    <li><a href="#" class="footer__link" onclick="TyagiHub.Toast.show('Coding Cheatsheets coming soon!', 'info'); return false;">Coding Cheatsheets (Coming Soon)</a></li>
+    <li><a href="#" class="footer__link" onclick="TyagiHub.Toast.show('Shortcut Keys coming soon!', 'info'); return false;">Shortcut Keys (Coming Soon)</a></li>
   {% endif %}
 </ul>
       </div>
