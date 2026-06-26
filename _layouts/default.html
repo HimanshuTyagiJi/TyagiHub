@@ -511,7 +511,7 @@
     var safeName    = String(c.name).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
 
     var html = '<div class="tc-card ' + (c.parentId !== "0" ? "reply " : "") + (c.pending ? "pending" : "") + '">'
-      + '<div><img src="' + c.pic + '" class="tc-card-pfp" onerror="this.src=\'https://tyagihub.in/assets/images/icon-192.png\'">'
+      + '<div><img src="' + c.pic + '" class="tc-card-pfp" alt="' + safeName + '" onerror="this.src=\'https://tyagihub.in/assets/images/icon-192.png\'">'
       + '<span style="font-weight:bold;font-size:14px;">' + safeName + '</span>'
       + (c.isAdmin ? '<span class="tc-admin-badge">ADMIN ⭐</span>' : '')
       + starStr
@@ -564,7 +564,6 @@
 })();
 </script>
 
-<script src="https://accounts.google.com/gsi/client" async defer></script>
 {% endif %}
   {% include footer.html %}
   <script src="{{ site.url }}/assets/js/main.js" defer="defer"></script>
