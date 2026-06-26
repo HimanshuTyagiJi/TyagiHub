@@ -1,0 +1,146 @@
+---
+layout: default
+title: Security Policy - TyagiHub
+permalink: /security/
+comments: false
+---
+
+<div class="th-security-wrapper" style="max-width: 850px; margin: 40px auto; padding: 0 20px; font-family: sans-serif; line-height: 1.6; color: #333;">
+  
+  <!-- 🎛️ DYNAMIC LANGUAGE SWITCHER BUTTONS -->
+  <div style="text-align: center; margin-bottom: 30px; border-bottom: 2px solid #eee; padding-bottom: 15px;">
+    <button onclick="switchSecurityLang('en')" id="btn-security-en" class="security-lang-btn active-btn" style="padding: 8px 20px; font-size: 14px; font-weight: bold; border: 1px solid #1a73e8; background: #1a73e8; color: #fff; border-radius: 20px; cursor: pointer; margin-right: 10px; transition: all 0.3s;">English</button>
+    <button onclick="switchSecurityLang('hi')" id="btn-security-hi" class="security-lang-btn" style="padding: 8px 20px; font-size: 14px; font-weight: bold; border: 1px solid #ddd; background: #fff; color: #333; border-radius: 20px; cursor: pointer; transition: all 0.3s;">हिन्दी</button>
+  </div>
+
+  <!-- ========================================== -->
+  <!-- 🇺🇸 ENGLISH TEXT BLOCK (50+ Lines Configuration) -->
+  <!-- ========================================== -->
+  <div id="security-content-en" class="security-lang-section">
+    <div style="text-align: center; margin-bottom: 35px;">
+      <h1 style="font-size: 30px; font-weight: bold; color: #1a73e8; margin-bottom: 8px;">Security Policy</h1>
+      <p style="color: #666; font-size: 13px;">Last Updated: June 2026</p>
+    </div>
+
+    <div style="background: #fff; border: 1px solid #e0e0e0; border-radius: 12px; padding: 30px; box-shadow: 0 4px 12px rgba(0,0,0,0.04);">
+      <p style="font-size: 15px; margin-bottom: 20px; color: #202124;">
+        At TyagiHub, we prioritize the protection and security of our web infrastructure and user interfaces. As a platform dedicated to spreading digital safety and cybersecurity awareness, we maintain strict architectural configurations to ensure your browsing experience remains highly secure.
+      </p>
+
+      <h3 style="font-size: 18px; color: #1a73e8; margin-top: 25px; border-bottom: 1px solid #eee; padding-bottom: 5px;">1. User Authentication and Encryption</h3>
+      <p style="font-size: 14px; color: #5f6368;">
+        We leverage industry-standard Google Identity Services for user sign-ins. We do not store, process, or maintain custom password configurations on our internal backend systems. Authentication tokens and profile data are managed directly through Google's secure infrastructure, reducing the risk of credential hijacking.
+      </p>
+
+      <h3 style="font-size: 18px; color: #1a73e8; margin-top: 25px; border-bottom: 1px solid #eee; padding-bottom: 5px;">2. Local Data Isolation</h3>
+      <p style="font-size: 14px; color: #5f6368;">
+        User session tracking is confined completely to your browser's local sandbox profile using <code>localStorage</code>. No background processes silently upload your private browser configurations or operational cookies to our primary database logs. Your local parameters remain entirely under your personal hardware environment control.
+      </p>
+
+      <h3 style="font-size: 18px; color: #1a73e8; margin-top: 25px; border-bottom: 1px solid #eee; padding-bottom: 5px;">3. Protection Against Server Deletion & Leaks</h3>
+      <p style="font-size: 14px; color: #5f6368; margin-bottom: 10px;">
+        To mitigate potential server-side data leaks or system injections, our processing layer runs minimal persistent states. Database actions (such as posting comments or submitting scorecard updates) are passed through strict programmatic filters before syncing with Google Apps Script frameworks.
+      </p>
+      <ul style="padding-left: 20px; font-size: 14px; color: #5f6368; line-height: 1.8;">
+        <li><strong>Cross-Site Scripting (XSS) Shield:</strong> All operational text input blocks reject malicious scripts automatically to maintain high sanitization baselines.</li>
+        <li><strong>Secure Sockets Layer (SSL):</strong> End-to-end network communication is encrypted dynamically via advanced HTTPS routing structures.</li>
+        <li><strong>Firebase Security Policies:</strong> Push notifications and cloud messaging layers utilize strict custom tokens to avoid arbitrary spoofing.</li>
+      </ul>
+
+      <h3 style="font-size: 18px; color: #1a73e8; margin-top: 25px; border-bottom: 1px solid #eee; padding-bottom: 5px;">4. Third-Party API Guardrails</h3>
+      <p style="font-size: 14px; color: #5f6368;">
+        Any sub-component integration, such as Google OAuth or Firebase Web SDKs, operates under strict API origin validation. Unverified external scripts or malicious domains are blocked from accessing or interacting with TyagiHub’s document structure.
+      </p>
+
+      <h3 style="font-size: 18px; color: #1a73e8; margin-top: 25px; border-bottom: 1px solid #eee; padding-bottom: 5px;">5. Vulnerability Disclosure & Bug Reporting</h3>
+      <p style="font-size: 14px; color: #5f6368;">
+        We welcome responsible security auditing from software developers and tech enthusiasts. If you discover an architectural oversight or sub-optimal implementation on our site, please report it privately through our customer support hub instead of disclosing it publicly.
+      </p>
+
+      <h3 style="font-size: 18px; color: #1a73e8; margin-top: 25px; border-bottom: 1px solid #eee; padding-bottom: 5px;">6. System Integrity Enforcement</h3>
+      <p style="font-size: 14px; color: #5f6368;">
+        This document stands independent to meet global compliance expectations and automated bot crawling assessments. We continuously update our source implementations to prevent security deterioration across upcoming features.
+      </p>
+    </div>
+  </div>
+
+  <!-- ========================================== -->
+  <!-- 🇮🇳 HINDI TEXT BLOCK (50+ Lines Configuration) -->
+  <!-- ========================================== -->
+  <div id="security-content-hi" class="security-lang-section" style="display: none;">
+    <div style="text-align: center; margin-bottom: 35px;">
+      <h1 style="font-size: 30px; font-weight: bold; color: #1a73e8; margin-bottom: 8px;">सुरक्षा नीति (Security Policy)</h1>
+      <p style="color: #666; font-size: 13px;">अंतिम अपडेट: जून 2026</p>
+    </div>
+
+    <div style="background: #fff; border: 1px solid #e0e0e0; border-radius: 12px; padding: 30px; box-shadow: 0 4px 12px rgba(0,0,0,0.04);">
+      <p style="font-size: 15px; margin-bottom: 20px; color: #202124;">
+        TyagiHub पर हम अपने वेब इंफ्रास्ट्रक्चर और यूज़र इंटरफ़ेस की सुरक्षा को सर्वोच्च प्राथमिकता देते हैं। चूंकि हमारा प्लेटफ़ॉर्म डिजिटल सुरक्षा और साइबर क्राइम जागरूकता फैलाने के लिए प्रतिबद्ध है, इसलिए हम आपके ब्राउज़िंग अनुभव को सुरक्षित रखने के लिए कड़े तकनीकी सुरक्षा मानकों का पालन करते हैं।
+      </p>
+
+      <h3 style="font-size: 18px; color: #1a73e8; margin-top: 25px; border-bottom: 1px solid #eee; padding-bottom: 5px;">1. यूज़र ऑथेंटिकेशन और एन्क्रिप्शन</h3>
+      <p style="font-size: 14px; color: #5f6368;">
+        हम यूज़र लॉग-इन के लिए इंडस्ट्री-स्टैंडर्ड गूगल आइडेंटिटी सर्विसेज (Google Sign-In API) का उपयोग करते हैं। हम अपने आंतरिक डेटाबेस या बैकएंड सिस्टम पर आपके किसी भी प्रकार के कस्टमाइज्ड पासवर्ड को स्टोर या प्रोसेस नहीं करते हैं। ऑथेंटिकेशन टोकन सीधे गूगल के सुरक्षित सर्वर द्वारा मैनेज किए जाते हैं, जिससे क्रेडेंशियल हैकिंग का खतरा शून्य हो जाता है।
+      </p>
+
+      <h3 style="font-size: 18px; color: #1a73e8; margin-top: 25px; border-bottom: 1px solid #eee; padding-bottom: 5px;">2. लोकल डेटा आइसोलेशन (Local Data Isolation)</h3>
+      <p style="font-size: 14px; color: #5f6368;">
+        यूज़र सेशन और प्रोफाइल स्टेट को केवल आपके ब्राउज़र के लोकल सैंडबॉक्स एनवायरनमेंट में <code>localStorage</code> के माध्यम से सुरक्षित रखा जाता है। कोई भी बैकग्राउंड प्रोसेस आपके निजी ब्राउज़र डेटा को हमारे सर्वर लॉग्स पर चुपके से अपलोड नहीं करती है। आपका लोकल डेटा पूरी तरह से आपके डिवाइस के नियंत्रण में रहता है।
+      </p>
+
+      <h3 style="font-size: 18px; color: #1a73e8; margin-top: 25px; border-bottom: 1px solid #eee; padding-bottom: 5px;">3. डेटा लीक और सर्वर इंजेक्शन से सुरक्षा</h3>
+      <p style="font-size: 14px; color: #5f6368; margin-bottom: 10px;">
+        सर्वर-साइड डेटा लीक या बाहरी मालवेयर अटैक्स को रोकने के लिए हमारा प्रोसेसिंग लेयर न्यूनतम डेटा आर्किटेक्चर पर काम करता है। किसी भी पब्लिक एक्शन (जैसे कमेंट पोस्ट करना या रेटिंग सबमिट करना) के दौरान डेटा को गूगल एप्लिकेशंस स्क्रिप्ट फ्रेमवर्क से सिंक करने से पहले कड़े फिल्टर से गुजारा जाता है।
+      </p>
+      <ul style="padding-left: 20px; font-size: 14px; color: #5f6368; line-height: 1.8;">
+        <li><strong>XSS प्रोटेक्शन शील्ड:</strong> सभी इनपुट टेक्स्ट ब्लॉक्स किसी भी प्रकार की दुर्भावनापूर्ण स्क्रिप्ट्स (Malicious Scripts) को ऑटोमैटिक रिजेक्ट कर देते हैं।</li>
+        <li><strong>SSL एन्क्रिप्शन लेयर:</strong> प्लेटफ़ॉर्म पर होने वाला एंड-टू-एंड नेटवर्क कम्युनिकेशन एडवांस्ड HTTPS राउटिंग स्ट्रक्चर्स के जरिए पूरी तरह एन्क्रिप्टेड रहता है।</li>
+        <li><strong>फायरबेस सिक्योरिटी पॉलिसी:</strong> पुश नोटिफिकेशन्स और क्लाउड मैसेजिंग लेयर्स मनमाने स्पूफिंग अटैक्स से बचने के लिए कस्टमाइज्ड टोकन्स का उपयोग करते हैं।</li>
+      </ul>
+
+      <h3 style="font-size: 18px; color: #1a73e8; margin-top: 25px; border-bottom: 1px solid #eee; padding-bottom: 5px;">4. थर्ड-पार्टी API सुरक्षा गाइडलाइंस</h3>
+      <p style="font-size: 14px; color: #5f6368;">
+        हमारी वेबसाइट पर इंटीग्रेटेड सभी बाहरी सब-कंपोनेंट्स (जैसे Google OAuth या Firebase Web SDKs) केवल वेरिफाइड ओरिजिन वैलिडेशन के साथ काम करते हैं। अनवेरिफाइड बाहरी स्क्रिप्ट्स या संदेहास्पद डोमेन्स को TyagiHub के डॉक्यूमेंट स्ट्रक्चर से इंटरैक्ट करने से ब्लॉक किया गया है।
+      </p>
+
+      <h3 style="font-size: 18px; color: #1a73e8; margin-top: 25px; border-bottom: 1px solid #eee; padding-bottom: 5px;">5. वल्नरेबिलिटी डिस्क्लोज़र और बग रिपोर्टिंग</h3>
+      <p style="font-size: 14px; color: #5f6368;">
+        हम डेवलपर्स और एथिकल हैकर्स द्वारा वेबसाइट की सुरक्षा ऑडिटिंग का स्वागत करते हैं। यदि आपको हमारे कोड या इंफ्रास्ट्रक्चर में कोई तकनीकी कमी या लूप-होल मिलता है, तो कृपया उसे सार्वजनिक रूप से लीक करने के बजाय हमारे कस्टमर सपोर्ट हब के माध्यम से हमें प्राइवेटली रिपोर्ट करें।
+      </p>
+
+      <h3 style="font-size: 18px; color: #1a73e8; margin-top: 25px; border-bottom: 1px solid #eee; padding-bottom: 5px;">6. सिस्टम अखंडता प्रवर्तन</h3>
+      <p style="font-size: 14px; color: #5f6368;">
+        यह सुरक्षा नीति दस्तावेज़ पूरी तरह स्वतंत्र रूप से काम करता है ताकि ग्लोबल ऑटोमेटेड बॉट्स और स्क्रैपर्स के सुरक्षा ऑडिट के दौरान प्लेटफ़ॉर्म की प्राइवेसी और क्रेडिबिलिटी 100% सही बनी रहे। हम आने वाले नए फीचर्स के साथ अपनी सिक्योरिटी को लगातार अपडेट करते रहते हैं।
+      </p>
+    </div>
+  </div>
+
+</div>
+
+<!-- 🌐 JAVASCRIPT TAB TOGGLING ENGINE -->
+<script>
+function switchSecurityLang(lang) {
+    document.querySelectorAll('.security-lang-section').forEach(function(el) {
+        el.style.display = 'none';
+    });
+    document.querySelectorAll('.security-lang-btn').forEach(function(btn) {
+        btn.style.background = '#fff';
+        btn.style.color = '#333';
+        btn.style.borderColor = '#ddd';
+    });
+
+    if (lang === 'en') {
+        document.getElementById('security-content-en').style.display = 'block';
+        var activeBtn = document.getElementById('btn-security-en');
+        activeBtn.style.background = '#1a73e8';
+        activeBtn.style.color = '#fff';
+        activeBtn.style.borderColor = '#1a73e8';
+    } else {
+        document.getElementById('security-content-hi').style.display = 'block';
+        var activeBtn = document.getElementById('btn-security-hi');
+        activeBtn.style.background = '#1a73e8';
+        activeBtn.style.color = '#fff';
+        activeBtn.style.borderColor = '#1a73e8';
+    }
+}
+</script>
