@@ -236,7 +236,7 @@
 }
   </style>
 
-
+{% if page.comments != false %}
  
 
 <div id="tc-root">
@@ -565,7 +565,7 @@
 </script>
 
 <script src="https://accounts.google.com/gsi/client" async defer></script>
-
+{% endif %}
   {% include footer.html %}
   <script src="{{ site.url }}/assets/js/main.js" defer="defer"></script>
   <script src="{{ site.url }}/assets/js/search.js" defer="defer"></script>
