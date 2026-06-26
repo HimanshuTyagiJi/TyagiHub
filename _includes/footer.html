@@ -121,16 +121,16 @@
   </svg>. 
 </p>
       <div class="footer__legal">
-        {% if page.lang == "hi" %}
-          <a href="{{ site.url }}/hi/support/">सपोर्ट</a>
-          <a href="{{ site.url }}/hi/status/">स्टेटस</a>
-          <a href="{{ site.url }}/hi/help-center/">सहायता केंद्र</a>
-        {% else %}
-          <a href="{{ site.url }}/support/">Support</a>
-          <a href="{{ site.url }}/status/">Status</a>
-          <a href="{{ site.url }}/help-center/">Help Center</a>
-        {% endif %}
-      </div>
+  {% if page.lang == "hi" %}
+    <a href="mailto:tyagihub.official@gmail.com?subject=TyagiHub%20Support%20Request" class="footer__link">सपोर्ट</a>
+    <a href="{{ site.url }}/hi/" class="footer__link">स्टेटस</a>
+    <a href="mailto:tyagihub.official@gmail.com?subject=TyagiHub%20Help%20Query" class="footer__link">सहायता केंद्र</a>
+  {% else %}
+    <a href="mailto:tyagihub.official@gmail.com?subject=TyagiHub%20Support%20Request" class="footer__link">Support</a>
+    <a href="{{ site.url }}/" class="footer__link">Status</a>
+    <a href="mailto:tyagihub.official@gmail.com?subject=TyagiHub%20Help%20Query" class="footer__link">Help Center</a>
+  {% endif %}
+</div>
     </div>
 
   </div>
