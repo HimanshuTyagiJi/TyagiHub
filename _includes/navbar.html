@@ -101,17 +101,17 @@
 {% endif %}
 
         {% if page.lang == "hi" %}
-  <a href="#"
-     class="btn btn-primary btn-sm"
-     onclick="TyagiHub.Toast.show('ऑथेंटिकेशन जल्द आ रहा है!', 'info'); return false;">
-    लॉगिन
-  </a>
+ <a href="#"
+   class="btn btn-primary btn-sm"
+   onclick="google.accounts.id.prompt(); return false;">
+  लॉगिन
+</a>
 {% else %}
-  <a href="#"
-     class="btn btn-primary btn-sm"
-     onclick="TyagiHub.Toast.show('Authentication coming soon!', 'info'); return false;">
-    Sign In
-  </a>
+<a href="#"
+   class="btn btn-primary btn-sm"
+   onclick="google.accounts.id.prompt(); return false;">
+  Sign In
+</a>
 {% endif %}
         <button class="navbar__hamburger"
           aria-label="{% if page.lang == 'hi' %}मेनू खोलें{% else %}Toggle menu{% endif %}"
