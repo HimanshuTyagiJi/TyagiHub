@@ -1,1415 +1,2539 @@
 ---
 layout: default
-title: "Mathematics Formulas - Class 9, 10, 11, 12, CBSE, UP Board, JEE"
+section: learn
+learn_type: formula
 permalink: /learn/maths-formulas/
+lang_switch: false
+lang_toggle: false
 ---
-<!-- KaTeX CDNs -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
-<script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
-
-<!-- Google Font and Tailwind Play CDN for high performance compilation -->
-<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-<script src="https://cdn.tailwindcss.com"></script>
-
-<!-- Lucide Icons CDN -->
-<script src="https://unpkg.com/lucide@latest"></script>
-
-<style>
-  :root {
-    --font-sans: 'Outfit', sans-serif;
-    --font-mono: 'JetBrains Mono', monospace;
-  }
-  body {
-    background-color: #060b13;
-    color: #f1f5f9;
-    font-family: 'Outfit', sans-serif;
-  }
-  
-  /* Custom scrollbar */
-  .custom-scrollbar::-webkit-scrollbar {
-    width: 6px;
-    height: 6px;
-  }
-  .custom-scrollbar::-webkit-scrollbar-track {
-    background: rgba(10, 17, 32, 0.4);
-    border-radius: 4px;
-  }
-  .custom-scrollbar::-webkit-scrollbar-thumb {
-    background: rgba(99, 102, 241, 0.35);
-    border-radius: 4px;
-  }
-  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-    background: rgba(99, 102, 241, 0.6);
-  }
-
-  /* Table styles */
-  .th-math-table {
-    width: 100%;
-    border-collapse: separate;
-    border-spacing: 0;
-    margin-top: 0.5rem;
-    margin-bottom: 0.5rem;
-  }
-  .th-math-table th {
-    background: rgba(30, 41, 59, 0.85);
-    color: #cbd5e1;
-    font-weight: 700;
-    padding: 12px 16px;
-    text-align: left;
-    border-bottom: 2px solid #1e293b;
-    font-size: 0.875rem;
-  }
-  .th-math-table td {
-    padding: 14px 16px;
-    border-bottom: 1px solid rgba(30, 41, 59, 0.5);
-    color: #e2e8f0;
-    font-size: 0.9rem;
-    vertical-align: middle;
-  }
-  .th-math-table tr:hover td {
-    background: rgba(99, 102, 241, 0.06);
-    color: #ffffff;
-  }
-  .th-math-table tr:last-child td {
-    border-bottom: none;
-  }
-
-  /* Scroll wrapper */
-  .scroll-x {
-    overflow-x: auto;
-    width: 100%;
-    -webkit-overflow-scrolling: touch;
-    border: 1px solid rgba(30, 41, 59, 0.6);
-    border-radius: 12px;
-    background: rgba(15, 23, 42, 0.4);
-    margin: 1rem 0;
-  }
-
-  /* Math card animations */
-  .glow-card {
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  }
-  .glow-card:hover {
-    box-shadow: 0 0 25px rgba(99, 102, 241, 0.12);
-    border-color: rgba(99, 102, 241, 0.3);
-    transform: translateY(-2px);
-  }
-
-  /* Mobile Responsive Sidebar Drawer */
-  @media (max-width: 1023px) {
-    .th-left-col-wrapper {
-      position: fixed !important;
-      top: 0;
-      left: -320px !important;
-      width: 290px !important;
-      height: 100vh !important;
-      z-index: 1001 !important;
-      background: #090e17 !important;
-      border-right: 1px solid #1e293b !important;
-      box-shadow: 4px 0 24px rgba(0, 0, 0, 0.5);
-      transition: left 0.3s ease-in-out;
-      overflow-y: auto;
-      display: block !important;
-      padding: 24px !important;
-    }
-    .th-left-col-wrapper.mobile-open {
-      left: 0 !important;
-    }
-  }
-
-  /* Premium Maths Hero */
-  .maths-hero {
-    background: radial-gradient(circle at 85% 15%, rgba(99, 102, 241, 0.15), transparent 45%),
-                radial-gradient(circle at 15% 85%, rgba(139, 92, 246, 0.1), transparent 45%),
-                #0b1329;
-  }
-</style>
 
 <div class="tyagihub-main-layout">
 
-  <!-- Left Sidebar Wrapper -->
-  <div class="th-left-col-wrapper" id="mobileSidebar">
-    <div class="flex items-center justify-between mb-4 lg:hidden pb-2 border-b border-slate-800">
-      <span class="text-xs font-bold text-slate-400 uppercase tracking-wider">Navigation Menu</span>
-      <button class="p-2 text-slate-400 hover:text-white" onclick="toggleMobileSidebar(event)">
-        <i data-lucide="x" class="h-5 w-5"></i>
-      </button>
-    </div>
-    {% include sidebars/math-formulas.html %}
-  </div>
-
-  <!-- Main Content Space -->
-  <div style="grid-column: 2; min-width: 0 !important; width: 100% !important; overflow: hidden !important; contain: layout style !important; isolation: isolate !important; clear: both !important; box-sizing: border-box; padding: 10px;">
-    
-    <!-- Mobile Navigation Bar -->
-    <div class="flex items-center justify-between lg:hidden mb-6 bg-slate-900/80 border border-slate-800 p-4 rounded-2xl">
-      <button class="px-4 py-2 bg-indigo-650 hover:bg-indigo-600 text-white rounded-xl text-xs font-semibold flex items-center gap-2 shadow-lg transition-all" onclick="toggleMobileSidebar(event)">
-        <i data-lucide="menu" class="h-4 w-4"></i>
-        <span>Syllabus Menu</span>
-      </button>
-      <div class="text-xs text-indigo-400 font-bold uppercase tracking-wider">Mathematics</div>
+    <div class="th-left-col-wrapper">
+        <button class="th-mobile-menu-trigger" onclick="toggleMobileSidebar(event)">
+            ☰ <span>Menu</span>
+        </button>
+        {% include left-sidebar-selector.html %}
     </div>
 
-    <!-- Hero Header section -->
-    <div class="maths-hero border border-slate-800/85 rounded-3xl p-6 sm:p-10 mb-8 relative overflow-hidden shadow-2xl">
-      <div class="relative z-10 max-w-3xl">
-        <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[10px] font-bold bg-indigo-500/10 text-indigo-400 border border-indigo-500/20 mb-4 tracking-wider uppercase">
-          📐 Class 9 Mathematics Complete Cheat Sheet
-        </span>
-        <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-100 tracking-tight leading-tight mb-4 font-sans">
-          कक्षा 9वीं गणित के संपूर्ण सूत्र <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-400 font-medium">LaTeX Edition</span>
-        </h1>
-        <p class="text-xs sm:text-sm text-slate-400 leading-relaxed max-w-2xl">
-          सभी अध्यायों के महत्वपूर्ण सिद्धांतों, परिभाषाओं, उदाहरणों और गणितीय सूत्रों की एक संपूर्ण सूची। परीक्षाओं की सर्वोत्तम तैयारी और त्वरित रिवीजन के लिए विशेष रूप से डिज़ाइन किया गया।
-        </p>
-      </div>
-    </div>
+    <div style="grid-column: 2; min-width: 0 !important; width: 100% !important; overflow-x: auto !important; contain: layout style !important; isolation: isolate !important; clear: both !important; box-sizing: border-box; padding: 10px;">
 
-    <!-- Global search bar -->
-    <div class="relative max-w-xl mx-auto mb-10 mt-2">
-      <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
-        <i data-lucide="search" class="h-5 w-5 text-slate-400"></i>
-      </div>
-      <input type="text" id="mathFormulaSearch" placeholder="सूत्र या टॉपिक खोजें (उदा. परिमेय, Polynomial, sin θ)..." class="w-full pl-11 pr-4 py-3.5 bg-slate-900 border border-slate-800 rounded-2xl text-slate-100 placeholder-slate-400 focus:outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20 transition-all text-sm shadow-inner" oninput="filterMathFormulas()">
-    </div>
 
-    <!-- Formulas Sheet Grid -->
-    <div class="space-y-12" id="mathFormulasContainer">
+<div id="root">
 
-      <!-- CHAPTER 1: NUMBER SYSTEM -->
-      <section id="chapter-real-numbers" class="bg-slate-900/40 border border-slate-800/80 rounded-3xl p-6 sm:p-8 glow-card">
-        <div class="flex items-center gap-3 border-b border-slate-800/80 pb-4 mb-6">
-          <span class="text-2xl sm:text-3xl">🔢</span>
-          <div>
-            <span class="text-[10px] text-indigo-400 font-bold uppercase tracking-wider">Chapter 1</span>
-            <h2 class="text-xl sm:text-2xl font-bold text-slate-100 font-sans">संख्या पद्धति (Number System)</h2>
-          </div>
-        </div>
+            <header class="math-header">
+                <div class="header-content">
 
-        <p class="text-sm text-slate-300 mb-4 leading-relaxed">
-          संख्याओं को प्रदर्शित करने और उनकी विभिन्न विशेषताओं के अध्ययन को <b>संख्या पद्धति (Number System)</b> कहते हैं।
-        </p>
+                    <!-- SVG Math Animation -->
+                    <div class="header-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 220" role="img"
+                            aria-labelledby="math-title-svg">
+                            <title id="math-title-svg">Interactive Math Formulas Icon</title>
+                            <style>
+                                .circle-bg {
+                                    fill: #4338ca;
+                                }
 
-        <div class="scroll-x custom-scrollbar">
-          <table class="th-math-table">
-            <thead>
-              <tr>
-                <th class="w-16">क्र.सं.</th>
-                <th class="w-1/3">प्रकार / नाम</th>
-                <th>परिभाषा एवं उदाहरण</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td class="font-mono text-indigo-400">1</td>
-                <td class="font-bold">प्राकृतिक संख्याएँ (Natural Numbers)</td>
-                <td>गणना करने वाली संख्याएँ: $1, 2, 3, 4, 5, \dots$ (इसे $\mathbb{N}$ से दर्शाते हैं)</td>
-              </tr>
-              <tr>
-                <td class="font-mono text-indigo-400">2</td>
-                <td class="font-bold">पूर्ण संख्याएँ (Whole Numbers)</td>
-                <td>यदि प्राकृतिक संख्याओं में $0$ मिला लें: $0, 1, 2, 3, 4, \dots$ (इसे $\mathbb{W}$ से दर्शाते हैं)</td>
-              </tr>
-              <tr>
-                <td class="font-mono text-indigo-400">3</td>
-                <td class="font-bold">पूर्णांक (Integers)</td>
-                <td>सभी धनात्मक, ऋणात्मक संख्याएँ और शून्य: $\dots, -3, -2, -1, 0, 1, 2, 3, \dots$ (इसे $\mathbb{Z}$ से दर्शाते हैं)</td>
-              </tr>
-              <tr>
-                <td class="font-mono text-indigo-400">4</td>
-                <td class="font-bold">धनात्मक पूर्णांक (Positive Integers)</td>
-                <td>$1, 2, 3, 4, 5, \dots$</td>
-              </tr>
-              <tr>
-                <td class="font-mono text-indigo-400">5</td>
-                <td class="font-bold">ऋणात्मक पूर्णांक (Negative Integers)</td>
-                <td>$-1, -2, -3, -4, -5, \dots$</td>
-              </tr>
-              <tr>
-                <td class="font-mono text-indigo-400">6</td>
-                <td class="font-bold">परिमेय संख्याएँ (Rational Numbers)</td>
-                <td>जिन्हें $\frac{p}{q}$ के रूप में लिख सकें, जहाँ $p, q \in \mathbb{Z}$ और $q \neq 0$ हो। जैसे: $\frac{2}{3}, \frac{-7}{5}, 4$ (इसे $\mathbb{Q}$ से दर्शाते हैं)</td>
-              </tr>
-              <tr>
-                <td class="font-mono text-indigo-400">7</td>
-                <td class="font-bold">अपरिमेय संख्याएँ (Irrational Numbers)</td>
-                <td>जिन्हें $\frac{p}{q}$ के रूप में न लिखा जा सके। जैसे: $\sqrt{2}, \sqrt{3}, \pi$</td>
-              </tr>
-              <tr>
-                <td class="font-mono text-indigo-400">8</td>
-                <td class="font-bold">वास्तविक संख्याएँ (Real Numbers)</td>
-                <td>सभी परिमेय तथा अपरिमेय संख्याओं का संग्रह। जैसे: $4, -2.5, \sqrt{7}, \pi$ (इसे $\mathbb{R}$ से दर्शाते हैं)</td>
-              </tr>
-              <tr>
-                <td class="font-mono text-indigo-400">9</td>
-                <td class="font-bold">सम संख्याएँ (Even Numbers)</td>
-                <td>वे संख्याएँ जो $2$ से पूरी तरह विभाजित हों। सामान्य रूप: $2n$, जैसे: $2, 4, 6, 8, \dots$</td>
-              </tr>
-              <tr>
-                <td class="font-mono text-indigo-400">10</td>
-                <td class="font-bold">विषम संख्याएँ (Odd Numbers)</td>
-                <td>वे संख्याएँ जो $2$ से विभाजित न हों। सामान्य रूप: $2n + 1$, जैसे: $1, 3, 5, 7, \dots$</td>
-              </tr>
-              <tr>
-                <td class="font-mono text-indigo-400">11</td>
-                <td class="font-bold">अभाज्य संख्याएँ (Prime Numbers)</td>
-                <td>जो केवल $1$ और स्वयं से विभाजित हों। जैसे: $2, 3, 5, 7, 11, 13, 17, 19, \dots$ ($2$ सबसे छोटा और एकमात्र सम अभाज्य संख्या है)</td>
-              </tr>
-              <tr>
-                <td class="font-mono text-indigo-400">12</td>
-                <td class="font-bold">भाज्य संख्याएँ (Composite Numbers)</td>
-                <td>जिनके $2$ से अधिक गुणनखंड हों। जैसे: $4, 6, 8, 9, 10, \dots$ ($4$ सबसे छोटी भाज्य संख्या है)</td>
-              </tr>
-              <tr>
-                <td class="font-mono text-indigo-400">13</td>
-                <td class="font-bold">HCF और LCM</td>
-                <td>
-                  <b>HCF (महतम समापवर्तक):</b> सबसे बड़ी उभयनिष्ठ भाजक संख्या।<br>
-                  <b>LCM (लघुतम समापवर्त्य):</b> सबसे छोटी उभयनिष्ठ गुणज संख्या।
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+                                .math-text {
+                                    font-size: 30px;
+                                    font-weight: 700;
+                                    fill: #fff;
+                                    text-anchor: middle;
+                                    dominant-baseline: middle;
+                                }
 
-        <!-- Section for Complex Numbers (समिश्र संख्याएँ) -->
-        <h3 class="text-base sm:text-lg font-bold text-slate-200 mt-6 mb-3">📍 सम्मिश्र संख्याएँ (Complex Numbers)</h3>
-        <p class="text-xs sm:text-sm text-slate-400 mb-4">
-          वे संख्याएँ जिन्हें $a + bi$ के रूप में व्यक्त किया जा सके, जहाँ $a, b$ वास्तविक संख्याएँ हैं तथा $i = \sqrt{-1}$ काल्पनिक मात्रक (Imaginary unit) है।
-        </p>
+                                .formula {
+                                    font-size: 18px;
+                                    fill: #facc15;
+                                    font-weight: 600;
+                                    text-anchor: middle;
+                                }
 
-        <div class="scroll-x custom-scrollbar">
-          <table class="th-math-table">
-            <thead>
-              <tr>
-                <th class="w-16">क्र.सं.</th>
-                <th class="w-1/3">विषय / सूत्र</th>
-                <th>गणितीय निरूपण (LaTeX)</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td class="font-mono text-indigo-400">1</td>
-                <td class="font-bold">सामान्य रूप (General Form)</td>
-                <td>$$z = a + bi$$</td>
-              </tr>
-              <tr>
-                <td class="font-mono text-indigo-400">2</td>
-                <td class="font-bold">मापांक (Modulus)</td>
-                <td>$$|z| = \sqrt{a^2 + b^2}$$</td>
-              </tr>
-              <tr>
-                <td class="font-mono text-indigo-400">3</td>
-                <td class="font-bold">संयुग्मी (Conjugate)</td>
-                <td>$$\bar{z} = a - bi$$</td>
-              </tr>
-              <tr>
-                <td class="font-mono text-indigo-400">4</td>
-                <td class="font-bold">ध्रुवीय रूप (Polar Form)</td>
-                <td>$$z = r(\cos\theta + i\sin\theta)$$ <br> जहाँ $r = |z|$ और $\theta = \tan^{-1}\left(\frac{b}{a}\right)$ है</td>
-              </tr>
-              <tr>
-                <td class="font-mono text-indigo-400">5</td>
-                <td class="font-bold">योग और अंतर (Addition & Subtraction)</td>
-                <td>$$(a+bi) \pm (c+di) = (a \pm c) + (b \pm d)i$$</td>
-              </tr>
-              <tr>
-                <td class="font-mono text-indigo-400">6</td>
-                <td class="font-bold">गुणनफल (Multiplication)</td>
-                <td>$$(a+bi)(c+di) = (ac - bd) + (ad + bc)i$$</td>
-              </tr>
-              <tr>
-                <td class="font-mono text-indigo-400">7</td>
-                <td class="font-bold">भागफल (Division)</td>
-                <td>$$\frac{a+bi}{c+di} = \frac{(ac+bd) + (bc-ad)i}{c^2+d^2}$$</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </section>
+                                .orbit {
+                                    stroke: #a5b4fc;
+                                    stroke-dasharray: 4 6;
+                                    fill: none;
+                                    opacity: 0.6;
+                                }
 
-      <!-- CHAPTER 2: POLYNOMIALS -->
-      <section id="chapter-polynomials" class="bg-slate-900/40 border border-slate-800/80 rounded-3xl p-6 sm:p-8 glow-card">
-        <div class="flex items-center gap-3 border-b border-slate-800/80 pb-4 mb-6">
-          <span class="text-2xl sm:text-3xl">📐</span>
-          <div>
-            <span class="text-[10px] text-indigo-400 font-bold uppercase tracking-wider">Chapter 2</span>
-            <h2 class="text-xl sm:text-2xl font-bold text-slate-100 font-sans">बहुपद (Polynomials)</h2>
-          </div>
-        </div>
+                                .rotate {
+                                    animation: spin 12s linear infinite;
+                                    transform-origin: 120px 110px;
+                                }
 
-        <p class="text-sm text-slate-300 mb-4 leading-relaxed">
-          चर और अचर के घातांक गुणांकों के संयोजन से बने गणितीय व्यंजकों को <b>बहुपद (Polynomials)</b> कहा जाता है।
-        </p>
+                                .floating {
+                                    animation: float 3s ease-in-out infinite alternate;
+                                }
 
-        <div class="scroll-x custom-scrollbar">
-          <table class="th-math-table">
-            <thead>
-              <tr>
-                <th class="w-16">क्र.सं.</th>
-                <th class="w-1/3">विषय / सूत्र</th>
-                <th>सरल व्याख्या एवं गणितीय रूप</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td class="font-mono text-indigo-400">1</td>
-                <td class="font-bold">बहुपद का सामान्य रूप</td>
-                <td>$$P(x) = a_n x^n + a_{n-1} x^{n-1} + \dots + a_1 x + a_0$$ <br>जहाँ $n$ एक गैर-ऋणात्मक पूर्णांक है।</td>
-              </tr>
-              <tr>
-                <td class="font-mono text-indigo-400">2</td>
-                <td class="font-bold">बहुपद का मान निकालना</td>
-                <td>यदि $P(x) = x^2 + 3x + 2$ हो, तो $x = 1$ पर:<br>$$P(1) = 1^2 + 3(1) + 2 = 6$$</td>
-              </tr>
-              <tr>
-                <td class="font-mono text-indigo-400">3</td>
-                <td class="font-bold">शून्य बहुपद (Zero Polynomial)</td>
-                <td>जब सभी पदों के गुणांक शून्य हों, जैसे $P(x) = 0$ इसकी घात अपरिभाषित होती है।</td>
-              </tr>
-              <tr>
-                <td class="font-mono text-indigo-400">4</td>
-                <td class="font-bold">रैखिक बहुपद (Linear Polynomial)</td>
-                <td>जिसमें चर की अधिकतम घात $1$ हो। जैसे: $x + 2$</td>
-              </tr>
-              <tr>
-                <td class="font-mono text-indigo-400">5</td>
-                <td class="font-bold">द्विघात बहुपद (Quadratic Polynomial)</td>
-                <td>जिसमें चर की अधिकतम घात $2$ हो। जैसे: $x^2 + 3x + 2$</td>
-              </tr>
-              <tr>
-                <td class="font-mono text-indigo-400">6</td>
-                <td class="font-bold">बहुपद की घात (Degree of Polynomial)</td>
-                <td>बहुपद में चर की सबसे बड़ी घात (power) को "डिग्री" या "घात" कहते हैं। जैसे: $x^3 + x^2$ की घात $= 3$ है।</td>
-              </tr>
-              <tr>
-                <td class="font-mono text-indigo-400">7</td>
-                <td class="font-bold">गुणनखंड प्रमेय (Factor Theorem)</td>
-                <td>यदि किसी बहुपद $P(x)$ के लिए $P(a) = 0$ हो, तो $$(x - a)$$ बहुपद $P(x)$ का एक गुणनखंड होगा।</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+                                .glow {
+                                    filter: url(#glow);
+                                }
 
-        <!-- Algebra Identities Section -->
-        <h3 class="text-base sm:text-lg font-bold text-slate-200 mt-6 mb-3">⚡ महत्वपूर्ण बीजीय सर्वसमिकाएँ (Algebraic Identities)</h3>
-        <p class="text-xs sm:text-sm text-slate-400 mb-4">
-          सर्वसमिकाएँ वे समीकरण होते हैं जो चरों के सभी मानों के लिए सत्य होते हैं।
-        </p>
+                                .pulse {
+                                    animation: pulse 2s ease-in-out infinite;
+                                }
 
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <div class="bg-slate-950 p-4 border border-slate-800/80 rounded-2xl space-y-2">
-            <span class="text-xs text-indigo-400 font-mono font-bold">Identity Group A (Power 2 & 3)</span>
-            <div class="space-y-3 pt-2 text-sm">
-              <div>$$(a + b)^2 = a^2 + 2ab + b^2$$</div>
-              <div>$$(a - b)^2 = a^2 - 2ab + b^2$$</div>
-              <div>$$(a + b)(a - b) = a^2 - b^2$$</div>
-              <div>$$a^2 + b^2 = (a + b)^2 - 2ab$$</div>
-              <div>$$(a + b + c)^2 = a^2 + b^2 + c^2 + 2ab + 2bc + 2ca$$</div>
-              <div>$$(a - b - c)^2 = a^2 + b^2 + c^2 - 2ab + 2bc - 2ca$$</div>
+                                @keyframes spin {
+                                    from {
+                                        transform: rotate(0);
+                                    }
+
+                                    to {
+                                        transform: rotate(360deg);
+                                    }
+                                }
+
+                                @keyframes float {
+                                    from {
+                                        transform: translateY(0);
+                                    }
+
+                                    to {
+                                        transform: translateY(-10px);
+                                    }
+                                }
+
+                                @keyframes pulse {
+
+                                    0%,
+                                    100% {
+                                        opacity: 0.6;
+                                        r: 4;
+                                    }
+
+                                    50% {
+                                        opacity: 1;
+                                        r: 6;
+                                    }
+                                }
+                            </style>
+
+                            <!-- Glow Filter -->
+                            <defs>
+                                <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+                                    <feGaussianBlur in="SourceGraphic" stdDeviation="2.5" result="blur" />
+                                    <feMerge>
+                                        <feMergeNode in="blur" />
+                                        <feMergeNode in="SourceGraphic" />
+                                    </feMerge>
+                                </filter>
+                            </defs>
+
+                            <!-- Background -->
+                            <circle class="circle-bg" cx="120" cy="110" r="95"></circle>
+
+                            <!-- Central Symbol -->
+                            <text x="120" y="115" class="math-text glow">π</text>
+
+                            <!-- Dotted Orbits -->
+                            <circle class="orbit" cx="120" cy="110" r="70"></circle>
+                            <circle class="orbit" cx="120" cy="110" r="45"></circle>
+
+                            <!-- Rotating Formulas -->
+                            <g class="rotate">
+                                <text x="120" y="30" class="formula">x²</text>
+                                <text x="200" y="110" class="formula">√a²+b²</text>
+                                <text x="120" y="190" class="formula">sin θ</text>
+                                <text x="40" y="110" class="formula">A=πr²</text>
+                            </g>
+
+                            <!-- Floating Extra -->
+                            <text x="120" y="60" class="formula floating">a² + b² = c²</text>
+
+                            <!-- Glowing Pulse Dots -->
+                            <circle class="pulse glow" cx="190" cy="60" r="5" fill="#fbbf24"></circle>
+                            <circle class="pulse glow" cx="60" cy="160" r="5" fill="#34d399"></circle>
+                            <circle class="pulse glow" cx="170" cy="160" r="5" fill="#f87171"></circle>
+                        </svg>
+                    </div>
+
+                    <!-- Text Content -->
+                    <div class="header-text">
+                        <h1>Class 9 Math – All Formulas</h1>
+                        <p>
+                            Master <strong>Class 9 Mathematics formulas</strong> in Algebra, Geometry, Trigonometry, and
+                            Mensuration.
+                            Interactive animations and clear breakdowns make revision engaging and effective for every
+                            student.
+                        </p>
+                    </div>
+                </div>
+                <br>
+                <div class="post-meta-container">
+                    <div class="byline">
+                        <div class="author-avatar">
+                            <svg width="40" height="40" viewBox="0 0 300 300">
+                                <circle cx="150" cy="150" r="150" fill="white" />
+                                <text x="50%" y="35%" font-size="90" font-weight="bold" fill="red"
+                                    text-anchor="middle">GK</text>
+                                <text x="50%" y="65%" font-size="38" fill="purple" text-anchor="middle">Learn
+                                    Study</text>
+                                <clipPath id="circle-clip-avatar">
+                                    <circle cx="150" cy="150" r="150" />
+                                </clipPath>
+                                <g clip-path="url(#circle-clip-avatar)">
+                                    <path fill="#c0a4fb" fill-opacity="1">
+                                        <animate attributeName="d" dur="8s" repeatCount="indefinite"
+                                            values="M0 230 Q 75 210, 150 230 T 300 210 L 300 300 L 0 300 Z; M0 240 Q 75 260, 150 240 T 300 250 L 300 300 L 0 300 Z; M0 230 Q 75 210, 150 230 T 300 210 L 300 300 L 0 300 Z" />
+                                    </path>
+                                    <path fill="#641ef9" fill-opacity="0.7">
+                                        <animate attributeName="d" dur="7s" repeatCount="indefinite"
+                                            values="M0 220 Q 75 245, 150 220 T 300 235 L 300 300 L 0 300 Z; M0 250 Q 75 220, 150 250 T 300 220 L 300 300 L 0 300 Z; M0 220 Q 75 245, 150 220 T 300 235 L 300 300 L 0 300 Z" />
+                                    </path>
+                                </g>
+                            </svg>
+                        </div>
+                        <div class="author-details">
+                            <span class="author vcard">
+                                by
+                                <span class="name">
+                                    <a class="url fn n" href="#" rel="author">GK Learn Study</a>
+                                </span>
+                                <span class="author-status verified">
+                                    <a class="verified-author" title="Verified Author" href="#"
+                                        aria-label="Verified Author">
+                                        <svg width="16" height="16" role="img" aria-hidden="true" viewBox="0 0 16 16">
+                                            <path fill-rule="evenodd"
+                                                d="M16 8c0 4.42-3.58 8-8 8s-8-3.58-8-8 3.58-8 8-8 8 3.58 8 8zm-3.28-2.47a.75.75 0 00-1.06-1.06L6.75 9.44l-1.97-1.97a.75.75 0 10-1.06 1.06l2.5 2.5a.75.75 0 001.06 0l4.97-4.97z">
+                                            </path>
+                                        </svg>
+                                    </a>
+                                </span>
+                            </span>
+                            <span class="entry-modified-date"> | Updated on <time class="entry-date updated"
+                                    datetime="2024-05-21T10:45:02+05:30">May 21, 2024</time> </span>
+                        </div>
+                    </div>
+                    <div class="share-button-wrapper">
+                        <button id="shareButton" class="share-button" title="Share this page">
+                            <svg class="share-icon" viewBox="0 0 24 24" width="20" height="20" role="img"
+                                aria-hidden="true">
+                                <path
+                                    d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92 1.61 0 2.92-1.31 2.92-2.92s-1.31-2.92-2.92-2.92z" />
+                            </svg>
+                            <span>Share</span>
+                        </button>
+                    </div>
+                </div>
+            </header>
+
+            <style>
+                .header-content {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    gap: 1.5rem;
+                    max-width: 1000px;
+                    margin: 0 auto;
+                    padding: 1rem;
+                }
+
+                .header-icon svg {
+                    width: 240px;
+                    height: auto;
+                    max-width: 100%;
+                }
+
+                .header-text {
+                    text-align: center;
+                }
+
+                .header-text h1 {
+                    margin: 0;
+                    font-size: 1.8rem;
+                    font-weight: 800;
+                }
+
+                .header-text p {
+                    margin-top: 0.5rem;
+                    font-size: 1rem;
+                    color: #374151;
+                    line-height: 1.5;
+                }
+
+                /* Desktop Layout */
+                @media (min-width: 768px) {
+                    .header-content {
+                        flex-direction: row;
+                        align-items: center;
+                        text-align: left;
+                    }
+
+                    .header-icon {
+                        flex: 0 0 280px;
+                        text-align: center;
+                    }
+
+                    .header-icon svg {
+                        width: 100%;
+                        max-width: 280px;
+                    }
+
+                    .header-text {
+                        flex: 1;
+                    }
+                }
+            </style>
+
+            <h1>Class 9 Maths Formulas in Hindi</h1>
+
+            <div class="class-buttons">
+                <a href="https://gklearnstudy.in/class-10th/mathsformula" class="btn-link">Class 10</a>
+                <a href="https://gklearnstudy.in/class-11th/mathsformula" class="btn-link">Class 11</a>
+                <a href="https://gklearnstudy.in/class-12th/mathsformula" class="btn-link">Class 12</a>
+                <a href="https://gklearnstudy.in/competitive/mathsformula" class="btn-link">Competitive & Commerce</a>
             </div>
-          </div>
+            <style>
+                .class-buttons {
+                    display: flex;
+                    justify-content: left;
+                    align-items: center;
+                    gap: 10px;
+                    /* buttons ke beech gap */
+                    margin-bottom: 20px;
+                    flex-wrap: nowrap;
+                    /* ek line me rakhega */
+                    overflow-x: auto;
+                    /* agar space kam hua to horizontal scroll */
+                    padding: 5px;
+                }
 
-          <div class="bg-slate-950 p-4 border border-slate-800/80 rounded-2xl space-y-2">
-            <span class="text-xs text-indigo-400 font-mono font-bold">Identity Group B (Power 3, 4, 5 & Advanced)</span>
-            <div class="space-y-3 pt-2 text-sm">
-              <div>$$(a + b)^3 = a^3 + 3a^2b + 3ab^2 + b^3 = a^3 + b^3 + 3ab(a+b)$$</div>
-              <div>$$(a - b)^3 = a^3 - 3a^2b + 3ab^2 - b^3 = a^3 - b^3 - 3ab(a-b)$$</div>
-              <div>$$a^3 - b^3 = (a-b)(a^2 + ab + b^2)$$</div>
-              <div>$$a^3 + b^3 = (a+b)(a^2 - ab + b^2)$$</div>
-              <div>$$(a + b)^4 = a^4 + 4a^3b + 6a^2b^2 + 4ab^3 + b^4$$</div>
-              <div>$$(a - b)^4 = a^4 - 4a^3b + 6a^2b^2 - 4ab^3 + b^4$$</div>
-              <div>$$a^4 - b^4 = (a-b)(a+b)(a^2 + b^2)$$</div>
-              <div>$$a^5 - b^5 = (a-b)(a^4 + a^3b + a^2b^2 + ab^3 + b^4)$$</div>
-              <div>$$(a - b)^5 = a^5 - 5a^4b + 10a^3b^2 - 10a^2b^3 + 5ab^4 - b^5$$</div>
-              <div>$$x^3 + y^3 + z^3 - 3xyz = (x+y+z)(x^2+y^2+z^2-xy-yz-zx)$$</div>
-              <div>$$x^2+y^2+z^2-xy-yz-zx = \frac{1}{2} [(x-y)^2 + (y-z)^2 + (z-x)^2]$$</div>
+                .btn-link {
+                    flex: 0 0 auto;
+                    /* shrink/line-break na ho */
+                    text-decoration: none;
+                    background-color: #2563eb;
+                    color: white;
+                    padding: 10px 18px;
+                    border-radius: 5px;
+                    font-size: 16px;
+                    white-space: nowrap;
+                    /* text break na ho */
+                    transition: background-color 0.3s ease;
+                }
+
+                .btn-link:hover {
+                    background-color: #1d4ed8;
+                }
+            </style>
+
+
+            <section id="Number-System">
+                <div>
+                    <h2 id="Mathematics-All-Formulas"><b>Mathematics All Formulas</b></h2>
+                </div>
+                <h2 id="Number-System"><b>Number System</b></h2>
+                <div class="green-background">
+                    गणित में, संख्या पद्धति (Number System) संख्याओं को दर्शाने और उनका प्रयोग करने की विधि है। यह
+                    विभिन्न प्रकार की संख्याओं जैसे प्राकृतिक संख्याएँ, पूर्ण संख्याएँ, पूर्णांक, परिमेय संख्याएँ,
+                    अपरिमेय संख्याएँ, और वास्तविक
+                    संख्याएँ, आदि का अध्ययन करती है।
+                </div>
+                <br />
+
+                <p id="Natural-Numbers-(प्राकृतिक-संख्याएँ):"><b>1. Natural Numbers (प्राकृतिक संख्याएँ):</b></p>
+                <ul>
+                    <li><b>Definition-</b>&nbsp;वे संख्याएँ जो 1 से शुरू होती हैं और अनंत तक जाती हैं।</li>
+                    <li><strong>Example-</strong> 1, 2, 3, 4, ...</li>
+                    <li><strong>Explanation-</strong> इनका प्रयोग गिनती करने में किया जाता है। इनमें दशमलव या ऋणात्मक
+                        संख्या शामिल नहीं होती हैं।</li>
+                </ul>
+                <br />
+                <p id="Whole-Numbers-(पूर्ण-संख्याएँ):"><b>2. Whole Numbers (पूर्ण संख्याएँ):</b></p>
+                <ul>
+                    <li><b>Definition-</b>&nbsp;वे संख्याएँ जो 0 से शुरू होती हैं और प्राकृतिक संख्याएँ भी शामिल होती
+                        हैं।</li>
+                    <li><strong>Example-</strong> 0, 1, 2, 3, 4, ...</li>
+                    <li><strong>Explanation-</strong> ये संख्याएँ 0 से शुरू होती हैं और इनमें दशमलव या ऋणात्मक संख्या
+                        शामिल नहीं होती हैं।</li>
+                </ul>
+                <br />
+                <p id="Integers-(पूर्णांक):"><b>3. Integers (पूर्णांक):</b></p>
+                <ul>
+                    <li><b>Definition-</b>&nbsp;वे संख्याएँ जो प्राकृतिक संख्याएँ, उनकी ऋणात्मक संख्याएँ और 0 को शामिल
+                        करती हैं।</li>
+                    <li><strong>Example-</strong> -3, -2, -1, 0, 1, 2, 3, ...</li>
+                    <li><strong>Explanation-</strong> इनमें ऋणात्मक संख्याएँ भी शामिल होती हैं, जो कि पूर्णांक का हिस्सा
+                        हैं।</li>
+                </ul>
+                <br />
+                <p id="Positive-Integers-(धन-पूर्णांक):"><b>4. Positive Integers (धन पूर्णांक):</b></p>
+
+                <ul>
+                    <li><b>Definition-</b> वे पूर्णांक जो 0 से बड़े होते हैं।</li>
+                    <li>
+                        <b>Example-</b>
+
+                        1 , 2 , 3 , 4 , 5 , ...
+                    </li>
+                </ul>
+                <br />
+                <p id="Negative-Integers-(ऋण पूर्णांक):"><b>5. Negative Integers (ऋण पूर्णांक):</b></p>
+
+                <ul>
+                    <li><b>Definition-</b> वे पूर्णांक जो 0 से छोटे होते हैं।</li>
+                    <li><b>Example- -</b>1 , -2 , -3 , -4 , -5 , ...<br /></li>
+                </ul>
+                <br />
+                <p id="Rational-Numbers-(परिमेय संख्याएँ):"><b>6. Rational Numbers (परिमेय संख्याएँ):</b></p>
+                <ul>
+                    <li><strong>Definition-</strong> वे संख्याएँ जिन्हें p/q के रूप में लिखा जा सकता है, जहाँ p और q
+                        पूर्णांक हैं और q ≠ 0।</li>
+                    <li><strong>Example-</strong> 1/2, 3/4, -2/5, ...</li>
+                    <li><strong>Explanation-</strong> यह वे संख्याएँ होती हैं जो पूर्णांक के अनुपात में होती हैं और
+                        इनमें दशमलव विस्तार सीमित होता है या आवर्ती होता है।</li>
+                </ul>
+                <br />
+                <p id="Irrational-Numbers-(अपरिमेय संख्याएँ):"><b>7. Irrational Numbers (अपरिमेय संख्याएँ):</b></p>
+                <ul>
+                    <li><strong>Definition-</strong> वे संख्याएँ जिन्हें p/q के रूप में नहीं लिखा जा सकता है और जिनके
+                        दशमलव विस्तार अनंत और आवर्ती नहीं होते हैं।</li>
+                    <li>
+                        <strong>Example-</strong> &nbsp;&nbsp;<span class="sqrtt"><span
+                                class="overline">2</span></span>, π, ...
+                    </li>
+                    <li><strong>Explanation-</strong> यह वे संख्याएँ होती हैं जिनके दशमलव अनंत और अव्यवस्थित होते हैं।
+                        जैसे π (पाई) जिसकी दशमलव विस्तार अनंत है और दोहराता नहीं है।</li>
+                </ul>
+
+                <br />
+                <p id="Real-Numbers-(वास्तविक संख्याएँ):"><b>8. Real Numbers (वास्तविक संख्याएँ):</b></p>
+                <ul>
+                    <li><strong>Definition-</strong> वे संख्याएँ जो Rational और Irrational दोनों संख्याओं को शामिल करती
+                        हैं।</li>
+                    <li>
+                        <strong>Example-</strong> 3, -1/2, &nbsp;&nbsp;&nbsp;<span class="sqrtt"><span
+                                class="overline">5</span></span>, π, ...
+                    </li>
+                    <li><strong>Explanation-</strong> वास्तविक संख्या वह होती है जो संख्या रेखा पर मौजूद होती है। इनमें
+                        प्राकृतिक संख्या, पूर्णांक, परिमेय संख्या, और अपरिमेय संख्या शामिल होती हैं।</li>
+                </ul>
+                <br />
+                <p id="Even-Numbers(सम संख्या):"><b>9. Even Numbers (सम संख्या):</b></p>
+                <ul>
+                    <li><b>Definition-</b> वे संख्याएँ जो 2 से विभाजित हो सकती हैं।</li>
+                    <li><b>Example-</b>2, 4, 6, 8, 10, ...</li>
+                    <li>
+                        <b>सामान्य रूप:</b>
+
+                        &nbsp;एक पूर्णांक है।
+                    </li>
+                    <li>
+                        <b>Example-</b> 2 = 2 × 1, 4 = 2 × 2, 6 = 2 × 3
+
+                        <br />
+                    </li>
+                </ul>
+                <br />
+                <p id="Odd-Numbers-(विषम संख्या):"><b>10. Odd Numbers (विषम संख्या):</b></p>
+                <ul>
+                    <li><b>Definition-</b> वे संख्याएँ जो 2 से विभाजित नहीं हो सकती हैं।</li>
+                    <li><b>Example-&nbsp;</b>1, 3, 5, 7, 9, ...<br /></li>
+                    <li><b>सामान्य रूप:</b>&nbsp;2n + 1,जहां n एक पूर्णांक है।</li>
+                    <li>
+                        <b>Example:</b>1 = 2 × 0 + 1, 3= 2 × 1 + 1, 5 = 2 × 2 + 1
+
+                        <br />
+                    </li>
+                </ul>
+                <br />
+                <p id="Prime-Numbers-(अभाज्य-संख्या):"><b>11. Prime Numbers (अभाज्य संख्या):</b></p>
+                <ul>
+                    <li><b>Definition-</b> वे संख्याएँ जो केवल 1 और स्वयं से विभाजित हो सकती हैं।</li>
+                    <li><b>Example-&nbsp;</b>2, 3, 5, 7, 11, 13, 17, 19, ...</li>
+                    <li><b>Explanation-</b> 2 सबसे छोटी और एकमात्र सम अभाज्य संख्या है।</li>
+                </ul>
+                <br />
+                <p id="Composite-Numbers-(समग्र-संख्या):"><b>12. Composite Numbers (समग्र संख्या):</b></p>
+                <ul>
+                    <li><b>Definition-</b> वे संख्याएँ जो 1 और स्वयं के अलावा अन्य संख्याओं से भी विभाजित हो सकती हैं।
+                    </li>
+                    <li>
+                        <b>Example-</b>
+
+                        4, 6, 8, 9, 10, 12, 14, 15, 16, 18, 20, ...<br />
+                    </li>
+
+                    <li><b>Explanation-</b> 4 सबसे छोटी समग्र संख्या है।</li>
+                </ul>
+                &nbsp;<br />
+                <p id="LCMHCF"><b>13. HCF and LCM (महत्तम समापवर्तक और लघुत्तम समापवर्त्य):</b></p>
+                <ul>
+                    <li>
+                        <p id="HCF (Highest Common Factor):"><b>HCF (Highest Common Factor):</b></p>
+                        <ul>
+                            <li><strong>Definition-</strong> दो या अधिक संख्याओं का सबसे बड़ा गुणनखंड जो उन सभी संख्याओं
+                                को विभाजित करता है।</li>
+                            <li><strong>Example-</strong> HCF of 12 and 15 is 3.</li>
+                            <li><strong>Explanation-</strong> जैसे 12 और 15 के सामान्य गुणनखंड 1 और 3 हैं। इनमें से सबसे
+                                बड़ा 3 है, इसलिए HCF 3 है।</li>
+                        </ul>
+                    </li>
+                    <li>
+                        <p id="LCM (Least Common Multiple):"><b>LCM (Least Common Multiple):</b></p>
+                        <ul>
+                            <li><strong>Definition-</strong> दो या अधिक संख्याओं का सबसे छोटा गुणनफल जो उन सभी संख्याओं
+                                से विभाजित हो सकता है।</li>
+                            <li><strong>Example-</strong> LCM of 12 and 15 is 60.</li>
+                            <li><strong>Explanation-</strong> जैसे 12 और 15 के गुणनफल 60 से विभाजित हो सकते हैं, तो इनका
+                                LCM 60 है।</li>
+                        </ul>
+                    </li>
+                </ul>
+
+                <br />
+                <p id="Complex Numbers (सम्मिश्र संख्याएँ):"><b>14. Complex Numbers (सम्मिश्र संख्याएँ):</b></p>
+                <ul>
+                    <li>
+                        <strong>Definition-</strong> वे संख्याएँ जो वास्तविक संख्या और काल्पनिक संख्या के रूप में होती
+                        हैं। इसे z = a + bi के रूप में लिखा जाता है, जहाँ a और b वास्तविक संख्याएँ हैं और i
+                        =&nbsp;&nbsp;&nbsp;
+                        <span class="sqrtt"><span class="overline">-1</span></span> ।
+                    </li>
+                    <li>
+                        <strong>Example-</strong> 3 + 2i, -1 + i&nbsp;&nbsp;&nbsp;<span class="sqrtt"><span
+                                class="overline">5</span></span>, ...
+                    </li>
+                    <li><strong>Explanation-</strong> इनमें वास्तविक संख्या (a) और काल्पनिक संख्या (b) का संयोग होता है।
+                        जैसे 3 + 2i में 3 वास्तविक और 2i काल्पनिक भाग है।</li>
+                </ul>
+                <br />
+                <p id="Modulus and Conjugate of a Complex Number:"><b>15. Modulus and Conjugate of a Complex Number:</b>
+                </p>
+                <ul>
+                    <li>
+                        <b>Modulus:</b>&nbsp;z = a + bi का मापांक &nbsp;&nbsp;&nbsp;<span class="sqrtt"><span
+                                class="overline">(a² + b²)</span></span> होता है।
+                    </li>
+                </ul>
+                <ul>
+                    <li>
+                        <strong>Example-</strong>
+                        |3 + 4i| = &nbsp;&nbsp;&nbsp;<span class="sqrtt"><span class="overline">(3² + 4²)</span></span>
+                        = &nbsp;&nbsp;&nbsp;<span class="sqrtt"><span class="overline">25</span> = 5.</span>
+                    </li>
+                    <li><strong>Explanation-</strong> यह सम्मिश्र संख्या की लंबाई होती है जो उसे 0 से मापता है।</li>
+                </ul>
+
+
+                <b>Conjugate:</b>&nbsp;z = a + bi का संयुग्म a - bi होता है।
+                <ul>
+                    <li><strong>Example-</strong> Conjugate of 3 + 4i is 3 - 4i.</li>
+                    <li><strong>Explanation-</strong> संयुग्म सम्मिश्र संख्या के काल्पनिक भाग को विपरीत चिह्न देता है।
+                    </li>
+                </ul>
+
+                <br />
+                <p id="16. Polar Form of Complex Numbers:"><b>16. Polar Form of Complex Numbers:</b></p>
+                <ul>
+                    <li>
+                        <strong>Definition-</strong> कोई सम्मिश्र संख्या z = a + bi को r(cosθ + i sinθ) के रूप में लिखा
+                        जा सकता है, जहाँ r =&nbsp;&nbsp;&nbsp;<span class="sqrtt"><span class="overline">(a² +
+                                b²)</span></span> और θ =
+                        tan⁻¹(b/a)।
+                    </li>
+                    <li>
+                        <strong>Example-</strong> z = 1 + i&nbsp;&nbsp;&nbsp;<span class="sqrtt"><span
+                                class="overline">3</span></span>, r = 2, θ = π/3, तो z = 2(cosπ/3 + i sinπ/3).
+                    </li>
+                    <li><strong>Explanation-</strong> यह सम्मिश्र संख्याओं का वैकल्पिक रूप होता है जिसमें r दूरी और θ
+                        कोण होता है।</li>
+                </ul>
+
+                <h2 id="Properties of Complex Numbers (सम्मिश्र संख्याओं के गुण)"><b>Properties of Complex Numbers
+                        (सम्मिश्र संख्याओं के गुण)</b></h2>
+
+                <p id="Addition (योग):"><b>Addition (योग):</b></p>
+                <ul>
+                    <li><strong>Formula:</strong> (a + bi) + (c + di) = (a + c) + (b + d)i.</li>
+                    <li><strong>Explanation-</strong> दो सम्मिश्र संख्याओं का योग करते समय, वास्तविक भाग को वास्तविक भाग
+                        में और काल्पनिक भाग को काल्पनिक भाग में जोड़ा जाता है।</li>
+                    <li>
+                        <strong>Example-</strong>
+                        <ul>
+                            <li>
+                                (3 + 4i) + (1 + 2i)
+                            </li>
+                            <li>(3 + 1) + (4 + 2i)</li>
+                            <li>
+                                4 + 6i
+                            </li>
+                        </ul>
+                    </li>
+                    <li><strong>Explanation-</strong> यहाँ 3 और 1 को जोड़कर 4 प्राप्त होता है, और 4i और 2i को जोड़कर 6i
+                        प्राप्त होता है।</li>
+                </ul>
+
+                <p id="Subtraction (घटाव):"><b>Subtraction (घटाव):</b></p>
+                <ul>
+                    <li><strong>Formula:</strong> (a + bi) - (c + di) = (a - c) + (b - d)i.</li>
+                    <li><strong>Explanation-</strong> दो सम्मिश्र संख्याओं का घटाव करते समय, वास्तविक भाग को वास्तविक
+                        भाग से और काल्पनिक भाग को काल्पनिक भाग से घटाया जाता है।</li>
+                    <li>
+                        <strong>Example-</strong>
+                        <ul>
+                            <li>(5 + 7i) - (3 + 2i)</li>
+                            <li>
+                                (5 - 3) + (7 - 2i)
+                            </li>
+                            <li>2 + 5i</li>
+                        </ul>
+                    </li>
+                    <li><strong>Explanation-</strong> यहाँ 5 और 3 को घटाकर 2 प्राप्त होता है, और 7i और 2i को घटाकर 5i
+                        प्राप्त होता है।</li>
+                </ul>
+
+                <p id="Multiplication (गुणन):"><b>Multiplication (गुणन):</b></p>
+                <ul>
+                    <li><strong>Formula:</strong> (a + bi)(c + di) = (ac - bd) + (ad + bc)i.</li>
+                    <li><strong>Explanation-</strong> दो सम्मिश्र संख्याओं का गुणन करते समय, हमें वास्तविक और काल्पनिक
+                        भागों के गुणन का योग निकालना होता है।</li>
+                    <li>
+                        <strong>Example-</strong>
+                        <ul>
+                            <li>
+                                (3 + 4i)(1 + 2i)
+
+                                <br />
+                            </li>
+                            <li>
+                                3 × 1 + 3 × 2i + 4i × 1 + 4i × 2i
+                            </li>
+                            <li>
+                                3 + 10i + 8(-1) &nbsp;[क्योंकि 𝑖<sup>2</sup>
+
+                                = − 1
+                            </li>
+                            <li>
+                                -5 + 10i
+                            </li>
+                        </ul>
+                    </li>
+                    <li><strong>Explanation-</strong> यहाँ 3 × 1 = 3, 3 × 2i = 6i, 4i × 1 = 4i&nbsp; और&nbsp; &nbsp;4i ×
+                        2i = 8(-1) = -8&nbsp; होते हैं। इनको जोड़कर 5 + 10i प्राप्त होता है।</li>
+                </ul>
+
+                <p id="Division (भाग):"><b>Division (भाग):</b></p>
+                <ul>
+                    <li>
+                        <strong>Formula:</strong>
+                        <span class="frac">
+                            <span>
+                                <mi>𝑎</mi>
+                                <mo>+</mo>
+                                <mi>𝑏</mi>
+                                <mi>𝑖</mi>&nbsp;
+                            </span>
+                            <span class="bottom">
+                                <mi>𝑐</mi>
+                                <mo>+</mo>
+                                <mi>𝑑</mi>
+                                <mi>𝑖</mi><br />
+                            </span>
+                        </span>
+                        =&nbsp;
+                        <span class="frac">
+                            <span>
+                                <mo stretchy="false">(</mo>
+                                <mi>𝑎</mi>
+                                <mo>+</mo>
+                                <mi>𝑏</mi>
+                                <mi>𝑖</mi>
+                                <mo stretchy="false">)</mo>
+                                <mo stretchy="false">(</mo>
+                                <mi>𝑐</mi>
+                                <mo>−</mo>
+                                <mi>𝑑</mi>
+                                <mi>𝑖</mi>
+                                <mo stretchy="false">)</mo><br />
+                            </span>
+                            <span class="bottom">
+                                <msup>
+                                    <mi>𝑐</mi>
+                                    <mn><sup>2</sup></mn>
+                                </msup>
+                                <mo>+</mo>
+                                <msup>
+                                    <mi>𝑑</mi>
+                                    <mn><sup>2</sup></mn>
+                                </msup>
+                                <br />
+                            </span>
+                        </span>
+                        <br />
+                    </li>
+                    <li><strong>Explanation-</strong> दो सम्मिश्र संख्याओं का भाग करते समय, संख्या के संयुग्म का उपयोग
+                        करके समीकरण को सरल किया जाता है।</li>
+                    <li>
+                        <strong>Example-</strong>
+                        <ul>
+                            <li>
+                                <span class="frac">
+                                    <span>
+                                        <mn>3</mn>
+                                        <mo>+</mo>
+                                        <mn>4</mn>
+                                        <mi>𝑖</mi><br />
+                                    </span>
+                                    <span class="bottom">
+                                        <mn>1</mn>
+                                        <mo>+</mo>
+                                        <mn>2</mn>
+                                        <mi>𝑖</mi><br />
+                                    </span>
+                                </span>
+                            </li>
+                            <li>
+                                <span class="frac">
+                                    <span>
+                                        <mo stretchy="false">(</mo>
+                                        <mn>3</mn>
+                                        <mo>+</mo>
+                                        <mn>4</mn>
+                                        <mi>𝑖</mi>
+                                        <mo stretchy="false">)</mo>
+                                        <mo stretchy="false">(</mo>
+                                        <mn>1</mn>
+                                        <mo>−</mo>
+                                        <mn>2</mn>
+                                        <mi>𝑖</mi>
+                                        <mo stretchy="false">)</mo><br />
+                                    </span>
+                                    <span class="bottom">
+                                        <msup>
+                                            <mn>1</mn>
+                                            <mn><sup>2</sup></mn>
+                                        </msup>
+                                        <mo>+</mo>
+                                        <msup>
+                                            <mn>2</mn>
+                                            <mn><sup>2</sup></mn>
+                                        </msup>
+                                        <br />
+                                    </span>
+                                </span>
+                            </li>
+                            <li>
+                                <span class="frac">
+                                    <span>
+                                        <mn>3</mn>
+                                        <mo>−</mo>
+                                        <mn>6</mn>
+                                        <mi>𝑖</mi>
+                                        <mo>+</mo>
+                                        <mn>4</mn>
+                                        <mi>𝑖</mi>
+                                        <mo>−</mo>
+                                        <mn>8</mn>
+                                        <msup>
+                                            <mi>𝑖</mi>
+                                            <mn><sup>2</sup></mn>
+                                        </msup>
+                                        <br />
+                                    </span>
+                                    <span class="bottom">
+                                        <mn>1</mn>
+                                        <mo>+</mo>
+                                        <mn>4</mn><br />
+                                    </span>
+                                </span>
+                            </li>
+                            <li>
+                                <span class="frac">
+                                    <span>
+                                        <mn>3</mn>
+                                        <mo>−</mo>
+                                        <mn>2</mn>
+                                        <mi>𝑖</mi>
+                                        <mo>+</mo>
+                                        <mn>8</mn><br />
+                                    </span>
+                                    <span class="bottom"><span
+                                            style="font-family: math; font-size: 10.95px; text-align: left;">5</span><br /></span>
+                                </span>
+                                &nbsp; &nbsp; [क्योंकि&nbsp;<mi>𝑖</mi>
+                                <mn><sup>2 </sup></mn> = -1]
+                            </li>
+                            <li>
+                                <span class="frac">
+                                    <span>
+                                        <mn>11</mn>
+                                        <mo>−</mo>
+                                        <mn>2</mn>
+                                        <mi>𝑖</mi><br />
+                                    </span>
+                                    <span class="bottom"><span
+                                            style="font-family: math; font-size: 10.95px; text-align: left;">5</span><br /></span>
+                                </span>
+                            </li>
+                            <li>
+                                &nbsp;<mn>2.2</mn>
+                                <mo>−</mo>
+                                <mn>0.4</mn>
+                                <mi>𝑖</mi>
+                            </li>
+                        </ul>
+                    </li>
+                    <li><strong>Explanation-</strong> यहाँ, हम c + di &nbsp;के संयुग्म c - di &nbsp;का उपयोग करते हैं और
+                        गुणा करते हैं, जिससे विभाजक वास्तविक संख्या बन जाती है और भाग करना सरल हो जाता है।</li>
+                </ul>
+
+                <p id="Conjugate (संयुग्म):&nbsp;"><b>Conjugate (संयुग्म):&nbsp;</b></p>
+                <ul>
+                    <li><strong>Formula:</strong>&nbsp;z = a + bi &nbsp;का संयुग्म <span class="katex-error"
+                            title="ParseError: KaTeX parse error: Unknown accent ' ̅' at position 1: z̲̲̅ = a - bi">z̅ =
+                            a - bi होता है।</span></li>
+                    <li><strong>Explanation-</strong> सम्मिश्र संख्या का संयुग्म वास्तविक भाग को अपरिवर्तित रखते हुए
+                        काल्पनिक भाग के चिह्न को बदलता है।</li>
+                    <li>
+                        <strong>Example-</strong>
+                        <ul>
+                            <li>
+                                z = 3 + 4i
+
+                                <br />
+                            </li>
+                            <li><span class="katex-error"
+                                    title="ParseError: KaTeX parse error: Unknown accent ' ̅' at position 1: z̲̲̅ = 3 - 4i">z̅
+                                    = 3 - 4i</span></li>
+                        </ul>
+                    </li>
+                    <li><strong>Explanation-</strong> संयुग्म का उपयोग सम्मिश्र संख्याओं को सरल करने और भाग के संचालन
+                        में किया जाता है।</li>
+                </ul>
+
+                <p id="Modulus (मापांक):"><b>Modulus (मापांक):</b></p>
+
+                <ul>
+                    <li>
+                        <strong>Formula:</strong>
+
+                        z = a + b i &nbsp;का मापांक |z| = होता है।
+                    </li>
+                    <li><strong>Explanation-</strong> सम्मिश्र संख्या का मापांक वास्तविक और काल्पनिक भागों के वर्गों के
+                        योग का वर्गमूल होता है।</li>
+                    <li>
+                        <strong>Example-</strong>
+                        <ul>
+                            <li>
+                                z = 3 + 4i
+
+                                <br />
+                            </li>
+                            <li>
+                                |z| =&nbsp;&nbsp;&nbsp;<span class="sqrtt"><span class="overline">(3² +
+                                        4²)</span></span> =&nbsp;&nbsp;&nbsp;<span class="sqrtt"><span
+                                        class="overline">(9 + 16)</span></span> =&nbsp;&nbsp;&nbsp;
+                                <span class="sqrtt"><span class="overline">25</span></span> = 5
+                            </li>
+                        </ul>
+                    </li>
+                    <li><strong>Explanation-</strong> यह सम्मिश्र संख्या की लंबाई या दूरी को दर्शाता है, जो इसे मूल
+                        बिंदु से मापता है।</li>
+                </ul>
+            </section>
+            <section id="Polynomials">
+                <br />
+                <hr style="border: none; height: 5px; background-color: orange; margin: 20px 0;" />
+                <style>
+                    .scroll-x {
+                        overflow-x: auto;
+                        width: 100%;
+                        -webkit-overflow-scrolling: touch;
+                    }
+                </style>
+                <h2>Class 9 – Chapter 2: बहुपद (Polynomials) – सरल सूत्र</h2>
+                <div class="scroll-x">
+
+                    <table border="1" cellpadding="6" cellspacing="0">
+                        <thead>
+                            <tr>
+                                <th>क्र.सं.</th>
+                                <th>सूत्र / टॉपिक</th>
+                                <th>सरल व्याख्या</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>बहुपद क्या है?</td>
+                                <td>जैसे: x² + 3x + 2 एक बहुपद है। यह x के अलग-अलग घात (power) वाले पदों से बना होता है।
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>बहुपद का मान निकालना</td>
+                                <td>अगर p(x) = x² + 3x + 2, तो p(1) = 1² + 3×1 + 2 = 6</td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>शून्य (Zero) बहुपद</td>
+                                <td>जब सभी पद 0 हो, जैसे p(x) = 0</td>
+                            </tr>
+                            <tr>
+                                <td>4</td>
+                                <td>एक-घात (Linear) बहुपद</td>
+                                <td>जिसमें x की पावर 1 हो, जैसे: x + 2</td>
+                            </tr>
+                            <tr>
+                                <td>5</td>
+                                <td>दो-घात (Quadratic) बहुपद</td>
+                                <td>जिसमें x² हो, जैसे: x² + 3x + 2</td>
+                            </tr>
+                            <tr>
+                                <td>6</td>
+                                <td>घात और डिग्री</td>
+                                <td>सबसे बड़ी पावर को “डिग्री” कहते हैं। जैसे x³ + x² की डिग्री = 3</td>
+                            </tr>
+                            <tr>
+                                <td>7</td>
+                                <td>(x - a) एक गुणनखंड</td>
+                                <td>अगर p(a) = 0, तो (x - a) उसका गुणनखंड होगा</td>
+                            </tr>
+                            <tr>
+                                <td>8</td>
+                                <td>सूत्र: (a + b)²</td>
+                                <td>(a + b)² = a² + 2ab + b²</td>
+                            </tr>
+                            <tr>
+                                <td>9</td>
+                                <td>सूत्र: (a - b)²</td>
+                                <td>(a - b)² = a² - 2ab + b²</td>
+                            </tr>
+                            <tr>
+                                <td>10</td>
+                                <td>सूत्र: (a + b)(a - b)</td>
+                                <td>(a + b)(a - b) = a² - b²</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <section id="Algebra">
+                <h2>Algebra Formulas</h2>
+                <div class="scroll-x">
+
+                    <h1 id="Identity">
+                        <br />
+                        <b>Identity</b>
+                        </h2>
+                        <table border="1" style="width: 100%;">
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <p>
+                                            <span>a<sup>2</sup> + b<sup>2</sup></span>
+                                        </p>
+                                    </td>
+
+                                    <td>
+                                        <span>(a + b)<sup>2</sup> - 2ab</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <p>
+                                            <span>(a - b)<sup>2</sup></span>
+                                        </p>
+                                    </td>
+
+                                    <td>
+                                        <span>a<sup>2</sup> - 2ab + b<sup>2</sup></span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <p>
+                                            <span>(a + b + c)<sup>2</sup></span>
+                                        </p>
+                                    </td>
+
+                                    <td>
+                                        <span>a<sup>2</sup> + b<sup>2</sup> + c<sup>2</sup> + 2ab + 2bc + 2ca</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <p>
+                                            <span>(a - b - c)<sup>2</sup></span>
+                                        </p>
+                                    </td>
+
+                                    <td>
+                                        <span>a<sup>2</sup> + b<sup>2</sup> + c<sup>2</sup> - 2ab + 2bc - 2ca</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <p>
+                                            <span>(a + b)<sup>3</sup></span>
+                                        </p>
+                                    </td>
+
+                                    <td>
+                                        <span>a<sup>3</sup> + 3a<sup>2</sup>b + 3ab<sup>2</sup> + b<sup>3</sup></span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <p>
+                                            <span>(a - b)<sup>3</sup></span>
+                                        </p>
+                                    </td>
+
+                                    <td>
+                                        <span>a<sup>3</sup> - 3a<sup>2</sup>b + 3ab<sup>2</sup> - b<sup>3</sup> =
+                                            a<sup>3</sup> - b<sup>3</sup> - 3ab(a - b)</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <p>
+                                            <span>a<sup>3</sup> - b<sup>3</sup></span>
+                                        </p>
+                                    </td>
+
+                                    <td>
+                                        <span>(a - b)(a<sup>2</sup> + ab + b<sup>2</sup>)</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <p>
+                                            <span>a<sup>3</sup> + b<sup>3</sup></span>
+                                        </p>
+                                    </td>
+
+                                    <td>
+                                        <span>(a + b)(a<sup>2</sup> - ab + b<sup>2</sup>)</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <p>
+                                            <span>(a + b)<sup>4</sup></span>
+                                        </p>
+                                    </td>
+
+                                    <td>
+                                        <span>a<sup>4</sup> + 4a<sup>3</sup>b + 6a<sup>2</sup>b<sup>2</sup> +
+                                            4ab<sup>3</sup> + b<sup>4</sup></span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <p>
+                                            <span>(a - b)<sup>4</sup></span>
+                                        </p>
+                                    </td>
+
+                                    <td>
+                                        <span>a<sup>4</sup> - 4a<sup>3</sup>b + 6a<sup>2</sup>b<sup>2</sup> -
+                                            4ab<sup>3</sup> + b<sup>4</sup></span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <p>
+                                            <span>a<sup>4</sup> - b<sup>4</sup></span>
+                                        </p>
+                                    </td>
+
+                                    <td>
+                                        <span>(a - b)(a + b)(a<sup>2</sup> + b<sup>2</sup>)</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <p>
+                                            <span>a<sup>5</sup> - b<sup>5</sup></span>
+                                        </p>
+                                    </td>
+
+                                    <td>
+                                        <span>(a - b)(a<sup>4</sup> + a<sup>3</sup>b + a<sup>2</sup>b<sup>2</sup> +
+                                            ab<sup>3</sup> + b<sup>4</sup>)</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <p>
+                                            <span>(x + y + z)<sup>2</sup></span>
+                                        </p>
+                                    </td>
+
+                                    <td>
+                                        <span>x<sup>2</sup> + y<sup>2</sup> + z<sup>2</sup> + 2xy + 2yz + 2xz</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <p>
+                                            <span>(x + y - z)<sup>2</sup></span>
+                                        </p>
+                                    </td>
+
+                                    <td>
+                                        <span>x<sup>2</sup> + y<sup>2</sup> + z<sup>2</sup> + 2xy - 2yz - 2xz</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <p>
+                                            <span>(x - y + z)<sup>2</sup></span>
+                                        </p>
+                                    </td>
+
+                                    <td>
+                                        <span>x<sup>2</sup> + y<sup>2</sup> + z<sup>2</sup> - 2xy - 2yz + 2xz</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <p>
+                                            <span>(x - y - z)<sup>2</sup></span>
+                                        </p>
+                                    </td>
+
+                                    <td>
+                                        <span>x<sup>2</sup> + y<sup>2</sup> + z<sup>2</sup> - 2xy + 2yz - 2xz</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <p>
+                                            <span>x<sup>3</sup> + y<sup>3</sup> + z<sup>3</sup> - 3xyz</span>
+                                        </p>
+                                    </td>
+
+                                    <td>
+                                        <span>(x + y + z)(x<sup>2</sup> + y<sup>2</sup> + z<sup>2</sup> - xy - yz -
+                                            xz)</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <p>
+                                            <span>x<sup>2</sup> + y<sup>2</sup> + z<sup>2</sup> - xy - yz - zx</span>
+                                        </p>
+                                    </td>
+
+                                    <td>
+                                        <span>1/2 [(x - y)<sup>2</sup> + (y - z)<sup>2</sup> + (z -
+                                            x)<sup>2</sup>]</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <p>
+                                            <span>(a + b + c + ...)<sup>2</sup></span>
+                                        </p>
+                                    </td>
+
+                                    <td>
+                                        <span>a<sup>2</sup> + b<sup>2</sup> + c<sup>2</sup> + ... + 2(ab + ac + bc +
+                                            ...)</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <p>
+                                            <span>(x + y + z + ...)<sup>2</sup></span>
+                                        </p>
+                                    </td>
+
+                                    <td>
+                                        <span>x<sup>2</sup> + y<sup>2</sup> + z<sup>2</sup> + ... + 2(xy + xz + yz +
+                                            ...)</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <p>
+                                            <span>(x<sup>2</sup> + y<sup>2</sup> + z<sup>2</sup>)<sup>2</sup></span>
+                                        </p>
+                                    </td>
+
+                                    <td>
+                                        <span>x<sup>4</sup> + y<sup>4</sup> + z<sup>4</sup> +
+                                            2(x<sup>2</sup>y<sup>2</sup> +
+                                            y<sup>2</sup>z<sup>2</sup> + z<sup>2</sup>x<sup>2</sup>) + 2(x<sup>2</sup>yz
+                                            +
+                                            xy<sup>2</sup>z + xyz<sup>2</sup>)</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <p>
+                                            <span>(a + b + c)<sup>3</sup></span>
+                                        </p>
+                                    </td>
+
+                                    <td>
+                                        <span>a<sup>3</sup> + b<sup>3</sup> + c<sup>3</sup> + 3(a<sup>2</sup>b +
+                                            ab<sup>2</sup> + b<sup>2</sup>c + bc<sup>2</sup> + c<sup>2</sup>a +
+                                            ac<sup>2</sup>) + 6abc</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <p>
+                                            <span>(a - b)<sup>5</sup></span>
+                                        </p>
+                                    </td>
+
+                                    <td>
+                                        <span>a<sup>5</sup> - 5a<sup>4</sup>b + 10a<sup>3</sup>b<sup>2</sup> -
+                                            10a<sup>2</sup>b<sup>3</sup> + 5ab<sup>4</sup> - b<sup>5</sup></span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <p>
+                                            <span>(x + y)<sup>2</sup>(x - y)<sup>2</sup></span>
+                                        </p>
+                                    </td>
+
+                                    <td>
+                                        <span>(x<sup>2</sup> - y<sup>2</sup>)<sup>2</sup></span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <p>
+                                            <span>(a + b)<sup>2</sup>(a - b)<sup>2</sup></span>
+                                        </p>
+                                    </td>
+
+                                    <td>
+                                        <span>(a<sup>2</sup> - b<sup>2</sup>)<sup>2</sup></span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <p>
+                                            <span>(x + y + z)<sup>3</sup></span>
+                                        </p>
+                                    </td>
+
+                                    <td>
+                                        <span>x<sup>3</sup> + y<sup>3</sup> + z<sup>3</sup> + 3(x<sup>2</sup>y +
+                                            xy<sup>2</sup> + y<sup>2</sup>z + yz<sup>2</sup> + z<sup>2</sup>x +
+                                            zx<sup>2</sup>) + 6xyz</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <p>
+                                            <span>(a + b + c + d)<sup>2</sup></span>
+                                        </p>
+                                    </td>
+
+                                    <td>
+                                        <span>a<sup>2</sup> + b<sup>2</sup> + c<sup>2</sup> + d<sup>2</sup> + 2(ab + ac
+                                            + ad
+                                            + bc + bd + cd)</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <p>
+                                            <span>(a<sup>2</sup> - b<sup>2</sup>)<sup>2</sup></span>
+                                        </p>
+                                    </td>
+
+                                    <td>
+                                        <span>a<sup>4</sup> - 2a<sup>2</sup>b<sup>2</sup> + b<sup>4</sup></span>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                </div>
+            </section>
+            <div style="width:100%;max-width:1200px;margin:auto;">
+                <canvas id="mathCanvas" aria-label="Class 9 Maths formulas image by GK Learn Study">
+                </canvas>
             </div>
-          </div>
-        </div>
 
-        <!-- Interactive Formula Canvas Wrapper -->
-        <div class="mt-8 bg-slate-950 p-6 border border-slate-800/80 rounded-3xl">
-          <h4 class="text-xs font-bold text-slate-400 uppercase tracking-widest text-center mb-4">🎨 Interactive Formula Generator Visual Canvas</h4>
-          <div class="max-w-[100%] overflow-hidden">
-            <canvas id="mathCanvas" aria-label="Class 9 Maths formulas image by GK Learn Study" class="w-full h-auto mx-auto border border-slate-850 rounded-2xl shadow-inner"></canvas>
-          </div>
-        </div>
-      </section>
+            <script>
+                const canvas = document.getElementById("mathCanvas");
+                const ctx = canvas.getContext("2d");
 
-      <!-- CHAPTER 3: COORDINATE GEOMETRY -->
-      <section id="chapter-coordinate-geometry" class="bg-slate-900/40 border border-slate-800/80 rounded-3xl p-6 sm:p-8 glow-card">
-        <div class="flex items-center gap-3 border-b border-slate-800/80 pb-4 mb-6">
-          <span class="text-2xl sm:text-3xl">📍</span>
-          <div>
-            <span class="text-[10px] text-indigo-400 font-bold uppercase tracking-wider">Chapter 3</span>
-            <h2 class="text-xl sm:text-2xl font-bold text-slate-100 font-sans">निर्देशांक ज्यामिति (Coordinate Geometry)</h2>
-          </div>
-        </div>
+                const BASE_W = 1200;
+                const BASE_H = 675;
 
-        <p class="text-sm text-slate-300 mb-4 leading-relaxed">
-          तल पर किसी बिंदु की स्थिति को संख्याओं के जोड़े द्वारा व्यक्त करने की विधि को <b>निर्देशांक ज्यामिति (Coordinate Geometry)</b> कहते हैं।
-        </p>
+                function resizeCanvas() {
+                    const width = canvas.parentElement.offsetWidth;
+                    canvas.width = width;
+                    canvas.height = width * (BASE_H / BASE_W);
+                    draw(width / BASE_W);
+                }
+                window.addEventListener("resize", resizeCanvas);
+                resizeCanvas();
 
-        <div class="scroll-x custom-scrollbar">
-          <table class="th-math-table">
-            <thead>
-              <tr>
-                <th class="w-16">क्र.सं.</th>
-                <th class="w-1/3">विषय / सूत्र</th>
-                <th>परिभाषा एवं सूत्र (LaTeX)</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td class="font-mono text-indigo-400">1</td>
-                <td class="font-bold">बिंदु निरूपण (Point representation)</td>
-                <td>$$(x, y)$$ <br>जहाँ $x$-अक्ष की दूरी को "भुज" (abscissa) तथा $y$-अक्ष की दूरी को "कोटि" (ordinate) कहते हैं।</td>
-              </tr>
-              <tr>
-                <td class="font-mono text-indigo-400">2</td>
-                <td class="font-bold">मूल बिंदु (Origin Point)</td>
-                <td>$$(0,0)$$ <br>वह स्थान जहाँ $x$-अक्ष और $y$-अक्ष परस्पर एक दूसरे को प्रतिच्छेद करते हैं।</td>
-              </tr>
-              <tr>
-                <td class="font-mono text-indigo-400">3</td>
-                <td class="font-bold">चार चतुर्थांश (Quadrants)</td>
-                <td>
-                  <ul class="space-y-1 text-xs">
-                    <li><b>प्रथम चतुर्थांश:</b> $(+, +)$</li>
-                    <li><b>द्वितीय चतुर्थांश:</b> $(-, +)$</li>
-                    <li><b>तृतीय चतुर्थांश:</b> $(-, -)$</li>
-                    <li><b>चतुर्थ चतुर्थांश:</b> $(+, -)$</li>
-                  </ul>
-                </td>
-              </tr>
-              <tr>
-                <td class="font-mono text-indigo-400">4</td>
-                <td class="font-bold">दूरी सूत्र (Distance Formula)</td>
-                <td>दो बिंदुओं $P(x_1, y_1)$ और $Q(x_2, y_2)$ के बीच की दूरी: <br>$$d = \sqrt{(x_2 - x_1)^2 + (y_2 - y_1)^2}$$</td>
-              </tr>
-              <tr>
-                <td class="font-mono text-indigo-400">5</td>
-                <td class="font-bold">मध्य बिंदु सूत्र (Midpoint Formula)</td>
-                <td>दो बिंदुओं को जोड़ने वाले रेखाखंड का मध्य बिंदु: <br>$$M = \left( \frac{x_1 + x_2}{2}, \frac{y_1 + y_2}{2} \right)$$</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </section>
+                function draw(scale) {
 
-      <!-- CHAPTER 4: LINEAR EQUATIONS IN TWO VARIABLES -->
-      <section id="chapter-linear-equations" class="bg-slate-900/40 border border-slate-800/80 rounded-3xl p-6 sm:p-8 glow-card">
-        <div class="flex items-center gap-3 border-b border-slate-800/80 pb-4 mb-6">
-          <span class="text-2xl sm:text-3xl">📉</span>
-          <div>
-            <span class="text-[10px] text-indigo-400 font-bold uppercase tracking-wider">Chapter 4</span>
-            <h2 class="text-xl sm:text-2xl font-bold text-slate-100 font-sans">दो चरों वाले रैखिक समीकरण (Linear Equations)</h2>
-          </div>
-        </div>
+                    /* ===== BACKGROUND ===== */
+                    ctx.setTransform(scale, 0, 0, scale, 0, 0);
+                    ctx.clearRect(0, 0, BASE_W, BASE_H);
 
-        <p class="text-sm text-slate-300 mb-4 leading-relaxed">
-          ऐसे समीकरण जिन्हें $ax + by + c = 0$ के रूप में प्रदर्शित किया जा सके, उन्हें <b>रैखिक समीकरण (Linear Equations)</b> कहा जाता है।
-        </p>
+                    const bg = ctx.createLinearGradient(0, 0, BASE_W, BASE_H);
+                    bg.addColorStop(0, "#050b1e");
+                    bg.addColorStop(1, "#0d1b2a");
+                    ctx.fillStyle = bg;
+                    ctx.fillRect(0, 0, BASE_W, BASE_H);
 
-        <div class="scroll-x custom-scrollbar">
-          <table class="th-math-table">
-            <thead>
-              <tr>
-                <th class="w-16">क्र.सं.</th>
-                <th class="w-1/3">विषय / सूत्र</th>
-                <th>विवरण एवं गणितीय निरूपण</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td class="font-mono text-indigo-400">1</td>
-                <td class="font-bold">एक चर वाला रैखिक समीकरण</td>
-                <td>$$ax + b = 0 \implies x = -\frac{b}{a}$$ <br>जहाँ $a \neq 0$ एक अचर गुणांक है।</td>
-              </tr>
-              <tr>
-                <td class="font-mono text-indigo-400">2</td>
-                <td class="font-bold">दो चरों वाला रैखिक समीकरण</td>
-                <td>$$ax + by + c = 0$$ <br>जहाँ $a, b, c$ वास्तविक संख्याएँ हैं और $a, b \neq 0$ हैं।</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+                    /* ===== SOFT LIGHT ===== */
+                    function glow(x, y, r, c) {
+                        const g = ctx.createRadialGradient(x, y, r * 0.2, x, y, r);
+                        g.addColorStop(0, c);
+                        g.addColorStop(1, "transparent");
+                        ctx.fillStyle = g;
+                        ctx.beginPath();
+                        ctx.arc(x, y, r, 0, Math.PI * 2);
+                        ctx.fill();
+                    }
+                    glow(260, 220, 300, "rgba(0,150,255,.25)");
+                    glow(980, 520, 350, "rgba(255,120,0,.2)");
 
-        <h3 class="text-base sm:text-lg font-bold text-slate-200 mt-6 mb-3">📌 रैखिक समीकरण हल करने के व्यावहारिक उदाहरण:</h3>
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-          <div class="bg-slate-950 p-4 border border-slate-850 rounded-2xl space-y-1">
-            <span class="text-xs text-indigo-400 font-mono font-bold">उदाहरण 1: आसान समीकरण</span>
-            <p class="text-xs text-slate-300"><b>समीकरण:</b> $3x + 6 = 12$</p>
-            <ul class="list-disc pl-4 text-xs text-slate-400 space-y-1">
-              <li>संख्याओं को एक तरफ ले जाने पर: $3x = 12 - 6$</li>
-              <li>सरल करने पर: $3x = 6$</li>
-              <li>विभाजित करने पर: $x = \frac{6}{3} = 2$</li>
-            </ul>
-          </div>
-          <div class="bg-slate-950 p-4 border border-slate-850 rounded-2xl space-y-1">
-            <span class="text-xs text-indigo-400 font-mono font-bold">उदाहरण 2: ऋणात्मक पक्ष</span>
-            <p class="text-xs text-slate-300"><b>समीकरण:</b> $5x - 4 = 11$</p>
-            <ul class="list-disc pl-4 text-xs text-slate-400 space-y-1">
-              <li>संख्याओं को एक तरफ ले जाने पर: $5x = 11 + 4$</li>
-              <li>सरल करने पर: $5x = 15$</li>
-              <li>विभाजित करने पर: $x = \frac{15}{5} = 3$</li>
-            </ul>
-          </div>
-        </div>
-      </section>
+                    /* ===== CARD ===== */
+                    ctx.save();
+                    ctx.shadowColor = "rgba(0,0,0,.6)";
+                    ctx.shadowBlur = 30;
+                    ctx.shadowOffsetY = 15;
+                    ctx.fillStyle = "rgba(255,255,255,.06)";
+                    ctx.fillRect(40, 40, BASE_W - 80, BASE_H - 80);
+                    ctx.restore();
 
-      <!-- CHAPTER 5: LINES AND ANGLES -->
-      <section id="chapter-lines-and-angles" class="bg-slate-900/40 border border-slate-800/80 rounded-3xl p-6 sm:p-8 glow-card">
-        <div class="flex items-center gap-3 border-b border-slate-800/80 pb-4 mb-6">
-          <span class="text-2xl sm:text-3xl">📐</span>
-          <div>
-            <span class="text-[10px] text-indigo-400 font-bold uppercase tracking-wider">Chapter 5</span>
-            <h2 class="text-xl sm:text-2xl font-bold text-slate-100 font-sans">रेखाएँ और कोण (Lines and Angles)</h2>
-          </div>
-        </div>
+                    ctx.strokeStyle = "rgba(255,255,255,.25)";
+                    ctx.lineWidth = 2;
+                    ctx.strokeRect(40, 40, BASE_W - 80, BASE_H - 80);
 
-        <p class="text-sm text-slate-300 mb-4 leading-relaxed">
-          रेखाओं की ज्यामितीय आकृतियों और उनके बीच झुकाव से बनने वाले कोणों के संबंधों का अध्ययन <b>रेखाएँ और कोण (Lines and Angles)</b> है।
-        </p>
+                    /* ===== TITLE ===== */
+                    ctx.textAlign = "center";
+                    ctx.font = "bold 48px Times New Roman";
+                    ctx.fillStyle = "#000";
+                    ctx.fillText("Class 9 Mathematics – Important Formulas", BASE_W / 2 + 2, 110);
+                    ctx.fillStyle = "#ffffff";
+                    ctx.fillText("Class 9 Mathematics – Important Formulas", BASE_W / 2, 108);
 
-        <div class="scroll-x custom-scrollbar">
-          <table class="th-math-table">
-            <thead>
-              <tr>
-                <th class="w-16">क्र.सं.</th>
-                <th class="w-1/3">विषय / परिभाषा</th>
-                <th>नियम / सूत्र (LaTeX)</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td class="font-mono text-indigo-400">1</td>
-                <td class="font-bold">कोटिपूरक कोण (Complementary Angles)</td>
-                <td>यदि दो कोणों का योग $90^\circ$ हो, तो वे एक दूसरे के कोटिपूरक कहलाते हैं। <br>$$\theta_1 + \theta_2 = 90^\circ$$</td>
-              </tr>
-              <tr>
-                <td class="font-mono text-indigo-400">2</td>
-                <td class="font-bold">संपूरक कोण (Supplementary Angles)</td>
-                <td>यदि दो कोणों का योग $180^\circ$ हो, तो वे संपूरक कोण कहलाते हैं। <br>$$\theta_1 + \theta_2 = 180^\circ$$</td>
-              </tr>
-              <tr>
-                <td class="font-mono text-indigo-400">3</td>
-                <td class="font-bold">समानांतर रेखाएँ (Parallel Lines)</td>
-                <td>ऐसी दो सीधी रेखाएँ जो आगे बढ़ाने पर कभी आपस में नहीं मिलतीं। जैसे: $$AB \parallel CD$$</td>
-              </tr>
-              <tr>
-                <td class="font-mono text-indigo-400">4</td>
-                <td class="font-bold">तिर्यक रेखा नियम (Transversal Line Rule)</td>
-                <td>यदि कोई तिर्यक रेखा दो समानांतर रेखाओं को काटती है, तो एकांतर अंतः कोण (Alternate interior angles) तथा संगत कोण (Corresponding angles) आपस में बराबर होते हैं। <br>$$\angle 1 = \angle 2 \text{ (एकांतर)}$$ <br>$$\angle 3 = \angle 4 \text{ (संगत)}$$</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </section>
+                    /* ===== FORMULAS ===== */
+                    ctx.font = "bold 30px Times New Roman";
+                    ctx.fillStyle = "#eaf4ff";
 
-      <!-- CHAPTER 6: TRIGONOMETRY (EXHAUSTIVE) -->
-      <section id="chapter-trigonometry-intro" class="bg-slate-900/40 border border-slate-800/80 rounded-3xl p-6 sm:p-8 glow-card">
-        <div class="flex items-center gap-3 border-b border-slate-800/80 pb-4 mb-6">
-          <span class="text-2xl sm:text-3xl">📐</span>
-          <div>
-            <span class="text-[10px] text-indigo-400 font-bold uppercase tracking-wider">Chapter 6</span>
-            <h2 class="text-xl sm:text-2xl font-bold text-slate-100 font-sans">त्रिकोणमिति (Trigonometry) - संपूर्ण अध्ययन</h2>
-          </div>
-        </div>
+                    function formula(text, y) {
+                        ctx.fillStyle = "#000";
+                        ctx.fillText(text, BASE_W / 2 + 2, y + 2);
+                        ctx.fillStyle = "#eaf4ff";
+                        ctx.fillText(text, BASE_W / 2, y);
+                    }
 
-        <p class="text-sm text-slate-300 mb-4 leading-relaxed">
-          त्रिभुज की भुजाओं और उनके बीच बनने वाले कोणों के संबंधों को मापने का विज्ञान <b>त्रिकोणमिति (Trigonometry)</b> है।
-        </p>
+                    formula("Area of Triangle  =  ½ × base × height", 300);
+                    formula("Pythagoras Theorem  :  a² + b² = c²", 380);
+                    formula("Linear Equation  :  ax + b = 0  ⇒  x = −b / a", 460);
 
-        <!-- Degree Radian Section -->
-        <h3 class="text-base sm:text-lg font-bold text-slate-200 mt-6 mb-3">📍 रेडियन और डिग्री माप (Radian and Degree Measures)</h3>
-        <div class="scroll-x custom-scrollbar">
-          <table class="th-math-table">
-            <thead>
-              <tr>
-                <th class="w-1/4">रेडियन / डिग्री संकेत</th>
-                <th>सटीक मान एवं रूपांतरण सूत्र</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td class="font-bold">1 Radian ($1\text{ rad}$)</td>
-                <td>$$1\text{ rad} = \left(\frac{180^\circ}{\pi}\right) \approx 57^\circ 17' 45''$$</td>
-              </tr>
-              <tr>
-                <td class="font-bold">1 Degree ($1^\circ$)</td>
-                <td>$$1^\circ = \left(\frac{\pi}{180}\right)\text{ rad} \approx 0.017453\text{ rad}$$</td>
-              </tr>
-              <tr>
-                <td class="font-bold">1 Minute ($1'$)</td>
-                <td>$$1' = \left(\frac{\pi}{180 \times 60}\right)\text{ rad} \approx 0.000291\text{ rad}$$</td>
-              </tr>
-              <tr>
-                <td class="font-bold">1 Second ($1''$)</td>
-                <td>$$1'' = \left(\frac{\pi}{180 \times 3600}\right)\text{ rad} \approx 0.000005\text{ rad}$$</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+                    /* ===== GRAPHIC ===== */
+                    ctx.strokeStyle = "rgba(255,255,255,.45)";
+                    ctx.lineWidth = 3;
 
-        <!-- Ratios and Right Triangle properties -->
-        <h3 class="text-base sm:text-lg font-bold text-slate-200 mt-6 mb-3">📍 त्रिकोणमितीय अनुपात (Trigonometric Ratios)</h3>
-        <p class="text-xs sm:text-sm text-slate-400 mb-4">
-          समकोण त्रिभुज के संदर्भ में: $H = \text{कर्ण}$ (Hypotenuse), $P = \text{लम्ब}$ (Perpendicular), $B = \text{आधार}$ (Base).
-        </p>
+                    ctx.beginPath();
+                    ctx.moveTo(230, 470);
+                    ctx.lineTo(310, 470);
+                    ctx.lineTo(310, 350);
+                    ctx.closePath();
+                    ctx.stroke();
 
-        <div class="scroll-x custom-scrollbar">
-          <table class="th-math-table">
-            <thead>
-              <tr>
-                <th>पाइथागोरस सूत्र</th>
-                <th>मूल त्रिकोणमितीय अनुपात</th>
-                <th>व्युत्क्रम अनुपात सूत्र (Reciprocal)</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>$$H^2 = P^2 + B^2$$</td>
-                <td>$$\sin\theta = \frac{P}{H} \text{ (लम्ब/कर्ण)}$$</td>
-                <td>$$\csc\theta = \frac{1}{\sin\theta} = \frac{H}{P} \text{ (कर्ण/लम्ब)}$$</td>
-              </tr>
-              <tr>
-                <td>$$P^2 = H^2 - B^2$$</td>
-                <td>$$\cos\theta = \frac{B}{H} \text{ (आधार/कर्ण)}$$</td>
-                <td>$$\sec\theta = \frac{1}{\cos\theta} = \frac{H}{B} \text{ (कर्ण/आधार)}$$</td>
-              </tr>
-              <tr>
-                <td>$$B^2 = H^2 - P^2$$</td>
-                <td>$$\tan\theta = \frac{P}{B} \text{ (लम्ब/आधार)}$$</td>
-                <td>$$\cot\theta = \frac{1}{\tan\theta} = \frac{B}{P} \text{ (आधार/लम्ब)}$$</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+                    ctx.strokeRect(292, 452, 16, 16);
 
-        <!-- Quotient Identities -->
-        <h3 class="text-sm sm:text-base font-bold text-slate-200 mt-4 mb-2">⚡ भागफल संबंध (Quotient Identities)</h3>
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
-          <div class="bg-slate-950 p-4 border border-slate-850 rounded-2xl text-center">
-            $$\tan\theta = \frac{\sin\theta}{\cos\theta}$$
-          </div>
-          <div class="bg-slate-950 p-4 border border-slate-850 rounded-2xl text-center">
-            $$\cot\theta = \frac{\cos\theta}{\sin\theta}$$
-          </div>
-        </div>
+                    /* ===== SYMBOL ===== */
+                    ctx.font = "bold 150px serif";
+                    ctx.fillStyle = "rgba(255,255,255,.08)";
+                    ctx.fillText("√", 900, 430);
 
-        <!-- Trigonometric Chart / Values Table -->
-        <h3 class="text-base sm:text-lg font-bold text-slate-200 mt-6 mb-3">📍 त्रिकोणमितीय सारणी (Trigonometric Chart)</h3>
-        <div class="scroll-x custom-scrollbar">
-          <table class="th-math-table">
-            <thead>
-              <tr>
-                <th>कोण ($\theta$)</th>
-                <th>$0^\circ$</th>
-                <th>$30^\circ$</th>
-                <th>$45^\circ$</th>
-                <th>$60^\circ$</th>
-                <th>$90^\circ$</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td class="font-bold">$\sin\theta$</td>
-                <td>$0$</td>
-                <td>$\frac{1}{2}$</td>
-                <td>$\frac{1}{\sqrt{2}}$</td>
-                <td>$\frac{\sqrt{3}}{2}$</td>
-                <td>$1$</td>
-              </tr>
-              <tr>
-                <td class="font-bold">$\cos\theta$</td>
-                <td>$1$</td>
-                <td>$\frac{\sqrt{3}}{2}$</td>
-                <td>$\frac{1}{\sqrt{2}}$</td>
-                <td>$\frac{1}{2}$</td>
-                <td>$0$</td>
-              </tr>
-              <tr>
-                <td class="font-bold">$\tan\theta$</td>
-                <td>$0$</td>
-                <td>$\frac{1}{\sqrt{3}}$</td>
-                <td>$1$</td>
-                <td>$\sqrt{3}$</td>
-                <td>$\infty$ (अपरिभाषित)</td>
-              </tr>
-              <tr>
-                <td class="font-bold">$\cot\theta$</td>
-                <td>$\infty$</td>
-                <td>$\sqrt{3}$</td>
-                <td>$1$</td>
-                <td>$\frac{1}{\sqrt{3}}$</td>
-                <td>$0$</td>
-              </tr>
-              <tr>
-                <td class="font-bold">$\sec\theta$</td>
-                <td>$1$</td>
-                <td>$\frac{2}{\sqrt{3}}$</td>
-                <td>$\sqrt{2}$</td>
-                <td>$2$</td>
-                <td>$\infty$</td>
-              </tr>
-              <tr>
-                <td class="font-bold">$\csc\theta$</td>
-                <td>$\infty$</td>
-                <td>$2$</td>
-                <td>$\sqrt{2}$</td>
-                <td>$\frac{2}{\sqrt{3}}$</td>
-                <td>$1$</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+                    /* ===== WATERMARK ===== */
+                    ctx.textAlign = "right";
+                    ctx.font = "bold 18px Arial";
+                    ctx.fillStyle = "rgba(255,255,255,.55)";
+                    ctx.fillText("GK Learn Study", BASE_W - 50, BASE_H - 45);
 
-        <!-- Pythagorean Identities -->
-        <h3 class="text-base sm:text-lg font-bold text-slate-200 mt-6 mb-3">📍 त्रिकोणमितीय सर्वसमिकाएँ (Pythagorean Identities)</h3>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-          <div class="bg-slate-950 p-4 border border-slate-850 rounded-2xl text-center">
-            $$\sin^2\theta + \cos^2\theta = 1$$
-          </div>
-          <div class="bg-slate-950 p-4 border border-slate-850 rounded-2xl text-center">
-            $$\sec^2\theta - \tan^2\theta = 1$$
-          </div>
-          <div class="bg-slate-950 p-4 border border-slate-850 rounded-2xl text-center">
-            $$\csc^2\theta - \cot^2\theta = 1$$
-          </div>
-        </div>
+                    /* ===== FOOTER ===== */
+                    ctx.textAlign = "left";
+                    ctx.font = "16px Arial";
+                    ctx.fillStyle = "rgba(255,255,255,.7)";
+                    ctx.fillText("Class 9 • NCERT • Exam Ready Notes", 60, BASE_H - 45);
+                }
+            </script>
 
-        <!-- Co-Ratio / Allied Angles -->
-        <h3 class="text-base sm:text-lg font-bold text-slate-200 mt-6 mb-3">📍 संबंधित कोण सूत्र (Co-Ratio Identities)</h3>
-        <div class="scroll-x custom-scrollbar">
-          <table class="th-math-table">
-            <thead>
-              <tr>
-                <th>कोण रूपांतरण</th>
-                <th>$\sin$</th>
-                <th>$\cos$</th>
-                <th>$\tan$</th>
-                <th>$\cot$</th>
-                <th>$\sec$</th>
-                <th>$\csc$</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td class="font-bold">$90^\circ - \theta$</td>
-                <td>$\cos\theta$</td>
-                <td>$\sin\theta$</td>
-                <td>$\cot\theta$</td>
-                <td>$\tan\theta$</td>
-                <td>$\csc\theta$</td>
-                <td>$\sec\theta$</td>
-              </tr>
-              <tr>
-                <td class="font-bold">$90^\circ + \theta$</td>
-                <td>$\cos\theta$</td>
-                <td>$-\sin\theta$</td>
-                <td>$-\cot\theta$</td>
-                <td>$-\tan\theta$</td>
-                <td>$-\csc\theta$</td>
-                <td>$\sec\theta$</td>
-              </tr>
-              <tr>
-                <td class="font-bold">$180^\circ - \theta$</td>
-                <td>$\sin\theta$</td>
-                <td>$-\cos\theta$</td>
-                <td>$-\tan\theta$</td>
-                <td>$-\cot\theta$</td>
-                <td>$-\sec\theta$</td>
-                <td>$\csc\theta$</td>
-              </tr>
-              <tr>
-                <td class="font-bold">$180^\circ + \theta$</td>
-                <td>$-\sin\theta$</td>
-                <td>$-\cos\theta$</td>
-                <td>$\tan\theta$</td>
-                <td>$\cot\theta$</td>
-                <td>$-\sec\theta$</td>
-                <td>$-\csc\theta$</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </section>
 
-      <!-- CHAPTER 7: QUADRILATERALS -->
-      <section id="chapter-quadrilaterals" class="bg-slate-900/40 border border-slate-800/80 rounded-3xl p-6 sm:p-8 glow-card">
-        <div class="flex items-center gap-3 border-b border-slate-800/80 pb-4 mb-6">
-          <span class="text-2xl sm:text-3xl">🟩</span>
-          <div>
-            <span class="text-[10px] text-indigo-400 font-bold uppercase tracking-wider">Chapter 7</span>
-            <h2 class="text-xl sm:text-2xl font-bold text-slate-100 font-sans">चतुर्भुज (Quadrilaterals)</h2>
-          </div>
-        </div>
+            <section id="Coordinate-Geometry">
+                <br />
+                <hr style="border: none; height: 5px; background-color: orange; margin: 20px 0;" />
+                <h2>अध्याय 3: निर्देशांक ज्यामिति (Coordinate Geometry)</h2>
+                <div class="scroll-x">
 
-        <p class="text-sm text-slate-300 mb-4 leading-relaxed">
-          चार भुजाओं से घिरी बंद समतल आकृति को <b>चतुर्भुज (Quadrilaterals)</b> कहते हैं।
-        </p>
+                    <h3>📌 प्रमुख सूत्र:</h3>
+                    <table>
+                        <tr>
+                            <th>क्रमांक</th>
+                            <th>सूत्र</th>
+                            <th>विवरण</th>
+                        </tr>
+                        <tr>
+                            <td>1.</td>
+                            <td>(x, y)</td>
+                            <td>निर्देशांक (Coordinate) को दर्शाने का सामान्य रूप</td>
+                        </tr>
+                        <tr>
+                            <td>2.</td>
+                            <td>सकारात्मक x-अक्ष और y-अक्ष</td>
+                            <td>x-अक्ष (horizontal), y-अक्ष (vertical)</td>
+                        </tr>
+                        <tr>
+                            <td>3.</td>
+                            <td>मूल बिंदु (0, 0)</td>
+                            <td>जहाँ x और y अक्ष एक-दूसरे को काटते हैं (Origin)</td>
+                        </tr>
+                        <tr>
+                            <td>4.</td>
+                            <td>चार चतुर्थांश (Quadrants)</td>
+                            <td>
+                                <ul>
+                                    <li>प्रथम चतुर्थांश (+x, +y)</li>
+                                    <li>द्वितीय चतुर्थांश (–x, +y)</li>
+                                    <li>तृतीय चतुर्थांश (–x, –y)</li>
+                                    <li>चतुर्थ चतुर्थांश (+x, –y)</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>5.</td>
+                            <td>
+                                <span class="root"> (x<sub>2</sub> - x<sub>1</sub>)<sup>2</sup> + (y<sub>2</sub> -
+                                    y<sub>1</sub>)<sup>2</sup> </span>
+                            </td>
+                            <td>दो बिंदुओं (x₁, y₁) और (x₂, y₂) के बीच की दूरी (Distance Formula)</td>
+                        </tr>
+                        <tr>
+                            <td>6.</td>
+                            <td>
+                                <span class="frac">
+                                    <span>(x<sub>1</sub> + x<sub>2</sub>)</span>
 
-        <div class="scroll-x custom-scrollbar">
-          <table class="th-math-table">
-            <thead>
-              <tr>
-                <th class="w-16">क्र.सं.</th>
-                <th class="w-1/3">चतुर्भुज का प्रकार</th>
-                <th>क्षेत्रफल और परिमाप सूत्र (LaTeX)</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td class="font-mono text-indigo-400">1</td>
-                <td class="font-bold">कोण योग नियम</td>
-                <td>चारों अंतः कोणों का योग: $$\angle A + \angle B + \angle C + \angle D = 360^\circ$$</td>
-              </tr>
-              <tr>
-                <td class="font-mono text-indigo-400">2</td>
-                <td class="font-bold">आयत (Rectangle)</td>
-                <td>
-                  <b>क्षेत्रफल:</b> $$\text{Area} = l \times w$$ <br>
-                  <b>परिमाप:</b> $$\text{Perimeter} = 2(l + w)$$
-                </td>
-              </tr>
-              <tr>
-                <td class="font-mono text-indigo-400">3</td>
-                <td class="font-bold">वर्ग (Square)</td>
-                <td>
-                  <b>क्षेत्रफल:</b> $$\text{Area} = s^2$$ <br>
-                  <b>परिमाप:</b> $$\text{Perimeter} = 4s$$
-                </td>
-              </tr>
-              <tr>
-                <td class="font-mono text-indigo-400">4</td>
-                <td class="font-bold">समांतर चतुर्भुज (Parallelogram)</td>
-                <td>
-                  <b>क्षेत्रफल:</b> $$\text{Area} = b \times h$$ <br>
-                  <b>परिमाप:</b> $$\text{Perimeter} = 2(a + b)$$
-                </td>
-              </tr>
-              <tr>
-                <td class="font-mono text-indigo-400">5</td>
-                <td class="font-bold">समचतुर्भुज (Rhombus)</td>
-                <td>
-                  <b>क्षेत्रफल:</b> $$\text{Area} = \frac{1}{2} \times d_1 \times d_2$$ <br>जहाँ $d_1, d_2$ विकर्ण हैं।
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </section>
+                                    <span class="bottom">2</span>
+                                </span>
+                                ,
+                                <span class="frac">
+                                    <span>(y<sub>1</sub> + y<sub>2</sub>)</span>
 
-      <!-- CHAPTER 8: CIRCLES -->
-      <section id="chapter-circles" class="bg-slate-900/40 border border-slate-800/80 rounded-3xl p-6 sm:p-8 glow-card">
-        <div class="flex items-center gap-3 border-b border-slate-800/80 pb-4 mb-6">
-          <span class="text-2xl sm:text-3xl">⭕</span>
-          <div>
-            <span class="text-[10px] text-indigo-400 font-bold uppercase tracking-wider">Chapter 8</span>
-            <h2 class="text-xl sm:text-2xl font-bold text-slate-100 font-sans">वृत्त (Circles)</h2>
-          </div>
-        </div>
+                                    <span class="bottom">2</span>
+                                </span>
+                            </td>
+                            <td>मध्य बिंदु सूत्र (Midpoint Formula)</td>
+                        </tr>
+                    </table>
+                </div>
+            </section>
+            <section id="Linear-Equations">
+                <br />
+                <hr style="border: none; height: 5px; background-color: orange; margin: 20px 0;" />
+                <h2>अध्यान 4: एक चर वाले रैखिक समीकरण (Linear Equations in One Variable)</h2>
 
-        <p class="text-sm text-slate-300 mb-4 leading-relaxed">
-          एक निश्चित बिंदु से समान दूरी पर स्थित बिंदुओं के बिंदु पथ को <b>वृत्त (Circles)</b> कहते हैं।
-        </p>
+                <h3>📌 प्रमुख सूत्र:</h3>
+                <div class="scroll-x">
 
-        <div class="scroll-x custom-scrollbar">
-          <table class="th-math-table">
-            <thead>
-              <tr>
-                <th class="w-16">क्र.सं.</th>
-                <th class="w-1/3">विषय / अंग</th>
-                <th>मापने के सूत्र (LaTeX)</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td class="font-mono text-indigo-400">1</td>
-                <td class="font-bold">वृत्त का व्यास (Diameter)</td>
-                <td>$$d = 2r$$ (जहाँ $r$ त्रिज्या है)</td>
-              </tr>
-              <tr>
-                <td class="font-mono text-indigo-400">2</td>
-                <td class="font-bold">वृत्त की परिधि (Circumference)</td>
-                <td>$$C = 2\pi r$$</td>
-              </tr>
-              <tr>
-                <td class="font-mono text-indigo-400">3</td>
-                <td class="font-bold">वृत्त का क्षेत्रफल (Area)</td>
-                <td>$$\text{Area} = \pi r^2$$</td>
-              </tr>
-              <tr>
-                <td class="font-mono text-indigo-400">4</td>
-                <td class="font-bold">त्रिज्यखंड का क्षेत्रफल (Sector Area)</td>
-                <td>$$\text{Sector Area} = \frac{\theta}{360^\circ} \times \pi r^2$$</td>
-              </tr>
-              <tr>
-                <td class="font-mono text-indigo-400">5</td>
-                <td class="font-bold">चाप की लंबाई (Arc Length)</td>
-                <td>$$\text{Arc Length} = \frac{\theta}{360^\circ} \times 2\pi r$$</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </section>
+                    <table>
+                        <tr>
+                            <th>क्रमांक</th>
+                            <th>सूत्र</th>
+                            <th>विवरण</th>
+                        </tr>
+                        <tr>
+                            <td>1.</td>
+                            <td><span class="equation">ax + b = 0</span></td>
+                            <td>यह रैखिक समीकरण का सामान्य रूप है, जहाँ 'a' और 'b' संख्या हैं, और 'x' अज्ञात है।</td>
+                        </tr>
+                        <tr>
+                            <td>2.</td>
+                            <td>
+                                <span class="equation">
+                                    x = <span class="frac"><span>-b</span><span class="bottom">a</span></span>
+                                </span>
+                            </td>
+                            <td>यह रैखिक समीकरण हल करने का सामान्य सूत्र है। इसे इस्तेमाल करके हम x का मान प्राप्त करते
+                                हैं।
+                            </td>
+                        </tr>
+                    </table>
+                </div>
 
-      <!-- CHAPTER 9: MENSURATION / HERON'S FORMULA -->
-      <section id="chapter-herons-formula" class="bg-slate-900/40 border border-slate-800/80 rounded-3xl p-6 sm:p-8 glow-card">
-        <div class="flex items-center gap-3 border-b border-slate-800/80 pb-4 mb-6">
-          <span class="text-2xl sm:text-3xl">📐</span>
-          <div>
-            <span class="text-[10px] text-indigo-400 font-bold uppercase tracking-wider">Chapter 9</span>
-            <h2 class="text-xl sm:text-2xl font-bold text-slate-100 font-sans">क्षेत्रमिति और हेरॉन का सूत्र (Mensuration)</h2>
-          </div>
-        </div>
+                <h3>📌 समीकरण हल करने का तरीका:</h3>
+                <p>उदाहरण:</p>
+                <p><strong>समीकरण:</strong> 3x + 6 = 12</p>
+                <ul>
+                    <li>पहले 6 को दूसरी ओर ले जाएं: <strong>3x = 12 - 6</strong></li>
+                    <li>फिर: <strong>3x = 6</strong></li>
+                    <li>अब 3 से दोनों ओर विभाजित करें: <strong>x = 6 / 3</strong></li>
+                    <li>अंत में, <strong>x = 2</strong></li>
+                </ul>
 
-        <p class="text-sm text-slate-300 mb-4 leading-relaxed">
-          त्रिभुजों और विभिन्न द्विविमीय आकृतियों के क्षेत्रफलों को मापने की वैज्ञानिक विधि <b>क्षेत्रमिति (Mensuration)</b> है।
-        </p>
+                <p>तो, x का मान है: <strong>2</strong></p>
 
-        <div class="scroll-x custom-scrollbar">
-          <table class="th-math-table">
-            <thead>
-              <tr>
-                <th class="w-16">क्र.सं.</th>
-                <th class="w-1/3">त्रिभुज प्रकार</th>
-                <th>विशेष सूत्र (LaTeX)</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td class="font-mono text-indigo-400">1</td>
-                <td class="font-bold">सामान्य त्रिभुज क्षेत्रफल</td>
-                <td>$$\text{Area} = \frac{1}{2} \times \text{आधार} \times \text{ऊँचाई}$$</td>
-              </tr>
-              <tr>
-                <td class="font-mono text-indigo-400">2</td>
-                <td class="font-bold">समबाहु त्रिभुज क्षेत्रफल (Equilateral)</td>
-                <td>$$\text{Area} = \frac{\sqrt{3}}{4} a^2$$ <br>जहाँ $a$ समबाहु त्रिभुज की भुजा है।</td>
-              </tr>
-              <tr>
-                <td class="font-mono text-indigo-400">3</td>
-                <td class="font-bold">हेरॉन का सूत्र (Heron's Formula)</td>
-                <td>
-                  यदि त्रिभुज की तीन भुजाएँ $a, b, c$ हों, तो क्षेत्रफल:<br>
-                  $$\text{Area} = \sqrt{s(s - a)(s - b)(s - c)}$$<br>
-                  जहाँ $s$ अर्ध-परिमाप (Semi-perimeter) है:<br>
-                  $$s = \frac{a + b + c}{2}$$
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </section>
+                <p><strong>समीकरण:</strong> 5x - 4 = 11</p>
+                <ul>
+                    <li>पहले -4 को दूसरी ओर ले जाएं: <strong>5x = 11 + 4</strong></li>
+                    <li>फिर: <strong>5x = 15</strong></li>
+                    <li>अब 5 से दोनों ओर विभाजित करें: <strong>x = 15 / 5</strong></li>
+                    <li>अंत में, <strong>x = 3</strong></li>
+                </ul>
 
-      <!-- CHAPTER 10: SURFACE AREAS AND VOLUMES -->
-      <section id="chapter-surface-areas-volumes" class="bg-slate-900/40 border border-slate-800/80 rounded-3xl p-6 sm:p-8 glow-card">
-        <div class="flex items-center gap-3 border-b border-slate-800/80 pb-4 mb-6">
-          <span class="text-2xl sm:text-3xl">📦</span>
-          <div>
-            <span class="text-[10px] text-indigo-400 font-bold uppercase tracking-wider">Chapter 10</span>
-            <h2 class="text-xl sm:text-2xl font-bold text-slate-100 font-sans">पृष्ठ क्षेत्रफल और आयतन (Surface Areas & Volumes)</h2>
-          </div>
-        </div>
+                <p>तो, x का मान है: <strong>3</strong></p>
+            </section>
+            <section id="Lines-Angles">
+                <br />
+                <hr style="border: none; height: 5px; background-color: orange; margin: 20px 0;" />
 
-        <p class="text-sm text-slate-300 mb-4 leading-relaxed">
-          त्रिविमीय आकृतियों के कुल बाहरी सतह के माप (क्षेत्रफल) और उनके द्वारा घेरे गए स्थान (आयतन) का मापन।
-        </p>
+                <h2>अध्यान 5: रेखाएँ और कोण (Lines and Angles)</h2>
+                <div class="scroll-x">
 
-        <div class="scroll-x custom-scrollbar">
-          <table class="th-math-table">
-            <thead>
-              <tr>
-                <th>ठोस आकृति</th>
-                <th>वक्र पृष्ठ क्षेत्रफल (Lateral Area)</th>
-                <th>संपूर्ण पृष्ठ क्षेत्रफल (Total Area)</th>
-                <th>आयतन (Volume)</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td class="font-bold">घन (Cube)</td>
-                <td>$$4a^2$$</td>
-                <td>$$6a^2$$</td>
-                <td>$$a^3$$</td>
-              </tr>
-              <tr>
-                <td class="font-bold">घनाभ (Cuboid)</td>
-                <td>$$2h(l + b)$$</td>
-                <td>$$2(lb + bh + hl)$$</td>
-                <td>$$l \times b \times h$$</td>
-              </tr>
-              <tr>
-                <td class="font-bold">गोला (Sphere)</td>
-                <td>$$4\pi r^2$$</td>
-                <td>$$4\pi r^2$$</td>
-                <td>$$\frac{4}{3}\pi r^3$$</td>
-              </tr>
-              <tr>
-                <td class="font-bold">अर्द्धगोला (Hemisphere)</td>
-                <td>$$2\pi r^2$$</td>
-                <td>$$3\pi r^2$$</td>
-                <td>$$\frac{2}{3}\pi r^3$$</td>
-              </tr>
-              <tr>
-                <td class="font-bold">शंकु (Cone)</td>
-                <td>$$\pi r l$$ <br>जहाँ slant height $l = \sqrt{r^2 + h^2}$</td>
-                <td>$$\pi r(l + r)$$</td>
-                <td>$$\frac{1}{3}\pi r^2 h$$</td>
-              </tr>
-              <tr>
-                <td class="font-bold">बेलन (Cylinder)</td>
-                <td>$$2\pi r h$$</td>
-                <td>$$2\pi r(r + h)$$</td>
-                <td>$$\pi r^2 h$$</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </section>
+                    <h3>📌 प्रमुख सूत्र:</h3>
+                    <table>
+                        <tr>
+                            <th>क्रमांक</th>
+                            <th>सूत्र</th>
+                            <th>विवरण</th>
+                        </tr>
+                        <tr>
+                            <td>1.</td>
+                            <td><span class="equation">समकुच कोण (Complementary Angles)</span></td>
+                            <td>दो कोणों का योग 90° होता है, तो वे समकुच कोण कहलाते हैं।</td>
+                        </tr>
+                        <tr>
+                            <td>2.</td>
+                            <td><span class="equation">पूरक कोण (Supplementary Angles)</span></td>
+                            <td>दो कोणों का योग 180° होता है, तो वे पूरक कोण कहलाते हैं।</td>
+                        </tr>
+                        <tr>
+                            <td>3.</td>
+                            <td><span class="equation">समानांतर रेखाएँ (Parallel Lines)</span></td>
+                            <td>दो रेखाएँ जो कभी एक-दूसरे को नहीं काटतीं, उन्हें समानांतर रेखाएँ कहते हैं।</td>
+                        </tr>
+                        <tr>
+                            <td>4.</td>
+                            <td><span class="equation">काटती रेखाएँ (Intersecting Lines)</span></td>
+                            <td>दो रेखाएँ जो एक बिंदु पर मिलती हैं, उन्हें काटती रेखाएँ कहते हैं।</td>
+                        </tr>
+                        <tr>
+                            <td>5.</td>
+                            <td><span class="equation">आंतर कोण (Alternate Angles)</span></td>
+                            <td>दो समानांतर रेखाओं को एक ट्रांसवर्सल रेखा द्वारा काटा जाता है, तो ट्रांसवर्सल रेखा से
+                                बने
+                                कोण आंतर कोण कहलाते हैं।</td>
+                        </tr>
+                    </table>
+                </div>
 
-      <!-- CHAPTER 11: STATISTICS -->
-      <section id="chapter-statistics" class="bg-slate-900/40 border border-slate-800/80 rounded-3xl p-6 sm:p-8 glow-card">
-        <div class="flex items-center gap-3 border-b border-slate-800/80 pb-4 mb-6">
-          <span class="text-2xl sm:text-3xl">📊</span>
-          <div>
-            <span class="text-[10px] text-indigo-400 font-bold uppercase tracking-wider">Chapter 11</span>
-            <h2 class="text-xl sm:text-2xl font-bold text-slate-100 font-sans">सांख्यिकी (Statistics)</h2>
-          </div>
-        </div>
+                <h3>📌 उदाहरण:</h3>
+                <div class="scroll-x">
 
-        <p class="text-sm text-slate-300 mb-4 leading-relaxed">
-          आंकड़ों के संग्रहण, प्रस्तुतीकरण और उनके विश्लेषण की गणितीय शाखा को <b>सांख्यिकी (Statistics)</b> कहते हैं।
-        </p>
+                    <p><strong>समकुच कोण (Complementary Angles):</strong></p>
+                    <p>यदि एक कोण 30° है, तो दूसरा कोण 60° होगा, क्योंकि दोनों का योग 90° होता है।</p>
+                    <table>
+                        <tr>
+                            <th>समीकरण</th>
+                            <th>विवरण</th>
+                        </tr>
+                        <tr>
+                            <td>30° + 60° = 90°</td>
+                            <td>यहां 30° और 60° समकुच कोण हैं, जिनका योग 90° होता है।</td>
+                        </tr>
+                    </table>
+                </div>
 
-        <div class="scroll-x custom-scrollbar">
-          <table class="th-math-table">
-            <thead>
-              <tr>
-                <th class="w-16">क्र.सं.</th>
-                <th class="w-1/3">विषय / प्रकार</th>
-                <th>सटीक गणितीय सूत्र (LaTeX)</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td class="font-mono text-indigo-400">1</td>
-                <td class="font-bold">साधारण माध्य (Mean)</td>
-                <td>$$\bar{x} = \frac{\text{सभी प्रेक्षणों का योग}}{\text{प्रेक्षणों की कुल संख्या}} = \frac{\sum x_i}{n}$$</td>
-              </tr>
-              <tr>
-                <td class="font-mono text-indigo-400">2</td>
-                <td class="font-bold">वर्गीकृत आंकड़ों का माध्य</td>
-                <td>$$\bar{x} = \frac{\sum f_i x_i}{\sum f_i}$$ <br>जहाँ $f$ आवृत्ति (frequency) है।</td>
-              </tr>
-              <tr>
-                <td class="font-mono text-indigo-400">3</td>
-                <td class="font-bold">अवर्गीकृत माध्यिका (Median)</td>
-                <td>
-                  संख्या $n$ को आरोही क्रम में रखने पर:<br>
-                  - यदि $n$ विषम (odd) है: $$\text{Median} = \left(\frac{n+1}{2}\right)\text{वाँ पद}$$<br>
-                  - यदि $n$ सम (even) है: $$\text{Median} = \frac{\left(\frac{n}{2}\right)\text{वाँ पद} + \left(\frac{n}{2}+1\right)\text{वाँ पद}}{2}$$
-                </td>
-              </tr>
-              <tr>
-                <td class="font-mono text-indigo-400">4</td>
-                <td class="font-bold">वर्गीकृत माध्यिका (Median for Grouped Data)</td>
-                <td>
-                  $$\text{Median} = l + \left( \frac{\frac{n}{2} - F}{f} \right) \times h$$
-                </td>
-              </tr>
-              <tr>
-                <td class="font-mono text-indigo-400">5</td>
-                <td class="font-bold">वर्गीकृत बहुलक (Mode for Grouped Data)</td>
-                <td>
-                  $$\text{Mode} = l + \left( \frac{f_1 - f_0}{2f_1 - f_0 - f_2} \right) \times h$$
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+                <p><strong>पूरक कोण (Supplementary Angles):</strong></p>
+                <p>यदि एक कोण 110° है, तो दूसरा कोण 70° होगा, क्योंकि दोनों का योग 180° होता है।</p>
+                <table>
+                    <tr>
+                        <th>समीकरण</th>
+                        <th>विवरण</th>
+                    </tr>
+                    <tr>
+                        <td>110° + 70° = 180°</td>
+                        <td>यहां 110° और 70° पूरक कोण हैं, जिनका योग 180° होता है।</td>
+                    </tr>
+                </table>
 
-        <h3 class="text-sm font-bold text-indigo-400 mt-4 mb-2">💡 सांख्यिकी सूत्रों के संकेतों की व्याख्या:</h3>
-        <ul class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs text-slate-400 list-disc pl-4">
-          <li><b>$\sum f \cdot x$</b>: आवृत्ति तथा मान के गुणनफलों का योग</li>
-          <li><b>$l$</b>: माध्यिका या बहुलक वर्ग की निम्न सीमा</li>
-          <li><b>$n$</b>: कुल आवृत्तियों का योग</li>
-          <li><b>$F$</b>: माध्यिका वर्ग के ठीक पहले वाले वर्ग की संचयी आवृत्ति</li>
-          <li><b>$f$</b>: माध्यिका वर्ग की बारंबारता</li>
-          <li><b>$f_0$</b>: बहुलक वर्ग के ठीक पहले वर्ग की बारंबारता</li>
-          <li><b>$f_1$</b>: बहुलक वर्ग की बारंबारता</li>
-          <li><b>$f_2$</b>: बहुलक वर्ग के ठीक बाद वाले वर्ग की बारंबारता</li>
-          <li><b>$h$</b>: वर्ग अंतराल का माप (Class width)</li>
-        </ul>
-      </section>
+                <p><strong>समानांतर रेखाएँ (Parallel Lines):</strong></p>
+                <p>अगर दो रेखाएँ समानांतर हैं, तो उनका अंतर कोण (alternate angles) और अनुकूली कोण (corresponding angles)
+                    समान होते हैं।</p>
 
-      <!-- CHAPTER 12: PROBABILITY -->
-      <section id="chapter-probability" class="bg-slate-900/40 border border-slate-800/80 rounded-3xl p-6 sm:p-8 glow-card">
-        <div class="flex items-center gap-3 border-b border-slate-800/80 pb-4 mb-6">
-          <span class="text-2xl sm:text-3xl">🎲</span>
-          <div>
-            <span class="text-[10px] text-indigo-400 font-bold uppercase tracking-wider">Chapter 12</span>
-            <h2 class="text-xl sm:text-2xl font-bold text-slate-100 font-sans">प्रायिकता (Probability)</h2>
-          </div>
-        </div>
+                <p><strong>उदाहरण:</strong></p>
+                <table>
+                    <tr>
+                        <td>⟶ रेखाएँ: AB || CD</td>
+                        <td>⟶ ट्रांसवर्सल रेखा: EF</td>
+                    </tr>
+                    <tr>
+                        <td>⇒ ∠1 = ∠2 (आंतर कोण)</td>
+                        <td>⇒ ∠3 = ∠4 (अनुकूली कोण)</td>
+                    </tr>
+                </table>
 
-        <p class="text-sm text-slate-300 mb-4 leading-relaxed">
-          किसी घटना के घटित होने की संभावना की गणितीय माप को <b>प्रायिकता (Probability)</b> कहते हैं।
-        </p>
+                <p><strong>काटती रेखाएँ (Intersecting Lines):</strong></p>
+                <p>जब दो रेखाएँ एक ही बिंदु पर मिलती हैं, तो वे काटती रेखाएँ कहलाती हैं।</p>
 
-        <div class="scroll-x custom-scrollbar">
-          <table class="th-math-table">
-            <thead>
-              <tr>
-                <th class="w-16">क्र.सं.</th>
-                <th class="w-1/3">प्रायिकता नियम</th>
-                <th>गणितीय सूत्र (LaTeX)</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td class="font-mono text-indigo-400">1</td>
-                <td class="font-bold">घटना $E$ की प्रायिकता</td>
-                <td>$$P(E) = \frac{\text{अनुकूल परिणामों की संख्या}}{\text{कुल संभावित परिणामों की संख्या}}$$</td>
-              </tr>
-              <tr>
-                <td class="font-mono text-indigo-400">2</td>
-                <td class="font-bold">घटना न घटने की प्रायिकता</td>
-                <td>$$P(\bar{E}) = 1 - P(E)$$</td>
-              </tr>
-              <tr>
-                <td class="font-mono text-indigo-400">3</td>
-                <td class="font-bold">निश्चित घटना (Sure Event)</td>
-                <td>$$P(E) = 1$$</td>
-              </tr>
-              <tr>
-                <td class="font-mono text-indigo-400">4</td>
-                <td class="font-bold">असंभव घटना (Impossible Event)</td>
-                <td>$$P(E) = 0$$</td>
-              </tr>
-              <tr>
-                <td class="font-mono text-indigo-400">5</td>
-                <td class="font-bold">प्रायिकता की सीमा</td>
-                <td>$$0 \le P(E) \le 1$$</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </section>
+                <p><strong>उदाहरण:</strong></p>
+                <table>
+                    <tr>
+                        <td>⟶ रेखाएँ: AB और CD</td>
+                        <td>⟶ बिंदु: P</td>
+                    </tr>
+                    <tr>
+                        <td>⇒ AB ∩ CD = P</td>
+                        <td>⇒ रेखाएँ AB और CD P पर मिलती हैं।</td>
+                    </tr>
+                </table>
 
-    </div>
+                <p><strong>आंतर कोण (Alternate Angles):</strong></p>
+                <p>समानांतर रेखाओं को ट्रांसवर्सल रेखा द्वारा काटे जाने पर बनने वाले कोण आंतर कोण कहलाते हैं।</p>
+                <p><strong>उदाहरण:</strong> अगर रेखाएँ AB और CD समानांतर हैं, और EF एक ट्रांसवर्सल रेखा है, तो ∠1 और ∠2
+                    आंतर कोण होंगे।</p>
+            </section>
+            <section id="Triangles">
+                <br />
+                <hr style="border: none; height: 5px; background-color: orange; margin: 20px 0;" />
 
-  </div>
+                <h2>Trigonometry</h2>
+
+                <h1 id="Radian-degree">
+                    </h2>
+                    <br />
+                    <div class="scroll-x">
+
+                        <h2>Radian and Degree Measures of Angles:</h2>
+                        <table border="1" cellpadding="10" cellspacing="2" style="width: 100%;">
+                            <tbody>
+                                <tr></tr>
+                                <tr></tr>
+                                <tr>
+                                    <td>1 rad</td>
+
+                                    <td>
+                                        <span class="frac">180°<span class="bottom">π</span></span> ≈ 57°17'45"
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>1°</td>
+
+                                    <td>
+                                        <span class="frac">π<span class="bottom">180</span></span>rad ≈ 0.017453
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>1'</td>
+
+                                    <td>
+                                        <span class="frac">π<span class="bottom">180.60</span></span>rad ≈ 0.000291 rad
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>1"</td>
+
+                                    <td>
+                                        <span class="frac">π<span class="bottom">180.3600</span></span>rad ≈ 0.000005
+                                        rad
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <h2>
+                        <p id="Trigonometric-ratio">
+                            <br />
+                            Trigonometric Ratio
+                        </p>
+                    </h2>
+
+                    <p>Opposite Side = लम्ब</p>
+                    <p>Hypotenuse = कर्ण</p>
+                    <p>Adjacent Side = आधार</p>
+                    <div class="scroll-x">
+
+                        <table border="1" cellpadding="10" cellspacing="2" style="width: 100%;">
+                            <tbody>
+                                <tr></tr>
+                                <tr>
+                                    <td>(कर्ण)<sup>2</sup></td>
+
+                                    <td>(लम्ब)<sup>2</sup> + (आधार)<sup>2</sup></td>
+                                </tr>
+                                <tr>
+                                    <td>(लम्ब)<sup>2</sup></td>
+
+                                    <td>(कर्ण)<sup>2</sup> - (आधार)<sup>2</sup></td>
+                                </tr>
+                                <tr>
+                                    <td>(आधार)<sup>2</sup></td>
+
+                                    <td>(कर्ण)<sup>2</sup> - (लम्ब)<sup>2</sup></td>
+                                </tr>
+                                <tr>
+                                    <td>sin θ</td>
+
+                                    <td>
+                                        <span class="frac">लम्ब<span class="bottom">कर्ण</span></span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>cos θ</td>
+
+                                    <td>
+                                        <span class="frac">आधार<span class="bottom">कर्ण</span></span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>tan θ</td>
+
+                                    <td>
+                                        <span class="frac">लम्ब<span class="bottom">आधार</span></span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>cosec θ</td>
+
+                                    <td>
+                                        <span class="frac">कर्ण<span class="bottom">लम्ब</span></span>
+                                        ,&nbsp;&nbsp;<span class="frac">1<span class="bottom">Sin</span></span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>sec θ</td>
+
+                                    <td>
+                                        <span class="frac">कर्ण<span class="bottom">आधार</span></span>
+                                        ,&nbsp;&nbsp;<span class="frac">1<span class="bottom">cos</span></span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>cot θ</td>
+
+                                    <td>
+                                        <span class="frac">आधार<span class="bottom">लम्ब</span></span>
+                                        ,&nbsp;&nbsp;<span class="frac">1<span class="bottom">tan</span></span>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <p id="Reciprocal-Identities">
+                        <br />
+
+                        <b>Reciprocal Identities:</b>
+                    </p>
+                    <div class="scroll-x">
+
+                        <table border="1" cellpadding="10" cellspacing="2" style="width: 100%;">
+                            <tbody>
+                                <tr>
+                                    <td>cosec θ</td>
+
+                                    <td>
+                                        <span class="frac">1<span class="bottom">sin θ</span></span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>sec θ</td>
+
+                                    <td>
+                                        <span class="frac">1<span class="bottom">cos θ</span></span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>cot θ</td>
+
+                                    <td>
+                                        <span class="frac">1<span class="bottom">tan θ</span></span>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <p id="Quotient-Identities">
+                        <br />
+
+                        <b>Quotient Identities:</b>
+                    </p>
+                    <div class="scroll-x">
+
+                        <table border="1" cellpadding="10" cellspacing="2" style="width: 100%;">
+                            <tbody>
+                                <tr>
+                                    <td>tan θ</td>
+
+                                    <td>
+                                        <span class="frac">sin θ<span class="bottom">cos θ</span></span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>cot θ</td>
+
+                                    <td>
+                                        <span class="frac">cos θ<span class="bottom">sin θ</span></span>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <br />
+                    <h2>त्रिकोणमिति (Trigonometry)</h2>
+                    <p id="Trigonometric-Chart">
+                        <br />
+                        <br />
+                        <b>त्रिकोणमिति सारणी (Trigonometric Chart):-</b>
+                    </p>
+                    <div class="scroll-x">
+
+                        <table id="myTable" border="1" cellpadding="10" cellspacing="2" style="width: 100%;">
+                            <tbody>
+                                <tr>
+                                    <th>Angle (θ)</th>
+                                    <th>0°</th>
+                                    <th>30°</th>
+                                    <th>45°</th>
+                                    <th>60°</th>
+                                    <th>90°</th>
+                                </tr>
+                                <tr>
+                                    <td>Sine (sin θ)</td>
+                                    <td>0</td>
+                                    <td>
+                                        <span class="rootfrac"><span class="num">1</span><span
+                                                class="den">2</span></span>
+                                    </td>
+                                    <td>
+                                        <span class="rootfrac">
+                                            <span class="num">1</span><span class="den"><span
+                                                    class="root">2</span></span>
+                                        </span>
+                                    </td>
+                                    <td>
+                                        <span class="rootfrac">
+                                            <span class="num"><span class="root">3</span></span><span
+                                                class="den">2</span>
+                                        </span>
+                                    </td>
+                                    <td>1</td>
+                                </tr>
+                                <tr>
+                                    <td>Cosine (cos θ)</td>
+                                    <td>1</td>
+                                    <td>
+                                        <span class="rootfrac">
+                                            <span class="num"><span class="root">3</span></span><span
+                                                class="den">2</span>
+                                        </span>
+                                    </td>
+                                    <td>
+                                        <span class="rootfrac">
+                                            <span class="num">1</span><span class="den"><span
+                                                    class="root">2</span></span>
+                                        </span>
+                                    </td>
+                                    <td>
+                                        <span class="frac">1<span class="bottom">2</span></span>
+                                    </td>
+                                    <td>0</td>
+                                </tr>
+                                <tr>
+                                    <td>Tangent (tan θ)</td>
+                                    <td>0</td>
+                                    <td>
+                                        <span class="rootfrac">
+                                            <span class="num">1</span><span class="den"><span
+                                                    class="root">3</span></span>
+                                        </span>
+                                    </td>
+                                    <td>1</td>
+                                    <td>
+                                        <span class="root">3</span>
+                                    </td>
+                                    <td>∞</td>
+                                </tr>
+                                <tr>
+                                    <td>Cotangent (cot θ)</td>
+                                    <td>∞</td>
+                                    <td>
+                                        <span class="root">3</span>
+                                    </td>
+                                    <td>1</td>
+                                    <td>
+                                        <span class="rootfrac">
+                                            <span class="num">1</span><span class="den"><span
+                                                    class="root">3</span></span>
+                                        </span>
+                                    </td>
+                                    <td>0</td>
+                                </tr>
+                                <tr>
+                                    <td>Secant (sec θ)</td>
+                                    <td>1</td>
+                                    <td>
+                                        <span class="rootfrac">
+                                            <span class="num">2</span><span class="den"><span
+                                                    class="root">3</span></span>
+                                        </span>
+                                    </td>
+                                    <td>
+                                        <span class="root">2</span>
+                                    </td>
+                                    <td>2</td>
+                                    <td>∞</td>
+                                </tr>
+                                <tr>
+                                    <td>Cosecant (csc θ)</td>
+                                    <td>∞</td>
+                                    <td>2</td>
+                                    <td>
+                                        <span class="root">2</span>
+                                    </td>
+                                    <td>
+                                        <span class="rootfrac">
+                                            <span class="num">2</span><span class="den"><span
+                                                    class="root">3</span></span>
+                                        </span>
+                                    </td>
+                                    <td>1</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <br />
+
+                    <p id="Pythagorean-Identities">
+                        <br />
+                        <br />
+                        <b>Pythagorean Identities:</b>
+                    </p>
+                    <table border="1" cellpadding="10" cellspacing="2" style="width: 100%;">
+                        <tbody>
+                            <tr>
+                                <td>sin<sup>2</sup> θ + cos<sup>2</sup> θ</td>
+
+                                <td>1</td>
+                            </tr>
+                            <tr>
+                                <td>sec<sup>2</sup> θ - tan<sup>2</sup> θ</td>
+
+                                <td>1</td>
+                            </tr>
+                            <tr>
+                                <td>cosec<sup>2</sup> θ - cot<sup>2</sup> θ</td>
+
+                                <td>1</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <p id="Even-Odd-Identities">
+                        <br />
+                        <br />
+                        <b>Even-Odd Identities:</b>
+                    </p>
+                    <table border="1" cellpadding="10" cellspacing="2" style="width: 100%;">
+                        <tbody>
+                            <tr>
+                                <td>sin(-θ)</td>
+
+                                <td>-sin(θ)</td>
+                            </tr>
+                            <tr>
+                                <td>cos(-θ)</td>
+
+                                <td>cos(θ)</td>
+                            </tr>
+                            <tr>
+                                <td>tan(-θ)</td>
+
+                                <td>-tan(θ)</td>
+                            </tr>
+                            <tr>
+                                <td>csc(-θ)</td>
+
+                                <td>-csc(θ)</td>
+                            </tr>
+                            <tr>
+                                <td>sec(-θ)</td>
+
+                                <td>sec(θ)</td>
+                            </tr>
+                            <tr>
+                                <td>cot(-θ)</td>
+
+                                <td>-cot(θ)</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <h2>
+                        <p id="Co-Ratio">
+                            <br />
+                            <br />
+                            <b>Co - Ratio</b>
+                        </p>
+                    </h2>
+
+                    <p id="Trigonometric-Identities"><b>Trigonometric Identities</b></p>
+                    <div class="scroll-x">
+                        <table id="myTable">
+                            <thead>
+                                <tr>
+                                    <th>Angle</th>
+                                    <th>sin</th>
+                                    <th>cos</th>
+                                    <th>tan</th>
+                                    <th>cot</th>
+                                    <th>sec</th>
+                                    <th>csc</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>90 - θ</td>
+                                    <td>cos(θ)</td>
+                                    <td>sin(θ)</td>
+                                    <td>cot(θ)</td>
+                                    <td>tan(θ)</td>
+                                    <td>csc(θ)</td>
+                                    <td>sec(θ)</td>
+                                </tr>
+                                <tr>
+                                    <td>90 + θ</td>
+                                    <td>cos(θ)</td>
+                                    <td>-sin(θ)</td>
+                                    <td>-cot(θ)</td>
+                                    <td>-tan(θ)</td>
+                                    <td>-csc(θ)</td>
+                                    <td>sec(θ)</td>
+                                </tr>
+                                <tr>
+                                    <td>180 - θ</td>
+                                    <td>sin(θ)</td>
+                                    <td>-cos(θ)</td>
+                                    <td>-tan(θ)</td>
+                                    <td>-cot(θ)</td>
+                                    <td>-sec(θ)</td>
+                                    <td>csc(θ)</td>
+                                </tr>
+                                <tr>
+                                    <td>180 + θ</td>
+                                    <td>-sin(θ)</td>
+                                    <td>-cos(θ)</td>
+                                    <td>tan(θ)</td>
+                                    <td>cot(θ)</td>
+                                    <td>-sec(θ)</td>
+                                    <td>-csc(θ)</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <br />
+            </section>
+            <div class="scroll-x">
+
+                <section id="Quadrilaterals">
+                    <br />
+                    <hr style="border: none; height: 5px; background-color: orange; margin: 20px 0;" />
+                    <h2>चतुर्भुज (Quadrilaterals)</h2>
+                    <div class="scroll-x">
+                        <table border="1" cellspacing="0" cellpadding="5">
+                            <tr>
+                                <th>विषय</th>
+                                <th>=</th>
+                                <th>सूत्र</th>
+                            </tr>
+                            <tr>
+                                <td>चतुर्भुज के कोणों का योग</td>
+                                <td>=</td>
+                                <td>360°</td>
+                            </tr>
+                            <tr>
+                                <td>सामान्य चतुर्भुज का क्षेत्रफल</td>
+                                <td>=</td>
+                                <td>आधार × ऊँचाई</td>
+                            </tr>
+                            <tr>
+                                <td>आयत का क्षेत्रफल</td>
+                                <td>=</td>
+                                <td>लंबाई × चौड़ाई</td>
+                            </tr>
+                            <tr>
+                                <td>आयत का परिमाप</td>
+                                <td>=</td>
+                                <td>2 × (लंबाई + चौड़ाई)</td>
+                            </tr>
+                            <tr>
+                                <td>समांतर चतुर्भुज का क्षेत्रफल</td>
+                                <td>=</td>
+                                <td>आधार × ऊँचाई</td>
+                            </tr>
+                            <tr>
+                                <td>समांतर चतुर्भुज का परिमाप</td>
+                                <td>=</td>
+                                <td>2 × (a + b)</td>
+                            </tr>
+                            <tr>
+                                <td>वर्ग का क्षेत्रफल</td>
+                                <td>=</td>
+                                <td>(पक्ष)<sup>2</sup></td>
+                            </tr>
+                            <tr>
+                                <td>वर्ग का परिमाप</td>
+                                <td>=</td>
+                                <td>4 × (पक्ष)</td>
+                            </tr>
+                            <tr>
+                                <td>रम्बस (Rhombus) का क्षेत्रफल</td>
+                                <td>=</td>
+                                <td>
+                                    <span class="frac"><span>1</span><span class="bottom">2</span></span> × (विकर्ण₁ ×
+                                    विकर्ण₂)
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </section>
+                <section id="Circles">
+                    <br />
+                    <hr style="border: none; height: 5px; background-color: orange; margin: 20px 0;" />
+
+                    <table border="1" cellspacing="0" cellpadding="5">
+                        <tr>
+                            <th>विषय</th>
+                            <th>=</th>
+                            <th>सूत्र</th>
+                        </tr>
+                        <tr>
+                            <td>वृत्त की परिधि</td>
+                            <td>=</td>
+                            <td>2πr</td>
+                        </tr>
+                        <tr>
+                            <td>वृत्त का क्षेत्रफल</td>
+                            <td>=</td>
+                            <td>πr<sup>2</sup></td>
+                        </tr>
+                        <tr>
+                            <td>व्यास (Diameter)</td>
+                            <td>=</td>
+                            <td>2r</td>
+                        </tr>
+                        <tr>
+                            <td>त्रिज्या (Radius)</td>
+                            <td>=</td>
+                            <td>
+                                <span class="frac"><span>व्यास</span><span class="bottom">2</span></span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>चाप की लंबाई (θ डिग्री में)</td>
+                            <td>=</td>
+                            <td>
+                                <span class="frac"><span>θ</span><span class="bottom">360</span></span> × 2πr
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>वृत्त खंड का क्षेत्रफल (Sector Area)</td>
+                            <td>=</td>
+                            <td>
+                                <span class="frac"><span>θ</span><span class="bottom">360</span></span> × πr<sup>2</sup>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>वृत्त का अर्द्धव्यास</td>
+                            <td>=</td>
+                            <td>
+                                <span class="frac"><span>परिधि</span><span class="bottom">2π</span></span>
+                            </td>
+                        </tr>
+                    </table>
+                </section>
+                <section id="Mensuration">
+                    <br />
+                    <hr style="border: none; height: 5px; background-color: orange; margin: 20px 0;" />
+                    <h2>क्षेत्रमिति (Mensuration)</h2>
+                    <table border="1" cellspacing="0" cellpadding="5">
+                        <tr>
+                            <th>विषय</th>
+                            <th>=</th>
+                            <th>सूत्र</th>
+                        </tr>
+                        <tr>
+                            <td>वर्ग का क्षेत्रफल</td>
+                            <td>=</td>
+                            <td>(पक्ष)<sup>2</sup></td>
+                        </tr>
+                        <tr>
+                            <td>वर्ग का परिमाप</td>
+                            <td>=</td>
+                            <td>4 × पक्ष</td>
+                        </tr>
+                        <tr>
+                            <td>आयत का क्षेत्रफल</td>
+                            <td>=</td>
+                            <td>लंबाई × चौड़ाई</td>
+                        </tr>
+                        <tr>
+                            <td>आयत का परिमाप</td>
+                            <td>=</td>
+                            <td>2 × (लंबाई + चौड़ाई)</td>
+                        </tr>
+                        <tr>
+                            <td>त्रिभुज का क्षेत्रफल (आधार और ऊँचाई द्वारा)</td>
+                            <td>=</td>
+                            <td>
+                                <span class="frac"><span>1</span><span class="bottom">2</span></span> × आधार × ऊँचाई
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>समभुज त्रिभुज का क्षेत्रफल</td>
+                            <td>=</td>
+                            <td>
+                                <span class="rootfrac">
+                                    <span class="num"><span class="root">3</span></span><span class="den">4</span>
+                                </span>
+                                × (भुजा)<sup>2</sup>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>समांतर चतुर्भुज का क्षेत्रफल</td>
+                            <td>=</td>
+                            <td>आधार × ऊँचाई</td>
+                        </tr>
+                        <tr>
+                            <td>रम्बस (Rhombus) का क्षेत्रफल</td>
+                            <td>=</td>
+                            <td>
+                                <span class="frac"><span>1</span><span class="bottom">2</span></span> × (विकर्ण₁ ×
+                                विकर्ण₂)
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>वृत्त का क्षेत्रफल</td>
+                            <td>=</td>
+                            <td>πr<sup>2</sup></td>
+                        </tr>
+                        <tr>
+                            <td>वृत्त की परिधि</td>
+                            <td>=</td>
+                            <td>2πr</td>
+                        </tr>
+                        <tr>
+                            <td>अर्धवृत्त का क्षेत्रफल</td>
+                            <td>=</td>
+                            <td>
+                                <span class="frac"><span>1</span><span class="bottom">2</span></span> × πr<sup>2</sup>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>अर्धवृत्त की परिधि</td>
+                            <td>=</td>
+                            <td>πr + 2r</td>
+                        </tr>
+                        <tr>
+                            <td>किसी चाप की लंबाई</td>
+                            <td>=</td>
+                            <td>
+                                <span class="frac"><span>θ</span><span class="bottom">360</span></span> × 2πr
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>चाप वाला क्षेत्रफल (Sector area)</td>
+                            <td>=</td>
+                            <td>
+                                <span class="frac"><span>θ</span><span class="bottom">360</span></span> × πr<sup>2</sup>
+                            </td>
+                        </tr>
+                    </table>
+                </section>
+                <section id="Statistics">
+                    <br />
+                    <hr style="border: none; height: 5px; background-color: orange; margin: 20px 0;" />
+                    <h2>सांख्यिकी (Statistics)</h2>
+                    <table border="1" cellspacing="0" cellpadding="5">
+                        <tr>
+                            <th>विषय</th>
+                            <th>=</th>
+                            <th>सूत्र</th>
+                        </tr>
+                        <tr>
+                            <td>माध्य (Mean)</td>
+                            <td>=</td>
+                            <td>
+                                <span class="frac"><span>सभी मानों का योग</span><span class="bottom">कुल मानों की
+                                        संख्या</span></span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>संवृत्त माध्य (Mean for grouped data)</td>
+                            <td>=</td>
+                            <td>
+                                <span class="frac"><span>Σf·x</span><span class="bottom">Σf</span></span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>माध्यिका (Median) - असांवृत्त</td>
+                            <td>=</td>
+                            <td>
+                                <span class="frac"><span>n + 1</span><span class="bottom">2</span></span> वीं संख्या
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>माध्यिका (Median) - सांवृत्त</td>
+                            <td>=</td>
+                            <td>
+                                l +
+                                <span class="frac">
+                                    <span>
+                                        <span class="frac"><span>n</span><span class="bottom">2</span></span> – F
+                                    </span>
+                                    <span class="bottom">f</span>
+                                </span>
+                                × h
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>बहुलक (Mode) - सांवृत्त</td>
+                            <td>=</td>
+                            <td>
+                                l +
+                                <span class="frac">
+                                    <span>f<sub>1</sub> – f<sub>0</sub></span><span class="bottom">2f<sub>1</sub> –
+                                        f<sub>0</sub> – f<sub>2</sub></span>
+                                </span>
+                                × h
+                            </td>
+                        </tr>
+                    </table>
+                    <ul>
+                        <li><b>Σf·x</b>: आवृत्ति (f) × मान (x) का योग</li>
+                        <li><b>Σf</b>: कुल आवृत्ति</li>
+                        <li><b>l</b>: माध्यिका या बहुलक वर्ग की निम्न सीमा</li>
+                        <li><b>n</b>: कुल आवृत्तियों का योग</li>
+                        <li><b>F</b>: माध्यिका वर्ग से पहले की कुल आवृत्तियाँ</li>
+                        <li><b>f</b>: माध्यिका वर्ग की आवृत्ति</li>
+                        <li><b>f₀</b>: बहुलक वर्ग से पहले की आवृत्ति</li>
+                        <li><b>f₁</b>: बहुलक वर्ग की आवृत्ति</li>
+                        <li><b>f₂</b>: बहुलक वर्ग के बाद की आवृत्ति</li>
+                        <li><b>h</b>: वर्ग की चौड़ाई (class width)</li>
+                    </ul>
+                </section>
+                <section id="Probability">
+                    <br />
+                    <hr style="border: none; height: 5px; background-color: orange; margin: 20px 0;" />
+                    <h2>प्रायिकता (Probability)</h2>
+                    <table border="1" cellspacing="0" cellpadding="5">
+                        <tr>
+                            <th>विषय</th>
+                            <th>=</th>
+                            <th>सूत्र</th>
+                        </tr>
+                        <tr>
+                            <td>प्रायिकता (साधारण)</td>
+                            <td>=</td>
+                            <td>
+                                <span class="frac"><span>मनचाही घटनाएँ</span><span class="bottom">संभाव्य कुल
+                                        घटनाएँ</span></span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>घटित न होने की प्रायिकता</td>
+                            <td>=</td>
+                            <td>1 − P(E)</td>
+                        </tr>
+                        <tr>
+                            <td>पूर्ण निश्चित घटना की प्रायिकता</td>
+                            <td>=</td>
+                            <td>1</td>
+                        </tr>
+                        <tr>
+                            <td>असंभव घटना की प्रायिकता</td>
+                            <td>=</td>
+                            <td>0</td>
+                        </tr>
+                        <tr>
+                            <td>0 ≤ किसी घटना की प्रायिकता P(E)</td>
+                            <td>≤</td>
+                            <td>1</td>
+                        </tr>
+                    </table>
+                    <ul>
+                        <li><b>P(E)</b>: घटना E की प्रायिकता</li>
+                        <li><b>मनचाही घटनाएँ</b>: वह परिणाम जो हमें चाहिए</li>
+                        <li><b>संभाव्य कुल घटनाएँ</b>: सभी संभावित परिणाम</li>
+                    </ul>
+                </section>
+                <section id="Surface-Volume">
+                    <br />
+                    <hr style="border: none; height: 5px; background-color: orange; margin: 20px 0;" />
+                    <h2>पृष्ठ क्षेत्रफल और आयतन</h2>
+                    <table border="1" cellspacing="0" cellpadding="5">
+                        <tr>
+                            <th>आकार</th>
+                            <th>माप</th>
+                            <th>सूत्र</th>
+                        </tr>
+                        <tr>
+                            <td rowspan="3">घन (Cube)</td>
+                            <td>पृष्ठ क्षेत्रफल</td>
+                            <td>6 × a<sup>2</sup></td>
+                        </tr>
+                        <tr>
+                            <td>वक्र पृष्ठ क्षेत्रफल</td>
+                            <td>4 × a<sup>2</sup></td>
+                        </tr>
+                        <tr>
+                            <td>आयतन</td>
+                            <td>a<sup>3</sup></td>
+                        </tr>
+
+                        <tr>
+                            <td rowspan="3">घनाभ (Cuboid)</td>
+                            <td>पृष्ठ क्षेत्रफल</td>
+                            <td>2(lb + bh + hl)</td>
+                        </tr>
+                        <tr>
+                            <td>वक्र पृष्ठ क्षेत्रफल</td>
+                            <td>2h(l + b)</td>
+                        </tr>
+                        <tr>
+                            <td>आयतन</td>
+                            <td>l × b × h</td>
+                        </tr>
+
+                        <tr>
+                            <td rowspan="3">गोला (Sphere)</td>
+                            <td>पृष्ठ क्षेत्रफल</td>
+                            <td>4πr<sup>2</sup></td>
+                        </tr>
+                        <tr>
+                            <td>वक्र पृष्ठ क्षेत्रफल</td>
+                            <td>4πr<sup>2</sup></td>
+                        </tr>
+                        <tr>
+                            <td>आयतन</td>
+                            <td>
+                                <span class="frac"><span>4</span><span class="bottom">3</span></span>πr<sup>3</sup>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td rowspan="3">अर्द्धगोला (Hemisphere)</td>
+                            <td>पृष्ठ क्षेत्रफल</td>
+                            <td>3πr<sup>2</sup></td>
+                        </tr>
+                        <tr>
+                            <td>वक्र पृष्ठ क्षेत्रफल</td>
+                            <td>2πr<sup>2</sup></td>
+                        </tr>
+                        <tr>
+                            <td>आयतन</td>
+                            <td>
+                                <span class="frac"><span>2</span><span class="bottom">3</span></span>πr<sup>3</sup>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td rowspan="3">शंकु (Cone)</td>
+                            <td>पृष्ठ क्षेत्रफल</td>
+                            <td>πr(l + r)</td>
+                        </tr>
+                        <tr>
+                            <td>वक्र पृष्ठ क्षेत्रफल</td>
+                            <td>πrl</td>
+                        </tr>
+                        <tr>
+                            <td>आयतन</td>
+                            <td>
+                                <span class="frac"><span>1</span><span class="bottom">3</span></span>πr<sup>2</sup>h
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td rowspan="3">बेलन (Cylinder)</td>
+                            <td>पृष्ठ क्षेत्रफल</td>
+                            <td>2πr(r + h)</td>
+                        </tr>
+                        <tr>
+                            <td>वक्र पृष्ठ क्षेत्रफल</td>
+                            <td>2πrh</td>
+                        </tr>
+                        <tr>
+                            <td>आयतन</td>
+                            <td>πr<sup>2</sup>h</td>
+                        </tr>
+                    </table>
+                    <ul>
+                        <li><b>a</b>: घन की भुजा</li>
+                        <li><b>l</b>: लंबाई</li>
+                        <li><b>b</b>: चौड़ाई</li>
+                        <li><b>h</b>: ऊँचाई</li>
+                        <li><b>r</b>: त्रिज्या</li>
+                        <li><b>π</b>: पाई (लगभग 3.14)</li>
+                        <li><b>l (shankhu)</b>: शंकु की तिर्यक ऊँचाई (slant height)</li>
+                    </ul>
+                </section>
+                <div class="container related-posts-container">
+                    <h2 class="widget-title">Related Articles</h2>
+                    <div id="related-posts-grid" class="post-grid">
+                        <!-- Related posts will be injected here -->
+                    </div>
+                </div>
+
+              </div>
+
+    <aside class="th-right-sidebar-wrapper">
+        {% case page.section %}
+          {% when "learn" %}
+            {% include sidebars/learn-sidebar.html %}
+          {% else %}
+            {% include sidebars/default-sidebar.html %}
+        {% endcase %}
+    </aside>
 
 </div>
 
-<!-- Auto KaTeX Rendering & Sidebar controls script -->
 <script>
-  // Dynamic Mobile Sidebar controls
-  function toggleMobileSidebar(e) {
-    if (e) e.stopPropagation();
-    const sidebar = document.getElementById('mobileSidebar');
-    if (sidebar) {
-      sidebar.classList.toggle('mobile-open');
-    }
-  }
-
-  // Close mobile sidebar when clicking on a background area
-  document.addEventListener('click', function(e) {
-    const sidebar = document.getElementById('mobileSidebar');
-    if (sidebar && sidebar.classList.contains('mobile-open')) {
-      if (!sidebar.contains(e.target) && !e.target.closest('.th-mobile-menu-trigger') && !e.target.closest('button')) {
-        sidebar.classList.remove('mobile-open');
-      }
-    }
-  });
-
-  // Client-side instant live math formulas search filter
-  function filterMathFormulas() {
-    const query = document.getElementById('mathFormulaSearch').value.toLowerCase().trim();
-    const sections = document.querySelectorAll('#mathFormulasContainer section');
+document.addEventListener("DOMContentLoaded", function () {
+    // URL parameters read karo (e.g., ?class=9)
+    const currentUrlParams = window.location.search; 
     
-    sections.forEach(sec => {
-      const heading = sec.querySelector('h2') ? sec.querySelector('h2').textContent.toLowerCase() : '';
-      const paragraphs = Array.from(sec.querySelectorAll('p, li, td')).map(p => p.textContent.toLowerCase()).join(' ');
-      
-      if (heading.includes(query) || paragraphs.includes(query)) {
-        sec.style.display = 'block';
+    if (currentUrlParams) {
+        // Sidebar ke andar saare math class section targets pakdo
+        const classSections = document.querySelectorAll("#tyagihubLeftSidebar .th-class-section");
         
-        // Target rows specifically to highlight matches
-        const rows = sec.querySelectorAll('tbody tr');
-        rows.forEach(row => {
-          if (row.textContent.toLowerCase().includes(query)) {
-            row.style.opacity = '1';
-            row.style.background = query !== '' ? 'rgba(99, 102, 241, 0.08)' : '';
-          } else {
-            row.style.opacity = query !== '' ? '0.4' : '1';
-            row.style.background = '';
-          }
+        classSections.forEach(section => {
+            const classHeader = section.querySelector(".th-class-header");
+            const chapterList = section.querySelector(".th-chapters-list");
+            const activeDot = section.querySelector(".active-dot");
+            
+            // Agar class header ke href mein current query parameter chipka hai
+            if (classHeader && classHeader.href.includes(currentUrlParams)) {
+                // Header style active karo
+                classHeader.classList.add("bg-slate-800/60", "text-indigo-400", "border-indigo-500/30");
+                classHeader.classList.remove("text-slate-400");
+                
+                // Chapter list dropdown open karo aur indicator dot show karo
+                if (chapterList) chapterList.classList.remove("hidden");
+                if (activeDot) activeDot.classList.remove("hidden");
+            }
         });
-      } else {
-        sec.style.display = 'none';
-      }
-    });
-  }
-
-  // Trigger KaTeX dynamic renderer on load
-  document.addEventListener("DOMContentLoaded", function() {
-    try {
-      renderMathInElement(document.body, {
-        delimiters: [
-          {left: "$$", right: "$$", display: true},
-          {left: "$", right: "$", display: false},
-          {left: "\\(", right: "\\)", display: false},
-          {left: "\\[", right: "\\]", display: true}
-        ],
-        throwOnError : false
-      });
-    } catch(err) {
-      console.warn("KaTeX loading error:", err);
     }
-    
-    lucide.createIcons();
-    initCanvas();
-  });
+});
 
-  // Dynamic Drawing Canvas Script (Beautiful Interactive Graphics)
-  function initCanvas() {
-    const canvas = document.getElementById("mathCanvas");
-    if (!canvas) return;
-    const ctx = canvas.getContext("2d");
-
-    const BASE_W = 1200;
-    const BASE_H = 675;
-
-    function resizeCanvas() {
-      const containerW = canvas.parentElement.offsetWidth;
-      canvas.width = containerW;
-      canvas.height = containerW * (BASE_H / BASE_W);
-      draw(containerW / BASE_W);
-    }
-    
-    window.addEventListener("resize", resizeCanvas);
-    resizeCanvas();
-
-    function draw(scale) {
-      ctx.setTransform(scale, 0, 0, scale, 0, 0);
-      ctx.clearRect(0, 0, BASE_W, BASE_H);
-
-      // Deep Space Blue Background gradient
-      const bg = ctx.createLinearGradient(0, 0, BASE_W, BASE_H);
-      bg.addColorStop(0, "#050b1e");
-      bg.addColorStop(1, "#0d1b2a");
-      ctx.fillStyle = bg;
-      ctx.fillRect(0, 0, BASE_W, BASE_H);
-
-      // Radial Soft Ambient glow spots
-      function glow(x, y, r, color) {
-        const g = ctx.createRadialGradient(x, y, r * 0.15, x, y, r);
-        g.addColorStop(0, color);
-        g.addColorStop(1, "transparent");
-        ctx.fillStyle = g;
-        ctx.beginPath();
-        ctx.arc(x, y, r, 0, Math.PI * 2);
-        ctx.fill();
-      }
-      glow(220, 220, 280, "rgba(99, 102, 241, 0.22)");
-      glow(980, 480, 320, "rgba(236, 72, 153, 0.15)");
-
-      // Decorative Grid pattern
-      ctx.strokeStyle = "rgba(255, 255, 255, 0.03)";
-      ctx.lineWidth = 1;
-      for (let i = 0; i < BASE_W; i += 60) {
-        ctx.beginPath();
-        ctx.moveTo(i, 0);
-        ctx.lineTo(i, BASE_H);
-        ctx.stroke();
-      }
-      for (let j = 0; j < BASE_H; j += 60) {
-        ctx.beginPath();
-        ctx.moveTo(0, j);
-        ctx.lineTo(BASE_W, j);
-        ctx.stroke();
-      }
-
-      // Elegant inner Card Frame
-      ctx.save();
-      ctx.shadowColor = "rgba(0,0,0,0.55)";
-      ctx.shadowBlur = 35;
-      ctx.shadowOffsetY = 15;
-      ctx.fillStyle = "rgba(255, 255, 255, 0.05)";
-      ctx.fillRect(40, 40, BASE_W - 80, BASE_H - 80);
-      ctx.restore();
-
-      ctx.strokeStyle = "rgba(255, 255, 255, 0.22)";
-      ctx.lineWidth = 2;
-      ctx.strokeRect(40, 40, BASE_W - 80, BASE_H - 80);
-
-      // Display Title
-      ctx.textAlign = "center";
-      ctx.font = "bold 44px 'Outfit', sans-serif";
-      ctx.fillStyle = "rgba(0, 0, 0, 0.6)";
-      ctx.fillText("Class 9 Mathematics – Important Formulas", BASE_W / 2 + 2, 112);
-      ctx.fillStyle = "#ffffff";
-      ctx.fillText("Class 9 Mathematics – Important Formulas", BASE_W / 2, 110);
-
-      // Line separating the title
-      ctx.strokeStyle = "rgba(99, 102, 241, 0.45)";
-      ctx.lineWidth = 3;
-      ctx.beginPath();
-      ctx.moveTo(BASE_W/2 - 180, 140);
-      ctx.lineTo(BASE_W/2 + 180, 140);
-      ctx.stroke();
-
-      // Display Key Math formulas
-      ctx.font = "500 28px 'JetBrains Mono', monospace";
-      function formulaText(text, y) {
-        ctx.fillStyle = "rgba(0,0,0,0.8)";
-        ctx.fillText(text, BASE_W / 2 + 2, y + 2);
-        ctx.fillStyle = "#e0e7ff";
-        ctx.fillText(text, BASE_W / 2, y);
-      }
-
-      formulaText("Area of Triangle  =  ½ × base × height", 260);
-      formulaText("Pythagoras Theorem  :  a² + b² = c²", 340);
-      formulaText("Linear Equation  :  ax + b = 0  ⇒  x = −b / a", 420);
-      formulaText("Quadratic Identity  :  (a + b)² = a² + 2ab + b²", 500);
-
-      // Draw a sleek right-triangle diagram on the left
-      ctx.strokeStyle = "rgba(99, 102, 241, 0.75)";
-      ctx.lineWidth = 4;
-      ctx.beginPath();
-      ctx.moveTo(160, 490);
-      ctx.lineTo(280, 490); // base
-      ctx.lineTo(280, 340); // height
-      ctx.closePath(); // hypotenuse
-      ctx.stroke();
-
-      // Right angle indicator box
-      ctx.strokeStyle = "rgba(236, 72, 153, 0.7)";
-      ctx.lineWidth = 2;
-      ctx.strokeRect(260, 470, 20, 20);
-
-      // Big translucent square root symbol in the background
-      ctx.font = "bold 160px 'Outfit', sans-serif";
-      ctx.fillStyle = "rgba(255, 255, 255, 0.06)";
-      ctx.fillText("√", 950, 400);
-
-      // Watermark Text
-      ctx.textAlign = "right";
-      ctx.font = "bold 18px 'Outfit', sans-serif";
-      ctx.fillStyle = "rgba(255, 255, 255, 0.5)";
-      ctx.fillText("GK Learn Study", BASE_W - 65, BASE_H - 60);
-
-      // Footer
-      ctx.textAlign = "left";
-      ctx.font = "16px 'Outfit', sans-serif";
-      ctx.fillStyle = "rgba(255, 255, 255, 0.65)";
-      ctx.fillText("Class 9 • NCERT • Exam Ready Cheat Sheet", 65, BASE_H - 60);
-    }
-  }
+// Mobile menu click toggle handler
+function toggleMobileSidebar(event) {
+    if(event) event.stopPropagation(); 
+    const sidebar = document.querySelector(".th-left-sidebar");
+    if (sidebar) sidebar.classList.toggle("mobile-open");
+}
 </script>
