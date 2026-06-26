@@ -64,175 +64,63 @@
           </svg>
         </button>
 
-     {% if page.lang_switch != false %}
+        {% if page.lang_switch != false %}
+          {% if page.lang_en_url or page.lang_hi_url %}
+            {% if page.lang == "hi" %}
+              <a href="{{ page.lang_en_url | relative_url }}" class="btn btn-outline btn-sm navbar__docs-link" data-lang-switch="{{ page.lang_en_url }}">English</a>
+            {% else %}
+              <a href="{{ page.lang_hi_url | relative_url }}" class="btn btn-outline btn-sm navbar__docs-link" data-lang-switch="{{ page.lang_hi_url }}">हिन्दी</a>
+            {% endif %}
+          {% else %}
+            {% if page.lang == "hi" %}
+              <a href="{{ site.url }}{{ page.url | remove:'/hi' }}" class="btn btn-outline btn-sm navbar__docs-link">English</a>
+            {% else %}
+              <a href="{{ site.url }}/hi{{ page.url }}" class="btn btn-outline btn-sm navbar__docs-link">हिन्दी</a>
+            {% endif %}
+          {%   endif %}
+        {% endif %}
 
-  {% if page.lang_en_url or page.lang_hi_url %}
+        <div id="g_id_onload"
+             data-client_id="1052184634573-pa4qebig69ntj46lfhgkbui319bd91e9.apps.googleusercontent.com"
+             data-callback="onGoogleAuth"
+             data-auto_prompt="false">
+        </div>
 
-    {% if page.lang == "hi" %}
-      <a href="{{ page.lang_en_url | relative_url }}"
-         class="btn btn-outline btn-sm navbar__docs-link"
-         data-lang-switch="{{ page.lang_en_url }}">
-        English
-      </a>
-    {% else %}
-      <a href="{{ page.lang_hi_url | relative_url }}"
-         class="btn btn-outline btn-sm navbar__docs-link"
-         data-lang-switch="{{ page.lang_hi_url }}">
-        हिन्दी
-      </a>
-    {% endif %}
+        <div class="th-nav-auth-container" style="position: relative; display: inline-flex; align-items: center; vertical-align: middle;">
+          
+          <div id="th-nav-logged-out" style="display: inline-flex;">
+            {% if page.lang == "hi" %}
+              <a href="#" class="btn btn-primary btn-sm" onclick="google.accounts.id.prompt(); return false;">लॉगिन</a>
+            {% else %}
+              <a href="#" class="btn btn-primary btn-sm" onclick="google.accounts.id.prompt(); return false;">Sign In</a>
+            {% endif %}
+          </div>
 
-  {% else %}
-
-    {% if page.lang == "hi" %}
-    <div id="g_id_onload"
-     data-client_id="1052184634573-pa4qebig69ntj46lfhgkbui319bd91e9.apps.googleusercontent.com"
-     data-callback="onGoogleAuth"
-     data-auto_prompt="false">
-</div>
-
-<div class="th-nav-auth-wrapper" style="position: relative; display: inline-block;">
-  
-  <div id="th-nav-logged-out-state">
-    <a href="#"
-       class="btn btn-primary btn-sm"
-       onclick="google.accounts.id.prompt(); return false;">
-      लॉगिन
-    </a>
-    {% else %}
-    <a href="#"
-       class="btn btn-primary btn-sm"
-       onclick="google.accounts.id.prompt(); return false;">
-      Sign In
-    </a>
-  </div>
-
-  <div id="th-nav-logged-in-state" style="display: none; align-items: center;">
-    <img id="th-nav-avatar" src="" 
-         onclick="toggleNavProfilePopup(event)"
-         style="width: 32px; height: 32px; border-radius: 50%; border: 2px solid #1a73e8; cursor: pointer; transition: transform 0.2s;" 
-         onmouseover="this.style.transform='scale(1.05)'" 
-         onmouseout="this.style.transform='scale(1)'">
-
-    <div id="th-nav-profile-popup" style="display: none; position: absolute; right: 0; top: 40px; width: 220px; background: #ffffff; border: 1px solid #ddd; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.15); z-index: 9999; padding: 10px 0; font-family: sans-serif;">
-      
-      <div style="padding: 10px 15px; border-bottom: 1px solid #eee; text-align: center;">
-        <span id="th-popup-user-name" style="display: block; font-size: 14px; font-weight: bold; color: #333; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">User</span>
-        <span id="th-popup-user-email" style="display: block; font-size: 11px; color: #666; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Email</span>
-      </div>
-
-      <ul style="list-style: none; margin: 0; padding: 5px 0;">
-        <li>
-          <a href="/test/maths-practice-portal/" style="display: flex; align-items: center; gap: 10px; padding: 10px 15px; font-size: 13px; color: #333; text-decoration: none; transition: background 0.2s;" onmouseover="this.style.background='#f5f5f5'" onmouseout="this.style.background='transparent'">
-            🎯 <span>Your Scorecard / Results</span>
-          </a>
-        </li>
-        <li>
-          <a href="/store/order-history/" style="display: flex; align-items: center; gap: 10px; padding: 10px 15px; font-size: 13px; color: #333; text-decoration: none; transition: background 0.2s;" onmouseover="this.style.background='#f5f5f5'" onmouseout="this.style.background='transparent'">
-            📦 <span>Product Order History</span>
-          </a>
-        </li>
-        <li>
-          <a href="/dashboard/profile/" style="display: flex; align-items: center; gap: 10px; padding: 10px 15px; font-size: 13px; color: #333; text-decoration: none; transition: background 0.2s;" onmouseover="this.style.background='#f5f5f5'" onmouseout="this.style.background='transparent'">
-            👤 <span>Edit Profile Settings</span>
-          </a>
-        </li>
-        <li>
-          <a href="/support/" style="display: flex; align-items: center; gap: 10px; padding: 10px 15px; font-size: 13px; color: #333; text-decoration: none; transition: background 0.2s;" onmouseover="this.style.background='#f5f5f5'" onmouseout="this.style.background='transparent'">
-            🛠️ <span>Help & Support Center</span>
-          </a>
-        </li>
-        <li style="border-top: 1px solid #eee; margin-top: 5px; padding-top: 5px;">
-          <a href="#" onclick="handleDeleteAccount(); return false;" style="display: flex; align-items: center; gap: 10px; padding: 10px 15px; font-size: 13px; color: #d93025; font-weight: 600; text-decoration: none; transition: background 0.2s;" onmouseover="this.style.background='#ffebee'" onmouseout="this.style.background='transparent'">
-            ⚠️ <span>Delete Account Permanently</span>
-          </a>
-        </li>
-      </ul>
-
-      <div style="border-top: 1px solid #eee; padding-top: 5px; text-align: center;">
-        <button onclick="tcLogout()" style="width: 100%; border: none; background: none; color: #d93025; padding: 10px; font-size: 13px; font-weight: bold; cursor: pointer; transition: background 0.2s;" onmouseover="this.style.background='#f5f5f5'" onmouseout="this.style.background='transparent'">
-          🚪 Logout
-        </button>
-      </div>
-
-    </div>
-  </div>
-
-</div>
-
-<script src="https://accounts.google.com/gsi/client" async defer></script>
-<script>
-(function() {
-    const cachedUser = JSON.parse(localStorage.getItem("tc_user")) || null;
-
-    // Window global handlers sync up
-    window.onGoogleAuth = function(r) {
-        var p = JSON.parse(atob(r.credential.split('.')[1]));
-        var user = { n: p.name, e: p.email, p: p.picture };
-        localStorage.setItem("tc_user", JSON.stringify(user));
-        location.reload();
-    };
-
-    window.tcLogout = function() {
-        localStorage.removeItem("tc_user");
-        location.reload();
-    };
-
-    window.toggleNavProfilePopup = function(event) {
-        event.stopPropagation();
-        const popup = document.getElementById("th-nav-profile-popup");
-        if (popup) {
-            popup.style.display = (popup.style.display === "none" || popup.style.display === "") ? "block" : "none";
-        }
-    };
-
-    window.handleDeleteAccount = function() {
-        if (confirm("⚠️ Warning! Kya aap sach me apna account aur saara purchase data permanently delete karna chahte hain? Ye action reverse nahi hoga.")) {
-            alert("Account data deletion request sent to Google Apps Script!");
-            localStorage.removeItem("tc_user");
-            location.reload();
-        }
-    };
-
-    // Close popup if user clicks anywhere outside the menu frame wrapper
-    document.addEventListener("click", function() {
-        const popup = document.getElementById("th-nav-profile-popup");
-        if (popup) popup.style.display = "none";
-    });
-
-    // On Load State Verification Router
-    document.addEventListener("DOMContentLoaded", function() {
-        if (cachedUser) {
-            document.getElementById("th-nav-logged-out-state").style.display = "none";
-            document.getElementById("th-nav-logged-in-state").style.display = "flex";
+          <div id="th-nav-logged-in" style="display: none; align-items: center;">
+            <img id="th-nav-pfp-trigger" src="" onclick="toggleThDropdown(event)" style="width: 32px; height: 32px; border-radius: 50%; border: 2px solid #1a73e8; cursor: pointer; object-fit: cover;">
             
-            // Set Avatar image source links
-            document.getElementById("th-nav-avatar").src = cachedUser.p;
-            document.getElementById("th-popup-user-name").innerText = cachedUser.n;
-            document.getElementById("th-popup-user-email").innerText = cachedUser.e;
-        }
-    });
-})();
-</script>
-    {% endif %}
+            <div id="th-nav-dropdown-panel" style="display: none; position: absolute; right: 0; top: 42px; width: 230px; background: #ffffff; border: 1px solid #e0e0e0; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.15); z-index: 10000; padding: 8px 0; font-family: sans-serif; text-align: left;">
+              <div style="padding: 10px 16px; border-bottom: 1px solid #f0f0f0; margin-bottom: 5px;">
+                <div id="th-dd-name" style="font-size: 14px; font-weight: bold; color: #202124; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">User Name</div>
+                <div id="th-dd-email" style="font-size: 11px; color: #5f6368; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">user@gmail.com</div>
+              </div>
+              
+              <ul style="list-style: none; margin: 0; padding: 0;">
+                <li><a href="{% if page.lang == 'hi' %}{{ site.url }}/hi/test/maths-practice-portal/{% else %}{{ site.url }}/test/maths-practice-portal/{% endif %}" style="display: block; padding: 9px 16px; font-size: 13px; color: #333; text-decoration: none;">🎯 {% if page.lang == "hi" %}आपका स्कोर / रिजल्ट{% else %}Your Scorecard{% endif %}</a></li>
+                <li><a href="{{ site.url }}/store/order-history/" style="display: block; padding: 9px 16px; font-size: 13px; color: #333; text-decoration: none;">📦 {% if page.lang == "hi" %}ऑर्डर हिस्ट्री{% else %}Order History{% endif %}</a></li>
+                <li><a href="{{ site.url }}/dashboard/profile/" style="display: block; padding: 9px 16px; font-size: 13px; color: #333; text-decoration: none;">👤 {% if page.lang == "hi" %}प्रोफ़ाइल सेटिंग्स{% else %}Profile Settings{% endif %}</a></li>
+                <li><a href="{{ site.url }}/support/" style="display: block; padding: 9px 16px; font-size: 13px; color: #333; text-decoration: none;">🛠️ {% if page.lang == "hi" %}सहायता केंद्र{% else %}Help & Support{% endif %}</a></li>
+                <li style="border-top: 1px solid #f0f0f0; margin-top: 5px; padding-top: 5px;"><a href="#" onclick="handleAccountDeletion(); return false;" style="display: block; padding: 9px 16px; font-size: 13px; color: #d93025; font-weight: bold; text-decoration: none;">⚠️ {% if page.lang == "hi" %}अकाउंट डिलीट करें{% else %}Delete Account{% endif %}</a></li>
+              </ul>
+              
+              <div style="border-top: 1px solid #f0f0f0; margin-top: 5px; padding-top: 5px; text-align: center;">
+                <button onclick="tcLogout()" style="width: 100%; border: none; background: none; color: #d93025; padding: 8px 0; font-size: 13px; font-weight: bold; cursor: pointer;">🚪 {% if page.lang == "hi" %}लॉगआउट Logout{% else %}Logout{% endif %}</button>
+              </div>
+            </div>
+          </div>
 
-  {% endif %}
+        </div>
 
-{% endif %}
-
-        {% if page.lang == "hi" %}
- <a href="#"
-   class="btn btn-primary btn-sm"
-   onclick="google.accounts.id.prompt(); return false;">
-  लॉगिन
-</a>
-{% else %}
-<a href="#"
-   class="btn btn-primary btn-sm"
-   onclick="google.accounts.id.prompt(); return false;">
-  Sign In
-</a>
-{% endif %}
         <button class="navbar__hamburger"
           aria-label="{% if page.lang == 'hi' %}मेनू खोलें{% else %}Toggle menu{% endif %}"
           aria-expanded="false"
@@ -259,19 +147,12 @@
       </svg>
     </span>
 
-    <input type="search"
-      id="search-input"
-      class="search-box__input"
-     placeholder="{% if page.lang == 'hi' %}प्रश्न, फ़ॉर्मूला, टूल्स और गाइड खोजें...{% else %}Search questions, formulas, tools and guides...{% endif %}"
+    <input type="search" id="search-input" class="search-box__input"
+      placeholder="{% if page.lang == 'hi' %}प्रश्न, फ़ॉर्मूला, टूल्स और गाइड खोजें...{% else %}Search questions, formulas, tools and guides...{% endif %}"
       aria-label="{% if page.lang == 'hi' %}TyagiHub खोजें{% else %}Search TyagiHub{% endif %}"
-      autocomplete="off"
-      spellcheck="false">
+      autocomplete="off" id="search-input" spellcheck="false">
 
-    <button class="search-box__close"
-      id="search-close"
-      aria-label="{% if page.lang == 'hi' %}खोज बंद करें{% else %}Close search{% endif %}">
-      ESC
-    </button>
+    <button class="search-box__close" id="search-close" aria-label="{% if page.lang == 'hi' %}खोज बंद करें{% else %}Close search{% endif %}">ESC</button>
   </div>
 
   <div class="search-results" role="listbox">
@@ -280,28 +161,65 @@
 
     <div class="search-no-results" id="search-no-results">
       <div class="search-no-results__icon">🔍</div>
-      <div class="search-no-results__text">
-        {% if page.lang == "hi" %}
-          कोई रिजल्ट नहीं मिला
-        {% else %}
-          No result found
-        {% endif %}
-      </div>
+      <div class="search-no-results__text">{% if page.lang == "hi" %}कोई रिजल्ट नहीं मिला{% else %}No result found{% endif %}</div>
     </div>
 
     <div class="search-keyboard-hint" aria-hidden="true">
-      <span class="search-kbd"><kbd>↑</kbd><kbd>↓</kbd>
-        {% if page.lang == "hi" %}नेविगेट{% else %}Navigate{% endif %}
-      </span>
-      <span class="search-kbd"><kbd>Enter</kbd>
-        {% if page.lang == "hi" %}खोलें{% else %}Open{% endif %}
-      </span>
-      <span class="search-kbd"><kbd>ESC</kbd>
-        {% if page.lang == "hi" %}बंद करें{% else %}Close{% endif %}
-      </span>
-      <span class="search-kbd"><kbd>/</kbd>
-        {% if page.lang == "hi" %}खोलें{% else %}Open{% endif %}
-      </span>
+      <span class="search-kbd"><kbd>↑</kbd><kbd>↓</kbd> {% if page.lang == "hi" %}नेविगेट{% else %}Navigate{% endif %}</span>
+      <span class="search-kbd"><kbd>Enter</kbd> {% if page.lang == "hi" %}खोलें{% else %}Open{% endif %}</span>
+      <span class="search-kbd"><kbd>ESC</kbd> {% if page.lang == "hi" %}बंद करें{% else %}Close{% endif %}</span>
+      <span class="search-kbd"><kbd>/</kbd> {% if page.lang == "hi" %}खोलें{% else %}Open{% endif %}</span>
     </div>
   </div>
 </div>
+
+<script src="https://accounts.google.com/gsi/client" async defer></script>
+<script>
+(function() {
+    const userCache = JSON.parse(localStorage.getItem("tc_user")) || null;
+
+    window.onGoogleAuth = function(r) {
+        var p = JSON.parse(atob(r.credential.split('.')[1]));
+        var user = { n: p.name, e: p.email, p: p.picture };
+        localStorage.setItem("tc_user", JSON.stringify(user));
+        location.reload();
+    };
+
+    window.tcLogout = function() {
+        localStorage.removeItem("tc_user");
+        location.reload();
+    };
+
+    window.toggleThDropdown = function(e) {
+        e.stopPropagation();
+        const panel = document.getElementById("th-nav-dropdown-panel");
+        if (panel) {
+            panel.style.display = (panel.style.display === "none" || panel.style.display === "") ? "block" : "none";
+        }
+    };
+
+    window.handleAccountDeletion = function() {
+        const confirmMsg = "{% if page.lang == 'hi' %}⚠️ चेतावनी! क्या आप सच में अपना अकाउंट डिलीट करना चाहते हैं?{% else %}⚠️ Warning! Do you permanently want to delete your account?{% endif %}";
+        if (confirm(confirmMsg)) {
+            alert("Deletion requested.");
+            localStorage.removeItem("tc_user");
+            location.reload();
+        }
+    };
+
+    document.addEventListener("click", function() {
+        const panel = document.getElementById("th-nav-dropdown-panel");
+        if (panel) panel.style.display = "none";
+    });
+
+    document.addEventListener("DOMContentLoaded", function() {
+        if (userCache) {
+            document.getElementById("th-nav-logged-out").style.display = "none";
+            document.getElementById("th-nav-logged-in").style.display = "flex";
+            document.getElementById("th-nav-pfp-trigger").src = userCache.p;
+            document.getElementById("th-dd-name").innerText = userCache.n;
+            document.getElementById("th-dd-email").innerText = userCache.e;
+        }
+    });
+})();
+</script>
