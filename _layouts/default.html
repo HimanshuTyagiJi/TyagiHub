@@ -28,7 +28,7 @@
   <link rel="manifest" href="{{ site.url }}/site.webmanifest">
   <meta name="theme-color" content="#f5a623">
   
-<link rel="stylesheet" href="{{ '/assets/css/search-main.css' | relative_url }}">
+  <link rel="stylesheet" href="{{ '/assets/css/search-main.css' | relative_url }}">
 
   {% if page.extra_css %}
     {% for css in page.extra_css %}
@@ -127,23 +127,10 @@
     ]
   }
   </script>
-{% comment %}
-  <script>
-    window.onerror = function(message, url, line) {
-      if (
-        message.includes("addEventListener") ||
-        message.includes("null") ||
-        message.includes("undefined")
-      ) {
-        return true;
-      }
-      return false;
-    };
-  </script>
-  {% endcomment %}
+
   <link rel="alternate" hreflang="en" href="{{ site.url }}{{ page.url | remove:'/hi' }}">
-<link rel="alternate" hreflang="hi" href="{{ site.url }}/hi{{ page.url | remove:'/hi' }}">
-<link rel="alternate" hreflang="x-default" href="{{ site.url }}{{ page.url | remove:'/hi' }}">
+  <link rel="alternate" hreflang="hi" href="{{ site.url }}/hi{{ page.url | remove:'/hi' }}">
+  <link rel="alternate" hreflang="x-default" href="{{ site.url }}{{ page.url | remove:'/hi' }}">
 </head>
 <body>
   <a href="#main-content" class="sr-only">Skip to main content</a>
