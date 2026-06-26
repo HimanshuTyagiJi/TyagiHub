@@ -754,3 +754,24 @@ window.nativeShare = async function (
 
 
 
+
+
+// 🟢 Dynamic Google Sign-In Script Loader
+function loadGoogleSignIn() {
+    if (window.google && window.google.accounts) return; // Pehle se loaded hai toh dubara mat karo
+
+    const script = document.createElement('script');
+    script.src = "https://accounts.google.com/gsi/client";
+    script.async = true;
+    script.defer = true;
+    script.onload = () => {
+        console.log("Google GSI Client Loaded Dynamically!");
+        // Yahan tera purana google.accounts.id.initialize wala logic trigger kar dena
+        if (typeof initializeGoogleSignIn === 'function') initializeGoogleSignIn();
+    };
+    document.head.appendChild(script);
+}
+
+// 🎯 Kab load karna hai? Jab user window scroll kare ya active ho (Mobile user hamesha touch/scroll karta hai)
+window.addEventListener('scroll', loadGoogleSignIn, { passive: true, once: true });
+window.addEventListener('touchstart', loadGoogleSignIn, { passive: true, once: true });
