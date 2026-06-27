@@ -74,88 +74,32 @@ extra_js:
 
   <section class="discover-search-filter-section">
     <div class="container">
-      
       <div class="discover-search-wrapper">
         <input type="text" id="discover-search" class="discover-search-input" placeholder="Search posts dynamically...">
       </div>
-      
       <div class="discover-categories" id="category-buttons-container">
-
-        {% if page.lang == "hi" %}
-          {% assign all_posts_size = site.posts_hi.size %}
-        {% else %}
-          {% assign posts_size = site.posts.size %}
-          {% assign shield_size = site.shield.size %}
-          {% assign all_posts_size = posts_size | plus: shield_size %}
-        {% endif %}
-
-        <button class="discover-cat-btn" data-cat="all" onclick="window.location.href='?category=all'">
-          सभी <span>({{ all_posts_size }})</span>
-        </button>
-
-        {% assign categories = site.categories | sort %}
-        {% for category in categories %}
-          {% unless category[0] == "discover" %}
-            
-            {% assign cat_name = category[0] | downcase %}
-            
-            {% if cat_name == "appsandinternet" %}
-              {% assign display_name = "Apps & Internet" %}
-            {% elsif cat_name == "aifuture" or cat_name == "ai-future" %}
-              {% assign display_name = "AI Future" %}
-            {% elsif cat_name == "cybersecurity" or cat_name == "cyber-security" %}
-              {% assign display_name = "Cyber Security" %}
-            {% else %}
-              {% assign display_name = category[0] | replace: "-", " " | replace: "_", " " | capitalize %}
-            {% endif %}
-
-            <button class="discover-cat-btn" data-cat="{{ category[0] | downcase }}" onclick="window.location.href='?category={{ category[0] | downcase }}'">
-              {{ display_name }}
-              <span>({{ category[1].size }})</span>
-            </button>
-          {% endunless %}
-        {% endfor %}
-
-        {% if page.lang == "hi" %}
-          <button class="discover-cat-btn" data-cat="cybersecurity" onclick="window.location.href='?category=cybersecurity'">
-            Cyber Security
-            <span>({{ site.shield_hi.size }})</span>
-          </button>
-        {% else %}
-          <button class="discover-cat-btn" data-cat="cybersecurity" onclick="window.location.href='?category=cybersecurity'">
-            Cyber Security
-            <span>({{ site.shield.size }})</span>
-          </button>
-        {% endif %}
-
+        <button class="discover-cat-btn" data-cat="all" onclick="window.location.href='?category=all'"> सभी <span>(9)</span></button>
+        <button class="discover-cat-btn" data-cat="ai-future" onclick="window.location.href='?category=ai-future'"> AI Future <span>(3)</span></button>
+        <button class="discover-cat-btn" data-cat="apps-and-internet" onclick="window.location.href='?category=apps-and-internet'"> Apps and internet <span>(3)</span></button>
+        <button class="discover-cat-btn" data-cat="technology" onclick="window.location.href='?category=technology'"> Technology <span>(3)</span></button>
+        <button class="discover-cat-btn" data-cat="cybersecurity" onclick="window.location.href='?category=cybersecurity'"> Cyber Security <span>(3)</span></button>
       </div>
-
     </div>
   </section>
 
-  <!-- Content Wrapper -->
   <div class="tc-wrapper container" style="display: flex; gap: 24px; margin-top: 20px; align-items: flex-start; flex-wrap: wrap;">
     
-    <!-- LEFT SIDE: Posts Grid Layout Engine -->
     <div class="tc-left" style="flex: 1; min-width: 300px; max-width: 100%;">
       <section class="section" style="padding: 0;">
         <div id="posts">
-          
           <div id="post-wrapper" class="static-seo-load">
             
             {% if page.lang == "hi" %}
               {% assign sorted = site.posts_hi | sort: "date" | reverse %}
             {% else %}
               {% assign combined_posts = "" | split: "" %}
-              
-              {% for p in site.posts %}
-                {% assign combined_posts = combined_posts | push: p %}
-              {% endfor %}
-              
-              {% for p in site.shield %}
-                {% assign combined_posts = combined_posts | push: p %}
-              {% endfor %}
-              
+              {% for p in site.posts %}{% assign combined_posts = combined_posts | push: p %}\n              {% endfor %}
+              {% for p in site.shield %}{% assign combined_posts = combined_posts | push: p %}\n              {% endfor %}
               {% assign sorted = combined_posts | sort: "date" | reverse %}
             {% endif %}
             
@@ -171,7 +115,7 @@ extra_js:
               {% else %}
                 {% assign p_cat_raw = p.category | default: "CyberSecurity" %}
                 {% assign clean_s = p.category | downcase %}
-                {% if clean_s == "cyber-security" or clean_s == "cybersecurity" %}{% assign clean_s = "cybersecurity" %}{% endif %}
+                {% if clean_s == "cyber-security" or clean_s == "cybersecurity" %}{% assign clean_s = "cybersecurity" %}\n                {% endif %}
                 {% assign data_cats = clean_s | append: " " %}
               {% endif %}
 
@@ -186,22 +130,15 @@ extra_js:
                 {% assign display_chip = p_cat_raw | replace: "-", " " | replace: "_", " " | capitalize %}
               {% endif %}
 
-              <div class="horizontal-post-card js-post"
-                   data-lang="{{ p.lang | default: 'hi' }}"
-                   data-categories="{{ data_cats | strip }}"
-                   data-post-url="{{ p.url | relative_url }}">
+              <div class="horizontal-post-card js-post" data-lang="{{ page.lang | default: 'hi' }}" data-categories="{{ data_cats | strip }}" data-post-url="{{ p.url | relative_url }}">
                 
                 <div class="post-img" style="position: relative; overflow: hidden; background: #111216; display: flex; align-items: center; justify-content: center; width: 354px; height: 236px;">
-                  <span class="post-category" style="z-index: 10;">
-                    {{ display_chip }}
-                  </span>
+                  <span class="post-category" style="z-index: 10;">{{ display_chip }}</span>
                   <div class="post-date" style="z-index: 10;">
-                    <i class="fa-regular fa-calendar"></i>
-                    {{ p.date | date: "%d %b %Y" }}
+                    <i class="fa-regular fa-calendar"></i> {{ p.date | date: "%d %b %Y" }}
                   </div>
 
                   <div class="thumb-media-box" style="width:100%; height:100%; display:flex; align-items:center; justify-content:center; position:relative;">
-                    
                     <img src="{{ p.image | default: '/assets/images/default-thumb.png' }}" 
                          alt="{{ p.title | escape }} - TyagiHub" 
                          title="{{ p.title | escape }} - TyagiHub" 
@@ -221,23 +158,14 @@ extra_js:
                         {{ p.title }}
                       </span>
                     </div>
-
                   </div>
-
                 </div>
 
                 <div class="post-info">
                   <div class="post-top-meta">
-                    <h2>
-                      <a href="{{ p.url | relative_url }}">
-                        {{ p.title }}
-                      </a>
-                    </h2>
-                    <p>
-                      {{ p.description | default: p.excerpt | strip_html | truncate: 110 }}
-                    </p>
+                    <h2><a href="{{ p.url | relative_url }}">{{ p.title }}</a></h2>
+                    <p>{{ p.description | default: p.excerpt | strip_html | truncate: 110 }}</p>
                   </div>
-
                   <div class="post-footer">
                     <button class="native-share-btn" onclick="nativeShare('{{ p.title | escape }}','{{ p.url | absolute_url }}')">
                       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -249,33 +177,24 @@ extra_js:
                       </svg>
                       <span>शेयर</span>
                     </button>
-                    <a href="{{ p.url | relative_url }}" class="read-link">
-                      पूरा पढ़ें →
-                    </a>
+                    <a href="{{ p.url | relative_url }}" class="read-link">पूरा पढ़ें →</a>
                   </div>
                 </div>
 
               </div>
             {% endfor %}
-
           </div>
-
-          <nav id="pagination-nav" class="pagination-center" aria-label="Pagination Navigation" style="display: flex; gap: 8px; justify-content: center; margin-top: 30px; align-items: center; flex-wrap: wrap;">
-          </nav>
-
+          <nav id="pagination-nav" class="pagination-center" aria-label="Pagination Navigation" style="display: flex; gap: 8px; justify-content: center; margin-top: 30px; align-items: center; flex-wrap: wrap;"></nav>
         </div>
       </section>
     </div>
 
-    <!-- RIGHT SIDEBAR INCLUSION -->
     {% include sidebars/discover-sidebar.html %}
 
   </div>
 
-  <!-- POSITION MATCHED: Text-to-Code Ratio Insights Block -->
   <section class="discover-insights-section">
     <div class="container discover-insights-container">
-      
       <h2 class="discover-insights-main-title">
         <svg class="discover-insights-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
@@ -283,30 +202,25 @@ extra_js:
         </svg>
         TyagiHub डिस्कवर इकोसिस्टम (Technical Hub)
       </h2>
-      
       <div class="discover-insights-grid">
-        
         <div class="discover-insights-col">
           <h3 class="discover-insights-col-title">🤖 उन्नत तकनीक और एआई (AI Future)</h3>
           <p class="discover-insights-text">
             Tyagi MultiTech द्वारा संचालित TyagiHub के तकनीकी केंद्र में आपका स्वागत है। यह प्लेटफ़ॉर्म डेवलपर्स, क्रिएटर्स और छात्रों के लिए डिज़ाइन किया गया एक संपूर्ण डिजिटल इकोसिस्टम है। हमारा क्यूरेटेड डिस्कवर फ़ीड कृत्रिम बुद्धिमत्ता (AI), मशीन लर्निंग ऑटोमेशन, डीप लर्निंग मॉडल और भविष्य की उन्नत तकनीकी क्रांतियों पर गहन विश्लेषण प्रदान करता है।
           </p>
         </div>
-
         <div class="discover-insights-col">
           <h3 class="discover-insights-col-title">🔒 साइबर सुरक्षा और डेटा सुरक्षा (Shield)</h3>
           <p class="discover-insights-text">
             डिजिटल सुरक्षा के क्षेत्र में, TyagiHub Shield ऑनलाइन खतरों, फ़िशिंग घोटालों और सोशल engineering हमलों की पहचान करने के लिए महत्वपूर्ण सुरक्षा रणनीतियाँ साझा करता है। सिम स्वैप फ्रॉड, डेटा लीक, टू-फैक्टर ऑथेंटिकेशन (2FA) बाईपास और छिपे हुए मालवेयर पेलोड से खुद को सुरक्षित रखने के लिए कोर नेटवर्किंग प्रोटोकॉल की इंजीनियरिंग को विस्तार से समझें।
           </p>
         </div>
-
         <div class="discover-insights-col">
           <h3 class="discover-insights-col-title">🛠️ वेब इंजीनियरिंग और कोर वेब वाइटल्स</h3>
           <p class="discover-insights-text">
             सुरक्षा के साथ-साथ, हम डेवलपर्स को उन्नत कोडिंग उपयोगिताएँ, स्क्रिप्ट पार्सिंग गाइड, डेटाबेस स्केलिंग और ऑप्टिमाइज़ेशन ब्लूप्रिंट प्रदान करते हैं। Jekyll स्टेटिक साइट जनरेशन, क्लाउड आर्किटेक्चर से लेकर कोर वेब वाइटल्स प्रदर्शन को बढ़ाने तक, हम साइट की लोडिंग स्पीड और रिस्पॉन्सिवनेस को अधिकतम करने के लिए सीमेंटिक और स्वच्छ कोड संरचना की रूपरेखा देते हैं।
           </p>
         </div>
-
       </div>
     </div>
   </section>
