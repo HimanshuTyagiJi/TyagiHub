@@ -40,7 +40,6 @@ extra_js:
             <img src="{{ p.image | default:'/assets/images/default-thumb.png' }}" alt="{{ p.title | escape }} - TyagiHub" title="{{ p.title | escape }} - TyagiHub" loading="lazy" width="354" height="236">
           </div>
           <div class="blog-card__body">
-            <span class="blog-card__tag">{{ p.category | default:"Security" | capitalize }}</span>
             <h2 class="blog-card__title">{{ p.title }}</h2>
             <p>
               {{ p.description | default: p.excerpt | strip_html | truncate: 180 }}
