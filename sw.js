@@ -1,9 +1,8 @@
-const CACHE_NAME = "tyagihub-v1"; // 🟢 Cache name updated for TyagiHub
+const CACHE_NAME = "tyagihub-v2"; // 🟢 Version badha diya taaki naya code force update ho
 
-// 🟢 Paths matched with TyagiHub layout directory
 const PRECACHE_URLS = [
   "/assets/css/search-main.css",
-  "/offline.html" // Make sure to create a simple offline.html in your root folder later
+  "/offline.html"
 ];
 
 self.addEventListener("install", event => {
@@ -46,7 +45,7 @@ self.addEventListener("fetch", event => {
 
   const url = new URL(event.request.url);
 
-  // HTML, CSS, JS, JSON parsing (Network First strategy for dynamic code updates)
+  // HTML, CSS, JS parsing (Network First)
   if (
     url.origin === self.location.origin &&
     (
@@ -60,48 +59,39 @@ self.addEventListener("fetch", event => {
     event.respondWith(
       fetch(event.request)
         .then(response => {
-          if (
-            response &&
-            response.status === 200 &&
-            (response.type === "basic" || response.type === "cors")
-          ) {
-            const clone = response.clone();
+          if (response && response.status === 200 && (response.type === "basic" || response.type === "cors")) {
+            const cloneForCache = response.clone(); // 🟢 Safe Clone Before Use
             caches.open(CACHE_NAME).then(cache => {
-              cache.put(event.request, clone);
+              cache.put(event.request, cloneForCache);
             });
           }
           return response;
         })
         .catch(() =>
-          caches.match(event.request).then(res =>
-            res || caches.match("/offline.html")
-          )
+          caches.match(event.request).then(res => res || caches.match("/offline.html"))
         )
     );
     return;
   }
 
-  // Images and Fonts Caching (Cache First strategy to boost mobile performance)
+  // Images and Fonts Caching (Cache First)
   if (
     event.request.destination === "image" ||
     event.request.destination === "font" ||
-    url.hostname.includes("googleusercontent.com") // Handle dynamic Google user profiles safely
+    url.hostname.includes("googleusercontent.com")
   ) {
     event.respondWith(
       caches.match(event.request).then(cached =>
         cached ||
         fetch(event.request).then(response => {
-          // Allow basic, cors, and cross-origin profile images caching
-          if (
-            response && 
-            (response.status === 200 || response.status === 0)
-          ) {
+          if (response && (response.status === 200 || response.status === 0)) {
+            const responseToCache = response.clone(); // 🟢 Fixed Clone Execution
             caches.open(CACHE_NAME).then(cache => {
-              cache.put(event.request, response.clone());
+              cache.put(event.request, responseToCache);
             });
           }
           return response;
-        }).catch(() => caches.match("/assets/images/icon-192.png")) // Fallback image if offline
+        }).catch(() => caches.match("/assets/images/icon-192.png"))
       )
     );
   }
