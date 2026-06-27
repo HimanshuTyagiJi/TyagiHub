@@ -196,10 +196,10 @@ let searchQuery = '';
 
 const CAT_CONFIG = [
   { key: 'pdf', label: 'PDF Tools', svgKey: 'createpdf', color: '#f5a623' },
-  { key: 'image', label: 'Image Tools', svgKey: 'imgcompress', color: '#a78bfa' },
+  { key: 'image', label: 'Image Tools (Coming Soon)', svgKey: 'imgcompress', color: '#a78bfa' },
   { key: 'convert', label: 'Convert', svgKey: 'imgconvert', color: '#3ecfcf' },
-  { key: 'video', label: 'Video Tools', svgKey: 'vidcompress', color: '#60a5fa' },
-  { key: 'audio', label: 'Audio Tools', svgKey: 'audioconvert', color: '#34d399' },
+  { key: 'video', label: 'Video Tools (Coming Soon)', svgKey: 'vidcompress', color: '#60a5fa' },
+  { key: 'audio', label: 'Audio Tools (Coming Soon)', svgKey: 'audioconvert', color: '#34d399' },
   { key: 'text', label: 'Text Tools', svgKey: 'wordcount', color: '#fb923c' },
   { key: 'security', label: 'Security & Utils', svgKey: 'passgen', color: '#f87171' },
   { key: 'utilities', label: 'Utilities', svgKey: 'qrgen', color: '#f87171' },
