@@ -409,13 +409,13 @@
     var safeComment = String(c.comment).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
     var safeName    = String(c.name).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
     
-    // 🟢 Contrast Safe Color Fixed here (#b0b0b0)
+    // 🟢 Contrast Safe Color Fixed here (#575757)
     var html = '<div class="tc-card ' + (c.parentId !== "0" ? "reply " : "") + (c.pending ? "pending" : "") + '">'
       + '<div><img src="' + c.pic + '" class="tc-card-pfp" alt="' + safeName + '" onerror="this.src=\'https://tyagihub.in/assets/images/icon-192.png\'">'
       + '<span style="font-weight:bold;font-size:14px;">' + safeName + '</span>'
       + (c.isAdmin ? '<span class="tc-admin-badge">ADMIN ⭐</span>' : '')
       + starStr
-      + '<small style="float:right;color:#b0b0b0;">' + c.date + '</small></div>'
+      + '<small style="float:right;color:#575757;">' + c.date + '</small></div>'
       + '<div style="margin:8px 0 0 42px;font-size:14px;color:#333;" id="body-' + c.rowId + '">' + safeComment + '</div>'
       + '<div class="tc-actions">'
       + '<span onclick="checkAuthAndOpen(\'' + c.rowId + '\',\'reply\')">Reply</span>'
