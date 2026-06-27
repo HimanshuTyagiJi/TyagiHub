@@ -24,19 +24,19 @@ extra_js:
         <span class="discover-badge__dot"></span>
         TyagiHub Discover
       </div>
-     <h1 class="discover-title">
-      Discover Technology, AI & <span>Cybersecurity</span>
-    </h1>
-    
-    <p class="discover-desc">
-      Technology, AI, Cybersecurity, Education, Current Affairs,
-      Digital Tools, Apps, Tutorials, Online Safety &
-      Future Innovation — all in one powerful Discover feed.
-    </p>
+      <h1 class="discover-title">
+        Discover Technology, AI & <span>Cybersecurity</span>
+      </h1>
+      
+      <p class="discover-desc">
+        Technology, AI, Cybersecurity, Education, Current Affairs,
+        Digital Tools, Apps, Tutorials, Online Safety &
+        Future Innovation — all in one powerful Discover feed.
+      </p>
 
-    <p class="discover-seo-text" style="display: none !important; visibility: hidden;">
-      Welcome to the official TyagiHub Discover feed. Explore our comprehensive repository of artificial intelligence tutorials, advanced data safety architecture, digital layouts, and software engineering methodologies handcrafted by Tyagi MultiTech. Stay ahead with modern insights on network protocols, computing automation, internet safety trends, and developer utilities optimized for high-performance scale.
-    </p>
+      <p class="discover-seo-text" style="display: none !important; visibility: hidden;">
+        Welcome to the official TyagiHub Discover feed. Explore our comprehensive repository of artificial intelligence tutorials, advanced data safety architecture, digital layouts, and software engineering methodologies handcrafted by Tyagi MultiTech. Stay ahead with modern insights on network protocols, computing automation, internet safety trends, and developer utilities optimized for high-performance scale.
+      </p>
 
       <div class="discover-icons">
         <div class="discover-icon">
@@ -257,7 +257,47 @@ extra_js:
     </div>
   </section>
 
+  <!-- 🟢 POSITION MATCHED: Placed cleanly below the main content modules -->
+  <section class="discover-insights-section">
+    <div class="container discover-insights-container">
+      
+      <h2 class="discover-insights-main-title">
+        <svg class="discover-insights-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
+          <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
+        </svg>
+        TyagiHub Discover Ecosystem
+      </h2>
+      
+      <div class="discover-insights-grid">
+        
+        <div class="discover-insights-col">
+          <h3 class="discover-insights-col-title">🤖 Advanced Tech & AI Insights</h3>
+          <p class="discover-insights-text">
+            Welcome to the technical hub of TyagiHub, proudly maintained by Tyagi MultiTech. This platform serves as a comprehensive digital ecosystem designed for developers, creators, and students. Our curated Discover feed provides extensive deep dives into modern artificial intelligence engineering, generative AI, machine learning automation, and future technological advancements.
+          </p>
+        </div>
+
+        <div class="discover-insights-col">
+          <h3 class="discover-insights-col-title">🔒 Cyber Security & Online Safety</h3>
+          <p class="discover-insights-text">
+            In the domain of cybersecurity, TyagiHub Shield provides critical safety methodologies to identify online threats, phishing schemas, and social engineering attacks. Learn the underlying engineering protocols of SIM swap frauds, data leak vectors, multi-factor authentication (2FA) bypasses, and hidden malware payloads that compromise network privacy.
+          </p>
+        </div>
+
+        <div class="discover-insights-col">
+          <h3 class="discover-insights-col-title">🛠️ Web Engineering & Optimization</h3>
+          <p class="discover-insights-text">
+            Beyond security, we equip developers with advanced utilities, script parsing guidelines, database management patterns, and optimization tips. From mastering static site generation with Jekyll, database management, to improving core web vitals performance, we provide semantic blueprints to maximize site speed and responsiveness.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
 </div>
+
 <script>
 function triggerFallback(imgNode) {
   imgNode.style.display = 'none';
@@ -268,14 +308,14 @@ function triggerFallback(imgNode) {
 }
 
 document.addEventListener("DOMContentLoaded", function() {
-  // 🟢 Automated Core Check: Force insert title attribute to all rendered images on page load
+  // Automated Core Check: Force insert title attribute to all rendered images on page load
   setTimeout(function() {
     document.querySelectorAll("img").forEach(function(img) {
       if (img.getAttribute("alt") && !img.getAttribute("title")) {
         img.setAttribute("title", img.getAttribute("alt"));
       }
     });
-  }, 1000); // 1.5 second wait taaki dynamic sidebar pehle load ho jaye
+  }, 1000);
 
   const postCards = document.querySelectorAll(".js-post");
   postCards.forEach((card, index) => {
