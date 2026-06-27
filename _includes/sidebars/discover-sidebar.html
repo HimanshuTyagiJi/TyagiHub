@@ -1,6 +1,6 @@
 <aside class="right-sidebar discover-sidebar" aria-label="Discover Sidebar">
 
-  <!-- Trending Posts Section -->
+  <!-- Section 1: Trending Posts System -->
   <div class="sidebar-section">
     <div class="sidebar-title">
       <svg class="sidebar-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -30,7 +30,7 @@
     <div id="trending-posts-container" class="sidebar-links"></div>
   </div>
 
-  <!-- Related Articles Section -->
+  <!-- Section 2: Related Articles (For Posts) OR Latest Discover (For Feed) -->
   {% if page.is_post %}
   <div class="sidebar-section">
     <div class="sidebar-title">
@@ -65,7 +65,26 @@
       {% endif %}
     </div>
   </div>
-  <!-- Social & Apps Section -->
+  {% else %}
+  <div class="sidebar-section">
+    <div class="sidebar-title">
+      <span>{% if page.lang == "hi" %}नवीनतम डिस्कवर{% else %}Latest Discover{% endif %}</span>
+    </div>
+    <div class="sidebar-links">
+      {% if page.lang == "hi" %}
+        {% assign latest_posts = site.posts_hi | sort:"date" | reverse %}
+      {% else %}
+        {% assign latest_posts = site.posts | concat: site.shield | sort:"date" | reverse %}
+      {% endif %}
+
+      {% for post in latest_posts limit:5 %}
+        <a href="{{ post.url | relative_url }}" class="sidebar-link-card">{{ post.title }}</a>
+      {% endfor %}
+    </div>
+  </div>
+  {% endif %}
+
+  <!-- Section 3: Telegram Updates Link -->
   <div class="sidebar-section">
     <div class="sidebar-title">
       <span>{% if page.lang == "hi" %}टेलीग्राम अपडेट्स{% else %}Telegram Updates{% endif %}</span>
@@ -75,6 +94,7 @@
     </a>
   </div>
 
+  <!-- Section 4: YouTube Channel Promo -->
   <div class="sidebar-section">
     <div class="sidebar-title">
       <span>{% if page.lang == "hi" %}यूट्यूब चैनल{% else %}YouTube Channel{% endif %}</span>
@@ -87,6 +107,7 @@
     </a>
   </div>
 
+  <!-- Section 5: Instagram Target Handle -->
   <div class="sidebar-section">
     <div class="sidebar-title">
       <span>Instagram</span>
@@ -99,6 +120,7 @@
     </a>
   </div>
 
+  <!-- Section 6: TyagiHub Dynamic Native Apps -->
   <div class="sidebar-section">
     <div class="sidebar-title">
       <span>{% if page.lang == "hi" %}TyagiHub के ऐप्स{% else %}TyagiHub Apps{% endif %}</span>
