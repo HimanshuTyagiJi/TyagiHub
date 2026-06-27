@@ -22,8 +22,10 @@ keywords: "Tyagi MultiTech apps, DiagX, GK Learn, PDF Tool Pro, free Android app
 
   <section class="section">
     <div class="container">
-      <div class="grid-2" role="list">
+      <!-- 🟢 GRID UTILITY: Added explicit layout class for desktop alignment -->
+      <div class="grid-2 apps-centered-grid" role="list">
 
+        <!-- CARD 1: DeviceX -->
         <div class="card reveal" role="listitem">
           <div class="card__thumb-svg" aria-hidden="true">
             <svg width="180" height="180" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -107,6 +109,7 @@ keywords: "Tyagi MultiTech apps, DiagX, GK Learn, PDF Tool Pro, free Android app
           </div>
         </div>
 
+        <!-- CARD 2: TyagiHub -->
         <div class="card reveal reveal-delay-1" role="listitem">
           <div class="card__thumb-img" aria-hidden="true">
             <img src="/assets/images/tyagihub.png" alt="TyagiHub Web Portal Application Icon" title="TyagiHub Web App" width="180" height="180">
@@ -126,6 +129,7 @@ keywords: "Tyagi MultiTech apps, DiagX, GK Learn, PDF Tool Pro, free Android app
           </div>
         </div>
 
+        <!-- CARD 3: TyagiStudio -->
         <div class="card reveal reveal-delay-2" role="listitem">
           <div class="card__thumb-img" aria-hidden="true">
             <img src="/assets/images/tyagistudio.png" alt="TyagiStudio Creator Toolkit Application Icon" title="TyagiStudio Asset Engine" width="180" height="180">
@@ -145,6 +149,7 @@ keywords: "Tyagi MultiTech apps, DiagX, GK Learn, PDF Tool Pro, free Android app
           </div>
         </div>
 
+        <!-- CARD 4: Graphio Player -->
         <div class="card reveal reveal-delay-3" role="listitem">
           <div class="card__thumb-img" aria-hidden="true">
             <img src="/assets/images/graphioplayer.png" alt="Graphio Secure Media Player App Icon" title="Graphio Player Engine" width="180" height="180">
@@ -164,6 +169,7 @@ keywords: "Tyagi MultiTech apps, DiagX, GK Learn, PDF Tool Pro, free Android app
           </div>
         </div>
 
+        <!-- CARD 5: Tyagi Game Box -->
         <div class="card reveal reveal-delay-4" role="listitem">
           <div class="card__thumb-svg" aria-hidden="true">
             <svg width="180" height="180" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -203,6 +209,7 @@ keywords: "Tyagi MultiTech apps, DiagX, GK Learn, PDF Tool Pro, free Android app
           </div>
         </div>
 
+        <!-- CARD 6: TyagiPad -->
         <div class="card reveal reveal-delay-3" role="listitem">
           <div class="card__thumb-img" aria-hidden="true">
             <img src="/assets/images/tyagipad.png" alt="TyagiPad Code & Text Workspace Editor Icon" title="TyagiPad Editor Hub" width="180" height="180">
@@ -222,6 +229,7 @@ keywords: "Tyagi MultiTech apps, DiagX, GK Learn, PDF Tool Pro, free Android app
           </div>
         </div>
 
+        <!-- CARD 7: BhaktiPath -->
         <div class="card reveal reveal-delay-5" role="listitem">
           <div class="card__thumb-img" aria-hidden="true">
             <img src="/assets/images/bhaktipath.png" alt="BhaktiPath Devotional App Icon" title="BhaktiPath Spiritual Hub" width="180" height="180">
@@ -274,7 +282,26 @@ keywords: "Tyagi MultiTech apps, DiagX, GK Learn, PDF Tool Pro, free Android app
     </div>
   </section>
 
-</div><style>.apps-documentation-overview {
+</div>
+
+<style>
+/* 🟢 DESKTOP WIDTH & CENTERING LAYER UPGRADE */
+@media (min-width: 768px) {
+  .apps-centered-grid {
+    display: flex !important;
+    flex-wrap: wrap;
+    justify-content: center !important;
+    align-items: stretch;
+    gap: 30px;
+  }
+  .apps-centered-grid .card {
+    width: 480px !important;
+    max-width: 100% !important;
+    flex: 0 0 480px !important;
+  }
+}
+
+.apps-documentation-overview {
   padding: 50px 0;
   border-top: 1px solid var(--clr-border, #222);
   background: var(--clr-bg, #0f172a);
@@ -308,4 +335,5 @@ keywords: "Tyagi MultiTech apps, DiagX, GK Learn, PDF Tool Pro, free Android app
 .card__btn-group { display: flex; gap: var(--space-3); }
 .card__meta-span { display: flex; align-items: center; font-size: var(--fs-xs); color: var(--clr-text-3); }
 .card__thumb-img, .card__thumb-svg { height: 180px; display: flex; align-items: center; justify-content: center; font-size: 4rem; }
-.card__thumb-img img { border-radius: 25px; }</style>
+.card__thumb-img img { border-radius: 25px; }
+</style>
