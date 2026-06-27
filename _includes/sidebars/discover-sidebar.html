@@ -19,9 +19,9 @@
       {% for post in discover_posts %}
         {% unless post.url == page.url %}
         <div class="trending-post-item"
-          data-title="{{ post.title | escape }}"
+          data-title="{{ post.title | escape }} - TyagiHub"
           data-url="{{ post.url | relative_url }}"
-          data-image="{{ post.image }}">
+          data-image="{{ post.image | default:'/assets/images/default-thumb.png' }}">
         </div>
         {% endunless %}
       {% endfor %}
@@ -45,7 +45,7 @@
           {% if post.lang == "hi" %}
             {% unless post.url == page.url %}
             <div class="related-post-item"
-              data-title="{{ post.title | escape }}"
+              data-title="{{ post.title | escape }} - TyagiHub"
               data-url="{{ post.url | relative_url }}"
               data-image="{{ post.image | default:'/assets/images/default-thumb.png' }}">
             </div>
@@ -57,7 +57,7 @@
           {% unless post.lang == "hi" %}
             {% unless post.url == page.url %}
             <div class="related-post-item"
-              data-title="{{ post.title | escape }}"
+              data-title="{{ post.title | escape }} - TyagiHub"
               data-url="{{ post.url | relative_url }}"
               data-image="{{ post.image | default:'/assets/images/default-thumb.png' }}">
             </div>
@@ -69,6 +69,7 @@
   </div>
   {% else %}
   <div class="sidebar-section">
+    <div class="navbar-dropdown-panel__title" style="display:none;">Latest Posts</div>
     <div class="sidebar-title">
       <span>{% if page.lang == "hi" %}नवीनतम डिस्कवर{% else %}Latest Discover{% endif %}</span>
     </div>
@@ -76,7 +77,10 @@
       {% if page.lang == "hi" %}
         {% assign latest_posts = site.posts_hi | sort:"date" | reverse %}
       {% else %}
-        {% assign latest_posts = site.posts | sort:"date" | reverse %}
+        {% assign combined_latest = "" | split: "" %}
+        {% for p in site.posts %}{% assign combined_latest = combined_latest | push: p %}{% endfor %}
+        {% for p in site.shield %}{% assign combined_latest = combined_latest | push: p %}{% endfor %}
+        {% assign latest_posts = combined_latest | sort:"date" | reverse %}
       {% endif %}
 
       {% for post in latest_posts limit:5 %}
@@ -94,7 +98,7 @@
       <span>{% if page.lang == "hi" %}टेलीग्राम अपडेट्स{% else %}Telegram Updates{% endif %}</span>
     </div>
     <a href="https://t.me/TyagiHubs" target="_blank" rel="noopener" class="telegram-card">
-      {% if page.lang == "hi" %}टेलीग्राम चैनल से जुड़ें{% else %}Join Telegram Channel{% endif %}
+      {% if page.lang == "hi" %}टेलीग्राम चैनल से जुड़ें{% else %}Join Telegram Channel{% endif %}
     </a>
   </div>
 
@@ -102,7 +106,8 @@
     <div class="sidebar-title">
       <span>{% if page.lang == "hi" %}यूट्यूब चैनल{% else %}YouTube Channel{% endif %}</span>
     </div>
-    <a href="https://youtube.com/@tyagicore" target="_blank" rel="noopener" class="telegram-card"
+    <!-- 🟢 Fixed Username Link: @TyagiHubs -->
+    <a href="https://youtube.com/@TyagiHubs" target="_blank" rel="noopener" class="telegram-card"
        style="background-color: #FF0000; border-color: #FF0000; color: #ffffff;"
        onmouseover="this.style.backgroundColor='#cc0000'; this.style.borderColor='#cc0000';"
        onmouseout="this.style.backgroundColor='#FF0000'; this.style.borderColor='#FF0000';">
@@ -114,7 +119,8 @@
     <div class="sidebar-title">
       <span>इंस्टाग्राम</span>
     </div>
-    <a href="https://instagram.com/tyagicore" target="_blank" rel="noopener" class="telegram-card"
+    <!-- 🟢 Fixed Username Link: TyagiHub -->
+    <a href="https://instagram.com/TyagiHub" target="_blank" rel="noopener" class="telegram-card"
        style="background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888); border: none; color: #ffffff;"
        onmouseover="this.style.filter='brightness(1.1)';"
        onmouseout="this.style.filter='brightness(1)';">
@@ -132,7 +138,7 @@
       <div class="app-logo-box">SM</div>
       <div class="app-details">
         <span class="app-name">Secure Media Player</span>
-        <span class="app-meta">{% if page.lang == "hi" %}प्राइवेट मीडिया सुरक्षा{% else %}Private Media Protection{% endif %}</span>
+        <span class="app-meta">{% if page.lang == "hi" %}प्राइवेट media सुरक्षा{% else %}Private Media Protection{% endif %}</span>
       </div>
       <span class="download-btn">{% if page.lang == "hi" %}जल्द ही{% else %}Soon{% endif %}</span>
     </div>
