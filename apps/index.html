@@ -285,7 +285,7 @@ keywords: "Tyagi MultiTech apps, DiagX, GK Learn, PDF Tool Pro, free Android app
 </div>
 
 <style>
-/* 🟢 DESKTOP WIDTH & CENTERING FOR CARDS AND TEXT BLOCKS */
+/* 🟢 DESKTOP WIDTH, CARD LOOK & CENTERING FOR BOTH SECTIONS */
 @media (min-width: 768px) {
   .apps-centered-grid, .apps-documentation-grid {
     display: flex !important;
@@ -309,15 +309,27 @@ keywords: "Tyagi MultiTech apps, DiagX, GK Learn, PDF Tool Pro, free Android app
 .apps-documentation-overview h2 {
   font-size: 26px;
   font-weight: 850;
-  margin-bottom: 25px;
+  margin-bottom: 35px;
   color: var(--clr-heading, #fff);
   letter-spacing: -0.02em;
-  text-align: center; /* Niche ka heading bhi center lock */
+  text-align: center;
 }
 .apps-documentation-grid {
   display: grid;
   gap: 30px;
   grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+}
+
+/* 🟢 TEXT BLOCK CARD HARDENING FIXED */
+.apps-documentation-column {
+  background: var(--clr-bg-2, #1e293b);
+  border: 1px solid var(--clr-border, #334155);
+  border-radius: 25px; /* Cards ki image border radius se match locked */
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
 }
 .apps-documentation-column h3 {
   font-size: 18px;
@@ -327,10 +339,12 @@ keywords: "Tyagi MultiTech apps, DiagX, GK Learn, PDF Tool Pro, free Android app
 }
 .apps-documentation-column p {
   font-size: 14px;
-  color: var(--clr-text-2, #888);
+  color: var(--clr-text-2, #94a3b8);
   line-height: 1.7;
   text-align: justify;
+  margin: 0;
 }
+
 .card__header-flex { display: flex; align-items: center; justify-content: space-between; margin-bottom: var(--space-3); }
 .card__desc-text { color: var(--clr-text-2); font-size: var(--fs-sm); margin-bottom: var(--space-4); line-height: var(--lh-loose); }
 .card__btn-group { display: flex; gap: var(--space-3); }
