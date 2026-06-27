@@ -1,227 +1,229 @@
 ---
 layout: default
-title: "Editor — Free Online Design Tool"
-description: "Browser-based image editor, poster maker, and visual design tool. Free alternative to Canva. No signup required."
-keywords: "free online image editor, poster maker, design tool India, Canva alternative free, graphic design guide, html5 canvas manual"
+title: "TyagiHub Editor — Free Browser-Based Graphic Design Tool (Launching Soon)"
+description: "Discover the upcoming TyagiHub Editor, a powerful, subscription-free, browser-based graphic design suite and image editor. Read our engineering manuals, graphic design guides, and upcoming system specifications."
+keywords: "free online image editor, upcoming graphic design tool, Canva alternative free, browser image editor, HTML5 canvas guide, WebGL graphic editor, TyagiHub"
 lang_switch: false
 permalink: /editor/
 ---
 
 <div class="th-editor-layout">
-  <!-- Hero Section -->
+  <!-- Hero / Pre-Launch Notice Section -->
   <section class="th-editor-hero">
     <div class="container text-center">
-      <div class="th-editor-label" aria-hidden="true">TyagiHub Creative Suite</div>
+      <div class="th-status-badge">
+        <span class="th-status-dot"></span>
+        <span class="th-status-text">Engineering Phase Active — Launching in Beta Soon</span>
+      </div>
       <h1 class="th-editor-hero-title">
-        Free Professional Graphic Design & Visual Editor
+        The Next-Generation Sovereign Browser-Based Graphic Design Suite
       </h1>
       <p class="th-editor-hero-desc">
-        A full-featured, browser-based alternative to premium vector design suites. Edit high-resolution pictures, compose marketing posters, add gorgeous typography, and export clean assets—fully offline-safe with absolute pixel precision.
+        We are actively engineering a professional-grade, hardware-accelerated creative workspace that runs entirely in your local browser sandbox. Experience ultra-high-resolution canvas manipulation, responsive social banner composition, and advanced vector typography—all powered by local GPU WebGL fragment shaders with zero server latency, 100% offline security, and absolutely no premium subscriptions.
       </p>
       
-      <!-- Premium SVG Animation Component illustrating real-time image editing -->
+      <!-- Interactive SVG Mockup with active code/design state preview -->
       <div class="th-editor-hero-animation-wrapper">
-        <svg class="th-editor-svg-animation" viewBox="0 0 800 350" xmlns="http://www.w3.org/2000/svg">
-          <!-- Background Grid Pattern -->
+        <svg class="th-editor-svg-animation" viewBox="0 0 800 400" xmlns="http://www.w3.org/2000/svg">
           <defs>
-            <pattern id="gridPattern" width="20" height="20" patternUnits="userSpaceOnUse">
-              <path d="M 20 0 L 0 0 0 20" fill="none" stroke="#e2e8f0" stroke-width="0.5"/>
+            <!-- Grid Background Pattern -->
+            <pattern id="editorGrid" width="20" height="20" patternUnits="userSpaceOnUse">
+              <path d="M 20 0 L 0 0 0 20" fill="none" stroke="#f1f5f9" stroke-width="0.8"/>
             </pattern>
-            <linearGradient id="coolGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stop-color="#6366f1" />
-              <stop offset="50%" stop-color="#4f46e5" />
+            <!-- Vibrant Linear Gradient for Graphic Canvas Mock -->
+            <linearGradient id="vibrantGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#4f46e5" />
+              <stop offset="50%" stop-color="#6366f1" />
               <stop offset="100%" stop-color="#3b82f6" />
             </linearGradient>
-            <filter id="shadow" x="-10%" y="-10%" width="120%" height="120%">
-              <feDropShadow dx="0" dy="8" stdDeviation="12" flood-color="#0f172a" flood-opacity="0.12" />
+            <!-- Drop Shadow Filter -->
+            <filter id="boxShadow" x="-10%" y="-10%" width="120%" height="120%">
+              <feDropShadow dx="0" dy="12" stdDeviation="16" flood-color="#0f172a" flood-opacity="0.1" />
             </filter>
           </defs>
-          <rect width="100%" height="100%" fill="url(#gridPattern)" />
           
-          <!-- Outer Application Frame -->
-          <rect x="100" y="30" width="600" height="290" rx="10" fill="#ffffff" filter="url(#shadow)" stroke="#e2e8f0" stroke-width="1.5" />
+          <!-- Background Grid Area -->
+          <rect width="100%" height="100%" fill="url(#editorGrid)" rx="16" />
           
-          <!-- Toolbars/Header -->
-          <rect x="100" y="30" width="600" height="40" rx="10" fill="#f8fafc" />
-          <circle cx="125" cy="50" r="5" fill="#ef4444" />
-          <circle cx="140" cy="50" r="5" fill="#f59e0b" />
-          <circle cx="155" cy="50" r="5" fill="#10b981" />
-          <text x="400" y="55" font-family="'Inter', sans-serif" font-size="11" font-weight="600" fill="#64748b" text-anchor="middle">TyagiHub Creative Engine v2.1 (Active)</text>
+          <!-- Outer Browser / Editor Frame Mock -->
+          <rect x="50" y="30" width="700" height="340" rx="12" fill="#ffffff" filter="url(#boxShadow)" stroke="#e2e8f0" stroke-width="1.5" />
           
-          <!-- Left Sidebar Tools -->
-          <rect x="100" y="70" width="50" height="250" fill="#f8fafc" border-right="1px solid #e2e8f0" />
-          <g fill="#94a3b8">
-            <!-- Selector Tool Icon -->
-            <path d="M115,90 L130,100 L122,102 L125,110 L121,111 L118,103 L115,106 Z" fill="#6366f1" />
-            <!-- Crop Tool Icon -->
-            <rect x="117" y="125" width="16" height="16" rx="2" fill="none" stroke="#94a3b8" stroke-width="2" />
-            <!-- Text Tool Icon -->
-            <text x="125" y="170" font-family="'Inter', sans-serif" font-weight="800" font-size="14" text-anchor="middle">T</text>
-            <!-- Filter Tool Icon -->
-            <circle cx="125" cy="205" r="7" fill="none" stroke="#94a3b8" stroke-width="2" />
-            <circle cx="125" cy="205" r="3" fill="#94a3b8" />
-            <!-- Settings Icon -->
-            <circle cx="125" cy="245" r="6" fill="none" stroke="#94a3b8" stroke-width="2" />
+          <!-- Browser Header with Tabs and Actions -->
+          <rect x="50" y="30" width="700" height="44" rx="12" fill="#f8fafc" />
+          <!-- Window Controls -->
+          <circle cx="80" cy="52" r="6" fill="#ef4444" />
+          <circle cx="98" cy="52" r="6" fill="#f59e0b" />
+          <circle cx="116" cy="52" r="6" fill="#10b981" />
+          <!-- Header URL Text -->
+          <rect x="180" y="38" width="440" height="26" rx="6" fill="#edf2f7" stroke="#e2e8f0" stroke-width="1" />
+          <text x="400" y="55" font-family="'Inter', sans-serif" font-size="11" font-weight="600" fill="#475569" text-anchor="middle">tyagihub.com/editor [development-preview]</text>
+          
+          <!-- Left-Side Toolbox (Vertical Rail) -->
+          <rect x="50" y="74" width="60" height="296" fill="#f8fafc" />
+          <line x1="110" y1="74" x2="110" y2="370" stroke="#e2e8f0" stroke-width="1.5" />
+          
+          <!-- Toolbox Icons (Interactive Vector paths) -->
+          <g fill="#64748b">
+            <!-- Selector/Pointer Arrow (Active) -->
+            <path d="M72,100 L87,112 L79,114 L82,122 L78,123 L75,115 L72,118 Z" fill="#4f46e5" />
+            <!-- Crop Vector Square -->
+            <rect x="70" y="145" width="20" height="20" rx="3" fill="none" stroke="#94a3b8" stroke-width="2" />
+            <line x1="66" y1="150" x2="94" y2="150" stroke="#94a3b8" stroke-width="1" />
+            <!-- Typography 'T' Icon -->
+            <text x="80" y="202" font-family="'Inter', sans-serif" font-weight="900" font-size="16" text-anchor="middle">T</text>
+            <!-- Brush / Filter Circles -->
+            <circle cx="80" cy="245" r="9" fill="none" stroke="#94a3b8" stroke-width="2" />
+            <circle cx="80" cy="245" r="4" fill="#94a3b8" />
+            <!-- Settings Gear -->
+            <circle cx="80" cy="295" r="6" fill="none" stroke="#94a3b8" stroke-width="2" />
           </g>
           
-          <!-- Main Canvas Workspace -->
-          <rect x="170" y="90" width="310" height="210" rx="6" fill="#f1f5f9" />
+          <!-- Main Canvas Workspace Box -->
+          <rect x="130" y="94" width="370" height="256" rx="8" fill="#f1f5f9" />
           
-          <!-- Vector Design Shape in Progress -->
-          <g class="animated-design-shape">
-            <rect x="220" y="120" width="210" height="150" rx="8" fill="url(#coolGrad)" opacity="0.95" />
-            <!-- Inner Mock Content -->
-            <text x="325" y="185" font-family="'Inter', sans-serif" font-weight="900" font-size="20" fill="#ffffff" text-anchor="middle" letter-spacing="-0.03em">CREATIVE ART</text>
-            <text x="325" y="210" font-family="'JetBrains Mono', monospace" font-size="9" fill="#e0e7ff" text-anchor="middle" letter-spacing="0.05em">RENDERED AT 120 FPS</text>
+          <!-- Vector Illustration element representing high-quality layout creation -->
+          <g class="animated-canvas-element">
+            <rect x="180" y="134" width="270" height="176" rx="10" fill="url(#vibrantGradient)" opacity="0.95" />
+            <!-- Mock Content Layout on Canvas -->
+            <text x="315" y="215" font-family="'Inter', sans-serif" font-weight="900" font-size="22" fill="#ffffff" text-anchor="middle" letter-spacing="-0.03em">TYAGIHUB EDITOR</text>
+            <text x="315" y="242" font-family="'JetBrains Mono', monospace" font-size="10" fill="#c7d2fe" text-anchor="middle" letter-spacing="0.1em">DEVELOPMENT IN PROGRESS</text>
             
-            <!-- Animated SVG Vector Lines illustrating resizing anchors -->
-            <rect x="216" y="116" width="8" height="8" fill="#ffffff" stroke="#6366f1" stroke-width="1.5" />
-            <rect x="426" y="116" width="8" height="8" fill="#ffffff" stroke="#6366f1" stroke-width="1.5" />
-            <rect x="216" y="266" width="8" height="8" fill="#ffffff" stroke="#6366f1" stroke-width="1.5" />
-            <rect x="426" y="266" width="8" height="8" fill="#ffffff" stroke="#6366f1" stroke-width="1.5" />
-            <line x1="220" y1="120" x2="325" y2="70" stroke="#6366f1" stroke-width="1" stroke-dasharray="3,3" />
-            <circle cx="325" cy="70" r="4" fill="#6366f1" />
+            <!-- Resizing Anchors and Vector Handles -->
+            <rect x="175" y="129" width="10" height="10" fill="#ffffff" stroke="#4f46e5" stroke-width="2" />
+            <rect x="445" y="129" width="10" height="10" fill="#ffffff" stroke="#4f46e5" stroke-width="2" />
+            <rect x="175" y="300" width="10" height="10" fill="#ffffff" stroke="#4f46e5" stroke-width="2" />
+            <rect x="445" y="300" width="10" height="10" fill="#ffffff" stroke="#4f46e5" stroke-width="2" />
+            <line x1="315" y1="134" x2="315" y2="85" stroke="#4f46e5" stroke-width="1.5" stroke-dasharray="4,4" />
+            <circle cx="315" cy="85" r="5" fill="#4f46e5" />
           </g>
           
-          <!-- Right Properties Panel -->
-          <rect x="500" y="70" width="200" height="250" fill="#f8fafc" />
-          <line x1="500" y1="70" x2="500" y2="320" stroke="#e2e8f0" stroke-width="1" />
-          <text x="515" y="100" font-family="'Inter', sans-serif" font-size="11" font-weight="700" fill="#475569">PROPERTIES</text>
+          <!-- Right Sidebar (Properties Panel Controls) -->
+          <rect x="520" y="74" width="230" height="296" fill="#f8fafc" />
+          <line x1="520" y1="74" x2="520" y2="370" stroke="#e2e8f0" stroke-width="1.5" />
           
-          <!-- Sliders Mock -->
-          <text x="515" y="130" font-family="'Inter', sans-serif" font-size="9" font-weight="600" fill="#64748b">Opacity (95%)</text>
-          <line x1="515" y1="140" x2="675" y2="140" stroke="#e2e8f0" stroke-width="3" stroke-linecap="round" />
-          <line x1="515" y1="140" x2="655" y2="140" stroke="#6366f1" stroke-width="3" stroke-linecap="round" />
-          <circle cx="655" cy="140" r="5" fill="#6366f1" />
+          <!-- Properties Panel Details -->
+          <text x="540" y="105" font-family="'Inter', sans-serif" font-size="11" font-weight="800" fill="#1e293b" letter-spacing="0.05em">PROPERTIES PANEL</text>
           
-          <text x="515" y="175" font-family="'Inter', sans-serif" font-size="9" font-weight="600" fill="#64748b">Contrast (110%)</text>
-          <line x1="515" y1="185" x2="675" y2="185" stroke="#e2e8f0" stroke-width="3" stroke-linecap="round" />
-          <line x1="515" y1="185" x2="630" y2="185" stroke="#6366f1" stroke-width="3" stroke-linecap="round" />
-          <circle cx="630" cy="185" r="5" fill="#6366f1" />
+          <!-- Control Sliders -->
+          <text x="540" y="135" font-family="'Inter', sans-serif" font-size="10" font-weight="600" fill="#64748b">GPU Canvas Contrast</text>
+          <line x1="540" y1="146" x2="710" y2="146" stroke="#cbd5e1" stroke-width="3" stroke-linecap="round" />
+          <line x1="540" y1="146" x2="660" y2="146" stroke="#4f46e5" stroke-width="3" stroke-linecap="round" />
+          <circle cx="660" cy="146" r="6" fill="#4f46e5" />
           
-          <text x="515" y="220" font-family="'Inter', sans-serif" font-size="9" font-weight="600" fill="#64748b">Saturation (130%)</text>
-          <line x1="515" y1="230" x2="675" y2="230" stroke="#e2e8f0" stroke-width="3" stroke-linecap="round" />
-          <line x1="515" y1="230" x2="650" y2="230" stroke="#6366f1" stroke-width="3" stroke-linecap="round" />
-          <circle cx="650" cy="230" r="5" fill="#6366f1" />
-
-          <!-- Export Buttons Mock -->
-          <rect x="515" y="265" width="75" height="24" rx="4" fill="#e2e8f0" />
-          <text x="552.5" y="280" font-family="'Inter', sans-serif" font-size="9" font-weight="700" fill="#475569" text-anchor="middle">PNG Export</text>
+          <text x="540" y="185" font-family="'Inter', sans-serif" font-size="10" font-weight="600" fill="#64748b">Layer Saturation (WebGL)</text>
+          <line x1="540" y1="196" x2="710" y2="196" stroke="#cbd5e1" stroke-width="3" stroke-linecap="round" />
+          <line x1="540" y1="196" x2="685" y2="196" stroke="#4f46e5" stroke-width="3" stroke-linecap="round" />
+          <circle cx="685" cy="196" r="6" fill="#4f46e5" />
           
-          <rect x="600" y="265" width="75" height="24" rx="4" fill="#6366f1" />
-          <text x="637.5" y="280" font-family="'Inter', sans-serif" font-size="9" font-weight="700" fill="#ffffff" text-anchor="middle">SVG Vector</text>
+          <text x="540" y="235" font-family="'Inter', sans-serif" font-size="10" font-weight="600" fill="#64748b">Typography Drop Shadow</text>
+          <line x1="540" y1="246" x2="710" y2="246" stroke="#cbd5e1" stroke-width="3" stroke-linecap="round" />
+          <line x1="540" y1="246" x2="610" y2="246" stroke="#4f46e5" stroke-width="3" stroke-linecap="round" />
+          <circle cx="610" cy="246" r="6" fill="#4f46e5" />
+          
+          <!-- Pre-Launch Overlay Banner on Mockup to indicate status -->
+          <rect x="130" y="74" width="620" height="296" rx="0" fill="#0f172a" opacity="0.03" />
         </svg>
       </div>
 
+      <!-- Pre-launch Call-to-actions (No broken links, styled for search compliance) -->
       <div class="th-editor-cta-group">
-        <a href="/editor/image-editor/" class="btn btn-primary btn-lg" aria-label="Open the TyagiHub professional browser-based picture editor workspace">Open Editor Workspace</a>
-        <span class="btn btn-outline btn-lg btn-disabled" role="button" aria-disabled="true">Browse Assets Template Library (Coming Soon)</span>
+        <span class="btn btn-outline btn-lg btn-disabled" role="button" aria-disabled="true" aria-label="Editor interface is currently under active construction. Review the roadmap and manuals below.">
+          🚧 Under Development (Launching Soon)
+        </span>
+        <a href="#section-roadmap" class="btn btn-primary btn-lg" aria-label="Scroll directly to the TyagiHub development schedule and roadmap section">
+          View Engineering Roadmap
+        </a>
       </div>
     </div>
   </section>
 
-  <!-- High-Value Comparative Feature Matrices and Feature Cards -->
+  <!-- High-Value Core Functional Blueprint Cards -->
   <section class="th-editor-features-section">
     <div class="container">
       <div class="th-editor-features-header">
-        <h2 class="th-editor-features-title">Cutting-Edge Features of TyagiHub Editor</h2>
-        <p class="th-editor-features-subtitle">Built directly for professional developers, content creators, and marketing managers</p>
+        <h2 class="th-editor-features-title">Planned System Architecture & Upcoming Core Capabilities</h2>
+        <p class="th-editor-features-subtitle">We are building a highly integrated rendering engine from the ground up to support native desktop performance directly inside the browser window.</p>
       </div>
       
       <div class="th-editor-grid">
+        <!-- Feature 1 -->
         <div class="th-editor-card">
           <div class="th-editor-card-icon" aria-hidden="true">🖼️</div>
-          <h3 class="th-editor-card-title">Hardware-Accelerated Image Editor</h3>
-          <p class="th-editor-card-desc">Execute complex operations including bicubic scaling, gamma level corrections, dynamic contrast adjustments, custom vignette filters, and real-time color saturation adjustments straight inside your local browser sandbox.</p>
+          <div class="th-card-status-pill">Active R&D Phase</div>
+          <h3 class="th-editor-card-title">Client-Side Image Manipulation</h3>
+          <p class="th-editor-card-desc">Bypassing slow server queues entirely. The upcoming editor will perform bicubic coordinate interpolation and real-time GPU matrix filter adjustments natively on your local device.</p>
         </div>
+        <!-- Feature 2 -->
         <div class="th-editor-card">
           <div class="th-editor-card-icon" aria-hidden="true">📋</div>
-          <h3 class="th-editor-card-title">Intelligent Poster & Banner Composer</h3>
-          <p class="th-editor-card-desc">Tweak preset canvas grids mapped perfectly to Instagram standard posts, high-impact YouTube thumbnails, custom LinkedIn cover headers, and modern geometric banner guidelines without losing aspect-ratio control.</p>
+          <div class="th-card-status-pill">UI Engineering Phase</div>
+          <h3 class="th-editor-card-title">Responsive Banner Compositor</h3>
+          <p class="th-editor-card-desc">Designed to allow instant content resizing for multi-platform dimensions. Easily compose upcoming social banners, custom thumbnails, and header layouts with live safety guidelines.</p>
         </div>
+        <!-- Feature 3 -->
         <div class="th-editor-card">
           <div class="th-editor-card-icon" aria-hidden="true">✏️</div>
-          <h3 class="th-editor-card-title">Robust Typographical Compositing</h3>
-          <p class="th-editor-card-desc">Add beautifully aligned text layers, customize letter spacing (tracking), alter line heights (leading), choose from dozens of premium Google Fonts, and define drop shadows with custom blur radii using real-time canvas layers.</p>
+          <div class="th-card-status-pill">Core Engine Testing</div>
+          <h3 class="th-editor-card-title">Advanced Text & Font Renderer</h3>
+          <p class="th-editor-card-desc">Integrating seamlessly with dynamic typography structures. Built-in capabilities will support complex letter spacing (tracking), drop shadows, layer rotations, and vector text alignment.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Massive Educational Core Section (AdSense Master Booster) - Over 10,000 words of deeply researched documentation -->
+  <!-- Massive Educational Content Sections: Highly dense for Ultimate Information Authority -->
   <section class="th-docs-section">
     <div class="th-docs-container">
       
-      <!-- Table of Contents for Professional Layout -->
+      <!-- Table of Contents for Professional Layout & Interlinked Structure -->
       <div class="th-docs-toc-card">
-        <h3 class="th-docs-toc-title">Comprehensive Documentation Index</h3>
+        <h3 class="th-docs-toc-title">TyagiHub Editor Project Directory & Graphic Design Knowledge Base</h3>
         <p class="th-docs-toc-intro">
-          This publication serves as the official design manual, architectural specification guide, and educational masterclass resource for the TyagiHub browser-based Graphic Design Engine. Search engines and web engineering developers can consult the exhaustive manuals below to study visual rendering models.
+          This comprehensive informational directory compiles our active development manuals, technical research studies, and essential graphic design tutorials. Explore each chapter to understand the technology and design foundations supporting our upcoming release.
         </p>
         <ul class="th-docs-toc-list">
-          <li><a href="#section-rendering" aria-label="Jump to Section 1: Dynamic Graphic Rendering Architecture">1. Dynamic Graphic Rendering Architecture & GPU Compilation Pipelines</a></li>
-          <li><a href="#section-theory" aria-label="Jump to Section 2: Core Graphic Design Theory & Layout Principles">2. Core Graphic Design Theory, Visual Hierarchy & Proportional Harmony</a></li>
-          <li><a href="#section-pixel" aria-label="Jump to Section 3: Professional Image Resampling & Pixel Interpolation Algorithms">3. Professional Image Resampling, Color Matrices & Pixel Manipulation Algorithms</a></li>
-          <li><a href="#section-marketing" aria-label="Jump to Section 4: Marketing Banner Optimization & Social Media Aspect Matrix">4. Marketing Banner Optimization & Social Media Aspect Ratio Matrices</a></li>
-          <li><a href="#section-compliance" aria-label="Jump to Section 5: Semantic Accessibility & Crawler Indexation Standards">5. Semantic Accessibility, High Text-to-Code Ratio & Search Crawler Compliance</a></li>
-          <li><a href="#section-tutorials" aria-label="Jump to Section 6: In-Depth Practical Graphic Tutorials & Step-by-Step Walkthroughs">6. Comprehensive Design Tutorials: Step-by-Step Workflow Guides</a></li>
-          <li><a href="#section-benchmarks" aria-label="Jump to Section 7: Browser Performance Benchmarks & Core Web Vitals Optimization">7. Performance Benchmarks, Local Storage Engines & Security Controls</a></li>
-          <li><a href="#section-faq" aria-label="Jump to Section 8: Frequently Asked Technical Questions">8. Frequently Asked Technical & Engineering Questions (Exhaustive FAQ)</a></li>
+          <li><a href="#section-vision" aria-label="Jump to Section 1: The Engineering Vision & Modern Web Rendering Pipelines">1. The Engineering Vision: Client-Side Web Rendering Pipelines</a></li>
+          <li><a href="#section-math" aria-label="Jump to Section 2: Mathematical Canvas Transformations & Pixel Matrix Calculations">2. Mathematics of Digital Image Editing: Matrix Transforms & Resampling Algorithms</a></li>
+          <li><a href="#section-theory" aria-label="Jump to Section 3: Essential Graphic Design Rules & Visual Composition">3. Essential Graphic Design Rules: Composition, Contrast & Proportional Balance</a></li>
+          <li><a href="#section-ratios" aria-label="Jump to Section 4: Multi-Platform Aspect Ratio Matrices & Banner Optimization Specs">4. Digital Aspect Ratio Specifications & Multi-Platform Layout Standardization</a></li>
+          <li><a href="#section-privacy" aria-label="Jump to Section 5: Client-Side Persistency & Sandbox Data Confidentiality">5. Zero-Server Architecture: Safeguarding Personal Privacy & Local Cache Engines</a></li>
+          <li><a href="#section-roadmap" aria-label="Jump to Section 6: Official TyagiHub Development Roadmap & Milestones">6. Official Development Roadmap, Code Milestones & Scheduled Release Phases</a></li>
+          <li><a href="#section-faq" aria-label="Jump to Section 7: Upcoming TyagiHub Editor System FAQs">7. Project Pre-Launch Frequently Asked Questions (FAQ)</a></li>
         </ul>
       </div>
 
       <!-- Section 1 -->
-      <div id="section-rendering" class="th-docs-block">
-        <h2 class="th-docs-title">1. Dynamic Graphic Rendering Architecture & GPU Compilation Pipelines</h2>
+      <div id="section-vision" class="th-docs-block">
+        <h2 class="th-docs-title">1. The Engineering Vision: Client-Side Web Rendering Pipelines</h2>
         <p class="th-docs-paragraph">
-          The fundamental rendering architecture of the TyagiHub Editor is built on an elegant dual-engine paradigm: a lightweight vector processing engine layered over a heavy-duty, hardware-accelerated raster processing system. While traditional browser applications rely on bloated server-side software to render high-resolution layouts, the TyagiHub Graphic Design Tool compiles all visual transformations directly on the user's graphics processor (GPU) using the native HTML5 Canvas 2D API and customized WebGL fragment shaders. This client-centric compilation strategy eliminates the overhead associated with sending bulky multi-megabyte image payloads over latency-prone TCP/IP channels, ensuring absolute local rendering speeds matching desktop applications.
+          The core philosophy behind the TyagiHub Editor is the creation of a zero-latency, desktop-grade visual editing environment that runs natively in any modern web browser without heavy server-side processing or registration loops. Traditionally, web-based image editors rely heavily on remote server instances. When a user drags a crop slider, adds a custom layer, or applies a visual filter, the heavy graphic data is typically compressed, sent over a network connection, processed by a remote server, and then returned as a compressed image preview. This classic pipeline introduces network latency, consumes server bandwidth, and leads to lag, especially when working with high-definition photograph containers.
         </p>
         <p class="th-docs-paragraph">
-          When an image is loaded into the TyagiHub editor workspace, the system initializes a dynamic rendering context within a designated virtual DOM node. The source file is parsed down to its raw bitmap representation, yielding a contiguous, low-level array structure containing 8-bit unsigned integer channels representing red, green, blue, and alpha values (RGBA) for every single pixel coordinate. Mathematically, a canvas containing an ultra-high-definition image of dimensions 3840 by 2160 pixels encompasses 8,294,400 distinct pixels, which translates into a linear buffer of 33,177,600 individual bytes of data. To render visual adjustments at sixty frames per second (FPS), our pipeline optimizes this data throughput via hardware-driven coordinate transforms.
+          Our upcoming editor addresses this bottleneck by using a hardware-accelerated dual-engine rendering pipeline that runs locally on the user's graphics processing unit (GPU). By leveraging the HTML5 Canvas 2D API and customized WebGL fragment shaders, the engine executes pixel-level adjustments instantly in the browser. Processing a standard 4K Ultra-HD canvas (3840 &times; 2160 pixels) requires calculating color values for 8,294,400 individual pixels. Applying complex operations like Gaussian blurs or color matrix transformations means computing values across more than 33 million color channel arrays (Red, Green, Blue, Alpha). By using WebGL shaders, these mathematical adjustments are processed in parallel, enabling 60 frames-per-second previews.
         </p>
         <p class="th-docs-paragraph">
-          The vector rendering layer coordinates the spatial positioning, rotation angles, skewing offsets, and depth-sorting values of overlapping canvas elements. Every design element—be it a rounded rectangle path, a custom SVG vector emblem, or a high-density typographic block—is mathematically stored as an element in a structural layout tree. During the paint cycle of the main application loop, the engine walks this visual tree, calculating and multiplying affine transformation matrices. These matrices are mathematically represented as 3x3 homogeneous coordinate structures that project logical element spaces directly into the browser's screen-coordinate viewport, allowing instant canvas redraws during dragging, resizing, or rotation operations.
+          Additionally, this client-centric design uses background Web Workers to prevent main-thread blocking. In standard web applications, running heavy math calculations on the primary JavaScript thread can cause the page to freeze, resulting in lag warnings. By offloading coordinate interpolation and pixel transformations to dedicated background threads, the user interface remains responsive and sliders drag smoothly, even when editing multi-layered poster layouts.
         </p>
         <p class="th-docs-paragraph">
-          Furthermore, when complex filters like gaussian blur or color matrix offsets are enabled, the rendering pipeline seamlessly redirects computation from the CPU main thread to WebGL fragment shaders. These shaders execute parallelized computing loops across thousands of tiny GPU cores, evaluating pixel convolution kernels concurrently. The result is a smooth, real-time visual feedback loop that operates independently of the browser's single-threaded Javascript event execution queue, preventing page freezes and browser warning popups.
+          By utilizing local graphics hardware, we eliminate the need for expensive cloud hosting infrastructure. This allows us to provide a high-performance, professional-grade design tool completely free of charge. Users will be able to load, edit, and export their graphics without encountering subscription prompts or watermark limitations.
         </p>
       </div>
 
       <!-- Section 2 -->
-      <div id="section-theory" class="th-docs-block">
-        <h2 class="th-docs-title">2. Core Graphic Design Theory, Visual Hierarchy & Proportional Harmony</h2>
+      <div id="section-math" class="th-docs-block">
+        <h2 class="th-docs-title">2. Mathematics of Digital Image Editing: Matrix Transforms & Resampling Algorithms</h2>
         <p class="th-docs-paragraph">
-          Behind every engaging social media banner, viral YouTube thumbnail, or professional marketing flyer lies a strict application of visual design theory. Graphic design is not a random placement of decorative shapes and lines; it is an analytical system governed by the laws of human visual perception, psychological associations, and optical weight balances. To assist users in crafting high-impact marketing designs, the TyagiHub Graphic Suite enforces these principles of visual hierarchy, proximity, alignment, contrast, and unified repetition natively through its layout helpers and canvas grids.
-        </p>
-        <p class="th-docs-paragraph">
-          <strong>Visual Hierarchy & Focal Points:</strong> In design, if everything is emphasized, nothing is emphasized. The human eye reads layout compositions sequentially based on visual weight. High-contrast elements, larger font weights, and vibrant color blocks command attention first. The TyagiHub Editor encourages users to structure their canvas layouts following the classical "Z-Pattern" (common for landing pages and promotional posters) or the "F-Pattern" (common for text-rich documents and informational layouts). The main headline should always occupy the primary focal area, styled with a bold display font of heavy weight. Supporting headers and dynamic call-to-actions follow in secondary priority regions, guiding the reader's gaze naturally through the intended visual narrative.
-        </p>
-        <p class="th-docs-paragraph">
-          <strong>The Rule of Proximity & White Space:</strong> Cluttered layouts degrade reading retention and lower the perceived quality of a brand. The principle of proximity dictates that related elements should be grouped closely together, creating a clear visual bond. Conversely, unrelated elements should be separated by generous buffers of negative space, often referred to as "white space." White space is not "empty space"; it is a vital structural component of design that allows the user's eyes to breathe, reducing cognitive load and highlighting key elements. The TyagiHub composer provides robust grid alignment guides and smart snapping grids, ensuring that users maintain proportional padding across margins and element clusters.
-        </p>
-        <p class="th-docs-paragraph">
-          <strong>Color Theory and Optical Harmony:</strong> Colors evoke powerful subconscious emotional triggers. Warm colors like vibrant orange and crimson red convey urgency, excitement, and energy (ideal for YouTube thumbnails and conversion-driven flyers), whereas cool colors like corporate blue and soft mint green evoke trust, calmness, and stability (ideal for B2B presentation slides and technological infographics). The TyagiHub suite incorporates advanced color palettes based on the classical color wheel, allowing designers to utilize scientifically proven color harmony models, including:
-        </p>
-        <ul class="th-docs-internal-bullets">
-          <li><strong>Complementary Palettes:</strong> Pairing colors directly opposite each other on the color wheel (such as indigo and amber yellow) to generate maximum visual vibration and high-contrast appeal.</li>
-          <li><strong>Analogous Palettes:</strong> Grouping three adjacent colors (such as slate gray, dark blue, and light indigo) to establish unified, subtle transitions that evoke sophisticated professional vibes.</li>
-          <li><strong>Triadic Palettes:</strong> Utilizing three colors spaced evenly at 120-degree intervals across the wheel, producing a vibrant, balanced contrast suitable for modern consumer branding.</li>
-        </ul>
-        <p class="th-docs-paragraph">
-          <strong>Typographic Contrast & Readability:</strong> Selecting the correct combination of typefaces is a crucial milestone in layout optimization. Our editor engine supports a professional font-pairing matrix, typically pairing a heavy sans-serif display font (such as "Space Grotesk" or "Outfit") for titles with a highly readable, geometric sans-serif (such as "Inter") or a sharp monospace font (such as "JetBrains Mono") for technical specifications and subtitle callouts. By adjusting letter tracking and line heights dynamically, creators prevent text overlap errors, guaranteeing readable compositions that look polished on both high-resolution desktop screens and mobile displays.
-        </p>
-      </div>
-
-      <!-- Section 3 -->
-      <div id="section-pixel" class="th-docs-block">
-        <h2 class="th-docs-title">3. Professional Image Resampling, Color Matrices & Pixel Manipulation Algorithms</h2>
-        <p class="th-docs-paragraph">
-          At the micro-architectural level, modifying an image's scale, aspect ratio, or tone involves complex mathematical transformations applied across millions of individual array elements. When a user resizes a picture within the TyagiHub Editor, the application executes multi-pass resampling algorithms to recalculate color weights for the target dimensions. Without these high-fidelity resampling algorithms, scaling down a graphic would cause jagged alias artifacts ("pixelated edges"), while scaling up would produce blurry, low-contrast visual blurs.
-        </p>
-        <p class="th-docs-paragraph">
-          To provide a deeper understanding of web-based image rendering, let us analyze the core pixel interpolation algorithms implemented within our graphic suite's codebase:
+          At the heart of any professional image editor is a robust framework of coordinate geometry and pixel interpolation. When an image layer is scaled, rotated, or sheared in our upcoming editor, the browser performs affine transformations represented by homogeneous 3&times;3 coordinate matrices. This mathematical system allows complex series of geometric modifications to be combined into a single matrix calculation, ensuring that every pixel is mapped to its new location in a single pass. The formula below shows how our system coordinates these transformations:
         </p>
         
+        <div class="th-docs-code-callout">
+          <code>[X_final, Y_final, 1] = [a, c, e; b, d, f; 0, 0, 1] &times; [X_source, Y_source, 1]</code>
+        </div>
+
+        <p class="th-docs-paragraph">
+          During resizing, simple grid stretching can result in jagged edges or blurry shapes. To solve this, our upcoming editor is being engineered to support several advanced image resampling algorithms. For fast, real-time dragging previews, we use Bilinear Interpolation, which averages color values across a 2&times;2 pixel neighborhood. For final high-quality exports, the engine will use multi-pass Bicubic Resampling. This algorithm uses cubic spline interpolation across a 16-pixel neighborhood (4&times;4 matrix) to calculate color values, preserving fine details and maintaining sharp borders on professional-grade prints and social banners.
+        </p>
+
         <!-- Algorithm Comparison Table -->
         <div class="th-table-wrapper">
           <table class="th-comparison-table">
@@ -230,244 +232,185 @@ permalink: /editor/
                 <th scope="col">Resampling Algorithm</th>
                 <th scope="col">Mathematical Complexity</th>
                 <th scope="col">Visual Sharpness</th>
-                <th scope="col">Ideal Use Case</th>
-                <th scope="col">Execution Location</th>
+                <th scope="col">Ideal Application</th>
+                <th scope="col">Development Status</th>
               </tr>
             </thead>
             <tbody>
               <tr>
                 <td><strong>Nearest Neighbor</strong></td>
-                <td>O(1) - Lowest computational weight</td>
-                <td>Low (High aliasing / pixelation)</td>
-                <td>Pixel Art, Low-res UI assets</td>
-                <td>CPU / Fast Canvas Draw</td>
+                <td>O(1) - Lower computational footprint</td>
+                <td>Low (High aliasing & pixelation)</td>
+                <td>Pixel-perfect asset rendering & retro art</td>
+                <td>Engine Core Integrated</td>
               </tr>
               <tr>
                 <td><strong>Bilinear Interpolation</strong></td>
-                <td>O(4) - Average linear equation</td>
-                <td>Medium (Slightly soft edges)</td>
-                <td>Mid-res photographic downscaling</td>
-                <td>GPU WebGL / Standard Canvas</td>
+                <td>O(4) - Fast linear averaging</td>
+                <td>Medium (Good speed, soft borders)</td>
+                <td>Real-time canvas dragging & live previews</td>
+                <td>Engine Core Integrated</td>
               </tr>
               <tr>
                 <td><strong>Bicubic Resampling</strong></td>
-                <td>O(16) - Complex cubic spline</td>
-                <td>High (Excellent edge preservation)</td>
-                <td>High-res photo cropping, Print design</td>
-                <td>GPU fragment shaders</td>
+                <td>O(16) - Complex cubic spline weights</td>
+                <td>High (Excellent edge definition)</td>
+                <td>High-resolution photo exports</td>
+                <td>Active Engineering Phase</td>
               </tr>
               <tr>
-                <td><strong>Lanczos Resampling</strong></td>
-                <td>O(64) - Sinc function convolution</td>
-                <td>Very High (Optimal crisp clarity)</td>
-                <td>Professional banner export layers</td>
-                <td>Offline pre-rendered buffers</td>
+                <td><strong>Lanczos Sinc Convolution</strong></td>
+                <td>O(64) - Heavy trigonometric kernel</td>
+                <td>Maximum (Optimal clarity, zero blur)</td>
+                <td>High-density poster printing layouts</td>
+                <td>R&D Planning Phase</td>
               </tr>
             </tbody>
           </table>
         </div>
-        
+
         <p class="th-docs-paragraph">
-          Beyond geometric resizing, the editor provides dynamic color-filtering capabilities that manipulate the image's histogram values. Adjusting contrast, brightness, and color temperature is accomplished by applying transformation matrices directly to the RGBA coordinates of each pixel. For instance, adjusting brightness involves a simple addition/subtraction scalar applied across the R, G, and B arrays. However, altering saturation requires converting the RGB values into the YUV or HSL color spaces, calculating the chroma intensity vector, multiplying it by the scaling coefficient, and then transforming the coordinates back into the display-compatible RGB color space.
+          Beyond geometric scaling, color grading filters (such as brightness, contrast, saturation, and hue shift) are calculated using specialized color transform matrices. For instance, adjusting brightness involves adding a constant offset to each channel. Contrast adjustments, however, scale each color channel relative to a middle-gray threshold. Saturation adjustments are calculated using a luminance-weighted desaturation algorithm. This model scales red, green, and blue values based on how the human eye perceives brightness, resulting in visually balanced monochrome and high-contrast outputs.
         </p>
         <p class="th-docs-paragraph">
-          For advanced monochrome conversions, standard converters often simply average the RGB channels. The TyagiHub Editor, however, implements human-eye luminance-weighted desaturation. This formula prioritizes green and red wave-lengths over blue, matching human optical perception to generate highly aesthetic, high-contrast black-and-white art. The exact formula utilized in our canvas pipeline is:
+          We are also researching advanced WebGL fragment shaders to support real-time color lookup tables (LUTs). This technology will allow users to apply complex, cinematic color grading presets instantly. By compiling these calculations into GPU instructions, the editor will be able to apply rich color profiles to massive image arrays in real time.
         </p>
-        <div class="th-docs-code-callout">
-          <code>Luminance = (0.299 &times; Red) + (0.587 &times; Green) + (0.114 &times; Blue)</code>
-        </div>
+      </div>
+
+      <!-- Section 3 -->
+      <div id="section-theory" class="th-docs-block">
+        <h2 class="th-docs-title">3. Essential Graphic Design Rules: Composition, Contrast & Proportional Balance</h2>
         <p class="th-docs-paragraph">
-          By utilizing these robust mathematical matrices, the editor ensures that every photo filter, exposure slide adjustment, and tint correction maintains visual integrity, preventing chromatic aberration and color banding across the exported assets.
+          A professional-grade design tool must do more than just edit pixels; it should help users create visually harmonious compositions. To support this, our upcoming editor will feature built-in alignment tools, layout guides, and grid systems built around core principles of human psychology and visual balance. By understanding these foundational design rules, creators can build more effective social banners, YouTube thumbnails, and corporate marketing materials.
+        </p>
+        <p class="th-docs-paragraph">
+          <strong>The Rule of Proximity:</strong> Elements that are conceptually related should be positioned close to one another. Grouping related items establishes a clear visual relationship, reducing clutter and helping the viewer process information quickly. Conversely, unrelated items are separated by clear white space. White space is not "empty space"; it is a active layout tool that lets the design breathe, creating balance and emphasizing key content.
+        </p>
+        <p class="th-docs-paragraph">
+          <strong>Visual Hierarchy & Typographic Pairings:</strong> Design is read sequentially. Your primary title or promotional message should always have the highest visual weight. This is achieved by using bold, eye-catching fonts, larger sizes, and high-contrast colors. Supporting headings and body text should follow in a clear hierarchy, guiding the reader's eyes through your layout in a logical flow.
+        </p>
+        <p class="th-docs-paragraph">
+          <strong>Color Coordination and Contrast:</strong> Colors evoke powerful subconscious feelings. Warm colors like vibrant amber and dynamic red create a sense of urgency and energy, making them ideal for high-impact YouTube thumbnails and sale banners. Cool tones like ocean blue and soft emerald green evoke trust, stability, and professionalism, which is perfect for business presentations and infographics. Our upcoming tool will feature an automatic palette generator that helps you select harmonious color schemes (such as complementary or triadic colors) to ensure high-contrast, visually engaging results.
+        </p>
+        <p class="th-docs-paragraph">
+          <strong>The Rule of Thirds and Golden Ratio:</strong> To help creators build visually pleasing compositions, the editor will include dynamic overlay grids for the Rule of Thirds and the Golden Ratio. By placing key focal points along these grid intersections, designers can create more balanced and engaging layouts. These proportional guides will adjust automatically as the canvas is resized, helping creators maintain balanced compositions across different screen dimensions.
         </p>
       </div>
 
       <!-- Section 4 -->
-      <div id="section-marketing" class="th-docs-block">
-        <h2 class="th-docs-title">4. Marketing Banner Optimization & Social Media Aspect Ratio Matrices</h2>
+      <div id="section-ratios" class="th-docs-block">
+        <h2 class="th-docs-title">4. Digital Aspect Ratio Specifications & Multi-Platform Layout Standardization</h2>
         <p class="th-docs-paragraph">
-          In the modern digital landscape, cross-platform compatibility is essential for successful social media campaigns. Content creators and digital marketing agencies must adapt their design outputs to suit a wide array of dimensions, from tall portrait vertical screens (such as Instagram Reels and TikTok shorts) to wide landscapes (such as YouTube banner graphics and desktop web layouts). Preparing individual graphics manually for each separate platform is incredibly time-consuming. The TyagiHub Editor streamlines this process by introducing responsive canvas bounding boxes pre-configured to meet official social platform guidelines.
-        </p>
-        <p class="th-docs-paragraph">
-          Let us examine the precise dimension guidelines and optimal export strategies for high-impact social media assets:
+          In today's fast-paced social media landscape, creating content that is optimized for multiple screen dimensions is critical. Creating separate layouts manually for every platform is incredibly time-consuming. TyagiHub solves this by providing pre-set aspect ratio grids tailored to meet the official guidelines of major social networks:
         </p>
         <ul class="th-docs-internal-bullets font-mono">
-          <li><strong>Instagram Square Post (1:1 Ratio):</strong> Target resolution is 1080 &times; 1080 pixels. This aspect ratio is highly versatile, maximizing visual screen area on mobile newsfeeds.</li>
-          <li><strong>Instagram Portrait / Story (9:16 Ratio):</strong> Target resolution is 1080 &times; 1920 pixels. Key elements, typography, and call-to-actions should be placed within the "Safe Zone" (middle 80% of the canvas height) to prevent overlap with native app UI elements.</li>
-          <li><strong>YouTube Video Thumbnail (16:9 Ratio):</strong> Target resolution is 1280 &times; 720 pixels. Visual contrast and extreme text legibility are paramount here, as these assets are viewed as small scale snippets on mobile dashboards. Keep file weights under 2MB for fast loading.</li>
-          <li><strong>Facebook Feed Banner (1.91:1 Ratio):</strong> Target resolution is 1200 &times; 630 pixels. Keep text density balanced to ensure compliance with ad-network visibility standards.</li>
-          <li><strong>LinkedIn Professional Update (1.91:1 or 1:1):</strong> Target resolution is 1200 &times; 627 pixels. Best suited for sharp vector icons, high-contrast infographics, and sleek corporate color pairings.</li>
+          <li><strong>Instagram Square (1:1 Ratio — 1080x1080px):</strong> The most versatile aspect ratio, optimized for maximum visibility on mobile feeds.</li>
+          <li><strong>Instagram Story & Reels (9:16 Ratio — 1080x1920px):</strong> Tall vertical layouts. Our upcoming editor includes "Safe-Zone" boundaries to prevent key elements from being hidden by app UI overlays.</li>
+          <li><strong>YouTube Thumbnail (16:9 Ratio — 1280x720px):</strong> High-impact, low-scale graphics. Text layers are styled to maintain readability even when viewed as small preview snippets on mobile devices.</li>
+          <li><strong>Facebook Post (1.91:1 Ratio — 1200x630px):</strong> Wide landscape layout, optimized to load quickly and display correctly across both desktop and mobile web feeds.</li>
+          <li><strong>LinkedIn Header Banner (4:1 Ratio — 1584x396px):</strong> Extremely wide header layout, designed to display sharp professional vectors and minimal typography perfectly.</li>
         </ul>
         <p class="th-docs-paragraph">
-          To maintain visual sharpness across all these platforms, the TyagiHub Editor outputs designs in multiple formats, including raw PNG (for lossless transparency), highly compressed WebP (optimized for fast website loading speeds), and vector-based SVG formats. During export, the image encoder compiles the composition at twice the resolution ("Retina/2x scaling") if requested, guaranteeing that fine lines and text layers remain crystal clear on modern high-pixel-density smartphones and Ultra-HD screens.
+          When exporting assets, the editor will compile your designs using multiple file containers. Standard PNG format provides lossless transparency, WebP delivers highly compressed, lightweight images optimized for fast website load speeds, and vector-based SVG ensures perfect resolution clarity at any scale. By scaling exports to 2x (Retina standard) automatically, we guarantee your finished designs look razor-sharp on high-density smartphone screens.
+        </p>
+        <p class="th-docs-paragraph">
+          Our upcoming smart canvas engine is being designed to allow automatic content reflow. When switching from a wide YouTube thumbnail (16:9) to a tall Instagram story layout (9:16), the engine will automatically reposition background assets, text boxes, and foreground graphics while preserving their relative scale. This will save hours of manual adjustment, making multi-platform campaign creation simple and efficient.
         </p>
       </div>
 
       <!-- Section 5 -->
-      <div id="section-compliance" class="th-docs-block">
-        <h2 class="th-docs-title">5. Semantic Accessibility, High Text-to-Code Ratio & Search Crawler Compliance</h2>
+      <div id="section-privacy" class="th-docs-block">
+        <h2 class="th-docs-title">5. Zero-Server Architecture: Safeguarding Personal Privacy & Local Cache Engines</h2>
         <p class="th-docs-paragraph">
-          A truly professional web tool is not only designed for human eyes; it must be equally understandable for search engines, web accessibility devices, and automated crawlers. To ensure high visibility on Google Search, secure immediate Google AdSense approval, and maintain excellent Lighthouse scores, the TyagiHub design ecosystem is engineered in strict compliance with the Web Content Accessibility Guidelines (WCAG 2.1) and advanced SEO structure paradigms.
+          Privacy is a fundamental cornerstone of the TyagiHub design ecosystem. In an era where user activities are constantly tracked, data is harvested, and complex registration forms are mandatory, our upcoming suite offers a completely secure, private alternative. Because our editor runs entirely client-side, your images, vector layers, and layouts are never uploaded to external servers. All operations are processed locally on your device, ensuring complete data privacy.
         </p>
         <p class="th-docs-paragraph">
-          <strong>Maximizing Content Density and Text-to-Code Ratio:</strong> Search engine bots use text-to-code ratios to gauge a webpage's informational value. Codebases cluttered with inline styles, bloated scripting libraries, and minimal written documentation are often flagged as "Thin Content" or "Low-Value Templates." The TyagiHub Editor bypasses this by completely separating layout styles from the structural layout elements, placing all responsive design directives inside a clean CSS block. Furthermore, we have enriched this application portal with high-value, educational reference manuals. This extensive, highly technical documentation block ensures a robust text-to-code ratio (&gt;25%), positioning TyagiHub as a highly authoritative educational hub in the graphic design niche.
+          To manage canvas state histories without complex database infrastructures, we are developing a lightweight local state engine utilizing browser IndexedDB. By saving serialized layout configurations in your local browser sandbox, our system preserves your active projects even if you accidentally close your browser tab or clear your browser cache. This zero-database design guarantees that your creative assets remain entirely your own, giving you complete control over your creative intellectual property.
         </p>
         <p class="th-docs-paragraph">
-          <strong>Semantic HTML5 Structures & Screen Reader Support:</strong> Every functional module on this page is wrapped in proper HTML5 landmark tags (such as <code>&lt;header&gt;</code>, <code>&lt;main&gt;</code>, <code>&lt;section&gt;</code>, and <code>&lt;footer&gt;</code>). Interactive controls like buttons and links are configured with explicit <code>aria-label</code> tags, ensuring visually impaired developers utilizing assistive screen-reading tools receive meaningful descriptions of functional paths. To prevent indexing penalties caused by dead links, placeholder attributes and incoming integrations are styled as semantic, disabled spans with precise accessibility tags.
-        </p>
-        <p class="th-docs-paragraph">
-          By merging beautiful front-end designs with high-density technical reading materials and clean accessibility attributes, the TyagiHub portal stands as a premier example of programmatic SEO optimization, ready to achieve high rankings on search queries and pass publisher evaluation guidelines with ease.
+          Furthermore, our development is strictly focused on creating an offline-first workspace. Once loaded, the entire editor suite will be fully functional without an active internet connection. You can edit images, write custom typography layers, and export high-quality design assets while traveling, in low-connectivity zones, or in restricted local networks. This architecture provides high accessibility and security for developers, students, and creative professionals alike.
         </p>
       </div>
 
-      <!-- Section 6 -->
-      <div id="section-tutorials" class="th-docs-block">
-        <h2 class="th-docs-title">6. Comprehensive Design Tutorials: Step-by-Step Workflow Guides</h2>
+      <!-- Section 6: Official Roadmap (Coming Soon & Progress Details) -->
+      <div id="section-roadmap" class="th-docs-block">
+        <h2 class="th-docs-title">6. Official Development Roadmap, Code Milestones & Scheduled Release Phases</h2>
         <p class="th-docs-paragraph">
-          To help users get the most out of our browser-based visual suite, we have compiled detailed, step-by-step tutorials for three of the most popular graphic design workflows on TyagiHub. These instructions are optimized for both beginner design enthusiasts and professional developers looking to assemble beautiful promotional assets quickly.
+          Building a professional-grade visual editor is a journey of strict engineering and testing. We are committed to transparency and are excited to share our development timeline. Review our upcoming milestones below to see the progress we are making toward launching the TyagiHub Editor:
         </p>
         
-        <h3 class="th-docs-sub-title">Workflow A: Designing a High-CTR YouTube Thumbnail</h3>
-        <p class="th-docs-paragraph">
-          1. <strong>Initialize Canvas:</strong> Open the TyagiHub Editor Workspace and select the 16:9 aspect ratio preset (1280 &times; 720 pixels). This dimensions standard ensures that your thumbnail aligns perfectly with YouTube's display grid, preventing visual crop borders.
-        </p>
-        <p class="th-docs-paragraph">
-          2. <strong>Load Background Visuals:</strong> Import your primary image asset. For video creators, using a high-resolution close-up portrait of a face expressing emotion works best. Position the face on the left or right third of the canvas, adhering to the "Rule of Thirds" to create a balanced composition.
-        </p>
-        <p class="th-docs-paragraph">
-          3. <strong>Apply Image Filters:</strong> Slide the Contrast slider to 115% and Saturation to 125%. YouTube thumbnails are shown at a very small size on mobile feeds, so boosting color vibrance helps your content stand out against dark mode backgrounds.
-        </p>
-        <p class="th-docs-paragraph">
-          4. <strong>Add Impactful Typography:</strong> Create a new text layer. Enter a short, compelling three-to-four-word phrase that complements, rather than repeats, your video title. Pick a bold sans-serif font like "Space Grotesk", increase the font size, and set the text color to white with an eye-catching amber yellow accent.
-        </p>
-        <p class="th-docs-paragraph">
-          5. <strong>Configure Drop Shadows:</strong> Add a dark drop shadow to your text layer with a blur radius of 8px and opacity of 80% to ensure your text remains perfectly readable, regardless of the complexity of your background image.
-        </p>
-        <p class="th-docs-paragraph">
-          6. <strong>Export Optimized Asset:</strong> Click the "Export PNG" button to download your finished thumbnail in high-fidelity, ready for immediate uploading to your YouTube dashboard.
-        </p>
-
-        <h3 class="th-docs-sub-title">Workflow B: Creating a Sleek B2B Promo Banner</h3>
-        <p class="th-docs-paragraph">
-          1. <strong>Set Aspect Ratio:</strong> Select the 1.91:1 Landscape aspect ratio preset (1200 &times; 630 pixels), which is ideal for professional updates on platforms like LinkedIn and Twitter.
-        </p>
-        <p class="th-docs-paragraph">
-          2. <strong>Create Geometric Accents:</strong> Use our shapes tool to add a clean, dark slate background. Overlay a diagonal complementary gradient block using professional brand colors, such as cool tech blues and deep corporate purples.
-        </p>
-        <p class="th-docs-paragraph">
-          3. <strong>Establish Typographical Balance:</strong> Place your main headline in the left-hand column, aligning it to the left to match standard Western reading patterns. Add a supporting subtitle below using a sharp monospace font like "JetBrains Mono" to convey a clean, technological aesthetic.
-        </p>
-        <p class="th-docs-paragraph">
-          4. <strong>Include High-Value Vector Icons:</strong> Upload clean SVG logos or embed professional vector shapes representing your product's key advantages. Maintain consistent spacing (padding) of at least 40px around the canvas margins to prevent visual clutter.
-        </p>
-        <p class="th-docs-paragraph">
-          5. <strong>Optimize & Save:</strong> Export the final B2B asset as a WebP file to ensure maximum compression and lightning-fast loading speeds when sharing the link across digital corporate networks.
-        </p>
-      </div>
-
-      <!-- Section 7 -->
-      <div id="section-benchmarks" class="th-docs-block">
-        <h2 class="th-docs-title">7. Performance Benchmarks, Local Storage Engines & Security Controls</h2>
-        <p class="th-docs-paragraph">
-          Performance and privacy are the two pillars of the TyagiHub design experience. In an era where online tools constantly monitor user activities, track data, and require complex registration forms, our editor stands as a beacon of speed and privacy. Since all calculations are executed client-side, your images and design assets never travel across external servers, keeping your creative content entirely private.
-        </p>
-        <p class="th-docs-paragraph">
-          Let us review the technical performance statistics and security configurations implemented within our local browser environment:
-        </p>
-        
-        <div class="th-table-wrapper">
-          <table class="th-comparison-table">
-            <thead>
-              <tr>
-                <th scope="col">Performance Metric</th>
-                <th scope="col">Standard Server-Based Tool</th>
-                <th scope="col">TyagiHub Local GPU Engine</th>
-                <th scope="col">User Benefit</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><strong>Asset Load Latency</strong></td>
-                <td>1200ms - 3500ms (Depends on API roundtrips)</td>
-                <td><strong>&lt; 50ms (Instant local read)</strong></td>
-                <td>No lag; immediate loading of high-res image canvas</td>
-              </tr>
-              <tr>
-                <td><strong>Filter Processing Delay</strong></td>
-                <td>800ms - 2200ms (Queued processing)</td>
-                <td><strong>&lt; 8ms (WebGL shader processing)</strong></td>
-                <td>Real-time filter previews during slider movements</td>
-              </tr>
-              <tr>
-                <td><strong>Data Security Guarantee</strong></td>
-                <td>Variable (Subject to cloud server policies)</td>
-                <td><strong>100% Secure (Assets stay on local device)</strong></td>
-                <td>Complete security; zero risk of data leaks</td>
-              </tr>
-              <tr>
-                <td><strong>Offline Work Support</strong></td>
-                <td>No (Requires active internet connection)</td>
-                <td><strong>Yes (Full functionality without network)</strong></td>
-                <td>Create and export designs on flights or remote trips</td>
-              </tr>
-            </tbody>
-          </table>
+        <div class="th-roadmap-timeline">
+          <!-- Milestone 1 -->
+          <div class="th-roadmap-node done">
+            <div class="th-roadmap-marker">✓</div>
+            <div class="th-roadmap-content">
+              <h4 class="th-roadmap-step">Phase 1: Dual-Engine Core & Base Canvas API (Completed)</h4>
+              <p class="th-roadmap-desc">Developed the primary HTML5 rendering canvas, designed our coordinate mapping systems, implemented base scaling algorithms, and configured baseline text layer overlays.</p>
+            </div>
+          </div>
+          <!-- Milestone 2 -->
+          <div class="th-roadmap-node active">
+            <div class="th-roadmap-marker">⚙</div>
+            <div class="th-roadmap-content">
+              <h4 class="th-roadmap-step">Phase 2: GPU-Accelerated Filtering & WebGL Shaders (Active Engineering)</h4>
+              <p class="th-roadmap-desc">Currently developing customized fragment shaders to enable real-time brightness, contrast, and saturation filter previews with zero frame drops.</p>
+            </div>
+          </div>
+          <!-- Milestone 3 -->
+          <div class="th-roadmap-node future">
+            <div class="th-roadmap-marker">✦</div>
+            <div class="th-roadmap-content">
+              <h4 class="th-roadmap-step">Phase 3: Public Beta Launch (Coming Soon)</h4>
+              <p class="th-roadmap-desc">Launching the free, public beta of our client-side editor. This release will include basic crop controls, text tools, preset social grids, and lossless PNG/WebP exports.</p>
+            </div>
+          </div>
+          <!-- Milestone 4 -->
+          <div class="th-roadmap-node future">
+            <div class="th-roadmap-marker">✦</div>
+            <div class="th-roadmap-content">
+              <h4 class="th-roadmap-step">Phase 4: Vector Graphics & SVG Node Parser (Planned)</h4>
+              <p class="th-roadmap-desc">Adding comprehensive support for importing and editing SVG paths, managing complex layers, and exporting clean vector code for developer workflows.</p>
+            </div>
+          </div>
         </div>
-
-        <p class="th-docs-paragraph">
-          To manage canvas state histories without loading external database servers, the TyagiHub suite implements an optimized Local Storage state manager. By saving serialized layout configurations in IndexedDB, the editor retains your active projects even if you accidentally close your browser tab or clear your browser cache. The system also features garbage-collection routines that clear unused binary data blocks, ensuring your system memory remains free and responsive during long editing sessions.
-        </p>
       </div>
 
-      <!-- Section 8 -->
+      <!-- Section 7: FAQ -->
       <div id="section-faq" class="th-docs-block">
-        <h2 class="th-docs-title">8. Frequently Asked Technical & Engineering Questions (Exhaustive FAQ)</h2>
+        <h2 class="th-docs-title">7. Project Pre-Launch Frequently Asked Questions (FAQ)</h2>
         
         <div class="th-faq-item">
-          <h3 class="th-faq-question">Q1: How does the TyagiHub Editor achieve desktop-class speeds without any server backend?</h3>
+          <h3 class="th-faq-question">Q1: When will the TyagiHub Graphic Editor be ready for public use?</h3>
           <p class="th-faq-answer">
-            Our engine leverages hardware acceleration by utilizing the browser's native HTML5 Canvas API and WebGL shader compilations. This allows tasks like pixel manipulations and resizing math to run directly on your computer's GPU cores in parallel, delivering instant visual updates and bypassing slow server processing entirely.
+            Our core canvas APIs are complete, and we are currently working on our WebGL shader filters. The free, public beta is scheduled to launch soon. You can monitor our active progress directly in our development roadmap section.
           </p>
         </div>
 
         <div class="th-faq-item">
-          <h3 class="th-faq-question">Q2: Are my uploaded images, templates, and layouts secure on the TyagiHub platform?</h3>
+          <h3 class="th-faq-question">Q2: Will I need to create an account or sign up to use the editor?</h3>
           <p class="th-faq-answer">
-            Absolutely! Privacy is a core design principle at TyagiHub. All image processing, canvas modifications, and file exports are handled 100% locally on your machine. Your assets never leave your device, ensuring complete data security and total peace of mind.
+            No. TyagiHub is committed to creating open, accessible developer and design utilities. The graphic editor will be completely free to use, require zero registration, and have no watermark limitations on exported assets.
           </p>
         </div>
 
         <div class="th-faq-item">
-          <h3 class="th-faq-question">Q3: What resampling algorithm does the image editor use when exporting my designs?</h3>
+          <h3 class="th-faq-question">Q3: How does client-side GPU processing protect my privacy?</h3>
           <p class="th-faq-answer">
-            During live editing sessions, we employ fast Bilinear Interpolation to ensure smooth preview performance. When exporting your final design, however, the engine switches to a multi-pass Bicubic Resampling model. This model analyzes a 16-pixel grid surrounding each coordinate to preserve sharp lines, eliminate jagged edges, and deliver professional-grade clarity for both web and print assets.
+            Since the entire editing pipeline runs locally in your browser using the Canvas and WebGL APIs, your uploaded pictures, templates, and layouts never leave your device. All calculations are executed on your local graphics processor, providing absolute privacy and security.
           </p>
         </div>
 
         <div class="th-faq-item">
-          <h3 class="th-faq-question">Q4: Does the editor support vector graphic exports, and how does it handle SVG rendering?</h3>
+          <h3 class="th-faq-question">Q4: Will the editor support high-definition exports for print layouts?</h3>
           <p class="th-faq-answer">
-            Yes, our system parses SVG vectors into local Bezier path trees. When exporting vector formats, it writes clean, lightweight, and responsive SVG markup that maintains perfect scale sharpness across any screen resolution—ideal for modern responsive web development.
+            Yes. The editor features a multi-pass bicubic resampling algorithm that reconstructs pixel grids with excellent edge preservation, supporting razor-sharp exports suitable for both digital displays and high-resolution printing.
           </p>
         </div>
 
         <div class="th-faq-item">
-          <h3 class="th-faq-question">Q5: Is there any limit to the file size or canvas resolution that can be edited?</h3>
+          <h3 class="th-faq-question">Q5: Which browser platforms are compatible with the TyagiHub suite?</h3>
           <p class="th-faq-answer">
-            The main constraint is your device's available graphics memory (VRAM). On standard computers and mobile phones, the editor easily supports canvas resolutions up to 8000 &times; 8000 pixels, accommodating heavy raw images, large poster dimensions, and high-resolution banner exports with ease.
-          </p>
-        </div>
-
-        <div class="th-faq-item">
-          <h3 class="th-faq-question">Q6: Can I use custom fonts, and how does the typography compositing pipeline work?</h3>
-          <p class="th-faq-answer">
-            Yes! The editor is integrated with the Google Fonts API, giving you instant access to dozens of premium, modern typefaces. Our typography rendering pipeline uses subpixel anti-aliasing to guarantee crisp, legible text overlays at any scale or angle of rotation.
-          </p>
-        </div>
-
-        <div class="th-faq-item">
-          <h3 class="th-faq-question">Q7: How does this page guarantee instant Google AdSense approval?</h3>
-          <p class="th-faq-answer">
-            AdSense approval requires highly authoritative, valuable, and non-thin text content. By combining a clean HTML structure with over 10,000 words of deep, informative documentation on image processing, typography, and design theory, this portal establishes high value and easily passes automated and manual quality evaluations.
+            Our editor is designed to run on any modern browser that supports HTML5, Canvas 2D, and WebGL, including Google Chrome, Mozilla Firefox, Apple Safari, and Microsoft Edge on both desktop and mobile devices.
           </p>
         </div>
       </div>
@@ -480,45 +423,72 @@ permalink: /editor/
   /* Base Layout Styles */
   .th-editor-layout {
     padding-top: var(--nav-height, 80px);
-    background: #fdfdfd;
+    background: #ffffff;
   }
   .th-editor-hero {
-    padding: 6rem 0 4rem;
+    padding: 5rem 0 4rem;
     background: radial-gradient(circle at top right, #f8fafc 0%, #edf2f7 100%);
     border-bottom: 1px solid #e2e8f0;
   }
-  .th-editor-label {
-    color: #4f46e5;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.15em;
-    margin-bottom: 0.75rem;
-    font-size: 0.875rem;
+  
+  /* Status Badge */
+  .th-status-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: #e0e7ff;
+    border: 1px solid #c7d2fe;
+    padding: 0.5rem 1rem;
+    border-radius: 9999px;
+    margin-bottom: 1.5rem;
   }
+  .th-status-dot {
+    width: 8px;
+    height: 8px;
+    background: #4f46e5;
+    border-radius: 50%;
+    display: inline-block;
+    animation: blink-anim 1.5s infinite ease-in-out;
+  }
+  @keyframes blink-anim {
+    0%, 100% { opacity: 0.3; transform: scale(0.9); }
+    50% { opacity: 1; transform: scale(1.1); }
+  }
+  .th-status-text {
+    font-size: 0.775rem;
+    font-weight: 700;
+    color: #4f46e5;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
   .th-editor-hero-title {
-    font-size: clamp(2.5rem, 6vw, 4rem);
+    font-size: clamp(2.25rem, 5.5vw, 3.5rem);
     font-weight: 900;
     letter-spacing: -0.04em;
     color: #0f172a;
-    margin-bottom: 1.5rem;
-    line-height: 1.1;
+    margin-bottom: 1.25rem;
+    line-height: 1.15;
+    max-width: 25ch;
+    margin-left: auto;
+    margin-right: auto;
   }
   .th-editor-hero-desc {
-    font-size: 1.25rem;
+    font-size: 1.15rem;
     color: #475569;
-    max-width: 70ch;
-    line-height: 1.7;
-    margin: 0 auto 3rem;
+    max-width: 68ch;
+    line-height: 1.65;
+    margin: 0 auto 2.5rem;
   }
 
-  /* Vector SVG Illustration Styling & Keyframe Animation */
+  /* Vector SVG Illustration Container */
   .th-editor-hero-animation-wrapper {
     max-width: 800px;
-    margin: 0 auto 3.5rem;
-    padding: 1rem;
+    margin: 0 auto 3rem;
+    padding: 0.75rem;
     background: #ffffff;
     border-radius: 16px;
-    box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+    box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.08), 0 8px 10px -6px rgb(0 0 0 / 0.08);
     border: 1px solid #e2e8f0;
   }
   .th-editor-svg-animation {
@@ -529,20 +499,13 @@ permalink: /editor/
     overflow: hidden;
   }
   
-  @keyframes designPulse {
-    0% {
-      transform: scale(1);
-    }
-    50% {
-      transform: scale(1.02);
-    }
-    100% {
-      transform: scale(1);
-    }
+  @keyframes elementPulse {
+    0%, 100% { transform: scale(1) translate(0px, 0px); }
+    50% { transform: scale(1.01) translate(2px, -1px); }
   }
-  .animated-design-shape {
-    transform-origin: 325px 195px;
-    animation: designPulse 6s ease-in-out infinite;
+  .animated-canvas-element {
+    transform-origin: 315px 222px;
+    animation: elementPulse 7s ease-in-out infinite;
   }
 
   .th-editor-cta-group {
@@ -552,20 +515,21 @@ permalink: /editor/
     justify-content: center;
   }
 
-  /* Feature Grids */
+  /* Feature Grid Layouts */
   .th-editor-features-section {
-    padding: 6rem 0;
+    padding: 5rem 0;
     background: #ffffff;
   }
   .th-editor-features-header {
     text-align: center;
-    margin-bottom: 4rem;
-    max-width: 700px;
+    margin-bottom: 3.5rem;
+    max-width: 720px;
     margin-left: auto;
     margin-right: auto;
+    padding: 0 1rem;
   }
   .th-editor-features-title {
-    font-size: 2.25rem;
+    font-size: 2.125rem;
     font-weight: 800;
     color: #0f172a;
     letter-spacing: -0.02em;
@@ -573,68 +537,81 @@ permalink: /editor/
   .th-editor-features-subtitle {
     color: #64748b;
     margin-top: 0.75rem;
-    font-size: 1.125rem;
+    font-size: 1.05rem;
     line-height: 1.6;
   }
   .th-editor-grid {
     display: grid;
     grid-template-columns: 1fr;
-    gap: 2.5rem;
-    padding: 0 1rem;
+    gap: 2.25rem;
+    padding: 0 1.25rem;
   }
   .th-editor-card {
     background: #ffffff;
     border: 1px solid #edf2f7;
     border-radius: 16px;
-    padding: 3rem 2rem;
-    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.05), 0 2px 4px -2px rgb(0 0 0 / 0.05);
+    padding: 2.5rem 1.75rem;
+    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.03);
     transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
     text-align: center;
+    position: relative;
+    overflow: hidden;
   }
   .th-editor-card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+    transform: translateY(-6px);
+    box-shadow: 0 16px 24px -4px rgb(0 0 0 / 0.08);
     border-color: #cbd5e1;
   }
   .th-editor-card-icon {
-    font-size: 3rem;
-    margin-bottom: 1.5rem;
+    font-size: 2.75rem;
+    margin-bottom: 1.25rem;
+  }
+  .th-card-status-pill {
+    display: inline-block;
+    background: #f1f5f9;
+    color: #475569;
+    font-weight: 700;
+    font-size: 0.75rem;
+    padding: 0.25rem 0.75rem;
+    border-radius: 9999px;
+    margin-bottom: 1rem;
+    border: 1px solid #e2e8f0;
   }
   .th-editor-card-title {
-    font-size: 1.5rem;
+    font-size: 1.375rem;
     font-weight: 800;
     color: #0f172a;
     margin-bottom: 0.75rem;
   }
   .th-editor-card-desc {
-    font-size: 1rem;
+    font-size: 0.95rem;
     color: #475569;
     line-height: 1.6;
   }
 
-  /* Extremely High-Density Educational Content Layouts */
+  /* Highly Dense Educational & Technical Block */
   .th-docs-section {
-    padding: 6rem 1.5rem;
+    padding: 5rem 1.25rem;
     background: #f8fafc;
     border-top: 1px solid #edf2f7;
   }
   .th-docs-container {
-    max-width: 900px;
+    max-width: 860px;
     margin: 0 auto;
   }
   
-  /* Table of Contents Styling */
+  /* Table of Contents */
   .th-docs-toc-card {
     background: #ffffff;
     border: 1px solid #e2e8f0;
     border-left: 5px solid #4f46e5;
     border-radius: 12px;
-    padding: 2.5rem;
-    margin-bottom: 4rem;
-    box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.05);
+    padding: 2.25rem;
+    margin-bottom: 3.5rem;
+    box-shadow: 0 4px 12px rgb(0 0 0 / 0.03);
   }
   .th-docs-toc-title {
-    font-size: 1.5rem;
+    font-size: 1.375rem;
     font-weight: 800;
     color: #0f172a;
     margin-bottom: 0.75rem;
@@ -643,7 +620,7 @@ permalink: /editor/
     font-size: 0.95rem;
     color: #475569;
     line-height: 1.6;
-    margin-bottom: 1.5rem;
+    margin-bottom: 1.25rem;
   }
   .th-docs-toc-list {
     list-style: none;
@@ -651,13 +628,13 @@ permalink: /editor/
     margin: 0;
     display: flex;
     flex-direction: column;
-    gap: 0.875rem;
+    gap: 0.75rem;
   }
   .th-docs-toc-list li a {
     color: #4f46e5;
     font-weight: 600;
     text-decoration: none;
-    font-size: 0.95rem;
+    font-size: 0.925rem;
     transition: color 0.15s;
   }
   .th-docs-toc-list li a:hover {
@@ -665,83 +642,76 @@ permalink: /editor/
     text-decoration: underline;
   }
 
-  /* Educational Text Blocks Styling */
+  /* Documentation Text styling */
   .th-docs-block {
-    margin-bottom: 5rem;
-    scroll-margin-top: 100px; /* offset for nav headers */
+    margin-bottom: 4rem;
+    scroll-margin-top: 90px;
   }
   .th-docs-title {
-    font-size: 2rem;
+    font-size: 1.75rem;
     font-weight: 850;
     color: #0f172a;
-    margin-bottom: 1.5rem;
+    margin-bottom: 1.25rem;
     letter-spacing: -0.02em;
-    line-height: 1.2;
+    line-height: 1.25;
     border-bottom: 2px solid #e2e8f0;
-    padding-bottom: 0.75rem;
-  }
-  .th-docs-sub-title {
-    font-size: 1.375rem;
-    font-weight: 800;
-    color: #1e293b;
-    margin-top: 2.5rem;
-    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
   }
   .th-docs-paragraph {
-    font-size: 1.05rem;
+    font-size: 1rem;
     color: #334155;
-    line-height: 1.8;
-    margin-bottom: 1.75rem;
+    line-height: 1.75;
+    margin-bottom: 1.5rem;
     text-align: justify;
   }
   .th-docs-internal-bullets {
     margin-left: 1.5rem;
-    margin-bottom: 2rem;
+    margin-bottom: 1.75rem;
     display: flex;
     flex-direction: column;
-    gap: 0.75rem;
+    gap: 0.5rem;
   }
   .th-docs-internal-bullets li {
-    font-size: 1rem;
+    font-size: 0.95rem;
     color: #334155;
     line-height: 1.6;
   }
   .th-docs-code-callout {
     background: #0f172a;
     color: #38bdf8;
-    padding: 1.25rem 2rem;
+    padding: 1rem 1.5rem;
     border-radius: 8px;
     font-family: 'JetBrains Mono', monospace;
-    font-size: 1.125rem;
-    margin: 2rem 0;
+    font-size: 1rem;
+    margin: 1.5rem 0;
     text-align: center;
-    box-shadow: inset 0 2px 4px 0 rgb(0 0 0 / 0.6);
+    box-shadow: inset 0 2px 4px 0 rgb(0 0 0 / 0.5);
   }
 
-  /* Comparison Matrices Styling */
+  /* Comparison Grid / Table formatting */
   .th-table-wrapper {
     overflow-x: auto;
-    margin: 2.5rem 0;
-    border: 1px solid #edf2f7;
+    margin: 2rem 0;
+    border: 1px solid #e2e8f0;
     border-radius: 12px;
-    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.05);
+    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.02);
   }
   .th-comparison-table {
     width: 100%;
     border-collapse: collapse;
     text-align: left;
     background: #ffffff;
-    font-size: 0.95rem;
+    font-size: 0.925rem;
   }
   .th-comparison-table th {
     background: #f1f5f9;
     color: #1e293b;
     font-weight: 700;
-    padding: 1rem 1.5rem;
+    padding: 0.875rem 1.25rem;
     border-bottom: 2px solid #e2e8f0;
   }
   .th-comparison-table td {
-    padding: 1.25rem 1.5rem;
+    padding: 1rem 1.25rem;
     border-bottom: 1px solid #edf2f7;
     color: #475569;
     line-height: 1.5;
@@ -750,28 +720,95 @@ permalink: /editor/
     background: #f8fafc;
   }
 
-  /* FAQ Layouts */
+  /* Roadmap Timeline component styling */
+  .th-roadmap-timeline {
+    position: relative;
+    padding-left: 2rem;
+    margin: 2rem 0;
+  }
+  .th-roadmap-timeline::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: #cbd5e1;
+  }
+  .th-roadmap-node {
+    position: relative;
+    margin-bottom: 2.5rem;
+  }
+  .th-roadmap-node:last-child {
+    margin-bottom: 0;
+  }
+  .th-roadmap-marker {
+    position: absolute;
+    left: calc(-2rem - 11px);
+    top: 2px;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.775rem;
+    font-weight: 700;
+    background: #ffffff;
+    border: 2px solid #cbd5e1;
+    color: #64748b;
+    z-index: 10;
+  }
+  .th-roadmap-node.done .th-roadmap-marker {
+    background: #10b981;
+    border-color: #10b981;
+    color: #ffffff;
+  }
+  .th-roadmap-node.active .th-roadmap-marker {
+    background: #4f46e5;
+    border-color: #4f46e5;
+    color: #ffffff;
+    animation: pulse-ring 2s infinite ease-in-out;
+  }
+  @keyframes pulse-ring {
+    0% { box-shadow: 0 0 0 0 rgba(79, 70, 229, 0.4); }
+    70% { box-shadow: 0 0 0 10px rgba(79, 70, 229, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(79, 70, 229, 0); }
+  }
+  .th-roadmap-step {
+    font-size: 1.1rem;
+    font-weight: 800;
+    color: #0f172a;
+    margin-bottom: 0.375rem;
+  }
+  .th-roadmap-desc {
+    font-size: 0.95rem;
+    color: #475569;
+    line-height: 1.5;
+  }
+
+  /* FAQ Styles */
   .th-faq-item {
     background: #ffffff;
     border: 1px solid #e2e8f0;
     border-radius: 12px;
-    padding: 2rem;
-    margin-bottom: 1.5rem;
-    box-shadow: 0 2px 4px rgb(0 0 0 / 0.02);
+    padding: 1.75rem;
+    margin-bottom: 1.25rem;
+    box-shadow: 0 2px 4px rgb(0 0 0 / 0.01);
   }
   .th-faq-question {
-    font-size: 1.15rem;
+    font-size: 1.1rem;
     font-weight: 800;
     color: #0f172a;
-    margin-bottom: 0.75rem;
+    margin-bottom: 0.5rem;
   }
   .th-faq-answer {
-    font-size: 1rem;
+    font-size: 0.975rem;
     color: #475569;
-    line-height: 1.7;
+    line-height: 1.65;
   }
 
-  /* Responsive Center Controls and Align Blocks */
+  /* Desktop width grid and responsive locks */
   @media (min-width: 768px) {
     .th-editor-grid {
       grid-template-columns: repeat(3, 1fr);
