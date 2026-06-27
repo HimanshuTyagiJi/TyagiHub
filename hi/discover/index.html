@@ -1,6 +1,6 @@
 ---
 layout: discover
-title: "डिस्कवर"
+title: "Discover — Technology, AI & Cybersecurity"
 description: "टेक्नोलॉजी, AI, साइबर सुरक्षा, शिक्षा, डिजिटल अपडेट, ऑनलाइन सुरक्षा, apps, tutorials & future innovation — सब कुछ एक ही Discover फ़ीड में।"
 permalink: /hi/discover/
 image: /assets/images/tyagihub.png
@@ -22,10 +22,8 @@ extra_js:
     <div class="container discover-hero__content">
       <div class="discover-badge">
         <span class="discover-badge__dot"></span>
-        TyagiHub डिस्कवर
+        TyagiHub Discover
       </div>
-      
-      <!-- H1 Header Context Matrix Lock -->
       <h1 class="discover-title">
         Discover Technology, AI & <span>Cybersecurity</span>
       </h1>
@@ -34,6 +32,10 @@ extra_js:
         टेक्नोलॉजी, कृत्रिम बुद्धिमत्ता (AI), साइबर सुरक्षा, शिक्षा, समसामयिक घटनाएँ,
         डिजिटल टूल्स, ऐप्स, ट्यूटोरियल, ऑनलाइन सुरक्षा और भविष्य की नवाचार तकनीकों से जुड़ी
         उपयोगी जानकारी — सब कुछ एक ही शक्तिशाली TyagiHub Discover फ़ीड में।
+      </p>
+
+      <p class="discover-seo-text" style="display: none !important; visibility: hidden;">
+        Welcome to the official TyagiHub Discover feed. Explore our comprehensive repository of artificial intelligence tutorials, advanced data safety architecture, digital layouts, and software engineering methodologies handcrafted by Tyagi MultiTech. Stay ahead with modern insights on network protocols, computing automation, internet safety trends, and developer utilities optimized for high-performance scale.
       </p>
 
       <div class="discover-icons">
@@ -79,9 +81,13 @@ extra_js:
       
       <div class="discover-categories" id="category-buttons-container">
 
-        {% assign posts_size = site.posts_hi.size | default: 0 %}
-        {% assign shield_size = site.shield_hi.size | default: 0 %}
-        {% assign all_posts_size = posts_size | plus: shield_size %}
+        {% if page.lang == "hi" %}
+          {% assign all_posts_size = site.posts_hi.size %}
+        {% else %}
+          {% assign posts_size = site.posts.size %}
+          {% assign shield_size = site.shield.size %}
+          {% assign all_posts_size = posts_size | plus: shield_size %}
+        {% endif %}
 
         <button class="discover-cat-btn" data-cat="all" onclick="window.location.href='?category=all'">
           सभी <span>({{ all_posts_size }})</span>
@@ -93,7 +99,7 @@ extra_js:
             
             {% assign cat_name = category[0] | downcase %}
             
-            {% if cat_name == "appsandinternet" or cat_name == "apps-and-internet" %}
+            {% if cat_name == "appsandinternet" %}
               {% assign display_name = "Apps & Internet" %}
             {% elsif cat_name == "aifuture" or cat_name == "ai-future" %}
               {% assign display_name = "AI Future" %}
@@ -104,39 +110,54 @@ extra_js:
             {% endif %}
 
             <button class="discover-cat-btn" data-cat="{{ category[0] | downcase }}" onclick="window.location.href='?category={{ category[0] | downcase }}'">
-              {{ display_name }} <span>({{ category[1].size }})</span>
+              {{ display_name }}
+              <span>({{ category[1].size }})</span>
             </button>
           {% endunless %}
         {% endfor %}
 
-        <button class="discover-cat-btn" data-cat="cybersecurity" onclick="window.location.href='?category=cybersecurity'">
-          Cyber Security <span>({{ site.shield_hi.size }})</span>
-        </button>
+        {% if page.lang == "hi" %}
+          <button class="discover-cat-btn" data-cat="cybersecurity" onclick="window.location.href='?category=cybersecurity'">
+            Cyber Security
+            <span>({{ site.shield_hi.size }})</span>
+          </button>
+        {% else %}
+          <button class="discover-cat-btn" data-cat="cybersecurity" onclick="window.location.href='?category=cybersecurity'">
+            Cyber Security
+            <span>({{ site.shield.size }})</span>
+          </button>
+        {% endif %}
 
       </div>
 
     </div>
   </section>
 
-  <!-- Content Grid Wrapper -->
+  <!-- Content Wrapper -->
   <div class="tc-wrapper container" style="display: flex; gap: 24px; margin-top: 20px; align-items: flex-start; flex-wrap: wrap;">
-
-    <!-- LEFT SIDE ENGINE -->
+    
+    <!-- LEFT SIDE: Posts Grid Layout Engine -->
     <div class="tc-left" style="flex: 1; min-width: 300px; max-width: 100%;">
       <section class="section" style="padding: 0;">
         <div id="posts">
           
           <div id="post-wrapper" class="static-seo-load">
             
-            {% assign combined_posts = "" | split: "" %}
-            {% for p in site.posts_hi %}
-              {% assign combined_posts = combined_posts | push: p %}
-            {% endfor %}
-            {% for p in site.shield_hi %}
-              {% assign combined_posts = combined_posts | push: p %}
-            {% endfor %}
-            
-            {% assign sorted = combined_posts | uniq | sort: "date" | reverse %}
+            {% if page.lang == "hi" %}
+              {% assign sorted = site.posts_hi | sort: "date" | reverse %}
+            {% else %}
+              {% assign combined_posts = "" | split: "" %}
+              
+              {% for p in site.posts %}
+                {% assign combined_posts = combined_posts | push: p %}
+              {% endfor %}
+              
+              {% for p in site.shield %}
+                {% assign combined_posts = combined_posts | push: p %}
+              {% endfor %}
+              
+              {% assign sorted = combined_posts | sort: "date" | reverse %}
+            {% endif %}
             
             {% for p in sorted limit: 6 %}
               {% if p.categories %}
@@ -144,13 +165,13 @@ extra_js:
                 {% assign data_cats = "" %}
                 {% for cat in p.categories %}
                   {% assign clean_c = cat | downcase %}
-                  {% if clean_c == "cyber-security" or clean_c == "cybersecurity" %}{% assign clean_c = "cybersecurity" %}\n                  {% endif %}
+                  {% if clean_c == "cyber-security" or clean_c == "cybersecurity" %}{% assign clean_c = "cybersecurity" %}{% endif %}
                   {% assign data_cats = data_cats | append: clean_c | append: " " %}
                 {% endfor %}
               {% else %}
                 {% assign p_cat_raw = p.category | default: "CyberSecurity" %}
                 {% assign clean_s = p.category | downcase %}
-                {% if clean_s == "cyber-security" or clean_s == "cybersecurity" %}{% assign clean_s = "cybersecurity" %}\n                {% endif %}
+                {% if clean_s == "cyber-security" or clean_s == "cybersecurity" %}{% assign clean_s = "cybersecurity" %}{% endif %}
                 {% assign data_cats = clean_s | append: " " %}
               {% endif %}
 
@@ -180,6 +201,7 @@ extra_js:
                   </div>
 
                   <div class="thumb-media-box" style="width:100%; height:100%; display:flex; align-items:center; justify-content:center; position:relative;">
+                    
                     <img src="{{ p.image | default: '/assets/images/default-thumb.png' }}" 
                          alt="{{ p.title | escape }} - TyagiHub" 
                          title="{{ p.title | escape }} - TyagiHub" 
@@ -199,6 +221,7 @@ extra_js:
                         {{ p.title }}
                       </span>
                     </div>
+
                   </div>
 
                 </div>
@@ -249,7 +272,7 @@ extra_js:
 
   </div>
 
-  <!-- HINDI TEXT RECOVERY INSIGHTS SYSTEM (Text-to-Code Ratio Fix) -->
+  <!-- POSITION MATCHED: Text-to-Code Ratio Insights Block -->
   <section class="discover-insights-section">
     <div class="container discover-insights-container">
       
@@ -273,7 +296,7 @@ extra_js:
         <div class="discover-insights-col">
           <h3 class="discover-insights-col-title">🔒 साइबर सुरक्षा और डेटा सुरक्षा (Shield)</h3>
           <p class="discover-insights-text">
-            डिजिटल सुरक्षा के क्षेत्र में, TyagiHub Shield ऑनलाइन खतरों, फ़िशिंग घोटालों और सोशल इंजीनियरिंग हमलों की पहचान करने के लिए महत्वपूर्ण सुरक्षा रणनीतियाँ साझा करता है। सिम स्वैप फ्रॉड, डेटा लीक, टू-फैक्टर ऑथेंटिकेशन (2FA) बाईपास और छिपे हुए मालवेयर पेलोड से खुद को सुरक्षित रखने के लिए कोर नेटवर्किंग प्रोटोकॉल की इंजीनियरिंग को विस्तार से समझें।
+            डिजिटल सुरक्षा के क्षेत्र में, TyagiHub Shield ऑनलाइन खतरों, फ़िशिंग घोटालों और सोशल engineering हमलों की पहचान करने के लिए महत्वपूर्ण सुरक्षा रणनीतियाँ साझा करता है। सिम स्वैप फ्रॉड, डेटा लीक, टू-फैक्टर ऑथेंटिकेशन (2FA) बाईपास और छिपे हुए मालवेयर पेलोड से खुद को सुरक्षित रखने के लिए कोर नेटवर्किंग प्रोटोकॉल की इंजीनियरिंग को विस्तार से समझें।
           </p>
         </div>
 
@@ -300,7 +323,6 @@ function triggerFallback(imgNode) {
 }
 
 document.addEventListener("DOMContentLoaded", function() {
-  // Automated Content Observer Layer: Force map alternative title metadata tokens dynamically
   setTimeout(function() {
     document.querySelectorAll("img").forEach(function(img) {
       if (img.getAttribute("alt") && !img.getAttribute("title")) {
