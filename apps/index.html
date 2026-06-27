@@ -285,16 +285,16 @@ keywords: "Tyagi MultiTech apps, DiagX, GK Learn, PDF Tool Pro, free Android app
 </div>
 
 <style>
-/* 🟢 DESKTOP WIDTH & CENTERING LAYER UPGRADE */
+/* 🟢 DESKTOP WIDTH & CENTERING FOR CARDS AND TEXT BLOCKS */
 @media (min-width: 768px) {
-  .apps-centered-grid {
+  .apps-centered-grid, .apps-documentation-grid {
     display: flex !important;
     flex-wrap: wrap;
     justify-content: center !important;
     align-items: stretch;
     gap: 30px;
   }
-  .apps-centered-grid .card {
+  .apps-centered-grid .card, .apps-documentation-grid .apps-documentation-column {
     width: 480px !important;
     max-width: 100% !important;
     flex: 0 0 480px !important;
@@ -312,6 +312,7 @@ keywords: "Tyagi MultiTech apps, DiagX, GK Learn, PDF Tool Pro, free Android app
   margin-bottom: 25px;
   color: var(--clr-heading, #fff);
   letter-spacing: -0.02em;
+  text-align: center; /* Niche ka heading bhi center lock */
 }
 .apps-documentation-grid {
   display: grid;
