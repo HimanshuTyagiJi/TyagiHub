@@ -258,7 +258,6 @@ extra_js:
   </section>
 
 </div>
-
 <script>
 function triggerFallback(imgNode) {
   imgNode.style.display = 'none';
@@ -269,36 +268,35 @@ function triggerFallback(imgNode) {
 }
 
 document.addEventListener("DOMContentLoaded", function() {
+  // 🟢 Automated Core Check: Force insert title attribute to all rendered images on page load
+  setTimeout(function() {
+    document.querySelectorAll("img").forEach(function(img) {
+      if (img.getAttribute("alt") && !img.getAttribute("title")) {
+        img.setAttribute("title", img.getAttribute("alt"));
+      }
+    });
+  }, 1000); // 1.5 second wait taaki dynamic sidebar pehle load ho jaye
+
   const postCards = document.querySelectorAll(".js-post");
-
   postCards.forEach((card, index) => {
-    if (index >= 2) {
-      return; 
-    }
-
+    if (index >= 2) return; 
     const postUrl = card.getAttribute("data-post-url");
     const mediaBox = card.querySelector(".thumb-media-box");
-
     if (postUrl && mediaBox) {
       fetch(postUrl)
         .then(response => response.text())
         .then(htmlData => {
           const parser = new DOMParser();
           const doc = parser.parseFromString(htmlData, "text/html");
-          
           const contentSvg = doc.querySelector("article svg, .post-content svg, main svg");
-
           if (contentSvg) {
             mediaBox.innerHTML = "";
-            
             contentSvg.style.width = "100%";
             contentSvg.style.height = "100%";
             contentSvg.style.display = "block";
             contentSvg.style.objectFit = "cover";
-            
             contentSvg.removeAttribute("height");
             contentSvg.removeAttribute("width");
-            
             mediaBox.appendChild(contentSvg);
           }
         })
