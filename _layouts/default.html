@@ -36,12 +36,6 @@
     {% endfor %}
   {% endif %}
 
-  <link rel="preload" href="{{ site.url }}/assets/images/favicon.png" as="image">
-  {% if page.image %}
-    <link rel="preload" href="{{ site.url }}{{ page.image }}" as="image">
-  {% else %}
-    <link rel="preload" href="{{ site.url }}/assets/images/tyagihub.avif" as="image">
-  {% endif %}
 
   <script type="application/ld+json">
   {
