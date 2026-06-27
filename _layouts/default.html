@@ -123,7 +123,7 @@
 
   <link rel="alternate" hreflang="en" href="{{ site.url }}{{ page.url | remove:'/hi' }}">
   <link rel="alternate" hreflang="hi" href="{{ site.url }}/hi{{ page.url | remove:'/hi' }}">
-  <link rel="alternate" hreflang="x-default" href="{{ site.url }}{{ page.url | remove:'/hi' }}">
+  <link rel="alternate" hreflang="x-default" href="{{ site.url orient }}{{ page.url | remove:'/hi' }}">
 </head>
 <body>
   <a href="#main-content" class="sr-only">Skip to main content</a>
@@ -174,11 +174,12 @@
     </div>
 
     <div id="tc-auth-zone">
-      <div id="tc-auth-gate">
-        <div class="g_id_signin" data-type="standard" data-shape="pill"></div>
+      <div id="tc-auth-gate" style="display: block; padding: 10px 0;">
+        <p style="font-size: 12px; color: #666; margin: 0 0 8px 0;">Comment karne ke liye niche click karein:</p>
+        <div class="g_id_signin" data-type="standard" data-size="large" data-theme="filled_blue" data-text="signin_with" data-shape="pill"></div>
       </div>
       <div id="tc-user-pill" style="display:none" class="tc-user-pill">
-        <img id="tc-user-pfp" src="" class="tc-pfp-small" alt="User PFP">
+        <img id="tc-user-pfp" src="" class="tc-pfp-small" alt="User Profile Image">
         <span id="tc-user-name" class="tc-u-name"></span>
         <button onclick="tcLogout()" class="tc-logout-btn">Logout</button>
       </div>
@@ -307,27 +308,17 @@
 
   function init() {
     if (user) {
-      document.getElementById("tc-auth-gate").style.display = "none";
-      document.getElementById("tc-user-pill").style.display = "flex";
-      document.getElementById("tc-user-name").innerText     = user.n;
-      document.getElementById("tc-user-pfp").src            = user.p;
+      if(document.getElementById("tc-auth-gate")) document.getElementById("tc-auth-gate").style.display = "none";
+      if(document.getElementById("tc-user-pill")) {
+          document.getElementById("tc-user-pill").style.display = "flex";
+          document.getElementById("tc-user-pfp").src = user.p;
+          document.getElementById("tc-user-name").innerText = user.n;
+      }
       setTimeout(function() { if (window._tcInitFCM) window._tcInitFCM(); }, 1500);
     }
     sync();
     setInterval(function() { if (!isTyping) sync(); }, 30000);
   }
-
-  window.onGoogleAuth = function(r) {
-    var p = JSON.parse(atob(r.credential.split('.')[1]));
-    user  = { n: p.name, e: p.email, p: p.picture };
-    localStorage.setItem("tc_user", JSON.stringify(user));
-    location.reload();
-  };
-
-  window.tcLogout = function() {
-    localStorage.removeItem("tc_user");
-    location.reload();
-  };
 
   window.hoverStar = function(n) {
     if (currentRating === 0) paintStars(n);
@@ -418,7 +409,7 @@
     var safeComment = String(c.comment).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
     var safeName    = String(c.name).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
     
-    // 🟢 Contrast Safe Color updated (#b0b0b0)
+    // 🟢 Contrast Safe Color Fixed here (#b0b0b0)
     var html = '<div class="tc-card ' + (c.parentId !== "0" ? "reply " : "") + (c.pending ? "pending" : "") + '">'
       + '<div><img src="' + c.pic + '" class="tc-card-pfp" alt="' + safeName + '" onerror="this.src=\'https://tyagihub.in/assets/images/icon-192.png\'">'
       + '<span style="font-weight:bold;font-size:14px;">' + safeName + '</span>'
