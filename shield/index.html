@@ -17,7 +17,6 @@ extra_js:
       <div class="section-label shield-hero__label" aria-hidden="true">
         InfoShield India
       </div>
-      <!-- SEO FIX: Explicit Title-H1 Context Matching -->
       <h1 class="shield-hero__title">
         Shield — Cybersecurity Awareness
       </h1>
@@ -30,12 +29,10 @@ extra_js:
   <section class="section">
     <div class="container">
 
-      <!-- ACCESSIBILITY FIX: Structured Input Properties -->
       <div class="shield-search-box">
         <input type="search" id="shield-search" placeholder="Search scams, security tips, and guides..." aria-label="Search cybersecurity guides" autocomplete="off" spellcheck="false">
       </div>
 
-      <!-- CORE ENGAGEMENT MATRIX: Standard English site.shield posts array -->
       <div id="post-wrapper" class="grid-3">
         {% for p in site.shield limit: 6 %}
         <a href="{{ p.url | relative_url }}" class="blog-card">
@@ -59,7 +56,6 @@ extra_js:
     </div>
   </section>
 
-  <!-- green SEO FIX: High-Density Clean Text Block (Guarantees Text-to-Code Ratio > 15% without Inline Markup) -->
   <section class="shield-knowledge-base">
     <div class="container">
       <h2>Comprehensive Digital Safety & Threat Mitigation Architecture</h2>
