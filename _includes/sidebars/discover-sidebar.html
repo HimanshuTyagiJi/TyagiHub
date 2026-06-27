@@ -29,7 +29,6 @@
     <div id="trending-posts-container" class="sidebar-links"></div>
   </div>
 
-
   {% if page.is_post %}
   <div class="sidebar-section">
     <div class="sidebar-title">
@@ -69,7 +68,6 @@
   </div>
   {% else %}
   <div class="sidebar-section">
-    <div class="navbar-dropdown-panel__title" style="display:none;">Latest Posts</div>
     <div class="sidebar-title">
       <span>{% if page.lang == "hi" %}नवीनतम डिस्कवर{% else %}Latest Discover{% endif %}</span>
     </div>
@@ -92,7 +90,6 @@
   </div>
   {% endif %}
 
-
   <div class="sidebar-section">
     <div class="sidebar-title">
       <span>{% if page.lang == "hi" %}टेलीग्राम अपडेट्स{% else %}Telegram Updates{% endif %}</span>
@@ -106,7 +103,6 @@
     <div class="sidebar-title">
       <span>{% if page.lang == "hi" %}यूट्यूब चैनल{% else %}YouTube Channel{% endif %}</span>
     </div>
-    <!-- 🟢 Fixed Username Link: @TyagiHubs -->
     <a href="https://youtube.com/@TyagiHubs" target="_blank" rel="noopener" class="telegram-card"
        style="background-color: #FF0000; border-color: #FF0000; color: #ffffff;"
        onmouseover="this.style.backgroundColor='#cc0000'; this.style.borderColor='#cc0000';"
@@ -119,7 +115,6 @@
     <div class="sidebar-title">
       <span>इंस्टाग्राम</span>
     </div>
-    <!-- 🟢 Fixed Username Link: TyagiHub -->
     <a href="https://instagram.com/TyagiHub" target="_blank" rel="noopener" class="telegram-card"
        style="background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888); border: none; color: #ffffff;"
        onmouseover="this.style.filter='brightness(1.1)';"
@@ -127,7 +122,6 @@
       {% if page.lang == "hi" %}इंस्टाग्राम पर फॉलो करें{% else %}Follow on Instagram{% endif %}
     </a>
   </div>
-
 
   <div class="sidebar-section">
     <div class="sidebar-title">
@@ -138,18 +132,18 @@
       <div class="app-logo-box">SM</div>
       <div class="app-details">
         <span class="app-name">Secure Media Player</span>
-        <span class="app-meta">{% if page.lang == "hi" %}प्राइवेट media सुरक्षा{% else %}Private Media Protection{% endif %}</span>
+        <span class="app-meta">Private Media Protection</span>
       </div>
-      <span class="download-btn">{% if page.lang == "hi" %}जल्द ही{% else %}Soon{% endif %}</span>
+      <span class="download-btn">Soon</span>
     </div>
 
     <div class="app-card">
       <div class="app-logo-box">GK</div>
       <div class="app-details">
         <span class="app-name">GK Quiz App</span>
-        <span class="app-meta">{% if page.lang == "hi" %}प्रैक्टिस और मॉक टेस्ट्स{% else %}Practice & Mock Tests{% endif %}</span>
+        <span class="app-meta">Practice & Mock Tests</span>
       </div>
-      <span class="download-btn">{% if page.lang == "hi" %}जल्द ही{% else %}Soon{% endif %}</span>
+      <span class="download-btn">Soon</span>
     </div>
   </div>
 
