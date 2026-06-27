@@ -1452,3 +1452,140 @@
   display: inline !important;
 }
 
+/* ==========================================================================
+   TyagiHub Discover Insights Component - Light & Dark Adaptive Premium Styles
+   ========================================================================== */
+.discover-insights-section {
+  padding: 60px 0;
+  border-top: 1px solid rgba(128, 128, 128, 0.15);
+  margin-top: 60px;
+  /* Default light theme color matrix background */
+  background: linear-gradient(180deg, #f8fafc 0%, #f1f5f9 100%);
+  position: relative;
+   border-radius:25px;
+}
+
+/* Base Dark Theme Detection override helper */
+[data-theme="dark"] .discover-insights-section {
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.01) 0%, rgba(15, 23, 42, 0.2) 100%);
+}
+
+.discover-insights-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* Main Core Page Header Typography - Heavy Bold Setup */
+.discover-insights-main-title {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: 26px;
+  font-weight: 800; /* Extra bold structural visibility */
+  color: #0f172a; /* Light theme crisp black */
+  margin: 0 0 32px 0;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  letter-spacing: -0.02em;
+}
+
+[data-theme="dark"] .discover-insights-main-title {
+  color: #ffffff;
+}
+
+.discover-insights-icon {
+  stroke: #1a73e8;
+  filter: drop-shadow(0 2px 6px rgba(26, 115, 232, 0.2));
+  flex-shrink: 0;
+}
+
+.discover-insights-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 28px;
+}
+
+/* Premium Adaptive Grid Module Card Component Layout Box */
+.discover-insights-col {
+  background: #ffffff; /* Clean glossy white background for light theme */
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  border-radius: 16px; /* Smooth rounded borders */
+  padding: 28px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+  transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1), 
+              border-color 0.3s ease, 
+              box-shadow 0.3s ease;
+}
+
+[data-theme="dark"] .discover-insights-col {
+  background: rgba(30, 31, 38, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+/* Micro-interaction physics logic on mouse hover states */
+.discover-insights-col:hover {
+  transform: translateY(-5px); /* Clean snappy lift */
+  border-color: #1a73e8;
+  box-shadow: 0 12px 30px rgba(26, 115, 232, 0.15);
+}
+
+[data-theme="dark"] .discover-insights-col:hover {
+  border-color: rgba(26, 115, 232, 0.3);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.35), 0 0 15px rgba(26, 115, 232, 0.1);
+}
+
+/* Heavy Deep Bold Inner Titles for Grid Architecture */
+.discover-insights-col-title {
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size: 18px;
+  font-weight: 750; /* Super heavy crisp header weight */
+  color: #1e293b; /* Premium structural deep dark */
+  margin: 0 0 12px 0;
+  display: flex;
+  align-items: center;
+  letter-spacing: -0.01em;
+}
+
+[data-theme="dark"] .discover-insights-col-title {
+  color: #ffffff;
+}
+
+/* Clean Readable High-Contrast Description Prose Paragraphs */
+.discover-insights-text {
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size: 14.5px;
+  color: #334155; /* Sharp high-contrast dark gray text for pure light-mode readability */
+  line-height: 1.65;
+  margin: 0;
+  text-align: justify;
+}
+
+[data-theme="dark"] .discover-insights-text {
+  color: #b0b3b8;
+}
+
+/* Mobile Breakpoint System Stack Management */
+@media (max-width: 768px) {
+  .discover-insights-section {
+    padding: 40px 0;
+    margin-top: 40px;
+  }
+  
+  .discover-insights-main-title {
+    font-size: 22px;
+    margin-bottom: 24px;
+  }
+  
+  .discover-insights-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  
+  .discover-insights-col {
+    padding: 22px;
+  }
+}
