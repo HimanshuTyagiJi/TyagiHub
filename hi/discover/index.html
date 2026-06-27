@@ -87,8 +87,10 @@ extra_js:
     </div>
   </section>
 
+  <!-- Content Wrapper Matrix -->
   <div class="tc-wrapper container" style="display: flex; gap: 24px; margin-top: 20px; align-items: flex-start; flex-wrap: wrap;">
     
+    <!-- LEFT SIDE: Posts Grid Layout Engine -->
     <div class="tc-left" style="flex: 1; min-width: 300px; max-width: 100%;">
       <section class="section" style="padding: 0;">
         <div id="posts">
@@ -98,8 +100,8 @@ extra_js:
               {% assign sorted = site.posts_hi | sort: "date" | reverse %}
             {% else %}
               {% assign combined_posts = "" | split: "" %}
-              {% for p in site.posts %}{% assign combined_posts = combined_posts | push: p %}\n              {% endfor %}
-              {% for p in site.shield %}{% assign combined_posts = combined_posts | push: p %}\n              {% endfor %}
+              {% for p in site.posts %}{% assign combined_posts = combined_posts | push: p %}{% endfor %}
+              {% for p in site.shield %}{% assign combined_posts = combined_posts | push: p %}{% endfor %}
               {% assign sorted = combined_posts | sort: "date" | reverse %}
             {% endif %}
             
@@ -115,7 +117,7 @@ extra_js:
               {% else %}
                 {% assign p_cat_raw = p.category | default: "CyberSecurity" %}
                 {% assign clean_s = p.category | downcase %}
-                {% if clean_s == "cyber-security" or clean_s == "cybersecurity" %}{% assign clean_s = "cybersecurity" %}\n                {% endif %}
+                {% if clean_s == "cyber-security" or clean_s == "cybersecurity" %}{% assign clean_s = "cybersecurity" %}{% endif %}
                 {% assign data_cats = clean_s | append: " " %}
               {% endif %}
 
@@ -189,10 +191,11 @@ extra_js:
       </section>
     </div>
 
-    {% include sidebars/discover-sidebar.html %}
+    <!-- 🔴 REDUNDANT SIDEBAR REMOVED FROM HERE TO PREVENT DOUBLE RENDERING CRASH -->
 
   </div>
 
+  <!-- POSITION MATCHED: Text-to-Code Ratio Insights Block -->
   <section class="discover-insights-section">
     <div class="container discover-insights-container">
       <h2 class="discover-insights-main-title">
@@ -212,7 +215,7 @@ extra_js:
         <div class="discover-insights-col">
           <h3 class="discover-insights-col-title">🔒 साइबर सुरक्षा और डेटा सुरक्षा (Shield)</h3>
           <p class="discover-insights-text">
-            डिजिटल सुरक्षा के क्षेत्र में, TyagiHub Shield ऑनलाइन खतरों, फ़िशिंग घोटालों और सोशल engineering हमलों की पहचान करने के लिए महत्वपूर्ण सुरक्षा रणनीतियाँ साझा करता है। सिम स्वैप फ्रॉड, डेटा लीक, टू-फैक्टर ऑथेंटिकेशन (2FA) बाईपास और छिपे हुए मालवेयर पेलोड से खुद को सुरक्षित रखने के लिए कोर नेटवर्किंग प्रोटोकॉल की इंजीनियरिंग को विस्तार से समझें।
+            डिजिटल सुरक्षा के क्षेत्र में, TyagiHub Shield ऑनलाइन खतरों, फ़िशिंग घोटालों और सोशल engineering हमलों की पहचान करने के लिए महत्वपूर्ण सुरक्षा रणनीतियाँ साझा करता है। सिम स्वैप फ्रॉड, डेटा लीक, टू-फैक्टर ऑथेंटिकेशन (2FA) बाईपास और छिपे हुए मालवेयर पेलोड से खुद को सुरक्षित रखने के लिए कोर稳健 नेटवर्किंग प्रोटोकॉल की इंजीनियरिंग को विस्तार से समझें।
           </p>
         </div>
         <div class="discover-insights-col">
