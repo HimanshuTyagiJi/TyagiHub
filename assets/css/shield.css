@@ -366,3 +366,30 @@
   
   }
 }
+.shield-knowledge-base {
+  padding: 40px 0;
+  border-top: 1px solid var(--border-color, #222);
+}
+.shield-knowledge-base h2 {
+  font-size: 24px;
+  font-weight: 800;
+  margin-bottom: 25px;
+  color: var(--clr-heading, #fff);
+}
+.shield-insights-grid {
+  display: grid;
+  gap: 30px;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+.shield-insights-column h3 {
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 12px;
+  color: var(--clr-accent, #007bff);
+}
+.shield-insights-column p {
+  font-size: 14px;
+  color: var(--text-muted, #888);
+  line-height: 1.7;
+  text-align: justify;
+}
