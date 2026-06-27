@@ -1018,7 +1018,7 @@
     top:60px;
     right:24px;
     width:340px;
-    height:calc(100vh - 112px);
+    height:calc(100vh - 6%);
 
     overflow-y:auto;
     overflow-x:hidden;
