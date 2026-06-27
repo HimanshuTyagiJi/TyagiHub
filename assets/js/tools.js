@@ -148,29 +148,29 @@ const TOOLS_DATA = [
 
   // CONVERT
   { id: 'img-convert', name: 'Image convert', icon: 'pngtojpg', cat: 'convert', url: '/tools/convert/image-convert/', color: '#3ecfcf', bg: 'rgba(62,207,207,0.1)' },
-  { id: 'audio-convert', name: 'Audio convert', icon: 'mp3towav', cat: 'convert', url: '/tools/convert/audio-convert/', color: '#3ecfcf', bg: 'rgba(62,207,207,0.1)' },
-  { id: 'video-convert', name: 'Video convert', icon: 'mp4tomp3', cat: 'convert', url: '/tools/convert/video-convert/', color: '#3ecfcf', bg: 'rgba(62,207,207,0.1)' },
+  { id: 'audio-convert', name: 'Audio convert', icon: 'mp3towav', cat: 'convert', url: '#', color: '#3ecfcf', bg: 'rgba(62,207,207,0.1)' },
+  { id: 'video-convert', name: 'Video convert', icon: 'mp4tomp3', cat: 'convert', url: '#', color: '#3ecfcf', bg: 'rgba(62,207,207,0.1)' },
   { id: 'unit-convert', name: 'Unit convert', icon: 'jpgtopng', cat: 'convert', url: '/tools/convert/unit-convert/', color: '#3ecfcf', bg: 'rgba(62,207,207,0.1)' },
   { id: 'text-convert', name: 'Text convert', icon: 'textdiff', cat: 'convert', url: '/tools/convert/text/', color: '#3ecfcf', bg: 'rgba(62,207,207,0.1)' },
   
   // VIDEO
-  { id: 'create-video', name: 'Create Video', icon: 'vidconvert', cat: 'video', url: '/tools/video/create-video/', color: '#60a5fa', bg: 'rgba(96,165,250,0.1)', isNew: true },
-  { id: 'vid-editor', name: 'Video Editor', icon: 'vidtrim', cat: 'video', url: '/tools/video/editor/', color: '#60a5fa', bg: 'rgba(96,165,250,0.1)', isNew: true },
-  { id: 'vid-compress', name: 'Compress Video', icon: 'vidcompress', cat: 'video', url: '/tools/video/compress/', color: '#60a5fa', bg: 'rgba(96,165,250,0.1)' },
-  { id: 'vid-convert', name: 'Convert Video', icon: 'vidconvert', cat: 'video', url: '/tools/video/convert/', color: '#60a5fa', bg: 'rgba(96,165,250,0.1)' },
-  { id: 'vid-to-gif', name: 'Video to GIF', icon: 'vidtogif', cat: 'video', url: '/tools/video/video-to-gif/', color: '#60a5fa', bg: 'rgba(96,165,250,0.1)', isNew: true },
-  { id: 'vid-audio', name: 'Extract Audio', icon: 'vidaudio', cat: 'video', url: '/tools/video/extract-audio/', color: '#60a5fa', bg: 'rgba(96,165,250,0.1)' },
+  { id: 'create-video', name: 'Create Video', icon: 'vidconvert', cat: 'video', url: '#', color: '#60a5fa', bg: 'rgba(96,165,250,0.1)', isNew: true },
+  { id: 'vid-editor', name: 'Video Editor', icon: 'vidtrim', cat: 'video', url: '#', color: '#60a5fa', bg: 'rgba(96,165,250,0.1)', isNew: true },
+  { id: 'vid-compress', name: 'Compress Video', icon: 'vidcompress', cat: 'video', url: '#', color: '#60a5fa', bg: 'rgba(96,165,250,0.1)' },
+  { id: 'vid-convert', name: 'Convert Video', icon: 'vidconvert', cat: 'video', url: '#', color: '#60a5fa', bg: 'rgba(96,165,250,0.1)' },
+  { id: 'vid-to-gif', name: 'Video to GIF', icon: 'vidtogif', cat: 'video', url: '#', color: '#60a5fa', bg: 'rgba(96,165,250,0.1)', isNew: true },
+  { id: 'vid-audio', name: 'Extract Audio', icon: 'vidaudio', cat: 'video', url: '!', color: '#60a5fa', bg: 'rgba(96,165,250,0.1)' },
 
   // AUDIO
-  { id: 'audio-editor', name: 'Audio Editor', icon: 'audiotrim', cat: 'audio', url: '/tools/audio/editor/', color: '#34d399', bg: 'rgba(52,211,153,0.1)', isNew: true },
-  { id: 'audio-convert', name: 'Convert Audio', icon: 'audioconvert', cat: 'audio', url: '/tools/audio/convert/', color: '#34d399', bg: 'rgba(52,211,153,0.1)' },
-  { id: 'audio-merge', name: 'Merge Audio', icon: 'audiomerge', cat: 'audio', url: '/tools/audio/merge/', color: '#34d399', bg: 'rgba(52,211,153,0.1)' },
-  { id: 'audio-recorder', name: 'Voice Recorder', icon: 'audiovolume', cat: 'audio', url: '/tools/audio/voice-recorder/', color: '#34d399', bg: 'rgba(52,211,153,0.1)', isNew: true },
-  { id: 'audio-remove-noise', name: 'Remove Noise', icon: 'audiovolume', cat: 'audio', url: '/tools/audio/remove-noise/', color: '#34d399', bg: 'rgba(52,211,153,0.1)', isNew: true },
-  { id: 'audio-extract', name: 'Extract Audio', icon: 'audioconvert', cat: 'audio', url: '/tools/audio/extract-audio/', color: '#34d399', bg: 'rgba(52,211,153,0.1)' },
-  { id: 'text-to-audio', name: 'Text to Audio', icon: 'audioconvert', cat: 'audio', url: '/tools/audio/text-to-audio/', color: '#34d399', bg: 'rgba(52,211,153,0.1)', isNew: true },
-  { id: 'audio-to-text', name: 'Audio to Text', icon: 'audioconvert', cat: 'audio', url: '/tools/audio/audio-to-text/', color: '#34d399', bg: 'rgba(52,211,153,0.1)', isNew: true },
-  { id: 'audio-effects', name: 'Audio Effects', icon: 'audiovolume', cat: 'audio', url: '/tools/audio/audio-effects/', color: '#34d399', bg: 'rgba(52,211,153,0.1)', isNew: true },
+  { id: 'audio-editor', name: 'Audio Editor', icon: 'audiotrim', cat: 'audio', url: '#', color: '#34d399', bg: 'rgba(52,211,153,0.1)', isNew: true },
+  { id: 'audio-convert', name: 'Convert Audio', icon: 'audioconvert', cat: 'audio', url: '#', color: '#34d399', bg: 'rgba(52,211,153,0.1)' },
+  { id: 'audio-merge', name: 'Merge Audio', icon: 'audiomerge', cat: 'audio', url: '#', color: '#34d399', bg: 'rgba(52,211,153,0.1)' },
+  { id: 'audio-recorder', name: 'Voice Recorder', icon: 'audiovolume', cat: 'audio', url: '#', color: '#34d399', bg: 'rgba(52,211,153,0.1)', isNew: true },
+  { id: 'audio-remove-noise', name: 'Remove Noise', icon: 'audiovolume', cat: 'audio', url: '#', color: '#34d399', bg: 'rgba(52,211,153,0.1)', isNew: true },
+  { id: 'audio-extract', name: 'Extract Audio', icon: 'audioconvert', cat: 'audio', url: '#', color: '#34d399', bg: 'rgba(52,211,153,0.1)' },
+  { id: 'text-to-audio', name: 'Text to Audio', icon: 'audioconvert', cat: 'audio', url: '#', color: '#34d399', bg: 'rgba(52,211,153,0.1)', isNew: true },
+  { id: 'audio-to-text', name: 'Audio to Text', icon: 'audioconvert', cat: 'audio', url: '#', color: '#34d399', bg: 'rgba(52,211,153,0.1)', isNew: true },
+  { id: 'audio-effects', name: 'Audio Effects', icon: 'audiovolume', cat: 'audio', url: '#', color: '#34d399', bg: 'rgba(52,211,153,0.1)', isNew: true },
 
   // TEXT
   { id: 'word-counter', name: 'Word Counter', icon: 'wordcount', cat: 'text', url: '/tools/text/word-counter/', color: '#fb923c', bg: 'rgba(251,146,60,0.1)' },
