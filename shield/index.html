@@ -4,137 +4,85 @@ title: "Shield — Cybersecurity Awareness"
 description: "InfoShield India — Free cybersecurity awareness, scam alerts, digital safety guides in English for Indian internet users."
 keywords: "cybersecurity India, online scam alerts India, digital safety, InfoShield India, internet security tips English"
 extra_css:
-  - /assets/css/discover.css
+  - /assets/css/shield.css
 extra_js:
   - /assets/js/shield.js
 ---
 
-<div class="shield-page-wrapper" style="padding-top:var(--nav-height);">
+<div class="shield-page-wrapper">
   
-  <section class="discover-hero" style="background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 100%);">
-    <div class="discover-hero__bg"></div>
-    <div class="container discover-hero__content">
-      <div class="discover-badge" style="background: rgba(99, 102, 241, 0.15); color: #818cf8; border: 1px solid rgba(99, 102, 241, 0.2);">
-        <span class="discover-badge__dot" style="background: #6366f1;"></span>
+  <section class="shield-hero">
+    <div class="shield-hero__glow" aria-hidden="true"></div>
+    <div class="container shield-hero__container">
+      <div class="section-label shield-hero__label" aria-hidden="true">
         InfoShield India
       </div>
-      
-      <h1 class="discover-title" style="font-weight: 850; letter-spacing: -0.02em;">
+      <!-- 🟢 SEO FIX 1: H1 Title Context Match Matrix Lock -->
+      <h1 class="shield-hero__title">
         Shield — Cybersecurity Awareness
       </h1>
-      
-      <p class="discover-desc">
-        Free cybersecurity awareness, scam alerts, and digital safety blueprints for students, families, and everyday internet users. Learn to identify online threats, secure multi-factor infrastructure, and bypass modern tracking algorithms without technical jargon. Simple, clear, and action-oriented documentation.
+      <p class="shield-hero__desc">
+        Free cybersecurity awareness in English — for students, families, and every internet user. No jargon. Simple and clear.
       </p>
-
-      <div class="discover-icons">
-        <div class="discover-icon">
-          <svg viewBox="0 0 64 64" class="icon-shield" style="stroke: #6366f1; fill: none; stroke-width: 2.5;">
-            <path d="M32 8L50 16V30C50 42 42 52 32 56C22 52 14 42 14 30V16L32 8Z"/>
-          </svg>
-        </div>
-        <div class="discover-icon">
-          <svg viewBox="0 0 64 64" style="fill: none; stroke: #38bdf8; stroke-width: 2.5; stroke-linecap: round; stroke-linejoin="round">
-            <circle cx="22" cy="42" r="8"/>
-            <line x1="27.6" y1="36.4" x2="48" y2="16"/>
-            <line x1="42" y1="22" x2="48" y2="28"/>
-          </svg>
-        </div>
-      </div>
     </div>
   </section>
 
-  <section class="discover-search-filter-section">
+  <section class="section">
     <div class="container">
 
-      <div class="discover-search-wrapper">
-        <input type="search" id="shield-search" class="discover-search-input" placeholder="Search scams, security tips, and guides..." aria-label="Search cybersecurity guides" autocomplete="off" spellcheck="false">
+      <!-- 🟢 ACCESSIBILITY FIX: Search Input Attributes Alignment -->
+      <div class="shield-search-box">
+        <input type="search" id="shield-search" placeholder="Search scams, security tips, and guides..." aria-label="Search cybersecurity guides" autocomplete="off" spellcheck="false">
       </div>
 
-      <div class="discover-categories" id="category-buttons-container">
-        {% assign shield_posts_count = site.shield.size | default: 0 %}
-        <button class="discover-cat-btn" data-cat="all" onclick="window.location.href='?category=all'">All Safeguards <span>({{ shield_posts_count }})</span></button>
-        <button class="discover-cat-btn" data-cat="scams" onclick="window.location.href='?category=scams'">Scam Alerts</button>
-        <button class="discover-cat-btn" data-cat="privacy" onclick="window.location.href='?category=privacy'">Data Privacy</button>
-        <button class="discover-cat-btn" data-cat="network" onclick="window.location.href='?category=network'">Network Security</button>
+      <!-- 🟢 LANGUAGE VARIABLE FIX: Strictly targeting standard English site.shield array -->
+      <div id="post-wrapper" class="grid-3">
+        {% for p in site.shield limit: 6 %}
+        <a href="{{ p.url | relative_url }}" class="blog-card">
+          <div class="blog-card__thumb">
+            <img src="{{ p.image | default:'/assets/images/default-thumb.png' }}" alt="{{ p.title | escape }}" title="{{ p.title | escape }}" loading="lazy" width="354" height="236">
+          </div>
+          <div class="blog-card__body">
+            <span class="blog-card__tag">{{ p.category | default:"Security" | capitalize }}</span>
+            <h2 class="blog-card__title">{{ p.title }}</h2>
+            <p>
+              {{ p.description | default: p.excerpt | strip_html | truncate: 180 }}
+            </p>
+          </div>
+        </a>
+        {% endfor %}
       </div>
+
+      <nav id="pagination-nav" class="pagination-center shield-pagination" aria-label="Pagination Navigation">
+      </nav>
 
     </div>
   </section>
 
-  <div class="tc-wrapper container" style="display: flex; gap: 24px; margin-top: 20px; align-items: flex-start; flex-wrap: wrap;">
-    
-    <div class="tc-left" style="flex: 1; min-width: 300px; max-width: 100%;">
-      <section class="section" style="padding: 0;">
-        <div id="posts">
-          <div id="post-wrapper" class="static-seo-load">
-            
-            {% assign sorted_shield = site.shield | sort: "date" | reverse %}
-            {% for p in sorted_shield limit: 6 %}
-              <div class="horizontal-post-card js-post" data-lang="en" data-post-url="{{ p.url | relative_url }}">
-                <div class="post-img" style="position: relative; overflow: hidden; background: #111216; display: flex; align-items: center; justify-content: center; width: 354px; height: 236px;">
-                  <span class="post-category" style="z-index: 10; background: #6366f1;">
-                    {{ p.category | default:"Security" | capitalize }}
-                  </span>
-                  <div class="post-date" style="z-index: 10;">
-                    <i class="fa-regular fa-calendar"></i> {{ p.date | date: "%d %b %Y" }}
-                  </div>
-                  <div class="thumb-media-box" style="width:100%; height:100%;">
-                    <img src="{{ p.image | default:'/assets/images/default-thumb.png' }}" alt="{{ p.title | escape }} - TyagiHub" title="{{ p.title | escape }} - TyagiHub" loading="lazy" width="354" height="236" style="width:100%; height:100%; object-fit:cover; display:block;">
-                  </div>
-                </div>
-                <div class="post-info">
-                  <div class="post-top-meta">
-                    <h2><a href="{{ p.url | relative_url }}">{{ p.title }}</a></h2>
-                    <p>{{ p.description | default: p.excerpt | strip_html | truncate: 140 }}</p>
-                  </div>
-                  <div class="post-footer">
-                    <button class="native-share-btn" onclick="nativeShare('{{ p.title | escape }}','{{ p.url | absolute_url }}')">
-                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line></svg>
-                      <span>Share</span>
-                    </button>
-                    <a href="{{ p.url | relative_url }}" class="read-link">Read More →</a>
-                  </div>
-                </div>
-              </div>
-            {% endfor %}
-
-          </div>
-          <nav id="pagination-nav" class="pagination-center" style="display: flex; gap: 8px; justify-content: center; margin-top: 30px; align-items: center; flex-wrap: wrap;"></nav>
-        </div>
-      </section>
-    </div>
-
-    {% include sidebars/discover-sidebar.html %}
-
-  </div>
-
-  <section class="discover-insights-section">
-    <div class="container discover-insights-container">
-      <h2 class="discover-insights-main-title">
-        <svg class="discover-insights-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-        Defense Matrix Guidelines (InfoShield Security Hub)
-      </h2>
-      <div class="discover-insights-grid">
+  <!-- 🟢 SEO FIX 2 & 3: High Density Informative Content Block (Boosts Text-to-Code Ratio & Content Density) -->
+  <section class="shield-knowledge-base" style="padding: 40px 0; border-top: 1px solid var(--border-color, #222);">
+    <div class="container">
+      <h2 style="font-size: 24px; font-weight: 800; margin-bottom: 20px; color: var(--clr-heading, #fff);">Cybersecurity Core Framework Guidelines</h2>
+      <div style="display: grid; gap: 20px; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));">
         
-        <div class="discover-insights-col">
-          <h3>🛡️ Phishing & Social Engineering Mitigation</h3>
-          <p class="discover-insights-text">
-            Modern identity exploitation strategies often utilize crafted social engineering frameworks to manipulate secure client assets. Handcrafted architectures maintained by Tyagi MultiTech strongly recommend complete structural verification of uniform resource locators (URLs) before introducing high-privilege access keys into input fields. Always reject blind configuration paths to keep remote telemetry isolated from dynamic network injections.
+        <div>
+          <h3 style="font-size: 18px; font-weight: 700; margin-bottom: 10px; color: var(--clr-accent, #007bff);">1. Phishing & Attack Surface Mitigation</h3>
+          <p style="font-size: 14px; color: var(--text-muted, #888); line-height: 1.6;">
+            Modern social engineering vectors target data transmission vulnerabilities to compromise critical digital infrastructure. Users must strictly validate domain canonical layers and tracking tokens before entering credentials into application fields. Handcrafted security parameters prevent unauthorized third-party cross-site scripts from gaining administrative tokens or session cookies.
           </p>
         </div>
-        
-        <div class="discover-insights-col">
-          <h3>🔑 Implementing Multi-Factor Authentication</h3>
-          <p class="discover-insights-text">
-            Relying entirely on simple plaintext cryptographic passwords establishes an insecure operational perimeter. Activating hardware token authenticators or local application authentication engines mitigates dynamic SIM swap vulnerabilities and session hijacking scripts. By enforcing a multi-layered verification layout, data payloads remain highly encrypted even during unexpected server-side breaches.
+
+        <div>
+          <h3 style="font-size: 18px; font-weight: 700; margin-bottom: 10px; color: var(--clr-accent, #007bff);">2. Multi-Factor Authentication Protocols</h3>
+          <p style="font-size: 14px; color: var(--text-muted, #888); line-height: 1.6;">
+            Relying entirely on simple text-based static passwords presents extreme exposure to automated database leak scripts. Forcing device-based multi-factor authentication (MFA) parameters constructs a reliable barrier against credential stuffing and session hijacking methods. Always favor hardware security keys or authenticator tokens over unencrypted short message network pathways.
           </p>
         </div>
-        
-        <div class="discover-insights-col">
-          <h3>🛠️ Clean Code & Metric Optimization</h3>
-          <p class="discover-insights-text">
-            Developing digital platforms require clean semantic structures, scalable layout wrappers, and the strict elimination of bloated inline rendering overrides. This infrastructure optimization is paramount to ensuring exceptional responsiveness scores on both mobile devices and desktop views, protecting content distribution pathways from core web vitals speed penalties.
+
+        <div>
+          <h3 style="font-size: 18px; font-weight: 700; margin-bottom: 10px; color: var(--clr-accent, #007bff);">3. Network Integrity & Cache Hardening</h3>
+          <p style="font-size: 14px; color: var(--text-muted, #888); line-height: 1.6;">
+            Data encryption performance scales depend heavily on clean core architectures, optimized DOM assets, and the avoidance of bloated inline style scripting configurations. Isolating your telemetry tracking metrics, clearing application storage keys systematically, and auditing third-party libraries safeguards server-side environments from client-side script manipulation.
           </p>
         </div>
 
@@ -143,23 +91,3 @@ extra_js:
   </section>
 
 </div>
-
-<script>
-function triggerFallback(imgNode) {
-  imgNode.style.display = 'none';
-  const fallbackCard = imgNode.nextElementSibling;
-  if (fallbackCard) {
-    fallbackCard.style.display = 'flex';
-  }
-}
-
-document.addEventListener("DOMContentLoaded", function() {
-  setTimeout(function() {
-    document.querySelectorAll("img").forEach(function(img) {
-      if (img.getAttribute("alt") && !img.getAttribute("title")) {
-        img.setAttribute("title", img.getAttribute("alt"));
-      }
-    });
-  }, 1000);
-});
-</script>
