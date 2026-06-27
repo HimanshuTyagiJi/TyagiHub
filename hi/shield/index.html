@@ -15,15 +15,12 @@ extra_js:
 ---
 
 {% assign combined_hindi = "" | split: "" %}
-
 {% for p in site.shield_hi %}
   {% assign combined_hindi = combined_hindi | push: p %}
 {% endfor %}
-
 {% for p in site.posts_hi %}
   {% assign combined_hindi = combined_hindi | push: p %}
 {% endfor %}
-
 {% assign sorted = combined_hindi | uniq | sort: "date" | reverse %}
 
 <div class="shield-page-wrapper">
@@ -35,8 +32,7 @@ extra_js:
         InfoShield India
       </div>
       <h1 class="shield-hero__title">
-        ऑनलाइन सुरक्षित रहें।<br>
-        <span class="shield-hero__title--alert">Scam से बचें।</span>
+        शील्ड — साइबर सुरक्षा और स्कैम अलर्ट
       </h1>
       <p class="shield-hero__desc">
         हिंदी में मुफ्त साइबर सुरक्षा जागरूकता — छात्रों, परिवारों और हर भारतीय internet यूजर के लिए। कोई कठिन शब्द नहीं, बिल्कुल आसान भाषा में।
@@ -48,31 +44,17 @@ extra_js:
     <div class="container">
 
       <div class="shield-search-box">
-        <input type="text" id="shield-search" placeholder="स्कैम्स, सुरक्षा टिप्स और गाइड सर्च करें...">
+        <input type="search" id="shield-search" placeholder="स्कैम्स, सुरक्षा टिप्स और गाइड सर्च करें..." aria-label="Search cybersecurity guides" autocomplete="off" spellcheck="false">
       </div>
 
       <div id="post-wrapper" class="grid-3" data-page-lang="hi">
-  
         {% for p in sorted limit: 6 %}
-        
-          {% assign cat_clean = p.categories[0] | downcase %}
-          {% if cat_clean == "cyber-security" or cat_clean == "cybersecurity" or cat_clean == "security" or p.url contains "cyber-security" %}
-            {% assign display_tag = "साइबर सुरक्षा" %}
-          {% else %}
-            {% assign display_tag = p.categories[0] | default: "सुरक्षा" | capitalize %}
-          {% endif %}
-
-        <div class="blog-card js-post"
-             data-lang="hi"
-             data-categories="{% for cat in p.categories %}{{ cat | downcase }} {% endfor %}"
-             data-post-url="{{ p.url | relative_url }}">
-             
+        <div class="blog-card js-post" data-lang="hi" data-categories="{% for cat in p.categories %}{{ cat | downcase }} {% endfor %}" data-post-url="{{ p.url | relative_url }}">
           <a href="{{ p.url | relative_url }}" style="text-decoration: none; color: inherit; display: block;">
             <div class="blog-card__thumb">
-              <img src="{{ p.image | default:'/assets/images/default-thumb.png' }}" alt="{{ p.title }}" loading="lazy" width="354" height="236">
+              <img src="{{ p.image | default:'/assets/images/default-thumb.png' }}" alt="{{ p.title | escape }} - TyagiHub" title="{{ p.title | escape }} - TyagiHub" loading="lazy" width="354" height="236">
             </div>
             <div class="blog-card__body">
-              <span class="blog-card__tag">{{ display_tag }}</span>
               <h2 class="blog-card__title">{{ p.title }}</h2>
               <p>
                 {{ p.description | default: p.excerpt | strip_html | truncate: 120 }}
@@ -81,7 +63,6 @@ extra_js:
           </a>
         </div>
         {% endfor %}
-
       </div>
 
       <nav id="pagination-nav" class="pagination-center shield-pagination" aria-label="Pagination Navigation">
@@ -89,4 +70,35 @@ extra_js:
 
     </div>
   </section>
+
+  <section class="shield-knowledge-base">
+    <div class="container">
+      <h2>व्यापक डिजिटल सुरक्षा एवं साइबर खतरा न्यूनीकरण निर्देशिका</h2>
+      <div class="shield-insights-grid">
+        
+        <div class="shield-insights-column">
+          <h3>1. उन्नत फ़िशिंग सुरक्षा और सोशल इंजीनियरिंग से बचाव</h3>
+          <p>
+            आधुनिक साइबर हमले अब केवल साधारण भ्रामक ईमेल तक सीमित नहीं रह गए हैं। आज के समय में, परिष्कृत सोशल इंजीनियरिंग आर्किटेक्चर लक्षित फ़िशिंग, स्पीयर-फ़िशिंग और सिम स्वैप फ्रॉड जैसी रणनीतियों का उपयोग करते हैं जिनका मुख्य उद्देश्य सर्वर टेलीमेट्री को बाधित करना और संवेदनशील क्रेडेंशियल्स को चुराना होता है। त्यागी मल्टीटेक नेटवर्क के अंतर्गत यह दृढ़ता से अनुशंसित किया जाता है कि किसी भी प्रकार का व्यक्तिगत डेटा प्रविष्ट करने से पहले आधिकारिक यूआरएल संरचना (URL Canonical Setup) और डोमेन सुरक्षा मापदंडों की कड़ाई से जांच की जाए। इन खतरों से सुरक्षित रहने के लिए एक सक्रिय सुरक्षा दृष्टिकोण आवश्यक है, जिसमें अज्ञात लिंक्स पर क्लिक न करना, ट्रैकिंग कुकीज़ को समय-समय पर हटाना और ब्राउज़र सत्रों को सुरक्षित रखना शामिल है।
+          </p>
+        </div>
+
+        <div class="shield-insights-column">
+          <h3>2. सुदृढ़ टू-फैक्टर ऑथेंटिकेशन (2FA) और पहचान संरक्षण</h3>
+          <p>
+            डेटाबेस लीक और क्रेडेंशियल स्टफिंग हमलों के बढ़ते दौर में केवल एक मजबूत पासवर्ड पर निर्भर रहना अत्यधिक असुरक्षित साबित हो सकता है। सुरक्षा व्यवस्था को अभेद्य बनाने के लिए बहु-स्तरीय प्रमाणीकरण (MFA) या टू-फैक्टर ऑथेंटिकेशन (2FA) को अनिवार्य रूप से सक्रिय करें। वेब इंजीनियरिंग के सर्वोत्तम नियमों के अनुसार, पारंपरिक और असुरक्षित नेटवर्क एसएमएस-आधारित ओटीपी (SMS OTP) के स्थान पर प्रमाणीकरण अनुप्रयोगों (जैसे Google Authenticator) या हार्डवेयर सुरक्षा टोकन का उपयोग करना चाहिए। यह सुरक्षा ग्रिड यह सुनिश्चित करता है कि यदि किसी बाह्य उल्लंघन के कारण आपका प्राथमिक पासवर्ड लीक भी हो जाता है, तब भी आपका खाता दुर्भावनापूर्ण दूरस्थ प्रविष्टियों से पूरी तरह सुरक्षित रहेगा।
+          </p>
+        </div>
+
+        <div class="shield-insights-column">
+          <h3>3. क्लाइंट-साइड डिवाइस हार्डनिंग और प्रदर्शन अनुकूलन</h3>
+          <p>
+            अपनी डिजिटल गोपनीयता को बनाए रखने के लिए अपने व्यक्तिगत डेटा फुटप्रिंट को न्यूनतम करना और अनावश्यक एप्लिकेशन अनुमतियों को निरस्त करना बेहद जरूरी है। ब्राउज़र एक्सटेंशन और अवांछित बैकग्राउंड ट्रैकिंग स्क्रिप्ट को ब्लॉक करके डिवाइस की सुरक्षा को मजबूत किया जा सकता है। इसके अतिरिक्त, कोड संरचना से अत्यधिक इनलाइन स्टाइलिंग को हटाना और स्वच्छ सिमेंटिक एचटीएमएल (Semantic HTML) का उपयोग करना साइट लोडिंग स्पीड को अधिकतम करता है। यह अनुकूलन न केवल कोर वेब वाइटल्स प्रदर्शन को बेहतर बनाता है बल्कि क्रोम लाइटहाउस और खोज इंजन अनुक्रमण (Search Engine Indexing) पर 100% स्कोर बनाए रखने में भी पूर्ण सहायता प्रदान करता है।
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
 </div>
