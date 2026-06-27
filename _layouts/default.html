@@ -36,7 +36,6 @@
     {% endfor %}
   {% endif %}
 
-
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -133,93 +132,34 @@
   <main id="main-content">
     {{ content }}
   </main>
+
 <div class="floating-lang-switch">
-
 {% if page.lang_switch != false %}
-
   {% if page.lang_en_url or page.lang_hi_url %}
-
     {% if page.lang == "hi" %}
-      <a href="{{ page.lang_en_url | relative_url }}"
-         class="floating-lang-btn"
-         data-lang-switch="{{ page.lang_en_url }}"
-         aria-label="Switch to English">
-        EN
-      </a>
+      <a href="{{ page.lang_en_url | relative_url }}" class="floating-lang-btn" data-lang-switch="{{ page.lang_en_url }}" aria-label="Switch to English">EN</a>
     {% else %}
-      <a href="{{ page.lang_hi_url | relative_url }}"
-         class="floating-lang-btn"
-         data-lang-switch="{{ page.lang_hi_url }}"
-         aria-label="हिन्दी में बदलें">
-        हिं
-      </a>
+      <a href="{{ page.lang_hi_url | relative_url }}" class="floating-lang-btn" data-lang-switch="{{ page.lang_hi_url }}" aria-label="हिन्दी में बदलें">हिं</a>
     {% endif %}
-
   {% else %}
-
     {% if page.lang == "hi" %}
-      <a href="{{ page.url | remove:'/hi' }}"
-         class="floating-lang-btn"
-         aria-label="Switch to English">
-        EN
-      </a>
+      <a href="{{ page.url | remove:'/hi' }}" class="floating-lang-btn" aria-label="Switch to English">EN</a>
     {% else %}
-      <a href="/hi{{ page.url }}"
-         class="floating-lang-btn"
-         aria-label="हिन्दी में बदलें">
-        हिं
-      </a>
+      <a href="/hi{{ page.url }}" class="floating-lang-btn" aria-label="हिन्दी में बदलें">हिं</a>
     {% endif %}
-
   {% endif %}
-
 {% endif %}
-
 </div>
+
   <style>
-    .floating-lang-switch {
-      position: fixed;
-      right: 14px;
-      bottom: 84px;
-      z-index: 9999;
-    }
-    .floating-lang-btn {
-      width: 48px;
-      height: 48px;
-      border-radius: 999px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: rgba(15, 23, 42, .88);
-      backdrop-filter: blur(12px);
-      border: 1px solid rgba(255, 255, 255, .08);
-      color: #fff;
-      text-decoration: none;
-      font-size: 14px;
-      font-weight: 800;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, .25);
-      transition: .25s ease;
-    }
-    .floating-lang-btn:hover {
-      transform: translateY(-2px) scale(1.05);
-    }
-    @media (min-width: 901px) {
-      .floating-lang-switch {
-        display: none;
-      }
-    }
-    @media (max-width: 900px) {
-
-  .navbar__docs-link {
-    display: none !important;
-  }
-
-}
+    .floating-lang-switch { position: fixed; right: 14px; bottom: 84px; z-index: 9999; }
+    .floating-lang-btn { width: 48px; height: 48px; border-radius: 999px; display: flex; align-items: center; justify-content: center; background: rgba(15, 23, 42, .88); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, .08); color: #fff; text-decoration: none; font-size: 14px; font-weight: 800; box-shadow: 0 10px 30px rgba(0, 0, 0, .25); transition: .25s ease; }
+    .floating-lang-btn:hover { transform: translateY(-2px) scale(1.05); }
+    @media (min-width: 901px) { .floating-lang-switch { display: none; } }
+    @media (max-width: 900px) { .navbar__docs-link { display: none !important; } }
   </style>
 
 {% if page.comments != false %}
- 
-
 <div id="tc-root">
   <div class="tc-header">
     <div class="tc-header-left">
@@ -235,14 +175,10 @@
 
     <div id="tc-auth-zone">
       <div id="tc-auth-gate">
-        <div id="g_id_onload"
-             data-client_id="1052184634573-pa4qebig69ntj46lfhgkbui319bd91e9.apps.googleusercontent.com"
-             data-callback="onGoogleAuth">
-        </div>
         <div class="g_id_signin" data-type="standard" data-shape="pill"></div>
       </div>
       <div id="tc-user-pill" style="display:none" class="tc-user-pill">
-        <img id="tc-user-pfp" src="" class="tc-pfp-small">
+        <img id="tc-user-pfp" src="" class="tc-pfp-small" alt="User PFP">
         <span id="tc-user-name" class="tc-u-name"></span>
         <button onclick="tcLogout()" class="tc-logout-btn">Logout</button>
       </div>
@@ -323,63 +259,6 @@
     const storedUser = JSON.parse(localStorage.getItem("tc_user"));
     if (!storedUser) return;
     try {
-      const sw = await navigator.serviceWorker.register('./sw.js', { scope: './' });
-      await navigator.serviceWorker.ready;
-      const perm = await Notification.requestPermission();
-      if (perm !== "granted") return;
-      const token = await getToken(messaging, { vapidKey: VAPID_KEY, serviceWorkerRegistration: sw });
-      if (token) {
-        fetch(SCRIPT_URL, {
-          method: "POST", mode: "no-cors",
-          body: JSON.stringify({ action: "fcm_subscribe", fcmToken: token, email: storedUser.e, name: storedUser.n })
-        });
-        console.log("FCM ready ✅");
-      }
-    } catch(err) { console.log("FCM Error:", err); }
-
-    onMessage(messaging, function(payload) {
-      var title = payload.notification ? payload.notification.title : "TyagiHub Core 🔔";
-      var body  = payload.notification ? payload.notification.body  : "";
-      var url   = (payload.data && payload.data.url) ? payload.data.url : "https://tyagihub.in";
-      if (url.startsWith("/")) url = "https://tyagihub.in" + url;
-      navigator.serviceWorker.ready.then(function(reg) {
-        reg.showNotification(title, {
-          body:    body,
-          icon:    "/assets/images/tyagi_core.png",
-          tag:     "tc-notif",
-          data:    { url: url },
-          vibrate: [200, 100, 200]
-        });
-      });
-    });
-  };
-</script>
-
-<script type="module">
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.0/firebase-app.js";
-  import { getMessaging, getToken, onMessage } from "https://www.gstatic.com/firebasejs/10.7.0/firebase-messaging.js";
-
-  const firebaseConfig = {
-    apiKey: "AIzaSyBE0uXhh8ePOQH6FBdhRCZrRgRkUTwCWws",
-    authDomain: "tyagi-hub.firebaseapp.com",
-    projectId: "tyagi-hub",
-    storageBucket: "tyagi-hub.firebasestorage.app",
-    messagingSenderId: "1052184634573",
-    appId: "1:1052184634573:web:077135d1bc4f321688b584",
-    measurementId: "G-36X3TG734R"
-  };
-
-  const VAPID_KEY  = "BD_TF4_Pmc1uUCqtcMF-KF1eBsUyr9cC1MUbT82kIdZ8VJSWQtwLMg738clOiHqOtL55iFs4Xd-y5prBgueUm_E";
-  const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzLt6yxrdohBhdhOlxhKwSi1SRL1kr0xEVADmEsHFWyzIaCsuwLyQ4ewFrSE2Bk4Z1l/exec";
-
-  const app       = initializeApp(firebaseConfig);
-  const messaging = getMessaging(app);
-
-  window._tcInitFCM = async function() {
-    const storedUser = JSON.parse(localStorage.getItem("tc_user"));
-    if (!storedUser) return;
-    try {
-      // 🟢 Fix: Absolute Root Path aur Scope lagaya taaki /discover/ se link tootna band ho
       const sw = await navigator.serviceWorker.register('/sw.js', { scope: '/' });
       await navigator.serviceWorker.ready;
       const perm = await Notification.requestPermission();
@@ -435,7 +314,6 @@
       setTimeout(function() { if (window._tcInitFCM) window._tcInitFCM(); }, 1500);
     }
     sync();
-    // 🟢 Fix: 5 second ke khatarnak interval ko badal kar 30 second kiya taaki net fluctuate hone par break na ho
     setInterval(function() { if (!isTyping) sync(); }, 30000);
   }
 
@@ -479,9 +357,7 @@
     rowId = rowId || null;
     if (!user) { alert("Please Login!"); return; }
 
-    var inputId = mode === "edit"  ? "edit-in-"  + rowId
-                : pid  === "0"    ? "tc-input"
-                :                   "reply-in-" + pid;
+    var inputId = mode === "edit"  ? "edit-in-"  + rowId : pid === "0" ? "tc-input" : "reply-in-" + pid;
     var inputEl = document.getElementById(inputId);
     var msg     = inputEl ? inputEl.value.trim() : "";
     if (!msg) return;
@@ -538,26 +414,25 @@
 
   function renderCard(c, list) {
     var canEdit = user && user.e === c.email;
-    var starStr = c.userRating > 0
-      ? '<span style="color:#f4b400;font-size:10px;margin-left:8px;">' + "★".repeat(c.userRating) + '</span>' : "";
-    var safeComment = String(c.comment).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
-    var safeName    = String(c.name).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
-
+    var starStr = c.userRating > 0 ? '<span style="color:#f4b400;font-size:10px;margin-left:8px;">' + "★".repeat(c.userRating) + '</span>' : "";
+    var safeComment = String(c.comment).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+    var safeName    = String(c.name).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+    
+    // 🟢 Contrast Safe Color updated (#b0b0b0)
     var html = '<div class="tc-card ' + (c.parentId !== "0" ? "reply " : "") + (c.pending ? "pending" : "") + '">'
       + '<div><img src="' + c.pic + '" class="tc-card-pfp" alt="' + safeName + '" onerror="this.src=\'https://tyagihub.in/assets/images/icon-192.png\'">'
       + '<span style="font-weight:bold;font-size:14px;">' + safeName + '</span>'
       + (c.isAdmin ? '<span class="tc-admin-badge">ADMIN ⭐</span>' : '')
       + starStr
-      + '<small style="float:right;color:#575757;">' + c.date + '</small></div>'
+      + '<small style="float:right;color:#b0b0b0;">' + c.date + '</small></div>'
       + '<div style="margin:8px 0 0 42px;font-size:14px;color:#333;" id="body-' + c.rowId + '">' + safeComment + '</div>'
       + '<div class="tc-actions">'
       + '<span onclick="checkAuthAndOpen(\'' + c.rowId + '\',\'reply\')">Reply</span>'
-      + (canEdit ? '<span onclick="checkAuthAndOpen(\'' + c.rowId + '\',\'edit\')">Edit</span>'                                             : '')
-      + (canEdit ? '<span style="color:#d93025" onclick="deleteMsg(\'' + c.rowId + '\')">Delete</span>'                    : '')
+      + (canEdit ? '<span onclick="checkAuthAndOpen(\'' + c.rowId + '\',\'edit\')">Edit</span>' : '')
+      + (canEdit ? '<span style="color:#d93025" onclick="deleteMsg(\'' + c.rowId + '\')">Delete</span>' : '')
       + '</div><div id="box-' + c.rowId + '" class="tc-inline-box"></div></div>';
-
-    list.filter(function(r) { return String(r.parentId) === String(c.rowId); })
-        .forEach(function(r) { html += renderCard(r, list); });
+      
+    list.filter(function(r) { return String(r.parentId) === String(c.rowId); }).forEach(function(r) { html += renderCard(r, list); });
     return html;
   }
 
@@ -567,18 +442,11 @@
     document.querySelectorAll(".tc-inline-box").forEach(function(b) { b.innerHTML = ""; });
     var box = document.getElementById("box-" + id);
     if (!box) return;
-
     if (type === "reply") {
-      box.innerHTML = '<textarea id="reply-in-' + id + '" placeholder="Write a reply..."></textarea>'
-        + '<div style="text-align:right;margin-top:5px;">'
-        + '<button onclick="isTyping=false;this.parentElement.parentElement.innerHTML=\'\'" style="background:none;border:none;cursor:pointer;font-size:12px;margin-right:10px;">Cancel</button>'
-        + '<button class="tc-post-btn" onclick="handleAction(\'' + id + '\')">Reply</button></div>';
+      box.innerHTML = '<textarea id="reply-in-' + id + '" placeholder="Write a reply..."></textarea>' + '<div style="text-align:right;margin-top:5px;"><button onclick="isTyping=false;this.parentElement.parentElement.innerHTML=\'\'" style="background:none;border:none;cursor:pointer;font-size:12px;margin-right:10px;">Cancel</button><button class="tc-post-btn" onclick="handleAction(\'' + id + '\')">Reply</button></div>';
     } else {
       var old = document.getElementById("body-" + id).innerText;
-      box.innerHTML = '<textarea id="edit-in-' + id + '">' + old + '</textarea>'
-        + '<div style="text-align:right;margin-top:5px;">'
-        + '<button onclick="isTyping=false;this.parentElement.parentElement.innerHTML=\'\'" style="background:none;border:none;cursor:pointer;font-size:12px;margin-right:10px;">Cancel</button>'
-        + '<button class="tc-post-btn" onclick="handleAction(\'0\',\'edit\',\'' + id + '\')">Update</button></div>';
+      box.innerHTML = '<textarea id="edit-in-' + id + '">' + old + '</textarea>' + '<div style="text-align:right;margin-top:5px;"><button onclick="isTyping=false;this.parentElement.parentElement.innerHTML=\'\'" style="background:none;border:none;cursor:pointer;font-size:12px;margin-right:10px;">Cancel</button><button class="tc-post-btn" onclick="handleAction(\'0\',\'edit\',\'' + id + '\')">Update</button></div>';
     }
     var ta = box.querySelector("textarea");
     if (ta) ta.focus();
@@ -586,18 +454,14 @@
 
   window.deleteMsg = async function(id) {
     if (!confirm("Delete permanently?")) return;
-    await fetch(SCRIPT_URL, {
-      method: "POST", mode: "no-cors",
-      body: JSON.stringify({ action: "delete", rowId: id, email: user.e })
-    });
+    await fetch(SCRIPT_URL, { method: "POST", mode: "no-cors", body: JSON.stringify({ action: "delete", rowId: id, email: user.e }) });
     sync();
   };
-
   init();
 })();
 </script>
-
 {% endif %}
+
   {% include footer.html %}
   <script src="{{ site.url }}/assets/js/main.js" defer="defer"></script>
   <script src="{{ site.url }}/assets/js/search.js" defer="defer"></script>
