@@ -91,13 +91,11 @@
         <div class="th-nav-auth-container" style="position: relative; display: inline-flex; align-items: center; vertical-align: middle;">
           
           <div id="th-nav-logged-out" style="display: inline-flex;">
-            <button class="btn btn-primary btn-sm" id="th-sign-in-trigger">
-              {% if page.lang == "hi" %}लॉगइन{% else %}Sign In{% endif %}
-            </button>
+            <div class="g_id_signin" data-type="standard" data-size="small" data-theme="outline" data-text="signin" data-shape="pill"></div>
           </div>
 
           <div id="th-nav-logged-in" style="display: none; align-items: center;">
-            <img id="th-nav-pfp-trigger" src="" onclick="toggleThDropdown(event)" style="width: 32px; height: 32px; border-radius: 50%; border: 2px solid #1a73e8; cursor: pointer; object-fit: cover;" alt="User Profile Picture">
+            <img id="th-nav-pfp-trigger" src="" onclick="toggleThDropdown(event)" style="width: 32px; height: 32px; border-radius: 50%; border: 2px solid #1a73e8; cursor: pointer; object-fit: cover;" alt="User Profile">
             
             <div id="th-nav-dropdown-panel" style="display: none; position: absolute; right: 0; top: 42px; width: 230px; background: #ffffff; border: 1px solid #e0e0e0; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.15); z-index: 10000; padding: 8px 0; font-family: sans-serif; text-align: left;">
               <div style="padding: 10px 16px; border-bottom: 1px solid #f0f0f0; margin-bottom: 5px;">
@@ -218,19 +216,6 @@
             document.getElementById("th-nav-pfp-trigger").src = userCache.p;
             document.getElementById("th-dd-name").innerText = userCache.n;
             document.getElementById("th-dd-email").innerText = userCache.e;
-        }
-
-        // 🟢 Robust event listener pattern to completely bypass inline parsing exceptions
-        const signInBtn = document.getElementById("th-sign-in-trigger");
-        if (signInBtn) {
-            signInBtn.addEventListener("click", function(e) {
-                e.preventDefault();
-                if (typeof google !== 'undefined' && google.accounts && google.accounts.id) {
-                    google.accounts.id.prompt();
-                } else {
-                    console.warn("Google identity client API object reference unavailable at execution point.");
-                }
-            });
         }
     });
 })();
