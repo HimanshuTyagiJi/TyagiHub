@@ -1,4 +1,56 @@
 ---
 layout: default
 ---
-{{ content }}
+
+ 
+<style>
+/* ==========================================================
+   TYAGIHUB TWO-COLUMN SPLIT DESKTOP & MOBILE SYSTEM
+========================================================== */
+.study-split-layout {
+    display: flex;
+    gap: 30px;
+    max-width: 1250px;
+    margin: 40px auto;
+    padding: 0 16px;
+    align-items: flex-start;
+}
+
+.study-main-content-panel {
+    flex: 1;
+    min-width: 0; /* Prevents text bounds overflow in flex grids */
+    background: var(--privacy-surface, #ffffff);
+    border: 1px solid var(--privacy-border-2, #e2e8f0);
+    border-radius: 24px;
+    padding: 40px;
+    box-shadow: var(--privacy-shadow, 0 15px 35px rgba(15,23,42,0.04));
+    transition: background 0.3s ease, border 0.3s ease;
+}
+
+/* ==========================================================
+   RESPONSIVE LAYOUT RESPONSIVENESS OVERRIDES
+========================================================== */
+@media (max-width: 992px) {
+    .study-split-layout {
+        flex-direction: column;
+        margin: 20px auto;
+        gap: 20px;
+    }
+    .study-main-content-panel {
+        padding: 24px 16px;
+        border-radius: 18px;
+        width: 100%;
+        box-sizing: border-box;
+    }
+}
+</style>
+
+<div class="study-split-layout">
+    
+    {% include vyakaran.html %}
+
+    <main class="study-main-content-panel">
+        {{ content }}
+    </main>
+
+</div>
