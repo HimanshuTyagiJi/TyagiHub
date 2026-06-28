@@ -15,7 +15,14 @@
   gap: 1.5rem;
   margin-bottom: 2rem;
 }
-
+  .tyagihub-main-layout {
+            display: grid;
+            grid-template-columns: 280px 1fr 280px;
+            margin: 62px auto;
+            /* padding: 0 15px; */
+            align-items: start;
+            position: relative;
+          }
 .top-controls {
   display: flex;
   gap: 1rem;
