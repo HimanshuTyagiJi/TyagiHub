@@ -1,182 +1,230 @@
 ---
 layout: default
-title: Privacy Policy | TyagiHub - The MultiTech Digital Ecosystem
+title: Privacy Policy | The MultiTech Digital Ecosystem
 permalink: /privacy/
 lang: en
 description: Read the Privacy Policy of TyagiHub. Learn how Tyagi MultiTech ensures strict data protection, transactional safety, and cookie transparency.
+comments: false
 ---
 
 <style>
-    :root {
-        --primary: #0062ff;
-        --bg: #fdfdfd;
-        --card: #ffffff;
-        --text-dark: #1a1f36;
-        --text-light: #4f566b;
-        --accent: #eef2ff;
-    }
-    .wrapper {
+    /* 🔴 DUAL THEME TOKENS ADAPTATION GRID */
+    .privacy-wrapper {
         max-width: 950px;
         margin: 40px auto;
-        background: var(--card);
-        border: 1px solid #e3e8ee;
-        border-radius: 20px;
+        background: var(--surface, #ffffff);
+        border: 1px solid var(--border2, rgba(0,0,0,0.08));
+        border-radius: var(--radius, 20px);
         overflow: hidden;
-        box-shadow: 0 15px 35px rgba(50,50,93,0.05), 0 5px 15px rgba(0,0,0,0.03);
+        box-shadow: var(--glow-blue, 0 15px 35px rgba(0,0,0,0.05));
+        transition: background 0.3s ease, border 0.3s ease;
     }
-    .header {
-        background: linear-gradient(to right, #f8fafd, #ffffff);
+    .privacy-header {
+        background: linear-gradient(135deg, var(--bg2, #f8fafd), var(--surface, #ffffff));
         padding: 60px 50px;
-        border-bottom: 1px solid #e3e8ee;
+        border-bottom: 1px solid var(--border2, rgba(0,0,0,0.08));
         text-align: center;
     }
-    .header h1 {
-        font-size: 2.8rem;
-        font-weight: 800;
-        color: var(--text-dark);
-        letter-spacing: -1px;
-        margin-bottom: 10px;
+    .privacy-header h1 {
+        font-size: 3rem;
+        font-weight: 900;
+        color: var(--heading, #0f172a);
+        letter-spacing: -0.04em;
+        margin-bottom: 12px;
     }
-    .header p {
-        color: var(--text-light);
-        font-size: 1.1rem;
+    .privacy-header p {
+        color: var(--text, #475569);
+        font-size: 1.15rem;
+        font-weight: 500;
+        max-width: 65ch;
+        margin: 0 auto;
     }
-    .badge {
-        background: var(--accent);
-        color: var(--primary);
-        padding: 6px 16px;
+    .privacy-badge {
+        background: rgba(59, 130, 246, 0.1);
+        color: var(--accent, #3b82f6);
+        padding: 8px 18px;
         border-radius: 50px;
-        font-weight: 600;
+        font-weight: 700;
         font-size: 0.85rem;
         margin-bottom: 20px;
         display: inline-block;
+        border: 1px solid rgba(59, 130, 246, 0.15);
     }
-    .content-body {
+    .privacy-body {
         padding: 50px;
+        background: var(--surface, #ffffff);
     }
-    .section {
-        margin-bottom: 45px;
+    .privacy-section {
+        margin-bottom: 50px;
     }
-    .section-title {
+    .privacy-title {
         display: flex;
         align-items: center;
-        font-size: 1.4rem;
-        font-weight: 700;
-        color: var(--text-dark);
-        margin-bottom: 18px;
+        font-size: 1.5rem;
+        font-weight: 800;
+        color: var(--heading, #0f172a);
+        margin-bottom: 20px;
+        letter-spacing: -0.02em;
     }
-    .section-title span {
-        background: var(--primary);
-        color: white;
-        width: 32px;
-        height: 32px;
-        border-radius: 8px;
+    .privacy-title span {
+        background: var(--accent, #3b82f6);
+        color: #ffffff;
+        width: 36px;
+        height: 36px;
+        border-radius: 10px;
         display: flex;
         align-items: center;
         justify-content: center;
-        margin-right: 15px;
-        font-size: 0.9rem;
+        margin-right: 18px;
+        font-size: 0.95rem;
+        font-weight: 700;
+        box-shadow: 0 4px 10px rgba(59, 130, 246, 0.2);
     }
-    .text-block {
-        color: var(--text-light);
-        font-size: 1.05rem;
-        margin-left: 47px;
+    .privacy-text {
+        color: var(--text, #475569);
+        font-size: 1.08rem;
+        margin-left: 54px;
+        line-height: var(--lh-loose, 1.8);
+        text-align: justify;
     }
-    .highlight-card {
-        background: #fbfcfe;
-        border: 1px solid #edf2f7;
+    .privacy-text strong {
+        color: var(--heading, #0f172a);
+    }
+    .privacy-highlight {
+        background: var(--bg2, #fbfcfe);
+        border: 1px solid var(--border2, #edf2f7);
         padding: 25px;
-        border-radius: 12px;
-        margin: 20px 0 20px 47px;
+        border-radius: 14px;
+        margin: 22px 0 22px 54px;
+        color: var(--text, #475569);
+        font-size: 1.05rem;
+        line-height: 1.7;
     }
-    .contact-footer {
-        background: #1a1f36;
-        color: white;
-        padding: 50px;
+    .privacy-highlight strong {
+        color: var(--heading, #0f172a);
+    }
+    .privacy-footer {
+        background: var(--bg2, #1a1f36);
+        border-top: 1px solid var(--border2, rgba(255,255,255,0.05));
+        padding: 60px 50px;
         text-align: center;
     }
-    .contact-footer h3 {
+    .privacy-footer h3 {
+        color: var(--heading, #ffffff);
         margin-bottom: 15px;
-        font-size: 1.6rem;
+        font-size: 1.7rem;
+        font-weight: 800;
+        letter-spacing: -0.02em;
     }
-    .contact-footer a {
-        color: #4cd137;
+    .privacy-footer p {
+        color: var(--text, #94a3b8);
+        font-size: 1.05rem;
+        max-width: 60ch;
+        margin: 0 auto 25px;
+    }
+    .privacy-footer a {
+        color: var(--accent2, #06b6d4);
         text-decoration: none;
-        font-weight: 700;
-        font-size: 1.2rem;
+        font-weight: 800;
+        font-size: 1.3rem;
+        font-family: var(--mono, monospace);
+        border-bottom: 2px dashed rgba(6, 182, 212, 0.3);
+        padding-bottom: 3px;
+        transition: color 0.2s ease, border-color 0.2s ease;
     }
+    .privacy-footer a:hover {
+        color: var(--accent, #3b82f6);
+        border-color: var(--accent, #3b82f6);
+    }
+    .privacy-timestamp {
+        margin-top: 35px;
+        font-size: 0.85rem;
+        color: var(--muted, #475569);
+        font-weight: 500;
+    }
+
     @media (max-width: 768px) {
-        .header, .content-body, .contact-footer { padding: 30px 20px; }
-        .header h1 { font-size: 2rem; }
-        .text-block { margin-left: 0; }
-        .section-title span { display: none; }
+        .privacy-wrapper { margin: 20px 10px; }
+        .privacy-header { padding: 40px 20px; }
+        .privacy-body { padding: 30px 20px; }
+        .privacy-footer { padding: 40px 20px; }
+        .privacy-header h1 { font-size: 2.2rem; }
+        .privacy-text { margin-left: 0; text-align: left; }
+        .privacy-highlight { margin-left: 0; }
+        .privacy-title span { display: none; }
     }
 </style>
 
-<div class="wrapper">
-    <div class="header">
-        <span class="badge">Updated on 16 June 2026</span>
+<div class="privacy-wrapper">
+    <div class="privacy-header">
+        <span class="privacy-badge">System Modified: 16 June 2026</span>
         <h1>Privacy Policy</h1>
-        <p>Data Protection, Structural Compliance & Security Frameworks at TyagiHub</p>
+        <p>Data Protection Strategy, Transactional Isolation Layer, & Structural Compliance Frameworks at TyagiHub</p>
     </div>
 
-    <div class="content-body">
-        <div class="section">
-            <div class="section-title"><span>01</span> Overview</div>
-            <div class="text-block">
-                Welcome to <strong>TyagiHub</strong>, the official digital workspace maintained by Tyagi MultiTech. We value your engagement across our platforms, technical micro-tools, and learning desks. This policy document outlines our non-intrusive operations, systemic structure, and absolute data protection standards to ensure a highly secure browsing runtime.
+    <div class="privacy-body">
+        <!-- Section 1 -->
+        <div class="privacy-section">
+            <div class="privacy-title"><span>01</span> Functional Overview</div>
+            <div class="privacy-text">
+                Welcome to <strong>TyagiHub</strong>, the official structural utility space engineered and securely maintained by <strong>Tyagi MultiTech</strong>. We prioritize non-intrusive computing methodologies across our application modules, technical system configurations, and dynamic general knowledge testing environments. This documentation defines our high-performance structural boundaries, local-first computing priorities, and systemic validation workflows deployed to preserve your absolute processing integrity.
             </div>
         </div>
 
-        <div class="section">
-            <div class="section-title"><span>02</span> Voluntarily Shared Data</div>
-            <div class="text-block">
-                TyagiHub does not force identity registration or pull back-channel tracking cookies to profile your lifestyle. Our entire network operates on optimized open infrastructure. The only segments processing data occur when you engage directly:
-                <ul style="margin-top: 10px; padding-left: 20px; list-style-type: square;">
-                    <li><strong>Communications Data:</strong> When contacting our system help desks via official email protocols, we retain your email address strictly to process technical responses.</li>
-                    <li><strong>Store Purchases:</strong> Basic purchase inputs required to manage delivery loops and transaction receipts when downloading exclusive resource models from our PDF desk.</li>
+        <!-- Section 2 -->
+        <div class="privacy-section">
+            <div class="privacy-title"><span>02</span> Voluntarily Injected Information Nodes</div>
+            <div class="privacy-text">
+                TyagiHub does not enforce automated consumer identity mapping pipelines or extract silent telemetry parameters to build behavioral patterns. Our infrastructure architecture is strictly engineered for unrestricted educational accessibility. System interaction states only trigger transient processing data loops during active, explicit operations:
+                <ul style="margin-top: 12px; padding-left: 20px; list-style-type: square; line-height: 1.8;">
+                    <li><strong>Direct Technical Communication:</strong> When transmitting inquiries to our structural maintenance queues via official communication vectors, we store your origin email coordinates solely to resolve system requests.</li>
+                    <li><strong>Ecosystem Store Operations:</strong> Minimal operational markers are required to process invoice delivery blocks and generation sequences when retrieving exclusive learning materials from our static PDF document databases.</li>
                 </ul>
             </div>
         </div>
 
-        <div class="section">
-            <div class="section-title"><span>03</span> Decoupled Payment Gateways</div>
-            <div class="text-block">
-                Financial data is treated under rigid operational isolations. For access to premium notes and material stores, we route requests through secure third-party billing infrastructures.
-                <div class="highlight-card">
-                    <strong>Technical Isolation:</strong> Our systems do not handle, cache, store, or log sensitive billing details, card tokens, bank numbers, or authentication passwords. Processing is completely decoupled and handled by end-to-end encrypted gateways.
+        <!-- Section 3 -->
+        <div class="privacy-section">
+            <div class="privacy-title"><span>03</span> Cryptographic Billing & Payment Isolation</div>
+            <div class="privacy-text">
+                All micro-transaction structures processing across our network nodes operate under strict hardware layer sandboxing. Premium document fulfillment runs through completely independent transaction routing networks.
+                <div class="privacy-highlight">
+                    <strong>Architectural Security Standard:</strong> TyagiHub infrastructure pipelines do not process, intercept, log, or cache financial payloads, account tokens, sensitive card variables, routing numbers, or account validation phrases. Transaction processes execute entirely inside external, globally certified cryptographic billing layers.
                 </div>
             </div>
         </div>
 
-        <div class="section">
-            <div class="section-title"><span>04</span> Cookie Management & Third-Party Advertising</div>
-            <div class="text-block">
-                TyagiHub does not run internal tracking tokens. However, to keep our system resources free and scalable, we interface with third-party networks (such as Google AdSense) to serve display advertising. These verified partner engines may look at cookie metadata to parse contextually accurate configurations. Users retain full rights to block or disable cookie tracking via native web browser preferences.
+        <!-- Section 4 -->
+        <div class="privacy-section">
+            <div class="privacy-title"><span>04</span> Cookie Distribution & Third-Party Advertising Frameworks</div>
+            <div class="privacy-text">
+                The native execution core of TyagiHub does not utilize first-party analytical tracking loops. To maintain free computing utilities and offset global server infrastructure costs, our endpoints deploy verified third-party contextual processing assets (including Google AdSense networks). These automated partner configurations may parse standard request cookies to render secure, target-accurate configurations. Visitors hold absolute structural authority to revoke tracking privileges by resetting localized browser parameters at any time.
             </div>
         </div>
 
-        <div class="section">
-            <div class="section-title"><span>05</span> Content Integrity & Liability Blueprint</div>
-            <div class="text-block">
-                We implement thorough internal checks across our analytical platforms, programming code modules, and educational libraries to ensure maximum structural depth.
+        <!-- Section 5 -->
+        <div class="privacy-section">
+            <div class="privacy-title"><span>05</span> Content Integrity & Operational Liability Blueprint</div>
+            <div class="privacy-text">
+                Our internal development desks run comprehensive validation testing loops across every single programmatic module, script block, and exam template repository to guarantee clean structural density.
                 <br><br>
-                <strong>Liability Disclaimer:</strong> TyagiHub and its parent firm, Tyagi MultiTech, offer resources strictly on an "as-available" architecture. We do not provide absolute legal liability or warranty over sudden curriculum updates or computing software script mismatches. All technical facts, solutions, and exam models should be analyzed across official standard documentations.
+                <strong>Ecosystem Liability Clause:</strong> TyagiHub and its parent firm, Tyagi MultiTech, deploy technical products strictly on an "as-available" runtime basis. We explicitly disclaim warranty protections or legal liabilities concerning structural updates by government examination councils or local hardware system processing anomalies. Users are advised to verify mathematical targets and runtime behaviors against official standard references.
             </div>
         </div>
 
-        <div class="section">
-            <div class="section-title"><span>06</span> External Network Redirections</div>
-            <div class="text-block">
-                Our site interfaces may contain external outbound hyperlinks. TyagiHub does not maintain administrative controls over the network scripts, security guidelines, or operational content published on external platforms.
+        <!-- Section 6 -->
+        <div class="privacy-section">
+            <div class="privacy-title"><span>06</span> External Network Redirections</div>
+            <div class="privacy-text">
+                Our dynamic content systems interface with outbound hyperlinks pointing toward independent network platforms. TyagiHub exercises zero administrative control over the tracking protocols, runtime scripts, or content safety schemas deployed outside our verified root domain configurations.
             </div>
         </div>
     </div>
 
-    <div class="contact-footer">
+    <div class="privacy-footer">
         <h3>Technical Support & Compliance Desk</h3>
-        <p>For data removal requests, structural compliance questions, or infrastructure inquiries, target communications to:</p>
-        <a href="mailto:contact@tyagihub.in">contact@tyagihub.in</a>
-        <p style="margin-top: 25px; font-size: 0.8rem; opacity: 0.6;">&copy; 2024 - 2026 Tyagi MultiTech | All Infrastructure Reserved</p>
+        <p>For systemic data purge requests, explicit compliance inquiries, or backend infrastructure coordination, direct communications to our security interface:</p>
+        <a href="mailto:tyagihub.official@gmail.com">tyagihub.official@gmail.com</a>
+        <p class="privacy-timestamp">&copy; 2024 - 2026 Tyagi MultiTech | All Infrastructure Systems Reserved</p>
     </div>
 </div>
