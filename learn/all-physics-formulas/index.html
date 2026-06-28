@@ -296,7 +296,125 @@ lang_toggle: false
                         English
                     </button>
                 </div>
-            </header>
+            </header><style>/* ==========================================================
+   TYAGIHUB PREMIUM SCI-FI PHYSICS HEADER CORE
+========================================================== */
+.physics-container-header {
+    max-width: 1000px;
+    margin: 40px auto;
+    padding: 40px 30px;
+    background: var(--privacy-surface, #ffffff);
+    border: 1px solid var(--privacy-border-2, #e2e8f0);
+    border-radius: 24px;
+    box-shadow: var(--privacy-shadow, 0 20px 40px rgba(15,23,42,0.06));
+    position: relative;
+    overflow: hidden;
+    transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* HIGH-TECH GLOW LINING BACKGROUND */
+.physics-container-header::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(90deg, #4f46e5, #06b6d4, #f43f5e);
+}
+
+/* 🪐 ANIMATED PHYSICS GRADIENT ICON SHELL */
+.physics-svg-wrap {
+    display: inline-flex;
+    padding: 16px;
+    border-radius: 20px;
+    background: var(--privacy-highlight, #f8fafc);
+    border: 1px solid var(--privacy-border, #e2e8f0);
+    box-shadow: inset 0 2px 8px rgba(0,0,0,0.02);
+    transition: all 0.3s ease;
+}
+
+html[data-theme="dark"] .physics-svg-wrap {
+    background: rgba(79, 70, 229, 0.04);
+    border-color: rgba(79, 70, 229, 0.2);
+    box-shadow: 0 0 25px rgba(6, 182, 212, 0.15);
+}
+
+.physics-svg-wrap svg {
+    filter: drop-shadow(0 0 10px rgba(79, 70, 229, 0.4));
+}
+
+/* 🏷️ CORE TYPOGRAPHY SETTINGS */
+.physics-container-header h1 {
+    font-size: clamp(1.8rem, 4.5vw, 2.25rem);
+    font-weight: 900;
+    color: var(--privacy-heading, #1e293b);
+    letter-spacing: -0.03em;
+    line-height: 1.2;
+}
+
+.physics-container-header p {
+    color: var(--privacy-text, #64748b);
+    font-weight: 500;
+    max-width: 720px;
+    margin-inline: auto;
+}
+
+/* 🔄 ADVANCED LANGUAGE SWITCHER COMPONENT GRID */
+.physics-toggle-desk {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+}
+
+.physics-toggle-btn {
+    padding: 8px 22px;
+    font-size: 13px;
+    font-weight: 700;
+    border: 1px solid var(--privacy-border-2, #e2e8f0);
+    background: var(--privacy-surface, #ffffff);
+    color: var(--privacy-text, #475569);
+    border-radius: 50px;
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ACTIVE BUTTON EFFECT WITH SHADOW MATRIX */
+.physics-toggle-btn.active-tab, 
+.physics-toggle-btn:hover {
+    background: linear-gradient(135deg, #4f46e5, #06b6d4) !important;
+    color: #ffffff !important;
+    border-color: transparent !important;
+    box-shadow: 0 8px 20px rgba(79, 70, 229, 0.3);
+    transform: translateY(-1px);
+}
+
+/* 🌐 LANG FALLBACKS FILTER */
+.physics-container-header .hindi,
+.physics-container-header .english {
+    display: none;
+}
+[data-lang="hi"] .physics-container-header .hindi { display: inline; }
+[data-lang="hi"] .physics-container-header p.hindi { display: block; }
+[data-lang="en"] .physics-container-header .english { display: inline; }
+[data-lang="en"] .physics-container-header p.english { display: block; }
+
+/* ==========================================================
+   RESPONSIVE DESIGN COMPLIANCE
+========================================================== */
+@media (max-width: 768px) {
+    .physics-container-header {
+        margin: 20px 12px;
+        padding: 30px 16px;
+        border-radius: 20px;
+    }
+    .physics-svg-wrap {
+        padding: 12px;
+    }
+    .physics-svg-wrap svg {
+        width: 90px !important;
+        height: 90px !important;
+    }
+}</style>
 
             <!-- ── WATERMARK CANVAS HERO BANNER ── -->
             <div class="th-canvas-hero-wrap">
