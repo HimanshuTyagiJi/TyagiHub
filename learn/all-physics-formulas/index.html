@@ -241,9 +241,9 @@ lang_toggle: false
             "@type": "Article",
             "headline": "भौतिकी के महत्वपूर्ण सूत्र - Class 9, 10, 11, 12",
             "description": "कक्षा 9वीं, 10वीं, 11वीं और 12वीं भौतिक विज्ञान (Physics) के सभी आवश्यक सूत्र, परिभाषाएं और अध्याय-वार विस्तृत सूची।",
-            "image": "https://tyagihub.com/images/physics.png",
+            "image": "https://tyagihub.in/images/physics.png",
             "author": { "@type": "Organization", "name": "TyagiHub" },
-            "url": "/learn/physics/formulas-hindi/"
+           
         }
         </script>
 
@@ -745,7 +745,7 @@ function renderPhysicsHeroCanvas() {
     ctx.fillStyle = "#ffffff"; 
     ctx.font = "bold 44px sans-serif";
     ctx.textAlign = "right"; 
-    ctx.fillText("tyagihub.com", W - 70, H - 40);
+    ctx.fillText("tyagihub.in", W - 70, H - 40);
     ctx.restore();
 }
 
@@ -932,7 +932,7 @@ function generateChapterDirectory(classNum) {
 function copyPhysicsFormulaText(button, title, formulaHtml) {
     // Format copying text beautifully for students - strip any HTML if present
     var cleanFormula = formulaHtml.replace(/<[^>]*>/g, '').replace(/\s+/g, ' ').trim();
-    var plainText = title + ": " + cleanFormula + " — Study via TyagiHub (tyagihub.com)";
+    var plainText = title + ": " + cleanFormula + " — Study via TyagiHub (tyagihub.in)";
     
     navigator.clipboard.writeText(plainText).then(function() {
         // Dynamic tick feedback
