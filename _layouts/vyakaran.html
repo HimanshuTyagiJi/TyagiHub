@@ -3,7 +3,164 @@ layout: default
 ---
 
  
+<style>/* ==========================================================
+   TYAGIHUB THREE-COLUMN GRID ENGINE (VYAKARAN DESK)
+========================================================== */
+:root {
+    --side-bg: #ffffff;
+    --side-border: var(--border2, #e5e7eb);
+    --side-text: #4b5563;
+    --side-heading: #111827;
+    --side-active-bg: rgba(37, 99, 235, 0.08);
+    --side-active-text: #2563eb;
+    --side-shadow: 0 15px 35px rgba(15, 23, 42, 0.04);
+}
 
+html[data-theme="dark"] {
+    --side-bg: #0f172a;
+    --side-border: var(--border2, #233247);
+    --side-text: #cbd5e1;
+    --side-heading: #f8fafc;
+    --side-active-bg: rgba(56, 189, 248, 0.12);
+    --side-active-text: #38bdf8;
+    --side-shadow: 0 15px 35px rgba(0, 0, 0, 0.35);
+}
+
+/* 🧱 CORE GRID ARCHITECTURE */
+.study-split-layout {
+    display: grid;
+    grid-template-columns: 280px 1fr 260px;
+    gap: 24px;
+    max-width: 1400px;
+    margin: 40px auto;
+    padding: 0 16px;
+    align-items: flex-start;
+}
+
+/* ⬅️ LEFT COLUMN: CATALOG SIDEBAR */
+.vyakaran-aside {
+    position: sticky;
+    top: 90px;
+    height: calc(100vh - 130px);
+    background: var(--side-bg);
+    border: 1px solid var(--side-border);
+    border-radius: 20px;
+    overflow-y: auto;
+    box-shadow: var(--side-shadow);
+    padding: 24px 16px;
+    box-sizing: border-box;
+    scrollbar-width: thin;
+    scrollbar-color: var(--side-border) transparent;
+}
+
+.vyakaran-aside h2 {
+    font-size: 1.1rem;
+    font-weight: 850;
+    color: var(--side-heading);
+    margin: 0 0 16px 4px;
+    letter-spacing: -0.02em;
+}
+
+.vyakaran-nav-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.vyakaran-nav-list li a {
+    display: block;
+    padding: 10px 14px;
+    color: var(--side-text);
+    text-decoration: none;
+    font-size: 0.95rem;
+    font-weight: 600;
+    border-radius: 12px;
+    transition: all 0.2s ease;
+}
+
+.vyakaran-nav-list li a:hover {
+    background: var(--side-active-bg);
+    color: var(--side-active-text);
+    padding-left: 18px;
+}
+
+.vyakaran-nav-list li a.active {
+    background: var(--side-active-bg);
+    color: var(--side-active-text);
+    font-weight: 700;
+    border-left: 4px solid var(--side-active-text);
+    border-radius: 4px 12px 12px 4px;
+}
+
+/* 📄 MIDDLE COLUMN: MAIN CONTENT CORE */
+.study-main-content-panel {
+    min-width: 0; /* Anti-overflow block */
+    background: var(--side-bg);
+    border: 1px solid var(--side-border);
+    border-radius: 24px;
+    padding: 40px;
+    box-shadow: var(--side-shadow);
+    transition: background 0.3s, border 0.3s;
+}
+
+/* ➡️ RIGHT COLUMN: AD desk / UTILITY PANEL */
+/* (Isme jo right-sidebar.html lagaya hai uski parent class right-sidebar rakhna bsdk) */
+.right-sidebar {
+    position: sticky;
+    top: 90px;
+    background: var(--side-bg);
+    border: 1px solid var(--side-border);
+    border-radius: 20px;
+    padding: 20px;
+    box-shadow: var(--side-shadow);
+    box-sizing: border-box;
+}
+
+/* ==========================================================
+   📱 RESPONSIVE MEDIA BREAKPOINTS (LAPTOPS / MOBILE)
+========================================================== */
+
+/* Laptop screen compression */
+@media (max-width: 1200px) {
+    .study-split-layout {
+        grid-template-columns: 260px 1fr; /* Hide right sidebar or stack it */
+    }
+    .right-sidebar {
+        display: none; /* Auto-hide right banner on medium screens to keep content clean */
+    }
+}
+
+/* Mobile & Tablet view layout mutation */
+@media (max-width: 992px) {
+    .study-split-layout {
+        grid-template-columns: 1fr;
+        margin: 20px auto;
+        gap: 20px;
+    }
+    .study-main-content-panel {
+        padding: 24px 16px;
+        border-radius: 18px;
+    }
+    
+    /* Mobile slide animation variables trigger config */
+    .vyakaran-aside {
+        position: fixed;
+        top: 0;
+        left: -300px;
+        width: 280px;
+        height: 100vh;
+        z-index: 1001;
+        border-radius: 0 24px 24px 0;
+        padding-top: 50px;
+        transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .vyakaran-aside.mobile-open {
+        transform: translateX(300px);
+    }
+}</style>
  
 <div class="study-split-layout">
     
