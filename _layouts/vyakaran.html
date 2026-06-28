@@ -23,7 +23,7 @@ layout: default
     flex-shrink: 0;
     background: var(--bg-surface);
     border-right: 1px solid var(--border-table);
-    position: fixed;
+    position: fixed !important;
     top: 62px;
     height: calc(100vh - 64px);
     overflow-y: auto;
@@ -42,7 +42,7 @@ layout: default
     max-width: 920px;
     width: 100%;
   
-    margin-left:300px; 
+        margin: 00px 300px 00px 300px;
     box-sizing: border-box;
     display: block;
 }
@@ -109,7 +109,7 @@ layout: default
         padding: 20px 16px;
     }
     .gk-sidebar {
-        position: fixed;
+        position: unset;
         top: 56px;
         left: 0;
         height: 100%;
