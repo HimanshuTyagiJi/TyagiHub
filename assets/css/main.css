@@ -2703,3 +2703,92 @@ img {
   height: 120px;
   object-fit: cover; /* 16:9 photo ko bina dabaye square me set karega */
 }
+/* ==========================================================
+   TYAGIHUB SCIENCE/EDUCATION HEADER ENGINE
+========================================================== */
+.education-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: var(--space-10, 40px) var(--space-4, 16px);
+    background: linear-gradient(180deg, var(--privacy-bg, #f4f7fb), var(--privacy-surface, #ffffff));
+    border-bottom: 1px solid var(--privacy-border-2, #e5e7eb);
+    transition: background 0.35s ease, border 0.35s ease;
+}
+
+/* 🪐 ANIMATED ATOM SVG SHELL GRID */
+.atom-svg-wrap {
+    position: relative;
+    width: 140px;
+    height: 140px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: var(--space-5, 20px);
+    border-radius: 50%;
+    background: var(--privacy-highlight, #f8fafc);
+    border: 1px solid var(--privacy-border, #e5e7eb);
+    box-shadow: inset 0 4px 12px rgba(0, 0, 0, 0.02);
+    transition: background 0.3s ease;
+}
+
+html[data-theme="dark"] .atom-svg-wrap {
+    background: rgba(139, 92, 246, 0.05);
+    border-color: rgba(139, 92, 246, 0.15);
+    box-shadow: 0 0 25px rgba(139, 92, 246, 0.1);
+}
+
+.atom-svg-wrap svg {
+    display: block;
+    overflow: visible;
+    filter: drop-shadow(0 0 8px rgba(139, 92, 246, 0.3));
+}
+
+/* 🏷️ HIGH PRESENTATION DENSITY TYPOGRAPHY */
+.education-header #page-title {
+    font-size: clamp(2rem, 5vw, 2.8rem);
+    font-weight: 900;
+    color: var(--privacy-heading, #111827);
+    letter-spacing: -0.04em;
+    margin: 0;
+    line-height: 1.15;
+    text-align: center;
+}
+
+.education-header .education-description {
+    color: var(--privacy-text, #4b5563);
+    font-size: 1.08rem;
+    line-height: 1.8;
+    text-align: center;
+    font-weight: 500;
+}
+
+.education-header .education-description strong {
+    color: var(--privacy-primary, #2563eb);
+    font-weight: 700;
+}
+
+/* ==========================================================
+   MOBILE SCREEN MUTATION (480px / 768px COMPLIANCE)
+========================================================== */
+@media (max-width: 768px) {
+    .education-header {
+        padding: var(--space-6, 24px) var(--space-3, 12px);
+    }
+    .atom-svg-wrap {
+        width: 110px;
+        height: 110px;
+        margin-bottom: 16px;
+    }
+    .atom-svg-wrap svg {
+        width: 100px !important;
+    }
+    .education-header #page-title {
+        font-size: 1.85rem;
+    }
+    .education-header .education-description {
+        font-size: 0.95rem;
+        line-height: 1.65;
+        padding: 0 var(--space-2, 8px);
+    }
+}
