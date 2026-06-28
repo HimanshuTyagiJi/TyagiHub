@@ -250,69 +250,66 @@ lang_toggle: false
         <div id="physics-root">
 
             <!-- ── HEADER SECTION ── -->
-            <header style="text-align: center; margin-bottom: 24px;">
-                <div style="display: flex; justify-content: center; margin-bottom: 12px;">
-                    <!-- Animated Physics Atom/Magnet SVG -->
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" style="width: 120px; height: 120px;" role="img" aria-label="Animated Physics Icon">
-                        <defs>
-                            <linearGradient id="orbit-grad" x1="0" y1="0" x2="1" y2="1">
-                                <stop offset="0%" stop-color="#4f46e5" />
-                                <stop offset="100%" stop-color="#06b6d4" />
-                            </linearGradient>
-                        </defs>
-                        <circle cx="100" cy="100" r="16" fill="url(#orbit-grad)" />
-                        <!-- Orbit 1 -->
-                        <ellipse cx="100" cy="100" rx="80" ry="25" fill="none" stroke="url(#orbit-grad)" stroke-width="2.5" transform="rotate(30 100 100)">
-                            <animateTransform attributeName="transform" type="rotate" values="30 100 100; 390 100 100" dur="8s" repeatCount="indefinite" />
-                        </ellipse>
-                        <!-- Orbit 2 -->
-                        <ellipse cx="100" cy="100" rx="80" ry="25" fill="none" stroke="url(#orbit-grad)" stroke-width="2.5" transform="rotate(-30 100 100)">
-                            <animateTransform attributeName="transform" type="rotate" values="-30 100 100; 330 100 100" dur="8s" repeatCount="indefinite" />
-                        </ellipse>
-                        <!-- Orbit 3 -->
-                        <ellipse cx="100" cy="100" rx="80" ry="25" fill="none" stroke="url(#orbit-grad)" stroke-width="2.5" transform="rotate(90 100 100)">
-                            <animateTransform attributeName="transform" type="rotate" values="90 100 100; 450 100 100" dur="8s" repeatCount="indefinite" />
-                        </ellipse>
-                        <!-- Tiny electrons -->
-                        <circle cx="100" cy="20" r="5" fill="#f43f5e" />
-                    </svg>
-                </div>
+         <header class="physics-container-header">
+    <div class="physics-svg-wrap">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" role="img" aria-label="Animated Physics Icon">
+            <defs>
+                <linearGradient id="orbit-grad" x1="0" y1="0" x2="1" y2="1">
+                    <stop offset="0%" stop-color="#4f46e5" />
+                    <stop offset="100%" stop-color="#06b6d4" />
+                </linearGradient>
+            </defs>
+            <circle cx="100" cy="100" r="16" fill="url(#orbit-grad)" />
+            <ellipse cx="100" cy="100" rx="80" ry="25" fill="none" stroke="url(#orbit-grad)" stroke-width="2.5" transform="rotate(30 100 100)">
+                <animateTransform attributeName="transform" type="rotate" values="30 100 100; 390 100 100" dur="8s" repeatCount="indefinite" />
+            </ellipse>
+            <ellipse cx="100" cy="100" rx="80" ry="25" fill="none" stroke="url(#orbit-grad)" stroke-width="2.5" transform="rotate(-30 100 100)">
+                <animateTransform attributeName="transform" type="rotate" values="-30 100 100; 330 100 100" dur="8s" repeatCount="indefinite" />
+            </ellipse>
+            <ellipse cx="100" cy="100" rx="80" ry="25" fill="none" stroke="url(#orbit-grad)" stroke-width="2.5" transform="rotate(90 100 100)">
+                <animateTransform attributeName="transform" type="rotate" values="90 100 100; 450 100 100" dur="8s" repeatCount="indefinite" />
+            </ellipse>
+            <circle cx="100" cy="20" r="5" fill="#f43f5e" />
+        </svg>
+    </div>
 
-                <h1 style="font-size: 2.25rem; font-weight: 800; color: #1e293b; margin-bottom: 6px;">
-                    <span class="hindi">भौतिकी के सभी सूत्र (Physics Formula Bank)</span>
-                    <span class="english">Physics Formula Bank</span>
-                </h1>
-                <p style="max-width: 720px; margin: 0 auto 15px; font-size: 0.95rem; color: #64748b; line-height: 1.5;">
-                    <span class="hindi">कक्षा 9, 10, 11, और 12 के लिए अध्याय-वार भौतिक विज्ञान के महत्वपूर्ण सूत्रों का सर्वश्रेष्ठ संग्रह। बोर्ड परीक्षा, JEE और NEET की तैयारी के लिए अत्यधिक उपयोगी।</span>
-                    <span class="english">The ultimate collection of physics formulas for classes 9, 10, 11, and 12, organized by chapters. Highly useful for board exams, JEE, and NEET preparation.</span>
-                </p>
+    <h1>
+        <span class="hindi">भौतिकी के सभी सूत्र (Physics Formula Bank)</span>
+        <span class="english">Physics Formula Bank</span>
+    </h1>
+    
+    <p class="physics-subtitle">
+        <span class="hindi">कक्षा 9, 10, 11, और 12 के लिए अध्याय-वार भौतिक विज्ञान के महत्वपूर्ण सूत्रों का सर्वश्रेष्ठ संग्रह। बोर्ड परीक्षा, JEE और NEET की तैयारी के लिए अत्यधिक उपयोगी।</span>
+        <span class="english">The ultimate collection of physics formulas for classes 9, 10, 11, and 12, organized by chapters. Highly useful for board exams, JEE, and NEET preparation.</span>
+    </p>
 
-                <!-- Language Toggle Button -->
-                <div style="display: flex; justify-content: center; gap: 8px; margin-top: 10px;">
-                    <button onclick="toggleAppLanguage('hindi')" id="lang-btn-hi" class="px-4 py-1.5 rounded-full text-xs font-bold border transition duration-150" style="cursor: pointer;">
-                        हिन्दी (Hindi)
-                    </button>
-                    <button onclick="toggleAppLanguage('english')" id="lang-btn-en" class="px-4 py-1.5 rounded-full text-xs font-bold border transition duration-150" style="cursor: pointer;">
-                        English
-                    </button>
-                </div>
-            </header><style>/* ==========================================================
-   TYAGIHUB PREMIUM SCI-FI PHYSICS HEADER CORE
+    <div class="physics-toggle-desk">
+        <button onclick="toggleAppLanguage('hindi')" id="lang-btn-hi" class="physics-toggle-btn active-tab">
+            हिन्दी (Hindi)
+        </button>
+        <button onclick="toggleAppLanguage('english')" id="lang-btn-en" class="physics-toggle-btn">
+            English
+        </button>
+    </div>
+</header>
+            <style>/* ==========================================================
+   TYAGIHUB DUAL-THEME BORDERED PHYSICS HEADER DESK
 ========================================================== */
 .physics-container-header {
     max-width: 1000px;
     margin: 40px auto;
     padding: 40px 30px;
+    text-align: center;
     background: var(--privacy-surface, #ffffff);
     border: 1px solid var(--privacy-border-2, #e2e8f0);
     border-radius: 24px;
     box-shadow: var(--privacy-shadow, 0 20px 40px rgba(15,23,42,0.06));
     position: relative;
     overflow: hidden;
-    transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: background 0.3s ease, border 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* HIGH-TECH GLOW LINING BACKGROUND */
+/* TOP GRADIENT BORDER ACCELERATOR */
 .physics-container-header::before {
     content: "";
     position: absolute;
@@ -323,9 +320,12 @@ lang_toggle: false
     background: linear-gradient(90deg, #4f46e5, #06b6d4, #f43f5e);
 }
 
-/* 🪐 ANIMATED PHYSICS GRADIENT ICON SHELL */
+/* 🪐 ANIMATED PHYSICS GRADIENT SVG OUTER RING */
 .physics-svg-wrap {
     display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 16px;
     padding: 16px;
     border-radius: 20px;
     background: var(--privacy-highlight, #f8fafc);
@@ -334,37 +334,44 @@ lang_toggle: false
     transition: all 0.3s ease;
 }
 
+.physics-svg-wrap svg {
+    width: 120px;
+    height: 120px;
+    overflow: visible;
+    filter: drop-shadow(0 0 10px rgba(79, 70, 229, 0.35));
+}
+
 html[data-theme="dark"] .physics-svg-wrap {
     background: rgba(79, 70, 229, 0.04);
     border-color: rgba(79, 70, 229, 0.2);
     box-shadow: 0 0 25px rgba(6, 182, 212, 0.15);
 }
 
-.physics-svg-wrap svg {
-    filter: drop-shadow(0 0 10px rgba(79, 70, 229, 0.4));
-}
-
-/* 🏷️ CORE TYPOGRAPHY SETTINGS */
+/* 🏷️ DENSITY TYPOGRAPHY OVERRIDES */
 .physics-container-header h1 {
     font-size: clamp(1.8rem, 4.5vw, 2.25rem);
     font-weight: 900;
     color: var(--privacy-heading, #1e293b);
     letter-spacing: -0.03em;
     line-height: 1.2;
+    margin: 0 0 8px 0;
 }
 
-.physics-container-header p {
-    color: var(--privacy-text, #64748b);
-    font-weight: 500;
+.physics-container-header .physics-subtitle {
     max-width: 720px;
-    margin-inline: auto;
+    margin: 0 auto 20px;
+    font-size: 0.98rem;
+    color: var(--privacy-text, #64748b);
+    line-height: 1.6;
+    font-weight: 500;
 }
 
-/* 🔄 ADVANCED LANGUAGE SWITCHER COMPONENT GRID */
+/* 🔄 LEVEL TRANSITION LANGUAGE LAYER BUTTONS */
 .physics-toggle-desk {
     display: flex;
     justify-content: center;
     gap: 12px;
+    margin-top: 12px;
 }
 
 .physics-toggle-btn {
@@ -375,10 +382,11 @@ html[data-theme="dark"] .physics-svg-wrap {
     background: var(--privacy-surface, #ffffff);
     color: var(--privacy-text, #475569);
     border-radius: 50px;
+    cursor: pointer;
     transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* ACTIVE BUTTON EFFECT WITH SHADOW MATRIX */
+/* ACTIVE STATE MUTATIONS */
 .physics-toggle-btn.active-tab, 
 .physics-toggle-btn:hover {
     background: linear-gradient(135deg, #4f46e5, #06b6d4) !important;
@@ -388,7 +396,7 @@ html[data-theme="dark"] .physics-svg-wrap {
     transform: translateY(-1px);
 }
 
-/* 🌐 LANG FALLBACKS FILTER */
+/* 🌐 MULTI-LANGUAGE DYNAMIC RENDERING BLOCK */
 .physics-container-header .hindi,
 .physics-container-header .english {
     display: none;
@@ -399,7 +407,7 @@ html[data-theme="dark"] .physics-svg-wrap {
 [data-lang="en"] .physics-container-header p.english { display: block; }
 
 /* ==========================================================
-   RESPONSIVE DESIGN COMPLIANCE
+   MOBILE INTERACTION SPECIFICITY (480px OVERRIDE)
 ========================================================== */
 @media (max-width: 768px) {
     .physics-container-header {
@@ -414,8 +422,8 @@ html[data-theme="dark"] .physics-svg-wrap {
         width: 90px !important;
         height: 90px !important;
     }
-}</style>
-
+}
+                </style>
             <!-- ── WATERMARK CANVAS HERO BANNER ── -->
             <div class="th-canvas-hero-wrap">
                 <canvas id="thPhysicsCanvas" width="1400" height="420" aria-label="Physics Formula Hub Banner"></canvas>
