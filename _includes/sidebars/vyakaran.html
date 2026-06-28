@@ -1,0 +1,192 @@
+<style>
+:root {
+    --side-bg: #ffffff;
+    --side-border: var(--border2, #e5e7eb);
+    --side-text: #4b5563;
+    --side-heading: #111827;
+    --side-active-bg: rgba(37, 99, 235, 0.08);
+    --side-active-text: #2563eb;
+    --side-shadow: 0 4px 20px rgba(15, 23, 42, 0.05);
+}
+
+html[data-theme="dark"] {
+    --side-bg: #0f172a;
+    --side-border: var(--border2, #233247);
+    --side-text: #cbd5e1;
+    --side-heading: #f8fafc;
+    --side-active-bg: rgba(56, 189, 248, 0.12);
+    --side-active-text: #38bdf8;
+    --side-shadow: 0 4px 25px rgba(0, 0, 0, 0.3);
+}
+
+/* DESKTOP ASIDE NAVIGATION FRAME */
+.vyakaran-aside {
+    width: 280px;
+    height: calc(100vh - 100px);
+    position: sticky;
+    top: 80px;
+    background: var(--side-bg);
+    border: 1px solid var(--side-border);
+    border-radius: 20px;
+    overflow-y: auto;
+    box-shadow: var(--side-shadow);
+    padding: 24px 16px;
+    scrollbar-width: thin;
+    scrollbar-color: var(--side-border) transparent;
+    transition: background 0.3s, border 0.3s, transform 0.3s ease;
+}
+
+.vyakaran-aside h2 {
+    font-size: 1.15rem;
+    font-weight: 800;
+    color: var(--side-heading);
+    margin: 0 0 16px 8px;
+    letter-spacing: -0.02em;
+}
+
+.vyakaran-nav-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.vyakaran-nav-list li a {
+    display: block;
+    padding: 10px 16px;
+    color: var(--side-text);
+    text-decoration: none;
+    font-size: 0.95rem;
+    font-weight: 600;
+    border-radius: 12px;
+    transition: all 0.2s ease;
+}
+
+.vyakaran-nav-list li a:hover {
+    background: var(--side-active-bg);
+    color: var(--side-active-text);
+    padding-left: 20px;
+}
+
+.vyakaran-nav-list li a.active {
+    background: var(--side-active-bg);
+    color: var(--side-active-text);
+    font-weight: 700;
+    border-left: 4px solid var(--side-active-text);
+    border-radius: 4px 12px 12px 4px;
+}
+
+/* FIXED FLOATING MOBILE TOGGLE TRIGGER */
+.v-sidebar-trigger {
+    display: none;
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    background: var(--side-active-text);
+    color: #ffffff;
+    border: none;
+    box-shadow: 0 8px 25px rgba(37, 99, 235, 0.4);
+    cursor: pointer;
+    z-index: 1000;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+}
+
+/* MOBILE SHIELD OVERLAY WINDOW */
+@media (max-width: 992px) {
+    .vyakaran-aside {
+        position: fixed;
+        top: 0;
+        left: -320px;
+        width: 280px;
+        height: 100vh;
+        z-index: 1001;
+        border-radius: 0 24px 24px 0;
+        border-y: none;
+        border-left: none;
+        padding-top: 40px;
+    }
+    .vyakaran-aside.mobile-open {
+        transform: translateX(320px);
+    }
+    .v-sidebar-trigger {
+        display: flex;
+    }
+    .vyakaran-backdrop {
+        display: none;
+        position: fixed;
+        top: 0; left: 0; width: 100vw; height: 100vh;
+        background: rgba(0, 0, 0, 0.4);
+        backdrop-filter: blur(4px);
+        z-index: 999;
+    }
+    .vyakaran-backdrop.mobile-open {
+        display: block;
+    }
+}
+</style>
+
+<div class="vyakaran-backdrop" id="asideBackdrop" onclick="toggleVAside()"></div>
+
+<button class="v-sidebar-trigger" onclick="toggleVAside()" aria-label="Toggle Navigation Catalog">📚</button>
+
+<aside class="vyakaran-aside" id="vyakaranAsideMenu">
+    <h2>व्याकरण अनुक्रमणिका</h2>
+    <nav>
+        <ul class="vyakaran-nav-list">
+            <li><a class="{% if page.url == '/vyakaran-language.html' or page.url == '/vyakaran-language/' %}active{% endif %}" href="{{ '/vyakaran-language.html' | relative_url }}">भाषा और व्याकरण</a></li>
+            <li><a class="{% if page.url contains 'phonology-in-hindi' %}active{% endif %}" href="{{ '/vyakaran/phonology-in-hindi.html' | relative_url }}">वर्ण-विचार</a></li>
+            <li><a class="{% if page.url contains 'morphology-in-hindi' %}active{% endif %}" href="{{ '/vyakaran/morphology-in-hindi.html' | relative_url }}">शब्द-विचार</a></li>
+            <li><a class="{% if page.url contains 'syntax-in-hindi' %}active{% endif %}" href="{{ '/vyakaran/syntax-in-hindi.html' | relative_url }}">वाक्य-विचार</a></li>
+            <li><a class="{% if page.url contains 'noun-in-hindi' %}active{% endif %}" href="{{ '/vyakaran/noun-in-hindi.html' | relative_url }}">संज्ञा</a></li>
+            <li><a class="{% if page.url contains 'number-in-hindi' %}active{% endif %}" href="{{ '/vyakaran/number-in-hindi.html' | relative_url }}">वचन</a></li>
+            <li><a class="{% if page.url contains 'gender-in-hindi' %}active{% endif %}" href="{{ '/vyakaran/gender-in-hindi.html' | relative_url }}">लिंग</a></li>
+            <li><a class="{% if page.url contains 'case-in-hindi' %}active{% endif %}" href="{{ '/vyakaran/case-in-hindi.html' | relative_url }}">कारक</a></li>
+            <li><a class="{% if page.url contains 'pronoun-in-hindi' %}active{% endif %}" href="{{ '/vyakaran/pronoun-in-hindi.html' | relative_url }}">सर्वनाम</a></li>
+            <li><a class="{% if page.url contains 'adjective-in-hindi' %}active{% endif %}" href="{{ '/vyakaran/adjective-in-hindi.html' | relative_url }}">विशेषण</a></li>
+            <li><a class="{% if page.url contains 'verb-in-hindi' %}active{% endif %}" href="{{ '/vyakaran/verb-in-hindi.html' | relative_url }}">क्रिया</a></li>
+            <li><a class="{% if page.url contains 'tense-in-hindi' %}active{% endif %}" href="{{ '/vyakaran/tense-in-hindi.html' | relative_url }}">काल</a></li>
+            <li><a class="{% if page.url contains 'indeclinable-words-in-hindi' %}active{% endif %}" href="{{ '/vyakaran/indeclinable-words-in-hindi.html' | relative_url }}">अव्यय</a></li>
+            <li><a class="{% if page.url contains 'particle-in-hindi' %}active{% endif %}" href="{{ '/vyakaran/particle-in-hindi.html' | relative_url }}">निपात</a></li>
+            <li><a class="{% if page.url contains 'voice-in-hindi' %}active{% endif %}" href="{{ '/vyakaran/voice-in-hindi.html' | relative_url }}">वाच्य</a></li>
+            <li><a class="{% if page.url contains 'person-in-hindi' %}active{% endif %}" href="{{ '/vyakaran/person-in-hindi.html' | relative_url }}">पुरुष</a></li>
+            <li><a class="{% if page.url contains 'punctuation-in-hindi' %}active{% endif %}" href="{{ '/vyakaran/punctuation-in-hindi.html' | relative_url }}">विराम-चिन्ह</a></li>
+            <li><a class="{% if page.url contains 'prefix-in-hindi' %}active{% endif %}" href="{{ '/vyakaran/prefix-in-hindi.html' | relative_url }}">उपसर्ग</a></li>
+            <li><a class="{% if page.url contains 'suffix-in-hindi' %}active{% endif %}" href="{{ '/vyakaran/suffix-in-hindi.html' | relative_url }}">प्रत्यय</a></li>
+            <li><a class="{% if page.url contains 'joining' %}active{% endif %}" href="{{ '/vyakaran/joining.html' | relative_url }}">संधि</a></li>
+            <li><a class="{% if page.url contains 'compound-in-hindi' %}active{% endif %}" href="{{ '/vyakaran/compound-in-hindi.html' | relative_url }}">समास</a></li>
+            <li><a class="{% if page.url contains 'tatsam-tadbhav-in-hindi' %}active{% endif %}" href="{{ '/vyakaran/tatsam-tadbhav-in-hindi.html' | relative_url }}">तत्सम-तद्भव</a></li>
+            <li><a class="{% if page.url contains 'deshaj-videshaj-in-hindi' %}active{% endif %}" href="{{ '/vyakaran/deshaj-videshaj-in-hindi.html' | relative_url }}">देशज-विदेशज</a></li>
+            <li><a class="{% if page.url contains 'antonyms-in-hindi' %}active{% endif %}" href="{{ '/vyakaran/antonyms-in-hindi.html' | relative_url }}">विलोम-शब्द</a></li>
+            <li><a class="{% if page.url contains 'synonyms-in-hindi' %}active{% endif %}" href="{{ '/vyakaran/synonyms-in-hindi.html' | relative_url }}">पर्यायवाची-शब्द</a></li>
+            <li><a class="{% if page.url contains 'idioms-in-hindi' %}active{% endif %}" href="{{ '/vyakaran/idioms-in-hindi.html' | relative_url }}">मुहावरे</a></li>
+            <li><a class="{% if page.url contains 'proverbs-in-hindi' %}active{% endif %}" href="{{ '/vyakaran/proverbs-in-hindi.html' | relative_url }}">लोकोक्तियाँ</a></li>
+            <li><a class="{% if page.url contains 'one-word-substitution-in-hindi' %}active{% endif %}" href="{{ '/vyakaran/one-word-substitution-in-hindi.html' | relative_url }}">अनेक शब्दों के लिए एक शब्द</a></li>
+            <li><a class="{% if page.url contains 'words-of-many-meanings-in-hindi' %}active{% endif %}" href="{{ '/vyakaran/words-of-many-meanings-in-hindi.html' | relative_url }}">एकार्थक शब्द</a></li>
+            <li><a class="{% if page.url contains 'words-apparently-similar-in-meanings-in-hindi' %}active{% endif %}" href="{{ '/vyakaran/words-apparently-similar-in-meanings-in-hindi.html' | relative_url }}">एकार्थक प्रतीत होने वाले शब्द</a></li>
+            <li><a class="{% if page.url contains 'pairs-of-similar-words' %}active{% endif %}" href="{{ '/vyakaran/pairs-of-similar-words.html' | relative_url }}">श्रुतिसम भिन्नार्थक शब्द</a></li>
+            <li><a class="{% if page.url contains 'yugm-shabd' %}active{% endif %}" href="{{ '/vyakaran/yugm-shabd.html' | relative_url }}">युग्म शब्द</a></li>
+            <li><a class="{% if page.url contains 'ras-in-hindi' %}active{% endif %}" href="{{ '/vyakaran/ras-in-hindi.html' | relative_url }}">रस</a></li>
+            <li><a class="{% if page.url contains 'chhand-in-hindi' %}active{% endif %}" href="{{ '/vyakaran/chhand-in-hindi.html' | relative_url }}">छन्द</a></li>
+            <li><a class="{% if page.url contains 'alankar-in-hindi' %}active{% endif %}" href="{{ '/vyakaran/alankar-in-hindi.html' | relative_url }}">अलंकार</a></li>
+            <li><a class="{% if page.url contains 'paragraph-writing-in-hindi' %}active{% endif %}" href="{{ '/vyakaran/paragraph-writing-in-hindi.html' | relative_url }}">अनुच्छेद-लेखन</a></li>
+            <li><a class="{% if page.url contains 'unseen-passage-in-hindi' %}active{% endif %}" href="{{ '/vyakaran/unseen-passage-in-hindi.html' | relative_url }}">अपठित-गद्यांश</a></li>
+            <li><a class="{% if page.url contains 'letter-writing-in-hindi' %}active{% endif %}" href="{{ '/vyakaran/letter-writing-in-hindi.html' | relative_url }}">पत्र-लेखन</a></li>
+            <li><a class="{% if page.url contains 'essay-in-hindi' %}active{% endif %}" href="{{ '/vyakaran/essay-in-hindi.html' | relative_url }}">निबंध</a></li>
+            <li><a class="{% if page.url contains 'quiz-for-exam' %}active{% endif %}" href="{{ '/vyakaran/quiz-for-exam.html' | relative_url }}">Quiz For Exam</a></li>
+        </ul>
+    </nav>
+</aside>
+
+<script>
+function toggleVAside() {
+    document.getElementById('vyakaranAsideMenu').classList.toggle('mobile-open');
+    document.getElementById('asideBackdrop').classList.toggle('mobile-open');
+}
+</script>
