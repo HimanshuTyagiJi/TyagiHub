@@ -8,51 +8,83 @@ comments: false
 ---
 
 <style>
-    /* 🔴 DUAL THEME TOKENS ADAPTATION GRID */
+    /* 🔴 THEME VARIABLES MAPPING FOR SYSTEM INTERACTION */
+    :root {
+        --privacy-bg: #fdfdfd;
+        --privacy-surface: #ffffff;
+        --privacy-border: rgba(0, 0, 0, 0.08);
+        --privacy-heading: #1a1f36;
+        --privacy-text: #4f566b;
+        --privacy-badge-bg: rgba(0, 98, 255, 0.08);
+        --privacy-primary: #0062ff;
+        --privacy-highlight-bg: #fbfcfe;
+        --privacy-footer-bg: #1a1f36;
+        --privacy-footer-text: #94a3b8;
+        --privacy-link: #06b6d4;
+    }
+
+    /* AUTOMATIC DARK THEME OVERRIDE CORE GRID */
+    @media (prefers-color-scheme: dark) {
+        :root {
+            --privacy-bg: #0f172a;
+            --privacy-surface: #1e293b;
+            --privacy-border: rgba(255, 255, 255, 0.08);
+            --privacy-heading: #f8fafc;
+            --privacy-text: #cbd5e1;
+            --privacy-badge-bg: rgba(56, 189, 248, 0.15);
+            --privacy-primary: #38bdf8;
+            --privacy-highlight-bg: #0f172a;
+            --privacy-footer-bg: #0f172a;
+            --privacy-footer-text: #94a3b8;
+            --privacy-link: #38bdf8;
+        }
+    }
+
+    /* STRUCTURE STYLING */
     .privacy-wrapper {
         max-width: 950px;
         margin: 40px auto;
-        background: var(--surface, #ffffff);
-        border: 1px solid var(--border2, rgba(0,0,0,0.08));
-        border-radius: var(--radius, 20px);
+        background: var(--privacy-surface);
+        border: 1px solid var(--privacy-border);
+        border-radius: 20px;
         overflow: hidden;
-        box-shadow: var(--glow-blue, 0 15px 35px rgba(0,0,0,0.05));
+        box-shadow: 0 15px 35px rgba(0,0,0,0.1), 0 5px 15px rgba(0,0,0,0.05);
         transition: background 0.3s ease, border 0.3s ease;
     }
     .privacy-header {
-        background: linear-gradient(135deg, var(--bg2, #f8fafd), var(--surface, #ffffff));
+        background: linear-gradient(135deg, var(--privacy-bg), var(--privacy-surface));
         padding: 60px 50px;
-        border-bottom: 1px solid var(--border2, rgba(0,0,0,0.08));
+        border-bottom: 1px solid var(--privacy-border);
         text-align: center;
     }
     .privacy-header h1 {
         font-size: 3rem;
         font-weight: 900;
-        color: var(--heading, #0f172a);
+        color: var(--privacy-heading);
         letter-spacing: -0.04em;
         margin-bottom: 12px;
     }
     .privacy-header p {
-        color: var(--text, #475569);
+        color: var(--privacy-text);
         font-size: 1.15rem;
         font-weight: 500;
         max-width: 65ch;
         margin: 0 auto;
     }
     .privacy-badge {
-        background: rgba(59, 130, 246, 0.1);
-        color: var(--accent, #3b82f6);
+        background: var(--privacy-badge-bg);
+        color: var(--privacy-primary);
         padding: 8px 18px;
         border-radius: 50px;
         font-weight: 700;
         font-size: 0.85rem;
         margin-bottom: 20px;
         display: inline-block;
-        border: 1px solid rgba(59, 130, 246, 0.15);
+        border: 1px solid var(--privacy-border);
     }
     .privacy-body {
         padding: 50px;
-        background: var(--surface, #ffffff);
+        background: var(--privacy-surface);
     }
     .privacy-section {
         margin-bottom: 50px;
@@ -62,12 +94,12 @@ comments: false
         align-items: center;
         font-size: 1.5rem;
         font-weight: 800;
-        color: var(--heading, #0f172a);
+        color: var(--privacy-heading);
         margin-bottom: 20px;
         letter-spacing: -0.02em;
     }
     .privacy-title span {
-        background: var(--accent, #3b82f6);
+        background: var(--privacy-primary);
         color: #ffffff;
         width: 36px;
         height: 36px;
@@ -78,69 +110,65 @@ comments: false
         margin-right: 18px;
         font-size: 0.95rem;
         font-weight: 700;
-        box-shadow: 0 4px 10px rgba(59, 130, 246, 0.2);
+        box-shadow: 0 4px 10px rgba(0, 98, 255, 0.2);
     }
     .privacy-text {
-        color: var(--text, #475569);
+        color: var(--privacy-text);
         font-size: 1.08rem;
         margin-left: 54px;
-        line-height: var(--lh-loose, 1.8);
+        line-height: 1.8;
         text-align: justify;
     }
     .privacy-text strong {
-        color: var(--heading, #0f172a);
+        color: var(--privacy-heading);
     }
     .privacy-highlight {
-        background: var(--bg2, #fbfcfe);
-        border: 1px solid var(--border2, #edf2f7);
+        background: var(--privacy-highlight-bg);
+        border: 1px solid var(--privacy-border);
         padding: 25px;
         border-radius: 14px;
         margin: 22px 0 22px 54px;
-        color: var(--text, #475569);
+        color: var(--privacy-text);
         font-size: 1.05rem;
         line-height: 1.7;
     }
     .privacy-highlight strong {
-        color: var(--heading, #0f172a);
+        color: var(--privacy-heading);
     }
     .privacy-footer {
-        background: var(--bg2, #1a1f36);
-        border-top: 1px solid var(--border2, rgba(255,255,255,0.05));
+        background: var(--privacy-footer-bg);
+        border-top: 1px solid var(--privacy-border);
         padding: 60px 50px;
         text-align: center;
     }
     .privacy-footer h3 {
-        color: var(--heading, #ffffff);
+        color: #ffffff;
         margin-bottom: 15px;
         font-size: 1.7rem;
         font-weight: 800;
         letter-spacing: -0.02em;
     }
     .privacy-footer p {
-        color: var(--text, #94a3b8);
+        color: var(--privacy-footer-text);
         font-size: 1.05rem;
         max-width: 60ch;
         margin: 0 auto 25px;
     }
     .privacy-footer a {
-        color: var(--accent2, #06b6d4);
+        color: var(--privacy-link);
         text-decoration: none;
         font-weight: 800;
         font-size: 1.3rem;
-        font-family: var(--mono, monospace);
         border-bottom: 2px dashed rgba(6, 182, 212, 0.3);
         padding-bottom: 3px;
         transition: color 0.2s ease, border-color 0.2s ease;
     }
-    .privacy-footer a:hover {
-        color: var(--accent, #3b82f6);
-        border-color: var(--accent, #3b82f6);
-    }
     .privacy-timestamp {
         margin-top: 35px;
         font-size: 0.85rem;
-        color: var(--muted, #475569);
+        color: var(--privacy-footer-text);
         font-weight: 500;
+        opacity: 0.6;
     }
 
     @media (max-width: 768px) {
@@ -163,7 +191,6 @@ comments: false
     </div>
 
     <div class="privacy-body">
-        <!-- Section 1 -->
         <div class="privacy-section">
             <div class="privacy-title"><span>01</span> Functional Overview</div>
             <div class="privacy-text">
@@ -171,7 +198,6 @@ comments: false
             </div>
         </div>
 
-        <!-- Section 2 -->
         <div class="privacy-section">
             <div class="privacy-title"><span>02</span> Voluntarily Injected Information Nodes</div>
             <div class="privacy-text">
@@ -183,7 +209,6 @@ comments: false
             </div>
         </div>
 
-        <!-- Section 3 -->
         <div class="privacy-section">
             <div class="privacy-title"><span>03</span> Cryptographic Billing & Payment Isolation</div>
             <div class="privacy-text">
@@ -194,7 +219,6 @@ comments: false
             </div>
         </div>
 
-        <!-- Section 4 -->
         <div class="privacy-section">
             <div class="privacy-title"><span>04</span> Cookie Distribution & Third-Party Advertising Frameworks</div>
             <div class="privacy-text">
@@ -202,7 +226,6 @@ comments: false
             </div>
         </div>
 
-        <!-- Section 5 -->
         <div class="privacy-section">
             <div class="privacy-title"><span>05</span> Content Integrity & Operational Liability Blueprint</div>
             <div class="privacy-text">
@@ -212,7 +235,6 @@ comments: false
             </div>
         </div>
 
-        <!-- Section 6 -->
         <div class="privacy-section">
             <div class="privacy-title"><span>06</span> External Network Redirections</div>
             <div class="privacy-text">
