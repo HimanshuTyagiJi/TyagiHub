@@ -1,182 +1,337 @@
 ---
 layout: default
-title: प्राइवेसी पॉलिसी | TyagiHub - डेटा सुरक्षा एवं गोपनीयता नीति
+title: प्राइवेसी पॉलिसी -डेटा सुरक्षा एवं गोपनीयता नीति
 permalink: /hi/privacy/
 lang: hi
 description: जानें TyagiHub की प्राइवेसी पॉलिसी के बारे में। Tyagi MultiTech द्वारा आपकी डेटा सुरक्षा, पारदर्शिता और सुरक्षित पेमेंट व्यवस्था की पूर्ण जानकारी।
+comments: false
 ---
 
 <style>
-    :root {
-        --primary: #0062ff;
-        --bg: #fdfdfd;
-        --card: #ffffff;
-        --text-dark: #1a1f36;
-        --text-light: #4f566b;
-        --accent: #eef2ff;
+:root{
+    --privacy-bg:#f4f7fb;
+    --privacy-surface:#ffffff;
+    --privacy-surface-2:#fbfcff;
+    --privacy-border:var(--border, #e5e7eb);
+    --privacy-border-2:var(--border2, #e5e7eb);
+    --privacy-heading:#111827;
+    --privacy-text:#4b5563;
+    --privacy-primary:#2563eb;
+    --privacy-primary-soft:rgba(37,99,235,.08);
+    --privacy-highlight:#f8fafc;
+    --privacy-footer:#111827;
+    --privacy-footer-text:#94a3b8;
+    --privacy-link:#0ea5e9;
+    --privacy-shadow:
+        0 20px 45px rgba(15,23,42,.08),
+        0 8px 18px rgba(15,23,42,.05);
+}
+
+html[data-theme="dark"]{
+    --privacy-bg:#020617;
+    --privacy-surface:#0f172a;
+    --privacy-surface-2:#111827;
+    --privacy-border:var(--border, #233247);
+    --privacy-border-2:var(--border2, #233247);
+    --privacy-heading:#f8fafc;
+    --privacy-text:#cbd5e1;
+    --privacy-primary:#38bdf8;
+    --privacy-primary-soft:rgba(56,189,248,.12);
+    --privacy-highlight:#172235;
+    --privacy-footer:#020617;
+    --privacy-footer-text:#94a3b8;
+    --privacy-link:#67e8f9;
+    --privacy-shadow:
+        0 20px 45px rgba(0,0,0,.45),
+        0 8px 18px rgba(0,0,0,.25);
+}
+
+body{
+    background:var(--privacy-bg);
+}
+
+.privacy-wrapper{
+    width:min(950px,calc(100% - 32px));
+    margin:48px auto;
+    background:var(--privacy-surface);
+    border:1px solid var(--privacy-border-2);
+    border-radius:24px;
+    overflow:hidden;
+    box-shadow:var(--privacy-shadow);
+    transition:.35s ease;
+}
+
+.privacy-header{
+    background:
+    radial-gradient(circle at top right,
+    rgba(37,99,235,.08),
+    transparent 45%),
+    linear-gradient(180deg,
+    var(--privacy-surface-2),
+    var(--privacy-surface));
+    border-bottom:1px solid var(--privacy-border-2);
+    padding:70px 60px;
+    text-align:center;
+}
+
+.privacy-badge{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    gap:8px;
+    padding:9px 18px;
+    border-radius:999px;
+    background:var(--privacy-primary-soft);
+    color:var(--privacy-primary);
+    border:1px solid var(--privacy-border);
+    font-size:.85rem;
+    font-weight:700;
+    margin-bottom:24px;
+}
+
+.privacy-header h1{
+    color:var(--privacy-heading);
+    font-size:clamp(2.2rem,5vw,3.4rem);
+    font-weight:900;
+    letter-spacing:-.04em;
+    margin:0 0 18px;
+    line-height:1.1;
+}
+
+.privacy-header p{
+    color:var(--privacy-text);
+    max-width:720px;
+    margin:auto;
+    line-height:1.8;
+    font-size:1.08rem;
+}
+
+.privacy-body{
+    padding:55px;
+    background:var(--privacy-surface);
+}
+
+.privacy-section{
+    margin-bottom:55px;
+}
+
+.privacy-section:last-child{
+    margin-bottom:0;
+}
+
+.privacy-title{
+    display:flex;
+    align-items:center;
+    gap:18px;
+    color:var(--privacy-heading);
+    font-size:1.45rem;
+    font-weight:800;
+    margin-bottom:22px;
+    line-height:1.3;
+}
+
+.privacy-title span{
+    width:42px;
+    height:42px;
+    flex-shrink:0;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    border-radius:12px;
+    background:linear-gradient(135deg,#2563eb,#38bdf8);
+    color:#fff;
+    font-size:.95rem;
+    font-weight:800;
+    box-shadow:
+    0 10px 18px rgba(37,99,235,.25);
+}
+
+.privacy-text{
+    margin-left:60px;
+    color:var(--privacy-text);
+    font-size:1.05rem;
+    line-height:1.95;
+    text-align:justify;
+}
+
+.privacy-text strong{
+    color:var(--privacy-heading);
+    font-weight:700;
+}
+
+.privacy-text ul{
+    margin:18px 0 0;
+    padding-left:22px;
+}
+
+.privacy-text li{
+    margin:10px 0;
+}
+
+.privacy-highlight{
+    margin:26px 0 26px 60px;
+    padding:24px 26px;
+    background:var(--privacy-highlight);
+    border:1px solid var(--privacy-border-2);
+    border-left:4px solid var(--privacy-primary);
+    border-radius:16px;
+    color:var(--privacy-text);
+    line-height:1.85;
+}
+
+.privacy-highlight strong{
+    color:var(--privacy-heading);
+}
+
+.privacy-footer{
+    background:var(--privacy-footer);
+    border-top:1px solid var(--privacy-border-2);
+    padding:65px 50px;
+    text-align:center;
+}
+
+.privacy-footer h3{
+    color:#fff;
+    font-size:1.8rem;
+    font-weight:800;
+    margin-bottom:16px;
+}
+
+.privacy-footer p{
+    max-width:700px;
+    margin:0 auto 24px;
+    color:var(--privacy-footer-text);
+    line-height:1.8;
+}
+
+.privacy-footer a{
+    display:inline-block;
+    color:var(--privacy-link);
+    text-decoration:none;
+    font-weight:800;
+    font-size:1.15rem;
+    transition:.25s;
+}
+
+.privacy-footer a:hover{
+    opacity:.8;
+    transform:translateY(-2px);
+}
+
+.privacy-timestamp{
+    margin-top:34px;
+    color:var(--privacy-footer-text);
+    font-size:.88rem;
+    opacity:.75;
+}
+
+@media (max-width:768px){
+    .privacy-wrapper{
+        width:calc(100% - 18px);
+        margin:18px auto;
+        border-radius:18px;
     }
-    .wrapper {
-        max-width: 950px;
-        margin: 40px auto;
-        background: var(--card);
-        border: 1px solid #e3e8ee;
-        border-radius: 20px;
-        overflow: hidden;
-        box-shadow: 0 15px 35px rgba(50,50,93,0.05), 0 5px 15px rgba(0,0,0,0.03);
+    .privacy-header{
+        padding:42px 22px;
     }
-    .header {
-        background: linear-gradient(to right, #f8fafd, #ffffff);
-        padding: 60px 50px;
-        border-bottom: 1px solid #e3e8ee;
-        text-align: center;
+    .privacy-header h1{
+        font-size:2.15rem;
     }
-    .header h1 {
-        font-size: 2.8rem;
-        font-weight: 800;
-        color: var(--text-dark);
-        letter-spacing: -1px;
-        margin-bottom: 10px;
+    .privacy-header p{
+        font-size:1rem;
     }
-    .header p {
-        color: var(--text-light);
-        font-size: 1.1rem;
+    .privacy-body{
+        padding:32px 20px;
     }
-    .badge {
-        background: var(--accent);
-        color: var(--primary);
-        padding: 6px 16px;
-        border-radius: 50px;
-        font-weight: 600;
-        font-size: 0.85rem;
-        margin-bottom: 20px;
-        display: inline-block;
+    .privacy-title{
+        font-size:1.25rem;
+        gap:14px;
     }
-    .content-body {
-        padding: 50px;
+    .privacy-title span{
+        display:none;
     }
-    .section {
-        margin-bottom: 45px;
+    .privacy-text{
+        margin-left:0;
+        text-align:left;
+        font-size:1rem;
     }
-    .section-title {
-        display: flex;
-        align-items: center;
-        font-size: 1.4rem;
-        font-weight: 700;
-        color: var(--text-dark);
-        margin-bottom: 18px;
+    .privacy-highlight{
+        margin:24px 0;
+        padding:20px;
     }
-    .section-title span {
-        background: var(--primary);
-        color: white;
-        width: 32px;
-        height: 32px;
-        border-radius: 8px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        margin-right: 15px;
-        font-size: 0.9rem;
+    .privacy-footer{
+        padding:42px 20px;
     }
-    .text-block {
-        color: var(--text-light);
-        font-size: 1.05rem;
-        margin-left: 47px;
+    .privacy-footer h3{
+        font-size:1.45rem;
     }
-    .highlight-card {
-        background: #fbfcfe;
-        border: 1px solid #edf2f7;
-        padding: 25px;
-        border-radius: 12px;
-        margin: 20px 0 20px 47px;
-    }
-    .contact-footer {
-        background: #1a1f36;
-        color: white;
-        padding: 50px;
-        text-align: center;
-    }
-    .contact-footer h3 {
-        margin-bottom: 15px;
-        font-size: 1.6rem;
-    }
-    .contact-footer a {
-        color: #4cd137;
-        text-decoration: none;
-        font-weight: 700;
-        font-size: 1.2rem;
-    }
-    @media (max-width: 768px) {
-        .header, .content-body, .contact-footer { padding: 30px 20px; }
-        .header h1 { font-size: 2rem; }
-        .text-block { margin-left: 0; }
-        .section-title span { display: none; }
-    }
+}
 </style>
 
-<div class="wrapper">
-    <div class="header">
-        <span class="badge">संशोधित तिथि: 16 जून 2026</span>
+<div class="privacy-wrapper">
+    <div class="privacy-header">
+        <span class="privacy-badge">संशोधित तिथि: 16 जून 2026</span>
         <h1>प्राइवेसी पॉलिसी</h1>
         <p>TyagiHub पर पूर्ण पारदर्शिता, डेटा सुरक्षा एवं गोपनीयता अनुपालन नीति</p>
     </div>
 
-    <div class="content-body">
-        <div class="section">
-            <div class="section-title"><span>01</span> सामान्य सिंहावलोकन</div>
-            <div class="text-block">
-                <strong>TyagiHub</strong> में आपका स्वागत है। हमारा यह डिजिटल तंत्र पूरी तरह से Tyagi MultiTech द्वारा संचालित और प्रबंधित है। हम आपकी गोपनीयता का पूर्ण सम्मान करते हैं और आपके डेटा को सुरक्षित रखने के लिए दृढ़ता से प्रतिबद्ध हैं। यह दस्तावेज़ हमारी नीतियों को स्पष्ट रूप से परिभाषित करता है ताकि हमारे शैक्षणिक प्लेटफॉर्म, वेब टूल्स और एप्लिकेशन का उपयोग करते समय आपका अनुभव पूरी तरह सुरक्षित और विश्वसनीय बना रहे।
+    <div class="privacy-body">
+        <div class="privacy-section">
+            <div class="privacy-title"><span>01</span> सामान्य सिंहावलोकन</div>
+            <div class="privacy-text">
+                <strong>TyagiHub</strong> में आपका स्वागत है। हमारा यह डिजिटल तंत्र पूरी तरह से Tyagi MultiTech द्वारा संचालित और प्रबंधित है। हम आपकी गोपनीयता का पूर्ण सम्मान करते हैं और आपके डेटा को सुरक्षित रखने के लिए दृढ़ता से प्रतिबद्ध हैं। यह दस्तावेज़ हमारी नीतियों को स्पष्ट रूप से परिभाषित करता है ताकि हमारे शैक्षणिक प्लेटफॉर्म, वेब टूल्स और ख्याल रखने वाले एप्लिकेशन का उपयोग करते समय आपका अनुभव पूरी तरह सुरक्षित और विश्वसनीय बना रहे।
             </div>
         </div>
 
-        <div class="section">
-            <div class="section-title"><span>02</span> स्वैच्छिक डेटा संग्रह</div>
-            <div class="text-block">
-                हमारा डिजिटल इंफ्रास्ट्रक्चर उपयोगकर्ताओं की व्यक्तिगत पहचान या उनकी वेब ब्राउज़िंग की आदतों को ट्रैक नहीं करता है। हमारा पूरा प्लेटफॉर्म सभी के लिए स्वतंत्र और खुला है। हम केवल वही बुनियादी डेटा प्राप्त करते हैं जो आप स्वयं अपनी इच्छा से साझा करते हैं:
-                <ul style="margin-top: 10px; padding-left: 20px; list-style-type: square;">
+        <div class="privacy-section">
+            <div class="privacy-title"><span>02</span> स्वैच्छिक डेटा संग्रह</div>
+            <div class="privacy-text">
+                Our digital infrastructure does not force tracking consumer identity or parsing web browsing habits to profile lifestyles. Our complete platform architecture is engineered for open accessibility. Interaction data processes only execute transient data loops during active, explicit operations:
+                <ul style="margin-top: 12px; padding-left: 20px; list-style-type: square; line-height: 1.8;">
                     <li><strong>संचार ईमेल पते:</strong> जब आप हमारी सहायता टीम से आधिकारिक मेल द्वारा संपर्क करते हैं, तो आपकी समस्याओं के त्वरित समाधान हेतु हम आपका ईमेल पता सुरक्षित रखते हैं।</li>
                     <li><strong>लेनदेन संबंधी सामान्य जानकारी:</strong> हमारे प्रीमियम स्टोर से अध्ययन सामग्री अथवा विशेष पीडीएफ डाउनलोड करते समय रसीद भेजने और ऑर्डर प्रबंधित करने के लिए आवश्यक विवरण।</li>
                 </ul>
             </div>
         </div>
 
-        <div class="section">
-            <div class="section-title"><span>03</span> सुरक्षित और पृथक भुगतान व्यवस्था</div>
-            <div class="text-block">
+        <div class="privacy-section">
+            <div class="privacy-title"><span>03</span> सुरक्षित और पृथक भुगतान व्यवस्था</div>
+            <div class="privacy-text">
                 हमारी प्रीमियम अध्ययन सामग्री और डिजिटल संसाधनों की खरीद के लिए उपयोग किए जाने वाले भुगतान माध्यमों को कड़े सुरक्षा मानकों के अंतर्गत रखा गया है।
-                <div class="highlight-card">
+                <div class="privacy-highlight">
                     <strong>विशेष सुरक्षा निर्देश:</strong> हमारा सर्वर या सिस्टम आपके बैंक खातों की जानकारी, क्रेडिट अथवा डेबिट कार्ड की संख्या और गोपनीय सुरक्षा कोड (सीवीवी) को कभी भी रिकॉर्ड, स्टोर या सेव नहीं करता है। संपूर्ण भुगतान प्रक्रिया पूरी तरह से एन्क्रिप्टेड और सुरक्षित गेटवे सर्वरों के माध्यम से संपन्न होती है।
                 </div>
             </div>
         </div>
 
-        <div class="section">
-            <div class="section-title"><span>04</span> कुकीज़ और विज्ञापन नीतियां</div>
-            <div class="text-block">
+        <div class="privacy-section">
+            <div class="privacy-title"><span>04</span> कुकीज़ और विज्ञापन नीतियां</div>
+            <div class="privacy-text">
                 TyagiHub व्यक्तिगत ट्रैकिंग कुकीज़ का संचालन नहीं करता है। हालांकि, इस तकनीकी ढांचे को सुचारू और निःशुल्क बनाए रखने के लिए हम अपनी वेबसाइट पर तृतीय-पक्ष नेटवर्क (जैसे कि गूगल एडसेंस) के विज्ञापन प्रदर्शित करते हैं। ये विज्ञापन प्रदाता आपकी रुचियों के अनुकूल प्रासंगिक विज्ञापन दिखाने के लिए कुकीज़ का उपयोग कर सकते हैं। आप अपने वेब ब्राउज़र की सेटिंग्स में जाकर कुकी ट्रैकिंग को कभी भी बंद कर सकते हैं।
             </div>
         </div>
 
-        <div class="section">
-            <div class="section-title"><span>05</span> सामग्री की सत्यता और उत्तरदायित्व सीमा</div>
-            <div class="text-block">
+        <div class="privacy-section">
+            <div class="privacy-title"><span>05</span> सामग्री की सत्यता व उत्तरदायित्व सीमा</div>
+            <div class="privacy-text">
                 हम अपने शैक्षणिक पाठों, प्रोग्रामिंग कोड्स और परीक्षा मॉड्यूल्स की गुणवत्ता व शुद्धता सुनिश्चित करने के लिए कड़े आंतरिक मापदंडों का पालन करते हैं।
                 <br><br>
                 <strong>दायित्व अस्वीकरण:</strong> TyagiHub और इसकी मूल संस्था Tyagi MultiTech इस सामग्री का उपयोग करने से होने वाले किसी भी प्रकार के प्रत्यक्ष या अप्रत्यक्ष नुकसान अथवा अचानक हुए पाठ्यक्रम बदलाव की कानूनी जिम्मेदारी नहीं लेते हैं। उपयोगकर्ताओं को सलाह दी जाती है कि वे कोडिंग स्क्रिप्ट्स और परीक्षा तथ्यों की पुष्टि आधिकारिक और प्रामाणिक सरकारी अथवा तकनीकी स्रोतों से अवश्य करें।
             </div>
         </div>
 
-        <div class="section">
-            <div class="section-title"><span>06</span> बाहरी कड़ियों की नीतियां</div>
-            <div class="text-block">
+        <div class="privacy-section">
+            <div class="privacy-title"><span>06</span> बाहरी कड़ियों की नीतियां</div>
+            <div class="privacy-text">
                 हमारे पेजों पर बाहरी वेबसाइटों के लिंक मिल सकते हैं। हम उन बाहरी वेबसाइटों की व्यक्तिगत सुरक्षा प्रणालियों, उनकी सामग्री की वैधता अथवा उनकी प्राइवेसी नीतियों के लिए कतई उत्तरदायी नहीं हैं।
             </div>
         </div>
     </div>
 
-    <div class="contact-footer">
+    <div class="privacy-footer">
         <h3>तकनीकी सहायता एवं अनुपालन डेस्क</h3>
         <p>गोपनीयता नीतियों से जुड़े किसी भी प्रश्न, डेटा हटाने के अनुरोध अथवा सुझावों के लिए हमें सीधे संपर्क करें:</p>
-        <a href="mailto:contact@tyagihub.in">contact@tyagihub.in</a>
-        <p style="margin-top: 25px; font-size: 0.8rem; opacity: 0.6;">&copy; 2024 - 2026 Tyagi MultiTech | सर्वाधिकार सुरक्षित।</p>
+        <a href="mailto:tyagihub.official@gmail.com">tyagihub.official@gmail.com</a>
+        <p class="privacy-timestamp">&copy; 2024 - 2026 Tyagi MultiTech | सर्वाधिकार सुरक्षित।</p>
     </div>
 </div>
