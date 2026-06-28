@@ -19,7 +19,7 @@
             display: grid;
             grid-template-columns: 280px 1fr 280px;
             margin: 62px auto;
-            /* padding: 0 15px; */
+             padding: 0 !important;
             align-items: start;
             position: relative;
           }
