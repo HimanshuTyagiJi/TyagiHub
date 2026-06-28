@@ -8,16 +8,12 @@ comments: false
 ---
 
 <style>
-/* ==========================================================
-   TYAGIHUB PRIVACY PAGE (LIGHT + DARK THEME)
-   Compatible with: <html data-theme="light|dark">
-========================================================== */
-
 :root{
     --privacy-bg:#f4f7fb;
     --privacy-surface:#ffffff;
     --privacy-surface-2:#fbfcff;
-    --privacy-border:#e5e7eb;
+    --privacy-border:var(--border, #e5e7eb);
+    --privacy-border-2:var(--border2, #e5e7eb);
     --privacy-heading:#111827;
     --privacy-text:#4b5563;
     --privacy-primary:#2563eb;
@@ -35,7 +31,8 @@ html[data-theme="dark"]{
     --privacy-bg:#020617;
     --privacy-surface:#0f172a;
     --privacy-surface-2:#111827;
-    --privacy-border:#233247;
+    --privacy-border:var(--border, #233247);
+    --privacy-border-2:var(--border2, #233247);
     --privacy-heading:#f8fafc;
     --privacy-text:#cbd5e1;
     --privacy-primary:#38bdf8;
@@ -49,8 +46,6 @@ html[data-theme="dark"]{
         0 8px 18px rgba(0,0,0,.25);
 }
 
-/* ========================= */
-
 body{
     background:var(--privacy-bg);
 }
@@ -59,7 +54,7 @@ body{
     width:min(950px,calc(100% - 32px));
     margin:48px auto;
     background:var(--privacy-surface);
-    border:1px solid var(--privacy-border);
+    border:1px solid var(--privacy-border-2);
     border-radius:24px;
     overflow:hidden;
     box-shadow:var(--privacy-shadow);
@@ -74,7 +69,7 @@ body{
     linear-gradient(180deg,
     var(--privacy-surface-2),
     var(--privacy-surface));
-    border-bottom:1px solid var(--privacy-border);
+    border-bottom:1px solid var(--privacy-border-2);
     padding:70px 60px;
     text-align:center;
 }
@@ -177,7 +172,7 @@ body{
     margin:26px 0 26px 60px;
     padding:24px 26px;
     background:var(--privacy-highlight);
-    border:1px solid var(--privacy-border);
+    border:1px solid var(--privacy-border-2);
     border-left:4px solid var(--privacy-primary);
     border-radius:16px;
     color:var(--privacy-text);
@@ -190,7 +185,7 @@ body{
 
 .privacy-footer{
     background:var(--privacy-footer);
-    border-top:1px solid var(--privacy-border);
+    border-top:1px solid var(--privacy-border-2);
     padding:65px 50px;
     text-align:center;
 }
@@ -230,62 +225,49 @@ body{
     opacity:.75;
 }
 
-/* ========================= */
-
 @media (max-width:768px){
-
     .privacy-wrapper{
         width:calc(100% - 18px);
         margin:18px auto;
         border-radius:18px;
     }
-
     .privacy-header{
         padding:42px 22px;
     }
-
     .privacy-header h1{
         font-size:2.15rem;
     }
-
     .privacy-header p{
         font-size:1rem;
     }
-
     .privacy-body{
         padding:32px 20px;
     }
-
     .privacy-title{
         font-size:1.25rem;
         gap:14px;
     }
-
     .privacy-title span{
         display:none;
     }
-
     .privacy-text{
         margin-left:0;
         text-align:left;
         font-size:1rem;
     }
-
     .privacy-highlight{
         margin:24px 0;
         padding:20px;
     }
-
     .privacy-footer{
         padding:42px 20px;
     }
-
     .privacy-footer h3{
         font-size:1.45rem;
     }
-
 }
 </style>
+
 <div class="privacy-wrapper">
     <div class="privacy-header">
         <span class="privacy-badge">System Modified: 16 June 2026</span>
