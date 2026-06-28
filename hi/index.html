@@ -5,928 +5,565 @@ title: "TyagiHub — भारत का क्रिएटर और डेव�
 description: "TyagiHub के साथ सीखें, बनाएं, डिजाइन करें और सुरक्षित रहें। भारतीय छात्रों, क्रिएटर्स और डेवलपर्स के लिए मुफ्त टूल्स, ऐप्स, कोर्स और साइबर सुरक्षा प्लेटफॉर्म।"
 keywords: "TyagiHub, Tyagi MultiTech, मुफ्त टूल्स, ऑनलाइन सीखें, साइबर सुरक्षा, भारतीय छात्र"
 permalink: /hi/
+comments: false
 ---
-<!-- =========================
-     HOME DISCOVER SECTION
-========================= -->
 
-<!-- ============================================================
-     SECTION 1: HERO
-     ============================================================ -->
+<style>
+/* ==========================================================
+   TYAGIHUB HINDI HOME SYSTEM (DUAL THEME ENGINE)
+========================================================== */
+:root {
+  --home-hero-bg: radial-gradient(circle at top right, rgba(37,99,235,0.06), transparent 50%), linear-gradient(180deg, #f8fafd, #ffffff);
+  --home-section-bg-2: #f8fafc;
+  --home-card-shadow: 0 10px 30px rgba(15,23,42,0.04);
+  --home-card-hover: translateY(-6px);
+  --home-border-override: var(--clr-border, #e5e7eb);
+  --home-surface-override: var(--clr-surface, #ffffff);
+  --home-heading-override: var(--clr-heading, #111827);
+  --home-text-override: var(--clr-text, #4b5563);
+}
+
+html[data-theme="dark"] {
+  --home-hero-bg: radial-gradient(circle at top right, rgba(56,189,248,0.1), transparent 50%), linear-gradient(180deg, #0f172a, #020617);
+  --home-section-bg-2: #0f172a;
+  --home-card-shadow: 0 10px 30px rgba(0,0,0,0.3);
+  --home-border-override: var(--clr-border, #233247);
+  --home-surface-override: var(--clr-surface, #1e293b);
+  --home-heading-override: var(--clr-heading, #f8fafc);
+  --home-text-override: var(--clr-text, #cbd5e1);
+}
+
+/* STRUCTURAL LAYOUT INTEGRITY */
+.hero { background: var(--home-hero-bg); position: relative; padding: var(--space-20) 0 var(--space-16); border-bottom: 1px solid var(--home-border-override); transition: background 0.3s ease; }
+.hero__title { color: var(--home-heading-override); font-weight: 900; line-height: 1.15; letter-spacing: -0.04em; }
+.hero__subtitle { color: var(--home-text-override); max-width: 65ch; font-size: var(--fs-md); line-height: 1.7; margin-bottom: var(--space-6); }
+.hero__stats { border-top: 1px solid var(--home-border-override); margin-top: var(--space-10); padding-top: var(--space-8); }
+.hero__stat-number { color: var(--clr-primary, #2563eb); font-weight: 800; font-size: 1.8rem; }
+.hero__stat-label { color: var(--home-text-override); font-size: var(--fs-sm); }
+
+.search-section { padding: var(--space-8) 0; background: var(--home-surface-override); border-bottom: 1px solid var(--home-border-override); }
+.search-bar { display: flex; background: var(--home-hero-bg); border: 1px solid var(--home-border-override); border-radius: var(--radius-md, 14px); padding: 6px; max-width: 680px; margin: 0 auto; }
+.search-bar__input { background: transparent; border: none; padding: 10px; color: var(--home-heading-override); width: 100%; font-size: 1rem; }
+.search-bar__input:focus { outline: none; }
+
+.section-head { display: flex; align-items: center; justify-content: space-between; gap: 20px; margin-bottom: 26px; }
+.section-title { font-size: clamp(1.8rem, 4vw, 2.6rem); font-weight: 800; line-height: 1.15; color: var(--home-heading-override); }
+.view-all-link { color: var(--clr-primary, #2563eb); text-decoration: none; font-weight: 700; font-size: 15px; }
+
+/* RE-ENGINEERED DISCOVER GRAPHICS CONTAINER */
+.home-discover-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 24px; margin-bottom: var(--space-4); }
+.home-discover-card { display: block; border-radius: 20px; overflow: hidden; background: var(--home-surface-override); border: 1px solid var(--home-border-override); text-decoration: none; box-shadow: var(--home-card-shadow); transition: transform 0.25s ease, box-shadow 0.25s ease; }
+.home-discover-card:hover { transform: var(--home-card-hover); box-shadow: 0 15px 35px rgba(0,0,0,0.15); }
+.home-discover-thumb { position: relative; width: 100%; height: 180px; background: linear-gradient(135deg, #2563eb, #7c3aed); overflow: hidden; }
+.home-discover-thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.home-discover-content { padding: 20px; }
+.home-discover-content h3 { font-size: 18px; line-height: 1.4; font-weight: 800; color: var(--home-heading-override); margin: 0; }
+
+/* ECOSYSTEM GRID MUTATION WITHOUT INLINE TAGS */
+.service-card { display: flex; flex-direction: column; justify-content: space-between; padding: 26px; border-radius: 20px; background: var(--home-surface-override); border: 1px solid var(--home-border-override); text-decoration: none; box-shadow: var(--home-card-shadow); transition: transform 0.25s ease; }
+.service-card:hover { transform: var(--home-card-hover); }
+.service-card__icon { font-size: 2.2rem; margin-bottom: 16px; width: 50px; height: 50px; display: flex; align-items: center; justify-content: center; border-radius: 12px; background: var(--home-section-bg-2); }
+.service-card__name { font-size: 1.3rem; font-weight: 800; color: var(--home-heading-override); }
+.service-card__desc { color: var(--home-text-override); font-size: var(--fs-sm); line-height: 1.6; margin: var(--space-4) 0; flex-grow: 1; text-align: justify; }
+.service-card__link { font-size: var(--fs-xs); font-weight: 700; color: var(--clr-primary, #2563eb); display: inline-flex; align-items: center; gap: 6px; }
+
+/* TOOL UTILITIES TILES MATRIX */
+.tool-grid-wrapper { background: var(--home-section-bg-2); border-top: 1px solid var(--home-border-override); border-bottom: 1px solid var(--home-border-override); padding: var(--space-12) 0; }
+.tool-card { display: flex; align-items: center; gap: 16px; padding: 18px; border-radius: 16px; background: var(--home-surface-override); border: 1px solid var(--home-border-override); text-decoration: none; transition: transform 0.2s ease; }
+.tool-card:hover { transform: translateY(-3px); }
+.tool-card__icon { width: 44px; height: 44px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 1.4rem; flex-shrink: 0; }
+.tool-card__content { overflow: hidden; }
+.tool-card__name { font-weight: 700; color: var(--home-heading-override); font-size: 15px; }
+.tool-card__desc { color: var(--home-text-override); font-size: 12px; white-space: nowrap; text-overflow: ellipsis; overflow: hidden; }
+
+/* LEARNING ARCHITECTURE CARDS */
+.blog-card { display: flex; flex-direction: column; border-radius: 20px; overflow: hidden; background: var(--home-surface-override); border: 1px solid var(--home-border-override); text-decoration: none; box-shadow: var(--home-card-shadow); transition: transform 0.25s ease; }
+.blog-card:hover { transform: var(--home-card-hover); }
+.blog-card__thumb { height: 140px; display: flex; align-items: center; justify-content: center; font-size: 3rem; }
+.blog-card__body { padding: 20px; flex-grow: 1; display: flex; flex-direction: column; justify-content: space-between; }
+.blog-card__tag { font-size: 11px; font-weight: 700; color: var(--clr-primary, #2563eb); text-transform: uppercase; letter-spacing: 0.05em; }
+.blog-card__title { font-size: 17px; font-weight: 800; color: var(--home-heading-override); margin: 8px 0 12px; line-height: 1.4; }
+.blog-card__meta { font-size: 12px; color: var(--home-text-override); display: flex; gap: 6px; }
+
+/* CYBERSECURITY LAYER BLOCK */
+.shield-layout-wrapper { background: var(--home-surface-override); padding: var(--space-16) 0; }
+.shield-grid-split { display: grid; grid-template-columns: 1fr; gap: 40px; align-items: center; }
+@media (min-width: 992px) { .shield-grid-split { grid-template-columns: 1fr 1fr; gap: 60px; } }
+.shield-features { display: flex; flex-direction: column; gap: 20px; }
+.shield-feature { display: flex; gap: 16px; background: var(--home-section-bg-2); border: 1px solid var(--home-border-override); padding: 18px; border-radius: 16px; }
+.shield-feature__icon { font-size: 1.8rem; flex-shrink: 0; }
+.shield-feature__title { font-weight: 800; color: var(--home-heading-override); margin-bottom: 4px; }
+.shield-feature__desc { color: var(--home-text-override); font-size: 13px; line-height: 1.5; }
+
+/* CTA METRICS FOOTER BANNER */
+.cta-banner-wrapper { padding: var(--space-20) 0; background: var(--home-hero-bg); border-top: 1px solid var(--home-border-override); text-align: center; }
+
+/* SYSTEM DOCUMENTATION DENSITY (ADSENSE BOOSTER) */
+.home-documentation-overview { background: var(--home-surface-override); padding: 45px 0; border-top: 1px solid var(--home-border-override); }
+.home-documentation-overview h2 { font-size: 22px; font-weight: 850; color: var(--home-heading-override); margin-bottom: 20px; text-align: center; letter-spacing: -0.02em; }
+.home-documentation-overview p { font-size: 14px; color: var(--home-text-override); line-height: 1.8; text-align: justify; margin-bottom: 16px; }
+
+/* RESPONSIVE SCROLLBAR ELIMINATION GRID FOR GRAPHICS SLIDER */
+@media (max-width: 768px) {
+  .home-discover-grid { display: flex; gap: 16px; overflow-x: auto; scroll-snap-type: x mandatory; padding-bottom: 8px; scrollbar-width: none; }
+  .home-discover-grid::-webkit-scrollbar { display: none; }
+  .home-discover-card { width: 280px; min-width: 280px; scroll-snap-align: start; }
+}
+</style>
+
+<!-- SECTION 1: HERO CONTAINER -->
 <section class="hero" aria-labelledby="hero-title">
-  <div class="hero__bg">
-    <div class="hero__grid" aria-hidden="true"></div>
-    <div class="hero__glow" aria-hidden="true"></div>
-  </div>
-
   <div class="container">
     <div class="hero__content">
-
       <div class="hero__badge" aria-label="प्लेटफॉर्म घोषणा">
         <span class="hero__badge-dot" aria-hidden="true"></span>
         अब लाइव — भारत का मुफ्त क्रिएटर इकोसिस्टम
       </div>
-
       <h1 class="hero__title" id="hero-title">
         बनाएं। सीखें।<br>
         <span class="accent">मिलकर आगे बढ़ें।</span>
       </h1>
-
       <p class="hero__subtitle">
-        TyagiHub भारतीय छात्रों, क्रिएटर्स और डेवलपर्स के लिए एक मुफ्त ऑल-इन-वन प्लेटफॉर्म है।
-        डिज़ाइन करें, कोड करें, सीखें और सुरक्षित रहें — बिना किसी सब्सक्रिप्शन के।
+        TyagiHub भारतीय छात्रों, क्रिएटर्स और डेवलपर्स के लिए एक मुफ्त ऑल-इन-वन प्लेटफॉर्म है। डिज़ाइन करें, कोड करें, सीखें और सुरक्षित रहें — बिना किसी सब्सक्रिप्शन के।
       </p>
-
-      <div class="hero__actions">
-        <a href="/hi/tools/" class="btn btn-primary btn-lg">
+      <div class="hero__actions" style="display:flex; gap:var(--space-4); flex-wrap:wrap;">
+        <a href="/hi/tools/" class="btn btn-primary btn-lg" aria-label="TyagiHub यूटिलिटी टूल्स देखें">
           टूल्स देखें
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
-            aria-hidden="true">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
             <path d="M5 12h14M12 5l7 7-7 7" />
           </svg>
         </a>
-        <a href="/hi/learn/" class="btn btn-outline btn-lg">
-          सीखना शुरू करें
-        </a>
+        <a href="/hi/learn/" class="btn btn-outline btn-lg" aria-label="सीखना शुरू करें">सीखाना शुरू करें</a>
       </div>
 
-      <!-- Stats Bar -->
       <div class="hero__stats" aria-label="प्लेटफॉर्म आँकड़े">
-        <div class="hero__stat">
-          <div class="hero__stat-number" data-count="50" data-suffix="+">50+</div>
-          <div class="hero__stat-label">मुफ्त टूल्स</div>
-        </div>
-        <div class="hero__stat">
-          <div class="hero__stat-number" data-count="10000" data-suffix="+">10,000+</div>
-          <div class="hero__stat-label">उपयोगकर्ता</div>
-        </div>
-        <div class="hero__stat">
-          <div class="hero__stat-number" data-count="6">6</div>
-          <div class="hero__stat-label">प्लेटफॉर्म</div>
-        </div>
-        <div class="hero__stat">
-          <div class="hero__stat-number" data-count="100" data-suffix="% मुफ्त">100% मुफ्त</div>
-          <div class="hero__stat-label">कोर फीचर्स</div>
+        <div class="grid-4" style="gap: var(--space-4);">
+          <div class="hero__stat">
+            <div class="hero__stat-number">50+</div>
+            <div class="hero__stat-label">मुफ्त टूल्स</div>
+          </div>
+          <div class="hero__stat">
+            <div class="hero__stat-number">10,000+</div>
+            <div class="hero__stat-label">उपयोगकर्ता</div>
+          </div>
+          <div class="hero__stat">
+            <div class="hero__stat-number">6</div>
+            <div class="hero__stat-label">प्लेटफॉर्म</div>
+          </div>
+          <div class="hero__stat">
+            <div class="hero__stat-number">100% मुफ्त</div>
+            <div class="hero__stat-label">कोर फीचर्स</div>
+          </div>
         </div>
       </div>
-
     </div>
   </div>
 </section>
 
-<!-- ============================================================
-     SECTION 2: SEARCH
-     ============================================================ -->
+<!-- SECTION 2: SEARCH UTILITY DESK -->
 <section class="search-section" aria-label="TyagiHub में खोजें">
   <div class="container">
     <div class="search-bar" role="search">
-      <span class="search-bar__icon" aria-hidden="true">
+      <span class="search-bar__icon" aria-hidden="true" style="padding: 10px 0 0 10px;">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <circle cx="11" cy="11" r="8" />
-          <path d="m21 21-4.35-4.35" />
+          <circle cx="11" cy="11" r="8" /><path d="m21 21-4.35-4.35" />
         </svg>
       </span>
-      <input type="search" class="search-bar__input" placeholder="टूल्स, कोर्स, ऐप्स खोजें... (/ दबाएं फोकस के लिए)"
-        aria-label="TyagiHub में खोजें" autocomplete="off" spellcheck="false">
-      <button class="search-bar__btn" type="button" aria-label="खोज सबमिट करें">खोजें</button>
+      <input type="search" class="search-bar__input" placeholder="टूल्स, कोर्स, ऐप्स खोजें... (/ दबाएं फोकस के लिए)" aria-label="TyagiHub में खोजें" autocomplete="off" spellcheck="false">
+      <button class="search-bar__btn btn btn-primary" type="button" aria-label="खोज सबमिट करें" style="padding:6px 16px;">खोजें</button>
     </div>
-
-    <div class="search-tags" aria-label="त्वरित खोज सुझाव" role="list">
-      <button class="search-tag" data-query="PDF Compressor" role="listitem">PDF कम्प्रेसर</button>
-      <button class="search-tag" data-query="Image Editor" role="listitem">इमेज एडिटर</button>
-      <button class="search-tag" data-query="GK Quiz" role="listitem">GK क्विज़</button>
-      <button class="search-tag" data-query="Background Remover" role="listitem">बैकग्राउंड रिमूवर</button>
-      <button class="search-tag" data-query="QR Generator" role="listitem">QR जनरेटर</button>
-      <button class="search-tag" data-query="Cybersecurity" role="listitem">साइबर सुरक्षा</button>
+    <div class="search-tags" aria-label="त्वरित खोज सुझाव" role="list" style="display:flex; gap:10px; justify-content:center; margin-top:15px; flex-wrap:wrap;">
+      <button class="btn btn-outline btn-sm" data-query="PDF Compressor" role="listitem">PDF कम्प्रेसर</button>
+      <button class="btn btn-outline btn-sm" data-query="Image Editor" role="listitem">इमेज एडिटर</button>
+      <button class="btn btn-outline btn-sm" data-query="GK Quiz" role="listitem">GK क्विज़</button>
+      <button class="btn btn-outline btn-sm" data-query="Background Remover" role="listitem">बैकग्राउंड रिमूवर</button>
+      <button class="btn btn-outline btn-sm" data-query="QR Generator" role="listitem">QR जनरेटर</button>
     </div>
   </div>
 </section>
 
-
-<section class="section">
-
+<!-- SECTION 3: LATEST DISCOVER CAROUSEL -->
+<section class="section" style="background: var(--home-surface-override); padding: var(--space-12) 0;">
   <div class="container">
-
     <div class="section-head">
-
-      <div>
-
-        <h2 class="section-title">
-          नवीनतम डिस्कवर पोस्ट
-        </h2>
-
-      </div>
-
-      <a href="/hi/discover/" class="view-all-link">
-
-        सभी देखें →
-
-      </a>
-
+      <div><h2 class="section-title">नवीनतम डिस्कवर पोस्ट</h2></div>
+      <a href="/hi/discover/" class="view-all-link" aria-label="सभी डिस्कवर पोस्ट देखें">सभी देखें →</a>
     </div>
-
     <div class="home-discover-grid">
-
       {% assign latest_posts = site.posts_hi | sort: "date" | reverse %}
-
       {% for p in latest_posts limit:5 %}
-
-      <a href="{{ p.url | relative_url }}" class="home-discover-card">
-
+      <a href="{{ p.url | relative_url }}" class="home-discover-card" aria-label="{{ p.title }}">
         <div class="home-discover-thumb">
-
-          <img
-            src="{{ p.image | default: '/assets/images/default-thumb.png' }}"
-            alt="{{ p.title }}"
-            loading="lazy">
-
+          <img src="{{ p.image | default: '/assets/images/default-thumb.png' }}" alt="{{ p.title }}" loading="lazy">
         </div>
-
         <div class="home-discover-content">
-
-          <h3>
-            {{ p.title }}
-          </h3>
-
+          <h3>{{ p.title }}</h3>
         </div>
-
       </a>
-
       {% endfor %}
-
     </div>
-
   </div>
-
 </section>
-<style>
-  /* =========================
-   HOME DISCOVER
-========================= */
 
-  .section-head {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 20px;
-    margin-bottom: 26px;
-  }
-
-  .section-title {
-    font-size: clamp(1.8rem, 4vw, 2.6rem);
-    font-weight: 800;
-    line-height: 1.15;
-    color: var(--clr-heading);
-  }
-
-  .view-all-link {
-    flex: none;
-    color: #60a5fa;
-    text-decoration: none;
-    font-weight: 700;
-    font-size: 15px;
-  }
-
-  /* =========================
-   GRID DESKTOP
-========================= */
-
-  .home-discover-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 22px;
-  }
-
-  /* =========================
-   CARD
-========================= */
-
-  .home-discover-card {
-    display: block;
-    border-radius: 22px;
-    overflow: hidden;
-    background: var(--clr-surface, #111827);
-    border: 1px solid var(--clr-border, #1f2937);
-    text-decoration: none;
-    transition: .25s;
-    flex: none;
-  }
-
-  .home-discover-card:hover {
-    transform: translateY(-5px);
-  }
-
-  .home-discover-thumb {
-    position: relative;
-    width: 100%;
-    height: 220px;
-    overflow: hidden;
-    background: linear-gradient(135deg, #2563eb, #7c3aed);
-  }
-
-  .home-discover-thumb img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-  }
-
-  .home-discover-content {
-    padding: 18px;
-  }
-
-  .home-discover-content h3 {
-    font-size: 20px;
-    line-height: 1.45;
-    font-weight: 800;
-    color: var(--clr-heading, #fff);
-  }
-
-  /* =========================
-   TABLET
-========================= */
-
-
-
-  .home-discover-grid {
-    display: flex;
-    gap: 18px;
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    padding-bottom: 6px;
-    scrollbar-width: none;
-  }
-
-  .home-discover-grid::-webkit-scrollbar {
-    display: none;
-  }
-
-  .home-discover-card {
-    width: 320px;
-    min-width: 320px;
-    scroll-snap-align: start;
-  }
-
-  .home-discover-thumb {
-    height: 210px;
-  }
-
-
-
-  /* =========================
-   MOBILE
-========================= */
-
-  @media(max-width:600px) {
-
-    .section-head {
-      align-items: flex-start;
-    }
-
-    .home-discover-grid {
-      display: flex;
-      gap: 16px;
-      overflow-x: auto;
-      scroll-snap-type: x mandatory;
-      padding-bottom: 4px;
-    }
-
-    .home-discover-card {
-      width: 85%;
-      min-width: 85%;
-    }
-
-    .home-discover-thumb {
-      height: 190px;
-    }
-
-    .home-discover-content {
-      padding: 16px;
-    }
-
-    .home-discover-content h3 {
-      font-size: 17px;
-    }
-
-  }
-</style>
-
-
-<!-- ============================================================
-     SECTION 3: SERVICE CARDS
-     ============================================================ -->
-<section class="section" aria-labelledby="services-title">
+<!-- SECTION 4: CORE SIX ECOSYSTEM PLATFORMS -->
+<section class="section" aria-labelledby="services-title" style="background: var(--home-surface-override);">
   <div class="container">
-
-    <header class="section-header text-center reveal">
+    <header class="section-header text-center reveal" style="margin-bottom:var(--space-10);">
       <div class="section-label" aria-hidden="true">हमारा इकोसिस्टम</div>
       <h2 class="section-title" id="services-title">जो चाहिए, सब एक जगह।</h2>
-      <p class="section-subtitle" style="margin-inline:auto;">
-        छह शक्तिशाली प्लेटफॉर्म — भारतीय क्रिएटर्स, छात्रों और डेवलपर्स के लिए।
-      </p>
+      <p class="section-subtitle" style="margin-inline:auto;">छह शक्तिशाली प्लेटफॉर्म — भारतीय क्रिएटर्स, छात्रों और डेवलपर्स के लिए।</p>
     </header>
 
-
-
-    <div class="grid-3" style="gap: var(--space-5);" role="list">
-
+    <div class="grid-3" role="list">
       <!-- Learn -->
-      <a href="/hi/learn/" class="service-card reveal reveal-delay-1"
-        style="--card-color:rgba(62,207,207,0.12); --card-border:rgba(62,207,207,0.3); --card-accent:var(--clr-learn);"
-        role="listitem" aria-label="TyagiHub Learn प्लेटफॉर्म">
-        <div class="service-card__icon" style="background:rgba(62,207,207,0.12); --card-icon-bg:transparent;"
-          aria-hidden="true">
-          📚
-        </div>
+      <a href="/hi/learn/" class="service-card reveal reveal-delay-1" role="listitem" aria-label="TyagiHub Learn प्लेटफॉर्म">
+        <div class="service-card__icon" aria-hidden="true">📚</div>
         <div>
           <div class="service-card__name">Learn</div>
-          <div style="display:flex;gap:var(--space-2);margin-top:var(--space-2);">
-            <span class="badge badge-free">मुफ्त</span>
-            <span class="badge badge-new">नया</span>
+          <div style="display:flex; gap:6px; margin-top:8px;">
+            <span class="badge badge-free">मुफ्त</span><span class="badge badge-new">नया</span>
           </div>
         </div>
-        <p class="service-card__desc">
-          GK क्विज़, कोडिंग ट्यूटोरियल, गणित अभ्यास और SSC, Banking, Railway परीक्षाओं की तैयारी।
-        </p>
-        <span class="service-card__link" aria-label="Learn पर जाएं">
-          सीखना शुरू करें
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
-            aria-hidden="true">
-            <path d="M5 12h14M12 5l7 7-7 7" />
-          </svg>
-        </span>
+        <p class="service-card__desc">GK क्विज़, कोडिंग ट्यूटोरियल, गणित अभ्यास और SSC, Banking, Railway परीक्षाओं की सटीक तैयारी करें।</p>
+        <span class="service-card__link">सीखना शुरू करें →</span>
       </a>
 
       <!-- Editor -->
-      <a href="/hi/editor/" class="service-card reveal reveal-delay-2"
-        style="--card-color:rgba(167,139,250,0.12); --card-border:rgba(167,139,250,0.3); --card-accent:var(--clr-editor);"
-        role="listitem" aria-label="TyagiHub Editor प्लेटफॉर्म">
+      <a href="/hi/editor/" class="service-card reveal reveal-delay-2" role="listitem" aria-label="TyagiHub Editor प्लेटफॉर्म">
         <div class="service-card__icon" aria-hidden="true">✏️</div>
         <div>
           <div class="service-card__name">Editor</div>
-          <div style="display:flex;gap:var(--space-2);margin-top:var(--space-2);">
-            <span class="badge badge-free">मुफ्त</span>
-          </div>
+          <div style="display:flex; gap:6px; margin-top:8px;"><span class="badge badge-free">मुफ्त</span></div>
         </div>
-        <p class="service-card__desc">
-          ब्राउज़र-बेस्ड इमेज एडिटर, पोस्टर मेकर और विज़ुअल डिज़ाइन टूल — Canva जैसा, पर पूरी तरह मुफ्त।
-        </p>
-        <span class="service-card__link">
-          एडिटर खोलें
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
-            aria-hidden="true">
-            <path d="M5 12h14M12 5l7 7-7 7" />
-          </svg>
-        </span>
+        <p class="service-card__desc">ब्राउज़र-बेस्ड इमेज एडिटर, पोस्टर मेकर और विज़ुअल डिज़ाइन टूल — Canva जैसा, पर पूरी तरह मुफ्त।</p>
+        <span class="service-card__link">एडिटर खोलें →</span>
       </a>
 
       <!-- Tools -->
-      <a href="/hi/tools/" class="service-card reveal reveal-delay-3"
-        style="--card-color:rgba(245,166,35,0.12); --card-border:rgba(245,166,35,0.3); --card-accent:var(--clr-tools);"
-        role="listitem" aria-label="TyagiHub Tools प्लेटफॉर्म">
+      <a href="/hi/tools/" class="service-card reveal reveal-delay-3" role="listitem" aria-label="TyagiHub Tools प्लेटफॉर्म">
         <div class="service-card__icon" aria-hidden="true">🔧</div>
         <div>
           <div class="service-card__name">Tools</div>
-          <div style="display:flex;gap:var(--space-2);margin-top:var(--space-2);">
-            <span class="badge badge-hot">50+ टूल्स</span>
-          </div>
+          <div style="display:flex; gap:6px; margin-top:8px;"><span class="badge badge-hot">50+ टूल्स</span></div>
         </div>
-        <p class="service-card__desc">
-          PDF कम्प्रेसर, QR जनरेटर, इमेज कन्वर्टर, बैकग्राउंड रिमूवर और 50+ यूटिलिटी टूल्स।
-        </p>
-        <span class="service-card__link">
-          टूल्स देखें
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
-            aria-hidden="true">
-            <path d="M5 12h14M12 5l7 7-7 7" />
-          </svg>
-        </span>
+        <p class="service-card__desc">PDF कम्प्रेसर, QR जनरेटर, इमेज कन्वर्टर, बैकग्राउंड रिमूवर और 50+ दैनिक उपयोगिता वेब टूल्स।</p>
+        <span class="service-card__link">टूल्स देखें →</span>
       </a>
 
       <!-- Stock -->
-      <a href="/hi/stock/" class="service-card reveal reveal-delay-4"
-        style="--card-color:rgba(52,211,153,0.12); --card-border:rgba(52,211,153,0.3); --card-accent:var(--clr-stock);"
-        role="listitem" aria-label="TyagiHub Stock एसेट्स प्लेटफॉर्म">
+      <a href="/hi/stock/" class="service-card reveal reveal-delay-4" role="listitem" aria-label="TyagiHub Stock एसेट्स प्लेटफॉर्म">
         <div class="service-card__icon" aria-hidden="true">🖼️</div>
         <div>
           <div class="service-card__name">Stock</div>
-          <div style="display:flex;gap:var(--space-2);margin-top:var(--space-2);">
-            <span class="badge badge-free">मुफ्त एसेट्स</span>
-          </div>
+          <div style="display:flex; gap:6px; margin-top:8px;"><span class="badge badge-free">मुफ्त एसेट्स</span></div>
         </div>
-        <p class="service-card__desc">
-          क्रिएटर्स के लिए रॉयल्टी-फ्री इमेज, वेक्टर, आइकन, टेम्पलेट और बैकग्राउंड।
-        </p>
-        <span class="service-card__link">
-          Stock देखें
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
-            aria-hidden="true">
-            <path d="M5 12h14M12 5l7 7-7 7" />
-          </svg>
-        </span>
+        <p class="service-card__desc">क्रिएटर्स के लिए हाई-रिज़ॉल्यूशन रॉयल्टी-फ्री इमेज, वेक्टर, आइकन, टेम्पलेट और संपादन बैकग्राउंड।</p>
+        <span class="service-card__link">Stock देखें →</span>
       </a>
 
       <!-- Apps -->
-      <a href="/hi/apps/" class="service-card reveal reveal-delay-5"
-        style="--card-color:rgba(96,165,250,0.12); --card-border:rgba(96,165,250,0.3); --card-accent:var(--clr-apps);"
-        role="listitem" aria-label="TyagiHub Apps प्लेटफॉर्म">
+      <a href="/hi/apps/" class="service-card reveal reveal-delay-5" role="listitem" aria-label="TyagiHub Apps प्लेटफॉर्म">
         <div class="service-card__icon" aria-hidden="true">📱</div>
         <div>
           <div class="service-card__name">Apps</div>
-          <div style="display:flex;gap:var(--space-2);margin-top:var(--space-2);">
-            <span class="badge badge-new">Android</span>
-          </div>
+          <div style="display:flex; gap:6px; margin-top:8px;"><span class="badge badge-new">Android</span></div>
         </div>
-        <p class="service-card__desc">
-          Tyagi MultiTech के मुफ्त Android ऐप्स डाउनलोड करें — DiagX, GK Learn, PDF Tool Pro, और अधिक।
-        </p>
-        <span class="service-card__link">
-          ऐप्स पाएं
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
-            aria-hidden="true">
-            <path d="M5 12h14M12 5l7 7-7 7" />
-          </svg>
-        </span>
+        <p class="service-card__desc">Tyagi MultiTech के नेटिव Android ऐप्स डाउनलोड करें — DiagX, GK Learn, PDF Tool Pro और उत्पादकता बढ़ाने वाले सॉफ़्टवेयर।</p>
+        <span class="service-card__link">ऐप्स पाएं →</span>
       </a>
 
       <!-- Shield -->
-      <a href="/hi/shield/" class="service-card reveal reveal-delay-6"
-        style="--card-color:rgba(248,113,113,0.12); --card-border:rgba(248,113,113,0.3); --card-accent:var(--clr-shield);"
-        role="listitem" aria-label="TyagiHub Shield सुरक्षा प्लेटफॉर्म">
+      <a href="/hi/shield/" class="service-card reveal reveal-delay-6" role="listitem" aria-label="TyagiHub Shield सुरक्षा प्लेटफॉर्म">
         <div class="service-card__icon" aria-hidden="true">🛡️</div>
         <div>
           <div class="service-card__name">Shield</div>
-          <div style="display:flex;gap:var(--space-2);margin-top:var(--space-2);">
-            <span class="badge badge-hot">InfoShield India</span>
-          </div>
+          <div style="display:flex; gap:6px; margin-top:8px;"><span class="badge badge-hot">InfoShield India</span></div>
         </div>
-        <p class="service-card__desc">
-          भारतीय उपयोगकर्ताओं के लिए हिंदी में साइबर सुरक्षा जागरूकता, स्कैम अलर्ट और डिजिटल सुरक्षा गाइड।
-        </p>
-        <span class="service-card__link">
-          सुरक्षित रहें
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
-            aria-hidden="true">
-            <path d="M5 12h14M12 5l7 7-7 7" />
-          </svg>
-        </span>
+        <p class="service-card__desc">भारतीय उपयोगकर्ताओं के लिए शुद्ध हिंदी में साइबर सुरक्षा जागरूकता, लाइव स्कैम अलर्ट और डिजिटल सुरक्षा गाइड्स।</p>
+        <span class="service-card__link">सुरक्षित रहें →</span>
       </a>
-
     </div>
   </div>
 </section>
 
-<!-- ============================================================
-     SECTION 4: FEATURED TOOLS
-     ============================================================ -->
-<section class="section section-sm"
-  style="background:var(--clr-bg-2); border-top:1px solid var(--clr-border); border-bottom:1px solid var(--clr-border);"
-  aria-labelledby="tools-title">
+<!-- SECTION 5: POPULAR WEB UTILITY TILES -->
+<div class="tool-grid-wrapper">
   <div class="container">
-
-    <div class="flex-between" style="margin-bottom:var(--space-8); flex-wrap:wrap; gap:var(--space-4);">
-      <div class="reveal">
+    <div class="section-head">
+      <div>
         <div class="section-label" aria-hidden="true">लोकप्रिय टूल्स</div>
         <h2 class="section-title" id="tools-title">लोगों के पसंदीदा टूल्स</h2>
       </div>
-      <a href="/hi/tools/" class="btn btn-outline btn-sm reveal">सभी टूल्स देखें →</a>
+      <a href="/hi/tools/" class="btn btn-outline btn-sm" aria-label="सभी ५० से अधिक टूल्स की लिस्ट खोलें">सभी टूल्स देखें →</a>
     </div>
 
     <div class="grid-4" role="list">
-
-      <a href="/hi/tools/pdf-compressor/" class="tool-card reveal reveal-delay-1" role="listitem"
-        aria-label="PDF कम्प्रेसर टूल">
+      <a href="/hi/tools/pdf-compressor/" class="tool-card" role="listitem" aria-label="PDF कम्प्रेसर टूल">
         <div class="tool-card__icon" style="background:rgba(245,166,35,0.12);" aria-hidden="true">📄</div>
         <div class="tool-card__content">
           <div class="tool-card__name">PDF कम्प्रेसर</div>
           <div class="tool-card__desc">बिना क्वालिटी खोए PDF फ़ाइलें कम्प्रेस करें</div>
         </div>
       </a>
-
-      <a href="/hi/tools/background-remover/" class="tool-card reveal reveal-delay-2" role="listitem"
-        aria-label="बैकग्राउंड रिमूवर टूल">
+      <a href="/hi/tools/background-remover/" class="tool-card" role="listitem" aria-label="बैकग्राउंड रिमूवर टूल">
         <div class="tool-card__icon" style="background:rgba(167,139,250,0.12);" aria-hidden="true">🎭</div>
         <div class="tool-card__content">
           <div class="tool-card__name">BG रिमूवर</div>
           <div class="tool-card__desc">तुरंत इमेज बैकग्राउंड हटाएं</div>
         </div>
       </a>
-
-      <a href="/hi/tools/qr-generator/" class="tool-card reveal reveal-delay-3" role="listitem"
-        aria-label="QR कोड जनरेटर टूल">
+      <a href="/hi/tools/qr-generator/" class="tool-card" role="listitem" aria-label="QR कोड जनरेटर टूल">
         <div class="tool-card__icon" style="background:rgba(62,207,207,0.12);" aria-hidden="true">📱</div>
         <div class="tool-card__content">
           <div class="tool-card__name">QR जनरेटर</div>
           <div class="tool-card__desc">मुफ्त में कस्टम QR कोड बनाएं</div>
         </div>
       </a>
-
-      <a href="/hi/tools/image-converter/" class="tool-card reveal reveal-delay-4" role="listitem"
-        aria-label="इमेज कन्वर्टर टूल">
+      <a href="/hi/tools/image-converter/" class="tool-card" role="listitem" aria-label="इमेज कन्वर्टर टूल">
         <div class="tool-card__icon" style="background:rgba(52,211,153,0.12);" aria-hidden="true">🖼️</div>
         <div class="tool-card__content">
           <div class="tool-card__name">इमेज कन्वर्टर</div>
-          <div class="tool-card__desc">PNG, JPG, WebP, AVIF तुरंत कन्वर्ट करें</div>
+          <div class="tool-card__desc">PNG, JPG, WebP तुरंत कन्वर्ट करें</div>
         </div>
       </a>
-
-      <a href="/hi/tools/word-counter/" class="tool-card reveal reveal-delay-1" role="listitem"
-        aria-label="वर्ड काउंटर टूल">
+      <a href="/hi/tools/word-counter/" class="tool-card" role="listitem" aria-label="वर्ड काउंटर टूल">
         <div class="tool-card__icon" style="background:rgba(251,146,60,0.12);" aria-hidden="true">📝</div>
         <div class="tool-card__content">
           <div class="tool-card__name">वर्ड काउंटर</div>
           <div class="tool-card__desc">शब्द, अक्षर, पैराग्राफ गिनें</div>
         </div>
       </a>
-
-      <a href="/hi/tools/password-generator/" class="tool-card reveal reveal-delay-2" role="listitem"
-        aria-label="पासवर्ड जनरेटर टूल">
+      <a href="/hi/tools/password-generator/" class="tool-card" role="listitem" aria-label="पासवर्ड जनरेटर टूल">
         <div class="tool-card__icon" style="background:rgba(248,113,113,0.12);" aria-hidden="true">🔐</div>
         <div class="tool-card__content">
           <div class="tool-card__name">पासवर्ड जनरेटर</div>
           <div class="tool-card__desc">मज़बूत और सुरक्षित पासवर्ड बनाएं</div>
         </div>
       </a>
-
-      <a href="/hi/tools/color-picker/" class="tool-card reveal reveal-delay-3" role="listitem"
-        aria-label="कलर पिकर टूल">
+      <a href="/hi/tools/color-picker/" class="tool-card" role="listitem" aria-label="कलर पिकर टूल">
         <div class="tool-card__icon" style="background:rgba(96,165,250,0.12);" aria-hidden="true">🎨</div>
         <div class="tool-card__content">
           <div class="tool-card__name">कलर पिकर</div>
           <div class="tool-card__desc">रंग चुनें, कन्वर्ट करें और एक्सप्लोर करें</div>
         </div>
       </a>
-
-      <a href="/hi/tools/" class="tool-card reveal reveal-delay-4" role="listitem" style="border-style:dashed;"
-        aria-label="सभी टूल्स देखें">
-        <div class="tool-card__icon" style="background:var(--clr-surface-2);" aria-hidden="true">➕</div>
+      <a href="/hi/tools/" class="tool-card" role="listitem" style="border-style:dashed;" aria-label="सभी टूल्स देखें">
+        <div class="tool-card__icon" aria-hidden="true">➕</div>
         <div class="tool-card__content">
           <div class="tool-card__name">50+ और टूल्स</div>
           <div class="tool-card__desc">पूरा टूल्स कलेक्शन देखें</div>
         </div>
       </a>
-
     </div>
   </div>
-</section>
+</div>
 
-<!-- ============================================================
-     SECTION 5: FEATURED LEARNING
-     ============================================================ -->
-<section class="section" aria-labelledby="learn-title">
+<!-- SECTION 6: EDUCATION & PORTAL MOCKS -->
+<section class="section" aria-labelledby="learn-title" style="background: var(--home-surface-override);">
   <div class="container">
-
-    <div class="flex-between" style="margin-bottom:var(--space-8); flex-wrap:wrap; gap:var(--space-4);">
-      <div class="reveal">
+    <div class="section-head">
+      <div>
         <div class="section-label" aria-hidden="true">TyagiHub Learn</div>
         <h2 class="section-title" id="learn-title">आज से सीखना शुरू करें</h2>
-        <p class="section-subtitle">प्रतियोगी परीक्षाओं और कोडिंग के लिए मुफ्त कोर्स और क्विज़</p>
+        <p class="section-subtitle" style="color:var(--home-text-override);">प्रतियोगी परीक्षाओं और कोडिंग के लिए मुफ्त कोर्स और क्विज़</p>
       </div>
-      <a href="/hi/learn/" class="btn btn-outline btn-sm reveal">सभी कोर्स →</a>
+      <a href="/hi/learn/" class="btn btn-outline btn-sm" aria-label="सभी शैक्षणिक कोर्स देखें">सभी कोर्स →</a>
     </div>
 
     <div class="grid-3" role="list">
-
-      <a href="/hi/learn/gk-quiz/" class="blog-card reveal reveal-delay-1" role="listitem" aria-label="GK Quiz कोर्स">
-        <div class="blog-card__thumb"
-          style="background:linear-gradient(135deg,rgba(62,207,207,0.2),rgba(62,207,207,0.05));" aria-hidden="true">📚
-        </div>
+      <a href="/hi/learn/gk-quiz/" class="blog-card" role="listitem" aria-label="GK Quiz कोर्स पोर्टल">
+        <div class="blog-card__thumb" style="background:linear-gradient(135deg,rgba(62,207,207,0.1),transparent);" aria-hidden="true">📚</div>
         <div class="blog-card__body">
           <span class="blog-card__tag">GK और करंट अफेयर्स</span>
           <h3 class="blog-card__title">GK Quiz अभ्यास — SSC, Banking, Railway</h3>
-          <div class="blog-card__meta">
-            <span>500+ प्रश्न</span>
-            <span>·</span>
-            <span>मुफ्त</span>
-          </div>
+          <div class="blog-card__meta"><span>500+ प्रश्न</span><span>·</span><span>मुफ्त</span></div>
         </div>
       </a>
-
-      <a href="/hi/learn/coding-basics/" class="blog-card reveal reveal-delay-2" role="listitem"
-        aria-label="Coding Basics कोर्स">
-        <div class="blog-card__thumb"
-          style="background:linear-gradient(135deg,rgba(167,139,250,0.2),rgba(167,139,250,0.05));" aria-hidden="true">💻
-        </div>
+      <a href="/hi/learn/coding-basics/" class="blog-card" role="listitem" aria-label="Coding Basics कोर्स">
+        <div class="blog-card__thumb" style="background:linear-gradient(135deg,rgba(167,139,250,0.1),transparent);" aria-hidden="true">💻</div>
         <div class="blog-card__body">
           <span class="blog-card__tag">प्रोग्रामिंग</span>
           <h3 class="blog-card__title">कोडिंग बेसिक्स — HTML, CSS, JavaScript</h3>
-          <div class="blog-card__meta">
-            <span>बिगिनर फ्रेंडली</span>
-            <span>·</span>
-            <span>हिंदी + अंग्रेज़ी</span>
-          </div>
+          <div class="blog-card__meta"><span>बिगिनर फ्रेंडली</span><span>·</span><span>हिंदी + अंग्रेज़ी</span></div>
         </div>
       </a>
-
-      <a href="/hi/learn/maths-practice/" class="blog-card reveal reveal-delay-3" role="listitem"
-        aria-label="Maths Practice कोर्स">
-        <div class="blog-card__thumb"
-          style="background:linear-gradient(135deg,rgba(245,166,35,0.2),rgba(245,166,35,0.05));" aria-hidden="true">🔢
-        </div>
+      <a href="/hi/learn/maths-practice/" class="blog-card" role="listitem" aria-label="Maths Practice अभ्यास पोर्टल">
+        <div class="blog-card__thumb" style="background:linear-gradient(135deg,rgba(245,166,35,0.1),transparent);" aria-hidden="true">🔢</div>
         <div class="blog-card__body">
           <span class="blog-card__tag">गणित</span>
           <h3 class="blog-card__title">गणित अभ्यास पोर्टल — सभी परीक्षा स्तर</h3>
-          <div class="blog-card__meta">
-            <span>चरण-दर-चरण हल</span>
-            <span>·</span>
-            <span>मुफ्त</span>
-          </div>
+          <div class="blog-card__meta"><span>चरण-दर-चरण हल</span><span>·</span><span>मुफ्त</span></div>
         </div>
       </a>
-
     </div>
   </div>
 </section>
 
-<!-- ============================================================
-     SECTION 6: FEATURED STOCK
-     ============================================================ -->
-<section class="section section-sm"
-  style="background:var(--clr-bg-2); border-top:1px solid var(--clr-border); border-bottom:1px solid var(--clr-border);"
-  aria-labelledby="stock-title">
+<!-- SECTION 7: CREATOR ASSETS PREVIEW TILES -->
+<section class="section" aria-labelledby="stock-title" style="background: var(--home-section-bg-2); border-top:1px solid var(--home-border-override); border-bottom:1px solid var(--home-border-override);">
   <div class="container">
-
-    <div class="flex-between" style="margin-bottom:var(--space-8); flex-wrap:wrap; gap:var(--space-4);">
-      <div class="reveal">
+    <div class="section-head">
+      <div>
         <div class="section-label" aria-hidden="true">TyagiHub Stock</div>
         <h2 class="section-title" id="stock-title">क्रिएटर्स के लिए मुफ्त एसेट्स</h2>
       </div>
-      <a href="/hi/stock/" class="btn btn-outline btn-sm reveal">Stock देखें →</a>
+      <a href="/hi/stock/" class="btn btn-outline btn-sm" aria-label="स्टॉक एसेट्स हब खोलें">Stock देखें →</a>
     </div>
 
     <div class="grid-4" role="list">
-      <!-- Stock preview cards -->
-      <a href="/hi/stock/icons/" class="card reveal reveal-delay-1" role="listitem" aria-label="मुफ्त आइकन्स कैटेगरी">
-        <div
-          style="height:120px; background:linear-gradient(135deg,var(--clr-surface-2),var(--clr-bg-3)); display:flex; align-items:center; justify-content:center; font-size:3rem;"
-          aria-hidden="true">🎯</div>
-        <div class="card__body">
-          <div style="font-weight:var(--fw-semi);color:var(--clr-heading);">आइकन्स पैक</div>
-          <div style="font-size:var(--fs-xs);color:var(--clr-text-3);margin-top:var(--space-1);">500+ मुफ्त SVG आइकन्स
-          </div>
+      <a href="/hi/stock/icons/" class="blog-card" role="listitem" aria-label="मुफ्त आइकन्स एसेट्स">
+        <div style="height:120px; background:var(--home-section-bg-2); display:flex; align-items:center; justify-content:center; font-size:2.5rem;" aria-hidden="true">🎯</div>
+        <div class="blog-card__body" style="padding:15px;">
+          <div style="font-weight:700; color:var(--home-heading-override);">आइकन्स पैक</div>
+          <div style="font-size:12px; color:var(--home-text-override); margin-top:4px;">500+ मुफ्त SVG आइकन्स</div>
         </div>
       </a>
-
-      <a href="/hi/stock/templates/" class="card reveal reveal-delay-2" role="listitem"
-        aria-label="मुफ्त टेम्पलेट्स कैटेगरी">
-        <div
-          style="height:120px; background:linear-gradient(135deg,var(--clr-surface-2),rgba(167,139,250,0.1)); display:flex; align-items:center; justify-content:center; font-size:3rem;"
-          aria-hidden="true">📋</div>
-        <div class="card__body">
-          <div style="font-weight:var(--fw-semi);color:var(--clr-heading);">टेम्पलेट्स</div>
-          <div style="font-size:var(--fs-xs);color:var(--clr-text-3);margin-top:var(--space-1);">रिज्यूमे, पोस्टर, सोशल
-          </div>
+      <a href="/hi/stock/templates/" class="blog-card" role="listitem" aria-label="मुफ्त टेम्पलेट्स एसेट्स">
+        <div style="height:120px; background:var(--home-section-bg-2); display:flex; align-items:center; justify-content:center; font-size:2.5rem;" aria-hidden="true">📋</div>
+        <div class="blog-card__body" style="padding:15px;">
+          <div style="font-weight:700; color:var(--home-heading-override);">टेम्पलेट्स</div>
+          <div style="font-size:12px; color:var(--home-text-override); margin-top:4px;">रिज्यूमे, पोस्टर, सोशल लेआउट</div>
         </div>
       </a>
-
-      <a href="/hi/stock/backgrounds/" class="card reveal reveal-delay-3" role="listitem"
-        aria-label="मुफ्त बैकग्राउंड कैटेगरी">
-        <div
-          style="height:120px; background:linear-gradient(135deg,rgba(52,211,153,0.15),var(--clr-surface-2)); display:flex; align-items:center; justify-content:center; font-size:3rem;"
-          aria-hidden="true">🌌</div>
-        <div class="card__body">
-          <div style="font-weight:var(--fw-semi);color:var(--clr-heading);">बैकग्राउंड</div>
-          <div style="font-size:var(--fs-xs);color:var(--clr-text-3);margin-top:var(--space-1);">ग्रेडिएंट और टेक्सचर
-          </div>
+      <a href="/hi/stock/backgrounds/" class="blog-card" role="listitem" aria-label="मुफ्त बैकग्राउंड एसेट्स">
+        <div style="height:120px; background:var(--home-section-bg-2); display:flex; align-items:center; justify-content:center; font-size:2.5rem;" aria-hidden="true">🌌</div>
+        <div class="blog-card__body" style="padding:15px;">
+          <div style="font-weight:700; color:var(--home-heading-override);">बैकग्राउंड</div>
+          <div style="font-size:12px; color:var(--home-text-override); margin-top:4px;">स्मूथ ग्रेडिएंट और टेक्सचर्स</div>
         </div>
       </a>
-
-      <a href="/hi/stock/illustrations/" class="card reveal reveal-delay-4" role="listitem"
-        aria-label="मुफ्त इलस्ट्रेशन कैटेगरी">
-        <div
-          style="height:120px; background:linear-gradient(135deg,rgba(245,166,35,0.12),var(--clr-surface-2)); display:flex; align-items:center; justify-content:center; font-size:3rem;"
-          aria-hidden="true">🎨</div>
-        <div class="card__body">
-          <div style="font-weight:var(--fw-semi);color:var(--clr-heading);">इलस्ट्रेशन</div>
-          <div style="font-size:var(--fs-xs);color:var(--clr-text-3);margin-top:var(--space-1);">फ्लैट और वेक्टर आर्ट</div>
+      <a href="/hi/stock/illustrations/" class="blog-card" role="listitem" aria-label="मुफ्त इलस्ट्रेशन एसेट्स">
+        <div style="height:120px; background:var(--home-section-bg-2); display:flex; align-items:center; justify-content:center; font-size:2.5rem;" aria-hidden="true">🎨</div>
+        <div class="blog-card__body" style="padding:15px;">
+          <div style="font-weight:700; color:var(--home-heading-override);">इलस्ट्रेशन</div>
+          <div style="font-size:12px; color:var(--home-text-override); margin-top:4px;">फ्लैट वेक्टर और आधुनिक आर्ट</div>
         </div>
       </a>
     </div>
   </div>
 </section>
 
-<!-- ============================================================
-     SECTION 7: APPS
-     ============================================================ -->
-<section class="section" aria-labelledby="apps-title">
+<!-- SECTION 8: NATIVE ANDROID APPS STORE LAYER -->
+<section class="section" aria-labelledby="apps-title" style="background: var(--home-surface-override);">
   <div class="container">
-
-    <div class="flex-between" style="margin-bottom:var(--space-8); flex-wrap:wrap; gap:var(--space-4);">
-      <div class="reveal">
+    <div class="section-head">
+      <div>
         <div class="section-label" aria-hidden="true">Tyagi MultiTech Apps</div>
         <h2 class="section-title" id="apps-title">मुफ्त Android ऐप्स</h2>
-        <p class="section-subtitle">भारत के लिए बने। कोई सब्सक्रिप्शन नहीं। कोई छुपा हुआ खर्च नहीं।</p>
+        <p class="section-subtitle" style="color:var(--home-text-override);">भारत के लिए बने। कोई सब्सक्रिप्शन नहीं। कोई छुपा हुआ खर्च नहीं।</p>
       </div>
-      <a href="/hi/apps/" class="btn btn-outline btn-sm reveal">सभी ऐप्स →</a>
+      <a href="/hi/apps/" class="btn btn-outline btn-sm" aria-label="सभी एंड्रॉइड ऐप्स सूची">सभी ऐप्स →</a>
     </div>
 
     <div class="grid-2" role="list">
-
-      <a href="/hi/apps/diagx/" class="app-card reveal reveal-delay-1" role="listitem" aria-label="DiagX ऐप">
-        <div class="app-card__icon" style="background:linear-gradient(135deg,#1e40af,#3b82f6);" aria-hidden="true">📱
+      <a href="/hi/apps/diagx/" class="tool-card" role="listitem" aria-label="DiagX एंड्रॉइड एप्लिकेशन" style="padding:22px;">
+        <div class="tool-card__icon" style="background:linear-gradient(135deg,#1e40af,#3b82f6); color:#fff;" aria-hidden="true">📱</div>
+        <div class="tool-card__content">
+          <div class="tool-card__name" style="font-size:18px;">DiagX</div>
+          <div class="tool-card__desc" style="font-size:13px; margin-top:4px;">फोन हेल्थ डायग्नोस्टिक्स · सेकंड-हैंड डिवाइस चेकर</div>
         </div>
-        <div class="app-card__content">
-          <div class="app-card__name">DiagX</div>
-          <div class="app-card__category">फोन हेल्थ डायग्नोस्टिक्स</div>
-          <div class="app-card__rating">
-            <span>⭐⭐⭐⭐⭐</span>
-            <span>सेकंड-हैंड फोन खरीदने से पहले जांचें</span>
-          </div>
-        </div>
-        <span class="badge badge-new">नया</span>
       </a>
-
-      <a href="/hi/apps/gk-learn/" class="app-card reveal reveal-delay-2" role="listitem" aria-label="GK Learn ऐप">
-        <div class="app-card__icon" style="background:linear-gradient(135deg,#065f46,#10b981);" aria-hidden="true">📚
+      <a href="/hi/apps/gk-learn/" class="tool-card" role="listitem" aria-label="GK Learn एप्लिकेशन" style="padding:22px;">
+        <div class="tool-card__icon" style="background:linear-gradient(135deg,#065f46,#10b981); color:#fff;" aria-hidden="true">📚</div>
+        <div class="tool-card__content">
+          <div class="tool-card__name" style="font-size:18px;">GK Learn &amp; Study</div>
+          <div class="tool-card__desc" style="font-size:13px; margin-top:4px;">शिक्षा · SSC, Banking, Railway परीक्षा तैयारी ऐप</div>
         </div>
-        <div class="app-card__content">
-          <div class="app-card__name">GK Learn &amp; Study</div>
-          <div class="app-card__category">शिक्षा · परीक्षा तैयारी</div>
-          <div class="app-card__rating">
-            <span>⭐⭐⭐⭐⭐</span>
-            <span>SSC, Banking, Railway परीक्षा तैयारी</span>
-          </div>
-        </div>
-        <span class="badge badge-free">मुफ्त</span>
       </a>
-
-      <a href="/hi/apps/pdf-tool-pro/" class="app-card reveal reveal-delay-3" role="listitem"
-        aria-label="PDF Tool Pro ऐप">
-        <div class="app-card__icon" style="background:linear-gradient(135deg,#7c2d12,#f97316);" aria-hidden="true">📄
-        </div>
-        <div class="app-card__content">
-          <div class="app-card__name">PDF Tool Pro</div>
-          <div class="app-card__category">प्रोडक्टिविटी · PDF</div>
-          <div class="app-card__rating">
-            <span>⭐⭐⭐⭐⭐</span>
-            <span>एक ऐप में 14 PDF टूल्स</span>
-          </div>
-        </div>
-        <span class="badge badge-free">मुफ्त</span>
-      </a>
-
-      <a href="/hi/apps/omnigraph-studio/" class="app-card reveal reveal-delay-4" role="listitem"
-        aria-label="OmniGraph Studio ऐप">
-        <div class="app-card__icon" style="background:linear-gradient(135deg,#4c1d95,#8b5cf6);" aria-hidden="true">🎨
-        </div>
-        <div class="app-card__content">
-          <div class="app-card__name">OmniGraph Studio</div>
-          <div class="app-card__category">डिज़ाइन · ग्राफिक्स</div>
-          <div class="app-card__rating">
-            <span>⭐⭐⭐⭐⭐</span>
-            <span>कोलाज, डायग्राम, डॉक्यूमेंट</span>
-          </div>
-        </div>
-        <span class="badge badge-free">मुफ्त</span>
-      </a>
-
     </div>
   </div>
 </section>
 
-<!-- ============================================================
-     SECTION 8: SHIELD / SECURITY
-     ============================================================ -->
-<section class="section shield-section" aria-labelledby="shield-title">
+<!-- SECTION 9: INFO SHIELD CYBERSECURITY BLOCK -->
+<div class="shield-layout-wrapper">
   <div class="container">
-
-    <div style="display:grid; grid-template-columns:1fr 1fr; gap:var(--space-12); align-items:center;"
-      class="shield-layout">
-
-      <div class="reveal">
+    <div class="shield-grid-split">
+      <div>
         <div class="section-label" aria-hidden="true">InfoShield India</div>
-        <h2 class="section-title" id="shield-title">ऑनलाइन सुरक्षित रहें।<br>जागरूक रहें।</h2>
-        <p class="section-subtitle">
-          हिंदी में साइबर सुरक्षा जागरूकता। स्कैम अलर्ट, डिजिटल सुरक्षा टिप्स और भारत के हर इंटरनेट उपयोगकर्ता के लिए प्राइवेसी गाइड।
-        </p>
-        <div style="display:flex; gap:var(--space-3); margin-top:var(--space-8); flex-wrap:wrap;">
+        <h2 class="section-title" id="shield-title" style="margin-bottom:15px;">ऑनलाइन सुरक्षित रहें।<br>जागरूक रहें।</h2>
+        <p class="hero__subtitle" style="font-size:15px;">हिंदी में व्यापक साइबर सुरक्षा जागरूकता। नवीनतम ऑनलाइन वित्तीय धोखाधड़ी (Financial Scams) से बचने के व्यावहारिक उपाय, डिजिटल सुरक्षा सेटिंग्स और प्राइवेसी गाइडेंस ढांचा।</p>
+        <div style="display:flex; gap:12px; margin-top:25px; flex-wrap:wrap;">
           <a href="/hi/shield/" class="btn btn-primary">Shield देखें</a>
           <a href="/hi/shield/scam-alerts/" class="btn btn-outline">नवीनतम स्कैम अलर्ट</a>
         </div>
       </div>
 
-      <div class="shield-features reveal reveal-delay-2">
+      <div class="shield-features">
         <div class="shield-feature">
           <span class="shield-feature__icon" aria-hidden="true">🚨</span>
           <div>
             <div class="shield-feature__title">स्कैम अलर्ट</div>
-            <div class="shield-feature__desc">हिंदी में नवीनतम धोखाधड़ी की चेतावनियाँ — OTP स्कैम, फर्जी ऐप्स, फिशिंग</div>
+            <div class="shield-feature__desc">हिंदी में त्वरित धोखाधड़ी की चेतावनियाँ — OTP स्कैम, फर्जी लोन ऐप्स और फिशिंग जाल से बचाव।</div>
           </div>
         </div>
         <div class="shield-feature">
           <span class="shield-feature__icon" aria-hidden="true">🔒</span>
           <div>
             <div class="shield-feature__title">प्राइवेसी गाइड</div>
-            <div class="shield-feature__desc">अपना फोन, अकाउंट और निजी डेटा कैसे सुरक्षित करें</div>
-          </div>
-        </div>
-        <div class="shield-feature">
-          <span class="shield-feature__icon" aria-hidden="true">📱</span>
-          <div>
-            <div class="shield-feature__title">ऐप सुरक्षा</div>
-            <div class="shield-feature__desc">कौन से ऐप्स पर भरोसा करें, किनसे बचें और क्यों</div>
-          </div>
-        </div>
-        <div class="shield-feature">
-          <span class="shield-feature__icon" aria-hidden="true">🎓</span>
-          <div>
-            <div class="shield-feature__title">जागरूकता अभियान</div>
-            <div class="shield-feature__desc">छात्रों और परिवारों के लिए मुफ्त डिजिटल साक्षरता सामग्री</div>
+            <div class="shield-feature__desc">अपने निजी सोशल मीडिया अकाउंट्स, ईमेल और स्मार्टफोन को हैकर्स से सुरक्षित रखने की स्टेप-बाय-स्टेप गाइड।</div>
           </div>
         </div>
       </div>
-
     </div>
   </div>
-</section>
+</div>
 
-<!-- ============================================================
-     SECTION 9: BLOG PREVIEW
-     ============================================================ -->
-<section class="section" aria-labelledby="blog-title">
+<!-- SECTION 10: HIGHEST METRICS BLOG ENTRIES SUPPORT -->
+<section class="section" aria-labelledby="blog-title" style="background: var(--home-section-bg-2); border-top:1px solid var(--home-border-override);">
   <div class="container">
-
-    <div class="flex-between" style="margin-bottom:var(--space-8); flex-wrap:wrap; gap:var(--space-4);">
-      <div class="reveal">
+    <div class="section-head">
+      <div>
         <div class="section-label" aria-hidden="true">नवीनतम पोस्ट</div>
         <h2 class="section-title" id="blog-title">ब्लॉग से</h2>
       </div>
-      <a href="/hi/blog/" class="btn btn-outline btn-sm reveal">सभी पोस्ट →</a>
+      <a href="/hi/blog/" class="btn btn-outline btn-sm" aria-label="सभी हिंदी ब्लॉग पोस्ट देखें">सभी पोस्ट →</a>
     </div>
 
     <div class="grid-3" role="list">
-
-      <a href="/hi/blog/how-to-stay-safe-online/" class="blog-card reveal reveal-delay-1" role="listitem"
-        aria-label="ब्लॉग पोस्ट: भारत में ऑनलाइन सुरक्षित कैसे रहें">
-        <div class="blog-card__thumb"
-          style="background:linear-gradient(135deg,rgba(248,113,113,0.2),rgba(248,113,113,0.05));" aria-hidden="true">
-          🛡️</div>
+      <a href="/hi/blog/how-to-stay-safe-online/" class="blog-card" role="listitem" aria-label="ब्लॉग पोस्ट: ऑनलाइन सुरक्षित कैसे रहें">
+        <div class="blog-card__thumb" style="background:linear-gradient(135deg,rgba(248,113,113,0.1),transparent);" aria-hidden="true">🛡️</div>
         <div class="blog-card__body">
           <span class="blog-card__tag">साइबर सुरक्षा</span>
           <h3 class="blog-card__title">ऑनलाइन सुरक्षित कैसे रहें — Top 10 Tips</h3>
-          <div class="blog-card__meta">
-            <span>Tyagi MultiTech</span>
-            <span>·</span>
-            <span>5 मिनट पढ़ें</span>
-          </div>
+          <div class="blog-card__meta"><span>Tyagi MultiTech</span><span>·</span><span>5 मिनट पढ़ें</span></div>
         </div>
       </a>
-
-      <a href="/hi/blog/free-tools-for-students/" class="blog-card reveal reveal-delay-2" role="listitem"
-        aria-label="ब्लॉग पोस्ट: छात्रों के लिए मुफ्त टूल्स">
-        <div class="blog-card__thumb"
-          style="background:linear-gradient(135deg,rgba(245,166,35,0.2),rgba(245,166,35,0.05));" aria-hidden="true">🎓
-        </div>
+      <a href="/hi/blog/free-tools-for-students/" class="blog-card" role="listitem" aria-label="ब्लॉग पोस्ट: छात्रों के लिए टूल्स">
+        <div class="blog-card__thumb" style="background:linear-gradient(135deg,rgba(245,166,35,0.1),transparent);" aria-hidden="true">🎓</div>
         <div class="blog-card__body">
           <span class="blog-card__tag">प्रोडक्टिविटी</span>
           <h3 class="blog-card__title">Students के लिए 10 Free Online Tools</h3>
-          <div class="blog-card__meta">
-            <span>Tyagi MultiTech</span>
-            <span>·</span>
-            <span>4 मिनट पढ़ें</span>
-          </div>
+          <div class="blog-card__meta"><span>Tyagi MultiTech</span><span>·</span><span>4 मिनट पढ़ें</span></div>
         </div>
       </a>
-
-      <a href="/hi/blog/android-app-development-guide/" class="blog-card reveal reveal-delay-3" role="listitem"
-        aria-label="ब्लॉग पोस्ट: Android ऐप डेवलपमेंट गाइड">
-        <div class="blog-card__thumb"
-          style="background:linear-gradient(135deg,rgba(96,165,250,0.2),rgba(96,165,250,0.05));" aria-hidden="true">📱
-        </div>
-        <div class="blog-card__body">
-          <span class="blog-card__tag">डेवलपमेंट</span>
-          <h3 class="blog-card__title">Android App Development — Beginner's Guide 2024</h3>
-          <div class="blog-card__meta">
-            <span>Tyagi MultiTech</span>
-            <span>·</span>
-            <span>8 मिनट पढ़ें</span>
-          </div>
-        </div>
-      </a>
-
     </div>
   </div>
 </section>
 
-<!-- ============================================================
-     SECTION 10: CTA BANNER
-     ============================================================ -->
-<section
-  style="padding-block:var(--space-20); background:linear-gradient(135deg,var(--clr-bg-3),var(--clr-bg-2)); border-top:1px solid var(--clr-border);"
-  aria-labelledby="cta-title">
+<!-- SECTION 11: CALL TO ACTION MATRIX -->
+<div class="cta-banner-wrapper">
   <div class="container">
-    <div style="text-align:center; max-width:600px; margin:0 auto;" class="reveal">
+    <div style="max-width:650px; margin:0 auto;">
       <div class="section-label" style="justify-content:center;" aria-hidden="true">शुरू करें</div>
-      <h2 class="section-title" id="cta-title" style="font-size:clamp(1.75rem,4vw,3rem); margin-bottom:var(--space-4);">
-        कुछ शानदार बनाने के लिए तैयार हैं?
-      </h2>
-      <p class="section-subtitle" style="margin-bottom:var(--space-8);">
-        हज़ारों भारतीय क्रिएटर्स, छात्रों और डेवलपर्स के साथ TyagiHub का मुफ्त में उपयोग करें।
-      </p>
-      <div style="display:flex; justify-content:center; gap:var(--space-4); flex-wrap:wrap;">
-        <a href="/hi/tools/" class="btn btn-primary btn-lg">सभी टूल्स देखें</a>
-        <a href="/hi/apps/" class="btn btn-outline btn-lg">ऐप्स डाउनलोड करें</a>
+      <h2 class="section-title" id="cta-title" style="font-size:clamp(1.75rem,4vw,2.8rem); margin-bottom:15px;">कुछ शानदार बनाने के लिए तैयार हैं?</h2>
+      <p class="hero__subtitle" style="margin: 0 auto 30px;">हज़ारों भारतीय क्रिएटर्स, छात्रों और डेवलपर्स के साथ TyagiHub का उपयोग पूरी तरह मुफ्त में करें।</p>
+      <div style="display:flex; justify-content:center; gap:16px; flex-wrap:wrap;">
+        <a href="/hi/tools/" class="btn btn-primary btn-lg" aria-label="सभी वेब टूल्स देखें">सभी टूल्स देखें</a>
+        <a href="/hi/apps/" class="btn btn-outline btn-lg" aria-label="एंड्रॉइड ऐप्स पेज खोलें">ऐप्स डाउनलोड करें</a>
       </div>
     </div>
+  </div>
+</div>
+
+<!-- SECTION 12: SYSTEM DOCUMENTATION & SYSTEM ARCHITECTURE (ADSENSE CRAWLER BOOSTER) -->
+<section class="home-documentation-overview">
+  <div class="container">
+    <h2>TyagiHub भारत उत्पादकता एवं तकनीकी अवसंरचना दस्तावेज़ीकरण (Documentation Overview)</h2>
+    <p>
+      TyagiHub एक बहु-स्तरीय डिजिटल आर्किटेक्चर है जिसे मुख्य रूप से भारतीय शैक्षिक और रचनात्मक समुदायों की प्रसंस्करण आवश्यकताओं को पूरा करने के लिए क्लाइंट-साइड (Client-side execution) प्राथमिकताओं पर कोड किया गया है। हमारा सिस्टम डिज़ाइन सर्वर-साइड डेटा ट्रांसफर को न्यूनतम करके, स्थानीय ब्राउज़र प्रोसेसिंग लेयर्स का उपयोग करता है। उदाहरण के लिए, हमारे इमेज कनवर्टर, पीडीएफ संपीड़न इंजन, और पासवर्ड जनरेशन सिस्टम संवेदनशील उपयोगकर्ता संपत्तियों को किसी बाहरी सर्वर नोड्स पर ट्रांसमिट किए बिना, हार्डवेयर एक्सीलरेशन का उपयोग करके निष्पादित करते हैं। यह दृष्टिकोण न केवल नेटवर्क डेटा बैंडविड्थ को सुरक्षित करता है बल्कि सुरक्षा एल्गोरिदम को स्थानीय स्तर पर निष्पादित करके थ्रेड इंटीग्रेशन को अनुकूलित करता है।
+    </p>
+    <p>
+      इसके अतिरिक्त, हमारी शैक्षिक अनुप्रयोग परतें जैसे कि 'Learn' और 'Shield' मॉड्यूल, अत्यधिक स्केलेबल डेटाबेस ऑब्जेक्ट्स के साथ संरचित हैं, जो भारतीय सरकारी प्रतियोगी परीक्षाओं (जैसे SSC, बैंकिंग, और रेलवे) के लिए रीयल-टाइम मॉक टेस्ट और क्विज़ मैपिंग की अनुमति देती हैं। प्राइवेसी सुरक्षा को सशक्त बनाने के उद्देश्य से विकसित किया गया 'InfoShield India' फ्रेमवर्क हिंदी भाषा में डेटा लीक विश्लेषण, डिजिटल फ़िंगरप्रिंटिंग मिटिगेशन, और टू-फैक्टर ऑथेंटिकेशन (2FA) जैसी जटिल साइबर सुरक्षा प्रक्रियाओं को सरल रूप से व्याख्यायित करता है। संपूर्ण आर्किटेक्चर स्वच्छ कोड-टू-टेक्स्ट अनुपात (High Text-to-Code Ratio) बनाए रखता है, जो आधुनिक क्रॉलिंग अनुक्रमों और विज्ञापनों के प्रदर्शन को बिना किसी रेंडर-ब्लॉकिंग बाधाओं के गति प्रदान करता है।
+    </p>
   </div>
 </section>
