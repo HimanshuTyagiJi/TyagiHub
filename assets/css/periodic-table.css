@@ -682,3 +682,95 @@
   --border-color: #898989 !important;
   --shadow-color: rgba(29, 44, 61, 0.1);
 }
+/* ==========================================================
+   TYAGIHUB COMPLIANT FORMULA/CONTENT SECTION
+========================================================== */
+.formula-section.content-section {
+    max-width: 1000px;
+    margin: 40px auto;
+    padding: 35px 40px;
+    background: var(--privacy-surface, #ffffff);
+    border: 1px solid var(--privacy-border-2, #e5e7eb);
+    border-radius: var(--radius, 20px);
+    box-shadow: var(--privacy-shadow, 0 10px 30px rgba(15,23,42,0.04));
+    transition: background 0.3s ease, border 0.3s ease;
+}
+
+/* SECTION TITLE WITH ACCENT ACCELERATOR */
+.formula-section .section-title {
+    font-size: clamp(1.4rem, 4vw, 1.8rem);
+    font-weight: 850;
+    color: var(--privacy-heading, #111827);
+    margin-bottom: 20px;
+    letter-spacing: -0.02em;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.formula-section .section-title::before {
+    content: "💡";
+    font-size: 1.3rem;
+}
+
+.formula-section .section-title::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: var(--privacy-border-2, #e5e7eb);
+}
+
+/* HIGH CONTENT DENSITY TEXT TYPOGRAPHY */
+.formula-section .text-content {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.formula-section .text-content p {
+    color: var(--privacy-text, #4b5563);
+    font-size: 1.05rem;
+    line-height: 1.85;
+    text-align: justify;
+    margin: 0;
+}
+
+/* TOKEN HIGHLIGHTING MATRIX */
+.formula-section .text-content strong {
+    color: var(--privacy-heading, #111827);
+    font-weight: 700;
+    background: var(--privacy-primary-soft, rgba(37,99,235,0.06));
+    padding: 2px 6px;
+    border-radius: 6px;
+    border: 1px solid rgba(35, 99, 235, 0.08);
+}
+
+.formula-section .text-content em {
+    font-style: normal;
+    font-family: var(--mono, monospace);
+    font-weight: 600;
+    color: var(--privacy-link, #0ea5e9);
+    background: var(--privacy-highlight, #f8fafc);
+    padding: 1px 5px;
+    border-radius: 4px;
+    border: 1px solid var(--privacy-border-2, #e5e7eb);
+}
+
+/* ==========================================================
+   MOBILE RESPONSIVE OVERRIDE
+========================================================== */
+@media (max-width: 768px) {
+    .formula-section.content-section {
+        margin: 24px 12px;
+        padding: 25px 20px;
+        border-radius: 16px;
+    }
+    .formula-section .section-title {
+        font-size: 1.35rem;
+    }
+    .formula-section .text-content p {
+        text-align: left;
+        font-size: 0.98rem;
+        line-height: 1.75;
+    }
+}
