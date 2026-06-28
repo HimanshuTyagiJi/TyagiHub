@@ -4,191 +4,154 @@ layout: default
 
 <style>
 /* ==========================================================
-   TYAGIHUB UNIFIED THREE-COLUMN CONFIGURATION
+   GK-QUIZ LINKED STANDARDS FOR VYAKARAN DESK
 ========================================================== */
-:root {
-    --side-bg: #ffffff;
-    --side-border: var(--border2, #e5e7eb);
-    --side-text: #4b5563;
-    --side-heading: #111827;
-    --side-active-bg: rgba(37, 99, 235, 0.08);
-    --side-active-text: #2563eb;
-    --side-shadow: 0 15px 35px rgba(15, 23, 42, 0.04);
-}
-
-html[data-theme="dark"] {
-    --side-bg: #0f172a;
-    --side-border: var(--border2, #233247);
-    --side-text: #cbd5e1;
-    --side-heading: #f8fafc;
-    --side-active-bg: rgba(56, 189, 248, 0.12);
-    --side-active-text: #38bdf8;
-    --side-shadow: 0 15px 35px rgba(0, 0, 0, 0.35);
-}
-
-/* 🧱 CORE GRID ARCHITECTURE */
-.study-split-layout {
-    display: grid;
-    grid-template-columns: 280px 1fr 260px;
-    gap: 24px;
-    max-width: 1400px;
-    margin: 40px auto;
-    padding: 0 16px;
-    align-items: flex-start;
-}
-
-/* ⬅️ LEFT COLUMN: CATALOG SIDEBAR */
-.vyakaran-aside {
-    position: sticky;
-    top: 90px;
-    height: calc(100vh - 130px);
-    background: var(--side-bg);
-    border: 1px solid var(--side-border);
-    border-radius: 20px;
-    overflow-y: auto;
-    box-shadow: var(--side-shadow);
-    padding: 24px 16px;
-    box-sizing: border-box;
-    scrollbar-width: thin;
-    scrollbar-color: var(--side-border) transparent;
-}
-
-.vyakaran-aside h2 {
-    font-size: 1.1rem;
-    font-weight: 850;
-    color: var(--side-heading);
-    margin: 0 0 16px 4px;
-    letter-spacing: -0.02em;
-}
-
-.vyakaran-nav-list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
+.page-wrapper {
+    margin-top: 90px;
     display: flex;
-    flex-direction: column;
-    gap: 4px;
+    min-height: calc(100vh - 64px);
+    position: relative;
+    width: 100%;
 }
 
-.vyakaran-nav-list li a {
-    display: block;
-    padding: 10px 14px;
-    color: var(--side-text);
-    text-decoration: none;
-    font-size: 0.95rem;
-    font-weight: 600;
-    border-radius: 12px;
-    transition: all 0.2s ease;
-}
-
-.vyakaran-nav-list li a:hover {
-    background: var(--side-active-bg);
-    color: var(--side-active-text);
-    padding-left: 18px;
-}
-
-.vyakaran-nav-list li a.active {
-    background: var(--side-active-bg);
-    color: var(--side-active-text);
-    font-weight: 700;
-    border-left: 4px solid var(--side-active-text);
-    border-radius: 4px 12px 12px 4px;
-}
-
-/* 📄 MIDDLE COLUMN COMPONENT FRAME */
-.study-center-column {
-    display: flex;
-    flex-direction: column;
-    gap: 24px;
-    min-width: 0; /* Prevents flex box breakout leaks */
-}
-
-.study-main-content-panel {
-    background: var(--side-bg);
-    border: 1px solid var(--side-border);
-    border-radius: 24px;
-    padding: 40px;
-    box-shadow: var(--side-shadow);
-    transition: background 0.3s, border 0.3s;
-}
-
-/* 📥 BOTTOM STAGE CONTENT AREA (JUST BELOW MAIN BOX) */
-.study-bottom-content-panel {
-    background: var(--side-bg);
-    border: 1px solid var(--side-border);
-    border-radius: 24px;
-    padding: 30px;
-    box-shadow: var(--side-shadow);
-    transition: background 0.3s, border 0.3s;
-}
-
-/* ➡️ RIGHT COLUMN: AD BANNER SHELL */
-.right-sidebar {
-    position: sticky;
-    top: 90px;
-    background: var(--side-bg);
-    border: 1px solid var(--side-border);
-    border-radius: 20px;
+/* ⬅️ LEFT COLUMN: CATALOG FIXED SIDEBAR */
+.gk-sidebar {
     padding: 20px;
-    box-shadow: var(--side-shadow);
+    padding-right: 0;
+    width: 280px;
+    flex-shrink: 0;
+    background: var(--bg-surface);
+    border-right: 1px solid var(--border-table);
+    position: fixed;
+    top: 62px;
+    height: calc(100vh - 64px);
+    overflow-y: auto;
+    overflow-x: hidden;
+    scrollbar-width: thin;
+    scrollbar-color: var(--border-3) rgba(0,0,0,0);
+    z-index: 2;
+    transition: transform var(--ease-normal);
+}
+
+/* 📄 MIDDLE COLUMN: MAIN WORKING DYNAMIC WORKSPACE */
+.main-content {
+    flex: 1;
+    min-width: 0;
+    padding: 5px;
+    max-width: 920px;
+    width: 100%;
+    margin: 15px auto;
     box-sizing: border-box;
+}
+
+/* ➡️ RIGHT COLUMN: EXTENSION STICKY CARD SHELL */
+.gk-sidebar-right {
+    width: 280px;
+    flex-shrink: 0;
+    margin-left: 24px;
+    position: fixed;
+    right: 0;
+    top: 62px;
+    height: calc(100vh - 60px);
+    overflow-y: auto;
+    padding: 15px;
+    background: var(--bg-surface) !important;
+    border-left: 1px solid var(--border-table);
+    box-shadow: var(--shadow-1);
+    z-index: var(--z-card);
+    border-radius: 8px;
+    position: relative;
+}
+
+.gk-sidebar-right::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 8px;
+    background: linear-gradient(90deg, var(--anim-glow-1), var(--anim-glow-2), var(--anim-glow-4), var(--anim-glow-5), var(--anim-glow-1));
+    background-size: 300% 100%;
+    animation: sidebarGlow 6s linear infinite;
+    opacity: .12;
+    pointer-events: none;
+}
+
+@keyframes sidebarGlow {
+    0% { background-position: 0% 50% }
+    100% { background-position: 300% 50% }
 }
 
 /* ==========================================================
-   📱 RESPONSIVE MEDIA ADAPTATION LAYER
+   📱 MOBILE & TABLET MEDIA ADAPTATIONS (1023px BREAKPOINT)
 ========================================================== */
-@media (max-width: 1200px) {
-    .study-split-layout {
-        grid-template-columns: 260px 1fr;
+@media (max-width: 1023px) {
+    .page-wrapper {
+        flex-wrap: wrap;
     }
-    .right-sidebar {
-        display: none;
+    .main-content {
+        width: 100%;
+        flex: 0 0 100%;
+        padding: 20px 16px;
+    }
+    .gk-sidebar {
+        position: fixed;
+        top: 56px;
+        left: 0;
+        height: 100%;
+        z-index: 90;
+        transform: translateX(-100%);
+        box-shadow: var(--shadow-3);
+        width: 240px;
+    }
+    .gk-sidebar.open {
+        transform: translateX(0);
+    }
+    .gk-sidebar-right {
+        width: 100%;
+        margin-top: 24px;
+        margin-left: 0;
+        margin-right: 0;
+        padding: 16px;
+        display: block;
+        position: static;
+        top: auto;
+        right: auto;
+        height: auto;
+        order: 2;
     }
 }
 
-@media (max-width: 992px) {
-    .study-split-layout {
-        grid-template-columns: 1fr;
-        margin: 20px auto;
-        gap: 20px;
-    }
-    .study-main-content-panel {
-        padding: 24px 16px;
-        border-radius: 18px;
-    }
-    .study-bottom-content-panel {
-        padding: 20px 16px;
-        border-radius: 18px;
-    }
-    .vyakaran-aside {
-        position: fixed;
-        top: 0;
-        left: -300px;
-        width: 280px;
-        height: 100vh;
-        z-index: 1001;
-        border-radius: 0 24px 24px 0;
-        padding-top: 50px;
-        transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-    .vyakaran-aside.mobile-open {
-        transform: translateX(300px);
+@media (max-width: 639px) {
+    .main-content {
+        padding: 16px 12px;
     }
 }
 </style>
 
-<div class="study-split-layout">
+<div class="page-wrapper">
     
-    {% include sidebars/vyakaran.html %}
-
-    <div class="study-center-column">
-        <main class="study-main-content-panel">
-            {{ content }}
-        </main>
-        
-       
+    <div class="gk-sidebar" id="vyakaranAsideMenu">
+        {% include sidebars/vyakaran.html %}
     </div>
 
-    {% include right-sidebar.html %}
+    <main class="main-content">
+        {{ content }}
+    </main>
+
+    <div class="gk-sidebar-right">
+        {% include right-sidebar.html %}
+    </div>
 
 </div>
+
+<div class="sidebar-overlay" id="asideBackdrop" onclick="toggleVAside()"></div>
+
+<script>
+function toggleVAside() {
+    const aside = document.getElementById('vyakaranAsideMenu');
+    const backdrop = document.getElementById('asideBackdrop');
+    if (aside && backdrop) {
+        aside.classList.toggle('open');
+        backdrop.classList.toggle('active');
+    }
+}
+</script>
