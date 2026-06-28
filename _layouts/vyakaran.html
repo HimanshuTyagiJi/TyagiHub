@@ -2,9 +2,9 @@
 layout: default
 ---
 
- 
-<style>/* ==========================================================
-   TYAGIHUB THREE-COLUMN GRID ENGINE (VYAKARAN DESK)
+<style>
+/* ==========================================================
+   TYAGIHUB UNIFIED THREE-COLUMN CONFIGURATION
 ========================================================== */
 :root {
     --side-bg: #ffffff;
@@ -95,9 +95,15 @@ html[data-theme="dark"] {
     border-radius: 4px 12px 12px 4px;
 }
 
-/* 📄 MIDDLE COLUMN: MAIN CONTENT CORE */
+/* 📄 MIDDLE COLUMN COMPONENT FRAME */
+.study-center-column {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    min-width: 0; /* Prevents flex box breakout leaks */
+}
+
 .study-main-content-panel {
-    min-width: 0; /* Anti-overflow block */
     background: var(--side-bg);
     border: 1px solid var(--side-border);
     border-radius: 24px;
@@ -106,8 +112,17 @@ html[data-theme="dark"] {
     transition: background 0.3s, border 0.3s;
 }
 
-/* ➡️ RIGHT COLUMN: AD desk / UTILITY PANEL */
-/* (Isme jo right-sidebar.html lagaya hai uski parent class right-sidebar rakhna bsdk) */
+/* 📥 BOTTOM STAGE CONTENT AREA (JUST BELOW MAIN BOX) */
+.study-bottom-content-panel {
+    background: var(--side-bg);
+    border: 1px solid var(--side-border);
+    border-radius: 24px;
+    padding: 30px;
+    box-shadow: var(--side-shadow);
+    transition: background 0.3s, border 0.3s;
+}
+
+/* ➡️ RIGHT COLUMN: AD BANNER SHELL */
 .right-sidebar {
     position: sticky;
     top: 90px;
@@ -120,20 +135,17 @@ html[data-theme="dark"] {
 }
 
 /* ==========================================================
-   📱 RESPONSIVE MEDIA BREAKPOINTS (LAPTOPS / MOBILE)
+   📱 RESPONSIVE MEDIA ADAPTATION LAYER
 ========================================================== */
-
-/* Laptop screen compression */
 @media (max-width: 1200px) {
     .study-split-layout {
-        grid-template-columns: 260px 1fr; /* Hide right sidebar or stack it */
+        grid-template-columns: 260px 1fr;
     }
     .right-sidebar {
-        display: none; /* Auto-hide right banner on medium screens to keep content clean */
+        display: none;
     }
 }
 
-/* Mobile & Tablet view layout mutation */
 @media (max-width: 992px) {
     .study-split-layout {
         grid-template-columns: 1fr;
@@ -144,8 +156,10 @@ html[data-theme="dark"] {
         padding: 24px 16px;
         border-radius: 18px;
     }
-    
-    /* Mobile slide animation variables trigger config */
+    .study-bottom-content-panel {
+        padding: 20px 16px;
+        border-radius: 18px;
+    }
     .vyakaran-aside {
         position: fixed;
         top: 0;
@@ -160,15 +174,23 @@ html[data-theme="dark"] {
     .vyakaran-aside.mobile-open {
         transform: translateX(300px);
     }
-}</style>
- 
+}
+</style>
+
 <div class="study-split-layout">
     
     {% include sidebars/vyakaran.html %}
 
-    <main class="study-main-content-panel">
-        {{ content }}
-    </main>
-  {% include right-sidebar.html %}
+    <div class="study-center-column">
+        <main class="study-main-content-panel">
+            {{ content }}
+        </main>
+        
+        <div class="study-bottom-content-panel">
+            {% include bottom-content.html %}
+        </div>
+    </div>
+
+    {% include right-sidebar.html %}
 
 </div>
