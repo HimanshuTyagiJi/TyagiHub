@@ -33,15 +33,30 @@ layout: default
     transition: transform var(--ease-normal);
 }
 
-/* 📄 MIDDLE COLUMN: MAIN WORKING DYNAMIC WORKSPACE */
+/* 📄 MIDDLE COLUMN: MAIN WORKING DYNAMIC WORKSPACE (CORRECTED CENTERING) */
 .main-content {
     flex: 1;
     min-width: 0;
     padding: 5px;
     max-width: 920px;
     width: 100%;
-    margin: 15px auto;
+  
+    margin-left:300px; 
     box-sizing: border-box;
+    display: block;
+}
+
+/* ==========================================================
+   📱 MOBILE & TABLET MEDIA ADAPTATIONS (RESET MARGINS)
+========================================================== */
+@media (max-width: 1023px) {
+    .main-content {
+        width: 100%;
+        flex: 0 0 100%;
+        padding: 20px 16px;
+        /* Mobile par sidebars collapse ho jate hain isliye margins auto resets */
+        margin: 15px auto; 
+    }
 }
 
 /* ➡️ RIGHT COLUMN: EXTENSION STICKY CARD SHELL */
