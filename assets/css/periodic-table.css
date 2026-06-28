@@ -1,7 +1,7 @@
 /* Periodic Table Page Specific Styles */
 
 .periodic-table-container {
-  background-color: var(--card-bg);
+ 
   padding: 5px;
   border-radius: 12px;
 
@@ -321,7 +321,7 @@
 }
 
 .details-prose-adv {
-  background: var(--card-bg);
+ 
   border-radius: 8px;
   padding: 1.5rem;
   border: 1px solid var(--border-color);
@@ -349,7 +349,7 @@
 .details-prose-adv ul {
   font-size: 0.95rem;
   line-height: 1.7;
-  color: var(--text-secondary);
+ 
 }
 
 .details-prose-adv ul {
@@ -397,7 +397,7 @@
 }
 
 .details-sidebar-adv .sidebar-card {
-  background-color: var(--card-bg);
+  
   border: 1px solid var(--border-color);
   border-radius: 8px;
   padding: 1.5rem;
@@ -442,9 +442,7 @@
 .details-key-properties li:last-child {
   border-bottom: none;
 }
-.details-key-properties strong {
-  color: var(--text-primary);
-}
+ 
 
 /* === Element Categories Colors === */
 .alkali-metal {
