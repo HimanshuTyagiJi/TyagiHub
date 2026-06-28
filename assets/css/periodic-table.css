@@ -395,7 +395,7 @@
 }
 
 .details-sidebar-adv {
-  position: sticky;
+  position: sticky !important;
   top: 80px;
   display: flex;
   flex-direction: column;
