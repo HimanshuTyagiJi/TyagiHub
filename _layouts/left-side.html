@@ -43,8 +43,8 @@ layout: default
     padding: 5px;
     max-width: 920px;
     width: 100%;
-    /* Position fixed layouts me overlap rokne ke liye left aur right absolute spacing */
-    margin: 0px 300px 0px 300px; 
+    margin-left: 300px;
+    margin-right: 300px;
     box-sizing: border-box;
     display: block;
     line-height: 2;
@@ -137,6 +137,24 @@ layout: default
 }
 .layout-sidebar-overlay-shield.active { display: block; }
 
+  .th-right-sidebar-engine {
+    overflow-y: auto;
+    position: fixed;
+    width: 280px;
+    right: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    overflow: auto;
+    height: calc(100vh - 20%);
+    background: var(--bg-surface, #ffffff);
+    border-right: 1px solid var(--border-table, #e5e7eb);
+    overflow-y: auto;
+    overflow-x: hidden;
+    scrollbar-width: thin;
+    scrollbar-color: var(--border-3, #cbd5e1) rgba(0, 0, 0, 0);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
 /* ==========================================================
    📱 RESPONSIVE VIEWPORT QUERIES (1023px GRAPHIC COMPRESSION)
 ========================================================== */
