@@ -2,12 +2,10 @@
 layout: default
 section: test
 permalink: /test/maths-practice/
+lang_switch: false
 ---
 <div class="tyagihub-main-layout">
-  <div class="th-left-col-wrapper">
-    <button class="th-mobile-menu-trigger" onclick="toggleMobileSidebar(event)">☰ <span>Menu</span></button>
-    {% include left-sidebar-selector.html %}
-  </div>
+  
   <div style="grid-column:2;min-width:0!important;width:100%!important;overflow:hidden!important;contain:layout style!important;isolation:isolate!important;clear:both!important;box-sizing:border-box;padding:10px;">
 
     <div id="screen-home" class="screen active">
@@ -120,9 +118,7 @@ permalink: /test/maths-practice/
     </div>
 
   </div>
-  <aside class="th-right-sidebar-wrapper">
-    {% case page.section %}{% when "test" %}{% include sidebars/test-sidebar.html %}{% else %}{% include sidebars/default-sidebar.html %}{% endcase %}
-  </aside>
+  
 </div>
 <script>function toggleMobileSidebar(e){if(e)e.stopPropagation();const s=document.querySelector('.th-left-sidebar');if(s)s.classList.toggle('mobile-open');}</script>
 <style>
