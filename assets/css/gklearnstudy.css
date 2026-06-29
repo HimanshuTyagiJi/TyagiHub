@@ -82,36 +82,6 @@ body,.header,.menu,.search-input,.theme-switcher,.burger,.back-icon,.search-icon
 }
 
  
-.container {
-    width: 65%;
-    margin: 0 auto;
-    padding: 24px 16px;
-    text-align: justify;
-    line-height: 2;
-}
-
-/* When screen is at least 1680px → lock max width at 1050px */
-@media(min-width: 1680px) {
-    .container {
-        width:100%;
-        max-width: 1050px;
-    }
-}
-
- 
-
-. 
-@media(max-width: 850px) {
-    .container {
-        max-width:98%;
-        margin: 0 auto;
-        padding: 24px 16px;
-        text-align: justify;
-        line-height: 2;
-    }
-
-   
-}
 
 
 .btn {
