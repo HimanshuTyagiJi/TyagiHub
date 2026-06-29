@@ -1,0 +1,732 @@
+---
+layout: left-side
+title: "Power Unit Conversion Calculator"
+permalink: /conversion/power-unit-conversion.html
+learn_type: "conversion"
+lang_switch: false
+---
+<main class="container">
+    <div id="root">
+        <header class="education-header">
+            <div class="logo" style="max-width: 200px; margin: 0 auto 1rem auto;">
+                <svg viewBox="0 0 200 200" role="img" aria-labelledby="powerTitle">
+                    <title id="powerTitle">Animated Power Conversion Icon</title>
+                    <style>
+                        .bolt-main {
+                            fill: #facc15;
+                            stroke: #f59e0b;
+                            stroke-width: 4;
+                            stroke-linecap: round;
+                            stroke-linejoin: round;
+                            filter: drop-shadow(0 0 8px #f59e0b);
+                            animation: flash 1.5s ease-in-out infinite;
+                        }
+
+                        .spark {
+                            fill: #fde047;
+                            animation: burst 1.5s ease-out infinite;
+                            transform-origin: center;
+                        }
+
+                        @keyframes flash {
+                            50% {
+                                transform: scale(1.05);
+                                opacity: 0.8;
+                            }
+                        }
+
+                        @keyframes burst {
+                            0% {
+                                transform: scale(0);
+                                opacity: 1;
+                            }
+
+                            100% {
+                                transform: scale(1.5);
+                                opacity: 0;
+                            }
+                        }
+                    </style>
+                    <g>
+                        <path class="bolt-main" d="M115,30 L80,95 L110,95 L85,170 L135,90 L100,90 Z" />
+                        <circle class="spark" cx="70" cy="70" r="8" style="animation-delay: 0.1s;" />
+                        <circle class="spark" cx="140" cy="120" r="10" style="animation-delay: 0.3s;" />
+                        <circle class="spark" cx="90" cy="140" r="6" style="animation-delay: 0.5s;" />
+                    </g>
+                </svg>
+            </div>
+            <div>
+                <h1>Power Unit Conversion</h1>
+                <p class="education-description">
+                    <strong>Power unit conversion</strong> is the process of changing the measurement of power from
+                    one unit to another, such as from <strong>watts (W)</strong> to <strong>horsepower
+                        (hp)</strong>. Power is the
+                    rate at which work is done or energy is transferred. Different fields use different units:
+                    engineering and automotive fields often use horsepower, while electrical and scientific fields
+                    use watts and
+                    kilowatts. Converting between them allows us to compare the energy output of engines, motors,
+                    and appliances on a like-for-like basis, making it a crucial skill in technology and physics.
+                </p>
+            </div>
+        </header>
+
+        <div class="conversion-tool-container">
+            <div class="conversion-tool-grid">
+                <div class="converter-widget">
+                    <h2>Power Converter Tool</h2>
+                    <table class="converter-table">
+                        <tr>
+                            <td>Watts (W)</td>
+                            <td><input type="number" id="inputWatts" oninput="powerConverter(this.id, this.value)"
+                                    placeholder="e.g., 745.7" /></td>
+                        </tr>
+                        <tr>
+                            <td>Kilowatts (kW)</td>
+                            <td><input type="number" id="inputKilowatts" oninput="powerConverter(this.id, this.value)"
+                                    placeholder="e.g., 0.7457" /></td>
+                        </tr>
+                        <tr>
+                            <td>Horsepower (hp)</td>
+                            <td><input type="number" id="inputHorsepower" oninput="powerConverter(this.id, this.value)"
+                                    placeholder="e.g., 1" /></td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="converter-widget">
+                    <h2>Quick Formulas</h2>
+                    <div class="quick-formulas-grid">
+                        <div class="example-formula">Kilowatts ≈ HP &times; 0.7457</div>
+                        <div class="example-formula">Horsepower ≈ kW &times; 1.341</div>
+                        <div class="example-formula">Watts = Kilowatts &times; 1000</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div style="max-width:100%;margin:20px auto;">
+            <canvas id="powerConv" width="1600" height="360"
+                style="width:100%;height:auto;display:block;border-radius:22px;"></canvas>
+        </div>
+
+        <script>
+            (function () {
+
+                let c = document.getElementById("powerConv");
+                let x = c.getContext("2d");
+
+                c.oncontextmenu = e => e.preventDefault();
+                c.setAttribute("draggable", "false");
+
+                // ===== CYBERPUNK NEON BACKGROUND =====
+                let g = x.createLinearGradient(0, 0, 1600, 360);
+                g.addColorStop(0, "#0f0c29");
+                g.addColorStop(0.4, "#302b63");
+                g.addColorStop(1, "#24243e");
+                x.fillStyle = g;
+                x.fillRect(0, 0, 1600, 360);
+
+                // ===== NEON GRID LINES =====
+                x.save();
+                x.globalAlpha = 0.08;
+                x.strokeStyle = "#00eaff";
+                for (let i = 0; i < 35; i++) {
+                    x.beginPath(); x.moveTo(i * 50, 0); x.lineTo(i * 50, 360); x.stroke();
+                    x.beginPath(); x.moveTo(0, i * 50); x.lineTo(1600, i * 50); x.stroke();
+                }
+                x.restore();
+
+                // ===== LIGHTNING ENERGY WAVES =====
+                x.save();
+                x.globalAlpha = 0.15;
+                x.strokeStyle = "#00ffe7";
+                x.lineWidth = 6;
+                for (let w = 0; w < 3; w++) {
+                    x.beginPath();
+                    let yy = 80 + w * 90;
+                    for (let xx = 0; xx <= 1600; xx += 40) {
+                        let yv = yy + Math.sin(xx * 0.02 + w) * 20;
+                        x.lineTo(xx, yv);
+                    }
+                    x.stroke();
+                }
+                x.restore();
+
+                // ===== DIAGONAL BIG WATERMARK =====
+                x.save();
+                x.globalAlpha = 0.06;
+                x.translate(800, 180);
+                x.rotate(-0.28);
+                x.fillStyle = "#ffffff";
+                x.font = "bold 155px Arial";
+                x.textAlign = "center";
+                x.fillText("GKLearnStudy", 0, 50);
+                x.restore();
+
+                // ===== TITLE =====
+                x.fillStyle = "#00f6ff";
+                x.textAlign = "left";
+                x.font = "bold 78px Arial";
+                x.fillText("Power Conversion", 120, 170);
+
+                // ===== CENTRAL LIGHTNING BOLT =====
+                x.save();
+                x.globalAlpha = 0.90;
+                x.fillStyle = "#00fff2";
+                x.font = "150px Arial";
+                x.fillText("⚡", 480, 240);
+                x.restore();
+
+                // ===== UNIT CHAIN =====
+                x.fillStyle = "#ffffff";
+                x.textAlign = "center";
+                x.font = "bold 58px Arial";
+
+                x.fillText("W", 650, 150);
+                x.fillText("↔", 750, 150);
+                x.fillText("kW", 850, 150);
+                x.fillText("↔", 950, 150);
+                x.fillText("HP", 1050, 150);
+
+                // ===== POWER FORMULAS =====
+                let formulas = [
+                    { t: "P = VI", x: 640, y: 260, s: 48 },
+                    { t: "P = W / t", x: 860, y: 260, s: 48 },
+                    { t: "P = I²R", x: 1080, y: 260, s: 48 },
+                ];
+
+                formulas.forEach(f => {
+                    x.save();
+                    x.globalAlpha = 0.90;
+                    x.fillStyle = "#00ffe5";
+                    x.font = "bold " + f.s + "px Arial";
+                    x.textAlign = "center";
+                    x.fillText(f.t, f.x, f.y);
+                    x.restore();
+                });
+
+                // ===== FLOATING ICONS (TECH STYLE) =====
+                let icons = [
+                    { t: "⚡", x: 1180, y: 105, s: 80 },
+                    { t: "🔌", x: 1320, y: 220, s: 65 },
+                    { t: "🔋", x: 1440, y: 170, s: 65 },
+                    { t: "✨", x: 1020, y: 260, s: 55 },
+                    { t: "🔧", x: 950, y: 110, s: 55 },
+                ];
+
+                icons.forEach(o => {
+                    x.save();
+                    x.globalAlpha = 0.28;
+                    x.fillStyle = "#00fff0";
+                    x.font = "bold " + o.s + "px Arial";
+                    x.textAlign = "center";
+                    x.fillText(o.t, o.x, o.y);
+                    x.restore();
+                });
+
+            })();
+        </script>
+
+
+        <article class="article-content">
+            <h2>Understanding Power Measurements</h2>
+            <p>
+                Power is one of the most essential concepts in physics and engineering. It describes not just the
+                total amount of energy but the rate at which energy is transferred, consumed, or converted into
+                work. In everyday
+                terms, power tells us how fast a machine or system can perform its task. For example, if two engines
+                are given the same job, a more powerful engine can complete it in less time, while a less powerful
+                one will
+                take longer. This distinction is crucial when comparing machines, engines, or even electrical
+                devices. The standard unit for measuring power is the <strong>watt (W)</strong>, but historical and
+                industry-specific
+                units like <strong>horsepower (hp)</strong> are still widely used. Each has its own background,
+                usage, and relevance in different fields.
+            </p>
+            <h3>The Primary Units of Power Measurement</h3>
+            <h4>1. Watt (W), Kilowatt (kW), and Beyond</h4>
+            <p>
+                The <strong>watt</strong>, named after the Scottish inventor James Watt, is the internationally
+                recognized SI (International System of Units) measurement for power. By definition, one watt is
+                equal to one joule
+                of energy used per second. This simple relationship makes it a universal standard for measuring both
+                electrical and mechanical power. It helps engineers, scientists, and consumers compare devices of
+                very
+                different types on a common scale.
+            </p>
+            <ul>
+                <li><b>Watt (W):</b> Applied to small-scale devices like LED bulbs, mobile phone chargers, and small
+                    fans.</li>
+                <li><b>Kilowatt (kW):</b> Equal to 1,000 watts. Used for medium to large machines such as
+                    refrigerators, air conditioners, elevators, and car motors.</li>
+                <li><b>Megawatt (MW):</b> Equal to one million watts. Reserved for industrial-scale operations such
+                    as power plants, wind farms, and large factories.</li>
+            </ul>
+            <div class="example-formula">1 W = 1 Joule/second &nbsp;&nbsp;|&nbsp;&nbsp; 1 kW = 1000 W</div>
+            <p>
+                To give perspective, a typical household light bulb might consume 60 watts, an electric water heater
+                might require 2 kilowatts, while a medium-sized power plant might generate hundreds of megawatts.
+                This shows
+                the wide range of scales where power measurement plays a role.
+            </p>
+            <h4>2. Horsepower (hp)</h4>
+            <p>
+                <strong>Horsepower</strong> is an older but still widely used unit of power. The term was introduced
+                by James Watt in the late 18th century as a way to market his steam engines. At that time, horses
+                were the
+                primary source of mechanical power for transportation and agriculture. Watt calculated that a horse
+                could lift 550 pounds one foot high in one second, and he used this as the definition of one
+                horsepower.
+            </p>
+            <p>
+                Today, horsepower remains popular in industries such as automotive, aviation, and sometimes marine
+                engineering. While the scientific community prefers watts, many consumers still find horsepower a
+                more intuitive
+                unit, especially when describing cars or aircraft. For example, when people hear that a sports car
+                has 500 horsepower, they immediately picture a very powerful engine, even if they are not familiar
+                with the
+                equivalent number in kilowatts.
+            </p>
+            <p>
+                There are different types of horsepower—mechanical horsepower, metric horsepower, and electrical
+                horsepower. However, <strong>mechanical horsepower</strong> is the most common, defined as
+                approximately 745.7
+                watts.
+            </p>
+            <div class="example-formula">1 mechanical hp ≈ 745.7 W</div>
+            <h3>Why Conversion is Necessary</h3>
+            <p>
+                In the modern world, conversion between different units of power is not just an academic exercise
+                but a practical necessity. With the rise of electric vehicles, renewable energy, and global
+                engineering projects,
+                engineers and consumers frequently encounter both watts and horsepower. For instance, electric
+                motors are almost always rated in kilowatts, while gasoline engines are usually measured in
+                horsepower. To make a
+                fair comparison between the two, a conversion must be performed.
+            </p>
+            <p>
+                This becomes even more critical in industries that deal with international standards. A European car
+                manufacturer might advertise engine performance in kilowatts, while an American manufacturer uses
+                horsepower.
+                Without proper conversion, customers would struggle to compare vehicles accurately. The same
+                challenge arises when integrating electrical systems with mechanical ones in large engineering
+                projects.
+            </p>
+            <h3>Practical Applications of Power Conversions</h3>
+            <ul>
+                <li>
+                    <strong>Automotive Industry:</strong> Electric vehicles (EVs) are rated in kilowatts, while
+                    traditional cars are rated in horsepower. Conversions allow buyers and engineers to compare
+                    their performance side
+                    by side.
+                </li>
+                <li>
+                    <strong>Household Appliances:</strong> Most devices list their consumption in watts. Knowing
+                    this helps consumers estimate electricity usage and calculate their monthly energy bills, which
+                    are typically
+                    measured in kilowatt-hours (kWh).
+                </li>
+                <li>
+                    <strong>Engineering and Industry:</strong> Mechanical machines, such as pumps and compressors,
+                    are sometimes rated in horsepower, while the electrical systems powering them are in kilowatts.
+                    Accurate
+                    conversion ensures proper system integration and efficiency.
+                </li>
+                <li>
+                    <strong>Renewable Energy:</strong> Solar panels and wind turbines are usually measured in
+                    kilowatts or megawatts, while older systems may still refer to horsepower for motors and
+                    turbines. Conversion ensures
+                    consistent understanding across technologies.
+                </li>
+            </ul>
+            <h3>Conclusion</h3>
+            <p>
+                Power measurement may sound like a purely technical topic, but in reality, it influences our daily
+                lives more than we realize. From the electricity bill we pay at home to the car we choose to drive,
+                understanding
+                power helps us make better decisions. The <strong>watt</strong> provides a precise scientific
+                standard, while <strong>horsepower</strong> carries historical and practical importance, especially
+                in consumer
+                industries like automobiles. Converting between the two is not just about numbers; it is about
+                bridging the gap between tradition and modern technology. As we move toward an energy-driven future
+                dominated by
+                renewables and electric mobility, having a clear understanding of power units and conversions will
+                remain vital for engineers, policymakers, and everyday consumers alike.
+            </p>
+        </article>
+        <section class="solved-examples-section">
+            <h2>Solved Examples: Step-by-Step Power Conversions</h2>
+            <div class="examples-grid">
+                <div class="example-item">
+                    <h3>1. Convert 150 hp to Kilowatts</h3>
+                    <div class="example-solution">
+                        <p><b>Formula:</b> <code>kW = hp × 0.7457</code></p>
+                        <p><b>Calculation:</b> <code>150 × 0.7457 = 111.855</code></p>
+                        <p class="example-answer"><b>Answer:</b> &approx; 111.86 kW</p>
+                    </div>
+                </div>
+                <div class="example-item">
+                    <h3>2. Convert 80 kW to Horsepower</h3>
+                    <div class="example-solution">
+                        <p><b>Formula:</b> <code>hp = kW × 1.34102</code></p>
+                        <p><b>Calculation:</b> <code>80 × 1.34102 = 107.2816</code></p>
+                        <p class="example-answer"><b>Answer:</b> &approx; 107.3 hp</p>
+                    </div>
+                </div>
+                <div class="example-item">
+                    <h3>3. Convert 1200 Watts to Horsepower</h3>
+                    <div class="example-solution">
+                        <p><b>Step 1 (W to kW):</b> <code>1200 W / 1000 = 1.2 kW</code></p>
+                        <p><b>Step 2 (kW to hp):</b> <code>1.2 kW × 1.34102</code></p>
+                        <p><b>Calculation:</b> <code>1.2 × 1.34102 = 1.609</code></p>
+                        <p class="example-answer"><b>Answer:</b> &approx; 1.61 hp</p>
+                    </div>
+                </div>
+                <div class="example-item">
+                    <h3>4. Convert 2 hp to Watts</h3>
+                    <div class="example-solution">
+                        <p><b>Formula:</b> <code>W = hp × 745.7</code></p>
+                        <p><b>Calculation:</b> <code>2 × 745.7 = 1491.4</code></p>
+                        <p class="example-answer"><b>Answer:</b> 1491.4 W</p>
+                    </div>
+                </div>
+                <div class="example-item">
+                    <h3>5. Convert 500 Watts to Kilowatts</h3>
+                    <div class="example-solution">
+                        <p><b>Formula:</b> <code>kW = W / 1000</code></p>
+                        <p><b>Calculation:</b> <code>500 / 1000 = 0.5</code></p>
+                        <p class="example-answer"><b>Answer:</b> 0.5 kW</p>
+                    </div>
+                </div>
+                <div class="example-item">
+                    <h3>6. Convert 3.5 kW to Watts</h3>
+                    <div class="example-solution">
+                        <p><b>Formula:</b> <code>W = kW × 1000</code></p>
+                        <p><b>Calculation:</b> <code>3.5 × 1000 = 3500</code></p>
+                        <p class="example-answer"><b>Answer:</b> 3500 W</p>
+                    </div>
+                </div>
+                <div class="example-item">
+                    <h3>7. Convert a 100 hp motor to kW</h3>
+                    <div class="example-solution">
+                        <p><b>Formula:</b> <code>kW = hp × 0.7457</code></p>
+                        <p><b>Calculation:</b> <code>100 × 0.7457 = 74.57</code></p>
+                        <p class="example-answer"><b>Answer:</b> 74.57 kW</p>
+                    </div>
+                </div>
+                <div class="example-item">
+                    <h3>8. Convert a 250 kW generator to hp</h3>
+                    <div class="example-solution">
+                        <p><b>Formula:</b> <code>hp = kW × 1.34102</code></p>
+                        <p><b>Calculation:</b> <code>250 × 1.34102 = 335.255</code></p>
+                        <p class="example-answer"><b>Answer:</b> &approx; 335.3 hp</p>
+                    </div>
+                </div>
+                <div class="example-item">
+                    <h3>9. A light bulb is 60 W. How many hp is that?</h3>
+                    <div class="example-solution">
+                        <p><b>Step 1 (W to kW):</b> <code>60 / 1000 = 0.06 kW</code></p>
+                        <p><b>Step 2 (kW to hp):</b> <code>0.06 × 1.34102</code></p>
+                        <p><b>Calculation:</b> <code>0.06 × 1.34102 = 0.08046</code></p>
+                        <p class="example-answer"><b>Answer:</b> &approx; 0.08 hp</p>
+                    </div>
+                </div>
+                <div class="example-item">
+                    <h3>10. Convert 0.5 hp to Watts</h3>
+                    <div class="example-solution">
+                        <p><b>Formula:</b> <code>W = hp × 745.7</code></p>
+                        <p><b>Calculation:</b> <code>0.5 × 745.7 = 372.85</code></p>
+                        <p class="example-answer"><b>Answer:</b> 372.85 W</p>
+                    </div>
+                </div>
+                <div class="example-item">
+                    <h3>11. Convert 75 kW to hp</h3>
+                    <div class="example-solution">
+                        <p><b>Formula:</b> <code>hp = kW × 1.34102</code></p>
+                        <p><b>Calculation:</b> <code>75 × 1.34102 = 100.5765</code></p>
+                        <p class="example-answer"><b>Answer:</b> &approx; 100.6 hp</p>
+                    </div>
+                </div>
+                <div class="example-item">
+                    <h3>12. A car engine produces 200 hp. How many kW is this?</h3>
+                    <div class="example-solution">
+                        <p><b>Formula:</b> <code>kW = hp × 0.7457</code></p>
+                        <p><b>Calculation:</b> <code>200 × 0.7457 = 149.14</code></p>
+                        <p class="example-answer"><b>Answer:</b> 149.14 kW</p>
+                    </div>
+                </div>
+                <div class="example-item">
+                    <h3>13. Convert 1 Watt to Horsepower</h3>
+                    <div class="example-solution">
+                        <p><b>Formula:</b> <code>hp = W / 745.7</code></p>
+                        <p><b>Calculation:</b> <code>1 / 745.7 = 0.001341</code></p>
+                        <p class="example-answer"><b>Answer:</b> &approx; 0.00134 hp</p>
+                    </div>
+                </div>
+                <div class="example-item">
+                    <h3>14. Convert 1 hp to kW</h3>
+                    <div class="example-solution">
+                        <p><b>Formula:</b> <code>kW = hp × 0.7457</code></p>
+                        <p><b>Calculation:</b> <code>1 × 0.7457 = 0.7457</code></p>
+                        <p class="example-answer"><b>Answer:</b> &approx; 0.746 kW</p>
+                    </div>
+                </div>
+                <div class="example-item">
+                    <h3>15. A microwave is 900 W. Convert to kW.</h3>
+                    <div class="example-solution">
+                        <p><b>Formula:</b> <code>kW = W / 1000</code></p>
+                        <p><b>Calculation:</b> <code>900 / 1000 = 0.9</code></p>
+                        <p class="example-answer"><b>Answer:</b> 0.9 kW</p>
+                    </div>
+                </div>
+                <div class="example-item">
+                    <h3>16. An electric motor is rated 5.5 kW. What is its hp?</h3>
+                    <div class="example-solution">
+                        <p><b>Formula:</b> <code>hp = kW × 1.34102</code></p>
+                        <p><b>Calculation:</b> <code>5.5 × 1.34102 = 7.37561</code></p>
+                        <p class="example-answer"><b>Answer:</b> &approx; 7.38 hp</p>
+                    </div>
+                </div>
+                <div class="example-item">
+                    <h3>17. Convert 300 hp to Watts</h3>
+                    <div class="example-solution">
+                        <p><b>Formula:</b> <code>W = hp × 745.7</code></p>
+                        <p><b>Calculation:</b> <code>300 × 745.7 = 223710</code></p>
+                        <p class="example-answer"><b>Answer:</b> 223,710 W or 223.71 kW</p>
+                    </div>
+                </div>
+                <div class="example-item">
+                    <h3>18. Convert 10 kW to Watts</h3>
+                    <div class="example-solution">
+                        <p><b>Formula:</b> <code>W = kW × 1000</code></p>
+                        <p><b>Calculation:</b> <code>10 × 1000 = 10000</code></p>
+                        <p class="example-answer"><b>Answer:</b> 10,000 W</p>
+                    </div>
+                </div>
+                <div class="example-item">
+                    <h3>19. A small pump is 0.25 hp. How many Watts is it?</h3>
+                    <div class="example-solution">
+                        <p><b>Formula:</b> <code>W = hp × 745.7</code></p>
+                        <p><b>Calculation:</b> <code>0.25 × 745.7 = 186.425</code></p>
+                        <p class="example-answer"><b>Answer:</b> &approx; 186.4 W</p>
+                    </div>
+                </div>
+                <div class="example-item">
+                    <h3>20. An EV motor is 150 kW. What's its horsepower?</h3>
+                    <div class="example-solution">
+                        <p><b>Formula:</b> <code>hp = kW × 1.34102</code></p>
+                        <p><b>Calculation:</b> <code>150 × 1.34102 = 201.153</code></p>
+                        <p class="example-answer"><b>Answer:</b> &approx; 201.2 hp</p>
+                    </div>
+                </div>
+                <div class="example-item">
+                    <h3>21. Convert 2000 W to hp</h3>
+                    <div class="example-solution">
+                        <p><b>Step 1 (W to kW):</b> <code>2000 / 1000 = 2 kW</code></p>
+                        <p><b>Step 2 (kW to hp):</b> <code>2 × 1.34102 = 2.682</code></p>
+                        <p class="example-answer"><b>Answer:</b> &approx; 2.68 hp</p>
+                    </div>
+                </div>
+                <div class="example-item">
+                    <h3>22. Convert 1.5 hp to kW</h3>
+                    <div class="example-solution">
+                        <p><b>Formula:</b> <code>kW = hp × 0.7457</code></p>
+                        <p><b>Calculation:</b> <code>1.5 × 0.7457 = 1.11855</code></p>
+                        <p class="example-answer"><b>Answer:</b> &approx; 1.12 kW</p>
+                    </div>
+                </div>
+                <div class="example-item">
+                    <h3>23. Convert 100 W to hp</h3>
+                    <div class="example-solution">
+                        <p><b>Step 1 (W to kW):</b> <code>100 / 1000 = 0.1 kW</code></p>
+                        <p><b>Step 2 (kW to hp):</b> <code>0.1 × 1.34102 = 0.1341</code></p>
+                        <p class="example-answer"><b>Answer:</b> &approx; 0.134 hp</p>
+                    </div>
+                </div>
+                <div class="example-item">
+                    <h3>24. Convert 400 hp to kW</h3>
+                    <div class="example-solution">
+                        <p><b>Formula:</b> <code>kW = hp × 0.7457</code></p>
+                        <p><b>Calculation:</b> <code>400 × 0.7457 = 298.28</code></p>
+                        <p class="example-answer"><b>Answer:</b> 298.28 kW</p>
+                    </div>
+                </div>
+                <div class="example-item">
+                    <h3>25. Convert 300 kW to hp</h3>
+                    <div class="example-solution">
+                        <p><b>Formula:</b> <code>hp = kW × 1.34102</code></p>
+                        <p><b>Calculation:</b> <code>300 × 1.34102 = 402.306</code></p>
+                        <p class="example-answer"><b>Answer:</b> &approx; 402.3 hp</p>
+                    </div>
+                </div>
+                <div class="example-item">
+                    <h3>26. A blender uses 500 W. What is this in hp?</h3>
+                    <div class="example-solution">
+                        <p><b>Step 1 (W to kW):</b> <code>500 / 1000 = 0.5 kW</code></p>
+                        <p><b>Step 2 (kW to hp):</b> <code>0.5 × 1.34102 = 0.67051</code></p>
+                        <p class="example-answer"><b>Answer:</b> &approx; 0.67 hp</p>
+                    </div>
+                </div>
+                <div class="example-item">
+                    <h3>27. Convert 10 hp to Watts</h3>
+                    <div class="example-solution">
+                        <p><b>Formula:</b> <code>W = hp × 745.7</code></p>
+                        <p><b>Calculation:</b> <code>10 × 745.7 = 7457</code></p>
+                        <p class="example-answer"><b>Answer:</b> 7457 W</p>
+                    </div>
+                </div>
+                <div class="example-item">
+                    <h3>28. Convert 2.2 kW to hp</h3>
+                    <div class="example-solution">
+                        <p><b>Formula:</b> <code>hp = kW × 1.34102</code></p>
+                        <p><b>Calculation:</b> <code>2.2 × 1.34102 = 2.950244</code></p>
+                        <p class="example-answer"><b>Answer:</b> &approx; 2.95 hp</p>
+                    </div>
+                </div>
+                <div class="example-item">
+                    <h3>29. Convert 50 hp to kW</h3>
+                    <div class="example-solution">
+                        <p><b>Formula:</b> <code>kW = hp × 0.7457</code></p>
+                        <p><b>Calculation:</b> <code>50 × 0.7457 = 37.285</code></p>
+                        <p class="example-answer"><b>Answer:</b> 37.285 kW</p>
+                    </div>
+                </div>
+                <div class="example-item">
+                    <h3>30. Convert 1 Megawatt (MW) to hp</h3>
+                    <div class="example-solution">
+                        <p><b>Step 1 (MW to kW):</b> <code>1 MW = 1000 kW</code></p>
+                        <p><b>Step 2 (kW to hp):</b> <code>1000 × 1.34102 = 1341.02</code></p>
+                        <p class="example-answer"><b>Answer:</b> 1341.02 hp</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <aside class="sidebar">
+            <div class="sidebar-widget">
+                <h2>Next Conversions</h2>
+                <ul class="sidebar-link-list">
+                    <li>
+                        <a href="pressure-unit-conversion.html">
+                            <span class="link-icon">...</span>
+                            <div class="link-text">
+                                <span>Pressure Conversion</span>
+                                <small class="post-date">February 19, 2025</small>
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="speed-unit-conversion.html">
+                            <span class="link-icon">...</span>
+                            <div class="link-text">
+                                <span>Speed Conversion</span>
+                                <small class="post-date">February 20, 2025</small>
+                            </div>
+                        </a>
+                    </li>
+                </ul>
+                <p>
+                    After this chapter, you can continue to explore these conversions to learn how to convert
+                    different units accurately.
+                </p>
+            </div>
+
+            <div class="sidebar-widget">
+                <h2>Popular Conversions</h2>
+                <ul class="sidebar-link-list">
+                    <li>
+                        <a href="length-unit-conversion.html">
+                            <span class="link-icon">...</span>
+                            <div class="link-text">
+                                <span>Length Conversion</span>
+                                <small class="post-date">February 17, 2025</small>
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="power-unit-conversion.html">
+                            <span class="link-icon">...</span>
+                            <div class="link-text">
+                                <span>Power Conversion</span>
+                                <small class="post-date">February 18, 2025</small>
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="pressure-unit-conversion.html">
+                            <span class="link-icon">...</span>
+                            <div class="link-text">
+                                <span>Pressure Conversion</span>
+                                <small class="post-date">February 19, 2025</small>
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="speed-unit-conversion.html">
+                            <span class="link-icon">...</span>
+                            <div class="link-text">
+                                <span>Speed Conversion</span>
+                                <small class="post-date">February 20, 2025</small>
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="temperature-unit-conversion.html">
+                            <span class="link-icon">...</span>
+                            <div class="link-text">
+                                <span>Temperature Conversion</span>
+                                <small class="post-date">February 21, 2025</small>
+                            </div>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="sidebar-widget">
+                <h2>Suggestion Pages</h2>
+                <ul class="sidebar-link-list">
+                    <li>
+                        <a href="length-unit-conversion.html" class="page-button">
+                            <span class="link-icon">...</span>
+                            <div class="link-text">
+                                <span>Length Conversion</span>
+                                <small class="post-date">February 17, 2025</small>
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="weight-mass-unit-conversion.html" class="page-button">
+                            <span class="link-icon">...</span>
+                            <div class="link-text">
+                                <span>Weight & Mass Conversion</span>
+                                <small class="post-date">February 24, 2025</small>
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="volume-unit-conversion.html" class="page-button">
+                            <span class="link-icon">...</span>
+                            <div class="link-text">
+                                <span>Volume Conversion</span>
+                                <small class="post-date">February 23, 2025</small>
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="temperature-unit-conversion.html" class="page-button">
+                            <span class="link-icon">...</span>
+                            <div class="link-text">
+                                <span>Temperature Conversion</span>
+                                <small class="post-date">February 21, 2025</small>
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="speed-unit-conversion.html" class="page-button">
+                            <span class="link-icon">...</span>
+                            <div class="link-text">
+                                <span>Speed Conversion</span>
+                                <small class="post-date">February 20, 2025</small>
+                            </div>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </aside>
