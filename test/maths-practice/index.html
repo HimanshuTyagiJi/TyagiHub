@@ -1,0 +1,1268 @@
+---
+layout: default
+section: test
+permalink: /test/maths-practice/
+---
+<div class="tyagihub-main-layout">
+  <div class="th-left-col-wrapper">
+    <button class="th-mobile-menu-trigger" onclick="toggleMobileSidebar(event)">☰ <span>Menu</span></button>
+    {% include left-sidebar-selector.html %}
+  </div>
+  <div style="grid-column:2;min-width:0!important;width:100%!important;overflow:hidden!important;contain:layout style!important;isolation:isolate!important;clear:both!important;box-sizing:border-box;padding:10px;">
+
+    <div id="screen-home" class="screen active">
+      <div class="home-bg"><div class="bg-circle c1"></div><div class="bg-circle c2"></div><div class="bg-circle c3"></div></div>
+      <div class="home-wrap">
+        <div class="home-topbar">
+          <span class="brand-pill">🎓 TyagiHub Practice Engine</span>
+          <button class="lang-toggle" onclick="toggleLang()"><span id="lang-label">हिंदी</span> 🌐</button>
+        </div>
+        <div class="hero-card">
+          <div class="hero-icon">📐</div>
+          <h1 class="hero-title"><span data-en="Maths Practice" data-hi="गणित अभ्यास">Maths Practice</span><br/><em data-en="Portal" data-hi="पोर्टल">Portal</em></h1>
+          <p class="hero-sub" data-en="50 Questions · 30 Min · SSC/RBI/UPSSC Level · Full Solutions" data-hi="50 प्रश्न · 30 मिनट · SSC/RBI/UPSSC स्तर · पूर्ण हल">50 Questions · 30 Min · SSC/RBI/UPSSC Level · Full Solutions</p>
+          <div class="topics-grid">
+            <div class="topic-chip">📊 Percentage</div><div class="topic-chip">💰 Profit &amp; Loss</div>
+            <div class="topic-chip">⚖️ Ratio</div><div class="topic-chip">📈 Average</div>
+            <div class="topic-chip">🔢 Simplification</div><div class="topic-chip">🔤 Algebra</div>
+            <div class="topic-chip">⏱ Time &amp; Work</div><div class="topic-chip">🚀 Speed &amp; Distance</div>
+            <div class="topic-chip">🚂 Trains</div><div class="topic-chip">🚰 Pipes &amp; Cisterns</div>
+            <div class="topic-chip">🏦 SI &amp; CI</div><div class="topic-chip">🤝 Partnership</div>
+            <div class="topic-chip">🔺 Triangle</div><div class="topic-chip">📐 Mensuration</div>
+            <div class="topic-chip">📦 Volume</div><div class="topic-chip">🧩 LCM &amp; HCF</div>
+            <div class="topic-chip">🎲 P &amp; C</div><div class="topic-chip">🃏 Probability</div>
+            <div class="topic-chip">⛵ Boat &amp; Stream</div><div class="topic-chip">🔣 Indices</div>
+          </div>
+          <div class="home-info-row">
+            <div class="info-pill">⏳ 30 Minutes</div>
+            <div class="info-pill">❓ 50 Questions</div>
+            <div class="info-pill">+2 / −0.5 Marks</div>
+            <div class="info-pill">🏆 SSC/RBI/UPSSC</div>
+          </div>
+          <button class="btn-start" onclick="startTest()"><span data-en="Start Test →" data-hi="परीक्षा शुरू करें →">Start Test →</span></button>
+          <p class="home-note">Powered by TyagiHub.in</p>
+        </div>
+      </div>
+    </div>
+
+    <div id="screen-quiz" class="screen">
+      <header class="quiz-header">
+        <div class="qh-left"><span class="qh-brand">📐 Maths Portal</span></div>
+        <div class="qh-center"><div class="q-progress-text" id="q-counter">Q 1 / 50</div></div>
+        <div class="qh-right">
+          <button class="lang-toggle small" onclick="toggleLang()"><span id="lang-label-quiz">हिंदी</span> 🌐</button>
+          <div class="timer-wrap" id="timer-wrap">
+            <svg class="timer-ring" viewBox="0 0 36 36">
+              <circle class="ring-bg" cx="18" cy="18" r="15.9"/>
+              <circle class="ring-fill" id="ring-fill" cx="18" cy="18" r="15.9" stroke-dasharray="100 100" stroke-dashoffset="0"/>
+            </svg>
+            <span class="timer-text" id="timer-display">30:00</span>
+          </div>
+        </div>
+      </header>
+      <div class="quiz-progress-bar-wrap"><div class="quiz-progress-bar" id="progress-bar" style="width:2%"></div></div>
+      <div class="quiz-body">
+        <div class="q-dots" id="q-dots"></div>
+        <div class="question-card" id="question-card">
+          <div class="q-top-row">
+            <span class="q-category-badge" id="q-category">Topic</span>
+            <span class="q-marks-badge">+2 / −0.5</span>
+          </div>
+          <p class="q-text" id="q-text">Loading...</p>
+          <div class="options-grid" id="options-grid"></div>
+        </div>
+        <div class="quiz-bottom-bar">
+          <div class="qb-left"><span class="answered-info" id="answered-count">Answered: 0/50</span></div>
+          <div class="qb-right">
+            <button class="btn-skip" onclick="skipQuestion()">Skip →</button>
+            <button class="btn-next" id="btn-next" onclick="nextQuestion()" disabled><span id="next-label">Next →</span></button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="screen-result" class="screen">
+      <div class="print-watermark print-only">TyagiHub</div>
+      <div class="print-header print-only"><h2>Maths Practice — Result</h2><p>TyagiHub.in</p><hr/></div>
+      <div class="result-topbar no-print">
+        <div class="result-brand">📊 Your Result</div>
+        <button class="lang-toggle small" onclick="toggleLang()"><span id="lang-label-result">हिंदी</span> 🌐</button>
+      </div>
+      <div class="result-summary-wrap">
+        <div class="score-big-card">
+          <div class="score-ring-wrap">
+            <svg class="score-ring" viewBox="0 0 120 120">
+              <circle class="sr-bg" cx="60" cy="60" r="52"/>
+              <circle class="sr-fill" id="sr-fill" cx="60" cy="60" r="52" stroke-dasharray="326.7 326.7" stroke-dashoffset="326.7"/>
+            </svg>
+            <div class="score-ring-inner"><span class="score-big-num" id="score-num">0</span><span class="score-big-denom">/50</span></div>
+          </div>
+          <div class="score-breakdown">
+            <div class="sb-item correct"><span class="sb-num" id="correct-count">0</span><span class="sb-label">Correct ✅</span></div>
+            <div class="sb-divider"></div>
+            <div class="sb-item wrong"><span class="sb-num" id="wrong-count">0</span><span class="sb-label">Wrong ❌</span></div>
+            <div class="sb-divider"></div>
+            <div class="sb-item skip"><span class="sb-num" id="skip-count">0</span><span class="sb-label">Skipped ⏭</span></div>
+            <div class="sb-divider"></div>
+            <div class="sb-item marks"><span class="sb-num" id="total-marks">0</span><span class="sb-label">Marks 📝</span></div>
+          </div>
+          <div class="grade-banner" id="grade-banner"></div>
+        </div>
+      </div>
+      <div class="result-actions no-print">
+        <button class="btn-play-again" onclick="playAgain()">🔄 Play Again</button>
+        <button class="btn-print" onclick="printResult()">🖨 Print</button>
+      </div>
+      <div class="solutions-wrap">
+        <h3 class="sol-section-title" id="sol-title">📋 Detailed Solutions</h3>
+        <div id="solutions-section"></div>
+      </div>
+    </div>
+
+  </div>
+  <aside class="th-right-sidebar-wrapper">
+    {% case page.section %}{% when "test" %}{% include sidebars/test-sidebar.html %}{% else %}{% include sidebars/default-sidebar.html %}{% endcase %}
+  </aside>
+</div>
+<script>function toggleMobileSidebar(e){if(e)e.stopPropagation();const s=document.querySelector('.th-left-sidebar');if(s)s.classList.toggle('mobile-open');}</script>
+<style>
+:root{--blue:#1552a0;--blue2:#1e6fd9;--blue-lt:#e8f1fb;--blue-dk:#0b3470;--green:#15803d;--green-lt:#dcfce7;--red:#c81e1e;--red-lt:#fee2e2;--amber:#b45309;--amber-lt:#fef3c7;--purple:#7c3aed;--purple-lt:#ede9fe;--grey:#6b7280;--grey-lt:#f4f7fc;--border:#cdddf5;--shadow-md:0 6px 24px rgba(21,82,160,.13);--shadow-lg:0 16px 48px rgba(21,82,160,.18);--fh:'Baloo 2','Hind',sans-serif;--fb:'Hind','Baloo 2',sans-serif}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--fb);background:var(--grey-lt);color:#111827;min-height:100vh}
+.screen{display:none;min-height:100vh}.screen.active{display:block}
+#screen-home{display:none;min-height:100vh;background:linear-gradient(145deg,#071e45 0%,#0f3882 40%,#1e6fd9 100%);position:relative;overflow:hidden}
+#screen-home.active{display:flex;flex-direction:column;align-items:center}
+.home-bg{position:absolute;inset:0;overflow:hidden;pointer-events:none}
+.bg-circle{position:absolute;border-radius:50%;background:rgba(255,255,255,.04);animation:float 8s ease-in-out infinite}
+.c1{width:420px;height:420px;top:-100px;right:-80px}.c2{width:280px;height:280px;bottom:40px;left:-60px;animation-delay:3s}.c3{width:180px;height:180px;top:45%;left:20%;animation-delay:5s}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-20px)}}
+.home-wrap{width:100%;max-width:600px;padding:24px 18px 48px;position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;gap:18px}
+.home-topbar{width:100%;display:flex;align-items:center;justify-content:space-between}
+.brand-pill{background:rgba(255,255,255,.14);color:#fff;font-size:.82rem;font-weight:600;padding:6px 14px;border-radius:20px;border:1px solid rgba(255,255,255,.22)}
+.lang-toggle{background:rgba(255,255,255,.12);color:#fff;border:1px solid rgba(255,255,255,.28);border-radius:20px;padding:6px 14px;font-family:var(--fb);font-size:.83rem;font-weight:600;cursor:pointer;display:flex;align-items:center;gap:5px}
+.lang-toggle:hover{background:rgba(255,255,255,.22)}.lang-toggle.small{padding:5px 11px;font-size:.78rem}
+.hero-card{background:#fff;border-radius:20px;padding:36px 32px 32px;width:100%;box-shadow:var(--shadow-lg);text-align:center;animation:cardIn .6s cubic-bezier(.22,1,.36,1) both}
+@keyframes cardIn{from{opacity:0;transform:translateY(32px)}to{opacity:1;transform:translateY(0)}}
+.hero-icon{font-size:3rem;margin-bottom:10px}
+.hero-title{font-family:var(--fh);font-size:2.1rem;font-weight:800;color:var(--blue-dk);line-height:1.15;margin-bottom:10px}
+.hero-title em{color:var(--blue2);font-style:normal}
+.hero-sub{color:var(--grey);font-size:.88rem;margin-bottom:20px;line-height:1.5}
+.topics-grid{display:flex;flex-wrap:wrap;gap:7px;justify-content:center;margin-bottom:18px}
+.topic-chip{background:var(--grey-lt);border:1px solid var(--border);border-radius:8px;padding:5px 11px;font-size:.76rem;font-weight:500;color:#374151}
+.home-info-row{display:flex;gap:10px;justify-content:center;margin-bottom:22px;flex-wrap:wrap}
+.info-pill{background:var(--blue-lt);color:var(--blue);border:1px solid var(--border);border-radius:20px;padding:5px 14px;font-size:.82rem;font-weight:600}
+.btn-start{background:linear-gradient(135deg,var(--blue2),var(--blue));color:#fff;border:none;border-radius:12px;padding:15px 0;width:100%;font-family:var(--fh);font-size:1.1rem;font-weight:700;cursor:pointer;box-shadow:0 6px 20px rgba(21,82,160,.35);transition:transform .15s}
+.btn-start:hover{transform:translateY(-2px)}.home-note{margin-top:14px;font-size:.76rem;color:#9ca3af}
+.quiz-header{background:var(--blue-dk);padding:12px 20px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:200;box-shadow:0 3px 12px rgba(0,0,0,.28)}
+.qh-brand{font-family:var(--fh);font-size:.95rem;font-weight:700;color:#fff}
+.q-progress-text{color:#fff;font-weight:700;font-size:.95rem;background:rgba(255,255,255,.12);padding:4px 14px;border-radius:20px;border:1px solid rgba(255,255,255,.18)}
+.qh-right{display:flex;align-items:center;gap:10px}
+.timer-wrap{position:relative;width:46px;height:46px;display:flex;align-items:center;justify-content:center}
+.timer-ring{width:46px;height:46px;transform:rotate(-90deg)}
+.ring-bg{fill:none;stroke:rgba(255,255,255,.15);stroke-width:3}
+.ring-fill{fill:none;stroke:#4ade80;stroke-width:3;stroke-linecap:round;transition:stroke-dashoffset .9s linear,stroke .5s}
+.timer-text{position:absolute;font-size:.65rem;font-weight:700;color:#fff}
+.timer-wrap.warning .ring-fill{stroke:#fbbf24}
+.timer-wrap.danger .ring-fill{stroke:#f87171;animation:tpulse .6s infinite}
+@keyframes tpulse{0%,100%{opacity:1}50%{opacity:.5}}
+.quiz-progress-bar-wrap{height:5px;background:#dbe8f8}
+.quiz-progress-bar{height:100%;background:linear-gradient(90deg,var(--blue2),#38bdf8);transition:width .4s ease;border-radius:0 3px 3px 0}
+.q-dots{display:flex;flex-wrap:wrap;gap:4px;padding:12px 0 4px;justify-content:center}
+.q-dot{width:20px;height:20px;border-radius:50%;background:var(--border);border:2px solid var(--border);font-size:.6rem;font-weight:700;display:flex;align-items:center;justify-content:center;color:var(--grey);cursor:default;transition:all .2s}
+.q-dot.active{background:var(--blue2);border-color:var(--blue2);color:#fff;transform:scale(1.15)}
+.q-dot.answered{background:var(--green);border-color:var(--green);color:#fff}
+.q-dot.skipped{background:var(--amber);border-color:var(--amber);color:#fff}
+.q-dot.wrong{background:var(--red);border-color:var(--red);color:#fff}
+.quiz-body{max-width:780px;margin:0 auto;padding:6px 18px 80px}
+.question-card{background:#fff;border-radius:16px;padding:28px 28px 24px;box-shadow:var(--shadow-md);border:1px solid var(--border);margin-bottom:18px;animation:qslide .28s ease both}
+@keyframes qslide{from{opacity:0;transform:translateX(20px)}to{opacity:1;transform:translateX(0)}}
+.q-top-row{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px}
+.q-category-badge{background:var(--blue-lt);color:var(--blue);font-size:.72rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:4px 12px;border-radius:20px;border:1px solid var(--border)}
+.q-marks-badge{background:var(--green-lt);color:var(--green);font-size:.72rem;font-weight:700;padding:4px 12px;border-radius:20px;border:1px solid #bbf7d0}
+.q-text{font-size:1.05rem;font-weight:600;color:#111827;line-height:1.75;margin-bottom:22px;white-space:pre-line}
+.options-grid{display:grid;gap:10px}
+.option-btn{display:flex;align-items:center;gap:14px;background:var(--grey-lt);border:2px solid var(--border);border-radius:10px;padding:13px 16px;font-family:var(--fb);font-size:.97rem;color:#111827;cursor:pointer;text-align:left;width:100%;transition:border-color .18s,background .18s,transform .12s;position:relative}
+.option-btn:hover:not(:disabled){border-color:var(--blue2);background:var(--blue-lt);transform:translateX(4px)}
+.opt-label{display:inline-flex;align-items:center;justify-content:center;min-width:30px;height:30px;border-radius:50%;background:var(--border);font-weight:800;font-size:.8rem;color:var(--blue-dk);flex-shrink:0}
+.option-btn.selected{border-color:var(--blue2);background:var(--blue-lt)}
+.option-btn.selected .opt-label{background:var(--blue2);color:#fff}
+.option-btn.correct{border-color:var(--green);background:var(--green-lt)}
+.option-btn.correct .opt-label{background:var(--green);color:#fff}
+.option-btn.correct::after{content:'✓';position:absolute;right:16px;font-size:1.1rem;color:var(--green);font-weight:700}
+.option-btn.wrong{border-color:var(--red);background:var(--red-lt)}
+.option-btn.wrong .opt-label{background:var(--red);color:#fff}
+.option-btn.wrong::after{content:'✗';position:absolute;right:16px;font-size:1.1rem;color:var(--red);font-weight:700}
+.option-btn:disabled{cursor:default}
+.quiz-bottom-bar{display:flex;align-items:center;justify-content:space-between;padding:0 2px;gap:12px}
+.answered-info{font-size:.87rem;color:var(--grey);font-weight:500}
+.qb-right{display:flex;gap:10px}
+.btn-skip{background:var(--grey-lt);color:var(--grey);border:2px solid var(--border);border-radius:10px;padding:11px 20px;font-family:var(--fb);font-size:.9rem;font-weight:600;cursor:pointer;transition:all .18s}
+.btn-skip:hover{background:var(--amber-lt);color:var(--amber);border-color:var(--amber)}
+.btn-next{background:var(--blue);color:#fff;border:none;border-radius:10px;padding:11px 28px;font-family:var(--fh);font-size:.95rem;font-weight:700;cursor:pointer;box-shadow:0 3px 10px rgba(21,82,160,.3);transition:background .18s,opacity .18s}
+.btn-next:disabled{opacity:.35;cursor:not-allowed;box-shadow:none}
+.btn-next:not(:disabled):hover{background:var(--blue-dk)}
+#screen-result{background:var(--grey-lt);padding-bottom:60px}
+.result-topbar{background:var(--blue-dk);color:#fff;padding:16px 24px;display:flex;align-items:center;justify-content:space-between}
+.result-brand{font-family:var(--fh);font-size:1.2rem;font-weight:800}
+.result-summary-wrap{max-width:700px;margin:28px auto 0;padding:0 18px}
+.score-big-card{background:#fff;border-radius:18px;padding:32px 28px;box-shadow:var(--shadow-md);border:1px solid var(--border);display:flex;flex-direction:column;align-items:center;gap:22px}
+.score-ring-wrap{position:relative;width:140px;height:140px;display:flex;align-items:center;justify-content:center}
+.score-ring{width:140px;height:140px;transform:rotate(-90deg)}
+.sr-bg{fill:none;stroke:var(--blue-lt);stroke-width:8}
+.sr-fill{fill:none;stroke:var(--blue2);stroke-width:8;stroke-linecap:round;transition:stroke-dashoffset 1.2s cubic-bezier(.22,1,.36,1)}
+.score-ring-inner{position:absolute;display:flex;flex-direction:column;align-items:center;line-height:1}
+.score-big-num{font-family:var(--fh);font-size:2.8rem;font-weight:800;color:var(--blue-dk)}
+.score-big-denom{font-size:.9rem;color:var(--grey)}
+.score-breakdown{display:flex;align-items:stretch;border:1px solid var(--border);border-radius:12px;overflow:hidden;width:100%}
+.sb-item{flex:1;text-align:center;padding:14px 8px;display:flex;flex-direction:column;gap:4px}
+.sb-item.correct{background:var(--green-lt)}.sb-item.wrong{background:var(--red-lt)}.sb-item.skip{background:var(--amber-lt)}.sb-item.marks{background:var(--purple-lt)}
+.sb-num{font-family:var(--fh);font-size:1.7rem;font-weight:800}.sb-label{font-size:.72rem;font-weight:600}
+.sb-item.correct .sb-num{color:var(--green)}.sb-item.correct .sb-label{color:var(--green)}
+.sb-item.wrong .sb-num{color:var(--red)}.sb-item.wrong .sb-label{color:var(--red)}
+.sb-item.skip .sb-num{color:var(--amber)}.sb-item.skip .sb-label{color:var(--amber)}
+.sb-item.marks .sb-num{color:var(--purple)}.sb-item.marks .sb-label{color:var(--purple)}
+.sb-divider{width:1px;background:var(--border)}
+.grade-banner{width:100%;text-align:center;padding:11px 20px;border-radius:10px;font-family:var(--fh);font-size:1.05rem;font-weight:700}
+.result-actions{max-width:700px;margin:20px auto 0;padding:0 18px;display:flex;gap:12px}
+.btn-play-again{flex:1;background:var(--blue);color:#fff;border:none;border-radius:10px;padding:14px;font-family:var(--fh);font-size:1rem;font-weight:700;cursor:pointer}
+.btn-play-again:hover{background:var(--blue-dk)}
+.btn-print{flex:1;background:#fff;color:var(--blue);border:2px solid var(--blue);border-radius:10px;padding:14px;font-family:var(--fh);font-size:1rem;font-weight:700;cursor:pointer}
+.btn-print:hover{background:var(--blue-lt)}
+.solutions-wrap{max-width:800px;margin:32px auto 0;padding:0 18px}
+.sol-section-title{font-family:var(--fh);font-size:1.2rem;color:var(--blue-dk);margin-bottom:18px;padding-bottom:10px;border-bottom:2px solid var(--border)}
+.sol-card{background:#fff;border-radius:14px;border:1px solid var(--border);padding:22px;margin-bottom:16px;box-shadow:0 2px 8px rgba(21,82,160,.08)}
+.sol-header{display:flex;gap:10px;align-items:flex-start;margin-bottom:12px}
+.sol-num{background:var(--blue);color:#fff;font-size:.75rem;font-weight:700;padding:3px 10px;border-radius:6px;white-space:nowrap;margin-top:2px;flex-shrink:0}
+.sol-q{font-size:.97rem;font-weight:600;color:#111827;line-height:1.6;white-space:pre-line}
+.sol-answers{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px}
+.ans-chip{padding:6px 14px;border-radius:20px;font-size:.82rem;font-weight:600}
+.your-ans.correct{background:var(--green-lt);color:var(--green);border:1px solid #bbf7d0}
+.your-ans.wrong{background:var(--red-lt);color:var(--red);border:1px solid #fecaca}
+.your-ans.skipped{background:var(--amber-lt);color:var(--amber);border:1px solid #fde68a}
+.correct-ans{background:#dbeafe;color:var(--blue);border:1px solid #bfdbfe}
+.sol-steps{background:#f8faff;border-radius:10px;padding:16px 18px;border-left:4px solid var(--blue2);margin-bottom:10px}
+.sol-steps-title{font-size:.78rem;font-weight:700;color:var(--blue2);text-transform:uppercase;letter-spacing:.07em;margin-bottom:12px}
+.sol-step{display:flex;gap:10px;align-items:flex-start;margin-bottom:10px}
+.sol-step:last-child{margin-bottom:0}
+.step-num{min-width:22px;height:22px;border-radius:50%;background:var(--blue2);color:#fff;font-size:.7rem;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px}
+.step-text{font-size:.91rem;color:#1e293b;line-height:1.8}
+.step-text b{color:var(--blue)}
+.step-text .f{background:#e0f2fe;color:#0369a1;padding:1px 7px;border-radius:4px;font-style:italic;font-size:.88rem}
+.step-text .c{background:#f0fdf4;color:#166534;padding:1px 7px;border-radius:4px;font-weight:700;font-size:.88rem}
+.final-answer{margin-top:12px;padding:10px 16px;background:var(--green-lt);border-radius:8px;border:1px solid #bbf7d0;font-size:.92rem;font-weight:700;color:var(--green);display:inline-block}
+.concept-box{margin-top:10px;padding:10px 14px;background:#ede9fe;border-radius:8px;border:1px solid #c4b5fd;font-size:.84rem;color:#5b21b6;line-height:1.6}
+.concept-box b{color:#4c1d95}
+.print-only{display:none!important}
+@media print{.no-print{display:none!important}.print-only{display:block!important}body{background:#fff!important}#screen-home,#screen-quiz{display:none!important}#screen-result{display:block!important;background:#fff!important}.sol-card{break-inside:avoid}}
+@media(max-width:600px){.hero-card{padding:28px 18px 24px}.hero-title{font-size:1.65rem}.quiz-body{padding:4px 12px 70px}.question-card{padding:20px 16px}.q-text{font-size:1rem}.score-breakdown{flex-wrap:wrap}.sb-item{min-width:45%}.result-actions{flex-direction:column}}
+</style>
+<script>
+/* TyagiHub Maths Portal v3 — 50Q · 30Min · SSC/RBI/UPSSC
+   FIX: concept = plain object {en,hi} NOT a function */
+const TQ=50,TT=1800;
+let aQ=[],ci=0,uA=[],tI=null,sL=TT,lg='en';
+const rand=(a,b)=>Math.floor(Math.random()*(b-a+1))+a;
+const pick=a=>a[rand(0,a.length-1)];
+const shuffle=a=>{const b=[...a];for(let i=b.length-1;i>0;i--){const j=rand(0,i);[b[i],b[j]]=[b[j],b[i]];}return b;};
+function gcd(a,b){return b===0?a:gcd(b,a%b);}
+function lcmOf(a,b){return(a*b)/gcd(a,b);}
+function pf(n){let f=[],d=2;while(n>1){while(n%d===0){f.push(d);n/=d;}d++;}return f.join('×');}
+
+const L={
+  en:{answered:'Answered:',skip:'Skip →',next:'Next →',submit:'Submit',correct:'Correct ✅',wrong:'Wrong ❌',skipped:'Skipped ⏭',
+      yourAns:'Your Ans:',corrAns:'Correct Ans:',notAtt:'Not Attempted',solTitle:'📋 Detailed Solutions',
+      stepHead:'Step-by-Step Solution',finalAns:'✅ Final Answer:',concept:'💡 Concept',
+      excellent:'🏆 Excellent! Outstanding Performance!',good:'👍 Good Job!',average:'📚 Average. Practice More.',poor:'💪 Needs Improvement!'},
+  hi:{answered:'उत्तरित:',skip:'छोड़ें →',next:'अगला →',submit:'जमा करें',correct:'सही ✅',wrong:'गलत ❌',skipped:'छोड़े ⏭',
+      yourAns:'आपका उत्तर:',corrAns:'सही उत्तर:',notAtt:'प्रयास नहीं',solTitle:'📋 विस्तृत हल',
+      stepHead:'चरण-दर-चरण हल',finalAns:'✅ अंतिम उत्तर:',concept:'💡 अवधारणा',
+      excellent:'🏆 उत्कृष्ट!',good:'👍 अच्छा!',average:'📚 औसत। अभ्यास करें।',poor:'💪 सुधार जरूरी!'}
+};
+const t=k=>L[lg][k]||L.en[k];
+function toggleLang(){
+  lg=lg==='en'?'hi':'en';
+  const nl=lg==='en'?'हिंदी':'English';
+  ['lang-label','lang-label-quiz','lang-label-result'].forEach(id=>{const e=document.getElementById(id);if(e)e.textContent=nl;});
+  document.querySelectorAll('[data-en]').forEach(el=>{const a='data-'+lg;if(el.hasAttribute(a))el.textContent=el.getAttribute(a);});
+  if(aQ.length>0&&ci<TQ)renderQ();
+}
+
+/* option helpers */
+function makeON(ans,w){
+  const a=Math.round(ans*10)/10;
+  const cl=w.map(x=>{let v=Math.round(x*10)/10;return Math.abs(v-a)<0.05?a+rand(4,9):v;});
+  const four=shuffle([a,...cl.slice(0,3)]);
+  return{vals:four,idx:four.findIndex(v=>Math.abs(v-a)<0.05)};
+}
+function makeOS(ans,w){const f=shuffle([ans,...w.slice(0,3)]);return{vals:f,idx:f.indexOf(ans)};}
+
+/* ====================================================
+   40 QUESTION GENERATORS
+   concept is ALWAYS a plain {en:'',hi:''} object
+==================================================== */
+
+function qPctBasic(){
+  const p=pick([5,8,10,12,15,20,25,30]),n=rand(200,3000);
+  const ans=(p*n)/100;
+  const o=makeON(ans,[ans+rand(20,100),ans-rand(10,60),Math.round(ans*1.5)]);
+  return{
+    category:{en:'Percentage',hi:'प्रतिशत'},
+    text:{en:'A government department has an annual budget of ₹'+n+' lakh. If '+p+'% of the budget is allocated for infrastructure development, find the amount (in lakh) allocated for infrastructure.',
+          hi:'एक सरकारी विभाग का वार्षिक बजट ₹'+n+' लाख है। यदि बजट का '+p+'% बुनियादी ढाँचे के विकास के लिए आवंटित किया जाता है, तो आवंटित राशि (लाख में) ज्ञात करें।'},
+    options:o.vals.map(v=>'₹'+v+' L'),correctIndex:o.idx,
+    steps:[
+      {en:'<b>Given:</b> Total Budget = ₹'+n+' lakh, Allocation = '+p+'%',hi:'<b>दिया:</b> कुल बजट = ₹'+n+' लाख, आवंटन = '+p+'%'},
+      {en:'<b>Formula:</b> <span class="f">Amount = (Percentage × Total) ÷ 100</span>',hi:'<b>सूत्र:</b> <span class="f">राशि = (प्रतिशत × कुल) ÷ 100</span>'},
+      {en:'= ('+p+' × '+n+') ÷ 100 = '+p*n+' ÷ 100 = <span class="c">₹'+ans+' lakh</span>',hi:'= ('+p+' × '+n+') ÷ 100 = <span class="c">₹'+ans+' लाख</span>'},
+    ],
+    concept:{en:'"of" means multiply. x% of N = (x × N)/100. Used heavily in Budget/DI questions in SSC.',hi:'"का" का मतलब गुणा। N का x% = (x × N)/100। SSC बजट/DI प्रश्नों में बहुत उपयोगी।'},
+    finalAns:'₹'+ans+' lakh'
+  };
+}
+
+function qWhatPct(){
+  const base=rand(200,1000),pct=pick([5,10,20,25,40,50,60]);
+  const part=(pct*base)/100;
+  const o=makeOS(pct+'%',[(pct+5)+'%',(pct-5)+'%',(pct+15)+'%']);
+  return{
+    category:{en:'Percentage',hi:'प्रतिशत'},
+    text:{en:'In an SSC examination, '+part+' students passed out of '+base+' total students who appeared. What percentage of students passed the examination?',
+          hi:'एक SSC परीक्षा में '+base+' कुल उपस्थित छात्रों में से '+part+' छात्र उत्तीर्ण हुए। कितने प्रतिशत छात्र परीक्षा उत्तीर्ण हुए?'},
+    options:o.vals,correctIndex:o.idx,
+    steps:[
+      {en:'<b>Given:</b> Passed = '+part+', Total = '+base,hi:'<b>दिया:</b> उत्तीर्ण = '+part+', कुल = '+base},
+      {en:'<b>Formula:</b> <span class="f">Pass% = (Passed ÷ Total) × 100</span>',hi:'<b>सूत्र:</b> <span class="f">% = (उत्तीर्ण ÷ कुल) × 100</span>'},
+      {en:'= ('+part+' ÷ '+base+') × 100 = '+((part/base).toFixed(4))+' × 100 = <span class="c">'+pct+'%</span>',hi:'= '+part+' ÷ '+base+' × 100 = <span class="c">'+pct+'%</span>'},
+    ],
+    concept:{en:'% = (Part/Whole)×100. Always identify which is Part and which is Whole. Denominator = total/whole.',hi:'% = (भाग/पूर्ण)×100। भाग और पूर्ण की सही पहचान जरूरी है।'},
+    finalAns:pct+'%'
+  };
+}
+
+function qPctChange(){
+  const orig=rand(500,5000),pct=pick([5,8,10,12,15,20,25]),isUp=rand(0,1);
+  const diff=Math.round((orig*pct)/100),nv=isUp?orig+diff:orig-diff;
+  const o=makeON(nv,[nv+rand(40,150),nv-rand(30,100),Math.round(orig*(isUp?1.6:0.5))]);
+  return{
+    category:{en:'Percentage',hi:'प्रतिशत'},
+    text:{en:'The monthly salary of a bank employee is ₹'+orig+'. After the salary revision, the salary is '+(isUp?'increased':'decreased')+' by '+pct+'%. What is the new monthly salary after revision?',
+          hi:'एक बैंक कर्मचारी का मासिक वेतन ₹'+orig+' है। वेतन संशोधन के बाद, वेतन में '+pct+'% की '+(isUp?'वृद्धि':'कमी')+' हुई। संशोधन के बाद नया मासिक वेतन क्या होगा?'},
+    options:o.vals.map(v=>'₹'+v),correctIndex:o.idx,
+    steps:[
+      {en:'<b>Original Salary:</b> ₹'+orig,hi:'<b>मूल वेतन:</b> ₹'+orig},
+      {en:(isUp?'Increase':'Decrease')+' = '+pct+'% of '+orig+' = ('+pct+' × '+orig+') ÷ 100 = ₹'+diff,hi:(isUp?'वृद्धि':'कमी')+' = ₹'+diff},
+      {en:'New Salary = '+orig+(isUp?' + ':' − ')+diff+' = <span class="c">₹'+nv+'</span>',hi:'नया वेतन = <span class="c">₹'+nv+'</span>'},
+      {en:'<b>Shortcut:</b> ₹'+orig+' × '+(isUp?(100+pct):(100-pct))+'/100 = ₹'+nv,hi:'<b>शॉर्टकट:</b> ₹'+orig+' × '+(isUp?(100+pct):(100-pct))+'/100 = ₹'+nv},
+    ],
+    concept:{en:isUp?'Increase by x%: New = Original × (100+x)/100':'Decrease by x%: New = Original × (100−x)/100. This shortcut saves time in exams.',hi:isUp?'x% वृद्धि: नया = मूल × (100+x)/100':'x% कमी: नया = मूल × (100-x)/100'},
+    finalAns:'₹'+nv
+  };
+}
+
+function qPL_SP(){
+  const cp=rand(300,3000),pct=pick([5,8,10,12,15,20,25]),isP=rand(0,1);
+  const pl=Math.round((cp*pct)/100),sp=isP?cp+pl:cp-pl;
+  const o=makeON(sp,[sp+rand(40,150),sp-rand(30,100),Math.round(sp*1.2)]);
+  return{
+    category:{en:'Profit & Loss',hi:'लाभ और हानि'},
+    text:{en:'A trader buys a television set for ₹'+cp+' from a wholesaler. He sells it at a '+(isP?'profit':'loss')+' of '+pct+'%. Calculate the selling price of the television set.',
+          hi:'एक व्यापारी थोक विक्रेता से ₹'+cp+' में एक टेलीविजन सेट खरीदता है। वह इसे '+pct+'% '+(isP?'लाभ':'हानि')+' पर बेचता है। टेलीविजन सेट का विक्रय मूल्य ज्ञात करें।'},
+    options:o.vals.map(v=>'₹'+v),correctIndex:o.idx,
+    steps:[
+      {en:'<b>Cost Price (CP)</b> = ₹'+cp+', '+(isP?'Profit':'Loss')+'% = '+pct+'%',hi:'<b>क्रय मूल्य (CP)</b> = ₹'+cp},
+      {en:(isP?'Profit':'Loss')+' = '+pct+'% of CP = ('+pct+' × '+cp+') ÷ 100 = ₹'+pl,hi:(isP?'लाभ':'हानि')+' = ₹'+pl},
+      {en:'<b>Formula:</b> <span class="f">SP = CP × (100 '+(isP?'+':'-')+' '+pct+') ÷ 100</span>',hi:'<b>सूत्र:</b> <span class="f">SP = CP × (100'+(isP?'+':'-')+pct+') ÷ 100</span>'},
+      {en:'SP = '+cp+' × '+(isP?100+pct:100-pct)+' ÷ 100 = <span class="c">₹'+sp+'</span>',hi:'SP = <span class="c">₹'+sp+'</span>'},
+    ],
+    concept:{en:'SP = CP×(100+P%)/100 for profit. SP = CP×(100-L%)/100 for loss. CP = SP×100/(100±%)',hi:'लाभ: SP = CP×(100+P%)/100। हानि: SP = CP×(100-L%)/100। CP = SP×100/(100±%)'},
+    finalAns:'₹'+sp
+  };
+}
+
+function qPL_CP(){
+  const sp=rand(400,3000),pct=pick([5,10,15,20,25]),isP=rand(0,1);
+  const cp=Math.round(sp*100/(isP?100+pct:100-pct));
+  const o=makeON(cp,[cp+rand(40,130),cp-rand(30,100),Math.round(cp*1.15)]);
+  return{
+    category:{en:'Profit & Loss',hi:'लाभ और हानि'},
+    text:{en:'A shopkeeper sells a mobile phone for ₹'+sp+' making a '+(isP?'profit':'loss')+' of '+pct+'% on the cost price. Find the cost price of the mobile phone.',
+          hi:'एक दुकानदार ₹'+sp+' में एक मोबाइल फोन बेचता है, जिसमें उसे क्रय मूल्य पर '+pct+'% '+(isP?'लाभ':'हानि')+' होती है। मोबाइल फोन का क्रय मूल्य ज्ञात करें।'},
+    options:o.vals.map(v=>'₹'+v),correctIndex:o.idx,
+    steps:[
+      {en:'<b>Given:</b> SP = ₹'+sp+', '+(isP?'Profit':'Loss')+'% = '+pct+'%',hi:'<b>दिया:</b> SP = ₹'+sp+', '+(isP?'लाभ':'हानि')+'% = '+pct+'%'},
+      {en:'<b>Formula:</b> <span class="f">CP = SP × 100 ÷ (100 '+(isP?'+':'-')+' '+pct+')</span>',hi:'<b>सूत्र:</b> <span class="f">CP = SP × 100 ÷ (100 '+(isP?'+':'-')+pct+')</span>'},
+      {en:'CP = '+sp+' × 100 ÷ '+(isP?100+pct:100-pct)+' = <span class="c">₹'+cp+'</span>',hi:'CP = '+sp+' × 100 ÷ '+(isP?100+pct:100-pct)+' = <span class="c">₹'+cp+'</span>'},
+      {en:'<b>Verify:</b> CP×(100'+(isP?'+':'-')+pct+')/100 = '+cp+'×'+(isP?100+pct:100-pct)+'/100 = ₹'+sp+' ✓',hi:'<b>जाँच:</b> ✓'},
+    ],
+    concept:{en:'CP = SP×100/(100+P%) if profit. CP = SP×100/(100-L%) if loss. Always check sign.',hi:'लाभ में: CP = SP×100/(100+P%)। हानि में: CP = SP×100/(100-L%)'},
+    finalAns:'₹'+cp
+  };
+}
+
+function qRatio(){
+  const rats=[[1,2],[2,3],[3,4],[3,5],[4,5],[2,5],[1,4],[3,7],[5,8]];
+  const [a,b]=pick(rats),total=(a+b)*rand(10,50);
+  const sA=(a/(a+b))*total,sB=total-sA;
+  const o=makeON(sA,[sA+rand(20,80),sA-rand(15,70),sB]);
+  return{
+    category:{en:'Ratio & Proportion',hi:'अनुपात और समानुपात'},
+    text:{en:'A sum of ₹'+total+' is distributed among two candidates A and B in the ratio '+a+':'+b+' (based on their performance score in a recruitment drive). Find the share received by candidate A.',
+          hi:'₹'+total+' की राशि दो उम्मीदवारों A और B के बीच '+a+':'+b+' के अनुपात में (भर्ती अभियान में उनके प्रदर्शन स्कोर के आधार पर) वितरित की जाती है। उम्मीदवार A को प्राप्त राशि ज्ञात करें।'},
+    options:o.vals.map(v=>'₹'+v),correctIndex:o.idx,
+    steps:[
+      {en:'Total parts = '+a+' + '+b+' = '+(a+b),hi:'कुल भाग = '+(a+b)},
+      {en:'Value of 1 part = ₹'+total+' ÷ '+(a+b)+' = ₹'+(total/(a+b)),hi:'1 भाग = ₹'+(total/(a+b))},
+      {en:'<b>A\'s share</b> = '+a+' parts = '+a+' × '+(total/(a+b))+' = <span class="c">₹'+sA+'</span>',hi:'<b>A का हिस्सा</b> = <span class="c">₹'+sA+'</span>'},
+      {en:'B\'s share = ₹'+sB+' | Check: '+sA+'+'+sB+' = ₹'+total+' ✓',hi:'B का हिस्सा = ₹'+sB+' | जाँच ✓'},
+    ],
+    concept:{en:'Share = (Individual ratio part / Sum of parts) × Total. This formula works for any number of partners.',hi:'हिस्सा = (व्यक्तिगत भाग / भागों का योग) × कुल।'},
+    finalAns:'₹'+sA
+  };
+}
+
+function qAvg(){
+  let n,nums,sum,avg;
+  do{n=rand(4,7);nums=Array.from({length:n},()=>rand(20,150));sum=nums.reduce((a,b)=>a+b,0);avg=sum/n;}
+  while(!Number.isInteger(avg));
+  const o=makeON(avg,[avg+rand(3,15),avg-rand(3,12),avg+rand(8,22)]);
+  return{
+    category:{en:'Average',hi:'औसत'},
+    text:{en:'A candidate appears in '+n+' papers of a competitive examination and scores the following marks:\n'+nums.join(', ')+'\nFind the average marks scored by the candidate.',
+          hi:'एक अभ्यर्थी प्रतियोगी परीक्षा के '+n+' पर्चों में निम्नलिखित अंक प्राप्त करता है:\n'+nums.join(', ')+'\nअभ्यर्थी द्वारा प्राप्त औसत अंक ज्ञात करें।'},
+    options:o.vals.map(String),correctIndex:o.idx,
+    steps:[
+      {en:'<b>Step 1 — Sum:</b> '+nums.join(' + ')+' = <span class="c">'+sum+'</span>',hi:'<b>चरण 1 — योग:</b> '+nums.join(' + ')+' = <span class="c">'+sum+'</span>'},
+      {en:'<b>Step 2 — Count (n):</b> '+n+' papers',hi:'<b>चरण 2 — गिनती (n):</b> '+n+' पर्चे'},
+      {en:'<b>Formula:</b> <span class="f">Average = Sum ÷ n</span>',hi:'<b>सूत्र:</b> <span class="f">औसत = योग ÷ n</span>'},
+      {en:'Average = '+sum+' ÷ '+n+' = <span class="c">'+avg+' marks</span>',hi:'औसत = '+sum+' ÷ '+n+' = <span class="c">'+avg+' अंक</span>'},
+    ],
+    concept:{en:'Average = Sum/n. If all values increase by k, new average = old average + k. Memorize this property!',hi:'औसत = योग/n। सभी मान k से बढ़ें → नया औसत = पुराना + k'},
+    finalAns:avg+' marks'
+  };
+}
+
+function qAvgNew(){
+  let n,avg,sum,nn,na;
+  do{n=rand(4,8);avg=rand(20,80);sum=n*avg;nn=rand(avg+5,avg+50);na=(sum+nn)/(n+1);}
+  while(!Number.isInteger(na));
+  const o=makeON(na,[na+rand(1,5),na-rand(1,4),avg]);
+  return{
+    category:{en:'Average',hi:'औसत'},
+    text:{en:'The average age of '+n+' employees in a government office is '+avg+' years. A new employee aged '+nn+' years joins the office. What is the new average age of all employees in the office?',
+          hi:'एक सरकारी कार्यालय में '+n+' कर्मचारियों की औसत आयु '+avg+' वर्ष है। '+nn+' वर्ष की आयु का एक नया कर्मचारी कार्यालय में शामिल होता है। कार्यालय के सभी कर्मचारियों की नई औसत आयु क्या होगी?'},
+    options:o.vals.map(String),correctIndex:o.idx,
+    steps:[
+      {en:'Old total = '+n+' × '+avg+' = <span class="c">'+sum+'</span> years',hi:'पुराना कुल = '+n+' × '+avg+' = <span class="c">'+sum+'</span> वर्ष'},
+      {en:'New total = '+sum+' + '+nn+' = <span class="c">'+(sum+nn)+'</span> years',hi:'नया कुल = '+sum+' + '+nn+' = <span class="c">'+(sum+nn)+'</span> वर्ष'},
+      {en:'New count = '+n+' + 1 = '+(n+1),hi:'नई गिनती = '+(n+1)},
+      {en:'<b>New Average</b> = '+(sum+nn)+' ÷ '+(n+1)+' = <span class="c">'+na+' years</span>',hi:'<b>नया औसत</b> = <span class="c">'+na+' वर्ष</span>'},
+    ],
+    concept:{en:'Change in avg = (New value − Old avg)/(n+1) = ('+(nn-avg)+')/('+(n+1)+') = '+((nn-avg)/(n+1))+'. Add this to old average.',hi:'औसत परिवर्तन = (नया − पुराना)/(n+1) = '+((nn-avg)/(n+1))},
+    finalAns:na+' years'
+  };
+}
+
+function qBODMAS(){
+  const a=rand(3,15),b=rand(2,10),c=rand(1,8),d=rand(2,6);
+  const ans=a*b+c*d;
+  const o=makeON(ans,[a*b+c,ans+rand(5,15),(a+b)*(c+d)]);
+  return{
+    category:{en:'Simplification',hi:'सरलीकरण'},
+    text:{en:'Simplify using BODMAS rule:\n('+a+' × '+b+') + ('+c+' × '+d+')',hi:'BODMAS नियम का उपयोग करके सरल करें:\n('+a+' × '+b+') + ('+c+' × '+d+')'},
+    options:o.vals.map(String),correctIndex:o.idx,
+    steps:[
+      {en:'<b>BODMAS:</b> Brackets → Orders → Division → Multiplication → Addition → Subtraction',hi:'<b>BODMAS:</b> कोष्टक → घातांक → भाग → गुणा → जोड़ → घटाना'},
+      {en:'<b>Step 1</b> — First bracket: '+a+' × '+b+' = <span class="c">'+a*b+'</span>',hi:'<b>चरण 1</b> — पहला कोष्टक: '+a+' × '+b+' = <span class="c">'+a*b+'</span>'},
+      {en:'<b>Step 2</b> — Second bracket: '+c+' × '+d+' = <span class="c">'+c*d+'</span>',hi:'<b>चरण 2</b> — दूसरा कोष्टक: '+c+' × '+d+' = <span class="c">'+c*d+'</span>'},
+      {en:'<b>Step 3</b> — Addition: '+a*b+' + '+c*d+' = <span class="c">'+ans+'</span>',hi:'<b>चरण 3</b> — जोड़: <span class="c">'+ans+'</span>'},
+    ],
+    concept:{en:'BODMAS rule: Multiplication/Division before Addition/Subtraction. Brackets always first.',hi:'BODMAS: गुणा/भाग हमेशा जोड़/घटाने से पहले। कोष्टक सबसे पहले।'},
+    finalAns:String(ans)
+  };
+}
+
+function qLinear(){
+  const a=rand(3,9),x=rand(3,18),b=rand(2,25),c=a*x+b;
+  const o=makeON(x,[x+1,x-1,x+3]);
+  return{
+    category:{en:'Basic Algebra',hi:'बीजगणित'},
+    text:{en:'In a recruitment test, '+a+' times a candidate\'s score plus '+b+' equals '+c+'. Find the score of the candidate.\n(Solve for x: '+a+'x + '+b+' = '+c+')',
+          hi:'एक भर्ती परीक्षा में, एक अभ्यर्थी के स्कोर का '+a+' गुना '+b+' जोड़ने पर '+c+' प्राप्त होता है। अभ्यर्थी का स्कोर ज्ञात करें।\n(हल करें: '+a+'x + '+b+' = '+c+')'},
+    options:o.vals.map(String),correctIndex:o.idx,
+    steps:[
+      {en:'<b>Equation:</b> '+a+'x + '+b+' = '+c,hi:'<b>समीकरण:</b> '+a+'x + '+b+' = '+c},
+      {en:'<b>Transpose '+b+':</b> '+a+'x = '+c+' − '+b+' = '+(c-b),hi:'<b>'+b+' स्थानांतरित:</b> '+a+'x = '+(c-b)},
+      {en:'<b>Divide by '+a+':</b> x = '+(c-b)+' ÷ '+a+' = <span class="c">'+x+'</span>',hi:'<b>'+a+' से भाग:</b> x = <span class="c">'+x+'</span>'},
+      {en:'<b>Verify:</b> '+a+'('+x+') + '+b+' = '+a*x+' + '+b+' = '+c+' ✓',hi:'<b>जाँच:</b> '+a+'×'+x+' + '+b+' = '+c+' ✓'},
+    ],
+    concept:{en:'Transposition: move terms across = sign changes. ax+b=c → ax=c-b → x=(c-b)/a.',hi:'स्थानांतरण: = चिह्न पार करने पर चिह्न बदलता है। ax+b=c → x=(c-b)/a'},
+    finalAns:'x = '+x
+  };
+}
+
+function qTwoVar(){
+  const x=rand(10,30),y=rand(3,x-2),s=x+y,d=x-y;
+  const o=makeON(x,[x+2,x-2,y]);
+  return{
+    category:{en:'Basic Algebra',hi:'बीजगणित'},
+    text:{en:'The sum of attempted and unattempted questions by a candidate in an exam is '+s+' and their difference is '+d+'. Find the number of questions attempted (the larger number).',
+          hi:'एक परीक्षा में अभ्यर्थी द्वारा किए गए और न किए गए प्रश्नों का योग '+s+' और अंतर '+d+' है। प्रयास किए गए प्रश्नों की संख्या (बड़ी संख्या) ज्ञात करें।'},
+    options:o.vals.map(String),correctIndex:o.idx,
+    steps:[
+      {en:'Let attempted = x, unattempted = y',hi:'मान लें: प्रयास = x, न किए = y'},
+      {en:'Eq 1: x + y = '+s+'  |  Eq 2: x − y = '+d,hi:'समीकरण 1: x + y = '+s+' | समीकरण 2: x − y = '+d},
+      {en:'<b>Add both equations:</b> 2x = '+(s+d)+' → x = '+(s+d)+' ÷ 2 = <span class="c">'+x+'</span>',hi:'<b>दोनों जोड़ें:</b> 2x = '+(s+d)+' → x = <span class="c">'+x+'</span>'},
+      {en:'y = '+s+' − '+x+' = '+y+' | Verify: '+x+'+'+y+'='+s+' ✓ '+x+'-'+y+'='+d+' ✓',hi:'y = '+y+' | जाँच ✓'},
+    ],
+    concept:{en:'Elimination: Add eq1+eq2 → eliminates y. Subtract eq1-eq2 → eliminates x. Choose as per requirement.',hi:'विलोपन: eq1+eq2 → y समाप्त। eq1-eq2 → x समाप्त।'},
+    finalAns:String(x)
+  };
+}
+
+function qTimeWork(){
+  const pairs=[[6,12],[8,12],[10,15],[12,18],[9,18],[6,9],[10,20],[4,6],[12,24],[15,20]];
+  const [a,b]=pick(pairs),L2=lcmOf(a,b),wa=L2/a,wb=L2/b,tog=L2/(wa+wb);
+  const o=makeON(tog,[tog+1,tog-1,a+b]);
+  return{
+    category:{en:'Time & Work',hi:'समय और कार्य'},
+    text:{en:'Ramesh can complete a project in '+a+' days and Suresh can complete the same project in '+b+' days. If both are assigned the project and start working together simultaneously, in how many days will the project be completed?',
+          hi:'रमेश एक परियोजना '+a+' दिनों में पूरी कर सकता है और सुरेश उसी परियोजना को '+b+' दिनों में पूरी कर सकता है। यदि दोनों को परियोजना सौंपी जाए और वे एक साथ काम शुरू करें, तो परियोजना कितने दिनों में पूरी होगी?'},
+    options:o.vals.map(String),correctIndex:o.idx,
+    steps:[
+      {en:'Ramesh\'s 1 day work = <span class="f">1/'+a+'</span>; Suresh\'s 1 day work = <span class="f">1/'+b+'</span>',hi:'रमेश का 1 दिन = <span class="f">1/'+a+'</span>; सुरेश का 1 दिन = <span class="f">1/'+b+'</span>'},
+      {en:'Together per day = 1/'+a+' + 1/'+b+' = '+(wa+wb)+'/'+L2,hi:'दोनों मिलकर = '+(wa+wb)+'/'+L2},
+      {en:'<b>Formula:</b> <span class="f">Together time = AB/(A+B)</span>',hi:'<b>सूत्र:</b> <span class="f">= AB/(A+B)</span>'},
+      {en:'= ('+a+'×'+b+')/('+a+'+'+b+') = '+a*b+'/'+(a+b)+' = <span class="c">'+tog+' days</span>',hi:'= '+a*b+'/'+(a+b)+' = <span class="c">'+tog+' दिन</span>'},
+    ],
+    concept:{en:'T = AB/(A+B). For 3 workers: T = ABC/(AB+BC+CA). Efficiency = 1/Days. More efficient = finishes faster.',hi:'T = AB/(A+B)। 3 लोग: T = ABC/(AB+BC+CA)। दक्षता = 1/दिन'},
+    finalAns:tog+' days'
+  };
+}
+
+function qManDays(){
+  let m1,d1,m2,d2;
+  do{m1=rand(4,12);d1=rand(6,20);m2=m1+rand(1,6);d2=(m1*d1)/m2;}while(!Number.isInteger(d2));
+  const o=makeON(d2,[d2+1,d2-1,d2+2]);
+  return{
+    category:{en:'Time & Work',hi:'समय और कार्य'},
+    text:{en:m1+' labourers can complete the construction of a road in '+d1+' days. Due to an urgent deadline, '+m2+' labourers are deployed for the same construction. In how many days will the road be constructed?',
+          hi:m1+' मजदूर एक सड़क का निर्माण '+d1+' दिनों में पूरा कर सकते हैं। एक जरूरी समयसीमा के कारण, उसी निर्माण के लिए '+m2+' मजदूर तैनात किए जाते हैं। सड़क का निर्माण कितने दिनों में होगा?'},
+    options:o.vals.map(String),correctIndex:o.idx,
+    steps:[
+      {en:'<b>Key Concept:</b> Inverse proportion — More workers = Fewer days',hi:'<b>मुख्य अवधारणा:</b> व्युत्क्रम समानुपात — अधिक मजदूर = कम दिन'},
+      {en:'Total work = M₁ × D₁ = '+m1+' × '+d1+' = <span class="c">'+m1*d1+' man-days</span>',hi:'कुल कार्य = '+m1+' × '+d1+' = <span class="c">'+m1*d1+' मानव-दिवस</span>'},
+      {en:'<b>M₁D₁ = M₂D₂:</b> '+m1*d1+' = '+m2+' × D₂',hi:'<b>M₁D₁ = M₂D₂:</b> '+m1*d1+' = '+m2+' × D₂'},
+      {en:'D₂ = '+m1*d1+' ÷ '+m2+' = <span class="c">'+d2+' days</span>',hi:'D₂ = '+m1*d1+' ÷ '+m2+' = <span class="c">'+d2+' दिन</span>'},
+    ],
+    concept:{en:'M₁D₁H₁ = M₂D₂H₂ (H = hours/day). This is the universal work equation. Constant = total output.',hi:'M₁D₁H₁ = M₂D₂H₂ (H = घंटे/दिन)। यह सार्वभौमिक कार्य समीकरण है।'},
+    finalAns:d2+' days'
+  };
+}
+
+function qSDT(){
+  const type=rand(1,3);
+  if(type===1){
+    const spd=pick([36,40,45,50,54,60,72,80,90,100]),hr=rand(2,8),dist=spd*hr;
+    const o=makeON(dist,[dist+rand(20,90),dist-rand(15,70),dist+rand(50,130)]);
+    return{
+      category:{en:'Speed, Distance & Time',hi:'गति, दूरी और समय'},
+      text:{en:'A state roadways bus travels from City A to City B at a uniform speed of '+spd+' km/h. If the bus takes '+hr+' hours to complete the journey, find the distance between City A and City B.',
+            hi:'एक राज्य परिवहन बस शहर A से शहर B तक '+spd+' km/h की एकसमान गति से यात्रा करती है। यदि बस यात्रा पूरी करने में '+hr+' घंटे लेती है, तो शहर A और B के बीच की दूरी ज्ञात करें।'},
+      options:o.vals.map(v=>v+' km'),correctIndex:o.idx,
+      steps:[
+        {en:'<b>Given:</b> Speed = '+spd+' km/h, Time = '+hr+' hours',hi:'<b>दिया:</b> गति = '+spd+' km/h, समय = '+hr+' घंटे'},
+        {en:'<b>Formula:</b> <span class="f">Distance = Speed × Time</span>',hi:'<b>सूत्र:</b> <span class="f">दूरी = गति × समय</span>'},
+        {en:'D = '+spd+' × '+hr+' = <span class="c">'+dist+' km</span>',hi:'D = '+spd+' × '+hr+' = <span class="c">'+dist+' km</span>'},
+      ],
+      concept:{en:'D=S×T, S=D/T, T=D/S. Cover the unknown in DST triangle. Units: km/h × hours = km.',hi:'D=S×T, S=D/T, T=D/S। इकाई: km/h × घंटे = km'},
+      finalAns:dist+' km'
+    };
+  } else {
+    const spd=pick([20,25,30,40,50,60]),mult=rand(2,8),dist=spd*mult;
+    const o=makeON(mult,[mult+1,mult-1,mult+2]);
+    return{
+      category:{en:'Speed, Distance & Time',hi:'गति, दूरी और समय'},
+      text:{en:'A vehicle covers a distance of '+dist+' km at a constant speed of '+spd+' km/h. Calculate the time taken by the vehicle to complete this journey.',
+            hi:'एक वाहन '+spd+' km/h की स्थिर गति से '+dist+' km की दूरी तय करता है। इस यात्रा को पूरा करने में लगा समय ज्ञात करें।'},
+      options:o.vals.map(v=>v+' hours'),correctIndex:o.idx,
+      steps:[
+        {en:'<b>Given:</b> Distance = '+dist+' km, Speed = '+spd+' km/h',hi:'<b>दिया:</b> दूरी = '+dist+' km, गति = '+spd+' km/h'},
+        {en:'<b>Formula:</b> <span class="f">Time = Distance ÷ Speed</span>',hi:'<b>सूत्र:</b> <span class="f">समय = दूरी ÷ गति</span>'},
+        {en:'T = '+dist+' ÷ '+spd+' = <span class="c">'+mult+' hours</span>',hi:'T = '+dist+' ÷ '+spd+' = <span class="c">'+mult+' घंटे</span>'},
+      ],
+      concept:{en:'Minutes to hours: divide by 60. Hours to minutes: multiply by 60. Always check units before solving.',hi:'मिनट → घंटे: 60 से भाग। घंटे → मिनट: 60 से गुणा।'},
+      finalAns:mult+' hours'
+    };
+  }
+}
+
+function qTrain(){
+  const len=rand(100,400),spd=pick([36,45,54,60,72,90,108]);
+  const sMs=Math.round(spd*500/180)/100,platLen=rand(100,300),isP=rand(0,1);
+  const dist=isP?len+platLen:len,time=Math.round(dist/sMs);
+  const o=makeON(time,[time+3,time-3,time+8]);
+  return{
+    category:{en:'Problems on Trains',hi:'ट्रेन सम्बन्धी प्रश्न'},
+    text:{en:'A train of length '+len+' m is running at '+spd+' km/h. '+(isP?'Find the time taken to cross a platform of length '+platLen+' m.':'Find the time taken to cross a signal pole.'),
+          hi:len+' m लंबी एक ट्रेन '+spd+' km/h की गति से चल रही है। '+(isP?platLen+' m लंबे एक प्लेटफॉर्म को पार करने में लगा समय ज्ञात करें।':'एक सिग्नल पोल को पार करने में लगा समय ज्ञात करें।')},
+    options:o.vals.map(v=>v+' sec'),correctIndex:o.idx,
+    steps:[
+      {en:'<b>Speed:</b> '+spd+' km/h = '+spd+' × 5/18 = <span class="c">'+sMs+' m/s</span>',hi:'<b>गति:</b> '+spd+' × 5/18 = <span class="c">'+sMs+' m/s</span>'},
+      {en:'<b>Distance to cover</b> = '+(isP?'Train + Platform = '+len+' + '+platLen+' = '+dist:'Train only = '+len)+' m',hi:'<b>दूरी</b> = '+dist+' m'},
+      {en:'<b>Time</b> = '+dist+' ÷ '+sMs+' ≈ <span class="c">'+time+' sec</span>',hi:'<b>समय</b> = <span class="c">'+time+' सेकंड</span>'},
+    ],
+    concept:{en:'km/h × 5/18 = m/s. Pole = point object → distance = train length only. Platform → distance = train + platform.',hi:'km/h × 5/18 = m/s। पोल = बिंदु → दूरी = केवल ट्रेन। प्लेटफॉर्म → दूरी = ट्रेन + प्लेटफॉर्म'},
+    finalAns:time+' sec'
+  };
+}
+
+function qTwoTrains(){
+  const l1=rand(100,300),l2=rand(100,300),s1=pick([36,45,54,60,72]),s2=pick([36,45,54,60,72]);
+  const same=rand(0,1),rel=same?Math.abs(s1-s2):s1+s2;
+  if(rel===0)return qTwoTrains();
+  const rMs=Math.round(rel*500/180)/100,time=Math.round((l1+l2)/rMs);
+  const o=makeON(time,[time+4,time-3,time+9]);
+  return{
+    category:{en:'Problems on Trains',hi:'ट्रेन सम्बन्धी प्रश्न'},
+    text:{en:'Train P (length '+l1+' m, speed '+s1+' km/h) and Train Q (length '+l2+' m, speed '+s2+' km/h) run in '+(same?'the same direction':'opposite directions')+'. How long do they take to completely cross each other?',
+          hi:'ट्रेन P (लंबाई '+l1+' m, गति '+s1+' km/h) और ट्रेन Q (लंबाई '+l2+' m, गति '+s2+' km/h) '+(same?'एक ही दिशा':'विपरीत दिशाओं')+' में चल रही हैं। वे एक-दूसरे को पूरी तरह पार करने में कितना समय लेंगी?'},
+    options:o.vals.map(v=>v+' sec'),correctIndex:o.idx,
+    steps:[
+      {en:'Total distance = '+l1+' + '+l2+' = <span class="c">'+(l1+l2)+' m</span>',hi:'कुल दूरी = '+(l1+l2)+' m'},
+      {en:'Relative speed ('+(same?'same dir → subtract':'opposite → add')+') = '+s1+(same?' − ':' + ')+s2+' = '+rel+' km/h',hi:'सापेक्ष गति = '+rel+' km/h'},
+      {en:'= '+rel+' × 5/18 = <span class="c">'+rMs+' m/s</span>',hi:'= <span class="c">'+rMs+' m/s</span>'},
+      {en:'Time = '+(l1+l2)+' ÷ '+rMs+' = <span class="c">'+time+' sec</span>',hi:'समय = <span class="c">'+time+' सेकंड</span>'},
+    ],
+    concept:{en:'Same direction: Rel speed = |s1−s2|. Opposite: Rel speed = s1+s2. Always add both lengths.',hi:'एक दिशा: |s1−s2|। विपरीत: s1+s2। दोनों लंबाइयाँ हमेशा जोड़ें।'},
+    finalAns:time+' sec'
+  };
+}
+
+function qSI(){
+  const P=rand(2,10)*500,R=pick([4,5,6,8,10,12,15]),T=rand(2,6);
+  const SI=(P*R*T)/100,A=P+SI;
+  const o=makeON(SI,[SI+rand(50,200),SI-rand(50,150),A]);
+  return{
+    category:{en:'Simple Interest',hi:'साधारण ब्याज'},
+    text:{en:'A person invests ₹'+P+' in a Post Office savings scheme at a simple interest rate of '+R+'% per annum. Calculate the Simple Interest earned after '+T+' years. Also find the total amount received.',
+          hi:'एक व्यक्ति डाकघर बचत योजना में '+R+'% प्रति वर्ष साधारण ब्याज दर पर ₹'+P+' निवेश करता है। '+T+' वर्षों के बाद अर्जित साधारण ब्याज की गणना करें। कुल प्राप्त राशि भी ज्ञात करें।'},
+    options:o.vals.map(v=>'₹'+v),correctIndex:o.idx,
+    steps:[
+      {en:'<b>P</b> = ₹'+P+', <b>R</b> = '+R+'% p.a., <b>T</b> = '+T+' years',hi:'P = ₹'+P+', R = '+R+'%, T = '+T+' वर्ष'},
+      {en:'<b>Formula:</b> <span class="f">SI = (P × R × T) ÷ 100</span>',hi:'<b>सूत्र:</b> <span class="f">SI = (P × R × T) ÷ 100</span>'},
+      {en:'SI = ('+P+' × '+R+' × '+T+') ÷ 100 = '+P*R*T+' ÷ 100 = <span class="c">₹'+SI+'</span>',hi:'SI = <span class="c">₹'+SI+'</span>'},
+      {en:'<b>Total Amount</b> = P + SI = '+P+' + '+SI+' = <span class="c">₹'+A+'</span>',hi:'<b>मिश्रधन</b> = <span class="c">₹'+A+'</span>'},
+    ],
+    concept:{en:'SI is same every year. In T years, total SI = T × annual SI. Rate is always per annum unless stated.',hi:'SI हर वर्ष समान रहता है। T वर्ष में कुल SI = T × वार्षिक SI'},
+    finalAns:'₹'+SI
+  };
+}
+
+function qCI(){
+  const P=rand(2,8)*1000,R=pick([5,10,15,20]);
+  const Ar=Math.round(P*Math.pow(1+R/100,2)),CI=Ar-P,SI2=P*R*2/100;
+  const o=makeON(CI,[CI+rand(30,100),Math.round(SI2),CI-rand(25,80)]);
+  return{
+    category:{en:'Compound Interest',hi:'चक्रवृद्धि ब्याज'},
+    text:{en:'A bank offers compound interest at '+R+'% per annum compounded annually. Ramesh deposits ₹'+P+' in this bank. Find the Compound Interest earned by Ramesh at the end of 2 years.',
+          hi:'एक बैंक '+R+'% प्रति वर्ष वार्षिक चक्रवृद्धि ब्याज देता है। रमेश इस बैंक में ₹'+P+' जमा करता है। 2 वर्षों के अंत में रमेश द्वारा अर्जित चक्रवृद्धि ब्याज ज्ञात करें।'},
+    options:o.vals.map(v=>'₹'+v),correctIndex:o.idx,
+    steps:[
+      {en:'<b>Formula:</b> <span class="f">A = P × (1 + R/100)ⁿ</span>',hi:'<b>सूत्र:</b> <span class="f">A = P × (1 + R/100)ⁿ</span>'},
+      {en:'A = '+P+' × (1 + '+R+'/100)² = '+P+' × ('+(1+R/100)+')² = '+P+' × '+Math.pow(1+R/100,2).toFixed(4)+' = ₹'+Ar,hi:'A = '+P+' × '+(1+R/100)+'² = ₹'+Ar},
+      {en:'<b>CI = A − P</b> = '+Ar+' − '+P+' = <span class="c">₹'+CI+'</span>',hi:'<b>CI = A − P</b> = <span class="c">₹'+CI+'</span>'},
+      {en:'SI for 2 yrs = ₹'+SI2+'. Extra due to compounding = ₹'+(CI-SI2)+' (interest on interest)',hi:'SI 2 वर्ष = ₹'+SI2+'। चक्रवृद्धि से अतिरिक्त = ₹'+(CI-SI2)},
+    ],
+    concept:{en:'CI−SI (2yrs) = P×(R/100)² = ₹'+Math.round(P*(R/100)*(R/100))+'. CI uses previous year\'s amount as new principal.',hi:'CI−SI (2 वर्ष) = P×(R/100)² = ₹'+Math.round(P*(R/100)*(R/100))+'। CI में पिछले वर्ष की राशि नई मूल बनती है।'},
+    finalAns:'₹'+CI
+  };
+}
+
+function qPipes(){
+  const pairs=[[6,12],[8,20],[10,15],[12,18],[9,18],[15,20],[12,30]];
+  const [a,b]=pick(pairs),L2=lcmOf(a,b),wa=L2/a,wb=L2/b,isLeak=rand(0,1);
+  let time;
+  if(isLeak){const net=wa-wb;if(net<=0)return qPipes();time=L2/net;if(!Number.isInteger(time))return qPipes();}
+  else{time=L2/(wa+wb);if(!Number.isInteger(time))return qPipes();}
+  const o=makeON(time,[time+2,time-1,time+3]);
+  return{
+    category:{en:'Pipes & Cisterns',hi:'नल और टंकी'},
+    text:{en:isLeak?'Inlet Pipe A fills a water tank in '+a+' hours. A leakage (Pipe B) can empty the full tank in '+b+' hours. If both the inlet and the leakage are simultaneously active, in how many hours will the empty tank be completely filled?':'Inlet Pipe A can fill a cistern in '+a+' hours. Inlet Pipe B can fill the same cistern in '+b+' hours. If both pipes are opened simultaneously, find the time required to fill the cistern completely.',
+          hi:isLeak?'आने वाला नल A एक टंकी '+a+' घंटों में भरता है। एक रिसाव (नल B) पूरी टंकी '+b+' घंटों में खाली करता है। यदि दोनों एक साथ सक्रिय हों, तो खाली टंकी पूरी तरह भरने में कितने घंटे लगेंगे?':'आने वाला नल A एक टंकी '+a+' घंटों में और नल B '+b+' घंटों में भर सकता है। दोनों एक साथ खोलने पर टंकी भरने में कितना समय लगेगा?'},
+    options:o.vals.map(v=>v+' hrs'),correctIndex:o.idx,
+    steps:[
+      {en:'Pipe A (fill): 1/'+a+' per hour | Pipe B ('+(isLeak?'drain':'fill')+'): '+(isLeak?'-':'')+' 1/'+b+' per hour',hi:'नल A (भरना): 1/'+a+' | नल B ('+(isLeak?'निकासी':'भरना')+'): '+(isLeak?'-':'')+'1/'+b},
+      {en:'Net rate = 1/'+a+(isLeak?' − ':' + ')+'1/'+b+' = '+(wa+(isLeak?-wb:wb))+'/'+L2,hi:'शुद्ध दर = '+(wa+(isLeak?-wb:wb))+'/'+L2},
+      {en:'Time = '+L2+' ÷ '+(wa+(isLeak?-wb:wb))+' = <span class="c">'+time+' hours</span>',hi:'समय = <span class="c">'+time+' घंटे</span>'},
+    ],
+    concept:{en:'Fill pipe = positive (+). Drain/Leak = negative (−). Net rate = algebraic sum. Time = 1/Net rate.',hi:'भरने वाला = धनात्मक (+)। निकासी = ऋणात्मक (−)। शुद्ध दर = बीजगणितीय योग।'},
+    finalAns:time+' hrs'
+  };
+}
+
+function qPartnership(){
+  const rats=[[1,2],[2,3],[3,4],[3,5],[5,7],[4,6]];
+  const [a,b]=pick(rats),total=(a+b)*rand(500,2500);
+  const pA=Math.round((a/(a+b))*total),pB=total-pA;
+  const o=makeON(pA,[pA+rand(200,600),pA-rand(150,500),pB]);
+  return{
+    category:{en:'Partnership',hi:'साझेदारी'},
+    text:{en:'Two friends A and B start a business by investing capital in the ratio '+a+':'+b+'. At the end of the financial year, the total profit of the business amounts to ₹'+total+'. Find the share of profit received by A.',
+          hi:'दो मित्र A और B '+a+':'+b+' के अनुपात में पूँजी लगाकर व्यवसाय शुरू करते हैं। वित्तीय वर्ष के अंत में, व्यवसाय का कुल लाभ ₹'+total+' है। A को प्राप्त लाभ का हिस्सा ज्ञात करें।'},
+    options:o.vals.map(v=>'₹'+v),correctIndex:o.idx,
+    steps:[
+      {en:'Investment ratio A:B = '+a+':'+b+' → Total parts = '+(a+b),hi:'निवेश अनुपात = '+a+':'+b+' → कुल भाग = '+(a+b)},
+      {en:'Profit distributed in same ratio as investment (simple partnership).',hi:'लाभ निवेश के समान अनुपात में (साधारण साझेदारी)'},
+      {en:'<b>A\'s profit</b> = ('+a+'/'+(a+b)+') × ₹'+total+' = <span class="c">₹'+pA+'</span>',hi:'<b>A का लाभ</b> = <span class="c">₹'+pA+'</span>'},
+      {en:'B\'s profit = ₹'+pB+' | Check: ₹'+pA+' + ₹'+pB+' = ₹'+total+' ✓',hi:'B का लाभ = ₹'+pB+' | जाँच ✓'},
+    ],
+    concept:{en:'Time-based partnership: Profit ∝ Capital × Time. A(x for t₁ months) : B(y for t₂ months) = xt₁:yt₂',hi:'समय आधारित: लाभ ∝ पूँजी × समय। A(x,t₁) : B(y,t₂) = xt₁:yt₂'},
+    finalAns:'₹'+pA
+  };
+}
+
+function qRect(){
+  const l=rand(6,35),w=rand(4,22),area=l*w,per=2*(l+w);
+  const o=makeON(area,[area+rand(15,50),l+w,per]);
+  return{
+    category:{en:'Mensuration',hi:'क्षेत्रमिति'},
+    text:{en:'A rectangular plot of land measures '+l+' metres in length and '+w+' metres in breadth. A government authority needs to calculate the area of the plot for land acquisition. Find the area of the rectangular plot.',
+          hi:'भूमि के एक आयताकार भूखंड की लंबाई '+l+' मीटर और चौड़ाई '+w+' मीटर है। एक सरकारी प्राधिकरण को भूमि अधिग्रहण के लिए भूखंड का क्षेत्रफल जानना है। आयताकार भूखंड का क्षेत्रफल ज्ञात करें।'},
+    options:o.vals.map(v=>v+' m²'),correctIndex:o.idx,
+    steps:[
+      {en:'<b>Given:</b> l = '+l+' m, b = '+w+' m',hi:'<b>दिया:</b> l = '+l+' m, b = '+w+' m'},
+      {en:'<b>Formula:</b> <span class="f">Area = l × b</span>',hi:'<b>सूत्र:</b> <span class="f">क्षेत्रफल = l × b</span>'},
+      {en:'Area = '+l+' × '+w+' = <span class="c">'+area+' m²</span>',hi:'क्षेत्रफल = <span class="c">'+area+' m²</span>'},
+      {en:'<b>Perimeter</b> = 2(l+b) = 2('+l+'+'+w+') = <span class="c">'+per+' m</span>',hi:'<b>परिमाप</b> = <span class="c">'+per+' m</span>'},
+    ],
+    concept:{en:'Rectangle: Area=lb, Perimeter=2(l+b), Diagonal=√(l²+b²)=√('+(l*l+w*w)+')≈'+Math.round(Math.sqrt(l*l+w*w)*10)/10+' m',hi:'आयत: क्षेत्रफल=lb, परिमाप=2(l+b), विकर्ण=√(l²+b²)'},
+    finalAns:area+' m²'
+  };
+}
+
+function qCircle(){
+  const r=pick([7,14,21,3.5]);
+  const area=Math.round((22/7)*r*r),circ=Math.round(2*(22/7)*r);
+  const o=makeON(area,[area+rand(20,80),circ,area-rand(20,60)]);
+  return{
+    category:{en:'Mensuration — Circle',hi:'क्षेत्रमिति — वृत्त'},
+    text:{en:'A circular park in a township has a radius of '+r+' m. The municipal corporation wants to calculate the area of the park for maintenance budgeting. Find the area of the park. (Use π = 22/7)',
+          hi:'एक टाउनशिप में एक गोलाकार पार्क की त्रिज्या '+r+' m है। नगर निगम रखरखाव बजट के लिए पार्क का क्षेत्रफल जानना चाहता है। पार्क का क्षेत्रफल ज्ञात करें। (π = 22/7)'},
+    options:o.vals.map(v=>v+' m²'),correctIndex:o.idx,
+    steps:[
+      {en:'<b>Given:</b> r = '+r+' m, π = 22/7',hi:'<b>दिया:</b> r = '+r+' m'},
+      {en:'<b>Formula:</b> <span class="f">Area = π × r²</span>',hi:'<b>सूत्र:</b> <span class="f">क्षेत्रफल = π × r²</span>'},
+      {en:'= 22/7 × '+r+'² = 22/7 × '+r*r+' = '+(22*r*r)+'/7 = <span class="c">'+area+' m²</span>',hi:'= <span class="c">'+area+' m²</span>'},
+      {en:'<b>Circumference</b> = 2πr = <span class="c">'+circ+' m</span>',hi:'<b>परिधि</b> = <span class="c">'+circ+' m</span>'},
+    ],
+    concept:{en:'Circle: Area=πr², Circumference=2πr. If diameter d given: Area=πd²/4. Remember: π≈22/7≈3.14',hi:'वृत्त: Area=πr², Circumference=2πr। व्यास d दिया हो: Area=πd²/4'},
+    finalAns:area+' m²'
+  };
+}
+
+function qTriangle(){
+  const pythagorean=[[3,4,5],[5,12,13],[8,15,17],[7,24,25]];
+  const type=rand(1,3);
+  if(type===1){
+    const b=rand(4,20),h=rand(3,15),area=0.5*b*h;
+    const o=makeON(area,[area+rand(5,25),b*h,area-rand(3,12)]);
+    return{
+      category:{en:'Mensuration — Triangle',hi:'क्षेत्रमिति — त्रिभुज'},
+      text:{en:'A triangular plot of land has a base of '+b+' m and a perpendicular height of '+h+' m. Find the area of this triangular plot of land.',
+            hi:'भूमि के एक त्रिकोणीय भूखंड का आधार '+b+' m और लंबवत ऊँचाई '+h+' m है। इस त्रिकोणीय भूखंड का क्षेत्रफल ज्ञात करें।'},
+      options:o.vals.map(v=>v+' m²'),correctIndex:o.idx,
+      steps:[
+        {en:'<b>Formula:</b> <span class="f">Area of Triangle = ½ × Base × Height</span>',hi:'<b>सूत्र:</b> <span class="f">त्रिभुज का क्षेत्रफल = ½ × आधार × ऊँचाई</span>'},
+        {en:'= ½ × '+b+' × '+h+' = '+b*h+' ÷ 2 = <span class="c">'+area+' m²</span>',hi:'= ½ × '+b+' × '+h+' = <span class="c">'+area+' m²</span>'},
+      ],
+      concept:{en:'Triangle: Area=½bh. Equilateral: Area=(√3/4)a². Heron\'s formula when 3 sides known: s=(a+b+c)/2, Area=√[s(s-a)(s-b)(s-c)]',hi:'त्रिभुज: ½bh। समबाहु: (√3/4)a²। हीरोन: s=परिमाप/2, √[s(s-a)(s-b)(s-c)]'},
+      finalAns:area+' m²'
+    };
+  } else {
+    const [pa,pb,pc]=pick(pythagorean),k=rand(2,4),A=pa*k,B=pb*k,C=pc*k,askH=rand(0,1);
+    const o=makeON(askH?C:A,[askH?C+k:A+k,askH?C-k:A-k,B]);
+    return{
+      category:{en:'Mensuration — Triangle',hi:'क्षेत्रमिति — त्रिभुज'},
+      text:{en:askH?'In a right-angled triangle, the two perpendicular sides (legs) measure '+A+' cm and '+B+' cm. Using the Pythagorean theorem, find the length of the hypotenuse.':'A right-angled triangle has a hypotenuse of '+C+' cm and one side of '+B+' cm. Find the length of the third side.',
+            hi:askH?'एक समकोण त्रिभुज में दो लंबवत भुजाएँ '+A+' cm और '+B+' cm हैं। पाइथागोरस प्रमेय से कर्ण की लंबाई ज्ञात करें।':'एक समकोण त्रिभुज का कर्ण '+C+' cm और एक भुजा '+B+' cm है। तीसरी भुजा ज्ञात करें।'},
+      options:o.vals.map(v=>v+' cm'),correctIndex:o.idx,
+      steps:[
+        {en:'<b>Pythagoras Theorem:</b> <span class="f">c² = a² + b²</span>',hi:'<b>पाइथागोरस प्रमेय:</b> <span class="f">c² = a² + b²</span>'},
+        askH?{en:A+'² + '+B+'² = '+A*A+' + '+B*B+' = '+(A*A+B*B),hi:A*A+' + '+B*B+' = '+(A*A+B*B)}:
+             {en:C+'² − '+B+'² = '+C*C+' − '+B*B+' = '+(C*C-B*B),hi:C*C+' − '+B*B+' = '+(C*C-B*B)},
+        {en:(askH?'Hypotenuse':'Third side')+' = √'+(askH?A*A+B*B:C*C-B*B)+' = <span class="c">'+(askH?C:A)+' cm</span>',hi:'= <span class="c">'+(askH?C:A)+' cm</span>'},
+      ],
+      concept:{en:'Pythagorean triples: 3-4-5, 5-12-13, 8-15-17, 7-24-25. Multiples also valid: 6-8-10, 10-24-26. Memorize!',hi:'पाइथागोरस त्रिक: 3-4-5, 5-12-13, 8-15-17, 7-24-25। याद करें!'},
+      finalAns:(askH?C:A)+' cm'
+    };
+  }
+}
+
+function qCylinder(){
+  const r=rand(3,10),h=rand(5,20),vol=Math.round(22/7*r*r*h),csa=Math.round(2*22/7*r*h);
+  const o=makeON(vol,[vol+rand(30,120),csa,vol-rand(25,90)]);
+  return{
+    category:{en:'Mensuration — Volume',hi:'क्षेत्रमिति — आयतन'},
+    text:{en:'A cylindrical overhead water tank in a housing society has a base radius of '+r+' m and a height of '+h+' m. Find the volume of water (in m³) that the tank can hold. (π = 22/7)',
+          hi:'एक आवासीय सोसायटी में एक बेलनाकार ओवरहेड पानी की टंकी की आधार त्रिज्या '+r+' m और ऊँचाई '+h+' m है। टंकी कितने m³ पानी धारण कर सकती है? (π = 22/7)'},
+    options:o.vals.map(v=>v+' m³'),correctIndex:o.idx,
+    steps:[
+      {en:'<b>Formula:</b> <span class="f">Volume of Cylinder = πr²h</span>',hi:'<b>सूत्र:</b> <span class="f">बेलन का आयतन = πr²h</span>'},
+      {en:'V = 22/7 × '+r+'² × '+h+' = 22/7 × '+r*r+' × '+h+' = '+(22*r*r*h)+'/7 = <span class="c">'+vol+' m³</span>',hi:'V = <span class="c">'+vol+' m³</span>'},
+      {en:'<b>Curved Surface Area (CSA)</b> = 2πrh = <span class="c">'+csa+' m²</span>',hi:'<b>वक्र पृष्ठ क्षेत्रफल</b> = <span class="c">'+csa+' m²</span>'},
+    ],
+    concept:{en:'Cylinder: V=πr²h, CSA=2πrh, TSA=2πr(r+h). Cone: V=⅓πr²h. Sphere: V=(4/3)πr³. Cube: V=a³.',hi:'बेलन: V=πr²h, CSA=2πrh। शंकु: V=⅓πr²h। गोला: V=(4/3)πr³'},
+    finalAns:vol+' m³'
+  };
+}
+
+function qLCM(){
+  const pairs=[[4,6],[6,8],[8,12],[9,12],[6,10],[5,8],[4,14],[6,15],[8,20],[10,15]];
+  const [a,b]=pick(pairs),L2=lcmOf(a,b);
+  const o=makeON(L2,[L2+rand(2,8),L2*2,L2-rand(1,4)]);
+  return{
+    category:{en:'LCM & HCF',hi:'LCM और HCF'},
+    text:{en:'Two traffic signal lights at a crossing blink at intervals of '+a+' minutes and '+b+' minutes respectively. If they both blink together at 8:00 AM, after how many minutes will they blink together again?',
+          hi:'एक चौराहे पर दो ट्रैफिक सिग्नल लाइटें क्रमशः '+a+' मिनट और '+b+' मिनट के अंतराल पर चमकती हैं। यदि वे दोनों सुबह 8:00 बजे एक साथ चमकती हैं, तो कितने मिनट बाद वे फिर एक साथ चमकेंगी?'},
+    options:o.vals.map(v=>v+' min'),correctIndex:o.idx,
+    steps:[
+      {en:'They blink together at LCM of their intervals.',hi:'वे LCM समय पर एक साथ चमकेंगी।'},
+      {en:'Prime factors of '+a+': '+pf(a)+' | Prime factors of '+b+': '+pf(b),hi:a+' के गुणनखंड: '+pf(a)+' | '+b+' के: '+pf(b)},
+      {en:'LCM = highest powers of all prime factors = <span class="c">'+L2+' minutes</span>',hi:'LCM = <span class="c">'+L2+' मिनट</span>'},
+      {en:'Check: '+L2+'÷'+a+'='+(L2/a)+' ✓  |  '+L2+'÷'+b+'='+(L2/b)+' ✓',hi:'जाँच: ✓'},
+    ],
+    concept:{en:'LCM: Use for "when do two cyclic events coincide". LCM × HCF = Product of two numbers.',hi:'LCM: दो चक्रीय घटनाओं के मिलन के लिए। LCM × HCF = दोनों संख्याओं का गुणनफल'},
+    finalAns:L2+' min'
+  };
+}
+
+function qHCF(){
+  const pairs=[[12,18],[15,25],[16,24],[18,27],[20,30],[14,21],[24,36],[30,45]];
+  const [a,b]=pick(pairs),h=gcd(a,b);
+  const o=makeON(h,[h+1,h*2,h+3]);
+  return{
+    category:{en:'LCM & HCF',hi:'LCM और HCF'},
+    text:{en:a+' teachers and '+b+' students are to be divided into groups such that each group contains only teachers or only students, and all groups have the same maximum number of people. What is the maximum number of people each group can have?',
+          hi:a+' शिक्षकों और '+b+' छात्रों को समूहों में बाँटना है ताकि प्रत्येक समूह में केवल शिक्षक या केवल छात्र हों, और सभी समूहों में समान अधिकतम लोग हों। प्रत्येक समूह में अधिकतम कितने लोग हो सकते हैं?'},
+    options:o.vals.map(String),correctIndex:o.idx,
+    steps:[
+      {en:'Maximum group size = HCF('+a+', '+b+')',hi:'अधिकतम समूह आकार = HCF('+a+', '+b+')'},
+      {en:'<b>Euclidean Algorithm:</b> '+a+' = '+Math.floor(a/b)+' × '+b+' + '+(a%b),hi:'<b>यूक्लिड:</b> '+a+' = '+Math.floor(a/b)+' × '+b+' + '+(a%b)},
+      {en:b+' = '+Math.floor(b/h)+' × '+h+' + 0  →  <b>HCF = <span class="c">'+h+'</span></b>',hi:'HCF = <span class="c">'+h+'</span>'},
+      {en:'Verify: '+a+'÷'+h+'='+(a/h)+' ✓  |  '+b+'÷'+h+'='+(b/h)+' ✓',hi:'जाँच: ✓'},
+    ],
+    concept:{en:'HCF: Use for "maximum equal size" or "largest common divisor" problems. HCF ≤ min(a,b).',hi:'HCF: "अधिकतम समान आकार" या "सबसे बड़ा साझा भाजक" समस्याओं के लिए।'},
+    finalAns:String(h)
+  };
+}
+
+function qPnC(){
+  const n=rand(4,7),r=rand(2,Math.min(n-1,3));
+  let nPr=1;for(let i=n;i>n-r;i--)nPr*=i;
+  const type=rand(1,2);
+  if(type===1){
+    const o=makeON(nPr,[nPr+rand(10,40),nPr/r,nPr*2]);
+    return{
+      category:{en:'Permutation & Combination',hi:'क्रमचय और संचय'},
+      text:{en:'In a state examination, the top '+n+' candidates qualify for an interview. The interview board must select and arrange '+r+' candidates for a panel presentation (order of arrangement matters). In how many ways can this be done?',
+            hi:'एक राज्य परीक्षा में शीर्ष '+n+' अभ्यर्थी साक्षात्कार के योग्य होते हैं। साक्षात्कार बोर्ड को पैनल प्रस्तुति के लिए '+r+' अभ्यर्थियों को चुनकर व्यवस्थित करना है (व्यवस्था का क्रम मायने रखता है)। यह कितने तरीकों से हो सकता है?'},
+      options:o.vals.map(String),correctIndex:o.idx,
+      steps:[
+        {en:'This is a <b>Permutation</b> (arrangement, order matters)',hi:'यह <b>क्रमचय</b> है (व्यवस्था, क्रम मायने रखता है)'},
+        {en:'<b>Formula:</b> <span class="f">ⁿPᵣ = n × (n−1) × ... × (n−r+1)</span>',hi:'<b>सूत्र:</b> <span class="f">ⁿPᵣ = n × (n−1) × ... × (n−r+1)</span>'},
+        {en:'P('+n+','+r+') = '+Array.from({length:r},(_,i)=>n-i).join(' × ')+' = <span class="c">'+nPr+'</span>',hi:'P('+n+','+r+') = <span class="c">'+nPr+'</span>'},
+      ],
+      concept:{en:'Permutation=Arrangement(order matters). Combination=Selection(order doesn\'t matter). nPr=n!/(n-r)!, nCr=nPr/r!',hi:'क्रमचय = व्यवस्था (क्रम)। संचय = चयन (क्रम नहीं)। nPr=n!/(n-r)!'},
+      finalAns:nPr+' ways'
+    };
+  } else {
+    let fact=1;for(let i=1;i<=r;i++)fact*=i;
+    const nCr=nPr/fact;
+    const o=makeON(nCr,[nCr+rand(2,8),nPr,nCr-rand(1,4)]);
+    return{
+      category:{en:'Permutation & Combination',hi:'क्रमचय और संचय'},
+      text:{en:'A selection committee needs to choose '+r+' members for a subcommittee from '+n+' eligible candidates. In how many ways can the subcommittee be formed? (Order of selection does NOT matter)',
+            hi:'एक चयन समिति को '+n+' योग्य उम्मीदवारों में से एक उपसमिति के लिए '+r+' सदस्य चुनने हैं। उपसमिति कितने तरीकों से बनाई जा सकती है? (चयन का क्रम मायने नहीं रखता)'},
+      options:o.vals.map(String),correctIndex:o.idx,
+      steps:[
+        {en:'This is a <b>Combination</b> (selection, order doesn\'t matter)',hi:'यह <b>संचय</b> है (चयन, क्रम नहीं)'},
+        {en:'<b>Formula:</b> <span class="f">ⁿCᵣ = ⁿPᵣ ÷ r!</span>',hi:'<b>सूत्र:</b> <span class="f">ⁿCᵣ = ⁿPᵣ ÷ r!</span>'},
+        {en:'ⁿPᵣ = '+nPr+', r! = '+fact,hi:'ⁿPᵣ = '+nPr+', r! = '+fact},
+        {en:'C('+n+','+r+') = '+nPr+' ÷ '+fact+' = <span class="c">'+nCr+'</span>',hi:'= <span class="c">'+nCr+'</span>'},
+      ],
+      concept:{en:'C(n,r) = C(n,n-r). C(n,1)=n, C(n,0)=1. Total subsets of n items = 2ⁿ.',hi:'C(n,r) = C(n,n-r)। C(n,1)=n, C(n,0)=1'},
+      finalAns:nCr+' ways'
+    };
+  }
+}
+
+function qProb(){
+  const n=rand(4,9),r=rand(1,n-1);
+  const o=makeOS(r+'/'+n,[(r+1)+'/'+n,(r+2)+'/'+n,(r-1<1?1:r-1)+'/'+n]);
+  return{
+    category:{en:'Probability',hi:'प्रायिकता'},
+    text:{en:'A bag used for a lucky draw contest contains '+n+' chits numbered 1 to '+n+'. One chit is drawn at random by a participant. What is the probability that the number on the chit is '+r+' or less (i.e., winning number ≤ '+r+')?',
+          hi:'एक भाग्यशाली ड्रा प्रतियोगिता में उपयोग किए जाने वाले थैले में 1 से '+n+' तक क्रमांकित '+n+' पर्चियाँ हैं। एक प्रतिभागी यादृच्छिक रूप से एक पर्ची निकालता है। पर्ची पर अंकित संख्या '+r+' या उससे कम होने की प्रायिकता क्या है?'},
+    options:o.vals,correctIndex:o.idx,
+    steps:[
+      {en:'<b>Total outcomes</b> = '+n+' (chits 1 to '+n+')',hi:'<b>कुल परिणाम</b> = '+n},
+      {en:'<b>Favourable outcomes</b> (≤ '+r+') = '+r+' (chits: 1, 2, ..., '+r+')',hi:'<b>अनुकूल परिणाम</b> (≤ '+r+') = '+r},
+      {en:'<b>Formula:</b> <span class="f">P = Favourable ÷ Total</span>',hi:'<b>सूत्र:</b> <span class="f">P = अनुकूल ÷ कुल</span>'},
+      {en:'P = '+r+' ÷ '+n+' = <span class="c">'+r+'/'+n+'</span>',hi:'P = <span class="c">'+r+'/'+n+'</span>'},
+    ],
+    concept:{en:'0 ≤ P ≤ 1. P(certain)=1, P(impossible)=0. P(A)+P(A\')=1. Deck: 52 cards, 4 suits, 13 each.',hi:'0 ≤ P ≤ 1। P(निश्चित)=1, P(असंभव)=0। P(A)+P(A\')=1'},
+    finalAns:r+'/'+n
+  };
+}
+
+function qBoat(){
+  const u=rand(10,25),v=rand(2,u-3),ds=u+v,us=u-v;
+  const type=rand(1,2);
+  if(type===1){
+    const dist=rand(3,8)*ds,time=dist/ds;
+    const o=makeON(time,[time+1,time-1,dist/us]);
+    return{
+      category:{en:'Boat & Stream',hi:'नाव और धारा'},
+      text:{en:'A boat can row at '+u+' km/h in still water. The speed of the river current is '+v+' km/h. A boatman rows downstream to reach a market. How long will he take to cover a distance of '+dist+' km downstream?',
+            hi:'एक नाव शांत जल में '+u+' km/h की गति से चल सकती है। नदी धारा की गति '+v+' km/h है। एक नाविक बाजार तक पहुँचने के लिए अनुप्रवाह (धारा के साथ) '+dist+' km की दूरी तय करता है। उसे कितना समय लगेगा?'},
+      options:o.vals.map(v=>v+' hours'),correctIndex:o.idx,
+      steps:[
+        {en:'<b>Downstream speed</b> = Boat + Current = '+u+' + '+v+' = <span class="c">'+ds+' km/h</span>',hi:'<b>अनुप्रवाह गति</b> = '+u+' + '+v+' = <span class="c">'+ds+' km/h</span>'},
+        {en:'Time = Distance ÷ Speed = '+dist+' ÷ '+ds+' = <span class="c">'+time+' hours</span>',hi:'समय = '+dist+' ÷ '+ds+' = <span class="c">'+time+' घंटे</span>'},
+        {en:'Upstream speed = '+u+' − '+v+' = '+us+' km/h (for reference)',hi:'प्रतिप्रवाह गति = '+us+' km/h (जानकारी)'},
+      ],
+      concept:{en:'Downstream=u+v, Upstream=u-v. Boat in still water=(D+U)/2. Current speed=(D-U)/2.',hi:'अनुप्रवाह=u+v, प्रतिप्रवाह=u-v। शांत जल=(D+U)/2, धारा=(D-U)/2'},
+      finalAns:time+' hours'
+    };
+  } else {
+    const o=makeON(u,[u+2,u-2,v+rand(2,5)]);
+    return{
+      category:{en:'Boat & Stream',hi:'नाव और धारा'},
+      text:{en:'The downstream speed of a motorboat is '+ds+' km/h and its upstream speed is '+us+' km/h. Find (i) the speed of the boat in still water and (ii) the speed of the stream.',
+            hi:'एक मोटरबोट की अनुप्रवाह गति '+ds+' km/h और प्रतिप्रवाह गति '+us+' km/h है। (i) शांत जल में नाव की गति और (ii) धारा की गति ज्ञात करें।'},
+      options:o.vals.map(v=>v+' km/h'),correctIndex:o.idx,
+      steps:[
+        {en:'<b>Boat (still water)</b> = (Downstream + Upstream) ÷ 2 = ('+ds+' + '+us+') ÷ 2 = <span class="c">'+u+' km/h</span>',hi:'<b>नाव (शांत जल)</b> = ('+ds+' + '+us+') ÷ 2 = <span class="c">'+u+' km/h</span>'},
+        {en:'<b>Stream speed</b> = (Downstream − Upstream) ÷ 2 = ('+ds+' − '+us+') ÷ 2 = <span class="c">'+v+' km/h</span>',hi:'<b>धारा गति</b> = ('+ds+' − '+us+') ÷ 2 = <span class="c">'+v+' km/h</span>'},
+      ],
+      concept:{en:'KEY FORMULAS: Boat=(D+U)/2, Stream=(D-U)/2. These are derived from D=u+v and U=u-v. Must memorize!',hi:'मुख्य सूत्र: नाव=(D+U)/2, धारा=(D-U)/2। D=u+v और U=u-v से प्राप्त।'},
+      finalAns:u+' km/h (still water)'
+    };
+  }
+}
+
+function qIndices(){
+  const b=rand(2,5),e1=rand(2,4),e2=rand(1,3),type=rand(1,2);
+  if(type===1){
+    const ans=Math.pow(b,e1+e2);
+    const o=makeON(ans,[Math.pow(b,e1)*e2,ans+10,Math.pow(b,e1-1+e2)]);
+    return{
+      category:{en:'Surds & Indices',hi:'करणी और घातांक'},
+      text:{en:'Simplify the following expression (all values are positive integers):\n'+b+'^'+e1+' × '+b+'^'+e2,
+            hi:'निम्नलिखित व्यंजक को सरल करें (सभी मान धनात्मक पूर्णांक हैं):\n'+b+'^'+e1+' × '+b+'^'+e2},
+      options:o.vals.map(String),correctIndex:o.idx,
+      steps:[
+        {en:'<b>Law of Indices (Multiplication):</b> <span class="f">aᵐ × aⁿ = aᵐ⁺ⁿ</span>',hi:'<b>घातांक नियम (गुणा):</b> <span class="f">aᵐ × aⁿ = aᵐ⁺ⁿ</span>'},
+        {en:'When bases are same in multiplication, ADD the exponents',hi:'गुणा में समान आधार → घातांक जोड़ें'},
+        {en:b+'^'+e1+' × '+b+'^'+e2+' = '+b+'^('+e1+'+'+e2+') = '+b+'^'+(e1+e2)+' = <span class="c">'+ans+'</span>',hi:'= '+b+'^'+(e1+e2)+' = <span class="c">'+ans+'</span>'},
+      ],
+      concept:{en:'Index Laws: aᵐ×aⁿ=aᵐ⁺ⁿ, aᵐ÷aⁿ=aᵐ⁻ⁿ, (aᵐ)ⁿ=aᵐⁿ, a⁰=1, a⁻ⁿ=1/aⁿ, a^(1/n)=ⁿ√a',hi:'नियम: aᵐ×aⁿ=aᵐ⁺ⁿ, aᵐ÷aⁿ=aᵐ⁻ⁿ, (aᵐ)ⁿ=aᵐⁿ, a⁰=1, a⁻ⁿ=1/aⁿ'},
+      finalAns:String(ans)
+    };
+  } else {
+    if(e1<=e2)return qIndices();
+    const ans=Math.pow(b,e1-e2);
+    const o=makeON(ans,[ans+1,Math.pow(b,e1+e2),ans+2]);
+    return{
+      category:{en:'Surds & Indices',hi:'करणी और घातांक'},
+      text:{en:'Simplify: '+b+'^'+e1+' ÷ '+b+'^'+e2,hi:'सरल करें: '+b+'^'+e1+' ÷ '+b+'^'+e2},
+      options:o.vals.map(String),correctIndex:o.idx,
+      steps:[
+        {en:'<b>Law of Indices (Division):</b> <span class="f">aᵐ ÷ aⁿ = aᵐ⁻ⁿ</span>',hi:'<b>घातांक नियम (भाग):</b> <span class="f">aᵐ ÷ aⁿ = aᵐ⁻ⁿ</span>'},
+        {en:'When bases are same in division, SUBTRACT the exponents',hi:'भाग में समान आधार → घातांक घटाएँ'},
+        {en:b+'^'+e1+' ÷ '+b+'^'+e2+' = '+b+'^('+e1+'−'+e2+') = '+b+'^'+(e1-e2)+' = <span class="c">'+ans+'</span>',hi:'= <span class="c">'+ans+'</span>'},
+      ],
+      concept:{en:'(a/b)ⁿ=aⁿ/bⁿ. (ab)ⁿ=aⁿbⁿ. Different bases cannot be combined. a^0=1 for any a≠0.',hi:'(a/b)ⁿ=aⁿ/bⁿ। (ab)ⁿ=aⁿbⁿ। अलग आधार नहीं जोड़ सकते।'},
+      finalAns:String(ans)
+    };
+  }
+}
+
+function qAges(){
+  let age,yr,mult,past,tries=0;
+  do{age=rand(12,38);yr=rand(3,8);mult=rand(2,4);past=age-yr;tries++;}
+  while((past<1||(age+yr)!==mult*past)&&tries<300);
+  if(tries>=300)return{category:{en:'Ages',hi:'आयु'},text:{en:'A person is 25 years old now. What will be his age after 10 years?',hi:'एक व्यक्ति अभी 25 वर्ष का है। 10 वर्ष बाद उसकी आयु क्या होगी?'},options:['35','34','36','33'],correctIndex:0,steps:[{en:'25+10=35',hi:'25+10=35'}],concept:{en:'Future age = Present + Years',hi:'भविष्य आयु = वर्तमान + वर्ष'},finalAns:'35 years'};
+  const o=makeON(age,[age+2,age-2,age+yr]);
+  return{
+    category:{en:'Problems on Ages',hi:'आयु सम्बन्धी प्रश्न'},
+    text:{en:'In a government service application form, the eligibility condition states: "'+yr+' years hence, the age of the applicant shall be '+mult+' times his/her age '+yr+' years ago." Find the present age of the applicant.',
+          hi:'एक सरकारी सेवा आवेदन पत्र में योग्यता शर्त है: "'+yr+' वर्ष बाद, आवेदक की आयु '+yr+' वर्ष पूर्व की आयु की '+mult+' गुना होगी।" आवेदक की वर्तमान आयु ज्ञात करें।'},
+    options:o.vals.map(String),correctIndex:o.idx,
+    steps:[
+      {en:'Let <b>present age = x</b> years',hi:'मान लें <b>वर्तमान आयु = x</b> वर्ष'},
+      {en:'Age '+yr+' years ago = (x − '+yr+'); Age '+yr+' years hence = (x + '+yr+')',hi:yr+' वर्ष पहले: x−'+yr+'; '+yr+' वर्ष बाद: x+'+yr},
+      {en:'<b>Equation:</b> (x + '+yr+') = '+mult+' × (x − '+yr+')',hi:'<b>समीकरण:</b> x+'+yr+' = '+mult+'(x−'+yr+')'},
+      {en:'x + '+yr+' = '+mult+'x − '+mult*yr+' → '+yr+' + '+mult*yr+' = '+(mult-1)+'x',hi:yr+' + '+mult*yr+' = '+(mult-1)+'x'},
+      {en:(yr+mult*yr)+' = '+(mult-1)+'x → x = '+(yr+mult*yr)+'÷'+(mult-1)+' = <span class="c">'+age+' years</span>',hi:'x = <span class="c">'+age+' वर्ष</span>'},
+      {en:'<b>Verify:</b> Future = '+(age+yr)+', Past = '+(age-yr)+', Ratio = '+(age+yr)+'/'+  (age-yr)+' = '+mult+' ✓',hi:'<b>जाँच:</b> '+(age+yr)+'/'+(age-yr)+' = '+mult+' ✓'},
+    ],
+    concept:{en:'Age problems: Present=x, Past=x−k, Future=x+k. Set up equation from given condition. Verify after solving.',hi:'आयु: वर्तमान=x, भूत=x−k, भविष्य=x+k। शर्त से समीकरण बनाएँ।'},
+    finalAns:age+' years'
+  };
+}
+
+function qAlligation(){
+  let cP,dP,mean,ratC,ratD,qC,qD,tries=0;
+  do{cP=rand(20,60);dP=cP+rand(10,30);mean=cP+rand(2,dP-cP-1);ratC=dP-mean;ratD=mean-cP;qC=ratC*rand(2,6);qD=ratD*(qC/ratC);tries++;}
+  while(!Number.isInteger(qD)&&tries<100);
+  if(!Number.isInteger(qD))return qAlligation();
+  const o=makeON(qD,[qD+rand(5,20),qD-rand(5,15),qD+ratD]);
+  return{
+    category:{en:'Mixture & Alligation',hi:'मिश्रण और एलिगेशन'},
+    text:{en:'A fair price shop has two varieties of sugar: Variety A at ₹'+cP+'/kg and Variety B at ₹'+dP+'/kg. The shopkeeper wants to mix them to sell at ₹'+mean+'/kg without incurring any loss. If '+qC+' kg of Variety A (cheaper) is used, how many kg of Variety B (dearer) should be mixed?',
+          hi:'एक उचित मूल्य दुकान में दो प्रकार की चीनी है: किस्म A ₹'+cP+'/kg और किस्म B ₹'+dP+'/kg। दुकानदार बिना नुकसान के ₹'+mean+'/kg पर बेचने के लिए इन्हें मिलाना चाहता है। यदि '+qC+' kg किस्म A (सस्ती) लिया जाए, तो किस्म B (महँगी) कितना kg मिलाना होगा?'},
+    options:o.vals.map(v=>v+' kg'),correctIndex:o.idx,
+    steps:[
+      {en:'<b>Alligation Cross Rule:</b> Cheaper : Dearer = (Dearer − Mean) : (Mean − Cheaper)',hi:'<b>एलिगेशन क्रॉस नियम:</b> सस्ता : महँगा = (महँगा − माध्य) : (माध्य − सस्ता)'},
+      {en:'= ('+dP+' − '+mean+') : ('+mean+' − '+cP+') = '+ratC+' : '+ratD,hi:'= '+ratC+' : '+ratD},
+      {en:'For '+qC+' kg of Variety A: Variety B needed = '+qC+' × ('+ratD+'/'+ratC+') = <span class="c">'+qD+' kg</span>',hi:qC+' kg किस्म A के लिए: किस्म B = <span class="c">'+qD+' kg</span>'},
+    ],
+    concept:{en:'Alligation: Cross-multiply method. Cheaper(top-left) → Mean(center) ← Dearer(top-right). Cross-differences give ratio.',hi:'एलिगेशन क्रॉस विधि: सस्ता(ऊपर बाएँ)→माध्य←महँगा(ऊपर दाएँ)'},
+    finalAns:qD+' kg'
+  };
+}
+
+function qSqRoot(){
+  const perfsq=[4,9,16,25,36,49,64,81,100,121,144,169,196,225,256,289,324,361,400,441,484,529,576,625];
+  const n=pick(perfsq),ans=Math.round(Math.sqrt(n));
+  const o=makeON(ans,[ans+1,ans-1,ans+2]);
+  return{
+    category:{en:'Number System',hi:'संख्या पद्धति'},
+    text:{en:'A square-shaped plot of land has an area of '+n+' square metres. A farmer wants to install fencing along all four sides. To determine the total length of fencing needed, find the length of each side of the square plot (i.e., find √'+n+').',
+          hi:'एक वर्गाकार भूखंड का क्षेत्रफल '+n+' वर्ग मीटर है। एक किसान चारों तरफ बाड़ लगाना चाहता है। आवश्यक कुल बाड़ की लंबाई जानने के लिए, वर्गाकार भूखंड की प्रत्येक भुजा की लंबाई ज्ञात करें (अर्थात √'+n+' ज्ञात करें)।'},
+    options:o.vals.map(v=>v+' m'),correctIndex:o.idx,
+    steps:[
+      {en:'Area of square = side² → side = √Area',hi:'वर्ग का क्षेत्रफल = भुजा² → भुजा = √क्षेत्रफल'},
+      {en:'side = √'+n+' = <span class="c">'+ans+' m</span>',hi:'भुजा = √'+n+' = <span class="c">'+ans+' m</span>'},
+      {en:'Verify: '+ans+'² = '+ans*ans+' = '+n+' ✓',hi:'जाँच: '+ans+'² = '+n+' ✓'},
+      {en:'Total fencing = Perimeter = 4 × '+ans+' = '+(4*ans)+' m',hi:'कुल बाड़ = 4 × '+ans+' = '+(4*ans)+' m'},
+    ],
+    concept:{en:'Perfect squares 1-30²=900. √(ab)=√a×√b. Between consecutive perfect squares, use approximation.',hi:'1 से 30 तक के वर्ग याद करें। √(ab)=√a×√b'},
+    finalAns:ans+' m'
+  };
+}
+
+function qSeriesAP(){
+  const s=rand(2,20),d=rand(3,9),ser=Array.from({length:5},(_,i)=>s+d*i),next=s+d*5;
+  const o=makeON(next,[next+d,next-d,next+rand(1,3)]);
+  return{
+    category:{en:'Number Series',hi:'संख्या श्रृंखला'},
+    text:{en:'Study the following number sequence carefully and find the MISSING number at the end:\n'+ser.join(', ')+', __?',
+          hi:'निम्नलिखित संख्या श्रृंखला को ध्यान से देखें और अंत में MISSING संख्या ज्ञात करें:\n'+ser.join(', ')+', __?'},
+    options:o.vals.map(String),correctIndex:o.idx,
+    steps:[
+      {en:'Calculate differences: '+ser.slice(1).map((v,i)=>v-ser[i]).join(', ')+' → All = '+d,hi:'अंतर: '+d+' (सभी समान)'},
+      {en:'<b>Pattern:</b> Arithmetic Progression (AP), a = '+s+', d = '+d,hi:'<b>पैटर्न:</b> समान्तर श्रेढ़ी (AP), d = '+d},
+      {en:'Next = '+ser[4]+' + '+d+' = <span class="c">'+next+'</span>',hi:'अगला = '+ser[4]+' + '+d+' = <span class="c">'+next+'</span>'},
+    ],
+    concept:{en:'AP: nth term = a+(n-1)d. Sum = n/2×[2a+(n-1)d]. Constant differences → AP.',hi:'AP: nवाँ पद = a+(n-1)d। योग = n/2×[2a+(n-1)d]'},
+    finalAns:String(next)
+  };
+}
+
+function qCubeRoot(){
+  const cubes=[{n:8,r:2},{n:27,r:3},{n:64,r:4},{n:125,r:5},{n:216,r:6},{n:343,r:7},{n:512,r:8},{n:729,r:9},{n:1000,r:10}];
+  const {n,r}=pick(cubes);
+  const o=makeON(r,[r+1,r-1,r+2]);
+  return{
+    category:{en:'Number System',hi:'संख्या पद्धति'},
+    text:{en:'A cubical storage box is used in a government warehouse. The volume of the box is '+n+' cubic centimetres. Find the length of each edge (side) of the cubical box (i.e., find the cube root of '+n+').',
+          hi:'एक सरकारी गोदाम में एक घनाकार भंडारण बॉक्स का उपयोग किया जाता है। बॉक्स का आयतन '+n+' घन सेंटीमीटर है। घनाकार बॉक्स के प्रत्येक किनारे (भुजा) की लंबाई ज्ञात करें (अर्थात '+n+' का घनमूल ज्ञात करें)।'},
+    options:o.vals.map(v=>v+' cm'),correctIndex:o.idx,
+    steps:[
+      {en:'Volume = side³ → side = ∛Volume = ∛'+n,hi:'आयतन = भुजा³ → भुजा = ∛'+n},
+      {en:'∛'+n+' = <span class="c">'+r+' cm</span>',hi:'∛'+n+' = <span class="c">'+r+' cm</span>'},
+      {en:'Verify: '+r+'³ = '+r+' × '+r+' × '+r+' = '+r*r+' × '+r+' = '+r*r*r+' = '+n+' ✓',hi:'जाँच: '+r+'³ = '+n+' ✓'},
+    ],
+    concept:{en:'Cube roots: ∛8=2, ∛27=3, ∛64=4, ∛125=5, ∛216=6, ∛343=7, ∛512=8, ∛729=9, ∛1000=10. Memorize all!',hi:'घनमूल याद करें: ∛8=2 से ∛1000=10 तक सब!'},
+    finalAns:r+' cm'
+  };
+}
+
+/* Pool of 50 (some generators appear twice for variety) */
+const POOL=[
+  qPctBasic,qWhatPct,qPctChange,
+  qPL_SP,qPL_CP,
+  qRatio,
+  qAvg,qAvgNew,
+  qBODMAS,
+  qLinear,qTwoVar,
+  qTimeWork,qManDays,
+  qSDT,qSDT,
+  qTrain,qTwoTrains,
+  qSI,qCI,
+  qPipes,qPartnership,
+  qRect,qCircle,
+  qTriangle,qTriangle,
+  qCylinder,
+  qLCM,qHCF,
+  qPnC,qPnC,
+  qProb,qProb,
+  qBoat,qBoat,
+  qIndices,qIndices,
+  qAges,qAges,
+  qAlligation,
+  qSqRoot,qSqRoot,
+  qSeriesAP,qSeriesAP,
+  qCubeRoot,
+  qPctBasic,qAvg,qSDT,qLinear,qRect
+];
+
+function generateQuestions(){
+  const pool=shuffle([...POOL]);
+  const out=[];
+  for(let i=0;i<TQ&&i<pool.length;i++){
+    let q=null,t=0;
+    do{try{q=pool[i]();}catch(e){q=null;}t++;}while(!q&&t<15);
+    if(q)out.push(q);
+  }
+  return out.slice(0,TQ);
+}
+
+/* === Screen / UI === */
+function showScreen(id){document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));document.getElementById(id).classList.add('active');window.scrollTo(0,0);}
+
+function startTest(){
+  aQ=generateQuestions();uA=new Array(aQ.length).fill(-1);ci=0;sL=TT;
+  buildDots();showScreen('screen-quiz');renderQ();startTimer();
+}
+
+function buildDots(){
+  const w=document.getElementById('q-dots');w.innerHTML='';
+  aQ.forEach((_,i)=>{const d=document.createElement('div');d.className='q-dot';d.textContent=i+1;d.id='dot-'+i;w.appendChild(d);});
+}
+function updDot(i,s){const d=document.getElementById('dot-'+i);if(d)d.className='q-dot '+s;}
+
+function renderQ(){
+  const q=aQ[ci];
+  document.getElementById('q-counter').textContent='Q '+(ci+1)+' / '+aQ.length;
+  document.getElementById('q-category').textContent=q.category[lg]||q.category.en;
+  document.getElementById('q-text').textContent=q.text[lg]||q.text.en;
+  document.getElementById('progress-bar').style.width=((ci+1)/aQ.length*100)+'%';
+  const ans=uA.filter(a=>a!==-1).length;
+  document.getElementById('answered-count').textContent=t('answered')+' '+ans+'/'+aQ.length;
+  document.getElementById('next-label').textContent=ci===aQ.length-1?t('submit'):t('next');
+  const grid=document.getElementById('options-grid');grid.innerHTML='';
+  ['A','B','C','D'].forEach((lbl,idx)=>{
+    const btn=document.createElement('button');btn.className='option-btn';
+    btn.innerHTML='<span class="opt-label">'+lbl+'</span><span>'+q.options[idx]+'</span>';
+    btn.onclick=()=>selOpt(idx);
+    if(uA[ci]===idx)btn.classList.add('selected');
+    grid.appendChild(btn);
+  });
+  document.getElementById('btn-next').disabled=(uA[ci]===-1);
+  if(uA[ci]>=0)lockOpts(uA[ci],q.correctIndex);
+  if(uA[ci]===-2)document.getElementById('btn-next').disabled=false;
+  aQ.forEach((_,i)=>{
+    const a=uA[i];
+    updDot(i,i===ci?'active':a===-1?'':a===-2?'skipped':a===aQ[i].correctIndex?'answered':'wrong');
+  });
+}
+
+function selOpt(idx){
+  if(uA[ci]!==-1)return;
+  uA[ci]=idx;lockOpts(idx,aQ[ci].correctIndex);
+  document.getElementById('btn-next').disabled=false;
+  updDot(ci,idx===aQ[ci].correctIndex?'answered':'wrong');
+  document.getElementById('answered-count').textContent=t('answered')+' '+uA.filter(a=>a!==-1).length+'/'+aQ.length;
+}
+
+function lockOpts(chosen,correct){
+  document.querySelectorAll('#options-grid .option-btn').forEach((btn,i)=>{
+    btn.disabled=true;
+    if(i===correct)btn.classList.add('correct');
+    if(i===chosen&&chosen!==correct)btn.classList.add('wrong');
+  });
+}
+
+function skipQuestion(){
+  if(uA[ci]!==-1)return;
+  uA[ci]=-2;updDot(ci,'skipped');
+  document.getElementById('btn-next').disabled=false;
+  if(ci<aQ.length-1){ci++;renderQ();}else endTest();
+}
+
+function nextQuestion(){
+  if(ci<aQ.length-1){
+    ci++;renderQ();
+    const c=document.getElementById('question-card');c.style.animation='none';void c.offsetWidth;c.style.animation='';
+  }else endTest();
+}
+
+function startTimer(){
+  clearInterval(tI);updTimer();
+  tI=setInterval(()=>{sL--;updTimer();if(sL<=0){clearInterval(tI);endTest();}},1000);
+}
+function updTimer(){
+  const m=Math.floor(sL/60).toString().padStart(2,'0'),s=(sL%60).toString().padStart(2,'0');
+  document.getElementById('timer-display').textContent=m+':'+s;
+  const fill=document.getElementById('ring-fill');if(fill)fill.style.strokeDashoffset=100-(sL/TT*100);
+  const w=document.getElementById('timer-wrap');
+  if(w){w.className='timer-wrap';if(sL<=60)w.classList.add('danger');else if(sL<=300)w.classList.add('warning');}
+}
+
+function endTest(){
+  clearInterval(tI);
+  const cor=aQ.filter((q,i)=>uA[i]===q.correctIndex).length;
+  const wrng=aQ.filter((q,i)=>uA[i]>=0&&uA[i]!==q.correctIndex).length;
+  const skip=aQ.filter((_,i)=>uA[i]===-1||uA[i]===-2).length;
+  const marks=Math.max(0,cor*2-wrng*0.5);
+  document.getElementById('score-num').textContent=cor;
+  document.getElementById('correct-count').textContent=cor;
+  document.getElementById('wrong-count').textContent=wrng;
+  document.getElementById('skip-count').textContent=skip;
+  document.getElementById('total-marks').textContent=marks.toFixed(1);
+  const pct=cor/aQ.length*100;
+  setTimeout(()=>{const f=document.getElementById('sr-fill');if(f)f.style.strokeDashoffset=326.7-(326.7*pct/100);},200);
+  const g=document.getElementById('grade-banner');
+  if(pct>=80){g.textContent=t('excellent');g.style.cssText='background:#dcfce7;color:#15803d;';}
+  else if(pct>=60){g.textContent=t('good');g.style.cssText='background:#dbeafe;color:#1552a0;';}
+  else if(pct>=40){g.textContent=t('average');g.style.cssText='background:#fef3c7;color:#b45309;';}
+  else{g.textContent=t('poor');g.style.cssText='background:#fee2e2;color:#c81e1e;';}
+  renderSol();showScreen('screen-result');
+}
+
+function renderSol(){
+  const lb=['A','B','C','D'];
+  const sec=document.getElementById('solutions-section');sec.innerHTML='';
+  const title=document.getElementById('sol-title');if(title)title.textContent=t('solTitle');
+  aQ.forEach((q,i)=>{
+    const ua=uA[i],isC=ua===q.correctIndex,isS=ua===-1||ua===-2;
+    const icon=isS?'⏭':isC?'✅':'❌';
+    const card=document.createElement('div');card.className='sol-card';
+    const qTxt=q.text[lg]||q.text.en;
+    const yTxt=isS?('<em>'+t('notAtt')+'</em>'):(ua>=0&&ua<q.options.length?lb[ua]+'. '+q.options[ua]:'—');
+    const stepsHTML=(q.steps||[]).map((step,si)=>{
+      const txt=step[lg]||step.en||'';
+      return'<div class="sol-step"><span class="step-num">'+(si+1)+'</span><span class="step-text">'+txt+'</span></div>';
+    }).join('');
+    /* FIXED: concept is a plain {en,hi} object, NOT a function */
+    const conc=(q.concept&&typeof q.concept==='object')?(q.concept[lg]||q.concept.en||''):'';
+    const concHTML=conc?'<div class="concept-box"><b>'+t('concept')+':</b> '+conc+'</div>':'';
+    card.innerHTML=
+      '<div class="sol-header"><span class="sol-num">Q '+(i+1)+'</span><span class="sol-q">'+icon+' '+qTxt+'</span></div>'
+      +'<div class="sol-answers">'
+      +'<span class="ans-chip your-ans '+(isS?'skipped':isC?'correct':'wrong')+'">'+t('yourAns')+' '+yTxt+'</span>'
+      +'<span class="ans-chip correct-ans">'+t('corrAns')+' '+lb[q.correctIndex]+'. '+q.options[q.correctIndex]+'</span>'
+      +'</div>'
+      +'<div class="sol-steps"><div class="sol-steps-title">🔢 '+t('stepHead')+'</div>'+stepsHTML
+      +'<div class="final-answer">'+t('finalAns')+' '+q.finalAns+'</div></div>'
+      +concHTML;
+    sec.appendChild(card);
+  });
+}
+
+function printResult(){window.print();}
+function playAgain(){showScreen('screen-home');}
+</script>
