@@ -263,3 +263,6 @@ function toggleLeftMasterMenu() {
     }
 }
 </script>
+{% if page.learn_type == "conversion" %}
+  <script src="{{ '/assets/js/convert.js' | relative_url }}"></script>
+{% endif %}
