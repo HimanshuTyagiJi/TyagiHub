@@ -1,0 +1,21 @@
+<!-- ==========================================================
+     TYAGIHUB CLEAN CONVERSION SIDEBAR LINKS ONLY (NO STYLE CLASH)
+========================================================== -->
+<aside class="vyakaran-aside-navigation" aria-label="Conversion Navigation">
+  
+    <nav>
+        <ul class="vyakaran-nav-list">
+            <li><a class="{% if page.url == '/conversion.html' or page.url == '/conversion/' %}active{% endif %}" href="{{ '/conversion.html' | relative_url }}">Conversion Hub</a></li>
+            <li><a class="{% if page.url contains 'angle-unit-conversion' %}active{% endif %}" href="{{ '/conversion/angle-unit-conversion.html' | relative_url }}">Angle Conversion</a></li>
+            <li><a class="{% if page.url contains 'area-unit-conversion' %}active{% endif %}" href="{{ '/conversion/area-unit-conversion.html' | relative_url }}">Area Conversion</a></li>
+            <li><a class="{% if page.url contains 'length-unit-conversion' %}active{% endif %}" href="{{ '/conversion/length-unit-conversion.html' | relative_url }}">Length Conversion</a></li>
+            <li><a class="{% if page.url contains 'power-unit-conversion' %}active{% endif %}" href="{{ '/conversion/power-unit-conversion.html' | relative_url }}">Power Conversion</a></li>
+            <li><a class="{% if page.url contains 'pressure-unit-conversion' %}active{% endif %}" href="{{ '/conversion/pressure-unit-conversion.html' | relative_url }}">Pressure Conversion</a></li>
+            <li><a class="{% if page.url contains 'speed-unit-conversion' %}active{% endif %}" href="{{ '/conversion/speed-unit-conversion.html' | relative_url }}">Speed Conversion</a></li>
+            <li><a class="{% if page.url contains 'temperature-unit-conversion' %}active{% endif %}" href="{{ '/conversion/temperature-unit-conversion.html' | relative_url }}">Temperature Conversion</a></li>
+            <li><a class="{% if page.url contains 'time-unit-conversion' %}active{% endif %}" href="{{ '/conversion/time-unit-conversion.html' | relative_url }}">Time Conversion</a></li>
+            <li><a class="{% if page.url contains 'volume-unit-conversion' %}active{% endif %}" href="{{ '/conversion/volume-unit-conversion.html' | relative_url }}">Volume Conversion</a></li>
+            <li><a class="{% if page.url contains 'weight-mass-unit-conversion' %}active{% endif %}" href="{{ '/conversion/weight-mass-unit-conversion.html' | relative_url }}">Weight & Mass Conversion</a></li>
+        </ul>
+    </nav>
+</aside>
