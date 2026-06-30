@@ -8,12 +8,7 @@ lang_switch: false
 ---
  <div class="container">
     <h1>📚 Class 11 Science and Commerce के Formulas 📚</h1>
-    <div class="class-buttons">
-      <a href="https://gklearnstudy.in/class-9th/mathsformula" class="btn-link">Class 9</a>
-      <a href="https://gklearnstudy.in/class-10th/mathsformula" class="btn-link">Class 10</a>
-      <a href="https://gklearnstudy.in/class-12th/mathsformula" class="btn-link">Class 12</a>
-      <a href="https://gklearnstudy.in/competitive/mathsformula" class="btn-link">Competitive & Commerce</a>
-    </div>
+ 
 
     <section id="Sets">
       <section>
@@ -780,9 +775,296 @@ lang_switch: false
       </tbody>
     </table>
     <br />
-    <div class="scrollmenu-container">
-      <img src="https://gklearnstudy.in/images/trigonometry.png" alt="trigonometry" />
+   <div class="scrollmenu-container">
+    <div class="formula-hero" aria-hidden="true">
+
+        <div class="grid"></div>
+
+        <div class="glow glow1"></div>
+        <div class="glow glow2"></div>
+
+        <svg class="triangle" viewBox="0 0 220 180">
+            <polygon points="25,155 195,155 110,25"></polygon>
+            <line x1="110" y1="25" x2="110" y2="155"></line>
+            <line x1="25" y1="155" x2="110" y2="25"></line>
+        </svg>
+
+        <svg class="graph" viewBox="0 0 320 120">
+            <path d="M0 100 C40 20 80 20 120 80 S200 120 240 50 S280 10 320 70"></path>
+        </svg>
+
+        <div class="formula f1">sin²θ + cos²θ = 1</div>
+        <div class="formula f2">a² + b² = c²</div>
+        <div class="formula f3">E = mc²</div>
+        <div class="formula f4">π = 3.14159</div>
+        <div class="formula f5">∫ x² dx</div>
+        <div class="formula f6">Σ x</div>
+        <div class="formula f7">√(a²+b²)</div>
+        <div class="formula f8">tanθ = y/x</div>
+
     </div>
+</div>
+
+<style>
+
+.scrollmenu-container{
+display:flex;
+justify-content:center;
+align-items:center;
+padding:40px 0;
+}
+
+.formula-hero{
+
+position:relative;
+width:100%;
+max-width:900px;
+height:320px;
+overflow:hidden;
+
+border-radius:26px;
+
+background:
+linear-gradient(135deg,
+rgba(37,99,235,.10),
+rgba(14,165,233,.08));
+
+border:1px solid rgba(59,130,246,.18);
+
+}
+
+html[data-theme="dark"] .formula-hero{
+
+background:
+linear-gradient(135deg,
+rgba(15,23,42,.95),
+rgba(30,41,59,.95));
+
+border:1px solid rgba(56,189,248,.15);
+
+}
+
+.grid{
+
+position:absolute;
+inset:0;
+
+background:
+
+linear-gradient(rgba(59,130,246,.07) 1px,transparent 1px),
+linear-gradient(90deg,rgba(59,130,246,.07) 1px,transparent 1px);
+
+background-size:40px 40px;
+
+}
+
+.glow{
+
+position:absolute;
+border-radius:50%;
+filter:blur(55px);
+
+}
+
+.glow1{
+
+width:220px;
+height:220px;
+
+background:#38bdf8;
+
+left:-70px;
+top:-70px;
+
+opacity:.22;
+
+}
+
+.glow2{
+
+width:200px;
+height:200px;
+
+background:#2563eb;
+
+right:-60px;
+bottom:-60px;
+
+opacity:.18;
+
+}
+
+.triangle{
+
+position:absolute;
+
+left:60px;
+bottom:45px;
+
+width:180px;
+height:150px;
+
+stroke:#38bdf8;
+stroke-width:3;
+fill:none;
+
+opacity:.9;
+
+animation:floatTriangle 6s ease-in-out infinite;
+
+}
+
+.graph{
+
+position:absolute;
+
+right:40px;
+top:70px;
+
+width:330px;
+
+stroke:#2563eb;
+stroke-width:4;
+
+fill:none;
+
+opacity:.9;
+
+animation:waveMove 5s ease-in-out infinite;
+
+}
+
+.formula{
+
+position:absolute;
+
+font-size:18px;
+font-weight:800;
+
+font-family:
+Cambria,
+Georgia,
+serif;
+
+color:#2563eb;
+
+white-space:nowrap;
+
+animation:floatFormula 7s ease-in-out infinite;
+
+}
+
+html[data-theme="dark"] .formula{
+
+color:#67e8f9;
+
+}
+
+.f1{top:28px;left:55px;}
+.f2{top:70px;right:65px;}
+.f3{bottom:30px;left:280px;}
+.f4{top:140px;left:320px;}
+.f5{bottom:65px;right:120px;}
+.f6{top:35px;right:260px;}
+.f7{bottom:28px;right:40px;}
+.f8{top:205px;left:95px;}
+
+@keyframes floatFormula{
+
+0%,100%{
+
+transform:translateY(0);
+
+}
+
+50%{
+
+transform:translateY(-12px);
+
+}
+
+}
+
+@keyframes floatTriangle{
+
+0%,100%{
+
+transform:translateY(0);
+
+}
+
+50%{
+
+transform:translateY(-10px);
+
+}
+
+}
+
+@keyframes waveMove{
+
+0%{
+
+transform:translateX(0);
+
+}
+
+50%{
+
+transform:translateX(-10px);
+
+}
+
+100%{
+
+transform:translateX(0);
+
+}
+
+}
+
+@media(max-width:768px){
+
+.formula-hero{
+
+height:240px;
+
+}
+
+.graph{
+
+width:220px;
+
+right:10px;
+top:70px;
+
+}
+
+.triangle{
+
+width:120px;
+
+left:20px;
+
+}
+
+.formula{
+
+font-size:13px;
+
+}
+
+.f3,
+.f6,
+.f7{
+
+display:none;
+
+}
+
+}
+
+</style>
     <p id="Trigonometric-Chart">
       <br />
       <br />
@@ -4445,9 +4727,9 @@ lang_switch: false
       <h3>18. माध्य, माध्यिका और बहुलक के बीच संबंध</h3>
       <p>Mode = 3 × Median − 2 × Mean</p>
       <p>
-        📌 यह टॉपिक आपकी <b>कक्षा 9वीं</b> में भी दिया गया है। और अधिक जानने
+        📌 यह टॉपिक आपकी <b>कक्षा 10वीं</b> में भी दिया गया है। और अधिक जानने
         के लिए
-        <a href="https://gklearnstudy.in/class-10th/mathsformula#Statistics" target="_blank">यहाँ क्लिक करें</a>।
+        <a href="https://tyagihub.in/class-10/mathematics-formulas/#Statistics" target="_blank">यहाँ क्लिक करें</a>।
       </p>
     </section>
     <section id="Probability">
