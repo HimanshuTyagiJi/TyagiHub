@@ -1,10 +1,10 @@
 ---
-layout: default
+layout: lef-tside
 section: learn
 learn_type: formula
-permalink: /learn/maths-formulas/
+permalink: /class-9/mathematics-formulas/
 lang_switch: false
-lang_toggle: false
+ 
 ---
 
 <div class="tyagihub-main-layout">
@@ -19,7 +19,7 @@ lang_toggle: false
     <div style="grid-column: 2; min-width: 0 !important; width: 100% !important; overflow-x: auto !important; contain: layout style !important; isolation: isolate !important; clear: both !important; box-sizing: border-box; padding: 10px;">
 
 
-<div id="root">
+     <div id="root">
 
             <header class="math-header">
                 <div class="header-content">
@@ -2488,52 +2488,4 @@ lang_toggle: false
                         <!-- Related posts will be injected here -->
                     </div>
                 </div>
-
-              </div>
-
-    <aside class="th-right-sidebar-wrapper">
-        {% case page.section %}
-          {% when "learn" %}
-            {% include sidebars/learn-sidebar.html %}
-          {% else %}
-            {% include sidebars/default-sidebar.html %}
-        {% endcase %}
-    </aside>
-
-</div>
-
-<script>
-document.addEventListener("DOMContentLoaded", function () {
-    // URL parameters read karo (e.g., ?class=9)
-    const currentUrlParams = window.location.search; 
-    
-    if (currentUrlParams) {
-        // Sidebar ke andar saare math class section targets pakdo
-        const classSections = document.querySelectorAll("#tyagihubLeftSidebar .th-class-section");
-        
-        classSections.forEach(section => {
-            const classHeader = section.querySelector(".th-class-header");
-            const chapterList = section.querySelector(".th-chapters-list");
-            const activeDot = section.querySelector(".active-dot");
-            
-            // Agar class header ke href mein current query parameter chipka hai
-            if (classHeader && classHeader.href.includes(currentUrlParams)) {
-                // Header style active karo
-                classHeader.classList.add("bg-slate-800/60", "text-indigo-400", "border-indigo-500/30");
-                classHeader.classList.remove("text-slate-400");
                 
-                // Chapter list dropdown open karo aur indicator dot show karo
-                if (chapterList) chapterList.classList.remove("hidden");
-                if (activeDot) activeDot.classList.remove("hidden");
-            }
-        });
-    }
-});
-
-// Mobile menu click toggle handler
-function toggleMobileSidebar(event) {
-    if(event) event.stopPropagation(); 
-    const sidebar = document.querySelector(".th-left-sidebar");
-    if (sidebar) sidebar.classList.toggle("mobile-open");
-}
-</script>
