@@ -9,6 +9,8 @@ layout: default
   <link rel="stylesheet" href="{{ '/assets/css/vyakaran.css' | relative_url }}">
 {% elsif page.learn_type == "conversion" %}
   <link rel="stylesheet" href="{{ '/assets/css/conversion.css' | relative_url }}">
+{% elsif page.learn_type == "formula" %}
+  <link rel="stylesheet" href="{{ '/assets/css/maths.css' | relative_url }}">
 {% endif %}
 
 <style>
@@ -269,4 +271,6 @@ function toggleLeftMasterMenu() {
 </script>
 {% if page.learn_type == "conversion" %}
   <script src="{{ '/assets/js/convert.js' | relative_url }}"></script>
+{% elsif page.learn_type == "formula" %}
+    <script src="{{ '/assets/js/maths.js' | relative_url }}"></script>
 {% endif %}
