@@ -1,47 +1,56 @@
- ---
-lang_switch: false
-layout: default
-title: "Test Center & Global Leaderboard | TyagiHub"
-description: "Challenge yourself with quizzes on Hindi, History, Computer, and more. Track your progress on the global leaderboard and prepare for competitive exams on TyagiHub."
-keywords: "online tests, practice quizzes, competitive exam preparation, GK test, history quiz, computer test, global leaderboard, TyagiHub"
-
 ---
-        <link rel="stylesheet" href="https://gklearnstudy.in/css/test.css" />
+layout: default
  
-    <body data-test-category="history">
-       <header class="header" id="header"><nav class="navbar"><div class="burger" id="burger"><svg id="burgerSvg" width="30" height="30" viewBox="0 0 100 80" cursor="pointer"><rect width="100" height="7" rx="5"></rect><rect y="30" width="100" height="7" rx="5"></rect><rect y="60" width="100" height="7" rx="5"></rect></svg></div><a href="index.html" class="brand" aria-label="GK Learn Study"><svg width="40" height="40" viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg"><circle cx="150" cy="150" r="150" fill="white" /><text x="50%" y="40%" font-size="85" font-weight="bold" fill="#ff4b5c" text-anchor="middle">GK</text><text x="50%" y="65%" font-size="45" fill="#6a4cff" text-anchor="middle">Learn Study</text></svg></a><div class="menu" id="menu"><div class="mobile-menu-header"><a href="/" class="menu-brand-text">GK Learn Study</a><button class="close-menu-btn" id="closeMenuBtn" aria-label="Close menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></button></div><div class="menu-inner"></div></div><div class="header-actions"><div class="search-container"><button class="search-icon" id="searchBtn" aria-label="Open search bar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></button></div><button class="theme-switcher" id="themeSwitcher" aria-label="Toggle theme"><svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg><svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg></button></div></nav><button class="back-icon" id="backBtn" aria-label="Close search bar">←</button><input type="text" class="search-input" id="searchInput" autocomplete="off" placeholder="Search..." /><div class="overlay"></div></header>
+permalink: /test/history-test/
+title: "History Test Hub"
+description: "Test your knowledge of Indian and World History with GK Learn Study."
+keywords: "history test, mock test, gk learn study, history quiz"
+lang_switch: false
+---
 
-        <main class="container">
-            <h1>History Test Hub</h1>
-            <p class="section-subtitle">Test your knowledge of Indian and World History. Choose from the test parts below.</p>
-            
-            <div id="test-parts-container" class="box-grid">
-                <div class="box" data-quiz-id="history-test-part-01">
-                    <a href="history-test/part-01.html">Part-01</a>
-                </div>
-                <div class="box" data-quiz-id="history-test-part-02">
-                     <a href="history-test/part-02.html">Part-02</a>
-                </div>
-                 <div class="box" data-quiz-id="history-test-part-03">
-                     <a href="#">Part-03 (Coming Soon)</a>
-                </div>
-            </div>
+<!-- 📄 GK LEARN STUDY CORE TEST STYLESHEET HOOK -->
+<link rel="stylesheet" href="https://gklearnstudy.in/css/test.css" />
 
-            <section class="leaderboard-section">
-                <h2>History Tests - Top Scorers</h2>
-                <div id="leaderboard-container">
-                    <div class="spinner-container"><div class="spinner"></div></div>
-                </div>
-            </section>
-        </main>
+<!-- 🏆 MAIN TEST WORKSPACE PANEL -->
+<div class="math-formula-container" data-test-category="history">
+    
+    <h1>History Test Hub</h1>
+    <p class="section-subtitle" style="margin-bottom: 30px; color: var(--text-paragraph, #4b5563);">
+        Test your knowledge of Indian and World History. Choose from the test parts below.
+    </p>
+    
+    <!-- 🎛️ TEST PARTS SELECTION GRID -->
+    <div id="test-parts-container" class="box-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; margin-bottom: 40px;">
+        <div class="box" data-quiz-id="history-test-part-01" style="border: 1px solid var(--border-table, #e5e7eb); padding: 20px; border-radius: 12px; text-align: center;">
+            <a href="{{ '/test/history/part-01.html' | relative_url }}" style="font-weight: 700; text-decoration: none; color: var(--primary-base, #2563eb);">Part-01</a>
+        </div>
         
-        <footer class="app-footer"><div class="footer-content"></div><div class="footer-bottom" id="footer-year">
-                © 2024 - <span id="year"></span> GK Learn Study | All Rights Reserved
+        <div class="box" data-quiz-id="history-test-part-02" style="border: 1px solid var(--border-table, #e5e7eb); padding: 20px; border-radius: 12px; text-align: center;">
+            <a href="{{ '/test/history/part-02.html' | relative_url }}" style="font-weight: 700; text-decoration: none; color: var(--primary-base, #2563eb);">Part-02</a>
+        </div>
+        
+        <div class="box" data-quiz-id="history-test-part-03" style="border: 1px solid var(--border-table, #e5e7eb); padding: 20px; border-radius: 12px; text-align: center; opacity: 0.6;">
+            <a href="#" style="font-weight: 700; text-decoration: none; color: var(--text-paragraph, #4b5563); cursor: not-allowed;">Part-03 (Coming Soon)</a>
+        </div>
+    </div>
+
+    <hr style="border: 0; border-top: 1px solid var(--border-table, #e5e7eb); margin: 40px 0;" />
+
+    <!-- 🥇 FIREBASE DRIVEN LIVE LEADERBOARD SECTION -->
+    <section class="leaderboard-section">
+        <h2 style="font-size: 1.5rem; font-weight: 800; margin-bottom: 20px;">History Tests - Top Scorers</h2>
+        <div id="leaderboard-container">
+            <div class="spinner-container" style="text-align: center; padding: 20px;">
+                <div class="spinner" style="border: 4px solid rgba(0,0,0,0.1); width: 36px; height: 36px; border-radius: 50%; border-left-color: var(--primary-base, #2563eb); animation: spin 1s linear infinite; display: inline-block;"></div>
             </div>
-            <script>
-                document.getElementById("year").textContent = new Date().getFullYear();
-            </script></footer>
- 
-        <script type="module" src="/assets/js/test-hub.js"></script>
-    </body>
-</html>
+        </div>
+    </section>
+
+</div>
+
+<style>
+@keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+</style>
+
+<!-- ⚡ DYNAMIC CORE SCRIPTS HOOK -->
+<script type="module" src="{{ '/assets/js/test-hub.js' | relative_url }}"></script>
