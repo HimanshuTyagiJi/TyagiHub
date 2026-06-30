@@ -1,0 +1,173 @@
+<aside class="vyakaran-aside-navigation" aria-label="Maths Formula Navigation">
+    <h2>फार्मूला अनुक्रमणिका</h2>
+    <nav>
+        <ul class="vyakaran-nav-list">
+
+            {% if page.url contains '/class-12/' %}
+                <li class="purple-text active-heading">Class:12th</li>
+                <li><a class="{% if page.url contains '#Relations-Functions' %}active{% endif %}" href="{{ '/class-12/mathematics-formulas/#Relations-Functions' | relative_url }}">1. संबंध और फलन</a></li>
+                <li><a class="{% if page.url contains '#Vector-Algebra' %}active{% endif %}" href="{{ '/class-12/mathematics-formulas/#Vector-Algebra' | relative_url }}">2. सदिश बीजगणित</a></li>
+                <li><a class="{% if page.url contains '#Determinants' %}active{% endif %}" href="{{ '/class-12/mathematics-formulas/#Determinants' | relative_url }}">3. सारणिक</a></li>
+                <li><a class="{% if page.url contains '#Continuity-Differentiability' %}active{% endif %}" href="{{ '/class-12/mathematics-formulas/#Continuity-Differentiability' | relative_url }}">4. सांतत्य और अवकलनीयता</a></li>
+                <li><a class="{% if page.url contains '#Applications-Derivatives' %}active{% endif %}" href="{{ '/class-12/mathematics-formulas/#Applications-Derivatives' | relative_url }}">6. अवकलज के अनुप्रयोग</a></li>
+                <li><a class="{% if page.url contains '#Differential-Equations' %}active{% endif %}" href="{{ '/class-12/mathematics-formulas/#Differential-Equations' | relative_url }}">7. अवकल समीकरण</a></li>
+                <li><a class="{% if page.url contains '#Integrals' %}active{% endif %}" href="{{ '/class-12/mathematics-formulas/#Integrals' | relative_url }}">8. समाकलन</a></li>
+                <li><a class="{% if page.url contains '#3D-Geometry' %}active{% endif %}" href="{{ '/class-12/mathematics-formulas/#3D-Geometry' | relative_url }}">9. त्रिविमीय ज्यामिति</a></li>
+                <li><a class="{% if page.url contains '#Linear-Programming' %}active{% endif %}" href="{{ '/class-12/mathematics-formulas/#Linear-Programming' | relative_url }}">10. रेखीय प्रोग्रामिंग</a></li>
+                <li><a class="{% if page.url contains '#Linear-Inequalities' %}active{% endif %}" href="{{ '/class-12/mathematics-formulas/#Linear-Inequalities' | relative_url }}">11. रेखीय असमानताएँ</a></li>
+                <li><a class="{% if page.url contains '#Statistics' %}active{% endif %}" href="{{ '/class-12/mathematics-formulas/#Statistics' | relative_url }}">12. सांख्यिकी</a></li>
+                <li><a class="{% if page.url contains '#Probability' %}active{% endif %}" href="{{ '/class-12/mathematics-formulas/#Probability' | relative_url }}">13. प्रायिकता</a></li>
+            {% endif %}
+
+            {% if page.url contains '/class-11/' %}
+                <li class="purple-text active-heading">Class:11th</li>
+                <li><a class="{% if page.url contains '#Sets' %}active{% endif %}" href="{{ '/class-11/mathematics-formulas/#Sets' | relative_url }}">1. समुच्चय</a></li>
+                <li><a class="{% if page.url contains '#Relations-Functions' %}active{% endif %}" href="{{ '/class-11/mathematics-formulas/#Relations-Functions' | relative_url }}">2. संबंध और फलन</a></li>
+                <li><a class="{% if page.url contains '#Trigonometric-Functions' %}active{% endif %}" href="{{ '/class-11/mathematics-formulas/#Trigonometric-Functions' | relative_url }}">3. त्रिकोणमितीय फलन</a></li>
+                <li><a class="{% if page.url contains '#Complex-Numbers' %}active{% endif %}" href="{{ '/class-11/mathematics-formulas/#Complex-Numbers' | relative_url }}">4. सम्मिश्र संख्याएँ</a></li>
+                <li><a class="{% if page.url contains '#Quadratic-Equations' %}active{% endif %}" href="{{ '/class-11/mathematics-formulas/#Quadratic-Equations' | relative_url }}">5. द्विघात समीकरण</a></li>
+                <li><a class="{% if page.url contains '#Linear-Inequalities' %}active{% endif %}" href="{{ '/class-11/mathematics-formulas/#Linear-Inequalities' | relative_url }}">6. रैखिक असमिकाएँ</a></li>
+                <li><a class="{% if page.url contains '#Permutation-Combination' %}active{% endif %}" href="{{ '/class-11/mathematics-formulas/#Permutation-Combination' | relative_url }}">7. क्रमचय और संचय</a></li>
+                <li><a class="{% if page.url contains '#Binomial-Theorem' %}active{% endif %}" href="{{ '/class-11/mathematics-formulas/#Binomial-Theorem' | relative_url }}">8. द्विपद प्रमेय</a></li>
+                <li><a class="{% if page.url contains '#Sequence-Series' %}active{% endif %}" href="{{ '/class-11/mathematics-formulas/#Sequence-Series' | relative_url }}">9. अनुक्रम और श्रेणी</a></li>
+                <li><a class="{% if page.url contains '#Straight-Lines' %}active{% endif %}" href="{{ '/class-11/mathematics-formulas/#Straight-Lines' | relative_url }}">10. सरल रेखाएँ</a></li>
+                <li><a class="{% if page.url contains '#Conic-Sections' %}active{% endif %}" href="{{ '/class-11/mathematics-formulas/#Conic-Sections' | relative_url }}">11. शंकवक्र</a></li>
+                <li><a class="{% if page.url contains '#Introduction-3D-Geometry' %}active{% endif %}" href="{{ '/class-11/mathematics-formulas/#Introduction-3D-Geometry' | relative_url }}">12. त्रिविमीय ज्यामिति</a></li>
+                <li><a class="{% if page.url contains '#Limits' %}active{% endif %}" href="{{ '/class-11/mathematics-formulas/#Limits' | relative_url }}">13. सीमाएँ</a></li>
+                <li><a class="{% if page.url contains '#Derivatives' %}active{% endif %}" href="{{ '/class-11/mathematics-formulas/#Derivatives' | relative_url }}">14. अवकलज</a></li>
+                <li><a class="{% if page.url contains '#Statistics' %}active{% endif %}" href="{{ '/class-11/mathematics-formulas/#Statistics' | relative_url }}">15. सांख्यिकी</a></li>
+                <li><a class="{% if page.url contains '#Probability' %}active{% endif %}" href="{{ '/class-11/mathematics-formulas/#Probability' | relative_url }}">16. प्रायिकता</a></li>
+            {% endif %}
+
+            {% if page.url contains '/class-10/' %}
+                <li class="purple-text active-heading">Class:10th</li>
+                <li><a class="{% if page.url contains '#Real-Number' %}active{% endif %}" href="{{ '/class-10/mathematics-formulas/#Real-Number' | relative_url }}">1. वास्तविक संख्याएँ</a></li>
+                <li><a class="{% if page.url contains '#Polynomials' %}active{% endif %}" href="{{ '/class-10/mathematics-formulas/#Polynomials' | relative_url }}">2. बहुपद</a></li>
+                <li><a class="{% if page.url contains '#Pairs-Linear_Equations' %}active{% endif %}" href="{{ '/class-10/mathematics-formulas/#Pairs-Linear_Equations' | relative_url }}">3. दो चर वाले रैखिक समीकरण</a></li>
+                <li><a class="{% if page.url contains '#Quadratic-Equations' %}active{% endif %}" href="{{ '/class-10/mathematics-formulas/#Quadratic-Equations' | relative_url }}">4. द्विघात समीकरण</a></li>
+                <li><a class="{% if page.url contains '#Arithmetic-Progression' %}active{% endif %}" href="{{ '/class-10/mathematics-formulas/#Arithmetic-Progression' | relative_url }}">5. अंकगणितीय प्रगति</a></li>
+                <li><a class="{% if page.url contains '#Trigonometry' %}active{% endif %}" href="{{ '/class-10/mathematics-formulas/#Trigonometry' | relative_url }}">6. त्रिकोणमिति</a></li>
+                <li><a class="{% if page.url contains '#Circles' %}active{% endif %}" href="{{ '/class-10/mathematics-formulas/#Circles' | relative_url }}">7. वृत्त</a></li>
+                <li><a class="{% if page.url contains '#Constructions' %}active{% endif %}" href="{{ '/class-10/mathematics-formulas/#Constructions' | relative_url }}">8. रचनाएँ</a></li>
+                <li><a class="{% if page.url contains '#Mensuration' %}active{% endif %}" href="{{ '/class-10/mathematics-formulas/#Mensuration' | relative_url }}">9. पृष्ठ क्षेत्रफल और आयतन</a></li>
+                <li><a class="{% if page.url contains '#Statistics' %}active{% endif %}" href="{{ '/class-10/mathematics-formulas/#Statistics' | relative_url }}">10. सांख्यिकी</a></li>
+                <li><a class="{% if page.url contains '#Probability' %}active{% endif %}" href="{{ '/class-10/mathematics-formulas/#Probability' | relative_url }}">11. प्रायिकता</a></li>
+            {% endif %}
+
+            {% if page.url contains '/class-9/' %}
+                <li class="purple-text active-heading">Class:9th</li>
+                <li><a class="{% if page.url contains '#Number-System' %}active{% endif %}" href="{{ '/class-9/mathematics-formulas/#Number-System' | relative_url }}">1. संख्या पद्धति</a></li>
+                <li><a class="{% if page.url contains '#Polynomials' %}active{% endif %}" href="{{ '/class-9/mathematics-formulas/#Polynomials' | relative_url }}">2. बहुपद</a></li>
+                <li><a class="{% if page.url contains '#Coordinate-Geometry' %}active{% endif %}" href="{{ '/class-9/mathematics-formulas/#Coordinate-Geometry' | relative_url }}">3. निर्देशांक ज्यामिति</a></li>
+                <li><a class="{% if page.url contains '#Linear-Equations' %}active{% endif %}" href="{{ '/class-9/mathematics-formulas/#Linear-Equations' | relative_url }}">4. एक चर वाले रैखिक समीकरण</a></li>
+                <li><a class="{% if page.url contains '#Lines-Angles' %}active{% endif %}" href="{{ '/class-9/mathematics-formulas/#Lines-Angles' | relative_url }}">5. रेखाएँ और कोण</a></li>
+                <li><a class="{% if page.url contains '#Triangles' %}active{% endif %}" href="{{ '/class-9/mathematics-formulas/#Triangles' | relative_url }}">6. त्रिभुज</a></li>
+                <li><a class="{% if page.url contains '#Quadrilaterals' %}active{% endif %}" href="{{ '/class-9/mathematics-formulas/#Quadrilaterals' | relative_url }}">7. चतुर्भुज</a></li>
+                <li><a class="{% if page.url contains '#Circles' %}active{% endif %}" href="{{ '/class-9/mathematics-formulas/#Circles' | relative_url }}">8. वृत्त</a></li>
+                <li><a class="{% if page.url contains '#Mensuration' %}active{% endif %}" href="{{ '/class-9/mathematics-formulas/#Mensuration' | relative_url }}">9. क्षेत्रमिति</a></li>
+                <li><a class="{% if page.url contains '#Statistics' %}active{% endif %}" href="{{ '/class-9/mathematics-formulas/#Statistics' | relative_url }}">10. सांख्यिकी</a></li>
+                <li><a class="{% if page.url contains '#Probability' %}active{% endif %}" href="{{ '/class-9/mathematics-formulas/#Probability' | relative_url }}">11. प्रायिकता</a></li>
+                <li><a class="{% if page.url contains '#Surface-Volume' %}active{% endif %}" href="{{ '/class-9/mathematics-formulas/#Surface-Volume' | relative_url }}">12. पृष्ठ क्षेत्रफल और आयतन</a></li>
+            {% endif %}
+
+            {% if page.url contains '/competitive/' %}
+                <li class="purple-text active-heading">6th-10th + Competitive</li>
+                <li><a class="{% if page.url contains '#Percentage' %}active{% endif %}" href="{{ '/competitive/mathematics-formulas/#Percentage' | relative_url }}">1. प्रतिशत</a></li>
+                <li><a class="{% if page.url contains '#SimpleInterest' %}active{% endif %}" href="{{ '/competitive/mathematics-formulas/#SimpleInterest' | relative_url }}">2. साधारण ब्याज</a></li>
+                <li><a class="{% if page.url contains '#CompoundInterest' %}active{% endif %}" href="{{ '/competitive/mathematics-formulas/#CompoundInterest' | relative_url }}">3. चक्रवृद्धि ब्याज</a></li>
+                <li><a class="{% if page.url contains '#Partnership' %}active{% endif %}" href="{{ '/competitive/mathematics-formulas/#Partnership' | relative_url }}">4. साझेदारी</a></li>
+                <li><a class="{% if page.url contains '#ProfitLoss' %}active{% endif %}" href="{{ '/competitive/mathematics-formulas/#ProfitLoss' | relative_url }}">5. लाभ और हानि</a></li>
+                <li><a class="{% if page.url contains '#SquareCube' %}active{% endif %}" href="{{ '/competitive/mathematics-formulas/#SquareCube' | relative_url }}">6. स्क्वेयर & क्यूब रूट</a></li>
+                <li><a class="{% if page.url contains '#TimeWork' %}active{% endif %}" href="{{ '/competitive/mathematics-formulas/#TimeWork' | relative_url }}">7. समय, दूरी और कार्य</a></li>
+                <li><a class="{% if page.url contains '#PipesCisterns' %}active{% endif %}" href="{{ '/competitive/mathematics-formulas/#PipesCisterns' | relative_url }}">8. पाइप और टंकी</a></li>
+                <li><a class="{% if page.url contains '#TrainProblems' %}active{% endif %}" href="{{ '/competitive/mathematics-formulas/#TrainProblems' | relative_url }}">9. रेलगाड़ी पर प्रश्न</a></li>
+                <li><a class="{% if page.url contains '#BoatsStreams' %}active{% endif %}" href="{{ '/competitive/mathematics-formulas/#BoatsStreams' | relative_url }}">10. नाव और धारा</a></li>
+                <li><a class="{% if page.url contains '#AgeProblems' %}active{% endif %}" href="{{ '/competitive/mathematics-formulas/#AgeProblems' | relative_url }}">11. आयु संबंधी प्रश्न</a></li>
+            {% endif %}
+
+
+            {% unless page.url contains '/class-12/' %}
+                <li class="purple-text">Class:12th</li>
+                <li><a href="{{ '/class-12/mathematics-formulas/#Relations-Functions' | relative_url }}">1. संबंध और फलन</a></li>
+                <li><a href="{{ '/class-12/mathematics-formulas/#Vector-Algebra' | relative_url }}">2. सदिश बीजगणित</a></li>
+                <li><a href="{{ '/class-12/mathematics-formulas/#Determinants' | relative_url }}">3. सारणिक</a></li>
+                <li><a href="{{ '/class-12/mathematics-formulas/#Continuity-Differentiability' | relative_url }}">4. सांतत्य और अवकलनीयता</a></li>
+                <li><a href="{{ '/class-12/mathematics-formulas/#Applications-Derivatives' | relative_url }}">6. अवकलज के अनुप्रयोग</a></li>
+                <li><a href="{{ '/class-12/mathematics-formulas/#Differential-Equations' | relative_url }}">7. अवकल समीकरण</a></li>
+                <li><a href="{{ '/class-12/mathematics-formulas/#Integrals' | relative_url }}">8. समाकलन</a></li>
+                <li><a href="{{ '/class-12/mathematics-formulas/#3D-Geometry' | relative_url }}">9. त्रिविमीय ज्यामिति</a></li>
+                <li><a href="{{ '/class-12/mathematics-formulas/#Linear-Programming' | relative_url }}">10. रेखीय प्रोग्रामिंग</a></li>
+                <li><a href="{{ '/class-12/mathematics-formulas/#Linear-Inequalities' | relative_url }}">11. रेखीय असमानताएँ</a></li>
+                <li><a href="{{ '/class-12/mathematics-formulas/#Statistics' | relative_url }}">12. सांख्यिकी</a></li>
+                <li><a href="{{ '/class-12/mathematics-formulas/#Probability' | relative_url }}">13. प्रायिकता</a></li>
+            {% endunless %}
+
+            {% unless page.url contains '/class-11/' %}
+                <li class="purple-text">Class:11th</li>
+                <li><a href="{{ '/class-11/mathematics-formulas/#Sets' | relative_url }}">1. समुच्चय</a></li>
+                <li><a href="{{ '/class-11/mathematics-formulas/#Relations-Functions' | relative_url }}">2. संबंध और फलन</a></li>
+                <li><a href="{{ '/class-11/mathematics-formulas/#Trigonometric-Functions' | relative_url }}">3. त्रिकोणमितीय फलन</a></li>
+                <li><a href="{{ '/class-11/mathematics-formulas/#Complex-Numbers' | relative_url }}">4. सम्मिश्र संख्याएँ</a></li>
+                <li><a href="{{ '/class-11/mathematics-formulas/#Quadratic-Equations' | relative_url }}">5. द्विघात समीकरण</a></li>
+                <li><a href="{{ '/class-11/mathematics-formulas/#Linear-Inequalities' | relative_url }}">6. रैखिक असमिकाएँ</a></li>
+                <li><a href="{{ '/class-11/mathematics-formulas/#Permutation-Combination' | relative_url }}">7. क्रमचय और संचय</a></li>
+                <li><a href="{{ '/class-11/mathematics-formulas/#Binomial-Theorem' | relative_url }}">8. द्विपद प्रमेय</a></li>
+                <li><a href="{{ '/class-11/mathematics-formulas/#Sequence-Series' | relative_url }}">9. अनुक्रम और श्रेणी</a></li>
+                <li><a href="{{ '/class-11/mathematics-formulas/#Straight-Lines' | relative_url }}">10. सरल रेखाएँ</a></li>
+                <li><a href="{{ '/class-11/mathematics-formulas/#Conic-Sections' | relative_url }}">11. शंकवक्र</a></li>
+                <li><a href="{{ '/class-11/mathematics-formulas/#Introduction-3D-Geometry' | relative_url }}">12. त्रिविमीय ज्यामिति</a></li>
+                <li><a href="{{ '/class-11/mathematics-formulas/#Limits' | relative_url }}">13. सीमाएँ</a></li>
+                <li><a href="{{ '/class-11/mathematics-formulas/#Derivatives' | relative_url }}">14. अवकलज</a></li>
+                <li><a href="{{ '/class-11/mathematics-formulas/#Statistics' | relative_url }}">15. सांख्यिकी</a></li>
+                <li><a href="{{ '/class-11/mathematics-formulas/#Probability' | relative_url }}">16. प्रायिकता</a></li>
+            {% endunless %}
+
+            {% unless page.url contains '/class-10/' %}
+                <li class="purple-text">Class:10th</li>
+                <li><a href="{{ '/class-10/mathematics-formulas/#Real-Number' | relative_url }}">1. वास्तविक संख्याएँ</a></li>
+                <li><a href="{{ '/class-10/mathematics-formulas/#Polynomials' | relative_url }}">2. बहुपद</a></li>
+                <li><a href="{{ '/class-10/mathematics-formulas/#Pairs-Linear_Equations' | relative_url }}">3. दो चर वाले रैखिक समीकरण</a></li>
+                <li><a href="{{ '/class-10/mathematics-formulas/#Quadratic-Equations' | relative_url }}">4. द्विघात समीकरण</a></li>
+                <li><a href="{{ '/class-10/mathematics-formulas/#Arithmetic-Progression' | relative_url }}">5. अंकगणितीय प्रगति</a></li>
+                <li><a href="{{ '/class-10/mathematics-formulas/#Trigonometry' | relative_url }}">6. त्रिकोणमिति</a></li>
+                <li><a href="{{ '/class-10/mathematics-formulas/#Circles' | relative_url }}">7. वृत्त</a></li>
+                <li><a href="{{ '/class-10/mathematics-formulas/#Constructions' | relative_url }}">8. रचनाएँ</a></li>
+                <li><a href="{{ '/class-10/mathematics-formulas/#Mensuration' | relative_url }}">9. पृष्ठ क्षेत्रफल और आयतन</a></li>
+                <li><a href="{{ '/class-10/mathematics-formulas/#Statistics' | relative_url }}">10. सांख्यिकी</a></li>
+                <li><a href="{{ '/class-10/mathematics-formulas/#Probability' | relative_url }}">11. प्रायिकता</a></li>
+            {% endunless %}
+
+            {% unless page.url contains '/class-9/' %}
+                <li class="purple-text">Class:9th</li>
+                <li><a href="{{ '/class-9/mathematics-formulas/#Number-System' | relative_url }}">1. संख्या पद्धति</a></li>
+                <li><a href="{{ '/class-9/mathematics-formulas/#Polynomials' | relative_url }}">2. बहुपद</a></li>
+                <li><a href="{{ '/class-9/mathematics-formulas/#Coordinate-Geometry' | relative_url }}">3. निर्देशांक ज्यामिति</a></li>
+                <li><a href="{{ '/class-9/mathematics-formulas/#Linear-Equations' | relative_url }}">4. एक चर वाले रैखिक समीकरण</a></li>
+                <li><a href="{{ '/class-9/mathematics-formulas/#Lines-Angles' | relative_url }}">5. रेखाएँ और कोण</a></li>
+                <li><a href="{{ '/class-9/mathematics-formulas/#Triangles' | relative_url }}">6. त्रिभुज</a></li>
+                <li><a href="{{ '/class-9/mathematics-formulas/#Quadrilaterals' | relative_url }}">7. चतुर्भुज</a></li>
+                <li><a href="{{ '/class-9/mathematics-formulas/#Circles' | relative_url }}">8. वृत्त</a></li>
+                <li><a href="{{ '/class-9/mathematics-formulas/#Mensuration' | relative_url }}">9. क्षेत्रमिति</a></li>
+                <li><a href="{{ '/class-9/mathematics-formulas/#Statistics' | relative_url }}">10. सांख्यिकी</a></li>
+                <li><a href="{{ '/class-9/mathematics-formulas/#Probability' | relative_url }}">11. प्रायिकता</a></li>
+                <li><a href="{{ '/class-9/mathematics-formulas/#Surface-Volume' | relative_url }}">12. पृष्ठ क्षेत्रफल और आयतन</a></li>
+            {% endunless %}
+
+            {% unless page.url contains '/competitive/' %}
+                <li class="purple-text">6th-10th + Competitive</li>
+                <li><a href="{{ '/competitive/mathematics-formulas/#Percentage' | relative_url }}">1. प्रतिशत</a></li>
+                <li><a href="{{ '/competitive/mathematics-formulas/#SimpleInterest' | relative_url }}">2. साधारण ब्याज</a></li>
+                <li><a href="{{ '/competitive/mathematics-formulas/#CompoundInterest' | relative_url }}">3. चक्रवृद्धि ब्याज</a></li>
+                <li><a href="{{ '/competitive/mathematics-formulas/#Partnership' | relative_url }}">4. साझेदारी</a></li>
+                <li><a href="{{ '/competitive/mathematics-formulas/#ProfitLoss' | relative_url }}">5. लाभ और हानि</a></li>
+                <li><a href="{{ '/competitive/mathematics-formulas/#SquareCube' | relative_url }}">6. स्क्वेयर & क्यूब रूट</a></li>
+                <li><a href="{{ '/competitive/mathematics-formulas/#TimeWork' | relative_url }}">7. समय, दूरी और कार्य</a></li>
+                <li><a href="{{ '/competitive/mathematics-formulas/#PipesCisterns' | relative_url }}">8. पाइप और टंकी</a></li>
+                <li><a href="{{ '/competitive/mathematics-formulas/#TrainProblems' | relative_url }}">9. रेलगाड़ी पर प्रश्न</a></li>
+                <li><a href="{{ '/competitive/mathematics-formulas/#BoatsStreams' | relative_url }}">10. नाव और धारा</a></li>
+                <li><a href="{{ '/competitive/mathematics-formulas/#AgeProblems' | relative_url }}">11. आयु संबंधी प्रश्न</a></li>
+            {% endunless %}
+
+        </ul>
+    </nav>
+</aside>
