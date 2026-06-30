@@ -239,13 +239,13 @@ layout: default
 <div class="page-wrapper">
     
     <div class="left-sidebar-wrapper" id="leftMasterSidebar">
-        {% case page.learn_type %}
+      {% case page.learn_type %}
           {% when "vyakaran" %}
             {% include sidebars/vyakaran.html %}
           {% when "conversion" %}
             {% include sidebars/conversion.html %}
-          {% else %}
-            {% include sidebars/vyakaran.html %}
+          {% when "formula" %}
+            {% include sidebars/maths.html %}
         {% endcase %}
     </div>
 
