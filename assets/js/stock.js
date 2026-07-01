@@ -1,13 +1,13 @@
 /**
- * TyagiHub Stock — Live Apps Script Integration Engine
+ * TyagiHub Stock — Production Core Controller (GAS Linked)
  * File: assets/js/stock.js
  * ============================================================
  */
 
 'use strict';
 
-// 🌐 1. GOOGLE APPS SCRIPT CORE ENDPOINT
-const GAS_API_URL = 'https://script.google.com/macros/s/AKfycbwMvhfXJh89ELEdsJ4QXotz7QtiGsFG4qk091hGbBHsmkXDKsQ5a4FzCm5X8NZU3fXa/exec';
+// 🌐 1. TERA EKDUM FRESH LIVE GOOGLE APPS SCRIPT WEB APP LINK BSDK
+const GAS_API_URL = 'https://script.google.com/macros/s/AKfycbyb1vvwqcDIp4NxQ73nMx85dGg5XpT0C8OEorKr-aR4ZfaB4EVPJLzlGgMsdYFMo5ur/exec';
 
 /* ============================================================
    STATE MANAGEMENT
@@ -20,7 +20,7 @@ const StockState = {
   view: 'grid',
   searchQuery: '',
   page: 1,
-  perPage: 12, // Google Sheet caching ke liye ideal load size
+  perPage: 12, 
   totalAssets: 0,
   totalPages: 1,
   allFetchedData: [], // Client-side memory caching to avoid spreadsheet lag
@@ -30,7 +30,7 @@ const StockState = {
 };
 
 /* ============================================================
-   CORE ASSET FETCH ENGINE (With Full Client-Side Filtering)
+   CORE ASSET FETCH ENGINE (With Redirect Follow Rule bsdk)
    ============================================================ */
 async function loadAssets() {
   if (StockState.isLoading) return;
@@ -38,14 +38,18 @@ async function loadAssets() {
   showSkeletons();
 
   try {
-    // Agar local cache memory empty hai toh hi server se data khincho 
+    // Agar local memory cache empty hai toh hi hit marega bsdk
     if (StockState.allFetchedData.length === 0) {
-      const response = await fetch(`${GAS_API_URL}?action=getAssets`);
+      // 🔥 REDIRECT FOLLOW ENGINE INTERACTION APPLIED
+      const response = await fetch(`${GAS_API_URL}?action=getAssets`, {
+        method: "GET",
+        redirect: "follow"
+      });
       if (!response.ok) throw new Error('Spreadsheet network refusal.');
       StockState.allFetchedData = await response.json();
     }
 
-    // 🏎️ AUTOMATIC CLIENT FILTER WRAPPER (Saves Spreadsheet processing quota)
+    // 🏎️ AUTOMATIC CLIENT SIDE FILTER ENGINE
     let filtered = StockState.allFetchedData.filter(asset => {
       const matchCat = StockState.category === 'all' || asset.category === StockState.category;
       const matchPrice = StockState.priceType === 'all' || asset.priceType === StockState.priceType;
@@ -53,13 +57,12 @@ async function loadAssets() {
       
       const q = StockState.searchQuery.toLowerCase();
       const matchSearch = !StockState.searchQuery || 
-                          asset.title.toLowerCase().includes(q) ||
-                          asset.description.toLowerCase().includes(q) ||
-                          (asset.tags && asset.tags.toLowerCase().includes(q));
+                          String(asset.title).toLowerCase().includes(q) ||
+                          String(asset.description).toLowerCase().includes(q);
       return matchCat && matchPrice && matchType && matchSearch;
     });
 
-    // 🎛️ SORT COMPILER
+    // 🎛️ SORT SYSTEM SWITCH
     if (StockState.sortBy === 'newest') {
       filtered.sort((a, b) => new Date(b.dateAdded) - new Date(a.dateAdded));
     } else if (StockState.sortBy === 'name-asc') {
@@ -70,7 +73,7 @@ async function loadAssets() {
       filtered.sort((a, b) => (parseInt(b.popularity) || 0) - (parseInt(a.popularity) || 0));
     }
 
-    // 📄 PAGINATION RANGE SELECTOR
+    // 📄 PAGINATION SEGMENTATION
     StockState.totalAssets = filtered.length;
     StockState.totalPages = Math.ceil(filtered.length / StockState.perPage) || 1;
     
@@ -86,7 +89,7 @@ async function loadAssets() {
 
   } catch (err) {
     console.error('[Stock Engine Error]:', err);
-    showError('Google Cloud server connection error. ');
+    showError('Google Cloud connection trace dropped. Refresh bsdk.');
   } finally {
     StockState.isLoading = false;
   }
@@ -101,7 +104,7 @@ function loadAssetDetail(id) {
 }
 
 /* ============================================================
-   SKELETON RENDERER
+   SKELETON ANIMATION LAYER
    ============================================================ */
 function showSkeletons() {
   const grid = document.getElementById('asset-grid');
@@ -117,11 +120,12 @@ function showSkeletons() {
     </div>
   `).join('');
   grid.className = `asset-grid ${StockState.view === 'list' ? 'list-view' : ''}`;
-  document.getElementById('stock-empty').style.display = 'none';
+  const emptyEl = document.getElementById('stock-empty');
+  if (emptyEl) emptyEl.style.display = 'none';
 }
 
 /* ============================================================
-   GRID COMPILER & CARD RENDERER
+   GRID RENDER COMPILER
    ============================================================ */
 function renderGrid(assets) {
   const grid = document.getElementById('asset-grid');
@@ -151,15 +155,11 @@ function renderCard(asset) {
   const priceText = asset.priceType === 'free' ? 'FREE' : `₹${asset.priceAmount}`;
   const priceClass = asset.priceType === 'free' ? 'free' : 'paid';
 
-  const badgeHtml = `
-    <span class="asset-badge asset-badge--${asset.priceType}">${asset.priceType === 'free' ? 'Free' : 'Paid'}</span>
-  `;
-
   return `
     <div class="asset-card" data-id="${asset.id}" role="article" tabindex="0">
       <div class="asset-card__thumb">
         ${asset.thumbnailId ? `<img src="https://docs.google.com/uc?export=download&id=${asset.thumbnailId}" alt="${asset.title}" loading="lazy">` : `<div class="asset-card__thumb-placeholder">${asset.emoji || '📦'}</div>`}
-        <div class="asset-card__badges">${badgeHtml}</div>
+        <div class="asset-card__badges"><span class="asset-badge asset-badge--${asset.priceType}">${asset.priceType === 'free' ? 'Free' : 'Paid'}</span></div>
         <div class="asset-card__overlay">
           <button class="asset-overlay-btn asset-overlay-btn--primary" onclick="handleDownload(event,'${asset.id}')">⬇ Download</button>
           <button class="asset-overlay-btn asset-overlay-btn--secondary" onclick="openDetailModal('${asset.id}')">👁 Details</button>
@@ -194,7 +194,7 @@ function escHtml(str) {
 }
 
 /* ============================================================
-   DYNAMIC DETAILED MODAL LAYER
+   AMAZON STYLE INTERACTION DETAIL MODAL
    ============================================================ */
 function createDetailModal() {
   if (document.getElementById('asset-detail-modal')) return;
@@ -225,7 +225,7 @@ function openDetailModal(id) {
 
   const result = loadAssetDetail(id);
   if (!result) {
-    body.innerHTML = `<div class="adm-error">Asset matching local index data corrupted.</div>`;
+    body.innerHTML = `<div class="adm-error">Data sync broken bsdk.</div>`;
     return;
   }
 
@@ -236,7 +236,6 @@ function openDetailModal(id) {
   const priceText = asset.priceType === 'free' ? 'FREE' : `₹${asset.priceAmount}`;
   const priceClass = asset.priceType === 'free' ? 'free' : 'paid';
 
-  // Format comma separated features from sheet dynamically 
   const featuresHtml = asset.features ? String(asset.features).split(',').map(f => `<li class="adm-feature-item">✓ ${escHtml(f.trim())}</li>`).join('') : '';
 
   const relatedHtml = related.slice(0, 4).map(r => `
@@ -294,7 +293,7 @@ function closeDetailModal() {
 }
 
 /* ============================================================
-   BYPASS-PROOF DOWNLOAD & TWO-INPUT SEMI-REAL PAYMENT FLOW
+   BYPASS-PROOF REDIRECT DOWNLOAD STREAM PIPELINE
    ============================================================ */
 window.handleDownload = async function(event, id) {
   if (event) event.stopPropagation();
@@ -303,7 +302,7 @@ window.handleDownload = async function(event, id) {
   if (!target) return;
 
   if (target.priceType === 'free') {
-    await executeSecureStream(target, '', '');
+    await executeSecureStream(target, 'Free_Guest', 'N/A');
   } else {
     openPaymentModal(target);
   }
@@ -331,7 +330,7 @@ function openPaymentModal(asset) {
           <div class="pm-qr-icon">📱</div>
           <div class="pm-qr-text">Scan QR to Pay via UPI</div>
           <div class="pm-qr-box">
-             <div style="padding:12px; font-size:13px; color:var(--clr-text-2);">
+             <div style="padding:12px; font-size:13px; color:var(--clr-text-2); text-align:center;">
                UPI ID: <strong style="color:var(--clr-accent);">tyagihub@upi</strong><br>
                Amount: <strong>₹${asset.priceAmount}</strong>
              </div>
@@ -339,17 +338,16 @@ function openPaymentModal(asset) {
         </div>
       </div>
       
-      <!-- 🛠️ TWO INPUT FLOW SETUP  -->
       <div class="pm-code-section" style="display:flex; flex-direction:column; gap:12px;">
         <div>
           <label class="pm-code-label">1. Contact Mobile / Email Address</label>
-          <input id="pm-user-input" class="pm-code-input" type="text" placeholder="Enter your mobile or email" style="letter-spacing:0; font-family:inherit;">
+          <input id="pm-user-input" class="pm-code-input" type="text" placeholder="Enter your mobile or email" style="letter-spacing:0;">
         </div>
         <div>
           <label class="pm-code-label">2. UPI Transaction ID / Reference No.</label>
           <input id="pm-tx-input" class="pm-code-input" type="text" placeholder="12-digit UPI Transaction Ref ID" maxlength="30">
         </div>
-        <div class="pm-error" id="pm-error" style="display:none; color:var(--clr-danger);"></div>
+        <div class="pm-error" id="pm-error" style="display:none; color:var(--clr-danger); font-size:12px; margin-top:4px;"></div>
       </div>
 
       <button class="pm-submit-btn" id="pm-submit-btn" style="margin-top:16px;">Verify TxID &amp; Download</button>
@@ -368,7 +366,7 @@ function openPaymentModal(asset) {
     const errorEl = document.getElementById('pm-error');
 
     if (!userInput || !txInput) {
-      errorEl.textContent = "Both Inputs are mandatory !";
+      errorEl.textContent = "Both inputs are mandatory bsdk!";
       errorEl.style.display = "block";
       return;
     }
@@ -380,7 +378,7 @@ function openPaymentModal(asset) {
 
     const success = await executeSecureStream(asset, userInput, txInput);
     if (success) {
-      setTimeout(() => modal.remove(), 1000);
+      setTimeout(() => modal.remove(), 800);
     } else {
       submitBtn.disabled = false;
       submitBtn.textContent = "Verify TxID & Download";
@@ -388,14 +386,11 @@ function openPaymentModal(asset) {
   });
 }
 
-/**
- * 🔥 VIRTUAL BLOB CONVERSION STREAM PIPELINE (Bypass Proof)
- */
 async function executeSecureStream(asset, userIdentifier, txId) {
   const downloadBtn = document.getElementById('adm-download-btn');
   const errorEl = document.getElementById('pm-error');
   
-  if (downloadBtn) { downloadBtn.disabled = true; downloadBtn.innerHTML = '⏳ Stream Building...'; }
+  if (downloadBtn) { downloadBtn.disabled = true; downloadBtn.innerHTML = '⏳ Injecting Stream...'; }
 
   try {
     const params = new URLSearchParams({
@@ -407,8 +402,11 @@ async function executeSecureStream(asset, userIdentifier, txId) {
       type: asset.priceType
     });
 
-    // Hit the live Google Apps Script web app URL
-    const response = await fetch(`${GAS_API_URL}?${params}`);
+    // 🔥 DYNAMIC REDIRECT CRITICAL INSTRUCTION MATCH bsdk
+    const response = await fetch(`${GAS_API_URL}?${params}`, {
+      method: "GET",
+      redirect: "follow"
+    });
     const streamPayload = await response.text();
 
     if (streamPayload.startsWith("Error")) {
@@ -421,7 +419,7 @@ async function executeSecureStream(asset, userIdentifier, txId) {
       return false;
     }
 
-    // Binary decryption loop (Base64 data decryption)
+    // Binary decryption pipeline
     const byteCharacters = atob(streamPayload);
     const byteNumbers = new Array(byteCharacters.length);
     for (let i = 0; i < byteCharacters.length; i++) {
@@ -436,7 +434,6 @@ async function executeSecureStream(asset, userIdentifier, txId) {
     const fileBlob = new Blob([byteArray], { type: mimeType });
     const virtualBlobUrl = URL.createObjectURL(fileBlob);
 
-    // Dynamic virtual download simulation
     const a = document.createElement('a');
     a.href = virtualBlobUrl;
     a.download = asset.title;
@@ -450,7 +447,7 @@ async function executeSecureStream(asset, userIdentifier, txId) {
   } catch (err) {
     console.error(err);
     if (errorEl) {
-      errorEl.textContent = "Network trace dropped by Google firewall.";
+      errorEl.textContent = "Network trace dropped by Google firewall rules.";
       errorEl.style.display = "block";
     }
     return false;
@@ -460,7 +457,7 @@ async function executeSecureStream(asset, userIdentifier, txId) {
 }
 
 /* ============================================================
-   PAGINATION, WISHLIST, AND FILTERS EVENT LISTENERS
+   FILTERS, SORTING AND EVENT BINDINGS
    ============================================================ */
 function renderPagination() {
   const el = document.getElementById('stock-pagination');
@@ -489,7 +486,6 @@ window.goPage = function(p) {
 window.toggleWish = function(event, id, btn) {
   if (event) event.stopPropagation();
   id = parseInt(id);
-
   if (StockState.wishlist.has(id)) {
     StockState.wishlist.delete(id);
     if (btn) { btn.innerHTML = btn.id === 'adm-wish-btn' ? '🤍 Save' : '🤍'; btn.classList.remove('active'); }
@@ -508,7 +504,6 @@ function renderActiveChips() {
   StockState.fileTypes.forEach(t => chips.push({ label: `Type: ${t.toUpperCase()}`, key: `type:${t}` }));
   if (StockState.category !== 'all') chips.push({ label: `Category: ${StockState.category}`, key: 'category' });
   if (StockState.searchQuery) chips.push({ label: `"${StockState.searchQuery}"`, key: 'search' });
-
   el.innerHTML = chips.map(c => `<button class="active-filter-chip" onclick="removeFilter('${c.key}')">${escHtml(c.label)} <span class="active-filter-chip__remove">✕</span></button>`).join('');
 }
 
@@ -523,7 +518,7 @@ window.removeFilter = function(key) {
 document.addEventListener('DOMContentLoaded', () => {
   loadAssets();
 
-  // Category Bar Binding
+  // Categories Sidebar/Navbar Engine
   document.querySelectorAll('.stock-catbar__item').forEach(el => {
     el.addEventListener('click', () => {
       StockState.category = el.dataset.cat || 'all';
@@ -533,7 +528,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // Price Toggles
+  // Price toggles
   document.querySelectorAll('.price-toggle__btn').forEach(btn => {
     btn.addEventListener('click', () => {
       document.querySelectorAll('.price-toggle__btn').forEach(b => b.classList.remove('active'));
@@ -544,7 +539,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // Checkboxes for formats
+  // Type bindings
   document.querySelectorAll('input[data-type]').forEach(cb => {
     cb.addEventListener('change', () => {
       if (cb.checked) StockState.fileTypes.add(cb.dataset.type);
@@ -554,7 +549,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // Sorting Handler
+  // Sort Selector
   const sortSelect = document.getElementById('stock-sort');
   sortSelect?.addEventListener('change', () => {
     StockState.sortBy = sortSelect.value;
@@ -562,7 +557,7 @@ document.addEventListener('DOMContentLoaded', () => {
     loadAssets();
   });
 
-  // View Layout Toggles (Grid/List)
+  // Grid/List toggle handler
   document.querySelectorAll('.view-toggle__btn').forEach(btn => {
     btn.addEventListener('click', () => {
       document.querySelectorAll('.view-toggle__btn').forEach(b => b.classList.remove('active'));
@@ -572,7 +567,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // Search Engine Buffering
+  // Buffering Live Search Layout
   let searchTimer;
   document.getElementById('stock-search-input')?.addEventListener('input', (e) => {
     clearTimeout(searchTimer);
