@@ -38,7 +38,7 @@ async function loadAssets() {
   showSkeletons();
 
   try {
-    // Agar local cache memory empty hai toh hi server se data khincho bsdk
+    // Agar local cache memory empty hai toh hi server se data khincho 
     if (StockState.allFetchedData.length === 0) {
       const response = await fetch(`${GAS_API_URL}?action=getAssets`);
       if (!response.ok) throw new Error('Spreadsheet network refusal.');
@@ -86,7 +86,7 @@ async function loadAssets() {
 
   } catch (err) {
     console.error('[Stock Engine Error]:', err);
-    showError('Google Cloud server connection error. Refresh bsdk.');
+    showError('Google Cloud server connection error. ');
   } finally {
     StockState.isLoading = false;
   }
@@ -225,7 +225,7 @@ function openDetailModal(id) {
 
   const result = loadAssetDetail(id);
   if (!result) {
-    body.innerHTML = `<div class="adm-error">Asset matching local index data corrupted bsdk.</div>`;
+    body.innerHTML = `<div class="adm-error">Asset matching local index data corrupted.</div>`;
     return;
   }
 
@@ -236,7 +236,7 @@ function openDetailModal(id) {
   const priceText = asset.priceType === 'free' ? 'FREE' : `₹${asset.priceAmount}`;
   const priceClass = asset.priceType === 'free' ? 'free' : 'paid';
 
-  // Format comma separated features from sheet dynamically bsdk
+  // Format comma separated features from sheet dynamically 
   const featuresHtml = asset.features ? String(asset.features).split(',').map(f => `<li class="adm-feature-item">✓ ${escHtml(f.trim())}</li>`).join('') : '';
 
   const relatedHtml = related.slice(0, 4).map(r => `
@@ -339,7 +339,7 @@ function openPaymentModal(asset) {
         </div>
       </div>
       
-      <!-- 🛠️ TWO INPUT FLOW SETUP BSDK -->
+      <!-- 🛠️ TWO INPUT FLOW SETUP  -->
       <div class="pm-code-section" style="display:flex; flex-direction:column; gap:12px;">
         <div>
           <label class="pm-code-label">1. Contact Mobile / Email Address</label>
@@ -368,7 +368,7 @@ function openPaymentModal(asset) {
     const errorEl = document.getElementById('pm-error');
 
     if (!userInput || !txInput) {
-      errorEl.textContent = "Both Inputs are mandatory bsdk!";
+      errorEl.textContent = "Both Inputs are mandatory !";
       errorEl.style.display = "block";
       return;
     }
