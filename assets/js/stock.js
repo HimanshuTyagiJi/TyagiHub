@@ -6,7 +6,7 @@
 
 'use strict';
 
-// 🌐 1. TERA EKDUM FRESH LIVE GOOGLE APPS SCRIPT WEB APP LINK BSDK
+// 🌐 1. TERA EKDUM FRESH LIVE GOOGLE APPS SCRIPT WEB APP LINK 
 const GAS_API_URL = 'https://script.google.com/macros/s/AKfycbyb1vvwqcDIp4NxQ73nMx85dGg5XpT0C8OEorKr-aR4ZfaB4EVPJLzlGgMsdYFMo5ur/exec';
 
 /* ============================================================
@@ -30,7 +30,7 @@ const StockState = {
 };
 
 /* ============================================================
-   CORE ASSET FETCH ENGINE (With Redirect Follow Rule bsdk)
+   CORE ASSET FETCH ENGINE (With Redirect Follow Rule )
    ============================================================ */
 async function loadAssets() {
   if (StockState.isLoading) return;
@@ -38,7 +38,7 @@ async function loadAssets() {
   showSkeletons();
 
   try {
-    // Agar local memory cache empty hai toh hi hit marega bsdk
+    // Agar local memory cache empty hai toh hi hit marega 
     if (StockState.allFetchedData.length === 0) {
       // 🔥 REDIRECT FOLLOW ENGINE INTERACTION APPLIED
       const response = await fetch(`${GAS_API_URL}?action=getAssets`, {
@@ -89,7 +89,7 @@ async function loadAssets() {
 
   } catch (err) {
     console.error('[Stock Engine Error]:', err);
-    showError('Google Cloud connection trace dropped. Refresh bsdk.');
+    showError('Google Cloud connection trace dropped. Refresh .');
   } finally {
     StockState.isLoading = false;
   }
@@ -225,7 +225,7 @@ function openDetailModal(id) {
 
   const result = loadAssetDetail(id);
   if (!result) {
-    body.innerHTML = `<div class="adm-error">Data sync broken bsdk.</div>`;
+    body.innerHTML = `<div class="adm-error">Data sync broken .</div>`;
     return;
   }
 
@@ -366,7 +366,7 @@ function openPaymentModal(asset) {
     const errorEl = document.getElementById('pm-error');
 
     if (!userInput || !txInput) {
-      errorEl.textContent = "Both inputs are mandatory bsdk!";
+      errorEl.textContent = "Both inputs are mandatory !";
       errorEl.style.display = "block";
       return;
     }
@@ -402,7 +402,7 @@ async function executeSecureStream(asset, userIdentifier, txId) {
       type: asset.priceType
     });
 
-    // 🔥 DYNAMIC REDIRECT CRITICAL INSTRUCTION MATCH bsdk
+    // 🔥 DYNAMIC REDIRECT CRITICAL INSTRUCTION MATCH 
     const response = await fetch(`${GAS_API_URL}?${params}`, {
       method: "GET",
       redirect: "follow"
