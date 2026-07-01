@@ -1,5 +1,5 @@
 /**
- * TyagiHub Stock — Production Core Controller (V2 Dynamic Extensions Loaded)
+ * TyagiHub Stock — Production Core Controller (V3 Corrupt Format Fixed)
  * File: assets/js/stock.js
  * ============================================================================
  */
@@ -25,7 +25,7 @@ const StockState = {
   currentAsset: null,
 };
 
-// Map file types to correct structural modern mime-types dynamically
+// Strict Corporate Standard MIME Mapping Hook
 const MimeMap = {
   'pdf': 'application/pdf',
   'docx': 'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
@@ -90,6 +90,8 @@ async function loadAssets() {
     const countEl = document.getElementById('result-count');
     if (countEl) countEl.textContent = StockState.totalAssets.toLocaleString('en-IN');
 
+    checkUrlParams();
+
   } catch (err) {
     console.error('[Stock Engine Error]:', err);
     showError('Connection dropped. Please refresh the page.');
@@ -139,9 +141,13 @@ function renderGrid(assets) {
 
   grid.querySelectorAll('.asset-card').forEach(card => {
     card.addEventListener('click', e => {
-      // Mobile / Tablet touch safety layout triggers details overlay instantly
-      if (e.target.closest('.asset-overlay-btn') || e.target.closest('.asset-card__wish')) return;
-      openDetailModal(card.dataset.id);
+      if (e.target.closest('.asset-card__wish')) return;
+      
+      const assetId = card.dataset.id;
+      const newUrl = window.location.protocol + "//" + window.location.host + window.location.pathname + '?id=' + assetId;
+      window.history.pushState({ path: newUrl }, '', newUrl);
+      
+      openDetailModal(assetId);
     });
   });
 }
@@ -152,14 +158,10 @@ function renderCard(asset) {
   const priceClass = asset.priceType === 'free' ? 'free' : 'paid';
 
   return `
-    <div class="asset-card" data-id="${asset.id}" role="article" tabindex="0">
+    <div class="asset-card" data-id="${asset.id}" role="article" tabindex="0" style="cursor: pointer;">
       <div class="asset-card__thumb">
         ${asset.thumbnailId ? `<img src="https://docs.google.com/uc?export=download&id=${asset.thumbnailId}" alt="${asset.title}" loading="lazy">` : `<div class="asset-card__thumb-placeholder">${asset.emoji || '📦'}</div>`}
         <div class="asset-card__badges"><span class="asset-badge asset-badge--${asset.priceType}">${asset.priceType === 'free' ? 'Free' : 'Paid'}</span></div>
-        <div class="asset-card__overlay">
-          <button class="asset-overlay-btn asset-overlay-btn--primary" onclick="handleDownload(event,'${asset.id}', this)">⬇ Download</button>
-          <button class="asset-overlay-btn asset-overlay-btn--secondary" onclick="openDetailModal('${asset.id}')">👁 Details</button>
-        </div>
         <button class="asset-card__wish ${isWished ? 'active' : ''}" onclick="toggleWish(event,'${asset.id}',this)">
           ${isWished ? '❤️' : '🤍'}
         </button>
@@ -175,13 +177,21 @@ function renderCard(asset) {
   `;
 }
 
+function checkUrlParams() {
+  const urlParams = new URLSearchParams(window.location.search);
+  const assetId = urlParams.get('id');
+  if (assetId && StockState.allFetchedData.some(a => a.id == assetId)) {
+    openDetailModal(assetId);
+  }
+}
+
 function showError(msg) {
   const grid = document.getElementById('asset-grid');
   if (grid) grid.innerHTML = `<div style="padding:2rem;color:var(--clr-danger);grid-column:1/-1;">${msg}</div>`;
 }
 
 function getTypeIcon(type) {
-  const icons = { svg: '🔷', image: '🖼️', video: '🎬', pdf: '📄', ppt: '📊', docx: '📝', doc: '📝', other: '📦' };
+  const icons = { svg: '🔷', image: '🖼️', video: '🎬', pdf: '📄', ppt: '📊', docx: '📝', doc: '📝', zip: '📦', other: '📦' };
   return icons[type] || '📦';
 }
 
@@ -283,6 +293,9 @@ function closeDetailModal() {
   if (modal) modal.classList.remove('open');
   document.body.style.overflow = '';
   StockState.currentAsset = null;
+  
+  const cleanUrl = window.location.protocol + "//" + window.location.host + window.location.pathname;
+  window.history.pushState({ path: cleanUrl }, '', cleanUrl);
 }
 
 window.handleDownload = async function(event, id, element) {
@@ -292,12 +305,11 @@ window.handleDownload = async function(event, id, element) {
   if (!target) return;
 
   if (target.priceType === 'free') {
-    // LOCK SYSTEM: If it is a direct external path (GitHub or Docs), bypass cloud stream instantly
     if (String(target.driveFileId).startsWith('http')) {
       updateButtonLoading(element, true);
       const a = document.createElement('a');
       a.href = target.driveFileId;
-      a.download = `${target.title}.${target.fileType || 'docx'}`;
+      // 🛠️ SMART BYPASS: Open directly via link layout
       document.body.appendChild(a);
       a.click();
       a.remove();
@@ -316,7 +328,7 @@ function updateButtonLoading(btn, isLoading) {
     btn.style.pointerEvents = 'none';
     btn.style.opacity = '0.6';
     btn.dataset.oldHtml = btn.innerHTML;
-    btn.innerHTML = '⏳ Fetching Bytes... Do Not Click Again';
+    btn.innerHTML = '⏳ Processing Download Chunks...';
   } else {
     btn.style.pointerEvents = 'auto';
     btn.style.opacity = '1';
@@ -442,16 +454,30 @@ async function executeSecureStream(asset, userIdentifier, txId, triggerOriginBtn
     }
     const byteArray = new Uint8Array(byteNumbers);
     
-    // Dynamic Extension Extractor Pipeline
-    const detectedMime = MimeMap[String(asset.fileType).toLowerCase()] || 'application/octet-stream';
+    // 🎯 100% REAL EXTENSION AUTOMAPPING PIPELINE
+    // Extract exact extension from the format input row or check MIME
+    let targetExt = String(asset.format || 'docx').toLowerCase().trim();
+    if (targetExt.includes('png')) targetExt = 'png';
+    else if (targetExt.includes('jpg') || targetExt.includes('jpeg')) targetExt = 'jpg';
+    else if (targetExt.includes('svg')) targetExt = 'svg';
+    else if (targetExt.includes('mp4') || targetExt.includes('video')) targetExt = 'mp4';
+    else if (targetExt.includes('pdf')) targetExt = 'pdf';
+    else if (targetExt.includes('zip')) targetExt = 'zip';
+    else if (targetExt.includes('doc') || targetExt.includes('word')) targetExt = 'docx';
+    else if (targetExt.includes('ppt') || targetExt.includes('powerpoint')) targetExt = 'pptx';
+    else targetExt = 'docx'; // Fallback extension safety block
+
+    const detectedMime = MimeMap[targetExt] || 'application/octet-stream';
     const fileBlob = new Blob([byteArray], { type: detectedMime });
     const virtualBlobUrl = URL.createObjectURL(fileBlob);
 
     const a = document.createElement('a');
     a.href = virtualBlobUrl;
-    // Map extension right over download filename layer
-    const ext = asset.fileType || 'docx';
-    a.download = String(asset.title).endsWith(`.${ext}`) ? asset.title : `${asset.title}.${ext}`;
+    
+    // Clean download file layer structure
+    const cleanTitle = String(asset.title).replace(/\.[^/.]+$/, "");
+    a.download = `${cleanTitle}.${targetExt}`;
+    
     document.body.appendChild(a);
     a.click();
     a.remove();
