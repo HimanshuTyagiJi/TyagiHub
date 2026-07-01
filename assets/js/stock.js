@@ -1,5 +1,5 @@
 /**
- * TyagiHub Stock — Production Core Controller (V5 Ultra-Smart Thumbnail Engine Loaded)
+ * TyagiHub Stock — Production Core Controller (V7 100% COMPLETE NO BUCK PASSING BLOCK)
  * File: assets/js/stock.js
  * ============================================================================
  */
@@ -38,6 +38,21 @@ const MimeMap = {
   'ppt': 'application/vnd.openxmlformats-officedocument.presentationml.presentation',
   'pptx': 'application/vnd.openxmlformats-officedocument.presentationml.presentation'
 };
+
+// Helper function to extract drive ID on frontend layer securely bsdk
+function getCleanDriveId(linkOrId) {
+  let cleanId = String(linkOrId || '').trim();
+  if (cleanId.includes('http')) {
+    if (cleanId.includes('id=')) {
+      cleanId = cleanId.split('id=')[1].split('&')[0];
+    } else if (cleanId.includes('/d/')) {
+      cleanId = cleanId.split('/d/')[1].split('/')[0];
+    } else if (cleanId.includes('folders/')) {
+      cleanId = cleanId.split('folders/')[1].split('?')[0];
+    }
+  }
+  return cleanId;
+}
 
 function slugify(text) {
   return String(text)
@@ -166,23 +181,29 @@ function renderGrid(assets) {
 }
 
 /**
- * 🕵️‍♂️ ULTRA-SMART THUMBNAIL EXTRACTOR PIPELINE BSDK
- * Maps any variant of thumbnail inputs right into a standard HTML visual layer
+ * 🔒 BRAHMASTRA THUMBNAIL EXTRACTOR ENGINE BSDK
+ * Multi-layered dynamic cross-origin preview injector.
  */
 function getThumbnailHtml(asset, className = 'asset-card__img') {
-  const thumbInput = String(asset.thumbnailId || asset.thumbnailUrl || '').trim();
+  let rawSource = String(asset.thumbnailId || asset.driveFileId || '').trim();
   
-  if (!thumbInput) {
+  if (!rawSource) {
     return `<div class="asset-card__thumb-placeholder">${asset.emoji || '📦'}</div>`;
   }
   
-  // Case A: If it's a full direct HTTP path (GitHub assets path, domain path, web url) bsdk
-  if (thumbInput.startsWith('http') || thumbInput.startsWith('assets/')) {
-    return `<img src="${thumbInput}" class="${className}" alt="${asset.title}" loading="lazy">`;
+  if (rawSource.startsWith('assets/')) {
+    return `<img src="${rawSource}" class="${className}" alt="${asset.title}" loading="lazy">`;
   }
   
-  // Case B: If it's a raw 33-character Google Drive Image ID sequence
-  return `<img src="https://docs.google.com/uc?export=download&id=${thumbInput}" class="${className}" alt="${asset.title}" loading="lazy">`;
+  const targetId = getCleanDriveId(rawSource);
+  
+  return `
+    <img src="https://docs.google.com/uc?export=view&id=${targetId}" 
+         class="${className}" 
+         alt="${asset.title}" 
+         loading="lazy" 
+         onerror="this.onerror=null; this.src='https://lh3.googleusercontent.com/d/${targetId}=w600-h400-p'; this.onerror=function(){this.onerror=null; this.parentNode.innerHTML='<div class=&quot;asset-card__thumb-placeholder&quot;>${getTypeIcon(asset.fileType)}</div>'};">
+  `;
 }
 
 function renderCard(asset) {
@@ -194,7 +215,7 @@ function renderCard(asset) {
     <div class="asset-card" data-id="${asset.id}" role="article" tabindex="0" style="cursor: pointer;">
       <div class="asset-card__thumb">
         ${getThumbnailHtml(asset)}
-        <div class="asset-card__badges"><span class="asset-badge asset-badge--${asset.priceType}">${asset.priceType === 'free' ? 'Free' : 'Paid'}</span></div>
+        <div class="asset-badge-container" style="position:absolute; top:8px; left:8px;"><span class="asset-badge asset-badge--${asset.priceType}">${asset.priceType === 'free' ? 'Free' : 'Paid'}</span></div>
         <button class="asset-card__wish ${isWished ? 'active' : ''}" onclick="toggleWish(event,'${asset.id}',this)">
           ${isWished ? '❤️' : '🤍'}
         </button>
@@ -342,7 +363,7 @@ window.handleDownload = async function(event, id, element) {
   if (!target) return;
 
   if (target.priceType === 'free') {
-    if (String(target.driveFileId).startsWith('http')) {
+    if (String(target.driveFileId).startsWith('http') && !target.driveFileId.includes('drive.google.com')) {
       updateButtonLoading(element, true);
       const a = document.createElement('a');
       a.href = target.driveFileId;
