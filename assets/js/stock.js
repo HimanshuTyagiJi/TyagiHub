@@ -1,7 +1,7 @@
 /**
- * TyagiHub Stock — Production Core Controller (GAS Linked)
+ * TyagiHub Stock — Production Core Controller (V2 Dynamic Extensions Loaded)
  * File: assets/js/stock.js
- * ============================================================
+ * ============================================================================
  */
 
 'use strict';
@@ -23,6 +23,21 @@ const StockState = {
   wishlist: new Set(JSON.parse(localStorage.getItem('th-stock-wishlist') || '[]')),
   isLoading: false,
   currentAsset: null,
+};
+
+// Map file types to correct structural modern mime-types dynamically
+const MimeMap = {
+  'pdf': 'application/pdf',
+  'docx': 'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
+  'doc': 'application/msword',
+  'mp4': 'video/mp4',
+  'png': 'image/png',
+  'jpg': 'image/jpeg',
+  'jpeg': 'image/jpeg',
+  'svg': 'image/svg+xml',
+  'zip': 'application/zip',
+  'ppt': 'application/vnd.openxmlformats-officedocument.presentationml.presentation',
+  'pptx': 'application/vnd.openxmlformats-officedocument.presentationml.presentation'
 };
 
 async function loadAssets() {
@@ -77,7 +92,7 @@ async function loadAssets() {
 
   } catch (err) {
     console.error('[Stock Engine Error]:', err);
-    showError('Google Cloud connection trace dropped. Please refresh the page.');
+    showError('Connection dropped. Please refresh the page.');
   } finally {
     StockState.isLoading = false;
   }
@@ -105,8 +120,6 @@ function showSkeletons() {
     </div>
   `).join('');
   grid.className = `asset-grid ${StockState.view === 'list' ? 'list-view' : ''}`;
-  const emptyEl = document.getElementById('stock-empty');
-  if (emptyEl) emptyEl.style.display = 'none';
 }
 
 function renderGrid(assets) {
@@ -126,6 +139,7 @@ function renderGrid(assets) {
 
   grid.querySelectorAll('.asset-card').forEach(card => {
     card.addEventListener('click', e => {
+      // Mobile / Tablet touch safety layout triggers details overlay instantly
       if (e.target.closest('.asset-overlay-btn') || e.target.closest('.asset-card__wish')) return;
       openDetailModal(card.dataset.id);
     });
@@ -143,7 +157,7 @@ function renderCard(asset) {
         ${asset.thumbnailId ? `<img src="https://docs.google.com/uc?export=download&id=${asset.thumbnailId}" alt="${asset.title}" loading="lazy">` : `<div class="asset-card__thumb-placeholder">${asset.emoji || '📦'}</div>`}
         <div class="asset-card__badges"><span class="asset-badge asset-badge--${asset.priceType}">${asset.priceType === 'free' ? 'Free' : 'Paid'}</span></div>
         <div class="asset-card__overlay">
-          <button class="asset-overlay-btn asset-overlay-btn--primary" onclick="handleDownload(event,'${asset.id}')">⬇ Download</button>
+          <button class="asset-overlay-btn asset-overlay-btn--primary" onclick="handleDownload(event,'${asset.id}', this)">⬇ Download</button>
           <button class="asset-overlay-btn asset-overlay-btn--secondary" onclick="openDetailModal('${asset.id}')">👁 Details</button>
         </div>
         <button class="asset-card__wish ${isWished ? 'active' : ''}" onclick="toggleWish(event,'${asset.id}',this)">
@@ -167,7 +181,7 @@ function showError(msg) {
 }
 
 function getTypeIcon(type) {
-  const icons = { svg: '🔷', image: '🖼️', video: '🎬', pdf: '📄', ppt: '📊', other: '📦' };
+  const icons = { svg: '🔷', image: '🖼️', video: '🎬', pdf: '📄', ppt: '📊', docx: '📝', doc: '📝', other: '📦' };
   return icons[type] || '📦';
 }
 
@@ -254,7 +268,7 @@ function openDetailModal(id) {
         <p class="adm-desc">${escHtml(asset.description)}</p>
         ${featuresHtml ? `<div class="adm-features"><ul class="adm-feature-list">${featuresHtml}</ul></div>` : ''}
         <div class="adm-cta-row">
-          <button class="adm-btn adm-btn--primary" id="adm-download-btn" onclick="handleDownload(event,'${asset.id}')">
+          <button class="adm-btn adm-btn--primary" id="adm-download-btn" onclick="handleDownload(event,'${asset.id}', this)">
             ⬇ ${asset.priceType === 'free' ? 'Download Free' : `Buy & Download — ₹${asset.priceAmount}`}
           </button>
         </div>
@@ -271,20 +285,46 @@ function closeDetailModal() {
   StockState.currentAsset = null;
 }
 
-window.handleDownload = async function(event, id) {
+window.handleDownload = async function(event, id, element) {
   if (event) event.stopPropagation();
 
   const target = StockState.allFetchedData.find(a => a.id == id);
   if (!target) return;
 
   if (target.priceType === 'free') {
-    await executeSecureStream(target, 'Free_Guest', 'N/A');
+    // LOCK SYSTEM: If it is a direct external path (GitHub or Docs), bypass cloud stream instantly
+    if (String(target.driveFileId).startsWith('http')) {
+      updateButtonLoading(element, true);
+      const a = document.createElement('a');
+      a.href = target.driveFileId;
+      a.download = `${target.title}.${target.fileType || 'docx'}`;
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+      setTimeout(() => updateButtonLoading(element, false), 800);
+    } else {
+      await executeSecureStream(target, 'Free_Guest', 'N/A', element);
+    }
   } else {
-    openPaymentModal(target);
+    openPaymentModal(target, element);
   }
 };
 
-function openPaymentModal(asset) {
+function updateButtonLoading(btn, isLoading) {
+  if (!btn) return;
+  if (isLoading) {
+    btn.style.pointerEvents = 'none';
+    btn.style.opacity = '0.6';
+    btn.dataset.oldHtml = btn.innerHTML;
+    btn.innerHTML = '⏳ Fetching Bytes... Do Not Click Again';
+  } else {
+    btn.style.pointerEvents = 'auto';
+    btn.style.opacity = '1';
+    btn.innerHTML = btn.dataset.oldHtml || '⬇ Download';
+  }
+}
+
+function openPaymentModal(asset, triggerOriginBtn) {
   document.getElementById('payment-modal')?.remove();
 
   const modal = document.createElement('div');
@@ -350,9 +390,9 @@ function openPaymentModal(asset) {
     errorEl.style.display = "none";
     const submitBtn = document.getElementById('pm-submit-btn');
     submitBtn.disabled = true;
-    submitBtn.textContent = "Verifying Transaction...";
+    submitBtn.textContent = "Verifying Transaction Log...";
 
-    const success = await executeSecureStream(asset, userInput, txInput);
+    const success = await executeSecureStream(asset, userInput, txInput, triggerOriginBtn);
     if (success) {
       setTimeout(() => modal.remove(), 800);
     } else {
@@ -362,11 +402,12 @@ function openPaymentModal(asset) {
   });
 }
 
-async function executeSecureStream(asset, userIdentifier, txId) {
-  const downloadBtn = document.getElementById('adm-download-btn');
+async function executeSecureStream(asset, userIdentifier, txId, triggerOriginBtn) {
+  const mainModalDownloadBtn = document.getElementById('adm-download-btn');
   const errorEl = document.getElementById('pm-error');
   
-  if (downloadBtn) { downloadBtn.disabled = true; downloadBtn.innerHTML = '⏳ Processing...'; }
+  updateButtonLoading(triggerOriginBtn, true);
+  if (mainModalDownloadBtn) { mainModalDownloadBtn.disabled = true; mainModalDownloadBtn.innerHTML = '⏳ Processing Byte Pipeline...'; }
 
   try {
     const params = new URLSearchParams({
@@ -401,16 +442,16 @@ async function executeSecureStream(asset, userIdentifier, txId) {
     }
     const byteArray = new Uint8Array(byteNumbers);
     
-    let mimeType = 'application/octet-stream';
-    if (asset.fileType === 'pdf') mimeType = 'application/pdf';
-    if (asset.fileType === 'video') mimeType = 'video/mp4';
-
-    const fileBlob = new Blob([byteArray], { type: mimeType });
+    // Dynamic Extension Extractor Pipeline
+    const detectedMime = MimeMap[String(asset.fileType).toLowerCase()] || 'application/octet-stream';
+    const fileBlob = new Blob([byteArray], { type: detectedMime });
     const virtualBlobUrl = URL.createObjectURL(fileBlob);
 
     const a = document.createElement('a');
     a.href = virtualBlobUrl;
-    a.download = asset.title;
+    // Map extension right over download filename layer
+    const ext = asset.fileType || 'docx';
+    a.download = String(asset.title).endsWith(`.${ext}`) ? asset.title : `${asset.title}.${ext}`;
     document.body.appendChild(a);
     a.click();
     a.remove();
@@ -421,12 +462,13 @@ async function executeSecureStream(asset, userIdentifier, txId) {
   } catch (err) {
     console.error(err);
     if (errorEl) {
-      errorEl.textContent = "Network trace dropped by Google storage rules.";
+      errorEl.textContent = "Network trace dropped by Google firewall configurations.";
       errorEl.style.display = "block";
     }
     return false;
   } finally {
-    if (downloadBtn) { downloadBtn.disabled = false; downloadBtn.innerHTML = `⬇ ${asset.priceType === 'free' ? 'Download Free' : 'Download Premium'}`; }
+    updateButtonLoading(triggerOriginBtn, false);
+    if (mainModalDownloadBtn) { mainModalDownloadBtn.disabled = false; mainModalDownloadBtn.innerHTML = `⬇ ${asset.priceType === 'free' ? 'Download Free' : 'Download Premium'}`; }
   }
 }
 
