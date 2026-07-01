@@ -1,5 +1,5 @@
 /**
- * TyagiHub Stock — Production Core Controller (V4 SEO Slug Title URLs Loaded)
+ * TyagiHub Stock — Production Core Controller (V5 Ultra-Smart Thumbnail Engine Loaded)
  * File: assets/js/stock.js
  * ============================================================================
  */
@@ -39,7 +39,6 @@ const MimeMap = {
   'pptx': 'application/vnd.openxmlformats-officedocument.presentationml.presentation'
 };
 
-// Helper function to turn asset titles into clean clean url slugs bsdk
 function slugify(text) {
   return String(text)
     .toLowerCase()
@@ -99,7 +98,6 @@ async function loadAssets() {
     const countEl = document.getElementById('result-count');
     if (countEl) countEl.textContent = StockState.totalAssets.toLocaleString('en-IN');
 
-    // 🎯 LIVE CHECK SLUG TITLE LINK ON MOUNT
     checkUrlParams();
 
   } catch (err) {
@@ -157,7 +155,6 @@ function renderGrid(assets) {
       const targetAsset = StockState.allFetchedData.find(a => a.id == assetId);
       
       if (targetAsset) {
-        // 🔗 LIVE SLUG GENERATION MATCH BSDK
         const titleSlug = slugify(targetAsset.title);
         const newUrl = window.location.protocol + "//" + window.location.host + window.location.pathname + '?item=' + titleSlug;
         window.history.pushState({ path: newUrl }, '', newUrl);
@@ -168,6 +165,26 @@ function renderGrid(assets) {
   });
 }
 
+/**
+ * 🕵️‍♂️ ULTRA-SMART THUMBNAIL EXTRACTOR PIPELINE BSDK
+ * Maps any variant of thumbnail inputs right into a standard HTML visual layer
+ */
+function getThumbnailHtml(asset, className = 'asset-card__img') {
+  const thumbInput = String(asset.thumbnailId || asset.thumbnailUrl || '').trim();
+  
+  if (!thumbInput) {
+    return `<div class="asset-card__thumb-placeholder">${asset.emoji || '📦'}</div>`;
+  }
+  
+  // Case A: If it's a full direct HTTP path (GitHub assets path, domain path, web url) bsdk
+  if (thumbInput.startsWith('http') || thumbInput.startsWith('assets/')) {
+    return `<img src="${thumbInput}" class="${className}" alt="${asset.title}" loading="lazy">`;
+  }
+  
+  // Case B: If it's a raw 33-character Google Drive Image ID sequence
+  return `<img src="https://docs.google.com/uc?export=download&id=${thumbInput}" class="${className}" alt="${asset.title}" loading="lazy">`;
+}
+
 function renderCard(asset) {
   const isWished = StockState.wishlist.has(asset.id);
   const priceText = asset.priceType === 'free' ? 'FREE' : `₹${asset.priceAmount}`;
@@ -176,7 +193,7 @@ function renderCard(asset) {
   return `
     <div class="asset-card" data-id="${asset.id}" role="article" tabindex="0" style="cursor: pointer;">
       <div class="asset-card__thumb">
-        ${asset.thumbnailId ? `<img src="https://docs.google.com/uc?export=download&id=${asset.thumbnailId}" alt="${asset.title}" loading="lazy">` : `<div class="asset-card__thumb-placeholder">${asset.emoji || '📦'}</div>`}
+        ${getThumbnailHtml(asset)}
         <div class="asset-card__badges"><span class="asset-badge asset-badge--${asset.priceType}">${asset.priceType === 'free' ? 'Free' : 'Paid'}</span></div>
         <button class="asset-card__wish ${isWished ? 'active' : ''}" onclick="toggleWish(event,'${asset.id}',this)">
           ${isWished ? '❤️' : '🤍'}
@@ -198,7 +215,6 @@ function checkUrlParams() {
   const itemSlug = urlParams.get('item');
   
   if (itemSlug) {
-    // Reverse dynamic slug matcher engine
     const targetAsset = StockState.allFetchedData.find(a => slugify(a.title) === itemSlug);
     if (targetAsset) {
       openDetailModal(targetAsset.id);
@@ -276,7 +292,7 @@ function openDetailModal(id) {
     <div class="adm-layout">
       <div class="adm-preview-col">
         <div class="adm-thumb-main">
-          ${asset.thumbnailId ? `<img src="https://docs.google.com/uc?export=download&id=${asset.thumbnailId}" class="adm-thumb-img">` : `<div class="adm-thumb-emoji">${asset.emoji || '📦'}</div>`}
+          ${getThumbnailHtml(asset, 'adm-thumb-img')}
         </div>
         <div class="adm-file-info">
           <div class="adm-fi-row"><span>Format</span><strong>${escHtml(asset.format || asset.fileType)}</strong></div>
