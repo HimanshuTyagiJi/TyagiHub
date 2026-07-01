@@ -1,5 +1,5 @@
 /**
- * TyagiHub Stock — Production Core Controller (V3 Corrupt Format Fixed)
+ * TyagiHub Stock — Production Core Controller (V4 SEO Slug Title URLs Loaded)
  * File: assets/js/stock.js
  * ============================================================================
  */
@@ -25,7 +25,6 @@ const StockState = {
   currentAsset: null,
 };
 
-// Strict Corporate Standard MIME Mapping Hook
 const MimeMap = {
   'pdf': 'application/pdf',
   'docx': 'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
@@ -39,6 +38,16 @@ const MimeMap = {
   'ppt': 'application/vnd.openxmlformats-officedocument.presentationml.presentation',
   'pptx': 'application/vnd.openxmlformats-officedocument.presentationml.presentation'
 };
+
+// Helper function to turn asset titles into clean clean url slugs bsdk
+function slugify(text) {
+  return String(text)
+    .toLowerCase()
+    .trim()
+    .replace(/[^\w\s-]/g, '')
+    .replace(/[\s_-]+/g, '-')
+    .replace(/^-+|-+$/g, '');
+}
 
 async function loadAssets() {
   if (StockState.isLoading) return;
@@ -90,6 +99,7 @@ async function loadAssets() {
     const countEl = document.getElementById('result-count');
     if (countEl) countEl.textContent = StockState.totalAssets.toLocaleString('en-IN');
 
+    // 🎯 LIVE CHECK SLUG TITLE LINK ON MOUNT
     checkUrlParams();
 
   } catch (err) {
@@ -144,8 +154,14 @@ function renderGrid(assets) {
       if (e.target.closest('.asset-card__wish')) return;
       
       const assetId = card.dataset.id;
-      const newUrl = window.location.protocol + "//" + window.location.host + window.location.pathname + '?id=' + assetId;
-      window.history.pushState({ path: newUrl }, '', newUrl);
+      const targetAsset = StockState.allFetchedData.find(a => a.id == assetId);
+      
+      if (targetAsset) {
+        // 🔗 LIVE SLUG GENERATION MATCH BSDK
+        const titleSlug = slugify(targetAsset.title);
+        const newUrl = window.location.protocol + "//" + window.location.host + window.location.pathname + '?item=' + titleSlug;
+        window.history.pushState({ path: newUrl }, '', newUrl);
+      }
       
       openDetailModal(assetId);
     });
@@ -179,9 +195,14 @@ function renderCard(asset) {
 
 function checkUrlParams() {
   const urlParams = new URLSearchParams(window.location.search);
-  const assetId = urlParams.get('id');
-  if (assetId && StockState.allFetchedData.some(a => a.id == assetId)) {
-    openDetailModal(assetId);
+  const itemSlug = urlParams.get('item');
+  
+  if (itemSlug) {
+    // Reverse dynamic slug matcher engine
+    const targetAsset = StockState.allFetchedData.find(a => slugify(a.title) === itemSlug);
+    if (targetAsset) {
+      openDetailModal(targetAsset.id);
+    }
   }
 }
 
@@ -309,7 +330,6 @@ window.handleDownload = async function(event, id, element) {
       updateButtonLoading(element, true);
       const a = document.createElement('a');
       a.href = target.driveFileId;
-      // 🛠️ SMART BYPASS: Open directly via link layout
       document.body.appendChild(a);
       a.click();
       a.remove();
@@ -454,8 +474,6 @@ async function executeSecureStream(asset, userIdentifier, txId, triggerOriginBtn
     }
     const byteArray = new Uint8Array(byteNumbers);
     
-    // 🎯 100% REAL EXTENSION AUTOMAPPING PIPELINE
-    // Extract exact extension from the format input row or check MIME
     let targetExt = String(asset.format || 'docx').toLowerCase().trim();
     if (targetExt.includes('png')) targetExt = 'png';
     else if (targetExt.includes('jpg') || targetExt.includes('jpeg')) targetExt = 'jpg';
@@ -465,7 +483,7 @@ async function executeSecureStream(asset, userIdentifier, txId, triggerOriginBtn
     else if (targetExt.includes('zip')) targetExt = 'zip';
     else if (targetExt.includes('doc') || targetExt.includes('word')) targetExt = 'docx';
     else if (targetExt.includes('ppt') || targetExt.includes('powerpoint')) targetExt = 'pptx';
-    else targetExt = 'docx'; // Fallback extension safety block
+    else targetExt = 'docx';
 
     const detectedMime = MimeMap[targetExt] || 'application/octet-stream';
     const fileBlob = new Blob([byteArray], { type: detectedMime });
@@ -474,7 +492,6 @@ async function executeSecureStream(asset, userIdentifier, txId, triggerOriginBtn
     const a = document.createElement('a');
     a.href = virtualBlobUrl;
     
-    // Clean download file layer structure
     const cleanTitle = String(asset.title).replace(/\.[^/.]+$/, "");
     a.download = `${cleanTitle}.${targetExt}`;
     
