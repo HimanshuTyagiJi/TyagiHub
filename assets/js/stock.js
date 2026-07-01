@@ -6,7 +6,7 @@
 
 'use strict';
 
-const GAS_API_URL = 'https://script.google.com/macros/s/AKfycbyb1vvwqcDIp4NxQ73nMx85dGg5XpT0C8OEorKr-aR4ZfaB4EVPJLzlGgMsdYFMo5ur/exec';
+const GAS_API_URL = 'https://script.google.com/macros/s/AKfycbwJ2805gEoTO3q3hWm3ROx5lvwuXWjyJ2xjHzQFqmlTSH2u5c6g4WsfXCjB5SXsvmc4/exec';
 
 const StockState = {
   category: 'all',
