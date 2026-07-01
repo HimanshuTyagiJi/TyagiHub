@@ -7,7 +7,7 @@
 'use strict';
 
 // 🌐 1. GOOGLE APPS SCRIPT CORE ENDPOINT
-const GAS_API_URL = 'https://script.google.com/macros/s/AKfycbxD8hHm24KLMdYlRwbyC_T0md13TUE-lJ9al1m3wOuBVifUXt3WQAKth1B49eYMLK9E/exec';
+const GAS_API_URL = 'https://script.google.com/macros/s/AKfycbwMvhfXJh89ELEdsJ4QXotz7QtiGsFG4qk091hGbBHsmkXDKsQ5a4FzCm5X8NZU3fXa/exec';
 
 /* ============================================================
    STATE MANAGEMENT
