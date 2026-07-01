@@ -6,12 +6,8 @@
 
 'use strict';
 
-// 🌐 1. TERA EKDUM FRESH LIVE GOOGLE APPS SCRIPT WEB APP LINK 
 const GAS_API_URL = 'https://script.google.com/macros/s/AKfycbyb1vvwqcDIp4NxQ73nMx85dGg5XpT0C8OEorKr-aR4ZfaB4EVPJLzlGgMsdYFMo5ur/exec';
 
-/* ============================================================
-   STATE MANAGEMENT
-   ============================================================ */
 const StockState = {
   category: 'all',
   priceType: 'all',
@@ -23,24 +19,19 @@ const StockState = {
   perPage: 12, 
   totalAssets: 0,
   totalPages: 1,
-  allFetchedData: [], // Client-side memory caching to avoid spreadsheet lag
+  allFetchedData: [],
   wishlist: new Set(JSON.parse(localStorage.getItem('th-stock-wishlist') || '[]')),
   isLoading: false,
   currentAsset: null,
 };
 
-/* ============================================================
-   CORE ASSET FETCH ENGINE (With Redirect Follow Rule )
-   ============================================================ */
 async function loadAssets() {
   if (StockState.isLoading) return;
   StockState.isLoading = true;
   showSkeletons();
 
   try {
-    // Agar local memory cache empty hai toh hi hit marega 
     if (StockState.allFetchedData.length === 0) {
-      // 🔥 REDIRECT FOLLOW ENGINE INTERACTION APPLIED
       const response = await fetch(`${GAS_API_URL}?action=getAssets`, {
         method: "GET",
         redirect: "follow"
@@ -49,7 +40,6 @@ async function loadAssets() {
       StockState.allFetchedData = await response.json();
     }
 
-    // 🏎️ AUTOMATIC CLIENT SIDE FILTER ENGINE
     let filtered = StockState.allFetchedData.filter(asset => {
       const matchCat = StockState.category === 'all' || asset.category === StockState.category;
       const matchPrice = StockState.priceType === 'all' || asset.priceType === StockState.priceType;
@@ -62,7 +52,6 @@ async function loadAssets() {
       return matchCat && matchPrice && matchType && matchSearch;
     });
 
-    // 🎛️ SORT SYSTEM SWITCH
     if (StockState.sortBy === 'newest') {
       filtered.sort((a, b) => new Date(b.dateAdded) - new Date(a.dateAdded));
     } else if (StockState.sortBy === 'name-asc') {
@@ -73,7 +62,6 @@ async function loadAssets() {
       filtered.sort((a, b) => (parseInt(b.popularity) || 0) - (parseInt(a.popularity) || 0));
     }
 
-    // 📄 PAGINATION SEGMENTATION
     StockState.totalAssets = filtered.length;
     StockState.totalPages = Math.ceil(filtered.length / StockState.perPage) || 1;
     
@@ -89,7 +77,7 @@ async function loadAssets() {
 
   } catch (err) {
     console.error('[Stock Engine Error]:', err);
-    showError('Google Cloud connection trace dropped. Refresh .');
+    showError('Google Cloud connection trace dropped. Please refresh the page.');
   } finally {
     StockState.isLoading = false;
   }
@@ -103,9 +91,6 @@ function loadAssetDetail(id) {
   return { asset, related };
 }
 
-/* ============================================================
-   SKELETON ANIMATION LAYER
-   ============================================================ */
 function showSkeletons() {
   const grid = document.getElementById('asset-grid');
   if (!grid) return;
@@ -124,9 +109,6 @@ function showSkeletons() {
   if (emptyEl) emptyEl.style.display = 'none';
 }
 
-/* ============================================================
-   GRID RENDER COMPILER
-   ============================================================ */
 function renderGrid(assets) {
   const grid = document.getElementById('asset-grid');
   const emptyEl = document.getElementById('stock-empty');
@@ -193,9 +175,6 @@ function escHtml(str) {
   return String(str).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
 }
 
-/* ============================================================
-   AMAZON STYLE INTERACTION DETAIL MODAL
-   ============================================================ */
 function createDetailModal() {
   if (document.getElementById('asset-detail-modal')) return;
 
@@ -225,7 +204,7 @@ function openDetailModal(id) {
 
   const result = loadAssetDetail(id);
   if (!result) {
-    body.innerHTML = `<div class="adm-error">Data sync broken .</div>`;
+    body.innerHTML = `<div class="adm-error">Data synchronization issue.</div>`;
     return;
   }
 
@@ -292,9 +271,6 @@ function closeDetailModal() {
   StockState.currentAsset = null;
 }
 
-/* ============================================================
-   BYPASS-PROOF REDIRECT DOWNLOAD STREAM PIPELINE
-   ============================================================ */
 window.handleDownload = async function(event, id) {
   if (event) event.stopPropagation();
 
@@ -366,7 +342,7 @@ function openPaymentModal(asset) {
     const errorEl = document.getElementById('pm-error');
 
     if (!userInput || !txInput) {
-      errorEl.textContent = "Both inputs are mandatory !";
+      errorEl.textContent = "Both inputs are required.";
       errorEl.style.display = "block";
       return;
     }
@@ -374,7 +350,7 @@ function openPaymentModal(asset) {
     errorEl.style.display = "none";
     const submitBtn = document.getElementById('pm-submit-btn');
     submitBtn.disabled = true;
-    submitBtn.textContent = "Verifying Transaction Log...";
+    submitBtn.textContent = "Verifying Transaction...";
 
     const success = await executeSecureStream(asset, userInput, txInput);
     if (success) {
@@ -390,7 +366,7 @@ async function executeSecureStream(asset, userIdentifier, txId) {
   const downloadBtn = document.getElementById('adm-download-btn');
   const errorEl = document.getElementById('pm-error');
   
-  if (downloadBtn) { downloadBtn.disabled = true; downloadBtn.innerHTML = '⏳ Injecting Stream...'; }
+  if (downloadBtn) { downloadBtn.disabled = true; downloadBtn.innerHTML = '⏳ Processing...'; }
 
   try {
     const params = new URLSearchParams({
@@ -402,7 +378,6 @@ async function executeSecureStream(asset, userIdentifier, txId) {
       type: asset.priceType
     });
 
-    // 🔥 DYNAMIC REDIRECT CRITICAL INSTRUCTION MATCH 
     const response = await fetch(`${GAS_API_URL}?${params}`, {
       method: "GET",
       redirect: "follow"
@@ -419,7 +394,6 @@ async function executeSecureStream(asset, userIdentifier, txId) {
       return false;
     }
 
-    // Binary decryption pipeline
     const byteCharacters = atob(streamPayload);
     const byteNumbers = new Array(byteCharacters.length);
     for (let i = 0; i < byteCharacters.length; i++) {
@@ -447,7 +421,7 @@ async function executeSecureStream(asset, userIdentifier, txId) {
   } catch (err) {
     console.error(err);
     if (errorEl) {
-      errorEl.textContent = "Network trace dropped by Google firewall rules.";
+      errorEl.textContent = "Network trace dropped by Google storage rules.";
       errorEl.style.display = "block";
     }
     return false;
@@ -456,9 +430,6 @@ async function executeSecureStream(asset, userIdentifier, txId) {
   }
 }
 
-/* ============================================================
-   FILTERS, SORTING AND EVENT BINDINGS
-   ============================================================ */
 function renderPagination() {
   const el = document.getElementById('stock-pagination');
   if (!el) return;
@@ -518,7 +489,6 @@ window.removeFilter = function(key) {
 document.addEventListener('DOMContentLoaded', () => {
   loadAssets();
 
-  // Categories Sidebar/Navbar Engine
   document.querySelectorAll('.stock-catbar__item').forEach(el => {
     el.addEventListener('click', () => {
       StockState.category = el.dataset.cat || 'all';
@@ -528,7 +498,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // Price toggles
   document.querySelectorAll('.price-toggle__btn').forEach(btn => {
     btn.addEventListener('click', () => {
       document.querySelectorAll('.price-toggle__btn').forEach(b => b.classList.remove('active'));
@@ -539,7 +508,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // Type bindings
   document.querySelectorAll('input[data-type]').forEach(cb => {
     cb.addEventListener('change', () => {
       if (cb.checked) StockState.fileTypes.add(cb.dataset.type);
@@ -549,7 +517,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // Sort Selector
   const sortSelect = document.getElementById('stock-sort');
   sortSelect?.addEventListener('change', () => {
     StockState.sortBy = sortSelect.value;
@@ -557,7 +524,6 @@ document.addEventListener('DOMContentLoaded', () => {
     loadAssets();
   });
 
-  // Grid/List toggle handler
   document.querySelectorAll('.view-toggle__btn').forEach(btn => {
     btn.addEventListener('click', () => {
       document.querySelectorAll('.view-toggle__btn').forEach(b => b.classList.remove('active'));
@@ -567,7 +533,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // Buffering Live Search Layout
   let searchTimer;
   document.getElementById('stock-search-input')?.addEventListener('input', (e) => {
     clearTimeout(searchTimer);
