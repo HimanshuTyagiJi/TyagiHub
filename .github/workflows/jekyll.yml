@@ -34,12 +34,15 @@ jobs:
           npm install -g clean-css-cli
           cleancss -o assets/css/search-main.css assets/css/main.css assets/css/search.css
 
-      # Step 3: Sub-folder ke andar jaakar React/Vite ko build karo
-      - name: Install Node Dependencies & Build Vite
-        working-directory: ./tyagihub-secure-store # 👈 AGAR FOLDER KA NAAM KUCH AUR HAI TOH YAHAN BADAL LENA
+      # Step 3: Agar root par package.json hai toh hi chalao, warna skip ho jayega
+      - name: Install Node Dependencies & Build Vite (If exists)
         run: |
-          npm install
-          npm run build --if-present
+          if [ -f package.json ]; then
+            npm install
+            npm run build --if-present
+          else
+            echo "package.json nahi mili, Vite build skip kar rahe hain."
+          fi
 
       # Step 4: Ruby aur Jekyll Setup
       - name: Setup Ruby
