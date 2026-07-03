@@ -7,17 +7,14 @@ keywords: "free stock assets, SVG icons, free templates, PDF downloads, question
 extra_css:
   - /assets/css/stock.css
 ---
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>TyagiHub Secure DRM & Digital Store</title>
-    <!-- Inter & JetBrains Mono Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
-    <script type="module" crossorigin src="./assets/js/stock/main.js"></script>
-    <link rel="stylesheet" crossorigin href="./assets/css/stock.css">
-  </head>
-<div id="root"></div> 
 
+<!-- Fonts loading (Bina head tag ke bhi body/layout ke saath blend ho jayega) -->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
 
+<!-- React App Root Container -->
+<div id="root"></div>
+
+<!-- Vite se build hui main entry js file (Relative ./ hata kar static root path diya hai) -->
+<script type="module" crossorigin src="/assets/js/stock/main.js"></script>
