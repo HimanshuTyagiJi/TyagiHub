@@ -28,14 +28,15 @@ jobs:
         with:
           node-version: '22'
 
-      # Step 2: Pehle CSS ko Merge aur Minify karo (Jo dusri file kar rahi thi)
+      # Step 2: CSS ko Merge aur Minify karo
       - name: Merge and Minify CSS
         run: |
           npm install -g clean-css-cli
           cleancss -o assets/css/search-main.css assets/css/main.css assets/css/search.css
 
-      # Step 3: Vite build chalao (React components compile karne ke liye)
+      # Step 3: Sub-folder ke andar jaakar React/Vite ko build karo
       - name: Install Node Dependencies & Build Vite
+        working-directory: ./tyagihub-secure-store # 👈 AGAR FOLDER KA NAAM KUCH AUR HAI TOH YAHAN BADAL LENA
         run: |
           npm install
           npm run build --if-present
