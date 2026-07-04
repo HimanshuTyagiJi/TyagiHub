@@ -2191,7 +2191,20 @@ function ProductComments({ productUrl, currentUser }) {
   };
 
   const deleteComment = async (rowId) => {
-    if (!confirm("Are you sure you want to delete this comment?")) return;
+    if (!confirm("Are you sure you want to delete this comment? (क्या आप इस टिप्पणी को हटाना चाहते हैं?)")) return;
+    
+    // Optimistic UI update: remove comment immediately from state
+    setComments(prev => prev.filter(c => c.rowId !== rowId));
+    
+    // Also remove from localStorage cache if it exists there
+    try {
+      let localList = getLocalComments();
+      localList = localList.filter(lc => lc.rowId !== rowId);
+      localStorage.setItem(`tyagihub_local_comments_${productUrl}`, JSON.stringify(localList));
+    } catch (e) {
+      console.error("Local storage delete error:", e);
+    }
+
     try {
       const payload = {
         action: "delete",
@@ -2203,7 +2216,7 @@ function ProductComments({ productUrl, currentUser }) {
         mode: "no-cors",
         body: JSON.stringify(payload)
       });
-      setTimeout(fetchComments, 1200);
+      setTimeout(fetchComments, 1500);
     } catch (err) {
       console.error("Delete comment error:", err);
     }
