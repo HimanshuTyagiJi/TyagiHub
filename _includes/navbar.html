@@ -189,7 +189,16 @@
 
     window.tcLogout = function() {
         localStorage.removeItem("tc_user");
-        location.reload();
+        localStorage.removeItem("tyagihub_user");
+        if (typeof window.firebaseAuthSignOut === "function") {
+            window.firebaseAuthSignOut().then(function() {
+                location.reload();
+            }).catch(function() {
+                location.reload();
+            });
+        } else {
+            location.reload();
+        }
     };
 
     window.triggerHeaderLogin = function(e) {
