@@ -1,4 +1,4 @@
-var d6=Object.defineProperty;var f6=(t,e,n)=>e in t?d6(t,e,{enumerable:!0,configurable:!0,writable:!0,value:n}):t[e]=n;var Vt=(t,e,n)=>f6(t,typeof e!="symbol"?e+"":e,n);(function(){const e=document.createElement("link").relList;if(e&&e.supports&&e.supports("modulepreload"))return;for(const i of document.querySelectorAll('link[rel="modulepreload"]'))r(i);new MutationObserver(i=>{for(const s of i)if(s.type==="childList")for(const o of s.addedNodes)o.tagName==="LINK"&&o.rel==="modulepreload"&&r(o)}).observe(document,{childList:!0,subtree:!0});function n(i){const s={};return i.integrity&&(s.integrity=i.integrity),i.referrerPolicy&&(s.referrerPolicy=i.referrerPolicy),i.crossOrigin==="use-credentials"?s.credentials="include":i.crossOrigin==="anonymous"?s.credentials="omit":s.credentials="same-origin",s}function r(i){if(i.ep)return;i.ep=!0;const s=n(i);fetch(i.href,s)}})();var JO=typeof globalThis<"u"?globalThis:typeof window<"u"?window:typeof global<"u"?global:typeof self<"u"?self:{};function h6(t){return t&&t.__esModule&&Object.prototype.hasOwnProperty.call(t,"default")?t.default:t}var Hx={exports:{}},np={},Wx={exports:{}},Lt={};/**
+ var d6=Object.defineProperty;var f6=(t,e,n)=>e in t?d6(t,e,{enumerable:!0,configurable:!0,writable:!0,value:n}):t[e]=n;var Vt=(t,e,n)=>f6(t,typeof e!="symbol"?e+"":e,n);(function(){const e=document.createElement("link").relList;if(e&&e.supports&&e.supports("modulepreload"))return;for(const i of document.querySelectorAll('link[rel="modulepreload"]'))r(i);new MutationObserver(i=>{for(const s of i)if(s.type==="childList")for(const o of s.addedNodes)o.tagName==="LINK"&&o.rel==="modulepreload"&&r(o)}).observe(document,{childList:!0,subtree:!0});function n(i){const s={};return i.integrity&&(s.integrity=i.integrity),i.referrerPolicy&&(s.referrerPolicy=i.referrerPolicy),i.crossOrigin==="use-credentials"?s.credentials="include":i.crossOrigin==="anonymous"?s.credentials="omit":s.credentials="same-origin",s}function r(i){if(i.ep)return;i.ep=!0;const s=n(i);fetch(i.href,s)}})();var JO=typeof globalThis<"u"?globalThis:typeof window<"u"?window:typeof global<"u"?global:typeof self<"u"?self:{};function h6(t){return t&&t.__esModule&&Object.prototype.hasOwnProperty.call(t,"default")?t.default:t}var Hx={exports:{}},np={},Wx={exports:{}},Lt={};/**
  * @license React
  * react.production.min.js
  *
@@ -1883,30 +1883,21 @@ end`};e.events.push(["putFont",function(s){(function(o){var a=o.font,l=o.out,u=o
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
- */const BO=5*60,UO=FN("authIdTokenMaxAge")||BO;let Bx=null;const VO=t=>async e=>{const n=e&&await e.getIdTokenResult(),r=n&&(new Date().getTime()-Date.parse(n.issuedAtTime))/1e3;if(r&&r>UO)return;const i=n==null?void 0:n.token;Bx!==i&&(Bx=i,await fetch(t,{method:i?"POST":"DELETE",headers:i?{Authorization:`Bearer ${i}`}:{}}))};function zO(t=HN()){const e=$N(t,"auth");if(e.isInitialized())return e.getImmediate();const n=cD(t,{popupRedirectResolver:DO,persistence:[WD,RD,w_]}),r=FN("authTokenSyncURL");if(r&&typeof isSecureContext=="boolean"&&isSecureContext){const s=new URL(r,location.origin);if(location.origin===s.origin){const o=VO(s.toString());CD(n,o,()=>o(n.currentUser)),PD(n,a=>o(a))}}const i=tj("auth");return i&&dD(n,`http://${i}`),n}function $O(){var t;return((t=document.getElementsByTagName("head"))==null?void 0:t[0])??document}nD({loadJS(t){return new Promise((e,n)=>{const r=document.createElement("script");r.setAttribute("src",t),r.onload=e,r.onerror=i=>{const s=es("internal-error");s.customData=i,n(s)},r.type="text/javascript",r.charset="UTF-8",$O().appendChild(r)})},gapiScript:"https://apis.google.com/js/api.js",recaptchaV2Script:"https://www.google.com/recaptcha/api.js",recaptchaEnterpriseScript:"https://www.google.com/recaptcha/enterprise.js?render="});FO("Browser");const ci=t=>{if(!t)return"";const e=/(?:https?:\/\/)?(?:drive\.google\.com\/(?:file\/d\/|open\?id=)|docs\.google\.com\/(?:file\/d\/))([a-zA-Z0-9_-]{25,100})/,n=String(t).match(e);return n&&n[1]?n[1]:""},hm=t=>{const e=(t.previewUrl||"").trim(),n=(t.driveId||"").trim(),r=ci(e),i=ci(n),s=r||(e===""||e.includes("images.unsplash.com")?i:"");return s?`https://drive.google.com/thumbnail?id=${s}&sz=w800`:e||"https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=800&q=80"},qO=t=>{const e=(t.title||"").toLowerCase(),n=(t.description||"").toLowerCase(),r=(t.type||"").toLowerCase();return e.includes("icon")||n.includes("icon")||e.includes("svg")||n.includes("svg")?"icons":e.includes("illustration")||n.includes("illustration")||e.includes("draw")||n.includes("draw")?"illustrations":e.includes("background")||n.includes("background")||e.includes("wallpaper")||n.includes("wallpaper")||e.includes("wave")||n.includes("wave")?"backgrounds":e.includes("template")||n.includes("template")||e.includes("pitch")||n.includes("pitch")||r==="zip"&&(e.includes("code")||n.includes("code"))?"templates":r==="pdf"||e.includes("document")||n.includes("document")||e.includes("paper")||n.includes("paper")||e.includes("book")||n.includes("book")||e.includes("notes")||n.includes("notes")?"documents":r==="image"&&(e.includes("photo")||n.includes("photo")||e.includes("scenery")||n.includes("scenery"))?"photos":r==="video"||e.includes("video")||n.includes("video")||e.includes("loop")||n.includes("loop")?"videos":e.includes("mockup")||n.includes("mockup")?"mockups":e.includes("font")||n.includes("font")||e.includes("typography")||n.includes("typography")?"fonts":r==="pdf"?"documents":r==="video"?"videos":"illustrations"},HO=t=>{const e=(t.type||"").toLowerCase(),n=(t.title||"").toLowerCase(),r=(t.description||"").toLowerCase();return n.includes("svg")||r.includes("svg")||n.includes("icon")||r.includes("icon")?"svg":e==="pdf"?"pdf":e==="video"?"video":e==="zip"&&(n.includes("ppt")||n.includes("template")||r.includes("template"))?"templates":"illustrations"};const Ux=t=>{if(!t)return!1;const e=t.trim();return e.startsWith("<svg")||e.includes("<svg")||e.includes('xmlns="http://www.w3.org/2000/svg"')};const WO=(t,e)=>{if(e)return t;const n=`
+ */const BO=5*60,UO=FN("authIdTokenMaxAge")||BO;let Bx=null;const VO=t=>async e=>{const n=e&&await e.getIdTokenResult(),r=n&&(new Date().getTime()-Date.parse(n.issuedAtTime))/1e3;if(r&&r>UO)return;const i=n==null?void 0:n.token;Bx!==i&&(Bx=i,await fetch(t,{method:i?"POST":"DELETE",headers:i?{Authorization:`Bearer ${i}`}:{}}))};function zO(t=HN()){const e=$N(t,"auth");if(e.isInitialized())return e.getImmediate();const n=cD(t,{popupRedirectResolver:DO,persistence:[WD,RD,w_]}),r=FN("authTokenSyncURL");if(r&&typeof isSecureContext=="boolean"&&isSecureContext){const s=new URL(r,location.origin);if(location.origin===s.origin){const o=VO(s.toString());CD(n,o,()=>o(n.currentUser)),PD(n,a=>o(a))}}const i=tj("auth");return i&&dD(n,`http://${i}`),n}function $O(){var t;return((t=document.getElementsByTagName("head"))==null?void 0:t[0])??document}nD({loadJS(t){return new Promise((e,n)=>{const r=document.createElement("script");r.setAttribute("src",t),r.onload=e,r.onerror=i=>{const s=es("internal-error");s.customData=i,n(s)},r.type="text/javascript",r.charset="UTF-8",$O().appendChild(r)})},gapiScript:"https://apis.google.com/js/api.js",recaptchaV2Script:"https://www.google.com/recaptcha/api.js",recaptchaEnterpriseScript:"https://www.google.com/recaptcha/enterprise.js?render="});FO("Browser");const ci=t=>{if(!t)return"";const e=/(?:https?:\/\/)?(?:drive\.google\.com\/(?:file\/d\/|open\?id=)|docs\.google\.com\/(?:file\/d\/))([a-zA-Z0-9_-]{25,100})/,n=String(t).match(e);return n&&n[1]?n[1]:""},hm=t=>{const e=(t.previewUrl||"").trim(),n=(t.driveId||"").trim(),r=ci(e),i=ci(n),s=r||(e===""||e.includes("images.unsplash.com")?i:"");return s?`https://drive.google.com/thumbnail?id=${s}&sz=w800`:e||"https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=800&q=80"},qO=t=>{const e=(t.title||"").toLowerCase(),n=(t.description||"").toLowerCase(),r=(t.type||"").toLowerCase();return e.includes("icon")||n.includes("icon")||e.includes("svg")||n.includes("svg")?"icons":e.includes("illustration")||n.includes("illustration")||e.includes("draw")||n.includes("draw")?"illustrations":e.includes("background")||n.includes("background")||e.includes("wallpaper")||n.includes("wallpaper")||e.includes("wave")||n.includes("wave")?"backgrounds":e.includes("template")||n.includes("template")||e.includes("pitch")||n.includes("pitch")||r==="zip"&&(e.includes("code")||n.includes("code"))?"templates":r==="pdf"||e.includes("document")||n.includes("document")||e.includes("paper")||n.includes("paper")||e.includes("book")||n.includes("book")||e.includes("notes")||n.includes("notes")?"documents":r==="image"&&(e.includes("photo")||n.includes("photo")||e.includes("scenery")||n.includes("scenery"))?"photos":r==="video"||e.includes("video")||n.includes("video")||e.includes("loop")||n.includes("loop")?"videos":e.includes("mockup")||n.includes("mockup")?"mockups":e.includes("font")||n.includes("font")||e.includes("typography")||n.includes("typography")?"fonts":r==="pdf"?"documents":r==="video"?"videos":"illustrations"},HO=t=>{const e=(t.type||"").toLowerCase(),n=(t.title||"").toLowerCase(),r=(t.description||"").toLowerCase();return n.includes("svg")||r.includes("svg")||n.includes("icon")||r.includes("icon")?"svg":e==="pdf"?"pdf":e==="video"?"video":e==="zip"&&(n.includes("ppt")||n.includes("template")||r.includes("ppt")||r.includes("template"))?"ppt":e==="image"?"image":"other"},Ux=t=>{if(!t)return!1;const e=t.trim();return e.startsWith("<svg")||e.includes("<svg")||e.includes('xmlns="http://www.w3.org/2000/svg"')},WO=(t,e)=>{if(e)return t;const n=`
     <g id="tyagihub-svg-drm-watermark" style="pointer-events: none; user-select: none;">
       <!-- Elegant diagonal dotted lines crossing the canvas -->
       <line x1="0" y1="0" x2="100%" y2="100%" stroke="rgba(239, 68, 68, 0.18)" stroke-width="3" stroke-dasharray="10,10" />
       <line x1="100%" y1="0" x2="0" y2="100%" stroke="rgba(239, 68, 68, 0.18)" stroke-width="3" stroke-dasharray="10,10" />
       
-      <!-- Premium high-visibility DRM text watermarks repeated -->
-      <g fill="rgba(239, 68, 68, 0.35)" font-family="'Plus Jakarta Sans', system-ui, sans-serif" font-size="16" font-weight="900" text-anchor="middle">
-        <text x="20%" y="20%" transform="rotate(-15, 50, 50)">tyagiHUb</text>
-        <text x="50%" y="20%" transform="rotate(-15, 150, 50)">tyagiHUb</text>
-        <text x="80%" y="20%" transform="rotate(-15, 250, 50)">tyagiHUb</text>
-        <text x="20%" y="50%" transform="rotate(-15, 50, 150)">tyagiHUb</text>
-        <text x="50%" y="50%" transform="rotate(-15, 150, 150)">tyagiHUb</text>
-        <text x="80%" y="50%" transform="rotate(-15, 250, 150)">tyagiHUb</text>
-        <text x="20%" y="80%" transform="rotate(-15, 50, 250)">tyagiHUb</text>
-        <text x="50%" y="80%" transform="rotate(-15, 150, 250)">tyagiHUb</text>
-        <text x="80%" y="80%" transform="rotate(-15, 250, 250)">tyagiHUb</text>
-      </g>
+      <!-- Premium high-visibility DRM text watermarks -->
+      <text x="50%" y="38%" fill="rgba(239, 68, 68, 0.55)" font-family="'Plus Jakarta Sans', system-ui, sans-serif" font-size="24" font-weight="900" text-anchor="middle" transform="rotate(-18, 150, 150)">TyagiHub Secure DRM</text>
+      <text x="50%" y="62%" fill="rgba(239, 68, 68, 0.45)" font-family="'Plus Jakarta Sans', system-ui, sans-serif" font-size="16" font-weight="800" text-anchor="middle" transform="rotate(-18, 150, 150)">DO NOT ALTER OR REUSE</text>
       
       <!-- Solid warning footer banner for unauthorized views -->
       <rect x="0" y="85%" width="100%" height="15%" fill="rgba(15, 23, 42, 0.95)" rx="4" />
       <text x="50%" y="94%" fill="#fca5a5" font-family="'JetBrains Mono', monospace" font-size="11" font-weight="bold" text-anchor="middle">🔒 TYAGIHUB SECURED SVG PREVIEW</text>
     </g>
-  `,r=t.lastIndexOf("</svg>");return r!==-1?t.substring(0,r)+n+t.substring(r):t};const getPdfPages=(title,contentText)=>{try{const doc=new Ze({orientation:"portrait",unit:"mm",format:"a4"});const textLines=doc.splitTextToSize(contentText,170);const linesPerPage=[];let currentLineIndex=0;let u=28;doc.setFont("helvetica","bold");doc.setFontSize(20);const titleLines=doc.splitTextToSize(title.toUpperCase(),170);u+=titleLines.length*8+14;let firstPageLinesCount=Math.max(10,Math.floor((272-u)/6.8));const p1Lines=textLines.slice(0,firstPageLinesCount);if(p1Lines.length>0)linesPerPage.push(p1Lines);currentLineIndex=firstPageLinesCount;const subsequentPageLinesCount=36;while(currentLineIndex<textLines.length){const pageLines=textLines.slice(currentLineIndex,currentLineIndex+subsequentPageLinesCount);if(pageLines.length>0){linesPerPage.push(pageLines)}currentLineIndex+=subsequentPageLinesCount}return linesPerPage}catch(err){const lines=contentText.split("\n");const linesPerPage=[];for(let i=0;i<lines.length;i+=35){linesPerPage.push(lines.slice(i,i+35))}return linesPerPage}};function Vx({src:t,alt:e,isFree:n,className:r,type:i="image",pdfContent:s}){const[o,a]=de.useState(""),[l,u]=de.useState(!0),[f,m]=de.useState(!1),[v,h]=de.useState(!1);const isCard=r&&(r.includes("object-cover")||r.includes("rounded-t-xl"));de.useEffect(()=>{let b=!0;if(m(!1),h(!1),!t||t.trim()===""||t.includes("placeholder")){m(!0),u(!1);return}if(i==="zip"||Ux(t)){u(!1);return}if(u(!0),n){a(t),u(!1);return}const N=new Image;N.crossOrigin="anonymous",N.src=t,N.onload=()=>{if(b)try{const w=document.createElement("canvas"),S=w.getContext("2d");if(!S)throw new Error("Canvas 2D context unavailable");w.width=N.naturalWidth||800,w.height=N.naturalHeight||500,S.drawImage(N,0,0,w.width,w.height),S.save(),S.translate(w.width/2,w.height/2),S.rotate(-Math.PI/8),S.translate(-w.width/2,-w.height/2);const _=Math.max(14,Math.floor(w.width/25));S.font=`900 ${_}px "Plus Jakarta Sans", sans-serif`,S.fillStyle="rgba(239, 68, 68, 0.45)",S.textAlign="center";const L=w.height/4,$=w.width/3;for(let X=0;X<=3;X++)for(let O=0;O<=2;O++)S.fillText("tyagiHUb",O*$,X*L);S.restore(),S.fillStyle="rgba(15, 23, 42, 0.9)",S.fillRect(0,w.height-40,w.width,40),S.font=`bold ${Math.max(11,Math.floor(w.width/55))}px "JetBrains Mono", monospace`,S.fillStyle="#fca5a5",S.textAlign="center",S.fillText("TYAGIHUB SECURED DRM STORE • UNAUTHORIZED DOWNLOAD BLOCKED",w.width/2,w.height-15);const Q=w.toDataURL("image/jpeg",.85);a(Q),h(!1),m(!1),u(!1)}catch{P()}},N.onerror=()=>{b&&P()};function P(){const w=new Image;w.src=t,w.onload=()=>{b&&(a(t),h(!0),m(!1),u(!1))},w.onerror=()=>{b&&(m(!0),u(!1))}}return()=>{b=!1,N.onload=null,N.onerror=null}},[t,n,i]);if(Ux(t)){const b=WO(t,n);return g.jsxs("div",{className:`relative w-full h-full flex items-center justify-center p-3 bg-slate-950/80 rounded-xl overflow-hidden select-none ${r}`,style:isCard?{}:{minHeight:"180px"},onContextMenu:N=>N.preventDefault(),draggable:"false",children:[g.jsx("div",{className:"w-full h-full flex items-center justify-center svg-container [&>svg]:max-w-full [&>svg]:max-h-full [&>svg]:w-auto [&>svg]:h-auto",dangerouslySetInnerHTML:{__html:b}}),g.jsx("div",{className:"absolute inset-0 z-30 bg-transparent cursor-default",onContextMenu:N=>N.preventDefault(),draggable:"false"})]})}if(i==="pdf"){const b=s||"Complete syllabus preparation guide and verified answers.";const linesPerPage=getPdfPages(e,b);const totalPages=linesPerPage.length||1;if(isCard){return g.jsxs("div",{className:`w-full h-full p-4 flex flex-col justify-between text-left select-none bg-slate-900 border border-slate-850 rounded-t-xl relative overflow-hidden ${r}`,children:[g.jsx("div",{className:"absolute inset-0 pointer-events-none opacity-5 flex flex-col justify-around rotate-[-15deg] scale-125",children:Array.from({length:3}).map((_,idx)=>g.jsxs("div",{className:"flex justify-around gap-2 text-[10px] font-black uppercase tracking-widest",children:[g.jsx("span",{children:"tyagiHUb"}),g.jsx("span",{children:"tyagiHUb"})]},idx))}),g.jsxs("div",{className:"space-y-2 relative z-10",children:[g.jsxs("div",{className:"flex justify-between items-center border-b border-slate-800 pb-1.5",children:[g.jsx("span",{className:"text-[9px] font-mono font-bold text-red-400 tracking-wider",children:"PDF SECURE"}),g.jsx("span",{className:"text-[8px] font-mono text-slate-500",children:`PAGES: ${totalPages}`})]}),g.jsx("h4",{className:"text-xs font-bold text-slate-200 line-clamp-1 uppercase",children:e}),g.jsxs("div",{className:"space-y-1.5 pt-1 opacity-40",children:[g.jsx("div",{className:"h-1.5 bg-slate-700 rounded w-11/12"}),g.jsx("div",{className:"h-1.5 bg-slate-700 rounded w-full"}),g.jsx("div",{className:"h-1.5 bg-slate-700 rounded w-10/12"})]})]}),g.jsxs("div",{className:"flex justify-between items-center border-t border-slate-800/80 pt-1.5 relative z-10",children:[g.jsx("span",{className:"text-[8px] font-mono text-slate-400 font-semibold",children:"🔒 DRM ENCRYPTED"}),g.jsx("span",{className:"text-[8px] font-mono text-indigo-400 font-bold",children:"tyagiHUb"})]})]})}let previewLines=[];let pagesToDisplay=1;let previewLabel="📄 PREVIEW EXTRACT (FIRST 20%)";if(totalPages===1){const totalLines=linesPerPage[0].length;const linesToShow=Math.max(1,Math.floor(totalLines*.2));previewLines=linesPerPage[0].slice(0,linesToShow);pagesToDisplay=1;previewLabel="📄 PREVIEW EXTRACT (FIRST 20%)"}else if(totalPages>=10){previewLines=linesPerPage.slice(0,4).flat();pagesToDisplay=4;previewLabel="📄 PREVIEW EXTRACT (FIRST 4 PAGES)"}else if(totalPages>=5){previewLines=linesPerPage.slice(0,2).flat();pagesToDisplay=2;previewLabel="📄 PREVIEW EXTRACT (FIRST 2 PAGES)"}else{previewLines=linesPerPage[0];pagesToDisplay=1;previewLabel="📄 PREVIEW EXTRACT (FIRST 1 PAGE)"}const previewText=previewLines.join("\n");return g.jsxs("div",{className:`relative w-full aspect-[1/1.414] min-h-[360px] max-h-[440px] rounded-xl shadow-2xl p-6 select-none overflow-hidden transition-all flex flex-col justify-between border text-left ${n?"bg-white border-emerald-300 text-slate-800":"bg-white border-slate-250 text-slate-800"}`,style:{fontFamily:"'Calibri', 'Arial', sans-serif"},onContextMenu:w=>w.preventDefault(),draggable:"false",children:[g.jsx("div",{className:"absolute inset-0 z-30 bg-transparent cursor-default",onContextMenu:w=>w.preventDefault(),draggable:"false"}),!n&&g.jsx("div",{className:"absolute inset-0 pointer-events-none select-none overflow-hidden flex flex-col justify-around py-4 rotate-[-15deg] scale-110 opacity-[0.08] z-10",children:Array.from({length:5}).map((w,S)=>g.jsxs("div",{className:"flex justify-around gap-4 text-[12px] font-mono font-black text-rose-600 uppercase tracking-widest whitespace-nowrap",children:[g.jsx("span",{children:"tyagiHUb"}),g.jsx("span",{children:"tyagiHUb"})]},S))}),g.jsxs("div",{className:"border-b-2 border-indigo-500 pb-2 mb-4 relative z-20 text-left",children:[g.jsxs("div",{className:"flex justify-between items-center",children:[g.jsx("span",{className:"text-[10px] font-mono font-bold text-indigo-600 tracking-wider",children:"TYAGIHUB SECURE DOC"}),g.jsx("span",{className:"text-[9px] font-mono font-semibold text-slate-400",children:n?`PAGE 1 / ${totalPages}`:`PAGES 1 - ${pagesToDisplay} / ${totalPages}`})]}),g.jsx("h3",{className:"text-xs font-extrabold text-slate-900 mt-1 uppercase tracking-tight line-clamp-1",children:e})]}),g.jsx("div",{className:"flex-1 overflow-y-auto pr-1 text-[11px] leading-relaxed text-slate-700 text-justify relative z-20 scrollbar-none",children:n?g.jsxs("div",{className:"space-y-3 whitespace-pre-line text-left",children:[g.jsx("p",{className:"text-[10px] font-mono font-black text-emerald-600 tracking-wider border-b border-emerald-100 pb-1 flex items-center gap-1",children:g.jsx("span",{children:"✓ UNLOCKED ORIGINAL FULL TEXT"})}),g.jsx("p",{className:"text-slate-700 leading-relaxed text-left",children:b})]}):g.jsxs("div",{className:"space-y-3 text-left",children:[g.jsxs("p",{className:"text-[9.5px] font-mono font-black text-indigo-600 tracking-wider border-b border-slate-100 pb-1 flex items-center justify-between",children:[g.jsx("span",{children:previewLabel}),g.jsx("span",{className:"text-[8px] bg-rose-100 text-rose-700 px-1.5 py-0.5 rounded font-black uppercase",children:"DRM SECURED"})]}),g.jsxs("p",{className:"italic font-serif text-slate-600 whitespace-pre-line text-left",children:[previewText,"..."]}),g.jsxs("div",{className:"pt-4 border-t border-dashed border-slate-200 space-y-2 opacity-35 blur-[1.2px] pointer-events-none select-none",children:[g.jsx("p",{className:"font-mono text-[9px] text-slate-500",children:"SECTION 2: METHODOLOGY & SOLUTIONS PREPARATIONS [LOCKED]"}),g.jsx("div",{className:"h-2 rounded w-11/12 bg-slate-300"}),g.jsx("div",{className:"h-2 rounded w-full bg-slate-300"}),g.jsx("div",{className:"h-2 rounded w-10/12 bg-slate-300"})]})]})}),g.jsxs("div",{className:"border-t border-slate-200 pt-2 mt-4 flex items-center justify-between relative z-20",children:[g.jsx("span",{className:"text-[8px] font-mono text-slate-400 uppercase tracking-wider",children:n?"VERIFIED ORIGINAL DOWNLOAD READY":"🔒 PAYMENT REQUIRED TO UNLOCK FULL FILE"}),g.jsx("span",{className:"text-[8px] font-mono font-bold text-slate-500",children:"TYAGIHUB STORE"})]})]})}if(i==="zip"||f){let b={bg:"from-rose-950/30 to-slate-950",border:"border-rose-900/40",iconColor:"text-rose-400",glow:"shadow-rose-950/15",badge:"bg-rose-500/10 text-rose-400 border-rose-500/20"};i==="zip"?b={bg:"from-amber-950/30 to-slate-950",border:"border-amber-900/40",iconColor:"text-amber-400",glow:"shadow-amber-950/15",badge:"bg-amber-500/10 text-amber-400 border-amber-500/20"}:i==="video"?b={bg:"from-purple-950/30 to-slate-950",border:"border-purple-900/40",iconColor:"text-purple-400",glow:"shadow-purple-950/15",badge:"bg-purple-500/10 text-purple-400 border-purple-500/20"}:i==="image"?b={bg:"from-blue-950/30 to-slate-950",border:"border-blue-900/40",iconColor:"text-blue-400",glow:"shadow-blue-950/15",badge:"bg-blue-500/10 text-blue-400 border-blue-500/20"}:i==="pdf"&&(b={bg:"from-red-950/30 to-slate-950",border:"border-red-900/40",iconColor:"text-red-400",glow:"shadow-red-950/15",badge:"bg-red-500/10 text-red-400 border-red-500/20"});return g.jsxs("div",{className:`relative w-full h-full bg-gradient-to-br ${b.bg} border ${b.border} ${b.glow} shadow-2xl flex flex-col items-center justify-center ${isCard?"p-3":"p-6 min-h-[160px]"} select-none overflow-hidden`,children:[!n&&g.jsx("div",{className:"absolute inset-0 pointer-events-none select-none flex items-center justify-center overflow-hidden opacity-10",children:g.jsx("div",{className:"absolute inset-0 flex flex-wrap gap-4 p-2 justify-around content-around rotate-[-15deg] scale-125 text-[8px] font-mono font-bold tracking-widest text-rose-500 uppercase",children:Array.from({length:6}).map((N,P)=>g.jsx("span",{className:"whitespace-nowrap",children:"TYAGIHUB DRM PROTECTED"},P))})}),g.jsxs("div",{className:"flex flex-col items-center text-center space-y-3 z-10",children:[g.jsxs("div",{className:`p-4 rounded-2xl bg-slate-950/80 border ${b.border} shadow-lg flex items-center justify-center relative`,children:[i==="pdf"&&g.jsx(za,{className:`w-8 h-8 ${b.iconColor}`}),i==="zip"&&g.jsx(Wf,{className:`w-8 h-8 ${b.iconColor}`}),i==="video"&&g.jsx(i4,{className:`w-8 h-8 ${b.iconColor}`}),i==="image"&&g.jsx(Gf,{className:`w-8 h-8 ${b.iconColor}`}),i!=="pdf"&&i!=="zip"&&i!=="video"&&i!=="image"&&g.jsx(za,{className:"w-8 h-8 text-indigo-400"}),g.jsx("div",{className:"absolute -bottom-1 -right-1 bg-slate-900 border border-slate-800 rounded-full p-1 shadow-md",children:g.jsx(a1,{className:"w-3 h-3 text-rose-400"})})]}),g.jsxs("div",{className:"space-y-1",children:[g.jsx("span",{className:`inline-block px-2 py-0.5 text-[9px] font-mono font-bold uppercase rounded border ${b.badge}`,children:"Secure Preview"}),g.jsxs("h4",{className:"text-xs font-black text-white uppercase tracking-wider font-mono",children:["Premium ",i," File"]}),g.jsx("p",{className:"text-[10px] text-slate-400 max-w-[240px] leading-relaxed",children:"Google Drive Cloud verification active. Purchase to unlock permanent downloads."})]})]}),g.jsxs("div",{className:"absolute bottom-0 inset-x-0 bg-slate-950/90 py-1.5 border-t border-slate-900 flex items-center justify-center gap-1.5 px-3 z-10",children:[g.jsx("span",{className:"w-1.5 h-1.5 rounded-full bg-rose-500 animate-pulse"}),g.jsx("span",{className:"text-[8px] font-mono font-semibold text-slate-400 uppercase tracking-widest",children:"TYAGIHUB AUTOMATED PRE-DOWNLOAD DRM GATEWAY"})]})]})}return g.jsxs("div",{className:"relative w-full h-full overflow-hidden select-none",children:[l&&g.jsxs("div",{className:"absolute inset-0 bg-slate-950 flex flex-col items-center justify-center gap-1.5 z-30",children:[g.jsx("div",{className:"w-6 h-6 rounded-full border border-slate-850 border-t-indigo-500 animate-spin"}),g.jsx("span",{className:"text-[9px] font-mono text-slate-500 tracking-wider",children:"DRM SECURING..."})]}),g.jsx("img",{src:o||t,alt:e,referrerPolicy:"no-referrer",className:`${r} select-none pointer-events-none`,draggable:"false"}),v&&!n&&g.jsxs(g.Fragment,{children:[g.jsx("div",{className:"absolute inset-0 pointer-events-none select-none overflow-hidden z-10 flex flex-col justify-around py-4 scale-110",children:Array.from({length:5}).map((b,N)=>g.jsxs("div",{className:"flex justify-around gap-2 whitespace-nowrap text-[12px] font-mono font-black text-rose-500 uppercase tracking-widest select-none pointer-events-none rotate-[-18deg]",style:{mixBlendMode:"difference",opacity:.4},children:[g.jsx("span",{children:"tyagiHUb"}),g.jsx("span",{children:"tyagiHUb"})]},N))}),g.jsx("div",{className:"absolute bottom-0 inset-x-0 bg-slate-950/90 py-1.5 text-[8px] font-mono font-bold text-red-300 text-center uppercase tracking-widest border-t border-slate-900/60 z-15 select-none pointer-events-none",children:"TYAGIHUB SECURE DRM PROTECTED • PRE-DOWNLOAD PREVIEW"})]}),!n&&g.jsx("div",{className:"absolute inset-0 z-20 bg-transparent cursor-pointer select-none pointer-events-auto",onContextMenu:b=>b.preventDefault(),draggable:"false"})]})}function zx(t,e,n){const r=new Ze({orientation:"portrait",unit:"mm",format:"a4"}),i=r.internal.pageSize.getWidth(),s=r.internal.pageSize.getHeight(),o=20,a=i-o*2,l=(_,L)=>{r.setFont("helvetica","bold"),r.setFontSize(8),r.setTextColor(156,163,175),r.text("TYAGIHUB SECURE DOCUMENT PROTOCOL",o,12),r.setFont("helvetica","normal"),r.text("VERIFIED ORIGINAL (ORIGINAL CERTIFIED)",i-o,12,{align:"right"}),r.setDrawColor(229,231,235),r.setLineWidth(.3),r.line(o,14,i-o,14),r.line(o,s-15,i-o,s-15),r.setFontSize(7.5),r.setTextColor(156,163,175),r.text(`Page ${_} of ${L}`,i-o,s-10,{align:"right"}),r.text("Securely distributed by TyagiHub Store (golutyagi9710@gmail.com)",o,s-10)};let u=28;r.setFont("helvetica","bold"),r.setFontSize(20),r.setTextColor(17,24,39),r.splitTextToSize(t.toUpperCase(),a).forEach(_=>{r.text(_,i/2,u,{align:"center"}),u+=8}),u+=2,r.setDrawColor(79,70,229),r.setLineWidth(1.2),r.line(o,u,i-o,u),u+=12;const m=e.replace(/\r\n/g,`
+  `,r=t.lastIndexOf("</svg>");return r!==-1?t.substring(0,r)+n+t.substring(r):t};function Vx({src:t,alt:e,isFree:n,className:r,type:i="image",pdfContent:s}){const[o,a]=de.useState(""),[l,u]=de.useState(!0),[f,m]=de.useState(!1),[v,h]=de.useState(!1);if(de.useEffect(()=>{let b=!0;if(m(!1),h(!1),!t||t.trim()===""||t.includes("placeholder")){m(!0),u(!1);return}if(i==="zip"||Ux(t)){u(!1);return}if(u(!0),n){a(t),u(!1);return}const N=new Image;N.crossOrigin="anonymous",N.src=t,N.onload=()=>{if(b)try{const w=document.createElement("canvas"),S=w.getContext("2d");if(!S)throw new Error("Canvas 2D context unavailable");w.width=N.naturalWidth||800,w.height=N.naturalHeight||500,S.drawImage(N,0,0,w.width,w.height),S.save(),S.translate(w.width/2,w.height/2),S.rotate(-Math.PI/8),S.translate(-w.width/2,-w.height/2);const _=Math.max(14,Math.floor(w.width/25));S.font=`900 ${_}px "Plus Jakarta Sans", sans-serif`,S.fillStyle="rgba(239, 68, 68, 0.6)",S.textAlign="center";const L=w.height/4,$=w.width/2;for(let X=-1;X<=5;X++)for(let O=-1;O<=3;O++)S.fillText("TyagiHub Secure DRM Protected • DO NOT ALTER",O*$,X*L);S.restore(),S.fillStyle="rgba(15, 23, 42, 0.9)",S.fillRect(0,w.height-40,w.width,40),S.font=`bold ${Math.max(11,Math.floor(w.width/55))}px "JetBrains Mono", monospace`,S.fillStyle="#fca5a5",S.textAlign="center",S.fillText("TYAGIHUB SECURED DRM STORE • UNAUTHORIZED DOWNLOAD BLOCKED",w.width/2,w.height-15);const Q=w.toDataURL("image/jpeg",.85);a(Q),h(!1),m(!1),u(!1)}catch{P()}},N.onerror=()=>{b&&P()};function P(){const w=new Image;w.src=t,w.onload=()=>{b&&(a(t),h(!0),m(!1),u(!1))},w.onerror=()=>{b&&(m(!0),u(!1))}}return()=>{b=!1,N.onload=null,N.onerror=null}},[t,n,i]),Ux(t)){const b=WO(t,n);return g.jsxs("div",{className:`relative w-full h-full flex items-center justify-center p-3 bg-slate-950/80 rounded-xl overflow-hidden select-none ${r}`,style:{minHeight:"180px"},onContextMenu:N=>N.preventDefault(),draggable:"false",children:[g.jsx("div",{className:"w-full h-full flex items-center justify-center svg-container [&>svg]:max-w-full [&>svg]:max-h-full [&>svg]:w-auto [&>svg]:h-auto",dangerouslySetInnerHTML:{__html:b}}),g.jsx("div",{className:"absolute inset-0 z-30 bg-transparent cursor-default",onContextMenu:N=>N.preventDefault(),draggable:"false"})]})}if(i==="pdf"){const b=s||"Complete syllabus preparation guide and verified answers.",N=Math.max(100,Math.floor(b.length*.2)),P=b.substring(0,N);return g.jsxs("div",{className:`relative w-full aspect-[1/1.414] min-h-[360px] max-h-[440px] rounded-xl shadow-2xl p-6 select-none overflow-hidden transition-all flex flex-col justify-between border text-left ${n?"bg-white border-emerald-300 text-slate-800":"bg-white border-slate-250 text-slate-800"}`,style:{fontFamily:"'Calibri', 'Arial', sans-serif"},onContextMenu:w=>w.preventDefault(),draggable:"false",children:[g.jsx("div",{className:"absolute inset-0 z-30 bg-transparent cursor-default",onContextMenu:w=>w.preventDefault(),draggable:"false"}),!n&&g.jsx("div",{className:"absolute inset-0 pointer-events-none select-none overflow-hidden flex flex-col justify-around py-4 rotate-[-15deg] scale-110 opacity-[0.08] z-10",children:Array.from({length:5}).map((w,S)=>g.jsxs("div",{className:"flex justify-around gap-2 text-[10px] font-mono font-black text-rose-600 uppercase tracking-widest whitespace-nowrap",children:[g.jsx("span",{children:"PREVIEW • TYAGIHUB SECURE • PAY TO UNLOCK"}),g.jsx("span",{children:"PREVIEW • TYAGIHUB SECURE • PAY TO UNLOCK"})]},S))}),g.jsxs("div",{className:"border-b-2 border-indigo-500 pb-2 mb-4 relative z-20 text-left",children:[g.jsxs("div",{className:"flex justify-between items-center",children:[g.jsx("span",{className:"text-[10px] font-mono font-bold text-indigo-600 tracking-wider",children:"TYAGIHUB SECURE DOC"}),g.jsx("span",{className:"text-[9px] font-mono font-semibold text-slate-400",children:"PAGE 1 / 15"})]}),g.jsx("h3",{className:"text-xs font-extrabold text-slate-900 mt-1 uppercase tracking-tight line-clamp-1",children:e})]}),g.jsx("div",{className:"flex-1 overflow-y-auto pr-1 text-[11px] leading-relaxed text-slate-700 text-justify relative z-20 scrollbar-none",children:n?g.jsxs("div",{className:"space-y-3 whitespace-pre-line text-left",children:[g.jsx("p",{className:"text-[10px] font-mono font-black text-emerald-600 tracking-wider border-b border-emerald-100 pb-1 flex items-center gap-1",children:g.jsx("span",{children:"✓ UNLOCKED ORIGINAL FULL TEXT"})}),g.jsx("p",{className:"text-slate-700 leading-relaxed text-left",children:b})]}):g.jsxs("div",{className:"space-y-3 text-left",children:[g.jsxs("p",{className:"text-[9.5px] font-mono font-black text-indigo-600 tracking-wider border-b border-slate-100 pb-1 flex items-center justify-between",children:[g.jsx("span",{children:"📄 PREVIEW EXTRACT (FIRST 20%)"}),g.jsx("span",{className:"text-[8px] bg-rose-100 text-rose-700 px-1.5 py-0.5 rounded font-black uppercase",children:"DRM SECURED"})]}),g.jsxs("p",{className:"italic font-serif text-slate-600 whitespace-pre-line text-left",children:[P,"..."]}),g.jsxs("div",{className:"pt-4 border-t border-dashed border-slate-200 space-y-2 opacity-35 blur-[1.2px] pointer-events-none select-none",children:[g.jsx("p",{className:"font-mono text-[9px] text-slate-500",children:"SECTION 2: METHODOLOGY & SOLUTIONS PREPARATIONS [LOCKED]"}),g.jsx("div",{className:"h-2 rounded w-11/12 bg-slate-300"}),g.jsx("div",{className:"h-2 rounded w-full bg-slate-300"}),g.jsx("div",{className:"h-2 rounded w-10/12 bg-slate-300"})]})]})}),g.jsxs("div",{className:"border-t border-slate-200 pt-2 mt-4 flex items-center justify-between relative z-20",children:[g.jsx("span",{className:"text-[8px] font-mono text-slate-400 uppercase tracking-wider",children:n?"VERIFIED ORIGINAL DOWNLOAD READY":"🔒 PAYMENT REQUIRED TO UNLOCK FULL FILE"}),g.jsx("span",{className:"text-[8px] font-mono font-bold text-slate-500",children:"TYAGIHUB STORE"})]})]})}if(i==="zip"||f){let b={bg:"from-rose-950/30 to-slate-950",border:"border-rose-900/40",iconColor:"text-rose-400",glow:"shadow-rose-950/15",badge:"bg-rose-500/10 text-rose-400 border-rose-500/20"};return i==="zip"?b={bg:"from-amber-950/30 to-slate-950",border:"border-amber-900/40",iconColor:"text-amber-400",glow:"shadow-amber-950/15",badge:"bg-amber-500/10 text-amber-400 border-amber-500/20"}:i==="video"?b={bg:"from-purple-950/30 to-slate-950",border:"border-purple-900/40",iconColor:"text-purple-400",glow:"shadow-purple-950/15",badge:"bg-purple-500/10 text-purple-400 border-purple-500/20"}:i==="image"?b={bg:"from-blue-950/30 to-slate-950",border:"border-blue-900/40",iconColor:"text-blue-400",glow:"shadow-blue-950/15",badge:"bg-blue-500/10 text-blue-400 border-blue-500/20"}:i==="pdf"&&(b={bg:"from-red-950/30 to-slate-950",border:"border-red-900/40",iconColor:"text-red-400",glow:"shadow-red-950/15",badge:"bg-red-500/10 text-red-400 border-red-500/20"}),g.jsxs("div",{className:`relative w-full h-full bg-gradient-to-br ${b.bg} border ${b.border} ${b.glow} shadow-2xl flex flex-col items-center justify-center p-6 select-none overflow-hidden min-h-[160px]`,children:[!n&&g.jsx("div",{className:"absolute inset-0 pointer-events-none select-none flex items-center justify-center overflow-hidden opacity-10",children:g.jsx("div",{className:"absolute inset-0 flex flex-wrap gap-4 p-2 justify-around content-around rotate-[-15deg] scale-125 text-[8px] font-mono font-bold tracking-widest text-rose-500 uppercase",children:Array.from({length:6}).map((N,P)=>g.jsx("span",{className:"whitespace-nowrap",children:"TYAGIHUB DRM PROTECTED"},P))})}),g.jsxs("div",{className:"flex flex-col items-center text-center space-y-3 z-10",children:[g.jsxs("div",{className:`p-4 rounded-2xl bg-slate-950/80 border ${b.border} shadow-lg flex items-center justify-center relative`,children:[i==="pdf"&&g.jsx(za,{className:`w-8 h-8 ${b.iconColor}`}),i==="zip"&&g.jsx(Wf,{className:`w-8 h-8 ${b.iconColor}`}),i==="video"&&g.jsx(i4,{className:`w-8 h-8 ${b.iconColor}`}),i==="image"&&g.jsx(Gf,{className:`w-8 h-8 ${b.iconColor}`}),i!=="pdf"&&i!=="zip"&&i!=="video"&&i!=="image"&&g.jsx(za,{className:"w-8 h-8 text-indigo-400"}),g.jsx("div",{className:"absolute -bottom-1 -right-1 bg-slate-900 border border-slate-800 rounded-full p-1 shadow-md",children:g.jsx(a1,{className:"w-3 h-3 text-rose-400"})})]}),g.jsxs("div",{className:"space-y-1",children:[g.jsx("span",{className:`inline-block px-2 py-0.5 text-[9px] font-mono font-bold uppercase rounded border ${b.badge}`,children:"Secure Preview"}),g.jsxs("h4",{className:"text-xs font-black text-white uppercase tracking-wider font-mono",children:["Premium ",i," File"]}),g.jsx("p",{className:"text-[10px] text-slate-400 max-w-[240px] leading-relaxed",children:"Google Drive Cloud verification active. Purchase to unlock permanent downloads."})]})]}),g.jsxs("div",{className:"absolute bottom-0 inset-x-0 bg-slate-950/90 py-1.5 border-t border-slate-900 flex items-center justify-center gap-1.5 px-3 z-10",children:[g.jsx("span",{className:"w-1.5 h-1.5 rounded-full bg-rose-500 animate-pulse"}),g.jsx("span",{className:"text-[8px] font-mono font-semibold text-slate-400 uppercase tracking-widest",children:"TYAGIHUB AUTOMATED PRE-DOWNLOAD DRM GATEWAY"})]})]})}return g.jsxs("div",{className:"relative w-full h-full overflow-hidden select-none",children:[l&&g.jsxs("div",{className:"absolute inset-0 bg-slate-950 flex flex-col items-center justify-center gap-1.5 z-30",children:[g.jsx("div",{className:"w-6 h-6 rounded-full border border-slate-850 border-t-indigo-500 animate-spin"}),g.jsx("span",{className:"text-[9px] font-mono text-slate-500 tracking-wider",children:"DRM SECURING..."})]}),g.jsx("img",{src:o||t,alt:e,referrerPolicy:"no-referrer",className:`${r} select-none pointer-events-none`,draggable:"false"}),v&&!n&&g.jsxs(g.Fragment,{children:[g.jsx("div",{className:"absolute inset-0 pointer-events-none select-none overflow-hidden z-10 flex flex-col justify-around py-4 scale-110",children:Array.from({length:6}).map((b,N)=>g.jsxs("div",{className:"flex justify-around gap-2 whitespace-nowrap text-[9px] font-mono font-black text-rose-500 uppercase tracking-widest select-none pointer-events-none rotate-[-18deg]",style:{mixBlendMode:"difference",opacity:.4},children:[g.jsx("span",{children:"TyagiHub Secure DRM • DO NOT ALTER"}),g.jsx("span",{children:"TyagiHub Secure DRM • DO NOT ALTER"})]},N))}),g.jsx("div",{className:"absolute bottom-0 inset-x-0 bg-slate-950/90 py-1.5 text-[8px] font-mono font-bold text-red-300 text-center uppercase tracking-widest border-t border-slate-900/60 z-15 select-none pointer-events-none",children:"TYAGIHUB SECURE DRM PROTECTED • PRE-DOWNLOAD PREVIEW"})]}),!n&&g.jsx("div",{className:"absolute inset-0 z-20 bg-transparent cursor-pointer select-none pointer-events-auto",onContextMenu:b=>b.preventDefault(),draggable:"false"})]})}function zx(t,e,n){const r=new Ze({orientation:"portrait",unit:"mm",format:"a4"}),i=r.internal.pageSize.getWidth(),s=r.internal.pageSize.getHeight(),o=20,a=i-o*2,l=(_,L)=>{r.setFont("helvetica","bold"),r.setFontSize(8),r.setTextColor(156,163,175),r.text("TYAGIHUB SECURE DOCUMENT PROTOCOL",o,12),r.setFont("helvetica","normal"),r.text("VERIFIED ORIGINAL (ORIGINAL CERTIFIED)",i-o,12,{align:"right"}),r.setDrawColor(229,231,235),r.setLineWidth(.3),r.line(o,14,i-o,14),r.line(o,s-15,i-o,s-15),r.setFontSize(7.5),r.setTextColor(156,163,175),r.text(`Page ${_} of ${L}`,i-o,s-10,{align:"right"}),r.text("Securely distributed by TyagiHub Store (golutyagi9710@gmail.com)",o,s-10)};let u=28;r.setFont("helvetica","bold"),r.setFontSize(20),r.setTextColor(17,24,39),r.splitTextToSize(t.toUpperCase(),a).forEach(_=>{r.text(_,i/2,u,{align:"center"}),u+=8}),u+=2,r.setDrawColor(79,70,229),r.setLineWidth(1.2),r.line(o,u,i-o,u),u+=12;const m=e.replace(/\r\n/g,`
 `);r.setFont("helvetica","normal"),r.setFontSize(10.5),r.setTextColor(55,65,81);const v=r.splitTextToSize(m,a),h=6.8;let b=u,N=1;for(let _=0;_<v.length;_++)b>s-25&&(N++,b=22),b+=h;let P=1;l(P,N);for(let _=0;_<v.length;_++)u>s-25&&(r.addPage(),P++,u=22,l(P,N)),r.setFont("helvetica","normal"),r.setFontSize(10.5),r.setTextColor(55,65,81),r.text(v[_],o,u),u+=h;const S=`${t.toLowerCase().replace(/[^a-z0-9]/g,"_").substring(0,40)}_unlocked_tyagihub.pdf`;r.save(S)}function $x(t,e){const r=e.replace(/\r\n/g,`
 `).split(`
 `).map(u=>u.trim()).filter(u=>u.length>0).map(u=>`<p style="margin-bottom: 12pt; text-align: justify; font-size: 11pt; line-height: 150%; font-family: 'Calibri', 'Arial', sans-serif; color: #2D3748;">${u}</p>`).join(""),i=`
@@ -1978,635 +1969,434 @@ end`};e.events.push(["putFont",function(s){(function(o){var a=o.font,l=o.out,u=o
       </div>
     </body>
     </html>
-  `,s=new Blob(["\uFEFF"+i],{type:"application/msword;charset=utf-8"}),o=URL.createObjectURL(s),a=document.createElement("a");a.href=o;const l=t.toLowerCase().replace(/[^a-z0-9]/g,"_").substring(0,40);a.download=`${l}_unlocked_tyagihub.doc`,document.body.appendChild(a),a.click(),document.body.removeChild(a),URL.revokeObjectURL(o)}const GO={apiKey:"AIzaSyBE0uXhh8ePOQH6FBdhRCZrRgRkUTwCWws",authDomain:"tyagi-hub.firebaseapp.com",projectId:"tyagi-hub",storageBucket:"tyagi-hub.firebasestorage.app",messagingSenderId:"1052184634573",appId:"1:1052184634573:web:077135d1bc4f321688b584",measurementId:"G-36X3TG734R"},qx="https://script.google.com/macros/s/AKfycbx9iZxNjc8MdlgIul3TJju2B3h3RB25uEQMJ63R6YyzOLhmojgauokk7lB1ATZ6L58h/exec",KO=mR().length===0?qN(GO):HN(),jf=zO(KO),Hr=async t=>{const e=await fetch(t);if(!e.ok)throw new Error(`HTTP Error ${e.status}: ${e.statusText}`);const n=await e.text(),r=n.trim();if(r.startsWith("<!DOCTYPE")||r.startsWith("<html")||r.startsWith("<script")||r.startsWith("<head")||r.startsWith("<body"))throw new Error('Received HTML response instead of JSON. Please ensure that your Google Apps Script Web App is deployed with "Execute as: Me" and "Who has access: Anyone". If you are logged in with multiple Google accounts, try opening the App in incognito or another browser.');try{return JSON.parse(n)}catch(i){throw new Error(`Invalid JSON response from server. Error: ${i instanceof Error?i.message:String(i)}`)}};function slugify(title){if(!title)return"";return title.toLowerCase().replace(/[^a-z0-9\s-]/g,"").replace(/\s+/g,"-").replace(/-+/g,"-").trim()}
-
-function ProductComments({ productUrl, currentUser }) {
+  `,s=new Blob(["\uFEFF"+i],{type:"application/msword;charset=utf-8"}),o=URL.createObjectURL(s),a=document.createElement("a");a.href=o;const l=t.toLowerCase().replace(/[^a-z0-9]/g,"_").substring(0,40);a.download=`${l}_unlocked_tyagihub.doc`,document.body.appendChild(a),a.click(),document.body.removeChild(a),URL.revokeObjectURL(o)}const GO={apiKey:"AIzaSyBE0uXhh8ePOQH6FBdhRCZrRgRkUTwCWws",authDomain:"tyagi-hub.firebaseapp.com",projectId:"tyagi-hub",storageBucket:"tyagi-hub.firebasestorage.app",messagingSenderId:"1052184634573",appId:"1:1052184634573:web:077135d1bc4f321688b584",measurementId:"G-36X3TG734R"},qx="https://script.google.com/macros/s/AKfycbx9iZxNjc8MdlgIul3TJju2B3h3RB25uEQMJ63R6YyzOLhmojgauokk7lB1ATZ6L58h/exec",KO=mR().length===0?qN(GO):HN(),jf=zO(KO),Hr=async t=>{const e=await fetch(t);if(!e.ok)throw new Error(`HTTP Error ${e.status}: ${e.statusText}`);const n=await e.text(),r=n.trim();if(r.startsWith("<!DOCTYPE")||r.startsWith("<html")||r.startsWith("<script")||r.startsWith("<head")||r.startsWith("<body"))throw new Error('Received HTML response instead of JSON. Please ensure that your Google Apps Script Web App is deployed with "Execute as: Me" and "Who has access: Anyone". If you are logged in with multiple Google accounts, try opening the App in incognito or another browser.');try{return JSON.parse(n)}catch(i){throw new Error(`Invalid JSON response from server. Error: ${i instanceof Error?i.message:String(i)}`)}};function slugify(title){if(!title)return"";return title.toLowerCase().replace(/[^a-z0-9\s-]/g,"").replace(/\s+/g,"-").replace(/-+/g,"-").trim()}const ProductComments = ({ product, user, openLogin }) => {
   const [comments, setComments] = de.useState([]);
+  const [tempLocal, setTempLocal] = de.useState([]);
+  const [isTyping, setIsTyping] = de.useState(false);
+  const [currentRating, setCurrentRating] = de.useState(0);
   const [avgRating, setAvgRating] = de.useState("0.0");
   const [totalVotes, setTotalVotes] = de.useState(0);
-  const [myRating, setMyRating] = de.useState(0);
-  const [inputText, setInputText] = de.useState("");
-  const [ratingInput, setRatingInput] = de.useState(0);
-  const [hoveredStar, setHoveredStar] = de.useState(0);
-  const [loading, setLoading] = de.useState(true);
-  const [replyingTo, setReplyingTo] = de.useState(null);
+  const [newComment, setNewComment] = de.useState("");
+  const [replyToId, setReplyToId] = de.useState(null);
   const [replyText, setReplyText] = de.useState("");
-  const [submitting, setSubmitting] = de.useState(false);
+  const [editId, setEditId] = de.useState(null);
+  const [editText, setEditText] = de.useState("");
+  const [hoveredStars, setHoveredStars] = de.useState(0);
 
-  const getScriptUrl = () => {
-    return localStorage.getItem("tyagihub_gas_url") || "https://script.google.com/macros/s/AKfycbx9iZxNjc8MdlgIul3TJju2B3h3RB25uEQMJ63R6YyzOLhmojgauokk7lB1ATZ6L58h/exec";
+  const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzLt6yxrdohBhdhOlxhKwSi1SRL1kr0xEVADmEsHFWyzIaCsuwLyQ4ewFrSE2Bk4Z1l/exec";
+
+  const getPageUrl = () => {
+    return window.location.pathname + window.location.search;
   };
 
-  const getProductSlug = () => {
-    if (!productUrl) return "default";
-    const parts = productUrl.split("/");
-    return parts[parts.length - 1] || "default";
-  };
-
-  const getLocalComments = () => {
+  const sync = async () => {
     try {
-      return JSON.parse(localStorage.getItem(`tyagihub_local_comments_${productUrl}`) || "[]");
-    } catch (e) {
-      return [];
-    }
-  };
-
-  const addLocalComment = (newComment) => {
-    try {
-      const current = getLocalComments();
-      const updated = [newComment, ...current];
-      localStorage.setItem(`tyagihub_local_comments_${productUrl}`, JSON.stringify(updated));
-    } catch (e) {
-      console.error("Failed to save local comment:", e);
-    }
-  };
-
-  const getDefaultCommentsForSlug = (slug) => {
-    return [];
-  };
-
-  const fetchComments = async () => {
-    setLoading(true);
-    try {
-      const emailQuery = currentUser ? "&email=" + encodeURIComponent(currentUser.email) : "";
-      const res = await fetch(getScriptUrl() + "?url=" + encodeURIComponent(productUrl) + emailQuery);
-      let sheetComments = [];
-      let sheetAvgRating = 0;
-      let sheetTotalVotes = 0;
-      let sheetMyRating = 0;
-
-      if (res.ok) {
-        const data = await res.json();
-        sheetComments = data.comments || [];
-        sheetAvgRating = parseFloat(data.avgRating || "0.0");
-        sheetTotalVotes = data.totalVotes || 0;
-        sheetMyRating = data.myRating || 0;
+      const emailParam = user ? "&email=" + encodeURIComponent(user.email) : "";
+      const url = SCRIPT_URL + "?url=" + encodeURIComponent(getPageUrl()) + emailParam;
+      const response = await fetch(url);
+      const data = await response.json();
+      setComments(data.comments || []);
+      setTempLocal([]);
+      if (user && data.myRating > 0) {
+        setCurrentRating(data.myRating);
       }
-
-      // Load static custom comments specific to this product
-      const slug = getProductSlug();
-      const defaultList = getDefaultCommentsForSlug(slug);
-
-      // Filter out local comments that have already been synchronized (present in sheetComments)
-      let localList = getLocalComments();
-      localList = localList.filter(lc => !sheetComments.some(sc => sc.email === lc.email && sc.comment === lc.comment));
-      localStorage.setItem(`tyagihub_local_comments_${productUrl}`, JSON.stringify(localList));
-
-      // Merge sheet comments with default comments
-      // To avoid duplication, we check if default comment rowIds already exist in sheetComments
-      const filteredDefaults = defaultList.filter(dc => !sheetComments.some(sc => sc.rowId === dc.rowId));
-      
-      // Combine local comments, sheet comments, and default comments
-      const combinedComments = [...localList, ...sheetComments, ...filteredDefaults];
-
-      // Re-calculate average rating and total votes including defaults
-      const ratedComments = combinedComments.filter(c => parseFloat(c.userRating || 0) > 0);
-      const totalRatings = ratedComments.reduce((sum, c) => sum + parseFloat(c.userRating || 0), 0);
-      const calculatedAvg = ratedComments.length > 0 ? (totalRatings / ratedComments.length).toFixed(1) : "5.0";
-      const calculatedVotes = ratedComments.length;
-
-      setComments(combinedComments);
-      setAvgRating(calculatedAvg);
-      setTotalVotes(calculatedVotes);
-      setMyRating(sheetMyRating || 0);
-      if (sheetMyRating && sheetMyRating > 0) {
-        setRatingInput(sheetMyRating);
-      }
-    } catch (err) {
-      console.error("Comments fetch failed:", err);
-      // Fallback in case of network error: show default comments + any offline local comments so the page is never blank!
-      const slug = getProductSlug();
-      const defaultList = getDefaultCommentsForSlug(slug);
-      const localList = getLocalComments();
-      setComments([...localList, ...defaultList]);
-      setAvgRating("5.0");
-      setTotalVotes(defaultList.length + localList.filter(c => c.userRating > 0).length);
-    } finally {
-      setLoading(false);
+      setAvgRating(data.avgRating || "0.0");
+      setTotalVotes(data.totalVotes || 0);
+    } catch (e) {
+      console.error("Error syncing comments:", e);
     }
   };
 
   de.useEffect(() => {
-    fetchComments();
-  }, [productUrl, currentUser]);
+    sync();
+    const interval = setInterval(() => {
+      if (!isTyping) sync();
+    }, 15000);
+    return () => clearInterval(interval);
+  }, [product, user, isTyping]);
 
-  const submitRating = async (rating) => {
-    if (!currentUser) {
-      alert("कृपया रेटिंग देने के लिए लॉगिन करें। (Please login to rate.)");
+  const handleStar = async (rating) => {
+    if (!user) {
+      openLogin();
       return;
     }
+    setCurrentRating(rating);
     try {
-      setRatingInput(rating);
-      const payload = {
-        action: "rating_only",
-        comment: "__RATING_ONLY__",
-        url: productUrl,
-        rating: rating,
-        email: currentUser.email,
-        name: currentUser.displayName || currentUser.email.split("@")[0],
-        pic: currentUser.photoURL || "https://tyagihub.in/assets/images/icon-192.png"
-      };
-      await fetch(getScriptUrl(), {
+      await fetch(SCRIPT_URL, {
         method: "POST",
         mode: "no-cors",
-        body: JSON.stringify(payload)
+        body: JSON.stringify({
+          url: getPageUrl(),
+          email: user.email,
+          name: user.displayName,
+          rating: rating,
+          comment: "__RATING_ONLY__"
+        })
       });
-      setMyRating(rating);
-      setTimeout(fetchComments, 1500);
-    } catch (err) {
-      console.error("Rating submission error:", err);
-    }
-  };
-
-  const submitComment = async (e, parentId = "0") => {
-    if (e) e.preventDefault();
-    if (!currentUser) {
-      alert("कृपया टिप्पणी करने के लिए लॉगिन करें। (Please login to comment.)");
-      return;
-    }
-    const text = parentId === "0" ? inputText.trim() : replyText.trim();
-    if (!text) return;
-
-    setSubmitting(true);
-
-    const tempId = "local_" + Date.now();
-    const newLocalComment = {
-      rowId: tempId,
-      name: currentUser.displayName || currentUser.email.split("@")[0],
-      isAdmin: currentUser.email === "tyagihub.core@gmail.com" || currentUser.email === "golutyagi9710@gmail.com",
-      comment: text,
-      parentId: parentId,
-      date: "Just now (अभी-अभी)",
-      pic: currentUser.photoURL || "https://tyagihub.in/assets/images/icon-192.png",
-      userRating: parentId === "0" ? ratingInput : 0,
-      email: currentUser.email,
-      likes: 0,
-      dislikes: 0,
-      myReaction: "none",
-      scoreRank: "Silver Member",
-      productOrder: "-"
-    };
-
-    addLocalComment(newLocalComment);
-
-    // Optimistically update comments list immediately for zero latency
-    setComments(prev => {
-      // Find where to insert: replies go under parent, main comments at top
-      if (parentId === "0") {
-        return [newLocalComment, ...prev];
-      } else {
-        return [newLocalComment, ...prev];
-      }
-    });
-
-    try {
-      const payload = {
-        action: "comment",
-        comment: text,
-        url: productUrl,
-        parentId: parentId,
-        rating: parentId === "0" ? String(ratingInput) : "0",
-        email: currentUser.email,
-        name: currentUser.displayName || currentUser.email.split("@")[0],
-        pic: currentUser.photoURL || "https://tyagihub.in/assets/images/icon-192.png"
-      };
-      await fetch(getScriptUrl(), {
-        method: "POST",
-        mode: "no-cors",
-        body: JSON.stringify(payload)
-      });
-
-      if (parentId === "0") {
-        setInputText("");
-      } else {
-        setReplyText("");
-        setReplyingTo(null);
-      }
-      setTimeout(fetchComments, 1200);
-    } catch (err) {
-      console.error("Comment submit error:", err);
-    } finally {
-      setSubmitting(false);
-    }
-  };
-
-  const deleteComment = async (rowId) => {
-    if (!confirm("Are you sure you want to delete this comment? (क्या आप इस टिप्पणी को हटाना चाहते हैं?)")) return;
-    
-    // Optimistic UI update: remove comment immediately from state
-    setComments(prev => prev.filter(c => c.rowId !== rowId));
-    
-    // Also remove from localStorage cache if it exists there
-    try {
-      let localList = getLocalComments();
-      localList = localList.filter(lc => lc.rowId !== rowId);
-      localStorage.setItem(`tyagihub_local_comments_${productUrl}`, JSON.stringify(localList));
+      setTimeout(sync, 1500);
     } catch (e) {
-      console.error("Local storage delete error:", e);
-    }
-
-    try {
-      const payload = {
-        action: "delete",
-        rowId: rowId,
-        email: currentUser.email
-      };
-      await fetch(getScriptUrl(), {
-        method: "POST",
-        mode: "no-cors",
-        body: JSON.stringify(payload)
-      });
-      setTimeout(fetchComments, 1500);
-    } catch (err) {
-      console.error("Delete comment error:", err);
+      console.error(e);
     }
   };
 
-  const handleReaction = async (rowId, reactionType) => {
-    if (!currentUser) {
-      alert("Please login to react to comments.");
+  const handlePostComment = async () => {
+    if (!user) {
+      openLogin();
       return;
     }
+    const msg = newComment.trim();
+    if (!msg) return;
+
+    const tempId = "temp_" + Date.now();
+    setTempLocal(prev => [
+      ...prev,
+      {
+        rowId: tempId,
+        name: user.displayName,
+        comment: msg,
+        parentId: "0",
+        pic: user.photoURL || "https://tyagihub.in/assets/images/icon-192.png",
+        date: "Saving...",
+        pending: true,
+        isAdmin: false,
+        email: user.email
+      }
+    ]);
+    setNewComment("");
+
     try {
-      const payload = {
-        action: "reaction",
-        rowId: rowId,
-        reactionType: reactionType,
-        email: currentUser.email
-      };
-      await fetch(getScriptUrl(), {
+      await fetch(SCRIPT_URL, {
         method: "POST",
         mode: "no-cors",
-        body: JSON.stringify(payload)
+        body: JSON.stringify({
+          url: getPageUrl(),
+          name: user.displayName,
+          email: user.email,
+          pic: user.photoURL || "https://tyagihub.in/assets/images/icon-192.png",
+          comment: msg,
+          parentId: "0",
+          rating: currentRating
+        })
       });
-      setTimeout(fetchComments, 1000);
-    } catch (err) {
-      console.error("Reaction submission error:", err);
+      setTimeout(sync, 1500);
+    } catch (e) {
+      console.error(e);
     }
   };
 
-  const StarIcon = ({ filled, className, onClick, onMouseEnter, onMouseLeave }) => g.jsx("svg", {
-    onClick: onClick,
-    onMouseEnter: onMouseEnter,
-    onMouseLeave: onMouseLeave,
-    className: className || "w-4 h-4 cursor-pointer transition-all hover:scale-110",
-    viewBox: "0 0 24 24",
-    fill: filled ? "#f59e0b" : "none",
-    stroke: filled ? "#f59e0b" : "currentColor",
-    strokeWidth: "2",
-    strokeLinecap: "round",
-    strokeLinejoin: "round",
-    children: g.jsx("polygon", { points: "12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" })
-  });
+  const handlePostReply = async (parentId) => {
+    if (!user) {
+      openLogin();
+      return;
+    }
+    const msg = replyText.trim();
+    if (!msg) return;
 
-  const MessageSquareIcon = (props) => g.jsx("svg", { width: 14, height: 14, viewBox: "0 0 24 24", fill: "none", stroke: "currentColor", strokeWidth: 2, strokeLinecap: "round", strokeLinejoin: "round", className: props.className, children: g.jsx("path", { d: "M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" }) });
-  const SendIcon = (props) => g.jsx("svg", { width: 14, height: 14, viewBox: "0 0 24 24", fill: "none", stroke: "currentColor", strokeWidth: 2, strokeLinecap: "round", strokeLinejoin: "round", className: props.className, children: g.jsxs("g", { children: [g.jsx("line", { x1: "22", y1: "2", x2: "11", y2: "13" }), g.jsx("polygon", { points: "22 2 15 22 11 13 2 9 22 2" })] }) });
-  const ThumbsUpIcon = (props) => g.jsx("svg", { width: 12, height: 12, viewBox: "0 0 24 24", fill: props.fill || "none", stroke: "currentColor", strokeWidth: 2, strokeLinecap: "round", strokeLinejoin: "round", className: props.className, children: g.jsx("path", { d: "M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3" }) });
-  const ThumbsDownIcon = (props) => g.jsx("svg", { width: 12, height: 12, viewBox: "0 0 24 24", fill: props.fill || "none", stroke: "currentColor", strokeWidth: 2, strokeLinecap: "round", strokeLinejoin: "round", className: props.className, children: g.jsx("path", { d: "M10 15v4a3 3 0 0 0 3 3l4-9V2H5.72a2 2 0 0 0-2 1.7l-1.38 9a2 2 0 0 0 2 2.3zm10-13h3a2 2 0 0 1 2 2v7a2 2 0 0 1-2 2h-3" }) });
-  const CornerDownRightIcon = (props) => g.jsx("svg", { width: 12, height: 12, viewBox: "0 0 24 24", fill: "none", stroke: "currentColor", strokeWidth: 2, strokeLinecap: "round", strokeLinejoin: "round", className: props.className, children: g.jsxs("g", { children: [g.jsx("polyline", { points: "15 10 20 15 15 20" }), g.jsx("path", { d: "M4 4v7a4 4 0 0 0 4 4h12" })] }) });
-  const SparklesIcon = (props) => g.jsx("svg", { width: 12, height: 12, viewBox: "0 0 24 24", fill: "none", stroke: "currentColor", strokeWidth: 2, strokeLinecap: "round", strokeLinejoin: "round", className: props.className, children: g.jsxs("g", { children: [g.jsx("path", { d: "m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275Z" }), g.jsx("path", { d: "m5 3 1 2.5L8.5 6 6 7 5 9.5 4 7 1.5 6 4 5Z" }), g.jsx("path", { d: "m19 17 1 2.5 2.5.5-2.5 1-1 2.5-1-2.5-2.5-1 2.5-1Z" })] }) });
+    const tempId = "temp_" + Date.now();
+    setTempLocal(prev => [
+      ...prev,
+      {
+        rowId: tempId,
+        name: user.displayName,
+        comment: msg,
+        parentId: String(parentId),
+        pic: user.photoURL || "https://tyagihub.in/assets/images/icon-192.png",
+        date: "Saving...",
+        pending: true,
+        isAdmin: false,
+        email: user.email
+      }
+    ]);
+    setReplyText("");
+    setReplyToId(null);
+    setIsTyping(false);
 
-  const topLevelComments = comments.filter(c => c.parentId === "0" || !c.parentId);
-  const getRepliesFor = (id) => comments.filter(c => c.parentId === id);
+    try {
+      await fetch(SCRIPT_URL, {
+        method: "POST",
+        mode: "no-cors",
+        body: JSON.stringify({
+          url: getPageUrl(),
+          name: user.displayName,
+          email: user.email,
+          pic: user.photoURL || "https://tyagihub.in/assets/images/icon-192.png",
+          comment: msg,
+          parentId: String(parentId),
+          rating: currentRating
+        })
+      });
+      setTimeout(sync, 1500);
+    } catch (e) {
+      console.error(e);
+    }
+  };
+
+  const handleUpdateComment = async (rowId, parentId) => {
+    if (!user) {
+      openLogin();
+      return;
+    }
+    const msg = editText.trim();
+    if (!msg) return;
+
+    setComments(prev =>
+      prev.map(c => (c.rowId == rowId ? { ...c, comment: msg, date: "Updating..." } : c))
+    );
+    setEditText("");
+    setEditId(null);
+    setIsTyping(false);
+
+    try {
+      await fetch(SCRIPT_URL, {
+        method: "POST",
+        mode: "no-cors",
+        body: JSON.stringify({
+          action: "edit",
+          rowId: rowId,
+          url: getPageUrl(),
+          name: user.displayName,
+          email: user.email,
+          pic: user.photoURL || "https://tyagihub.in/assets/images/icon-192.png",
+          comment: msg,
+          parentId: String(parentId),
+          rating: currentRating
+        })
+      });
+      setTimeout(sync, 1500);
+    } catch (e) {
+      console.error(e);
+    }
+  };
+
+  const handleDeleteComment = async (rowId) => {
+    if (!confirm("Are you sure you want to delete this comment permanently? (क्या आप वाकई इस टिप्पणी को स्थायी रूप से हटाना चाहते हैं?)")) return;
+    try {
+      await fetch(SCRIPT_URL, {
+        method: "POST",
+        mode: "no-cors",
+        body: JSON.stringify({
+          action: "delete",
+          rowId: rowId,
+          email: user.email
+        })
+      });
+      setTimeout(sync, 1000);
+    } catch (e) {
+      console.error(e);
+    }
+  };
+
+  const renderCard = (c, allList) => {
+    const isReply = c.parentId !== "0";
+    const canEdit = user && user.email.toLowerCase() === c.email.toLowerCase();
+    const hasStars = c.userRating > 0;
+    
+    return g.jsxs("div", {
+      className: `p-4 border-b border-slate-900 transition-opacity ${isReply ? "ml-8 pl-4 border-l-2 border-slate-800 bg-slate-950/25" : ""} ${c.pending ? "opacity-60 border-l-3 border-amber-500" : ""}`,
+      children: [
+        g.jsxs("div", {
+          className: "flex items-center justify-between flex-wrap gap-2",
+          children: [
+            g.jsxs("div", {
+              className: "flex items-center gap-2",
+              children: [
+                g.jsx("img", {
+                  src: c.pic,
+                  className: "w-8 h-8 rounded-full object-cover border border-slate-800",
+                  onError: (e) => { e.target.src = "https://tyagihub.in/assets/images/icon-192.png"; },
+                  alt: c.name
+                }),
+                g.jsxs("div", {
+                  children: [
+                    g.jsxs("div", {
+                      className: "flex items-center gap-1.5",
+                      children: [
+                        g.jsx("span", { className: "font-bold text-sm text-slate-200", children: c.name }),
+                        c.isAdmin && g.jsx("span", { className: "text-[9px] bg-indigo-600 text-white font-mono font-bold px-1.5 py-0.5 rounded shadow", children: "ADMIN ⭐" })
+                      ]
+                    }),
+                    hasStars && g.jsx("span", { className: "text-amber-400 text-xs tracking-wider", children: "★".repeat(c.userRating) })
+                  ]
+                })
+              ]
+            }),
+            g.jsx("small", { className: "text-[11px] font-mono text-slate-500", children: c.date })
+          ]
+        }),
+        g.jsx("div", {
+          className: "mt-2.5 ml-10 text-xs leading-relaxed text-slate-300 whitespace-pre-wrap",
+          children: c.comment
+        }),
+        g.jsxs("div", {
+          className: "mt-2 ml-10 flex items-center gap-4 text-[11px] font-bold uppercase tracking-wider text-indigo-400 select-none",
+          children: [
+            g.jsx("span", {
+              className: "hover:text-indigo-300 cursor-pointer",
+              onClick: () => {
+                if (!user) { openLogin(); return; }
+                setIsTyping(true);
+                setReplyToId(c.rowId);
+                setReplyText("");
+                setEditId(null);
+              },
+              children: "Reply"
+            }),
+            canEdit && g.jsx("span", {
+              className: "hover:text-indigo-300 cursor-pointer",
+              onClick: () => {
+                setIsTyping(true);
+                setEditId(c.rowId);
+                setEditText(c.comment);
+                setReplyToId(null);
+              },
+              children: "Edit"
+            }),
+            canEdit && g.jsx("span", {
+              className: "hover:text-rose-405 text-rose-500 cursor-pointer",
+              onClick: () => handleDeleteComment(c.rowId),
+              children: "Delete"
+            })
+          ]
+        }),
+        replyToId === c.rowId && g.jsxs("div", {
+          className: "mt-3 ml-10 space-y-2",
+          children: [
+            g.jsx("textarea", {
+              value: replyText,
+              onChange: (e) => setReplyText(e.target.value),
+              placeholder: "Write a reply... (उत्तर लिखें...)",
+              className: "w-full p-3 text-xs bg-slate-950 border border-slate-800 rounded-xl text-slate-200 placeholder:text-slate-600 focus:outline-none focus:border-indigo-500 resize-none h-16"
+            }),
+            g.jsxs("div", {
+              className: "flex justify-end gap-2",
+              children: [
+                g.jsx("button", {
+                  onClick: () => { setReplyToId(null); setIsTyping(false); },
+                  className: "px-3 py-1.5 text-[10px] uppercase tracking-wider font-bold text-slate-400 hover:text-white cursor-pointer bg-slate-900 border border-slate-800 rounded-lg",
+                  children: "Cancel"
+                }),
+                g.jsx("button", {
+                  onClick: () => handlePostReply(c.rowId),
+                  className: "px-3 py-1.5 text-[10px] uppercase tracking-wider font-bold text-white bg-indigo-600 hover:bg-indigo-500 rounded-lg cursor-pointer",
+                  children: "Reply"
+                })
+              ]
+            })
+          ]
+        }),
+        editId === c.rowId && g.jsxs("div", {
+          className: "mt-3 ml-10 space-y-2",
+          children: [
+            g.jsx("textarea", {
+              value: editText,
+              onChange: (e) => setEditText(e.target.value),
+              className: "w-full p-3 text-xs bg-slate-950 border border-slate-800 rounded-xl text-slate-200 focus:outline-none focus:border-indigo-500 resize-none h-16"
+            }),
+            g.jsxs("div", {
+              className: "flex justify-end gap-2",
+              children: [
+                g.jsx("button", {
+                  onClick: () => { setEditId(null); setIsTyping(false); },
+                  className: "px-3 py-1.5 text-[10px] uppercase tracking-wider font-bold text-slate-400 hover:text-white cursor-pointer bg-slate-900 border border-slate-800 rounded-lg",
+                  children: "Cancel"
+                }),
+                g.jsx("button", {
+                  onClick: () => handleUpdateComment(c.rowId, c.parentId),
+                  className: "px-3 py-1.5 text-[10px] uppercase tracking-wider font-bold text-white bg-indigo-600 hover:bg-indigo-500 rounded-lg cursor-pointer",
+                  children: "Update"
+                })
+              ]
+            })
+          ]
+        }),
+        allList.filter(r => String(r.parentId) === String(c.rowId)).map(r => renderCard(r, allList))
+      ]
+    }, c.rowId);
+  };
+
+  const combined = comments.concat(tempLocal);
+  const mains = combined.filter(c => String(c.parentId) === "0");
+
+  const displayStars = hoveredStars > 0 ? hoveredStars : currentRating;
 
   return g.jsxs("div", {
-    className: "border rounded-2xl p-6 md:p-8 space-y-6 transition-colors bg-slate-900 border-slate-800/60 shadow-xl mt-8",
+    className: "border rounded-2xl overflow-hidden w-full shadow-2xl transition-colors bg-slate-900 border-slate-800/60 p-6 md:p-8 space-y-6 text-slate-200 mt-8",
     children: [
       g.jsxs("div", {
         className: "flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-800 pb-5",
         children: [
           g.jsxs("div", {
-            className: "space-y-1",
+            className: "space-y-1.5",
             children: [
-              g.jsxs("h3", {
-                className: "text-lg font-bold text-white flex items-center gap-2",
-                children: [
-                  g.jsx("span", { children: "💬" }),
-                  "Reviews & Comments (समीक्षा एवं टिप्पणियां)"
-                ]
-              }),
-              g.jsx("p", {
-                className: "text-xs text-slate-400",
-                children: "Read other buyers' verified reviews or share your feedback below!"
-              })
-            ]
-          }),
-          g.jsxs("div", {
-            className: "flex items-center gap-3 bg-slate-950/80 border border-slate-800 px-4 py-2 rounded-xl shrink-0",
-            children: [
+              g.jsx("h3", { className: "text-base font-extrabold text-white uppercase tracking-wider", children: "Discussion & Reviews" }),
               g.jsxs("div", {
-                className: "text-right",
+                className: "flex items-center gap-3",
                 children: [
-                  g.jsxs("p", {
-                    className: "text-sm font-black text-amber-400",
-                    children: [avgRating, " / 5.0"]
-                  }),
-                  g.jsxs("p", {
-                    className: "text-[9px] font-mono text-slate-500 uppercase tracking-wider",
-                    children: [totalVotes, " verified votes"]
-                  })
-                ]
-              }),
-              g.jsx("div", {
-                className: "flex gap-0.5",
-                children: [1, 2, 3, 4, 5].map(star => g.jsx(StarIcon, {
-                  filled: star <= Math.round(parseFloat(avgRating)),
-                  className: "w-4 h-4 text-amber-400"
-                }, star))
-              })
-            ]
-          })
-        ]
-      }),
-
-      currentUser ? g.jsxs("form", {
-        onSubmit: (e) => submitComment(e, "0"),
-        className: "space-y-4 bg-slate-950/40 p-4 rounded-xl border border-slate-850",
-        children: [
-          g.jsxs("div", {
-            className: "flex flex-col sm:flex-row sm:items-center justify-between gap-3",
-            children: [
-              g.jsxs("div", {
-                className: "flex items-center gap-2",
-                children: [
-                  g.jsx("img", {
-                    src: currentUser.photoURL || "https://tyagihub.in/assets/images/icon-192.png",
-                    className: "w-6 h-6 rounded-full border border-slate-750",
-                    alt: "user"
-                  }),
-                  g.jsxs("span", {
-                    className: "text-xs font-mono text-slate-300",
-                    children: ["Reviewing as ", g.jsx("strong", { className: "text-white", children: currentUser.displayName || currentUser.email.split("@")[0] })]
-                  })
-                ]
-              }),
-              g.jsxs("div", {
-                className: "flex items-center gap-1.5",
-                children: [
-                  g.jsx("span", { className: "text-xs text-slate-400 font-mono", children: "Your Rating:" }),
-                  g.jsx("div", {
-                    className: "flex gap-0.5",
-                    children: [1, 2, 3, 4, 5].map(star => g.jsx(StarIcon, {
-                      filled: star <= (hoveredStar || ratingInput),
-                      onMouseEnter: () => setHoveredStar(star),
-                      onMouseLeave: () => setHoveredStar(0),
-                      onClick: () => submitRating(star),
-                      className: "w-5 h-5 cursor-pointer text-amber-400 transition-all"
-                    }, star))
-                  })
-                ]
-              })
-            ]
-          }),
-
-          g.jsxs("div", {
-            className: "relative",
-            children: [
-              g.jsx("textarea", {
-                value: inputText,
-                onChange: (e) => setInputText(e.target.value),
-                placeholder: "Write your honest experience here... (अपनी ईमानदार समीक्षा यहाँ लिखें...)",
-                className: "w-full min-h-[80px] text-xs bg-slate-900 border border-slate-800 rounded-lg p-3 text-white placeholder-slate-500 focus:outline-none focus:border-indigo-500 transition-colors pr-10",
-                required: true
-              }),
-              g.jsx("button", {
-                type: "submit",
-                disabled: submitting || !inputText.trim(),
-                className: "absolute right-2.5 bottom-2.5 p-1.5 rounded-lg bg-indigo-600 hover:bg-indigo-500 text-white disabled:bg-slate-800 disabled:text-slate-600 transition-colors cursor-pointer",
-                children: submitting ? g.jsx(Ra, { className: "w-3.5 h-3.5 animate-spin" }) : g.jsx(SendIcon, {})
-              })
-            ]
-          })
-        ]
-      }) : g.jsx("div", {
-        className: "p-4 rounded-xl border border-dashed border-slate-800 bg-slate-950/20 text-center text-xs text-slate-400",
-        children: "Please log in to leave a review and rate this product. (समीक्षा करने और रेटिंग देने के लिए कृपया लॉगिन करें।)"
-      }),
-
-      loading ? g.jsx("div", {
-        className: "flex justify-center py-10",
-        children: g.jsx(Ra, { className: "w-6 h-6 animate-spin text-indigo-500" })
-      }) : topLevelComments.length === 0 ? g.jsxs("div", {
-        className: "text-center py-12 space-y-2",
-        children: [
-          g.jsx("p", { className: "text-slate-500 text-sm", children: "No reviews yet. Be the first to share your feedback!" }),
-          g.jsx("p", { className: "text-xs text-slate-600 italic", children: "अभी तक कोई समीक्षा नहीं है। अपना अनुभव साझा करने वाले पहले व्यक्ति बनें!" })
-        ]
-      }) : g.jsx("div", {
-        className: "space-y-5 max-h-[500px] overflow-y-auto pr-2 scrollbar-thin",
-        children: topLevelComments.map(comment => {
-          const replies = getRepliesFor(comment.rowId);
-          const isOwnerOrAdmin = currentUser && (currentUser.email === comment.email || comment.isAdmin || currentUser.email === "tyagihub.core@gmail.com" || currentUser.email === "golutyagi9710@gmail.com");
-
-          return g.jsxs("div", {
-            className: "space-y-3 p-4 rounded-xl border transition-all bg-slate-950/20 border-slate-850/60 hover:border-slate-800",
-            children: [
-              g.jsxs("div", {
-                className: "flex items-start justify-between gap-2",
-                children: [
+                  g.jsx("span", { className: "text-2xl font-black text-white", children: avgRating }),
                   g.jsxs("div", {
-                    className: "flex items-center gap-2.5",
+                    className: "flex flex-col",
                     children: [
-                      g.jsx("img", {
-                        src: comment.pic || "https://tyagihub.in/assets/images/icon-192.png",
-                        className: "w-8 h-8 rounded-full border border-slate-800",
-                        alt: "avatar"
-                      }),
-                      g.jsxs("div", {
-                        children: [
-                          g.jsxs("div", {
-                            className: "flex items-center gap-1.5",
-                            children: [
-                              g.jsx("span", {
-                                className: "text-xs font-bold text-slate-200",
-                                children: comment.name
-                              }),
-                              comment.isAdmin && g.jsx("span", {
-                                className: "text-[9px] font-bold px-1.5 py-0.5 rounded bg-amber-500/10 text-amber-400 border border-amber-500/20",
-                                children: "Owner"
-                              })
-                            ]
-                          }),
-                          g.jsx("span", {
-                            className: "text-[9px] text-slate-500 font-mono",
-                            children: comment.date
-                          })
-                        ]
-                      })
+                      g.jsx("div", { className: "text-amber-400 text-xs tracking-wider", children: "★".repeat(Math.round(parseFloat(avgRating))) + "☆".repeat(5 - Math.round(parseFloat(avgRating))) }),
+                      g.jsxs("span", { className: "text-[10px] text-slate-500 font-mono", children: [totalVotes, " reviews"] })
                     ]
-                  }),
-
-                  comment.userRating > 0 && g.jsx("div", {
-                    className: "flex gap-0.5 bg-amber-500/10 px-2 py-1 rounded-lg border border-amber-500/10",
-                    children: [1, 2, 3, 4, 5].map(star => g.jsx(StarIcon, {
-                      filled: star <= comment.userRating,
-                      className: "w-3 h-3 text-amber-400"
-                    }, star))
-                  })
-                ]
-              }),
-
-              g.jsx("p", {
-                className: "text-xs leading-relaxed text-slate-300 whitespace-pre-line pl-10",
-                dangerouslySetInnerHTML: { __html: comment.comment }
-              }),
-
-              g.jsxs("div", {
-                className: "flex items-center gap-3 pl-10 text-[10px] font-mono",
-                children: [
-                  g.jsxs("button", {
-                    type: "button",
-                    onClick: () => handleReaction(comment.rowId, "like"),
-                    className: `flex items-center gap-1 hover:text-indigo-400 cursor-pointer transition-colors ${comment.myReaction === "like" ? "text-indigo-400 font-bold" : "text-slate-500"}`,
-                    children: [
-                      g.jsx(ThumbsUpIcon, { fill: comment.myReaction === "like" ? "currentColor" : "none" }),
-                      comment.likes
-                    ]
-                  }),
-                  g.jsxs("button", {
-                    type: "button",
-                    onClick: () => handleReaction(comment.rowId, "dislike"),
-                    className: `flex items-center gap-1 hover:text-rose-400 cursor-pointer transition-colors ${comment.myReaction === "dislike" ? "text-rose-400 font-bold" : "text-slate-500"}`,
-                    children: [
-                      g.jsx(ThumbsDownIcon, { fill: comment.myReaction === "dislike" ? "currentColor" : "none" }),
-                      comment.dislikes
-                    ]
-                  }),
-                  currentUser && g.jsxs("button", {
-                    type: "button",
-                    onClick: () => setReplyingTo(replyingTo === comment.rowId ? null : comment.rowId),
-                    className: "flex items-center gap-1 text-slate-500 hover:text-white cursor-pointer transition-colors",
-                    children: [
-                      g.jsx(CornerDownRightIcon, {}),
-                      "Reply"
-                    ]
-                  }),
-                  isOwnerOrAdmin && g.jsxs("button", {
-                    type: "button",
-                    onClick: () => deleteComment(comment.rowId),
-                    className: "flex items-center gap-1 text-rose-500/80 hover:text-rose-400 cursor-pointer transition-colors ml-auto",
-                    children: [
-                      g.jsx(ZA, { className: "w-3 h-3" }),
-                      "Delete"
-                    ]
-                  })
-                ]
-              }),
-
-              replies.length > 0 && g.jsx("div", {
-                className: "pl-10 mt-3 space-y-3 border-l border-slate-800/80 ml-4",
-                children: replies.map(reply => {
-                  const isReplyOwner = currentUser && (currentUser.email === reply.email || reply.isAdmin || currentUser.email === "tyagihub.core@gmail.com" || currentUser.email === "golutyagi9710@gmail.com");
-                  return g.jsxs("div", {
-                    className: "bg-slate-900/20 p-3 rounded-lg border border-slate-850/40 relative space-y-2",
-                    children: [
-                      g.jsxs("div", {
-                        className: "flex items-center justify-between gap-2",
-                        children: [
-                          g.jsxs("div", {
-                            className: "flex items-center gap-2",
-                            children: [
-                              g.jsx("img", {
-                                src: reply.pic || "https://tyagihub.in/assets/images/icon-192.png",
-                                className: "w-5 h-5 rounded-full border border-slate-800",
-                                alt: "user"
-                              }),
-                              g.jsxs("div", {
-                                children: [
-                                  g.jsxs("div", {
-                                    className: "flex items-center gap-1",
-                                    children: [
-                                      g.jsx("span", { className: "text-[11px] font-bold text-slate-300", children: reply.name }),
-                                      reply.isAdmin && g.jsx("span", {
-                                        className: "text-[8px] font-bold px-1 py-0.2 rounded bg-amber-500/10 text-amber-400 border border-amber-500/20",
-                                        children: "Owner"
-                                      })
-                                    ]
-                                  }),
-                                  g.jsx("p", { className: "text-[8px] text-slate-500 font-mono", children: reply.date })
-                                ]
-                              })
-                            ]
-                          }),
-                          isReplyOwner && g.jsxs("button", {
-                            type: "button",
-                            onClick: () => deleteComment(reply.rowId),
-                            className: "text-slate-500 hover:text-rose-400 cursor-pointer transition-colors",
-                            children: [
-                              g.jsx(ZA, { className: "w-3 h-3" })
-                            ]
-                          })
-                        ]
-                      }),
-                      g.jsx("p", {
-                        className: "text-[11px] text-slate-300 leading-relaxed pl-7",
-                        dangerouslySetInnerHTML: { __html: reply.comment }
-                      }),
-                      g.jsxs("div", {
-                        className: "flex items-center gap-3 pl-7 text-[9px] font-mono",
-                        children: [
-                          g.jsxs("button", {
-                            type: "button",
-                            onClick: () => handleReaction(reply.rowId, "like"),
-                            className: `flex items-center gap-1 hover:text-indigo-400 cursor-pointer transition-colors ${reply.myReaction === "like" ? "text-indigo-400 font-bold" : "text-slate-500"}`,
-                            children: [
-                              g.jsx(ThumbsUpIcon, { fill: reply.myReaction === "like" ? "currentColor" : "none" }),
-                              reply.likes
-                            ]
-                          }),
-                          g.jsxs("button", {
-                            type: "button",
-                            onClick: () => handleReaction(reply.rowId, "dislike"),
-                            className: `flex items-center gap-1 hover:text-rose-400 cursor-pointer transition-colors ${reply.myReaction === "dislike" ? "text-rose-400 font-bold" : "text-slate-500"}`,
-                            children: [
-                              g.jsx(ThumbsDownIcon, { fill: reply.myReaction === "dislike" ? "currentColor" : "none" }),
-                              reply.dislikes
-                            ]
-                          })
-                        ]
-                      })
-                    ]
-                  }, reply.rowId);
-                })
-              }),
-
-              replyingTo === comment.rowId && g.jsxs("form", {
-                onSubmit: (e) => submitComment(e, comment.rowId),
-                className: "pl-10 mt-3 flex items-center gap-2",
-                children: [
-                  g.jsx("input", {
-                    type: "text",
-                    value: replyText,
-                    onChange: (e) => setReplyText(e.target.value),
-                    placeholder: `Reply to ${comment.name}...`,
-                    className: "flex-1 bg-slate-900 border border-slate-800 rounded-lg px-3 py-1.5 text-[11px] text-white placeholder-slate-500 focus:outline-none focus:border-indigo-500 transition-colors",
-                    required: true,
-                    autoFocus: true
-                  }),
-                  g.jsxs("button", {
-                    type: "submit",
-                    disabled: submitting || !replyText.trim(),
-                    className: "px-3 py-1.5 rounded-lg bg-indigo-600 hover:bg-indigo-500 text-white text-[10px] font-bold uppercase transition-colors cursor-pointer disabled:bg-slate-800 disabled:text-slate-600",
-                    children: [
-                      submitting ? g.jsx(Ra, { className: "w-3 h-3 animate-spin" }) : "Send"
-                    ]
-                  }),
-                  g.jsx("button", {
-                    type: "button",
-                    onClick: () => setReplyingTo(null),
-                    className: "px-2.5 py-1.5 rounded-lg border border-slate-800 hover:bg-slate-800 text-slate-400 text-[10px] font-bold uppercase transition-colors cursor-pointer",
-                    children: "Cancel"
                   })
                 ]
               })
             ]
-          }, comment.rowId);
+          }),
+          g.jsxs("div", {
+            className: "flex flex-col items-center sm:items-end gap-1 p-3 rounded-xl bg-slate-950 border border-slate-850",
+            children: [
+              g.jsx("span", { className: "text-[10px] font-mono uppercase tracking-wider text-slate-500", children: "Tap stars to rate this page" }),
+              g.jsx("div", {
+                className: "flex items-center gap-1.5 text-xl select-none cursor-pointer",
+                onMouseLeave: () => setHoveredStars(0),
+                children: [1, 2, 3, 4, 5].map(num => g.jsx("span", {
+                  className: `transition-all duration-150 hover:scale-110 ${num <= displayStars ? "text-amber-400" : "text-slate-700"}`,
+                  onMouseEnter: () => setHoveredStars(num),
+                  onClick: () => handleStar(num),
+                  children: "★"
+                }, num))
+              })
+            ]
+          })
+        ]
+      }),
+      g.jsxs("div", {
+        className: "space-y-3",
+        children: [
+          g.jsx("textarea", {
+            value: newComment,
+            onChange: (e) => { setNewComment(e.target.value); setIsTyping(e.target.value.length > 0); },
+            placeholder: "Join the discussion or ask a question about this product...",
+            className: "w-full p-4 text-xs bg-slate-950 border border-slate-800 rounded-xl text-slate-200 placeholder:text-slate-600 focus:outline-none focus:border-indigo-500 resize-none h-20"
+          }),
+          g.jsxs("div", {
+            className: "flex justify-end items-center gap-3",
+            children: [
+              !user && g.jsx("p", { className: "text-[11px] text-slate-400 font-mono", children: "Login required to post a review." }),
+              g.jsx("button", {
+                onClick: handlePostComment,
+                className: "px-4 py-2 text-xs font-black uppercase tracking-wider rounded-xl transition-all shadow-md bg-indigo-600 hover:bg-indigo-500 text-white cursor-pointer",
+                children: "Post Comment"
+              })
+            ]
+          })
+        ]
+      }),
+      g.jsx("div", {
+        className: "max-h-[400px] overflow-y-auto rounded-xl border border-slate-900 bg-slate-950/25 scrollbar-thin divide-y divide-slate-900",
+        children: mains.length > 0 ? mains.map(m => renderCard(m, combined)) : g.jsxs("div", {
+          className: "p-8 text-center text-xs text-slate-500 font-mono space-y-1",
+          children: [
+            g.jsx("p", { children: "No reviews or questions yet." }),
+            g.jsx("p", { className: "text-[10px] text-slate-600", children: "Be the first to share your thoughts!" })
+          ]
         })
       })
     ]
   });
-}
-function YO(){const[t,e]=de.useState(()=>{const G=localStorage.getItem("tyagihub_user");if(G)try{return JSON.parse(G)}catch{}const tc=localStorage.getItem("tc_user");if(tc)try{const parsed=JSON.parse(tc);if(parsed&&parsed.e)return{uid:"tc_"+parsed.e.replace(/[^a-zA-Z0-9]/g,""),email:parsed.e,displayName:parsed.n||parsed.e.split("@")[0],photoURL:parsed.p||"https://tyagihub.in/assets/images/icon-192.png",subscription:null}}catch{}return null}),[n,r]=de.useState(!1),[i,s]=de.useState("login"),[o,a]=de.useState(""),[l,u]=de.useState(""),[f,m]=de.useState(""),[v,h]=de.useState(""),[b,N]=de.useState(!1),[P,w]=de.useState([]),[S,_]=de.useState(!1),[L,$]=de.useState(null),[Q,X]=de.useState(""),[O,R]=de.useState("idle"),[H,I]=de.useState(""),[M,Y]=de.useState(""),[K,le]=de.useState(""),[ue,me]=de.useState(()=>{const G=localStorage.getItem("tyagihub_assets_offline");if(G)try{const ye=JSON.parse(G);if(ye&&ye.length>0)return ye.filter(Le=>Le&&Le.id&&!Le.id.startsWith("ASSET-"))}catch{}return[]}),[q,re]=de.useState([]),[he,pe]=de.useState(""),[k,z]=de.useState(null),[W,Z]=de.useState("all"),[te,oe]=de.useState("all"),[fe,ge]=de.useState([]),[be,Ce]=de.useState("newest"),[Re,Me]=de.useState(()=>typeof window<"u"?window.innerWidth>=1024:!0),[je,F]=de.useState(()=>{const G=localStorage.getItem("tyagihub_live_sync");return G!==null?G==="true":qx!=="YOUR_DEPLOYED_GOOGLE_APPS_SCRIPT_URL_HERE"}),[Ae]=de.useState(()=>qx),[bt,qe]=de.useState(!1),[Ee,nt]=de.useState("idle"),[Fe,rt]=de.useState(""),[Qe,jt]=de.useState(()=>localStorage.getItem("tyagihub_admin_mode")==="true"),[St,dt]=de.useState(!1),[Et,At]=de.useState(""),[He,pt]=de.useState(""),[Ye,en]=de.useState(!1),[Te,ft]=de.useState(null),[Nt,Ft]=de.useState(""),[it,Ot]=de.useState(""),[ot,ut]=de.useState(""),[Wt,yt]=de.useState(""),[et,vt]=de.useState("idle"),[Oi,an]=de.useState(""),[vi,Zr]=de.useState(""),[at,Mi]=de.useState(""),[wi,xr]=de.useState(""),[hn,tn]=de.useState(null),[Pn,gn]=de.useState(""),[ss,xi]=de.useState(!1),[br,Qr]=de.useState(!1),[Sr,Nr]=de.useState(!1),[Qn,os]=de.useState(""),[Fr,as]=de.useState("image"),[ls,Ps]=de.useState(""),[cs,ml]=de.useState(0),[Cs,ha]=de.useState(""),[pa,_r]=de.useState(""),[Is,ma]=de.useState(""),[co,ga]=de.useState(!1),[ya,Ts]=de.useState(null);de.useEffect(()=>{const search=window.location.search;if(search&&ue&&ue.length>0){const cleanSearch=decodeURIComponent(search.replace("?","")).toLowerCase().trim();if(cleanSearch){const matched=ue.find(p=>{const slug=slugify(p.title);return slug===cleanSearch||cleanSearch.includes("product="+slug)||slugify(p.title).includes(cleanSearch)||cleanSearch.includes(slug)});matched&&z(matched)}}},[ue]);de.useEffect(()=>{if(k){const slug=slugify(k.title);const newUrl=window.location.protocol+"//"+window.location.host+window.location.pathname+"?"+encodeURIComponent(slug);window.history.pushState({path:newUrl},"",newUrl)}else{const newUrl=window.location.protocol+"//"+window.location.host+window.location.pathname;window.history.pushState({path:newUrl},"",newUrl)}},[k]);const Br=async(G,ye=P)=>{if(!G)return null;let Le=G.creditsBalance??0,Oe=G.expiryDate??"N/A";const lt=ye.filter(st=>st.userEmail.toLowerCase()===G.email.toLowerCase()&&st.status==="approved");if(lt.length>0){let st=0,Xe=0,_e="N/A";lt.forEach(Ct=>{const qt=Ct.planName.toLowerCase();let Mt=0;qt.includes("micro")?Mt=60:qt.includes("mini")?Mt=125:qt.includes("super")||qt.includes("vault")?Mt=400:qt.includes("elite")||qt.includes("creator")?Mt=850:Mt=60,st+=Mt;const Nn=new Date(Ct.expiryDate).getTime();!isNaN(Nn)&&Nn>Xe&&(Xe=Nn,_e=Ct.expiryDate)}),Le=st,Oe=_e,Xe>0&&Xe<Date.now()&&(Le=0,Oe="Expired")}if(je&&Ae)try{const st=`${Ae}?action=syncUserWallet&uid=${encodeURIComponent(G.uid)}&name=${encodeURIComponent(G.displayName)}&email=${encodeURIComponent(G.email)}`,Xe=await Hr(st);Xe&&Xe.success&&(Le=Number(Xe.creditsBalance??0),Oe=String(Xe.expiryDate??"N/A"))}catch(st){console.error("Wallet sync failed, falling back to local subscriptions calculation:",st)}const tt={...G,creditsBalance:Le,expiryDate:Oe};return localStorage.setItem("tyagihub_user",JSON.stringify(tt)),tt};window.firebaseAuthSignOut=()=>jf.signOut();de.useEffect(()=>{if(t){localStorage.setItem("tc_user",JSON.stringify({n:t.displayName,e:t.email,p:t.photoURL||"https://tyagihub.in/assets/images/icon-192.png"}))}else{localStorage.removeItem("tc_user")}},[t]);de.useEffect(()=>{if(console.clear(),console.log("%c[DRM ACTIVE] TyagiHub Secure DRM Protocol v4","color: #fca5a5; font-size: 18px; font-weight: 900; background: #0f172a; padding: 6px 12px; border-radius: 8px;"),je&&Ae)Ur();else{const G=localStorage.getItem("tyagihub_assets_offline"),ye=localStorage.getItem("tyagihub_requests_offline"),Le=localStorage.getItem("tyagihub_subscriptions_offline");G&&me(JSON.parse(G)),ye&&re(JSON.parse(ye)),Le&&w(JSON.parse(Le))}},[je]),de.useEffect(()=>{const G=ye=>{ye.altKey&&ye.shiftKey&&ye.key.toLowerCase()==="a"&&(ye.preventDefault(),en(!0))};return window.addEventListener("keydown",G),()=>window.removeEventListener("keydown",G)},[]),de.useEffect(()=>{const G=ID(jf,async ye=>{var Le;if(ye){const Oe={uid:ye.uid,email:ye.email||"",displayName:ye.displayName||((Le=ye.email)==null?void 0:Le.split("@")[0])||"User",photoURL:ye.photoURL||void 0,subscription:null},lt=P.find(st=>st.userEmail.toLowerCase()===Oe.email.toLowerCase()&&st.status==="approved");lt&&(Oe.subscription=lt);const tt=await Br(Oe,P);e(tt),localStorage.setItem("tyagihub_user",JSON.stringify(tt))}else{const tc=localStorage.getItem("tc_user");if(tc){try{const parsed=JSON.parse(tc);if(parsed&&parsed.e){const Oe={uid:"tc_"+parsed.e.replace(/[^a-zA-Z0-9]/g,""),email:parsed.e,displayName:parsed.n||parsed.e.split("@")[0],photoURL:parsed.p||"https://tyagihub.in/assets/images/icon-192.png",subscription:null},lt=P.find(st=>st.userEmail.toLowerCase()===Oe.email.toLowerCase()&&st.status==="approved");lt&&(Oe.subscription=lt);const tt=await Br(Oe,P);e(tt),localStorage.setItem("tyagihub_user",JSON.stringify(tt));return}}catch(err){console.error("Failed to parse tc_user",err)}}const Oe=localStorage.getItem("tyagihub_user");if(Oe&&!je)try{const lt=JSON.parse(Oe),tt=await Br(lt,P);e(tt)}catch{e(null)}else e(null)}});return()=>G()},[je,P]),de.useEffect(()=>{je||localStorage.setItem("tyagihub_assets_offline",JSON.stringify(ue))},[ue,je]),de.useEffect(()=>{je||localStorage.setItem("tyagihub_requests_offline",JSON.stringify(q))},[q,je]),de.useEffect(()=>{je||localStorage.setItem("tyagihub_subscriptions_offline",JSON.stringify(P))},[P,je]);const Ur=async(G=Ae)=>{if(!G){nt("error"),rt("Please set your Google Apps Script Web App URL first.");return}qe(!0),nt("idle"),rt("");try{const ye=await Hr(`${G}?action=getProducts`);if(ye.success&&Array.isArray(ye.data))me(ye.data);else throw new Error(ye.error||"Could not parse products from sheet.");try{const Le=await Hr(`${G}?action=getRequests`);Le.success&&Array.isArray(Le.data)&&re(Le.data)}catch(Le){console.error("Requests fetch failed:",Le)}try{const Le=await Hr(`${G}?action=getSubscriptions`);if(Le.success&&Array.isArray(Le.data)){w(Le.data);const Oe=localStorage.getItem("tyagihub_user");if(Oe){const lt=JSON.parse(Oe),tt=Le.data.find(_e=>_e.userEmail.toLowerCase()===lt.email.toLowerCase()&&_e.status==="approved"),st={...lt,subscription:tt||null},Xe=await Br(st,Le.data);e(Xe)}}}catch(Le){throw console.error("Subscriptions fetch failed:",Le),new Error(Le instanceof Error?Le.message:"Subscriptions fetch failed")}nt("success"),localStorage.setItem("tyagihub_gas_url",G),localStorage.setItem("tyagihub_live_sync","true"),F(!0)}catch(ye){nt("error"),rt(ye.message||"Network error sync failed.")}finally{qe(!1)}},Oc=G=>{G.preventDefault(),Et==="golu123"?(jt(!0),localStorage.setItem("tyagihub_admin_mode","true"),en(!1),pt(""),At(""),dt(!0)):pt("Invalid access key. Please try again.")},Sn=()=>{jt(!1),localStorage.removeItem("tyagihub_admin_mode"),dt(!1)},gl=async G=>{if(G.preventDefault(),h(""),N(!0),i==="register"&&!o.trim()){h("कृपया अपना पूरा नाम दर्ज करें। (Please enter your full name.)"),N(!1);return}if(!l.trim()||!f.trim()){h("ईमेल और पासवर्ड आवश्यक हैं। (Email and Password are required.)"),N(!1);return}try{if(i==="register"){const ye=await kD(jf,l.trim(),f.trim());await LD(ye.user,{displayName:o.trim()})}else await AD(jf,l.trim(),f.trim());r(!1),a(""),u(""),m("")}catch(ye){console.error("Firebase Auth Error:",ye);let Le=ye.message;ye.code==="auth/email-already-in-use"?Le="यह ईमेल पहले से ही उपयोग में है। (This email is already registered.)":ye.code==="auth/invalid-credential"||ye.code==="auth/wrong-password"||ye.code==="auth/user-not-found"?Le="गलत ईमेल या पासवर्ड। कृपया पुनः प्रयास करें। (Incorrect email or password.)":ye.code==="auth/weak-password"?Le="पासवर्ड कम से कम 6 अक्षरों का होना चाहिए। (Password must be at least 6 characters.)":ye.code==="auth/invalid-email"&&(Le="कृपया एक मान्य ईमेल दर्ज करें। (Please enter a valid email.)"),h(Le)}finally{N(!1)}},bi=async()=>{h(""),N(!0);try{const G=new Gs;G.setCustomParameters({prompt:"select_account"}),await JD(jf,G),r(!1)}catch(G){console.error("Google Sign-In Error:",G),G.code!=="auth/popup-closed-by-user"&&h(G.message||"Google लॉगिन विफल रहा। (Google Login failed.)")}finally{N(!1)}},uo=async G=>{if(G.preventDefault(),!Te)return;const ye=Te.price>0,Le=t?Te.price:parseFloat((Te.price*1.15).toFixed(2)),Oe=Wt.trim();if(ye&&(!Oe||Oe.length<6)){vt("error"),an("Please enter a valid Paytm Transaction ID or UPI Reference Number (UTR).");return}vt("verifying"),an("");const lt="REQ-"+Math.floor(1e5+Math.random()*9e5);Mi(lt);const tt=t?t.displayName:Nt||"N/A",st=t?t.email:it||"N/A",Xe=new URLSearchParams({action:"addRequest",id:lt,assetId:Te.id,assetTitle:Te.title,customerName:tt,customerEmail:st,customerWhatsapp:ot||"N/A",transactionId:Oe,price:Le.toString(),requestDate:new Date().toLocaleString("en-US")});if(je&&Ae)try{const _e=await Hr(`${Ae}?${Xe.toString()}`);_e.success?(_e.status==="approved"?(vt("verified"),Zr(_e.secureToken)):(vt("pending"),_e.warning&&an(_e.warning)),Ur()):(vt("error"),an(_e.error||"Server rejected verification. Check UTR reuse."))}catch{vt("error"),an("Network failed to contact verification server. Order submitted locally.")}else{const _e=Te.price===0,Ct={id:lt,assetId:Te.id,assetTitle:Te.title,customerName:tt,customerEmail:st,customerWhatsapp:ot,transactionId:Oe,price:Le,status:_e?"approved":"pending",requestDate:new Date().toLocaleString("en-US"),downloadCount:0,secureToken:_e?"SANDBOX-FREE-TOKEN-"+Math.random().toString(36).substring(2,8).toUpperCase():void 0},qt=[Ct,...q];re(qt),_e?(vt("verified"),Zr(Ct.secureToken||"")):vt("pending")}},[fo,zn]=de.useState(!1),ho=async G=>{if(!t){alert("Please log in to use your Credit Pass.");return}if(zn(!0),!je||!Ae){const ye=t.creditsBalance??0,Le=t.expiryDate??"N/A";let Oe=!1;if(Le==="N/A")Oe=!0;else{const Xe=new Date(Le);(isNaN(Xe.getTime())||Xe.getTime()<Date.now())&&(Oe=!0)}if(Oe){const Xe={...t,creditsBalance:0,expiryDate:"Expired"};e(Xe),localStorage.setItem("tyagihub_user",JSON.stringify(Xe)),alert("Your Credit Pass has expired! Balance has been frozen and flushed. Please purchase a new Credit Pass."),zn(!1);return}if(ye<G.price){alert(`Insufficient credits! You have ${ye} credits, but this asset costs ${G.price} credits.`),zn(!1);return}const lt=ye-G.price,tt={...t,creditsBalance:lt};e(tt),localStorage.setItem("tyagihub_user",JSON.stringify(tt));const st={id:"REQ-CR-"+Math.floor(1e5+Math.random()*9e5),assetId:G.id,assetTitle:G.title,customerName:t.displayName,customerEmail:t.email,customerWhatsapp:"N/A",transactionId:"CREDIT_PASS_DEDUCTION",price:G.price,status:"approved",requestDate:new Date().toLocaleString(),secureToken:"TOKEN-CREDIT-"+Math.random().toString(36).substring(2,10).toUpperCase(),downloadCount:1};re(Xe=>[st,...Xe]),alert(`✓ ₹${G.price} Credits Deducted! Click format buttons to download.`),zn(!1);return}try{const ye=`${Ae}?action=downloadWithCredits&email=${encodeURIComponent(t.email)}&assetId=${encodeURIComponent(G.id)}`,Le=await Hr(ye);if(Le&&Le.success){const Oe={...t,creditsBalance:Le.creditsBalance,expiryDate:Le.expiryDate};e(Oe),localStorage.setItem("tyagihub_user",JSON.stringify(Oe));const lt={id:"REQ-CR-"+Math.floor(1e5+Math.random()*9e5),assetId:G.id,assetTitle:G.title,customerName:t.displayName,customerEmail:t.email,customerWhatsapp:"N/A",transactionId:"CREDIT_PASS_DEDUCTION",price:G.price,status:"approved",requestDate:new Date().toLocaleString(),secureToken:Le.secureToken,downloadCount:1};re(tt=>[lt,...tt]),alert("✓ Credits deducted successfully! DRM authorization token issued.")}else if(Le.expired){const Oe={...t,creditsBalance:0,expiryDate:"Expired"};e(Oe),localStorage.setItem("tyagihub_user",JSON.stringify(Oe)),alert(Le.error||"Your Credit Pass has expired! Balance has been frozen and flushed.")}else alert(Le.error||"Deduction failed. Ensure sufficient credits or valid pass.")}catch(ye){console.error("Deduction API error:",ye),alert("API connection failed. Please retry.")}finally{zn(!1)}},Fi=async G=>{if(G.preventDefault(),!L||!t)return;const ye=Q.trim();if(!ye||ye.length<6){R("error"),I("Please enter a valid Paytm transaction ID or UPI Reference Number (UTR).");return}R("verifying"),I("");const Le="SUB-"+Math.floor(1e5+Math.random()*9e5);Y(Le);const Oe=new Date().toLocaleString("en-US"),lt=new Date;L.durationHours?lt.setHours(lt.getHours()+L.durationHours):lt.setDate(lt.getDate()+L.durationDays);const tt=lt.toLocaleString("en-US");if(je&&Ae)try{const st=new URLSearchParams({action:"addSubscription",id:Le,userEmail:t.email,userName:t.displayName,planName:L.name,price:L.price.toString(),transactionId:ye,purchaseDate:Oe,expiryDate:tt}),Xe=await Hr(`${Ae}?${st.toString()}`);if(Xe.success)if(R(Xe.autoVerified?"verified":"pending"),Xe.autoVerified&&Xe.secureToken){le(Xe.secureToken);const _e={id:Le,userEmail:t.email,userName:t.displayName,planName:L.name,price:L.price,transactionId:ye,status:"approved",purchaseDate:Oe,expiryDate:tt,secureToken:Xe.secureToken},Ct={...t,subscription:_e};e(Ct),localStorage.setItem("tyagihub_user",JSON.stringify(Ct)),w(qt=>[_e,...qt])}else{const _e={id:Le,userEmail:t.email,userName:t.displayName,planName:L.name,price:L.price,transactionId:ye,status:"pending",purchaseDate:Oe,expiryDate:tt};w(Ct=>[_e,...Ct])}else R("error"),I(Xe.error||"Server rejected subscription log request.")}catch{R("error"),I("Connection lost. Please try submitting again.")}else{await new Promise(Ct=>setTimeout(Ct,1e3));const st="SUB-TOKEN-SANDBOX-"+Math.random().toString(36).substring(2,8).toUpperCase(),Xe={id:Le,userEmail:t.email,userName:t.displayName,planName:L.name,price:L.price,transactionId:ye,status:"approved",purchaseDate:Oe,expiryDate:tt,secureToken:st};R("verified"),le(st);const _e={...t,subscription:Xe};e(_e),localStorage.setItem("tyagihub_user",JSON.stringify(_e)),w(Ct=>[Xe,...Ct])}},Mn=async(G,ye)=>{const Le="SUB-TOKEN-MANUAL-"+Math.random().toString(36).substring(2,10).toUpperCase();if(je&&Ae)try{const Oe=new URLSearchParams({action:"updateSubscription",id:G,status:ye,secureToken:Le}),lt=await Hr(`${Ae}?${Oe.toString()}`);lt.success?(w(tt=>tt.map(st=>{if(st.id===G){const Xe={...st,status:ye,secureToken:lt.secureToken||Le};if(t&&t.email.toLowerCase()===st.userEmail.toLowerCase()){const _e={...t,subscription:ye==="approved"?Xe:null};e(_e),localStorage.setItem("tyagihub_user",JSON.stringify(_e))}return Xe}return st})),alert(`Subscription request ${G} successfully marked as ${ye}!`)):alert(`Failed to update subscription on sheet: ${lt.error}`)}catch{alert("Failed to update subscription status. Connection failed.")}else w(Oe=>Oe.map(lt=>{if(lt.id===G){const tt={...lt,status:ye,secureToken:ye==="approved"?Le:void 0};if(t&&t.email.toLowerCase()===lt.userEmail.toLowerCase()){const st={...t,subscription:ye==="approved"?tt:null};e(st),localStorage.setItem("tyagihub_user",JSON.stringify(st))}return tt}return lt})),alert(`[Sandbox Mode] Subscription request ${G} marked as ${ye}.`)},va=async(G,ye)=>{const Le="TOKEN-MANUAL-"+Math.random().toString(36).substring(2,10).toUpperCase();if(je&&Ae){qe(!0);try{const Oe=await Hr(`${Ae}?action=updateRequest&id=${G}&status=${ye}&secureToken=${Le}`);Oe.success?Ur():alert("Failed to update status: "+Oe.error)}catch{alert("Sync error failed to update.")}finally{qe(!1)}}else re(q.map(Oe=>Oe.id===G?{...Oe,status:ye,secureToken:ye==="approved"?Le:void 0}:Oe))},Mc=async G=>{if(confirm("Are you sure you want to delete this order?"))if(je&&Ae){qe(!0);try{(await Hr(`${Ae}?action=deleteRequest&id=${G}`)).success&&Ur()}catch{alert("Failed to delete request.")}finally{qe(!1)}}else re(q.filter(ye=>ye.id!==G))},Fc=async G=>{if(G.preventDefault(),!Qn||!Cs){alert("Product Title and Google Drive ID are required!");return}const ye="PROD-"+Date.now().toString(36).toUpperCase(),Le=Cs.trim(),Oe=ci(Le),lt=pa.trim()||(Oe?`https://drive.google.com/thumbnail?id=${Oe}&sz=w1000`:"https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=800&q=80");if(je&&Ae){qe(!0);try{const tt=new URLSearchParams({action:"addAsset",id:ye,title:Qn,type:Fr,size:ls||"N/A",price:cs.toString(),driveId:Le,previewUrl:lt,description:Is||"Premium high quality resource."}),st=await Hr(`${Ae}?${tt.toString()}`);st.success?(Nr(!1),ei(),Ur()):alert("Error adding asset: "+st.error)}catch{alert("Network failed to add product.")}finally{qe(!1)}}else me([{id:ye,title:Qn,type:Fr,size:ls||"N/A",price:cs,driveId:Le,previewUrl:lt,description:Is},...ue]),Nr(!1),ei()},Bc=async G=>{if(confirm("Are you sure you want to permanently delete this product? This will remove it from the store."))if(je&&Ae){qe(!0);try{const ye=await Hr(`${Ae}?action=deleteAsset&id=${G}`);ye.success?Ur():alert("Error deleting: "+ye.error)}catch{alert("Failed to connect to sheet.")}finally{qe(!1)}}else me(ue.filter(ye=>ye.id!==G))},ei=()=>{os(""),as("image"),Ps(""),ml(0),ha(""),_r(""),ma("")},yl=async()=>{if(!je||!Ae){alert("Please connect Google Sheets Live Mode to scan emails.");return}ga(!0),Ts(null);try{const G=await Hr(`${Ae}?action=syncEmails`);G.success?(Ts(G.message||"Gmail scan complete!"),Ur()):Ts("Error: "+G.error)}catch{Ts("Failed to trigger scan. Check if Web App has Gmail access.")}finally{ga(!1)}},po=async G=>{G.preventDefault();const ye=wi.trim();if(ye)if(xi(!0),gn(""),tn(null),je&&Ae)try{const Le=await Hr(`${Ae}?action=getRequests`);if(Le.success&&Array.isArray(Le.data)){const Oe=Le.data.find(lt=>lt.transactionId.toLowerCase()===ye.toLowerCase()||lt.id.toLowerCase()===ye.toLowerCase());Oe?tn(Oe):gn("No order found with this Transaction ID / Order ID.")}else gn("Could not sync orders from Google Sheet.")}catch{gn("Network connection failed. Please try again.")}finally{xi(!1)}else{const Le=q.find(Oe=>Oe.transactionId.toLowerCase()===ye.toLowerCase()||Oe.id.toLowerCase()===ye.toLowerCase());Le?tn(Le):gn("Order not found. Note: Sandbox mode stores orders locally in your current browser tab."),xi(!1)}},mo=G=>{fe.includes(G)?ge(fe.filter(ye=>ye!==G)):ge([...fe,G])},js=ue.filter(G=>{const ye=he.trim().toLowerCase();if(!(!ye||(G.title||"").toLowerCase().includes(ye)||(G.description||"").toLowerCase().includes(ye)||(G.id||"").toLowerCase().includes(ye))||W!=="all"&&qO(G)!==W||te==="free"&&G.price!==0||te==="paid"&&G.price===0)return!1;if(fe.length>0){const Oe=HO(G);if(!fe.includes(Oe))return!1}return!0}).sort((G,ye)=>be==="newest"?String(ye.id||"").localeCompare(String(G.id||"")):be==="name-asc"?String(G.title||"").localeCompare(String(ye.title||"")):be==="name-desc"?String(ye.title||"").localeCompare(String(G.title||"")):be==="price-asc"?(G.price||0)-(ye.price||0):be==="price-desc"?(ye.price||0)-(G.price||0):0);const renderProductPage=()=>{if(!k)return null; return (()=>{const G=k.price===0||q.some(_e=>_e.assetId===k.id&&_e.status==="approved"),ye=k.driveId.trim().startsWith("<svg")||k.driveId.includes("<svg")||k.type==="svg",Le=()=>{if(!G)return;const _e=k.driveId,Ct=new Blob([_e],{type:"image/svg+xml"}),qt=URL.createObjectURL(Ct),Mt=document.createElement("a");Mt.href=qt,Mt.download=`${k.title.toLowerCase().replace(/\s+/g,"_")}_clean.svg`,document.body.appendChild(Mt),Mt.click(),document.body.removeChild(Mt),URL.revokeObjectURL(qt)},Oe=()=>{if(!G)return;const _e=k.driveId,Ct=new Blob([_e],{type:"image/svg+xml;charset=utf-8"}),qt=URL.createObjectURL(Ct),Mt=new Image;Mt.onload=()=>{const Nn=document.createElement("canvas");Nn.width=1024,Nn.height=1024;const wa=Nn.getContext("2d");if(wa){wa.clearRect(0,0,Nn.width,Nn.height),wa.drawImage(Mt,0,0,Nn.width,Nn.height);try{const ti=Nn.toDataURL("image/png"),kr=document.createElement("a");kr.href=ti,kr.download=`${k.title.toLowerCase().replace(/\s+/g,"_")}.png`,document.body.appendChild(kr),kr.click(),document.body.removeChild(kr)}catch(ti){console.error("PNG conversion failed",ti)}}URL.revokeObjectURL(qt)},Mt.onerror=()=>{URL.revokeObjectURL(qt)},Mt.src=qt},lt=()=>{if(!G)return;const _e=k.driveId,Ct=new Blob([_e],{type:"text/xml"}),qt=URL.createObjectURL(Ct),Mt=document.createElement("a");Mt.href=qt,Mt.download=`${k.title.toLowerCase().replace(/\s+/g,"_")}_code.xml`,document.body.appendChild(Mt),Mt.click(),document.body.removeChild(Mt),URL.revokeObjectURL(qt)},tt=()=>{if(!G)return;const _e=k.driveId&&k.driveId.length>40&&!ci(k.driveId)?k.driveId:k.description||"Verified solutions prep guide.";zx(k.title,_e)},st=()=>{if(!G)return;const _e=k.driveId&&k.driveId.length>40&&!ci(k.driveId)?k.driveId:k.description||"Verified solutions prep guide.";$x(k.title,_e)},Xe=ci(k.driveId);return g.jsxs("div",{className:"space-y-8 animate-in fade-in duration-300",children:[g.jsxs("button",{onClick:()=>z(null),className:"flex items-center gap-2 px-4 py-2 text-xs font-bold uppercase tracking-wider rounded-xl border bg-slate-900 hover:bg-slate-850 text-slate-350 hover:text-white border-slate-800 transition-colors cursor-pointer mb-6",children:[g.jsx("span",{children:"←"}),"Back to assets catalog"]}),g.jsxs(Oa.div,{initial:{opacity:0,y:15},animate:{opacity:1,y:0},className:"border rounded-2xl overflow-hidden w-full shadow-2xl relative transition-colors bg-slate-900 border-slate-800/60",children:[g.jsx("button",{onClick:()=>z(null),className:"absolute top-4 right-4 z-40 p-2 rounded-full border transition-all shadow-lg bg-slate-950/80 hover:bg-slate-800 text-slate-400 border-slate-850 hover:text-white",children:g.jsx(vf,{className:"w-4 h-4"})}),g.jsxs("div",{className:"grid grid-cols-1 md:grid-cols-2",children:[g.jsxs("div",{className:"relative aspect-square md:aspect-auto md:h-full min-h-[300px] md:min-h-[450px] flex items-center justify-center overflow-hidden border-b md:border-b-0 md:border-r p-4 transition-colors bg-slate-950 border-slate-800/60",children:[g.jsx("img",{src:hm(k),alt:"",className:"absolute inset-0 w-full h-full object-cover blur-2xl opacity-35 scale-110 pointer-events-none select-none"}),g.jsx("div",{className:"relative z-10 max-h-[380px] max-w-full w-auto h-auto flex items-center justify-center",children:g.jsx(Vx,{src:hm(k),alt:k.title,isFree:G,type:ye?"svg":k.type,pdfContent:k.driveId&&k.driveId.length>40&&!ci(k.driveId)?k.driveId:k.description,className:`max-h-[380px] max-w-full w-auto h-auto object-contain rounded-lg shadow-2xl transition-transform hover:scale-[1.01] duration-300 ${G?"":"contrast-[1.03] brightness-[0.88]"}`})}),g.jsx("div",{className:"absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent opacity-80 z-20 pointer-events-none"}),g.jsxs("div",{className:"absolute bottom-4 left-4 text-[10px] font-mono px-2.5 py-1 rounded-lg border z-30 flex items-center gap-1 font-bold uppercase transition-colors bg-slate-950/90 text-slate-300 border-slate-800",children:[k.type==="zip"&&g.jsx(Wf,{className:"w-3.5 h-3.5 text-yellow-500"}),k.type==="pdf"&&g.jsx(za,{className:"w-3.5 h-3.5 text-red-500"}),k.type==="image"&&g.jsx(Gf,{className:"w-3.5 h-3.5 text-blue-500"}),k.type==="video"&&g.jsx(i4,{className:"w-3.5 h-3.5 text-purple-500"}),g.jsxs("span",{children:[k.type," • ",k.size]})]})]}),g.jsxs("div",{className:"p-6 md:p-8 flex flex-col justify-between space-y-6",children:[g.jsxs("div",{className:"space-y-4",children:[g.jsxs("div",{className:"flex items-center gap-2",children:[g.jsx("span",{className:"text-[9px] font-mono font-bold px-2.5 py-1 rounded border uppercase tracking-widest transition-colors bg-slate-950 text-indigo-400 border-slate-800",children:"DRM Verified Asset"}),g.jsxs("span",{className:"text-[11px] font-mono text-slate-600",children:["• ID: ",k.id]})]}),g.jsxs("div",{className:"flex flex-col sm:flex-row sm:items-start justify-between gap-3",children:[g.jsx("h2",{className:"text-lg md:text-xl font-extrabold leading-snug transition-colors text-white flex-1",children:k.title}),g.jsxs("button",{onClick:()=>{const url=window.location.protocol+"//"+window.location.host+window.location.pathname+"?"+encodeURIComponent(slugify(k.title));navigator.clipboard.writeText(url);alert("Product page link copied to clipboard! (उत्पाद लिंक कॉपी हो गया है!)")},className:"shrink-0 flex items-center gap-1.5 px-3 py-1.5 rounded-lg border text-[11px] font-bold uppercase tracking-wider bg-slate-900 border-slate-800 text-indigo-400 hover:text-indigo-300 hover:bg-slate-850 cursor-pointer transition-all",children:[g.jsx("span",{children:"🔗"}),"Copy Link"]})]}),g.jsxs("div",{className:"p-4 rounded-xl border flex items-center justify-between transition-colors bg-slate-950 border-slate-850",children:[g.jsxs("div",{children:[g.jsx("p",{className:"text-[9px] font-mono uppercase tracking-wider text-slate-500",children:"LICENSE COST"}),g.jsx("div",{className:"flex items-baseline gap-2 mt-0.5",children:g.jsx("span",{className:"text-xl font-black text-white",children:k.price===0?"FREE DOWNLOAD":`₹${k.price}`})})]}),g.jsx("span",{className:`text-[10px] font-mono font-black uppercase px-2.5 py-1 rounded-md ${G?"bg-emerald-500/15 text-emerald-400 border border-emerald-500/20":"bg-indigo-500/15 text-indigo-400 border border-indigo-500/20"}`,children:G?"Unlocked / Paid":"Verified Purchase"})]}),g.jsxs("div",{className:"space-y-2",children:[g.jsx("h4",{className:"text-[10px] font-mono font-bold uppercase tracking-wider text-slate-500",children:"File Specifications"}),g.jsxs("div",{className:"grid grid-cols-2 gap-2 text-xs font-mono",children:[g.jsxs("div",{className:"p-2 rounded-xl border flex flex-col transition-colors bg-slate-950/40 border-slate-900",children:[g.jsx("span",{className:"text-slate-500 text-[9px]",children:"FORMAT TYPE"}),g.jsx("span",{className:"uppercase font-bold mt-0.5 text-slate-200",children:k.type})]}),g.jsxs("div",{className:"p-2 rounded-xl border flex flex-col transition-colors bg-slate-950/40 border-slate-900",children:[g.jsx("span",{className:"text-slate-500 text-[9px]",children:"STORAGE WEIGHT"}),g.jsx("span",{className:"font-bold mt-0.5 text-slate-200",children:k.size})]})]})]}),g.jsxs("div",{className:"space-y-1.5",children:[g.jsx("h4",{className:"text-[10px] font-mono font-bold uppercase tracking-wider text-slate-500",children:"Description (विवरण)"}),g.jsx("p",{className:"text-xs leading-relaxed max-h-[140px] overflow-y-auto pr-2 p-3 rounded-xl border transition-colors scrollbar-thin text-slate-300 bg-slate-950/20 border-slate-900/60",children:k.description||"No description provided."})]})]}),g.jsxs("div",{className:"space-y-3 pt-4 border-t border-slate-850",children:[G?g.jsxs("div",{className:"space-y-2.5",children:[g.jsx("p",{className:"text-[10px] text-center font-mono font-black text-emerald-500 uppercase tracking-widest animate-pulse",children:"✓ Access Clearance Approved"}),ye&&g.jsxs("div",{className:"p-3 rounded-xl border transition-colors bg-slate-950 border-slate-850",children:[g.jsx("p",{className:"text-[10px] font-mono text-indigo-500 font-bold uppercase tracking-wider text-center",children:"🎯 Select Your Download Format"}),g.jsxs("div",{className:"grid grid-cols-1 gap-2",children:[g.jsxs("button",{onClick:Le,className:"w-full py-2.5 px-4 text-xs font-black tracking-wider uppercase rounded-xl transition-all shadow-lg bg-emerald-600 hover:bg-emerald-500 text-white flex items-center justify-center gap-2",children:[g.jsx(qr,{className:"w-3.5 h-3.5"}),"Download Clean SVG File (.svg)"]}),g.jsxs("button",{onClick:Oe,className:"w-full py-2.5 px-4 text-xs font-black tracking-wider uppercase rounded-xl transition-all shadow-lg bg-blue-600 hover:bg-blue-500 text-white flex items-center justify-center gap-2",children:[g.jsx(Gf,{className:"w-3.5 h-3.5"}),"Convert & Download PNG (.png)"]}),g.jsxs("button",{onClick:lt,className:"w-full py-2.5 px-4 text-xs font-black tracking-wider uppercase rounded-xl transition-all shadow-lg bg-purple-600 hover:bg-purple-500 text-white flex items-center justify-center gap-2",children:[g.jsx(za,{className:"w-3.5 h-3.5"}),"Download Raw XML (.xml)"]})]})]}),k.type==="pdf"&&g.jsxs("div",{className:"p-3 rounded-xl border transition-colors bg-slate-950 border-slate-850",children:[g.jsx("p",{className:"text-[10px] font-mono text-indigo-500 font-bold uppercase tracking-wider text-center",children:"🎯 Choose Your Download Format"}),g.jsxs("div",{className:"grid grid-cols-1 sm:grid-cols-2 gap-2 mt-2",children:[g.jsxs("button",{onClick:tt,className:"w-full py-2.5 px-4 text-xs font-black tracking-wider uppercase rounded-xl transition-all shadow-lg bg-emerald-600 hover:bg-emerald-500 text-white flex items-center justify-center gap-2",children:[g.jsx(qr,{className:"w-3.5 h-3.5 animate-bounce"}),"Download PDF (.pdf)"]}),g.jsxs("button",{onClick:st,className:"w-full py-2.5 px-4 text-xs font-black tracking-wider uppercase rounded-xl transition-all shadow-lg bg-indigo-600 hover:bg-indigo-500 text-white flex items-center justify-center gap-2",children:[g.jsx(za,{className:"w-3.5 h-3.5"}),"Download Word (.doc)"]})]})]}),!ye&&k.type!=="pdf"&&Xe&&g.jsxs("a",{href:`https://docs.google.com/uc?export=download&id=${Xe}&confirm=t`,target:"_blank",rel:"noreferrer",className:"w-full py-3 px-6 text-xs font-black tracking-wider uppercase rounded-xl transition-all shadow-lg bg-emerald-600 hover:bg-emerald-500 text-white flex items-center justify-center gap-2 text-center",children:[g.jsx(qr,{className:"w-4 h-4 animate-bounce"}),"Download Original File"]})]}):g.jsxs("div",{className:"space-y-3",children:[ye&&g.jsxs("div",{className:"p-3 rounded-xl border space-y-1.5 transition-colors bg-slate-950 border-slate-850",children:[g.jsx("p",{className:"text-[10px] font-mono font-bold uppercase tracking-wider text-slate-400",children:"🔒 MULTI-FORMAT LICENSE INCLUDED"}),g.jsxs("div",{className:"flex flex-wrap gap-1.5 text-[10px] font-mono",children:[g.jsx("span",{className:"bg-emerald-500/10 text-emerald-500 px-2 py-0.5 rounded border border-emerald-500/20",children:"📁 SVG (Vector)"}),g.jsx("span",{className:"bg-blue-500/10 text-blue-500 px-2 py-0.5 rounded border border-blue-500/20",children:"🖼️ PNG (Image)"}),g.jsx("span",{className:"bg-purple-500/10 text-purple-500 px-2 py-0.5 rounded border border-purple-500/20",children:"📝 XML (Code)"})]}),g.jsx("p",{className:"text-[9px] italic text-slate-500",children:"Watermarked live preview active. All formats unlocked immediately upon transaction verification."})]}),k.price===0?g.jsxs("button",{onClick:()=>{z(null),ft(k),Ft(""),Ot(""),ut(""),yt(""),vt("idle"),an("")},className:"w-full py-3 px-6 text-xs font-black tracking-wider uppercase rounded-xl transition-all shadow-lg flex items-center justify-center gap-2 bg-emerald-600 hover:bg-emerald-500 text-white shadow-emerald-950/20",children:[g.jsx(qr,{className:"w-4 h-4"}),"Download Free (मुफ्त डाउनलोड)"]}):g.jsx("div",{className:"space-y-3 w-full",children:t?g.jsxs("div",{className:"grid grid-cols-1 sm:grid-cols-2 gap-2.5",children:[g.jsxs("button",{onClick:()=>ho(k),disabled:fo||(t.creditsBalance??0)<k.price||t.expiryDate==="Expired",className:`py-3 px-4 text-xs font-black tracking-wider uppercase rounded-xl transition-all shadow-md flex items-center justify-center gap-1.5 ${(t.creditsBalance??0)>=k.price&&t.expiryDate!=="Expired"?"bg-gradient-to-r from-amber-500 to-indigo-600 hover:from-amber-400 hover:to-indigo-500 text-white shadow-indigo-950/20":"bg-slate-800 text-slate-500 cursor-not-allowed border border-slate-850"}`,children:[fo?g.jsx(Ra,{className:"w-4 h-4 animate-spin"}):g.jsx(gf,{className:"w-4 h-4 text-amber-300 animate-pulse"}),g.jsxs("span",{children:["Use Pass (",k.price," Cr)"]})]}),g.jsxs("button",{onClick:()=>{z(null),ft(k),Ft(t.displayName),Ot(t.email),ut(""),yt(""),vt("idle"),an("")},className:"py-3 px-4 text-xs font-bold tracking-wider uppercase rounded-xl transition-all border border-slate-700/60 hover:bg-slate-800 bg-slate-900 text-slate-200 flex items-center justify-center gap-1.5",children:[g.jsx(yf,{className:"w-4 h-4"}),g.jsxs("span",{children:["Buy (₹",k.price,")"]})]})]}):g.jsxs("div",{className:"space-y-2.5 w-full",children:[g.jsxs("button",{onClick:()=>{z(null),ft(k),Ft(""),Ot(""),ut(""),yt(""),vt("idle"),an("")},className:"w-full py-3 px-6 text-xs font-black tracking-wider uppercase rounded-xl transition-all shadow-lg bg-indigo-600 hover:bg-indigo-500 text-white shadow-indigo-950/20 flex items-center justify-center gap-2",children:[g.jsx(yf,{className:"w-4 h-4"}),g.jsxs("span",{children:["Buy Individual (₹",parseFloat((k.price*1.15).toFixed(2)),") [Guest Surcharged]"]})]}),g.jsxs("button",{onClick:()=>{z(null),r(!0)},className:"w-full py-2 text-center text-xs font-bold text-indigo-400 hover:text-indigo-300 border border-indigo-900/35 rounded-xl bg-indigo-950/20 hover:bg-indigo-950/40 transition-all flex items-center justify-center gap-1.5",children:[g.jsx(n8,{className:"w-3.5 h-3.5"}),g.jsxs("span",{children:["Log in to use VIP Credit Pass (₹",k.price,")"]})]})]})})]}),g.jsx("p",{className:"text-[10px] text-center text-slate-500",children:"Protected by secure Google Apps Script email & UTR match algorithm."})]})]})]})]}) , g.jsx(ProductComments,{productUrl:`/stock/${slugify(k.title)}`,currentUser:t}) ]})})()};
+};function YO(){const[t,e]=de.useState(()=>{const G=localStorage.getItem("tyagihub_user");if(G)try{return JSON.parse(G)}catch{}const tc=localStorage.getItem("tc_user");if(tc)try{const parsed=JSON.parse(tc);if(parsed&&parsed.e)return{uid:"tc_"+parsed.e.replace(/[^a-zA-Z0-9]/g,""),email:parsed.e,displayName:parsed.n||parsed.e.split("@")[0],photoURL:parsed.p||"https://tyagihub.in/assets/images/icon-192.png",subscription:null}}catch{}return null}),[n,r]=de.useState(!1),[i,s]=de.useState("login"),[o,a]=de.useState(""),[l,u]=de.useState(""),[f,m]=de.useState(""),[v,h]=de.useState(""),[b,N]=de.useState(!1),[P,w]=de.useState([]),[S,_]=de.useState(!1),[L,$]=de.useState(null),[Q,X]=de.useState(""),[O,R]=de.useState("idle"),[H,I]=de.useState(""),[M,Y]=de.useState(""),[K,le]=de.useState(""),[ue,me]=de.useState(()=>{const G=localStorage.getItem("tyagihub_assets_offline");if(G)try{const ye=JSON.parse(G);if(ye&&ye.length>0)return ye.filter(Le=>Le&&Le.id&&!Le.id.startsWith("ASSET-"))}catch{}return[]}),[q,re]=de.useState([]),[he,pe]=de.useState(""),[k,z]=de.useState(null),[W,Z]=de.useState("all"),[te,oe]=de.useState("all"),[fe,ge]=de.useState([]),[be,Ce]=de.useState("newest"),[Re,Me]=de.useState(()=>typeof window<"u"?window.innerWidth>=1024:!0),[je,F]=de.useState(()=>{const G=localStorage.getItem("tyagihub_live_sync");return G!==null?G==="true":qx!=="YOUR_DEPLOYED_GOOGLE_APPS_SCRIPT_URL_HERE"}),[Ae]=de.useState(()=>qx),[bt,qe]=de.useState(!1),[Ee,nt]=de.useState("idle"),[Fe,rt]=de.useState(""),[Qe,jt]=de.useState(()=>localStorage.getItem("tyagihub_admin_mode")==="true"),[St,dt]=de.useState(!1),[Et,At]=de.useState(""),[He,pt]=de.useState(""),[Ye,en]=de.useState(!1),[Te,ft]=de.useState(null),[Nt,Ft]=de.useState(""),[it,Ot]=de.useState(""),[ot,ut]=de.useState(""),[Wt,yt]=de.useState(""),[et,vt]=de.useState("idle"),[Oi,an]=de.useState(""),[vi,Zr]=de.useState(""),[at,Mi]=de.useState(""),[wi,xr]=de.useState(""),[hn,tn]=de.useState(null),[Pn,gn]=de.useState(""),[ss,xi]=de.useState(!1),[br,Qr]=de.useState(!1),[Sr,Nr]=de.useState(!1),[Qn,os]=de.useState(""),[Fr,as]=de.useState("image"),[ls,Ps]=de.useState(""),[cs,ml]=de.useState(0),[Cs,ha]=de.useState(""),[pa,_r]=de.useState(""),[Is,ma]=de.useState(""),[co,ga]=de.useState(!1),[ya,Ts]=de.useState(null);de.useEffect(()=>{const search=window.location.search;if(search&&ue&&ue.length>0){const cleanSearch=decodeURIComponent(search.replace("?","")).toLowerCase().trim();if(cleanSearch){const matched=ue.find(p=>{const slug=slugify(p.title);return slug===cleanSearch||cleanSearch.includes("product="+slug)||slugify(p.title).includes(cleanSearch)||cleanSearch.includes(slug)});matched&&z(matched)}}},[ue]);de.useEffect(()=>{if(k){const slug=slugify(k.title);const newUrl=window.location.protocol+"//"+window.location.host+window.location.pathname+"?"+encodeURIComponent(slug);window.history.pushState({path:newUrl},"",newUrl)}else{const newUrl=window.location.protocol+"//"+window.location.host+window.location.pathname;window.history.pushState({path:newUrl},"",newUrl)}},[k]);const Br=async(G,ye=P)=>{if(!G)return null;let Le=G.creditsBalance??0,Oe=G.expiryDate??"N/A";const lt=ye.filter(st=>st.userEmail.toLowerCase()===G.email.toLowerCase()&&st.status==="approved");if(lt.length>0){let st=0,Xe=0,_e="N/A";lt.forEach(Ct=>{const qt=Ct.planName.toLowerCase();let Mt=0;qt.includes("micro")?Mt=60:qt.includes("mini")?Mt=125:qt.includes("super")||qt.includes("vault")?Mt=400:qt.includes("elite")||qt.includes("creator")?Mt=850:Mt=60,st+=Mt;const Nn=new Date(Ct.expiryDate).getTime();!isNaN(Nn)&&Nn>Xe&&(Xe=Nn,_e=Ct.expiryDate)}),Le=st,Oe=_e,Xe>0&&Xe<Date.now()&&(Le=0,Oe="Expired")}if(je&&Ae)try{const st=`${Ae}?action=syncUserWallet&uid=${encodeURIComponent(G.uid)}&name=${encodeURIComponent(G.displayName)}&email=${encodeURIComponent(G.email)}`,Xe=await Hr(st);Xe&&Xe.success&&(Le=Number(Xe.creditsBalance??0),Oe=String(Xe.expiryDate??"N/A"))}catch(st){console.error("Wallet sync failed, falling back to local subscriptions calculation:",st)}const tt={...G,creditsBalance:Le,expiryDate:Oe};return localStorage.setItem("tyagihub_user",JSON.stringify(tt)),tt};window.firebaseAuthSignOut=()=>jf.signOut();de.useEffect(()=>{if(t){localStorage.setItem("tc_user",JSON.stringify({n:t.displayName,e:t.email,p:t.photoURL||"https://tyagihub.in/assets/images/icon-192.png"}))}else{localStorage.removeItem("tc_user")}},[t]);de.useEffect(()=>{if(console.clear(),console.log("%c[DRM ACTIVE] TyagiHub Secure DRM Protocol v4","color: #fca5a5; font-size: 18px; font-weight: 900; background: #0f172a; padding: 6px 12px; border-radius: 8px;"),je&&Ae)Ur();else{const G=localStorage.getItem("tyagihub_assets_offline"),ye=localStorage.getItem("tyagihub_requests_offline"),Le=localStorage.getItem("tyagihub_subscriptions_offline");G&&me(JSON.parse(G)),ye&&re(JSON.parse(ye)),Le&&w(JSON.parse(Le))}},[je]),de.useEffect(()=>{const G=ye=>{ye.altKey&&ye.shiftKey&&ye.key.toLowerCase()==="a"&&(ye.preventDefault(),en(!0))};return window.addEventListener("keydown",G),()=>window.removeEventListener("keydown",G)},[]),de.useEffect(()=>{const G=ID(jf,async ye=>{var Le;if(ye){const Oe={uid:ye.uid,email:ye.email||"",displayName:ye.displayName||((Le=ye.email)==null?void 0:Le.split("@")[0])||"User",photoURL:ye.photoURL||void 0,subscription:null},lt=P.find(st=>st.userEmail.toLowerCase()===Oe.email.toLowerCase()&&st.status==="approved");lt&&(Oe.subscription=lt);const tt=await Br(Oe,P);e(tt),localStorage.setItem("tyagihub_user",JSON.stringify(tt))}else{const tc=localStorage.getItem("tc_user");if(tc){try{const parsed=JSON.parse(tc);if(parsed&&parsed.e){const Oe={uid:"tc_"+parsed.e.replace(/[^a-zA-Z0-9]/g,""),email:parsed.e,displayName:parsed.n||parsed.e.split("@")[0],photoURL:parsed.p||"https://tyagihub.in/assets/images/icon-192.png",subscription:null},lt=P.find(st=>st.userEmail.toLowerCase()===Oe.email.toLowerCase()&&st.status==="approved");lt&&(Oe.subscription=lt);const tt=await Br(Oe,P);e(tt),localStorage.setItem("tyagihub_user",JSON.stringify(tt));return}}catch(err){console.error("Failed to parse tc_user",err)}}const Oe=localStorage.getItem("tyagihub_user");if(Oe&&!je)try{const lt=JSON.parse(Oe),tt=await Br(lt,P);e(tt)}catch{e(null)}else e(null)}});return()=>G()},[je,P]),de.useEffect(()=>{je||localStorage.setItem("tyagihub_assets_offline",JSON.stringify(ue))},[ue,je]),de.useEffect(()=>{je||localStorage.setItem("tyagihub_requests_offline",JSON.stringify(q))},[q,je]),de.useEffect(()=>{je||localStorage.setItem("tyagihub_subscriptions_offline",JSON.stringify(P))},[P,je]);const Ur=async(G=Ae)=>{if(!G){nt("error"),rt("Please set your Google Apps Script Web App URL first.");return}qe(!0),nt("idle"),rt("");try{const ye=await Hr(`${G}?action=getProducts`);if(ye.success&&Array.isArray(ye.data))me(ye.data);else throw new Error(ye.error||"Could not parse products from sheet.");try{const Le=await Hr(`${G}?action=getRequests`);Le.success&&Array.isArray(Le.data)&&re(Le.data)}catch(Le){console.error("Requests fetch failed:",Le)}try{const Le=await Hr(`${G}?action=getSubscriptions`);if(Le.success&&Array.isArray(Le.data)){w(Le.data);const Oe=localStorage.getItem("tyagihub_user");if(Oe){const lt=JSON.parse(Oe),tt=Le.data.find(_e=>_e.userEmail.toLowerCase()===lt.email.toLowerCase()&&_e.status==="approved"),st={...lt,subscription:tt||null},Xe=await Br(st,Le.data);e(Xe)}}}catch(Le){throw console.error("Subscriptions fetch failed:",Le),new Error(Le instanceof Error?Le.message:"Subscriptions fetch failed")}nt("success"),localStorage.setItem("tyagihub_gas_url",G),localStorage.setItem("tyagihub_live_sync","true"),F(!0)}catch(ye){nt("error"),rt(ye.message||"Network error sync failed.")}finally{qe(!1)}},Oc=G=>{G.preventDefault(),Et==="golu123"?(jt(!0),localStorage.setItem("tyagihub_admin_mode","true"),en(!1),pt(""),At(""),dt(!0)):pt("Invalid access key. Please try again.")},Sn=()=>{jt(!1),localStorage.removeItem("tyagihub_admin_mode"),dt(!1)},gl=async G=>{if(G.preventDefault(),h(""),N(!0),i==="register"&&!o.trim()){h("कृपया अपना पूरा नाम दर्ज करें। (Please enter your full name.)"),N(!1);return}if(!l.trim()||!f.trim()){h("ईमेल और पासवर्ड आवश्यक हैं। (Email and Password are required.)"),N(!1);return}try{if(i==="register"){const ye=await kD(jf,l.trim(),f.trim());await LD(ye.user,{displayName:o.trim()})}else await AD(jf,l.trim(),f.trim());r(!1),a(""),u(""),m("")}catch(ye){console.error("Firebase Auth Error:",ye);let Le=ye.message;ye.code==="auth/email-already-in-use"?Le="यह ईमेल पहले से ही उपयोग में है। (This email is already registered.)":ye.code==="auth/invalid-credential"||ye.code==="auth/wrong-password"||ye.code==="auth/user-not-found"?Le="गलत ईमेल या पासवर्ड। कृपया पुनः प्रयास करें। (Incorrect email or password.)":ye.code==="auth/weak-password"?Le="पासवर्ड कम से कम 6 अक्षरों का होना चाहिए। (Password must be at least 6 characters.)":ye.code==="auth/invalid-email"&&(Le="कृपया एक मान्य ईमेल दर्ज करें। (Please enter a valid email.)"),h(Le)}finally{N(!1)}},bi=async()=>{h(""),N(!0);try{const G=new Gs;G.setCustomParameters({prompt:"select_account"}),await JD(jf,G),r(!1)}catch(G){console.error("Google Sign-In Error:",G),G.code!=="auth/popup-closed-by-user"&&h(G.message||"Google लॉगिन विफल रहा। (Google Login failed.)")}finally{N(!1)}},uo=async G=>{if(G.preventDefault(),!Te)return;const ye=Te.price>0,Le=t?Te.price:parseFloat((Te.price*1.15).toFixed(2)),Oe=Wt.trim();if(ye&&(!Oe||Oe.length<6)){vt("error"),an("Please enter a valid Paytm Transaction ID or UPI Reference Number (UTR).");return}vt("verifying"),an("");const lt="REQ-"+Math.floor(1e5+Math.random()*9e5);Mi(lt);const tt=t?t.displayName:Nt||"N/A",st=t?t.email:it||"N/A",Xe=new URLSearchParams({action:"addRequest",id:lt,assetId:Te.id,assetTitle:Te.title,customerName:tt,customerEmail:st,customerWhatsapp:ot||"N/A",transactionId:Oe,price:Le.toString(),requestDate:new Date().toLocaleString("en-US")});if(je&&Ae)try{const _e=await Hr(`${Ae}?${Xe.toString()}`);_e.success?(_e.status==="approved"?(vt("verified"),Zr(_e.secureToken)):(vt("pending"),_e.warning&&an(_e.warning)),Ur()):(vt("error"),an(_e.error||"Server rejected verification. Check UTR reuse."))}catch{vt("error"),an("Network failed to contact verification server. Order submitted locally.")}else{const _e=Te.price===0,Ct={id:lt,assetId:Te.id,assetTitle:Te.title,customerName:tt,customerEmail:st,customerWhatsapp:ot,transactionId:Oe,price:Le,status:_e?"approved":"pending",requestDate:new Date().toLocaleString("en-US"),downloadCount:0,secureToken:_e?"SANDBOX-FREE-TOKEN-"+Math.random().toString(36).substring(2,8).toUpperCase():void 0},qt=[Ct,...q];re(qt),_e?(vt("verified"),Zr(Ct.secureToken||"")):vt("pending")}},[fo,zn]=de.useState(!1),ho=async G=>{if(!t){alert("Please log in to use your Credit Pass.");return}if(zn(!0),!je||!Ae){const ye=t.creditsBalance??0,Le=t.expiryDate??"N/A";let Oe=!1;if(Le==="N/A")Oe=!0;else{const Xe=new Date(Le);(isNaN(Xe.getTime())||Xe.getTime()<Date.now())&&(Oe=!0)}if(Oe){const Xe={...t,creditsBalance:0,expiryDate:"Expired"};e(Xe),localStorage.setItem("tyagihub_user",JSON.stringify(Xe)),alert("Your Credit Pass has expired! Balance has been frozen and flushed. Please purchase a new Credit Pass."),zn(!1);return}if(ye<G.price){alert(`Insufficient credits! You have ${ye} credits, but this asset costs ${G.price} credits.`),zn(!1);return}const lt=ye-G.price,tt={...t,creditsBalance:lt};e(tt),localStorage.setItem("tyagihub_user",JSON.stringify(tt));const st={id:"REQ-CR-"+Math.floor(1e5+Math.random()*9e5),assetId:G.id,assetTitle:G.title,customerName:t.displayName,customerEmail:t.email,customerWhatsapp:"N/A",transactionId:"CREDIT_PASS_DEDUCTION",price:G.price,status:"approved",requestDate:new Date().toLocaleString(),secureToken:"TOKEN-CREDIT-"+Math.random().toString(36).substring(2,10).toUpperCase(),downloadCount:1};re(Xe=>[st,...Xe]),alert(`✓ ₹${G.price} Credits Deducted! Click format buttons to download.`),zn(!1);return}try{const ye=`${Ae}?action=downloadWithCredits&email=${encodeURIComponent(t.email)}&assetId=${encodeURIComponent(G.id)}`,Le=await Hr(ye);if(Le&&Le.success){const Oe={...t,creditsBalance:Le.creditsBalance,expiryDate:Le.expiryDate};e(Oe),localStorage.setItem("tyagihub_user",JSON.stringify(Oe));const lt={id:"REQ-CR-"+Math.floor(1e5+Math.random()*9e5),assetId:G.id,assetTitle:G.title,customerName:t.displayName,customerEmail:t.email,customerWhatsapp:"N/A",transactionId:"CREDIT_PASS_DEDUCTION",price:G.price,status:"approved",requestDate:new Date().toLocaleString(),secureToken:Le.secureToken,downloadCount:1};re(tt=>[lt,...tt]),alert("✓ Credits deducted successfully! DRM authorization token issued.")}else if(Le.expired){const Oe={...t,creditsBalance:0,expiryDate:"Expired"};e(Oe),localStorage.setItem("tyagihub_user",JSON.stringify(Oe)),alert(Le.error||"Your Credit Pass has expired! Balance has been frozen and flushed.")}else alert(Le.error||"Deduction failed. Ensure sufficient credits or valid pass.")}catch(ye){console.error("Deduction API error:",ye),alert("API connection failed. Please retry.")}finally{zn(!1)}},Fi=async G=>{if(G.preventDefault(),!L||!t)return;const ye=Q.trim();if(!ye||ye.length<6){R("error"),I("Please enter a valid Paytm transaction ID or UPI Reference Number (UTR).");return}R("verifying"),I("");const Le="SUB-"+Math.floor(1e5+Math.random()*9e5);Y(Le);const Oe=new Date().toLocaleString("en-US"),lt=new Date;L.durationHours?lt.setHours(lt.getHours()+L.durationHours):lt.setDate(lt.getDate()+L.durationDays);const tt=lt.toLocaleString("en-US");if(je&&Ae)try{const st=new URLSearchParams({action:"addSubscription",id:Le,userEmail:t.email,userName:t.displayName,planName:L.name,price:L.price.toString(),transactionId:ye,purchaseDate:Oe,expiryDate:tt}),Xe=await Hr(`${Ae}?${st.toString()}`);if(Xe.success)if(R(Xe.autoVerified?"verified":"pending"),Xe.autoVerified&&Xe.secureToken){le(Xe.secureToken);const _e={id:Le,userEmail:t.email,userName:t.displayName,planName:L.name,price:L.price,transactionId:ye,status:"approved",purchaseDate:Oe,expiryDate:tt,secureToken:Xe.secureToken},Ct={...t,subscription:_e};e(Ct),localStorage.setItem("tyagihub_user",JSON.stringify(Ct)),w(qt=>[_e,...qt])}else{const _e={id:Le,userEmail:t.email,userName:t.displayName,planName:L.name,price:L.price,transactionId:ye,status:"pending",purchaseDate:Oe,expiryDate:tt};w(Ct=>[_e,...Ct])}else R("error"),I(Xe.error||"Server rejected subscription log request.")}catch{R("error"),I("Connection lost. Please try submitting again.")}else{await new Promise(Ct=>setTimeout(Ct,1e3));const st="SUB-TOKEN-SANDBOX-"+Math.random().toString(36).substring(2,8).toUpperCase(),Xe={id:Le,userEmail:t.email,userName:t.displayName,planName:L.name,price:L.price,transactionId:ye,status:"approved",purchaseDate:Oe,expiryDate:tt,secureToken:st};R("verified"),le(st);const _e={...t,subscription:Xe};e(_e),localStorage.setItem("tyagihub_user",JSON.stringify(_e)),w(Ct=>[Xe,...Ct])}},Mn=async(G,ye)=>{const Le="SUB-TOKEN-MANUAL-"+Math.random().toString(36).substring(2,10).toUpperCase();if(je&&Ae)try{const Oe=new URLSearchParams({action:"updateSubscription",id:G,status:ye,secureToken:Le}),lt=await Hr(`${Ae}?${Oe.toString()}`);lt.success?(w(tt=>tt.map(st=>{if(st.id===G){const Xe={...st,status:ye,secureToken:lt.secureToken||Le};if(t&&t.email.toLowerCase()===st.userEmail.toLowerCase()){const _e={...t,subscription:ye==="approved"?Xe:null};e(_e),localStorage.setItem("tyagihub_user",JSON.stringify(_e))}return Xe}return st})),alert(`Subscription request ${G} successfully marked as ${ye}!`)):alert(`Failed to update subscription on sheet: ${lt.error}`)}catch{alert("Failed to update subscription status. Connection failed.")}else w(Oe=>Oe.map(lt=>{if(lt.id===G){const tt={...lt,status:ye,secureToken:ye==="approved"?Le:void 0};if(t&&t.email.toLowerCase()===lt.userEmail.toLowerCase()){const st={...t,subscription:ye==="approved"?tt:null};e(st),localStorage.setItem("tyagihub_user",JSON.stringify(st))}return tt}return lt})),alert(`[Sandbox Mode] Subscription request ${G} marked as ${ye}.`)},va=async(G,ye)=>{const Le="TOKEN-MANUAL-"+Math.random().toString(36).substring(2,10).toUpperCase();if(je&&Ae){qe(!0);try{const Oe=await Hr(`${Ae}?action=updateRequest&id=${G}&status=${ye}&secureToken=${Le}`);Oe.success?Ur():alert("Failed to update status: "+Oe.error)}catch{alert("Sync error failed to update.")}finally{qe(!1)}}else re(q.map(Oe=>Oe.id===G?{...Oe,status:ye,secureToken:ye==="approved"?Le:void 0}:Oe))},Mc=async G=>{if(confirm("Are you sure you want to delete this order?"))if(je&&Ae){qe(!0);try{(await Hr(`${Ae}?action=deleteRequest&id=${G}`)).success&&Ur()}catch{alert("Failed to delete request.")}finally{qe(!1)}}else re(q.filter(ye=>ye.id!==G))},Fc=async G=>{if(G.preventDefault(),!Qn||!Cs){alert("Product Title and Google Drive ID are required!");return}const ye="PROD-"+Date.now().toString(36).toUpperCase(),Le=Cs.trim(),Oe=ci(Le),lt=pa.trim()||(Oe?`https://drive.google.com/thumbnail?id=${Oe}&sz=w1000`:"https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=800&q=80");if(je&&Ae){qe(!0);try{const tt=new URLSearchParams({action:"addAsset",id:ye,title:Qn,type:Fr,size:ls||"N/A",price:cs.toString(),driveId:Le,previewUrl:lt,description:Is||"Premium high quality resource."}),st=await Hr(`${Ae}?${tt.toString()}`);st.success?(Nr(!1),ei(),Ur()):alert("Error adding asset: "+st.error)}catch{alert("Network failed to add product.")}finally{qe(!1)}}else me([{id:ye,title:Qn,type:Fr,size:ls||"N/A",price:cs,driveId:Le,previewUrl:lt,description:Is},...ue]),Nr(!1),ei()},Bc=async G=>{if(confirm("Are you sure you want to permanently delete this product? This will remove it from the store."))if(je&&Ae){qe(!0);try{const ye=await Hr(`${Ae}?action=deleteAsset&id=${G}`);ye.success?Ur():alert("Error deleting: "+ye.error)}catch{alert("Failed to connect to sheet.")}finally{qe(!1)}}else me(ue.filter(ye=>ye.id!==G))},ei=()=>{os(""),as("image"),Ps(""),ml(0),ha(""),_r(""),ma("")},yl=async()=>{if(!je||!Ae){alert("Please connect Google Sheets Live Mode to scan emails.");return}ga(!0),Ts(null);try{const G=await Hr(`${Ae}?action=syncEmails`);G.success?(Ts(G.message||"Gmail scan complete!"),Ur()):Ts("Error: "+G.error)}catch{Ts("Failed to trigger scan. Check if Web App has Gmail access.")}finally{ga(!1)}},po=async G=>{G.preventDefault();const ye=wi.trim();if(ye)if(xi(!0),gn(""),tn(null),je&&Ae)try{const Le=await Hr(`${Ae}?action=getRequests`);if(Le.success&&Array.isArray(Le.data)){const Oe=Le.data.find(lt=>lt.transactionId.toLowerCase()===ye.toLowerCase()||lt.id.toLowerCase()===ye.toLowerCase());Oe?tn(Oe):gn("No order found with this Transaction ID / Order ID.")}else gn("Could not sync orders from Google Sheet.")}catch{gn("Network connection failed. Please try again.")}finally{xi(!1)}else{const Le=q.find(Oe=>Oe.transactionId.toLowerCase()===ye.toLowerCase()||Oe.id.toLowerCase()===ye.toLowerCase());Le?tn(Le):gn("Order not found. Note: Sandbox mode stores orders locally in your current browser tab."),xi(!1)}},mo=G=>{fe.includes(G)?ge(fe.filter(ye=>ye!==G)):ge([...fe,G])},js=ue.filter(G=>{const ye=he.trim().toLowerCase();if(!(!ye||(G.title||"").toLowerCase().includes(ye)||(G.description||"").toLowerCase().includes(ye)||(G.id||"").toLowerCase().includes(ye))||W!=="all"&&qO(G)!==W||te==="free"&&G.price!==0||te==="paid"&&G.price===0)return!1;if(fe.length>0){const Oe=HO(G);if(!fe.includes(Oe))return!1}return!0}).sort((G,ye)=>be==="newest"?String(ye.id||"").localeCompare(String(G.id||"")):be==="name-asc"?String(G.title||"").localeCompare(String(ye.title||"")):be==="name-desc"?String(ye.title||"").localeCompare(String(G.title||"")):be==="price-asc"?(G.price||0)-(ye.price||0):be==="price-desc"?(ye.price||0)-(G.price||0):0);const renderProductPage=()=>{if(!k)return null; return (()=>{const G=k.price===0||q.some(_e=>_e.assetId===k.id&&_e.status==="approved"),ye=k.driveId.trim().startsWith("<svg")||k.driveId.includes("<svg")||k.type==="svg",Le=()=>{if(!G)return;const _e=k.driveId,Ct=new Blob([_e],{type:"image/svg+xml"}),qt=URL.createObjectURL(Ct),Mt=document.createElement("a");Mt.href=qt,Mt.download=`${k.title.toLowerCase().replace(/\s+/g,"_")}_clean.svg`,document.body.appendChild(Mt),Mt.click(),document.body.removeChild(Mt),URL.revokeObjectURL(qt)},Oe=()=>{if(!G)return;const _e=k.driveId,Ct=new Blob([_e],{type:"image/svg+xml;charset=utf-8"}),qt=URL.createObjectURL(Ct),Mt=new Image;Mt.onload=()=>{const Nn=document.createElement("canvas");Nn.width=1024,Nn.height=1024;const wa=Nn.getContext("2d");if(wa){wa.clearRect(0,0,Nn.width,Nn.height),wa.drawImage(Mt,0,0,Nn.width,Nn.height);try{const ti=Nn.toDataURL("image/png"),kr=document.createElement("a");kr.href=ti,kr.download=`${k.title.toLowerCase().replace(/\s+/g,"_")}.png`,document.body.appendChild(kr),kr.click(),document.body.removeChild(kr)}catch(ti){console.error("PNG conversion failed",ti)}}URL.revokeObjectURL(qt)},Mt.onerror=()=>{URL.revokeObjectURL(qt)},Mt.src=qt},lt=()=>{if(!G)return;const _e=k.driveId,Ct=new Blob([_e],{type:"text/xml"}),qt=URL.createObjectURL(Ct),Mt=document.createElement("a");Mt.href=qt,Mt.download=`${k.title.toLowerCase().replace(/\s+/g,"_")}_code.xml`,document.body.appendChild(Mt),Mt.click(),document.body.removeChild(Mt),URL.revokeObjectURL(qt)},tt=()=>{if(!G)return;const _e=k.driveId&&k.driveId.length>40&&!ci(k.driveId)?k.driveId:k.description||"Verified solutions prep guide.";zx(k.title,_e)},st=()=>{if(!G)return;const _e=k.driveId&&k.driveId.length>40&&!ci(k.driveId)?k.driveId:k.description||"Verified solutions prep guide.";$x(k.title,_e)},Xe=ci(k.driveId);return g.jsxs("div",{className:"space-y-8 animate-in fade-in duration-300",children:[g.jsxs("button",{onClick:()=>z(null),className:"flex items-center gap-2 px-4 py-2 text-xs font-bold uppercase tracking-wider rounded-xl border bg-slate-900 hover:bg-slate-850 text-slate-350 hover:text-white border-slate-800 transition-colors cursor-pointer mb-6",children:[g.jsx("span",{children:"←"}),"Back to assets catalog"]}),g.jsxs(Oa.div,{initial:{opacity:0,y:15},animate:{opacity:1,y:0},className:"border rounded-2xl overflow-hidden w-full shadow-2xl relative transition-colors bg-slate-900 border-slate-800/60",children:[g.jsx("button",{onClick:()=>z(null),className:"absolute top-4 right-4 z-40 p-2 rounded-full border transition-all shadow-lg bg-slate-950/80 hover:bg-slate-800 text-slate-400 border-slate-850 hover:text-white",children:g.jsx(vf,{className:"w-4 h-4"})}),g.jsxs("div",{className:"grid grid-cols-1 md:grid-cols-2",children:[g.jsxs("div",{className:"relative aspect-square md:aspect-auto md:h-full min-h-[300px] md:min-h-[450px] flex items-center justify-center overflow-hidden border-b md:border-b-0 md:border-r p-4 transition-colors bg-slate-950 border-slate-800/60",children:[g.jsx("img",{src:hm(k),alt:"",className:"absolute inset-0 w-full h-full object-cover blur-2xl opacity-35 scale-110 pointer-events-none select-none"}),g.jsx("div",{className:"relative z-10 max-h-[380px] max-w-full w-auto h-auto flex items-center justify-center",children:g.jsx(Vx,{src:hm(k),alt:k.title,isFree:G,type:ye?"svg":k.type,pdfContent:k.driveId&&k.driveId.length>40&&!ci(k.driveId)?k.driveId:k.description,className:`max-h-[380px] max-w-full w-auto h-auto object-contain rounded-lg shadow-2xl transition-transform hover:scale-[1.01] duration-300 ${G?"":"contrast-[1.03] brightness-[0.88]"}`})}),g.jsx("div",{className:"absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent opacity-80 z-20 pointer-events-none"}),g.jsxs("div",{className:"absolute bottom-4 left-4 text-[10px] font-mono px-2.5 py-1 rounded-lg border z-30 flex items-center gap-1 font-bold uppercase transition-colors bg-slate-950/90 text-slate-300 border-slate-800",children:[k.type==="zip"&&g.jsx(Wf,{className:"w-3.5 h-3.5 text-yellow-500"}),k.type==="pdf"&&g.jsx(za,{className:"w-3.5 h-3.5 text-red-500"}),k.type==="image"&&g.jsx(Gf,{className:"w-3.5 h-3.5 text-blue-500"}),k.type==="video"&&g.jsx(i4,{className:"w-3.5 h-3.5 text-purple-500"}),g.jsxs("span",{children:[k.type," • ",k.size]})]})]}),g.jsxs("div",{className:"p-6 md:p-8 flex flex-col justify-between space-y-6",children:[g.jsxs("div",{className:"space-y-4",children:[g.jsxs("div",{className:"flex items-center gap-2",children:[g.jsx("span",{className:"text-[9px] font-mono font-bold px-2.5 py-1 rounded border uppercase tracking-widest transition-colors bg-slate-950 text-indigo-400 border-slate-800",children:"DRM Verified Asset"}),g.jsxs("span",{className:"text-[11px] font-mono text-slate-600",children:["• ID: ",k.id]})]}),g.jsxs("div",{className:"flex flex-col sm:flex-row sm:items-start justify-between gap-3",children:[g.jsx("h2",{className:"text-lg md:text-xl font-extrabold leading-snug transition-colors text-white flex-1",children:k.title}),g.jsxs("button",{onClick:()=>{const url=window.location.protocol+"//"+window.location.host+window.location.pathname+"?"+encodeURIComponent(slugify(k.title));navigator.clipboard.writeText(url);alert("Product page link copied to clipboard! (उत्पाद लिंक कॉपी हो गया है!)")},className:"shrink-0 flex items-center gap-1.5 px-3 py-1.5 rounded-lg border text-[11px] font-bold uppercase tracking-wider bg-slate-900 border-slate-800 text-indigo-400 hover:text-indigo-300 hover:bg-slate-850 cursor-pointer transition-all",children:[g.jsx("span",{children:"🔗"}),"Copy Link"]})]}),g.jsxs("div",{className:"p-4 rounded-xl border flex items-center justify-between transition-colors bg-slate-950 border-slate-850",children:[g.jsxs("div",{children:[g.jsx("p",{className:"text-[9px] font-mono uppercase tracking-wider text-slate-500",children:"LICENSE COST"}),g.jsx("div",{className:"flex items-baseline gap-2 mt-0.5",children:g.jsx("span",{className:"text-xl font-black text-white",children:k.price===0?"FREE DOWNLOAD":`₹${k.price}`})})]}),g.jsx("span",{className:`text-[10px] font-mono font-black uppercase px-2.5 py-1 rounded-md ${G?"bg-emerald-500/15 text-emerald-400 border border-emerald-500/20":"bg-indigo-500/15 text-indigo-400 border border-indigo-500/20"}`,children:G?"Unlocked / Paid":"Verified Purchase"})]}),g.jsxs("div",{className:"space-y-2",children:[g.jsx("h4",{className:"text-[10px] font-mono font-bold uppercase tracking-wider text-slate-500",children:"File Specifications"}),g.jsxs("div",{className:"grid grid-cols-2 gap-2 text-xs font-mono",children:[g.jsxs("div",{className:"p-2 rounded-xl border flex flex-col transition-colors bg-slate-950/40 border-slate-900",children:[g.jsx("span",{className:"text-slate-500 text-[9px]",children:"FORMAT TYPE"}),g.jsx("span",{className:"uppercase font-bold mt-0.5 text-slate-200",children:k.type})]}),g.jsxs("div",{className:"p-2 rounded-xl border flex flex-col transition-colors bg-slate-950/40 border-slate-900",children:[g.jsx("span",{className:"text-slate-500 text-[9px]",children:"STORAGE WEIGHT"}),g.jsx("span",{className:"font-bold mt-0.5 text-slate-200",children:k.size})]})]})]}),g.jsxs("div",{className:"space-y-1.5",children:[g.jsx("h4",{className:"text-[10px] font-mono font-bold uppercase tracking-wider text-slate-500",children:"Description (विवरण)"}),g.jsx("p",{className:"text-xs leading-relaxed max-h-[140px] overflow-y-auto pr-2 p-3 rounded-xl border transition-colors scrollbar-thin text-slate-300 bg-slate-950/20 border-slate-900/60",children:k.description||"No description provided."})]})]}),g.jsxs("div",{className:"space-y-3 pt-4 border-t border-slate-850",children:[G?g.jsxs("div",{className:"space-y-2.5",children:[g.jsx("p",{className:"text-[10px] text-center font-mono font-black text-emerald-500 uppercase tracking-widest animate-pulse",children:"✓ Access Clearance Approved"}),ye&&g.jsxs("div",{className:"p-3 rounded-xl border transition-colors bg-slate-950 border-slate-850",children:[g.jsx("p",{className:"text-[10px] font-mono text-indigo-500 font-bold uppercase tracking-wider text-center",children:"🎯 Select Your Download Format"}),g.jsxs("div",{className:"grid grid-cols-1 gap-2",children:[g.jsxs("button",{onClick:Le,className:"w-full py-2.5 px-4 text-xs font-black tracking-wider uppercase rounded-xl transition-all shadow-lg bg-emerald-600 hover:bg-emerald-500 text-white flex items-center justify-center gap-2",children:[g.jsx(qr,{className:"w-3.5 h-3.5"}),"Download Clean SVG File (.svg)"]}),g.jsxs("button",{onClick:Oe,className:"w-full py-2.5 px-4 text-xs font-black tracking-wider uppercase rounded-xl transition-all shadow-lg bg-blue-600 hover:bg-blue-500 text-white flex items-center justify-center gap-2",children:[g.jsx(Gf,{className:"w-3.5 h-3.5"}),"Convert & Download PNG (.png)"]}),g.jsxs("button",{onClick:lt,className:"w-full py-2.5 px-4 text-xs font-black tracking-wider uppercase rounded-xl transition-all shadow-lg bg-purple-600 hover:bg-purple-500 text-white flex items-center justify-center gap-2",children:[g.jsx(za,{className:"w-3.5 h-3.5"}),"Download Raw XML (.xml)"]})]})]}),k.type==="pdf"&&g.jsxs("div",{className:"p-3 rounded-xl border transition-colors bg-slate-950 border-slate-850",children:[g.jsx("p",{className:"text-[10px] font-mono text-indigo-500 font-bold uppercase tracking-wider text-center",children:"🎯 Choose Your Download Format"}),g.jsxs("div",{className:"grid grid-cols-1 sm:grid-cols-2 gap-2 mt-2",children:[g.jsxs("button",{onClick:tt,className:"w-full py-2.5 px-4 text-xs font-black tracking-wider uppercase rounded-xl transition-all shadow-lg bg-emerald-600 hover:bg-emerald-500 text-white flex items-center justify-center gap-2",children:[g.jsx(qr,{className:"w-3.5 h-3.5 animate-bounce"}),"Download PDF (.pdf)"]}),g.jsxs("button",{onClick:st,className:"w-full py-2.5 px-4 text-xs font-black tracking-wider uppercase rounded-xl transition-all shadow-lg bg-indigo-600 hover:bg-indigo-500 text-white flex items-center justify-center gap-2",children:[g.jsx(za,{className:"w-3.5 h-3.5"}),"Download Word (.doc)"]})]})]}),!ye&&k.type!=="pdf"&&Xe&&g.jsxs("a",{href:`https://docs.google.com/uc?export=download&id=${Xe}&confirm=t`,target:"_blank",rel:"noreferrer",className:"w-full py-3 px-6 text-xs font-black tracking-wider uppercase rounded-xl transition-all shadow-lg bg-emerald-600 hover:bg-emerald-500 text-white flex items-center justify-center gap-2 text-center",children:[g.jsx(qr,{className:"w-4 h-4 animate-bounce"}),"Download Original File"]})]}):g.jsxs("div",{className:"space-y-3",children:[ye&&g.jsxs("div",{className:"p-3 rounded-xl border space-y-1.5 transition-colors bg-slate-950 border-slate-850",children:[g.jsx("p",{className:"text-[10px] font-mono font-bold uppercase tracking-wider text-slate-400",children:"🔒 MULTI-FORMAT LICENSE INCLUDED"}),g.jsxs("div",{className:"flex flex-wrap gap-1.5 text-[10px] font-mono",children:[g.jsx("span",{className:"bg-emerald-500/10 text-emerald-500 px-2 py-0.5 rounded border border-emerald-500/20",children:"📁 SVG (Vector)"}),g.jsx("span",{className:"bg-blue-500/10 text-blue-500 px-2 py-0.5 rounded border border-blue-500/20",children:"🖼️ PNG (Image)"}),g.jsx("span",{className:"bg-purple-500/10 text-purple-500 px-2 py-0.5 rounded border border-purple-500/20",children:"📝 XML (Code)"})]}),g.jsx("p",{className:"text-[9px] italic text-slate-500",children:"Watermarked live preview active. All formats unlocked immediately upon transaction verification."})]}),k.price===0?g.jsxs("button",{onClick:()=>{z(null),ft(k),Ft(""),Ot(""),ut(""),yt(""),vt("idle"),an("")},className:"w-full py-3 px-6 text-xs font-black tracking-wider uppercase rounded-xl transition-all shadow-lg flex items-center justify-center gap-2 bg-emerald-600 hover:bg-emerald-500 text-white shadow-emerald-950/20",children:[g.jsx(qr,{className:"w-4 h-4"}),"Download Free (मुफ्त डाउनलोड)"]}):g.jsx("div",{className:"space-y-3 w-full",children:t?g.jsxs("div",{className:"grid grid-cols-1 sm:grid-cols-2 gap-2.5",children:[g.jsxs("button",{onClick:()=>ho(k),disabled:fo||(t.creditsBalance??0)<k.price||t.expiryDate==="Expired",className:`py-3 px-4 text-xs font-black tracking-wider uppercase rounded-xl transition-all shadow-md flex items-center justify-center gap-1.5 ${(t.creditsBalance??0)>=k.price&&t.expiryDate!=="Expired"?"bg-gradient-to-r from-amber-500 to-indigo-600 hover:from-amber-400 hover:to-indigo-500 text-white shadow-indigo-950/20":"bg-slate-800 text-slate-500 cursor-not-allowed border border-slate-850"}`,children:[fo?g.jsx(Ra,{className:"w-4 h-4 animate-spin"}):g.jsx(gf,{className:"w-4 h-4 text-amber-300 animate-pulse"}),g.jsxs("span",{children:["Use Pass (",k.price," Cr)"]})]}),g.jsxs("button",{onClick:()=>{z(null),ft(k),Ft(t.displayName),Ot(t.email),ut(""),yt(""),vt("idle"),an("")},className:"py-3 px-4 text-xs font-bold tracking-wider uppercase rounded-xl transition-all border border-slate-700/60 hover:bg-slate-800 bg-slate-900 text-slate-200 flex items-center justify-center gap-1.5",children:[g.jsx(yf,{className:"w-4 h-4"}),g.jsxs("span",{children:["Buy (₹",k.price,")"]})]})]}):g.jsxs("div",{className:"space-y-2.5 w-full",children:[g.jsxs("button",{onClick:()=>{z(null),ft(k),Ft(""),Ot(""),ut(""),yt(""),vt("idle"),an("")},className:"w-full py-3 px-6 text-xs font-black tracking-wider uppercase rounded-xl transition-all shadow-lg bg-indigo-600 hover:bg-indigo-500 text-white shadow-indigo-950/20 flex items-center justify-center gap-2",children:[g.jsx(yf,{className:"w-4 h-4"}),g.jsxs("span",{children:["Buy Individual (₹",parseFloat((k.price*1.15).toFixed(2)),") [Guest Surcharged]"]})]}),g.jsxs("button",{onClick:()=>{z(null),r(!0)},className:"w-full py-2 text-center text-xs font-bold text-indigo-400 hover:text-indigo-300 border border-indigo-900/35 rounded-xl bg-indigo-950/20 hover:bg-indigo-950/40 transition-all flex items-center justify-center gap-1.5",children:[g.jsx(n8,{className:"w-3.5 h-3.5"}),g.jsxs("span",{children:["Log in to use VIP Credit Pass (₹",k.price,")"]})]})]})})]}),g.jsx("p",{className:"text-[10px] text-center text-slate-500",children:"Protected by secure Google Apps Script email & UTR match algorithm."})]})]})]})]}) , g.jsx(ProductComments, { product: k, user: t, openLogin: () => r(!0) }) ]})})()};
 return g.jsxs("div",{className:"min-h-screen font-sans relative transition-colors duration-300 bg-slate-950 text-slate-100 selection:bg-indigo-500 selection:text-white",children:[g.jsxs(g.Fragment,{children:[g.jsx("div",{className:"absolute top-0 left-1/4 w-96 h-96 bg-indigo-950/20 rounded-full filter blur-[120px] pointer-events-none"}),g.jsx("div",{className:"absolute top-1/3 right-1/4 w-96 h-96 bg-slate-900/10 rounded-full filter blur-[120px] pointer-events-none"})]}),g.jsxs("main",{className:"max-w-7xl mx-auto px-4 sm:px-6 py-6 min-h-[80vh]",children:[bt&&g.jsxs("div",{className:"mb-4 flex items-center gap-2 text-indigo-400 text-xs font-semibold bg-indigo-950/15 border border-indigo-900/30 p-2.5 rounded-xl animate-pulse",children:[g.jsx(Ra,{className:"w-3.5 h-3.5 animate-spin text-indigo-500"}),g.jsx("span",{children:"Syncing catalog with live database..."})]}),Ee==="error"&&g.jsxs("div",{className:"mb-4 text-rose-400 text-xs font-semibold flex items-center gap-1.5 bg-rose-950/20 border border-rose-900/40 p-2.5 rounded-xl",children:[g.jsx(e8,{className:"w-4 h-4 shrink-0"}),Fe," (Using offline fallback sandbox)"]}),k ? renderProductPage() : g.jsxs("div",{className:"grid grid-cols-1 lg:grid-cols-4 gap-6 items-start",children:[Re&&g.jsx("div",{className:"fixed inset-0 bg-slate-950/80 backdrop-blur-sm z-50 lg:hidden",onClick:()=>Me(!1)}),g.jsxs("div",{className:`
             fixed inset-y-0 left-0 z-50 w-[310px] max-w-[85vw] p-5 overflow-y-auto transition-all duration-300 ease-out
             ${Re?"translate-x-0":"-translate-x-full lg:hidden"} 
