@@ -209,7 +209,7 @@
 </div>
 
 <style>
-  #tc-root { display: none; max-width:750px; margin:20px auto; border:1px solid #ddd; border-radius:12px; background:#fff; font-family:sans-serif; overflow:hidden; box-shadow:0 4px 12px rgba(0,0,0,0.08); }
+  #tc-root { max-width:750px; margin:20px auto; border:1px solid #ddd; border-radius:12px; background:#fff; font-family:sans-serif; overflow:hidden; box-shadow:0 4px 12px rgba(0,0,0,0.08); }
   .tc-header { padding:15px 20px; border-bottom:1px solid #eee; display:flex; justify-content:space-between; align-items:flex-start; background:#fafafa; }
   .tc-ps-rating { display:flex; align-items:center; gap:10px; margin-top:5px; }
   .tc-avg-big { font-size:32px; font-weight:bold; color:#202124; }
@@ -305,29 +305,7 @@
   let lastFetchedUrl = "";
 
   function getPageUrl() {
-    return location.pathname + location.search;
-  }
-
-  function updateVisibility() {
-    const rootEl = document.getElementById("tc-root");
-    if (rootEl) {
-      if (location.search && location.search.length > 1) {
-        rootEl.style.display = "block";
-      } else {
-        rootEl.style.display = "none";
-      }
-    }
-  }
-
-  function checkUrlChange() {
-    updateVisibility();
-    const currentUrl = getPageUrl();
-    if (currentUrl !== lastFetchedUrl) {
-      lastFetchedUrl = currentUrl;
-      if (location.search && location.search.length > 1) {
-        sync();
-      }
-    }
+    return location.pathname;
   }
 
   function init() {
@@ -340,17 +318,8 @@
       }
       setTimeout(function() { if (window._tcInitFCM) window._tcInitFCM(); }, 1500);
     }
-    
-    // Check initially and start interval to detect React routing changes
-    checkUrlChange();
-    setInterval(checkUrlChange, 500);
-    
-    // Standard background sync interval for active product discussion
-    setInterval(function() { 
-      if (!isTyping && location.search && location.search.length > 1) {
-        sync(); 
-      }
-    }, 30000);
+    sync();
+    setInterval(function() { if (!isTyping) sync(); }, 30000);
   }
 
   window.hoverStar = function(n) {
