@@ -106,14 +106,17 @@
               </div>
               
               <ul style="list-style: none; margin: 0; padding: 0;">
-                <!-- Cleaned Menu Options: Only Support, Delete, and Logout remains -->
-                <li><a href="{{ site.url }}/support/" style="display: block; padding: 9px 16px; font-size: 13px; color: #333; text-decoration: none;">🛠️ {% if page.lang == "hi" %}सहायता केंद्र{% else %}Help & Support{% endif %}</a></li>
+                <!-- 1. Help & Support with Official Email -->
+                <li><a href="mailto:tyagihub.official@gmail.com" style="display: block; padding: 9px 16px; font-size: 13px; color: #333; text-decoration: none;">🛠️ {% if page.lang == "hi" %}सहायता केंद्र{% else %}Help & Support{% endif %}</a></li>
+                
+                <!-- 2. Logout Button shifted here -->
+                <li style="border-top: 1px solid #f0f0f0; margin-top: 5px; padding-top: 5px;">
+                  <button onclick="tcLogout()" style="width: 100%; border: none; background: none; text-align: left; color: #333; padding: 9px 16px; font-size: 13px; cursor: pointer;">🚪 {% if page.lang == "hi" %}लॉगआउट Logout{% else %}Logout{% endif %}</button>
+                </li>
+                
+                <!-- 3. Delete Account moved to the absolute bottom -->
                 <li style="border-top: 1px solid #f0f0f0; margin-top: 5px; padding-top: 5px;"><a href="#" onclick="handleAccountDeletion(); return false;" style="display: block; padding: 9px 16px; font-size: 13px; color: #d93025; font-weight: bold; text-decoration: none;">⚠️ {% if page.lang == "hi" %}अकाउंट डिलीट करें{% else %}Delete Account{% endif %}</a></li>
               </ul>
-              
-              <div style="border-top: 1px solid #f0f0f0; margin-top: 5px; padding-top: 5px; text-align: center;">
-                <button onclick="tcLogout()" style="width: 100%; border: none; background: none; color: #d93025; padding: 8px 0; font-size: 13px; font-weight: bold; cursor: pointer;">🚪 {% if page.lang == "hi" %}लॉगआउट Logout{% else %}Logout{% endif %}</button>
-              </div>
             </div>
           </div>
 
@@ -146,7 +149,7 @@
     </span>
 
     <input type="search" id="search-input" class="search-box__input"
-      placeholder="{% if page.lang == 'hi' %}प्रश्न, फ़ॉर्मूला, टूल्स और गाइड खोजें...{% else %}Search questions, formulas, tools and guides...{% endif %}"
+      placeholder="{% if page.lang == 'hi' %}प्रश्न, फ़ॉर्मूला, टूels और गाइड खोजें...{% else %}Search questions, formulas, tools and guides...{% endif %}"
       aria-label="{% if page.lang == 'hi' %}TyagiHub खोजें{% else %}Search TyagiHub{% endif %}"
       autocomplete="off" spellcheck="false">
 
@@ -203,7 +206,7 @@
                 google.accounts.id.prompt();
             }
         } else {
-            alert("{% if page.lang == 'hi' %}Google Library लोड हो रही है, कृपया 1 sekund बाद दोबारा दबाएं!{% else %}Google Auth is loading, please try again in 1 second!{% endif %}");
+            alert("{% if page.lang == 'hi' %}Google Library लोड हो रही है, कृपया 3 second बाद दोबारा दबाएं!{% else %}Google Auth is loading, please try again in 3 second!{% endif %}");
         }
     };
 
