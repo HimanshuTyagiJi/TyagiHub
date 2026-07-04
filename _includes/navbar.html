@@ -106,9 +106,7 @@
               </div>
               
               <ul style="list-style: none; margin: 0; padding: 0;">
-                <li><a href="{% if page.lang == 'hi' %}{{ site.url }}/hi/test/maths-practice-portal/{% else %}{{ site.url }}/test/maths-practice-portal/{% endif %}" style="display: block; padding: 9px 16px; font-size: 13px; color: #333; text-decoration: none;">🎯 {% if page.lang == "hi" %}आपका स्कोर / रिजल्ट{% else %}Your Scorecard{% endif %}</a></li>
-                <li><a href="{{ site.url }}/store/order-history/" style="display: block; padding: 9px 16px; font-size: 13px; color: #333; text-decoration: none;">📦 {% if page.lang == "hi" %}ऑर्डर हिस्ट्री{% else %}Order History{% endif %}</a></li>
-                <li><a href="{{ site.url }}/dashboard/profile/" style="display: block; padding: 9px 16px; font-size: 13px; color: #333; text-decoration: none;">👤 {% if page.lang == "hi" %}PRO PROFILE SETTINGS{% else %}Profile Settings{% endif %}</a></li>
+                <!-- Cleaned Menu Options: Only Support, Delete, and Logout remains -->
                 <li><a href="{{ site.url }}/support/" style="display: block; padding: 9px 16px; font-size: 13px; color: #333; text-decoration: none;">🛠️ {% if page.lang == "hi" %}सहायता केंद्र{% else %}Help & Support{% endif %}</a></li>
                 <li style="border-top: 1px solid #f0f0f0; margin-top: 5px; padding-top: 5px;"><a href="#" onclick="handleAccountDeletion(); return false;" style="display: block; padding: 9px 16px; font-size: 13px; color: #d93025; font-weight: bold; text-decoration: none;">⚠️ {% if page.lang == "hi" %}अकाउंट डिलीट करें{% else %}Delete Account{% endif %}</a></li>
               </ul>
@@ -191,16 +189,13 @@
         location.reload();
     };
 
-    // 🟢 Programmatic Click Bridge Logic: Ad-block safe popup builder
     window.triggerHeaderLogin = function(e) {
         if(e) e.preventDefault();
         if (typeof google !== 'undefined' && google.accounts && google.accounts.id) {
-            // Invisible render execution element pattern
             google.accounts.id.renderButton(
                 document.getElementById("th-hidden-g-btn"),
                 { type: "standard", size: "large" }
             );
-            // Simulates direct user interaction context cleanly
             const clickTarget = document.getElementById("th-hidden-g-btn").querySelector('div[role="button"]');
             if (clickTarget) {
                 clickTarget.click();
@@ -208,7 +203,7 @@
                 google.accounts.id.prompt();
             }
         } else {
-            alert("{% if page.lang == 'hi' %}Google Library लोड हो रही है, कृपया 1 सेकंड बाद दोबारा दबाएं!{% else %}Google Auth is loading, please try again in 1 second!{% endif %}");
+            alert("{% if page.lang == 'hi' %}Google Library लोड हो रही है, कृपया 1 sekund बाद दोबारा दबाएं!{% else %}Google Auth is loading, please try again in 1 second!{% endif %}");
         }
     };
 
