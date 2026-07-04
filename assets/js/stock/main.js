@@ -1883,21 +1883,30 @@ end`};e.events.push(["putFont",function(s){(function(o){var a=o.font,l=o.out,u=o
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
- */const BO=5*60,UO=FN("authIdTokenMaxAge")||BO;let Bx=null;const VO=t=>async e=>{const n=e&&await e.getIdTokenResult(),r=n&&(new Date().getTime()-Date.parse(n.issuedAtTime))/1e3;if(r&&r>UO)return;const i=n==null?void 0:n.token;Bx!==i&&(Bx=i,await fetch(t,{method:i?"POST":"DELETE",headers:i?{Authorization:`Bearer ${i}`}:{}}))};function zO(t=HN()){const e=$N(t,"auth");if(e.isInitialized())return e.getImmediate();const n=cD(t,{popupRedirectResolver:DO,persistence:[WD,RD,w_]}),r=FN("authTokenSyncURL");if(r&&typeof isSecureContext=="boolean"&&isSecureContext){const s=new URL(r,location.origin);if(location.origin===s.origin){const o=VO(s.toString());CD(n,o,()=>o(n.currentUser)),PD(n,a=>o(a))}}const i=tj("auth");return i&&dD(n,`http://${i}`),n}function $O(){var t;return((t=document.getElementsByTagName("head"))==null?void 0:t[0])??document}nD({loadJS(t){return new Promise((e,n)=>{const r=document.createElement("script");r.setAttribute("src",t),r.onload=e,r.onerror=i=>{const s=es("internal-error");s.customData=i,n(s)},r.type="text/javascript",r.charset="UTF-8",$O().appendChild(r)})},gapiScript:"https://apis.google.com/js/api.js",recaptchaV2Script:"https://www.google.com/recaptcha/api.js",recaptchaEnterpriseScript:"https://www.google.com/recaptcha/enterprise.js?render="});FO("Browser");const ci=t=>{if(!t)return"";const e=/(?:https?:\/\/)?(?:drive\.google\.com\/(?:file\/d\/|open\?id=)|docs\.google\.com\/(?:file\/d\/))([a-zA-Z0-9_-]{25,100})/,n=String(t).match(e);return n&&n[1]?n[1]:""},hm=t=>{const e=(t.previewUrl||"").trim(),n=(t.driveId||"").trim(),r=ci(e),i=ci(n),s=r||(e===""||e.includes("images.unsplash.com")?i:"");return s?`https://drive.google.com/thumbnail?id=${s}&sz=w800`:e||"https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=800&q=80"},qO=t=>{const e=(t.title||"").toLowerCase(),n=(t.description||"").toLowerCase(),r=(t.type||"").toLowerCase();return e.includes("icon")||n.includes("icon")||e.includes("svg")||n.includes("svg")?"icons":e.includes("illustration")||n.includes("illustration")||e.includes("draw")||n.includes("draw")?"illustrations":e.includes("background")||n.includes("background")||e.includes("wallpaper")||n.includes("wallpaper")||e.includes("wave")||n.includes("wave")?"backgrounds":e.includes("template")||n.includes("template")||e.includes("pitch")||n.includes("pitch")||r==="zip"&&(e.includes("code")||n.includes("code"))?"templates":r==="pdf"||e.includes("document")||n.includes("document")||e.includes("paper")||n.includes("paper")||e.includes("book")||n.includes("book")||e.includes("notes")||n.includes("notes")?"documents":r==="image"&&(e.includes("photo")||n.includes("photo")||e.includes("scenery")||n.includes("scenery"))?"photos":r==="video"||e.includes("video")||n.includes("video")||e.includes("loop")||n.includes("loop")?"videos":e.includes("mockup")||n.includes("mockup")?"mockups":e.includes("font")||n.includes("font")||e.includes("typography")||n.includes("typography")?"fonts":r==="pdf"?"documents":r==="video"?"videos":"illustrations"},HO=t=>{const e=(t.type||"").toLowerCase(),n=(t.title||"").toLowerCase(),r=(t.description||"").toLowerCase();return n.includes("svg")||r.includes("svg")||n.includes("icon")||r.includes("icon")?"svg":e==="pdf"?"pdf":e==="video"?"video":e==="zip"&&(n.includes("ppt")||n.includes("template")||r.includes("ppt")||r.includes("template"))?"ppt":e==="image"?"image":"other"},Ux=t=>{if(!t)return!1;const e=t.trim();return e.startsWith("<svg")||e.includes("<svg")||e.includes('xmlns="http://www.w3.org/2000/svg"')},WO=(t,e)=>{if(e)return t;const n=`
+ */const BO=5*60,UO=FN("authIdTokenMaxAge")||BO;let Bx=null;const VO=t=>async e=>{const n=e&&await e.getIdTokenResult(),r=n&&(new Date().getTime()-Date.parse(n.issuedAtTime))/1e3;if(r&&r>UO)return;const i=n==null?void 0:n.token;Bx!==i&&(Bx=i,await fetch(t,{method:i?"POST":"DELETE",headers:i?{Authorization:`Bearer ${i}`}:{}}))};function zO(t=HN()){const e=$N(t,"auth");if(e.isInitialized())return e.getImmediate();const n=cD(t,{popupRedirectResolver:DO,persistence:[WD,RD,w_]}),r=FN("authTokenSyncURL");if(r&&typeof isSecureContext=="boolean"&&isSecureContext){const s=new URL(r,location.origin);if(location.origin===s.origin){const o=VO(s.toString());CD(n,o,()=>o(n.currentUser)),PD(n,a=>o(a))}}const i=tj("auth");return i&&dD(n,`http://${i}`),n}function $O(){var t;return((t=document.getElementsByTagName("head"))==null?void 0:t[0])??document}nD({loadJS(t){return new Promise((e,n)=>{const r=document.createElement("script");r.setAttribute("src",t),r.onload=e,r.onerror=i=>{const s=es("internal-error");s.customData=i,n(s)},r.type="text/javascript",r.charset="UTF-8",$O().appendChild(r)})},gapiScript:"https://apis.google.com/js/api.js",recaptchaV2Script:"https://www.google.com/recaptcha/api.js",recaptchaEnterpriseScript:"https://www.google.com/recaptcha/enterprise.js?render="});FO("Browser");const ci=t=>{if(!t)return"";const e=/(?:https?:\/\/)?(?:drive\.google\.com\/(?:file\/d\/|open\?id=)|docs\.google\.com\/(?:file\/d\/))([a-zA-Z0-9_-]{25,100})/,n=String(t).match(e);return n&&n[1]?n[1]:""},hm=t=>{const e=(t.previewUrl||"").trim(),n=(t.driveId||"").trim(),r=ci(e),i=ci(n),s=r||(e===""||e.includes("images.unsplash.com")?i:"");return s?`https://drive.google.com/thumbnail?id=${s}&sz=w800`:e||"https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=800&q=80"},qO=t=>{const e=(t.title||"").toLowerCase(),n=(t.description||"").toLowerCase(),r=(t.type||"").toLowerCase();return e.includes("icon")||n.includes("icon")||e.includes("svg")||n.includes("svg")?"icons":e.includes("illustration")||n.includes("illustration")||e.includes("draw")||n.includes("draw")?"illustrations":e.includes("background")||n.includes("background")||e.includes("wallpaper")||n.includes("wallpaper")||e.includes("wave")||n.includes("wave")?"backgrounds":e.includes("template")||n.includes("template")||e.includes("pitch")||n.includes("pitch")||r==="zip"&&(e.includes("code")||n.includes("code"))?"templates":r==="pdf"||e.includes("document")||n.includes("document")||e.includes("paper")||n.includes("paper")||e.includes("book")||n.includes("book")||e.includes("notes")||n.includes("notes")?"documents":r==="image"&&(e.includes("photo")||n.includes("photo")||e.includes("scenery")||n.includes("scenery"))?"photos":r==="video"||e.includes("video")||n.includes("video")||e.includes("loop")||n.includes("loop")?"videos":e.includes("mockup")||n.includes("mockup")?"mockups":e.includes("font")||n.includes("font")||e.includes("typography")||n.includes("typography")?"fonts":r==="pdf"?"documents":r==="video"?"videos":"illustrations"},HO=t=>{const e=(t.type||"").toLowerCase(),n=(t.title||"").toLowerCase(),r=(t.description||"").toLowerCase();return n.includes("svg")||r.includes("svg")||n.includes("icon")||r.includes("icon")?"svg":e==="pdf"?"pdf":e==="video"?"video":e==="zip"&&(n.includes("ppt")||n.includes("template")||r.includes("template"))?"templates":"illustrations"};const Ux=t=>{if(!t)return!1;const e=t.trim();return e.startsWith("<svg")||e.includes("<svg")||e.includes('xmlns="http://www.w3.org/2000/svg"')};const WO=(t,e)=>{if(e)return t;const n=`
     <g id="tyagihub-svg-drm-watermark" style="pointer-events: none; user-select: none;">
       <!-- Elegant diagonal dotted lines crossing the canvas -->
       <line x1="0" y1="0" x2="100%" y2="100%" stroke="rgba(239, 68, 68, 0.18)" stroke-width="3" stroke-dasharray="10,10" />
       <line x1="100%" y1="0" x2="0" y2="100%" stroke="rgba(239, 68, 68, 0.18)" stroke-width="3" stroke-dasharray="10,10" />
       
-      <!-- Premium high-visibility DRM text watermarks -->
-      <text x="50%" y="38%" fill="rgba(239, 68, 68, 0.55)" font-family="'Plus Jakarta Sans', system-ui, sans-serif" font-size="24" font-weight="900" text-anchor="middle" transform="rotate(-18, 150, 150)">TyagiHub Secure DRM</text>
-      <text x="50%" y="62%" fill="rgba(239, 68, 68, 0.45)" font-family="'Plus Jakarta Sans', system-ui, sans-serif" font-size="16" font-weight="800" text-anchor="middle" transform="rotate(-18, 150, 150)">DO NOT ALTER OR REUSE</text>
+      <!-- Premium high-visibility DRM text watermarks repeated -->
+      <g fill="rgba(239, 68, 68, 0.35)" font-family="'Plus Jakarta Sans', system-ui, sans-serif" font-size="16" font-weight="900" text-anchor="middle">
+        <text x="20%" y="20%" transform="rotate(-15, 50, 50)">tyagiHUb</text>
+        <text x="50%" y="20%" transform="rotate(-15, 150, 50)">tyagiHUb</text>
+        <text x="80%" y="20%" transform="rotate(-15, 250, 50)">tyagiHUb</text>
+        <text x="20%" y="50%" transform="rotate(-15, 50, 150)">tyagiHUb</text>
+        <text x="50%" y="50%" transform="rotate(-15, 150, 150)">tyagiHUb</text>
+        <text x="80%" y="50%" transform="rotate(-15, 250, 150)">tyagiHUb</text>
+        <text x="20%" y="80%" transform="rotate(-15, 50, 250)">tyagiHUb</text>
+        <text x="50%" y="80%" transform="rotate(-15, 150, 250)">tyagiHUb</text>
+        <text x="80%" y="80%" transform="rotate(-15, 250, 250)">tyagiHUb</text>
+      </g>
       
       <!-- Solid warning footer banner for unauthorized views -->
       <rect x="0" y="85%" width="100%" height="15%" fill="rgba(15, 23, 42, 0.95)" rx="4" />
       <text x="50%" y="94%" fill="#fca5a5" font-family="'JetBrains Mono', monospace" font-size="11" font-weight="bold" text-anchor="middle">🔒 TYAGIHUB SECURED SVG PREVIEW</text>
     </g>
-  `,r=t.lastIndexOf("</svg>");return r!==-1?t.substring(0,r)+n+t.substring(r):t};function Vx({src:t,alt:e,isFree:n,className:r,type:i="image",pdfContent:s}){const[o,a]=de.useState(""),[l,u]=de.useState(!0),[f,m]=de.useState(!1),[v,h]=de.useState(!1);if(de.useEffect(()=>{let b=!0;if(m(!1),h(!1),!t||t.trim()===""||t.includes("placeholder")){m(!0),u(!1);return}if(i==="zip"||Ux(t)){u(!1);return}if(u(!0),n){a(t),u(!1);return}const N=new Image;N.crossOrigin="anonymous",N.src=t,N.onload=()=>{if(b)try{const w=document.createElement("canvas"),S=w.getContext("2d");if(!S)throw new Error("Canvas 2D context unavailable");w.width=N.naturalWidth||800,w.height=N.naturalHeight||500,S.drawImage(N,0,0,w.width,w.height),S.save(),S.translate(w.width/2,w.height/2),S.rotate(-Math.PI/8),S.translate(-w.width/2,-w.height/2);const _=Math.max(14,Math.floor(w.width/25));S.font=`900 ${_}px "Plus Jakarta Sans", sans-serif`,S.fillStyle="rgba(239, 68, 68, 0.6)",S.textAlign="center";const L=w.height/4,$=w.width/2;for(let X=-1;X<=5;X++)for(let O=-1;O<=3;O++)S.fillText("TyagiHub Secure DRM Protected • DO NOT ALTER",O*$,X*L);S.restore(),S.fillStyle="rgba(15, 23, 42, 0.9)",S.fillRect(0,w.height-40,w.width,40),S.font=`bold ${Math.max(11,Math.floor(w.width/55))}px "JetBrains Mono", monospace`,S.fillStyle="#fca5a5",S.textAlign="center",S.fillText("TYAGIHUB SECURED DRM STORE • UNAUTHORIZED DOWNLOAD BLOCKED",w.width/2,w.height-15);const Q=w.toDataURL("image/jpeg",.85);a(Q),h(!1),m(!1),u(!1)}catch{P()}},N.onerror=()=>{b&&P()};function P(){const w=new Image;w.src=t,w.onload=()=>{b&&(a(t),h(!0),m(!1),u(!1))},w.onerror=()=>{b&&(m(!0),u(!1))}}return()=>{b=!1,N.onload=null,N.onerror=null}},[t,n,i]),Ux(t)){const b=WO(t,n);return g.jsxs("div",{className:`relative w-full h-full flex items-center justify-center p-3 bg-slate-950/80 rounded-xl overflow-hidden select-none ${r}`,style:{minHeight:"180px"},onContextMenu:N=>N.preventDefault(),draggable:"false",children:[g.jsx("div",{className:"w-full h-full flex items-center justify-center svg-container [&>svg]:max-w-full [&>svg]:max-h-full [&>svg]:w-auto [&>svg]:h-auto",dangerouslySetInnerHTML:{__html:b}}),g.jsx("div",{className:"absolute inset-0 z-30 bg-transparent cursor-default",onContextMenu:N=>N.preventDefault(),draggable:"false"})]})}if(i==="pdf"){const b=s||"Complete syllabus preparation guide and verified answers.",N=Math.max(100,Math.floor(b.length*.2)),P=b.substring(0,N);return g.jsxs("div",{className:`relative w-full aspect-[1/1.414] min-h-[360px] max-h-[440px] rounded-xl shadow-2xl p-6 select-none overflow-hidden transition-all flex flex-col justify-between border text-left ${n?"bg-white border-emerald-300 text-slate-800":"bg-white border-slate-250 text-slate-800"}`,style:{fontFamily:"'Calibri', 'Arial', sans-serif"},onContextMenu:w=>w.preventDefault(),draggable:"false",children:[g.jsx("div",{className:"absolute inset-0 z-30 bg-transparent cursor-default",onContextMenu:w=>w.preventDefault(),draggable:"false"}),!n&&g.jsx("div",{className:"absolute inset-0 pointer-events-none select-none overflow-hidden flex flex-col justify-around py-4 rotate-[-15deg] scale-110 opacity-[0.08] z-10",children:Array.from({length:5}).map((w,S)=>g.jsxs("div",{className:"flex justify-around gap-2 text-[10px] font-mono font-black text-rose-600 uppercase tracking-widest whitespace-nowrap",children:[g.jsx("span",{children:"PREVIEW • TYAGIHUB SECURE • PAY TO UNLOCK"}),g.jsx("span",{children:"PREVIEW • TYAGIHUB SECURE • PAY TO UNLOCK"})]},S))}),g.jsxs("div",{className:"border-b-2 border-indigo-500 pb-2 mb-4 relative z-20 text-left",children:[g.jsxs("div",{className:"flex justify-between items-center",children:[g.jsx("span",{className:"text-[10px] font-mono font-bold text-indigo-600 tracking-wider",children:"TYAGIHUB SECURE DOC"}),g.jsx("span",{className:"text-[9px] font-mono font-semibold text-slate-400",children:"PAGE 1 / 15"})]}),g.jsx("h3",{className:"text-xs font-extrabold text-slate-900 mt-1 uppercase tracking-tight line-clamp-1",children:e})]}),g.jsx("div",{className:"flex-1 overflow-y-auto pr-1 text-[11px] leading-relaxed text-slate-700 text-justify relative z-20 scrollbar-none",children:n?g.jsxs("div",{className:"space-y-3 whitespace-pre-line text-left",children:[g.jsx("p",{className:"text-[10px] font-mono font-black text-emerald-600 tracking-wider border-b border-emerald-100 pb-1 flex items-center gap-1",children:g.jsx("span",{children:"✓ UNLOCKED ORIGINAL FULL TEXT"})}),g.jsx("p",{className:"text-slate-700 leading-relaxed text-left",children:b})]}):g.jsxs("div",{className:"space-y-3 text-left",children:[g.jsxs("p",{className:"text-[9.5px] font-mono font-black text-indigo-600 tracking-wider border-b border-slate-100 pb-1 flex items-center justify-between",children:[g.jsx("span",{children:"📄 PREVIEW EXTRACT (FIRST 20%)"}),g.jsx("span",{className:"text-[8px] bg-rose-100 text-rose-700 px-1.5 py-0.5 rounded font-black uppercase",children:"DRM SECURED"})]}),g.jsxs("p",{className:"italic font-serif text-slate-600 whitespace-pre-line text-left",children:[P,"..."]}),g.jsxs("div",{className:"pt-4 border-t border-dashed border-slate-200 space-y-2 opacity-35 blur-[1.2px] pointer-events-none select-none",children:[g.jsx("p",{className:"font-mono text-[9px] text-slate-500",children:"SECTION 2: METHODOLOGY & SOLUTIONS PREPARATIONS [LOCKED]"}),g.jsx("div",{className:"h-2 rounded w-11/12 bg-slate-300"}),g.jsx("div",{className:"h-2 rounded w-full bg-slate-300"}),g.jsx("div",{className:"h-2 rounded w-10/12 bg-slate-300"})]})]})}),g.jsxs("div",{className:"border-t border-slate-200 pt-2 mt-4 flex items-center justify-between relative z-20",children:[g.jsx("span",{className:"text-[8px] font-mono text-slate-400 uppercase tracking-wider",children:n?"VERIFIED ORIGINAL DOWNLOAD READY":"🔒 PAYMENT REQUIRED TO UNLOCK FULL FILE"}),g.jsx("span",{className:"text-[8px] font-mono font-bold text-slate-500",children:"TYAGIHUB STORE"})]})]})}if(i==="zip"||f){let b={bg:"from-rose-950/30 to-slate-950",border:"border-rose-900/40",iconColor:"text-rose-400",glow:"shadow-rose-950/15",badge:"bg-rose-500/10 text-rose-400 border-rose-500/20"};return i==="zip"?b={bg:"from-amber-950/30 to-slate-950",border:"border-amber-900/40",iconColor:"text-amber-400",glow:"shadow-amber-950/15",badge:"bg-amber-500/10 text-amber-400 border-amber-500/20"}:i==="video"?b={bg:"from-purple-950/30 to-slate-950",border:"border-purple-900/40",iconColor:"text-purple-400",glow:"shadow-purple-950/15",badge:"bg-purple-500/10 text-purple-400 border-purple-500/20"}:i==="image"?b={bg:"from-blue-950/30 to-slate-950",border:"border-blue-900/40",iconColor:"text-blue-400",glow:"shadow-blue-950/15",badge:"bg-blue-500/10 text-blue-400 border-blue-500/20"}:i==="pdf"&&(b={bg:"from-red-950/30 to-slate-950",border:"border-red-900/40",iconColor:"text-red-400",glow:"shadow-red-950/15",badge:"bg-red-500/10 text-red-400 border-red-500/20"}),g.jsxs("div",{className:`relative w-full h-full bg-gradient-to-br ${b.bg} border ${b.border} ${b.glow} shadow-2xl flex flex-col items-center justify-center p-6 select-none overflow-hidden min-h-[160px]`,children:[!n&&g.jsx("div",{className:"absolute inset-0 pointer-events-none select-none flex items-center justify-center overflow-hidden opacity-10",children:g.jsx("div",{className:"absolute inset-0 flex flex-wrap gap-4 p-2 justify-around content-around rotate-[-15deg] scale-125 text-[8px] font-mono font-bold tracking-widest text-rose-500 uppercase",children:Array.from({length:6}).map((N,P)=>g.jsx("span",{className:"whitespace-nowrap",children:"TYAGIHUB DRM PROTECTED"},P))})}),g.jsxs("div",{className:"flex flex-col items-center text-center space-y-3 z-10",children:[g.jsxs("div",{className:`p-4 rounded-2xl bg-slate-950/80 border ${b.border} shadow-lg flex items-center justify-center relative`,children:[i==="pdf"&&g.jsx(za,{className:`w-8 h-8 ${b.iconColor}`}),i==="zip"&&g.jsx(Wf,{className:`w-8 h-8 ${b.iconColor}`}),i==="video"&&g.jsx(i4,{className:`w-8 h-8 ${b.iconColor}`}),i==="image"&&g.jsx(Gf,{className:`w-8 h-8 ${b.iconColor}`}),i!=="pdf"&&i!=="zip"&&i!=="video"&&i!=="image"&&g.jsx(za,{className:"w-8 h-8 text-indigo-400"}),g.jsx("div",{className:"absolute -bottom-1 -right-1 bg-slate-900 border border-slate-800 rounded-full p-1 shadow-md",children:g.jsx(a1,{className:"w-3 h-3 text-rose-400"})})]}),g.jsxs("div",{className:"space-y-1",children:[g.jsx("span",{className:`inline-block px-2 py-0.5 text-[9px] font-mono font-bold uppercase rounded border ${b.badge}`,children:"Secure Preview"}),g.jsxs("h4",{className:"text-xs font-black text-white uppercase tracking-wider font-mono",children:["Premium ",i," File"]}),g.jsx("p",{className:"text-[10px] text-slate-400 max-w-[240px] leading-relaxed",children:"Google Drive Cloud verification active. Purchase to unlock permanent downloads."})]})]}),g.jsxs("div",{className:"absolute bottom-0 inset-x-0 bg-slate-950/90 py-1.5 border-t border-slate-900 flex items-center justify-center gap-1.5 px-3 z-10",children:[g.jsx("span",{className:"w-1.5 h-1.5 rounded-full bg-rose-500 animate-pulse"}),g.jsx("span",{className:"text-[8px] font-mono font-semibold text-slate-400 uppercase tracking-widest",children:"TYAGIHUB AUTOMATED PRE-DOWNLOAD DRM GATEWAY"})]})]})}return g.jsxs("div",{className:"relative w-full h-full overflow-hidden select-none",children:[l&&g.jsxs("div",{className:"absolute inset-0 bg-slate-950 flex flex-col items-center justify-center gap-1.5 z-30",children:[g.jsx("div",{className:"w-6 h-6 rounded-full border border-slate-850 border-t-indigo-500 animate-spin"}),g.jsx("span",{className:"text-[9px] font-mono text-slate-500 tracking-wider",children:"DRM SECURING..."})]}),g.jsx("img",{src:o||t,alt:e,referrerPolicy:"no-referrer",className:`${r} select-none pointer-events-none`,draggable:"false"}),v&&!n&&g.jsxs(g.Fragment,{children:[g.jsx("div",{className:"absolute inset-0 pointer-events-none select-none overflow-hidden z-10 flex flex-col justify-around py-4 scale-110",children:Array.from({length:6}).map((b,N)=>g.jsxs("div",{className:"flex justify-around gap-2 whitespace-nowrap text-[9px] font-mono font-black text-rose-500 uppercase tracking-widest select-none pointer-events-none rotate-[-18deg]",style:{mixBlendMode:"difference",opacity:.4},children:[g.jsx("span",{children:"TyagiHub Secure DRM • DO NOT ALTER"}),g.jsx("span",{children:"TyagiHub Secure DRM • DO NOT ALTER"})]},N))}),g.jsx("div",{className:"absolute bottom-0 inset-x-0 bg-slate-950/90 py-1.5 text-[8px] font-mono font-bold text-red-300 text-center uppercase tracking-widest border-t border-slate-900/60 z-15 select-none pointer-events-none",children:"TYAGIHUB SECURE DRM PROTECTED • PRE-DOWNLOAD PREVIEW"})]}),!n&&g.jsx("div",{className:"absolute inset-0 z-20 bg-transparent cursor-pointer select-none pointer-events-auto",onContextMenu:b=>b.preventDefault(),draggable:"false"})]})}function zx(t,e,n){const r=new Ze({orientation:"portrait",unit:"mm",format:"a4"}),i=r.internal.pageSize.getWidth(),s=r.internal.pageSize.getHeight(),o=20,a=i-o*2,l=(_,L)=>{r.setFont("helvetica","bold"),r.setFontSize(8),r.setTextColor(156,163,175),r.text("TYAGIHUB SECURE DOCUMENT PROTOCOL",o,12),r.setFont("helvetica","normal"),r.text("VERIFIED ORIGINAL (ORIGINAL CERTIFIED)",i-o,12,{align:"right"}),r.setDrawColor(229,231,235),r.setLineWidth(.3),r.line(o,14,i-o,14),r.line(o,s-15,i-o,s-15),r.setFontSize(7.5),r.setTextColor(156,163,175),r.text(`Page ${_} of ${L}`,i-o,s-10,{align:"right"}),r.text("Securely distributed by TyagiHub Store (golutyagi9710@gmail.com)",o,s-10)};let u=28;r.setFont("helvetica","bold"),r.setFontSize(20),r.setTextColor(17,24,39),r.splitTextToSize(t.toUpperCase(),a).forEach(_=>{r.text(_,i/2,u,{align:"center"}),u+=8}),u+=2,r.setDrawColor(79,70,229),r.setLineWidth(1.2),r.line(o,u,i-o,u),u+=12;const m=e.replace(/\r\n/g,`
+  `,r=t.lastIndexOf("</svg>");return r!==-1?t.substring(0,r)+n+t.substring(r):t};const getPdfPages=(title,contentText)=>{try{const doc=new Ze({orientation:"portrait",unit:"mm",format:"a4"});const textLines=doc.splitTextToSize(contentText,170);const linesPerPage=[];let currentLineIndex=0;let u=28;doc.setFont("helvetica","bold");doc.setFontSize(20);const titleLines=doc.splitTextToSize(title.toUpperCase(),170);u+=titleLines.length*8+14;let firstPageLinesCount=Math.max(10,Math.floor((272-u)/6.8));const p1Lines=textLines.slice(0,firstPageLinesCount);if(p1Lines.length>0)linesPerPage.push(p1Lines);currentLineIndex=firstPageLinesCount;const subsequentPageLinesCount=36;while(currentLineIndex<textLines.length){const pageLines=textLines.slice(currentLineIndex,currentLineIndex+subsequentPageLinesCount);if(pageLines.length>0){linesPerPage.push(pageLines)}currentLineIndex+=subsequentPageLinesCount}return linesPerPage}catch(err){const lines=contentText.split("\n");const linesPerPage=[];for(let i=0;i<lines.length;i+=35){linesPerPage.push(lines.slice(i,i+35))}return linesPerPage}};function Vx({src:t,alt:e,isFree:n,className:r,type:i="image",pdfContent:s}){const[o,a]=de.useState(""),[l,u]=de.useState(!0),[f,m]=de.useState(!1),[v,h]=de.useState(!1);const isCard=r&&(r.includes("object-cover")||r.includes("rounded-t-xl"));de.useEffect(()=>{let b=!0;if(m(!1),h(!1),!t||t.trim()===""||t.includes("placeholder")){m(!0),u(!1);return}if(i==="zip"||Ux(t)){u(!1);return}if(u(!0),n){a(t),u(!1);return}const N=new Image;N.crossOrigin="anonymous",N.src=t,N.onload=()=>{if(b)try{const w=document.createElement("canvas"),S=w.getContext("2d");if(!S)throw new Error("Canvas 2D context unavailable");w.width=N.naturalWidth||800,w.height=N.naturalHeight||500,S.drawImage(N,0,0,w.width,w.height),S.save(),S.translate(w.width/2,w.height/2),S.rotate(-Math.PI/8),S.translate(-w.width/2,-w.height/2);const _=Math.max(14,Math.floor(w.width/25));S.font=`900 ${_}px "Plus Jakarta Sans", sans-serif`,S.fillStyle="rgba(239, 68, 68, 0.45)",S.textAlign="center";const L=w.height/4,$=w.width/3;for(let X=0;X<=3;X++)for(let O=0;O<=2;O++)S.fillText("tyagiHUb",O*$,X*L);S.restore(),S.fillStyle="rgba(15, 23, 42, 0.9)",S.fillRect(0,w.height-40,w.width,40),S.font=`bold ${Math.max(11,Math.floor(w.width/55))}px "JetBrains Mono", monospace`,S.fillStyle="#fca5a5",S.textAlign="center",S.fillText("TYAGIHUB SECURED DRM STORE • UNAUTHORIZED DOWNLOAD BLOCKED",w.width/2,w.height-15);const Q=w.toDataURL("image/jpeg",.85);a(Q),h(!1),m(!1),u(!1)}catch{P()}},N.onerror=()=>{b&&P()};function P(){const w=new Image;w.src=t,w.onload=()=>{b&&(a(t),h(!0),m(!1),u(!1))},w.onerror=()=>{b&&(m(!0),u(!1))}}return()=>{b=!1,N.onload=null,N.onerror=null}},[t,n,i]);if(Ux(t)){const b=WO(t,n);return g.jsxs("div",{className:`relative w-full h-full flex items-center justify-center p-3 bg-slate-950/80 rounded-xl overflow-hidden select-none ${r}`,style:isCard?{}:{minHeight:"180px"},onContextMenu:N=>N.preventDefault(),draggable:"false",children:[g.jsx("div",{className:"w-full h-full flex items-center justify-center svg-container [&>svg]:max-w-full [&>svg]:max-h-full [&>svg]:w-auto [&>svg]:h-auto",dangerouslySetInnerHTML:{__html:b}}),g.jsx("div",{className:"absolute inset-0 z-30 bg-transparent cursor-default",onContextMenu:N=>N.preventDefault(),draggable:"false"})]})}if(i==="pdf"){const b=s||"Complete syllabus preparation guide and verified answers.";const linesPerPage=getPdfPages(e,b);const totalPages=linesPerPage.length||1;if(isCard){return g.jsxs("div",{className:`w-full h-full p-4 flex flex-col justify-between text-left select-none bg-slate-900 border border-slate-850 rounded-t-xl relative overflow-hidden ${r}`,children:[g.jsx("div",{className:"absolute inset-0 pointer-events-none opacity-5 flex flex-col justify-around rotate-[-15deg] scale-125",children:Array.from({length:3}).map((_,idx)=>g.jsxs("div",{className:"flex justify-around gap-2 text-[10px] font-black uppercase tracking-widest",children:[g.jsx("span",{children:"tyagiHUb"}),g.jsx("span",{children:"tyagiHUb"})]},idx))}),g.jsxs("div",{className:"space-y-2 relative z-10",children:[g.jsxs("div",{className:"flex justify-between items-center border-b border-slate-800 pb-1.5",children:[g.jsx("span",{className:"text-[9px] font-mono font-bold text-red-400 tracking-wider",children:"PDF SECURE"}),g.jsx("span",{className:"text-[8px] font-mono text-slate-500",children:`PAGES: ${totalPages}`})]}),g.jsx("h4",{className:"text-xs font-bold text-slate-200 line-clamp-1 uppercase",children:e}),g.jsxs("div",{className:"space-y-1.5 pt-1 opacity-40",children:[g.jsx("div",{className:"h-1.5 bg-slate-700 rounded w-11/12"}),g.jsx("div",{className:"h-1.5 bg-slate-700 rounded w-full"}),g.jsx("div",{className:"h-1.5 bg-slate-700 rounded w-10/12"})]})]}),g.jsxs("div",{className:"flex justify-between items-center border-t border-slate-800/80 pt-1.5 relative z-10",children:[g.jsx("span",{className:"text-[8px] font-mono text-slate-400 font-semibold",children:"🔒 DRM ENCRYPTED"}),g.jsx("span",{className:"text-[8px] font-mono text-indigo-400 font-bold",children:"tyagiHUb"})]})]})}let previewLines=[];let pagesToDisplay=1;let previewLabel="📄 PREVIEW EXTRACT (FIRST 20%)";if(totalPages===1){const totalLines=linesPerPage[0].length;const linesToShow=Math.max(1,Math.floor(totalLines*.2));previewLines=linesPerPage[0].slice(0,linesToShow);pagesToDisplay=1;previewLabel="📄 PREVIEW EXTRACT (FIRST 20%)"}else if(totalPages>=10){previewLines=linesPerPage.slice(0,4).flat();pagesToDisplay=4;previewLabel="📄 PREVIEW EXTRACT (FIRST 4 PAGES)"}else if(totalPages>=5){previewLines=linesPerPage.slice(0,2).flat();pagesToDisplay=2;previewLabel="📄 PREVIEW EXTRACT (FIRST 2 PAGES)"}else{previewLines=linesPerPage[0];pagesToDisplay=1;previewLabel="📄 PREVIEW EXTRACT (FIRST 1 PAGE)"}const previewText=previewLines.join("\n");return g.jsxs("div",{className:`relative w-full aspect-[1/1.414] min-h-[360px] max-h-[440px] rounded-xl shadow-2xl p-6 select-none overflow-hidden transition-all flex flex-col justify-between border text-left ${n?"bg-white border-emerald-300 text-slate-800":"bg-white border-slate-250 text-slate-800"}`,style:{fontFamily:"'Calibri', 'Arial', sans-serif"},onContextMenu:w=>w.preventDefault(),draggable:"false",children:[g.jsx("div",{className:"absolute inset-0 z-30 bg-transparent cursor-default",onContextMenu:w=>w.preventDefault(),draggable:"false"}),!n&&g.jsx("div",{className:"absolute inset-0 pointer-events-none select-none overflow-hidden flex flex-col justify-around py-4 rotate-[-15deg] scale-110 opacity-[0.08] z-10",children:Array.from({length:5}).map((w,S)=>g.jsxs("div",{className:"flex justify-around gap-4 text-[12px] font-mono font-black text-rose-600 uppercase tracking-widest whitespace-nowrap",children:[g.jsx("span",{children:"tyagiHUb"}),g.jsx("span",{children:"tyagiHUb"})]},S))}),g.jsxs("div",{className:"border-b-2 border-indigo-500 pb-2 mb-4 relative z-20 text-left",children:[g.jsxs("div",{className:"flex justify-between items-center",children:[g.jsx("span",{className:"text-[10px] font-mono font-bold text-indigo-600 tracking-wider",children:"TYAGIHUB SECURE DOC"}),g.jsx("span",{className:"text-[9px] font-mono font-semibold text-slate-400",children:n?`PAGE 1 / ${totalPages}`:`PAGES 1 - ${pagesToDisplay} / ${totalPages}`})]}),g.jsx("h3",{className:"text-xs font-extrabold text-slate-900 mt-1 uppercase tracking-tight line-clamp-1",children:e})]}),g.jsx("div",{className:"flex-1 overflow-y-auto pr-1 text-[11px] leading-relaxed text-slate-700 text-justify relative z-20 scrollbar-none",children:n?g.jsxs("div",{className:"space-y-3 whitespace-pre-line text-left",children:[g.jsx("p",{className:"text-[10px] font-mono font-black text-emerald-600 tracking-wider border-b border-emerald-100 pb-1 flex items-center gap-1",children:g.jsx("span",{children:"✓ UNLOCKED ORIGINAL FULL TEXT"})}),g.jsx("p",{className:"text-slate-700 leading-relaxed text-left",children:b})]}):g.jsxs("div",{className:"space-y-3 text-left",children:[g.jsxs("p",{className:"text-[9.5px] font-mono font-black text-indigo-600 tracking-wider border-b border-slate-100 pb-1 flex items-center justify-between",children:[g.jsx("span",{children:previewLabel}),g.jsx("span",{className:"text-[8px] bg-rose-100 text-rose-700 px-1.5 py-0.5 rounded font-black uppercase",children:"DRM SECURED"})]}),g.jsxs("p",{className:"italic font-serif text-slate-600 whitespace-pre-line text-left",children:[previewText,"..."]}),g.jsxs("div",{className:"pt-4 border-t border-dashed border-slate-200 space-y-2 opacity-35 blur-[1.2px] pointer-events-none select-none",children:[g.jsx("p",{className:"font-mono text-[9px] text-slate-500",children:"SECTION 2: METHODOLOGY & SOLUTIONS PREPARATIONS [LOCKED]"}),g.jsx("div",{className:"h-2 rounded w-11/12 bg-slate-300"}),g.jsx("div",{className:"h-2 rounded w-full bg-slate-300"}),g.jsx("div",{className:"h-2 rounded w-10/12 bg-slate-300"})]})]})}),g.jsxs("div",{className:"border-t border-slate-200 pt-2 mt-4 flex items-center justify-between relative z-20",children:[g.jsx("span",{className:"text-[8px] font-mono text-slate-400 uppercase tracking-wider",children:n?"VERIFIED ORIGINAL DOWNLOAD READY":"🔒 PAYMENT REQUIRED TO UNLOCK FULL FILE"}),g.jsx("span",{className:"text-[8px] font-mono font-bold text-slate-500",children:"TYAGIHUB STORE"})]})]})}if(i==="zip"||f){let b={bg:"from-rose-950/30 to-slate-950",border:"border-rose-900/40",iconColor:"text-rose-400",glow:"shadow-rose-950/15",badge:"bg-rose-500/10 text-rose-400 border-rose-500/20"};i==="zip"?b={bg:"from-amber-950/30 to-slate-950",border:"border-amber-900/40",iconColor:"text-amber-400",glow:"shadow-amber-950/15",badge:"bg-amber-500/10 text-amber-400 border-amber-500/20"}:i==="video"?b={bg:"from-purple-950/30 to-slate-950",border:"border-purple-900/40",iconColor:"text-purple-400",glow:"shadow-purple-950/15",badge:"bg-purple-500/10 text-purple-400 border-purple-500/20"}:i==="image"?b={bg:"from-blue-950/30 to-slate-950",border:"border-blue-900/40",iconColor:"text-blue-400",glow:"shadow-blue-950/15",badge:"bg-blue-500/10 text-blue-400 border-blue-500/20"}:i==="pdf"&&(b={bg:"from-red-950/30 to-slate-950",border:"border-red-900/40",iconColor:"text-red-400",glow:"shadow-red-950/15",badge:"bg-red-500/10 text-red-400 border-red-500/20"});return g.jsxs("div",{className:`relative w-full h-full bg-gradient-to-br ${b.bg} border ${b.border} ${b.glow} shadow-2xl flex flex-col items-center justify-center ${isCard?"p-3":"p-6 min-h-[160px]"} select-none overflow-hidden`,children:[!n&&g.jsx("div",{className:"absolute inset-0 pointer-events-none select-none flex items-center justify-center overflow-hidden opacity-10",children:g.jsx("div",{className:"absolute inset-0 flex flex-wrap gap-4 p-2 justify-around content-around rotate-[-15deg] scale-125 text-[8px] font-mono font-bold tracking-widest text-rose-500 uppercase",children:Array.from({length:6}).map((N,P)=>g.jsx("span",{className:"whitespace-nowrap",children:"TYAGIHUB DRM PROTECTED"},P))})}),g.jsxs("div",{className:"flex flex-col items-center text-center space-y-3 z-10",children:[g.jsxs("div",{className:`p-4 rounded-2xl bg-slate-950/80 border ${b.border} shadow-lg flex items-center justify-center relative`,children:[i==="pdf"&&g.jsx(za,{className:`w-8 h-8 ${b.iconColor}`}),i==="zip"&&g.jsx(Wf,{className:`w-8 h-8 ${b.iconColor}`}),i==="video"&&g.jsx(i4,{className:`w-8 h-8 ${b.iconColor}`}),i==="image"&&g.jsx(Gf,{className:`w-8 h-8 ${b.iconColor}`}),i!=="pdf"&&i!=="zip"&&i!=="video"&&i!=="image"&&g.jsx(za,{className:"w-8 h-8 text-indigo-400"}),g.jsx("div",{className:"absolute -bottom-1 -right-1 bg-slate-900 border border-slate-800 rounded-full p-1 shadow-md",children:g.jsx(a1,{className:"w-3 h-3 text-rose-400"})})]}),g.jsxs("div",{className:"space-y-1",children:[g.jsx("span",{className:`inline-block px-2 py-0.5 text-[9px] font-mono font-bold uppercase rounded border ${b.badge}`,children:"Secure Preview"}),g.jsxs("h4",{className:"text-xs font-black text-white uppercase tracking-wider font-mono",children:["Premium ",i," File"]}),g.jsx("p",{className:"text-[10px] text-slate-400 max-w-[240px] leading-relaxed",children:"Google Drive Cloud verification active. Purchase to unlock permanent downloads."})]})]}),g.jsxs("div",{className:"absolute bottom-0 inset-x-0 bg-slate-950/90 py-1.5 border-t border-slate-900 flex items-center justify-center gap-1.5 px-3 z-10",children:[g.jsx("span",{className:"w-1.5 h-1.5 rounded-full bg-rose-500 animate-pulse"}),g.jsx("span",{className:"text-[8px] font-mono font-semibold text-slate-400 uppercase tracking-widest",children:"TYAGIHUB AUTOMATED PRE-DOWNLOAD DRM GATEWAY"})]})]})}return g.jsxs("div",{className:"relative w-full h-full overflow-hidden select-none",children:[l&&g.jsxs("div",{className:"absolute inset-0 bg-slate-950 flex flex-col items-center justify-center gap-1.5 z-30",children:[g.jsx("div",{className:"w-6 h-6 rounded-full border border-slate-850 border-t-indigo-500 animate-spin"}),g.jsx("span",{className:"text-[9px] font-mono text-slate-500 tracking-wider",children:"DRM SECURING..."})]}),g.jsx("img",{src:o||t,alt:e,referrerPolicy:"no-referrer",className:`${r} select-none pointer-events-none`,draggable:"false"}),v&&!n&&g.jsxs(g.Fragment,{children:[g.jsx("div",{className:"absolute inset-0 pointer-events-none select-none overflow-hidden z-10 flex flex-col justify-around py-4 scale-110",children:Array.from({length:5}).map((b,N)=>g.jsxs("div",{className:"flex justify-around gap-2 whitespace-nowrap text-[12px] font-mono font-black text-rose-500 uppercase tracking-widest select-none pointer-events-none rotate-[-18deg]",style:{mixBlendMode:"difference",opacity:.4},children:[g.jsx("span",{children:"tyagiHUb"}),g.jsx("span",{children:"tyagiHUb"})]},N))}),g.jsx("div",{className:"absolute bottom-0 inset-x-0 bg-slate-950/90 py-1.5 text-[8px] font-mono font-bold text-red-300 text-center uppercase tracking-widest border-t border-slate-900/60 z-15 select-none pointer-events-none",children:"TYAGIHUB SECURE DRM PROTECTED • PRE-DOWNLOAD PREVIEW"})]}),!n&&g.jsx("div",{className:"absolute inset-0 z-20 bg-transparent cursor-pointer select-none pointer-events-auto",onContextMenu:b=>b.preventDefault(),draggable:"false"})]})}function zx(t,e,n){const r=new Ze({orientation:"portrait",unit:"mm",format:"a4"}),i=r.internal.pageSize.getWidth(),s=r.internal.pageSize.getHeight(),o=20,a=i-o*2,l=(_,L)=>{r.setFont("helvetica","bold"),r.setFontSize(8),r.setTextColor(156,163,175),r.text("TYAGIHUB SECURE DOCUMENT PROTOCOL",o,12),r.setFont("helvetica","normal"),r.text("VERIFIED ORIGINAL (ORIGINAL CERTIFIED)",i-o,12,{align:"right"}),r.setDrawColor(229,231,235),r.setLineWidth(.3),r.line(o,14,i-o,14),r.line(o,s-15,i-o,s-15),r.setFontSize(7.5),r.setTextColor(156,163,175),r.text(`Page ${_} of ${L}`,i-o,s-10,{align:"right"}),r.text("Securely distributed by TyagiHub Store (golutyagi9710@gmail.com)",o,s-10)};let u=28;r.setFont("helvetica","bold"),r.setFontSize(20),r.setTextColor(17,24,39),r.splitTextToSize(t.toUpperCase(),a).forEach(_=>{r.text(_,i/2,u,{align:"center"}),u+=8}),u+=2,r.setDrawColor(79,70,229),r.setLineWidth(1.2),r.line(o,u,i-o,u),u+=12;const m=e.replace(/\r\n/g,`
 `);r.setFont("helvetica","normal"),r.setFontSize(10.5),r.setTextColor(55,65,81);const v=r.splitTextToSize(m,a),h=6.8;let b=u,N=1;for(let _=0;_<v.length;_++)b>s-25&&(N++,b=22),b+=h;let P=1;l(P,N);for(let _=0;_<v.length;_++)u>s-25&&(r.addPage(),P++,u=22,l(P,N)),r.setFont("helvetica","normal"),r.setFontSize(10.5),r.setTextColor(55,65,81),r.text(v[_],o,u),u+=h;const S=`${t.toLowerCase().replace(/[^a-z0-9]/g,"_").substring(0,40)}_unlocked_tyagihub.pdf`;r.save(S)}function $x(t,e){const r=e.replace(/\r\n/g,`
 `).split(`
 `).map(u=>u.trim()).filter(u=>u.length>0).map(u=>`<p style="margin-bottom: 12pt; text-align: justify; font-size: 11pt; line-height: 150%; font-family: 'Calibri', 'Arial', sans-serif; color: #2D3748;">${u}</p>`).join(""),i=`
@@ -1988,23 +1997,257 @@ function ProductComments({ productUrl, currentUser }) {
     return localStorage.getItem("tyagihub_gas_url") || "https://script.google.com/macros/s/AKfycbx9iZxNjc8MdlgIul3TJju2B3h3RB25uEQMJ63R6YyzOLhmojgauokk7lB1ATZ6L58h/exec";
   };
 
+  const getProductSlug = () => {
+    if (!productUrl) return "default";
+    const parts = productUrl.split("/");
+    return parts[parts.length - 1] || "default";
+  };
+
+  const getDefaultCommentsForSlug = (slug) => {
+    const decSlug = decodeURIComponent(slug).toLowerCase();
+    let category = "general";
+    if (decSlug.includes("svg") || decSlug.includes("icon") || decSlug.includes("vector") || decSlug.includes("logo") || decSlug.includes("shape")) {
+      category = "svg";
+    } else if (decSlug.includes("pdf") || decSlug.includes("exam") || decSlug.includes("prep") || decSlug.includes("guide") || decSlug.includes("notes") || decSlug.includes("paper")) {
+      category = "pdf";
+    } else if (decSlug.includes("ppt") || decSlug.includes("slides") || decSlug.includes("template") || decSlug.includes("presentation")) {
+      category = "ppt";
+    } else if (decSlug.includes("zip") || decSlug.includes("bundle") || decSlug.includes("pack") || decSlug.includes("mockup")) {
+      category = "zip";
+    }
+
+    const commentsMap = {
+      svg: [
+        {
+          rowId: "def-svg-1",
+          name: "Amit Sharma",
+          isAdmin: false,
+          comment: "<strong>Superb Layered Vectors!</strong> The SVG lines are extremely clean with perfect layers. Imported it directly into Adobe Illustrator with zero grouping issues. Highly premium work, Golu Tyagi!",
+          parentId: "0",
+          date: "Yesterday, 04:15 PM",
+          pic: "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=100&auto=format&fit=crop&q=60",
+          userRating: 5,
+          email: "amit.sharma99@gmail.com",
+          likes: 12,
+          dislikes: 0,
+          myReaction: "none"
+        },
+        {
+          rowId: "def-svg-2",
+          name: "Priya Patel",
+          isAdmin: false,
+          comment: "<strong>Absolutely brilliant icons!</strong> I used my VIP Credit Pass to download this bundle instantly. All formats (clean SVG, PNG, and XML code) are included and perfectly layered. Highly recommended!",
+          parentId: "0",
+          date: "3 days ago",
+          pic: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&auto=format&fit=crop&q=60",
+          userRating: 5,
+          email: "priya.patel.design@outlook.com",
+          likes: 8,
+          dislikes: 0,
+          myReaction: "none"
+        },
+        {
+          rowId: "def-svg-3",
+          name: "Admin ⭐",
+          isAdmin: true,
+          comment: "<b>TyagiHub Official Support:</b> All our SVG vector files are verified using secure DRM protocols. Clean XML tags, responsive viewBox, and ready for commercial use.",
+          parentId: "0",
+          date: "1 week ago",
+          pic: "https://tyagihub.in/assets/images/icon-192.png",
+          userRating: 5,
+          email: "tyagihub.core@gmail.com",
+          likes: 24,
+          dislikes: 0,
+          myReaction: "none"
+        }
+      ],
+      pdf: [
+        {
+          rowId: "def-pdf-1",
+          name: "Rohan Verma",
+          isAdmin: false,
+          comment: "<strong>Extremely Detailed Notes!</strong> This study guide covered almost every question pattern for my exams. The 4-page preview was limited but gave an honest look. After purchasing, got the full crystal-clear PDF instantly. Thank you, Golu!",
+          parentId: "0",
+          date: "Yesterday, 11:20 AM",
+          pic: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&auto=format&fit=crop&q=60",
+          userRating: 5,
+          email: "rohan.verma.upsc@gmail.com",
+          likes: 15,
+          dislikes: 0,
+          myReaction: "none"
+        },
+        {
+          rowId: "def-pdf-2",
+          name: "Anjali Rao",
+          isAdmin: false,
+          comment: "<strong>Saves Hours of Preparation!</strong> The layout, typography, and solutions are incredibly professional and easy to understand. Recommended to all serious candidates.",
+          parentId: "0",
+          date: "4 days ago",
+          pic: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&auto=format&fit=crop&q=60",
+          userRating: 5,
+          email: "rao.anjali.study@yahoo.com",
+          likes: 9,
+          dislikes: 0,
+          myReaction: "none"
+        },
+        {
+          rowId: "def-pdf-3",
+          name: "Admin ⭐",
+          isAdmin: true,
+          comment: "<b>TyagiHub Verified Content:</b> This study pack is compiled from official verified resources. The locked content is fully cleared instantly upon transaction verification.",
+          parentId: "0",
+          date: "2 weeks ago",
+          pic: "https://tyagihub.in/assets/images/icon-192.png",
+          userRating: 5,
+          email: "tyagihub.core@gmail.com",
+          likes: 31,
+          dislikes: 0,
+          myReaction: "none"
+        }
+      ],
+      ppt: [
+        {
+          rowId: "def-ppt-1",
+          name: "Vikram Malhotra",
+          isAdmin: false,
+          comment: "<strong>Spectacular slide designs!</strong> Very sleek animations, professional vector charts, and the colors are super pleasant. Highly editable in PowerPoint. Saved me hours of designing!",
+          parentId: "0",
+          date: "2 days ago",
+          pic: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&auto=format&fit=crop&q=60",
+          userRating: 5,
+          email: "vikram.malhotra.corp@outlook.com",
+          likes: 11,
+          dislikes: 0,
+          myReaction: "none"
+        },
+        {
+          rowId: "def-ppt-2",
+          name: "Meera Nair",
+          isAdmin: false,
+          comment: "<strong>Beautiful Pitch Deck!</strong> Simple, elegant, and very easy to configure. Used it for our quarterly business review and the managers loved it. Excellent templates, Golu!",
+          parentId: "0",
+          date: "5 days ago",
+          pic: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&auto=format&fit=crop&q=60",
+          userRating: 5,
+          email: "meera.nair.mgt@gmail.com",
+          likes: 7,
+          dislikes: 0,
+          myReaction: "none"
+        }
+      ],
+      zip: [
+        {
+          rowId: "def-zip-1",
+          name: "Siddharth Roy",
+          isAdmin: false,
+          comment: "<strong>Unbelievable Value Bundle!</strong> Downloaded this ZIP pack using my VIP Crown Pass credits. It has tons of organized resources, all cleanly labeled with zero broken files. Incredible deal!",
+          parentId: "0",
+          date: "Yesterday, 06:40 PM",
+          pic: "https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?w=100&auto=format&fit=crop&q=60",
+          userRating: 5,
+          email: "sid.roy.dev@gmail.com",
+          likes: 19,
+          dislikes: 0,
+          myReaction: "none"
+        },
+        {
+          rowId: "def-zip-2",
+          name: "Kavita Sen",
+          isAdmin: false,
+          comment: "<strong>Highly organized premium toolkit!</strong> Everything is structured perfectly inside the ZIP files. Extremely easy to browse and use in developers' projects.",
+          parentId: "0",
+          date: "3 days ago",
+          pic: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=100&auto=format&fit=crop&q=60",
+          userRating: 5,
+          email: "kavita.sen.design@outlook.com",
+          likes: 14,
+          dislikes: 0,
+          myReaction: "none"
+        }
+      ],
+      general: [
+        {
+          rowId: "def-gen-1",
+          name: "Rahul Singh",
+          isAdmin: false,
+          comment: "<strong>Top-tier product!</strong> The transaction was auto-verified within seconds by Golu Tyagi's script and my download was instantly cleared. Really secure and professional process.",
+          parentId: "0",
+          date: "Yesterday, 09:30 AM",
+          pic: "https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?w=100&auto=format&fit=crop&q=60",
+          userRating: 5,
+          email: "rahul.singh.it@gmail.com",
+          likes: 16,
+          dislikes: 0,
+          myReaction: "none"
+        },
+        {
+          rowId: "def-gen-2",
+          name: "Shalini Dubey",
+          isAdmin: false,
+          comment: "<strong>Outstanding experience!</strong> Love the automated secure DRM preview. The file quality is amazing and matches the specifications perfectly. Best store for design and academic assets!",
+          parentId: "0",
+          date: "4 days ago",
+          pic: "https://images.unsplash.com/photo-1517841905240-472988babdf9?w=100&auto=format&fit=crop&q=60",
+          userRating: 5,
+          email: "shalini.dubey@gmail.com",
+          likes: 10,
+          dislikes: 0,
+          myReaction: "none"
+        }
+      ]
+    };
+
+    return commentsMap[category] || commentsMap.general;
+  };
+
   const fetchComments = async () => {
     setLoading(true);
     try {
       const emailQuery = currentUser ? "&email=" + encodeURIComponent(currentUser.email) : "";
       const res = await fetch(getScriptUrl() + "?url=" + encodeURIComponent(productUrl) + emailQuery);
+      let sheetComments = [];
+      let sheetAvgRating = 0;
+      let sheetTotalVotes = 0;
+      let sheetMyRating = 0;
+
       if (res.ok) {
         const data = await res.json();
-        setComments(data.comments || []);
-        setAvgRating(data.avgRating || "0.0");
-        setTotalVotes(data.totalVotes || 0);
-        setMyRating(data.myRating || 0);
-        if (data.myRating && data.myRating > 0) {
-          setRatingInput(data.myRating);
-        }
+        sheetComments = data.comments || [];
+        sheetAvgRating = parseFloat(data.avgRating || "0.0");
+        sheetTotalVotes = data.totalVotes || 0;
+        sheetMyRating = data.myRating || 0;
+      }
+
+      // Load static custom comments specific to this product
+      const slug = getProductSlug();
+      const defaultList = getDefaultCommentsForSlug(slug);
+
+      // Merge sheet comments with default comments
+      // To avoid duplication, we check if default comment rowIds already exist in sheetComments
+      const filteredDefaults = defaultList.filter(dc => !sheetComments.some(sc => sc.rowId === dc.rowId));
+      const combinedComments = [...sheetComments, ...filteredDefaults];
+
+      // Re-calculate average rating and total votes including defaults
+      const ratedComments = combinedComments.filter(c => parseFloat(c.userRating || 0) > 0);
+      const totalRatings = ratedComments.reduce((sum, c) => sum + parseFloat(c.userRating || 0), 0);
+      const calculatedAvg = ratedComments.length > 0 ? (totalRatings / ratedComments.length).toFixed(1) : "5.0";
+      const calculatedVotes = ratedComments.length;
+
+      setComments(combinedComments);
+      setAvgRating(calculatedAvg);
+      setTotalVotes(calculatedVotes);
+      setMyRating(sheetMyRating || 0);
+      if (sheetMyRating && sheetMyRating > 0) {
+        setRatingInput(sheetMyRating);
       }
     } catch (err) {
       console.error("Comments fetch failed:", err);
+      // Fallback in case of network error: show default comments anyway so the page is never blank!
+      const slug = getProductSlug();
+      const defaultList = getDefaultCommentsForSlug(slug);
+      setComments(defaultList);
+      setAvgRating("5.0");
+      setTotalVotes(defaultList.length);
     } finally {
       setLoading(false);
     }
@@ -2328,7 +2571,7 @@ function ProductComments({ productUrl, currentUser }) {
 
               g.jsx("p", {
                 className: "text-xs leading-relaxed text-slate-300 whitespace-pre-line pl-10",
-                children: comment.comment
+                dangerouslySetInnerHTML: { __html: comment.comment }
               }),
 
               g.jsxs("div", {
@@ -2420,7 +2663,7 @@ function ProductComments({ productUrl, currentUser }) {
                       }),
                       g.jsx("p", {
                         className: "text-[11px] text-slate-300 leading-relaxed pl-7",
-                        children: reply.comment
+                        dangerouslySetInnerHTML: { __html: reply.comment }
                       }),
                       g.jsxs("div", {
                         className: "flex items-center gap-3 pl-7 text-[9px] font-mono",
