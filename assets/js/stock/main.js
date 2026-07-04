@@ -2003,6 +2003,24 @@ function ProductComments({ productUrl, currentUser }) {
     return parts[parts.length - 1] || "default";
   };
 
+  const getLocalComments = () => {
+    try {
+      return JSON.parse(localStorage.getItem(`tyagihub_local_comments_${productUrl}`) || "[]");
+    } catch (e) {
+      return [];
+    }
+  };
+
+  const addLocalComment = (newComment) => {
+    try {
+      const current = getLocalComments();
+      const updated = [newComment, ...current];
+      localStorage.setItem(`tyagihub_local_comments_${productUrl}`, JSON.stringify(updated));
+    } catch (e) {
+      console.error("Failed to save local comment:", e);
+    }
+  };
+
   const getDefaultCommentsForSlug = (slug) => {
     const decSlug = decodeURIComponent(slug).toLowerCase();
     let category = "general";
@@ -2222,10 +2240,17 @@ function ProductComments({ productUrl, currentUser }) {
       const slug = getProductSlug();
       const defaultList = getDefaultCommentsForSlug(slug);
 
+      // Filter out local comments that have already been synchronized (present in sheetComments)
+      let localList = getLocalComments();
+      localList = localList.filter(lc => !sheetComments.some(sc => sc.email === lc.email && sc.comment === lc.comment));
+      localStorage.setItem(`tyagihub_local_comments_${productUrl}`, JSON.stringify(localList));
+
       // Merge sheet comments with default comments
       // To avoid duplication, we check if default comment rowIds already exist in sheetComments
       const filteredDefaults = defaultList.filter(dc => !sheetComments.some(sc => sc.rowId === dc.rowId));
-      const combinedComments = [...sheetComments, ...filteredDefaults];
+      
+      // Combine local comments, sheet comments, and default comments
+      const combinedComments = [...localList, ...sheetComments, ...filteredDefaults];
 
       // Re-calculate average rating and total votes including defaults
       const ratedComments = combinedComments.filter(c => parseFloat(c.userRating || 0) > 0);
@@ -2242,12 +2267,13 @@ function ProductComments({ productUrl, currentUser }) {
       }
     } catch (err) {
       console.error("Comments fetch failed:", err);
-      // Fallback in case of network error: show default comments anyway so the page is never blank!
+      // Fallback in case of network error: show default comments + any offline local comments so the page is never blank!
       const slug = getProductSlug();
       const defaultList = getDefaultCommentsForSlug(slug);
-      setComments(defaultList);
+      const localList = getLocalComments();
+      setComments([...localList, ...defaultList]);
       setAvgRating("5.0");
-      setTotalVotes(defaultList.length);
+      setTotalVotes(defaultList.length + localList.filter(c => c.userRating > 0).length);
     } finally {
       setLoading(false);
     }
@@ -2295,6 +2321,37 @@ function ProductComments({ productUrl, currentUser }) {
     if (!text) return;
 
     setSubmitting(true);
+
+    const tempId = "local_" + Date.now();
+    const newLocalComment = {
+      rowId: tempId,
+      name: currentUser.displayName || currentUser.email.split("@")[0],
+      isAdmin: currentUser.email === "tyagihub.core@gmail.com" || currentUser.email === "golutyagi9710@gmail.com",
+      comment: text,
+      parentId: parentId,
+      date: "Just now (अभी-अभी)",
+      pic: currentUser.photoURL || "https://tyagihub.in/assets/images/icon-192.png",
+      userRating: parentId === "0" ? ratingInput : 0,
+      email: currentUser.email,
+      likes: 0,
+      dislikes: 0,
+      myReaction: "none",
+      scoreRank: "Silver Member",
+      productOrder: "-"
+    };
+
+    addLocalComment(newLocalComment);
+
+    // Optimistically update comments list immediately for zero latency
+    setComments(prev => {
+      // Find where to insert: replies go under parent, main comments at top
+      if (parentId === "0") {
+        return [newLocalComment, ...prev];
+      } else {
+        return [newLocalComment, ...prev];
+      }
+    });
+
     try {
       const payload = {
         action: "comment",
