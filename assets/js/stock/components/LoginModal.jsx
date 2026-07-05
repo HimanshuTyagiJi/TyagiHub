@@ -3,7 +3,7 @@ import {
   createUserWithEmailAndPassword, 
   signInWithEmailAndPassword, 
   updateProfile, 
-  GoogleAuthProvider, 
+  GoogleAuthProvider,  
   signInWithPopup 
 } from "firebase/auth";
 import { auth } from "/assets/js/stock/services/firebase.js";
