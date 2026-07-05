@@ -1,13 +1,15 @@
 import React, { useState, useEffect } from "react";
 import { onAuthStateChanged, signOut } from "firebase/auth";
-import { auth } from "./services/firebase";
-import { SCRIPT_URL, fetchGAS } from "./services/api";
+
+// 🚀 ABSOLUTE CONFIG LOCK BSDK: Pura rasta aur explicit extensions thonk diye hain!
+import { auth } from "/assets/js/stock/services/firebase.js";
+import { SCRIPT_URL, fetchGAS } from "/assets/js/stock/services/api.js";
 
 // Components
-import LoginModal from "./components/LoginModal";
-import ProductCard from "./components/ProductCard";
-import ProductDetailsDrawer from "./components/ProductDetailsDrawer";
-import AdminPanel from "./components/AdminPanel";
+import LoginModal from "/assets/js/stock/components/LoginModal.jsx";
+import ProductCard from "/assets/js/stock/components/ProductCard.jsx";
+import ProductDetailsDrawer from "/assets/js/stock/components/ProductDetailsDrawer.jsx";
+import AdminPanel from "/assets/js/stock/components/AdminPanel.jsx";
 
 // Icons
 import { 
