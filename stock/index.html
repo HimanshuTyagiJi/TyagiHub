@@ -9,12 +9,15 @@ extra_css:
   - /assets/css/stock.css
 ---
 
-<!-- Fonts loading (Bina head tag ke bhi body/layout ke saath blend ho jayega) -->
+<!-- Fonts loading -->
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
- 
+
+<!-- 🚀 BABEL COMPILER INJECTION LAYER BSDK: Ye browser ko direct JSX chalane ki taakat dega -->
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
 <!-- React App Root Container -->
 <div id="root"></div> 
 
-<!-- Vite se build hui main entry js file (Relative ./ hata kar static root path diya hai) -->
-<script type="module" crossorigin src="/assets/js/stock/App.jsx"></script>
+<!-- 🚨 CRITICAL CONFIG: type="text/babel" thonka hai aur data-type="module" lagaya hai taaki imports block na hon bsdk -->
+<script type="text/babel" data-type="module" src="/assets/js/stock/App.jsx"></script>
