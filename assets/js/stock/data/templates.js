@@ -1,6 +1,6 @@
 // 🚀 TYAGIHUB STATIC RESOURCE LAYOUT DATABASE BSDK
 // Contains pristine simulated arrays for secure client-side canvas and document visualizers.
-
+ 
 export const defaultPdfPages = [
   "TYAGIHUB PREMIUM EDUCATION STUDY PORTAL\nSubject: Advanced Syllabus Preparation & Verified Solutions Guide\nDocument ID: TH-SECURE-9921-A\n\nSECTION 1: OVERVIEW & CORE SYLLABUS THEORY\n\nWelcome to Golu Tyagi Hub's premium verified preparation guide. This document contains highly accurate notes, previous year solved questions, and step-by-step methodologies compiled by our expert educators.\n\nTo ensure academic success, please review each question and response systematically. The watermark on this file represents active secure DRM protection. Unauthorized copying or redistribution is strictly prohibited.",
   "SECTION 2: QUESTION BANK & SOLUTIONS (PRACTICE SET A)\n\nQuestion 1: Explain the fundamental difference between relational schemas and non-relational database architectures. Discuss scalability, concurrency controls, and transaction guarantees.\n\nAnswer Key:\n- Relational DBs use SQL, support ACID properties fully, and are horizontally scaled with sharding/replication.\n- Non-Relational DBs use dynamic schemas, offer eventual consistency, and scale out horizontally naturally.\n\nQuestion 2: Detail the primary protocols used for modern authentication in enterprise web systems.",
