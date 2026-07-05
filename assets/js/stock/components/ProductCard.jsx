@@ -1,8 +1,8 @@
 import React from "react";
 import { motion } from "motion/react";
 import { Crown, ArrowRight } from "lucide-react";
-import SecurePreview from "./SecurePreview";
-import { resolveThumbnailUrl } from "../utils/drm";
+import SecurePreview from "/assets/js/stock/SecurePreview.jsx";
+import { resolveThumbnailUrl } from "/assets/js/stock/utils/drm.js";
 
 export default function ProductCard({ product, user, onSelect }) {
   const isFree = product.price === 0;
