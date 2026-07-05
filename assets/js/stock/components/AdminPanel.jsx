@@ -9,7 +9,7 @@ import {
   ListOrdered, 
   PlusCircle, 
   Package, 
-  FolderSync 
+  FolderSync  
 } from "lucide-react";
 import { SCRIPT_URL, fetchGAS } from "/assets/js/stock/services/api.js";
 import { extractDriveId } from "/assets/js/stock/utils/drm.js";
