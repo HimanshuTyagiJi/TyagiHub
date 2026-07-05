@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+// 🚀 METICULOUS PATH INJECTION WRAPPING FOR INTERNAL SERVICES BSDK
 import { SCRIPT_URL } from "/assets/js/stock/services/api.js"; 
 
 export default function ProductComments({ product, user, openLogin }) {
@@ -201,12 +202,7 @@ export default function ProductComments({ product, user, openLogin }) {
   };
 
   const handleDeleteComment = async (rowId) => {
-    if (
-      !confirm(
-        "Are you sure you want to delete this comment permanently? (क्या आप वाकई इस टिप्पणी को स्थायी रूप से हटाना चाहते हैं?)"
-      )
-    )
-      return;
+    if (!confirm("Are you sure you want to delete this comment permanently?")) return;
     try {
       await fetch(SCRIPT_URL, {
         method: "POST",
@@ -231,7 +227,7 @@ export default function ProductComments({ product, user, openLogin }) {
     return (
       <div
         key={c.rowId}
-        className={`p-4 border-b border-slate-900 transition-opacity ${
+        className={`p-4 border-b border-slate-900 transition-opacity text-left ${
           isReply ? "ml-8 pl-4 border-l-2 border-slate-800 bg-slate-950/25" : ""
         } ${c.pending ? "opacity-60 border-l-3 border-amber-500" : ""}`}
       >
@@ -241,7 +237,7 @@ export default function ProductComments({ product, user, openLogin }) {
               src={c.pic}
               className="w-8 h-8 rounded-full object-cover border border-slate-800"
               onError={(e) => {
-                e.target.src = "https://tyagihub.in/assets/images/icon-192.png";
+                e.currentTarget.src = "https://tyagihub.in/assets/images/icon-192.png";
               }}
               alt={c.name}
             />
@@ -250,7 +246,7 @@ export default function ProductComments({ product, user, openLogin }) {
                 <span className="font-bold text-sm text-slate-200">{c.name}</span>
                 {c.isAdmin && (
                   <span className="text-[9px] bg-indigo-600 text-white font-mono font-bold px-1.5 py-0.5 rounded shadow">
-                    ADMIN ⭐
+                    ADMIN
                   </span>
                 )}
               </div>
@@ -310,11 +306,12 @@ export default function ProductComments({ product, user, openLogin }) {
             <textarea
               value={replyText}
               onChange={(e) => setReplyText(e.target.value)}
-              placeholder="Write a reply... (उत्तर लिखें...)"
+              placeholder="Write a reply..."
               className="w-full p-3 text-xs bg-slate-950 border border-slate-800 rounded-xl text-slate-200 placeholder:text-slate-600 focus:outline-none focus:border-indigo-500 resize-none h-16"
             />
             <div className="flex justify-end gap-2">
               <button
+                type="button"
                 onClick={() => {
                   setReplyToId(null);
                   setIsTyping(false);
@@ -324,6 +321,7 @@ export default function ProductComments({ product, user, openLogin }) {
                 Cancel
               </button>
               <button
+                type="button"
                 onClick={() => handlePostReply(c.rowId)}
                 className="px-3 py-1.5 text-[10px] uppercase tracking-wider font-bold text-white bg-indigo-600 hover:bg-indigo-500 rounded-lg cursor-pointer"
               >
@@ -342,6 +340,7 @@ export default function ProductComments({ product, user, openLogin }) {
             />
             <div className="flex justify-end gap-2">
               <button
+                type="button"
                 onClick={() => {
                   setEditId(null);
                   setIsTyping(false);
@@ -351,6 +350,7 @@ export default function ProductComments({ product, user, openLogin }) {
                 Cancel
               </button>
               <button
+                type="button"
                 onClick={() => handleUpdateComment(c.rowId, c.parentId)}
                 className="px-3 py-1.5 text-[10px] uppercase tracking-wider font-bold text-white bg-indigo-600 hover:bg-indigo-500 rounded-lg cursor-pointer"
               >
@@ -381,7 +381,7 @@ export default function ProductComments({ product, user, openLogin }) {
           <div className="flex items-center gap-3">
             <span className="text-2xl font-black text-white">{avgRating}</span>
             <div className="flex flex-col">
-              <div className="text-amber-400 text-xs tracking-wider">
+              <div className="text-amber-400 text-xs tracking-wider text-left">
                 {"★".repeat(Math.round(parseFloat(avgRating)))}
                 {"☆".repeat(5 - Math.round(parseFloat(avgRating)))}
               </div>
@@ -433,6 +433,7 @@ export default function ProductComments({ product, user, openLogin }) {
             </p>
           )}
           <button
+            type="button"
             onClick={handlePostComment}
             className="px-4 py-2 text-xs font-black uppercase tracking-wider rounded-xl transition-all shadow-md bg-indigo-600 hover:bg-indigo-500 text-white cursor-pointer"
           >
