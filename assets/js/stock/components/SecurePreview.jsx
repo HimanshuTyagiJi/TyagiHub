@@ -13,12 +13,12 @@ import {
   addSvgWatermark, 
   isSvgContent, 
   stripHtml 
-} from "../utils/drm";
+} from "/assets/js/stock/utils/drm.js";
 import { 
   defaultPdfPages, 
   realInvoicePages, 
   realResumePages 
-} from "../data/templates";
+} from "/assets/js/stock/data/templates.js";
 
 /**
  * Custom Canvas-based SVG Renderer to prevent users from inspecting 
