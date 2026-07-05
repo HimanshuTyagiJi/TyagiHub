@@ -1,3 +1,4 @@
+// 🚀 TYAGIHUB SECURE API BACKEND AGENT CONNECTOR BSDK
 export const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxqXDvnxgzxFMFjUKtxX1Aa2unnpvPreNuH7cJ69cZURAE4LcHbVvn5FLsK41QAqN8l/exec";
 
 /**
@@ -14,6 +15,7 @@ export const fetchGAS = async (url) => {
   const text = await response.text();
   const trimmed = text.trim();
   
+  // HTML Response hijack loop tracking bsdk
   if (
     trimmed.startsWith("<!DOCTYPE") ||
     trimmed.startsWith("<html") ||
@@ -22,7 +24,7 @@ export const fetchGAS = async (url) => {
     trimmed.startsWith("<body")
   ) {
     throw new Error(
-      'Received HTML response instead of JSON. Please ensure that your Google Apps Script Web App is deployed with "Execute as: Me" and "Who has access: Anyone". If you are logged in with multiple Google accounts, try opening the App in incognito or another browser.'
+      "Received HTML response instead of JSON. Please ensure that your Google Apps Script Web App is deployed with Execute as: Me and Who has access: Anyone. If you are logged in with multiple Google accounts, try opening the App in incognito or another browser."
     );
   }
   
