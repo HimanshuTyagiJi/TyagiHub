@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+// 🚀 METICULOUS DE-STRUCURING FOR BROWSER DRIVEN FIREBASE MODULE MATRIX
 import { 
   createUserWithEmailAndPassword, 
   signInWithEmailAndPassword, 
@@ -6,6 +7,8 @@ import {
   GoogleAuthProvider,  
   signInWithPopup 
 } from "firebase/auth";
+
+// 🌐 EXPLICIT ABSOLUTE GATEWAY CONFIG PIPELINE
 import { auth } from "/assets/js/stock/services/firebase.js";
 
 export default function LoginModal({ isOpen, onClose }) {
@@ -49,7 +52,7 @@ export default function LoginModal({ isOpen, onClose }) {
         await signInWithEmailAndPassword(auth, email.trim(), password.trim());
       }
       
-      // Reset state and close
+      // Reset validation states and inputs on secure resolution bsdk
       setName("");
       setEmail("");
       setPassword("");
@@ -98,16 +101,17 @@ export default function LoginModal({ isOpen, onClose }) {
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/80 backdrop-blur-sm animate-in fade-in duration-200">
-      <div className="w-full max-w-md bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden shadow-2xl p-6 md:p-8 space-y-6 text-slate-200">
+      <div className="w-full max-w-md bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden shadow-2xl p-6 md:p-8 space-y-6 text-slate-200 text-left">
         
         <div className="flex justify-between items-center border-b border-slate-800 pb-4">
           <div className="flex gap-4">
             <button
+              type="button"
               onClick={() => {
                 setTab("login");
                 setError("");
               }}
-              className={`text-sm font-black uppercase tracking-wider pb-1.5 border-b-2 transition-all ${
+              className={`text-sm font-black uppercase tracking-wider pb-1.5 border-b-2 transition-all cursor-pointer ${
                 tab === "login" 
                   ? "border-indigo-500 text-white" 
                   : "border-transparent text-slate-400 hover:text-slate-200"
@@ -116,11 +120,12 @@ export default function LoginModal({ isOpen, onClose }) {
               Login
             </button>
             <button
+              type="button"
               onClick={() => {
                 setTab("register");
                 setError("");
               }}
-              className={`text-sm font-black uppercase tracking-wider pb-1.5 border-b-2 transition-all ${
+              className={`text-sm font-black uppercase tracking-wider pb-1.5 border-b-2 transition-all cursor-pointer ${
                 tab === "register" 
                   ? "border-indigo-500 text-white" 
                   : "border-transparent text-slate-400 hover:text-slate-200"
@@ -130,6 +135,7 @@ export default function LoginModal({ isOpen, onClose }) {
             </button>
           </div>
           <button
+            type="button"
             onClick={onClose}
             className="text-slate-400 hover:text-white transition-colors cursor-pointer text-xs uppercase tracking-widest font-mono font-bold"
           >
@@ -146,9 +152,7 @@ export default function LoginModal({ isOpen, onClose }) {
         <form onSubmit={handleSubmit} className="space-y-4">
           {tab === "register" && (
             <div className="space-y-1.5">
-              <label className="block text-[10px] font-mono uppercase tracking-wider text-slate-500">
-                Full Name (पूरा नाम)
-              </label>
+              <label className="block text-[10px] font-mono uppercase tracking-wider text-slate-500">Full Name (पूरा नाम)</label>
               <input
                 type="text"
                 value={name}
@@ -161,9 +165,7 @@ export default function LoginModal({ isOpen, onClose }) {
           )}
 
           <div className="space-y-1.5">
-            <label className="block text-[10px] font-mono uppercase tracking-wider text-slate-500">
-              Email Address (ईमेल पता)
-            </label>
+            <label className="block text-[10px] font-mono uppercase tracking-wider text-slate-500">Email Address (ईमेल पता)</label>
             <input
               type="email"
               value={email}
@@ -175,9 +177,7 @@ export default function LoginModal({ isOpen, onClose }) {
           </div>
 
           <div className="space-y-1.5">
-            <label className="block text-[10px] font-mono uppercase tracking-wider text-slate-500">
-              Password (पासवर्ड)
-            </label>
+            <label className="block text-[10px] font-mono uppercase tracking-wider text-slate-500">Password (पासवर्ड)</label>
             <input
               type="password"
               value={password}
@@ -205,13 +205,12 @@ export default function LoginModal({ isOpen, onClose }) {
 
         <div className="relative flex py-1 items-center">
           <div className="flex-grow border-t border-slate-800"></div>
-          <span className="flex-shrink mx-3 text-[10px] font-mono uppercase text-slate-500 tracking-widest">
-            Or
-          </span>
+          <span className="flex-shrink mx-3 text-[10px] font-mono uppercase text-slate-500 tracking-widest">Or</span>
           <div className="flex-grow border-t border-slate-800"></div>
         </div>
 
         <button
+          type="button"
           onClick={handleGoogleSignIn}
           disabled={loading}
           className="w-full py-2.5 bg-slate-950 border border-slate-800 hover:border-slate-700 text-slate-200 hover:text-white font-bold text-xs uppercase tracking-wider rounded-xl transition-all flex items-center justify-center gap-2 cursor-pointer shadow-md"
