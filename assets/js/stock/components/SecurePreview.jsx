@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
+// 🚀 METICULOUS BARE IMPORT RESOLUTION VIA THE MAIN INJECTED IMPORT MAP
 import { jsPDF } from "jspdf";
 import { 
   Lock, 
@@ -8,6 +9,8 @@ import {
   Image as ImageIcon, 
   AlertTriangle 
 } from "lucide-react";
+
+// 🌐 ABSOLUTE PATH COMPONENT EXTENSION ENGINE BSDK
 import { 
   deobfuscateSVG, 
   addSvgWatermark, 
@@ -22,7 +25,7 @@ import {
 
 /**
  * Custom Canvas-based SVG Renderer to prevent users from inspecting 
- * and grabbing raw SVG paths from the DOM.
+ * and grabbing raw SVG paths from the DOM bsdk.
  */
 export const SvgCanvasRenderer = ({ svgContent, isFree, className }) => {
   const canvasRef = useRef(null);
@@ -87,9 +90,7 @@ export const SvgCanvasRenderer = ({ svgContent, isFree, className }) => {
       ctx.clearRect(0, 0, width, height);
       ctx.drawImage(img, 0, 0, width, height);
 
-      // Render DRM watermark directly on the canvas to ensure perfect compatibility
       if (!isFree) {
-        // Draw diagonal watermark lines
         ctx.strokeStyle = "rgba(239, 68, 68, 0.18)";
         ctx.lineWidth = Math.max(1.5, width / 200);
         ctx.setLineDash([10, 10]);
@@ -99,12 +100,11 @@ export const SvgCanvasRenderer = ({ svgContent, isFree, className }) => {
         ctx.moveTo(width, 0);
         ctx.lineTo(0, height);
         ctx.stroke();
-        ctx.setLineDash([]); // Reset line dash
+        ctx.setLineDash([]);
 
-        // Draw watermark text
         ctx.save();
         ctx.translate(width / 2, height / 2);
-        ctx.rotate(-Math.PI / 10); // Rotate slightly (-18 degrees)
+        ctx.rotate(-Math.PI / 10);
         
         const fontSize1 = Math.max(12, Math.floor(width / 18));
         ctx.font = `900 ${fontSize1}px "Plus Jakarta Sans", sans-serif`;
@@ -118,7 +118,6 @@ export const SvgCanvasRenderer = ({ svgContent, isFree, className }) => {
         ctx.fillText("DO NOT ALTER OR REUSE", 0, fontSize2 * 1.2 - fontSize1 / 2);
         ctx.restore();
 
-        // Draw warning footer banner at the bottom
         const bannerHeight = Math.max(25, height * 0.15);
         ctx.fillStyle = "rgba(15, 23, 42, 0.95)";
         ctx.fillRect(0, height - bannerHeight, width, bannerHeight);
@@ -128,11 +127,7 @@ export const SvgCanvasRenderer = ({ svgContent, isFree, className }) => {
         ctx.fillStyle = "#fca5a5";
         ctx.textAlign = "center";
         ctx.textBaseline = "middle";
-        ctx.fillText(
-          "SECURED SVG PREVIEW",
-          width / 2,
-          height - bannerHeight / 2
-        );
+        ctx.fillText("SECURED SVG PREVIEW", width / 2, height - bannerHeight / 2);
       }
 
       URL.revokeObjectURL(url);
@@ -151,11 +146,7 @@ export const SvgCanvasRenderer = ({ svgContent, isFree, className }) => {
   }, [svgContent, isFree]);
 
   if (error) {
-    return (
-      <div className="text-slate-500 text-xs text-center py-4">
-        Preview restricted or unrenderable.
-      </div>
-    );
+    return <div className="text-slate-500 text-xs text-center py-4">Preview restricted or unrenderable.</div>;
   }
 
   return (
@@ -183,7 +174,7 @@ export const SvgCanvasRenderer = ({ svgContent, isFree, className }) => {
 };
 
 /**
- * Secure PDF Download Generator
+ * Secure PDF Download Generator Matrix bsdk
  */
 export const downloadAsPdf = (title, content) => {
   const doc = new jsPDF({ orientation: "portrait", unit: "mm", format: "a4" });
@@ -198,7 +189,7 @@ export const downloadAsPdf = (title, content) => {
     doc.setTextColor(156, 163, 175);
     doc.text("TYAGIHUB SECURE DOCUMENT PROTOCOL", margin, 12);
     doc.setFont("helvetica", "normal");
-    doc.text("VERIFIED ORIGINAL (ORIGINAL CERTIFIED)", pageWidth - margin, 12, { align: "right" });
+    doc.text("VERIFIED ORIGINAL", pageWidth - margin, 12, { align: "right" });
     
     doc.setDrawColor(229, 231, 235);
     doc.setLineWidth(0.3);
@@ -222,9 +213,7 @@ export const downloadAsPdf = (title, content) => {
   const totalPDFPages = pagesList.length;
 
   for (let pIdx = 0; pIdx < totalPDFPages; pIdx++) {
-    if (pIdx > 0) {
-      doc.addPage();
-    }
+    if (pIdx > 0) doc.addPage();
 
     let yPos = 22;
     if (pIdx === 0) {
@@ -269,7 +258,7 @@ export const downloadAsPdf = (title, content) => {
 };
 
 /**
- * Secure MS Word DOC Download Generator
+ * Secure MS Word DOC Download Generator Matrix bsdk
  */
 export const downloadAsDoc = (title, content) => {
   const cleanContent = content.replace(/\[PAGE\]|---|—/gi, "\n\n");
@@ -278,9 +267,7 @@ export const downloadAsDoc = (title, content) => {
     .split("\n")
     .map((u) => u.trim())
     .filter((u) => u.length > 0)
-    .map(
-      (u) => `<p style="margin-bottom: 12pt; text-align: justify; font-size: 11pt; line-height: 150%; font-family: 'Calibri', 'Arial', sans-serif; color: #2D3748;">${u}</p>`
-    )
+    .map((u) => `<p style="margin-bottom: 12pt; text-align: justify; font-size: 11pt; line-height: 150%; font-family: 'Calibri', 'Arial', sans-serif; color: #2D3748;">${u}</p>`)
     .join("");
 
   const docHtml = `
@@ -288,68 +275,21 @@ export const downloadAsDoc = (title, content) => {
     <head>
       <meta charset="utf-8">
       <title>${title}</title>
-      <!--[if gte mso 9]>
-      <xml>
-        <w:WordDocument>
-          <w:View>Print</w:View>
-          <w:Zoom>100</w:Zoom>
-          <w:DoNotOptimizeForBrowser/>
-        </w:WordDocument>
-      </xml>
-      <![endif]-->
       <style>
-        @page {
-          size: 8.5in 11in;
-          margin: 1.0in 1.0in 1.0in 1.0in;
-          mso-header-margin: 0.5in;
-          mso-footer-margin: 0.5in;
-        }
-        body {
-          font-family: 'Calibri', 'Arial', sans-serif;
-        }
-        .header-title {
-          font-size: 20pt;
-          font-weight: bold;
-          color: #1A202C;
-          text-align: center;
-          margin-bottom: 4pt;
-          text-transform: uppercase;
-        }
-        .subtitle {
-          font-size: 8.5pt;
-          font-family: 'Courier New', monospace;
-          color: #4F46E5;
-          text-align: center;
-          font-weight: bold;
-          margin-bottom: 15pt;
-          letter-spacing: 1.5px;
-        }
-        .divider {
-          border-bottom: 2px solid #4F46E5;
-          margin-bottom: 20pt;
-        }
-        .footer {
-          margin-top: 40pt;
-          border-top: 1px solid #E2E8F0;
-          padding-top: 10pt;
-          font-size: 8pt;
-          color: #A0AEC0;
-          text-align: center;
-        }
+        @page { size: 8.5in 11in; margin: 1.0in 1.0in 1.0in 1.0in; mso-header-margin: 0.5in; mso-footer-margin: 0.5in; }
+        body { font-family: 'Calibri', 'Arial', sans-serif; }
+        .header-title { font-size: 20pt; font-weight: bold; color: #1A202C; text-align: center; margin-bottom: 4pt; text-transform: uppercase; }
+        .subtitle { font-size: 8.5pt; font-family: 'Courier New', monospace; color: #4F46E5; text-align: center; font-weight: bold; margin-bottom: 15pt; letter-spacing: 1.5px; }
+        .divider { border-bottom: 2px solid #4F46E5; margin-bottom: 20pt; }
+        .footer { margin-top: 40pt; border-top: 1px solid #E2E8F0; padding-top: 10pt; font-size: 8pt; color: #A0AEC0; text-align: center; }
       </style>
     </head>
     <body>
       <div class="header-title">${title}</div>
       <div class="subtitle">SECURE DOCUMENT PROTOCOL • TYAGIHUB VERIFIED ORIGINAL</div>
       <div class="divider"></div>
-      
-      <div class="content-body">
-        ${paragraphsHtml}
-      </div>
-
-      <div class="footer">
-        <p>Securely downloaded via TyagiHub Store (golutyagi9710@gmail.com) • Verified Original Solutions Document</p>
-      </div>
+      <div class="content-body">${paragraphsHtml}</div>
+      <div class="footer"><p>Securely downloaded via TyagiHub Store (golutyagi9710@gmail.com)</p></div>
     </body>
     </html>
   `;
@@ -367,7 +307,7 @@ export const downloadAsDoc = (title, content) => {
 };
 
 /**
- * SecurePreview (Vx) - Displays document sheets or watermarked vectors under secure DRM constraint
+ * SecurePreview core component layer bsdk
  */
 export default function SecurePreview({
   src,
@@ -406,7 +346,6 @@ export default function SecurePreview({
       return;
     }
 
-    // Load image and render watermark on client canvas
     const imgObj = new Image();
     imgObj.crossOrigin = "anonymous";
     imgObj.src = src;
@@ -437,11 +376,7 @@ export default function SecurePreview({
 
         for (let r = -1; r <= 5; r++) {
           for (let c = -1; c <= 3; c++) {
-            ctx.fillText(
-              "TyagiHub Secure DRM Protected • DO NOT ALTER",
-              c * colStep,
-              r * rowStep
-            );
+            ctx.fillText("TyagiHub Secure DRM Protected • DO NOT ALTER", c * colStep, r * rowStep);
           }
         }
 
@@ -453,11 +388,7 @@ export default function SecurePreview({
         ctx.font = `bold ${bannerTextSize}px "JetBrains Mono", monospace`;
         ctx.fillStyle = "#fca5a5";
         ctx.textAlign = "center";
-        ctx.fillText(
-          "TYAGIHUB SECURED DRM STORE • UNAUTHORIZED DOWNLOAD BLOCKED",
-          canvas.width / 2,
-          canvas.height - 15
-        );
+        ctx.fillText("TYAGIHUB SECURED DRM STORE • DOWNLOAD BLOCKED", canvas.width / 2, canvas.height - 15);
 
         const dataUrl = canvas.toDataURL("image/jpeg", 0.85);
         setImageSrc(dataUrl);
@@ -499,13 +430,11 @@ export default function SecurePreview({
     };
   }, [src, isFree, type]);
 
-  // Handle SVG DRM Preview
   if (isSvgContent(src) || (typeof src === "string" && src.startsWith("DRM_SECURE_V1_"))) {
     const rawSvg = src.startsWith("DRM_SECURE_V1_") ? deobfuscateSVG(src) : src;
     return <SvgCanvasRenderer svgContent={rawSvg} isFree={isFree} className={className} />;
   }
 
-  // Handle Multi-page PDF/Document Preview
   if (type === "pdf" || type === "document" || type === "doc" || type === "docx") {
     let pagesList = [];
     let rawContent = pdfContent;
@@ -513,11 +442,7 @@ export default function SecurePreview({
     if (!rawContent || rawContent.trim().length < 20) {
       if (assetId === "PROD-DOC-INV" || (alt && alt.toLowerCase().includes("invoice"))) {
         rawContent = realInvoicePages.join("\n\n[PAGE]\n\n");
-      } else if (
-        assetId === "PROD-DOC-RES" ||
-        (alt && alt.toLowerCase().includes("resume")) ||
-        (alt && alt.toLowerCase().includes("cv"))
-      ) {
+      } else if (assetId === "PROD-DOC-RES" || (alt && alt.toLowerCase().includes("resume")) || (alt && alt.toLowerCase().includes("cv"))) {
         rawContent = realResumePages.join("\n\n[PAGE]\n\n");
       } else {
         rawContent = "Complete syllabus preparation guide and verified answers.";
@@ -529,10 +454,7 @@ export default function SecurePreview({
     }
 
     if (rawContent && rawContent.trim().length > 10) {
-      pagesList = rawContent
-        .split(/\[PAGE\]|---|—/i)
-        .map((p) => p.trim())
-        .filter((p) => p.length > 0);
+      pagesList = rawContent.split(/\[PAGE\]|---|—/i).map((p) => p.trim()).filter((p) => p.length > 0);
       
       if (pagesList.length <= 1) {
         const paragraphs = rawContent.split("\n").filter((p) => p.trim().length > 0);
@@ -550,9 +472,7 @@ export default function SecurePreview({
       }
     }
 
-    if (pagesList.length === 0) {
-      pagesList = defaultPdfPages;
-    }
+    if (pagesList.length === 0) pagesList = defaultPdfPages;
 
     const totalPages = pagesList.length;
     let maxAllowedPages = 1;
@@ -567,51 +487,26 @@ export default function SecurePreview({
     const allowedCount = isFree ? totalPages : maxAllowedPages;
     const isPageLocked = currentPageIdx >= allowedCount;
 
-    const handlePrevPage = () => {
-      setCurrentPageIdx((prev) => Math.max(0, prev - 1));
-    };
-
-    const handleNextPage = () => {
-      setCurrentPageIdx((prev) => Math.min(totalPages - 1, prev + 1));
-    };
+    const handlePrevPage = () => setCurrentPageIdx((prev) => Math.max(0, prev - 1));
+    const handleNextPage = () => setCurrentPageIdx((prev) => Math.min(totalPages - 1, prev + 1));
 
     const handleUnlockClick = () => {
-      const checkoutEl =
-        document.getElementById("checkout-panel") ||
-        document.getElementById("paytm-upi-ref") ||
-        document.querySelector("form");
+      const checkoutEl = document.getElementById("checkout-panel") || document.getElementById("paytm-upi-ref") || document.querySelector("form");
       if (checkoutEl) {
         checkoutEl.scrollIntoView({ behavior: "smooth" });
       } else {
-        alert("Please claim/unlock this premium file using the UPI checkout form below!");
+        alert("Please claim/unlock this premium file using the form below!");
       }
     };
 
     return (
-      <div
-        className={`relative w-full aspect-[1/1.414] min-h-[380px] max-h-[460px] rounded-xl shadow-2xl p-5 select-none overflow-hidden transition-all flex flex-col justify-between border text-left ${
-          isFree 
-            ? "bg-white border-emerald-300 text-slate-800" 
-            : "bg-white border-slate-200 text-slate-800"
-        }`}
-        style={{ fontFamily: "'Calibri', 'Arial', sans-serif" }}
-        onContextMenu={(e) => e.preventDefault()}
-        draggable="false"
-      >
-        <div
-          className="absolute inset-0 z-30 bg-transparent cursor-default"
-          onContextMenu={(e) => e.preventDefault()}
-          draggable="false"
-        />
+      <div className={`relative w-full aspect-[1/1.414] min-h-[380px] max-h-[460px] rounded-xl shadow-2xl p-5 select-none overflow-hidden border text-left bg-white ${isFree ? "border-emerald-300" : "border-slate-200"}`} style={{ fontFamily: "'Calibri', 'Arial', sans-serif" }} onContextMenu={(e) => e.preventDefault()} draggable="false">
+        <div className="absolute inset-0 z-30 bg-transparent cursor-default" onContextMenu={(e) => e.preventDefault()} draggable="false" />
 
         {!isFree && !isPageLocked && (
           <div className="absolute inset-0 pointer-events-none select-none overflow-hidden flex flex-col justify-around py-4 rotate-[-15deg] scale-110 opacity-[0.07] z-10">
             {Array.from({ length: 5 }).map((_, idx) => (
-              <div
-                key={idx}
-                className="flex justify-around gap-2 text-[9px] font-mono font-black text-rose-600 uppercase tracking-widest whitespace-nowrap"
-              >
-                <span>PREVIEW • TYAGIHUB SECURE • PAY TO UNLOCK</span>
+              <div key={idx} className="flex justify-around gap-2 text-[9px] font-mono font-black text-rose-600 uppercase tracking-widest whitespace-nowrap">
                 <span>PREVIEW • TYAGIHUB SECURE • PAY TO UNLOCK</span>
               </div>
             ))}
@@ -620,89 +515,48 @@ export default function SecurePreview({
 
         <div className="border-b-2 border-indigo-500 pb-1.5 mb-3 relative z-20 text-left">
           <div className="flex justify-between items-center">
-            <span className="text-[9px] font-mono font-bold text-indigo-600 tracking-wider">
-              {isFree ? "✓ TYAGIHUB UNLOCKED PDF" : "🔒 TYAGIHUB SECURE DRM PREVIEW"}
-            </span>
-            <span className="text-[9px] font-mono font-semibold text-slate-500 bg-slate-100 px-1.5 py-0.5 rounded">
-              PAGE {currentPageIdx + 1} / {totalPages}
-            </span>
+            <span className="text-[9px] font-mono font-bold text-indigo-600 tracking-wider">{isFree ? "✓ UNLOCKED PDF" : "🔒 SECURE DRM PREVIEW"}</span>
+            <span className="text-[9px] font-mono font-semibold text-slate-500 bg-slate-100 px-1.5 py-0.5 rounded">PAGE {currentPageIdx + 1} / {totalPages}</span>
           </div>
-          <h3 className="text-[11px] font-extrabold text-slate-900 mt-1 uppercase tracking-tight line-clamp-1">
-            {alt}
-          </h3>
+          <h3 className="text-[11px] font-extrabold text-slate-900 mt-1 uppercase tracking-tight line-clamp-1">{alt}</h3>
         </div>
 
         <div className="flex-1 overflow-y-auto pr-1 text-[11px] leading-relaxed text-slate-700 text-justify relative z-20 scrollbar-none">
           {isPageLocked ? (
             <div className="absolute inset-0 bg-slate-950/95 backdrop-blur-md flex flex-col items-center justify-center p-6 text-center text-white z-40 animate-in fade-in zoom-in-95 duration-200">
-              <div className="w-12 h-12 bg-rose-950 border border-rose-800 text-rose-400 rounded-full flex items-center justify-center text-xl shadow-lg mb-3 animate-bounce">
-                🔒
-              </div>
-              <h4 className="text-xs font-black uppercase tracking-wider text-rose-400">
-                Page Locked (DRM Protected)
-              </h4>
+              <div className="w-12 h-12 bg-rose-950 border border-rose-800 text-rose-400 rounded-full flex items-center justify-center text-xl shadow-lg mb-3 animate-bounce">🔒</div>
+              <h4 className="text-xs font-black uppercase tracking-wider text-rose-400">Page Locked (DRM Protected)</h4>
               <p className="text-[10px] text-slate-300 mt-2 leading-relaxed max-w-xs mx-auto">
-                This document contains {totalPages} pages of premium educational study notes. 
-                You have viewed the free preview of {maxAllowedPages} page{maxAllowedPages > 1 ? "s" : ""}.
-                <span className="block mt-1.5 text-indigo-400 font-semibold">
-                  Please unlock the document to instantly read the remaining pages and download the pristine PDF/Word files.
-                </span>
+                This document contains {totalPages} pages. You have viewed the free preview.
+                <span className="block mt-1.5 text-indigo-400 font-semibold">Please unlock to read the remaining pages and download the files.</span>
               </p>
-              <button
-                onClick={handleUnlockClick}
-                className="mt-4 bg-indigo-600 hover:bg-indigo-500 text-white font-bold py-1.5 px-3 rounded-lg text-[9px] uppercase tracking-wider transition-all flex items-center gap-1 cursor-pointer shadow-md shadow-indigo-950/40"
-              >
-                <Lock className="w-3 h-3" />
-                Unlock Full PDF Now
-              </button>
+              <button onClick={handleUnlockClick} className="mt-4 bg-indigo-600 text-white font-bold py-1.5 px-3 rounded-lg text-[9px] uppercase tracking-wider shadow-md"><Lock className="w-3 h-3" /> Unlock Full PDF Now</button>
             </div>
           ) : (
             <div className="space-y-3 text-left whitespace-pre-line text-[10.5px]">
               {isFree ? (
-                <p className="text-[9px] font-mono font-black text-emerald-600 tracking-wider border-b border-emerald-100 pb-0.5 flex items-center gap-1">
-                  <span>✓ SECURED ORIGINAL STUDENT COPY</span>
-                </p>
+                <p className="text-[9px] font-mono font-black text-emerald-600 tracking-wider border-b border-emerald-100 pb-0.5"><span>✓ SECURED ORIGINAL STUDENT COPY</span></p>
               ) : (
                 <p className="text-[9px] font-mono font-black text-indigo-600 tracking-wider border-b border-slate-100 pb-0.5 flex items-center justify-between">
-                  <span>📄 FREE PREVIEW EXTRACT</span>
-                  <span className="text-[7.5px] bg-rose-100 text-rose-700 px-1 py-0.2 rounded font-black uppercase">
-                    SECURED
-                  </span>
+                  <span>📄 FREE PREVIEW EXTRACT</span><span className="text-[7.5px] bg-rose-100 text-rose-700 px-1 rounded font-black uppercase">SECURED</span>
                 </p>
               )}
-              <p className="text-slate-800 leading-relaxed font-serif text-left">
-                {pagesList[currentPageIdx]}
-              </p>
+              <p className="text-slate-800 leading-relaxed font-serif text-left">{pagesList[currentPageIdx]}</p>
             </div>
           )}
         </div>
 
         <div className="border-t border-slate-200 pt-2 mt-3 flex items-center justify-between relative z-20">
           <div className="flex gap-1.5">
-            <button
-              onClick={handlePrevPage}
-              disabled={currentPageIdx === 0}
-              className="px-2.5 py-1 text-[9px] font-extrabold uppercase rounded bg-slate-100 hover:bg-slate-200 disabled:opacity-40 text-slate-700 transition-colors cursor-pointer"
-            >
-              ← Prev
-            </button>
-            <button
-              onClick={handleNextPage}
-              disabled={currentPageIdx === totalPages - 1}
-              className="px-2.5 py-1 text-[9px] font-extrabold uppercase rounded bg-indigo-50 text-indigo-600 hover:bg-indigo-100 disabled:opacity-40 transition-colors cursor-pointer"
-            >
-              Next →
-            </button>
+            <button onClick={handlePrevPage} disabled={currentPageIdx === 0} className="px-2.5 py-1 text-[9px] font-extrabold uppercase rounded bg-slate-100 hover:bg-slate-200 disabled:opacity-40 text-slate-700 cursor-pointer">← Prev</button>
+            <button onClick={handleNextPage} disabled={currentPageIdx === totalPages - 1} className="px-2.5 py-1 text-[9px] font-extrabold uppercase rounded bg-indigo-50 text-indigo-600 hover:bg-indigo-100 disabled:opacity-40 cursor-pointer">Next →</button>
           </div>
-          <span className="text-[7.5px] font-mono text-slate-400 uppercase tracking-wider">
-            {isFree ? "VERIFIED DOWNLOAD UNLOCKED" : "🔒 DRM PREVIEW ACTIVE"}
-          </span>
+          <span className="text-[7.5px] font-mono text-slate-400 uppercase tracking-wider">{isFree ? "VERIFIED DOWNLOAD UNLOCKED" : "🔒 DRM PREVIEW ACTIVE"}</span>
         </div>
       </div>
     );
   }
 
-  // Handle ZIP, Video, other downloads pre-preview wrapper
   if (type === "zip" || error) {
     let theme = {
       bg: "from-rose-950/30 to-slate-950",
@@ -743,9 +597,7 @@ export default function SecurePreview({
         {!isFree && (
           <div className="absolute inset-0 pointer-events-none select-none flex items-center justify-center overflow-hidden opacity-10">
             <div className="absolute inset-0 flex flex-wrap gap-4 p-2 justify-around content-around rotate-[-15deg] scale-125 text-[8px] font-mono font-bold tracking-widest text-rose-500 uppercase">
-              {Array.from({ length: 6 }).map((_, i) => (
-                <span key={i} className="whitespace-nowrap">TYAGIHUB DRM PROTECTED</span>
-              ))}
+              {Array.from({ length: 6 }).map((_, i) => (<span key={i} className="whitespace-nowrap">TYAGIHUB DRM PROTECTED</span>))}
             </div>
           </div>
         )}
@@ -755,75 +607,45 @@ export default function SecurePreview({
             {type === "zip" && <FileArchive className={`w-8 h-8 ${theme.iconColor}`} />}
             {type === "video" && <Video className={`w-8 h-8 ${theme.iconColor}`} />}
             {type === "image" && <ImageIcon className={`w-8 h-8 ${theme.iconColor}`} />}
-            {type !== "pdf" && type !== "zip" && type !== "video" && type !== "image" && (
-              <FileText className="w-8 h-8 text-indigo-400" />
-            )}
-            <div className="absolute -bottom-1 -right-1 bg-slate-900 border border-slate-800 rounded-full p-1 shadow-md">
-              <AlertTriangle className="w-3 h-3 text-rose-400" />
-            </div>
+            {type !== "pdf" && type !== "zip" && type !== "video" && type !== "image" && (<FileText className="w-8 h-8 text-indigo-400" />)}
+            <div className="absolute -bottom-1 -right-1 bg-slate-900 border border-slate-800 rounded-full p-1"><AlertTriangle className="w-3 h-3 text-rose-400" /></div>
           </div>
           <div className="space-y-1">
-            <span className={`inline-block px-2 py-0.5 text-[9px] font-mono font-bold uppercase rounded border ${theme.badge}`}>
-              Secure Preview
-            </span>
-            <h4 className="text-xs font-black text-white uppercase tracking-wider font-mono">
-              Premium {type} File
-            </h4>
-            <p className="text-[10px] text-slate-400 max-w-[240px] leading-relaxed">
-              Secure GitHub Cloud verification active. Purchase to unlock permanent downloads.
-            </p>
+            <span className={`inline-block px-2 py-0.5 text-[9px] font-mono font-bold uppercase rounded border ${theme.badge}`}>Secure Preview</span>
+            <h4 className="text-xs font-black text-white uppercase tracking-wider font-mono">Premium {type} File</h4>
+            <p className="text-[10px] text-slate-400 max-w-[240px] leading-relaxed">Secure GitHub Cloud verification active. Purchase to unlock downloads.</p>
           </div>
         </div>
         <div className="absolute bottom-0 inset-x-0 bg-slate-950/90 py-1.5 border-t border-slate-900 flex items-center justify-center gap-1.5 px-3 z-10">
           <span className="w-1.5 h-1.5 rounded-full bg-rose-500 animate-pulse" />
-          <span className="text-[8px] font-mono font-semibold text-slate-400 uppercase tracking-widest">
-            TYAGIHUB AUTOMATED PRE-DOWNLOAD DRM GATEWAY
-          </span>
+          <span className="text-[8px] font-mono font-semibold text-slate-400 uppercase tracking-widest">TYAGIHUB AUTOMATED PRE-DOWNLOAD DRM GATEWAY</span>
         </div>
       </div>
     );
   }
 
-  // Handle standard images with client-side canvas watermarking
   return (
     <div className="relative w-full h-full overflow-hidden select-none">
       {loading && (
         <div className="absolute inset-0 bg-slate-950 flex flex-col items-center justify-center gap-1.5 z-30">
           <div className="w-6 h-6 rounded-full border border-slate-850 border-t-indigo-500 animate-spin" />
-          <span className="text-[9px] font-mono text-slate-500 tracking-wider">
-            DRM SECURING...
-          </span>
+          <span className="text-[9px] font-mono text-slate-500 tracking-wider">DRM SECURING...</span>
         </div>
       )}
-      <img
-        src={imageSrc || src}
-        alt={alt}
-        referrerPolicy="no-referrer"
-        className={`${className} select-none pointer-events-none`}
-        draggable="false"
-      />
+      <img src={imageSrc || src} alt={alt} referrerPolicy="no-referrer" className={`${className} select-none pointer-events-none`} draggable="false" />
       {useFallback && !isFree && (
         <>
           <div className="absolute inset-0 pointer-events-none select-none overflow-hidden z-10 flex flex-col justify-around py-4 scale-110">
             {Array.from({ length: 6 }).map((_, i) => (
-              <div
-                key={i}
-                className="flex justify-around gap-2 whitespace-nowrap text-[9px] font-mono font-black text-rose-500 uppercase tracking-widest select-none pointer-events-none rotate-[-18deg]"
-                style={{ mixBlendMode: "difference", opacity: 0.4 }}
-              >
-                <span>TyagiHub Secure DRM • DO NOT ALTER</span>
+              <div key={i} className="flex justify-around gap-2 whitespace-nowrap text-[9px] font-mono font-black text-rose-500 uppercase tracking-widest rotate-[-18deg]" style={{ mixBlendMode: "difference", opacity: 0.4 }}>
                 <span>TyagiHub Secure DRM • DO NOT ALTER</span>
               </div>
             ))}
           </div>
-          <div className="absolute bottom-0 inset-x-0 bg-slate-950/90 py-1.5 text-[8px] font-mono font-bold text-red-300 text-center uppercase tracking-widest border-t border-slate-900/60 z-15 select-none pointer-events-none">
-            TYAGIHUB SECURE DRM PROTECTED • PRE-DOWNLOAD PREVIEW
-          </div>
+          <div className="absolute bottom-0 inset-x-0 bg-slate-950/90 py-1.5 text-[8px] font-mono font-bold text-red-300 text-center uppercase tracking-widest border-t border-slate-900/60 z-15">TYAGIHUB SECURE DRM PROTECTED • PRE-DOWNLOAD PREVIEW</div>
         </>
       )}
-      {!isFree && (
-        <div className="absolute inset-0 z-20 bg-slate-950/20 backdrop-blur-[0.5px]" />
-      )}
+      {!isFree && <div className="absolute inset-0 z-20 bg-slate-950/20 backdrop-blur-[0.5px]" />}
     </div>
   );
 }
