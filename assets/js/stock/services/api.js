@@ -2,7 +2,7 @@ export const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxqXDvnxgzxFM
 
 /**
  * Clean unminified API Fetch helper for Google Apps Script requests
- * @param {string} url - The full Google Apps Script API endpoint
+ * @param {string} url - The full Google Apps Script API endpoint 
  * @returns {Promise<any>}
  */
 export const fetchGAS = async (url) => {
