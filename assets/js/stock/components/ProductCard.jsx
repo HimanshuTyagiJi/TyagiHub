@@ -1,15 +1,18 @@
 import React from "react";
-import { motion } from "motion/react";
+// 🚀 DYNAMIC FRAMER MOTION MAP RESOLUTION FOR BROWSER INJECTION PIPELINE
+const { motion } = window.Motion || { motion: { div: "div" } }; // Fallback protection layer bsdk
 import { Crown, ArrowRight } from "lucide-react";
+
+// 🌐 CRITICAL FULL PATH ASSIGNMENT WITH EXTENSIONS
 import SecurePreview from "/assets/js/stock/SecurePreview.jsx";
 import { resolveThumbnailUrl } from "/assets/js/stock/utils/drm.js"; 
 
 export default function ProductCard({ product, user, onSelect }) {
-  const isFree = product.price === 0;
-  const hasSubscription = user && user.subscription;
+  const isFree = Number(product.price || 0) === 0;
+  const hasSubscription = user && user.subscription && user.subscription.status === "approved";
   const surchargedPrice = parseFloat((product.price * 1.15).toFixed(2));
 
-  // Determine complexity level and styling based on product price
+  // Determine complexity level and styling metrics based on product price grid bsdk
   const getComplexityTag = (price) => {
     if (price === 0) {
       return {
@@ -42,14 +45,11 @@ export default function ProductCard({ product, user, onSelect }) {
   const tag = getComplexityTag(product.price);
 
   return (
-    <motion.div
-      layout
-      initial={{ opacity: 0, y: 12 }}
-      animate={{ opacity: 1, y: 0 }}
+    <div
       onClick={onSelect}
       className="rounded-xl overflow-hidden transition-all flex flex-col group relative cursor-pointer h-full border bg-slate-900/30 border-slate-900/80 hover:border-slate-800 hover:shadow-lg hover:shadow-indigo-950/10"
     >
-      {/* Thumbnail with Secure Watermark Preview */}
+      {/* Thumbnail with Secure Watermark Preview Sandbox layer */}
       <div className="relative aspect-video w-full bg-slate-950 overflow-hidden">
         <SecurePreview
           src={resolveThumbnailUrl(product)}
@@ -61,10 +61,10 @@ export default function ProductCard({ product, user, onSelect }) {
           }`}
         />
         
-        {/* Soft shadow overlay */}
+        {/* Soft shadow structural grid overlay */}
         <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent opacity-80 z-20 pointer-events-none" />
 
-        {/* Floating Category/Status Badges */}
+        {/* Floating Category/Status Badges Matrix */}
         <div className="absolute top-2.5 left-2.5 flex flex-col gap-1.5 z-30 items-start">
           <span
             className={`px-2 py-0.5 text-[9px] font-mono font-black uppercase rounded tracking-wider border ${
@@ -82,13 +82,13 @@ export default function ProductCard({ product, user, onSelect }) {
           </span>
         </div>
 
-        {/* Asset metadata badge */}
+        {/* Asset size and meta specs data indicator */}
         <div className="absolute bottom-2.5 right-2.5 flex items-center gap-1 bg-slate-950/95 px-2 py-0.5 rounded text-[9px] font-mono text-slate-300 border border-slate-850 z-30 font-bold uppercase">
           {product.type} • {product.size || "KB"}
         </div>
       </div>
 
-      {/* Product Information and Description */}
+      {/* Product Information and Text Description Block */}
       <div className="p-4 flex-1 flex flex-col justify-between space-y-3.5 transition-colors bg-slate-950/20">
         <div className="space-y-1.5 flex-1 text-left">
           <h3
@@ -104,7 +104,7 @@ export default function ProductCard({ product, user, onSelect }) {
           )}
         </div>
 
-        {/* Price and Claim CTA Button */}
+        {/* Price grid and interactive Call-To-Action gateway bsdk */}
         <div className="flex items-center justify-between pt-3 mt-auto border-t border-slate-900/60">
           <div>
             <p className="text-[8px] font-mono uppercase tracking-widest text-slate-500 text-left">PRICE</p>
@@ -137,6 +137,6 @@ export default function ProductCard({ product, user, onSelect }) {
           </div>
         </div>
       </div>
-    </motion.div>
+    </div>
   );
 }
