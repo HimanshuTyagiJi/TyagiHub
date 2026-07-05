@@ -4,7 +4,7 @@ import {
   Crown, 
   Download, 
   FileText, 
-  FileArchive, 
+  FileArchive,  
   Image as ImageIcon, 
   Video, 
   ShieldCheck, 
