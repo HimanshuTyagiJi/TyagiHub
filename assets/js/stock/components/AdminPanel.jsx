@@ -11,8 +11,8 @@ import {
   Package, 
   FolderSync 
 } from "lucide-react";
-import { SCRIPT_URL, fetchGAS } from "../services/api";
-import { extractDriveId } from "../utils/drm";
+import { SCRIPT_URL, fetchGAS } from "/assets/js/stock/services/api";
+import { extractDriveId } from "/assets/js/stock/utils/drm";
 
 export default function AdminPanel({ 
   requests, 
