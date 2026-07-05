@@ -10,7 +10,7 @@ export default function ProductComments({ product, user, openLogin }) {
   const [totalVotes, setTotalVotes] = useState(0);
   const [newComment, setNewComment] = useState("");
   const [replyToId, setReplyToId] = useState(null);
-  const [replyText, setReplyText] = useState("");
+  const [replyText, setReplyText] = useState(""); 
   const [editId, setEditId] = useState(null);
   const [editText, setEditText] = useState("");
   const [hoveredStars, setHoveredStars] = useState(0);
