@@ -6,7 +6,7 @@ import {
   GoogleAuthProvider, 
   signInWithPopup 
 } from "firebase/auth";
-import { auth } from "../services/firebase";
+import { auth } from "/assets/js/stock/services/firebase";
 
 export default function LoginModal({ isOpen, onClose }) {
   const [tab, setTab] = useState("login"); // "login" | "register"
