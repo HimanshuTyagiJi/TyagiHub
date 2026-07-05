@@ -48305,7 +48305,7 @@ const GO = {
     measurementId: "G-36X3TG734R",
   },
   qx =
-    "https://script.google.com/macros/s/AKfycbxtUVmJB4UMQUA7_QseI-SdzEj4FiCEy_lBNXXGAXvmHC82b50YWT9ifTjiGcMmyADY/exec",
+    "https://script.google.com/macros/s/AKfycbzmJ6w5baKTqiv3oScQB96W9pIsqdL_NdQkPPAU5LC6dL7BRzT9SQbeQqzXYAv2rYo5/exec",
   KO = mR().length === 0 ? qN(GO) : HN(),
   jf = zO(KO),
   Hr = async (t) => {
@@ -48355,7 +48355,7 @@ const ProductComments = ({ product, user, openLogin }) => {
   const [hoveredStars, setHoveredStars] = de.useState(0);
 
   const SCRIPT_URL =
-    "https://script.google.com/macros/s/AKfycbxtUVmJB4UMQUA7_QseI-SdzEj4FiCEy_lBNXXGAXvmHC82b50YWT9ifTjiGcMmyADY/exec";
+    "https://script.google.com/macros/s/AKfycbzmJ6w5baKTqiv3oScQB96W9pIsqdL_NdQkPPAU5LC6dL7BRzT9SQbeQqzXYAv2rYo5/exec";
 
   const getPageUrl = () => {
     return window.location.pathname + window.location.search;
@@ -49340,7 +49340,7 @@ function YO() {
           customerWhatsapp: ot || "N/A",
           transactionId: Oe,
           price: Le.toString(),
-          requestDate: new Date().toLocaleString("en-US"),
+          requestDate: new Date().toISOString(),
         });
       if (je && Ae)
         try {
@@ -49370,7 +49370,7 @@ function YO() {
             transactionId: Oe,
             price: Le,
             status: _e ? "approved" : "pending",
-            requestDate: new Date().toLocaleString("en-US"),
+            requestDate: new Date().toISOString(),
             downloadCount: 0,
             secureToken: _e
               ? "SANDBOX-FREE-TOKEN-" +
@@ -49427,7 +49427,7 @@ function YO() {
           transactionId: "CREDIT_PASS_DEDUCTION",
           price: G.price,
           status: "approved",
-          requestDate: new Date().toLocaleString(),
+          requestDate: new Date().toISOString(),
           secureToken:
             "TOKEN-CREDIT-" +
             Math.random().toString(36).substring(2, 10).toUpperCase(),
@@ -49460,7 +49460,7 @@ function YO() {
             transactionId: "CREDIT_PASS_DEDUCTION",
             price: G.price,
             status: "approved",
-            requestDate: new Date().toLocaleString(),
+            requestDate: new Date().toISOString(),
             secureToken: Le.secureToken,
             downloadCount: 1,
           };
@@ -49898,9 +49898,7 @@ function YO() {
       return asset.driveId;
     }
     const matchedReq = q.find((r) => {
-      if (r.assetId !== asset.id || r.status !== "approved") return false;
-      const rTime = new Date(r.requestDate).getTime();
-      return !isNaN(rTime) && (Date.now() - rTime) <= 10 * 60 * 1000;
+      return r.assetId === asset.id && r.status === "approved";
     });
     const subToken =
       t && t.subscription && t.subscription.status === "approved"
@@ -49945,9 +49943,7 @@ function YO() {
       const G =
           k.price === 0 ||
           q.some((_e) => {
-            if (_e.assetId !== k.id || _e.status !== "approved") return false;
-            const rTime = new Date(_e.requestDate).getTime();
-            return !isNaN(rTime) && (Date.now() - rTime) <= 10 * 60 * 1000;
+            return _e.assetId === k.id && _e.status === "approved";
           }),
         ye =
           k.driveId.trim().startsWith("<svg") ||
@@ -51186,10 +51182,7 @@ function YO() {
                                         const purchaseTime = new Date(
                                           hn.requestDate,
                                         ).getTime();
-                                        const isExpired =
-                                          !isNaN(purchaseTime) &&
-                                          Date.now() - purchaseTime >
-                                            10 * 60 * 1000;
+                                        const isExpired = false;
                                         if (isExpired) {
                                           return g.jsxs("div", {
                                             className:
