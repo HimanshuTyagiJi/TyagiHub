@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import App from "./App.jsx"; // <-- .jsx extension yahan lagana zaroori hai bsdk!
+import App from "/assets/js/stock/App.jsx";  
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
