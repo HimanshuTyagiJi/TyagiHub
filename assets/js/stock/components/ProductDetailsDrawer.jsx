@@ -14,10 +14,10 @@ import {
   MessageSquare,
   AlertTriangle
 } from "lucide-react";
-import SecurePreview, { downloadAsPdf, downloadAsDoc } from "./SecurePreview";
+import SecurePreview, { downloadAsPdf, downloadAsDoc } from "/assets/js/stock/SecurePreview.jsx";
 import ProductComments from "./ProductComments";
-import { SCRIPT_URL, fetchGAS } from "../services/api";
-import { extractDriveId, resolveThumbnailUrl } from "../utils/drm";
+import { SCRIPT_URL, fetchGAS } from "/assets/js/stock/services/api.js";
+import { extractDriveId, resolveThumbnailUrl } from "/assets/js/stock/utils/drm.js";
 
 export default function ProductDetailsDrawer({ 
   product, 
