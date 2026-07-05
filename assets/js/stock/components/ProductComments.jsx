@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { SCRIPT_URL } from "../services/api"; 
+import { SCRIPT_URL } from "/assets/js/stock/services/api.js"; 
 
 export default function ProductComments({ product, user, openLogin }) {
   const [comments, setComments] = useState([]);
