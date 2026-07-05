@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+// 🚀 METICULOUS LUCIDE SPECIFIER EXTRACTION LOOP FROM MAIN IMPORT MAP
 import { 
   Shield, 
   RefreshCw, 
@@ -9,8 +10,10 @@ import {
   ListOrdered, 
   PlusCircle, 
   Package, 
-  FolderSync  
+  FolderSync   
 } from "lucide-react";
+
+// 🌐 CRITICAL ABSOLUTE ROUTE GATEWAYS WITH EXPLICIT EXTENSIONS BSDK
 import { SCRIPT_URL, fetchGAS } from "/assets/js/stock/services/api.js";
 import { extractDriveId } from "/assets/js/stock/utils/drm.js";
 
@@ -30,9 +33,9 @@ export default function AdminPanel({
   const [syncMessage, setSyncMessage] = useState("");
   const [loading, setLoading] = useState(false);
 
-  // New Product Form state
+  // New Product Form state mapping
   const [title, setTitle] = useState("");
-  const [type, setType] = useState("image"); // "image" | "pdf" | "zip" | "video"
+  const [type, setType] = useState("image"); 
   const [size, setSize] = useState("");
   const [price, setPrice] = useState(0);
   const [driveId, setDriveId] = useState("");
@@ -49,10 +52,10 @@ export default function AdminPanel({
     setDescription("");
   };
 
-  // Sync Paytm Business Gmail Receipts manually
+  // Sync Paytm Business Gmail Receipts manually via Apps Script
   const triggerPaytmEmailSync = async () => {
     if (!liveSync || !gasUrl) {
-      alert("Please connect Golu's Live Google Sheets Sync to trigger email scanning.");
+      alert("Please connect Golu's Live Google Sheets Sync to trigger email scanning bsdk.");
       return;
     }
     setSyncingPaytm(true);
@@ -72,7 +75,7 @@ export default function AdminPanel({
     }
   };
 
-  // Add Product (Local or Live Sheets)
+  // Add Product Layer (Sandbox Cache vs Live Sheets Row Injection)
   const handleAddProductSubmit = async (e) => {
     e.preventDefault();
     if (!title.trim() || !driveId.trim()) {
@@ -91,7 +94,6 @@ export default function AdminPanel({
     }
 
     const finalPreview = previewUrl.trim() || defaultPreview;
-
     setLoading(true);
 
     if (liveSync && gasUrl) {
@@ -123,7 +125,6 @@ export default function AdminPanel({
         setLoading(false);
       }
     } else {
-      // Offline local update
       const localProduct = {
         id: prodId,
         title: title.trim(),
@@ -143,7 +144,7 @@ export default function AdminPanel({
     }
   };
 
-  // Delete product
+  // Delete product action trigger bsdk
   const handleDeleteProduct = async (prodId) => {
     if (!confirm("Are you sure you want to permanently delete this product? This will remove it from the store.")) {
       return;
@@ -168,7 +169,7 @@ export default function AdminPanel({
     }
   };
 
-  // Manual UTR Verification / Approval
+  // Manual UTR Verification / Approval layer bsdk
   const handleApproveUtr = async (reqId, status) => {
     const manualToken = "TOKEN-MANUAL-" + Math.random().toString(36).substring(2, 10).toUpperCase();
     
@@ -193,7 +194,7 @@ export default function AdminPanel({
     }
   };
 
-  // Manual Subscription UTR Verification / Approval
+  // Manual Value Pack Subscription Approval router bsdk
   const handleApproveSubscription = async (subId, status) => {
     const manualToken = "SUB-TOKEN-MANUAL-" + Math.random().toString(36).substring(2, 10).toUpperCase();
 
@@ -269,33 +270,16 @@ export default function AdminPanel({
       {/* Add New Product Form Panel */}
       {showAddForm && (
         <form onSubmit={handleAddProductSubmit} className="bg-slate-950/60 border border-slate-850 p-5 rounded-2xl space-y-4 max-w-2xl animate-in slide-in-from-top duration-200">
-          <h3 className="text-xs font-black uppercase text-indigo-400 tracking-wider mb-2">
-            Create Digital Listing
-          </h3>
+          <h3 className="text-xs font-black uppercase text-indigo-400 tracking-wider mb-2">Create Digital Listing</h3>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div className="space-y-1">
-              <label className="block text-[8px] font-mono uppercase tracking-wider text-slate-500">
-                Product Title
-              </label>
-              <input
-                type="text"
-                value={title}
-                onChange={(e) => setTitle(e.target.value)}
-                placeholder="Chapter 5 Physics Solved Guide"
-                className="w-full p-2.5 text-xs bg-slate-950 border border-slate-800 rounded-lg text-slate-200 focus:outline-none focus:border-indigo-500"
-                required
-              />
+              <label className="block text-[8px] font-mono uppercase tracking-wider text-slate-500">Product Title</label>
+              <input type="text" value={title} onChange={(e) => setTitle(e.target.value)} placeholder="Chapter 5 Physics Solved Guide" className="w-full p-2.5 text-xs bg-slate-950 border border-slate-800 rounded-lg text-slate-200 focus:outline-none focus:border-indigo-500" required />
             </div>
             <div className="space-y-1">
-              <label className="block text-[8px] font-mono uppercase tracking-wider text-slate-500">
-                Resource Type
-              </label>
-              <select
-                value={type}
-                onChange={(e) => setType(e.target.value)}
-                className="w-full p-2.5 text-xs bg-slate-950 border border-slate-800 rounded-lg text-slate-200 focus:outline-none focus:border-indigo-500"
-              >
+              <label className="block text-[8px] font-mono uppercase tracking-wider text-slate-500">Resource Type</label>
+              <select value={type} onChange={(e) => setType(e.target.value)} className="w-full p-2.5 text-xs bg-slate-950 border border-slate-800 rounded-lg text-slate-200 focus:outline-none focus:border-indigo-500">
                 <option value="image">Image Drawing / Template</option>
                 <option value="pdf">PDF Syllabus Study Guide</option>
                 <option value="zip">ZIP Asset Bundle</option>
@@ -306,87 +290,42 @@ export default function AdminPanel({
 
           <div className="grid grid-cols-3 gap-3">
             <div className="space-y-1">
-              <label className="block text-[8px] font-mono uppercase tracking-wider text-slate-500">
-                File Size
-              </label>
-              <input
-                type="text"
-                value={size}
-                onChange={(e) => setSize(e.target.value)}
-                placeholder="4.5 MB"
-                className="w-full p-2.5 text-xs bg-slate-950 border border-slate-800 rounded-lg text-slate-200 focus:outline-none"
-              />
+              <label className="block text-[8px] font-mono uppercase tracking-wider text-slate-500">File Size</label>
+              <input type="text" value={size} onChange={(e) => setSize(e.target.value)} placeholder="4.5 MB" className="w-full p-2.5 text-xs bg-slate-950 border border-slate-800 rounded-lg text-slate-200 focus:outline-none" />
             </div>
             <div className="space-y-1">
-              <label className="block text-[8px] font-mono uppercase tracking-wider text-slate-500">
-                Price (INR)
-              </label>
-              <input
-                type="number"
-                value={price}
-                onChange={(e) => setPrice(Math.max(0, parseInt(e.target.value) || 0))}
-                className="w-full p-2.5 text-xs bg-slate-950 border border-slate-800 rounded-lg text-slate-200 focus:outline-none"
-                required
-              />
+              <label className="block text-[8px] font-mono uppercase tracking-wider text-slate-500">Price (INR)</label>
+              <input type="number" value={price} onChange={(e) => setPrice(Math.max(0, parseInt(e.target.value) || 0))} className="w-full p-2.5 text-xs bg-slate-950 border border-slate-800 rounded-lg text-slate-200 focus:outline-none" required />
             </div>
             <div className="space-y-1">
-              <label className="block text-[8px] font-mono uppercase tracking-wider text-slate-500">
-                Cover Preview URL (Optional)
-              </label>
-              <input
-                type="text"
-                value={previewUrl}
-                onChange={(e) => setPreviewUrl(e.target.value)}
-                placeholder="https://..."
-                className="w-full p-2.5 text-xs bg-slate-950 border border-slate-800 rounded-lg text-slate-200 focus:outline-none"
-              />
+              <label className="block text-[8px] font-mono uppercase tracking-wider text-slate-500">Cover Preview URL</label>
+              <input type="text" value={previewUrl} onChange={(e) => setPreviewUrl(e.target.value)} placeholder="https://..." className="w-full p-2.5 text-xs bg-slate-950 border border-slate-800 rounded-lg text-slate-200 focus:outline-none" />
             </div>
           </div>
 
           <div className="space-y-1">
-            <label className="block text-[8px] font-mono uppercase tracking-wider text-indigo-400 font-bold">
-              GitHub Asset Path or Raw Markdown / SVG Content
-            </label>
-            <textarea
-              value={driveId}
-              onChange={(e) => setDriveId(e.target.value)}
-              placeholder="Enter Private GitHub Path (e.g. assets/svg/crown_logo.svg) or decrypted raw text here..."
-              className="w-full p-3 text-xs bg-slate-950 border border-slate-800 rounded-xl text-slate-200 focus:outline-none focus:border-indigo-500 h-24 font-mono resize-none"
-              required
-            />
+            <label className="block text-[8px] font-mono uppercase tracking-wider text-indigo-400 font-bold">GitHub Asset Path or Raw Markdown Content</label>
+            <textarea value={driveId} onChange={(e) => setDriveId(e.target.value)} placeholder="Enter Private GitHub Path or raw text here..." className="w-full p-3 text-xs bg-slate-950 border border-slate-800 rounded-xl text-slate-200 focus:outline-none focus:border-indigo-500 h-24 font-mono resize-none" required />
           </div>
 
           <div className="space-y-1">
-            <label className="block text-[8px] font-mono uppercase tracking-wider text-slate-500">
-              Brief Description
-            </label>
-            <input
-              type="text"
-              value={description}
-              onChange={(e) => setDescription(e.target.value)}
-              placeholder="Study Notes including solved proofs and exam practice papers..."
-              className="w-full p-2.5 text-xs bg-slate-950 border border-slate-800 rounded-lg text-slate-200 focus:outline-none"
-            />
+            <label className="block text-[8px] font-mono uppercase tracking-wider text-slate-500">Brief Description</label>
+            <input type="text" value={description} onChange={(e) => setDescription(e.target.value)} placeholder="Study Notes including solved proofs and exam practice papers..." className="w-full p-2.5 text-xs bg-slate-950 border border-slate-800 rounded-lg text-slate-200 focus:outline-none" />
           </div>
 
-          <button
-            type="submit"
-            disabled={loading}
-            className="w-full py-2.5 bg-indigo-600 hover:bg-indigo-500 disabled:opacity-55 text-white font-extrabold uppercase tracking-widest text-[10px] rounded-xl cursor-pointer shadow-md"
-          >
+          <button type="submit" disabled={loading} className="w-full py-2.5 bg-indigo-600 hover:bg-indigo-500 text-white font-extrabold uppercase tracking-widest text-[10px] rounded-xl cursor-pointer">
             {loading ? "Saving Item to Google Sheets..." : "Publish Product Listing"}
           </button>
         </form>
       )}
 
-      {/* Grid: Requests and Products Management tables */}
+      {/* Grid Tables Configuration layout */}
       <div className="grid grid-cols-1 xl:grid-cols-2 gap-8">
         
         {/* Sub-Panel 1: Direct File Purchases requests */}
         <div className="space-y-4">
           <h3 className="text-xs font-black uppercase text-indigo-400 tracking-wider flex items-center gap-1.5 border-b border-slate-800 pb-2">
-            <ListOrdered className="w-4 h-4" />
-            File Purchase Claims ({requests.length})
+            <ListOrdered className="w-4 h-4" /> File Purchase Claims ({requests.length})
           </h3>
 
           <div className="max-h-[360px] overflow-y-auto border border-slate-900 bg-slate-950/25 rounded-xl divide-y divide-slate-900 scrollbar-thin">
@@ -398,53 +337,30 @@ export default function AdminPanel({
                       <span className="font-bold text-white block">{req.customerName}</span>
                       <span className="text-[10px] text-slate-500 block">{req.customerEmail}</span>
                     </div>
-                    <span className={`px-2 py-0.5 rounded uppercase text-[9px] font-bold border ${
-                      req.status === "approved" 
-                        ? "bg-emerald-950/40 text-emerald-500 border-emerald-900/30" 
-                        : "bg-yellow-950/40 text-yellow-500 border-yellow-900/20 animate-pulse"
-                    }`}>
-                      {req.status}
-                    </span>
+                    <span className={`px-2 py-0.5 rounded uppercase text-[9px] font-bold border ${req.status === "approved" ? "bg-emerald-950/40 text-emerald-500 border-emerald-900/30" : "bg-yellow-950/40 text-yellow-500 border-yellow-900/20 animate-pulse"}`}>{req.status}</span>
                   </div>
                   
                   <div className="text-left leading-normal text-slate-300">
                     <p className="font-semibold text-[11px] text-indigo-300">{req.assetTitle}</p>
-                    <p className="text-[9.5px] text-slate-400 font-mono mt-0.5">
-                      UTR: <span className="text-amber-400 select-all">{req.transactionId}</span> • Price: ₹{req.price}
-                    </p>
+                    <p className="text-[9.5px] text-slate-400 font-mono mt-0.5">UTR: <span className="text-amber-400 select-all">{req.transactionId}</span> • Price: ₹{req.price}</p>
                   </div>
 
                   {req.status !== "approved" && (
                     <div className="flex gap-2 justify-end pt-1">
-                      <button
-                        onClick={() => handleApproveUtr(req.id, "approved")}
-                        className="px-2.5 py-1 bg-emerald-600 hover:bg-emerald-500 text-white rounded font-bold text-[9px] uppercase tracking-wider transition-all flex items-center gap-1 cursor-pointer"
-                      >
-                        <Check className="w-3 h-3" /> Approve
-                      </button>
-                      <button
-                        onClick={() => handleApproveUtr(req.id, "rejected")}
-                        className="px-2.5 py-1 bg-rose-600 hover:bg-rose-500 text-white rounded font-bold text-[9px] uppercase tracking-wider transition-all flex items-center gap-1 cursor-pointer"
-                      >
-                        <X className="w-3 h-3" /> Reject
-                      </button>
+                      <button onClick={() => handleApproveUtr(req.id, "approved")} className="px-2.5 py-1 bg-emerald-600 text-white rounded font-bold text-[9px] uppercase tracking-wider flex items-center gap-1"><Check className="w-3 h-3" /> Approve</button>
+                      <button onClick={() => handleApproveUtr(req.id, "rejected")} className="px-2.5 py-1 bg-rose-600 text-white rounded font-bold text-[9px] uppercase tracking-wider flex items-center gap-1"><X className="w-3 h-3" /> Reject</button>
                     </div>
                   )}
                 </div>
               ))
-            ) : (
-              <p className="p-6 text-center text-slate-500 text-[10px] font-mono uppercase">
-                No purchases submitted yet.
-              </p>
-            )}
+            ) : <p className="p-6 text-center text-slate-500 text-[10px] font-mono uppercase">No purchases submitted yet.</p>}
           </div>
         </div>
 
         {/* Sub-Panel 2: Crown subscriptions requests */}
         <div className="space-y-4">
           <h3 className="text-xs font-black uppercase text-amber-400 tracking-wider flex items-center gap-1.5 border-b border-slate-800 pb-2">
-            <Crown className="w-4 h-4 text-amber-400" />
-            Crown Subscriptions ({subscriptions.length})
+            <Crown className="w-4 h-4 text-amber-400" /> Crown Subscriptions ({subscriptions.length})
           </h3>
 
           <div className="max-h-[360px] overflow-y-auto border border-slate-900 bg-slate-950/25 rounded-xl divide-y divide-slate-900 scrollbar-thin">
@@ -456,52 +372,29 @@ export default function AdminPanel({
                       <span className="font-bold text-white block">{sub.userName || "VIP Student"}</span>
                       <span className="text-[10px] text-slate-500 block">{sub.userEmail}</span>
                     </div>
-                    <span className={`px-2 py-0.5 rounded uppercase text-[9px] font-bold border ${
-                      sub.status === "approved" 
-                        ? "bg-amber-950/40 text-amber-450 border-amber-900/30 text-amber-400" 
-                        : "bg-yellow-950/40 text-yellow-500 border-yellow-900/20 animate-pulse"
-                    }`}>
-                      {sub.status}
-                    </span>
+                    <span className={`px-2 py-0.5 rounded uppercase text-[9px] font-bold border ${sub.status === "approved" ? "bg-amber-950/40 text-amber-400 border-amber-900/30" : "bg-yellow-950/40 text-yellow-500 border-yellow-900/20 animate-pulse"}`}>{sub.status}</span>
                   </div>
 
-                  <div className="text-left font-mono text-[9.5px] text-slate-400">
-                    UTR: <span className="text-amber-400 select-all">{sub.transactionId}</span> • Price: ₹{sub.price}
-                  </div>
+                  <div className="text-left font-mono text-[9.5px] text-slate-400">UTR: <span className="text-amber-400 select-all">{sub.transactionId}</span> • Price: ₹{sub.price}</div>
 
                   {sub.status !== "approved" && (
                     <div className="flex gap-2 justify-end pt-1">
-                      <button
-                        onClick={() => handleApproveSubscription(sub.id, "approved")}
-                        className="px-2.5 py-1 bg-emerald-600 hover:bg-emerald-500 text-white rounded font-bold text-[9px] uppercase tracking-wider transition-all flex items-center gap-1 cursor-pointer"
-                      >
-                        <Check className="w-3 h-3" /> Approve
-                      </button>
-                      <button
-                        onClick={() => handleApproveSubscription(sub.id, "rejected")}
-                        className="px-2.5 py-1 bg-rose-600 hover:bg-rose-500 text-white rounded font-bold text-[9px] uppercase tracking-wider transition-all flex items-center gap-1 cursor-pointer"
-                      >
-                        <X className="w-3 h-3" /> Reject
-                      </button>
+                      <button onClick={() => handleApproveSubscription(sub.id, "approved")} className="px-2.5 py-1 bg-emerald-600 text-white rounded font-bold text-[9px] uppercase tracking-wider flex items-center gap-1"><Check className="w-3 h-3" /> Approve</button>
+                      <button onClick={() => handleApproveSubscription(sub.id, "rejected")} className="px-2.5 py-1 bg-rose-600 text-white rounded font-bold text-[9px] uppercase tracking-wider flex items-center gap-1"><X className="w-3 h-3" /> Reject</button>
                     </div>
                   )}
                 </div>
               ))
-            ) : (
-              <p className="p-6 text-center text-slate-500 text-[10px] font-mono uppercase">
-                No active subscription logs.
-              </p>
-            )}
+            ) : <p className="p-6 text-center text-slate-500 text-[10px] font-mono uppercase">No active subscription logs.</p>}
           </div>
         </div>
 
       </div>
 
-      {/* Catalog inventory manager list */}
+      {/* Catalog inventory table layout */}
       <div className="space-y-4">
         <h3 className="text-xs font-black uppercase text-indigo-400 tracking-wider flex items-center gap-1.5 border-b border-slate-800 pb-2">
-          <Package className="w-4 h-4" />
-          Active Store Inventory ({products.length})
+          <Package className="w-4 h-4" /> Active Store Inventory ({products.length})
         </h3>
 
         <div className="overflow-x-auto border border-slate-900 bg-slate-950/25 rounded-xl scrollbar-thin">
@@ -524,17 +417,9 @@ export default function AdminPanel({
                   </td>
                   <td className="p-3 uppercase font-semibold text-[10px]">{p.type}</td>
                   <td className="p-3 font-mono font-bold">₹{p.price}</td>
-                  <td className="p-3">
-                    <span className="text-[10px] font-mono text-slate-400 truncate max-w-[150px] block" title={p.driveId}>
-                      {p.driveId}
-                    </span>
-                  </td>
+                  <td className="p-3"><span className="text-[10px] font-mono text-slate-400 truncate max-w-[150px] block" title={p.driveId}>{p.driveId}</span></td>
                   <td className="p-3 text-right">
-                    <button
-                      onClick={() => handleDeleteProduct(p.id)}
-                      className="p-2 text-rose-500 hover:text-rose-400 hover:bg-rose-950/25 rounded-lg transition-all cursor-pointer inline-flex items-center gap-1"
-                      title="Delete asset permanently"
-                    >
+                    <button onClick={() => handleDeleteProduct(p.id)} className="p-2 text-rose-500 hover:text-rose-400 hover:bg-rose-950/25 rounded-lg transition-all inline-flex items-center gap-1">
                       <Trash className="w-3.5 h-3.5" />
                     </button>
                   </td>
