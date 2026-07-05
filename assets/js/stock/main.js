@@ -48305,7 +48305,7 @@ const GO = {
     measurementId: "G-36X3TG734R",
   },
   qx =
-    "https://script.google.com/macros/s/AKfycby2TFrOxbr-fdXfWC6wUUZIv2P2sN6J6drqevhIddypjKyXwOwEk1NXXt29VJtF-CoY/exec",
+    "https://script.google.com/macros/s/AKfycbxtUVmJB4UMQUA7_QseI-SdzEj4FiCEy_lBNXXGAXvmHC82b50YWT9ifTjiGcMmyADY/exec",
   KO = mR().length === 0 ? qN(GO) : HN(),
   jf = zO(KO),
   Hr = async (t) => {
@@ -48355,7 +48355,7 @@ const ProductComments = ({ product, user, openLogin }) => {
   const [hoveredStars, setHoveredStars] = de.useState(0);
 
   const SCRIPT_URL =
-    "https://script.google.com/macros/s/AKfycby2TFrOxbr-fdXfWC6wUUZIv2P2sN6J6drqevhIddypjKyXwOwEk1NXXt29VJtF-CoY/exec";
+    "https://script.google.com/macros/s/AKfycbxtUVmJB4UMQUA7_QseI-SdzEj4FiCEy_lBNXXGAXvmHC82b50YWT9ifTjiGcMmyADY/exec";
 
   const getPageUrl = () => {
     return window.location.pathname + window.location.search;
@@ -49897,9 +49897,11 @@ function YO() {
     if (!isPath) {
       return asset.driveId;
     }
-    const matchedReq = q.find(
-      (r) => r.assetId === asset.id && r.status === "approved",
-    );
+    const matchedReq = q.find((r) => {
+      if (r.assetId !== asset.id || r.status !== "approved") return false;
+      const rTime = new Date(r.requestDate).getTime();
+      return !isNaN(rTime) && (Date.now() - rTime) <= 10 * 60 * 1000;
+    });
     const subToken =
       t && t.subscription && t.subscription.status === "approved"
         ? t.subscription.secureToken
@@ -49942,7 +49944,11 @@ function YO() {
     return (() => {
       const G =
           k.price === 0 ||
-          q.some((_e) => _e.assetId === k.id && _e.status === "approved"),
+          q.some((_e) => {
+            if (_e.assetId !== k.id || _e.status !== "approved") return false;
+            const rTime = new Date(_e.requestDate).getTime();
+            return !isNaN(rTime) && (Date.now() - rTime) <= 10 * 60 * 1000;
+          }),
         ye =
           k.driveId.trim().startsWith("<svg") ||
           k.driveId.includes("<svg") ||
@@ -50088,17 +50094,11 @@ function YO() {
                         className:
                           "relative z-10 max-h-[380px] max-w-full w-auto h-auto flex items-center justify-center",
                         children: g.jsx(Vx, {
-                          src: hm(k),
+                          src: (G && rawUnlockedContent) ? rawUnlockedContent : hm(k),
                           alt: k.title,
                           isFree: G,
                           type: ye ? "svg" : k.type,
-                          pdfContent:
-                            rawUnlockedContent ||
-                            (k.driveId &&
-                            k.driveId.length > 40 &&
-                            !ci(k.driveId)
-                              ? k.driveId
-                              : k.description),
+                          pdfContent: G ? rawUnlockedContent : null,
                           assetId: k.id,
                           className: `max-h-[380px] max-w-full w-auto h-auto object-contain rounded-lg shadow-2xl transition-transform hover:scale-[1.01] duration-300 ${G ? "" : "contrast-[1.03] brightness-[0.88]"}`,
                         }),
