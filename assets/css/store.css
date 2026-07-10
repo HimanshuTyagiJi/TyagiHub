@@ -1938,7 +1938,8 @@
    ========================================================================== */
 
 .app-layout-root {
-  min-height: 100vh;
+   margin-top:60px;
+   min-height: 100vh;
   background-color: var(--clr-bg);
   color: var(--clr-text);
   display: flex;
