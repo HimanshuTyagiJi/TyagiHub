@@ -863,6 +863,7 @@
 }
 
 .discover-icons{
+  justice-align:center;
   display:flex;
   gap:16px;
   margin-top:40px;
