@@ -1600,6 +1600,32 @@
   padding: var(--space-4);
 }
 
+/* ==========================================================================
+   6. MISC UTILITIES
+   ========================================================================== */
+
+.load-more-btn {
+  padding: var(--space-3) var(--space-6);
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-bold);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  background-color: var(--clr-surface);
+  color: var(--clr-text);
+  border: 1px solid var(--clr-border);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: all var(--ease-fast);
+  align-self: center;
+  width: 200px;
+}
+
+.load-more-btn:hover {
+  background-color: var(--clr-surface-2);
+  border-color: var(--clr-accent);
+  color: var(--clr-accent);
+}
+
 .login-modal-box {
   background-color: var(--clr-surface);
   border: 1px solid var(--clr-border);
@@ -1912,7 +1938,6 @@
    ========================================================================== */
 
 .app-layout-root {
-  margin-top:60px;
   min-height: 100vh;
   background-color: var(--clr-bg);
   color: var(--clr-text);
@@ -2265,7 +2290,7 @@
 /* Catalog Grid */
 .storefront-products-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   gap: var(--space-6);
 }
 
