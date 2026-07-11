@@ -150,7 +150,7 @@ extra_js:
           {% assign sorted = combined_posts | sort: "date" | reverse %}
         {% endif %}
         
-        {% for p in sorted limit: 6 %}
+        {% for p in sorted limit: 12 %}
           {% if p.categories %}
             {% assign p_cat_raw = p.categories[0] | default: "Technology" %}
             {% assign data_cats = "" %}
