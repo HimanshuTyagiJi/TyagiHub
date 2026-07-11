@@ -78,6 +78,80 @@ extra_js:
           </button>
         </div>
 
+        <!-- ======================================================== -->
+        <!-- 🚀 START: SHIELD DYNAMIC NEXT & PREVIOUS POST NAVIGATION -->
+        <!-- ======================================================== -->
+        {% if page.lang == "hi" %}
+          {% assign all_shield_posts = site.shield_hi | sort:"date" %}
+        {% else %}
+          {% assign all_shield_posts = site.shield | where_exp: "item", "item.lang != 'hi'" | sort:"date" %}
+        {% endif %}
+        
+        {% assign shield_count = all_shield_posts | size %}
+        {% assign current_shield_index = nil %}
+
+        {% for p in all_shield_posts %}
+          {% if p.url == page.url %}
+            {% assign current_shield_index = forloop.index0 %}
+          {% endif %}
+        {% endfor %}
+
+        {% if current_shield_index != nil %}
+          {% assign prev_shield_index = current_shield_index | minus: 1 %}
+          {% assign next_shield_index = current_shield_index | plus: 1 %}
+
+          <nav class="post-nav-container" aria-label="Shield navigation" style="display: flex; justify-content: space-between; gap: 16px; margin-top: 40px; flex-wrap: wrap;">
+            
+            <!-- Previous Post Button -->
+            <div class="post-nav-link prev" style="flex: 1; min-width: 200px;">
+              {% if current_shield_index > 0 %}
+                {% assign prev_post = all_shield_posts[prev_shield_index] %}
+                <a href="{{ prev_post.url | relative_url }}" style="text-decoration: none; display: block;">
+                  <span class="nav-label" style="display: block; font-size: 13px; color: var(--text-muted); margin-bottom: 4px;">
+                    <i class="fas fa-arrow-left"></i> {% if page.lang == "hi" %}पिछला आर्टिकल{% else %}Previous Safeguard{% endif %}
+                  </span>
+                  <div class="nav-post-title" style="font-weight: 600; color: var(--clr-heading);">{{ prev_post.title }}</div>
+                </a>
+              {% else %}
+                <span class="nav-disabled">
+                  <span class="nav-label" style="display: block; font-size: 13px; color: var(--text-muted); opacity: 0.5; margin-bottom: 4px;">
+                    {% if page.lang == "hi" %}पिछला{% else %}Previous{% endif %}
+                  </span>
+                  <div class="nav-post-title disabled-title" style="font-weight: 600; opacity: 0.4;">
+                    {% if page.lang == "hi" %}कोई पिछला सुरक्षित पोस्ट नहीं है{% else %}No previous safeguard{% endif %}
+                  </div>
+                </span>
+              {% endif %}
+            </div>
+
+            <!-- Next Post Button -->
+            <div class="post-nav-link next" style="flex: 1; min-width: 200px; text-align: right;">
+              {% if next_shield_index < shield_count %} 
+                {% assign next_post = all_shield_posts[next_shield_index] %} 
+                <a href="{{ next_post.url | relative_url }}" style="text-decoration: none; display: block;">
+                  <span class="nav-label" style="display: block; font-size: 13px; color: var(--text-muted); margin-bottom: 4px;">
+                    {% if page.lang == "hi" %}अगला आर्टिकल{% else %}Next Safeguard{% endif %} <i class="fas fa-arrow-right"></i>
+                  </span>
+                  <div class="nav-post-title" style="font-weight: 600; color: var(--clr-heading);">{{ next_post.title }}</div>
+                </a>
+              {% else %}
+                <span class="nav-disabled">
+                  <span class="nav-label" style="display: block; font-size: 13px; color: var(--text-muted); opacity: 0.5; margin-bottom: 4px;">
+                    {% if page.lang == "hi" %}अगला{% else %}Next{% endif %}
+                  </span>
+                  <div class="nav-post-title disabled-title" style="font-weight: 600; opacity: 0.4;">
+                    {% if page.lang == "hi" %}कोई अगला सुरक्षित पोस्ट नहीं है{% else %}No next safeguard{% endif %}
+                  </div>
+                </span>
+              {% endif %}
+            </div>
+
+          </nav>
+        {% endif %}
+        <!-- ======================================================== -->
+        <!-- 🚀 END: SHIELD DYNAMIC NEXT & PREVIOUS POST NAVIGATION -->
+        <!-- ======================================================== -->
+
         <hr style="margin:44px 0;border:none;border-top:1px solid var(--border-color)">
       {% endif %}
 
