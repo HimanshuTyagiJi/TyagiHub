@@ -366,30 +366,191 @@
   
   }
 }
-.shield-knowledge-base {
-  padding: 40px 0;
-  border-top: 1px solid var(--border-color, #222);
-}
-.shield-knowledge-base h2 {
-  font-size: 24px;
-  font-weight: 800;
-  margin-bottom: 25px;
-  color: var(--clr-heading, #fff);
-}
-.shield-insights-grid {
-  display: grid;
-  gap: 30px;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-}
-.shield-insights-column h3 {
-  font-size: 18px;
-  font-weight: 700;
-  margin-bottom: 12px;
-  color: var(--clr-accent, #007bff);
-}
-.shield-insights-column p {
-  font-size: 14px;
-  color: var(--text-muted, #888);
-  line-height: 1.7;
-  text-align: justify;
-}
+
+
+
+
+
+  .shield-knowledge-base {
+    padding: var(--space-16) 0;
+    background-color: transparent;
+    color: var(--clr-text);
+    font-family: var(--font-body);
+    transition: color var(--ease-normal);
+  }
+
+  .shield-container {
+    width: 100%;
+    max-width: var(--container-max);
+    margin: 0 auto;
+    padding: 0 var(--space-4);
+    box-sizing: border-box;
+  }
+
+  .shield-header {
+    text-align: center;
+    margin-bottom: var(--space-16);
+  }
+
+  .shield-main-title {
+    font-family: var(--font-display);
+    font-size: var(--fs-2xl);
+    font-weight: var(--fw-black);
+    color: var(--text-heading);
+    margin-bottom: var(--space-6);
+    letter-spacing: -0.025em;
+  }
+
+  .shield-subtitle {
+    font-size: var(--fs-md);
+    line-height: var(--lh-normal);
+    color: var(--clr-text-2);
+    max-width: 896px;
+    margin: 0 auto;
+    font-weight: var(--fw-regular);
+    text-align: justify;
+    text-justify: inter-word;
+  }
+
+  .shield-insights-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-8);
+  }
+
+  @media (min-width: 768px) {
+    .shield-insights-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  .shield-insights-column {
+    padding: var(--space-8);
+    border-radius: var(--radius-xl);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-sizing: border-box;
+    transition: transform var(--ease-normal), 
+                border-color var(--ease-normal), 
+                box-shadow var(--ease-normal),
+                background-color var(--ease-normal);
+  }
+
+  .shield-insights-column:hover {
+    transform: translateY(-6px);
+  }
+
+  .shield-insights-column h3 {
+    font-family: var(--font-display);
+    font-size: var(--fs-md);
+    font-weight: var(--fw-bold);
+    color: var(--text-heading);
+    margin-top: 0;
+    margin-bottom: var(--space-4);
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+  }
+
+  .shield-insights-column p {
+    font-size: var(--fs-xs);
+    line-height: var(--lh-normal);
+    color: var(--text-paragraph);
+    margin: 0;
+    font-weight: var(--fw-regular);
+  }
+
+  .justify-text {
+    text-align: justify;
+    text-justify: inter-word;
+  }
+
+  .card-phishing { 
+    background-color: #1e1b1b; 
+    border: 2px solid #3f2222; 
+  }
+  .card-phishing:hover { 
+    border-color: var(--clr-shield); 
+    box-shadow: 0 0 20px rgba(248, 113, 113, 0.4);
+  }
+
+  .card-auth { 
+    background-color: #131a26; 
+    border: 2px solid #22354f; 
+  }
+  .card-auth:hover { 
+    border-color: var(--clr-apps); 
+    box-shadow: 0 0 20px rgba(96, 165, 250, 0.4);
+  }
+
+  .card-device { 
+    background-color: #111e21; 
+    border: 2px solid #1a3c3d; 
+  }
+  .card-device:hover { 
+    border-color: var(--clr-learn); 
+    box-shadow: 0 0 20px rgba(62, 207, 207, 0.4);
+  }
+
+  .card-network { 
+    background-color: #1a1824; 
+    border: 2px solid #362854; 
+  }
+  .card-network:hover { 
+    border-color: var(--clr-editor); 
+    box-shadow: 0 0 20px rgba(167, 139, 249, 0.4);
+  }
+
+  .card-database { 
+    background-color: #1e1a15; 
+    border: 2px solid #443217; 
+  }
+  .card-database:hover { 
+    border-color: var(--clr-tools); 
+    box-shadow: 0 0 20px rgba(245, 166, 35, 0.4);
+  }
+
+  .card-malware { 
+    background-color: #1f1816; 
+    border: 2px solid #44271d; 
+  }
+  .card-malware:hover { 
+    border-color: var(--clr-blog); 
+    box-shadow: 0 0 20px rgba(251, 146, 60, 0.4);
+  }
+
+  [data-theme="light"] .card-phishing { background-color: #fff5f5; border-color: #fed7d7; }
+  [data-theme="light"] .card-auth { background-color: #eff6ff; border-color: #dbeafe; }
+  [data-theme="light"] .card-device { background-color: #e6fffa; border-color: #b2f5ea; }
+  [data-theme="light"] .card-network { background-color: #faf5ff; border-color: #e9d5ff; }
+  [data-theme="light"] .card-database { background-color: #fffaf0; border-color: #fef3c7; }
+  [data-theme="light"] .card-malware { background-color: #fff7ed; border-color: #ffedd5; }
+
+  .shield-insights-info-block {
+    margin-top: var(--space-16);
+    background-color: transparent;
+    border: 2px solid var(--clr-border);
+    padding: var(--space-8);
+    border-radius: var(--radius-xl);
+    box-sizing: border-box;
+    transition: border-color var(--ease-normal);
+  }
+
+  .shield-insights-info-block h2 {
+    font-family: var(--font-display);
+    font-size: var(--fs-lg);
+    font-weight: var(--fw-bold);
+    color: var(--text-heading);
+    margin-top: 0;
+    margin-bottom: var(--space-4);
+    letter-spacing: -0.025em;
+  }
+
+  .shield-insights-info-block p {
+    font-size: var(--fs-base);
+    line-height: var(--lh-loose);
+    color: var(--clr-text-2);
+    margin: 0;
+    font-weight: var(--fw-regular);
+  }
