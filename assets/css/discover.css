@@ -1487,6 +1487,8 @@
     max-width: 896px;
     margin: 0 auto;
     font-weight: var(--fw-regular);
+     text-align: justify;
+  text-justify: inter-word;
   }
 
   .discover-insights-grid {
