@@ -34,10 +34,6 @@ extra_js:
         भविष्य के नवाचार — सब कुछ एक शक्तिशाली डिस्कवर फ़ीड में।
       </p>
 
-      <p class="discover-seo-text" style="display: none !important; visibility: hidden;">
-        TyagiHub के आधिकारिक हिंदी डिस्कवर फ़ीड में आपका स्वागत है। त्यागी मल्टीटेक द्वारा विशेष रूप से तैयार किए गए आर्टिफिशियल इंटेलिजेंस ट्यूटोरियल, उन्नत डेटा सुरक्षा आर्किटेक्चर, डिजिटल लेआउट और सॉफ्टवेयर इंजीनियरिंग पद्धतियों के हमारे व्यापक भंडार का अन्वेषण करें। उच्च-प्रदर्शन स्केल के लिए अनुकूलित नेटवर्क प्रोटोकॉल, कंप्यूटिंग ऑटोमेशन, इंटरनेट सुरक्षा रुझानों और डेवलपर उपयोगिताओं पर आधुनिक अंतर्दृष्टि के साथ आगे रहें।
-      </p>
-
       <div class="discover-icons">
         <div class="discover-icon">
           <svg viewBox="0 0 64 64" class="icon-ai">
@@ -81,13 +77,9 @@ extra_js:
       
       <div class="discover-categories" id="category-buttons-container">
 
-        {% if page.lang == "hi" %}
-          {% assign all_posts_size = site.posts_hi.size %}
-        {% else %}
-          {% assign posts_size = site.posts.size %}
-          {% assign shield_size = site.shield.size %}
-          {% assign all_posts_size = posts_size | plus: shield_size %}
-        {% endif %}
+        {% assign posts_hi_size = site.posts_hi.size %}
+        {% assign shield_hi_size = site.shield_hi.size %}
+        {% assign all_posts_size = posts_hi_size | plus: shield_hi_size %}
 
         <button class="discover-cat-btn" data-cat="all" onclick="window.location.href='?category=all'">
           सभी
@@ -97,7 +89,6 @@ extra_js:
         {% assign categories = site.categories | sort %}
         {% for category in categories %}
           {% unless category[0] == "discover" %}
-            
             {% assign cat_name = category[0] | downcase %}
             
             {% if cat_name == "appsandinternet" %}
@@ -117,12 +108,11 @@ extra_js:
           {% endunless %}
         {% endfor %}
 
-        {% unless page.lang == "hi" %}
-          <button class="discover-cat-btn" data-cat="cybersecurity" onclick="window.location.href='?category=cybersecurity'">
-            साइबर सुरक्षा
-            <span>({{ site.shield.size }})</span>
-          </button>
-        {% endunless %}
+        <!-- Hindi Fixed Guard: Dynamic activation of Hindi Cyber Security Collection Counter -->
+        <button class="discover-cat-btn" data-cat="cybersecurity" onclick="window.location.href='?category=cybersecurity'">
+          साइबर सुरक्षा
+          <span>({{ site.shield_hi.size }})</span>
+        </button>
 
       </div>
 
@@ -134,21 +124,14 @@ extra_js:
       
       <div id="post-wrapper" class="static-seo-load">
         
-        {% if page.lang == "hi" %}
-          {% assign sorted = site.posts_hi | sort: "date" | reverse %}
-        {% else %}
-          {% assign combined_posts = "" | split: "" %}
-          
-          {% for p in site.posts %}
-            {% assign combined_posts = combined_posts | push: p %}
-          {% endfor %}
-          
-          {% for p in site.shield %}
-            {% assign combined_posts = combined_posts | push: p %}
-          {% endfor %}
-          
-          {% assign sorted = combined_posts | sort: "date" | reverse %}
-        {% endif %}
+        {% assign combined_posts = "" | split: "" %}
+        {% for p in site.posts_hi %}
+          {% assign combined_posts = combined_posts | push: p %}
+        {% endfor %}
+        {% for p in site.shield_hi %}
+          {% assign combined_posts = combined_posts | push: p %}
+        {% endfor %}
+        {% assign sorted = combined_posts | sort: "date" | reverse %}
         
         {% for p in sorted limit: 12 %}
           {% if p.categories %}
@@ -178,7 +161,7 @@ extra_js:
           {% endif %}
 
           <div class="horizontal-post-card js-post"
-               data-lang="{{ p.lang | default: 'en' }}"
+               data-lang="{{ p.lang | default: 'hi' }}"
                data-categories="{{ data_cats | strip }}"
                data-post-url="{{ p.url | relative_url }}">
             
@@ -192,7 +175,6 @@ extra_js:
               </div>
 
               <div class="thumb-media-box" style="width:100%; height:100%; display:flex; align-items:center; justify-content:center; position:relative;">
-                
                 <img src="{{ p.image | default: '/assets/images/default-thumb.png' }}" 
                      alt="{{ p.title | escape }} - TyagiHub" 
                      title="{{ p.title | escape }} - TyagiHub" 
@@ -212,9 +194,7 @@ extra_js:
                     {{ p.title }}
                   </span>
                 </div>
-
               </div>
-
             </div>
 
             <div class="post-info">
@@ -256,6 +236,8 @@ extra_js:
 
     </div>
   </section>
+
+</div>
 
 <section class="discover-insights-section">
   <div class="discover-insights-container">
