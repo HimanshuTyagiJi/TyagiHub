@@ -72,6 +72,7 @@
   border: 1px solid var(--clr-border, #1f2937);
   overflow: hidden;
   transition: .25s ease;
+   margin-bottom: 25px;
 }
 
 .horizontal-post-card:hover {
