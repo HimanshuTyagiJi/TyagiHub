@@ -18,142 +18,135 @@ extra_js:
 
     <div class="tc-left">
 
-      {% if page.is_post %}
+      {% assign words = content | number_of_words %}
 
-        {% assign words = content | number_of_words %}
-
-        {% if page.lang == "hi" %}
-          {% if words < 360 %}
-            {% assign read_time = "2 मिनट का पाठ" %}
-          {% else %}
-            {% assign minutes = words | divided_by: 180 %}
-            {% assign read_time = minutes | append: " मिनट का पाठ" %}
-          {% endif %}
+      {% if page.lang == "hi" %}
+        {% if words < 360 %}
+          {% assign read_time = "2 मिनट का पाठ" %}
         {% else %}
-          {% if words < 360 %}
-            {% assign read_time = "2 min read" %}
-          {% else %}
-            {% assign minutes = words | divided_by: 180 %}
-            {% assign read_time = minutes | append: " min read" %}
-          {% endif %}
+          {% assign minutes = words | divided_by: 180 %}
+          {% assign read_time = minutes | append: " मिनट का पाठ" %}
         {% endif %}
-
-        <h1 class="post-title">
-          {{ page.title }}
-        </h1>
-
-        <p style="color:var(--text-muted);font-size:14px;margin-bottom:28px;">
-          {% if page.lang == "hi" %}द्वारा{% else %}By{% endif %} {{ page.author | default:"Tyagi MultiTech" }}
-          ·
-          {{ page.date | date: "%d %b %Y" }}
-          ·
-          {{ read_time }}
-        </p>
-
-        {% if page.image %}
-          <div class="post-hero-img">
-            <img src="{{ page.image | relative_url }}" alt="{{ page.title }}" loading="lazy" style="width:100%;height:auto;border-radius:12px;">
-          </div>
+      {% else %}
+        {% if words < 360 %}
+          {% assign read_time = "2 min read" %}
+        {% else %}
+          {% assign minutes = words | divided_by: 180 %}
+          {% assign read_time = minutes | append: " min read" %}
         {% endif %}
-
-        <div class="toc-container" id="toc-box" style="display:none;margin-bottom:30px;">
-          <div class="toc-title" style="font-family: var(--font-display); font-weight: var(--fw-bold); color: var(--clr-heading);">
-            {% if page.lang == "hi" %}मुख्य विषय{% else %}Topics{% endif %}
-          </div>
-          <ul id="toc-list"></ul>
-          <button id="toc-toggle-btn" class="toc-see-more">
-            {% if page.lang == "hi" %}और देखें{% else %}See More{% endif %}
-          </button>
-        </div>
-
       {% endif %}
 
+      <h1 class="post-title">
+        {{ page.title }}
+      </h1>
+
+      <p style="color:var(--text-muted);font-size:14px;margin-bottom:28px;">
+        {% if page.lang == "hi" %}द्वारा{% else %}By{% endif %} {{ page.author | default:"Tyagi MultiTech" }}
+        ·
+        {{ page.date | date: "%d %b %Y" }}
+        ·
+        {{ read_time }}
+      </p>
+
+      {% if page.image %}
+        <div class="post-hero-img">
+          <img src="{{ page.image | relative_url }}" alt="{{ page.title }}" loading="lazy" style="width:100%;height:auto;border-radius:12px;">
+        </div>
+      {% endif %}
+
+      <div class="toc-container" id="toc-box" style="display:none;margin-bottom:30px;">
+        <div class="toc-title" style="font-family: var(--font-display); font-weight: var(--fw-bold); color: var(--clr-heading);">
+          {% if page.lang == "hi" %}मुख्य विषय{% else %}Topics{% endif %}
+        </div>
+        <ul id="toc-list"></ul>
+        <button id="toc-toggle-btn" class="toc-see-more">
+          {% if page.lang == "hi" %}और देखें{% else %}See More{% endif %}
+        </button>
+      </div>
+
+      <!-- Main Content Block -->
       {{ content }}
 
-      {% if page.is_post %}
-        <div class="share-wrapper">
-          <p class="share-label">{% if page.lang == "hi" %}दोस्तों के साथ शेयर करें 🚀{% else %}Share With Friends 🚀{% endif %}</p>
-          <button onclick="tyagiShare()" class="tyagi-share-btn">
-            {% if page.lang == "hi" %}आर्टिकल शेयर करें{% else %}SHARE ARTICLE{% endif %}
-          </button>
-        </div>
+      <!-- Share Layout -->
+      <div class="share-wrapper" style="margin-top: 35px;">
+        <p class="share-label">{% if page.lang == "hi" %}दोस्तों के साथ शेयर करें 🚀{% else %}Share With Friends 🚀{% endif %}</p>
+        <button onclick="nativeShare('{{ page.title | escape }}','{{ page.url | absolute_url }}')" class="tyagi-share-btn" style="padding: 10px 20px; border-radius: 8px; background: #16a34a; color: #fff; border: none; cursor: pointer; font-weight: 600;">
+          {% if page.lang == "hi" %}आर्टिकल शेयर करें{% else %}SHARE ARTICLE{% endif %}
+        </button>
+      </div>
 
-        <!-- ======================================================== -->
-        <!-- 🚀 START: SHIELD DYNAMIC NEXT & PREVIOUS POST NAVIGATION -->
-        <!-- ======================================================== -->
-        {% if page.lang == "hi" %}
-          {% assign all_shield_posts = site.shield_hi | sort:"date" %}
-        {% else %}
-          {% assign all_shield_posts = site.shield | where_exp: "item", "item.lang != 'hi'" | sort:"date" %}
-        {% endif %}
-        
-        {% assign shield_count = all_shield_posts | size %}
-        {% assign current_shield_index = nil %}
-
-        {% for p in all_shield_posts %}
-          {% if p.url == page.url %}
-            {% assign current_shield_index = forloop.index0 %}
-          {% endif %}
-        {% endfor %}
-
-        {% if current_shield_index != nil %}
-          {% assign prev_shield_index = current_shield_index | minus: 1 %}
-          {% assign next_shield_index = current_shield_index | plus: 1 %}
-
-          <nav class="post-nav-container" aria-label="Shield navigation" style="display: flex; justify-content: space-between; gap: 16px; margin-top: 40px; flex-wrap: wrap;">
-            
-            <!-- Previous Post Button -->
-            <div class="post-nav-link prev" style="flex: 1; min-width: 200px;">
-              {% if current_shield_index > 0 %}
-                {% assign prev_post = all_shield_posts[prev_shield_index] %}
-                <a href="{{ prev_post.url | relative_url }}" style="text-decoration: none; display: block;">
-                  <span class="nav-label" style="display: block; font-size: 13px; color: var(--text-muted); margin-bottom: 4px;">
-                    <i class="fas fa-arrow-left"></i> {% if page.lang == "hi" %}पिछला आर्टिकल{% else %}Previous Safeguard{% endif %}
-                  </span>
-                  <div class="nav-post-title" style="font-weight: 600; color: var(--clr-heading);">{{ prev_post.title }}</div>
-                </a>
-              {% else %}
-                <span class="nav-disabled">
-                  <span class="nav-label" style="display: block; font-size: 13px; color: var(--text-muted); opacity: 0.5; margin-bottom: 4px;">
-                    {% if page.lang == "hi" %}पिछला{% else %}Previous{% endif %}
-                  </span>
-                  <div class="nav-post-title disabled-title" style="font-weight: 600; opacity: 0.4;">
-                    {% if page.lang == "hi" %}कोई पिछला सुरक्षित पोस्ट नहीं है{% else %}No previous safeguard{% endif %}
-                  </div>
-                </span>
-              {% endif %}
-            </div>
-
-            <!-- Next Post Button -->
-            <div class="post-nav-link next" style="flex: 1; min-width: 200px; text-align: right;">
-              {% if next_shield_index < shield_count %} 
-                {% assign next_post = all_shield_posts[next_shield_index] %} 
-                <a href="{{ next_post.url | relative_url }}" style="text-decoration: none; display: block;">
-                  <span class="nav-label" style="display: block; font-size: 13px; color: var(--text-muted); margin-bottom: 4px;">
-                    {% if page.lang == "hi" %}अगला आर्टिकल{% else %}Next Safeguard{% endif %} <i class="fas fa-arrow-right"></i>
-                  </span>
-                  <div class="nav-post-title" style="font-weight: 600; color: var(--clr-heading);">{{ next_post.title }}</div>
-                </a>
-              {% else %}
-                <span class="nav-disabled">
-                  <span class="nav-label" style="display: block; font-size: 13px; color: var(--text-muted); opacity: 0.5; margin-bottom: 4px;">
-                    {% if page.lang == "hi" %}अगला{% else %}Next{% endif %}
-                  </span>
-                  <div class="nav-post-title disabled-title" style="font-weight: 600; opacity: 0.4;">
-                    {% if page.lang == "hi" %}कोई अगला सुरक्षित पोस्ट नहीं है{% else %}No next safeguard{% endif %}
-                  </div>
-                </span>
-              {% endif %}
-            </div>
-
-          </nav>
-        {% endif %}
-        <!-- ======================================================== -->
-        <!-- 🚀 END: SHIELD DYNAMIC NEXT & PREVIOUS POST NAVIGATION -->
-        <!-- ======================================================== -->
-
-        <hr style="margin:44px 0;border:none;border-top:1px solid var(--border-color)">
+      <!-- ======================================================== -->
+      <!-- 🚀 SHIELD PARAMETRIC NEXT & PREVIOUS POST ENGINE         -->
+      <!-- ======================================================== -->
+      {% if page.lang == "hi" %}
+        {% assign all_shield_posts = site.shield_hi | sort:"date" %}
+      {% else %}
+        {% assign all_shield_posts = site.shield | where_exp: "item", "item.lang != 'hi'" | sort:"date" %}
       {% endif %}
+      
+      {% assign shield_count = all_shield_posts | size %}
+      {% assign current_shield_index = nil %}
+
+      {% for p in all_shield_posts %}
+        {% if p.url == page.url %}
+          {% assign current_shield_index = forloop.index0 %}
+        {% endif %}
+      {% endfor %}
+
+      {% if current_shield_index != nil %}
+        {% assign prev_shield_index = current_shield_index | minus: 1 %}
+        {% assign next_shield_index = current_shield_index | plus: 1 %}
+
+        <nav class="post-nav-container" aria-label="Shield navigation" style="display: flex; justify-content: space-between; gap: 16px; margin-top: 50px; padding-top: 25px; border-top: 1px solid var(--border-color, rgba(255,255,255,0.1)); flex-wrap: wrap;">
+          
+          <!-- Previous Safeguard -->
+          <div class="post-nav-link prev" style="flex: 1; min-width: 220px;">
+            {% if current_shield_index > 0 %}
+              {% assign prev_post = all_shield_posts[prev_shield_index] %}
+              <a href="{{ prev_post.url | relative_url }}" style="text-decoration: none; display: block;">
+                <span class="nav-label" style="display: block; font-size: 13px; color: var(--text-muted); margin-bottom: 4px;">
+                  <i class="fas fa-arrow-left"></i> {% if page.lang == "hi" %}पिछला आर्टिकल{% else %}Previous Post{% endif %}
+                </span>
+                <div class="nav-post-title" style="font-weight: 600; color: #16a34a;">{{ prev_post.title }}</div>
+              </a>
+            {% else %}
+              <span class="nav-disabled" style="display: block;">
+                <span class="nav-label" style="display: block; font-size: 13px; color: var(--text-muted); opacity: 0.5; margin-bottom: 4px;">
+                  {% if page.lang == "hi" %}पिछला{% else %}Previous{% endif %}
+                </span>
+                <div class="nav-post-title disabled-title" style="font-weight: 600; opacity: 0.4; color: var(--text-muted);">
+                  {% if page.lang == "hi" %}कोई पिछला पोस्ट नहीं है{% else %}No previous post{% endif %}
+                </div>
+              </span>
+            {% endif %}
+          </div>
+
+          <!-- Next Safeguard -->
+          <div class="post-nav-link next" style="flex: 1; min-width: 220px; text-align: right;">
+            {% if next_shield_index < shield_count %} 
+              {% assign next_post = all_shield_posts[next_shield_index] %} 
+              <a href="{{ next_post.url | relative_url }}" style="text-decoration: none; display: block;">
+                <span class="nav-label" style="display: block; font-size: 13px; color: var(--text-muted); margin-bottom: 4px;">
+                  {% if page.lang == "hi" %}अगला आर्टिकल{% else %}Next Post{% endif %} <i class="fas fa-arrow-right"></i>
+                </span>
+                <div class="nav-post-title" style="font-weight: 600; color: #16a34a;">{{ next_post.title }}</div>
+              </a>
+            {% else %}
+              <span class="nav-disabled" style="display: block;">
+                <span class="nav-label" style="display: block; font-size: 13px; color: var(--text-muted); opacity: 0.5; margin-bottom: 4px;">
+                  {% if page.lang == "hi" %}अगला{% else %}Next{% endif %}
+                </span>
+                <div class="nav-post-title disabled-title" style="font-weight: 600; opacity: 0.4; color: var(--text-muted);">
+                  {% if page.lang == "hi" %}कोई अगला पोस्ट नहीं है{% else %}No next post{% endif %}
+                </div>
+              </span>
+            {% endif %}
+          </div>
+
+        </nav>
+      {% endif %}
+
+      <hr style="margin:44px 0;border:none;border-top:1px solid var(--border-color, rgba(255,255,255,0.1))">
 
     </div>
 
