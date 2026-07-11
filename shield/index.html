@@ -34,7 +34,7 @@ extra_js:
       </div>
 
       <div id="post-wrapper" class="grid-3">
-        {% for p in site.shield limit: 6 %}
+        {% for p in site.shield limit: 12 %}
         <a href="{{ p.url | relative_url }}" class="blog-card">
           <div class="blog-card__thumb">
             <img src="{{ p.image | default:'/assets/images/default-thumb.png' }}" alt="{{ p.title | escape }} - TyagiHub" title="{{ p.title | escape }} - TyagiHub" loading="lazy" width="354" height="236">
