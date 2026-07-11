@@ -780,14 +780,14 @@
   .discover-sidebar {
     position: fixed;
     top: 60px;
-    right: 24px;
+    right: ;
     width: 340px;
     height: calc(100vh - 6%);
     overflow-y: auto;
     overflow-x: hidden;
     padding-right: 4px;
     scrollbar-width: none;
-    border-left: 2px solid var(--clr-bg-3);
+    
     border-radius: 25px;
   }
   .discover-sidebar::-webkit-scrollbar {
@@ -805,6 +805,8 @@
   border-radius: 18px;
   padding: 18px;
   transition: transform .25s ease, border-color .25s ease, box-shadow .25s ease;
+       margin-bottom: 20px;
+    border-radius: 20px;
 }
 
 .sidebar-section:hover {
