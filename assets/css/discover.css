@@ -1426,7 +1426,6 @@
     border-radius: 18px;
   }
   
-  /* 🟢 Mobile par bhi stretch rokhne ke liye aspect-ratio rule lagaya */
   .post-img {
     width: 100%;
     min-width: 100%;
@@ -1434,7 +1433,6 @@
     aspect-ratio: 354 / 236 !important;
   }
 }
-/* Default State: 4 items ke baad sab chupao */
 .toc-list li:nth-child(n+5) {
   display: none;
 }
@@ -1452,141 +1450,219 @@
 #toc-toggle:checked ~ .toc-btn .text-less {
   display: inline !important;
 }
-
-/* ==========================================================================
-   TyagiHub Discover Insights Component - Light & Dark Adaptive Premium Styles
-   ========================================================================== */
-.discover-insights-section {
-  padding: 60px 0;
-  border-top: 1px solid rgba(128, 128, 128, 0.15);
-  margin-top: 60px;
-  /* Default light theme color matrix background */
-  background: linear-gradient(180deg, #f8fafc 0%, #f1f5f9 100%);
-  position: relative;
-   border-radius:25px;
-}
-
-/* Base Dark Theme Detection override helper */
-[data-theme="dark"] .discover-insights-section {
-  border-top: 1px solid rgba(255, 255, 255, 0.06);
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.01) 0%, rgba(15, 23, 42, 0.2) 100%);
-}
-
-.discover-insights-container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 24px;
-}
-
-/* Main Core Page Header Typography - Heavy Bold Setup */
-.discover-insights-main-title {
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  font-size: 26px;
-  font-weight: 800; /* Extra bold structural visibility */
-  color: #0f172a; /* Light theme crisp black */
-  margin: 0 0 32px 0;
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  letter-spacing: -0.02em;
-}
-
-[data-theme="dark"] .discover-insights-main-title {
-  color: #ffffff;
-}
-
-.discover-insights-icon {
-  stroke: #1a73e8;
-  filter: drop-shadow(0 2px 6px rgba(26, 115, 232, 0.2));
-  flex-shrink: 0;
-}
-
-.discover-insights-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: 28px;
-}
-
-/* Premium Adaptive Grid Module Card Component Layout Box */
-.discover-insights-col {
-  background: #ffffff; /* Clean glossy white background for light theme */
-  border: 1px solid rgba(0, 0, 0, 0.06);
-  border-radius: 16px; /* Smooth rounded borders */
-  padding: 28px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
-  transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1), 
-              border-color 0.3s ease, 
-              box-shadow 0.3s ease;
-}
-
-[data-theme="dark"] .discover-insights-col {
-  background: rgba(30, 31, 38, 0.6);
-  border: 1px solid rgba(255, 255, 255, 0.05);
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-}
-
-/* Micro-interaction physics logic on mouse hover states */
-.discover-insights-col:hover {
-  transform: translateY(-5px); /* Clean snappy lift */
-  border-color: #1a73e8;
-  box-shadow: 0 12px 30px rgba(26, 115, 232, 0.15);
-}
-
-[data-theme="dark"] .discover-insights-col:hover {
-  border-color: rgba(26, 115, 232, 0.3);
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.35), 0 0 15px rgba(26, 115, 232, 0.1);
-}
-
-/* Heavy Deep Bold Inner Titles for Grid Architecture */
-.discover-insights-col-title {
-  font-family: system-ui, -apple-system, sans-serif;
-  font-size: 18px;
-  font-weight: 750; /* Super heavy crisp header weight */
-  color: #1e293b; /* Premium structural deep dark */
-  margin: 0 0 12px 0;
-  display: flex;
-  align-items: center;
-  letter-spacing: -0.01em;
-}
-
-[data-theme="dark"] .discover-insights-col-title {
-  color: #ffffff;
-}
-
-/* Clean Readable High-Contrast Description Prose Paragraphs */
-.discover-insights-text {
-  font-family: system-ui, -apple-system, sans-serif;
-  font-size: 14.5px;
-  color: #334155; /* Sharp high-contrast dark gray text for pure light-mode readability */
-  line-height: 1.65;
-  margin: 0;
-  text-align: justify;
-}
-
-[data-theme="dark"] .discover-insights-text {
-  color: #b0b3b8;
-}
-
-/* Mobile Breakpoint System Stack Management */
-@media (max-width: 768px) {
-  .discover-insights-section {
-    padding: 40px 0;
-    margin-top: 40px;
+ .discover-insights-section {
+    padding: var(--space-16) 0;
+    background-color: transparent;
+    color: var(--clr-text);
+    font-family: var(--font-body);
+    transition: color var(--ease-normal);
   }
-  
+
+  .discover-insights-container {
+    width: 100%;
+    max-width: var(--container-max);
+    margin: 0 auto;
+    padding: 0 var(--space-4);
+    box-sizing: border-box;
+  }
+
+  .discover-insights-header {
+    text-align: center;
+    margin-bottom: var(--space-16);
+  }
+
   .discover-insights-main-title {
-    font-size: 22px;
-    margin-bottom: 24px;
+    font-family: var(--font-display);
+    font-size: var(--fs-2xl);
+    font-weight: var(--fw-black);
+    color: var(--text-heading);
+    margin-bottom: var(--space-6);
+    letter-spacing: -0.025em;
   }
-  
+
+  .discover-insights-subtitle {
+    font-size: var(--fs-md);
+    line-height: var(--lh-normal);
+    color: var(--clr-text-2);
+    max-width: 896px;
+    margin: 0 auto;
+    font-weight: var(--fw-regular);
+  }
+
   .discover-insights-grid {
+    display: grid;
     grid-template-columns: 1fr;
-    gap: 20px;
+    gap: var(--space-8);
   }
-  
+
+  @media (min-width: 768px) {
+    .discover-insights-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
   .discover-insights-col {
-    padding: 22px;
+    padding: var(--space-8);
+    border-radius: var(--radius-xl);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-sizing: border-box;
+    transition: transform var(--ease-normal), 
+                border-color var(--ease-normal), 
+                box-shadow var(--ease-normal),
+                background-color var(--ease-normal);
   }
-}
+
+  .discover-insights-col:hover {
+    transform: translateY(-6px);
+  }
+
+  .discover-insights-col h3 {
+    font-family: var(--font-display);
+    font-size: var(--fs-md);
+    font-weight: var(--fw-bold);
+    color: var(--text-heading);
+    margin-top: 0;
+    margin-bottom: var(--space-4);
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+  }
+
+  .discover-insights-col p {
+    font-size: var(--fs-xs);
+    line-height: var(--lh-normal);
+    color: var(--text-paragraph);
+    margin: 0;
+    font-weight: var(--fw-regular);
+  }
+
+  .card-cyber { 
+    background-color: #1e1b1b; 
+    border: 2px solid #3f2222; 
+  }
+  .card-cyber:hover { 
+    border-color: var(--clr-shield); 
+    box-shadow: 0 0 20px rgba(248, 113, 113, 0.4);
+  }
+
+  .card-ai { 
+    background-color: #131a26; 
+    border: 2px solid #22354f; 
+  }
+  .card-ai:hover { 
+    border-color: var(--clr-apps); 
+    box-shadow: 0 0 20px rgba(96, 165, 250, 0.4);
+  }
+
+  .card-web { 
+    background-color: #111e21; 
+    border: 2px solid #1a3c3d; 
+  }
+  .card-web:hover { 
+    border-color: var(--clr-learn); 
+    box-shadow: 0 0 20px rgba(62, 207, 207, 0.4);
+  }
+
+  .card-prog { 
+    background-color: #1a1824; 
+    border: 2px solid #362854; 
+  }
+  .card-prog:hover { 
+    border-color: var(--clr-editor); 
+    box-shadow: 0 0 20px rgba(167, 139, 249, 0.4);
+  }
+
+  .card-cloud { 
+    background-color: #1e191b; 
+    border: 2px solid #472d2b; 
+  }
+  .card-cloud:hover { 
+    border-color: var(--clr-blog); 
+    box-shadow: 0 0 20px rgba(251, 146, 60, 0.4);
+  }
+
+  .card-android { 
+    background-color: #121d19; 
+    border: 2px solid #183d2b; 
+  }
+  .card-android:hover { 
+    border-color: var(--clr-stock); 
+    box-shadow: 0 0 20px rgba(52, 211, 153, 0.4);
+  }
+
+  .card-data { 
+    background-color: #16151f; 
+    border: 2px solid #2d2244; 
+  }
+  .card-data:hover { 
+    border-color: var(--clr-editor); 
+    box-shadow: 0 0 20px rgba(167, 139, 249, 0.4);
+  }
+
+  .card-tools { 
+    background-color: #1e1a15; 
+    border: 2px solid #443217; 
+  }
+  .card-tools:hover { 
+    border-color: var(--clr-tools); 
+    box-shadow: 0 0 20px rgba(245, 166, 35, 0.4);
+  }
+
+  .card-learning { 
+    background-color: #111c1e; 
+    border: 2px solid #1a363b; 
+  }
+  .card-learning:hover { 
+    border-color: var(--clr-learn); 
+    box-shadow: 0 0 20px rgba(62, 207, 207, 0.4);
+  }
+
+  .card-news { 
+    background-color: #1f1816; 
+    border: 2px solid #44271d; 
+  }
+  .card-news:hover { 
+    border-color: var(--clr-blog); 
+    box-shadow: 0 0 20px rgba(251, 146, 60, 0.4);
+  }
+
+  [data-theme="light"] .card-cyber { background-color: #fff5f5; border-color: #fed7d7; }
+  [data-theme="light"] .card-ai { background-color: #eff6ff; border-color: #dbeafe; }
+  [data-theme="light"] .card-web { background-color: #e6fffa; border-color: #b2f5ea; }
+  [data-theme="light"] .card-prog { background-color: #faf5ff; border-color: #e9d5ff; }
+  [data-theme="light"] .card-cloud { background-color: #fffaf0; border-color: #feebc8; }
+  [data-theme="light"] .card-android { background-color: #f0fff4; border-color: #c6f6d5; }
+  [data-theme="light"] .card-data { background-color: #f5f3ff; border-color: #ddd6fe; }
+  [data-theme="light"] .card-tools { background-color: #fffaf0; border-color: #fef3c7; }
+  [data-theme="light"] .card-learning { background-color: #e6fffa; border-color: #ccfbf1; }
+  [data-theme="light"] .card-news { background-color: #fff7ed; border-color: #ffedd5; }
+
+  .discover-insights-info-block {
+    margin-top: var(--space-16);
+    background-color: transparent;
+    border: 2px solid var(--clr-border);
+    padding: var(--space-8);
+    border-radius: var(--radius-xl);
+    box-sizing: border-box;
+    transition: border-color var(--ease-normal);
+  }
+
+  .discover-insights-info-block h2 {
+    font-family: var(--font-display);
+    font-size: var(--fs-lg);
+    font-weight: var(--fw-bold);
+    color: var(--text-heading);
+    margin-top: 0;
+    margin-bottom: var(--space-4);
+    letter-spacing: -0.025em;
+  }
+
+  .discover-insights-info-block p {
+    font-size: var(--fs-base);
+    line-height: var(--lh-loose);
+    color: var(--clr-text-2);
+    margin: 0;
+    font-weight: var(--fw-regular);
+  }
