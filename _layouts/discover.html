@@ -11,24 +11,7 @@ layout: default
 <div class="tc-wrapper">
 	<div class="tc-left">
 
-		{% if page.is_post %}
-			{% assign words = content | number_of_words %}
-			
-			{% if page.lang == "hi" %}
-				{% if words < 360 %} 
-					{% assign read_time = "2 मिनट का पाठ" %} 
-				{% else %} 
-					{% assign minutes = words | divided_by: 180 %}
-					{% assign read_time = minutes | append: " मिनट में पढ़ें" %} 
-				{% endif %}
-			{% else %}
-				{% if words < 360 %} 
-					{% assign read_time = "2 min read" %} 
-				{% else %} 
-					{% assign minutes = words | divided_by: 180 %}
-					{% assign read_time = minutes | append: " min read" %} 
-				{% endif %}
-			{% endif %} 
+		
 
 			<div class="post-hero">
 				{% if page.categories %}
@@ -45,6 +28,26 @@ layout: default
 					<span>✍️ {% if page.lang == "hi" %}द्वारा{% else %}By{% endif %} <a href="/profile.html?author={{ page.author | url_encode }}" class="author-link">{{ page.author | default: "Himanshu Tyagi" }}</a></span> · 
 					<span>📅 {{ page.date | date: "%d %b %Y" }}</span> · 
 					<span>⏱️ {{ read_time }}</span>
+
+					{% if page.is_post %}
+			{% assign words = content | number_of_words %}
+			
+			{% if page.lang == "hi" %}
+				{% if words < 360 %} 
+					{% assign read_time = "1 मिनट का पाठ" %} 
+				{% else %} 
+					{% assign minutes = words | divided_by: 180 %}
+					{% assign read_time = minutes | append: " मिनट में पढ़ें" %} 
+				{% endif %}
+			{% else %}
+				{% if words < 360 %} 
+					{% assign read_time = "1 min read" %} 
+				{% else %} 
+					{% assign minutes = words | divided_by: 180 %}
+					{% assign read_time = minutes | append: " min read" %} 
+				{% endif %}
+			{% endif %} 
+					
 				</div>
 {% if page.description %}
 					<p class="post-description-hero">{{ page.description }}</p>
