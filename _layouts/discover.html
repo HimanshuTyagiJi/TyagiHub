@@ -129,37 +129,37 @@ layout: default
 					{% assign prev_index = current_index | minus: 1 %}
 					{% assign next_index = current_index | plus: 1 %}
 
-					<nav class="post-nav-container" aria-label="Post navigation">
-						<div class="post-nav-link prev">
-							{% if current_index > 0 %}
-								{% assign prev_post = all_posts[prev_index] %}
-								<a href="{{ prev_post.url | relative_url }}">
-									<span class="nav-label"><i class="fas fa-arrow-left"></i> {% if page.lang == "hi" %}पिछला आर्टिकल{% else %}Previous Post{% endif %}</span>
-									<div class="nav-post-title">${prev_post.title}</div>
-								</a>
-							{% else %}
-								<span class="nav-disabled">
-									<span class="nav-label">{% if page.lang == "hi" %}पिछला{% else %}Previous{% endif %}</span>
-									<div class="nav-post-title disabled-title">{% if page.lang == "hi" %}कोई पिछला पोस्ट नहीं है{% else %}No previous post{% endif %}</div>
-								</span>
-							{% endif %}
-						</div>
+		<nav class="post-nav-container" aria-label="Post navigation">
+	<div class="post-nav-link prev">
+		{% if current_index > 0 %}
+			{% assign prev_post = all_posts[prev_index] %}
+			<a href="{{ prev_post.url | relative_url }}">
+				<span class="nav-label"><i class="fas fa-arrow-left"></i> {% if page.lang == "hi" %}पिछला आर्टिकल{% else %}Previous Post{% endif %}</span>
+				<div class="nav-post-title">{{ prev_post.title }}</div>
+			</a>
+		{% else %}
+			<span class="nav-disabled">
+				<span class="nav-label">{% if page.lang == "hi" %}पिछला{% else %}Previous{% endif %}</span>
+				<div class="nav-post-title disabled-title">{% if page.lang == "hi" %}कोई पिछला पोस्ट नहीं है{% else %}No previous post{% endif %}</div>
+			</span>
+		{% endif %}
+	</div>
 
-						<div class="post-nav-link next">
-							{% if next_index < post_count %} 
-								{% assign next_post = all_posts[next_index] %} 
-								<a href="{{ next_post.url | relative_url }}">
-									<span class="nav-label">{% if page.lang == "hi" %}अगला आर्टिकल{% else %}Next Post{% endif %} <i class="fas fa-arrow-right"></i></span>
-									<div class="nav-post-title">${next_post.title}</div>
-								</a>
-							{% else %}
-								<span class="nav-disabled">
-									<span class="nav-label">{% if page.lang == "hi" %}अगला{% else %}Next{% endif %}</span>
-									<div class="nav-post-title disabled-title">{% if page.lang == "hi" %}कोई अगला पोस्ट नहीं है{% else %}No next post{% endif %}</div>
-								</span>
-							{% endif %}
-						</div>
-					</nav>
+	<div class="post-nav-link next">
+		{% if next_index < post_count %} 
+			{% assign next_post = all_posts[next_index] %} 
+			<a href="{{ next_post.url | relative_url }}">
+				<span class="nav-label">{% if page.lang == "hi" %}अगला आर्टिकल{% else %}Next Post{% endif %} <i class="fas fa-arrow-right"></i></span>
+				<div class="nav-post-title">{{ next_post.title }}</div>
+			</a>
+		{% else %}
+			<span class="nav-disabled">
+				<span class="nav-label">{% if page.lang == "hi" %}अगला{% else %}Next{% endif %}</span>
+				<div class="nav-post-title disabled-title">{% if page.lang == "hi" %}कोई अगला पोस्ट नहीं है{% else %}No next post{% endif %}</div>
+			</span>
+		{% endif %}
+	</div>
+</nav>
 				{% endif %}
 				<hr class="post-footer-divider">
 			{% endif %}
