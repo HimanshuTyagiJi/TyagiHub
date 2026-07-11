@@ -80,7 +80,7 @@
   overflow: hidden;
   background: var(--clr-surface);
   border: 1px solid var(--clr-border);
-  padding: 3rem 2rem 2rem;
+ 
   margin-bottom: 3rem;
   text-align: center;
 }
