@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const POSTS_PER_PAGE = 3; 
+  const POSTS_PER_PAGE = 12; 
   
   const wrapper = document.getElementById("post-wrapper");
   const pagination = document.getElementById("pagination-nav");
