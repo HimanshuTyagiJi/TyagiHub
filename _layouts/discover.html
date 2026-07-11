@@ -11,48 +11,46 @@ layout: default
 <div class="tc-wrapper">
 	<div class="tc-left">
 
-		
-
-			<div class="post-hero">
-				{% if page.categories %}
-					<a href="/categories.html?category={{ page.categories | url_encode }}" class="tag-chip">
-						🧠 {{ page.categories }}
-					</a>
-				{% endif %}
-				
-				<h1 class="post-title">{{ page.title }}</h1>
-				
-				
-				
-				<div class="hero-meta">
-					<span>✍️ {% if page.lang == "hi" %}द्वारा{% else %}By{% endif %} <a href="/profile.html?author={{ page.author | url_encode }}" class="author-link">{{ page.author | default: "Himanshu Tyagi" }}</a></span> · 
-					<span>📅 {{ page.date | date: "%d %b %Y" }}</span> · 
-					<span>⏱️ {{ read_time }}</span>
-
-					{% if page.is_post %}
+		{% if page.is_post %}
 			{% assign words = content | number_of_words %}
 			
 			{% if page.lang == "hi" %}
-				{% if words < 360 %} 
+				{% if words < 250 %} 
 					{% assign read_time = "1 मिनट का पाठ" %} 
 				{% else %} 
-					{% assign minutes = words | divided_by: 180 %}
+					{% assign minutes = words | divided_by: 250 %}
 					{% assign read_time = minutes | append: " मिनट में पढ़ें" %} 
 				{% endif %}
 			{% else %}
-				{% if words < 360 %} 
+				{% if words < 250 %} 
 					{% assign read_time = "1 min read" %} 
 				{% else %} 
-					{% assign minutes = words | divided_by: 180 %}
+					{% assign minutes = words | divided_by: 250 %}
 					{% assign read_time = minutes | append: " min read" %} 
 				{% endif %}
 			{% endif %} 
-					
+
+			<div class="post-hero">
+				<!-- 1. Sabse Pahle Title -->
+				<h1 class="post-title">{{ page.title }}</h1>
+				
+				<!-- 2. Uske Neeche Author, Time, Date, Category Line -->
+				<div class="hero-meta">
+					<span>✍️ {% if page.lang == "hi" %}द्वारा{% else %}By{% endif %} <a href="/profile.html?author={{ page.author | url_encode }}" class="author-link">{{ page.author | default: "Himanshu Tyagi" }}</a></span> · 
+					<span>⏱️ {{ read_time }}</span> · 
+					<span>📅 {{ page.date | date: "%d %b %Y" }}</span>
+					{% if page.categories %}
+						· <a href="/categories.html?category={{ page.categories | url_encode }}" class="tag-chip">
+							🧠 {{ page.categories }}
+						</a>
+					{% endif %}
 				</div>
-{% if page.description %}
+
+				<!-- 3. Sabse Neeche Description Meta -->
+				{% if page.description %}
 					<p class="post-description-hero">{{ page.description }}</p>
 				{% endif %}
-				
+
 				{% if page.image %}
 					<div class="post-hero-img" id="post-hero-wrap">
 						<img src="{{ page.image | relative_url }}" 
