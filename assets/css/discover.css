@@ -780,7 +780,7 @@
   .discover-sidebar {
     position: fixed;
     top: 60px;
-    right: ;
+    right: 0;
     width: 340px;
     height: calc(100vh - 6%);
     overflow-y: auto;
