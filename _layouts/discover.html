@@ -39,19 +39,24 @@ layout: default
 				
 				<h1 class="post-title">{{ page.title }}</h1>
 				
+				
+				
 				<div class="hero-meta">
-					<span>✍️ {% if page.lang == "hi" %}द्वारा{% else %}By{% endif %} <a href="/profile.html?author={{ page.author | url_encode }}" style="color: var(--clr-accent); text-decoration: none; font-weight: 600;">{{ page.author | default: "Himanshu Tyagi" }}</a></span> · 
+					<span>✍️ {% if page.lang == "hi" %}द्वारा{% else %}By{% endif %} <a href="/profile.html?author={{ page.author | url_encode }}" class="author-link">{{ page.author | default: "Himanshu Tyagi" }}</a></span> · 
 					<span>📅 {{ page.date | date: "%d %b %Y" }}</span> · 
 					<span>⏱️ {{ read_time }}</span>
 				</div>
-
+{% if page.description %}
+					<p class="post-description-hero">{{ page.description }}</p>
+				{% endif %}
+				
 				{% if page.image %}
-					<div class="post-hero-img" id="post-hero-wrap" style="margin-bottom: 30px; text-align: center; width: 100%; max-width: 1280px; background: #111216; border-radius: 16px; overflow: hidden; position: relative;">
+					<div class="post-hero-img" id="post-hero-wrap">
 						<img src="{{ page.image | relative_url }}" 
                              alt="{{ page.title | escape }} - TyagiHub" 
                              title="{{ page.title | escape }} - TyagiHub" 
                              loading="eager" 
-                             style="width: 100%; height: auto; max-height: 750px; object-fit: contain; display: block; margin: 0 auto; border-radius: 16px; box-shadow: 0 4px 15px rgba(0,0,0,0.15);">
+                             class="hero-main-image">
 					</div>
 				{% endif %}
 			</div>
@@ -59,10 +64,11 @@ layout: default
 		{% endif %}
 		
 		{% if page.is_post %}
-			<div class="toc-box" style="margin-top: 20px; margin-bottom: 30px; border-radius: 12px;">
+			<div class="toc-box">
+				<div class="toc-title">
 					{% if page.lang == "hi" %}📋 विषय सूची{% else %}📋 Table of Contents{% endif %}
-			 
-				<input type="checkbox" id="toc-toggle" class="toc-toggle-checkbox" style="display: none;">
+				</div>
+				<input type="checkbox" id="toc-toggle" class="toc-toggle-checkbox">
 				<ol class="toc-list">
 					{% assign blocks = content | split: 'post-section' %}
 					{% for block in blocks %}
@@ -89,7 +95,7 @@ layout: default
 				</ol>
 				<label for="toc-toggle" class="toc-btn">
 					<span class="text-more">{% if page.lang == "hi" %}और देखें{% else %}See More{% endif %} <i class="fas fa-chevron-down"></i></span>
-					<span class="text-less" style="display: none;">{% if page.lang == "hi" %}कम देखें{% else %}See Less{% endif %} <i class="fas fa-chevron-up"></i></span>
+					<span class="text-less">{% if page.lang == "hi" %}कम देखें{% else %}See Less{% endif %} <i class="fas fa-chevron-up"></i></span>
 				</label>
 			</div>
 		{% endif %}
@@ -98,9 +104,9 @@ layout: default
 
 		{% unless page.url == "/" or page.url == "/index.html" %}
 			{% if page.is_post %}
-				<div class="share-wrapper" style="margin-top: 40px;">
-					<p class="share-label" style="font-weight: 750;">{% if page.lang == "hi" %}दोस्तों के साथ शेयर करें 🚀{% else %}Share With Friends 🚀{% endif %}</p>
-					<button onclick="tyagiShare()" class="tyagi-share-btn" aria-label="Share this article" style="border-radius: 8px;">
+				<div class="share-wrapper">
+					<p class="share-label">{% if page.lang == "hi" %}दोस्तों के साथ शेयर करें 🚀{% else %}Share With Friends 🚀{% endif %}</p>
+					<button onclick="tyagiShare()" class="tyagi-share-btn" aria-label="Share this article">
 						<i class="fas fa-paper-plane" aria-hidden="true"></i> {% if page.lang == "hi" %}आर्टिकल शेयर करें{% else %}SHARE ARTICLE{% endif %}
 					</button>
 				</div>
@@ -122,18 +128,18 @@ layout: default
 					{% assign prev_index = current_index | minus: 1 %}
 					{% assign next_index = current_index | plus: 1 %}
 
-					<nav class="post-nav-container" aria-label="Post navigation" style="margin-top: 30px;">
+					<nav class="post-nav-container" aria-label="Post navigation">
 						<div class="post-nav-link prev">
 							{% if current_index > 0 %}
 								{% assign prev_post = all_posts[prev_index] %}
 								<a href="{{ prev_post.url | relative_url }}">
 									<span class="nav-label"><i class="fas fa-arrow-left"></i> {% if page.lang == "hi" %}पिछला आर्टिकल{% else %}Previous Post{% endif %}</span>
-									<div class="nav-post-title">{{ prev_post.title }}</div>
+									<div class="nav-post-title">${prev_post.title}</div>
 								</a>
 							{% else %}
 								<span class="nav-disabled">
 									<span class="nav-label">{% if page.lang == "hi" %}पिछला{% else %}Previous{% endif %}</span>
-									<div class="nav-post-title">{% if page.lang == "hi" %}कोई पिछला पोस्ट नहीं है{% else %}No previous post{% endif %}</div>
+									<div class="nav-post-title disabled-title">{% if page.lang == "hi" %}कोई पिछला पोस्ट नहीं है{% else %}No previous post{% endif %}</div>
 								</span>
 							{% endif %}
 						</div>
@@ -143,23 +149,150 @@ layout: default
 								{% assign next_post = all_posts[next_index] %} 
 								<a href="{{ next_post.url | relative_url }}">
 									<span class="nav-label">{% if page.lang == "hi" %}अगला आर्टिकल{% else %}Next Post{% endif %} <i class="fas fa-arrow-right"></i></span>
-									<div class="nav-post-title">{{ next_post.title }}</div>
+									<div class="nav-post-title">${next_post.title}</div>
 								</a>
 							{% else %}
 								<span class="nav-disabled">
 									<span class="nav-label">{% if page.lang == "hi" %}अगला{% else %}Next{% endif %}</span>
-									<div class="nav-post-title">{% if page.lang == "hi" %}कोई अगला पोस्ट नहीं है{% else %}No next post{% endif %}</div>
+									<div class="nav-post-title disabled-title">{% if page.lang == "hi" %}कोई अगला पोस्ट नहीं है{% else %}No next post{% endif %}</div>
 								</span>
 							{% endif %}
 						</div>
 					</nav>
 				{% endif %}
-				<hr style="margin: 44px 0; border: none; border-top: 1px solid var(--border-color);">
+				<hr class="post-footer-divider">
 			{% endif %}
 		{% endunless %}
 
 	</div> 
 	
-	<!-- Sidebar call yahan single bar hoga, duplicacy khatam -->
 	{% include right-sidebar.html %}
 </div>
+					<style>/* Post Header Meta Framework */
+.post-hero {
+  margin-bottom: 25px;
+}
+
+.tag-chip {
+  text-decoration: none;
+  display: inline-block;
+}
+
+.post-title {
+  margin-top: 15px;
+  margin-bottom: 12px;
+  font-size: clamp(2rem, 5vw, 36px);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  line-height: var(--lh-tight);
+}
+
+.post-description-hero {
+  font-size: var(--fs-sm);
+  line-height: var(--lh-normal);
+  color: var(--clr-text-2);
+  margin-top: 0;
+  margin-bottom: 20px;
+  font-weight: 400;
+  text-align: justify;
+  text-justify: inter-word;
+}
+
+.hero-meta {
+  color: var(--text-muted);
+  font-size: 14px;
+  margin-bottom: 25px;
+}
+
+.author-link {
+  color: var(--clr-accent);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+/* Featured Hero Graphic Container */
+.post-hero-img {
+  margin-bottom: 30px;
+  text-align: center;
+  width: 100%;
+  max-width: 1280px;
+  background: #111216;
+  border-radius: 16px;
+  overflow: hidden;
+  position: relative;
+}
+
+.hero-main-image {
+  width: 100%;
+  height: auto;
+  max-height: 750px;
+  object-fit: contain;
+  display: block;
+  margin: 0 auto;
+  border-radius: 16px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+}
+
+/* Interactive Table of Contents Components */
+.toc-box {
+  margin-top: 20px;
+  margin-bottom: 30px;
+  border-radius: 12px;
+}
+
+.toc-title {
+  font-family: var(--font-display);
+  font-size: var(--fs-lg);
+  font-weight: 600;
+  color: var(--clr-heading);
+  margin-bottom: var(--space-3);
+}
+
+.toc-toggle-checkbox {
+  display: none;
+}
+
+.toc-btn {
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  margin-top: 12px;
+  font-weight: 600;
+}
+
+.toc-btn .text-less {
+  display: none;
+}
+
+/* Article Sharing Interaction Elements */
+.share-wrapper {
+  margin-top: 40px;
+}
+
+.share-label {
+  font-weight: 600;
+}
+
+.tyagi-share-btn {
+  border-radius: 8px;
+}
+
+/* Parametric Sequential Navigation Anchors */
+.post-nav-container {
+  margin-top: 30px;
+}
+
+.nav-post-title {
+  font-weight: 600;
+}
+
+.disabled-title {
+  opacity: 0.4;
+  font-weight: 600;
+}
+
+.post-footer-divider {
+  margin: 44px 0;
+  border: none;
+  border-top: 1px solid var(--border-color);
+}</style>
