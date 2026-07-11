@@ -48,7 +48,7 @@ extra_js:
       </div>
 
       <div id="post-wrapper" class="grid-3" data-page-lang="hi">
-        {% for p in sorted limit: 6 %}
+        {% for p in sorted limit: 12 %}
         <div class="blog-card js-post" data-lang="hi" data-categories="{% for cat in p.categories %}{{ cat | downcase }} {% endfor %}" data-post-url="{{ p.url | relative_url }}">
           <a href="{{ p.url | relative_url }}" style="text-decoration: none; color: inherit; display: block;">
             <div class="blog-card__thumb">
