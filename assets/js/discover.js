@@ -1,4 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
+  // 🎯 Configuration: Set to 15 posts per page layout limit
   const POSTS_PER_PAGE = 15; 
   const wrapper = document.querySelector("#post-wrapper");
   const pagination = document.querySelector("#pagination-nav");
@@ -6,8 +7,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
   if (!wrapper || !pagination) return;
 
+  // 🌐 Language Context Detection
   const isHindi = window.location.pathname.startsWith("/hi/");
   
+  // URL Parameters
   const params = new URLSearchParams(window.location.search);
   let currentPage = parseInt(params.get("page")) || 1;
   let currentCategory = (params.get("category") || "all").toLowerCase().trim();
@@ -16,6 +19,7 @@ document.addEventListener("DOMContentLoaded", () => {
   let allPostsData = [];
   let filteredPosts = [];
 
+  // Set Active Category Button Visual Styling States
   document.querySelectorAll(".discover-cat-btn").forEach(btn => {
     const btnCat = (btn.dataset.cat || "").toLowerCase().trim();
     if (btnCat === currentCategory) {
@@ -25,12 +29,16 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
+  // ============================================================
+  // 1. FETCH MULTI-JSON DATA (Merged Engine Pipeline 🚀)
+  // ============================================================
   Promise.all([
     fetch("/posts.json").then(res => res.json()).catch(() => []),
     fetch("/shield.json").then(res => res.json()).catch(() => [])
   ])
     .then(([postsData, shieldData]) => {
       
+      // 1. Regular Posts formatting and lowercase normalization
       const normalizedPosts = postsData.map(post => {
         let cats = [];
         if (Array.isArray(post.categories)) {
@@ -41,6 +49,7 @@ document.addEventListener("DOMContentLoaded", () => {
         return { ...post, categories: cats, lang: post.lang || "en" };
       });
 
+      // 2. Shield posts mapping standard structure
       const normalizedShield = shieldData.map(post => {
         let catStr = post.category || "cyber-security";
         return {
@@ -54,8 +63,10 @@ document.addEventListener("DOMContentLoaded", () => {
         };
       });
 
+      // 3. Combine raw dataset arrays
       const rawCombinedData = [...normalizedPosts, ...normalizedShield];
 
+      // 4. 🎯 ANTI-DUPLICATE INTERCEPTOR: Wipe out matching URLs
       const uniqueMap = new Map();
       rawCombinedData.forEach(post => {
         if (post.url) {
@@ -68,14 +79,19 @@ document.addEventListener("DOMContentLoaded", () => {
 
       const masterCombinedData = Array.from(uniqueMap.values());
 
+      // 5. Strict Language Segment gatekeeper Routing
       allPostsData = masterCombinedData.filter(post => isHindi ? post.lang === "hi" : post.lang !== "hi");
       
+      // 6. Chronological Date Sorting
       allPostsData.sort((a, b) => new Date(b.date) - new Date(a.date));
 
       applyFiltersAndRender();
     })
-    .catch(err => console.error("Multi-Data load failed:", err));
+    .catch(err => console.error("Multi-Data stream load execution failed:", err));
 
+  // ============================================================
+  // 2. MASTER FILTER ENGINE (Glitch Override Bypass Locked 🛠️)
+  // ============================================================
   function applyFiltersAndRender() {
     if (!allPostsData.length) return;
 
@@ -86,10 +102,14 @@ document.addEventListener("DOMContentLoaded", () => {
       return matchesCat && matchesSearch;
     });
 
+    // 🎯 Render everything straight from array dataset to prevent blank loads
     renderPosts();
     renderPagination();
   }
 
+  // ============================================================
+  // 3. LIVE SEARCH INTERCEPTOR
+  // ============================================================
   if (searchInput) {
     if (isHindi) searchInput.placeholder = "Articles तुरंत सर्च करें...";
     searchInput.addEventListener("input", (e) => {
@@ -103,6 +123,9 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
+  // ============================================================
+  // 4. SHOW POSTS DYNAMICALLY (With Top 2 SVG Badging Slot ⚡)
+  // ============================================================
   function renderPosts() {
     wrapper.innerHTML = ""; 
     
@@ -116,7 +139,8 @@ document.addEventListener("DOMContentLoaded", () => {
     const end = start + POSTS_PER_PAGE;
     const chunk = filteredPosts.slice(start, end);
 
-    chunk.forEach(p => {
+    // Array Index tracking via (p, i) initialization parameter
+    chunk.forEach((p, i) => {
       const rawCat = p.categories && p.categories.length > 0 ? p.categories[0] : "technology";
       
       let displayChip = rawCat.replace("-", " ").toUpperCase();
@@ -132,8 +156,23 @@ document.addEventListener("DOMContentLoaded", () => {
       const safeTitle = (p.title || "").replace(/'/g, "\\'");
       const safeUrl = p.url;
 
+      // 🔥 DYNAMIC SVG INTERCEPTOR: Runs only for the first two cards on page 1
+      let topPostBadgeSVG = "";
+      if (currentPage === 1 && (i === 0 || i === 1)) {
+        topPostBadgeSVG = `
+          <div class="top-featured-badge" style="position: absolute; top: 12px; left: 12px; z-index: 10; background: rgba(62,207,207,0.15); border: 1px solid rgba(62,207,207,0.4); padding: 5px; border-radius: 50%; display: flex; align-items: center; justify-content: center; backdrop-filter: blur(4px);">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#3ecfcf" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+            </svg>
+          </div>
+        `;
+      }
+
       const cardHTML = `
-        <div class="horizontal-post-card js-post" data-lang="${p.lang}">
+        <div class="horizontal-post-card js-post" data-lang="${p.lang}" style="position: relative;">
+          <!-- SVG Badge Injection Frame -->
+          ${topPostBadgeSVG}
+          
           <div class="post-img">
             <span class="post-category">${displayChip}</span>
             <div class="post-date"><i class="fa-regular fa-calendar"></i> ${p.date}</div>
@@ -164,6 +203,9 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
+  // ============================================================
+  // 5. PAGINATION RENDER MATRIX ENGINE
+  // ============================================================
   function renderPagination() {
     pagination.innerHTML = "";
     const totalPages = Math.ceil(filteredPosts.length / POSTS_PER_PAGE);
@@ -225,6 +267,9 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 });
 
+// ============================================================
+// 6. SIDEBAR DYNAMIC CARD RENDER ARCHITECTURE
+// ============================================================
 document.addEventListener("DOMContentLoaded", () => {
   const hiddenPosts = document.querySelectorAll("#related-posts-data .related-post-item");
   const container = document.getElementById("related-posts-container");
