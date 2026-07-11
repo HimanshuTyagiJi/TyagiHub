@@ -1,175 +1,82 @@
 <aside class="right-sidebar shield-sidebar" aria-label="Shield Sidebar">
 
-  <!-- Shield Tools -->
-  
   <div class="shield-sidebar-inner">
 
-  <div class="sidebar-section">
-
-    <div class="sidebar-title">
-      <span>🛡️ Shield Tools</span>
+    <!-- Shield Tools -->
+    <div class="sidebar-section">
+      <div class="sidebar-title">
+        <span>🛡️ {% if page.lang == "hi" %}शील्ड टूल्स{% else %}Shield Tools{% endif %}</span>
+      </div>
+      <div class="sidebar-links">
+        <a href="/shield/data-breach-check/" class="sidebar-link-card">Check Data Breach</a>
+        <a href="/shield/password-strength-test/" class="sidebar-link-card">Password Strength Test</a>
+        <a href="/shield/password-generator/" class="sidebar-link-card">Password Generator</a>
+        <a href="/shield/email-exposure-check/" class="sidebar-link-card">Email Exposure Check</a>
+      </div>
     </div>
 
-    <div class="sidebar-links">
-
-      <a href="/shield/data-breach-check/" class="sidebar-link-card">
-        Check Data Breach
-      </a>
-
-      <a href="/shield/password-strength-test/" class="sidebar-link-card">
-        Password Strength Test
-      </a>
-
-      <a href="/shield/password-generator/" class="sidebar-link-card">
-        Password Generator
-      </a>
-
-      <a href="/shield/email-exposure-check/" class="sidebar-link-card">
-        Email Exposure Check
-      </a>
-
+    <!-- Privacy Center -->
+    <div class="sidebar-section">
+      <div class="sidebar-title">
+        <span>🔒 {% if page.lang == "hi" %}प्राइवेसी सेंटर{% else %}Privacy Center{% endif %}</span>
+      </div>
+      <div class="sidebar-links">
+        <a href="/shield/browser-privacy/" class="sidebar-link-card">Browser Privacy</a>
+        <a href="/shield/app-permissions/" class="sidebar-link-card">App Permissions</a>
+        <a href="/shield/location-tracking/" class="sidebar-link-card">Location Tracking</a>
+        <a href="/shield/privacy-guides/" class="sidebar-link-card">Privacy Guides</a>
+      </div>
     </div>
 
-  </div>
-
-  <!-- Privacy Center -->
-
-  <div class="sidebar-section">
-
-    <div class="sidebar-title">
-      <span>🔒 Privacy Center</span>
+    <!-- Latest Threats (Fixed Permalink Conflict 🚀) -->
+    <div class="sidebar-section">
+      <div class="sidebar-title">
+        <span>🚨 {% if page.lang == "hi" %}नवीनतम खतरे{% else %}Latest Threats{% endif %}</span>
+      </div>
+      <div class="sidebar-links">
+        <!-- Changed from /cybersecurity/ to /shield/ to match collections config -->
+        <a href="/shield/sim-swap-attack-guide/" class="sidebar-link-card">SIM Swap Attack</a>
+        <a href="/shield/phishing-websites-guide/" class="sidebar-link-card">Phishing Websites</a>
+        <a href="/shield/android-spyware-guide/" class="sidebar-link-card">Android Spyware</a>
+        <a href="/shield/ai-voice-cloning-risks/" class="sidebar-link-card">AI Voice Scam</a>
+      </div>
     </div>
 
-    <div class="sidebar-links">
-
-      <a href="/shield/browser-privacy/" class="sidebar-link-card">
-        Browser Privacy
-      </a>
-
-      <a href="/shield/app-permissions/" class="sidebar-link-card">
-        App Permissions
-      </a>
-
-      <a href="/shield/location-tracking/" class="sidebar-link-card">
-        Location Tracking
-      </a>
-
-      <a href="/shield/privacy-guides/" class="sidebar-link-card">
-        Privacy Guides
-      </a>
-
+    <!-- Security Guides (Fixed Permalinks) -->
+    <div class="sidebar-section">
+      <div class="sidebar-title">
+        <span>📚 {% if page.lang == "hi" %}सुरक्षा गाइड{% else %}Security Guides{% endif %}</span>
+      </div>
+      <div class="sidebar-links">
+        <a href="/shield/dark-web-data-check/" class="sidebar-link-card">Data Breach Guide</a>
+        <a href="/shield/password-security/" class="sidebar-link-card">Password Security</a>
+        <a href="/shield/identity-theft-guide/" class="sidebar-link-card">Identity Theft</a>
+        <a href="/shield/online-scam-guide/" class="sidebar-link-card">Online Scam Guide</a>
+      </div>
     </div>
 
-  </div>
-
-  <!-- Latest Threats -->
-
-  <div class="sidebar-section">
-
-    <div class="sidebar-title">
-      <span>🚨 Latest Threats</span>
+    <!-- Security Alerts -->
+    <div class="sidebar-section">
+      <div class="sidebar-title">
+        <span>📡 {% if page.lang == "hi" %}सुरक्षा अलर्ट{% else %}Security Alerts{% endif %}</span>
+      </div>
+      <a href="https://t.me/TyagiHubs" target="_blank" rel="noopener" class="telegram-card" style="display: block; text-align: center; padding: 12px; background: #0088cc; color: #fff; text-decoration: none; border-radius: 6px; font-weight: 600;">
+        {% if page.lang == "hi" %}टेलीग्राम चैनल से जुड़ें{% else %}Join Telegram Channel{% endif %}
+      </a>
     </div>
 
-    <div class="sidebar-links">
-
-      <a href="/cybersecurity/sim-swap-attack-guide/" class="sidebar-link-card">
-        SIM Swap Attack
-      </a>
-
-      <a href="/cybersecurity/phishing-websites-guide/" class="sidebar-link-card">
-        Phishing Websites
-      </a>
-
-      <a href="/cybersecurity/android-spyware-guide/" class="sidebar-link-card">
-        Android Spyware
-      </a>
-
-      <a href="/cybersecurity/ai-voice-cloning-risks/" class="sidebar-link-card">
-        AI Voice Scam
-      </a>
-
+    <!-- Upcoming Shield Tools -->
+    <div class="sidebar-section">
+      <div class="sidebar-title">
+        <span>🛠 {% if page.lang == "hi" %}आगामी टूल्स{% else %}Upcoming Shield Tools{% endif %}</span>
+      </div>
+      <div class="sidebar-links">
+        <a href="/shield/email-leak-scanner/" class="sidebar-link-card">Email Leak Scanner</a>
+        <a href="/shield/data-breach-monitor/" class="sidebar-link-card">Data Breach Monitor</a>
+        <a href="/shield/password-auditor/" class="sidebar-link-card">Password Auditor</a>
+        <a href="/shield/device-security-check/" class="sidebar-link-card">Device Security Check</a>
+      </div>
     </div>
 
   </div>
-
-  <!-- Security Guides -->
-
-  <div class="sidebar-section">
-
-    <div class="sidebar-title">
-      <span>📚 Security Guides</span>
-    </div>
-
-    <div class="sidebar-links">
-
-      <a href="/cybersecurity/dark-web-data-check/" class="sidebar-link-card">
-        Data Breach Guide
-      </a>
-
-      <a href="/shield/password-security/" class="sidebar-link-card">
-        Password Security
-      </a>
-
-      <a href="/shield/identity-theft-guide/" class="sidebar-link-card">
-        Identity Theft
-      </a>
-
-      <a href="/shield/online-scam-guide/" class="sidebar-link-card">
-        Online Scam Guide
-      </a>
-
-    </div>
-
-  </div>
-
-  <!-- Security Alerts -->
-
-  <div class="sidebar-section">
-
-    <div class="sidebar-title">
-      <span>📡 Security Alerts</span>
-    </div>
-
-    <a href="https://t.me/TyagiHubs"
-       target="_blank"
-       rel="noopener"
-       class="telegram-card">
-
-      Join Telegram Channel
-
-    </a>
-
-  </div>
-
-  <!-- Upcoming Shield Tools -->
-
-  <div class="sidebar-section">
-
-    <div class="sidebar-title">
-      <span>🛠 Upcoming Shield Tools</span>
-    </div>
-
-    <div class="sidebar-links">
-
-      <a href="/shield/email-leak-scanner/" class="sidebar-link-card">
-        Email Leak Scanner
-      </a>
-
-      <a href="/shield/data-breach-monitor/" class="sidebar-link-card">
-        Data Breach Monitor
-      </a>
-
-      <a href="/shield/password-auditor/" class="sidebar-link-card">
-        Password Auditor
-      </a>
-
-      <a href="/shield/device-security-check/" class="sidebar-link-card">
-        Device Security Check
-      </a>
-
-    </div>
-
-  </div>
-  </div>
-
 </aside>
