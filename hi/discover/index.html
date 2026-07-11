@@ -1,13 +1,13 @@
 ---
 layout: discover
-title: "Discover — Technology, AI & Cybersecurity"
-description: "टेक्नोलॉजी, AI, साइबर सुरक्षा, शिक्षा, डिजिटल अपडेट, ऑनलाइन सुरक्षा, apps, tutorials & future innovation — सब कुछ एक ही Discover फ़ीड में।"
+title: "खोजें — टेक्नोलॉजी, एआई और साइबर सुरक्षा"
+description: "टेक्नोलॉजी, एआई, साइबर सुरक्षा, शिक्षा, समसामयिक विषय, डिजिटल अपडेट, ऑनलाइन सुरक्षा, ऐप्स, ट्यूटोरियल्स और भविष्य के नवाचार — सब कुछ त्यागीहब के एक शक्तिशाली डिस्कवर फ़ीड में।"
 permalink: /hi/discover/
 image: /assets/images/tyagihub.png
 author: "Himanshu Tyagi"
 lang: hi
 robots: "index, follow"
-keywords: "TyagiHub, AI टूल्स, साइबर सुरक्षा, शिक्षा, टेक्नोलॉजी, डिजिटल अपडेट, ऑनलाइन सुरक्षा"
+keywords: "TyagiHub, AI tools, cybersecurity, education, current affairs, apps, tutorials, technology news, digital updates, online safety, हिंदी टेक"
 section: discover
 extra_css:
   - /assets/css/discover.css
@@ -22,20 +22,20 @@ extra_js:
     <div class="container discover-hero__content">
       <div class="discover-badge">
         <span class="discover-badge__dot"></span>
-        TyagiHub Discover
+        त्यागीहब डिस्कवर
       </div>
       <h1 class="discover-title">
-        Discover Technology, AI & <span>Cybersecurity</span>
+        खोजें टेक्नोलॉजी, एआई और <span>साइबर सुरक्षा</span>
       </h1>
       
       <p class="discover-desc">
-        टेक्नोलॉजी, कृत्रिम बुद्धिमत्ता (AI), साइबर सुरक्षा, शिक्षा, समसामयिक घटनाएँ,
-        डिजिटल टूल्स, ऐप्स, ट्यूटोरियल, ऑनलाइन सुरक्षा और भविष्य की नवाचार तकनीकों से जुड़ी
-        उपयोगी जानकारी — सब कुछ एक ही शक्तिशाली TyagiHub Discover फ़ीड में।
+        टेक्नोलॉजी, एआई, साइबर सुरक्षा, शिक्षा, समसामयिक विषय,
+        डिजिटल टूल्स, ऐप्स, ट्यूटोरियल्स, ऑनलाइन सुरक्षा और
+        भविष्य के नवाचार — सब कुछ एक शक्तिशाली डिस्कवर फ़ीड में।
       </p>
 
       <p class="discover-seo-text" style="display: none !important; visibility: hidden;">
-        Welcome to the official TyagiHub Discover feed. Explore our comprehensive repository of artificial intelligence tutorials, advanced data safety architecture, digital layouts, and software engineering methodologies handcrafted by Tyagi MultiTech. Stay ahead with modern insights on network protocols, computing automation, internet safety trends, and developer utilities optimized for high-performance scale.
+        TyagiHub के आधिकारिक हिंदी डिस्कवर फ़ीड में आपका स्वागत है। त्यागी मल्टीटेक द्वारा विशेष रूप से तैयार किए गए आर्टिफिशियल इंटेलिजेंस ट्यूटोरियल, उन्नत डेटा सुरक्षा आर्किटेक्चर, डिजिटल लेआउट और सॉफ्टवेयर इंजीनियरिंग पद्धतियों के हमारे व्यापक भंडार का अन्वेषण करें। उच्च-प्रदर्शन स्केल के लिए अनुकूलित नेटवर्क प्रोटोकॉल, कंप्यूटिंग ऑटोमेशन, इंटरनेट सुरक्षा रुझानों और डेवलपर उपयोगिताओं पर आधुनिक अंतर्दृष्टि के साथ आगे रहें।
       </p>
 
       <div class="discover-icons">
@@ -74,126 +74,188 @@ extra_js:
 
   <section class="discover-search-filter-section">
     <div class="container">
+      
       <div class="discover-search-wrapper">
-        <input type="text" id="discover-search" class="discover-search-input" placeholder="Search posts dynamically...">
+        <input type="text" id="discover-search" class="discover-search-input" placeholder="आर्टिकल्स तुरंत सर्च करें...">
       </div>
+      
       <div class="discover-categories" id="category-buttons-container">
-        <button class="discover-cat-btn" data-cat="all" onclick="window.location.href='?category=all'"> सभी <span>(9)</span></button>
-        <button class="discover-cat-btn" data-cat="ai-future" onclick="window.location.href='?category=ai-future'"> AI Future <span>(3)</span></button>
-        <button class="discover-cat-btn" data-cat="apps-and-internet" onclick="window.location.href='?category=apps-and-internet'"> Apps and internet <span>(3)</span></button>
-        <button class="discover-cat-btn" data-cat="technology" onclick="window.location.href='?category=technology'"> Technology <span>(3)</span></button>
-        <button class="discover-cat-btn" data-cat="cybersecurity" onclick="window.location.href='?category=cybersecurity'"> Cyber Security <span>(3)</span></button>
+
+        {% if page.lang == "hi" %}
+          {% assign all_posts_size = site.posts_hi.size %}
+        {% else %}
+          {% assign posts_size = site.posts.size %}
+          {% assign shield_size = site.shield.size %}
+          {% assign all_posts_size = posts_size | plus: shield_size %}
+        {% endif %}
+
+        <button class="discover-cat-btn" data-cat="all" onclick="window.location.href='?category=all'">
+          सभी
+          <span>({{ all_posts_size }})</span>
+        </button>
+
+        {% assign categories = site.categories | sort %}
+        {% for category in categories %}
+          {% unless category[0] == "discover" %}
+            
+            {% assign cat_name = category[0] | downcase %}
+            
+            {% if cat_name == "appsandinternet" %}
+              {% assign display_name = "ऐप्स और इंटरनेट" %}
+            {% elsif cat_name == "aifuture" or cat_name == "ai-future" %}
+              {% assign display_name = "एआई फ्यूचर" %}
+            {% elsif cat_name == "cybersecurity" or cat_name == "cyber-security" %}
+              {% assign display_name = "साइबर सुरक्षा" %}
+            {% else %}
+              {% assign display_name = category[0] | replace: "-", " " | replace: "_", " " | capitalize %}
+            {% endif %}
+
+            <button class="discover-cat-btn" data-cat="{{ category[0] | downcase }}" onclick="window.location.href='?category={{ category[0] | downcase }}'">
+              {{ display_name }}
+              <span>({{ category[1].size }})</span>
+            </button>
+          {% endunless %}
+        {% endfor %}
+
+        {% unless page.lang == "hi" %}
+          <button class="discover-cat-btn" data-cat="cybersecurity" onclick="window.location.href='?category=cybersecurity'">
+            साइबर सुरक्षा
+            <span>({{ site.shield.size }})</span>
+          </button>
+        {% endunless %}
+
       </div>
+
     </div>
   </section>
 
-  <!-- Content Wrapper Matrix -->
-  <div class="tc-wrapper container" style="display: flex; gap: 24px; margin-top: 20px; align-items: flex-start; flex-wrap: wrap;">
-    
-    <!-- LEFT SIDE: Posts Grid Layout Engine -->
-    <div class="tc-left" style="flex: 1; min-width: 300px; max-width: 100%;">
-      <section class="section" style="padding: 0;">
-        <div id="posts">
-          <div id="post-wrapper" class="static-seo-load">
-            
-            {% if page.lang == "hi" %}
-              {% assign sorted = site.posts_hi | sort: "date" | reverse %}
-            {% else %}
-              {% assign combined_posts = "" | split: "" %}
-              {% for p in site.posts %}{% assign combined_posts = combined_posts | push: p %}{% endfor %}
-              {% for p in site.shield %}{% assign combined_posts = combined_posts | push: p %}{% endfor %}
-              {% assign sorted = combined_posts | sort: "date" | reverse %}
-            {% endif %}
-            
-            {% for p in sorted limit: 6 %}
-              {% if p.categories %}
-                {% assign p_cat_raw = p.categories[0] | default: "Technology" %}
-                {% assign data_cats = "" %}
-                {% for cat in p.categories %}
-                  {% assign clean_c = cat | downcase %}
-                  {% if clean_c == "cyber-security" or clean_c == "cybersecurity" %}{% assign clean_c = "cybersecurity" %}{% endif %}
-                  {% assign data_cats = data_cats | append: clean_c | append: " " %}
-                {% endfor %}
-              {% else %}
-                {% assign p_cat_raw = p.category | default: "CyberSecurity" %}
-                {% assign clean_s = p.category | downcase %}
-                {% if clean_s == "cyber-security" or clean_s == "cybersecurity" %}{% assign clean_s = "cybersecurity" %}{% endif %}
-                {% assign data_cats = clean_s | append: " " %}
-              {% endif %}
+  <section class="section">
+    <div id="posts">
+      
+      <div id="post-wrapper" class="static-seo-load">
+        
+        {% if page.lang == "hi" %}
+          {% assign sorted = site.posts_hi | sort: "date" | reverse %}
+        {% else %}
+          {% assign combined_posts = "" | split: "" %}
+          
+          {% for p in site.posts %}
+            {% assign combined_posts = combined_posts | push: p %}
+          {% endfor %}
+          
+          {% for p in site.shield %}
+            {% assign combined_posts = combined_posts | push: p %}
+          {% endfor %}
+          
+          {% assign sorted = combined_posts | sort: "date" | reverse %}
+        {% endif %}
+        
+        {% for p in sorted limit: 12 %}
+          {% if p.categories %}
+            {% assign p_cat_raw = p.categories[0] | default: "Technology" %}
+            {% assign data_cats = "" %}
+            {% for cat in p.categories %}
+              {% assign clean_c = cat | downcase %}
+              {% if clean_c == "cyber-security" or clean_c == "cybersecurity" %}{% assign clean_c = "cybersecurity" %}{% endif %}
+              {% assign data_cats = data_cats | append: clean_c | append: " " %}
+            {% endfor %}
+          {% else %}
+            {% assign p_cat_raw = p.category | default: "CyberSecurity" %}
+            {% assign clean_s = p.category | downcase %}
+            {% if clean_s == "cyber-security" or clean_s == "cybersecurity" %}{% assign clean_s = "cybersecurity" %}{% endif %}
+            {% assign data_cats = clean_s | append: " " %}
+          {% endif %}
 
-              {% assign check_cat = p_cat_raw | downcase %}
-              {% if check_cat == "aifuture" or check_cat == "ai-future" %}
-                {% assign display_chip = "AI Future" %}
-              {% elsif check_cat == "appsandinternet" or check_cat == "apps-and-internet" %}
-                {% assign display_chip = "Apps & Internet" %}
-              {% elsif check_cat == "cybersecurity" or check_cat == "cyber-security" %}
-                {% assign display_chip = "Cyber Security" %}
-              {% else %}
-                {% assign display_chip = p_cat_raw | replace: "-", " " | replace: "_", " " | capitalize %}
-              {% endif %}
+          {% assign check_cat = p_cat_raw | downcase %}
+          {% if check_cat == "aifuture" or check_cat == "ai-future" %}
+            {% assign display_chip = "एआई फ्यूचर" %}
+          {% elsif check_cat == "appsandinternet" or check_cat == "apps-and-internet" %}
+            {% assign display_chip = "ऐप्स और इंटरनेट" %}
+          {% elsif check_cat == "cybersecurity" or check_cat == "cyber-security" %}
+            {% assign display_chip = "साइबर सुरक्षा" %}
+          {% else %}
+            {% assign display_chip = p_cat_raw | replace: "-", " " | replace: "_", " " | capitalize %}
+          {% endif %}
 
-              <div class="horizontal-post-card js-post" data-lang="{{ page.lang | default: 'hi' }}" data-categories="{{ data_cats | strip }}" data-post-url="{{ p.url | relative_url }}">
+          <div class="horizontal-post-card js-post"
+               data-lang="{{ p.lang | default: 'en' }}"
+               data-categories="{{ data_cats | strip }}"
+               data-post-url="{{ p.url | relative_url }}">
+            
+            <div class="post-img" style="position: relative; overflow: hidden; background: #111216; display: flex; align-items: center; justify-content: center; width: 354px; height: 236px;">
+              <span class="post-category" style="z-index: 10;">
+                {{ display_chip }}
+              </span>
+              <div class="post-date" style="z-index: 10;">
+                <i class="fa-regular fa-calendar"></i>
+                {{ p.date | date: "%d %b %Y" }}
+              </div>
+
+              <div class="thumb-media-box" style="width:100%; height:100%; display:flex; align-items:center; justify-content:center; position:relative;">
                 
-                <div class="post-img" style="position: relative; overflow: hidden; background: #111216; display: flex; align-items: center; justify-content: center; width: 354px; height: 236px;">
-                  <span class="post-category" style="z-index: 10;">{{ display_chip }}</span>
-                  <div class="post-date" style="z-index: 10;">
-                    <i class="fa-regular fa-calendar"></i> {{ p.date | date: "%d %b %Y" }}
-                  </div>
-
-                  <div class="thumb-media-box" style="width:100%; height:100%; display:flex; align-items:center; justify-content:center; position:relative;">
-                    <img src="{{ p.image | default: '/assets/images/default-thumb.png' }}" 
-                         alt="{{ p.title | escape }} - TyagiHub" 
-                         title="{{ p.title | escape }} - TyagiHub" 
-                         class="js-thumbnail-img"
-                         loading="lazy" 
-                         width="354" 
-                         height="236"
-                         style="width:100%; height:100%; object-fit:cover; display:block;"
-                         onerror="triggerFallback(this)">
-                    
-                    <div class="auto-title-fallback" style="display:none; width:100%; height:100%; position:absolute; top:0; left:0; background:linear-gradient(135deg, #1e1e24 0%, #111216 100%); flex-direction:column; align-items:center; justify-content:center; padding:20px; text-align:center; box-sizing:border-box; border:1px solid rgba(255,255,255,0.05);">
-                      <div class="animated-bg-glow" style="position:absolute; width:130px; height:130px; background:rgba(0,123,255,0.15); filter:blur(40px); border-radius:50%;"></div>
-                      <svg viewBox="0 0 24 24" width="40" height="40" fill="none" stroke="#007bff" stroke-width="1.5" style="margin-bottom:10px; z-index:2;">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25" />
-                      </svg>
-                      <span style="font-size:15px; font-weight:600; color:#ffffff; line-height:1.4; padding:0 10px; z-index:2; font-family:sans-serif; display:-webkit-box; -webkit-line-clamp:3; -webkit-box-orient:vertical; overflow:hidden;">
-                        {{ p.title }}
-                      </span>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="post-info">
-                  <div class="post-top-meta">
-                    <h2><a href="{{ p.url | relative_url }}">{{ p.title }}</a></h2>
-                    <p>{{ p.description | default: p.excerpt | strip_html | truncate: 110 }}</p>
-                  </div>
-                  <div class="post-footer">
-                    <button class="native-share-btn" onclick="nativeShare('{{ p.title | escape }}','{{ p.url | absolute_url }}')">
-                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <circle cx="18" cy="5" r="3"></circle>
-                        <circle cx="6" cy="12" r="3"></circle>
-                        <circle cx="18" cy="19" r="3"></circle>
-                        <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line>
-                        <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line>
-                      </svg>
-                      <span>शेयर</span>
-                    </button>
-                    <a href="{{ p.url | relative_url }}" class="read-link">पूरा पढ़ें →</a>
-                  </div>
+                <img src="{{ p.image | default: '/assets/images/default-thumb.png' }}" 
+                     alt="{{ p.title | escape }} - TyagiHub" 
+                     title="{{ p.title | escape }} - TyagiHub" 
+                     class="js-thumbnail-img"
+                     loading="lazy" 
+                     width="354" 
+                     height="236"
+                     style="width:100%; height:100%; object-fit:cover; display:block;"
+                     onerror="triggerFallback(this)">
+                
+                <div class="auto-title-fallback" style="display:none; width:100%; height:100%; position:absolute; top:0; left:0; background:linear-gradient(135deg, #1e1e24 0%, #111216 100%); flex-direction:column; align-items:center; justify-content:center; padding:20px; text-align:center; box-sizing:border-box; border:1px solid rgba(255,255,255,0.05);">
+                  <div class="animated-bg-glow" style="position:absolute; width:130px; height:130px; background:rgba(0,123,255,0.15); filter:blur(40px); border-radius:50%;"></div>
+                  <svg viewBox="0 0 24 24" width="40" height="40" fill="none" stroke="#007bff" stroke-width="1.5" style="margin-bottom:10px; z-index:2;">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25" />
+                  </svg>
+                  <span style="font-size:15px; font-weight:600; color:#ffffff; line-height:1.4; padding:0 10px; z-index:2; font-family:sans-serif; display:-webkit-box; -webkit-line-clamp:3; -webkit-box-orient:vertical; overflow:hidden;">
+                    {{ p.title }}
+                  </span>
                 </div>
 
               </div>
-            {% endfor %}
+
+            </div>
+
+            <div class="post-info">
+              <div class="post-top-meta">
+                <h2>
+                  <a href="{{ p.url | relative_url }}">
+                    {{ p.title }}
+                  </a>
+                </h2>
+                <p>
+                  {{ p.description | default: p.excerpt | strip_html | truncate: 110 }}
+                </p>
+              </div>
+
+              <div class="post-footer">
+                <button class="native-share-btn" onclick="nativeShare('{{ p.title | escape }}','{{ p.url | absolute_url }}')">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="18" cy="5" r="3"></circle>
+                    <circle cx="6" cy="12" r="3"></circle>
+                    <circle cx="18" cy="19" r="3"></circle>
+                    <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line>
+                    <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line>
+                  </svg>
+                  <span>शेयर</span>
+                </button>
+                <a href="{{ p.url | relative_url }}" class="read-link">
+                  पूरा पढ़ें →
+                </a>
+              </div>
+            </div>
+
           </div>
-          <nav id="pagination-nav" class="pagination-center" aria-label="Pagination Navigation" style="display: flex; gap: 8px; justify-content: center; margin-top: 30px; align-items: center; flex-wrap: wrap;"></nav>
-        </div>
-      </section>
+        {% endfor %}
+
+      </div>
+
+      <nav id="pagination-nav" class="pagination-center" aria-label="Pagination Navigation" style="display: flex; gap: 8px; justify-content: center; margin-top: 30px; align-items: center; flex-wrap: wrap;">
+      </nav>
+
     </div>
-
-    <!-- 🔴 REDUNDANT SIDEBAR REMOVED FROM HERE TO PREVENT DOUBLE RENDERING CRASH -->
-
-  </div>
+  </section>
 
 <section class="discover-insights-section">
   <div class="discover-insights-container">
