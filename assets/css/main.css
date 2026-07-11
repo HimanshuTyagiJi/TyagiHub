@@ -137,10 +137,10 @@
   --fs-hero: clamp(2.5rem, 6vw, 5.5rem);
 
   --fw-regular: 400;
-  --fw-medium: 500;
-  --fw-semi: 600;
-  --fw-bold: 700;
-  --fw-black: 900;
+  --fw-medium: 450;
+  --fw-semi: 500;
+  --fw-bold: 550;
+  --fw-black: 600;
 
   --lh-tight: 1.1;
   --lh-snug: 1.3;
