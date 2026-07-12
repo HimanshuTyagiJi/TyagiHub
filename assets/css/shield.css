@@ -555,17 +555,4 @@
     font-weight: var(--fw-regular);
   }
 
-@media (min-width: 1024px) {
-    .shield-sidebar {
-        position: fixed;
-        top: 60px;
-        right: 0;
-        width: 340px;
-        height: calc(100vh - 6%);
-        overflow-y: auto;
-        overflow-x: hidden;
-        padding-right: 4px;
-        scrollbar-width: none;
-        border-radius: 25px;
-    }
-}
+
