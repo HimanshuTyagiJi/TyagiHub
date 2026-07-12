@@ -1,37 +1,14 @@
 // 🌐 TyagiHub Live Quiz Engine & Google Sheet Core Pipe
 // Path: /assets/js/test.js
 
-import { initializeApp, getApps, getApp } from "https://www.gstatic.com/firebasejs/9.22.1/firebase-app.js";
-import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/9.22.1/firebase-auth.js";
-
-// 🎯 Connected cleanly to your newly deployed auto-injecting Apps Script URL
+// Connected cleanly to your newly deployed auto-injecting Apps Script URL
 const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbw9Bz1KhUlIlKgy-lOpiI70oCMm28nbqhoBVUj1eg8uEH2iUcmaDP4Si9OXh0r37wiktg/exec";
 
 document.addEventListener('DOMContentLoaded', () => {
-    // Firebase Config for Authentication ONLY (Synced strictly with default.html)
-    const firebaseConfig = {
-        apiKey: "AIzaSyBE0uXhh8ePOQH6FBdhRCZrRgRkUTwCWws",
-        authDomain: "tyagi-hub.firebaseapp.com",
-        projectId: "tyagi-hub",
-        storageBucket: "tyagi-hub.firebasestorage.app",
-        messagingSenderId: "1052184634573",
-        appId: "1:1052184634573:web:077135d1bc4f321688b584"
-    };
-
-    let app, auth;
-    try {
-        app = getApps().length ? getApp() : initializeApp(firebaseConfig);
-        auth = getAuth(app);
-    } catch (e) {
-        console.error("Firebase initialization error:", e);
-        return;
-    }
-
     const quizId = document.body.dataset.quizId;
     if (!quizId) return;
 
     // --- State Management ---
-    let currentUser = null;
     let timerInterval;
     let timeTaken = 0;
     let currentQuestionIndex = 0;
@@ -50,9 +27,23 @@ document.addEventListener('DOMContentLoaded', () => {
     const retryBtn = document.getElementById("retry-btn");
     const reviewRetryBtn = document.getElementById("review-retry-btn");
 
-    onAuthStateChanged(auth, (user) => {
-        currentUser = user;
-    });
+    // 🎯 REPLACED FIREBASE AUTH WITH NATIVE LOCALSTORAGE LOGGED-IN USER MATRIX
+    function getLoggedUser() {
+        try {
+            const storedUser = localStorage.getItem("tc_user");
+            if (storedUser) {
+                const parsed = JSON.parse(storedUser);
+                return {
+                    uid: parsed.uid || parsed.e.replace(/[^a-zA-Z0-9]/g, ""),
+                    displayName: parsed.n || "Learner",
+                    photoURL: parsed.p || ""
+                };
+            }
+        } catch (e) {
+            console.error("Error reading local login session:", e);
+        }
+        return null;
+    }
 
     function startQuiz() {
         if(startModal) startModal.classList.remove('active');
@@ -249,19 +240,18 @@ document.addEventListener('DOMContentLoaded', () => {
         
         if (resultModal) resultModal.classList.add('active');
         
+        const currentUser = getLoggedUser();
         if (currentUser) {
-            saveScoreToGoogleSheet(correctCount, totalQuestions);
+            saveScoreToGoogleSheet(correctCount, totalQuestions, currentUser);
         }
     }
 
-    async function saveScoreToGoogleSheet(score, totalQuestions) {
-        if (!currentUser) return;
-
+    async function saveScoreToGoogleSheet(score, totalQuestions, currentUser) {
         const payload = {
             action: "save_score",
             userId: currentUser.uid,
-            userName: currentUser.displayName || "Anonymous Learner",
-            userPhotoURL: currentUser.photoURL || "",
+            userName: currentUser.displayName,
+            userPhotoURL: currentUser.photoURL,
             score: score,
             totalQuestions: totalQuestions,
             quizId: quizId
@@ -281,9 +271,8 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function retryQuiz() { location.reload(); }
-    function reviewQuestions() { renderReviewMode(); }
     
-    function renderReviewMode() {
+    function reviewQuestions() {
         if(startModal) startModal.classList.remove('active');
         if(quizSection) quizSection.style.display = "none";
         if(resultModal) resultModal.classList.remove('active');
