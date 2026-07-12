@@ -1,56 +1,231 @@
 ---
 layout: default
- 
 permalink: /history-test/
 title: "History Test Hub"
-description: "Test your knowledge of Indian and World History with GK Learn Study."
-keywords: "history test, mock test, gk learn study, history quiz"
+description: "Test your knowledge of Indian and World History with TyagiHub."
+keywords: "history test, mock test, history quiz, tyagihub"
 lang_switch: false
+comments: false
 ---
 
-<!-- 📄 GK LEARN STUDY CORE TEST STYLESHEET HOOK -->
-<link rel="stylesheet" href="https://gklearnstudy.in/css/test.css" />
+<!-- Premium Independent Category Layout Styling Layer -->
+<style>
+  .cat-test-wrapper {
+    max-width: var(--container-max, 1200px);
+    margin: var(--space-12, 48px) auto;
+    padding: 0 var(--space-4, 16px);
+    min-height: 75vh;
+    margin-top: 70px;
+  }
 
-<!-- 🏆 MAIN TEST WORKSPACE PANEL -->
-<div class="math-formula-container" data-test-category="history">
+  /* Header Typography */
+  .cat-main-heading {
+    font-family: var(--font-display), sans-serif;
+    font-size: var(--fs-2xl, 2.25rem);
+    font-weight: var(--fw-black, 600);
+    color: var(--text-heading);
+    text-align: center;
+    margin: 0 0 var(--space-2, 8px);
+    letter-spacing: -0.02em;
+  }
+
+  .cat-subtitle {
+    font-family: var(--font-body), sans-serif;
+    font-size: var(--fs-sm, 0.95rem);
+    color: var(--text-paragraph);
+    text-align: center;
+    max-width: 680px;
+    margin: 0 auto var(--space-10, 40px);
+    line-height: var(--lh-normal, 1.6);
+    opacity: 0.9;
+  }
+
+  /* 🎛️ TEST PARTS SELECTION MATRIX GRID */
+  .box-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-5, 20px);
+    margin-bottom: var(--space-12, 48px);
+  }
+
+  @media(min-width: 768px) {
+    .box-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media(min-width: 1024px) {
+    .box-grid { grid-template-columns: repeat(3, 1fr); }
+  }
+
+  .box-grid .box {
+    background: var(--bg-surface);
+    border: 1px solid var(--clr-border);
+    border-radius: var(--radius-lg, 18px);
+    padding: var(--space-6, 24px);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 120px;
+    position: relative;
+    overflow: hidden;
+    transition: transform var(--ease-normal, 250ms), border-color var(--ease-normal, 250ms), box-shadow var(--ease-normal, 250ms);
+    box-shadow: var(--shadow-sm);
+  }
+
+  .box-grid .box:not(.disabled-box):hover {
+    transform: translateY(-5px);
+    border-color: var(--clr-border-2);
+    box-shadow: var(--shadow-md);
+  }
+
+  .box-grid .box a {
+    font-family: var(--font-display), sans-serif;
+    font-size: var(--fs-md, 1.125rem);
+    font-weight: var(--fw-bold, 550);
+    text-decoration: none;
+    color: var(--clr-accent);
+    display: inline-block;
+    transition: color var(--ease-fast);
+  }
+
+  .box-grid .box:not(.disabled-box):hover a {
+    color: var(--clr-accent-2);
+  }
+
+  /* Disabled State Styling */
+  .box-grid .box.disabled-box {
+    opacity: 0.5;
+    cursor: not-allowed;
+    background: var(--bg-surface);
+  }
+
+  .box-grid .box.disabled-box a {
+    color: var(--text-muted) !important;
+    pointer-events: none;
+    cursor: not-allowed;
+  }
+
+  .soon-badge-tag {
+    position: absolute;
+    top: 12px;
+    right: -32px;
+    background: var(--clr-tools);
+    color: #000000;
+    font-size: 11px;
+    font-weight: var(--fw-black, 600);
+    padding: 2px 35px;
+    transform: rotate(45deg);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  /* 🥇 Leaderboard Section Layout Layer */
+  .leaderboard-section {
+    background: var(--bg-surface);
+    border: 1px solid var(--clr-border);
+    border-radius: var(--radius-lg, 18px);
+    padding: var(--space-6, 24px);
+    box-shadow: var(--shadow-sm);
+  }
+
+  .leaderboard-title {
+    font-family: var(--font-display), sans-serif;
+    font-size: var(--fs-lg, 1.375rem);
+    font-weight: var(--fw-black, 600);
+    color: var(--text-heading);
+    margin: 0 0 var(--space-5, 20px) 0;
+    letter-spacing: -0.01em;
+  }
+
+  /* 🎚️ Global Sync Leaderboard Style Rules Matrix Mapping Hooks */
+  .tc-leaderboard {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .tc-leaderboard li {
+    display: flex;
+    align-items: center;
+    padding: var(--space-3, 12px) var(--space-2, 8px);
+    border-bottom: 1px solid var(--clr-border);
+    font-family: var(--font-body), sans-serif;
+    font-size: var(--fs-sm, 0.95rem);
+  }
+
+  .tc-leaderboard li:last-child { border-bottom: none; }
+  .tc-leaderboard li.active-user-row {
+    background: var(--hover-bg-1);
+    border-left: 3px solid var(--clr-accent);
+    padding-left: calc(var(--space-2, 8px) - 3px);
+  }
+
+  .tc-leaderboard .rank { min-width: 40px; text-align: center; font-weight: var(--fw-black, 600); color: var(--clr-accent); }
+
+  .tc-leaderboard .lb-avatar-frame {
+    width: 36px; height: 36px;
+    border-radius: var(--radius-full, 9999px);
+    margin: 0 var(--space-3, 12px);
+    overflow: hidden;
+    border: 1px solid var(--clr-border-2);
+    display: flex; align-items: center; justify-content: center;
+    background: var(--bg-body);
+  }
+
+  .tc-leaderboard .lb-name { flex: 1; font-weight: var(--fw-bold, 550); color: var(--text-heading); }
+  .tc-leaderboard .lb-score { font-weight: var(--fw-black, 600); color: var(--text-heading); }
+
+  .luxury-spinner {
+    text-align: center;
+    padding: var(--space-8, 32px) 0;
+    color: var(--clr-accent);
+  }
+</style>
+
+<!-- <body> tag payload context anchor lock for test-hub.js fetching -->
+<script>document.body.setAttribute('data-test-category', 'history');</script>
+
+<main class="cat-test-wrapper">
     
-    <h1>History Test Hub</h1>
-    <p class="section-subtitle" style="margin-bottom: 30px; color: var(--text-paragraph, #4b5563);">
-        Test your knowledge of Indian and World History. Choose from the test parts below.
-    </p>
-    
-    <!-- 🎛️ TEST PARTS SELECTION GRID -->
-    <div id="test-parts-container" class="box-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; margin-bottom: 40px;">
-        <div class="box" data-quiz-id="history-test-part-01" style="border: 1px solid var(--border-table, #e5e7eb); padding: 20px; border-radius: 12px; text-align: center;">
-            <a href="{{ '/history-test/part-01' | relative_url }}" style="font-weight: 700; text-decoration: none; color: var(--primary-base, #2563eb);">Part-01</a>
-        </div>
-        
-        <div class="box" data-quiz-id="history-test-part-02" style="border: 1px solid var(--border-table, #e5e7eb); padding: 20px; border-radius: 12px; text-align: center;">
-            <a href="{{ '/history-test/part-02' | relative_url }}" style="font-weight: 700; text-decoration: none; color: var(--primary-base, #2563eb);">Part-02</a>
-        </div>
-        
-        <div class="box" data-quiz-id="history-test-part-03" style="border: 1px solid var(--border-table, #e5e7eb); padding: 20px; border-radius: 12px; text-align: center; opacity: 0.6;">
-            <a href="#" style="font-weight: 700; text-decoration: none; color: var(--text-paragraph, #4b5563); cursor: not-allowed;">Part-03 (Coming Soon)</a>
-        </div>
+    <div class="cat-header-zone">
+        <h1 class="cat-main-heading">History Test Hub</h1>
+        <p class="cat-subtitle">
+            Challenge your factual parameters across Ancient, Medieval, and Modern Indian &amp; World History. Select an active practice segment below.
+        </p>
     </div>
 
-    <hr style="border: 0; border-top: 1px solid var(--border-table, #e5e7eb); margin: 40px 0;" />
+    <!-- 🎛️ DYNAMIC ARCHIVE CONTAINER PIRE GRID -->
+    <div id="test-parts-container" class="box-grid">
+        
+        <!-- Part 01 Box Block -->
+        <div class="box" data-quiz-id="history-test-part-01" data-part-name="History - Part 01">
+            <a href="{{ '/history-test/part-01' | relative_url }}">Part-01</a>
+        </div>
+        
+        <!-- Part 02 Box Block -->
+        <div class="box" data-quiz-id="history-test-part-02" data-part-name="History - Part 02">
+            <a href="{{ '/history-test/part-02' | relative_url }}">Part-02</a>
+        </div>
+        
+        <!-- Coming Soon Locked Block -->
+        <div class="box disabled-box">
+            <span class="soon-badge-tag">Soon</span>
+            <a href="#" onclick="return false;">Part-03</a>
+        </div>
 
-    <!-- 🥇 FIREBASE DRIVEN LIVE LEADERBOARD SECTION -->
+    </div>
+
+    <!-- 🥇 GOOGLE SHEET INTEGRATED DYNAMIC LEADERBOARD ZONE -->
     <section class="leaderboard-section">
-        <h2 style="font-size: 1.5rem; font-weight: 800; margin-bottom: 20px;">History Tests - Top Scorers</h2>
+        <h2 class="leaderboard-title">History Tests - Top Performers</h2>
         <div id="leaderboard-container">
-            <div class="spinner-container" style="text-align: center; padding: 20px;">
-                <div class="spinner" style="border: 4px solid rgba(0,0,0,0.1); width: 36px; height: 36px; border-radius: 50%; border-left-color: var(--primary-base, #2563eb); animation: spin 1s linear infinite; display: inline-block;"></div>
+            <div class="luxury-spinner">
+                <i class="fas fa-spinner fa-spin" style="font-size:26px;"></i>
             </div>
         </div>
     </section>
 
-</div>
+</main>
 
-<style>
-@keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
-</style>
-
-<!-- ⚡ DYNAMIC CORE SCRIPTS HOOK -->
+<!-- ⚡ CONNECTS SYNCED JAVASCRIPT TRANSIT ENGINE -->
 <script type="module" src="{{ '/assets/js/test-hub.js' | relative_url }}"></script>
