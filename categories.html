@@ -21,6 +21,62 @@ lang_switch: false
     align-items: center;
     gap: 15px;
     margin-bottom: var(--space-10, 40px);
+    position: relative;
+    padding: 20px 0;
+  }
+
+  /* 🌌 Animated Tech SVG Canvas Container */
+  .cat-animated-svg-wrap {
+    width: 80px;
+    height: 80px;
+    margin-bottom: 5px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .cat-animated-svg-wrap svg {
+    width: 100%;
+    height: 100%;
+  }
+
+  /* SVG Animation Keyframes Curve Hooks */
+  .svg-pulse-ring {
+    transform-origin: center;
+    animation: svgPulse 3s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+    stroke: var(--clr-accent);
+    opacity: 0.4;
+  }
+
+  .svg-core-icon {
+    transform-origin: center;
+    animation: svgFloat 4s ease-in-out infinite;
+    fill: var(--clr-accent);
+  }
+
+  .svg-dash-orbit {
+    transform-origin: center;
+    animation: svgRotate 20s linear infinite;
+    stroke: var(--clr-accent);
+    stroke-dasharray: 8, 4;
+    opacity: 0.6;
+  }
+
+  @keyframes svgPulse {
+    0% { transform: scale(0.9); opacity: 0.6; }
+    50% { transform: scale(1.1); opacity: 0.2; }
+    100% { transform: scale(0.9); opacity: 0.6; }
+  }
+
+  @keyframes svgFloat {
+    0% { transform: translateY(0px) scale(1); }
+    50% { transform: translateY(-4px) scale(1.02); }
+    100% { transform: translateY(0px) scale(1); }
+  }
+
+  @keyframes svgRotate {
+    100% { transform: rotate(360deg); }
   }
 
   .cat-main-heading {
@@ -30,6 +86,19 @@ lang_switch: false
     color: var(--text-heading);
     letter-spacing: -0.02em;
     margin: 0;
+    text-align: center;
+  }
+
+  /* Upper Integrated Brand Description */
+  .cat-welcome-description {
+    font-family: var(--font-body), sans-serif;
+    font-size: var(--fs-sm, 0.95rem);
+    color: var(--text-paragraph);
+    line-height: var(--lh-normal, 1.6);
+    max-width: 800px;
+    margin: 5px 0 10px 0;
+    text-align: center;
+    opacity: 0.9;
   }
 
   /* 🌐 Hybrid Premium Live Language Toggle Switcher */
@@ -140,7 +209,7 @@ lang_switch: false
   .filter-chip-btn.active-chip-state {
     background: var(--clr-accent);
     border-color: var(--clr-accent);
-    color: #ffffff; 
+    color: #000000;  
     box-shadow: var(--shadow-accent);
   }
 
@@ -376,9 +445,27 @@ lang_switch: false
 <!-- Main Interface Markup -->
 <main class="premium-cat-wrapper">
     <div class="cat-header-zone">
+        <!-- 🌌 DYNAMIC VIP ANIMATED SVG ELEMENT -->
+        <div class="cat-animated-svg-wrap">
+            <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <!-- Outer Pulse Ring -->
+                <circle class="svg-pulse-ring" cx="50" cy="50" r="42" stroke-width="2"/>
+                <!-- Dashed Orbit Ring -->
+                <circle class="svg-dash-orbit" cx="50" cy="50" r="32" stroke-width="1.5"/>
+                <!-- Core Geometric Hub Icon -->
+                <polygon class="svg-core-icon" points="50,28 68,40 68,60 50,72 32,60 32,40"/>
+                <circle cx="50" cy="50" r="4" fill="var(--bg-body)"/>
+            </svg>
+        </div>
+
         <h1 id="category-posts-heading" class="cat-main-heading">Article Archive</h1>
         
-        <!-- 🌐 NESTED NATIVE SWITCHER: Controls language context live without refresh friction -->
+        <!-- 🎯 WELCOME BRAND DESCRIPTION -->
+        <p id="cat-welcome-desc-node" class="cat-welcome-description">
+            Welcome to TyagiHub Discover, the central directory for all published articles and technology categories. This page helps you explore educational content covering Cyber Security, Artificial Intelligence (AI), Programming, Web Development, Cloud Computing, Software Engineering, Mobile Technology, Digital Privacy, Open Source Projects, Technology News, and other emerging digital topics.
+        </p>
+        
+        <!-- 🌐 NESTED NATIVE SWITCHER -->
         <div id="live-lang-switch-trigger" class="live-lang-switch-box">
             <i class="fa-solid fa-earth-americas"></i>
             <span id="lang-switch-text-node">🌐 हिंदी में पढ़ें</span>
@@ -407,7 +494,7 @@ lang_switch: false
     <!-- Pagination Interface -->
     <nav id="premium-pagination-container" class="premium-pagination"></nav>
 
-    <!-- 💎 EXTRA BRAND INFORMATION BLOCK: Professional Company Metadata Section -->
+    <!-- 💎 EXTRA BRAND INFORMATION BLOCK -->
     <div class="archive-info-footer-section">
         <div id="info-box-title-node" class="info-footer-title">
             <i class="fa-solid fa-circle-info" style="color:var(--clr-accent);"></i> <span>Knowledge Base & Content Directory</span>
@@ -444,7 +531,7 @@ lang_switch: false
 
 <script>
 document.addEventListener('DOMContentLoaded', () => {
-    const POSTS_PER_PAGE = 15; // Shows exactly 15 records maximum per view grid window
+    const POSTS_PER_PAGE = 15;
 
     const postsGrid = document.getElementById('category-post-grid');
     const postsHeading = document.getElementById('category-posts-heading');
@@ -452,13 +539,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const paginationNav = document.getElementById('premium-pagination-container');
     const liveSearchInput = document.getElementById('premium-live-search');
     
-    // Toggle Controllers Dom Nodes
     const langSwitchBox = document.getElementById('live-lang-switch-trigger');
     const langSwitchText = document.getElementById('lang-switch-text-node');
+    const welcomeDescNode = document.getElementById('cat-welcome-desc-node');
     const infoTitleNode = document.getElementById('info-box-title-node');
     const infoDescNode = document.getElementById('info-box-desc-node');
 
-    // Safe dynamic baseline language analyzer hook
     const isHindiContext = window.location.pathname.includes('/hi/') || document.referrer.includes('/hi/');
     let activeLang = isHindiContext ? "hi" : "en";
 
@@ -480,7 +566,6 @@ document.addEventListener('DOMContentLoaded', () => {
         const rawJsonData = document.getElementById('tyagihub-master-json').textContent;
         rawUniversalArrayBuffer = JSON.parse(rawJsonData || "[]");
 
-        // Sync initial text frameworks matching activeLang
         syncStaticUIStrings();
         executeCoreDataRefreshPipeline();
 
@@ -489,12 +574,10 @@ document.addEventListener('DOMContentLoaded', () => {
         postsGrid.innerHTML = `<p style="color:var(--text-muted); text-align:center; grid-column:1/-1;">Buffer Exception.</p>`;
     }
 
-    // 🎯 1. LIVE LANGUAGE SWITCHER CONTROL HACK
     if (langSwitchBox) {
         langSwitchBox.addEventListener('click', () => {
-            activeLang = activeLang === "en" ? "hi" : "en"; // Swap values
-            
-            currentPageIndex = 1; // reset indices pagination safely
+            activeLang = activeLang === "en" ? "hi" : "en";
+            currentPageIndex = 1; 
             syncStaticUIStrings();
             executeCoreDataRefreshPipeline();
         });
@@ -505,28 +588,28 @@ document.addEventListener('DOMContentLoaded', () => {
             langSwitchText.innerText = "🌐 Switch to English";
             postsHeading.innerText = "श्रेणियाँ एवं सभी लेख";
             liveSearchInput.placeholder = "लेख खोजें...";
+            welcomeDescNode.innerText = "TyagiHub Discover में आपका स्वागत है। यह पृष्ठ हमारे सभी प्रकाशित लेखों और तकनीकी श्रेणियों का केंद्रीय संग्रह है। यहाँ आप साइबर सुरक्षा, कृत्रिम बुद्धिमत्ता (AI), प्रोग्रामिंग, वेब विकास, क्लाउड कंप्यूटिंग, सॉफ्टवेयर इंजीनियरिंग, मोबाइल तकनीक, डिजिटल गोपनीयता, ओपन सोर्स प्रोजेक्ट्स, तकनीकी समाचार तथा अन्य आधुनिक विषयों से संबंधित लेख आसानी से खोज और पढ़ सकते हैं।";
             infoTitleNode.innerHTML = `<i class="fa-solid fa-circle-info" style="color:var(--clr-accent);"></i> <span>ज्ञान केंद्र और सामग्री निर्देशिका</span>`;
-            infoDescNode.innerText = "त्TyagiHub Discover में आपका स्वागत है। यह पृष्ठ हमारे सभी प्रकाशित लेखों और तकनीकी श्रेणियों का केंद्रीय संग्रह है। यहाँ आप साइबर सुरक्षा, कृत्रिम बुद्धिमत्ता (AI), प्रोग्रामिंग, वेब विकास, क्लाउड कंप्यूटिंग, सॉफ्टवेयर इंजीनियरिंग, मोबाइल तकनीक, डिजिटल गोपनीयता, ओपन सोर्स प्रोजेक्ट्स, तकनीकी समाचार तथा अन्य आधुनिक विषयों से संबंधित लेख आसानी से खोज और पढ़ सकते हैं। प्रत्येक लेख शोध-आधारित, मूल एवं शिक्षाप्रद सामग्री के साथ तैयार किया जाता है ताकि विद्यार्थी, डेवलपर, पेशेवर और सामान्य पाठक विश्वसनीय जानकारी प्राप्त कर सकें। नियमित रूप से नए लेख और श्रेणियाँ जोड़ी जाती हैं, जिससे आपको नवीनतम तकनीकी जानकारी एक ही स्थान पर उपलब्ध हो सके।";
+            infoDescNode.innerText = "प्रत्येक लेख शोध-आधारित, मूल एवं शिक्षाप्रद सामग्री के साथ तैयार किया जाता है ताकि विद्यार्थी, डेवलपर, पेशेवर और सामान्य पाठक विश्वसनीय जानकारी प्राप्त कर सकें। नियमित रूप से नए लेख और श्रेणियाँ जोड़ी जाती हैं, जिससे आपको नवीनतम तकनीकी जानकारी एक ही स्थान पर उपलब्ध हो सके।";
         } else {
             langSwitchText.innerText = "🌐 हिंदी में पढ़ें";
             postsHeading.innerText = "Article Archive Directory";
             liveSearchInput.placeholder = "Search active articles...";
+            welcomeDescNode.innerText = "Welcome to TyagiHub Discover, the central directory for all published articles and technology categories. This page helps you explore educational content covering Cyber Security, Artificial Intelligence (AI), Programming, Web Development, Cloud Computing, Software Engineering, Mobile Technology, Digital Privacy, Open Source Projects, Technology News, and other emerging digital topics.";
             infoTitleNode.innerHTML = `<i class="fa-solid fa-circle-info" style="color:var(--clr-accent);"></i> <span>Knowledge Base & Content Directory</span>`;
-            infoDescNode.innerText = "Welcome to TyagiHub Discover, the central directory for all published articles and technology categories. This page helps you explore educational content covering Cyber Security, Artificial Intelligence (AI), Programming, Web Development, Cloud Computing, Software Engineering, Mobile Technology, Digital Privacy, Open Source Projects, Technology News, and other emerging digital topics. Every article is carefully researched, originally written, and structured to provide accurate, practical, and easy-to-understand information for students, developers, professionals, and technology enthusiasts. New articles and categories are added regularly to ensure readers always have access to reliable, up-to-date, and valuable technical knowledge in one place.";        }
+            infoDescNode.innerText = "Welcome to the centralized TyagiHub Intelligence Archive. This section compiles multi-disciplinary technical field logs, cybersecurity safeguards, software review metrics, and modern application parameters. All publications are parsed across language nodes to maintain optimal delivery structures. For persistent network mitigation strategies or platform developments, consult the corresponding dedicated document hubs.";
+        }
     }
 
-    // Pipeline module executing array modifications on lang swap triggers
     function executeCoreDataRefreshPipeline() {
-        // 🔥 CRITICAL FIX: Extract data and enforce uniform Timestamp Sorting (Newest to Oldest)
         masterSiteDataset = rawUniversalArrayBuffer
             .filter(post => post.lang === activeLang)
-            .sort((a, b) => new Date(b.date) - new Date(a.date)); // Enforces Recent Posts First globally!
+            .sort((a, b) => new Date(b.date) - new Date(a.date)); 
 
         buildCategoryChipsMenu();
         applyFilterLogicPipeline();
     }
 
-    // 🎯 2. DYNAMIC CHIPS MENU WITH AUTOMATIC METRIC COUNTERS
     function buildCategoryChipsMenu() {
         chipsTrack.innerHTML = '';
         
@@ -576,7 +659,6 @@ document.addEventListener('DOMContentLoaded', () => {
         applyFilterLogicPipeline();
     }
 
-    // 🎯 3. LIVE SEARCH CONTROLLER
     if (liveSearchInput) {
         liveSearchInput.addEventListener('input', (e) => {
             searchFilterQuery = e.target.value.toLowerCase().trim();
@@ -585,7 +667,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // 🎯 4. LOGIC FILTERS ENGINE PIPELINE
     function applyFilterLogicPipeline() {
         filteredPostsSubset = masterSiteDataset.filter(post => {
             if (currentSelectedCategoryKey !== "all") {
@@ -602,7 +683,6 @@ document.addEventListener('DOMContentLoaded', () => {
         executeGridRenderLifecycle();
     }
 
-    // 🎯 5. GRID CANVAS RENDER LIFECYCLE
     function executeGridRenderLifecycle() {
         postsGrid.innerHTML = '';
         paginationNav.innerHTML = '';
@@ -658,7 +738,6 @@ document.addEventListener('DOMContentLoaded', () => {
         generatePaginationInterface();
     }
 
-    // Dynamic Navigation Pager Pipelining
     function generatePaginationInterface() {
         const totalPages = Math.ceil(filteredPostsSubset.length / POSTS_PER_PAGE);
         if (totalPages <= 1) return;
