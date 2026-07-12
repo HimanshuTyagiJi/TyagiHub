@@ -47,7 +47,7 @@ comments: false
     opacity: 0.9;
   }
 
-  /* 👥 UNIVERSAL MULTI-AUTHOR VISUAL BLOCKS GRID (Persistent Selector Hub) */
+  /* 👥 MULTI-AUTHOR VISUAL BLOCKS GRID (Persistent Selector Hub) */
   .authors-selector-hub {
     display: grid;
     grid-template-columns: 1fr;
@@ -89,7 +89,7 @@ comments: false
     box-shadow: var(--shadow-accent);
   }
 
-  /* 🌌 Integrated Premium Live SVG Avatar Canvas (Inside Card Block) */
+  /* 🌌 Premium Circle SVG Avatar Canvas (No Hexagon) */
   .profile-block-svg-avatar {
     width: 76px;
     height: 76px;
@@ -105,38 +105,49 @@ comments: false
     height: 100%;
   }
 
-  /* SVG Live Animation Classes */
-  .svg-pulse-ring {
+  /* 🎯 CONDITIONAL STATE-BASED ANIMATIONS Framework */
+  .profile-block-svg-avatar .svg-pulse-ring,
+  .profile-block-svg-avatar .svg-dash-orbit {
     transform-origin: center;
-    animation: svgPulse 3s cubic-bezier(0.4, 0, 0.2, 1) infinite;
-    stroke: var(--clr-accent);
-    opacity: 0.35;
+    transition: all 0.3s ease;
   }
 
-  .svg-core-icon {
-    transform-origin: center;
-    animation: svgFloat 4s ease-in-out infinite;
+  /* Native Fallback Static Styling when OFF */
+  .profile-block-svg-avatar .svg-pulse-ring {
+    stroke: var(--clr-border);
+    opacity: 0.4;
+  }
+  .profile-block-svg-avatar .svg-dash-orbit {
+    stroke: var(--clr-border-2);
+    stroke-dasharray: 6, 3;
+    opacity: 0.4;
+  }
+  .profile-block-svg-avatar .svg-core-circle {
+    fill: var(--clr-border-2);
+  }
+
+  /* 🔥 Active State Engine: Triggers full premium blue/accent rotation animations when class injected */
+  .author-profile-block-card.is-animating .svg-pulse-ring {
+    animation: svgPulse 3s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+    stroke: var(--text-4, #60a5fa); 
+    opacity: 0.6;
+  }
+
+  .author-profile-block-card.is-animating .svg-dash-orbit {
+    animation: svgRotate 15s linear infinite;
+    stroke: var(--clr-accent);
+    stroke-dasharray: 6, 3;
+    opacity: 0.8;
+  }
+
+  .author-profile-block-card.is-animating .svg-core-circle {
     fill: var(--clr-accent);
   }
 
-  .svg-dash-orbit {
-    transform-origin: center;
-    animation: svgRotate 20s linear infinite;
-    stroke: var(--clr-accent);
-    stroke-dasharray: 6, 3;
-    opacity: 0.5;
-  }
-
   @keyframes svgPulse {
-    0% { transform: scale(0.92); opacity: 0.5; }
-    50% { transform: scale(1.08); opacity: 0.15; }
-    100% { transform: scale(0.92); opacity: 0.5; }
-  }
-
-  @keyframes svgFloat {
-    0% { transform: translateY(0px) scale(1); }
-    50% { transform: translateY(-3px) scale(1.02); }
-    100% { transform: translateY(0px) scale(1); }
+    0% { transform: scale(0.92); opacity: 0.7; }
+    50% { transform: scale(1.06); opacity: 0.2; }
+    100% { transform: scale(0.92); opacity: 0.7; }
   }
 
   @keyframes svgRotate {
@@ -158,10 +169,14 @@ comments: false
   .profile-card-role {
     font-size: 11px;
     font-weight: var(--fw-bold, 550);
-    color: var(--clr-accent);
+    color: var(--text-muted);
     text-transform: uppercase;
     letter-spacing: 0.5px;
     margin-bottom: 6px;
+  }
+  
+  .active-profile-state .profile-card-role {
+    color: var(--clr-accent);
   }
 
   .profile-card-counter-tag {
@@ -183,6 +198,7 @@ comments: false
     padding-bottom: var(--space-3, 12px);
     gap: 15px;
     flex-wrap: wrap;
+    scroll-margin-top: 90px; /* 🎯 Guarantees clean positioning space below header upon scrolling */
   }
 
   .feed-section-title {
@@ -216,7 +232,7 @@ comments: false
     background: var(--hover-bg-1);
   }
 
-  /* Strict 3-Column 15-Post Responsive Matrix Layout Grid Framework */
+  /* Strict 3-Column 15-Post Architecture Framework Grid */
   .premium-grid {
     display: grid;
     grid-template-columns: 1fr;
@@ -230,7 +246,7 @@ comments: false
   }
   @media(min-width: 1024px) {
     .premium-grid {
-      grid-template-columns: repeat(3, 1fr); /* Strict 3 Columns Row Desktop View */
+      grid-template-columns: repeat(3, 1fr); 
     }
   }
 
@@ -369,7 +385,7 @@ comments: false
     <div class="cat-header-zone">
         <h1 id="category-posts-heading" class="profile-main-heading">Creator Profiles</h1>
         <p id="profile-welcome-desc-node" class="profile-welcome-description">
-            Explore active knowledge contributions across TyagiHub. Meet our engineering architects, security analysts, and digital creators delivering parsed insights under multi-disciplinary technology pipelines.
+            Explore active knowledge contributions across TyagiHub. Meet our engineering architects, security analysts, and digital creators delivering insights under multi-disciplinary technology pipelines.
         </p>
     </div>
 
@@ -380,8 +396,8 @@ comments: false
         </div>
     </div>
 
-    <!-- Feed Controller Zone -->
-    <div class="profile-feed-header-line">
+    <!-- Feed Controller Zone (Target node mapped for smooth scrolling anchor locks) -->
+    <div id="profile-feed-anchor-bar" class="profile-feed-header-line">
         <h2 id="author-posts-heading" class="feed-section-title">Published Articles Archive</h2>
         
         <!-- Live Language Toggle Selector -->
@@ -425,6 +441,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const selectorTrack = document.getElementById('authors-selector-track-container');
     const postsGrid = document.getElementById('author-post-grid');
     const postsHeading = document.getElementById('author-posts-heading');
+    const feedAnchorBar = document.getElementById('profile-feed-anchor-bar');
     
     const pageMainHeading = document.getElementById('category-posts-heading');
     const pageWelcomeDesc = document.getElementById('profile-welcome-desc-node');
@@ -446,7 +463,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let languageScannedDataset = [];
     let filteredPostsSubset = [];
 
-    // 🌌 PREMIUM INTEGRATED LIVE SVG AVATAR GENERATOR ENGINE (Inside Block Card)
+    // 🌌 PURE DYNAMIC CIRCLE BASED SVG LOGO GENERATOR ENGINE
     const generateAuthorAvatarSVG = (name) => {
         const words = name.split(' ').filter(Boolean);
         let initials = words[0] ? words[0][0] : 'T';
@@ -457,10 +474,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
         return `
             <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <circle class="svg-pulse-ring" cx="50" cy="50" r="42" stroke-width="2"/>
-                <circle class="svg-dash-orbit" cx="50" cy="50" r="32" stroke-width="1.5"/>
-                <polygon class="svg-core-icon" points="50,26 66,38 66,58 50,70 34,58 34,38"/>
-                <text x="50%" y="54%" dominant-baseline="middle" text-anchor="middle" font-size="22" font-weight="800" fill="var(--bg-body)" font-family="var(--font-display), sans-serif">${initials}</text>
+                <circle class="svg-pulse-ring" cx="50" cy="50" r="44" stroke-width="2"/>
+                <circle class="svg-dash-orbit" cx="50" cy="50" r="34" stroke-width="1.5"/>
+                <circle class="svg-core-circle" cx="50" cy="50" r="26"/>
+                <text x="50%" y="54%" dominant-baseline="middle" text-anchor="middle" font-size="20" font-weight="800" fill="var(--bg-surface)" font-family="var(--font-display), sans-serif">${initials}</text>
             </svg>
         `;
     };
@@ -470,7 +487,7 @@ document.addEventListener('DOMContentLoaded', () => {
         rawUniversalArrayBuffer = JSON.parse(rawJsonData || "[]");
 
         syncGlobalStaticUIStrings();
-        executeCoreProfileRefreshPipeline();
+        executeCoreProfileRefreshPipeline(false); // Initial load: do not trigger auto-scrolling
 
     } catch (e) {
         console.error("Profile dataset build failure:", e);
@@ -481,7 +498,7 @@ document.addEventListener('DOMContentLoaded', () => {
         langSwitchBox.addEventListener('click', () => {
             activeLang = activeLang === "en" ? "hi" : "en";
             syncGlobalStaticUIStrings();
-            executeCoreProfileRefreshPipeline();
+            executeCoreProfileRefreshPipeline(false);
         });
     }
 
@@ -497,26 +514,24 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    function executeCoreProfileRefreshPipeline() {
-        // Enforce strict language barrier filter locks
+    function executeCoreProfileRefreshPipeline(shouldScroll = false) {
         languageScannedDataset = rawUniversalArrayBuffer.filter(post => post.lang === activeLang);
-        
         buildAuthorsSelectorBlocks();
-        applyAuthorFilteringPipeline();
+        applyAuthorFilteringPipeline(shouldScroll);
     }
 
-    // 🎯 STEP 1: RENDER PERSISTENT DYNAMIC AUTHOR CARDS MENU (WITH LIVE COUNT & SVG EMBEDDED)
+    // 🎯 STEP 1: RENDER PERSISTENT CARDS TRACK
     function buildAuthorsSelectorBlocks() {
         selectorTrack.innerHTML = '';
         
-        // 1. Build Global 'ALL CREATORS' Hub Switch Button Block
         const allLabel = activeLang === "hi" ? "सभी क्रिएटर्स" : "All Creators";
         const allRole = activeLang === "hi" ? "पूर्ण निर्देशिका" : "Unified Team Directory";
         const allPostsLabel = activeLang === "hi" ? "कुल लेख संग्रह" : "Total Content Logs";
         const allAvatar = generateAuthorAvatarSVG("ALL");
 
         const allCard = document.createElement('div');
-        allCard.className = `author-profile-block-card ${currentSelectedAuthorKey === "all" ? 'active-profile-state' : ''}`;
+        const isAllAnimating = currentSelectedAuthorKey === "all" ? "active-profile-state is-animating" : "";
+        allCard.className = `author-profile-block-card ${isAllAnimating}`;
         allCard.innerHTML = `
             <div class="profile-block-svg-avatar">${allAvatar}</div>
             <div class="profile-card-details">
@@ -530,7 +545,6 @@ document.addEventListener('DOMContentLoaded', () => {
         allCard.addEventListener('click', () => switchAuthorProfileState("all", allCard));
         selectorTrack.appendChild(allCard);
 
-        // 2. Aggregate data maps calculating distinct metric counts per authors
         const authorRegistryMap = new Map();
         languageScannedDataset.forEach(p => {
             const rawAuthorName = p.author.trim();
@@ -543,7 +557,6 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
 
-        // 3. Loop over dynamic author metadata creating interactive profile blocks
         authorRegistryMap.forEach((data, normKey) => {
             const authorAvatarSvg = generateAuthorAvatarSVG(data.rawName);
             
@@ -554,7 +567,8 @@ document.addEventListener('DOMContentLoaded', () => {
             const articlesLabel = activeLang === "hi" ? "प्रकाशित लेख" : "Articles Logged";
 
             const card = document.createElement('div');
-            card.className = `author-profile-block-card ${currentSelectedAuthorKey === normKey ? 'active-profile-state' : ''}`;
+            const isTargetAnimating = currentSelectedAuthorKey === normKey ? "active-profile-state is-animating" : "";
+            card.className = `author-profile-block-card ${isTargetAnimating}`;
             card.innerHTML = `
                 <div class="profile-block-svg-avatar">${authorAvatarSvg}</div>
                 <div class="profile-card-details">
@@ -571,26 +585,27 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function switchAuthorProfileState(targetNormAuthorKey, clickedCardElement) {
-        document.querySelectorAll('.author-profile-block-card').forEach(c => c.classList.remove('active-profile-state'));
-        clickedCardElement.classList.add('active-profile-state');
+        document.querySelectorAll('.author-profile-block-card').forEach(c => {
+            c.classList.remove('active-profile-state', 'is-animating');
+        });
         
+        clickedCardElement.classList.add('active-profile-state', 'is-animating');
         currentSelectedAuthorKey = targetNormAuthorKey;
         
-        // Silently push query string parameters context lock to address history changes
         const dynamicQueryParam = targetNormAuthorKey === "all" ? window.location.pathname : `?author=${targetNormAuthorKey}`;
         window.history.replaceState({}, "", dynamicQueryParam);
         
-        applyAuthorFilteringPipeline();
+        executeCoreProfileRefreshPipeline(true); // 🎯 User Action: Trigger safe auto-scrolling
     }
 
-    // 🎯 STEP 2: AUTHOR DATA SELECTION PIPELINE (WITH DATETIME SORTING ENFORCED)
-    function applyAuthorFilteringPipeline() {
+    // 🎯 STEP 2: AUTHOR DATA SELECTION PIPELINE (WITH SCROLL TRIGGERS ENGINE)
+    function applyAuthorFilteringPipeline(shouldScroll = false) {
         filteredPostsSubset = languageScannedDataset.filter(post => {
             if (currentSelectedAuthorKey !== "all") {
                 return normalizeStr(post.author) === currentSelectedAuthorKey;
             }
             return true;
-        }).sort((a, b) => new Date(b.date) - new Date(a.date)); // 🔥 STRICT RECENT SORT LATCH ACTIVE Globally
+        }).sort((a, b) => new Date(b.date) - new Date(a.date));
 
         if (activeLang === "hi") {
             postsHeading.innerText = currentSelectedAuthorKey === "all" ? "सभी प्रकाशित लेख संग्रह" : "लेखक के विशिष्ट लेख";
@@ -599,9 +614,14 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         renderAuthorArticlesGridCanvas();
+
+        // 🎯 SMART AUTO-SCROLL ENGINE LOGIC
+        if (shouldScroll && feedAnchorBar) {
+            feedAnchorBar.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
     }
 
-    // 🎯 STEP 3: RENDER 15-POST MAX GRID INTERFACE CANVAS 
+    // 🎯 STEP 3: DRAW 15-POST RESPONSIVE GRID CANVAS
     function renderAuthorArticlesGridCanvas() {
         postsGrid.innerHTML = '';
 
@@ -612,7 +632,6 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
 
-        // Clamp maximum bounds slice indices up to 15 posts total framework
         const clampedFifteenSliceChunk = filteredPostsSubset.slice(0, 15);
 
         clampedFifteenSliceChunk.forEach(p => {
