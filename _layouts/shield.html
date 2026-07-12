@@ -8,177 +8,291 @@ extra_css:
 extra_js:
   - /assets/js/shield.js
 ---
-<div class="container">
 
-  <div id="reading-progress-container" role="progressbar">
-    <div id="reading-progress-bar"></div>
-  </div>
-
-  <main class="tc-wrapper" id="main-content">
-
-    <div class="tc-left">
-
-      {% assign words = content | number_of_words %}
-
-      {% if page.lang == "hi" %}
-        {% if words < 360 %}
-          {% assign read_time = "2 मिनट का पाठ" %}
-        {% else %}
-          {% assign minutes = words | divided_by: 180 %}
-          {% assign read_time = minutes | append: " मिनट का पाठ" %}
-        {% endif %}
-      {% else %}
-        {% if words < 360 %}
-          {% assign read_time = "2 min read" %}
-        {% else %}
-          {% assign minutes = words | divided_by: 180 %}
-          {% assign read_time = minutes | append: " min read" %}
-        {% endif %}
-      {% endif %}
-
-      <h1 class="post-title">
-        {{ page.title }}
-      </h1>
-
-      <p style="color:var(--text-muted);font-size:14px;margin-bottom:28px;">
-        {% if page.lang == "hi" %}द्वारा{% else %}By{% endif %} {{ page.author | default:"Tyagi MultiTech" }}
-        ·
-        {{ page.date | date: "%d %b %Y" }}
-        ·
-        {{ read_time }}
-      </p>
-
-      {% if page.image %}
-        <div class="post-hero-img">
-          <img src="{{ page.image | relative_url }}" alt="{{ page.title }}" loading="lazy" style="width:100%;height:auto;border-radius:12px;">
-        </div>
-      {% endif %}
-
-      <!-- ======================================================== -->
-      <!-- 🎯 START: PURE SERVER-SIDE LIQUID TOC ENGINE (ONLY H2)   -->
-      <!-- ======================================================== -->
-      <div class="toc-container" id="toc-box" style="margin-bottom:30px;">
-        <div class="toc-title" style="font-family: var(--font-display); font-weight: var(--fw-bold); color: var(--clr-heading);">
-          {% if page.lang == "hi" %}📋 विषय सूची{% else %}📋 Table of Contents{% endif %}
-        </div>
-        
-        <input type="checkbox" id="toc-toggle" class="toc-toggle-checkbox" style="display: none;">
-        
-        <ol id="toc-list" class="toc-list">
-          {% assign blocks = content | split: 'id="' %}
-          {% for block in blocks %}
-            {% if forloop.first == false %}
-              <!-- Extract the raw ID attribute value safely -->
-              {% assign id_clean = block | split: '"' | first | strip %}
-              
-              <!-- STRICT H2 FILTER: Process ONLY if the tag is explicitly an h2 opening or part of it -->
-              {% if block contains '</h2' %}
-                {% assign title_part = block | split: '</h2' | first %}
-                
-                <!-- Strip out any nested tag or garbage left over inside the string -->
-                {% assign title_clean = title_part | strip_html | strip %}
-                
-                <!-- Safety check to ensure clean properties before rendering element -->
-                {% if title_clean != "" and id_clean != "" %}
-                  <li><a href="#{{ id_clean }}" style="text-decoration: none; color: var(--clr-text, #333);">{{ title_clean | replace: "📋", "" | replace: "🛡️", "" }}</a></li>
-                {% endif %}
-              {% endif %}
-            {% endif %}
-          {% endfor %}
-        </ol>
-        
-        <label for="toc-toggle" class="toc-btn" style="cursor: pointer; display: inline-flex; align-items: center; margin-top: 12px; font-weight: 600;">
-          <span class="text-more">{% if page.lang == "hi" %}और देखें{% else %}See More{% endif %} <i class="fas fa-chevron-down"></i></span>
-        </label>
-      </div>
-      <!-- ======================================================== -->
-      <!-- 🎯 END: PURE SERVER-SIDE LIQUID TOC ENGINE               -->
-      <!-- ======================================================== -->
-
-      <!-- Main Article Content Block -->
-      {{ content }}
-
-      <!-- Share Layout Component -->
-      <div class="share-wrapper" style="margin-top: 35px;">
-        <p class="share-label">{% if page.lang == "hi" %}दोस्तों के साथ शेयर करें 🚀{% else %}Share With Friends 🚀{% endif %}</p>
-        <button onclick="nativeShare('{{ page.title | escape }}','{{ page.url | absolute_url }}')" class="tyagi-share-btn" style="padding: 10px 20px; border-radius: 8px; background: #16a34a; color: #fff; border: none; cursor: pointer; font-weight: 600;">
-          {% if page.lang == "hi" %}आर्टिकल शेयर करें{% else %}SHARE ARTICLE{% endif %}
-        </button>
-      </div>
-
-      <!-- Shield Parametric Next & Previous Navigation Engine -->
-      {% if page.lang == "hi" %}
-        {% assign all_shield_posts = site.shield_hi | sort:"date" %}
-      {% else %}
-        {% assign all_shield_posts = site.shield | where_exp: "item", "item.lang != 'hi'" | sort:"date" %}
-      {% endif %}
-      
-      {% assign shield_count = all_shield_posts | size %}
-      {% assign current_shield_index = nil %}
-
-      {% for p in all_shield_posts %}
-        {% if p.url == page.url %}
-          {% assign current_shield_index = forloop.index0 %}
-        {% endif %}
-      {% endfor %}
-
-      {% if current_shield_index != nil %}
-        {% assign prev_shield_index = current_shield_index | minus: 1 %}
-        {% assign next_shield_index = current_shield_index | plus: 1 %}
-
-        <nav class="post-nav-container" aria-label="Shield navigation" style="display: flex; justify-content: space-between; gap: 16px; margin-top: 50px; padding-top: 25px; border-top: 1px solid var(--border-color, rgba(255,255,255,0.1)); flex-wrap: wrap;">
-          
-          <div class="post-nav-link prev" style="flex: 1; min-width: 220px;">
-            {% if current_shield_index > 0 %}
-              {% assign prev_post = all_shield_posts[prev_shield_index] %}
-              <a href="{{ prev_post.url | relative_url }}" style="text-decoration: none; display: block;">
-                <span class="nav-label" style="display: block; font-size: 13px; color: var(--text-muted); margin-bottom: 4px;">
-                  <i class="fas fa-arrow-left"></i> {% if page.lang == "hi" %}पिछला आर्टिकल{% else %}Previous Post{% endif %}
-                </span>
-                <div class="nav-post-title" style="font-weight: 600; color: #16a34a;">{{ prev_post.title }}</div>
-              </a>
-            {% else %}
-              <span class="nav-disabled" style="display: block;">
-                <span class="nav-label" style="display: block; font-size: 13px; color: var(--text-muted); opacity: 0.5; margin-bottom: 4px;">
-                  {% if page.lang == "hi" %}पिछला{% else %}Previous{% endif %}
-                </span>
-                <div class="nav-post-title disabled-title" style="font-weight: 600; opacity: 0.4; color: var(--text-muted);">
-                  {% if page.lang == "hi" %}कोई पिछला पोस्ट नहीं है{% else %}No previous post{% endif %}
-                </div>
-              </span>
-            {% endif %}
-          </div>
-
-          <div class="post-nav-link next" style="flex: 1; min-width: 220px; text-align: right;">
-            {% if next_shield_index < shield_count %} 
-              {% assign next_post = all_shield_posts[next_shield_index] %} 
-              <a href="{{ next_post.url | relative_url }}" style="text-decoration: none; display: block;">
-                <span class="nav-label" style="display: block; font-size: 13px; color: var(--text-muted); margin-bottom: 4px;">
-                  {% if page.lang == "hi" %}अगला आर्टिकल{% else %}Next Post{% endif %} <i class="fas fa-arrow-right"></i>
-                </span>
-                <div class="nav-post-title" style="font-weight: 600; color: #16a34a;">{{ next_post.title }}</div>
-              </a>
-            {% else %}
-              <span class="nav-disabled" style="display: block;">
-                <span class="nav-label" style="display: block; font-size: 13px; color: var(--text-muted); opacity: 0.5; margin-bottom: 4px;">
-                  {% if page.lang == "hi" %}अगला{% else %}Next{% endif %}
-                </span>
-                <div class="nav-post-title disabled-title" style="font-weight: 600; opacity: 0.4; color: var(--text-muted);">
-                  {% if page.lang == "hi" %}कोई अगला पोस्ट नहीं है{% else %}No next post{% endif %}
-                </div>
-              </span>
-            {% endif %}
-          </div>
-
-        </nav>
-      {% endif %}
-
-      <hr style="margin:44px 0;border:none;border-top:1px solid var(--border-color, rgba(255,255,255,0.1))">
-
-    </div>
-
-    {% include sidebars/shield-sidebar.html %}
-
-  </main>
-  
+<div id="reading-progress-container" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" aria-label="Reading progress">
+	<div id="reading-progress-bar"></div>
 </div>
+
+<div id="index-category-nav"></div>
+
+<div class="tc-wrapper">
+	<div class="tc-left">
+
+		{% assign words = content | number_of_words %}
+		
+		{% if page.lang == "hi" %}
+			{% if words < 250 %} 
+				{% assign read_time = "1 मिनट का पाठ" %} 
+			{% else %} 
+				{% assign minutes = words | divided_by: 250 %}
+				{% assign read_time = minutes | append: " मिनट में पढ़ें" %} 
+			{% endif %}
+		{% else %}
+			{% if words < 250 %} 
+				{% assign read_time = "1 min read" %} 
+			{% else %} 
+				{% assign minutes = words | divided_by: 250 %}
+				{% assign read_time = minutes | append: " min read" %} 
+			{% endif %}
+		{% endif %} 
+
+		<div class="post-hero">
+			<!-- 1. Title -->
+			<h1 class="post-title">{{ page.title }}</h1>
+			
+			<!-- 2. Hero Meta Line -->
+			<div class="hero-meta">
+				<span>✍️ {% if page.lang == "hi" %}द्वारा{% else %}By{% endif %} <a href="/profile.html?author={{ page.author | url_encode }}" class="author-link">{{ page.author | default: "Himanshu Tyagi" }}</a></span>  
+				<span>⏱️ {{ read_time }}</span>  
+				<span>📅 {{ page.date | date: "%d %b %Y" }}</span>
+				{% if page.categories %}
+					 <a href="/categories.html?category={{ page.categories | url_encode }}" class="tag-chip">
+						🧠 {{ page.categories }}
+					</a>
+				{% endif %}
+			</div>
+
+			<!-- 3. Description Meta -->
+			{% if page.description %}
+				<p class="post-description-hero">{{ page.description }}</p>
+			{% endif %}
+
+			{% if page.image %}
+				<div class="post-hero-img" id="post-hero-wrap">
+					<img src="{{ page.image | relative_url }}" 
+						 alt="{{ page.title | escape }} - TyagiHub" 
+						 title="{{ page.title | escape }} - TyagiHub" 
+						 loading="eager" 
+						 class="hero-main-image">
+				</div>
+			{% endif %}
+		</div>
+
+		<!-- DYNAMIC TABLE OF CONTENTS (STRICTLY FORCES H2 & USES DISCOVER HTML/CSS UI ARCHITECTURE) -->
+		<div class="toc-box">
+			<div class="toc-title">
+				{% if page.lang == "hi" %}📋 विषय सूची{% else %}📋 Table of Contents{% endif %}
+			</div>
+			<input type="checkbox" id="toc-toggle" class="toc-toggle-checkbox">
+			<ol class="toc-list">
+				{% assign blocks = content | split: 'post-section' %}
+				{% for block in blocks %}
+					{% if forloop.first == false %}
+						{% if block contains 'id="' %}
+							{% assign id_extract = block | split: 'id="' %}
+							{% assign id_clean = id_extract[1] | split: '"' | first | strip %}
+							
+							<!-- STRICT LOCK ENGINE: Process block ONLY if it contains an closing h2 tag -->
+							{% if block contains '</h2' %}
+								{% assign title_part = block | split: '</h2' | first %}
+								{% assign title_subpart = title_part | split: '<h2' %}
+								
+								{% if title_subpart.size > 1 %}
+									{% assign heading_body = title_subpart[1] | split: '>' %}
+									{% assign title_clean = heading_body[1] | strip_html | strip %}
+								{% else %}
+									{% assign title_clean = title_part | strip_html | strip %}
+								{% endif %}
+								
+								{% if title_clean != "" and id_clean != "" %}
+									<li><a href="#{{ id_clean }}">{{ title_clean }}</a></li>
+								{% endif %}
+							{% endif %}
+						{% endif %}
+					{% endif %}
+				{% endfor %}
+			</ol>
+			<label for="toc-toggle" class="toc-btn">
+				<span class="text-more">{% if page.lang == "hi" %}और देखें{% else %}See More{% endif %} <i class="fas fa-chevron-down"></i></span>
+				<span class="text-less">{% if page.lang == "hi" %}कम देखें{% else %}See Less{% endif %} <i class="fas fa-chevron-up"></i></span>
+			</label>
+		</div>
+		
+		<!-- Main Post Content -->
+		{{ content }}
+
+		<!-- Share Component Wrapper -->
+		<div class="share-wrapper">
+			<p class="share-label">{% if page.lang == "hi" %}दोस्तों के साथ शेयर करें 🚀{% else %}Share With Friends 🚀{% endif %}</p>
+			<button onclick="nativeShare('{{ page.title | escape }}','{{ page.url | absolute_url }}')" class="tyagi-share-btn" aria-label="Share this article">
+				<i class="fas fa-paper-plane" aria-hidden="true"></i> {% if page.lang == "hi" %}आर्टिकल शेयर करें{% else %}SHARE ARTICLE{% endif %}
+			</button>
+		</div>
+
+		<!-- DYNAMIC SHIELD NEXT & PREVIOUS LINKS ENGINE -->
+		{% if page.lang == "hi" %}
+			{% assign all_shield_posts = site.shield_hi | sort:"date" %}
+		{% else %}
+			{% assign all_shield_posts = site.shield | where_exp: "item", "item.lang != 'hi'" | sort:"date" %}
+		{% endif %}
+		
+		{% assign shield_count = all_shield_posts | size %}
+		{% assign current_shield_index = nil %}
+
+		{% for p in all_shield_posts %}
+			{% if p.url == page.url %}{% assign current_shield_index = forloop.index0 %}{% endif %}
+		{% endfor %}
+
+		{% if current_shield_index != nil %}
+			{% assign prev_shield_index = current_shield_index | minus: 1 %}
+			{% assign next_shield_index = current_shield_index | plus: 1 %}
+
+			<nav class="post-nav-container" aria-label="Shield navigation">
+				<div class="post-nav-link prev">
+					{% if current_shield_index > 0 %}
+						{% assign prev_post = all_shield_posts[prev_shield_index] %}
+						<a href="{{ prev_post.url | relative_url }}">
+							<span class="nav-label"><i class="fas fa-arrow-left"></i> {% if page.lang == "hi" %}पिछला आर्टिकल{% else %}Previous Post{% endif %}</span>
+							<div class="nav-post-title">{{ prev_post.title }}</div>
+						</a>
+					{% else %}
+						<span class="nav-disabled">
+							<span class="nav-label">{% if page.lang == "hi" %}पिछला{% else %}Previous{% endif %}</span>
+							<div class="nav-post-title disabled-title">{% if page.lang == "hi" %}कोई पिछला पोस्ट नहीं है{% else %}No previous post{% endif %}</div>
+						</span>
+					{% endif %}
+				</div>
+
+				<div class="post-nav-link next">
+					{% if next_shield_index < shield_count %} 
+						{% assign next_post = all_shield_posts[next_shield_index] %} 
+						<a href="{{ next_post.url | relative_url }}">
+							<span class="nav-label">{% if page.lang == "hi" %}अगला आर्टिकल{% else %}Next Post{% endif %} <i class="fas fa-arrow-right"></i></span>
+							<div class="nav-post-title">{{ next_post.title }}</div>
+						</a>
+					{% else %}
+						<span class="nav-disabled">
+							<span class="nav-label">{% if page.lang == "hi" %}अगला{% else %}Next{% endif %}</span>
+							<div class="nav-post-title disabled-title">{% if page.lang == "hi" %}कोई अगला पोस्ट नहीं है{% else %}No next post{% endif %}</div>
+						</span>
+					{% endif %}
+				</div>
+			</nav>
+		{% endif %}
+		
+		<hr class="post-footer-divider">
+
+	</div> 
+	
+	<!-- Inject Target Shield Sidebar Template -->
+	{% include sidebars/shield-sidebar.html %}
+</div>
+
+<style>
+/* Synchronized CSS Framework matching original layouts */
+.post-hero {
+  margin-bottom: 25px;
+}
+.tag-chip {
+  text-decoration: none;
+  display: inline-block;
+}
+.post-title {
+  margin: 15px;
+  margin-bottom: 12px;
+  font-size: clamp(2rem, 5vw, 36px);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  line-height: var(--lh-tight);
+}
+.post-description-hero {
+  font-size: var(--fs-sm);
+  line-height: var(--lh-normal);
+  color: var(--clr-text-2);
+  margin-top: 0;
+  margin: 20px;
+  font-weight: 400;
+  text-align: justify;
+  text-justify: inter-word;
+}
+.hero-meta {
+  color: var(--text-muted);
+  font-size: 14px;
+  margin-bottom: 25px;
+}
+.author-link {
+  color: var(--clr-accent);
+  text-decoration: none;
+  font-weight: 600;
+}
+.post-hero-img {
+  margin-bottom: 30px;
+  text-align: center;
+  width: 100%;
+  max-width: 1280px;
+  background: #111216;
+  border-radius: 16px;
+  overflow: hidden;
+  position: relative;
+}
+.hero-main-image {
+  width: 100%;
+  height: auto;
+  max-height: 750px;
+  object-fit: contain;
+  display: block;
+  margin: 0 auto;
+  border-radius: 16px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+}
+.toc-box {
+  margin-top: 20px;
+  margin-bottom: 30px;
+  border-radius: 12px;
+}
+.toc-title {
+  font-family: var(--font-display);
+  font-size: var(--fs-lg);
+  font-weight: 600;
+  color: var(--clr-heading);
+  margin-bottom: var(--space-3);
+}
+.toc-toggle-checkbox {
+  display: none;
+}
+.toc-btn {
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  margin-top: 12px;
+  font-weight: 600;
+}
+.toc-btn .text-less {
+  display: none;
+}
+.share-wrapper {
+  margin-top: 40px;
+}
+.share-label {
+  font-weight: 600;
+}
+.tyagi-share-btn {
+  border-radius: 8px;
+}
+.post-nav-container {
+  margin-top: 30px;
+}
+.nav-post-title {
+  font-weight: 600;
+}
+.disabled-title {
+  opacity: 0.4;
+  font-weight: 600;
+}
+.post-footer-divider {
+  margin: 44px 0;
+  border: none;
+  border-top: 1px solid var(--border-color);
+}
+
+/* Checkbox Toggle Hack Sync for Show More Engine 🚀 */
+.toc-toggle-checkbox:checked ~ .toc-list {
+  max-height: none !important; /* Forces expanding list block */
+}
+.toc-toggle-checkbox:checked ~ .toc-btn .text-more {
+  display: none !important;
+}
+.toc-toggle-checkbox:checked ~ .toc-btn .text-less {
+  display: inline-block !important;
+}
+</style>
