@@ -1,23 +1,27 @@
+// 🌐 TyagiHub Live Quiz Engine & Google Sheet Core Pipe
+// Path: /assets/js/test.js
 
 import { initializeApp, getApps, getApp } from "https://www.gstatic.com/firebasejs/9.22.1/firebase-app.js";
 import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/9.22.1/firebase-auth.js";
-import { getFirestore, collection, addDoc, serverTimestamp, query, where, getDocs, updateDoc, doc } from "https://www.gstatic.com/firebasejs/9.22.1/firebase-firestore.js";
+
+// Connected cleanly to your Google Apps Script URL
+const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwr8_llEQIDs_5kNWV-PL3diYZB2OYJ_sJzEVSs0JzAJiwgUDOHVEdBtU55AFgkgCFHwQ/exec";
 
 document.addEventListener('DOMContentLoaded', () => {
+    // 🎯 CORRECTED: Synced strictly with default.html layout credentials
     const firebaseConfig = {
-        apiKey: "AIzaSyCFIKqQ5OICMZhWPtZqmgem0bEW7QpoPcw",
-        authDomain: "appcomment.firebaseapp.com",
-        projectId: "appcomment",
-        storageBucket: "appcomment.firebasestorage.app",
-        messagingSenderId: "156258808941",
-        appId: "1:156258808941:web:04a1f7470ac43657c7fb64"
+        apiKey: "AIzaSyBE0uXhh8ePOQH6FBdhRCZrRgRkUTwCWws",
+        authDomain: "tyagi-hub.firebaseapp.com",
+        projectId: "tyagi-hub",
+        storageBucket: "tyagi-hub.firebasestorage.app",
+        messagingSenderId: "1052184634573",
+        appId: "1:1052184634573:web:077135d1bc4f321688b584"
     };
 
-    let app, auth, db;
+    let app, auth;
     try {
         app = getApps().length ? getApp() : initializeApp(firebaseConfig);
         auth = getAuth(app);
-        db = getFirestore(app);
     } catch (e) {
         console.error("Firebase initialization error:", e);
         return;
@@ -31,7 +35,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let timerInterval;
     let timeTaken = 0;
     let currentQuestionIndex = 0;
-    let userAnswers = []; // Will store selected option values or 'skipped'
+    let userAnswers = []; 
     let shuffledQuestions = [];
 
     // --- DOM Elements ---
@@ -51,8 +55,8 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     function startQuiz() {
-        startModal.classList.remove('active');
-        quizSection.style.display = "block";
+        if(startModal) startModal.classList.remove('active');
+        if(quizSection) quizSection.style.display = "block";
         
         shuffledQuestions = [...questions].sort(() => Math.random() - 0.5);
         userAnswers = new Array(shuffledQuestions.length).fill(null);
@@ -65,7 +69,6 @@ document.addEventListener('DOMContentLoaded', () => {
     function renderQuizUI() {
         if (!quizForm) return;
 
-        // Inject the new layout
         quizForm.innerHTML = `
             <div id="quiz-layout">
                 <div id="question-area">
@@ -99,7 +102,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const q = shuffledQuestions[index];
         
-        // --- Question Numbering Fix ---
         const questionHTML = `
             <div class="question-block" id="question-${index}">
                 <p class="question">${index + 1}. ${q.question}</p>
@@ -113,7 +115,6 @@ document.addEventListener('DOMContentLoaded', () => {
             </div>`;
         questionsContainer.innerHTML = questionHTML;
 
-        // Add event listener to save answer on change
         questionsContainer.querySelectorAll(`input[name="question${index}"]`).forEach(radio => {
             radio.addEventListener('change', (e) => {
                 if (e.target.checked) {
@@ -123,7 +124,6 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
         
-        // --- Navigation Buttons ---
         let navHTML = `<button type="button" class="skip-btn">Skip</button>`;
         if (index < shuffledQuestions.length - 1) {
             navHTML += `<button type="button" class="next-btn">Next</button>`;
@@ -132,7 +132,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         navigationContainer.innerHTML = navHTML;
 
-        // Attach listeners for navigation
         navigationContainer.querySelector('.skip-btn').addEventListener('click', skipQuestion);
         if (index < shuffledQuestions.length - 1) {
             navigationContainer.querySelector('.next-btn').addEventListener('click', nextQuestion);
@@ -163,7 +162,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         paletteContainer.innerHTML = paletteHTML;
 
-        // Attach jump-to-question listeners
         paletteContainer.querySelectorAll('.palette-item').forEach(item => {
             item.addEventListener('click', (e) => {
                 const index = parseInt(e.target.dataset.index, 10);
@@ -183,7 +181,6 @@ document.addEventListener('DOMContentLoaded', () => {
         if (currentQuestionIndex < shuffledQuestions.length - 1) {
             nextQuestion();
         } else {
-            // If on the last question, skipping means submitting
             if (confirm("This is the last question. Are you sure you want to submit the test?")) {
                 calculateResult();
             }
@@ -224,13 +221,12 @@ document.addEventListener('DOMContentLoaded', () => {
         const totalQuestions = shuffledQuestions.length;
         const percentage = totalQuestions > 0 ? (correctCount / totalQuestions) * 100 : 0;
 
-        const correctPercentageForSVG = percentage;
+        const greenDashArray = `${percentage}, 100`;
         const incorrectPercentageForSVG = totalQuestions > 0 ? (incorrectCount / totalQuestions) * 100 : 0;
-        const greenDashArray = `${correctPercentageForSVG}, 100`;
         const redDashArray = `${incorrectPercentageForSVG}, 100`;
-        const redDashOffset = `-${correctPercentageForSVG}`;
+        const redDashOffset = `-${percentage}`;
         
-        quizForm.innerHTML = ''; // Clear the quiz UI
+        if(quizForm) quizForm.innerHTML = ''; 
 
         if (resultContent) {
             resultContent.innerHTML = `
@@ -254,64 +250,49 @@ document.addEventListener('DOMContentLoaded', () => {
         if (resultModal) resultModal.classList.add('active');
         
         if (currentUser) {
-            saveScore(correctCount, totalQuestions, shuffledQuestions, userAnswers);
+            saveScoreToGoogleSheet(correctCount, totalQuestions);
         }
     }
 
-    async function saveScore(score, totalQuestions, questionsArray, answers) {
-        if (!currentUser || !db) return;
+    async function saveScoreToGoogleSheet(score, totalQuestions) {
+        if (!currentUser) return;
 
-        const quizData = {
+        const payload = {
+            action: "save_score",
             userId: currentUser.uid,
-            userName: currentUser.displayName,
-            userPhotoURL: currentUser.photoURL,
+            userName: currentUser.displayName || "Anonymous Learner",
+            userPhotoURL: currentUser.photoURL || "",
             score: score,
             totalQuestions: totalQuestions,
-            quizId: quizId,
-            timestamp: serverTimestamp(),
-            userAnswers: answers, // Storing array of answers
-            questions: questionsArray.map(q => ({ question: q.question, options: q.options, correctOption: q.correctOption, explanation: q.explanation }))
+            quizId: quizId
         };
 
-        const q = query(collection(db, "quizScores"), where("userId", "==", currentUser.uid), where("quizId", "==", quizId));
-        
         try {
-            const querySnapshot = await getDocs(q);
-            if (!querySnapshot.empty) {
-                // To keep a history, we always add a new doc. If we wanted to update, we'd do this:
-                // const docId = querySnapshot.docs[0].id;
-                // const docRef = doc(db, "quizScores", docId);
-                // await updateDoc(docRef, quizData);
-                // console.log("Score updated successfully!");
-                await addDoc(collection(db, "quizScores"), quizData);
-                console.log("New score saved successfully!");
-            } else {
-                await addDoc(collection(db, "quizScores"), quizData);
-                console.log("Score saved successfully!");
-            }
+            await fetch(GOOGLE_SCRIPT_URL, {
+                method: "POST",
+                mode: "no-cors",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(payload)
+            });
+            console.log("Score cleanly piped to Google Sheet Pipeline Ledger ✅");
         } catch (error) {
-            console.error("Error saving or updating score: ", error);
+            console.error("Network fault pushing score parameters to Google Script Engine:", error);
         }
     }
 
-    function retryQuiz() {
-        location.reload();
-    }
+    function retryQuiz() { location.reload(); }
+    function reviewQuestions() { renderReviewMode(); }
     
     function reviewQuestions() {
-       renderReviewMode();
-    }
-    
-    function renderReviewMode() {
-        startModal.classList.remove('active');
-        quizSection.style.display = "none";
-        resultModal.classList.remove('active');
+        if(startModal) startModal.classList.remove('active');
+        if(quizSection) quizSection.style.display = "none";
+        if(resultModal) resultModal.classList.remove('active');
         const reviewContainer = document.getElementById("review-container");
 
         let reviewHTML = "";
         if (!shuffledQuestions || !userAnswers) {
-            reviewContainer.innerHTML = "<p>Review data is incomplete.</p>";
-            reviewSection.style.display = "block";
+            if(reviewContainer) reviewContainer.innerHTML = "<p>Review data is incomplete.</p>";
+            if(reviewSection) reviewSection.style.display = "block";
             return;
         }
 
@@ -323,13 +304,10 @@ document.addEventListener('DOMContentLoaded', () => {
                     <div class="options">
                         ${q.options.map(opt => {
                             const isUserAnswer = userAnswer === opt.value;
-                            const isCorrectAnswer = opt.value === q.correctOption;
+                            const isOriginalCorrect = opt.value === q.correctOption;
                             let className = '';
-                            if (isCorrectAnswer) {
-                                className = 'correct-option';
-                            } else if (isUserAnswer && !isCorrectAnswer) {
-                                className = 'incorrect-option';
-                            }
+                            if (isOriginalCorrect) className = 'correct-option';
+                            else if (isUserAnswer && !isOriginalCorrect) className = 'incorrect-option';
                             
                             return `<label class="${className}">
                                         <input type="radio" name="review${index}" value="${opt.value}" ${isUserAnswer ? 'checked' : ''} disabled> 
@@ -341,8 +319,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 </div>`;
         });
 
-        reviewContainer.innerHTML = reviewHTML;
-        reviewSection.style.display = "block";
+        if(reviewContainer) reviewContainer.innerHTML = reviewHTML;
+        if(reviewSection) reviewSection.style.display = "block";
     }
 
     if (startBtn) startBtn.addEventListener('click', startQuiz);
@@ -350,6 +328,5 @@ document.addEventListener('DOMContentLoaded', () => {
     if (retryBtn) retryBtn.addEventListener('click', retryQuiz);
     if (reviewRetryBtn) reviewRetryBtn.addEventListener('click', retryQuiz);
     
-    // Initial UI setup
-    startModal.classList.add('active');
+    if(startModal) startModal.classList.add('active');
 });
