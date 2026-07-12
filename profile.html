@@ -1,135 +1,518 @@
 ---
 layout: default
+title: "Author Profile | TyagiHub"
+lang_switch: false
 ---
 
-<main class="container" style="margin-top: 40px;">
-    <div id="author-profile-card" class="author-profile-wrapper" style="margin-bottom: 40px;">
-        <div class="spinner"></div>
+<!-- Premium Independent Profile Styling Layer -->
+<style>
+  .premium-profile-wrapper {
+    max-width: var(--container-max, 1200px);
+    margin: var(--space-12, 48px) auto;
+    padding: 0 var(--space-4, 16px);
+    min-height: 75vh;
+    margin-top: 70px;
+  }
+
+  /* Luxury Profile Card Panel */
+  .profile-hero-card {
+    background: var(--bg-surface);
+    border: 1px solid var(--clr-border);
+    border-radius: var(--radius-lg, 18px);
+    padding: var(--space-8, 32px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-6, 24px);
+    text-align: center;
+    margin-bottom: var(--space-12, 48px);
+    box-shadow: var(--shadow-sm);
+    position: relative;
+    overflow: hidden;
+  }
+
+  @media(min-width: 768px) {
+    .profile-hero-card {
+      flex-direction: row;
+      text-align: left;
+      align-items: center;
+      padding: var(--space-10, 40px);
+    }
+  }
+
+  /* Modern Avatar Wrapper Layer */
+  .profile-avatar-wrap {
+    width: 120px;
+    height: 120px;
+    flex-shrink: 0;
+    border-radius: var(--radius-full, 9999px);
+    border: 3px solid var(--clr-border-2);
+    box-shadow: var(--shadow-md);
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .profile-meta-details {
+    flex-grow: 1;
+  }
+
+  .profile-main-name {
+    font-family: var(--font-display), sans-serif;
+    font-size: var(--fs-xl, 1.75rem);
+    font-weight: var(--fw-black, 600);
+    color: var(--text-heading);
+    margin: 0 0 6px 0;
+  }
+
+  .profile-badge-title {
+    font-size: var(--fs-xs, 0.89rem);
+    font-weight: var(--fw-bold, 550);
+    color: var(--clr-accent);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: var(--space-2, 8px);
+  }
+
+  .profile-bio-text {
+    font-size: var(--fs-sm, 0.95rem);
+    color: var(--text-paragraph);
+    line-height: var(--lh-normal, 1.6);
+    margin: 0;
+    max-width: 650px;
+  }
+
+  /* Metric Stat Box */
+  .profile-stats-panel {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: var(--bg-body);
+    border: 1px solid var(--clr-border);
+    padding: var(--space-4, 16px) var(--space-6, 24px);
+    border-radius: var(--radius-md, 12px);
+    min-width: 110px;
+  }
+
+  .stat-big-num {
+    font-family: var(--font-display), sans-serif;
+    font-size: var(--fs-xl, 1.75rem);
+    font-weight: var(--fw-black, 600);
+    color: var(--clr-accent);
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+
+  .stat-label-text {
+    font-size: 11px;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    font-weight: var(--fw-bold, 550);
+    letter-spacing: 0.5px;
+  }
+
+  /* Header Controls Zone */
+  .profile-feed-header-line {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--space-8, 32px);
+    border-bottom: 1px solid var(--clr-border);
+    padding-bottom: var(--space-3, 12px);
+    gap: 15px;
+    flex-wrap: wrap;
+  }
+
+  .feed-section-title {
+    font-family: var(--font-display), sans-serif;
+    font-size: var(--fs-lg, 1.375rem);
+    font-weight: var(--fw-black, 600);
+    color: var(--text-heading);
+    margin: 0;
+  }
+
+  .live-lang-switch-box {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--bg-surface);
+    border: 1px solid var(--clr-border);
+    padding: 6px 14px;
+    border-radius: var(--radius-full, 9999px);
+    cursor: pointer;
+    transition: all var(--ease-normal, 250ms);
+    font-family: var(--font-body), sans-serif;
+    font-size: var(--fs-xs, 0.89rem);
+    font-weight: var(--fw-bold, 550);
+    color: var(--clr-accent);
+    user-select: none;
+  }
+
+  .live-lang-switch-box:hover {
+    border-color: var(--clr-accent);
+    background: var(--hover-bg-1);
+  }
+
+  /* Strict 3-Column Responsive Layout Post Grid Framework */
+  .premium-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-8, 32px);
+  }
+
+  @media(min-width: 768px) {
+    .premium-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  @media(min-width: 1024px) {
+    .premium-grid {
+      grid-template-columns: repeat(3, 1fr); 
+    }
+  }
+
+  /* Luxury Card Structure */
+  .luxury-card {
+    background: var(--bg-surface);
+    border: 1px solid var(--clr-border);
+    border-radius: var(--radius-lg, 18px);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: transform var(--ease-normal, 250ms), border-color var(--ease-normal, 250ms), box-shadow var(--ease-normal, 250ms);
+    box-shadow: var(--shadow-sm);
+  }
+
+  .luxury-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--clr-border-2);
+    box-shadow: var(--shadow-md);
+  }
+
+  .card-media-wrap {
+    width: 100%;
+    aspect-ratio: 16 / 10;
+    overflow: hidden;
+    position: relative;
+    background: var(--bg-body);
+  }
+
+  .card-media-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform var(--ease-slow, 400ms);
+  }
+
+  .luxury-card:hover .card-media-wrap img {
+    transform: scale(1.03);
+  }
+
+  .card-body-content {
+    padding: var(--space-5, 20px);
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+  }
+
+  .card-meta-line {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3, 12px);
+    font-size: var(--fs-xs, 0.89rem);
+    color: var(--text-muted);
+    margin-bottom: var(--space-3, 12px);
+  }
+
+  .card-title-anchor {
+    font-family: var(--font-display), sans-serif;
+    font-size: var(--fs-md, 1.125rem);
+    font-weight: var(--fw-bold, 550);
+    line-height: var(--lh-snug, 1.3);
+    color: var(--text-heading);
+    text-decoration: none;
+    margin-bottom: var(--space-2, 8px);
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    transition: color var(--ease-fast, 150ms);
+  }
+
+  .card-title-anchor:hover {
+    color: var(--clr-accent);
+  }
+
+  .card-desc-text {
+    font-size: var(--fs-sm, 0.95rem);
+    color: var(--text-paragraph);
+    line-height: var(--lh-normal, 1.6);
+    margin: 0 0 var(--space-5, 20px) 0;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .card-footer-action {
+    margin-top: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: var(--space-3, 12px);
+    border-top: 1px solid var(--clr-border);
+  }
+
+  .premium-read-btn {
+    font-size: var(--fs-sm, 0.95rem);
+    font-weight: var(--fw-bold, 550);
+    color: var(--clr-accent);
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+  }
+
+  .premium-read-btn:hover {
+    color: var(--clr-accent-2);
+  }
+
+  .premium-share-icon-btn {
+    background: transparent;
+    border: none;
+    color: var(--text-muted);
+    cursor: pointer;
+    padding: var(--space-1, 4px);
+    border-radius: var(--radius-full, 9999px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .premium-share-icon-btn:hover {
+    color: var(--text-heading);
+  }
+
+  .luxury-spinner {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: var(--space-12, 48px) 0;
+  }
+</style>
+
+<!-- Main Container Element -->
+<main class="premium-profile-wrapper">
+    
+    <!-- Dynamic Profile Card Area -->
+    <div id="author-profile-panel" class="profile-hero-card">
+        <div class="luxury-spinner" style="color:var(--clr-accent); width:100%;">
+            <i class="fas fa-spinner fa-spin" style="font-size:26px;"></i>
+        </div>
     </div>
 
-    <div id="author-posts-container">
-        <h2 id="author-posts-heading" style="margin-bottom: 25px;">Articles by this author</h2>
-        <div id="author-post-grid" class="post-grid"></div>
+    <!-- Feed Controller Zone -->
+    <div class="profile-feed-header-line">
+        <h2 id="author-posts-heading" class="feed-section-title">Articles Archive</h2>
+        
+        <!-- Live Toggle Selector -->
+        <div id="live-lang-switch-trigger" class="live-lang-switch-box">
+            <i class="fa-solid fa-earth-americas"></i>
+            <span id="lang-switch-text-node">🌐 हिंदी में पढ़ें</span>
+        </div>
     </div>
+    
+    <!-- Strict 15-Post Max 3-Column Profile Matrix Layout Grid -->
+    <div id="author-post-grid" class="premium-grid"></div>
 </main>
+
+<!-- Master Unified Dataset Buffer Component mapping across dynamic collections -->
+<script id="tyagihub-master-json" type="application/json">
+[
+  {% assign all_site_posts = "" | split: "" %}
+  {% for p in site.posts %}{% assign all_site_posts = all_site_posts | push: p %}{% endfor %}
+  {% for p in site.posts_hi %}{% assign all_site_posts = all_site_posts | push: p %}{% endfor %}
+  {% for p in site.shield %}{% assign all_site_posts = all_site_posts | push: p %}{% endfor %}
+  {% for p in site.shield_hi %}{% assign all_site_posts = all_site_posts | push: p %}{% endfor %}
+  
+  {% for p in all_site_posts %}
+    {
+      "title": {{ p.title | jsonify }},
+      "url": {{ p.url | relative_url | jsonify }},
+      "description": {{ p.description | default: p.excerpt | strip_html | truncate: 120 | jsonify }},
+      "image": {{ p.image | default: '/assets/images/default-thumb.png' | jsonify }},
+      "date": {{ p.date | date: "%d %b %Y" | jsonify }},
+      "lang": {{ p.lang | default: 'en' | jsonify }},
+      "author": {{ p.author | default: "Himanshu Tyagi" | jsonify }},
+      "category": {% if p.categories %}{{ p.categories[0] | jsonify }}{% else %}{{ p.category | jsonify }}{% endif %},
+      "display_chip": {% if p.categories %}{{ p.categories[0] | replace: "-", " " | replace: "_", " " | capitalize | jsonify }}{% else %}{{ p.category | replace: "-", " " | replace: "_", " " | capitalize | jsonify }}{% endif %}
+    }{% unless forloop.last %},{% endunless %}
+  {% endfor %}
+]
+</script>
 
 <script>
 document.addEventListener('DOMContentLoaded', () => {
-    const profileCard = document.getElementById('author-profile-card');
+    const profileCard = document.getElementById('author-profile-panel');
     const postsGrid = document.getElementById('author-post-grid');
     const postsHeading = document.getElementById('author-posts-heading');
+    
+    const langSwitchBox = document.getElementById('live-lang-switch-trigger');
+    const langSwitchText = document.getElementById('lang-switch-text-node');
 
+    const isHindiContext = window.location.pathname.includes('/hi/') || document.referrer.includes('/hi/');
+    let activeLang = isHindiContext ? "hi" : "en";
+
+    const urlParams = new URLSearchParams(window.location.search);
+    const authorParam = urlParams.get('author') || "Himanshu Tyagi";
+    const cleanAuthorName = authorParam.trim();
+
+    let rawUniversalArrayBuffer = [];
+    let authorFilteredDataset = [];
+
+    // Premium Initials Based Vector Avatar Engine 🎨
     const generateAuthorAvatarSVG = (name) => {
         const words = name.split(' ').filter(Boolean);
-        let initials = words[0] ? words[0][0] : '';
+        let initials = words[0] ? words[0][0] : 'T';
         if (words.length > 1) {
             initials += words[words.length - 1][0];
         }
         initials = initials.toUpperCase();
 
-        let hash = 0;
-        for (let i = 0; i < name.length; i++) {
-            hash = name.charCodeAt(i) + ((hash << 5) - hash);
-            hash = hash & hash;
-        }
-        const hue = Math.abs(hash % 360);
-        const color = `hsl(${hue}, 70%, 45%)`;
-        const fontSize = initials.length > 1 ? '48' : '60';
-
-        return `<div class="author-avatar-large">
-            <svg width="120" height="120" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
-                <circle cx="60" cy="60" r="60" fill="${color}" />
-                <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" font-size="${fontSize}" font-weight="bold" fill="white" font-family="Arial, sans-serif">${initials}</text>
+        return `
+            <svg width="120" height="120" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="50" cy="50" r="48" fill="var(--bg-body)" stroke="var(--clr-border)" stroke-width="2"/>
+                <circle cx="50" cy="50" r="40" fill="var(--clr-accent)" opacity="0.1"/>
+                <text x="50%" y="53%" dominant-baseline="middle" text-anchor="middle" font-size="34" font-weight="700" fill="var(--clr-accent)" font-family="var(--font-display), sans-serif">${initials}</text>
             </svg>
-        </div>`;
-    };
-
-    const renderProfile = (authorName, postCount) => {
-        if (!profileCard) return;
-        
-        let authorAvatar;
-        // Specific checks for owner assets validation arrays
-        if (authorName === "Mr. Himanshu Tyagi" || authorName === "Owner" || authorName === "Himanshu Tyagi") {
-            const ownerLogoSVG = `<svg xmlns="http://www.w3.org/2000/svg" width="120" height="120" viewBox="0 0 300 300" role="img" aria-label="GK Learn Study logo">
-                <title>GK Learn Study</title>
-                <circle cx="150" cy="150" r="150" fill="white"></circle>
-                <defs><clipPath id="circle-clip-main"><circle cx="150" cy="150" r="150"></circle></clipPath></defs>
-                <g clip-path="url(#circle-clip-main)">
-                    <path fill="#c0a4fb" fill-opacity="1"><animate attributeName="d" dur="8s" repeatCount="indefinite" values="M0 230 Q 75 210, 150 230 T 300 210 L 300 300 L 0 300 Z; M0 240 Q 75 260, 150 240 T 300 250 L 300 300 L 0 300 Z; M0 230 Q 75 210, 150 230 T 300 210 L 300 300 L 0 300 Z"></animate></path>
-                    <path fill="#641ef9" fill-opacity="0.7"><animate attributeName="d" dur="7s" repeatCount="indefinite" values="M0 220 Q 75 245, 150 220 T 300 235 L 300 300 L 0 300 Z; M0 250 Q 75 220, 150 250 T 300 220 L 300 300 L 0 300 Z; M0 220 Q 75 245, 150 220 T 300 235 L 300 300 L 0 300 Z"></animate></path>
-                </g>
-                <text x="50%" y="35%" font-size="90" font-weight="700" fill="#e53935" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" style="transform-origin: 150px 90px;" opacity="1">GK</text>
-                <text x="50%" y="65%" font-size="38" fill="#6a1b9a" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" style="transform-origin: 150px 195px;" opacity="1">Learn Study</text>
-                <circle cx="150" cy="150" r="145" fill="none" stroke="#f0e6ff" stroke-width="4" opacity="0.6"></circle>
-            </svg>`;
-            authorAvatar = `<div class="author-avatar-large">${ownerLogoSVG}</div>`;
-        } else {
-            authorAvatar = generateAuthorAvatarSVG(authorName);
-        }
-        
-        profileCard.innerHTML = `
-            ${authorAvatar}
-            <div class="author-info">
-                <h1 class="author-name-large">${authorName}</h1>
-                <p class="author-education">Author at GK Learn Study</p>
-                <p class="author-bio">Explore all articles and contributions by ${authorName} below.</p>
-            </div>
-            <div class="author-stats">
-                <div class="stat-item">
-                    <span class="stat-number">${postCount}</span>
-                    <span>Total Posts</span>
-                </div>
-            </div>
         `;
     };
 
-    const renderPosts = (posts) => {
-        if (!postsGrid || !window.GKApp || !window.GKApp.createPostCard) return;
+    try {
+        const rawJsonData = document.getElementById('tyagihub-master-json').textContent;
+        rawUniversalArrayBuffer = JSON.parse(rawJsonData || "[]");
+
+        executeProfileLifecyclePipeline();
+
+    } catch (e) {
+        console.error("Dataset initial rendering fault:", e);
+        profileCard.innerHTML = `<p style="color:var(--text-muted); text-align:center;">Buffer Profile Exception.</p>`;
+    }
+
+    // Language Toggle Listener Box
+    if (langSwitchBox) {
+        langSwitchBox.addEventListener('click', () => {
+            activeLang = activeLang === "en" ? "hi" : "en";
+            executeProfileLifecyclePipeline();
+        });
+    }
+
+    // Main Control Router lifecycle pipeline
+    function executeProfileLifecyclePipeline() {
+        // Enforce strict language boundary and timestamp descending sort locks (Newest First)
+        authorFilteredDataset = rawUniversalArrayBuffer.filter(post => {
+            if (post.lang !== activeLang) return false;
+            return post.author.toLowerCase() === cleanAuthorName.toLowerCase();
+        }).sort((a, b) => new Date(b.date) - new Date(a.date));
+
+        // Sync Layout Headers Text Strings
+        if (activeLang === "hi") {
+            langSwitchText.innerText = "🌐 Switch to English";
+            postsHeading.innerText = `प्रकाशित लेख संग्रह`;
+            document.title = `${cleanAuthorName} | लेखक प्रोफाइल | TyagiHub`;
+        } else {
+            langSwitchText.innerText = "🌐 हिंदी में पढ़ें";
+            postsHeading.innerText = `Published Articles Archive`;
+            document.title = `${cleanAuthorName} | Author Profile | TyagiHub`;
+        }
+
+        renderProfileHeaderBox();
+        renderAuthorPostsGrid();
+    }
+
+    // Rendering profile layout framework components block
+    function renderProfileHeaderBox() {
+        if (!profileCard) return;
+
+        const avatarSvgElement = generateAuthorAvatarSVG(cleanAuthorName);
+        const subBadgeText = activeLang === "hi" ? "मुख्य लेखक एवं क्रिएटर" : "Verified Digital Creator";
+        const totalPostsLabel = activeLang === "hi" ? "कुल लेख संग्रह" : "Total Content Logs";
+        const bioFallback = activeLang === "hi" 
+            ? `त्यागीहब पर ${cleanAuthorName} द्वारा लिखे गए सभी मूल लेख, सुरक्षा गाइड और तकनीकी विश्लेषण यहाँ पढ़ें।` 
+            : `Explore full documentation logs, core software parameters, cybersecurity matrices, and content contributions published by ${cleanAuthorName}.`;
+
+        profileCard.innerHTML = `
+            <div class="profile-avatar-wrap">${avatarSvgElement}</div>
+            <div class="profile-meta-details">
+                <div class="profile-badge-title"><i class="fa-solid fa-shield-halved"></i> ${subBadgeText}</div>
+                <h1 class="profile-main-name">${cleanAuthorName}</h1>
+                <p class="profile-bio-text">${bioFallback}</p>
+            </div>
+            <div class="profile-stats-panel">
+                <span class="stat-big-num">${authorFilteredDataset.length}</span>
+                <span class="stat-label-text">${totalPostsLabel}</span>
+            </div>
+        `;
+    }
+
+    // Drawing Grid elements canvas items logic mapping slice chunk parameters
+    function renderAuthorPostsGrid() {
         postsGrid.innerHTML = '';
 
-        if (posts.length === 0) {
-            postsGrid.innerHTML = '<p class="no-posts-found">This author has not published any articles yet.</p>';
+        if (authorFilteredDataset.length === 0) {
+            postsGrid.innerHTML = activeLang === "hi"
+                ? '<p style="color:var(--text-muted); text-align:center; padding:40px; grid-column:1/-1;">इस लेखक द्वारा इस भाषा में अभी कोई लेख नहीं लिखा गया है।</p>'
+                : '<p style="color:var(--text-muted); text-align:center; padding:40px; grid-column:1/-1;">This author has not published any records under this language node.</p>';
             return;
         }
 
-        const fragment = document.createDocumentFragment();
-        posts.forEach((post, index) => {
-            fragment.appendChild(window.GKApp.createPostCard(post, index));
+        authorFilteredDataset.forEach(p => {
+            const readLabel = activeLang === "hi" ? "पूरा पढ़ें" : "Read More";
+
+            const cardHTML = `
+                <article class="luxury-card">
+                    <div class="card-media-wrap">
+                        <img src="${p.image}" alt="${p.title}" loading="lazy">
+                    </div>
+                    <div class="card-body-content">
+                        <div class="card-meta-line">
+                            <span><i class="fa-regular fa-calendar"></i> ${p.date}</span>
+                            <span>•</span>
+                            <span>🧠 ${p.display_chip}</span>
+                        </div>
+                        <a href="${p.url}" class="card-title-anchor">${p.title}</a>
+                        <p class="card-desc-text">${p.description}</p>
+                        
+                        <div class="card-footer-action">
+                            <a href="${p.url}" class="premium-read-btn">
+                                ${readLabel} <i class="fa-solid fa-arrow-right-long" style="font-size:12px; margin-left:4px;"></i>
+                            </a>
+                            <button class="premium-share-icon-btn" onclick="triggerNativeSystemShare('${p.title.replace(/'/g, "\\'")}', '${p.url}')" aria-label="Share article">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <circle cx="18" cy="5" r="3"></circle>
+                                    <circle cx="6" cy="12" r="3"></circle>
+                                    <circle cx="18" cy="19" r="3"></circle>
+                                    <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line>
+                                    <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </article>
+            `;
+            postsGrid.insertAdjacentHTML('beforeend', cardHTML);
         });
-        postsGrid.appendChild(fragment);
-        
-        if (window.GKApp.initializeLazyLoading) {
-            window.GKApp.initializeLazyLoading(postsGrid);
-        }
-    };
-    
-    const initializePage = async () => {
-        const urlParams = new URLSearchParams(window.location.search);
-        const authorParam = urlParams.get('author');
-
-        if (!authorParam) {
-            profileCard.innerHTML = `<p class="muted error">No author specified.</p>`;
-            postsHeading.style.display = 'none';
-            return;
-        }
-        
-        const authorName = authorParam.trim();
-
-        document.title = `${authorName} | Author Profile | GK Learn Study`;
-        postsHeading.textContent = `Articles by ${authorName}`;
-
-        await window.GKApp.dataReady;
-        
-        const allPosts = window.GKApp.searchData || [];
-        const authorPosts = allPosts.filter(post => post.author && post.author.trim() === authorName);
-
-        renderProfile(authorName, authorPosts.length);
-        renderPosts(authorPosts);
-    };
-
-    initializePage().catch(error => {
-        console.error("Failed to initialize profile page:", error);
-        profileCard.innerHTML = `<p class="muted error">Could not load author details.</p>`;
-    });
+    }
 });
+
+function triggerNativeSystemShare(title, path) {
+    const fullUrl = `${window.location.origin}${path}`;
+    if (navigator.share) {
+        navigator.share({ title: title, url: fullUrl }).catch(console.error);
+    } else {
+        navigator.clipboard.writeText(fullUrl).then(() => alert("Link copied to clipboard!"));
+    }
+}
 </script>
