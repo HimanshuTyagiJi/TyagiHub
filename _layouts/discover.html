@@ -36,7 +36,7 @@ layout: default
 				
 				<!-- 2. Uske Neeche Author, Time, Date, Category Line -->
 				<div class="hero-meta">
-					<span>✍️ {% if page.lang == "hi" %}द्वारा{% else %}By{% endif %} <a href="/profile.html?author={{ page.author | url_encode }}" class="author-link">{{ page.author | default: "Himanshu Tyagi" }}</a></span>  
+					<span>✍️ {% if page.lang == "hi" %}by{% else %}By{% endif %} <a href="/profile/?author={{ page.author | default: 'Himanshu Tyagi' | url_encode }}" class="author-link">{{ page.author | default: "Himanshu Tyagi" }}</a></span>
 					<span>⏱️ {{ read_time }}</span>  
 					<span>📅 {{ page.date | date: "%d %b %Y" }}</span>
 				{% if page.categories %}
