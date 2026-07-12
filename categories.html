@@ -503,17 +503,16 @@ document.addEventListener('DOMContentLoaded', () => {
     function syncStaticUIStrings() {
         if (activeLang === "hi") {
             langSwitchText.innerText = "🌐 Switch to English";
-            postsHeading.innerText = "लेख संग्रह निर्देशिका";
+            postsHeading.innerText = "श्रेणियाँ एवं सभी लेख";
             liveSearchInput.placeholder = "लेख खोजें...";
             infoTitleNode.innerHTML = `<i class="fa-solid fa-circle-info" style="color:var(--clr-accent);"></i> <span>ज्ञान केंद्र और सामग्री निर्देशिका</span>`;
-            infoDescNode.innerText = "त्यागीहब इंटेलिजेंस आर्काइव में आपका स्वागत है। यह अनुभाग बहु-विषयक तकनीकी फ़ील्ड लॉग, साइबर सुरक्षा सुरक्षा उपायों, सॉफ्टवेयर समीक्षा मेट्रिक्स और आधुनिक एप्लिकेशन मापदंडों को संकलित करता है। इष्टतम वितरण संरचनाओं को बनाए रखने के लिए सभी प्रकाशनों को भाषा नोड्स में पार्स किया जाता है। नेटवर्क सुरक्षा रणनीतियों या विकास कार्यों के लिए, संबंधित दस्तावेज़ हब देखें।";
+            infoDescNode.innerText = "त्TyagiHub Discover में आपका स्वागत है। यह पृष्ठ हमारे सभी प्रकाशित लेखों और तकनीकी श्रेणियों का केंद्रीय संग्रह है। यहाँ आप साइबर सुरक्षा, कृत्रिम बुद्धिमत्ता (AI), प्रोग्रामिंग, वेब विकास, क्लाउड कंप्यूटिंग, सॉफ्टवेयर इंजीनियरिंग, मोबाइल तकनीक, डिजिटल गोपनीयता, ओपन सोर्स प्रोजेक्ट्स, तकनीकी समाचार तथा अन्य आधुनिक विषयों से संबंधित लेख आसानी से खोज और पढ़ सकते हैं। प्रत्येक लेख शोध-आधारित, मूल एवं शिक्षाप्रद सामग्री के साथ तैयार किया जाता है ताकि विद्यार्थी, डेवलपर, पेशेवर और सामान्य पाठक विश्वसनीय जानकारी प्राप्त कर सकें। नियमित रूप से नए लेख और श्रेणियाँ जोड़ी जाती हैं, जिससे आपको नवीनतम तकनीकी जानकारी एक ही स्थान पर उपलब्ध हो सके।";
         } else {
             langSwitchText.innerText = "🌐 हिंदी में पढ़ें";
             postsHeading.innerText = "Article Archive Directory";
             liveSearchInput.placeholder = "Search active articles...";
             infoTitleNode.innerHTML = `<i class="fa-solid fa-circle-info" style="color:var(--clr-accent);"></i> <span>Knowledge Base & Content Directory</span>`;
-            infoDescNode.innerText = "Welcome to the centralized TyagiHub Intelligence Archive. This section compiles multi-disciplinary technical field logs, cybersecurity safeguards, software review metrics, and modern application parameters. All publications are parsed across language nodes to maintain optimal delivery structures. For persistent network mitigation strategies or platform developments, consult the corresponding dedicated document hubs.";
-        }
+            infoDescNode.innerText = "Welcome to TyagiHub Discover, the central directory for all published articles and technology categories. This page helps you explore educational content covering Cyber Security, Artificial Intelligence (AI), Programming, Web Development, Cloud Computing, Software Engineering, Mobile Technology, Digital Privacy, Open Source Projects, Technology News, and other emerging digital topics. Every article is carefully researched, originally written, and structured to provide accurate, practical, and easy-to-understand information for students, developers, professionals, and technology enthusiasts. New articles and categories are added regularly to ensure readers always have access to reliable, up-to-date, and valuable technical knowledge in one place.";        }
     }
 
     // Pipeline module executing array modifications on lang swap triggers
