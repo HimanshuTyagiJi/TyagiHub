@@ -54,20 +54,51 @@ extra_js:
         </div>
       {% endif %}
 
-      <div class="toc-container" id="toc-box" style="display:none;margin-bottom:30px;">
+      <!-- ======================================================== -->
+      <!-- 🎯 START: PURE SERVER-SIDE LIQUID TOC ENGINE (ONLY H2)   -->
+      <!-- ======================================================== -->
+      <div class="toc-container" id="toc-box" style="margin-bottom:30px;">
         <div class="toc-title" style="font-family: var(--font-display); font-weight: var(--fw-bold); color: var(--clr-heading);">
-          {% if page.lang == "hi" %}मुख्य विषय{% else %}Topics{% endif %}
+          {% if page.lang == "hi" %}📋 विषय सूची{% else %}📋 Table of Contents{% endif %}
         </div>
-        <ul id="toc-list"></ul>
-        <button id="toc-toggle-btn" class="toc-see-more">
-          {% if page.lang == "hi" %}और देखें{% else %}See More{% endif %}
-        </button>
+        
+        <input type="checkbox" id="toc-toggle" class="toc-toggle-checkbox" style="display: none;">
+        
+        <ol id="toc-list" class="toc-list">
+          {% assign blocks = content | split: 'id="' %}
+          {% for block in blocks %}
+            {% if forloop.first == false %}
+              <!-- Extract the raw ID attribute value safely -->
+              {% assign id_clean = block | split: '"' | first | strip %}
+              
+              <!-- STRICT H2 FILTER: Process ONLY if the tag is explicitly an h2 opening or part of it -->
+              {% if block contains '</h2' %}
+                {% assign title_part = block | split: '</h2' | first %}
+                
+                <!-- Strip out any nested tag or garbage left over inside the string -->
+                {% assign title_clean = title_part | strip_html | strip %}
+                
+                <!-- Safety check to ensure clean properties before rendering element -->
+                {% if title_clean != "" and id_clean != "" %}
+                  <li><a href="#{{ id_clean }}" style="text-decoration: none; color: var(--clr-text, #333);">{{ title_clean | replace: "📋", "" | replace: "🛡️", "" }}</a></li>
+                {% endif %}
+              {% endif %}
+            {% endif %}
+          {% endfor %}
+        </ol>
+        
+        <label for="toc-toggle" class="toc-btn" style="cursor: pointer; display: inline-flex; align-items: center; margin-top: 12px; font-weight: 600;">
+          <span class="text-more">{% if page.lang == "hi" %}और देखें{% else %}See More{% endif %} <i class="fas fa-chevron-down"></i></span>
+        </label>
       </div>
+      <!-- ======================================================== -->
+      <!-- 🎯 END: PURE SERVER-SIDE LIQUID TOC ENGINE               -->
+      <!-- ======================================================== -->
 
-      <!-- Main Content Block -->
+      <!-- Main Article Content Block -->
       {{ content }}
 
-      <!-- Share Layout -->
+      <!-- Share Layout Component -->
       <div class="share-wrapper" style="margin-top: 35px;">
         <p class="share-label">{% if page.lang == "hi" %}दोस्तों के साथ शेयर करें 🚀{% else %}Share With Friends 🚀{% endif %}</p>
         <button onclick="nativeShare('{{ page.title | escape }}','{{ page.url | absolute_url }}')" class="tyagi-share-btn" style="padding: 10px 20px; border-radius: 8px; background: #16a34a; color: #fff; border: none; cursor: pointer; font-weight: 600;">
@@ -75,9 +106,7 @@ extra_js:
         </button>
       </div>
 
-      <!-- ======================================================== -->
-      <!-- 🚀 SHIELD PARAMETRIC NEXT & PREVIOUS POST ENGINE         -->
-      <!-- ======================================================== -->
+      <!-- Shield Parametric Next & Previous Navigation Engine -->
       {% if page.lang == "hi" %}
         {% assign all_shield_posts = site.shield_hi | sort:"date" %}
       {% else %}
@@ -99,7 +128,6 @@ extra_js:
 
         <nav class="post-nav-container" aria-label="Shield navigation" style="display: flex; justify-content: space-between; gap: 16px; margin-top: 50px; padding-top: 25px; border-top: 1px solid var(--border-color, rgba(255,255,255,0.1)); flex-wrap: wrap;">
           
-          <!-- Previous Safeguard -->
           <div class="post-nav-link prev" style="flex: 1; min-width: 220px;">
             {% if current_shield_index > 0 %}
               {% assign prev_post = all_shield_posts[prev_shield_index] %}
@@ -121,7 +149,6 @@ extra_js:
             {% endif %}
           </div>
 
-          <!-- Next Safeguard -->
           <div class="post-nav-link next" style="flex: 1; min-width: 220px; text-align: right;">
             {% if next_shield_index < shield_count %} 
               {% assign next_post = all_shield_posts[next_shield_index] %} 
