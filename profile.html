@@ -1,6 +1,6 @@
 ---
 layout: default
-title: "Author Profile | TyagiHub"
+title: "Author Profile "
 lang_switch: false
 ---
 
@@ -328,7 +328,7 @@ lang_switch: false
     <div id="author-post-grid" class="premium-grid"></div>
 </main>
 
-<!-- Master Unified Dataset Buffer Component mapping across dynamic collections -->
+<!-- Unified Site Dataset Architecture JSON Layer Buffer -->
 <script id="tyagihub-master-json" type="application/json">
 [
   {% assign all_site_posts = "" | split: "" %}
@@ -365,9 +365,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const isHindiContext = window.location.pathname.includes('/hi/') || document.referrer.includes('/hi/');
     let activeLang = isHindiContext ? "hi" : "en";
 
+    // 🎯 DYNAMIC OVERRIDE: Automatically extract author from URL query params context safely
     const urlParams = new URLSearchParams(window.location.search);
-    const authorParam = urlParams.get('author') || "Himanshu Tyagi";
-    const cleanAuthorName = authorParam.trim();
+    const authorParam = urlParams.get('author');
+    
+    // If no author in URL, fallback seamlessly to owner profile
+    const cleanAuthorName = authorParam ? authorParam.trim() : "Himanshu Tyagi";
 
     let rawUniversalArrayBuffer = [];
     let authorFilteredDataset = [];
@@ -437,7 +440,13 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!profileCard) return;
 
         const avatarSvgElement = generateAuthorAvatarSVG(cleanAuthorName);
-        const subBadgeText = activeLang === "hi" ? "मुख्य लेखक एवं क्रिएटर" : "Verified Digital Creator";
+        
+        // Dynamic Role Badge Builder based on Owner status check
+        let subBadgeText = activeLang === "hi" ? "सत्यापित लेखक" : "Verified Contributor";
+        if (cleanAuthorName.toLowerCase() === "himanshu tyagi" || cleanAuthorName.toLowerCase() === "owner") {
+            subBadgeText = activeLang === "hi" ? "मुख्य लेखक एवं क्रिएटर" : "Platform Architect & Creator";
+        }
+        
         const totalPostsLabel = activeLang === "hi" ? "कुल लेख संग्रह" : "Total Content Logs";
         const bioFallback = activeLang === "hi" 
             ? `त्यागीहब पर ${cleanAuthorName} द्वारा लिखे गए सभी मूल लेख, सुरक्षा गाइड और तकनीकी विश्लेषण यहाँ पढ़ें।` 
