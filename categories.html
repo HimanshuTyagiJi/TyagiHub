@@ -12,7 +12,7 @@ extra_css:
     margin: var(--space-12, 48px) auto;
     padding: 0 var(--space-4, 16px);
     min-height: 75vh;
-    margin-top: 60px; /* 🎯 Strictly overridden as specified */
+    margin-top: 70px; /* 🎯 Strictly overridden as specified */
   }
 
   /* Header Architecture */
@@ -141,7 +141,7 @@ extra_css:
   .filter-chip-btn.active-chip-state {
     background: var(--clr-accent);
     border-color: var(--clr-accent);
-    color: #000000; 
+    color: #ffffff; 
     box-shadow: var(--shadow-accent);
   }
 
@@ -490,7 +490,7 @@ document.addEventListener('DOMContentLoaded', () => {
         postsGrid.innerHTML = `<p style="color:var(--text-muted); text-align:center; grid-column:1/-1;">Buffer Exception.</p>`;
     }
 
-    // 🎯 1. LIVE LANGUAGE SWITCHER CONTROL HACK (NO Friction / No Reload 🚀)
+    // 🎯 1. LIVE LANGUAGE SWITCHER CONTROL HACK
     if (langSwitchBox) {
         langSwitchBox.addEventListener('click', () => {
             activeLang = activeLang === "en" ? "hi" : "en"; // Swap values
@@ -501,7 +501,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Function synchronizing static typography headers mapping live changes
     function syncStaticUIStrings() {
         if (activeLang === "hi") {
             langSwitchText.innerText = "🌐 Switch to English";
@@ -520,7 +519,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Pipeline module executing array modifications on lang swap triggers
     function executeCoreDataRefreshPipeline() {
-        masterSiteDataset = rawUniversalArrayBuffer.filter(post => post.lang === activeLang);
+        // 🔥 CRITICAL FIX: Extract data and enforce uniform Timestamp Sorting (Newest to Oldest)
+        masterSiteDataset = rawUniversalArrayBuffer
+            .filter(post => post.lang === activeLang)
+            .sort((a, b) => new Date(b.date) - new Date(a.date)); // Enforces Recent Posts First globally!
+
         buildCategoryChipsMenu();
         applyFilterLogicPipeline();
     }
@@ -529,7 +532,6 @@ document.addEventListener('DOMContentLoaded', () => {
     function buildCategoryChipsMenu() {
         chipsTrack.innerHTML = '';
         
-        // Dynamic Setup For ALL posts button chip
         const allLabel = activeLang === "hi" ? "सभी लेख" : "All Posts";
         const allBtn = document.createElement('button');
         allBtn.className = `filter-chip-btn ${currentSelectedCategoryKey === "all" ? 'active-chip-state' : ''}`;
@@ -537,7 +539,6 @@ document.addEventListener('DOMContentLoaded', () => {
         allBtn.addEventListener('click', () => switchCategoryState("all", allBtn));
         chipsTrack.appendChild(allBtn);
 
-        // Aggregate metric calculations live across keys mapping array bounds
         const categoryMetaMap = new Map();
         masterSiteDataset.forEach(p => {
             if (!p.category) return;
@@ -550,7 +551,6 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
 
-        // Loop over unique metrics rendering tags dynamically
         categoryMetaMap.forEach((metaData, normKey) => {
             let polishedTitle = metaData.displayTitle;
             if (normKey === "cybersecurity") polishedTitle = activeLang === "hi" ? "साइबर सुरक्षा" : "Cyber Security";
