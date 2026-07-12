@@ -1,7 +1,8 @@
 ---
 layout: default
-title: "Explore Categories & Insights"
-
+title: "Explore Categories & Insights | TyagiHub"
+extra_css:
+  - /assets/css/discover.css
 ---
 
 <!-- Premium Advanced Native Layout Styling Layer -->
@@ -11,12 +12,15 @@ title: "Explore Categories & Insights"
     margin: var(--space-12, 48px) auto;
     padding: 0 var(--space-4, 16px);
     min-height: 75vh;
-    margin-top:60px;
+    margin-top: 60px; /* 🎯 Strictly overridden as specified */
   }
 
   /* Header Architecture */
   .cat-header-zone {
-    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
     margin-bottom: var(--space-10, 40px);
   }
 
@@ -27,6 +31,31 @@ title: "Explore Categories & Insights"
     color: var(--text-heading);
     letter-spacing: -0.02em;
     margin: 0;
+  }
+
+  /* 🌐 Hybrid Premium Live Language Toggle Switcher */
+  .live-lang-switch-box {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--bg-surface);
+    border: 1px solid var(--clr-border);
+    padding: 6px 14px;
+    border-radius: var(--radius-full, 9999px);
+    cursor: pointer;
+    transition: all var(--ease-normal, 250ms);
+    font-family: var(--font-body), sans-serif;
+    font-size: var(--fs-xs, 0.89rem);
+    font-weight: var(--fw-bold, 550);
+    color: var(--clr-accent);
+    user-select: none;
+    box-shadow: var(--shadow-sm);
+  }
+
+  .live-lang-switch-box:hover {
+    border-color: var(--clr-accent);
+    background: var(--hover-bg-1);
+    box-shadow: var(--shadow-4);
   }
 
   /* Controls Hub Framework */
@@ -112,7 +141,7 @@ title: "Explore Categories & Insights"
   .filter-chip-btn.active-chip-state {
     background: var(--clr-accent);
     border-color: var(--clr-accent);
-    color: #ffffff; 
+    color: #000000; 
     box-shadow: var(--shadow-accent);
   }
 
@@ -128,7 +157,7 @@ title: "Explore Categories & Insights"
     background: rgba(0, 0, 0, 0.15);
   }
 
-  /* 3-Column 15-Post Architecture (Strict Grid Framework) */
+  /* 3-Column 15-Post Architecture (Strict Desktop Matrix) */
   .premium-grid {
     display: grid;
     grid-template-columns: 1fr;
@@ -142,7 +171,7 @@ title: "Explore Categories & Insights"
   }
   @media(min-width: 1024px) {
     .premium-grid {
-      grid-template-columns: repeat(3, 1fr); /* Strict 3 Columns Row Desktop */
+      grid-template-columns: repeat(3, 1fr); 
     }
   }
 
@@ -246,7 +275,6 @@ title: "Explore Categories & Insights"
     display: inline-flex;
     align-items: center;
     gap: 4px;
-    transition: color var(--ease-fast);
   }
 
   .premium-read-btn:hover {
@@ -263,7 +291,6 @@ title: "Explore Categories & Insights"
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: color var(--ease-fast);
   }
 
   .premium-share-icon-btn:hover {
@@ -277,6 +304,7 @@ title: "Explore Categories & Insights"
     align-items: center;
     gap: var(--space-2, 8px);
     margin-top: var(--space-12, 48px);
+    margin-bottom: var(--space-16, 64px);
   }
 
   .premium-page-btn {
@@ -310,6 +338,35 @@ title: "Explore Categories & Insights"
     cursor: not-allowed;
   }
 
+  /* 💎 Static Info Footer Box Layout Layer */
+  .archive-info-footer-section {
+    margin-top: var(--space-16, 64px);
+    padding: var(--space-8, 32px);
+    background: var(--bg-surface);
+    border: 1px solid var(--clr-border);
+    border-radius: var(--radius-lg, 18px);
+    box-shadow: var(--shadow-sm);
+  }
+
+  .info-footer-title {
+    font-family: var(--font-display), sans-serif;
+    font-size: var(--fs-lg, 1.375rem);
+    font-weight: var(--fw-black, 600);
+    color: var(--text-heading);
+    margin-bottom: var(--space-4, 16px);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .info-footer-text {
+    font-size: var(--fs-sm, 0.95rem);
+    color: var(--text-paragraph);
+    line-height: var(--lh-normal, 1.6);
+    margin: 0 0 var(--space-4, 16px) 0;
+    text-align: justify;
+  }
+
   .luxury-spinner {
     grid-column: 1 / -1;
     text-align: center;
@@ -320,22 +377,28 @@ title: "Explore Categories & Insights"
 <!-- Main Interface Markup -->
 <main class="premium-cat-wrapper">
     <div class="cat-header-zone">
-        <h1 id="category-posts-heading" class="cat-main-heading">{% if page.lang == "hi" %}लेख संग्रह{% else %}Article Archive{% endif %}</h1>
+        <h1 id="category-posts-heading" class="cat-main-heading">Article Archive</h1>
+        
+        <!-- 🌐 NESTED NATIVE SWITCHER: Controls language context live without refresh friction -->
+        <div id="live-lang-switch-trigger" class="live-lang-switch-box">
+            <i class="fa-solid fa-earth-americas"></i>
+            <span id="lang-switch-text-node">🌐 हिंदी में पढ़ें</span>
+        </div>
     </div>
 
     <!-- Controls Hub Structure -->
     <div class="controls-hub">
         <div class="search-box-wrap">
             <i class="fa-solid fa-magnifying-glass search-icon-lens"></i>
-            <input type="text" id="premium-live-search" class="premium-search-input" placeholder="{% if page.lang == "hi" %}लेख खोजें...{% else %}Search active articles...{% endif %}">
+            <input type="text" id="premium-live-search" class="premium-search-input" placeholder="Search active articles...">
         </div>
         
         <div id="filter-chips-track-box" class="filter-chips-track">
-           <!-- Dynamic counter-enabled chips automatically injected here -->
+           <!-- Dynamic counter-enabled chips auto-injected here -->
         </div>
     </div>
     
-    <!-- Strict 15-Post 3-Column Responsive Grid Architecture -->
+    <!-- Strict 15-Post 3-Column Grid Architecture Matrix -->
     <div id="category-post-grid" class="premium-grid">
         <div class="luxury-spinner" style="color:var(--clr-accent);">
             <i class="fas fa-spinner fa-spin" style="font-size:30px;"></i>
@@ -344,9 +407,19 @@ title: "Explore Categories & Insights"
 
     <!-- Pagination Interface -->
     <nav id="premium-pagination-container" class="premium-pagination"></nav>
+
+    <!-- 💎 EXTRA BRAND INFORMATION BLOCK: Professional Company Metadata Section -->
+    <div class="archive-info-footer-section">
+        <div id="info-box-title-node" class="info-footer-title">
+            <i class="fa-solid fa-circle-info" style="color:var(--clr-accent);"></i> <span>Knowledge Base & Content Directory</span>
+        </div>
+        <p id="info-box-desc-node" class="info-footer-text">
+            Welcome to the centralized TyagiHub Intelligence Archive. This section compiles multi-disciplinary technical field logs, cybersecurity safeguards, software review metrics, and modern application parameters. All publications are parsed across language nodes to maintain optimal delivery structures. For persistent network mitigation strategies or platform developments, consult the corresponding dedicated document hubs.
+        </p>
+    </div>
 </main>
 
-<!-- Master Unified Dataset Buffer Component -->
+<!-- Unified Site Dataset Architecture JSON Layer Buffer -->
 <script id="tyagihub-master-json" type="application/json">
 [
   {% assign all_site_posts = "" | split: "" %}
@@ -372,16 +445,23 @@ title: "Explore Categories & Insights"
 
 <script>
 document.addEventListener('DOMContentLoaded', () => {
-    const POSTS_PER_PAGE = 15; // Strictly clamped maximum render boundary per index frame
+    const POSTS_PER_PAGE = 15; // Shows exactly 15 records maximum per view grid window
 
     const postsGrid = document.getElementById('category-post-grid');
     const postsHeading = document.getElementById('category-posts-heading');
     const chipsTrack = document.getElementById('filter-chips-track-box');
     const paginationNav = document.getElementById('premium-pagination-container');
     const liveSearchInput = document.getElementById('premium-live-search');
+    
+    // Toggle Controllers Dom Nodes
+    const langSwitchBox = document.getElementById('live-lang-switch-trigger');
+    const langSwitchText = document.getElementById('lang-switch-text-node');
+    const infoTitleNode = document.getElementById('info-box-title-node');
+    const infoDescNode = document.getElementById('info-box-desc-node');
 
+    // Safe dynamic baseline language analyzer hook
     const isHindiContext = window.location.pathname.includes('/hi/') || document.referrer.includes('/hi/');
-    const activeLang = isHindiContext ? "hi" : "en";
+    let activeLang = isHindiContext ? "hi" : "en";
 
     const normalizeStr = (str) => {
         if (!str) return "";
@@ -392,30 +472,64 @@ document.addEventListener('DOMContentLoaded', () => {
     let currentSelectedCategoryKey = normalizeStr(urlParams.get('category') || "all");
     let searchFilterQuery = "";
 
+    let rawUniversalArrayBuffer = [];
     let masterSiteDataset = [];
     let filteredPostsSubset = [];
     let currentPageIndex = 1;
 
     try {
         const rawJsonData = document.getElementById('tyagihub-master-json').textContent;
-        const allPosts = JSON.parse(rawJsonData || "[]");
+        rawUniversalArrayBuffer = JSON.parse(rawJsonData || "[]");
 
-        // Lock baseline global datasets context by current active lang property
-        masterSiteDataset = allPosts.filter(post => post.lang === activeLang);
-        
-        buildCategoryChipsMenu();
-        applyFilterLogicPipeline();
+        // Sync initial text frameworks matching activeLang
+        syncStaticUIStrings();
+        executeCoreDataRefreshPipeline();
 
     } catch (e) {
-        console.error("Dataset initial rendering exception:", e);
-        postsGrid.innerHTML = `<p style="color:var(--text-muted); text-align:center; grid-column:1/-1;">Parsing Fault.</p>`;
+        console.error("Dataset initial rendering fault:", e);
+        postsGrid.innerHTML = `<p style="color:var(--text-muted); text-align:center; grid-column:1/-1;">Buffer Exception.</p>`;
     }
 
-    // 🎯 STEP 1: DYNAMIC CHIPS GENERATOR WITH LIVE POST COUNTERS ENGINE 🚀
+    // 🎯 1. LIVE LANGUAGE SWITCHER CONTROL HACK (NO Friction / No Reload 🚀)
+    if (langSwitchBox) {
+        langSwitchBox.addEventListener('click', () => {
+            activeLang = activeLang === "en" ? "hi" : "en"; // Swap values
+            
+            currentPageIndex = 1; // reset indices pagination safely
+            syncStaticUIStrings();
+            executeCoreDataRefreshPipeline();
+        });
+    }
+
+    // Function synchronizing static typography headers mapping live changes
+    function syncStaticUIStrings() {
+        if (activeLang === "hi") {
+            langSwitchText.innerText = "🌐 Switch to English";
+            postsHeading.innerText = "लेख संग्रह निर्देशिका";
+            liveSearchInput.placeholder = "लेख खोजें...";
+            infoTitleNode.innerHTML = `<i class="fa-solid fa-circle-info" style="color:var(--clr-accent);"></i> <span>ज्ञान केंद्र और सामग्री निर्देशिका</span>`;
+            infoDescNode.innerText = "त्यागीहब इंटेलिजेंस आर्काइव में आपका स्वागत है। यह अनुभाग बहु-विषयक तकनीकी फ़ील्ड लॉग, साइबर सुरक्षा सुरक्षा उपायों, सॉफ्टवेयर समीक्षा मेट्रिक्स और आधुनिक एप्लिकेशन मापदंडों को संकलित करता है। इष्टतम वितरण संरचनाओं को बनाए रखने के लिए सभी प्रकाशनों को भाषा नोड्स में पार्स किया जाता है। नेटवर्क सुरक्षा रणनीतियों या विकास कार्यों के लिए, संबंधित दस्तावेज़ हब देखें।";
+        } else {
+            langSwitchText.innerText = "🌐 हिंदी में पढ़ें";
+            postsHeading.innerText = "Article Archive Directory";
+            liveSearchInput.placeholder = "Search active articles...";
+            infoTitleNode.innerHTML = `<i class="fa-solid fa-circle-info" style="color:var(--clr-accent);"></i> <span>Knowledge Base & Content Directory</span>`;
+            infoDescNode.innerText = "Welcome to the centralized TyagiHub Intelligence Archive. This section compiles multi-disciplinary technical field logs, cybersecurity safeguards, software review metrics, and modern application parameters. All publications are parsed across language nodes to maintain optimal delivery structures. For persistent network mitigation strategies or platform developments, consult the corresponding dedicated document hubs.";
+        }
+    }
+
+    // Pipeline module executing array modifications on lang swap triggers
+    function executeCoreDataRefreshPipeline() {
+        masterSiteDataset = rawUniversalArrayBuffer.filter(post => post.lang === activeLang);
+        buildCategoryChipsMenu();
+        applyFilterLogicPipeline();
+    }
+
+    // 🎯 2. DYNAMIC CHIPS MENU WITH AUTOMATIC METRIC COUNTERS
     function buildCategoryChipsMenu() {
         chipsTrack.innerHTML = '';
         
-        // 1. All Posts Button Implementation
+        // Dynamic Setup For ALL posts button chip
         const allLabel = activeLang === "hi" ? "सभी लेख" : "All Posts";
         const allBtn = document.createElement('button');
         allBtn.className = `filter-chip-btn ${currentSelectedCategoryKey === "all" ? 'active-chip-state' : ''}`;
@@ -423,7 +537,7 @@ document.addEventListener('DOMContentLoaded', () => {
         allBtn.addEventListener('click', () => switchCategoryState("all", allBtn));
         chipsTrack.appendChild(allBtn);
 
-        // 2. Scan and aggregate dynamic metric totals per explicit categories
+        // Aggregate metric calculations live across keys mapping array bounds
         const categoryMetaMap = new Map();
         masterSiteDataset.forEach(p => {
             if (!p.category) return;
@@ -436,7 +550,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
 
-        // 3. Loop over dynamic metrics data maps injecting component targets
+        // Loop over unique metrics rendering tags dynamically
         categoryMetaMap.forEach((metaData, normKey) => {
             let polishedTitle = metaData.displayTitle;
             if (normKey === "cybersecurity") polishedTitle = activeLang === "hi" ? "साइबर सुरक्षा" : "Cyber Security";
@@ -464,6 +578,7 @@ document.addEventListener('DOMContentLoaded', () => {
         applyFilterLogicPipeline();
     }
 
+    // 🎯 3. LIVE SEARCH CONTROLLER
     if (liveSearchInput) {
         liveSearchInput.addEventListener('input', (e) => {
             searchFilterQuery = e.target.value.toLowerCase().trim();
@@ -472,6 +587,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // 🎯 4. LOGIC FILTERS ENGINE PIPELINE
     function applyFilterLogicPipeline() {
         filteredPostsSubset = masterSiteDataset.filter(post => {
             if (currentSelectedCategoryKey !== "all") {
@@ -488,6 +604,7 @@ document.addEventListener('DOMContentLoaded', () => {
         executeGridRenderLifecycle();
     }
 
+    // 🎯 5. GRID CANVAS RENDER LIFECYCLE
     function executeGridRenderLifecycle() {
         postsGrid.innerHTML = '';
         paginationNav.innerHTML = '';
@@ -543,6 +660,7 @@ document.addEventListener('DOMContentLoaded', () => {
         generatePaginationInterface();
     }
 
+    // Dynamic Navigation Pager Pipelining
     function generatePaginationInterface() {
         const totalPages = Math.ceil(filteredPostsSubset.length / POSTS_PER_PAGE);
         if (totalPages <= 1) return;
@@ -556,7 +674,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 e.preventDefault();
                 currentPageIndex = pageIndex;
                 executeGridRenderLifecycle();
-                window.scrollTo({ top: postsHeading.offsetTop - 40, behavior: 'smooth' });
+                window.scrollTo({ top: postsHeading.offsetTop - 80, behavior: 'smooth' });
             });
             paginationNav.appendChild(btn);
         };
