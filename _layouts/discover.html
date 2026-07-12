@@ -30,23 +30,26 @@ layout: default
 				{% endif %}
 			{% endif %} 
 
-<!-- 2. Uske Neeche Author, Time, Date, Category Line -->
-<div class="hero-meta">
-	<span>✍️ {% if page.lang == "hi" %}द्वारा{% else %}By{% endif %} <a href="/profile/?author={{ page.author | url_encode }}" class="author-link">{{ page.author | default: "Himanshu Tyagi" }}</a></span>  
-	<span>⏱️ {{ read_time }}</span>  
-	<span>📅 {{ page.date | date: "%d %b %Y" }}</span>
-	
-	{% if page.categories %}
-		<!-- 🎯 CRITICAL FIX: Extracting first index securely strips array brackets [""] -->
+			<div class="post-hero">
+				<!-- 1. Sabse Pahle Title -->
+				<h1 class="post-title">{{ page.title }}</h1>
+				
+				<!-- 2. Uske Neeche Author, Time, Date, Category Line -->
+				<div class="hero-meta">
+					<span>✍️ {% if page.lang == "hi" %}द्वारा{% else %}By{% endif %} <a href="/profile.html?author={{ page.author | url_encode }}" class="author-link">{{ page.author | default: "Himanshu Tyagi" }}</a></span>  
+					<span>⏱️ {{ read_time }}</span>  
+					<span>📅 {{ page.date | date: "%d %b %Y" }}</span>
+				{% if page.categories %}
+		<!-- 🎯 UNIVERSAL DYNAMIC ENGINE: Strips brackets safely from any category automatically -->
 		{% assign raw_cat = page.categories[0] | default: page.categories %}
-		<!-- Strip trailing layout brackets if Jekyll outputs it as string representation -->
 		{% assign clean_cat = raw_cat | replace: '[', '' | replace: ']', '' | replace: '"', '' | strip %}
 		
+		<!-- 🚀 No manual 'if/else' needed anymore! It handles all categories automatically -->
 		<a href="/categories/?category={{ clean_cat | url_encode }}" class="tag-chip">
-			🧠 {% if page.lang == "hi" and clean_cat == "Cyber-Security" %}साइबर सुरक्षा{% elsif page.lang == "hi" and clean_cat == "Technology" %}तकनीक{% else %}{{ clean_cat }}{% endif %}
+			🧠 {{ clean_cat | replace: "-", " " | replace: "_", " " | capitalize }}
 		</a>
 	{% endif %}
-</div>
+				</div>
 
 				<!-- 3. Sabse Neeche Description Meta -->
 				{% if page.description %}
