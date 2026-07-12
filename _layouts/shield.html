@@ -45,11 +45,15 @@ extra_js:
 				<span>✍️ {% if page.lang == "hi" %}द्वारा{% else %}By{% endif %} <a href="/profile.html?author={{ page.author | url_encode }}" class="author-link">{{ page.author | default: "Himanshu Tyagi" }}</a></span>  
 				<span>⏱️ {{ read_time }}</span>  
 				<span>📅 {{ page.date | date: "%d %b %Y" }}</span>
-				{% if page.categories %}
-					 <a href="/categories.html?category={{ page.categories | url_encode }}" class="tag-chip">
-						🧠 {{ page.categories }}
-					</a>
-				{% endif %}
+			{% if page.categories %}
+		<!-- 🎯 CRITICAL FIX: Extracting first index securely strips array brackets [""] -->
+		{% assign raw_cat = page.categories[0] | default: page.categories %}
+		{% assign clean_cat = raw_cat | replace: '[', '' | replace: ']', '' | replace: '"', '' | strip %}
+		
+		<a href="/categories/?category={{ clean_cat | url_encode }}" class="tag-chip">
+			🧠 {% if page.lang == "hi" and clean_cat == "Cyber-Security" %}साइबर सुरक्षा{% elsif page.lang == "hi" and clean_cat == "Technology" %}तकनीक{% else %}{{ clean_cat }}{% endif %}
+		</a>
+	{% endif %}
 			</div>
 
 			<!-- 3. Description Meta -->
