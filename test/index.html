@@ -4,6 +4,7 @@ layout: default
 title: "Test Center & Global Leaderboard | TyagiHub"
 description: "Challenge yourself with quizzes on Hindi, History, Computer, and more. Track your progress on the global leaderboard and prepare for competitive exams on TyagiHub."
 keywords: "online tests, practice quizzes, competitive exam preparation, GK test, history quiz, computer test, global leaderboard, TyagiHub"
+comments: false
 ---
 
 <script type="application/ld+json">
@@ -30,376 +31,392 @@ keywords: "online tests, practice quizzes, competitive exam preparation, GK test
   "itemListElement": [
     {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://tyagihub.in/"},
     {"@type": "ListItem", "position": 2, "name": "Test Center", "item": "https://tyagihub.in/test/"}
-  ]
+  }
 }
 </script>
 
-<style>:root { --red: #b30000; --blue: #2f2eff; --purple: #4700b3; --green: #076600; --text-primary: #000; --text-secondary: #4f4f4f; --link-color: #2f2eff; --body-bg: #fff; --header-bg: #fff; --card-bg: #fff; --border-color: #e0e0e0; --shadow-color: rgba(0,0,0,0.08); --overlay-bg: rgba(0,0,0,0.4); --header-height: 60px; --accent-color: #005f61; --accent-color-transparent: rgba(0,95,97,0.08); --blue-transparent-focus: rgba(47,46,255,0.2); --white: #fff; --card-shadow: 0 2px 8px var(--shadow-color); --footer-bg: #f8f9fa; --footer-text: #4f4f4f; --footer-border: #e0e0e0; --category-badge-bg: #005f61; --border-radius: 10px; --btn: #b30000; --spinner-border: rgba(0,0,0,0.1); --primary-color: #2f2eff; --primary-hover-color: #0000e6; --danger-color: #e53935; --muted-text-color: #495057; --widget-background-color: #fff; --shadow: 0 2px 4px rgba(0,0,0,0.05); --input-bg: #f8f9fa; --button-hover-bg: #f1f3f5; --comment-body-text: #212529; --tbl-border: #e5e7eb; --tbl-head-bg: #f3f4f6; --tbl-hover: #f9fafb; --skeleton-bg: #e0e0e0; }
-
-  /* ── Layout helpers ── */
+<!-- Premium Unified Test Center Styling Layer -->
+<style>
   .tc-container {
-    max-width: 1100px;
-    margin: 90px auto;
-    padding: 0 1rem;
+    max-width: var(--container-max, 1200px);
+    margin: var(--space-12, 48px) auto;
+    padding: 0 var(--space-4, 16px);
+    min-height: 75vh;
+    margin-top: 70px;
   }
 
-  /* ── Section spacing ── */
   .tc-section {
-    margin-bottom: 4rem;
+    margin-bottom: var(--space-12, 48px);
   }
 
-  /* ── Section heading ── */
   .tc-heading {
+    font-family: var(--font-display), sans-serif;
+    font-size: var(--fs-2xl, 2.25rem);
+    font-weight: var(--fw-black, 600);
+    color: var(--text-heading);
     text-align: center;
-    font-size: clamp(1.6rem, 3.5vw, 2.2rem);
-    font-weight: 700;
-    color: var(--text-primary);
-    margin: 0 0 0.5rem;
-  }
-  .tc-heading::after {
-    content: '';
-    display: block;
-    width: 60px;
-    height: 3px;
-    background: var(--accent-color);
-    border-radius: 2px;
-    margin: 0.5rem auto 0;
-  }
-  .tc-subheading {
-    text-align: center;
-    font-size: 1rem;
-    color: var(--text-secondary);
-    max-width: 640px;
-    margin: 0.75rem auto 2.5rem;
-    line-height: 1.7;
+    margin: 0 0 var(--space-2, 8px);
+    letter-spacing: -0.02em;
   }
 
-  /* ── Hero ── */
-  .tc-hero {
+  .tc-subheading {
+    font-family: var(--font-body), sans-serif;
+    font-size: var(--fs-sm, 0.95rem);
+    color: var(--text-paragraph);
     text-align: center;
-    padding: 3.5rem 1.5rem;
-    background: linear-gradient(135deg, color-mix(in srgb, var(--accent-color) 10%, var(--card-bg)), var(--card-bg));
-    border: 1px solid var(--border-color);
-    border-radius: var(--border-radius);
-    margin-bottom: 4rem;
+    max-width: 680px;
+    margin: 0 auto var(--space-10, 40px);
+    line-height: var(--lh-normal, 1.6);
+    opacity: 0.9;
   }
+
+  /* Luxury Hero Layout Section */
+  .tc-hero {
+    background: var(--bg-surface);
+    border: 1px solid var(--clr-border);
+    border-radius: var(--radius-lg, 18px);
+    padding: var(--space-8, 32px);
+    text-align: center;
+    margin-bottom: var(--space-12, 48px);
+    box-shadow: var(--shadow-sm);
+  }
+
   .tc-hero h1 {
-    font-size: clamp(2rem, 5vw, 2.8rem);
-    font-weight: 700;
-    color: var(--text-primary);
-    margin: 0 0 0.75rem;
+    font-family: var(--font-display), sans-serif;
+    font-size: var(--fs-2xl, 2.25rem);
+    font-weight: var(--fw-black, 600);
+    color: var(--text-heading);
+    margin: 0 0 var(--space-3, 12px);
   }
+
   .tc-hero p {
-    font-size: 1.05rem;
-    color: var(--text-secondary);
-    max-width: 660px;
-    margin: 0 auto 1.5rem;
-    line-height: 1.7;
+    font-size: var(--fs-sm, 0.95rem);
+    color: var(--text-paragraph);
+    max-width: 700px;
+    margin: 0 auto var(--space-5, 20px);
+    line-height: var(--lh-normal, 1.6);
   }
+
   .tc-hero-meta {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 0.75rem;
+    gap: var(--space-4, 16px);
     flex-wrap: wrap;
-    font-size: 0.88rem;
-    color: var(--text-secondary);
+    font-size: var(--fs-xs, 0.89rem);
+    color: var(--text-muted);
   }
+
   .tc-hero-meta .author-link {
-    color: var(--accent-color);
-    font-weight: 500;
+    color: var(--clr-accent);
+    font-weight: var(--fw-bold, 550);
     text-decoration: none;
   }
-  .tc-hero-meta .share-btn {
+
+  .share-btn {
     display: inline-flex;
     align-items: center;
-    gap: 0.4rem;
-    background: var(--card-bg);
-    border: 1px solid var(--border-color);
-    border-radius: 20px;
-    padding: 0.35rem 0.9rem;
-    font-size: 0.85rem;
-    color: var(--text-primary);
+    gap: 6px;
+    background: var(--bg-body);
+    border: 1px solid var(--clr-border);
+    border-radius: var(--radius-full, 9999px);
+    padding: var(--space-2, 8px) var(--space-4, 16px);
+    font-family: var(--font-body), sans-serif;
+    font-size: var(--fs-xs, 0.89rem);
+    color: var(--text-heading);
     cursor: pointer;
-    transition: background 0.2s;
+    transition: all var(--ease-fast);
   }
-  .tc-hero-meta .share-btn:hover { background: var(--border-color); }
 
-  /* ── Category grid ── */
+  .share-btn:hover {
+    border-color: var(--clr-accent);
+    color: var(--clr-accent);
+    background: var(--hover-bg-1);
+  }
+
+  /* Premium Quiz Matrix Grid Layout */
   .tc-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-    gap: 1.25rem;
+    grid-template-columns: 1fr;
+    gap: var(--space-6, 24px);
   }
+
+  @media(min-width: 768px) {
+    .tc-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media(min-width: 1024px) {
+    .tc-grid { grid-template-columns: repeat(3, 1fr); }
+  }
+
   .tc-card {
-    background: var(--card-bg);
-    border: 1px solid var(--border-color);
-    border-radius: var(--border-radius);
-    padding: 1.75rem 1.5rem;
+    background: var(--bg-surface);
+    border: 1px solid var(--clr-border);
+    border-radius: var(--radius-lg, 18px);
+    padding: var(--space-6, 24px);
     text-align: center;
     text-decoration: none;
     color: inherit;
-    transition: transform 0.2s, box-shadow 0.2s;
-    display: block;
+    display: flex;
+    flex-direction: column;
     position: relative;
     overflow: hidden;
+    transition: transform var(--ease-normal, 250ms), border-color var(--ease-normal, 250ms), box-shadow var(--ease-normal, 250ms);
+    box-shadow: var(--shadow-sm);
   }
-  .tc-card:hover {
-    transform: translateY(-4px);
-    box-shadow: var(--card-shadow);
-  }
-  .tc-card .card-icon {
-    font-size: 2.6rem;
-    line-height: 1;
-    margin-bottom: 0.75rem;
-    color: var(--accent-color);
-  }
-  .tc-card h3 {
-    font-size: 1.2rem;
-    font-weight: 600;
-    color: var(--text-primary);
-    margin: 0 0 0.5rem;
-  }
-  .tc-card p {
-    font-size: 0.9rem;
-    color: var(--text-secondary);
-    margin: 0 0 1.25rem;
-    line-height: 1.6;
-  }
-  .tc-btn {
-    display: inline-block;
-    background: var(--accent-color);
-    color: #fff;
-    padding: 0.55rem 1.5rem;
-    border-radius: 20px;
-    font-size: 0.9rem;
-    font-weight: 500;
-    text-decoration: none;
-    transition: opacity 0.2s;
-  }
-  .tc-btn:hover { opacity: 0.85; }
 
-  /* disabled card */
+  .tc-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--clr-border-2);
+    box-shadow: var(--shadow-md);
+  }
+
+  .card-icon {
+    font-size: 2.5rem;
+    line-height: 1;
+    margin-bottom: var(--space-3, 12px);
+  }
+
+  .tc-card h3 {
+    font-family: var(--font-display), sans-serif;
+    font-size: var(--fs-md, 1.125rem);
+    font-weight: var(--fw-bold, 550);
+    color: var(--text-heading);
+    margin: 0 0 var(--space-2, 8px);
+  }
+
+  .tc-card p {
+    font-size: var(--fs-sm, 0.95rem);
+    color: var(--text-paragraph);
+    margin: 0 0 var(--space-5, 20px) 0;
+    line-height: var(--lh-normal, 1.6);
+  }
+
+  .tc-btn {
+    margin-top: auto;
+    display: inline-block;
+    background: var(--clr-border);
+    border: 1px solid var(--clr-border-2);
+    color: var(--text-heading);
+    padding: var(--space-2, 8px) var(--space-5, 20px);
+    border-radius: var(--radius-full, 9999px);
+    font-family: var(--font-body), sans-serif;
+    font-size: var(--fs-xs, 0.89rem);
+    font-weight: var(--fw-bold, 550);
+    text-decoration: none;
+    transition: all var(--ease-fast);
+  }
+
+  .tc-card:hover .tc-btn {
+    background: var(--clr-accent);
+    border-color: var(--clr-accent);
+    color: #000000;
+    box-shadow: var(--shadow-accent);
+  }
+
+  /* Disabled States Architecture */
   .tc-card.disabled {
-    opacity: 0.55;
-    pointer-events: none;
+    opacity: 0.5;
+    cursor: not-allowed;
   }
+
+  .tc-card.disabled:hover {
+    transform: none;
+    border-color: var(--clr-border);
+    box-shadow: var(--shadow-sm);
+  }
+
   .tc-card.disabled .tc-btn {
-    background: var(--text-secondary);
+    background: var(--bg-body) !important;
+    border-color: var(--clr-border) !important;
+    color: var(--text-muted) !important;
+    box-shadow: none !important;
   }
+
   .soon-badge {
     position: absolute;
-    top: 10px;
-    right: -34px;
-    background: #f57c00;
-    color: #fff;
-    font-size: 0.72rem;
-    font-weight: 700;
-    padding: 3px 40px;
+    top: 12px;
+    right: -32px;
+    background: var(--clr-tools);
+    color: #000000;
+    font-size: 11px;
+    font-weight: var(--fw-black, 600);
+    padding: 2px 35px;
     transform: rotate(45deg);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
   }
 
-  /* ── Leaderboard ── */
+  /* Global Leaderboard Wrapper Architecture */
   .tc-leaderboard-wrap {
-    background: var(--card-bg);
-    border: 1px solid var(--border-color);
-    border-radius: var(--border-radius);
-    padding: clamp(1rem, 4vw, 2rem);
+    background: var(--bg-surface);
+    border: 1px solid var(--clr-border);
+    border-radius: var(--radius-lg, 18px);
+    padding: var(--space-6, 24px);
+    box-shadow: var(--shadow-sm);
   }
+
   .tc-leaderboard {
     list-style: none;
     padding: 0;
     margin: 0;
   }
+
   .tc-leaderboard li {
     display: flex;
     align-items: center;
-    padding: 0.85rem 0.5rem;
-    border-bottom: 1px solid var(--border-color);
-    transition: background 0.15s;
+    padding: var(--space-3, 12px) var(--space-2, 8px);
+    border-bottom: 1px solid var(--clr-border);
+    font-family: var(--font-body), sans-serif;
+    font-size: var(--fs-sm, 0.95rem);
   }
+
   .tc-leaderboard li:last-child { border-bottom: none; }
-  .tc-leaderboard li.me {
-    background: color-mix(in srgb, var(--accent-color) 10%, transparent);
-    border-left: 3px solid var(--accent-color);
-    padding-left: calc(0.5rem - 3px);
+
+  .tc-leaderboard li.active-user-row {
+    background: var(--hover-bg-1);
+    border-left: 3px solid var(--clr-accent);
+    padding-left: calc(var(--space-2, 8px) - 3px);
   }
+
   .tc-leaderboard .rank {
-    min-width: 36px;
+    min-width: 40px;
     text-align: center;
-    font-weight: 700;
-    font-size: 1rem;
-    color: var(--accent-color);
+    font-weight: var(--fw-black, 600);
+    color: var(--clr-accent);
   }
-  .tc-leaderboard .lb-avatar {
-    width: 38px;
-    height: 38px;
-    border-radius: 50%;
-    margin: 0 0.9rem;
-    object-fit: cover;
+
+  .tc-leaderboard .lb-avatar-frame {
+    width: 36px;
+    height: 36px;
+    border-radius: var(--radius-full, 9999px);
+    margin: 0 var(--space-3, 12px);
+    overflow: hidden;
+    border: 1px solid var(--clr-border-2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--bg-body);
   }
+
   .tc-leaderboard .lb-name {
     flex: 1;
-    font-weight: 500;
-    color: var(--text-primary);
-    font-size: 0.95rem;
-  }
-  .tc-leaderboard .lb-score {
-    font-weight: 700;
-    color: var(--text-primary);
-    font-size: 0.95rem;
-  }
-  .tc-spinner {
-    display: flex;
-    justify-content: center;
-    padding: 2rem;
+    font-weight: var(--fw-bold, 550);
+    color: var(--text-heading);
   }
 
-  /* ── Highlight / CTA card ── */
-  .tc-highlight {
-    background: linear-gradient(135deg, var(--accent-color), #008c90);
-    color: #fff;
-    border-radius: var(--border-radius);
-    padding: 2.5rem 2rem;
-    text-align: center;
+  .tc-leaderboard .lb-score {
+    font-weight: var(--fw-black, 600);
+    color: var(--text-heading);
   }
+
+  /* Weekly Challenge Accent Box Block */
+  .tc-highlight {
+    background: var(--bg-surface);
+    border: 2px solid var(--clr-accent);
+    border-radius: var(--radius-lg, 18px);
+    padding: var(--space-8, 32px);
+    text-align: center;
+    box-shadow: var(--shadow-accent);
+  }
+
   .tc-highlight .tag {
     display: inline-block;
-    background: rgba(255,255,255,0.2);
-    color: #fff;
-    padding: 0.25rem 1rem;
-    border-radius: 20px;
-    font-size: 0.85rem;
-    font-weight: 600;
-    margin-bottom: 1rem;
+    background: var(--clr-accent-glow);
+    border: 1px solid var(--clr-accent);
+    color: var(--clr-accent);
+    padding: var(--space-1, 4px) var(--space-4, 16px);
+    border-radius: var(--radius-full, 9999px);
+    font-size: var(--fs-xs, 0.89rem);
+    font-weight: var(--fw-bold, 550);
+    margin-bottom: var(--space-3, 12px);
+    text-transform: uppercase;
   }
+
   .tc-highlight h3 {
-    font-size: clamp(1.4rem, 3vw, 1.9rem);
-    margin: 0 0 0.75rem;
+    font-family: var(--font-display), sans-serif;
+    font-size: var(--fs-lg, 1.375rem);
+    font-weight: var(--fw-black, 600);
+    color: var(--text-heading);
+    margin: 0 0 var(--space-2, 8px);
   }
+
   .tc-highlight p {
-    opacity: 0.9;
-    max-width: 580px;
-    margin: 0 auto 1.75rem;
-    line-height: 1.7;
+    color: var(--text-paragraph);
+    max-width: 600px;
+    margin: 0 auto var(--space-5, 20px);
+    line-height: var(--lh-normal, 1.6);
   }
-  .tc-highlight-btn {
-    display: inline-block;
-    background: #fff;
-    color: var(--accent-color);
-    padding: 0.85rem 2.2rem;
-    border-radius: 50px;
-    font-weight: 600;
-    text-decoration: none;
-    transition: transform 0.2s;
-  }
-  .tc-highlight-btn:hover { transform: scale(1.04); }
 
-  /* ── Info cards (3-up grids) ── */
-  .tc-grid-3 {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-    gap: 1.25rem;
-  }
-  .tc-info-card {
-    background: var(--card-bg);
-    border: 1px solid var(--border-color);
-    border-radius: var(--border-radius);
-    padding: 1.75rem 1.5rem;
-    text-align: center;
-    transition: transform 0.2s, box-shadow 0.2s;
-  }
-  .tc-info-card:hover {
-    transform: translateY(-4px);
-    box-shadow: var(--card-shadow);
-  }
-  .tc-info-card .info-icon { font-size: 2.4rem; color: var(--accent-color); margin-bottom: 0.75rem; }
-  .tc-info-card h3 { font-size: 1.1rem; font-weight: 600; margin: 0 0 0.6rem; color: var(--text-primary); }
-  .tc-info-card p { font-size: 0.9rem; color: var(--text-secondary); line-height: 1.6; margin: 0 0 1rem; }
-
-  /* ── Top Performers ── */
-  .tc-performers {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
-    gap: 1.25rem;
-    max-width: 800px;
-    margin: 0 auto;
-  }
-  .tc-performer {
-    background: var(--card-bg);
-    border: 1px solid var(--border-color);
-    border-radius: var(--border-radius);
-    padding: 1.75rem 1.25rem;
-    text-align: center;
-  }
-  .tc-performer .pf-rank { font-size: 1.4rem; font-weight: 700; margin-bottom: 1rem; }
-  .tc-performer .pf-rank.gold   { color: #f59e0b; }
-  .tc-performer .pf-rank.silver { color: #94a3b8; }
-  .tc-performer .pf-rank.bronze { color: #cd7f32; }
-  .tc-performer .pf-avatar {
-    width: 90px; height: 90px;
-    border-radius: 50%;
-    border: 3px solid var(--accent-color);
-    object-fit: cover;
-    margin: 0 auto 0.75rem;
-    display: block;
-  }
-  .tc-performer .pf-name { font-size: 1rem; font-weight: 600; color: var(--text-primary); }
-
-  /* ── Testimonials ── */
+  /* Testimonials Section */
   .tc-testimonial {
-    background: var(--card-bg);
-    border-left: 4px solid var(--accent-color);
-    border-radius: 0 var(--border-radius) var(--border-radius) 0;
-    padding: 1.5rem;
-    border-top: 1px solid var(--border-color);
-    border-right: 1px solid var(--border-color);
-    border-bottom: 1px solid var(--border-color);
+    background: var(--bg-surface);
+    border-left: 4px solid var(--clr-accent);
+    border-top: 1px solid var(--clr-border);
+    border-right: 1px solid var(--clr-border);
+    border-bottom: 1px solid var(--clr-border);
+    border-radius: 0 var(--radius-lg, 18px) var(--radius-lg, 18px) 0;
+    padding: var(--space-5, 20px);
+    box-shadow: var(--shadow-sm);
   }
+
   .tc-testimonial p {
     font-style: italic;
-    color: var(--text-secondary);
-    line-height: 1.7;
-    margin: 0 0 0.9rem;
-    font-size: 0.93rem;
+    color: var(--text-paragraph);
+    line-height: var(--lh-normal, 1.6);
+    margin: 0 0 var(--space-2, 8px) 0;
+    font-size: var(--fs-sm, 0.95rem);
   }
-  .tc-testimonial .author { font-weight: 600; color: var(--text-primary); font-size: 0.9rem; }
 
-  /* ── FAQ ── */
+  .tc-testimonial .author {
+    font-weight: var(--fw-bold, 550);
+    color: var(--text-heading);
+    font-size: var(--fs-xs, 0.89rem);
+  }
+
+  /* FAQ Accordion Section */
   .tc-faq details {
-    border: 1px solid var(--border-color);
-    border-radius: var(--border-radius);
-    margin-bottom: 0.75rem;
+    border: 1px solid var(--clr-border);
+    border-radius: var(--radius-md, 12px);
+    margin-bottom: var(--space-2, 8px);
     overflow: hidden;
   }
+
   .tc-faq summary {
     cursor: pointer;
-    padding: 1rem 1.25rem;
-    font-weight: 600;
-    color: var(--text-primary);
-    font-size: 0.97rem;
+    padding: var(--space-4, 16px);
+    font-weight: var(--fw-bold, 550);
+    color: var(--text-heading);
+    font-size: var(--fs-sm, 0.95rem);
     list-style: none;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background: var(--card-bg);
+    background: var(--bg-surface);
   }
+
   .tc-faq summary::-webkit-details-marker { display: none; }
-  .tc-faq summary::after { content: '+'; font-size: 1.2rem; color: var(--accent-color); }
+  .tc-faq summary::after { content: '+'; font-size: 1.2rem; color: var(--clr-accent); }
   .tc-faq details[open] summary::after { content: '−'; }
+  
   .tc-faq .faq-body {
-    padding: 0.9rem 1.25rem 1.1rem;
-    font-size: 0.92rem;
-    color: var(--text-secondary);
-    line-height: 1.7;
-    background: var(--card-bg);
-    border-top: 1px solid var(--border-color);
+    padding: var(--space-4, 16px);
+    font-size: var(--fs-sm, 0.95rem);
+    color: var(--text-paragraph);
+    line-height: var(--lh-normal, 1.6);
+    background: var(--bg-surface);
+    border-top: 1px solid var(--clr-border);
+  }
+
+  .luxury-spinner {
+    text-align: center;
+    padding: var(--space-8, 32px) 0;
+    color: var(--clr-accent);
   }
 </style>
 
 <main class="tc-container">
 
-  <!-- Hero -->
+  <!-- Hero Component -->
   <section class="tc-hero tc-section">
     <h1>🏆 Test Center &amp; Leaderboard</h1>
     <p>Challenge yourself with curated quizzes, track your performance, and see how you rank against learners across the country. Your journey to mastery starts here.</p>
@@ -407,7 +424,7 @@ keywords: "online tests, practice quizzes, competitive exam preparation, GK test
       <span>by <a href="/profile/?author=Owner" class="author-link" rel="author">TyagiHub</a></span>
       <span>| Updated: <time datetime="2025-12-22">Dec 22, 2025</time></span>
       <button class="share-btn" id="shareBtn" title="Share this page">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" style="margin-right:2px;">
           <path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92 1.61 0 2.92-1.31 2.92-2.92s-1.31-2.92-2.92-2.92z"/>
         </svg>
         Share
@@ -415,7 +432,7 @@ keywords: "online tests, practice quizzes, competitive exam preparation, GK test
     </div>
   </section>
 
-  <!-- Subject Selection -->
+  <!-- Subject Selection Grid Matrix -->
   <section class="tc-section">
     <h2 class="tc-heading">Choose Your Subject</h2>
     <p class="tc-subheading">Select a category to begin your practice test. Each quiz is designed to sharpen your skills for competitive exams.</p>
@@ -436,187 +453,142 @@ keywords: "online tests, practice quizzes, competitive exam preparation, GK test
       </a>
 
       <a href="computer-test/" class="tc-card">
+        <div class="tc-card-anchor-link"></div>
         <div class="card-icon">💻</div>
         <h3>Computer</h3>
         <p>Quizzes on computer fundamentals, software, and the latest technology trends.</p>
         <span class="tc-btn">View Tests</span>
       </a>
 
-      <a href="#" class="tc-card disabled" onclick="return false;">
+      <div class="tc-card disabled">
         <span class="soon-badge">Soon</span>
         <div class="card-icon">🧮</div>
         <h3>Maths</h3>
         <p>Sharpen your quantitative aptitude with tests on various mathematical concepts.</p>
         <span class="tc-btn">Coming Soon</span>
-      </a>
+      </div>
 
-      <a href="#" class="tc-card disabled" onclick="return false;">
+      <div class="tc-card disabled">
         <span class="soon-badge">Soon</span>
         <div class="card-icon">🌍</div>
         <h3>Geography</h3>
         <p>Quizzes on world and Indian geography — mountains, rivers, capitals, and climate.</p>
         <span class="tc-btn">Coming Soon</span>
-      </a>
+      </div>
 
-      <a href="#" class="tc-card disabled" onclick="return false;">
+      <div class="tc-card disabled">
         <span class="soon-badge">Soon</span>
         <div class="card-icon">🔬</div>
         <h3>General Science</h3>
         <p>Test your knowledge of Physics, Chemistry, and Biology with general science questions.</p>
         <span class="tc-btn">Coming Soon</span>
-      </a>
+      </div>
 
-      <a href="#" class="tc-card disabled" onclick="return false;">
+      <div class="tc-card disabled">
         <span class="soon-badge">Soon</span>
         <div class="card-icon">🏛️</div>
         <h3>Indian Polity</h3>
         <p>Quizzes on the Constitution, government structure, fundamental rights, and political system.</p>
         <span class="tc-btn">Coming Soon</span>
-      </a>
+      </div>
 
-      <a href="#" class="tc-card disabled" onclick="return false;">
+      <div class="tc-card disabled">
         <span class="soon-badge">Soon</span>
         <div class="card-icon">💹</div>
         <h3>Economy</h3>
         <p>Challenge yourself with questions on Indian and world economy, banking, and finance.</p>
         <span class="tc-btn">Coming Soon</span>
-      </a>
+      </div>
 
-      <a href="#" class="tc-card disabled" onclick="return false;">
+      <div class="tc-card disabled">
         <span class="soon-badge">Soon</span>
         <div class="card-icon">📰</div>
         <h3>Current Affairs</h3>
         <p>Stay updated and test your knowledge of the latest national and international events.</p>
         <span class="tc-btn">Coming Soon</span>
-      </a>
+      </div>
 
     </div>
   </section>
 
-  <!-- Leaderboard -->
+  <!-- Live Google Sheet Leaderboard Track Section -->
   <section class="tc-section">
     <h2 class="tc-heading">Global Leaderboard</h2>
-    <p class="tc-subheading">See how you stack up against the best. Top 50 players ranked by their average score across all quizzes.</p>
+    <p class="tc-subheading">See how you stack up against the best. Top players ranked by their performance parameters calculated from real-time sheets database entries.</p>
     <div class="tc-leaderboard-wrap">
       <div id="leaderboard-container">
-        <div class="tc-spinner"><div class="spinner"></div></div>
+        <div class="luxury-spinner"><i class="fas fa-spinner fa-spin" style="font-size:26px;"></i></div>
       </div>
     </div>
   </section>
 
-  <!-- Quiz of the Week -->
+  <!-- Quiz of the Week Accent Panel Box -->
   <section class="tc-section">
     <div class="tc-highlight">
       <div class="tag">Quiz of the Week</div>
       <h3>🏆 The Ultimate Indian History Challenge</h3>
       <p>Think you know your history? This week's featured quiz covers everything from the Mauryan Empire to the Mughal era — a true test for serious aspirants!</p>
-      <a href="history-test/" class="tc-highlight-btn">Take the Challenge Now</a>
+      <a href="history-test/" class="tc-btn" style="background:var(--clr-accent); border-color:var(--clr-accent); color:#000000; padding:10px 30px;">Take the Challenge Now</a>
     </div>
   </section>
 
-  <!-- Study Strategies -->
+  <!-- Effective Study Strategies Component Block Grid -->
   <section class="tc-section">
     <h2 class="tc-heading">Effective Study Strategies</h2>
     <p class="tc-subheading">Ace your tests with smart strategies. Study smarter, not harder.</p>
-    <div class="tc-grid-3">
-      <div class="tc-info-card">
-        <div class="info-icon">⏰</div>
+    <div class="tc-grid">
+      <div class="tc-card">
+        <div class="card-icon" style="color:var(--clr-accent);">⏰</div>
         <h3>Time Management</h3>
         <p>Allocate your study time effectively across subjects to maximize preparation and reduce burnout.</p>
       </div>
-      <div class="tc-info-card">
-        <div class="info-icon">💡</div>
+      <div class="tc-card">
+        <div class="card-icon" style="color:var(--clr-accent);">💡</div>
         <h3>Revision Techniques</h3>
         <p>Discover active recall and spaced repetition to retain facts longer and score higher.</p>
       </div>
-      <div class="tc-info-card">
-        <div class="info-icon">🧘</div>
+      <div class="tc-card">
+        <div class="card-icon" style="color:var(--clr-accent);">🧘</div>
         <h3>Handling Exam Stress</h3>
         <p>Get practical tips to stay calm, focused, and confident before and during your exams.</p>
       </div>
     </div>
   </section>
 
-  <!-- Top Performers -->
-  <section class="tc-section">
-    <h2 class="tc-heading">Top Performers This Week</h2>
-    <p class="tc-subheading">A special mention for this week's top three rank holders. Your dedication inspires everyone!</p>
-    <div class="tc-performers">
-      <div class="tc-performer">
-        <div class="pf-rank silver">🥈 2nd Place</div>
-        <img src="https://i.pravatar.cc/150?u=user2" alt="Priya S." class="pf-avatar" loading="lazy">
-        <div class="pf-name">Priya S.</div>
-      </div>
-      <div class="tc-performer">
-        <div class="pf-rank gold">🥇 1st Place</div>
-        <img src="https://i.pravatar.cc/150?u=user1" alt="Rohan M." class="pf-avatar" loading="lazy">
-        <div class="pf-name">Rohan M.</div>
-      </div>
-      <div class="tc-performer">
-        <div class="pf-rank bronze">🥉 3rd Place</div>
-        <img src="https://i.pravatar.cc/150?u=user3" alt="Anjali K." class="pf-avatar" loading="lazy">
-        <div class="pf-name">Anjali K.</div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Student Tools -->
+  <!-- Student Tools Link Blocks -->
   <section class="tc-section">
     <h2 class="tc-heading">Student Tools &amp; Resources</h2>
     <p class="tc-subheading">Beyond quizzes — tools to support your entire preparation journey.</p>
-    <div class="tc-grid-3">
-      <div class="tc-info-card">
-        <div class="info-icon">📄</div>
+    <div class="tc-grid">
+      <div class="tc-card">
+        <div class="card-icon" style="color:var(--clr-accent);">📄</div>
         <h3>Formula Sheets</h3>
         <p>Important formulas for Maths, Physics, and Chemistry — all in one place for quick revision.</p>
         <a href="/all-formulas/" class="tc-btn">View Formulas</a>
       </div>
-      <div class="tc-info-card">
-        <div class="info-icon">⚖️</div>
+      <div class="tc-card">
+        <div class="card-icon" style="color:var(--clr-accent);">⚖️</div>
         <h3>Unit Converter</h3>
         <p>Convert between units of length, mass, temperature, and more with our handy tool.</p>
         <a href="/tools/unit-converter/" class="tc-btn">Use Converter</a>
       </div>
-      <div class="tc-info-card">
-        <div class="info-icon">🗓️</div>
+      <div class="tc-card disabled">
+        <div class="card-icon" style="color:var(--clr-accent);">🗓️</div>
         <h3>Study Planner</h3>
         <p>Set goals, build a schedule, and track your daily progress with our upcoming planner.</p>
-        <span class="tc-btn" style="opacity:0.5;cursor:default;">Coming Soon</span>
+        <span class="tc-btn">Coming Soon</span>
       </div>
     </div>
   </section>
 
-  <!-- Why TyagiHub -->
-  <section class="tc-section">
-    <h2 class="tc-heading">Why Practice on TyagiHub?</h2>
-    <p class="tc-subheading">We're built for competitive exam aspirants — quality over quantity, always.</p>
-    <div class="tc-grid-3" style="max-width:820px;margin:0 auto;">
-      <div class="tc-info-card">
-        <div class="info-icon">🎯</div>
-        <h3>Exam-Oriented</h3>
-        <p>Questions modeled on real exam patterns to give you a genuine competitive edge.</p>
-      </div>
-      <div class="tc-info-card">
-        <div class="info-icon">📊</div>
-        <h3>Performance Tracking</h3>
-        <p>Log in to save your scores, track progress over time, and see your leaderboard rank.</p>
-      </div>
-      <div class="tc-info-card">
-        <div class="info-icon">✅</div>
-        <h3>Detailed Explanations</h3>
-        <p>Understand why each answer is correct — not just what, but why.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- FAQ -->
+  <!-- Frequently Asked Questions Accordion Container -->
   <section class="tc-section tc-faq">
     <h2 class="tc-heading">Frequently Asked Questions</h2>
     <p class="tc-subheading">Quick answers to common questions about the Test Center.</p>
 
     <details>
       <summary>How is the global leaderboard rank calculated?</summary>
-      <div class="faq-body">Your rank is based on your average percentage score across all quizzes attempted while logged in. The higher your average, the higher your rank.</div>
+      <div class="faq-body">Your rank is automatically refreshed based on the total operational score array calculated and parsed across your Google Sheets database submissions logs.</div>
     </details>
     <details>
       <summary>Do I need to sign in to take a test?</summary>
@@ -628,11 +600,11 @@ keywords: "online tests, practice quizzes, competitive exam preparation, GK test
     </details>
   </section>
 
-  <!-- Testimonials -->
+  <!-- Testimonials Reviews Layer -->
   <section class="tc-section">
     <h2 class="tc-heading">What Our Community Says</h2>
     <p class="tc-subheading">Real feedback from students who practice here regularly.</p>
-    <div class="tc-grid-3">
+    <div class="tc-grid">
       <div class="tc-testimonial">
         <p>"The Hindi Vyakaran tests were incredibly helpful for my state-level exam. The leaderboard kept me motivated to improve every single day. Thank you TyagiHub!"</p>
         <div class="author">— Neha Gupta, Aspirant</div>
@@ -651,18 +623,18 @@ keywords: "online tests, practice quizzes, competitive exam preparation, GK test
 </main>
 
 <script>
-  // Share button
+  // Dynamic Native Navigator Share API Bridge
   document.getElementById('shareBtn').addEventListener('click', function () {
     if (navigator.share) {
       navigator.share({ title: document.title, url: location.href });
     } else {
       navigator.clipboard.writeText(location.href).then(function () {
-        alert('Link copied!');
+        alert('Link copied to clipboard!');
       });
     }
   });
 
-  // Service Workers
+  // Service Workers Layer Init
   if ('serviceWorker' in navigator) {
     window.addEventListener('load', function () {
       navigator.serviceWorker.register('/firebase-messaging-sw.js').catch(function () {});
@@ -670,4 +642,5 @@ keywords: "online tests, practice quizzes, competitive exam preparation, GK test
     });
   }
 </script>   
-    <script type="module" src="/assets/js/test-hub.js"></script>
+
+<script type="module" src="/assets/js/test-hub.js"></script>
