@@ -1,10 +1,11 @@
 ---
 layout: default
-title: "Author Profile "
+title: "Authors Directory & Profiles"
 lang_switch: false
+comments: false
 ---
 
-<!-- Premium Independent Profile Styling Layer -->
+<!-- Premium Independent Profile Layout Styling Layer -->
 <style>
   .premium-profile-wrapper {
     max-width: var(--container-max, 1200px);
@@ -14,7 +15,94 @@ lang_switch: false
     margin-top: 70px;
   }
 
-  /* Luxury Profile Card Panel */
+  /* Header Architecture */
+  .profile-header-zone {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: var(--space-10, 40px);
+    position: relative;
+    padding: 20px 0;
+  }
+
+  /* 🌌 Animated Tech SVG Canvas Container */
+  .profile-animated-svg-wrap {
+    width: 80px;
+    height: 80px;
+    margin-bottom: 5px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .profile-animated-svg-wrap svg {
+    width: 100%;
+    height: 100%;
+  }
+
+  /* SVG Animation Keyframes */
+  .svg-pulse-ring {
+    transform-origin: center;
+    animation: svgPulse 3s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+    stroke: var(--clr-accent);
+    opacity: 0.4;
+  }
+
+  .svg-core-icon {
+    transform-origin: center;
+    animation: svgFloat 4s ease-in-out infinite;
+    fill: var(--clr-accent);
+  }
+
+  .svg-dash-orbit {
+    transform-origin: center;
+    animation: svgRotate 20s linear infinite;
+    stroke: var(--clr-accent);
+    stroke-dasharray: 8, 4;
+    opacity: 0.6;
+  }
+
+  @keyframes svgPulse {
+    0% { transform: scale(0.9); opacity: 0.6; }
+    50% { transform: scale(1.1); opacity: 0.2; }
+    100% { transform: scale(0.9); opacity: 0.6; }
+  }
+
+  @keyframes svgFloat {
+    0% { transform: translateY(0px) scale(1); }
+    50% { transform: translateY(-4px) scale(1.02); }
+    100% { transform: translateY(0px) scale(1); }
+  }
+
+  @keyframes svgRotate {
+    100% { transform: rotate(360deg); }
+  }
+
+  .profile-main-heading {
+    font-family: var(--font-display), sans-serif;
+    font-size: var(--fs-2xl, 2.25rem);
+    font-weight: var(--fw-black, 600);
+    color: var(--text-heading);
+    letter-spacing: -0.02em;
+    margin: 0;
+    text-align: center;
+  }
+
+  /* Upper Integrated Description */
+  .profile-welcome-description {
+    font-family: var(--font-body), sans-serif;
+    font-size: var(--fs-sm, 0.95rem);
+    color: var(--text-paragraph);
+    line-height: var(--lh-normal, 1.6);
+    max-width: 800px;
+    margin: 5px 0 10px 0;
+    text-align: center;
+    opacity: 0.9;
+  }
+
+  /* Luxury Profile Card Panel (Single View Mode) */
   .profile-hero-card {
     background: var(--bg-surface);
     border: 1px solid var(--clr-border);
@@ -59,7 +147,7 @@ lang_switch: false
     flex-grow: 1;
   }
 
-  .profile-main-name {
+  .profile-name-title {
     font-family: var(--font-display), sans-serif;
     font-size: var(--fs-xl, 1.75rem);
     font-weight: var(--fw-black, 600);
@@ -112,6 +200,39 @@ lang_switch: false
     color: var(--text-muted);
     font-weight: var(--fw-bold, 550);
     letter-spacing: 0.5px;
+  }
+
+  /* 👥 MULTI-AUTHOR DIRECTORY GRID ARCHITECTURE (Default View) */
+  .authors-directory-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-6, 24px);
+    margin-bottom: var(--space-12, 48px);
+  }
+
+  @media(min-width: 768px) {
+    .authors-directory-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  .author-directory-card {
+    background: var(--bg-surface);
+    border: 1px solid var(--clr-border);
+    border-radius: var(--radius-lg, 18px);
+    padding: var(--space-6, 24px);
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    cursor: pointer;
+    transition: transform var(--ease-normal, 250ms), border-color var(--ease-normal, 250ms), box-shadow var(--ease-normal, 250ms);
+    box-shadow: var(--shadow-sm);
+  }
+
+  .author-directory-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--clr-accent);
+    box-shadow: var(--shadow-md);
   }
 
   /* Header Controls Zone */
@@ -306,15 +427,34 @@ lang_switch: false
 <!-- Main Container Element -->
 <main class="premium-profile-wrapper">
     
-    <!-- Dynamic Profile Card Area -->
-    <div id="author-profile-panel" class="profile-hero-card">
+    <div class="cat-header-zone">
+        <!-- 🌌 DYNAMIC VIP ANIMATED SVG ELEMENT -->
+        <div class="profile-animated-svg-wrap">
+            <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle class="svg-pulse-ring" cx="50" cy="50" r="42" stroke-width="2"/>
+                <circle class="svg-dash-orbit" cx="50" cy="50" r="32" stroke-width="1.5"/>
+                <polygon class="svg-core-icon" points="50,28 68,40 68,60 50,72 32,60 32,40"/>
+                <circle cx="50" cy="50" r="4" fill="var(--bg-body)"/>
+            </svg>
+        </div>
+
+        <h1 id="category-posts-heading" class="profile-main-heading">Creator Directory</h1>
+        
+        <!-- 🎯 WELCOME DESCRIPTION BLOCK -->
+        <p id="profile-welcome-desc-node" class="profile-welcome-description">
+            Explore active knowledge contributions across TyagiHub. Meet our engineering architects, security analysts, and digital creators delivering parsed insights under multi-disciplinary technology pipelines.
+        </p>
+    </div>
+
+    <!-- Dynamic Container Area: Swaps between Authors Directory Grid OR Single Profile Panel Card -->
+    <div id="dynamic-profile-view-target">
         <div class="luxury-spinner" style="color:var(--clr-accent); width:100%;">
             <i class="fas fa-spinner fa-spin" style="font-size:26px;"></i>
         </div>
     </div>
 
     <!-- Feed Controller Zone -->
-    <div class="profile-feed-header-line">
+    <div id="profile-feed-control-bar" class="profile-feed-header-line" style="display: none;">
         <h2 id="author-posts-heading" class="feed-section-title">Articles Archive</h2>
         
         <!-- Live Toggle Selector -->
@@ -355,28 +495,32 @@ lang_switch: false
 
 <script>
 document.addEventListener('DOMContentLoaded', () => {
-    const profileCard = document.getElementById('author-profile-panel');
+    const viewTarget = document.getElementById('dynamic-profile-view-target');
     const postsGrid = document.getElementById('author-post-grid');
     const postsHeading = document.getElementById('author-posts-heading');
+    const feedControlBar = document.getElementById('profile-feed-control-bar');
     
+    const pageMainHeading = document.getElementById('category-posts-heading');
+    const pageWelcomeDesc = document.getElementById('profile-welcome-desc-node');
     const langSwitchBox = document.getElementById('live-lang-switch-trigger');
     const langSwitchText = document.getElementById('lang-switch-text-node');
 
     const isHindiContext = window.location.pathname.includes('/hi/') || document.referrer.includes('/hi/');
     let activeLang = isHindiContext ? "hi" : "en";
 
-    // 🎯 DYNAMIC OVERRIDE: Automatically extract author from URL query params context safely
     const urlParams = new URLSearchParams(window.location.search);
-    const authorParam = urlParams.get('author');
-    
-    // If no author in URL, fallback seamlessly to owner profile
-    const cleanAuthorName = authorParam ? authorParam.trim() : "Himanshu Tyagi";
+    let currentAuthorQuery = urlParams.get('author'); // Pulls raw query mapping
 
     let rawUniversalArrayBuffer = [];
-    let authorFilteredDataset = [];
+    let languageScannedDataset = [];
 
-    // Premium Initials Based Vector Avatar Engine 🎨
-    const generateAuthorAvatarSVG = (name) => {
+    const normalizeStr = (str) => {
+        if (!str) return "";
+        return str.toString().toLowerCase().replace(/[-_\s]/g, '').trim();
+    };
+
+    // Vector Initial Avatar Generator Engine
+    const generateAuthorAvatarSVG = (name, dimensions = 120, textSz = 34) => {
         const words = name.split(' ').filter(Boolean);
         let initials = words[0] ? words[0][0] : 'T';
         if (words.length > 1) {
@@ -385,10 +529,10 @@ document.addEventListener('DOMContentLoaded', () => {
         initials = initials.toUpperCase();
 
         return `
-            <svg width="120" height="120" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+            <svg width="${dimensions}" height="${dimensions}" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
                 <circle cx="50" cy="50" r="48" fill="var(--bg-body)" stroke="var(--clr-border)" stroke-width="2"/>
                 <circle cx="50" cy="50" r="40" fill="var(--clr-accent)" opacity="0.1"/>
-                <text x="50%" y="53%" dominant-baseline="middle" text-anchor="middle" font-size="34" font-weight="700" fill="var(--clr-accent)" font-family="var(--font-display), sans-serif">${initials}</text>
+                <text x="50%" y="53%" dominant-baseline="middle" text-anchor="middle" font-size="${textSz}" font-weight="700" fill="var(--clr-accent)" font-family="var(--font-display), sans-serif">${initials}</text>
             </svg>
         `;
     };
@@ -397,87 +541,177 @@ document.addEventListener('DOMContentLoaded', () => {
         const rawJsonData = document.getElementById('tyagihub-master-json').textContent;
         rawUniversalArrayBuffer = JSON.parse(rawJsonData || "[]");
 
-        executeProfileLifecyclePipeline();
+        executeProfileLifecycleEngine();
 
     } catch (e) {
-        console.error("Dataset initial rendering fault:", e);
-        profileCard.innerHTML = `<p style="color:var(--text-muted); text-align:center;">Buffer Profile Exception.</p>`;
+        console.error("Profile dataset execution crash:", e);
+        viewTarget.innerHTML = `<p style="color:var(--text-muted); text-align:center;">Directory Processing Error.</p>`;
     }
 
-    // Language Toggle Listener Box
     if (langSwitchBox) {
         langSwitchBox.addEventListener('click', () => {
             activeLang = activeLang === "en" ? "hi" : "en";
-            executeProfileLifecyclePipeline();
+            executeProfileLifecycleEngine();
         });
     }
 
-    // Main Control Router lifecycle pipeline
-    function executeProfileLifecyclePipeline() {
-        // Enforce strict language boundary and timestamp descending sort locks (Newest First)
-        authorFilteredDataset = rawUniversalArrayBuffer.filter(post => {
-            if (post.lang !== activeLang) return false;
-            return post.author.toLowerCase() === cleanAuthorName.toLowerCase();
-        }).sort((a, b) => new Date(b.date) - new Date(a.date));
+    function executeProfileLifecycleEngine() {
+        // Filter out global records by language index immediately
+        languageScannedDataset = rawUniversalArrayBuffer.filter(post => post.lang === activeLang);
+        
+        syncGlobalStaticUIStrings();
 
-        // Sync Layout Headers Text Strings
-        if (activeLang === "hi") {
-            langSwitchText.innerText = "🌐 Switch to English";
-            postsHeading.innerText = `प्रकाशित लेख संग्रह`;
-            document.title = `${cleanAuthorName} | लेखक प्रोफाइल | TyagiHub`;
+        if (currentAuthorQuery) {
+            // MODE A: Display Specific Single Author Details 
+            feedControlBar.style.display = 'flex';
+            renderSingleAuthorView(currentAuthorQuery.trim());
         } else {
-            langSwitchText.innerText = "🌐 हिंदी में पढ़ें";
-            postsHeading.innerText = `Published Articles Archive`;
-            document.title = `${cleanAuthorName} | Author Profile | TyagiHub`;
+            // MODE B: Default Directory Layout displaying all authors list grid 🚀
+            feedControlBar.style.display = 'none';
+            postsGrid.innerHTML = ''; 
+            renderAllAuthorsDirectory();
         }
-
-        renderProfileHeaderBox();
-        renderAuthorPostsGrid();
     }
 
-    // Rendering profile layout framework components block
-    function renderProfileHeaderBox() {
-        if (!profileCard) return;
+    // Sync baseline header text frameworks dynamically matching active language nodes
+    function syncGlobalStaticUIStrings() {
+        if (activeLang === "hi") {
+            langSwitchText.innerText = "🌐 Switch to English";
+            if (!currentAuthorQuery) {
+                pageMainHeading.innerText = "लेखक निर्देशिका संग्रह";
+                pageWelcomeDesc.innerText = "त्यागीहब के सक्रिय लेखकों और क्रिएटर्स से मिलें। यहाँ आप हमारे सभी तकनीकी लेखकों, सुरक्षा विश्लेषकों और डेवलपर्स की प्रोफ़ाइल देख सकते हैं जो विभिन्न डिजिटल क्षेत्रों में उपयोगी जानकारी प्रदान करते हैं।";
+                document.title = "लेखक निर्देशिका | TyagiHub";
+            }
+        } else {
+            langSwitchText.innerText = "🌐 हिंदी में पढ़ें";
+            if (!currentAuthorQuery) {
+                pageMainHeading.innerText = "Creator Directory Hub";
+                pageWelcomeDesc.innerText = "Explore active knowledge contributions across TyagiHub. Meet our engineering architects, security analysts, and digital creators delivering parsed insights under multi-disciplinary technology pipelines.";
+                document.title = "Author Directory | TyagiHub";
+            }
+        }
+    }
 
-        const avatarSvgElement = generateAuthorAvatarSVG(cleanAuthorName);
+    // 🎯 VIEW MODE A: ALL AUTHORS HUB MATRIX GENERATOR 🚀
+    function renderAllAuthorsDirectory() {
+        viewTarget.innerHTML = '';
         
-        // Dynamic Role Badge Builder based on Owner status check
+        // Scan dataset aggregating explicit distinct authors data
+        const authorMetaRegistry = new Map();
+        languageScannedDataset.forEach(p => {
+            const authorNormalizedKey = p.author.trim();
+            const lowerKey = authorNormalizedKey.toLowerCase();
+            
+            if (!authorMetaRegistry.has(lowerKey)) {
+                authorMetaRegistry.set(lowerKey, { rawName: authorNormalizedKey, count: 1 });
+            } else {
+                authorMetaRegistry.get(lowerKey).count += 1;
+            }
+        });
+
+        if (authorMetaRegistry.size === 0) {
+            viewTarget.innerHTML = `<p style="color:var(--text-muted); text-align:center; padding:40px;">No authors found.</p>`;
+            return;
+        }
+
+        const directoryWrapperNode = document.createElement('div');
+        directoryWrapperNode.className = "authors-directory-grid";
+
+        authorMetaRegistry.forEach((data) => {
+            const cardAvatar = generateAuthorAvatarSVG(data.rawName, 64, 30);
+            
+            let badgeTitle = activeLang === "hi" ? "सत्यापित लेखक" : "Verified Contributor";
+            if (data.rawName.toLowerCase() === "himanshu tyagi") {
+                badgeTitle = activeLang === "hi" ? "मुख्य लेखक एवं क्रिएटर" : "Platform Creator";
+            }
+
+            const totalPostsLabel = activeLang === "hi" ? "प्रकाशित लेख" : "Articles";
+
+            const cardHTML = `
+                <div class="author-directory-card" data-author-name="${data.rawName}">
+                    <div class="profile-avatar-wrap" style="width:64px; height:64px;">${cardAvatar}</div>
+                    <div style="flex-grow:1;">
+                        <div class="profile-badge-title" style="margin-bottom:2px; font-size:10px;">${badgeTitle}</div>
+                        <h3 style="color:var(--text-heading); margin:0 0 4px 0; font-family:var(--font-display); font-size:18px;">${data.rawName}</h3>
+                        <span style="font-size:12px; color:var(--text-muted); font-weight:600; display:inline-flex; align-items:center; gap:5px;">
+                           <i class="fa-solid fa-book-open" style="font-size:11px; color:var(--clr-accent);"></i> ${data.count} ${totalPostsLabel}
+                        </span>
+                    </div>
+                    <i class="fa-solid fa-chevron-right" style="color:var(--clr-accent); opacity:0.7;"></i>
+                </div>
+            `;
+            directoryWrapperNode.insertAdjacentHTML('beforeend', cardHTML);
+        });
+
+        viewTarget.appendChild(directoryWrapperNode);
+
+        // Bind interactive event click triggers routing to single layout frame seamlessly
+        document.querySelectorAll('.author-directory-card').forEach(card => {
+            card.addEventListener('click', () => {
+                const authorTargetName = card.getAttribute('data-author-name');
+                currentAuthorQuery = authorTargetName;
+                window.history.replaceState({}, "", `?author=${encodeURIComponent(authorTargetName)}`);
+                executeProfileLifecycleEngine();
+            });
+        });
+    }
+
+    // 🎯 VIEW MODE B: SINGLE SPECIFIC AUTHOR DETAILS LAYOUT PANEL
+    function renderSingleAuthorView(authorName) {
+        // Strict sorting layout enforcement ensuring Newest Posts First context
+        const singleAuthorPosts = languageScannedDataset.filter(post => {
+            return post.author.toLowerCase() === authorName.toLowerCase();
+        }).sort((a, b) => new Date(b.date) - new Date(a.date));
+
+        // Sync main layout meta title tags dynamically matching target context
+        pageMainHeading.innerText = authorName;
+        if (activeLang === "hi") {
+            pageWelcomeDesc.innerText = `त्यागीहब प्लेटफॉर्म पर ${authorName} द्वारा लिखे गए सभी मूल योगदानों, प्रलेखन लॉग और शोध लेखों की समीक्षा करें।`;
+            postsHeading.innerText = `प्रकाशित लेख संग्रह`;
+            document.title = `${authorName} | लेखक प्रोफाइल | TyagiHub`;
+        } else {
+            pageWelcomeDesc.innerText = `Review full core documentation logs, software metrics, and research contributions published by ${authorName} across the platform framework.`;
+            postsHeading.innerText = `Published Articles Archive`;
+            document.title = `${authorName} | Author Profile | TyagiHub`;
+        }
+
+        const avatarSvgElement = generateAuthorAvatarSVG(authorName);
         let subBadgeText = activeLang === "hi" ? "सत्यापित लेखक" : "Verified Contributor";
-        if (cleanAuthorName.toLowerCase() === "himanshu tyagi" || cleanAuthorName.toLowerCase() === "owner") {
+        if (authorName.toLowerCase() === "himanshu tyagi" || authorName.toLowerCase() === "owner") {
             subBadgeText = activeLang === "hi" ? "मुख्य लेखक एवं क्रिएटर" : "Platform Architect & Creator";
         }
         
         const totalPostsLabel = activeLang === "hi" ? "कुल लेख संग्रह" : "Total Content Logs";
         const bioFallback = activeLang === "hi" 
-            ? `त्यागीहब पर ${cleanAuthorName} द्वारा लिखे गए सभी मूल लेख, सुरक्षा गाइड और तकनीकी विश्लेषण यहाँ पढ़ें।` 
-            : `Explore full documentation logs, core software parameters, cybersecurity matrices, and content contributions published by ${cleanAuthorName}.`;
+            ? `तकनीकी नवाचारों, डिजिटल सुरक्षा प्रबंधन और कोडिंग संरचनाओं के क्षेत्र में निरंतर जानकारी साझा करना।` 
+            : `Delivering technical optimization matrices, security infrastructure protocols, and engineering tutorials across emerging domains.`;
 
-        profileCard.innerHTML = `
-            <div class="profile-avatar-wrap">${avatarSvgElement}</div>
-            <div class="profile-meta-details">
-                <div class="profile-badge-title"><i class="fa-solid fa-shield-halved"></i> ${subBadgeText}</div>
-                <h1 class="profile-main-name">${cleanAuthorName}</h1>
-                <p class="profile-bio-text">${bioFallback}</p>
-            </div>
-            <div class="profile-stats-panel">
-                <span class="stat-big-num">${authorFilteredDataset.length}</span>
-                <span class="stat-label-text">${totalPostsLabel}</span>
+        // Render dynamic header info panel block
+        viewTarget.innerHTML = `
+            <div class="profile-hero-card">
+                <div class="profile-avatar-wrap">${avatarSvgElement}</div>
+                <div class="profile-meta-details">
+                    <div class="profile-badge-title"><i class="fa-solid fa-shield-halved"></i> ${subBadgeText}</div>
+                    <h1 class="profile-name-title" style="display:none;">${authorName}</h1> <!-- Handled via top global h1 -->
+                    <p class="profile-bio-text">${bioFallback}</p>
+                </div>
+                <div class="profile-stats-panel">
+                    <span class="stat-big-num">${singleAuthorPosts.length}</span>
+                    <span class="stat-label-text">${totalPostsLabel}</span>
+                </div>
             </div>
         `;
-    }
 
-    // Drawing Grid elements canvas items logic mapping slice chunk parameters
-    function renderAuthorPostsGrid() {
+        // Render Author post item cards canvas elements mapping chunk slices arrays bounds
         postsGrid.innerHTML = '';
-
-        if (authorFilteredDataset.length === 0) {
+        if (singleAuthorPosts.length === 0) {
             postsGrid.innerHTML = activeLang === "hi"
                 ? '<p style="color:var(--text-muted); text-align:center; padding:40px; grid-column:1/-1;">इस लेखक द्वारा इस भाषा में अभी कोई लेख नहीं लिखा गया है।</p>'
-                : '<p style="color:var(--text-muted); text-align:center; padding:40px; grid-column:1/-1;">This author has not published any records under this language node.</p>';
+                : '<p style="color:var(--text-muted); text-align:center; padding:40px; grid-column:1/-1;">This creator has not logged any records under this active language node.</p>';
             return;
         }
 
-        authorFilteredDataset.forEach(p => {
+        singleAuthorPosts.forEach(p => {
             const readLabel = activeLang === "hi" ? "पूरा पढ़ें" : "Read More";
 
             const cardHTML = `
