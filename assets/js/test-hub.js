@@ -1,25 +1,27 @@
 // 🌐 TyagiHub Test Center & Leaderboard Synchronizer Engine
 // Path: /assets/js/test-hub.js
 
-import { getApp, getApps, initializeApp } from "https://www.gstatic.com/firebasejs/9.22.1/firebase-app.js";
-import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/9.22.1/firebase-auth.js";
-
 // 🎯 Connected cleanly to your newly deployed auto-injecting Apps Script URL
 const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbw9Bz1KhUlIlKgy-lOpiI70oCMm28nbqhoBVUj1eg8uEH2iUcmaDP4Si9OXh0r37wiktg/exec";
 
-// Firebase Config for Authentication ONLY (Synced strictly with default.html)
-const firebaseConfig = {
-    apiKey: "AIzaSyBE0uXhh8ePOQH6FBdhRCZrRgRkUTwCWws",
-    authDomain: "tyagi-hub.firebaseapp.com",
-    projectId: "tyagi-hub",
-    storageBucket: "tyagi-hub.firebasestorage.app",
-    messagingSenderId: "1052184634573",
-    appId: "1:1052184634573:web:077135d1bc4f321688b584"
-};
-
-const app = getApps().length ? getApp() : initializeApp(firebaseConfig);
-const auth = getAuth(app);
-let currentUser = null;
+// 🎯 REPLACED FIREBASE AUTH WITH NATIVE LOCALSTORAGE LOGGED-IN USER MATRIX
+function getLoggedUser() {
+    try {
+        const storedUser = localStorage.getItem("tc_user");
+        if (storedUser) {
+            const parsed = JSON.parse(storedUser);
+            // लेआउट स्ट्रक्चर मैपिंग: n = name, e = email, p = pic, uid = unique hash (या email को ही id मानेंगे)
+            return {
+                uid: parsed.uid || parsed.e.replace(/[^a-zA-Z0-9]/g, ""), 
+                displayName: parsed.n || "Learner",
+                photoURL: parsed.p || ""
+            };
+        }
+    } catch (e) {
+        console.error("Error reading local login session:", e);
+    }
+    return null;
+}
 
 function resetCategoryPageUI() {
     const testPartsContainer = document.getElementById('test-parts-container');
@@ -41,6 +43,7 @@ async function initializeTestHub() {
     const leaderboardContainer = document.getElementById('leaderboard-container');
     const testPartsContainer = document.getElementById('test-parts-container');
     const isCategoryPage = testCategory !== 'all';
+    const currentUser = getLoggedUser(); // Live fetch from localStorage
 
     // --- Part 1: Handle Google Sheets Based Leaderboard ---
     if (leaderboardContainer) {
@@ -56,7 +59,7 @@ async function initializeTestHub() {
             const leaderboardData = data.leaderboard || [];
             const userLiveRank = data.myRating || 0;
 
-            renderLeaderboard(leaderboardData, testCategory, userLiveRank);
+            renderLeaderboard(leaderboardData, testCategory, userLiveRank, currentUser);
         } catch (error) {
             console.error(`Error loading leaderboard from Google Sheet for '${testCategory}':`, error);
             leaderboardContainer.innerHTML = "<p style='color:var(--text-muted); text-align:center;'>The leaderboard could not be retrieved from database ledger.</p>";
@@ -67,12 +70,12 @@ async function initializeTestHub() {
     if (isCategoryPage && testPartsContainer) {
         resetCategoryPageUI();
         if (currentUser) {
-            await updateUserTestStatus(testCategory);
+            await updateUserTestStatus(testCategory, currentUser);
         }
     }
 }
 
-function renderLeaderboard(topScores, category, userLiveRank) {
+function renderLeaderboard(topScores, category, userLiveRank, currentUser) {
     const leaderboardContainer = document.getElementById('leaderboard-container');
     if (!leaderboardContainer) return;
 
@@ -127,7 +130,8 @@ function renderLeaderboard(topScores, category, userLiveRank) {
     leaderboardContainer.innerHTML = leaderboardHTML + userRankHTML;
 }
 
-async function updateUserTestStatus(category) {
+// Fetches and displays the user's LATEST scores from Google Sheets database logs
+async function updateUserTestStatus(category, currentUser) {
     const testPartsContainer = document.getElementById('test-parts-container');
     if (!currentUser || !testPartsContainer) return;
 
@@ -170,22 +174,19 @@ async function updateUserTestStatus(category) {
     }
 }
 
+// --- Entry Point & Event Listeners ---
 document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('#test-parts-container .box[data-quiz-id]').forEach(box => {
         if (!box.dataset.originalHtml) {
             box.dataset.originalHtml = box.innerHTML;
         }
     });
-
-    onAuthStateChanged(auth, (user) => {
-        currentUser = user;
-        initializeTestHub();
-    });
+    // Direct trigger using the existing layout session
+    initializeTestHub();
 });
 
 window.addEventListener('pageshow', (event) => {
     if (event.persisted) {
-        currentUser = auth.currentUser;
         initializeTestHub();
     }
 });
