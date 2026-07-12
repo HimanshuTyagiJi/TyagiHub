@@ -1,6 +1,6 @@
 ---
 layout: default
-title: "Authors Directory & Profiles"
+title: "Authors & Creators Hub"
 lang_switch: false
 comments: false
 ---
@@ -23,61 +23,7 @@ comments: false
     gap: 15px;
     margin-bottom: var(--space-10, 40px);
     position: relative;
-    padding: 20px 0;
-  }
-
-  /* 🌌 Animated Tech SVG Canvas Container */
-  .profile-animated-svg-wrap {
-    width: 80px;
-    height: 80px;
-    margin-bottom: 5px;
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .profile-animated-svg-wrap svg {
-    width: 100%;
-    height: 100%;
-  }
-
-  /* SVG Animation Keyframes */
-  .svg-pulse-ring {
-    transform-origin: center;
-    animation: svgPulse 3s cubic-bezier(0.4, 0, 0.2, 1) infinite;
-    stroke: var(--clr-accent);
-    opacity: 0.4;
-  }
-
-  .svg-core-icon {
-    transform-origin: center;
-    animation: svgFloat 4s ease-in-out infinite;
-    fill: var(--clr-accent);
-  }
-
-  .svg-dash-orbit {
-    transform-origin: center;
-    animation: svgRotate 20s linear infinite;
-    stroke: var(--clr-accent);
-    stroke-dasharray: 8, 4;
-    opacity: 0.6;
-  }
-
-  @keyframes svgPulse {
-    0% { transform: scale(0.9); opacity: 0.6; }
-    50% { transform: scale(1.1); opacity: 0.2; }
-    100% { transform: scale(0.9); opacity: 0.6; }
-  }
-
-  @keyframes svgFloat {
-    0% { transform: translateY(0px) scale(1); }
-    50% { transform: translateY(-4px) scale(1.02); }
-    100% { transform: translateY(0px) scale(1); }
-  }
-
-  @keyframes svgRotate {
-    100% { transform: rotate(360deg); }
+    padding: 10px 0;
   }
 
   .profile-main-heading {
@@ -90,7 +36,6 @@ comments: false
     text-align: center;
   }
 
-  /* Upper Integrated Description */
   .profile-welcome-description {
     font-family: var(--font-body), sans-serif;
     font-size: var(--fs-sm, 0.95rem);
@@ -102,108 +47,8 @@ comments: false
     opacity: 0.9;
   }
 
-  /* Luxury Profile Card Panel (Single View Mode) */
-  .profile-hero-card {
-    background: var(--bg-surface);
-    border: 1px solid var(--clr-border);
-    border-radius: var(--radius-lg, 18px);
-    padding: var(--space-8, 32px);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: var(--space-6, 24px);
-    text-align: center;
-    margin-bottom: var(--space-12, 48px);
-    box-shadow: var(--shadow-sm);
-    position: relative;
-    overflow: hidden;
-  }
-
-  @media(min-width: 768px) {
-    .profile-hero-card {
-      flex-direction: row;
-      text-align: left;
-      align-items: center;
-      padding: var(--space-10, 40px);
-    }
-  }
-
-  /* Modern Avatar Wrapper Layer */
-  .profile-avatar-wrap {
-    width: 120px;
-    height: 120px;
-    flex-shrink: 0;
-    border-radius: var(--radius-full, 9999px);
-    border: 3px solid var(--clr-border-2);
-    box-shadow: var(--shadow-md);
-    overflow: hidden;
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .profile-meta-details {
-    flex-grow: 1;
-  }
-
-  .profile-name-title {
-    font-family: var(--font-display), sans-serif;
-    font-size: var(--fs-xl, 1.75rem);
-    font-weight: var(--fw-black, 600);
-    color: var(--text-heading);
-    margin: 0 0 6px 0;
-  }
-
-  .profile-badge-title {
-    font-size: var(--fs-xs, 0.89rem);
-    font-weight: var(--fw-bold, 550);
-    color: var(--clr-accent);
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    margin-bottom: var(--space-2, 8px);
-  }
-
-  .profile-bio-text {
-    font-size: var(--fs-sm, 0.95rem);
-    color: var(--text-paragraph);
-    line-height: var(--lh-normal, 1.6);
-    margin: 0;
-    max-width: 650px;
-  }
-
-  /* Metric Stat Box */
-  .profile-stats-panel {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    background: var(--bg-body);
-    border: 1px solid var(--clr-border);
-    padding: var(--space-4, 16px) var(--space-6, 24px);
-    border-radius: var(--radius-md, 12px);
-    min-width: 110px;
-  }
-
-  .stat-big-num {
-    font-family: var(--font-display), sans-serif;
-    font-size: var(--fs-xl, 1.75rem);
-    font-weight: var(--fw-black, 600);
-    color: var(--clr-accent);
-    line-height: 1;
-    margin-bottom: 4px;
-  }
-
-  .stat-label-text {
-    font-size: 11px;
-    text-transform: uppercase;
-    color: var(--text-muted);
-    font-weight: var(--fw-bold, 550);
-    letter-spacing: 0.5px;
-  }
-
-  /* 👥 MULTI-AUTHOR DIRECTORY GRID ARCHITECTURE (Default View) */
-  .authors-directory-grid {
+  /* 👥 UNIVERSAL MULTI-AUTHOR VISUAL BLOCKS GRID (Persistent Selector Hub) */
+  .authors-selector-hub {
     display: grid;
     grid-template-columns: 1fr;
     gap: var(--space-6, 24px);
@@ -211,12 +56,13 @@ comments: false
   }
 
   @media(min-width: 768px) {
-    .authors-directory-grid {
+    .authors-selector-hub {
       grid-template-columns: repeat(2, 1fr);
     }
   }
 
-  .author-directory-card {
+  /* Luxury Profile Interactive Card Block */
+  .author-profile-block-card {
     background: var(--bg-surface);
     border: 1px solid var(--clr-border);
     border-radius: var(--radius-lg, 18px);
@@ -225,17 +71,109 @@ comments: false
     align-items: center;
     gap: 20px;
     cursor: pointer;
+    position: relative;
+    overflow: hidden;
     transition: transform var(--ease-normal, 250ms), border-color var(--ease-normal, 250ms), box-shadow var(--ease-normal, 250ms);
     box-shadow: var(--shadow-sm);
   }
 
-  .author-directory-card:hover {
+  .author-profile-block-card:hover {
     transform: translateY(-4px);
     border-color: var(--clr-accent);
     box-shadow: var(--shadow-md);
   }
 
-  /* Header Controls Zone */
+  .author-profile-block-card.active-profile-state {
+    border-color: var(--clr-accent);
+    background: rgba(255, 255, 255, 0.01);
+    box-shadow: var(--shadow-accent);
+  }
+
+  /* 🌌 Integrated Premium Live SVG Avatar Canvas (Inside Card Block) */
+  .profile-block-svg-avatar {
+    width: 76px;
+    height: 76px;
+    flex-shrink: 0;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .profile-block-svg-avatar svg {
+    width: 100%;
+    height: 100%;
+  }
+
+  /* SVG Live Animation Classes */
+  .svg-pulse-ring {
+    transform-origin: center;
+    animation: svgPulse 3s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+    stroke: var(--clr-accent);
+    opacity: 0.35;
+  }
+
+  .svg-core-icon {
+    transform-origin: center;
+    animation: svgFloat 4s ease-in-out infinite;
+    fill: var(--clr-accent);
+  }
+
+  .svg-dash-orbit {
+    transform-origin: center;
+    animation: svgRotate 20s linear infinite;
+    stroke: var(--clr-accent);
+    stroke-dasharray: 6, 3;
+    opacity: 0.5;
+  }
+
+  @keyframes svgPulse {
+    0% { transform: scale(0.92); opacity: 0.5; }
+    50% { transform: scale(1.08); opacity: 0.15; }
+    100% { transform: scale(0.92); opacity: 0.5; }
+  }
+
+  @keyframes svgFloat {
+    0% { transform: translateY(0px) scale(1); }
+    50% { transform: translateY(-3px) scale(1.02); }
+    100% { transform: translateY(0px) scale(1); }
+  }
+
+  @keyframes svgRotate {
+    100% { transform: rotate(360deg); }
+  }
+
+  .profile-card-details {
+    flex-grow: 1;
+  }
+
+  .profile-card-name {
+    color: var(--text-heading);
+    margin: 0 0 4px 0;
+    font-family: var(--font-display);
+    font-size: 19px;
+    font-weight: var(--fw-black, 600);
+  }
+
+  .profile-card-role {
+    font-size: 11px;
+    font-weight: var(--fw-bold, 550);
+    color: var(--clr-accent);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 6px;
+  }
+
+  .profile-card-counter-tag {
+    font-size: 12px;
+    color: var(--text-muted);
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+  }
+
+  /* Header Feed Controls Line */
   .profile-feed-header-line {
     display: flex;
     justify-content: space-between;
@@ -270,6 +208,7 @@ comments: false
     font-weight: var(--fw-bold, 550);
     color: var(--clr-accent);
     user-select: none;
+    box-shadow: var(--shadow-sm);
   }
 
   .live-lang-switch-box:hover {
@@ -277,7 +216,7 @@ comments: false
     background: var(--hover-bg-1);
   }
 
-  /* Strict 3-Column Responsive Layout Post Grid Framework */
+  /* Strict 3-Column 15-Post Responsive Matrix Layout Grid Framework */
   .premium-grid {
     display: grid;
     grid-template-columns: 1fr;
@@ -291,7 +230,7 @@ comments: false
   }
   @media(min-width: 1024px) {
     .premium-grid {
-      grid-template-columns: repeat(3, 1fr); 
+      grid-template-columns: repeat(3, 1fr); /* Strict 3 Columns Row Desktop View */
     }
   }
 
@@ -428,43 +367,31 @@ comments: false
 <main class="premium-profile-wrapper">
     
     <div class="cat-header-zone">
-        <!-- 🌌 DYNAMIC VIP ANIMATED SVG ELEMENT -->
-        <div class="profile-animated-svg-wrap">
-            <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <circle class="svg-pulse-ring" cx="50" cy="50" r="42" stroke-width="2"/>
-                <circle class="svg-dash-orbit" cx="50" cy="50" r="32" stroke-width="1.5"/>
-                <polygon class="svg-core-icon" points="50,28 68,40 68,60 50,72 32,60 32,40"/>
-                <circle cx="50" cy="50" r="4" fill="var(--bg-body)"/>
-            </svg>
-        </div>
-
-        <h1 id="category-posts-heading" class="profile-main-heading">Creator Directory</h1>
-        
-        <!-- 🎯 WELCOME DESCRIPTION BLOCK -->
+        <h1 id="category-posts-heading" class="profile-main-heading">Creator Profiles</h1>
         <p id="profile-welcome-desc-node" class="profile-welcome-description">
             Explore active knowledge contributions across TyagiHub. Meet our engineering architects, security analysts, and digital creators delivering parsed insights under multi-disciplinary technology pipelines.
         </p>
     </div>
 
-    <!-- Dynamic Container Area: Swaps between Authors Directory Grid OR Single Profile Panel Card -->
-    <div id="dynamic-profile-view-target">
+    <!-- 👥 PERSISTENT MULTI-AUTHOR VISUAL BLOCKS SELECTOR TRACK -->
+    <div id="authors-selector-track-container" class="authors-selector-hub">
         <div class="luxury-spinner" style="color:var(--clr-accent); width:100%;">
             <i class="fas fa-spinner fa-spin" style="font-size:26px;"></i>
         </div>
     </div>
 
     <!-- Feed Controller Zone -->
-    <div id="profile-feed-control-bar" class="profile-feed-header-line" style="display: none;">
-        <h2 id="author-posts-heading" class="feed-section-title">Articles Archive</h2>
+    <div class="profile-feed-header-line">
+        <h2 id="author-posts-heading" class="feed-section-title">Published Articles Archive</h2>
         
-        <!-- Live Toggle Selector -->
+        <!-- Live Language Toggle Selector -->
         <div id="live-lang-switch-trigger" class="live-lang-switch-box">
             <i class="fa-solid fa-earth-americas"></i>
             <span id="lang-switch-text-node">🌐 हिंदी में पढ़ें</span>
         </div>
     </div>
     
-    <!-- Strict 15-Post Max 3-Column Profile Matrix Layout Grid -->
+    <!-- Strict 15-Post Max 3-Column Grid Matrix Container -->
     <div id="author-post-grid" class="premium-grid"></div>
 </main>
 
@@ -495,10 +422,9 @@ comments: false
 
 <script>
 document.addEventListener('DOMContentLoaded', () => {
-    const viewTarget = document.getElementById('dynamic-profile-view-target');
+    const selectorTrack = document.getElementById('authors-selector-track-container');
     const postsGrid = document.getElementById('author-post-grid');
     const postsHeading = document.getElementById('author-posts-heading');
-    const feedControlBar = document.getElementById('profile-feed-control-bar');
     
     const pageMainHeading = document.getElementById('category-posts-heading');
     const pageWelcomeDesc = document.getElementById('profile-welcome-desc-node');
@@ -508,19 +434,20 @@ document.addEventListener('DOMContentLoaded', () => {
     const isHindiContext = window.location.pathname.includes('/hi/') || document.referrer.includes('/hi/');
     let activeLang = isHindiContext ? "hi" : "en";
 
-    const urlParams = new URLSearchParams(window.location.search);
-    let currentAuthorQuery = urlParams.get('author'); // Pulls raw query mapping
-
-    let rawUniversalArrayBuffer = [];
-    let languageScannedDataset = [];
-
     const normalizeStr = (str) => {
         if (!str) return "";
         return str.toString().toLowerCase().replace(/[-_\s]/g, '').trim();
     };
 
-    // Vector Initial Avatar Generator Engine
-    const generateAuthorAvatarSVG = (name, dimensions = 120, textSz = 34) => {
+    const urlParams = new URLSearchParams(window.location.search);
+    let currentSelectedAuthorKey = normalizeStr(urlParams.get('author') || "all");
+
+    let rawUniversalArrayBuffer = [];
+    let languageScannedDataset = [];
+    let filteredPostsSubset = [];
+
+    // 🌌 PREMIUM INTEGRATED LIVE SVG AVATAR GENERATOR ENGINE (Inside Block Card)
+    const generateAuthorAvatarSVG = (name) => {
         const words = name.split(' ').filter(Boolean);
         let initials = words[0] ? words[0][0] : 'T';
         if (words.length > 1) {
@@ -529,10 +456,11 @@ document.addEventListener('DOMContentLoaded', () => {
         initials = initials.toUpperCase();
 
         return `
-            <svg width="${dimensions}" height="${dimensions}" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-                <circle cx="50" cy="50" r="48" fill="var(--bg-body)" stroke="var(--clr-border)" stroke-width="2"/>
-                <circle cx="50" cy="50" r="40" fill="var(--clr-accent)" opacity="0.1"/>
-                <text x="50%" y="53%" dominant-baseline="middle" text-anchor="middle" font-size="${textSz}" font-weight="700" fill="var(--clr-accent)" font-family="var(--font-display), sans-serif">${initials}</text>
+            <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle class="svg-pulse-ring" cx="50" cy="50" r="42" stroke-width="2"/>
+                <circle class="svg-dash-orbit" cx="50" cy="50" r="32" stroke-width="1.5"/>
+                <polygon class="svg-core-icon" points="50,26 66,38 66,58 50,70 34,58 34,38"/>
+                <text x="50%" y="54%" dominant-baseline="middle" text-anchor="middle" font-size="22" font-weight="800" fill="var(--bg-body)" font-family="var(--font-display), sans-serif">${initials}</text>
             </svg>
         `;
     };
@@ -541,177 +469,153 @@ document.addEventListener('DOMContentLoaded', () => {
         const rawJsonData = document.getElementById('tyagihub-master-json').textContent;
         rawUniversalArrayBuffer = JSON.parse(rawJsonData || "[]");
 
-        executeProfileLifecycleEngine();
+        syncGlobalStaticUIStrings();
+        executeCoreProfileRefreshPipeline();
 
     } catch (e) {
-        console.error("Profile dataset execution crash:", e);
-        viewTarget.innerHTML = `<p style="color:var(--text-muted); text-align:center;">Directory Processing Error.</p>`;
+        console.error("Profile dataset build failure:", e);
+        selectorTrack.innerHTML = `<p style="color:var(--text-muted); text-align:center;">Directory Fault.</p>`;
     }
 
     if (langSwitchBox) {
         langSwitchBox.addEventListener('click', () => {
             activeLang = activeLang === "en" ? "hi" : "en";
-            executeProfileLifecycleEngine();
+            syncGlobalStaticUIStrings();
+            executeCoreProfileRefreshPipeline();
         });
     }
 
-    function executeProfileLifecycleEngine() {
-        // Filter out global records by language index immediately
-        languageScannedDataset = rawUniversalArrayBuffer.filter(post => post.lang === activeLang);
-        
-        syncGlobalStaticUIStrings();
-
-        if (currentAuthorQuery) {
-            // MODE A: Display Specific Single Author Details 
-            feedControlBar.style.display = 'flex';
-            renderSingleAuthorView(currentAuthorQuery.trim());
-        } else {
-            // MODE B: Default Directory Layout displaying all authors list grid 🚀
-            feedControlBar.style.display = 'none';
-            postsGrid.innerHTML = ''; 
-            renderAllAuthorsDirectory();
-        }
-    }
-
-    // Sync baseline header text frameworks dynamically matching active language nodes
     function syncGlobalStaticUIStrings() {
         if (activeLang === "hi") {
             langSwitchText.innerText = "🌐 Switch to English";
-            if (!currentAuthorQuery) {
-                pageMainHeading.innerText = "लेखक निर्देशिका संग्रह";
-                pageWelcomeDesc.innerText = "त्यागीहब के सक्रिय लेखकों और क्रिएटर्स से मिलें। यहाँ आप हमारे सभी तकनीकी लेखकों, सुरक्षा विश्लेषकों और डेवलपर्स की प्रोफ़ाइल देख सकते हैं जो विभिन्न डिजिटल क्षेत्रों में उपयोगी जानकारी प्रदान करते हैं।";
-                document.title = "लेखक निर्देशिका | TyagiHub";
-            }
+            pageMainHeading.innerText = "लेखक एवं क्रिएटर हब";
+            pageWelcomeDesc.innerText = "त्यागीहब के सक्रिय लेखकों और क्रिएटर्स से मिलें। यहाँ आप हमारे सभी तकनीकी लेखकों, सुरक्षा विश्लेषकों और डेवलपर्स की प्रोफ़ाइल देख सकते हैं जो विभिन्न डिजिटल क्षेत्रों में उपयोगी जानकारी प्रदान करते हैं।";
         } else {
             langSwitchText.innerText = "🌐 हिंदी में पढ़ें";
-            if (!currentAuthorQuery) {
-                pageMainHeading.innerText = "Creator Directory Hub";
-                pageWelcomeDesc.innerText = "Explore active knowledge contributions across TyagiHub. Meet our engineering architects, security analysts, and digital creators delivering parsed insights under multi-disciplinary technology pipelines.";
-                document.title = "Author Directory | TyagiHub";
-            }
+            pageMainHeading.innerText = "Creator Profiles Hub";
+            pageWelcomeDesc.innerText = "Explore active knowledge contributions across TyagiHub. Meet our engineering architects, security analysts, and digital creators delivering parsed insights under multi-disciplinary technology pipelines.";
         }
     }
 
-    // 🎯 VIEW MODE A: ALL AUTHORS HUB MATRIX GENERATOR 🚀
-    function renderAllAuthorsDirectory() {
-        viewTarget.innerHTML = '';
+    function executeCoreProfileRefreshPipeline() {
+        // Enforce strict language barrier filter locks
+        languageScannedDataset = rawUniversalArrayBuffer.filter(post => post.lang === activeLang);
         
-        // Scan dataset aggregating explicit distinct authors data
-        const authorMetaRegistry = new Map();
-        languageScannedDataset.forEach(p => {
-            const authorNormalizedKey = p.author.trim();
-            const lowerKey = authorNormalizedKey.toLowerCase();
-            
-            if (!authorMetaRegistry.has(lowerKey)) {
-                authorMetaRegistry.set(lowerKey, { rawName: authorNormalizedKey, count: 1 });
-            } else {
-                authorMetaRegistry.get(lowerKey).count += 1;
-            }
-        });
-
-        if (authorMetaRegistry.size === 0) {
-            viewTarget.innerHTML = `<p style="color:var(--text-muted); text-align:center; padding:40px;">No authors found.</p>`;
-            return;
-        }
-
-        const directoryWrapperNode = document.createElement('div');
-        directoryWrapperNode.className = "authors-directory-grid";
-
-        authorMetaRegistry.forEach((data) => {
-            const cardAvatar = generateAuthorAvatarSVG(data.rawName, 64, 30);
-            
-            let badgeTitle = activeLang === "hi" ? "सत्यापित लेखक" : "Verified Contributor";
-            if (data.rawName.toLowerCase() === "himanshu tyagi") {
-                badgeTitle = activeLang === "hi" ? "मुख्य लेखक एवं क्रिएटर" : "Platform Creator";
-            }
-
-            const totalPostsLabel = activeLang === "hi" ? "प्रकाशित लेख" : "Articles";
-
-            const cardHTML = `
-                <div class="author-directory-card" data-author-name="${data.rawName}">
-                    <div class="profile-avatar-wrap" style="width:64px; height:64px;">${cardAvatar}</div>
-                    <div style="flex-grow:1;">
-                        <div class="profile-badge-title" style="margin-bottom:2px; font-size:10px;">${badgeTitle}</div>
-                        <h3 style="color:var(--text-heading); margin:0 0 4px 0; font-family:var(--font-display); font-size:18px;">${data.rawName}</h3>
-                        <span style="font-size:12px; color:var(--text-muted); font-weight:600; display:inline-flex; align-items:center; gap:5px;">
-                           <i class="fa-solid fa-book-open" style="font-size:11px; color:var(--clr-accent);"></i> ${data.count} ${totalPostsLabel}
-                        </span>
-                    </div>
-                    <i class="fa-solid fa-chevron-right" style="color:var(--clr-accent); opacity:0.7;"></i>
-                </div>
-            `;
-            directoryWrapperNode.insertAdjacentHTML('beforeend', cardHTML);
-        });
-
-        viewTarget.appendChild(directoryWrapperNode);
-
-        // Bind interactive event click triggers routing to single layout frame seamlessly
-        document.querySelectorAll('.author-directory-card').forEach(card => {
-            card.addEventListener('click', () => {
-                const authorTargetName = card.getAttribute('data-author-name');
-                currentAuthorQuery = authorTargetName;
-                window.history.replaceState({}, "", `?author=${encodeURIComponent(authorTargetName)}`);
-                executeProfileLifecycleEngine();
-            });
-        });
+        buildAuthorsSelectorBlocks();
+        applyAuthorFilteringPipeline();
     }
 
-    // 🎯 VIEW MODE B: SINGLE SPECIFIC AUTHOR DETAILS LAYOUT PANEL
-    function renderSingleAuthorView(authorName) {
-        // Strict sorting layout enforcement ensuring Newest Posts First context
-        const singleAuthorPosts = languageScannedDataset.filter(post => {
-            return post.author.toLowerCase() === authorName.toLowerCase();
-        }).sort((a, b) => new Date(b.date) - new Date(a.date));
-
-        // Sync main layout meta title tags dynamically matching target context
-        pageMainHeading.innerText = authorName;
-        if (activeLang === "hi") {
-            pageWelcomeDesc.innerText = `त्यागीहब प्लेटफॉर्म पर ${authorName} द्वारा लिखे गए सभी मूल योगदानों, प्रलेखन लॉग और शोध लेखों की समीक्षा करें।`;
-            postsHeading.innerText = `प्रकाशित लेख संग्रह`;
-            document.title = `${authorName} | लेखक प्रोफाइल | TyagiHub`;
-        } else {
-            pageWelcomeDesc.innerText = `Review full core documentation logs, software metrics, and research contributions published by ${authorName} across the platform framework.`;
-            postsHeading.innerText = `Published Articles Archive`;
-            document.title = `${authorName} | Author Profile | TyagiHub`;
-        }
-
-        const avatarSvgElement = generateAuthorAvatarSVG(authorName);
-        let subBadgeText = activeLang === "hi" ? "सत्यापित लेखक" : "Verified Contributor";
-        if (authorName.toLowerCase() === "himanshu tyagi" || authorName.toLowerCase() === "owner") {
-            subBadgeText = activeLang === "hi" ? "मुख्य लेखक एवं क्रिएटर" : "Platform Architect & Creator";
-        }
+    // 🎯 STEP 1: RENDER PERSISTENT DYNAMIC AUTHOR CARDS MENU (WITH LIVE COUNT & SVG EMBEDDED)
+    function buildAuthorsSelectorBlocks() {
+        selectorTrack.innerHTML = '';
         
-        const totalPostsLabel = activeLang === "hi" ? "कुल लेख संग्रह" : "Total Content Logs";
-        const bioFallback = activeLang === "hi" 
-            ? `तकनीकी नवाचारों, डिजिटल सुरक्षा प्रबंधन और कोडिंग संरचनाओं के क्षेत्र में निरंतर जानकारी साझा करना।` 
-            : `Delivering technical optimization matrices, security infrastructure protocols, and engineering tutorials across emerging domains.`;
+        // 1. Build Global 'ALL CREATORS' Hub Switch Button Block
+        const allLabel = activeLang === "hi" ? "सभी क्रिएटर्स" : "All Creators";
+        const allRole = activeLang === "hi" ? "पूर्ण निर्देशिका" : "Unified Team Directory";
+        const allPostsLabel = activeLang === "hi" ? "कुल लेख संग्रह" : "Total Content Logs";
+        const allAvatar = generateAuthorAvatarSVG("ALL");
 
-        // Render dynamic header info panel block
-        viewTarget.innerHTML = `
-            <div class="profile-hero-card">
-                <div class="profile-avatar-wrap">${avatarSvgElement}</div>
-                <div class="profile-meta-details">
-                    <div class="profile-badge-title"><i class="fa-solid fa-shield-halved"></i> ${subBadgeText}</div>
-                    <h1 class="profile-name-title" style="display:none;">${authorName}</h1> <!-- Handled via top global h1 -->
-                    <p class="profile-bio-text">${bioFallback}</p>
-                </div>
-                <div class="profile-stats-panel">
-                    <span class="stat-big-num">${singleAuthorPosts.length}</span>
-                    <span class="stat-label-text">${totalPostsLabel}</span>
-                </div>
+        const allCard = document.createElement('div');
+        allCard.className = `author-profile-block-card ${currentSelectedAuthorKey === "all" ? 'active-profile-state' : ''}`;
+        allCard.innerHTML = `
+            <div class="profile-block-svg-avatar">${allAvatar}</div>
+            <div class="profile-card-details">
+                <div class="profile-card-role">${allRole}</div>
+                <h3 class="profile-card-name">${allLabel}</h3>
+                <span class="profile-card-counter-tag">
+                    <i class="fa-solid fa-book-open" style="font-size:11px; color:var(--clr-accent);"></i> ${languageScannedDataset.length} ${allPostsLabel}
+                </span>
             </div>
         `;
+        allCard.addEventListener('click', () => switchAuthorProfileState("all", allCard));
+        selectorTrack.appendChild(allCard);
 
-        // Render Author post item cards canvas elements mapping chunk slices arrays bounds
+        // 2. Aggregate data maps calculating distinct metric counts per authors
+        const authorRegistryMap = new Map();
+        languageScannedDataset.forEach(p => {
+            const rawAuthorName = p.author.trim();
+            const lowerKey = normalizeStr(rawAuthorName);
+            
+            if (!authorRegistryMap.has(lowerKey)) {
+                authorRegistryMap.set(lowerKey, { rawName: rawAuthorName, count: 1 });
+            } else {
+                authorRegistryMap.get(lowerKey).count += 1;
+            }
+        });
+
+        // 3. Loop over dynamic author metadata creating interactive profile blocks
+        authorRegistryMap.forEach((data, normKey) => {
+            const authorAvatarSvg = generateAuthorAvatarSVG(data.rawName);
+            
+            let badgeTitle = activeLang === "hi" ? "सत्यापित लेखक" : "Verified Contributor";
+            if (normKey === "himanshutyagi") {
+                badgeTitle = activeLang === "hi" ? "मुख्य लेखक एवं क्रिएटर" : "Platform Architect";
+            }
+            const articlesLabel = activeLang === "hi" ? "प्रकाशित लेख" : "Articles Logged";
+
+            const card = document.createElement('div');
+            card.className = `author-profile-block-card ${currentSelectedAuthorKey === normKey ? 'active-profile-state' : ''}`;
+            card.innerHTML = `
+                <div class="profile-block-svg-avatar">${authorAvatarSvg}</div>
+                <div class="profile-card-details">
+                    <div class="profile-card-role">${badgeTitle}</div>
+                    <h3 class="profile-card-name">${data.rawName}</h3>
+                    <span class="profile-card-counter-tag">
+                        <i class="fa-solid fa-book-open" style="font-size:11px; color:var(--clr-accent);"></i> ${data.count} ${articlesLabel}
+                    </span>
+                </div>
+            `;
+            card.addEventListener('click', () => switchAuthorProfileState(normKey, card));
+            selectorTrack.appendChild(card);
+        });
+    }
+
+    function switchAuthorProfileState(targetNormAuthorKey, clickedCardElement) {
+        document.querySelectorAll('.author-profile-block-card').forEach(c => c.classList.remove('active-profile-state'));
+        clickedCardElement.classList.add('active-profile-state');
+        
+        currentSelectedAuthorKey = targetNormAuthorKey;
+        
+        // Silently push query string parameters context lock to address history changes
+        const dynamicQueryParam = targetNormAuthorKey === "all" ? window.location.pathname : `?author=${targetNormAuthorKey}`;
+        window.history.replaceState({}, "", dynamicQueryParam);
+        
+        applyAuthorFilteringPipeline();
+    }
+
+    // 🎯 STEP 2: AUTHOR DATA SELECTION PIPELINE (WITH DATETIME SORTING ENFORCED)
+    function applyAuthorFilteringPipeline() {
+        filteredPostsSubset = languageScannedDataset.filter(post => {
+            if (currentSelectedAuthorKey !== "all") {
+                return normalizeStr(post.author) === currentSelectedAuthorKey;
+            }
+            return true;
+        }).sort((a, b) => new Date(b.date) - new Date(a.date)); // 🔥 STRICT RECENT SORT LATCH ACTIVE Globally
+
+        if (activeLang === "hi") {
+            postsHeading.innerText = currentSelectedAuthorKey === "all" ? "सभी प्रकाशित लेख संग्रह" : "लेखक के विशिष्ट लेख";
+        } else {
+            postsHeading.innerText = currentSelectedAuthorKey === "all" ? "All Platform Publications" : "Author Contributions Archive";
+        }
+
+        renderAuthorArticlesGridCanvas();
+    }
+
+    // 🎯 STEP 3: RENDER 15-POST MAX GRID INTERFACE CANVAS 
+    function renderAuthorArticlesGridCanvas() {
         postsGrid.innerHTML = '';
-        if (singleAuthorPosts.length === 0) {
+
+        if (filteredPostsSubset.length === 0) {
             postsGrid.innerHTML = activeLang === "hi"
-                ? '<p style="color:var(--text-muted); text-align:center; padding:40px; grid-column:1/-1;">इस लेखक द्वारा इस भाषा में अभी कोई लेख नहीं लिखा गया है।</p>'
-                : '<p style="color:var(--text-muted); text-align:center; padding:40px; grid-column:1/-1;">This creator has not logged any records under this active language node.</p>';
+                ? '<p style="color:var(--text-muted); text-align:center; padding:40px; grid-column:1/-1;">इस श्रेणी में अभी कोई लेख नहीं मिला।</p>'
+                : '<p style="color:var(--text-muted); text-align:center; padding:40px; grid-column:1/-1;">No matching records mapped under this creator profile selection.</p>';
             return;
         }
 
-        singleAuthorPosts.forEach(p => {
+        // Clamp maximum bounds slice indices up to 15 posts total framework
+        const clampedFifteenSliceChunk = filteredPostsSubset.slice(0, 15);
+
+        clampedFifteenSliceChunk.forEach(p => {
             const readLabel = activeLang === "hi" ? "पूरा पढ़ें" : "Read More";
 
             const cardHTML = `
