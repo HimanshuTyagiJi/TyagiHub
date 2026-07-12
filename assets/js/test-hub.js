@@ -4,10 +4,10 @@
 import { getApp, getApps, initializeApp } from "https://www.gstatic.com/firebasejs/9.22.1/firebase-app.js";
 import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/9.22.1/firebase-auth.js";
 
-// Connected cleanly to your Google Apps Script URL
-const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwr8_llEQIDs_5kNWV-PL3diYZB2OYJ_sJzEVSs0JzAJiwgUDOHVEdBtU55AFgkgCFHwQ/exec";
+// 🎯 Connected cleanly to your newly deployed auto-injecting Apps Script URL
+const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbw9Bz1KhUlIlKgy-lOpiI70oCMm28nbqhoBVUj1eg8uEH2iUcmaDP4Si9OXh0r37wiktg/exec";
 
-// 🎯 CORRECTED: Synced strictly with default.html layout credentials
+// Firebase Config for Authentication ONLY (Synced strictly with default.html)
 const firebaseConfig = {
     apiKey: "AIzaSyBE0uXhh8ePOQH6FBdhRCZrRgRkUTwCWws",
     authDomain: "tyagi-hub.firebaseapp.com",
