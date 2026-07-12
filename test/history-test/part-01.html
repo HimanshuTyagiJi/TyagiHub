@@ -1,39 +1,375 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>History Test Part - 1 | GK Learn Study</title>
-        <meta name="description" content="Take Part 1 of our History test to check your preparation with MCQs. Useful for all competitive exams." />
-        <link rel="icon" type="image/png" href="https://gklearnstudy.in/GK-Learn-Study.png" />
-       
-        <link rel="stylesheet" href="https://gklearnstudy.in/css/tests.css" />
-         
-       
-    </head>
+---
+layout: default
+title: "History Test Part - 01 | TyagiHub"
+description: "Take Part 1 of our History test to check your preparation with MCQs. Useful for all competitive exams."
+lang_switch: false
+comments: false
+---
 
-    <body data-quiz-id="history-test-part-01">
-        <main class="container">
-            <header><h1>History Test Part - 01</h1></header>
-            <section id="quiz-section" style="display:none;"><form id="quiz-form"><div class="quiz-header"><h2>History Test Part - 01</h2><div id="timer"><strong>Time:</strong> 0:00</div></div><div id="questions-container"><div class="spinner-container"><div class="spinner"></div><p>Loading Questions...</p></div></div><button type="submit" class="submit-btn" style="display: none;">Submit Test</button></form></section>
-            <section id="startModal" class="modal active" role="dialog"><div class="modal-content"><h2 id="rulesHeading">Test Rules</h2><ul><li>This test contains 10 questions.</li><li>The timer will track the total time for the test.</li><li>Once submitted, answers cannot be changed.</li><li>You can save your score to the leaderboard by logging in.</li></ul><button id="start-btn" class="start-btn">Start Test</button></div></section>
-            <section id="resultModal" class="modal" role="dialog"><div class="modal-content"><h2 id="resultHeading">Your Result</h2><div id="resultContent"></div><div class="modal-actions"><button id="review-btn" class="review-btn">Review Answers</button><button id="retry-btn" class="retry-btn">Try Again</button></div></div></section>
-            <section id="review-questions" style="display:none;" aria-label="Review Questions"><h2>Review Questions</h2><div id="review-container"></div><button id="review-retry-btn" class="retry-btn" style="display:block; margin: 2rem auto;">Try Again</button></section>
-        </main>
-        <script>
-            var questions = [
-                { question: "Who was the founder of the Mauryan Empire?", options: [ { text: "A. Ashoka", value: "a" }, { text: "B. Chandragupta Maurya", value: "b" }, { text: "C. Samudragupta", value: "c" } ], correctOption: "b", explanation: "Chandragupta Maurya founded the Mauryan Empire around 322 BCE with the help of his mentor Chanakya." },
-                { question: "The Battle of Plassey was fought in which year?", options: [ { text: "A. 1757", value: "a" }, { text: "B. 1764", value: "b" }, { text: "C. 1857", value: "c" } ], correctOption: "a", explanation: "The Battle of Plassey was fought on June 23, 1757, and was a decisive victory of the British East India Company over the Nawab of Bengal." },
-                { question: "Who is known as the 'Father of the Indian Constitution'?", options: [ { text: "A. Mahatma Gandhi", value: "a" }, { text: "B. Jawaharlal Nehru", value: "b" }, { text: "C. Dr. B. R. Ambedkar", value: "c" } ], correctOption: "c", explanation: "Dr. B. R. Ambedkar was the chairman of the Drafting Committee of the Constituent Assembly and is widely regarded as the 'Father of the Indian Constitution'." },
-                { question: "The ancient city of Harappa is located in which present-day country?", options: [ { text: "A. India", value: "a" }, { text: "B. Pakistan", value: "b" }, { text: "C. Afghanistan", value: "c" } ], correctOption: "b", explanation: "Harappa, a major city of the Indus Valley Civilization, is located in the Punjab province of modern-day Pakistan." },
-                { question: "Who was the last Mughal Emperor?", options: [ { text: "A. Aurangzeb", value: "a" }, { text: "B. Akbar", value: "b" }, { text: "C. Bahadur Shah Zafar", value: "c" } ], correctOption: "c", explanation: "Bahadur Shah Zafar was the last Mughal Emperor, who was deposed by the British and exiled to Burma after the Indian Rebellion of 1857." },
-                { question: "The 'Quit India Movement' was launched in which year?", options: [ { text: "A. 1930", value: "a" }, { text: "B. 1942", value: "b" }, { text: "C. 1947", value: "c" } ], correctOption: "b", explanation: "The Quit India Movement was launched by Mahatma Gandhi on August 8, 1942, demanding an end to British rule in India." },
-                { question: "Who wrote the 'Arthashastra'?", options: [ { text: "A. Chanakya", value: "a" }, { text: "B. Kalidasa", value: "b" }, { text: "C. Aryabhata", value: "c" } ], correctOption: "a", explanation: "The 'Arthashastra' is an ancient Indian treatise on statecraft, economic policy, and military strategy, attributed to Chanakya (also known as Kautilya)." },
-                { question: "The capital of the Gupta Empire was:", options: [ { text: "A. Pataliputra", value: "a" }, { text: "B. Ujjain", value: "b" }, { text: "C. Kannauj", value: "c" } ], correctOption: "a", explanation: "Pataliputra (modern-day Patna) was the capital of the Gupta Empire, a flourishing center of learning and culture." },
-                { question: "Who was the first woman to rule the Delhi Sultanate?", options: [ { text: "A. Nur Jahan", value: "a" }, { text: "B. Razia Sultana", value: "b" }, { text: "C. Mumtaz Mahal", value: "c" } ], correctOption: "b", explanation: "Razia Sultana was the first and only female ruler of the Delhi Sultanate, reigning from 1236 to 1240." },
-                { question: "The Jallianwala Bagh massacre took place in which city?", options: [ { text: "A. Lahore", value: "a" }, { text: "B. Delhi", value: "b" }, { text: "C. Amritsar", value: "c" } ], correctOption: "c", explanation: "The Jallianwala Bagh massacre occurred on April 13, 1919, in Amritsar, Punjab, when British troops fired on a large crowd of unarmed Indians." }
-            ];
-        </script>
-        <script type="module" src="/assets/js/test.js"></script>
-    </body>
-</html>
+<!-- Premium Quiz Gameplay Matrix Layout Styles -->
+<style>
+  .quiz-gameplay-wrapper {
+    max-width: var(--container-max, 1200px);
+    margin: var(--space-12, 48px) auto;
+    padding: 0 var(--space-4, 16px);
+    min-height: 80vh;
+    margin-top: 70px;
+  }
+
+  .quiz-page-title {
+    font-family: var(--font-display), sans-serif;
+    font-size: var(--fs-xl, 1.75rem);
+    font-weight: var(--fw-black, 600);
+    color: var(--text-heading);
+    margin-bottom: var(--space-6, 24px);
+  }
+
+  /* Quiz Meta Top Layout Line Bar */
+  .quiz-top-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: var(--bg-surface);
+    border: 1px solid var(--clr-border);
+    border-radius: var(--radius-md, 12px);
+    padding: var(--space-4, 16px) var(--space-6, 24px);
+    margin-bottom: var(--space-6, 24px);
+    box-shadow: var(--shadow-sm);
+  }
+
+  .quiz-meta-item {
+    font-family: var(--font-body), sans-serif;
+    font-size: var(--fs-sm, 0.95rem);
+    color: var(--text-heading);
+    font-weight: var(--fw-bold, 550);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  #timer {
+    color: var(--clr-accent);
+  }
+
+  /* 🏛️ Master Quiz Split Layout Columns Structure Grid */
+  #quiz-layout {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-6, 24px);
+  }
+
+  @media(min-width: 1024px) {
+    #quiz-layout {
+      grid-template-columns: 2.8fr 1.2fr;
+    }
+  }
+
+  /* Question Box Display Canvas Card Panel */
+  #question-area {
+    background: var(--bg-surface);
+    border: 1px solid var(--clr-border);
+    border-radius: var(--radius-lg, 18px);
+    padding: var(--space-6, 24px);
+    box-shadow: var(--shadow-sm);
+    display: flex;
+    flex-direction: column;
+    min-height: 360px;
+  }
+
+  @media(min-width: 768px) {
+    #question-area {
+      padding: var(--space-8, 32px);
+    }
+  }
+
+  .question-block .question {
+    font-family: var(--font-display), sans-serif;
+    font-size: var(--fs-md, 1.125rem);
+    font-weight: var(--fw-bold, 550);
+    color: var(--text-heading);
+    line-height: var(--lh-snug, 1.4);
+    margin: 0 0 var(--space-6, 24px) 0;
+  }
+
+  .question-block .options {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3, 12px);
+    margin-bottom: var(--space-6, 24px);
+  }
+
+  .question-block .options label {
+    background: var(--bg-body);
+    border: 1px solid var(--clr-border);
+    border-radius: var(--radius-md, 12px);
+    padding: var(--space-4, 16px);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    cursor: pointer;
+    font-family: var(--font-body), sans-serif;
+    font-size: var(--fs-sm, 0.95rem);
+    color: var(--text-paragraph);
+    transition: all var(--ease-fast);
+    user-select: none;
+  }
+
+  .question-block .options label:hover {
+    border-color: var(--clr-border-2);
+    background: var(--hover-bg-1);
+  }
+
+  .question-block .options input[type="radio"] {
+    accent-color: var(--clr-accent);
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+  }
+
+  /* Bottom Controls Actions Line */
+  #question-navigation-buttons {
+    margin-top: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: var(--space-4, 16px);
+    padding-top: var(--space-4, 16px);
+    border-top: 1px solid var(--clr-border);
+  }
+
+  .skip-btn, .next-btn, .submit-btn, .tc-action-btn, .retry-btn, .review-btn {
+    font-family: var(--font-body), sans-serif;
+    font-size: var(--fs-xs, 0.89rem);
+    font-weight: var(--fw-bold, 550);
+    padding: 10px 24px;
+    border-radius: var(--radius-full, 9999px);
+    cursor: pointer;
+    transition: all var(--ease-fast);
+    border: 1px solid transparent;
+  }
+
+  .skip-btn { background: transparent; border-color: var(--clr-border); color: var(--text-muted); }
+  .skip-btn:hover { border-color: var(--clr-border-2); color: var(--text-heading); }
+
+  .next-btn { background: var(--clr-border); border-color: var(--clr-border-2); color: var(--text-heading); }
+  .next-btn:hover { background: var(--hover-bg-1); }
+
+  .submit-btn { background: var(--clr-accent); color: #000000; box-shadow: var(--shadow-sm); }
+  .submit-btn:hover { opacity: 0.9; box-shadow: var(--shadow-accent); }
+
+  /* 🎛️ Right Side Navigation Palette Columns Panel Container */
+  #question-palette-container {
+    background: var(--bg-surface);
+    border: 1px solid var(--clr-border);
+    border-radius: var(--radius-lg, 18px);
+    padding: var(--space-5, 20px);
+    box-shadow: var(--shadow-sm);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4, 16px);
+    height: fit-content;
+  }
+
+  .palette-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--clr-border);
+    padding-bottom: var(--space-2, 8px);
+  }
+
+  .palette-header h4 { font-family: var(--font-display), sans-serif; margin: 0; color: var(--text-heading); font-size: 15px; }
+  .palette-header .submit-btn { padding: 6px 16px; font-size: 11px; }
+
+  #question-palette {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 8px;
+  }
+
+  .palette-item {
+    aspect-ratio: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--radius-sm, 8px);
+    font-family: var(--font-body), sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all var(--ease-fast);
+    border: 1px solid var(--clr-border);
+  }
+
+  .palette-item.unvisited { background: var(--bg-body); color: var(--text-muted); }
+  .palette-item.skipped { background: var(--clr-border); color: var(--text-heading); border-color: var(--clr-border-2); }
+  .palette-item.answered { background: var(--clr-accent-glow); color: var(--clr-accent); border-color: var(--clr-accent); }
+  
+  .palette-item.current {
+    ring: 2px solid var(--clr-accent);
+    outline: 2px solid var(--clr-accent);
+    outline-offset: 1px;
+  }
+
+  /* 🎭 Modals Layer Overlay Containers Frame System Architecture */
+  .quiz-modal-backdrop {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(8px);
+    z-index: 10000;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: var(--space-4, 16px);
+  }
+
+  .quiz-modal-backdrop.active { display: flex; }
+
+  .quiz-modal-content-panel {
+    background: var(--bg-surface);
+    border: 1px solid var(--clr-border);
+    border-radius: var(--radius-lg, 18px);
+    max-width: 500px;
+    width: 100%;
+    padding: var(--space-6, 24px);
+    box-shadow: var(--shadow-md);
+    text-align: center;
+    animation: modalSlide var(--ease-normal, 250ms) forwards;
+  }
+
+  .quiz-modal-content-panel ul {
+    text-align: left;
+    margin: 0 0 var(--space-6, 24px) var(--space-4, 16px);
+    color: var(--text-paragraph);
+    font-size: var(--fs-sm, 0.95rem);
+    line-height: 1.6;
+  }
+
+  @keyframes modalSlide {
+    from { transform: translateY(15px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+  }
+
+  .quiz-modal-content-panel h2 { font-family: var(--font-display), sans-serif; color: var(--text-heading); margin: 0 0 var(--space-4, 16px) 0; }
+  .quiz-modal-content-panel p { font-size: var(--fs-sm, 0.95rem); color: var(--text-paragraph); line-height: var(--lh-normal, 1.6); margin: 0 0 var(--space-6, 24px) 0; }
+  .modal-actions-track { display: flex; justify-content: center; gap: var(--space-3, 12px); flex-wrap: wrap; }
+
+  /* 📝 Review Canvas Mode Structure Blocks Row Element Shards Mapping Hooks */
+  .question-block.review {
+    background: var(--bg-surface);
+    border: 1px solid var(--clr-border);
+    border-radius: var(--radius-lg, 18px);
+    padding: var(--space-6, 24px);
+    margin-bottom: var(--space-6, 24px);
+  }
+
+  .question-block.review label.correct-option {
+    border-color: #28a745 !important;
+    background: rgba(40, 167, 69, 0.05) !important;
+    color: #28a745 !important;
+  }
+
+  .question-block.review label.incorrect-option {
+    border-color: #dc3545 !important;
+    background: rgba(220, 53, 69, 0.05) !important;
+    color: #dc3545 !important;
+  }
+
+  .question-block.review .explanation {
+    background: var(--bg-body);
+    border: 1px solid var(--clr-border);
+    border-radius: var(--radius-md, 12px);
+    padding: var(--space-4, 16px);
+    font-size: var(--fs-xs, 0.89rem);
+    color: var(--text-paragraph);
+    line-height: var(--lh-normal, 1.6);
+    margin-top: var(--space-4, 16px);
+  }
+
+  .luxury-spinner { text-align: center; padding: var(--space-6, 24px) 0; color: var(--clr-accent); }
+</style>
+
+<!-- Direct inject context data parameters token attribute securely into body via runtime execution lock hook -->
+<script>document.body.setAttribute('data-quiz-id', 'history-test-part-01');</script>
+
+<main class="quiz-gameplay-wrapper">
+    
+    <!-- 1. Live Gameplay Workspace Monitor Section Panel -->
+    <div id="quiz-section" style="display: none;">
+        <div class="quiz-top-bar">
+            <div class="quiz-meta-item">
+                <i class="fa-solid fa-graduation-cap" style="color:var(--clr-accent);"></i>
+                <span>History Test Part - 01</span>
+            </div>
+            <div id="timer" class="quiz-meta-item">
+                <i class="fa-regular fa-clock"></i>
+                <strong>Time:</strong> 0:00
+            </div>
+        </div>
+
+        <!-- Split Grid Target Elements Layout Vector -->
+        <form id="quiz-form" onsubmit="return false;"></form>
+    </div>
+
+    <!-- 2. Detailed Verification Solutions Matrix Review Mode Section Canvas -->
+    <div id="review-questions" style="display: none; max-width: 800px; margin: 0 auto;">
+        <div class="quiz-top-bar" style="margin-bottom: 32px;">
+            <h2 style="font-family:var(--font-display); font-size:20px; margin:0; color:var(--text-heading);">Review Solutions</h2>
+            <button id="review-retry-btn" class="submit-btn">Test Again</button>
+        </div>
+        <div id="review-container"></div>
+    </div>
+
+</main>
+
+<!-- 🎭 OVERLAYS DIALOGS STATE BLOCKS (Modals Pipeline Layer) -->
+
+<!-- A. Entry Rule Book Gate Modal verification -->
+<div id="startModal" class="quiz-modal-backdrop active">
+    <div class="quiz-modal-content-panel">
+        <div style="font-size:2.5rem; margin-bottom:8px;">📜</div>
+        <h2>Test Rules &amp; Protocols</h2>
+        <ul>
+            <li>This test contains 10 curated questions.</li>
+            <li>The timer tracks cumulative active testing seconds.</li>
+            <li>Once submitted, entries lock cleanly across state lists.</li>
+            <li>Authentication syncing stores metrics into Google Sheets ledger.</li>
+        </ul>
+        <div class="modal-actions-track">
+            <button id="start-btn" class="submit-btn" style="padding:12px 36px; font-size:14px;">Start Test</button>
+        </div>
+    </div>
+</div>
+
+<!-- B. Analysis Summary Result Modal Block -->
+<div id="resultModal" class="quiz-modal-backdrop">
+    <div class="quiz-modal-content-panel" style="max-width: 450px;">
+        <div style="font-size:2.5rem; margin-bottom:8px;">🎯</div>
+        <h2>Your Result Profile</h2>
+        <div id="resultContent" style="margin-bottom: 24px;"></div>
+        <div class="modal-actions-track" style="gap:15px;">
+            <button id="review-btn" class="skip-btn" style="border-color:var(--clr-border-2); color:var(--text-heading);">Review Answers</button>
+            <button id="retry-btn" class="submit-btn">Try Again</button>
+        </div>
+    </div>
+</div>
+
+<!-- 📦 Static Question Array Map Definition Matrix Database Block Asset Track Layer -->
+<script>
+    var questions = [
+        { question: "Who was the founder of the Mauryan Empire?", options: [ { text: "A. Ashoka", value: "a" }, { text: "B. Chandragupta Maurya", value: "b" }, { text: "C. Samudragupta", value: "c" } ], correctOption: "b", explanation: "Chandragupta Maurya founded the Mauryan Empire around 322 BCE with the help of his mentor Chanakya." },
+        { question: "The Battle of Plassey was fought in which year?", options: [ { text: "A. 1757", value: "a" }, { text: "B. 1764", value: "b" }, { text: "C. 1857", value: "c" } ], correctOption: "a", explanation: "The Battle of Plassey was fought on June 23, 1757, and was a decisive victory of the British East India Company over the Nawab of Bengal." },
+        { question: "Who is known as the 'Father of the Indian Constitution'?", options: [ { text: "A. Mahatma Gandhi", value: "a" }, { text: "B. Jawaharlal Nehru", value: "b" }, { text: "C. Dr. B. R. Ambedkar", value: "c" } ], correctOption: "c", explanation: "Dr. B. R. Ambedkar was the chairman of the Drafting Committee of the Constituent Assembly and is widely regarded as the 'Father of the Indian Constitution'." },
+        { question: "The ancient city of Harappa is located in which present-day country?", options: [ { text: "A. India", value: "a" }, { text: "B. Pakistan", value: "b" }, { text: "C. Afghanistan", value: "c" } ], correctOption: "b", explanation: "Harappa, a major city of the Indus Valley Civilization, is located in the Punjab province of modern-day Pakistan." },
+        { question: "Who was the last Mughal Emperor?", options: [ { text: "A. Aurangzeb", value: "a" }, { text: "B. Akbar", value: "b" }, { text: "C. Bahadur Shah Zafar", value: "c" } ], correctOption: "c", explanation: "Bahadur Shah Zafar was the last Mughal Emperor, who was deposed by the British and exiled to Burma after the Indian Rebellion of 1857." },
+        { question: "The 'Quit India Movement' was launched in which year?", options: [ { text: "A. 1930", value: "a" }, { text: "B. 1942", value: "b" }, { text: "C. 1947", value: "c" } ], correctOption: "b", explanation: "The Quit India Movement was launched by Mahatma Gandhi on August 8, 1942, demanding an end to British rule in India." },
+        { question: "Who wrote the 'Arthashastra'?", options: [ { text: "A. Chanakya", value: "a" }, { text: "B. Kalidasa", value: "b" }, { text: "C. Aryabhata", value: "c" } ], correctOption: "a", explanation: "The 'Arthashastra' is an ancient Indian treatise on statecraft, economic policy, and military strategy, attributed to Chanakya (also known as Kautilya)." },
+        { question: "The capital of the Gupta Empire was:", options: [ { text: "A. Pataliputra", value: "a" }, { text: "B. Ujjain", value: "b" }, { text: "C. Kannauj", value: "c" } ], correctOption: "a", explanation: "Pataliputra (modern-day Patna) was the capital of the Gupta Empire, a flourishing center of learning and culture." },
+        { question: "Who was the first woman to rule the Delhi Sultanate?", options: [ { text: "A. Nur Jahan", value: "a" }, { text: "B. Razia Sultana", value: "b" }, { text: "C. Mumtaz Mahal", value: "c" } ], correctOption: "b", explanation: "Razia Sultana was the first and only female ruler of the Delhi Sultanate, reigning from 1236 to 1240." },
+        { question: "The Jallianwala Bagh massacre took place in which city?", options: [ { text: "A. Lahore", value: "a" }, { text: "B. Delhi", value: "b" }, { text: "C. Amritsar", value: "c" } ], correctOption: "c", explanation: "The Jallianwala Bagh massacre occurred on April 13, 1919, in Amritsar, Punjab, when British troops fired on a large crowd of unarmed Indians." }
+    ];
+</script>
+
+<!-- Core Javascript Engine Hook Module Alignment -->
+<script type="module" src="/assets/js/test.js"></script>
