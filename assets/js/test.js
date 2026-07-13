@@ -1,4 +1,4 @@
-// 🌐 TyagiHub Test Center Engine — Secure Block Layout Matrix Edition
+// 🌐 TyagiHub Test Center Engine — Dynamic Language Sync & Multi-Buffer Edition
 // Path: /assets/js/test.js
 
 const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbw9Bz1KhUlIlKgy-lOpiI70oCMm28nbqhoBVUj1eg8uEH2iUcmaDP4Si9OXh0r37wiktg/exec";
@@ -37,7 +37,7 @@ document.addEventListener('DOMContentLoaded', () => {
         return null;
     }
 
-   function syncLanguageUI() {
+    function syncLanguageUI() {
         const titleEl = document.getElementById('player-dynamic-title');
         const labelTime = document.getElementById('label-time');
         const labelReview = document.getElementById('label-review-title');
@@ -52,34 +52,48 @@ document.addEventListener('DOMContentLoaded', () => {
         if (resultTitle) resultTitle.textContent = resultTitle.getAttribute(`data-${currentLang}`);
         if (startBtnEl) startBtnEl.textContent = startBtnEl.getAttribute(`data-${currentLang}`);
 
-        // 🎯 DOM MONITOR MATRIX: जो कोड कंसोल में काम कर रहा था, उसे ही 50ms के बफ़र के साथ लॉक कर दिया
-        // इससे कोई भी दूसरी बाहरी स्क्रिप्ट इसे ओवरराइड नहीं कर पाएगी
-        setTimeout(() => {
+        // 🎯 ULTIMATE DOM FORCE RENDERER: नियमों को कंप्रेस होने या गायब होने से बचाने का सुरक्षा कवच
+        const forceRenderRules = () => {
             const rulesUl = document.getElementById('modal-start-rules');
             if (!rulesUl) return;
 
-            const count = rulesUl.getAttribute('data-count') || "0";
-            
-            if (currentLang === 'hi') {
-                rulesUl.innerHTML = `
-                    <div style="text-align: left; margin: 20px 0; padding-left: 10px; font-family: var(--font-body), sans-serif; font-size: 14px; line-height: 1.6; color: var(--text-paragraph);">
-                        <div class="rule-line-item-hi" style="margin-bottom: 12px; display: block;">• इस टेस्ट में कुल <strong>${count}</strong> महत्वपूर्ण बहुविकल्पीय प्रश्न शामिल हैं।</div>
-                        <div class="rule-line-item-hi" style="margin-bottom: 12px; display: block;">• टाइमर सक्रिय टेस्टिंग सेकंड की गणना निरंतर करता रहेगा।</div>
-                        <div class="rule-line-item-hi" style="margin-bottom: 12px; display: block;">• एक बार सबमिट करने के बाद, परिणाम लॉक हो जाएंगे।</div>
-                    </div>
-                `;
-            } else {
-                rulesUl.innerHTML = `
-                    <div style="text-align: left; margin: 20px 0; padding-left: 10px; font-family: var(--font-body), sans-serif; font-size: 14px; line-height: 1.6; color: var(--text-paragraph);">
-                        <div class="rule-line-item-en" style="margin-bottom: 12px; display: block;">• This test contains <strong>${count}</strong> curated questions.</div>
-                        <div class="rule-line-item-en" style="margin-bottom: 12px; display: block;">• The timer tracks cumulative active testing seconds.</div>
-                        <div class="rule-line-item-en" style="margin-bottom: 12px; display: block;">• Once submitted, entries lock cleanly across state lists.</div>
-                                      </div>
-                `;
+            let count = rulesUl.getAttribute('data-count') || "0";
+            if (count === "0" && window.questionsRepo && window.questionsRepo.en) {
+                count = window.questionsRepo.en.length;
             }
-        }, 50); // 50 मिलीसेकंड का सूक्ष्म डिले ताकि यह सभी ओवरराइड्स के बाद अंतिम वार करे
 
-        // Language Switcher Active Class Alignment
+            // हिंदी नियम सूची (क्लीन 3 लाइन्स)
+            const hiHTML = `
+                <div style="text-align: left; margin: 20px 0; padding-left: 10px; font-family: var(--font-body), sans-serif; font-size: 14px; line-height: 1.6; color: var(--text-paragraph);">
+                    <div style="margin-bottom: 12px; display: block;">• इस टेस्ट में कुल <strong>${count}</strong> महत्वपूर्ण बहुविकल्पीय प्रश्न शामिल हैं।</div>
+                    <div style="margin-bottom: 12px; display: block;">• टाइमर सक्रिय टेस्टिंग सेकंड की गणना निरंतर करता रहेगा।</div>
+                    <div style="margin-bottom: 12px; display: block;">• एक बार सबमिट करने के बाद, परिणाम लॉक हो जाएंगे।</div>
+                </div>
+            `;
+
+            // इंग्लिश नियम सूची (क्लीन 3 लाइन्स - शीट वाली फालतू लाइन हटा दी गई है)
+            const enHTML = `
+                <div style="text-align: left; margin: 20px 0; padding-left: 10px; font-family: var(--font-body), sans-serif; font-size: 14px; line-height: 1.6; color: var(--text-paragraph);">
+                    <div style="margin-bottom: 12px; display: block;">• This test contains <strong>${count}</strong> curated questions.</div>
+                    <div style="margin-bottom: 12px; display: block;">• The timer tracks cumulative active testing seconds.</div>
+                    <div style="margin-bottom: 12px; display: block;">• Once submitted, entries lock cleanly across state lists.</div>
+                </div>
+            `;
+
+            const targetHTML = (currentLang === 'hi') ? hiHTML : enHTML;
+            
+            // इनफिनिट लूप से बचने के लिए सिर्फ तभी अपडेट करेगा जब स्ट्रक्चर न मिला हो
+            if (!rulesUl.innerHTML.includes('margin-bottom: 12px;')) {
+                rulesUl.innerHTML = targetHTML;
+            }
+        };
+
+        // 💥 ट्रिपल अटैक टाइमिंग (Immediate, 100ms, और 500ms) ताकि कोई दूसरी स्क्रिप्ट इसे डिलीट या पैराग्राफ न बना सके
+        forceRenderRules();
+        setTimeout(forceRenderRules, 100);
+        setTimeout(forceRenderRules, 500);
+
+        // Language Switcher Active Class Aligner
         ['player-language-switcher-bar', 'review-language-switcher-bar'].forEach(barId => {
             const bar = document.getElementById(barId);
             if (bar) {
@@ -92,6 +106,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }
+
     function initLanguageSwitcher() {
         ['player-language-switcher-bar', 'review-language-switcher-bar'].forEach(barId => {
             const bar = document.getElementById(barId);
