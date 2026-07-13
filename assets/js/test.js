@@ -1,5 +1,4 @@
-
-// 🌐 TyagiHub Test Center Engine — Secure Fallback Re-Engineered Code
+// 🌐 TyagiHub Test Center Engine — Secure Show/Hide Matrix Edition
 // Path: /assets/js/test.js
 
 const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbw9Bz1KhUlIlKgy-lOpiI70oCMm28nbqhoBVUj1eg8uEH2iUcmaDP4Si9OXh0r37wiktg/exec";
@@ -38,7 +37,7 @@ document.addEventListener('DOMContentLoaded', () => {
         return null;
     }
 
-   function syncLanguageUI() {
+    function syncLanguageUI() {
         const titleEl = document.getElementById('player-dynamic-title');
         const labelTime = document.getElementById('label-time');
         const labelReview = document.getElementById('label-review-title');
@@ -53,33 +52,19 @@ document.addEventListener('DOMContentLoaded', () => {
         if (resultTitle) resultTitle.textContent = resultTitle.getAttribute(`data-${currentLang}`);
         if (startBtnEl) startBtnEl.textContent = startBtnEl.getAttribute(`data-${currentLang}`);
 
-
-        const rulesUl = document.getElementById('modal-start-rules');
-        if (rulesUl) {
-            const count = rulesUl.getAttribute('data-count') || "0";
-            let rulesArray = [];
-
-            if (currentLang === 'hi') {
-                rulesArray = [
-                    '<li>इस टेस्ट में कुल <strong>' + count + '</strong> महत्वपूर्ण बहुविकल्पीय प्रश्न शामिल हैं।</li>',
-                    '<li>टाइमर सक्रिय टेस्टिंग सेकंड की गणना निरंतर करता रहेगा।</li>',
-                    '<li>एक बार सबमिट करने के बाद, परिणाम लॉक हो जाएंगे।</li>',
-                    '<li>आपका स्कोर लाइव Google Sheets लीडरबोर्ड पर अपडेट किया जाएगा।</li>'
-                ];
-            } else {
-                rulesArray = [
-                    '<li>This test contains <strong>' + count + '</strong> curated questions.</li>',
-                    '<li>The timer tracks cumulative active testing seconds.</li>',
-                    '<li>Once submitted, entries lock cleanly across state lists.</li>',
-                    '<li>Authentication syncing stores metrics into Google Sheets ledger.</li>'
-                ];
-            }
-            
-          
-            rulesUl.innerHTML = rulesArray.join('\n');
+        // 🎯 FIXED POPUP PARAGRAPH ISSUE: जावास्क्रिप्ट अब innerHTML को हाथ नहीं लगाएगा
+        // यह सिर्फ CSS के जरिए लेआउट में पहले से बनी बुलेट लाइनों को ऑन/ऑफ करेगा
+        const enRules = document.querySelectorAll('.rule-line-item-en');
+        const hiRules = document.querySelectorAll('.rule-line-item-hi');
+        
+        if (currentLang === 'hi') {
+            enRules.forEach(el => el.style.setProperty('display', 'none', 'important'));
+            hiRules.forEach(el => el.style.setProperty('display', 'list-item', 'important'));
+        } else {
+            enRules.forEach(el => el.style.setProperty('display', 'list-item', 'important'));
+            hiRules.forEach(el => el.style.setProperty('display', 'none', 'important'));
         }
 
-        // switcher button active state alignment
         ['player-language-switcher-bar', 'review-language-switcher-bar'].forEach(barId => {
             const bar = document.getElementById(barId);
             if (bar) {
@@ -92,6 +77,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }
+
     function initLanguageSwitcher() {
         ['player-language-switcher-bar', 'review-language-switcher-bar'].forEach(barId => {
             const bar = document.getElementById(barId);
@@ -129,7 +115,6 @@ document.addEventListener('DOMContentLoaded', () => {
         if(startModal) startModal.classList.remove('active');
         if(quizSection) quizSection.style.display = "block";
         
-        // 🎯 DYNAMIC DATA SIZE DETECTOR: लिक्विड से आ रहे एरे की रियल लेंथ चेक करना
         let len = 0;
         if (window.questionsRepo && window.questionsRepo.en) {
             len = window.questionsRepo.en.length;
@@ -137,7 +122,7 @@ document.addEventListener('DOMContentLoaded', () => {
         
         if (len === 0) {
             const qContainer = document.getElementById('questions-container');
-            if(qContainer) qContainer.innerHTML = "<p style='color:red; text-align:center;'>प्रश्नों का डेटा लोड नहीं हो सका। कृपया अपनी JSON फ़ाइल जांचें।</p>";
+            if(qContainer) qContainer.innerHTML = "<p style='color:red; text-align:center;'>प्रश्नों का डेटा लोड नहीं हो सका।</p>";
             return;
         }
 
