@@ -364,7 +364,7 @@ comments: false
     <!-- 2. Detailed Verification Solutions Matrix Review Mode Section Canvas -->
     <div id="review-questions" style="display: none; max-width: 800px; margin: 0 auto;">
         <div class="quiz-top-bar" style="margin-bottom: 32px;">
-            <h2 id="label-review-title" data-en="Review Solutions" data-hi="उत्तर और व्याख्या देखें" style="font-family:var(--font-display); font-size:20px; margin:0; color:var(--text-heading);">Review Solutions</h2>
+            <h2 id="label-review-title" data-en="Review Solutions" data-hi="उत्तर اور व्याख्या देखें" style="font-family:var(--font-display); font-size:20px; margin:0; color:var(--text-heading);">Review Solutions</h2>
             
             <!-- 🌐 Language Switch Also Available in Review Mode Bar Grid -->
             <div class="player-lang-toggle" id="review-language-switcher-bar">
@@ -507,7 +507,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (resultTitle) resultTitle.textContent = resultTitle.getAttribute(`data-${currentLang}`);
         if (startBtnEl) startBtnEl.textContent = startBtnEl.getAttribute(`data-${currentLang}`);
 
-        // 🎯 EMBEDDED TRIPLE-ATTACK DEEP FORCE MATRIX (कंसोल वाला वर्किंग कोड)
+        // 🎯 EMBEDDED TRIPLE-ATTACK DEEP FORCE MATRIX (FIXED)
         const forceRenderRules = () => {
             const rulesUl = document.getElementById('modal-start-rules');
             if (!rulesUl) return;
@@ -519,7 +519,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             const hiHTML = `
                 <div style="text-align: left; margin: 20px 0; padding-left: 10px; font-family: var(--font-body), sans-serif; font-size: 14px; line-height: 1.6; color: var(--text-paragraph);">
-                    <div style="margin-bottom: 12px; display: block;">• इस टेस्ट में कुल <strong>` + count + `</strong> महत्वपूर्ण बहुविकल्पीय प्रश्न शामिल हैं।</div>
+                    <div style="margin-bottom: 12px; display: block;">• इस टेस्ट में कुल <strong>${count}</strong> महत्वपूर्ण बहुविकल्पीय प्रश्न शामिल हैं।</div>
                     <div style="margin-bottom: 12px; display: block;">• टाइमर सक्रिय टेस्टिंग सेकंड की गणना निरंतर करता रहेगा।</div>
                     <div style="margin-bottom: 12px; display: block;">• एक बार सबमिट करने के बाद, परिणाम लॉक हो जाएंगे।</div>
                 </div>
@@ -527,20 +527,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
             const enHTML = `
                 <div style="text-align: left; margin: 20px 0; padding-left: 10px; font-family: var(--font-body), sans-serif; font-size: 14px; line-height: 1.6; color: var(--text-paragraph);">
-                    <div style="margin-bottom: 12px; display: block;">• This test contains <strong>` + count + `</strong> curated questions.</div>
+                    <div style="margin-bottom: 12px; display: block;">• This test contains <strong>${count}</strong> curated questions.</div>
                     <div style="margin-bottom: 12px; display: block;">• The timer tracks cumulative active testing seconds.</div>
                     <div style="margin-bottom: 12px; display: block;">• Once submitted, entries lock cleanly across state lists.</div>
                 </div>
             `;
 
-            const targetHTML = (currentLang === 'hi') ? hiHTML : enHTML;
-            
-            if (!rulesUl.innerHTML.includes('margin-bottom: 12px;')) {
-                rulesUl.innerHTML = targetHTML;
-            }
+            // Condition check completely removed to allow fresh layout on every execution
+            rulesUl.innerHTML = (currentLang === 'hi') ? hiHTML : enHTML;
         };
 
-        // तीन अलग-अलग बफ़र्स पर फ़ोर्स इन्जेक्शन
+        // Execution over multiple buffers to strictly handle delay offsets
         forceRenderRules();
         setTimeout(forceRenderRules, 100);
         setTimeout(forceRenderRules, 600);
