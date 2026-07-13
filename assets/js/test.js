@@ -1,4 +1,4 @@
-// 🌐 TyagiHub Test Center Engine — Secure Show/Hide Matrix Edition
+// 🌐 TyagiHub Test Center Engine — Secure Block Layout Matrix Edition
 // Path: /assets/js/test.js
 
 const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbw9Bz1KhUlIlKgy-lOpiI70oCMm28nbqhoBVUj1eg8uEH2iUcmaDP4Si9OXh0r37wiktg/exec";
@@ -52,16 +52,16 @@ document.addEventListener('DOMContentLoaded', () => {
         if (resultTitle) resultTitle.textContent = resultTitle.getAttribute(`data-${currentLang}`);
         if (startBtnEl) startBtnEl.textContent = startBtnEl.getAttribute(`data-${currentLang}`);
 
-        // 🎯 FIXED POPUP PARAGRAPH ISSUE: जावास्क्रिप्ट अब innerHTML को हाथ नहीं लगाएगा
-        // यह सिर्फ CSS के जरिए लेआउट में पहले से बनी बुलेट लाइनों को ऑन/ऑफ करेगा
+        // 🎯 FULLPROOF DOM LOCK: जावास्क्रिप्ट अब innerHTML को हाथ नहीं लगाएगा
+        // यह सिर्फ CSS के जरिए लेआउट में बने-बनाए div ब्लॉक्स को ऑन/ऑफ (Show/Hide) करेगा
         const enRules = document.querySelectorAll('.rule-line-item-en');
         const hiRules = document.querySelectorAll('.rule-line-item-hi');
         
         if (currentLang === 'hi') {
             enRules.forEach(el => el.style.setProperty('display', 'none', 'important'));
-            hiRules.forEach(el => el.style.setProperty('display', 'list-item', 'important'));
+            hiRules.forEach(el => el.style.setProperty('display', 'block', 'important'));
         } else {
-            enRules.forEach(el => el.style.setProperty('display', 'list-item', 'important'));
+            enRules.forEach(el => el.style.setProperty('display', 'block', 'important'));
             hiRules.forEach(el => el.style.setProperty('display', 'none', 'important'));
         }
 
