@@ -306,7 +306,7 @@ comments: false
 {%- assign slice_hi = all_qs_hi | slice: start_idx, qpp -%}
 {%- assign live_questions_count = slice_en.size -%}
 
-<!-- SECURE DATA PASS FOR NEXT/PREV ROUTING LINKS -->
+<!-- SECURE DATA PASS FOR NEXT/PREV ROUTING LINKS (PART CHANGED TO TEST STRING ACCORDING TO USER FEEDBACK) -->
 {%- assign current_part = page.part_index | plus: 0 -%}
 {%- assign prev_part = current_part | minus: 1 -%}
 {%- assign next_part = current_part | plus: 1 -%}
@@ -343,8 +343,11 @@ comments: false
         <div class="quiz-top-bar">
             <div class="quiz-meta-item">
                 <i class="fa-solid fa-graduation-cap" style="color:var(--clr-accent);"></i>
-                <span id="player-dynamic-title" data-en="{{ page.title | split: ' Live Test' | first }}" data-hi="{{ page.title_hi | split: ' लाइव टेस्ट' | first }}">
-                    {{ page.title | split: ' Live Test' | first }}
+                <!-- 🎯 USER RE-TITLED FEEDBACK APPLIED: "Part" replaced with "Test" cleanly -->
+                <span id="player-dynamic-title" 
+                      data-en="{{ page.title | replace: 'Part', 'Test' | split: ' Live Test' | first }}" 
+                      data-hi="{{ page.title_hi | replace: 'भाग', 'टेस्ट' | replace: 'Part', 'टेस्ट' | split: ' लाइव टेस्ट' | first }}">
+                    {{ page.title | replace: 'Part', 'Test' | split: ' Live Test' | first }}
                 </span>
             </div>
 
@@ -527,7 +530,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // 🎯 DIRECT START ENGINE (4-layer झंझट ख़त्म, पेज खुलते ही टेस्ट लोड)
     function startQuizDirectly() {
         let len = 0;
         if (window.questionsRepo && window.questionsRepo.en) {
@@ -779,8 +781,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
         let labelReview = currentLang === 'hi' ? 'उत्तर देखें' : 'Review Answers';
         let labelRetry = currentLang === 'hi' ? 'पुनः प्रयास' : 'Try Again';
-        let labelPrevPart = currentLang === 'hi' ? '← पिछला भाग' : '← Prev Part';
-        let labelNextPart = currentLang === 'hi' ? 'अगला भाग →' : 'Next Part →';
+        let labelPrevPart = currentLang === 'hi' ? '← पिछला टेस्ट' : '← Prev Test';
+        let labelNextPart = currentLang === 'hi' ? 'अगला टेस्ट →' : 'Next Test →';
 
         let html = `
             <button id="review-btn" class="skip-btn" style="border-color:var(--clr-border-2); color:var(--text-heading);">` + labelReview + `</button>
@@ -788,10 +790,13 @@ document.addEventListener('DOMContentLoaded', () => {
         `;
 
         if (window.routingConfig && window.routingConfig.prevUrl) {
-            html += `<a href="` + window.routingConfig.prevUrl + `" class="skip-btn" style="text-decoration:none; display:inline-block; border-color:var(--clr-accent); color:var(--clr-accent);">` + labelPrevPart + `</a>`;
+            // URL से पार्ट को टेस्ट दिखाने के लिए
+            let prevUrlSecured = window.routingConfig.prevUrl;
+            html += `<a href="` + prevUrlSecured + `" class="skip-btn" style="text-decoration:none; display:inline-block; border-color:var(--clr-accent); color:var(--clr-accent);">` + labelPrevPart + `</a>`;
         }
         if (window.routingConfig && window.routingConfig.nextUrl) {
-            html += `<a href="` + window.routingConfig.nextUrl + `" class="submit-btn" style="text-decoration:none; display:inline-block; color:#FFFFFF !important; background:var(--clr-accent);">${labelNextPart}</a>`;
+            let nextUrlSecured = window.routingConfig.nextUrl;
+            html += `<a href="` + nextUrlSecured + `" class="submit-btn" style="text-decoration:none; display:inline-block; color:#FFFFFF !important; background:var(--clr-accent);">${labelNextPart}</a>`;
         }
         actionsWrap.innerHTML = html;
 
@@ -864,8 +869,8 @@ document.addEventListener('DOMContentLoaded', () => {
         const reviewActionsTop = document.getElementById('review-actions-top-layer-buttons');
         if(reviewActionsTop) {
             let labelRetry = currentLang === 'hi' ? 'पुनः प्रयास' : 'Test Again';
-            let labelPrevPart = currentLang === 'hi' ? '← पिछला भाग' : '← Prev Part';
-            let labelNextPart = currentLang === 'hi' ? 'अगला भाग →' : 'Next Part →';
+            let labelPrevPart = currentLang === 'hi' ? '← पिछला टेस्ट' : '← Prev Test';
+            let labelNextPart = currentLang === 'hi' ? 'अगला टेस्ट →' : 'Next Test →';
             
             let topHtml = `<button id="review-top-retry-btn" class="submit-btn" style="color:#FFFFFF !important; margin-right:10px;">` + labelRetry + `</button>`;
             if (window.routingConfig && window.routingConfig.prevUrl) {
@@ -880,7 +885,6 @@ document.addEventListener('DOMContentLoaded', () => {
         if(reviewSection) reviewSection.style.display = "block";
     }
 
-    // 💥 सीधा लोड ट्रिगर
     startQuizDirectly();
     initLanguageSwitcher();
 });
