@@ -1,0 +1,395 @@
+---
+layout: default
+---
+
+<!-- Premium Quiz Gameplay Matrix Layout Styles -->
+<style>
+  .quiz-gameplay-wrapper {
+    max-width: var(--container-max, 1200px);
+    margin: var(--space-12, 48px) auto;
+    padding: 0 var(--space-4, 16px);
+    min-height: 80vh;
+    margin-top: 70px;
+  }
+
+  .quiz-page-title {
+    font-family: var(--font-display), sans-serif;
+    font-size: var(--fs-xl, 1.75rem);
+    font-weight: var(--fw-black, 600);
+    color: var(--text-heading);
+    margin-bottom: var(--space-6, 24px);
+  }
+
+  .quiz-top-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: var(--bg-surface);
+    border: 1px solid var(--clr-border);
+    border-radius: var(--radius-md, 12px);
+    padding: var(--space-4, 16px) var(--space-6, 24px);
+    margin-bottom: var(--space-6, 24px);
+    box-shadow: var(--shadow-sm);
+  }
+
+  .quiz-meta-item {
+    font-family: var(--font-body), sans-serif;
+    font-size: var(--fs-sm, 0.95rem);
+    color: var(--text-heading);
+    font-weight: var(--fw-bold, 550);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  #timer { color: var(--clr-accent); }
+
+  #quiz-layout {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-6, 24px);
+  }
+
+  @media(min-width: 1024px) {
+    #quiz-layout { grid-template-columns: 2.8fr 1.2fr; }
+  }
+
+  #question-area {
+    background: var(--bg-surface);
+    border: 1px solid var(--clr-border);
+    border-radius: var(--radius-lg, 18px);
+    padding: var(--space-6, 24px);
+    box-shadow: var(--shadow-sm);
+    display: flex;
+    flex-direction: column;
+    min-height: 360px;
+  }
+
+  @media(min-width: 768px) {
+    #question-area { padding: var(--space-8, 32px); }
+  }
+
+  .question-block .question {
+    font-family: var(--font-display), sans-serif;
+    font-size: var(--fs-md, 1.125rem);
+    font-weight: var(--fw-bold, 550);
+    color: var(--text-heading);
+    line-height: var(--lh-snug, 1.4);
+    margin: 0 0 var(--space-6, 24px) 0;
+  }
+
+  .question-block .options {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3, 12px);
+    margin-bottom: var(--space-6, 24px);
+  }
+
+  .question-block .options label {
+    background: var(--bg-body);
+    border: 1px solid var(--clr-border);
+    border-radius: var(--radius-md, 12px);
+    padding: var(--space-4, 16px);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    cursor: pointer;
+    font-family: var(--font-body), sans-serif;
+    font-size: var(--fs-sm, 0.95rem);
+    color: var(--text-paragraph);
+    transition: all var(--ease-fast);
+    user-select: none;
+  }
+
+  .question-block .options label:hover {
+    border-color: var(--clr-border-2);
+    background: var(--hover-bg-1);
+  }
+
+  .question-block .options input[type="radio"] {
+    accent-color: var(--clr-accent);
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+  }
+
+  #question-navigation-buttons {
+    margin-top: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: var(--space-4, 16px);
+    padding-top: var(--space-4, 16px);
+    border-top: 1px solid var(--clr-border);
+  }
+
+  .skip-btn, .next-btn, .submit-btn, .tc-action-btn, .retry-btn, .review-btn {
+    font-family: var(--font-body), sans-serif;
+    font-size: var(--fs-xs, 0.89rem);
+    font-weight: var(--fw-bold, 550);
+    padding: 10px 24px;
+    border-radius: var(--radius-full, 9999px);
+    cursor: pointer;
+    transition: all var(--ease-fast);
+    border: 1px solid transparent;
+  }
+
+  .skip-btn { background: transparent; border-color: var(--clr-border); color: var(--text-muted); }
+  .skip-btn:hover { border-color: var(--clr-border-2); color: var(--text-heading); }
+  .next-btn { background: var(--clr-border); border-color: var(--clr-border-2); color: var(--text-heading); }
+  .next-btn:hover { background: var(--hover-bg-1); }
+  .submit-btn { background: var(--clr-accent); color: #000000; box-shadow: var(--shadow-sm); }
+  .submit-btn:hover { opacity: 0.9; box-shadow: var(--shadow-accent); }
+
+  #question-palette-container {
+    background: var(--bg-surface);
+    border: 1px solid var(--clr-border);
+    border-radius: var(--radius-lg, 18px);
+    padding: var(--space-5, 20px);
+    box-shadow: var(--shadow-sm);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4, 16px);
+    height: fit-content;
+  }
+
+  .palette-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--clr-border);
+    padding-bottom: var(--space-2, 8px);
+  }
+
+  .palette-header h4 { font-family: var(--font-display), sans-serif; margin: 0; color: var(--text-heading); font-size: 15px; }
+  .palette-header .submit-btn { padding: 6px 16px; font-size: 11px; }
+
+  #question-palette {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 8px;
+  }
+
+  .palette-item {
+    aspect-ratio: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--radius-sm, 8px);
+    font-family: var(--font-body), sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all var(--ease-fast);
+    border: 1px solid var(--clr-border);
+  }
+
+  .palette-item.unvisited { background: var(--bg-body); color: var(--text-muted); }
+  .palette-item.skipped { background: var(--clr-border); color: var(--text-heading); border-color: var(--clr-border-2); }
+  .palette-item.answered { background: var(--clr-accent-glow); color: var(--clr-accent); border-color: var(--clr-accent); }
+  
+  .palette-item.current {
+    ring: 2px solid var(--clr-accent);
+    outline: 2px solid var(--clr-accent);
+    outline-offset: 1px;
+  }
+
+  .quiz-modal-backdrop {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(8px);
+    z-index: 10000;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: var(--space-4, 16px);
+  }
+
+  .quiz-modal-backdrop.active { display: flex; }
+
+  .quiz-modal-content-panel {
+    background: var(--bg-surface);
+    border: 1px solid var(--clr-border);
+    border-radius: var(--radius-lg, 18px);
+    max-width: 500px;
+    width: 100%;
+    padding: var(--space-6, 24px);
+    box-shadow: var(--shadow-md);
+    text-align: center;
+    animation: modalSlide var(--ease-normal, 250ms) forwards;
+  }
+
+  .quiz-modal-content-panel ul {
+    text-align: left;
+    margin: 0 0 var(--space-6, 24px) var(--space-4, 16px);
+    color: var(--text-paragraph);
+    font-size: var(--fs-sm, 0.95rem);
+    line-height: 1.6;
+  }
+
+  @keyframes modalSlide {
+    from { transform: translateY(15px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+  }
+
+  .quiz-modal-content-panel h2 { font-family: var(--font-display), sans-serif; color: var(--text-heading); margin: 0 0 var(--space-4, 16px) 0; }
+  .quiz-modal-content-panel p { font-size: var(--fs-sm, 0.95rem); color: var(--text-paragraph); line-height: var(--lh-normal, 1.6); margin: 0 0 var(--space-6, 24px) 0; }
+  .modal-actions-track { display: flex; justify-content: center; gap: var(--space-3, 12px); flex-wrap: wrap; }
+
+  .question-block.review {
+    background: var(--bg-surface);
+    border: 1px solid var(--clr-border);
+    border-radius: var(--radius-lg, 18px);
+    padding: var(--space-6, 24px);
+    margin-bottom: var(--space-6, 24px);
+  }
+
+  .question-block.review label.correct-option {
+    border-color: #28a745 !important;
+    background: rgba(40, 167, 69, 0.05) !important;
+    color: #28a745 !important;
+  }
+
+  .question-block.review label.incorrect-option {
+    border-color: #dc3545 !important;
+    background: rgba(220, 53, 69, 0.05) !important;
+    color: #dc3545 !important;
+  }
+
+  .question-block.review .explanation {
+    background: var(--bg-body);
+    border: 1px solid var(--clr-border);
+    border-radius: var(--radius-md, 12px);
+    padding: var(--space-4, 16px);
+    font-size: var(--fs-xs, 0.89rem);
+    color: var(--text-paragraph);
+    line-height: var(--lh-normal, 1.6);
+    margin-top: var(--space-4, 16px);
+  }
+</style>
+
+{%- comment -%}
+  ==================================================================
+  CORE LIQUID CORE LOGIC FOR LIVE SLICE QUESTION DETECTION
+  ==================================================================
+{%- endcomment -%}
+{%- assign map_file = page.category_id -%}
+{%- if page.category_id == 'medieval-history' -%}{%- assign map_file = 'medieval-history' -%}{%- endif -%}
+{%- if page.category_id == 'modern-history' -%}{%- assign map_file = 'modern-history' -%}{%- endif -%}
+
+{%- if page.lang == 'hi' -%}
+  {%- assign all_qs = site.data.quiz.hi[map_file] -%}
+{%- else -%}
+  {%- assign all_qs = site.data.quiz.en[map_file] -%}
+{%- endif -%}
+
+{%- assign qpp = page.questions_per_page | plus: 0 -%}
+{%- assign start_idx = page.part_index | minus: 1 | multiplied_by: qpp -%}
+
+{%- comment -%}
+  यहाँ हम slice की मदद से सटीक प्रश्नों का उप-समूह (Sub-array) निकाल रहे हैं
+  ताकि हमें इस विशिष्ट पार्ट के प्रश्नों की वास्तविक संख्या (Live Size) मिल सके।
+{%- endcomment -%}
+{%- assign questions_slice = all_qs | slice: start_idx, qpp -%}
+{%- assign live_questions_count = questions_slice.size -%}
+
+<!-- SECURE RUNTIME RUNNING INTERFACE ATTRIBUTE ANCHOR -->
+<script>document.body.setAttribute('data-quiz-id', '{{ page.quiz_id }}');</script>
+
+<main class="quiz-gameplay-wrapper">
+    
+    <!-- 1. Live Gameplay Workspace Monitor Section Panel -->
+    <div id="quiz-section" style="display: none;">
+        <div class="quiz-top-bar">
+            <div class="quiz-meta-item">
+                <i class="fa-solid fa-graduation-cap" style="color:var(--clr-accent);"></i>
+                <span>{{ page.title | split: ' Live Test' | first }}</span>
+            </div>
+            <div id="timer" class="quiz-meta-item">
+                <i class="fa-regular fa-clock"></i>
+                <strong>{% if page.lang == 'hi' %}समय:{% else %}Time:{% endif %}</strong> 0:00
+            </div>
+        </div>
+
+        <!-- Split Grid Target Elements Layout Vector -->
+        <form id="quiz-form" onsubmit="return false;"></form>
+    </div>
+
+    <!-- 2. Detailed Verification Solutions Matrix Review Mode Section Canvas -->
+    <div id="review-questions" style="display: none; max-width: 800px; margin: 0 auto;">
+        <div class="quiz-top-bar" style="margin-bottom: 32px;">
+            <h2 style="font-family:var(--font-display); font-size:20px; margin:0; color:var(--text-heading);">
+                {% if page.lang == 'hi' %}उत्तर और व्याख्या देखें{% else %}Review Solutions{% endif %}
+            </h2>
+            <button id="review-retry-btn" class="submit-btn">{% if page.lang == 'hi' %}पुनः प्रयास करें{% else %}Test Again{% endif %}</button>
+        </div>
+        <div id="review-container"></div>
+    </div>
+
+</main>
+
+<!-- 🎭 OVERLAYS DIALOGS STATE BLOCKS (Modals Pipeline Layer) -->
+
+<!-- A. Entry Rule Book Gate Modal verification -->
+<div id="startModal" class="quiz-modal-backdrop active">
+    <div class="quiz-modal-content-panel">
+        <div style="font-size:2.5rem; margin-bottom:8px;">📜</div>
+        <h2>{% if page.lang == 'hi' %}परीक्षण नियम और निर्देश{% else %}Test Rules &amp; Protocols{% endif %}</h2>
+        <ul>
+            {% if page.lang == 'hi' %}
+            <li>इस टेस्ट में कुल {{ live_questions_count }} महत्वपूर्ण बहुविकल्पीय प्रश्न शामिल हैं।</li>
+            <li>टाइमर सक्रिय टेस्टिंग सेकंड की गणना निरंतर करता रहेगा।</li>
+            <li>एक बार सबमिट करने के बाद, परिणाम लॉक हो जाएंगे।</li>
+            <li>आपका स्कोर लाइव Google Sheets लीडरबोर्ड पर अपडेट किया किया जाएगा।</li>
+            {% else %}
+            <li>This test contains {{ live_questions_count }} curated questions.</li>
+            <li>The timer tracks cumulative active testing seconds.</li>
+            <li>Once submitted, entries lock cleanly across state lists.</li>
+            <li>Authentication syncing stores metrics into Google Sheets ledger.</li>
+            {% endif %}
+        </ul>
+        <div class="modal-actions-track">
+            <button id="start-btn" class="submit-btn" style="padding:12px 36px; font-size:14px;">
+                {% if page.lang == 'hi' %}टेस्ट शुरू करें{% else %}Start Test{% endif %}
+            </button>
+        </div>
+    </div>
+</div>
+
+<!-- B. Analysis Summary Result Modal Block -->
+<div id="resultModal" class="quiz-modal-backdrop">
+    <div class="quiz-modal-content-panel" style="max-width: 450px;">
+        <div style="font-size:2.5rem; margin-bottom:8px;">🎯</div>
+        <h2>{% if page.lang == 'hi' %}आपका परिणाम प्रोफ़ाइल{% else %}Your Result Profile{% endif %}</h2>
+        <div id="resultContent" style="margin-bottom: 24px;"></div>
+        <div class="modal-actions-track" style="gap:15px;">
+            <button id="review-btn" class="skip-btn" style="border-color:var(--clr-border-2); color:var(--text-heading);">
+                {% if page.lang == 'hi' %}उत्तर देखें{% else %}Review Answers{% endif %}
+            </button>
+            <button id="retry-btn" class="submit-btn">{% if page.lang == 'hi' %}पुनः प्रयास करें{% else %}Try Again{% endif %}</button>
+        </div>
+    </div>
+</div>
+
+<!-- 📦 Dynamic Injected Question Array Engine Mapping Pipeline Block -->
+<script>
+    var questions = [
+      {%- for q in questions_slice -%}
+        {
+          question: {{ q.question | jsonify }},
+          options: [
+            { text: "A. " | append: q.option_a, value: "a" },
+            { text: "B. " | append: q.option_b, value: "b" },
+            { text: "C. " | append: q.option_c, value: "c" },
+            { text: "D. " | append: q.option_d, value: "d" }
+          ],
+          correctOption: {{ q.correct_answer | downcase | jsonify }},
+          explanation: {{ q.explanation | jsonify }}
+        }{%- unless forloop.last -%},{%- endunless -%}
+      {%- endfor -%}
+    ];
+</script>
+
+<!-- Core Javascript Engine Hook Module Alignment -->
+<script type="module" src="/assets/js/test.js"></script>
