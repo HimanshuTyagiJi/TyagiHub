@@ -1,19 +1,21 @@
-// 🌐 TyagiHub Live Quiz Engine & Google Sheet Core Pipe
+// 🌐 TyagiHub Live Quiz Engine & Google Sheet Core Pipe — Instant Bilingual Sync Edition
 // Path: /assets/js/test.js
 
-// Connected cleanly to your newly deployed auto-injecting Apps Script URL
 const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbw9Bz1KhUlIlKgy-lOpiI70oCMm28nbqhoBVUj1eg8uEH2iUcmaDP4Si9OXh0r37wiktg/exec";
 
 document.addEventListener('DOMContentLoaded', () => {
     const quizId = document.body.dataset.quizId;
     if (!quizId) return;
 
+    // --- Language State Sync Setup ---
+    let currentLang = localStorage.getItem('th-quiz-lang') || 'en';
+
     // --- State Management ---
     let timerInterval;
     let timeTaken = 0;
     let currentQuestionIndex = 0;
     let userAnswers = []; 
-    let shuffledQuestions = [];
+    let shuffledIndices = [];
 
     // --- DOM Elements ---
     const quizForm = document.getElementById("quiz-form");
@@ -27,7 +29,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const retryBtn = document.getElementById("retry-btn");
     const reviewRetryBtn = document.getElementById("review-retry-btn");
 
-    // 🎯 REPLACED FIREBASE AUTH WITH NATIVE LOCALSTORAGE LOGGED-IN USER MATRIX
     function getLoggedUser() {
         try {
             const storedUser = localStorage.getItem("tc_user");
@@ -39,18 +40,93 @@ document.addEventListener('DOMContentLoaded', () => {
                     photoURL: parsed.p || ""
                 };
             }
-        } catch (e) {
-            console.error("Error reading local login session:", e);
-        }
+        } catch (e) { console.error("Error reading session:", e); }
         return null;
+    }
+
+    // Dynamic localization text sync handler
+    function syncLanguageUI() {
+        const titleEl = document.getElementById('player-dynamic-title');
+        const labelTime = document.getElementById('label-time');
+        const labelReview = document.getElementById('label-review-title');
+        
+        if (titleEl) titleEl.textContent = titleEl.getAttribute(`data-${currentLang}`);
+        if (labelTime) labelTime.textContent = labelTime.getAttribute(`data-${currentLang}`);
+        if (labelReview) labelReview.textContent = labelReview.getAttribute(`data-${currentLang}`);
+        
+        // Modal & buttons text rewrite hooks
+        document.querySelectorAll('[data-en]').forEach(el => {
+            if(el.id !== 'player-dynamic-title' && el.id !== 'label-time' && el.id !== 'label-review-title') {
+                el.textContent = el.getAttribute(`data-${currentLang}`);
+            }
+        });
+
+        // Rules modal text updater
+        const rulesUl = document.getElementById('modal-start-rules');
+        if (rulesUl) {
+            const count = rulesUl.getAttribute('data-count');
+            if (currentLang === 'hi') {
+                rulesUl.innerHTML = `
+                    <li>इस टेस्ट में कुल ${count} महत्वपूर्ण बहुविकल्पीय प्रश्न शामिल हैं।</li>
+                    <li>टाइमर सक्रिय टेस्टिंग सेकंड की गणना निरंतर करता रहेगा।</li>
+                    <li>एक बार सबमिट करने के बाद, परिणाम लॉक हो जाएंगे।</li>
+                    <li>आपका स्कोर लाइव Google Sheets लीडरबोर्ड पर अपडेट किया जाएगा।</li>
+                `;
+            } else {
+                rulesUl.innerHTML = `
+                    <li>This test contains ${count} curated questions.</li>
+                    <li>The timer tracks cumulative active testing seconds.</li>
+                    <li>Once submitted, entries lock cleanly across state lists.</li>
+                    <li>Authentication syncing stores metrics into Google Sheets ledger.</li>
+                `;
+            }
+        }
+
+        // Toggle active button style
+        const btnEn = document.getElementById('pl-btn-en');
+        const btnHi = document.getElementById('pl-btn-hi');
+        if(btnEn && btnHi) {
+            btnEn.classList.toggle('active', currentLang === 'en');
+            btnHi.classList.toggle('active', currentLang === 'hi');
+        }
+    }
+
+    function initLanguageSwitcher() {
+        const btnEn = document.getElementById('pl-btn-en');
+        const btnHi = document.getElementById('pl-btn-hi');
+        
+        if(btnEn && btnHi) {
+            btnEn.addEventListener('click', () => switchLanguage('en'));
+            btnHi.addEventListener('click', () => switchLanguage('hi'));
+        }
+        syncLanguageUI();
+    }
+
+    function switchLanguage(targetLang) {
+        if (currentLang === targetLang) return;
+        currentLang = targetLang;
+        localStorage.setItem('th-quiz-lang', targetLang);
+        
+        syncLanguageUI();
+        
+        // अगर टेस्ट चल रहा है या रिव्यू मोड खुला है, तो यूआई को दोबारा रिफ्रेस करेंगे बिना स्टेट खोए
+        if (quizSection && quizSection.style.display === "block") {
+            displayQuestion(currentQuestionIndex);
+        } else if (reviewSection && reviewSection.style.display === "block") {
+            reviewQuestions();
+        }
     }
 
     function startQuiz() {
         if(startModal) startModal.classList.remove('active');
         if(quizSection) quizSection.style.display = "block";
         
-        shuffledQuestions = [...questions].sort(() => Math.random() - 0.5);
-        userAnswers = new Array(shuffledQuestions.length).fill(null);
+        // सवालों के मूल रेपो की साइज के अनुसार इंडेक्स जनरेट करके शफल करना
+        const len = window.questionsRepo.en.length;
+        shuffledIndices = Array.from({length: len}, (_, i) => i);
+        shuffledIndices.sort(() => Math.random() - 0.5);
+        
+        userAnswers = new Array(len).fill(null);
         currentQuestionIndex = 0;
 
         renderQuizUI();
@@ -68,8 +144,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 </div>
                 <div id="question-palette-container">
                     <div class="palette-header">
-                        <h4>Questions</h4>
-                        <button class="submit-btn" id="main-submit-btn" title="Submit Test">Submit</button>
+                        <h4 data-en="Questions" data-hi="प्रश्न सूची">${currentLang === 'hi' ? 'प्रश्न सूची' : 'Questions'}</h4>
+                        <button class="submit-btn" id="main-submit-btn" data-en="Submit" data-hi="सबमिट करें">${currentLang === 'hi' ? 'सबमिट करें' : 'Submit'}</button>
                     </div>
                     <div id="question-palette"></div>
                 </div>
@@ -77,9 +153,8 @@ document.addEventListener('DOMContentLoaded', () => {
         `;
         
         document.getElementById('main-submit-btn').addEventListener('click', () => {
-             if (confirm("Are you sure you want to submit the test?")) {
-                calculateResult();
-            }
+             const msg = currentLang === 'hi' ? "क्या आप वाकई टेस्ट सबमिट करना चाहते हैं?" : "Are you sure you want to submit the test?";
+             if (confirm(msg)) { calculateResult(); }
         });
 
         displayQuestion(currentQuestionIndex);
@@ -91,7 +166,9 @@ document.addEventListener('DOMContentLoaded', () => {
         const navigationContainer = document.getElementById('question-navigation-buttons');
         if (!questionsContainer || !navigationContainer) return;
 
-        const q = shuffledQuestions[index];
+        // करंट एक्टिव भाषा के रेपो से शफल्ड इंडेक्स का सवाल निकालना
+        const actualIdx = shuffledIndices[index];
+        const q = window.questionsRepo[currentLang][actualIdx];
         
         const questionHTML = `
             <div class="question-block" id="question-${index}">
@@ -115,22 +192,25 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
         
-        let navHTML = `<button type="button" class="skip-btn">Skip</button>`;
-        if (index < shuffledQuestions.length - 1) {
-            navHTML += `<button type="button" class="next-btn">Next</button>`;
+        let labelSkip = currentLang === 'hi' ? 'छोड़ें' : 'Skip';
+        let labelNext = currentLang === 'hi' ? 'अगला' : 'Next';
+        let labelSubmit = currentLang === 'hi' ? 'सबमिट करें' : 'Submit';
+
+        let navHTML = `<button type="button" class="skip-btn">${labelSkip}</button>`;
+        if (index < shuffledIndices.length - 1) {
+            navHTML += `<button type="button" class="next-btn">${labelNext}</button>`;
         } else {
-            navHTML += `<button type="button" class="submit-btn">Submit</button>`;
+            navHTML += `<button type="button" class="submit-btn">${labelSubmit}</button>`;
         }
         navigationContainer.innerHTML = navHTML;
 
         navigationContainer.querySelector('.skip-btn').addEventListener('click', skipQuestion);
-        if (index < shuffledQuestions.length - 1) {
+        if (index < shuffledIndices.length - 1) {
             navigationContainer.querySelector('.next-btn').addEventListener('click', nextQuestion);
         } else {
             navigationContainer.querySelector('.submit-btn').addEventListener('click', () => {
-                if (confirm("Are you sure you want to submit the test?")) {
-                    calculateResult();
-                }
+                const msg = currentLang === 'hi' ? "क्या आप वाकई टेस्ट सबमिट करना चाहते हैं?" : "Are you sure you want to submit the test?";
+                if (confirm(msg)) { calculateResult(); }
             });
         }
 
@@ -142,13 +222,12 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!paletteContainer) return;
         
         let paletteHTML = '';
-        for (let i = 0; i < shuffledQuestions.length; i++) {
+        for (let i = 0; i < shuffledIndices.length; i++) {
             let statusClass = 'unvisited';
             if (userAnswers[i] === 'skipped') statusClass = 'skipped';
             else if (userAnswers[i] !== null) statusClass = 'answered';
 
             if (i === currentQuestionIndex) statusClass += ' current';
-            
             paletteHTML += `<div class="palette-item ${statusClass}" data-index="${i}">${i + 1}</div>`;
         }
         paletteContainer.innerHTML = paletteHTML;
@@ -162,32 +241,31 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function nextQuestion() {
-        if (currentQuestionIndex < shuffledQuestions.length - 1) {
+        if (currentQuestionIndex < shuffledIndices.length - 1) {
             displayQuestion(currentQuestionIndex + 1);
         }
     }
 
     function skipQuestion() {
         userAnswers[currentQuestionIndex] = 'skipped';
-        if (currentQuestionIndex < shuffledQuestions.length - 1) {
+        if (currentQuestionIndex < shuffledIndices.length - 1) {
             nextQuestion();
         } else {
-            if (confirm("This is the last question. Are you sure you want to submit the test?")) {
-                calculateResult();
-            }
+            const msg = currentLang === 'hi' ? "यह अंतिम प्रश्न है। क्या आप टेस्ट सबमिट करना चाहते हैं?" : "This is the last question. Are you sure you want to submit the test?";
+            if (confirm(msg)) { calculateResult(); }
         }
     }
     
     function startTimer() {
         let seconds = 0;
-        const timerElement = document.getElementById("timer");
+        const timerClock = document.getElementById("timer-clock");
         timerInterval = setInterval(() => {
             seconds++;
             timeTaken = seconds;
             let min = Math.floor(seconds / 60);
             let sec = seconds % 60;
-            if (timerElement) {
-                timerElement.innerHTML = `<strong>Time:</strong> ${min}:${sec < 10 ? "0" + sec : sec}`;
+            if (timerClock) {
+                timerClock.textContent = `${min}:${sec < 10 ? "0" + sec : sec}`;
             }
         }, 1000);
     }
@@ -198,7 +276,9 @@ document.addEventListener('DOMContentLoaded', () => {
         let incorrectCount = 0;
         let skippedCount = 0;
 
-        shuffledQuestions.forEach((q, index) => {
+        shuffledIndices.forEach((actualIdx, index) => {
+            // सही विकल्प का मिलान बेस इंग्लिश डेटा से ही करेंगे क्योंकि दोनों भाषाओँ का आर्किटेक्चर अलाइन है
+            const q = window.questionsRepo.en[actualIdx];
             const userAnswer = userAnswers[index];
             if (userAnswer === 'skipped' || userAnswer === null) {
                 skippedCount++;
@@ -209,7 +289,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
 
-        const totalQuestions = shuffledQuestions.length;
+        const totalQuestions = shuffledIndices.length;
         const percentage = totalQuestions > 0 ? (correctCount / totalQuestions) * 100 : 0;
 
         const greenDashArray = `${percentage}, 100`;
@@ -220,6 +300,14 @@ document.addEventListener('DOMContentLoaded', () => {
         if(quizForm) quizForm.innerHTML = ''; 
 
         if (resultContent) {
+            let txtTotal = currentLang === 'hi' ? 'कुल प्रश्न' : 'Total Questions';
+            let txtCorrect = currentLang === 'hi' ? 'सही उत्तर' : 'Correct';
+            let txtIncorrect = currentLang === 'hi' ? 'गलत उत्तर' : 'Incorrect';
+            let txtSkipped = currentLang === 'hi' ? 'छोड़े गए' : 'Skipped';
+            let txtTime = currentLang === 'hi' ? 'कुल समय' : 'Total Time';
+            let txtMin = currentLang === 'hi' ? 'मिनट' : 'min';
+            let txtSec = currentLang === 'hi' ? 'सेकंड' : 'sec';
+
             resultContent.innerHTML = `
                 <div style="text-align: center;">
                     <div style="position: relative; width: 150px; height: 150px; margin: 1rem auto;">
@@ -230,11 +318,11 @@ document.addEventListener('DOMContentLoaded', () => {
                         </svg>
                         <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 1.5rem; font-weight: bold; color: var(--text-color);">${percentage.toFixed(2)}%</div>
                     </div>
-                    <p>Total Questions: ${totalQuestions}</p>
-                    <p style="color: var(--success-color, #28a745); font-weight: bold;">Correct: ${correctCount}</p>
-                    <p style="color: var(--danger-color, #dc3545); font-weight: bold;">Incorrect: ${incorrectCount}</p>
-                    <p style="color: var(--secondary-color, #6c757d);">Skipped: ${skippedCount}</p>
-                    <p>Total Time: ${Math.floor(timeTaken / 60)} min ${timeTaken % 60} sec</p>
+                    <p>${txtTotal}: ${totalQuestions}</p>
+                    <p style="color: var(--success-color, #28a745); font-weight: bold;">${txtCorrect}: ${correctCount}</p>
+                    <p style="color: var(--danger-color, #dc3545); font-weight: bold;">${txtIncorrect}: ${incorrectCount}</p>
+                    <p style="color: var(--secondary-color, #6c757d);">${txtSkipped}: ${skippedCount}</p>
+                    <p>${txtTime}: ${Math.floor(timeTaken / 60)} ${txtMin} ${timeTaken % 60} ${txtSec}</p>
                 </div>`;
         }
         
@@ -279,21 +367,26 @@ document.addEventListener('DOMContentLoaded', () => {
         const reviewContainer = document.getElementById("review-container");
 
         let reviewHTML = "";
-        if (!shuffledQuestions || !userAnswers) {
+        if (!shuffledIndices || !userAnswers) {
             if(reviewContainer) reviewContainer.innerHTML = "<p>Review data is incomplete.</p>";
             if(reviewSection) reviewSection.style.display = "block";
             return;
         }
 
-        shuffledQuestions.forEach((q, index) => {
+        shuffledIndices.forEach((actualIdx, index) => {
+            const q = window.questionsRepo[currentLang][actualIdx];
+            const qEn = window.questionsRepo.en[actualIdx]; // सही विकल्प का मिलान हमेशा बेस की से होगा
             const userAnswer = userAnswers[index];
+            
+            let labelExp = currentLang === 'hi' ? 'व्याख्या:' : 'Explanation:';
+
             reviewHTML += `
                 <div class="question-block review">
                     <p class="question">${index + 1}. ${q.question}</p>
                     <div class="options">
                         ${q.options.map(opt => {
                             const isUserAnswer = userAnswer === opt.value;
-                            const isOriginalCorrect = opt.value === q.correctOption;
+                            const isOriginalCorrect = opt.value === qEn.correctOption;
                             let className = '';
                             if (isOriginalCorrect) className = 'correct-option';
                             else if (isUserAnswer && !isOriginalCorrect) className = 'incorrect-option';
@@ -304,7 +397,7 @@ document.addEventListener('DOMContentLoaded', () => {
                                     </label>`;
                         }).join('')}
                     </div>
-                    <div class="explanation"><strong>Explanation:</strong> ${q.explanation}</div>
+                    <div class="explanation"><strong>${labelExp}</strong> ${q.explanation}</div>
                 </div>`;
         });
 
@@ -317,5 +410,5 @@ document.addEventListener('DOMContentLoaded', () => {
     if (retryBtn) retryBtn.addEventListener('click', retryQuiz);
     if (reviewRetryBtn) reviewRetryBtn.addEventListener('click', retryQuiz);
     
-    if(startModal) startModal.classList.add('active');
+    initLanguageSwitcher();
 });
