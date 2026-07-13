@@ -303,11 +303,24 @@ comments: false
     display: list-item !important;
     list-style-type: disc !important;
   }
+
+  /* 🏆 CATEGORY CARD BOX STYLES */
+  .category-history-box {
+    background: var(--hover-bg-1, #f8f9fa);
+    border: 1px solid var(--clr-border);
+    border-radius: var(--radius-md, 12px);
+    padding: 12px 16px;
+    margin-bottom: 20px;
+    text-align: left;
+    font-family: var(--font-body), sans-serif;
+    font-size: 13px;
+    color: var(--text-paragraph);
+  }
 </style>
 
 {%- comment -%}
   ==================================================================
-  CORE LIQUID STREAM FETCHING (CATEGORIES ALIGNMENT SYNCED)
+  CORE LIQUID STREAM FETCHING
   ==================================================================
 {%- endcomment -%}
 {%- assign map_file = page.category_id -%}
@@ -350,7 +363,10 @@ comments: false
 {%- endif -%}
 
 <!-- SECURE RUNTIME RUNNING INTERFACE ATTRIBUTE ANCHOR -->
-<script>document.body.setAttribute('data-quiz-id', '{{ page.quiz_id }}');</script>
+<script>
+    document.body.setAttribute('data-quiz-id', '{{ page.quiz_id }}');
+    document.body.setAttribute('data-category-id', '{{ page.category_id }}');
+</script>
 
 <main class="quiz-gameplay-wrapper">
     
@@ -364,7 +380,7 @@ comments: false
                 </span>
             </div>
 
-            <!-- 🌐 In House Live Instant Language Switcher (No Reload) -->
+            <!-- 🌐 Language Switcher Button -->
             <div class="player-lang-toggle" id="player-language-switcher-bar">
                 <button class="player-lang-btn active" id="pl-btn-en">EN</button>
                 <button class="player-lang-btn" id="pl-btn-hi">HI</button>
@@ -376,31 +392,25 @@ comments: false
             </div>
         </div>
 
-        <!-- Split Grid Target Elements Layout Vector -->
         <form id="quiz-form" onsubmit="return false;"></form>
     </div>
 
-    <!-- 2. Detailed Verification Solutions Matrix Review Mode Section Canvas -->
+    <!-- 2. Review Solutions Matrix Mode Section Canvas -->
     <div id="review-questions" style="display: none; max-width: 800px; margin: 0 auto;">
         <div class="quiz-top-bar" style="margin-bottom: 32px;">
             <h2 id="label-review-title" data-en="Review Solutions" data-hi="उत्तर और व्याख्या देखें" style="font-family:var(--font-display); font-size:20px; margin:0; color:var(--text-heading);">Review Solutions</h2>
             
-            <!-- 🌐 Language Switch Also Available in Review Mode Bar Grid -->
             <div class="player-lang-toggle" id="review-language-switcher-bar">
                 <button class="player-lang-btn" id="rev-btn-en">EN</button>
                 <button class="player-lang-btn" id="rev-btn-hi">HI</button>
             </div>
 
-            <div id="review-actions-top-layer-buttons">
-               <!-- Auto Inject white color buttons directly dynamically from test.js framework -->
-            </div>
+            <div id="review-actions-top-layer-buttons"></div>
         </div>
         <div id="review-container"></div>
     </div>
 
 </main>
-
-<!-- 🎭 OVERLAYS DIALOGS STATE BLOCKS (Modals Pipeline Layer) -->
 
 <!-- A. Entry Rule Book Gate Modal verification -->
 <div id="startModal" class="quiz-modal-backdrop active">
@@ -408,6 +418,9 @@ comments: false
         <div style="font-size:2.5rem; margin-bottom:8px;">📜</div>
         <h2 id="modal-start-title" data-en="Test Rules &amp; Protocols" data-hi="परीक्षण नियम और निर्देश">Test Rules &amp; Protocols</h2>
         
+        <!-- 🏆 LIVE CATEGORY DASHBOARD CARD INJECTOR -->
+        <div id="category-stats-dashboard" class="category-history-box" style="display:none;"></div>
+
         <!-- 🎯 ANCHOR LAYOUT LOCK CONTAINER -->
         <div id="modal-start-rules" data-count="{{ live_questions_count }}"></div>
         
@@ -423,9 +436,7 @@ comments: false
         <div style="font-size:2.5rem; margin-bottom:8px;">🎯</div>
         <h2 id="modal-result-title" data-en="Your Result Profile" data-hi="आपका परिणाम प्रोफ़ाइल">Your Result Profile</h2>
         <div id="resultContent" style="margin-bottom: 24px;"></div>
-        <div class="modal-actions-track" style="gap:15px;" id="modal-result-actions-container">
-            <!-- Dynamic Buttons with adaptive theme colors injected cleanly from test.js -->
-        </div>
+        <div class="modal-actions-track" style="gap:15px;" id="modal-result-actions-container"></div>
     </div>
 </div>
 
@@ -464,7 +475,6 @@ comments: false
       ]
     };
 
-    // Routing Token Anchors for Dynamic Results Navigation
     var routingConfig = {
       prevUrl: {{ prev_part_url | relative_url | jsonify }},
       nextUrl: {{ next_part_url | relative_url | jsonify }}
@@ -476,12 +486,11 @@ comments: false
      ================================================================== -->
 <script type="module">
 const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbw9Bz1KhUlIlKgy-lOpiI70oCMm28nbqhoBVUj1eg8uEH2iUcmaDP4Si9OXh0r37wiktg/exec";
-
-// ग्लोबल वेरिएबल ताकि रेंडर इंटरवल आईडी स्टोर हो सके और लीक न हो
 let rulesSyncTimer = null;
 
 document.addEventListener('DOMContentLoaded', () => {
     const quizId = document.body.dataset.quizId;
+    const catId = document.body.dataset.categoryId || "default-category";
     if (!quizId) return;
 
     let currentLang = localStorage.getItem('th-quiz-lang') || 'en';
@@ -529,13 +538,11 @@ document.addEventListener('DOMContentLoaded', () => {
         if (resultTitle) resultTitle.textContent = resultTitle.getAttribute(`data-${currentLang}`);
         if (startBtnEl) startBtnEl.textContent = startBtnEl.getAttribute(`data-${currentLang}`);
 
-        // 🎯 SAFE INTERVAL ALIGNMENT: पहले वाले एक्टिव लूप को मारो ताकि भाषा स्विच पर ओवरलैप न हो
-        if (rulesSyncTimer) {
-            clearInterval(rulesSyncTimer);
-        }
+        if (rulesSyncTimer) { clearInterval(rulesSyncTimer); }
 
         const forceRenderRules = () => {
             const rulesUl = document.getElementById('modal-start-rules');
+            const statsBox = document.getElementById('category-stats-dashboard');
             if (!rulesUl) return;
 
             let count = "0";
@@ -546,11 +553,30 @@ document.addEventListener('DOMContentLoaded', () => {
                 count = rulesUl.getAttribute('data-count') || "25";
             }
 
+            // 🏆 CATEGORY SCOPED DASHBOARD LOGIC (सिर्फ इस एक कैटेगरी का इतिहास)
+            if (statsBox) {
+                let scoresStorage = {};
+                try { scoresStorage = JSON.parse(localStorage.getItem('th_quiz_scores')) || {}; } catch(e){}
+                let catScores = scoresStorage[catId] || []; // सिर्फ इसी कैटेगरी का एरे लाओ
+                
+                if (catScores.length > 0) {
+                    let bestScore = Math.max(...catScores);
+                    if(currentLang === 'hi') {
+                        statsBox.innerHTML = `🏆 <b>इस कैटेगरी का आपका इतिहास:</b><br>🔄 कुल प्रयास: <b>${catScores.length}</b> | 🥇 सर्वश्रेष्ठ स्कोर: <span style="color:var(--clr-accent); font-weight:bold;">${bestScore.toFixed(1)}%</span>`;
+                    } else {
+                        statsBox.innerHTML = `🏆 <b>Your Category Progress:</b><br>🔄 Total Attempts: <b>${catScores.length}</b> | 🥇 Personal Best: <span style="color:var(--clr-accent); font-weight:bold;">${bestScore.toFixed(1)}%</span>`;
+                    }
+                    statsBox.style.display = 'block';
+                } else {
+                    statsBox.style.display = 'none';
+                }
+            }
+
             const hiHTML = `
                 <ul class="rules-clean-list">
                     <li>इस टेस्ट में कुल <strong>${count}</strong> महत्वपूर्ण बहुविकल्पीय प्रश्न शामिल हैं।</li>
                     <li>टाइम ट्रैकर सक्रिय टेस्टिंग सेकंड की गणना निरंतर करता रहेगा।</li>
-                    <li>एक बार सबमिट करने के बाद, परिणाम锁 हो जाएंगे।</li>
+                    <li>एक बार सबमिट करने के बाद, परिणाम लॉक हो जाएंगे।</li>
                 </ul>
             `;
 
@@ -562,11 +588,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 </ul>
             `;
 
-            const cleanTargetHTML = (currentLang === 'hi') ? hiHTML : enHTML;
-            rulesUl.innerHTML = cleanTargetHTML;
+            rulesUl.innerHTML = (currentLang === 'hi') ? hiHTML : enHTML;
         };
 
-        // तुरंत फायर करो और 100ms के लूप पर लॉक कर दो
         forceRenderRules();
         rulesSyncTimer = setInterval(forceRenderRules, 100);
         
@@ -623,7 +647,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function startQuiz() {
-        if (rulesSyncTimer) clearInterval(rulesSyncTimer); // सेफ्टी चेक गेट क्लोजर
+        if (rulesSyncTimer) clearInterval(rulesSyncTimer);
         if(startModal) startModal.classList.remove('active');
         if(quizSection) quizSection.style.display = "block";
         
@@ -804,7 +828,15 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         const totalQuestions = shuffledIndices.length;
+        const finalPercentage = totalQuestions > 0 ? (correctCount / totalQuestions) * 100 : 0;
         if(resultContent) resultContent.dataset.lastScore = correctCount;
+
+        // 🏆 LOCALSTORAGE SCORED SYNC ENGINE
+        let scoresStorage = {};
+        try { scoresStorage = JSON.parse(localStorage.getItem('th_quiz_scores')) || {}; } catch(e){}
+        if (!scoresStorage[catId]) { scoresStorage[catId] = []; }
+        scoresStorage[catId].push(finalPercentage); // नई परसेंटेज पुश करो
+        localStorage.setItem('th_quiz_scores', JSON.stringify(scoresStorage));
 
         if(quizForm) quizForm.innerHTML = ''; 
         renderResultContentDOM(correctCount, totalQuestions, incorrectCount, skippedCount);
