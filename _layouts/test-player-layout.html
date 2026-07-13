@@ -257,13 +257,15 @@ comments: false
     color: var(--text-paragraph);
     font-size: var(--fs-sm, 0.95rem);
     line-height: 1.6;
+    padding: 0;
   }
 
-  /* 🎯 FIXED Line break styling hook for modal rules */
+  /* 🎯 FIXED: पॉपअप बॉक्स के बुलेट पॉइंट्स को अलग-अलग लाइनों में लॉक किया गया है */
   .quiz-modal-content-panel ul li {
-    margin-bottom: var(--space-2, 8px);
+    margin-bottom: var(--space-2, 8px) !important;
     display: list-item !important;
     list-style-type: disc !important;
+    line-height: 1.5;
   }
 
   @keyframes modalSlide {
@@ -347,6 +349,7 @@ comments: false
 {%- else -%}
   {%- assign next_part_url = "" -%}
 {%- endif -%}
+
 <!-- SECURE RUNTIME RUNNING INTERFACE ATTRIBUTE ANCHOR -->
 <script>document.body.setAttribute('data-quiz-id', '{{ page.quiz_id }}');</script>
 
