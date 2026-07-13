@@ -371,20 +371,43 @@ layout: default
         </div>
     </div>
 </div>
-
-<!-- 📦 Dynamic Injected Question Array Engine Mapping Pipeline Block -->
+<!-- 📦 Dynamic Injected Question Array Engine Mapping Pipeline Block (test.js के साथ 100% सिंक) -->
 <script>
+    {%- comment -%}
+      1. रूबी प्लगइन द्वारा भेजे गए category_id से डेटा फ़ाइल का असली नाम मैप करना
+    {%- endcomment -%}
+    {%- assign map_file = page.category_id -%}
+    {%- if page.category_id == 'medieval-history' -%}{%- assign map_file = 'medieval-history' -%}{%- endif -%}
+    {%- if page.category_id == 'modern-history' -%}{%- assign map_file = 'modern-history' -%}{%- endif -%}
+    
+    {%- comment -%}
+      2. भाषा के आधार पर सही JSON डेटा पाथ को लोड करना
+    {%- endcomment -%}
+    {%- if page.lang == 'hi' -%}
+      {%- assign all_qs = site.data.quiz.hi[map_file] -%}
+    {%- else -%}
+      {%- assign all_qs = site.data.quiz.en[map_file] -%}
+    {%- endif -%}
+
+    {%- comment -%}
+      3. पार्ट इंडेक्स के हिसाब से 25 सवाल काटना
+    {%- endcomment -%}
+    {%- assign qpp = page.questions_per_page | plus: 0 -%}
+    {%- assign start_idx = page.part_index | minus: 1 | multiplied_by: qpp -%}
+    {%- assign questions_slice = all_qs | slice: start_idx, qpp -%}
+
+    // 🎯 test.js इसी 'questions' वेरिएबल को खोज रहा है
     var questions = [
       {%- for q in questions_slice -%}
         {
           question: {{ q.question | jsonify }},
           options: [
-            { text: "A. " | append: q.option_a, value: "a" },
-            { text: "B. " | append: q.option_b, value: "b" },
-            { text: "C. " | append: q.option_c, value: "c" },
-            { text: "D. " | append: q.option_d, value: "d" }
+            { text: {{ q.option_a | jsonify }}, value: "a" },
+            { text: {{ q.option_b | jsonify }}, value: "b" },
+            { text: {{ q.option_c | jsonify }}, value: "c" },
+            { text: {{ q.option_d | jsonify }}, value: "d" }
           ],
-          correctOption: {{ q.correct_answer | downcase | jsonify }},
+          correctOption: {{ q.correct_answer | downcase | trim | jsonify }},
           explanation: {{ q.explanation | jsonify }}
         }{%- unless forloop.last -%},{%- endunless -%}
       {%- endfor -%}
