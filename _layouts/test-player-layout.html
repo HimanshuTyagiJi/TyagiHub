@@ -285,17 +285,23 @@ comments: false
     margin-top: var(--space-4, 16px);
   }
 
-  /* ⚡ STRIKE FORCE ANTI-PARAGRAPH FIX: Purane text ko hide karke space maintain karega */
-  #modal-start-rules {
+  /* ⚡ HARDCORE FORCE OVERRIDE LIST STYLES */
+  .rules-clean-list {
     text-align: left !important;
-    font-size: 0px !important; /* Hide old text nodes completely */
-    color: transparent !important;
-  }
-  #modal-start-rules .clean-rule-item {
-    font-size: 14px !important;
-    color: var(--text-paragraph) !important;
+    margin: 20px 0 !important;
+    padding-left: 20px !important;
     display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+  }
+  .rules-clean-list li {
+    font-family: var(--font-body), sans-serif !important;
+    font-size: 14px !important;
+    line-height: 1.6 !important;
+    color: var(--text-paragraph) !important;
     margin-bottom: 12px !important;
+    display: list-item !important;
+    list-style-type: disc !important;
   }
 </style>
 
@@ -520,39 +526,51 @@ document.addEventListener('DOMContentLoaded', () => {
         if (resultTitle) resultTitle.textContent = resultTitle.getAttribute(`data-${currentLang}`);
         if (startBtnEl) startBtnEl.textContent = startBtnEl.getAttribute(`data-${currentLang}`);
 
-        // 🎯 EMBEDDED TRIPLE-ATTACK DEEP FORCE MATRIX (CSS PROTECTED & CLEANED)
+        // 🎯 EMBEDDED DYNAMIC RE-RUN LOOP MATRIX FOR LIST INTEGRITY
         const forceRenderRules = () => {
             const rulesUl = document.getElementById('modal-start-rules');
             if (!rulesUl) return;
 
-            let count = rulesUl.getAttribute('data-count') || "0";
-            if (count === "0" && window.questionsRepo && window.questionsRepo.en) {
+            let count = "0";
+            if (window.questionsRepo && window.questionsRepo.en) {
                 count = window.questionsRepo.en.length;
+            }
+            if (count === "0" || !count) {
+                count = rulesUl.getAttribute('data-count') || "25";
             }
 
             const hiHTML = `
-                <div style="text-align: left; padding-left: 5px; font-family: var(--font-body), sans-serif; font-size: 14px; line-height: 1.6;">
-                    <div class="clean-rule-item">• इस टेस्ट में कुल <strong>${count}</strong> महत्वपूर्ण बहुविकल्पीय प्रश्न शामिल हैं।</div>
-                    <div class="clean-rule-item">• टाइमर सक्रिय टेस्टिंग सेकंड की गणना निरंतर करता रहेगा।</div>
-                    <div class="clean-rule-item">• एक बार सबमिट करने के बाद, परिणाम लॉक हो जाएंगे।</div>
-                </div>
+                <ul class="rules-clean-list">
+                    <li>इस टेस्ट में कुल <strong>${count}</strong> महत्वपूर्ण बहुविकल्पीय प्रश्न शामिल हैं।</li>
+                    <li>टाइम ट्रैकर सक्रिय टेस्टिंग सेकंड की गणना निरंतर करता रहेगा।</li>
+                    <li>एक बार सबमिट करने के बाद, परिणाम लॉक हो जाएंगे।</li>
+                </ul>
             `;
 
             const enHTML = `
-                <div style="text-align: left; padding-left: 5px; font-family: var(--font-body), sans-serif; font-size: 14px; line-height: 1.6;">
-                    <div class="clean-rule-item">• This test contains <strong>${count}</strong> curated questions.</div>
-                    <div class="clean-rule-item">• The timer tracks cumulative active testing seconds.</div>
-                    <div class="clean-rule-item">• Once submitted, entries lock cleanly across state lists.</div>
-                </div>
+                <ul class="rules-clean-list">
+                    <li>This test contains <strong>${count}</strong> curated questions.</li>
+                    <li>The timer tracks cumulative active testing seconds.</li>
+                    <li>Once submitted, entries lock cleanly across state lists.</li>
+                </ul>
             `;
 
-            rulesUl.innerHTML = (currentLang === 'hi') ? hiHTML : enHTML;
+            const cleanTargetHTML = (currentLang === 'hi') ? hiHTML : enHTML;
+            
+            // Strictly inject the structural list markup
+            rulesUl.innerHTML = cleanTargetHTML;
         };
 
+        // Instant fire + recurring interval buffer to lock structural safety
         forceRenderRules();
-        setTimeout(forceRenderRules, 50);
-        setTimeout(forceRenderRules, 200);
-        setTimeout(forceRenderRules, 600);
+        var rulesSyncTimer = setInterval(forceRenderRules, 100);
+        
+        // Kill interval lock cleanly when start button clears the gate scene
+        if (startBtn) {
+            startBtn.addEventListener('click', () => {
+                clearInterval(rulesSyncTimer);
+            }, { once: true });
+        }
 
         ['player-language-switcher-bar', 'review-language-switcher-bar'].forEach(barId => {
             const bar = document.getElementById(barId);
