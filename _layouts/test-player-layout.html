@@ -409,16 +409,19 @@ comments: false
         <div style="font-size:2.5rem; margin-bottom:8px;">📜</div>
         <h2 id="modal-start-title" data-en="Test Rules &amp; Protocols" data-hi="परीक्षण नियम और निर्देश">Test Rules &amp; Protocols</h2>
         
-        <ul id="modal-start-rules" data-count="{{ live_questions_count }}">
-            <li class="rule-line-item-en">This test contains <strong>{{ live_questions_count }}</strong> curated questions.</li>
-            <li class="rule-line-item-en">The timer tracks cumulative active testing seconds.</li>
-            <li class="rule-line-item-en">Once submitted, entries lock cleanly across state lists.</li>
-            <li class="rule-line-item-en">Authentication syncing stores metrics into Google Sheets ledger.</li>
+        <!-- 🎯 DOM LOCK LAYER: डिब ब्लॉक्स जो कंप्रेसर को लाइन मर्ज करने से रोकते हैं -->
+        <div id="modal-start-rules" data-count="{{ live_questions_count }}" style="text-align: left; margin: 20px 0; padding-left: 10px;">
+            <!-- English Rule Set -->
+            <div class="rule-line-item-en" style="margin-bottom: 12px; display: block;">• This test contains <strong>{{ live_questions_count }}</strong> curated questions.</div>
+            <div class="rule-line-item-en" style="margin-bottom: 12px; display: block;">• The timer tracks cumulative active testing seconds.</div>
+            <div class="rule-line-item-en" style="margin-bottom: 12px; display: block;">• Once submitted, entries lock cleanly across state lists.</div>
+            <div class="rule-line-item-en" style="margin-bottom: 12px; display: block;">• Authentication syncing stores metrics into Google Sheets ledger.</div>
 
-            <li class="rule-line-item-hi" style="display:none;">इस टेस्ट में कुल <strong>{{ live_questions_count }}</strong> महत्वपूर्ण बहुविकल्पीय प्रश्न शामिल हैं।</li>
-            <li class="rule-line-item-hi" style="display:none;">टाइमर सक्रिय टेस्टिंग सेकंड की गणना निरंतर करता रहेगा।</li>
-            <li class="rule-line-item-hi" style="display:none;">एक बार सबमिट करने के बाद, परिणाम लॉक हो जाएंगे।</li>
-        </ul>
+            <!-- Hindi Rule Set (बिना लीडरबोर्ड लाइन के) -->
+            <div class="rule-line-item-hi" style="margin-bottom: 12px; display: none;">• इस टेस्ट में कुल <strong>{{ live_questions_count }}</strong> महत्वपूर्ण बहुविकल्पीय प्रश्न शामिल हैं।</div>
+            <div class="rule-line-item-hi" style="margin-bottom: 12px; display: none;">• टाइमर सक्रिय टेस्टिंग सेकंड की गणना निरंतर करता रहेगा।</div>
+            <div class="rule-line-item-hi" style="margin-bottom: 12px; display: none;">• एक बार सबमिट करने के बाद, परिणाम लॉक हो जाएंगे।</div>
+        </div>
         
         <div class="modal-actions-track">
             <button id="start-btn" class="submit-btn" style="padding:12px 36px; font-size:14px;" data-en="Start Test" data-hi="टेस्ट शुरू करें">Start Test</button>
