@@ -284,25 +284,6 @@ comments: false
     line-height: var(--lh-normal, 1.6);
     margin-top: var(--space-4, 16px);
   }
-
-  /* ⚡ HARDCORE FORCE OVERRIDE LIST STYLES */
-  .rules-clean-list {
-    text-align: left !important;
-    margin: 20px 0 !important;
-    padding-left: 20px !important;
-    display: block !important;
-    visibility: visible !important;
-    opacity: 1 !important;
-  }
-  .rules-clean-list li {
-    font-family: var(--font-body), sans-serif !important;
-    font-size: 14px !important;
-    line-height: 1.6 !important;
-    color: var(--text-paragraph) !important;
-    margin-bottom: 12px !important;
-    display: list-item !important;
-    list-style-type: disc !important;
-  }
 </style>
 
 {%- comment -%}
@@ -349,7 +330,7 @@ comments: false
   {%- assign next_part_url = "" -%}
 {%- endif -%}
 
-<!-- SECURE RUNTIME RUNNING INTERFACE ATTRIBUTE ANCHOR -->
+<!-- SECURE RUNTIME INTERFACE ATTRIBUTE ANCHOR -->
 <script>
     document.body.setAttribute('data-quiz-id', '{{ page.quiz_id }}');
     document.body.setAttribute('data-category-id', '{{ page.category_id }}');
@@ -358,7 +339,7 @@ comments: false
 <main class="quiz-gameplay-wrapper">
     
     <!-- 1. Live Gameplay Workspace Monitor Section Panel -->
-    <div id="quiz-section" style="display: none;">
+    <div id="quiz-section" style="display: block;">
         <div class="quiz-top-bar">
             <div class="quiz-meta-item">
                 <i class="fa-solid fa-graduation-cap" style="color:var(--clr-accent);"></i>
@@ -382,7 +363,7 @@ comments: false
         <form id="quiz-form" onsubmit="return false;"></form>
     </div>
 
-    <!-- 2. Review Solutions Matrix Mode Section Canvas -->
+    <!-- 2. Detailed Verification Solutions Matrix Review Mode Section Canvas -->
     <div id="review-questions" style="display: none; max-width: 800px; margin: 0 auto;">
         <div class="quiz-top-bar" style="margin-bottom: 32px;">
             <h2 id="label-review-title" data-en="Review Solutions" data-hi="उत्तर और व्याख्या देखें" style="font-family:var(--font-display); font-size:20px; margin:0; color:var(--text-heading);">Review Solutions</h2>
@@ -398,21 +379,6 @@ comments: false
     </div>
 
 </main>
-
-<!-- A. Entry Rule Book Gate Modal verification -->
-<div id="startModal" class="quiz-modal-backdrop active">
-    <div class="quiz-modal-content-panel">
-        <div style="font-size:2.5rem; margin-bottom:8px;">📜</div>
-        <h2 id="modal-start-title" data-en="Test Rules &amp; Protocols" data-hi="परीक्षण नियम और निर्देश">Test Rules &amp; Protocols</h2>
-
-        <!-- 🎯 ANCHOR LAYOUT LOCK CONTAINER (यूजर फीडबैक के अनुसार यह अब बिल्कुल साफ़ है) -->
-        <div id="modal-start-rules" data-count="{{ live_questions_count }}"></div>
-        
-        <div class="modal-actions-track">
-            <button id="start-btn" class="submit-btn" style="padding:12px 36px; font-size:14px;" data-en="Start Test" data-hi="टेस्ट शुरू करें">Start Test</button>
-        </div>
-    </div>
-</div>
 
 <!-- B. Analysis Summary Result Modal Block -->
 <div id="resultModal" class="quiz-modal-backdrop">
@@ -470,7 +436,6 @@ comments: false
      ================================================================== -->
 <script type="module">
 const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbw9Bz1KhUlIlKgy-lOpiI70oCMm28nbqhoBVUj1eg8uEH2iUcmaDP4Si9OXh0r37wiktg/exec";
-let rulesSyncTimer = null;
 
 document.addEventListener('DOMContentLoaded', () => {
     const quizId = document.body.dataset.quizId;
@@ -485,12 +450,10 @@ document.addEventListener('DOMContentLoaded', () => {
     let shuffledIndices = [];
 
     const quizForm = document.getElementById("quiz-form");
-    const startModal = document.getElementById("startModal");
     const resultModal = document.getElementById("resultModal");
     const resultContent = document.getElementById("resultContent");
     const reviewSection = document.getElementById("review-questions");
     const quizSection = document.getElementById("quiz-section");
-    const startBtn = document.getElementById("start-btn");
 
     function getLoggedUser() {
         try {
@@ -511,58 +474,12 @@ document.addEventListener('DOMContentLoaded', () => {
         const titleEl = document.getElementById('player-dynamic-title');
         const labelTime = document.getElementById('label-time');
         const labelReview = document.getElementById('label-review-title');
-        const startTitle = document.getElementById('modal-start-title');
         const resultTitle = document.getElementById('modal-result-title');
-        const startBtnEl = document.getElementById('start-btn');
         
         if (titleEl) titleEl.textContent = titleEl.getAttribute(`data-${currentLang}`);
         if (labelTime) labelTime.textContent = labelTime.getAttribute(`data-${currentLang}`);
         if (labelReview) labelReview.textContent = labelReview.getAttribute(`data-${currentLang}`);
-        if (startTitle) startTitle.textContent = startTitle.getAttribute(`data-${currentLang}`);
         if (resultTitle) resultTitle.textContent = resultTitle.getAttribute(`data-${currentLang}`);
-        if (startBtnEl) startBtnEl.textContent = startBtnEl.getAttribute(`data-${currentLang}`);
-
-        if (rulesSyncTimer) { clearInterval(rulesSyncTimer); }
-
-        const forceRenderRules = () => {
-            const rulesUl = document.getElementById('modal-start-rules');
-            if (!rulesUl) return;
-
-            let count = "0";
-            if (window.questionsRepo && window.questionsRepo.en) {
-                count = window.questionsRepo.en.length;
-            }
-            if (count === "0" || !count) {
-                count = rulesUl.getAttribute('data-count') || "25";
-            }
-
-            const hiHTML = `
-                <ul class="rules-clean-list">
-                    <li>इस टेस्ट में कुल <strong>${count}</strong> महत्वपूर्ण बहुविकल्पीय प्रश्न शामिल हैं।</li>
-                    <li>टाइम ट्रैकर सक्रिय टेस्टिंग सेकंड की गणना निरंतर करता रहेगा।</li>
-                    <li>एक बार सबमिट करने के बाद, परिणाम लॉक हो जाएंगे।</li>
-                </ul>
-            `;
-
-            const enHTML = `
-                <ul class="rules-clean-list">
-                    <li>This test contains <strong>${count}</strong> curated questions.</li>
-                    <li>The timer tracks cumulative active testing seconds.</li>
-                    <li>Once submitted, entries lock cleanly across state lists.</li>
-                </ul>
-            `;
-
-            rulesUl.innerHTML = (currentLang === 'hi') ? hiHTML : enHTML;
-        };
-
-        forceRenderRules();
-        rulesSyncTimer = setInterval(forceRenderRules, 100);
-        
-        if (startBtn) {
-            startBtn.addEventListener('click', () => {
-                if (rulesSyncTimer) clearInterval(rulesSyncTimer);
-            }, { once: true });
-        }
 
         ['player-language-switcher-bar', 'review-language-switcher-bar'].forEach(barId => {
             const bar = document.getElementById(barId);
@@ -610,11 +527,8 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    function startQuiz() {
-        if (rulesSyncTimer) clearInterval(rulesSyncTimer);
-        if(startModal) startModal.classList.remove('active');
-        if(quizSection) quizSection.style.display = "block";
-        
+    // 🎯 DIRECT START ENGINE (4-layer झंझट ख़त्म, पेज खुलते ही टेस्ट लोड)
+    function startQuizDirectly() {
         let len = 0;
         if (window.questionsRepo && window.questionsRepo.en) {
             len = window.questionsRepo.en.length;
@@ -622,7 +536,7 @@ document.addEventListener('DOMContentLoaded', () => {
         
         if (len === 0) {
             const qContainer = document.getElementById('questions-container');
-            if(qContainer) qContainer.innerHTML = "<p style='color:red; text-align:center;'>प्रश्नों का डेटा लोड नहीं हो सका।</p>";
+            if(qContainer) qContainer.innerHTML = "<p style='color:red; text-align:center;'>Data Loading Error.</p>";
             return;
         }
 
@@ -795,7 +709,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const finalPercentage = totalQuestions > 0 ? (correctCount / totalQuestions) * 100 : 0;
         if(resultContent) resultContent.dataset.lastScore = correctCount;
 
-        // 🏆 LOCALSTORAGE SCORED SYNC ENGINE
+        // 🏆 LOCALSTORAGE STATE INJECTION
         let scoresStorage = {};
         try { scoresStorage = JSON.parse(localStorage.getItem('th_quiz_scores')) || {}; } catch(e){}
         if (!scoresStorage[catId]) { scoresStorage[catId] = []; }
@@ -908,7 +822,6 @@ document.addEventListener('DOMContentLoaded', () => {
     function retryQuiz() { location.reload(); }
     
     function reviewQuestions() {
-        if(startModal) startModal.classList.remove('active');
         if(quizSection) quizSection.style.display = "none";
         if(resultModal) resultModal.classList.remove('active');
         
@@ -967,7 +880,8 @@ document.addEventListener('DOMContentLoaded', () => {
         if(reviewSection) reviewSection.style.display = "block";
     }
 
-    if (startBtn) startBtn.addEventListener('click', startQuiz);
+    // 💥 सीधा लोड ट्रिगर
+    startQuizDirectly();
     initLanguageSwitcher();
 });
 </script>
