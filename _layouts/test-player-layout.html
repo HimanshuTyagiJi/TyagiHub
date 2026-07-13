@@ -284,29 +284,11 @@ comments: false
     line-height: var(--lh-normal, 1.6);
     margin-top: var(--space-4, 16px);
   }
-
-  .rules-clean-list {
-    text-align: left !important;
-    margin: 20px 0 !important;
-    padding-left: 20px !important;
-    display: block !important;
-    visibility: visible !important;
-    opacity: 1 !important;
-  }
-  .rules-clean-list li {
-    font-family: var(--font-body), sans-serif !important;
-    font-size: 14px !important;
-    line-height: 1.6 !important;
-    color: var(--text-paragraph) !important;
-    margin-bottom: 12px !important;
-    display: list-item !important;
-    list-style-type: disc !important;
-  }
 </style>
 
 {%- comment -%}
   ==================================================================
-  CORE LIQUID STREAM FETCHING (CATEGORIES ALIGNMENT SYNCED)
+  CORE LIQUID STREAM FETCHING (SYNCED TO NEW TEST PATH INTERFACES)
   ==================================================================
 {%- endcomment -%}
 {%- assign map_file = page.category_id -%}
@@ -322,38 +304,34 @@ comments: false
 
 {%- assign slice_en = all_qs_en | slice: start_idx, qpp -%}
 {%- assign slice_hi = all_qs_hi | slice: start_idx, qpp -%}
-{%- assign live_questions_count = slice_en.size -%}
 
-<!-- SECURE DATA PASS FOR NEXT/PREV ROUTING LINKS -->
 {%- assign current_part = page.part_index | plus: 0 -%}
 {%- assign prev_part = current_part | minus: 1 -%}
 {%- assign next_part = current_part | plus: 1 -%}
 
-{%- assign base_hub_url = page.permalink | split: 'part-' | first -%}
+<!-- ⚡ PATH ROUTING SYNCED TO 'test-' MATRIX SPLIT -->
+{%- assign base_hub_url = page.permalink | split: 'test-' | first -%}
 
 {%- if prev_part > 0 -%}
-  {%- if prev_part < 10 -%}{%- assign prev_str = "part-0" | append: prev_part -%}{%- else -%}{%- assign prev_str = "part-" | append: prev_part -%}{%- endif -%}
+  {%- if prev_part < 10 -%}{%- assign prev_str = "test-0" | append: prev_part -%}{%- else -%}{%- assign prev_str = "test-" | append: prev_part -%}{%- endif -%}
   {%- assign prev_part_url = base_hub_url | append: prev_str | append: '/' -%}
-{%- else -%}
-  {%- assign prev_part_url = "" -%}
+{%- ... -%}
+{%- assign prev_part_url = "" -%}
 {%- endif -%}
 
 {%- assign total_qs_global = all_qs_en.size -%}
 {%- assign max_parts_global = total_qs_global | to_f | divide: qpp | ceil -%}
 
 {%- if next_part <= max_parts_global -%}
-  {%- if next_part < 10 -%}{%- assign next_str = "part-0" | append: next_part -%}{%- else -%}{%- assign next_str = "part-" | append: next_part -%}{%- endif -%}
+  {%- if next_part < 10 -%}{%- assign next_str = "test-0" | append: next_part -%}{%- else -%}{%- assign next_str = "test-" | append: next_part -%}{%- endif -%}
   {%- assign next_part_url = base_hub_url | append: next_str | append: '/' -%}
 {%- else -%}
   {%- assign next_part_url = "" -%}
 {%- endif -%}
 
-<!-- SECURE RUNTIME RUNNING INTERFACE ATTRIBUTE ANCHOR -->
 <script>document.body.setAttribute('data-quiz-id', '{{ page.quiz_id }}');</script>
 
 <main class="quiz-gameplay-wrapper">
-    
-    <!-- 1. Live Gameplay Workspace Monitor Section Panel (DISPLAY DIRECTLY SET TO BLOCK) -->
     <div id="quiz-section" style="display: block;">
         <div class="quiz-top-bar">
             <div class="quiz-meta-item">
@@ -363,7 +341,6 @@ comments: false
                 </span>
             </div>
 
-            <!-- 🌐 In-House Live Instant Language Switcher (No Reload) -->
             <div class="player-lang-toggle" id="player-language-switcher-bar">
                 <button class="player-lang-btn active" id="pl-btn-en">EN</button>
                 <button class="player-lang-btn" id="pl-btn-hi">HI</button>
@@ -374,46 +351,31 @@ comments: false
                 <strong id="label-time" data-en="Time:" data-hi="समय:">Time:</strong>&nbsp;<span id="timer-clock">0:00</span>
             </div>
         </div>
-
-        <!-- Split Grid Target Elements Layout Vector -->
         <form id="quiz-form" onsubmit="return false;"></form>
     </div>
 
-    <!-- 2. Detailed Verification Solutions Matrix Review Mode Section Canvas -->
     <div id="review-questions" style="display: none; max-width: 800px; margin: 0 auto;">
         <div class="quiz-top-bar" style="margin-bottom: 32px;">
             <h2 id="label-review-title" data-en="Review Solutions" data-hi="उत्तर और व्याख्या देखें" style="font-family:var(--font-display); font-size:20px; margin:0; color:var(--text-heading);">Review Solutions</h2>
-            
-            <!-- 🌐 Language Switch Also Available in Review Mode Bar Grid -->
             <div class="player-lang-toggle" id="review-language-switcher-bar">
                 <button class="player-lang-btn" id="rev-btn-en">EN</button>
                 <button class="player-lang-btn" id="rev-btn-hi">HI</button>
             </div>
-
-            <div id="review-actions-top-layer-buttons">
-               <!-- Auto Inject white color buttons directly dynamically from test.js framework -->
-            </div>
+            <div id="review-actions-top-layer-buttons"></div>
         </div>
         <div id="review-container"></div>
     </div>
-
 </main>
 
-<!-- 🎭 OVERLAYS DIALOGS STATE BLOCKS (StartModal Completely Removed for Direct Execution) -->
-
-<!-- B. Analysis Summary Result Modal Block -->
 <div id="resultModal" class="quiz-modal-backdrop">
     <div class="quiz-modal-content-panel" style="max-width: 450px;">
         <div style="font-size:2.5rem; margin-bottom:8px;">🎯</div>
         <h2 id="modal-result-title" data-en="Your Result Profile" data-hi="आपका परिणाम प्रोफ़ाइल">Your Result Profile</h2>
         <div id="resultContent" style="margin-bottom: 24px;"></div>
-        <div class="modal-actions-track" style="gap:15px;" id="modal-result-actions-container">
-            <!-- Dynamic Buttons injected from test.js -->
-        </div>
+        <div class="modal-actions-track" style="gap:15px;" id="modal-result-actions-container"></div>
     </div>
 </div>
 
-<!-- 📦 Fully Unified Dual-Language Repository Pipeline Block -->
 <script>
     var questionsRepo = {
       en: [
@@ -789,10 +751,11 @@ document.addEventListener('DOMContentLoaded', () => {
         const actionsWrap = document.getElementById('modal-result-actions-container');
         if (!actionsWrap) return;
 
+        // 🎯 USER FIX: Part updated to Test
         let labelReview = currentLang === 'hi' ? 'उत्तर देखें' : 'Review Answers';
         let labelRetry = currentLang === 'hi' ? 'पुनः प्रयास' : 'Try Again';
-        let labelPrevPart = currentLang === 'hi' ? '← पिछला भाग' : '← Prev Part';
-        let labelNextPart = currentLang === 'hi' ? 'अगला भाग →' : 'Next Part →';
+        let labelPrevPart = currentLang === 'hi' ? '← पिछला टेस्ट' : '← Prev Test';
+        let labelNextPart = currentLang === 'hi' ? 'अगला टेस्ट →' : 'Next Test →';
 
         let html = `
             <button id="review-btn" class="skip-btn" style="border-color:var(--clr-border-2); color:var(--text-heading);">` + labelReview + `</button>
@@ -875,9 +838,10 @@ document.addEventListener('DOMContentLoaded', () => {
         
         const reviewActionsTop = document.getElementById('review-actions-top-layer-buttons');
         if(reviewActionsTop) {
+            // 🎯 USER FIX: Part updated to Test
             let labelRetry = currentLang === 'hi' ? 'पुनः प्रयास' : 'Test Again';
-            let labelPrevPart = currentLang === 'hi' ? '← पिछला भाग' : '← Prev Part';
-            let labelNextPart = currentLang === 'hi' ? 'अगला भाग →' : 'Next Part →';
+            let labelPrevPart = currentLang === 'hi' ? '← पिछला टेस्ट' : '← Prev Test';
+            let labelNextPart = currentLang === 'hi' ? 'अगला टेस्ट →' : 'Next Test →';
             
             let topHtml = `<button id="review-top-retry-btn" class="submit-btn" style="color:#FFFFFF !important; margin-right:10px;">` + labelRetry + `</button>`;
             if (window.routingConfig && window.routingConfig.prevUrl) {
@@ -892,7 +856,6 @@ document.addEventListener('DOMContentLoaded', () => {
         if(reviewSection) reviewSection.style.display = "block";
     }
 
-    // ⚡ DIRECT TEST INITIALIZATION AND EXECUTION GATEWAY
     initLanguageSwitcher();
     startQuiz();
 });
