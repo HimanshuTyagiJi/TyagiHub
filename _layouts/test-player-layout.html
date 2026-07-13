@@ -4,7 +4,6 @@ lang_switch: false
 comments: false
 ---
 
-
 <!-- Premium Quiz Gameplay Matrix Layout Styles -->
 <style>
   .quiz-gameplay-wrapper {
@@ -309,12 +308,11 @@ comments: false
 
 {%- comment -%}
   ==================================================================
-  CORE LIQUID STREAM FETCHING (🎯 DETECT AND FIX CONFIG MISMATCHES)
+  CORE LIQUID STREAM FETCHING (CATEGORIES ALIGNMENT SYNCED)
   ==================================================================
 {%- endcomment -%}
 {%- assign map_file = page.category_id -%}
 
-{%- comment -%} 🎯 यहाँ है वह जादुई फिक्स जो आईडी और डेटा फ़ाइल के मिसमैच को ठीक करेगा {%- endcomment -%}
 {%- if map_file == 'medieval-indian-history' -%}{%- assign map_file = 'medieval-history' -%}{%- endif -%}
 {%- if map_file == 'modern-indian-history' -%}{%- assign map_file = 'modern-history' -%}{%- endif -%}
 
@@ -410,9 +408,18 @@ comments: false
     <div class="quiz-modal-content-panel">
         <div style="font-size:2.5rem; margin-bottom:8px;">📜</div>
         <h2 id="modal-start-title" data-en="Test Rules &amp; Protocols" data-hi="परीक्षण नियम और निर्देश">Test Rules &amp; Protocols</h2>
+        
         <ul id="modal-start-rules" data-count="{{ live_questions_count }}">
-            <!-- JS Inject Rules based on current active language -->
+            <li class="rule-line-item-en">This test contains <strong>{{ live_questions_count }}</strong> curated questions.</li>
+            <li class="rule-line-item-en">The timer tracks cumulative active testing seconds.</li>
+            <li class="rule-line-item-en">Once submitted, entries lock cleanly across state lists.</li>
+            <li class="rule-line-item-en">Authentication syncing stores metrics into Google Sheets ledger.</li>
+
+            <li class="rule-line-item-hi" style="display:none;">इस टेस्ट में कुल <strong>{{ live_questions_count }}</strong> महत्वपूर्ण बहुविकल्पीय प्रश्न शामिल हैं।</li>
+            <li class="rule-line-item-hi" style="display:none;">टाइमर सक्रिय टेस्टिंग सेकंड की गणना निरंतर करता रहेगा।</li>
+            <li class="rule-line-item-hi" style="display:none;">एक बार सबमिट करने के बाद, परिणाम लॉक हो जाएंगे।</li>
         </ul>
+        
         <div class="modal-actions-track">
             <button id="start-btn" class="submit-btn" style="padding:12px 36px; font-size:14px;" data-en="Start Test" data-hi="टेस्ट शुरू करें">Start Test</button>
         </div>
