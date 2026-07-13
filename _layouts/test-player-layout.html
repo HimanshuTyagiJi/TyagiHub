@@ -303,19 +303,6 @@ comments: false
     display: list-item !important;
     list-style-type: disc !important;
   }
-
-  /* 🏆 CATEGORY CARD BOX STYLES */
-  .category-history-box {
-    background: var(--hover-bg-1, #f8f9fa);
-    border: 1px solid var(--clr-border);
-    border-radius: var(--radius-md, 12px);
-    padding: 12px 16px;
-    margin-bottom: 20px;
-    text-align: left;
-    font-family: var(--font-body), sans-serif;
-    font-size: 13px;
-    color: var(--text-paragraph);
-  }
 </style>
 
 {%- comment -%}
@@ -380,7 +367,7 @@ comments: false
                 </span>
             </div>
 
-            <!-- 🌐 Language Switcher Button -->
+            <!-- 🌐 Language Switcher -->
             <div class="player-lang-toggle" id="player-language-switcher-bar">
                 <button class="player-lang-btn active" id="pl-btn-en">EN</button>
                 <button class="player-lang-btn" id="pl-btn-hi">HI</button>
@@ -417,11 +404,8 @@ comments: false
     <div class="quiz-modal-content-panel">
         <div style="font-size:2.5rem; margin-bottom:8px;">📜</div>
         <h2 id="modal-start-title" data-en="Test Rules &amp; Protocols" data-hi="परीक्षण नियम और निर्देश">Test Rules &amp; Protocols</h2>
-        
-        <!-- 🏆 LIVE CATEGORY DASHBOARD CARD INJECTOR -->
-        <div id="category-stats-dashboard" class="category-history-box" style="display:none;"></div>
 
-        <!-- 🎯 ANCHOR LAYOUT LOCK CONTAINER -->
+        <!-- 🎯 ANCHOR LAYOUT LOCK CONTAINER (यूजर फीडबैक के अनुसार यह अब बिल्कुल साफ़ है) -->
         <div id="modal-start-rules" data-count="{{ live_questions_count }}"></div>
         
         <div class="modal-actions-track">
@@ -542,7 +526,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const forceRenderRules = () => {
             const rulesUl = document.getElementById('modal-start-rules');
-            const statsBox = document.getElementById('category-stats-dashboard');
             if (!rulesUl) return;
 
             let count = "0";
@@ -551,25 +534,6 @@ document.addEventListener('DOMContentLoaded', () => {
             }
             if (count === "0" || !count) {
                 count = rulesUl.getAttribute('data-count') || "25";
-            }
-
-            // 🏆 CATEGORY SCOPED DASHBOARD LOGIC (सिर्फ इस एक कैटेगरी का इतिहास)
-            if (statsBox) {
-                let scoresStorage = {};
-                try { scoresStorage = JSON.parse(localStorage.getItem('th_quiz_scores')) || {}; } catch(e){}
-                let catScores = scoresStorage[catId] || []; // सिर्फ इसी कैटेगरी का एरे लाओ
-                
-                if (catScores.length > 0) {
-                    let bestScore = Math.max(...catScores);
-                    if(currentLang === 'hi') {
-                        statsBox.innerHTML = `🏆 <b>इस कैटेगरी का आपका इतिहास:</b><br>🔄 कुल प्रयास: <b>${catScores.length}</b> | 🥇 सर्वश्रेष्ठ स्कोर: <span style="color:var(--clr-accent); font-weight:bold;">${bestScore.toFixed(1)}%</span>`;
-                    } else {
-                        statsBox.innerHTML = `🏆 <b>Your Category Progress:</b><br>🔄 Total Attempts: <b>${catScores.length}</b> | 🥇 Personal Best: <span style="color:var(--clr-accent); font-weight:bold;">${bestScore.toFixed(1)}%</span>`;
-                    }
-                    statsBox.style.display = 'block';
-                } else {
-                    statsBox.style.display = 'none';
-                }
             }
 
             const hiHTML = `
@@ -835,7 +799,7 @@ document.addEventListener('DOMContentLoaded', () => {
         let scoresStorage = {};
         try { scoresStorage = JSON.parse(localStorage.getItem('th_quiz_scores')) || {}; } catch(e){}
         if (!scoresStorage[catId]) { scoresStorage[catId] = []; }
-        scoresStorage[catId].push(finalPercentage); // नई परसेंटेज पुश करो
+        scoresStorage[catId].push(finalPercentage); 
         localStorage.setItem('th_quiz_scores', JSON.stringify(scoresStorage));
 
         if(quizForm) quizForm.innerHTML = ''; 
