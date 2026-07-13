@@ -56,7 +56,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (resultTitle) resultTitle.textContent = resultTitle.getAttribute(`data-${currentLang}`);
         if (startBtnEl) startBtnEl.textContent = startBtnEl.getAttribute(`data-${currentLang}`);
 
-        // Rules modal text updater 🎯 FIXED Dynamic Count Sync
+        // Rules modal text updater 🎯 FIXED Dynamic Count Line-by-Line Break Sync
         const rulesUl = document.getElementById('modal-start-rules');
         if (rulesUl) {
             const count = rulesUl.getAttribute('data-count');
@@ -65,14 +65,14 @@ document.addEventListener('DOMContentLoaded', () => {
                     <li>इस टेस्ट में कुल ${count} महत्वपूर्ण बहुविकल्पीय प्रश्न शामिल हैं।</li>
                     <li>टाइमर सक्रिय टेस्टिंग सेकंड की गणना निरंतर करता रहेगा।</li>
                     <li>एक बार सबमिट करने के बाद, परिणाम लॉक हो जाएंगे।</li>
-                    <li>आपका स्कोर लाइव Google Sheets लीडरबोर्ड पर अपडेट किया जाएगा।</li>
+                  
                 `;
             } else {
                 rulesUl.innerHTML = `
                     <li>This test contains ${count} curated questions.</li>
                     <li>The timer tracks cumulative active testing seconds.</li>
                     <li>Once submitted, entries lock cleanly across state lists.</li>
-                    <li>Authentication syncing stores metrics into Google Sheets ledger.</li>
+                   
                 `;
             }
         }
@@ -129,7 +129,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if(startModal) startModal.classList.remove('active');
         if(quizSection) quizSection.style.display = "block";
         
-        // 🎯 FIXED SIZE MAP: केवल इसी पार्ट के 25 सवालों को आपस में शफल करेगा!
+        // 🎯 FIXED GAP LOGIC: केवल इसी पार्ट के 25 सवालों को ही आपस में शफल करेगा!
         const len = window.questionsRepo.en.length;
         shuffledIndices = Array.from({length: len}, (_, i) => i);
         shuffledIndices.sort(() => Math.random() - 0.5);
@@ -175,8 +175,6 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!questionsContainer || !navigationContainer) return;
 
         const actualIdx = shuffledIndices[index];
-        
-        // 🎯 STABLE OPTION SYNC: इंडेक्स और ऑप्शंस का क्रम (a, b, c, d) हमेशा फिक्स रहेगा!
         const qEn = window.questionsRepo.en[actualIdx];
         const qActive = window.questionsRepo[currentLang][actualIdx];
         
@@ -343,6 +341,7 @@ document.addEventListener('DOMContentLoaded', () => {
         let txtMin = currentLang === 'hi' ? 'मिनट' : 'min';
         let txtSec = currentLang === 'hi' ? 'सेकंड' : 'sec';
 
+        // 🎯 FIXED THEME SYSTEM INTERFACES MAPPING: स्कोर टेक्स्ट को 'var(--text-heading)' दिया गया है ताकि लाइट/डार्क थीम दोनों में परफेक्ट दिखे!
         resultContent.innerHTML = `
             <div style="text-align: center;">
                 <div style="position: relative; width: 150px; height: 150px; margin: 1rem auto;">
@@ -350,8 +349,8 @@ document.addEventListener('DOMContentLoaded', () => {
                         <path d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="#e6e6e6" stroke-width="3"></path>
                         <path d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="var(--success-color, #28a745)" stroke-width="3" stroke-dasharray="${greenDashArray}"></path>
                         <path d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="var(--danger-color, #dc3545)" stroke-width="3" stroke-dasharray="${redDashArray}" stroke-dashoffset="${redDashOffset}"></path>
-                    </svg>
-                    <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 1.5rem; font-weight: bold; color: #FFFFFF !important;">${percentage.toFixed(2)}%</div>
+                     </svg>
+                    <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 1.5rem; font-weight: bold; color: var(--text-heading) !important;">${percentage.toFixed(2)}%</div>
                 </div>
                 <p>${txtTotal}: ${totalQuestions}</p>
                 <p style="color: var(--success-color, #28a745); font-weight: bold;">${txtCorrect}: ${correctCount}</p>
@@ -413,6 +412,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function retryQuiz() { location.reload(); }
     
+    // 🎯 FIXED DYNAMIC EVENT BINDING: रिव्यू स्क्रीन के बटन्स को पूरी तरह री-इंजीनियर किया गया है!
     function reviewQuestions() {
         if(startModal) startModal.classList.remove('active');
         if(quizSection) quizSection.style.display = "none";
@@ -462,7 +462,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if(reviewContainer) reviewContainer.innerHTML = reviewHTML;
         
-        // 🎯 FIXED: रिव्यू स्क्रीन के टॉप एक्शन बटन्स में भी Next/Prev/Test Again को इंजेक्ट किया गया है
+        // 🎯 INJECT NEXT/PREV/RETRY BUTTONS INSIDE REVIEW INTERFACE TOP LAYER CLEANLY
         const reviewActionsTop = document.getElementById('review-actions-top-layer-buttons');
         if(reviewActionsTop) {
             let labelRetry = currentLang === 'hi' ? 'पुनः प्रयास' : 'Test Again';
@@ -478,6 +478,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 topHtml += `<a href="${window.routingConfig.nextUrl}" class="submit-btn" style="text-decoration:none; display:inline-block; color:#FFFFFF !important; background:var(--clr-accent);">${labelNextPart}</a>`;
             }
             reviewActionsTop.innerHTML = topHtml;
+            
+            // 🎯 CRITICAL EVENT FIX: नए डायनेमिक बटन पर क्लिक लिसनर को लाइव बाइंड किया गया है
             document.getElementById('review-top-retry-btn').addEventListener('click', retryQuiz);
         }
         
@@ -485,8 +487,5 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     if (startBtn) startBtn.addEventListener('click', startQuiz);
-    const revRetryBtnDefault = document.getElementById('review-retry-btn');
-    if (revRetryBtnDefault) revRetryBtnDefault.addEventListener('click', retryQuiz);
-    
     initLanguageSwitcher();
 });
