@@ -1,10 +1,8 @@
-// 🌐 TyagiHub Test Center & Leaderboard Synchronizer Engine
+// 🌐 TyagiHub Test Center & Leaderboard Synchronizer Engine — FIXED STRUCTURE EDITION
 // Path: /assets/js/test-hub.js
 
-// Connected cleanly to your newly deployed auto-injecting Apps Script URL
 const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbw9Bz1KhUlIlKgy-lOpiI70oCMm28nbqhoBVUj1eg8uEH2iUcmaDP4Si9OXh0r37wiktg/exec";
 
-// REPLACED FIREBASE AUTH WITH NATIVE LOCALSTORAGE LOGGED-IN USER MATRIX
 function getLoggedUser() {
     try {
         const storedUser = localStorage.getItem("tc_user");
@@ -16,20 +14,8 @@ function getLoggedUser() {
                 photoURL: parsed.p || ""
             };
         }
-    } catch (e) {
-        console.error("Error reading local login session:", e);
-    }
+    } catch (e) { console.error("Error reading login:", e); }
     return null;
-}
-
-function resetCategoryPageUI() {
-    const testPartsContainer = document.getElementById('test-parts-container');
-    if (!testPartsContainer) return;
-    testPartsContainer.querySelectorAll('.box[data-quiz-id]').forEach(box => {
-        if (box.dataset.originalHtml) {
-            box.innerHTML = box.dataset.originalHtml;
-        }
-    });
 }
 
 async function initializeTestHub() {
@@ -49,9 +35,7 @@ async function initializeTestHub() {
         leaderboardContainer.innerHTML = '<div class="luxury-spinner"><i class="fas fa-spinner fa-spin" style="font-size:26px;"></i></div>';
         try {
             let fetchUrl = `${GOOGLE_SCRIPT_URL}?action=get_leaderboard&quizId=${testCategory}`;
-            if (currentUser) {
-                fetchUrl += `&userId=${currentUser.uid}`;
-            }
+            if (currentUser) { fetchUrl += `&userId=${currentUser.uid}`; }
 
             const response = await fetch(fetchUrl);
             const data = await response.json();
@@ -60,17 +44,14 @@ async function initializeTestHub() {
 
             renderLeaderboard(leaderboardData, testCategory, userLiveRank, currentUser);
         } catch (error) {
-            console.error(`Error loading leaderboard from Google Sheet for '${testCategory}':`, error);
+            console.error("Error loading leaderboard:", error);
             leaderboardContainer.innerHTML = "<p style='color:var(--text-muted); text-align:center;'>The leaderboard could not be retrieved from database ledger.</p>";
         }
     }
 
-    // --- Part 2: Handle User-Specific Score Boxes from Google Sheets ---
-    if (isCategoryPage && testPartsContainer) {
-        resetCategoryPageUI();
-        if (currentUser) {
-            await updateUserTestStatus(testCategory, currentUser);
-        }
+    // --- Part 2: Handle Score Updates via Safe Target Selectors ---
+    if (isCategoryPage && testPartsContainer && currentUser) {
+        await updateUserTestStatus(testCategory, currentUser);
     }
 }
 
@@ -92,11 +73,8 @@ function renderLeaderboard(topScores, category, userLiveRank, currentUser) {
         const displayName = isCurrentUser ? "You" : scoreData.userName;
         const avatar = scoreData.userPhotoURL || 'data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="50" fill="%23ddd"/></svg>';
         
-        // 🎯 FIX: अगर बैकएंड से वैल्यू 1 से कम (जैसे 0.80) आ रही है तो 100 से गुणा करेंगे, वरना वैसे ही दिखाएंगे
         let finalPct = scoreData.averagePercentage;
-        if (finalPct <= 1 && finalPct > 0) {
-            finalPct = finalPct * 100;
-        }
+        if (finalPct <= 1 && finalPct > 0) { finalPct = finalPct * 100; }
 
         leaderboardHTML += `
             <li class="${isCurrentUser ? 'active-user-row' : ''}">
@@ -119,9 +97,7 @@ function renderLeaderboard(topScores, category, userLiveRank, currentUser) {
         let myPercentageStr = "0.00%";
         if (myActiveRecord) {
             let myPct = myActiveRecord.averagePercentage;
-            if (myPct <= 1 && myPct > 0) {
-                myPct = myPct * 100;
-            }
+            if (myPct <= 1 && myPct > 0) { myPct = myPct * 100; }
             myPercentageStr = myPct.toFixed(2) + "%";
         }
 
@@ -143,6 +119,7 @@ function renderLeaderboard(topScores, category, userLiveRank, currentUser) {
     leaderboardContainer.innerHTML = leaderboardHTML + userRankHTML;
 }
 
+// 🎯 SAFE THEME UPDATER: यह सिर्फ आवश्यक हिस्से को ही बदलेगा, पूरे बॉक्स के लेआउट या एंकर टैग को क्रैश नहीं करेगा!
 async function updateUserTestStatus(category, currentUser) {
     const testPartsContainer = document.getElementById('test-parts-container');
     if (!currentUser || !testPartsContainer) return;
@@ -155,48 +132,30 @@ async function updateUserTestStatus(category, currentUser) {
             const quizId = box.dataset.quizId;
             if (latestScoresMap && latestScoresMap[quizId]) {
                 const scoreData = latestScoresMap[quizId];
-                const partName = box.dataset.partName || "Test Part";
                 
-                const tempDiv = document.createElement('div');
-                if (box.dataset.originalHtml) {
-                    tempDiv.innerHTML = box.dataset.originalHtml;
+                // अगर पहले से बॉक्स के अंदर स्कोर नोटिफ़ायर नहीं बना है, तो एंकर लिंक के ऊपर साफ़-साफ़ इन्जेक्ट करें
+                let scoreBadge = box.querySelector('.js-live-score-badge');
+                if (!scoreBadge) {
+                    scoreBadge = document.createElement('div');
+                    scoreBadge.className = 'js-live-score-badge';
+                    scoreBadge.style.fontSize = '12px';
+                    scoreBadge.style.marginTop = '4px';
+                    scoreBadge.style.color = 'var(--text-paragraph)';
+                    scoreBadge.style.opacity = '0.8';
+                    box.appendChild(scoreBadge);
                 }
-                const originalLink = tempDiv.querySelector('a');
-                if (!originalLink) return;
-
-                box.innerHTML = `
-                    <div class="user-score-display" style="text-align:left; margin-bottom:12px;">
-                        <h4 style="margin:0 0 4px 0; font-family:var(--font-display); color:var(--text-heading);">${partName}</h4>
-                        <p style="margin:0; font-size:13px; color:var(--text-paragraph);"><strong>Your Latest Score:</strong> ${scoreData.score} / ${scoreData.totalQuestions}</p>
-                    </div>
-                    <div class="button-group" style="display:flex; gap:10px;">
-                        <button class="tc-action-btn retry-btn" style="cursor:pointer; background:var(--clr-accent); color:#000; border-color:var(--clr-accent);">Play Again</button>
-                    </div>
-                `;
-
-                box.querySelector('.retry-btn').onclick = () => {
-                    sessionStorage.removeItem(`review_${quizId}`);
-                    sessionStorage.removeItem('reviewDataForNextPage');
-                    window.location.href = originalLink.href;
-                };
+                scoreBadge.innerHTML = `<strong>Latest Score:</strong> ${scoreData.score} / ${scoreData.totalQuestions}`;
             }
         });
     } catch (error) {
-        console.error("Error updating user test status from Google Sheet Ledger:", error);
+        console.error("Error updating user test status:", error);
     }
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-    document.querySelectorAll('#test-parts-container .box[data-quiz-id]').forEach(box => {
-        if (!box.dataset.originalHtml) {
-            box.dataset.originalHtml = box.innerHTML;
-        }
-    });
     initializeTestHub();
 });
 
 window.addEventListener('pageshow', (event) => {
-    if (event.persisted) {
-        initializeTestHub();
-    }
+    if (event.persisted) { initializeTestHub(); }
 });
