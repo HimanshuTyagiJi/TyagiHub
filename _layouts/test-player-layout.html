@@ -251,7 +251,7 @@ comments: false
   }
 
   .quiz-modal-content-panel h2 { font-family: var(--font-display), sans-serif; color: var(--text-heading); margin: 0 0 var(--space-4, 16px) 0; }
-  .quiz-modal-content-panel p { font-size: var(--fs-sm, 0.95rem); color: var(--text-paragraph); line-height: var(--lh-normal, 1.6); margin: 0 0 var(--space-4, 16px) 0; }
+  .quiz-modal-content-panel p { font-size: var(--fs-sm, 0.95rem); color: var(--text-paragraph); line-height: var(--lh-normal, 1.6); margin: 0 0 var(--space-6, 24px) 0; }
   .modal-actions-track { display: flex; justify-content: center; gap: var(--space-3, 12px); flex-wrap: wrap; }
 
   .question-block.review {
@@ -284,11 +284,29 @@ comments: false
     line-height: var(--lh-normal, 1.6);
     margin-top: var(--space-4, 16px);
   }
+
+  .rules-clean-list {
+    text-align: left !important;
+    margin: 20px 0 !important;
+    padding-left: 20px !important;
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+  }
+  .rules-clean-list li {
+    font-family: var(--font-body), sans-serif !important;
+    font-size: 14px !important;
+    line-height: 1.6 !important;
+    color: var(--text-paragraph) !important;
+    margin-bottom: 12px !important;
+    display: list-item !important;
+    list-style-type: disc !important;
+  }
 </style>
 
 {%- comment -%}
   ==================================================================
-  CORE LIQUID STREAM FETCHING
+  CORE LIQUID STREAM FETCHING (CATEGORIES ALIGNMENT SYNCED)
   ==================================================================
 {%- endcomment -%}
 {%- assign map_file = page.category_id -%}
@@ -306,7 +324,7 @@ comments: false
 {%- assign slice_hi = all_qs_hi | slice: start_idx, qpp -%}
 {%- assign live_questions_count = slice_en.size -%}
 
-<!-- SECURE DATA PASS FOR NEXT/PREV ROUTING LINKS (PART CHANGED TO TEST STRING ACCORDING TO USER FEEDBACK) -->
+<!-- SECURE DATA PASS FOR NEXT/PREV ROUTING LINKS -->
 {%- assign current_part = page.part_index | plus: 0 -%}
 {%- assign prev_part = current_part | minus: 1 -%}
 {%- assign next_part = current_part | plus: 1 -%}
@@ -330,28 +348,22 @@ comments: false
   {%- assign next_part_url = "" -%}
 {%- endif -%}
 
-<!-- SECURE RUNTIME INTERFACE ATTRIBUTE ANCHOR -->
-<script>
-    document.body.setAttribute('data-quiz-id', '{{ page.quiz_id }}');
-    document.body.setAttribute('data-category-id', '{{ page.category_id }}');
-</script>
+<!-- SECURE RUNTIME RUNNING INTERFACE ATTRIBUTE ANCHOR -->
+<script>document.body.setAttribute('data-quiz-id', '{{ page.quiz_id }}');</script>
 
 <main class="quiz-gameplay-wrapper">
     
-    <!-- 1. Live Gameplay Workspace Monitor Section Panel -->
+    <!-- 1. Live Gameplay Workspace Monitor Section Panel (DISPLAY DIRECTLY SET TO BLOCK) -->
     <div id="quiz-section" style="display: block;">
         <div class="quiz-top-bar">
             <div class="quiz-meta-item">
                 <i class="fa-solid fa-graduation-cap" style="color:var(--clr-accent);"></i>
-                <!-- 🎯 USER RE-TITLED FEEDBACK APPLIED: "Part" replaced with "Test" cleanly -->
-                <span id="player-dynamic-title" 
-                      data-en="{{ page.title | replace: 'Part', 'Test' | split: ' Live Test' | first }}" 
-                      data-hi="{{ page.title_hi | replace: 'भाग', 'टेस्ट' | replace: 'Part', 'टेस्ट' | split: ' लाइव टेस्ट' | first }}">
-                    {{ page.title | replace: 'Part', 'Test' | split: ' Live Test' | first }}
+                <span id="player-dynamic-title" data-en="{{ page.title | split: ' Live Test' | first }}" data-hi="{{ page.title_hi | split: ' लाइव टेस्ट' | first }}">
+                    {{ page.title | split: ' Live Test' | first }}
                 </span>
             </div>
 
-            <!-- 🌐 Language Switcher -->
+            <!-- 🌐 In-House Live Instant Language Switcher (No Reload) -->
             <div class="player-lang-toggle" id="player-language-switcher-bar">
                 <button class="player-lang-btn active" id="pl-btn-en">EN</button>
                 <button class="player-lang-btn" id="pl-btn-hi">HI</button>
@@ -363,6 +375,7 @@ comments: false
             </div>
         </div>
 
+        <!-- Split Grid Target Elements Layout Vector -->
         <form id="quiz-form" onsubmit="return false;"></form>
     </div>
 
@@ -371,17 +384,22 @@ comments: false
         <div class="quiz-top-bar" style="margin-bottom: 32px;">
             <h2 id="label-review-title" data-en="Review Solutions" data-hi="उत्तर और व्याख्या देखें" style="font-family:var(--font-display); font-size:20px; margin:0; color:var(--text-heading);">Review Solutions</h2>
             
+            <!-- 🌐 Language Switch Also Available in Review Mode Bar Grid -->
             <div class="player-lang-toggle" id="review-language-switcher-bar">
                 <button class="player-lang-btn" id="rev-btn-en">EN</button>
                 <button class="player-lang-btn" id="rev-btn-hi">HI</button>
             </div>
 
-            <div id="review-actions-top-layer-buttons"></div>
+            <div id="review-actions-top-layer-buttons">
+               <!-- Auto Inject white color buttons directly dynamically from test.js framework -->
+            </div>
         </div>
         <div id="review-container"></div>
     </div>
 
 </main>
+
+<!-- 🎭 OVERLAYS DIALOGS STATE BLOCKS (StartModal Completely Removed for Direct Execution) -->
 
 <!-- B. Analysis Summary Result Modal Block -->
 <div id="resultModal" class="quiz-modal-backdrop">
@@ -389,7 +407,9 @@ comments: false
         <div style="font-size:2.5rem; margin-bottom:8px;">🎯</div>
         <h2 id="modal-result-title" data-en="Your Result Profile" data-hi="आपका परिणाम प्रोफ़ाइल">Your Result Profile</h2>
         <div id="resultContent" style="margin-bottom: 24px;"></div>
-        <div class="modal-actions-track" style="gap:15px;" id="modal-result-actions-container"></div>
+        <div class="modal-actions-track" style="gap:15px;" id="modal-result-actions-container">
+            <!-- Dynamic Buttons injected from test.js -->
+        </div>
     </div>
 </div>
 
@@ -434,15 +454,11 @@ comments: false
     };
 </script>
 
-<!-- ==================================================================
-     📦 EMBEDDED BULLETPROOF ENGINE INDUSTRIAL INJECTION BLOCK
-     ================================================================== -->
 <script type="module">
 const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbw9Bz1KhUlIlKgy-lOpiI70oCMm28nbqhoBVUj1eg8uEH2iUcmaDP4Si9OXh0r37wiktg/exec";
 
 document.addEventListener('DOMContentLoaded', () => {
     const quizId = document.body.dataset.quizId;
-    const catId = document.body.dataset.categoryId || "default-category";
     if (!quizId) return;
 
     let currentLang = localStorage.getItem('th-quiz-lang') || 'en';
@@ -530,7 +546,9 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    function startQuizDirectly() {
+    function startQuiz() {
+        if(quizSection) quizSection.style.display = "block";
+        
         let len = 0;
         if (window.questionsRepo && window.questionsRepo.en) {
             len = window.questionsRepo.en.length;
@@ -538,7 +556,7 @@ document.addEventListener('DOMContentLoaded', () => {
         
         if (len === 0) {
             const qContainer = document.getElementById('questions-container');
-            if(qContainer) qContainer.innerHTML = "<p style='color:red; text-align:center;'>Data Loading Error.</p>";
+            if(qContainer) qContainer.innerHTML = "<p style='color:red; text-align:center;'>प्रश्नों का डेटा लोड नहीं हो सका।</p>";
             return;
         }
 
@@ -708,15 +726,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         const totalQuestions = shuffledIndices.length;
-        const finalPercentage = totalQuestions > 0 ? (correctCount / totalQuestions) * 100 : 0;
         if(resultContent) resultContent.dataset.lastScore = correctCount;
-
-        // 🏆 LOCALSTORAGE STATE INJECTION
-        let scoresStorage = {};
-        try { scoresStorage = JSON.parse(localStorage.getItem('th_quiz_scores')) || {}; } catch(e){}
-        if (!scoresStorage[catId]) { scoresStorage[catId] = []; }
-        scoresStorage[catId].push(finalPercentage); 
-        localStorage.setItem('th_quiz_scores', JSON.stringify(scoresStorage));
 
         if(quizForm) quizForm.innerHTML = ''; 
         renderResultContentDOM(correctCount, totalQuestions, incorrectCount, skippedCount);
@@ -781,8 +791,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
         let labelReview = currentLang === 'hi' ? 'उत्तर देखें' : 'Review Answers';
         let labelRetry = currentLang === 'hi' ? 'पुनः प्रयास' : 'Try Again';
-        let labelPrevPart = currentLang === 'hi' ? '← पिछला टेस्ट' : '← Prev Test';
-        let labelNextPart = currentLang === 'hi' ? 'अगला टेस्ट →' : 'Next Test →';
+        let labelPrevPart = currentLang === 'hi' ? '← पिछला भाग' : '← Prev Part';
+        let labelNextPart = currentLang === 'hi' ? 'अगला भाग →' : 'Next Part →';
 
         let html = `
             <button id="review-btn" class="skip-btn" style="border-color:var(--clr-border-2); color:var(--text-heading);">` + labelReview + `</button>
@@ -790,13 +800,10 @@ document.addEventListener('DOMContentLoaded', () => {
         `;
 
         if (window.routingConfig && window.routingConfig.prevUrl) {
-            // URL से पार्ट को टेस्ट दिखाने के लिए
-            let prevUrlSecured = window.routingConfig.prevUrl;
-            html += `<a href="` + prevUrlSecured + `" class="skip-btn" style="text-decoration:none; display:inline-block; border-color:var(--clr-accent); color:var(--clr-accent);">` + labelPrevPart + `</a>`;
+            html += `<a href="` + window.routingConfig.prevUrl + `" class="skip-btn" style="text-decoration:none; display:inline-block; border-color:var(--clr-accent); color:var(--clr-accent);">` + labelPrevPart + `</a>`;
         }
         if (window.routingConfig && window.routingConfig.nextUrl) {
-            let nextUrlSecured = window.routingConfig.nextUrl;
-            html += `<a href="` + nextUrlSecured + `" class="submit-btn" style="text-decoration:none; display:inline-block; color:#FFFFFF !important; background:var(--clr-accent);">${labelNextPart}</a>`;
+            html += `<a href="` + window.routingConfig.nextUrl + `" class="submit-btn" style="text-decoration:none; display:inline-block; color:#FFFFFF !important; background:var(--clr-accent);">${labelNextPart}</a>`;
         }
         actionsWrap.innerHTML = html;
 
@@ -869,8 +876,8 @@ document.addEventListener('DOMContentLoaded', () => {
         const reviewActionsTop = document.getElementById('review-actions-top-layer-buttons');
         if(reviewActionsTop) {
             let labelRetry = currentLang === 'hi' ? 'पुनः प्रयास' : 'Test Again';
-            let labelPrevPart = currentLang === 'hi' ? '← पिछला टेस्ट' : '← Prev Test';
-            let labelNextPart = currentLang === 'hi' ? 'अगला टेस्ट →' : 'Next Test →';
+            let labelPrevPart = currentLang === 'hi' ? '← पिछला भाग' : '← Prev Part';
+            let labelNextPart = currentLang === 'hi' ? 'अगला भाग →' : 'Next Part →';
             
             let topHtml = `<button id="review-top-retry-btn" class="submit-btn" style="color:#FFFFFF !important; margin-right:10px;">` + labelRetry + `</button>`;
             if (window.routingConfig && window.routingConfig.prevUrl) {
@@ -885,7 +892,8 @@ document.addEventListener('DOMContentLoaded', () => {
         if(reviewSection) reviewSection.style.display = "block";
     }
 
-    startQuizDirectly();
+    // ⚡ DIRECT TEST INITIALIZATION AND EXECUTION GATEWAY
     initLanguageSwitcher();
+    startQuiz();
 });
 </script>
