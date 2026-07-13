@@ -56,7 +56,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (resultTitle) resultTitle.textContent = resultTitle.getAttribute(`data-${currentLang}`);
         if (startBtnEl) startBtnEl.textContent = startBtnEl.getAttribute(`data-${currentLang}`);
 
-        // Rules modal text updater
+        // Rules modal text updater 🎯 FIXED Dynamic Count Sync
         const rulesUl = document.getElementById('modal-start-rules');
         if (rulesUl) {
             const count = rulesUl.getAttribute('data-count');
@@ -77,7 +77,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
 
-        // Synchronize all Active Language Button Blocks (Gameplay + Review)
+        // Synchronize switcher button states cleanly across templates
         ['player-language-switcher-bar', 'review-language-switcher-bar'].forEach(barId => {
             const bar = document.getElementById(barId);
             if (bar) {
@@ -118,10 +118,10 @@ document.addEventListener('DOMContentLoaded', () => {
         } else if (reviewSection && reviewSection.style.display === "block") {
             reviewQuestions();
         } else if (resultModal && resultModal.classList.contains('active')) {
-            // Live translate results modal texts dynamically
             const scorePayload = resultContent.dataset.lastScore || 0;
             const totalPayload = shuffledIndices.length;
             renderResultContentDOM(parseInt(scorePayload, 10), totalPayload);
+            renderResultActionsBlockDOM();
         }
     }
 
@@ -151,7 +151,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 </div>
                 <div id="question-palette-container">
                     <div class="palette-header">
-                        <h4>${currentLang === 'hi' ? 'प्रश्न सूची' : 'Questions'}</h4>
+                        <h4 id="palette-title-node">${currentLang === 'hi' ? 'प्रश्न सूची' : 'Questions'}</h4>
                         <button class="submit-btn" id="main-submit-btn">${currentLang === 'hi' ? 'सबमिट' : 'Submit'}</button>
                     </div>
                     <div id="question-palette"></div>
@@ -174,7 +174,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!questionsContainer || !navigationContainer) return;
 
         const actualIdx = shuffledIndices[index];
-        // 🎯 FIX: ऑप्शंस हमेशा मूल स्थिर इंग्लिश के एलाइनमेंट (a, b, c, d) से ही मैच होंगे, ताकि डेटा डिस्टर्ब न हो
+        // 🎯 FIXED Parallel Mirroring logic extraction
         const qEn = window.questionsRepo.en[actualIdx];
         const qActive = window.questionsRepo[currentLang][actualIdx];
         
@@ -183,7 +183,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 <p class="question">${index + 1}. ${qActive.question}</p>
                 <div class="options">
                     ${qEn.options.map((option, optIdx) => {
-                        // टेक्स्ट एक्टिव भाषा का उठाएंगे, वैल्यू स्टेबल इंग्लिश 'value' (a,b,c,d) ही रहेगी
                         const activeOptionText = qActive.options[optIdx].text;
                         return `
                         <label>
@@ -206,7 +205,7 @@ document.addEventListener('DOMContentLoaded', () => {
         
         let labelSkip = currentLang === 'hi' ? 'छोड़ें' : 'Skip';
         let labelNext = currentLang === 'hi' ? 'अगला' : 'Next';
-        let labelSubmit = currentLang === 'hi' ? 'सबमिट' : 'Submit';
+        let labelSubmit = currentLang === 'hi' ? 'सबमिट करें' : 'Submit';
 
         let navHTML = `<button type="button" class="skip-btn">${labelSkip}</button>`;
         if (index < shuffledIndices.length - 1) {
@@ -318,7 +317,6 @@ document.addEventListener('DOMContentLoaded', () => {
     function renderResultContentDOM(correctCount, totalQuestions, incorrectCount, skippedCount) {
         if (!resultContent) return;
         
-        // इंक्रीमेंटल वैल्यूज री-कैलकुलेट करें यदि भाषा बदलने पर डेटा पास नहीं हुआ था
         if (incorrectCount === undefined) {
             incorrectCount = 0; skippedCount = 0;
             shuffledIndices.forEach((actualIdx, index) => {
@@ -343,7 +341,6 @@ document.addEventListener('DOMContentLoaded', () => {
         let txtMin = currentLang === 'hi' ? 'मिनट' : 'min';
         let txtSec = currentLang === 'hi' ? 'सेकंड' : 'sec';
 
-        // 🎯 FIX: SVG टेक्स्ट कलर को हमेशा #FFFFFF (100% White) रखा गया है
         resultContent.innerHTML = `
             <div style="text-align: center;">
                 <div style="position: relative; width: 150px; height: 150px; margin: 1rem auto;">
@@ -376,19 +373,16 @@ document.addEventListener('DOMContentLoaded', () => {
             <button id="retry-btn" class="submit-btn" style="color:#FFFFFF !important;">${labelRetry}</button>
         `;
 
-        // अगर पिछले पार्ट का यूआरएल मौजूद है, तो बटन जोड़ें
         if (window.routingConfig && window.routingConfig.prevUrl) {
             html += `<a href="${window.routingConfig.prevUrl}" class="skip-btn" style="text-decoration:none; display:inline-block; border-color:var(--clr-accent); color:var(--clr-accent);">${labelPrevPart}</a>`;
         }
 
-        // अगर अगले पार्ट का यूआरएल मौजूद है, तो बटन जोड़ें
         if (window.routingConfig && window.routingConfig.nextUrl) {
             html += `<a href="${window.routingConfig.nextUrl}" class="submit-btn" style="text-decoration:none; display:inline-block; color:#FFFFFF !important; background:var(--clr-accent);">${labelNextPart}</a>`;
         }
 
         actionsWrap.innerHTML = html;
 
-        // क्लिक लिसनर्स री-बाइंड करें
         document.getElementById('review-btn').addEventListener('click', reviewQuestions);
         document.getElementById('retry-btn').addEventListener('click', retryQuiz);
     }
@@ -422,7 +416,6 @@ document.addEventListener('DOMContentLoaded', () => {
         if(quizSection) quizSection.style.display = "none";
         if(resultModal) resultModal.classList.remove('active');
         
-        // रिव्यू मोड के शीर्ष बार में भी भाषा स्विच बार को लाइव एक्टिवेट रखें
         const revLangBar = document.getElementById('review-language-switcher-bar');
         if (revLangBar) revLangBar.style.display = 'inline-flex';
 
@@ -470,7 +463,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     if (startBtn) startBtn.addEventListener('click', startQuiz);
-    if (reviewRetryBtn) reviewRetryBtn.addEventListener('click', retryQuiz);
     
     initLanguageSwitcher();
 });
