@@ -25,9 +25,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const reviewSection = document.getElementById("review-questions");
     const quizSection = document.getElementById("quiz-section");
     const startBtn = document.getElementById("start-btn");
-    const reviewBtn = document.getElementById("review-btn");
-    const retryBtn = document.getElementById("retry-btn");
-    const reviewRetryBtn = document.getElementById("review-retry-btn");
 
     function getLoggedUser() {
         try {
@@ -44,22 +41,20 @@ document.addEventListener('DOMContentLoaded', () => {
         return null;
     }
 
-    // Dynamic localization text sync handler
     function syncLanguageUI() {
         const titleEl = document.getElementById('player-dynamic-title');
         const labelTime = document.getElementById('label-time');
         const labelReview = document.getElementById('label-review-title');
+        const startTitle = document.getElementById('modal-start-title');
+        const resultTitle = document.getElementById('modal-result-title');
+        const startBtnEl = document.getElementById('start-btn');
         
         if (titleEl) titleEl.textContent = titleEl.getAttribute(`data-${currentLang}`);
         if (labelTime) labelTime.textContent = labelTime.getAttribute(`data-${currentLang}`);
         if (labelReview) labelReview.textContent = labelReview.getAttribute(`data-${currentLang}`);
-        
-        // Modal & buttons text rewrite hooks
-        document.querySelectorAll('[data-en]').forEach(el => {
-            if(el.id !== 'player-dynamic-title' && el.id !== 'label-time' && el.id !== 'label-review-title') {
-                el.textContent = el.getAttribute(`data-${currentLang}`);
-            }
-        });
+        if (startTitle) startTitle.textContent = startTitle.getAttribute(`data-${currentLang}`);
+        if (resultTitle) resultTitle.textContent = resultTitle.getAttribute(`data-${currentLang}`);
+        if (startBtnEl) startBtnEl.textContent = startBtnEl.getAttribute(`data-${currentLang}`);
 
         // Rules modal text updater
         const rulesUl = document.getElementById('modal-start-rules');
@@ -82,23 +77,32 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
 
-        // Toggle active button style
-        const btnEn = document.getElementById('pl-btn-en');
-        const btnHi = document.getElementById('pl-btn-hi');
-        if(btnEn && btnHi) {
-            btnEn.classList.toggle('active', currentLang === 'en');
-            btnHi.classList.toggle('active', currentLang === 'hi');
-        }
+        // Synchronize all Active Language Button Blocks (Gameplay + Review)
+        ['player-language-switcher-bar', 'review-language-switcher-bar'].forEach(barId => {
+            const bar = document.getElementById(barId);
+            if (bar) {
+                const btnEn = bar.querySelector('.player-lang-btn[id*="-en"]');
+                const btnHi = bar.querySelector('.player-lang-btn[id*="-hi"]');
+                if (btnEn && btnHi) {
+                    btnEn.classList.toggle('active', currentLang === 'en');
+                    btnHi.classList.toggle('active', currentLang === 'hi');
+                }
+            }
+        });
     }
 
     function initLanguageSwitcher() {
-        const btnEn = document.getElementById('pl-btn-en');
-        const btnHi = document.getElementById('pl-btn-hi');
-        
-        if(btnEn && btnHi) {
-            btnEn.addEventListener('click', () => switchLanguage('en'));
-            btnHi.addEventListener('click', () => switchLanguage('hi'));
-        }
+        ['player-language-switcher-bar', 'review-language-switcher-bar'].forEach(barId => {
+            const bar = document.getElementById(barId);
+            if (bar) {
+                const btnEn = bar.querySelector('.player-lang-btn[id*="-en"]');
+                const btnHi = bar.querySelector('.player-lang-btn[id*="-hi"]');
+                if (btnEn && btnHi) {
+                    btnEn.addEventListener('click', () => switchLanguage('en'));
+                    btnHi.addEventListener('click', () => switchLanguage('hi'));
+                }
+            }
+        });
         syncLanguageUI();
     }
 
@@ -109,11 +113,15 @@ document.addEventListener('DOMContentLoaded', () => {
         
         syncLanguageUI();
         
-        // अगर टेस्ट चल रहा है या रिव्यू मोड खुला है, तो यूआई को दोबारा रिफ्रेस करेंगे बिना स्टेट खोए
         if (quizSection && quizSection.style.display === "block") {
             displayQuestion(currentQuestionIndex);
         } else if (reviewSection && reviewSection.style.display === "block") {
             reviewQuestions();
+        } else if (resultModal && resultModal.classList.contains('active')) {
+            // Live translate results modal texts dynamically
+            const scorePayload = resultContent.dataset.lastScore || 0;
+            const totalPayload = shuffledIndices.length;
+            renderResultContentDOM(parseInt(scorePayload, 10), totalPayload);
         }
     }
 
@@ -121,7 +129,6 @@ document.addEventListener('DOMContentLoaded', () => {
         if(startModal) startModal.classList.remove('active');
         if(quizSection) quizSection.style.display = "block";
         
-        // सवालों के मूल रेपो की साइज के अनुसार इंडेक्स जनरेट करके शफल करना
         const len = window.questionsRepo.en.length;
         shuffledIndices = Array.from({length: len}, (_, i) => i);
         shuffledIndices.sort(() => Math.random() - 0.5);
@@ -144,8 +151,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 </div>
                 <div id="question-palette-container">
                     <div class="palette-header">
-                        <h4 data-en="Questions" data-hi="प्रश्न सूची">${currentLang === 'hi' ? 'प्रश्न सूची' : 'Questions'}</h4>
-                        <button class="submit-btn" id="main-submit-btn" data-en="Submit" data-hi="सबमिट करें">${currentLang === 'hi' ? 'सबमिट करें' : 'Submit'}</button>
+                        <h4>${currentLang === 'hi' ? 'प्रश्न सूची' : 'Questions'}</h4>
+                        <button class="submit-btn" id="main-submit-btn">${currentLang === 'hi' ? 'सबमिट' : 'Submit'}</button>
                     </div>
                     <div id="question-palette"></div>
                 </div>
@@ -166,19 +173,24 @@ document.addEventListener('DOMContentLoaded', () => {
         const navigationContainer = document.getElementById('question-navigation-buttons');
         if (!questionsContainer || !navigationContainer) return;
 
-        // करंट एक्टिव भाषा के रेपो से शफल्ड इंडेक्स का सवाल निकालना
         const actualIdx = shuffledIndices[index];
-        const q = window.questionsRepo[currentLang][actualIdx];
+        // 🎯 FIX: ऑप्शंस हमेशा मूल स्थिर इंग्लिश के एलाइनमेंट (a, b, c, d) से ही मैच होंगे, ताकि डेटा डिस्टर्ब न हो
+        const qEn = window.questionsRepo.en[actualIdx];
+        const qActive = window.questionsRepo[currentLang][actualIdx];
         
         const questionHTML = `
             <div class="question-block" id="question-${index}">
-                <p class="question">${index + 1}. ${q.question}</p>
+                <p class="question">${index + 1}. ${qActive.question}</p>
                 <div class="options">
-                    ${q.options.map(option => `
+                    ${qEn.options.map((option, optIdx) => {
+                        // टेक्स्ट एक्टिव भाषा का उठाएंगे, वैल्यू स्टेबल इंग्लिश 'value' (a,b,c,d) ही रहेगी
+                        const activeOptionText = qActive.options[optIdx].text;
+                        return `
                         <label>
                             <input type="radio" name="question${index}" value="${option.value}" ${userAnswers[index] === option.value ? 'checked' : ''}>
-                            <span>${option.text}</span>
-                        </label>`).join("")}
+                            <span>${activeOptionText}</span>
+                        </label>`;
+                    }).join("")}
                 </div>
             </div>`;
         questionsContainer.innerHTML = questionHTML;
@@ -194,7 +206,7 @@ document.addEventListener('DOMContentLoaded', () => {
         
         let labelSkip = currentLang === 'hi' ? 'छोड़ें' : 'Skip';
         let labelNext = currentLang === 'hi' ? 'अगला' : 'Next';
-        let labelSubmit = currentLang === 'hi' ? 'सबमिट करें' : 'Submit';
+        let labelSubmit = currentLang === 'hi' ? 'सबमिट' : 'Submit';
 
         let navHTML = `<button type="button" class="skip-btn">${labelSkip}</button>`;
         if (index < shuffledIndices.length - 1) {
@@ -277,7 +289,6 @@ document.addEventListener('DOMContentLoaded', () => {
         let skippedCount = 0;
 
         shuffledIndices.forEach((actualIdx, index) => {
-            // सही विकल्प का मिलान बेस इंग्लिश डेटा से ही करेंगे क्योंकि दोनों भाषाओँ का आर्किटेक्चर अलाइन है
             const q = window.questionsRepo.en[actualIdx];
             const userAnswer = userAnswers[index];
             if (userAnswer === 'skipped' || userAnswer === null) {
@@ -290,41 +301,11 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         const totalQuestions = shuffledIndices.length;
-        const percentage = totalQuestions > 0 ? (correctCount / totalQuestions) * 100 : 0;
+        if(resultContent) resultContent.dataset.lastScore = correctCount;
 
-        const greenDashArray = `${percentage}, 100`;
-        const incorrectPercentageForSVG = totalQuestions > 0 ? (incorrectCount / totalQuestions) * 100 : 0;
-        const redDashArray = `${incorrectPercentageForSVG}, 100`;
-        const redDashOffset = `-${percentage}`;
-        
         if(quizForm) quizForm.innerHTML = ''; 
-
-        if (resultContent) {
-            let txtTotal = currentLang === 'hi' ? 'कुल प्रश्न' : 'Total Questions';
-            let txtCorrect = currentLang === 'hi' ? 'सही उत्तर' : 'Correct';
-            let txtIncorrect = currentLang === 'hi' ? 'गलत उत्तर' : 'Incorrect';
-            let txtSkipped = currentLang === 'hi' ? 'छोड़े गए' : 'Skipped';
-            let txtTime = currentLang === 'hi' ? 'कुल समय' : 'Total Time';
-            let txtMin = currentLang === 'hi' ? 'मिनट' : 'min';
-            let txtSec = currentLang === 'hi' ? 'सेकंड' : 'sec';
-
-            resultContent.innerHTML = `
-                <div style="text-align: center;">
-                    <div style="position: relative; width: 150px; height: 150px; margin: 1rem auto;">
-                         <svg viewBox="0 0 36 36" style="transform: rotate(-90deg); width: 100%; height: 100%;">
-                            <path d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="#e6e6e6" stroke-width="3"></path>
-                            <path d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="var(--success-color, #28a745)" stroke-width="3" stroke-dasharray="${greenDashArray}"></path>
-                            <path d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="var(--danger-color, #dc3545)" stroke-width="3" stroke-dasharray="${redDashArray}" stroke-dashoffset="${redDashOffset}"></path>
-                        </svg>
-                        <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 1.5rem; font-weight: bold; color: var(--text-color);">${percentage.toFixed(2)}%</div>
-                    </div>
-                    <p>${txtTotal}: ${totalQuestions}</p>
-                    <p style="color: var(--success-color, #28a745); font-weight: bold;">${txtCorrect}: ${correctCount}</p>
-                    <p style="color: var(--danger-color, #dc3545); font-weight: bold;">${txtIncorrect}: ${incorrectCount}</p>
-                    <p style="color: var(--secondary-color, #6c757d);">${txtSkipped}: ${skippedCount}</p>
-                    <p>${txtTime}: ${Math.floor(timeTaken / 60)} ${txtMin} ${timeTaken % 60} ${txtSec}</p>
-                </div>`;
-        }
+        renderResultContentDOM(correctCount, totalQuestions, incorrectCount, skippedCount);
+        renderResultActionsBlockDOM();
         
         if (resultModal) resultModal.classList.add('active');
         
@@ -332,6 +313,84 @@ document.addEventListener('DOMContentLoaded', () => {
         if (currentUser) {
             saveScoreToGoogleSheet(correctCount, totalQuestions, currentUser);
         }
+    }
+
+    function renderResultContentDOM(correctCount, totalQuestions, incorrectCount, skippedCount) {
+        if (!resultContent) return;
+        
+        // इंक्रीमेंटल वैल्यूज री-कैलकुलेट करें यदि भाषा बदलने पर डेटा पास नहीं हुआ था
+        if (incorrectCount === undefined) {
+            incorrectCount = 0; skippedCount = 0;
+            shuffledIndices.forEach((actualIdx, index) => {
+                const q = window.questionsRepo.en[actualIdx];
+                const userAnswer = userAnswers[index];
+                if (userAnswer === 'skipped' || userAnswer === null) skippedCount++;
+                else if (userAnswer !== q.correctOption) incorrectCount++;
+            });
+        }
+
+        const percentage = totalQuestions > 0 ? (correctCount / totalQuestions) * 100 : 0;
+        const greenDashArray = `${percentage}, 100`;
+        const incorrectPercentageForSVG = totalQuestions > 0 ? (incorrectCount / totalQuestions) * 100 : 0;
+        const redDashArray = `${incorrectPercentageForSVG}, 100`;
+        const redDashOffset = `-${percentage}`;
+
+        let txtTotal = currentLang === 'hi' ? 'कुल प्रश्न' : 'Total Questions';
+        let txtCorrect = currentLang === 'hi' ? 'सही उत्तर' : 'Correct';
+        let txtIncorrect = currentLang === 'hi' ? 'गलत उत्तर' : 'Incorrect';
+        let txtSkipped = currentLang === 'hi' ? 'छोड़े गए' : 'Skipped';
+        let txtTime = currentLang === 'hi' ? 'कुल समय' : 'Total Time';
+        let txtMin = currentLang === 'hi' ? 'मिनट' : 'min';
+        let txtSec = currentLang === 'hi' ? 'सेकंड' : 'sec';
+
+        // 🎯 FIX: SVG टेक्स्ट कलर को हमेशा #FFFFFF (100% White) रखा गया है
+        resultContent.innerHTML = `
+            <div style="text-align: center;">
+                <div style="position: relative; width: 150px; height: 150px; margin: 1rem auto;">
+                     <svg viewBox="0 0 36 36" style="transform: rotate(-90deg); width: 100%; height: 100%;">
+                        <path d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="#e6e6e6" stroke-width="3"></path>
+                        <path d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="var(--success-color, #28a745)" stroke-width="3" stroke-dasharray="${greenDashArray}"></path>
+                        <path d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="var(--danger-color, #dc3545)" stroke-width="3" stroke-dasharray="${redDashArray}" stroke-dashoffset="${redDashOffset}"></path>
+                    </svg>
+                    <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 1.5rem; font-weight: bold; color: #FFFFFF !important;">${percentage.toFixed(2)}%</div>
+                </div>
+                <p>${txtTotal}: ${totalQuestions}</p>
+                <p style="color: var(--success-color, #28a745); font-weight: bold;">${txtCorrect}: ${correctCount}</p>
+                <p style="color: var(--danger-color, #dc3545); font-weight: bold;">${txtIncorrect}: ${incorrectCount}</p>
+                <p style="color: var(--secondary-color, #6c757d);">${txtSkipped}: ${skippedCount}</p>
+                <p>${txtTime}: ${Math.floor(timeTaken / 60)} ${txtMin} ${timeTaken % 60} ${txtSec}</p>
+            </div>`;
+    }
+
+    function renderResultActionsBlockDOM() {
+        const actionsWrap = document.getElementById('modal-result-actions-container');
+        if (!actionsWrap) return;
+
+        let labelReview = currentLang === 'hi' ? 'उत्तर देखें' : 'Review Answers';
+        let labelRetry = currentLang === 'hi' ? 'पुनः प्रयास' : 'Try Again';
+        let labelPrevPart = currentLang === 'hi' ? '← पिछला भाग' : '← Prev Part';
+        let labelNextPart = currentLang === 'hi' ? 'अगला भाग →' : 'Next Part →';
+
+        let html = `
+            <button id="review-btn" class="skip-btn" style="border-color:var(--clr-border-2); color:var(--text-heading);">${labelReview}</button>
+            <button id="retry-btn" class="submit-btn" style="color:#FFFFFF !important;">${labelRetry}</button>
+        `;
+
+        // अगर पिछले पार्ट का यूआरएल मौजूद है, तो बटन जोड़ें
+        if (window.routingConfig && window.routingConfig.prevUrl) {
+            html += `<a href="${window.routingConfig.prevUrl}" class="skip-btn" style="text-decoration:none; display:inline-block; border-color:var(--clr-accent); color:var(--clr-accent);">${labelPrevPart}</a>`;
+        }
+
+        // अगर अगले पार्ट का यूआरएल मौजूद है, तो बटन जोड़ें
+        if (window.routingConfig && window.routingConfig.nextUrl) {
+            html += `<a href="${window.routingConfig.nextUrl}" class="submit-btn" style="text-decoration:none; display:inline-block; color:#FFFFFF !important; background:var(--clr-accent);">${labelNextPart}</a>`;
+        }
+
+        actionsWrap.innerHTML = html;
+
+        // क्लिक लिसनर्स री-बाइंड करें
+        document.getElementById('review-btn').addEventListener('click', reviewQuestions);
+        document.getElementById('retry-btn').addEventListener('click', retryQuiz);
     }
 
     async function saveScoreToGoogleSheet(score, totalQuestions, currentUser) {
@@ -353,9 +412,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 body: JSON.stringify(payload)
             });
             console.log("Score cleanly piped to Google Sheet Pipeline Ledger ✅");
-        } catch (error) {
-            console.error("Network fault pushing score parameters to Google Script Engine:", error);
-        }
+        } catch (error) { console.error("Error pushing score:", error); }
     }
 
     function retryQuiz() { location.reload(); }
@@ -364,6 +421,11 @@ document.addEventListener('DOMContentLoaded', () => {
         if(startModal) startModal.classList.remove('active');
         if(quizSection) quizSection.style.display = "none";
         if(resultModal) resultModal.classList.remove('active');
+        
+        // रिव्यू मोड के शीर्ष बार में भी भाषा स्विच बार को लाइव एक्टिवेट रखें
+        const revLangBar = document.getElementById('review-language-switcher-bar');
+        if (revLangBar) revLangBar.style.display = 'inline-flex';
+
         const reviewContainer = document.getElementById("review-container");
 
         let reviewHTML = "";
@@ -374,30 +436,32 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         shuffledIndices.forEach((actualIdx, index) => {
-            const q = window.questionsRepo[currentLang][actualIdx];
-            const qEn = window.questionsRepo.en[actualIdx]; // सही विकल्प का मिलान हमेशा बेस की से होगा
+            const qActive = window.questionsRepo[currentLang][actualIdx];
+            const qEn = window.questionsRepo.en[actualIdx]; 
             const userAnswer = userAnswers[index];
             
             let labelExp = currentLang === 'hi' ? 'व्याख्या:' : 'Explanation:';
 
             reviewHTML += `
                 <div class="question-block review">
-                    <p class="question">${index + 1}. ${q.question}</p>
+                    <p class="question">${index + 1}. ${qActive.question}</p>
                     <div class="options">
-                        ${q.options.map(opt => {
+                        ${qEn.options.map((opt, optIdx) => {
                             const isUserAnswer = userAnswer === opt.value;
                             const isOriginalCorrect = opt.value === qEn.correctOption;
                             let className = '';
                             if (isOriginalCorrect) className = 'correct-option';
                             else if (isUserAnswer && !isOriginalCorrect) className = 'incorrect-option';
                             
+                            const activeOptionText = qActive.options[optIdx].text;
+
                             return `<label class="${className}">
                                         <input type="radio" name="review${index}" value="${opt.value}" ${isUserAnswer ? 'checked' : ''} disabled> 
-                                        <span>${opt.text}</span>
+                                        <span>${activeOptionText}</span>
                                     </label>`;
                         }).join('')}
                     </div>
-                    <div class="explanation"><strong>${labelExp}</strong> ${q.explanation}</div>
+                    <div class="explanation"><strong>${labelExp}</strong> ${qActive.explanation}</div>
                 </div>`;
         });
 
@@ -406,8 +470,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     if (startBtn) startBtn.addEventListener('click', startQuiz);
-    if (reviewBtn) reviewBtn.addEventListener('click', reviewQuestions);
-    if (retryBtn) retryBtn.addEventListener('click', retryQuiz);
     if (reviewRetryBtn) reviewRetryBtn.addEventListener('click', retryQuiz);
     
     initLanguageSwitcher();
