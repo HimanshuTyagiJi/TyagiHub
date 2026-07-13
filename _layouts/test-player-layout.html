@@ -1,5 +1,7 @@
 ---
 layout: default
+comments: false
+lang_switch: false
 ---
 
 <!-- Premium Quiz Gameplay Matrix Layout Styles -->
@@ -43,6 +45,34 @@ layout: default
   }
 
   #timer { color: var(--clr-accent); }
+
+  /* 🌐 Custom Premium Language Switch Elements for Player */
+  .player-lang-toggle {
+    display: inline-flex;
+    gap: 6px;
+    background: var(--bg-body);
+    border: 1px solid var(--clr-border);
+    padding: 4px;
+    border-radius: var(--radius-full, 9999px);
+  }
+
+  .player-lang-btn {
+    padding: 4px 14px;
+    border: none;
+    background: transparent;
+    color: var(--text-paragraph);
+    font-family: var(--font-body), sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    border-radius: var(--radius-full, 9999px);
+    transition: all var(--ease-fast);
+  }
+
+  .player-lang-btn.active {
+    background: var(--clr-accent);
+    color: #FFFFFF;
+  }
 
   #quiz-layout {
     display: grid;
@@ -271,28 +301,22 @@ layout: default
 
 {%- comment -%}
   ==================================================================
-  CORE LIQUID CORE LOGIC FOR LIVE SLICE QUESTION DETECTION
+  CORE LIQUID CORE LOGIC FOR LIVE DOUBLE STREAM FECHING
   ==================================================================
 {%- endcomment -%}
 {%- assign map_file = page.category_id -%}
 {%- if page.category_id == 'medieval-history' -%}{%- assign map_file = 'medieval-history' -%}{%- endif -%}
 {%- if page.category_id == 'modern-history' -%}{%- assign map_file = 'modern-history' -%}{%- endif -%}
 
-{%- if page.lang == 'hi' -%}
-  {%- assign all_qs = site.data.quiz.hi[map_file] -%}
-{%- else -%}
-  {%- assign all_qs = site.data.quiz.en[map_file] -%}
-{%- endif -%}
+{%- assign all_qs_en = site.data.quiz.en[map_file] -%}
+{%- assign all_qs_hi = site.data.quiz.hi[map_file] -%}
 
 {%- assign qpp = page.questions_per_page | plus: 0 -%}
 {%- assign start_idx = page.part_index | minus: 1 | multiplied_by: qpp -%}
 
-{%- comment -%}
-  यहाँ हम slice की मदद से सटीक प्रश्नों का उप-समूह (Sub-array) निकाल रहे हैं
-  ताकि हमें इस विशिष्ट पार्ट के प्रश्नों की वास्तविक संख्या (Live Size) मिल सके।
-{%- endcomment -%}
-{%- assign questions_slice = all_qs | slice: start_idx, qpp -%}
-{%- assign live_questions_count = questions_slice.size -%}
+{%- assign slice_en = all_qs_en | slice: start_idx, qpp -%}
+{%- assign slice_hi = all_qs_hi | slice: start_idx, qpp -%}
+{%- assign live_questions_count = slice_en.size -%}
 
 <!-- SECURE RUNTIME RUNNING INTERFACE ATTRIBUTE ANCHOR -->
 <script>document.body.setAttribute('data-quiz-id', '{{ page.quiz_id }}');</script>
@@ -304,11 +328,20 @@ layout: default
         <div class="quiz-top-bar">
             <div class="quiz-meta-item">
                 <i class="fa-solid fa-graduation-cap" style="color:var(--clr-accent);"></i>
-                <span>{{ page.title | split: ' Live Test' | first }}</span>
+                <span id="player-dynamic-title" data-en="{{ page.title | split: ' Live Test' | first }}" data-hi="{{ page.title_hi | split: ' लाइव टेस्ट' | first }}">
+                    {{ page.title | split: ' Live Test' | first }}
+                </span>
             </div>
+
+            <!-- 🌐 In-House Live Instant Language Switcher (No Reload) -->
+            <div class="player-lang-toggle">
+                <button class="player-lang-btn active" id="pl-btn-en">EN</button>
+                <button class="player-lang-btn" id="pl-btn-hi">HI</button>
+            </div>
+
             <div id="timer" class="quiz-meta-item">
                 <i class="fa-regular fa-clock"></i>
-                <strong>{% if page.lang == 'hi' %}समय:{% else %}Time:{% endif %}</strong> 0:00
+                <strong id="label-time" data-en="Time:" data-hi="समय:">Time:</strong> <span id="timer-clock">0:00</span>
             </div>
         </div>
 
@@ -319,10 +352,8 @@ layout: default
     <!-- 2. Detailed Verification Solutions Matrix Review Mode Section Canvas -->
     <div id="review-questions" style="display: none; max-width: 800px; margin: 0 auto;">
         <div class="quiz-top-bar" style="margin-bottom: 32px;">
-            <h2 style="font-family:var(--font-display); font-size:20px; margin:0; color:var(--text-heading);">
-                {% if page.lang == 'hi' %}उत्तर और व्याख्या देखें{% else %}Review Solutions{% endif %}
-            </h2>
-            <button id="review-retry-btn" class="submit-btn">{% if page.lang == 'hi' %}पुनः प्रयास करें{% else %}Test Again{% endif %}</button>
+            <h2 id="label-review-title" data-en="Review Solutions" data-hi="उत्तर और व्याख्या देखें" style="font-family:var(--font-display); font-size:20px; margin:0; color:var(--text-heading);">Review Solutions</h2>
+            <button id="review-retry-btn" class="submit-btn" data-en="Test Again" data-hi="पुनः प्रयास करें">Test Again</button>
         </div>
         <div id="review-container"></div>
     </div>
@@ -335,24 +366,12 @@ layout: default
 <div id="startModal" class="quiz-modal-backdrop active">
     <div class="quiz-modal-content-panel">
         <div style="font-size:2.5rem; margin-bottom:8px;">📜</div>
-        <h2>{% if page.lang == 'hi' %}परीक्षण नियम और निर्देश{% else %}Test Rules &amp; Protocols{% endif %}</h2>
-        <ul>
-            {% if page.lang == 'hi' %}
-            <li>इस टेस्ट में कुल {{ live_questions_count }} महत्वपूर्ण बहुविकल्पीय प्रश्न शामिल हैं।</li>
-            <li>टाइमर सक्रिय टेस्टिंग सेकंड की गणना निरंतर करता रहेगा।</li>
-            <li>एक बार सबमिट करने के बाद, परिणाम लॉक हो जाएंगे।</li>
-            <li>आपका स्कोर लाइव Google Sheets लीडरबोर्ड पर अपडेट किया किया जाएगा।</li>
-            {% else %}
-            <li>This test contains {{ live_questions_count }} curated questions.</li>
-            <li>The timer tracks cumulative active testing seconds.</li>
-            <li>Once submitted, entries lock cleanly across state lists.</li>
-            <li>Authentication syncing stores metrics into Google Sheets ledger.</li>
-            {% endif %}
+        <h2 id="modal-start-title" data-en="Test Rules &amp; Protocols" data-hi="परीक्षण नियम और निर्देश">Test Rules &amp; Protocols</h2>
+        <ul id="modal-start-rules" data-count="{{ live_questions_count }}">
+            <!-- JS Inject Rules based on current active language -->
         </ul>
         <div class="modal-actions-track">
-            <button id="start-btn" class="submit-btn" style="padding:12px 36px; font-size:14px;">
-                {% if page.lang == 'hi' %}टेस्ट शुरू करें{% else %}Start Test{% endif %}
-            </button>
+            <button id="start-btn" class="submit-btn" style="padding:12px 36px; font-size:14px;" data-en="Start Test" data-hi="टेस्ट शुरू करें">Start Test</button>
         </div>
     </div>
 </div>
@@ -361,57 +380,52 @@ layout: default
 <div id="resultModal" class="quiz-modal-backdrop">
     <div class="quiz-modal-content-panel" style="max-width: 450px;">
         <div style="font-size:2.5rem; margin-bottom:8px;">🎯</div>
-        <h2>{% if page.lang == 'hi' %}आपका परिणाम प्रोफ़ाइल{% else %}Your Result Profile{% endif %}</h2>
+        <h2 id="modal-result-title" data-en="Your Result Profile" data-hi="आपका परिणाम प्रोफ़ाइल">Your Result Profile</h2>
         <div id="resultContent" style="margin-bottom: 24px;"></div>
         <div class="modal-actions-track" style="gap:15px;">
-            <button id="review-btn" class="skip-btn" style="border-color:var(--clr-border-2); color:var(--text-heading);">
-                {% if page.lang == 'hi' %}उत्तर देखें{% else %}Review Answers{% endif %}
-            </button>
-            <button id="retry-btn" class="submit-btn">{% if page.lang == 'hi' %}पुनः प्रयास करें{% else %}Try Again{% endif %}</button>
+            <button id="review-btn" class="skip-btn" style="border-color:var(--clr-border-2); color:var(--text-heading);" data-en="Review Answers" data-hi="उत्तर देखें">Review Answers</button>
+            <button id="retry-btn" class="submit-btn" data-en="Try Again" data-hi="पुनः प्रयास करें">Try Again</button>
         </div>
     </div>
 </div>
-<!-- 📦 Dynamic Injected Question Array Engine Mapping Pipeline Block (test.js के साथ 100% सिंक) -->
+
+<!-- 📦 Fully Unified Dual-Language Repository Pipeline Block -->
 <script>
-    {%- comment -%}
-      1. रूबी प्लगइन द्वारा भेजे गए category_id से डेटा फ़ाइल का असली नाम मैप करना
-    {%- endcomment -%}
-    {%- assign map_file = page.category_id -%}
-    {%- if page.category_id == 'medieval-history' -%}{%- assign map_file = 'medieval-history' -%}{%- endif -%}
-    {%- if page.category_id == 'modern-history' -%}{%- assign map_file = 'modern-history' -%}{%- endif -%}
-    
-    {%- comment -%}
-      2. भाषा के आधार पर सही JSON डेटा पाथ को लोड करना
-    {%- endcomment -%}
-    {%- if page.lang == 'hi' -%}
-      {%- assign all_qs = site.data.quiz.hi[map_file] -%}
-    {%- else -%}
-      {%- assign all_qs = site.data.quiz.en[map_file] -%}
-    {%- endif -%}
+    var questionsRepo = {
+      en: [
+        {%- for q in slice_en -%}
+          {
+            question: {{ q.question | jsonify }},
+            options: [
+              { text: {{ q.option_a | jsonify }}, value: "a" },
+              { text: {{ q.option_b | jsonify }}, value: "b" },
+              { text: {{ q.option_c | jsonify }}, value: "c" },
+              { text: {{ q.option_d | jsonify }}, value: "d" }
+            ],
+            correctOption: {{ q.correct_answer | downcase | trim | jsonify }},
+            explanation: {{ q.explanation | jsonify }}
+          }{%- unless forloop.last -%},{%- endunless -%}
+        {%- endfor -%}
+      ],
+      hi: [
+        {%- for q in slice_hi -%}
+          {
+            question: {{ q.question | jsonify }},
+            options: [
+              { text: {{ q.option_a | jsonify }}, value: "a" },
+              { text: {{ q.option_b | jsonify }}, value: "b" },
+              { text: {{ q.option_c | jsonify }}, value: "c" },
+              { text: {{ q.option_d | jsonify }}, value: "d" }
+            ],
+            correctOption: {{ q.correct_answer | downcase | trim | jsonify }},
+            explanation: {{ q.explanation | jsonify }}
+          }{%- unless forloop.last -%},{%- endunless -%}
+        {%- endfor -%}
+      ]
+    };
 
-    {%- comment -%}
-      3. पार्ट इंडेक्स के हिसाब से 25 सवाल काटना
-    {%- endcomment -%}
-    {%- assign qpp = page.questions_per_page | plus: 0 -%}
-    {%- assign start_idx = page.part_index | minus: 1 | multiplied_by: qpp -%}
-    {%- assign questions_slice = all_qs | slice: start_idx, qpp -%}
-
-    // 🎯 test.js इसी 'questions' वेरिएबल को खोज रहा है
-    var questions = [
-      {%- for q in questions_slice -%}
-        {
-          question: {{ q.question | jsonify }},
-          options: [
-            { text: {{ q.option_a | jsonify }}, value: "a" },
-            { text: {{ q.option_b | jsonify }}, value: "b" },
-            { text: {{ q.option_c | jsonify }}, value: "c" },
-            { text: {{ q.option_d | jsonify }}, value: "d" }
-          ],
-          correctOption: {{ q.correct_answer | downcase | trim | jsonify }},
-          explanation: {{ q.explanation | jsonify }}
-        }{%- unless forloop.last -%},{%- endunless -%}
-      {%- endfor -%}
-    ];
+    // Global variable binding for test.js engine handshake
+    var questions = questionsRepo.en; 
 </script>
 
 <!-- Core Javascript Engine Hook Module Alignment -->
