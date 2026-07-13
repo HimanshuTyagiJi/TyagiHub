@@ -250,26 +250,6 @@ comments: false
     animation: modalSlide var(--ease-normal, 250ms) forwards;
   }
 
-  .quiz-modal-content-panel ul {
-    text-align: left;
-    margin: 0 0 var(--space-6, 24px) var(--space-4, 16px);
-    color: var(--text-paragraph);
-    font-size: var(--fs-sm, 0.95rem);
-    line-height: 1.6;
-    padding: 0;
-  }
-
-  .quiz-modal-content-panel ul li {
-    margin-bottom: var(--space-2, 8px) !important;
-    display: list-item !important;
-    list-style-type: disc !important;
-  }
-
-  @keyframes modalSlide {
-    from { transform: translateY(15px); opacity: 0; }
-    to { transform: translateY(0); opacity: 1; }
-  }
-
   .quiz-modal-content-panel h2 { font-family: var(--font-display), sans-serif; color: var(--text-heading); margin: 0 0 var(--space-4, 16px) 0; }
   .quiz-modal-content-panel p { font-size: var(--fs-sm, 0.95rem); color: var(--text-paragraph); line-height: var(--lh-normal, 1.6); margin: 0 0 var(--space-6, 24px) 0; }
   .modal-actions-track { display: flex; justify-content: center; gap: var(--space-3, 12px); flex-wrap: wrap; }
@@ -409,18 +389,8 @@ comments: false
         <div style="font-size:2.5rem; margin-bottom:8px;">📜</div>
         <h2 id="modal-start-title" data-en="Test Rules &amp; Protocols" data-hi="परीक्षण नियम और निर्देश">Test Rules &amp; Protocols</h2>
         
-        <!-- 🎯 DOM LOCK LAYER: डिब ब्लॉक्स जो कंप्रेसर को लाइन मर्ज करने से रोकते हैं -->
-        <div id="modal-start-rules" data-count="{{ live_questions_count }}" style="text-align: left; margin: 20px 0; padding-left: 10px;">
-            <!-- English Rule Set -->
-            <div class="rule-line-item-en" style="margin-bottom: 12px; display: block;">• This test contains <strong>{{ live_questions_count }}</strong> curated questions.</div>
-            <div class="rule-line-item-en" style="margin-bottom: 12px; display: block;">• The timer tracks cumulative active testing seconds.</div>
-            <div class="rule-line-item-en" style="margin-bottom: 12px; display: block;">• Once submitted, entries lock cleanly across state lists.</div>
-          
-            <!-- Hindi Rule Set (बिना लीडरबोर्ड लाइन के) -->
-            <div class="rule-line-item-hi" style="margin-bottom: 12px; display: none;">• इस टेस्ट में कुल <strong>{{ live_questions_count }}</strong> महत्वपूर्ण बहुविकल्पीय प्रश्न शामिल हैं।</div>
-            <div class="rule-line-item-hi" style="margin-bottom: 12px; display: none;">• टाइमर सक्रिय टेस्टिंग सेकंड की गणना निरंतर करता रहेगा।</div>
-            <div class="rule-line-item-hi" style="margin-bottom: 12px; display: none;">• एक बार सबमिट करने के बाद, परिणाम लॉक हो जाएंगे।</div>
-        </div>
+        <!-- 🎯 CLEANED ATCHOR BOX: यहाँ से पुरानी लाइनों को साफ कर दिया गया है ताकि test.js बफ़र सीधा अपना साफ़ डिब इंजेक्ट करे -->
+        <div id="modal-start-rules" data-count="{{ live_questions_count }}"></div>
         
         <div class="modal-actions-track">
             <button id="start-btn" class="submit-btn" style="padding:12px 36px; font-size:14px;" data-en="Start Test" data-hi="टेस्ट शुरू करें">Start Test</button>
