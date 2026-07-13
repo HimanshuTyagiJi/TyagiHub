@@ -129,6 +129,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if(startModal) startModal.classList.remove('active');
         if(quizSection) quizSection.style.display = "block";
         
+        // 🎯 FIXED SIZE MAP: केवल इसी पार्ट के 25 सवालों को आपस में शफल करेगा!
         const len = window.questionsRepo.en.length;
         shuffledIndices = Array.from({length: len}, (_, i) => i);
         shuffledIndices.sort(() => Math.random() - 0.5);
@@ -151,7 +152,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 </div>
                 <div id="question-palette-container">
                     <div class="palette-header">
-                        <h4 id="palette-title-node">${currentLang === 'hi' ? 'प्रश्न सूची' : 'Questions'}</h4>
+                        <h4>${currentLang === 'hi' ? 'प्रश्न सूची' : 'Questions'}</h4>
                         <button class="submit-btn" id="main-submit-btn">${currentLang === 'hi' ? 'सबमिट' : 'Submit'}</button>
                     </div>
                     <div id="question-palette"></div>
@@ -174,7 +175,8 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!questionsContainer || !navigationContainer) return;
 
         const actualIdx = shuffledIndices[index];
-        // 🎯 FIXED Parallel Mirroring logic extraction
+        
+        // 🎯 STABLE OPTION SYNC: इंडेक्स और ऑप्शंस का क्रम (a, b, c, d) हमेशा फिक्स रहेगा!
         const qEn = window.questionsRepo.en[actualIdx];
         const qActive = window.questionsRepo[currentLang][actualIdx];
         
@@ -459,10 +461,32 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         if(reviewContainer) reviewContainer.innerHTML = reviewHTML;
+        
+        // 🎯 FIXED: रिव्यू स्क्रीन के टॉप एक्शन बटन्स में भी Next/Prev/Test Again को इंजेक्ट किया गया है
+        const reviewActionsTop = document.getElementById('review-actions-top-layer-buttons');
+        if(reviewActionsTop) {
+            let labelRetry = currentLang === 'hi' ? 'पुनः प्रयास' : 'Test Again';
+            let labelPrevPart = currentLang === 'hi' ? '← पिछला भाग' : '← Prev Part';
+            let labelNextPart = currentLang === 'hi' ? 'अगला भाग →' : 'Next Part →';
+            
+            let topHtml = `<button id="review-top-retry-btn" class="submit-btn" style="color:#FFFFFF !important; margin-right:10px;">${labelRetry}</button>`;
+            
+            if (window.routingConfig && window.routingConfig.prevUrl) {
+                topHtml += `<a href="${window.routingConfig.prevUrl}" class="skip-btn" style="text-decoration:none; display:inline-block; border-color:var(--clr-accent); color:var(--clr-accent); margin-right:10px;">${labelPrevPart}</a>`;
+            }
+            if (window.routingConfig && window.routingConfig.nextUrl) {
+                topHtml += `<a href="${window.routingConfig.nextUrl}" class="submit-btn" style="text-decoration:none; display:inline-block; color:#FFFFFF !important; background:var(--clr-accent);">${labelNextPart}</a>`;
+            }
+            reviewActionsTop.innerHTML = topHtml;
+            document.getElementById('review-top-retry-btn').addEventListener('click', retryQuiz);
+        }
+        
         if(reviewSection) reviewSection.style.display = "block";
     }
 
     if (startBtn) startBtn.addEventListener('click', startQuiz);
+    const revRetryBtnDefault = document.getElementById('review-retry-btn');
+    if (revRetryBtnDefault) revRetryBtnDefault.addEventListener('click', retryQuiz);
     
     initLanguageSwitcher();
 });
