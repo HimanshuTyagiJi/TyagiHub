@@ -1,7 +1,5 @@
 ---
 layout: default
-comments: false
-lang_switch: false
 ---
 
 <!-- Premium Independent Category Layout Styling Layer -->
@@ -14,6 +12,7 @@ lang_switch: false
     margin-top: 70px;
   }
 
+  /* Header Typography */
   .cat-main-heading {
     font-family: var(--font-display), sans-serif;
     font-size: var(--fs-2xl, 2.25rem);
@@ -35,6 +34,7 @@ lang_switch: false
     opacity: 0.9;
   }
 
+  /* 🎛️ TEST PARTS SELECTION MATRIX GRID */
   .box-grid {
     display: grid;
     grid-template-columns: 1fr;
@@ -42,8 +42,12 @@ lang_switch: false
     margin-bottom: var(--space-12, 48px);
   }
 
-  @media(min-width: 768px) { .box-grid { grid-template-columns: repeat(2, 1fr); } }
-  @media(min-width: 1024px) { .box-grid { grid-template-columns: repeat(3, 1fr); } }
+  @media(min-width: 768px) {
+    .box-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media(min-width: 1024px) {
+    .box-grid { grid-template-columns: repeat(3, 1fr); }
+  }
 
   .box-grid .box {
     background: var(--bg-surface);
@@ -82,6 +86,7 @@ lang_switch: false
     color: var(--clr-accent-2);
   }
 
+  /* 🥇 Leaderboard Section Layout Layer */
   .leaderboard-section {
     background: var(--bg-surface);
     border: 1px solid var(--clr-border);
@@ -99,62 +104,84 @@ lang_switch: false
     letter-spacing: -0.01em;
   }
 
-  .tc-leaderboard { list-style: none; padding: 0; margin: 0; }
-  .tc-leaderboard li { display: flex; align-items: center; padding: var(--space-3, 12px) var(--space-2, 8px); border-bottom: 1px solid var(--clr-border); font-family: var(--font-body), sans-serif; font-size: var(--fs-sm, 0.95rem); }
+  .tc-leaderboard {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .tc-leaderboard li {
+    display: flex;
+    align-items: center;
+    padding: var(--space-3, 12px) var(--space-2, 8px);
+    border-bottom: 1px solid var(--clr-border);
+    font-family: var(--font-body), sans-serif;
+    font-size: var(--fs-sm, 0.95rem);
+  }
+
   .tc-leaderboard li:last-child { border-bottom: none; }
-  .tc-leaderboard li.active-user-row { background: var(--hover-bg-1); border-left: 3px solid var(--clr-accent); padding-left: calc(var(--space-2, 8px) - 3px); }
+  .tc-leaderboard li.active-user-row {
+    background: var(--hover-bg-1);
+    border-left: 3px solid var(--clr-accent);
+    padding-left: calc(var(--space-2, 8px) - 3px);
+  }
+
   .tc-leaderboard .rank { min-width: 40px; text-align: center; font-weight: var(--fw-black, 600); color: var(--clr-accent); }
-  .tc-leaderboard .lb-avatar-frame { width: 36px; height: 36px; border-radius: var(--radius-full, 9999px); margin: 0 var(--space-3, 12px); overflow: hidden; border: 1px solid var(--clr-border-2); display: flex; align-items: center; justify-content: center; background: var(--bg-body); }
+
+  .tc-leaderboard .lb-avatar-frame {
+    width: 36px; height: 36px;
+    border-radius: var(--radius-full, 9999px);
+    margin: 0 var(--space-3, 12px);
+    overflow: hidden;
+    border: 1px solid var(--clr-border-2);
+    display: flex; align-items: center; justify-content: center;
+    background: var(--bg-body);
+  }
+
   .tc-leaderboard .lb-name { flex: 1; font-weight: var(--fw-bold, 550); color: var(--text-heading); }
   .tc-leaderboard .lb-score { font-weight: var(--fw-black, 600); color: var(--text-heading); }
-  .luxury-spinner { text-align: center; padding: var(--space-8, 32px) 0; color: var(--clr-accent); }
+
+  .luxury-spinner {
+    text-align: center;
+    padding: var(--space-8, 32px) 0;
+    color: var(--clr-accent);
+  }
 </style>
 
-<script>
-  // Dynamic identification token mapping lock for test-hub.js
-  document.body.setAttribute('data-test-category', '{{ page.category_id }}');
-</script>
+<!-- Hook for sheet database tracking -->
+<script>document.body.setAttribute('data-test-category', '{{ page.category_id }}');</script>
 
 <main class="cat-test-wrapper">
     
     <div class="cat-header-zone">
-        <h1 class="cat-main-heading">{{ page.category_title }}</h1>
+        <h1 class="cat-main-heading">{{ page.category_title }} Test Hub</h1>
         <p class="cat-subtitle">
-            {% if page.lang == 'hi' %}
-              {{ page.category_title }} प्रतियोगी परीक्षाओं की तैयारी के लिए यहाँ 25-25 प्रश्नों के लाइव मॉक टेस्ट सेट हल करें।
-            {% else %}
-              Challenge your competitive parameters across curated 25-question sets for {{ page.category_title }}.
-            {% endif %}
+            {{ page.category_description }}
         </p>
     </div>
 
-    <!-- 🎛️ AUTO-GENERATED BOX MATRIX GRID FROM RUBY RUNTIME -->
+    <!-- 🎛️ DYNAMIC AUTOMATIC PARTS MATRIX GRID -->
     <div id="test-parts-container" class="box-grid">
-        {% for i in (1..page.total_parts) %}
-            {% if i < 10 %}
-                {% assign part_str = "0" | append: i %}
-            {% else %}
-                {% assign part_str = i %}
-            {% endif %}
-            
-            <div class="box" data-quiz-id="{{ page.category_id }}-test-part-{{ part_str }}" data-part-name="{{ page.category_title }} - Part {{ part_str }}">
-                <a href="part-{{ part_str }}/">
-                   {% if page.lang == 'hi' %} भाग-{{ part_str }} {% else %} Part-{{ part_str }} {% endif %}
-                </a>
-            </div>
+        
+        {% for part in page.test_parts %}
+        <div class="box" data-quiz-id="{{ page.category_id }}-test-part-{{ part.num_str }}" data-part-name="{{ page.category_title }} - Part {{ part.num_str }}">
+            <a href="{{ part.url | relative_url }}">Part-{{ part.num_str }}</a>
+        </div>
         {% endfor %}
+
     </div>
 
-    <!-- 🥇 LEADERBOARD LAYER -->
+    <!-- 🥇 GOOGLE SHEET INTEGRATED DYNAMIC LEADERBOARD ZONE -->
     <section class="leaderboard-section">
-        <h2 class="leaderboard-title">
-            {% if page.lang == 'hi' %} शीर्ष प्रदर्शन करने वाले छात्र {% else %} Top Performers {% endif %}
-        </h2>
+        <h2 class="leaderboard-title">{{ page.category_title }} Tests - Top Performers</h2>
         <div id="leaderboard-container">
-            <div class="luxury-spinner"><i class="fas fa-spinner fa-spin" style="font-size:26px;"></i></div>
+            <div class="luxury-spinner">
+                <i class="fas fa-spinner fa-spin" style="font-size:26px;"></i>
+            </div>
         </div>
     </section>
 
 </main>
 
+<!-- ⚡ CONNECTS SYNCED JAVASCRIPT TRANSIT ENGINE -->
 <script type="module" src="{{ '/assets/js/test-hub.js' | relative_url }}"></script>
