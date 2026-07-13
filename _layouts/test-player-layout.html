@@ -251,7 +251,7 @@ comments: false
   }
 
   .quiz-modal-content-panel h2 { font-family: var(--font-display), sans-serif; color: var(--text-heading); margin: 0 0 var(--space-4, 16px) 0; }
-  .quiz-modal-content-panel p { font-size: var(--fs-sm, 0.95rem); color: var(--text-paragraph); line-height: var(--lh-normal, 1.6); margin: 0 0 var(--space-6, 24px) 0; }
+  .quiz-modal-content-panel p { font-size: var(--fs-sm, 0.95rem); color: var(--text-paragraph); line-height: var(--lh-normal, 1.6); margin: 0 0 var(--space-4, 16px) 0; }
   .modal-actions-track { display: flex; justify-content: center; gap: var(--space-3, 12px); flex-wrap: wrap; }
 
   .question-block.review {
@@ -364,7 +364,7 @@ comments: false
                 </span>
             </div>
 
-            <!-- 🌐 In-House Live Instant Language Switcher (No Reload) -->
+            <!-- 🌐 In House Live Instant Language Switcher (No Reload) -->
             <div class="player-lang-toggle" id="player-language-switcher-bar">
                 <button class="player-lang-btn active" id="pl-btn-en">EN</button>
                 <button class="player-lang-btn" id="pl-btn-hi">HI</button>
@@ -477,6 +477,9 @@ comments: false
 <script type="module">
 const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbw9Bz1KhUlIlKgy-lOpiI70oCMm28nbqhoBVUj1eg8uEH2iUcmaDP4Si9OXh0r37wiktg/exec";
 
+// ग्लोबल वेरिएबल ताकि रेंडर इंटरवल आईडी स्टोर हो सके और लीक न हो
+let rulesSyncTimer = null;
+
 document.addEventListener('DOMContentLoaded', () => {
     const quizId = document.body.dataset.quizId;
     if (!quizId) return;
@@ -526,7 +529,11 @@ document.addEventListener('DOMContentLoaded', () => {
         if (resultTitle) resultTitle.textContent = resultTitle.getAttribute(`data-${currentLang}`);
         if (startBtnEl) startBtnEl.textContent = startBtnEl.getAttribute(`data-${currentLang}`);
 
-        // 🎯 EMBEDDED DYNAMIC RE-RUN LOOP MATRIX FOR LIST INTEGRITY
+        // 🎯 SAFE INTERVAL ALIGNMENT: पहले वाले एक्टिव लूप को मारो ताकि भाषा स्विच पर ओवरलैप न हो
+        if (rulesSyncTimer) {
+            clearInterval(rulesSyncTimer);
+        }
+
         const forceRenderRules = () => {
             const rulesUl = document.getElementById('modal-start-rules');
             if (!rulesUl) return;
@@ -543,7 +550,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 <ul class="rules-clean-list">
                     <li>इस टेस्ट में कुल <strong>${count}</strong> महत्वपूर्ण बहुविकल्पीय प्रश्न शामिल हैं।</li>
                     <li>टाइम ट्रैकर सक्रिय टेस्टिंग सेकंड की गणना निरंतर करता रहेगा।</li>
-                    <li>एक बार सबमिट करने के बाद, परिणाम लॉक हो जाएंगे।</li>
+                    <li>एक बार सबमिट करने के बाद, परिणाम锁 हो जाएंगे।</li>
                 </ul>
             `;
 
@@ -556,19 +563,16 @@ document.addEventListener('DOMContentLoaded', () => {
             `;
 
             const cleanTargetHTML = (currentLang === 'hi') ? hiHTML : enHTML;
-            
-            // Strictly inject the structural list markup
             rulesUl.innerHTML = cleanTargetHTML;
         };
 
-        // Instant fire + recurring interval buffer to lock structural safety
+        // तुरंत फायर करो और 100ms के लूप पर लॉक कर दो
         forceRenderRules();
-        var rulesSyncTimer = setInterval(forceRenderRules, 100);
+        rulesSyncTimer = setInterval(forceRenderRules, 100);
         
-        // Kill interval lock cleanly when start button clears the gate scene
         if (startBtn) {
             startBtn.addEventListener('click', () => {
-                clearInterval(rulesSyncTimer);
+                if (rulesSyncTimer) clearInterval(rulesSyncTimer);
             }, { once: true });
         }
 
@@ -619,6 +623,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function startQuiz() {
+        if (rulesSyncTimer) clearInterval(rulesSyncTimer); // सेफ्टी चेक गेट क्लोजर
         if(startModal) startModal.classList.remove('active');
         if(quizSection) quizSection.style.display = "block";
         
