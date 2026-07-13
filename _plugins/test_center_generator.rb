@@ -30,9 +30,14 @@ module TyagiHub
         hi_cats = site.config.dig('categories', 'hindi') || []
         hi_cat = hi_cats.find { |c| c['id'] == cat['id'] }
         
+        # सुरक्षा जांच: अगर इंग्लिश में डेटा है तो उसे लें, वरना हिंदी का काउंट चेक करें
         total_questions = questions_en.size
-        total_parts = total_questions > 0 ? (total_questions.to_f / qpp).ceil : 1
+        if total_questions == 0 && hi_cat
+          questions_hi = load_test_questions(site, hi_cat['data_file'])
+          total_questions = questions_hi.size
+        end
         
+        total_parts = total_questions > 0 ? (total_questions.to_f / qpp).ceil : 1
         hub_dir = "#{cat['id']}-test"
         
         # 1. मुख्य कैटेगरी हब पेज जेनरेट करना
@@ -72,6 +77,7 @@ module TyagiHub
     private
 
     def load_test_questions(site, data_file)
+      return [] if data_file.nil?
       parts = data_file.split('/')
       data  = site.data
       parts.each { |p| data = data[p] rescue nil; break if data.nil? }
