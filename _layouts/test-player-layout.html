@@ -1,7 +1,5 @@
 ---
 layout: default
-comments: false
-lang_switch: false
 ---
 
 <!-- Premium Quiz Gameplay Matrix Layout Styles -->
@@ -46,7 +44,6 @@ lang_switch: false
 
   #timer { color: var(--clr-accent); }
 
-  /* 🌐 Custom Premium Language Switch Elements for Player */
   .player-lang-toggle {
     display: inline-flex;
     gap: 6px;
@@ -71,7 +68,7 @@ lang_switch: false
 
   .player-lang-btn.active {
     background: var(--clr-accent);
-    color: #FFFFFF;
+    color: #FFFFFF !important;
   }
 
   #quiz-layout {
@@ -168,8 +165,10 @@ lang_switch: false
   .skip-btn:hover { border-color: var(--clr-border-2); color: var(--text-heading); }
   .next-btn { background: var(--clr-border); border-color: var(--clr-border-2); color: var(--text-heading); }
   .next-btn:hover { background: var(--hover-bg-1); }
-  .submit-btn { background: var(--clr-accent); color: #000000; box-shadow: var(--shadow-sm); }
-  .submit-btn:hover { opacity: 0.9; box-shadow: var(--shadow-accent); }
+  
+  /* 🎯 HOVER FIX: Text strictly turns 100% White (#FFFFFF) on Accent buttons */
+  .submit-btn { background: var(--clr-accent); color: #FFFFFF !important; box-shadow: var(--shadow-sm); }
+  .submit-btn:hover { opacity: 0.9; box-shadow: var(--shadow-accent); color: #FFFFFF !important; }
 
   #question-palette-container {
     background: var(--bg-surface);
@@ -301,7 +300,7 @@ lang_switch: false
 
 {%- comment -%}
   ==================================================================
-  CORE LIQUID CORE LOGIC FOR LIVE DOUBLE STREAM FECHING
+  CORE LIQUID STREAM FECHING
   ==================================================================
 {%- endcomment -%}
 {%- assign map_file = page.category_id -%}
@@ -317,6 +316,30 @@ lang_switch: false
 {%- assign slice_en = all_qs_en | slice: start_idx, qpp -%}
 {%- assign slice_hi = all_qs_hi | slice: start_idx, qpp -%}
 {%- assign live_questions_count = slice_en.size -%}
+
+<!-- SECURE DATA PASS FOR NEXT/PREV ROUTING LINKS -->
+{%- assign current_part = page.part_index | plus: 0 -%}
+{%- assign prev_part = current_part | minus: 1 -%}
+{%- assign next_part = current_part | plus: 1 -%}
+
+{%- assign base_hub_url = page.permalink | split: 'part-' | first -%}
+
+{%- if prev_part > 0 -%}
+  {%- if prev_part < 10 -%}{%- assign prev_str = "part-0" | append: prev_part -%}{%- else -%}{%- assign prev_str = "part-" | append: prev_part -%}{%- endif -%}
+  {%- assign prev_part_url = base_hub_url | append: prev_str | append: '/' -%}
+{%- else -%}
+  {%- assign prev_part_url = "" -%}
+{%- endif -%}
+
+{%- assign total_qs_global = all_qs_en.size -%}
+{%- assign max_parts_global = total_qs_global | to_f | divide: qpp | ceil -%}
+
+{%- if next_part <= max_parts_global -%}
+  {%- if next_part < 10 -%}{%- assign next_str = "part-0" | append: next_part -%}{%- else -%}{%- assign next_str = "part-" | append: next_part -%}{%- endif -%}
+  {%- assign next_part_url = base_hub_url | append: next_str | append: '/' -%}
+{%- else -%}
+  {%- assign next_part_url = "" -%}
+{%- endif -%}
 
 <!-- SECURE RUNTIME RUNNING INTERFACE ATTRIBUTE ANCHOR -->
 <script>document.body.setAttribute('data-quiz-id', '{{ page.quiz_id }}');</script>
@@ -334,7 +357,7 @@ lang_switch: false
             </div>
 
             <!-- 🌐 In-House Live Instant Language Switcher (No Reload) -->
-            <div class="player-lang-toggle">
+            <div class="player-lang-toggle" id="player-language-switcher-bar">
                 <button class="player-lang-btn active" id="pl-btn-en">EN</button>
                 <button class="player-lang-btn" id="pl-btn-hi">HI</button>
             </div>
@@ -353,6 +376,13 @@ lang_switch: false
     <div id="review-questions" style="display: none; max-width: 800px; margin: 0 auto;">
         <div class="quiz-top-bar" style="margin-bottom: 32px;">
             <h2 id="label-review-title" data-en="Review Solutions" data-hi="उत्तर और व्याख्या देखें" style="font-family:var(--font-display); font-size:20px; margin:0; color:var(--text-heading);">Review Solutions</h2>
+            
+            <!-- 🌐 Language Switch Also Available in Review Mode Bar Grid -->
+            <div class="player-lang-toggle" id="review-language-switcher-bar">
+                <button class="player-lang-btn" id="rev-btn-en">EN</button>
+                <button class="player-lang-btn" id="rev-btn-hi">HI</button>
+            </div>
+
             <button id="review-retry-btn" class="submit-btn" data-en="Test Again" data-hi="पुनः प्रयास करें">Test Again</button>
         </div>
         <div id="review-container"></div>
@@ -382,9 +412,8 @@ lang_switch: false
         <div style="font-size:2.5rem; margin-bottom:8px;">🎯</div>
         <h2 id="modal-result-title" data-en="Your Result Profile" data-hi="आपका परिणाम प्रोफ़ाइल">Your Result Profile</h2>
         <div id="resultContent" style="margin-bottom: 24px;"></div>
-        <div class="modal-actions-track" style="gap:15px;">
-            <button id="review-btn" class="skip-btn" style="border-color:var(--clr-border-2); color:var(--text-heading);" data-en="Review Answers" data-hi="उत्तर देखें">Review Answers</button>
-            <button id="retry-btn" class="submit-btn" data-en="Try Again" data-hi="पुनः प्रयास करें">Try Again</button>
+        <div class="modal-actions-track" style="gap:15px;" id="modal-result-actions-container">
+            <!-- Dynamic Buttons with white color code #FFFFFF injected cleanly from test.js -->
         </div>
     </div>
 </div>
@@ -424,8 +453,11 @@ lang_switch: false
       ]
     };
 
-    // Global variable binding for test.js engine handshake
-    var questions = questionsRepo.en; 
+    // Routing Token Anchors for Dynamic Results Navigation
+    var routingConfig = {
+      prevUrl: {{ prev_part_url | relative_url | jsonify }},
+      nextUrl: {{ next_part_url | relative_url | jsonify }}
+    };
 </script>
 
 <!-- Core Javascript Engine Hook Module Alignment -->
