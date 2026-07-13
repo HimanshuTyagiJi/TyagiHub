@@ -55,28 +55,24 @@ module TyagiHub
         }
         site.pages << TestHubPage.new(site, site.source, hub_dir, 'index.html', hub_data, 'test-hub-layout.html')
 
-        # 2. पार्ट्स के प्लेयर पेज जेनरेट करना (सिंगल न्यूट्रल यूआरएल पाथ)
+        # 2. टेस्ट्स के प्लेयर पेज जेनरेट करना (सिंगल न्यूट्रल यूआरएल पाथ - टेस्ट सिन्क)
         total_parts.times do |p_idx|
           part_num = p_idx + 1
-          part_str = part_num < 10 ? "part-0#{part_num}" : "part-#{part_num}"
-          
-          # 🎯 USER FEEDBACK FIXED: "Part 01" को "Test 01" और "भाग 01" को "टेस्ट 01" में बदला गया
+          test_str = part_num < 10 ? "test-0#{part_num}" : "test-#{part_num}"
           formatted_num = part_num < 10 ? "0#{part_num}" : part_num
           
           player_data = {
             'layout' => 'default',
             'title' => "#{cat['title']} - Test #{formatted_num} Live Test",
             'title_hi' => "#{hi_cat ? hi_cat['title'] : cat['title']} - टेस्ट #{formatted_num} लाइव टेस्ट",
-            'quiz_id' => "#{cat['id']}-test-#{part_str}",
+            'quiz_id' => "#{cat['id']}-test-#{test_str}",
             'category_id' => cat['id'],
             'part_index' => part_num,
             'questions_per_page' => qpp,
-            'permalink' => "/#{hub_dir}//part-str/"
+            'permalink' => "/#{hub_dir}/#{test_str}/"
           }
-          # परमालिंक का पाथ पुराना ही रखा है ताकि गूगल रैंकिंग या पुराने लिंक्स न टूटें, सिर्फ डिस्प्ले नाम बदलेगा!
-          player_data['permalink'] = "/#{hub_dir}/#{part_str}/"
           
-          site.pages << TestHubPage.new(site, site.source, "#{hub_dir}/#{part_str}", 'index.html', player_data, 'test-player-layout.html')
+          site.pages << TestHubPage.new(site, site.source, "#{hub_dir}/#{test_str}", 'index.html', player_data, 'test-player-layout.html')
         end
       end
     end
