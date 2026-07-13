@@ -77,6 +77,14 @@ collections:
   shield_hi:
     output: true
     permalink: /hi/shield/:name/
+  tests_en:
+    output: true
+    permalink: /:name/
+    
+  tests_hi:
+    output: true
+    permalink: /hi/:name/
+
 
 # Defaults
 defaults:
@@ -100,6 +108,19 @@ defaults:
       path: ""
     values:
       layout: "quiz-player"
+ - scope:
+      path: ""
+      type: "tests_en"
+    values:
+      layout: "test-player"
+      lang: "en"
+  - scope:
+      path: ""
+      type: "tests_hi"
+    values:
+      layout: "test-player"
+      lang: "hi"
+
   - scope:
       path: ""
       type: "pages"
