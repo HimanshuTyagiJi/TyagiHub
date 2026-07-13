@@ -161,15 +161,33 @@ layout: default
     </div>
 
     <!-- 🎛️ DYNAMIC AUTOMATIC PARTS MATRIX GRID -->
-    <div id="test-parts-container" class="box-grid">
+    <!-- 🎛️ DYNAMIC ARCHIVE CONTAINER PIRE GRID (अब ये ऑटोमैटिक डिब्बे बनाएगा) -->
+<div id="test-parts-container" class="box-grid">
+    
+    {% if page.total_parts > 0 %}
+      {% for i in (1..page.total_parts) %}
+        {% if i < 10 %}
+          {% assign part_str = "part-0" | append: i %}
+          {% assign part_label = "Part-0" | append: i %}
+        {% else %}
+          {% assign part_str = "part-" | append: i %}
+          {% assign part_label = "Part-" | append: i %}
+        {% endif %}
         
-        {% for part in page.test_parts %}
-        <div class="box" data-quiz-id="{{ page.category_id }}-test-part-{{ part.num_str }}" data-part-name="{{ page.category_title }} - Part {{ part.num_str }}">
-            <a href="{{ part.url | relative_url }}">Part-{{ part.num_str }}</a>
+        <div class="box" data-quiz-id="{{ page.category_id }}-test-{{ part_str }}" data-part-name="{{ page.category_title }} - {{ part_label }}">
+            <a href="{{ page.permalink | append: part_str | append: '/' | relative_url }}">
+              {% if page.lang == 'hi' %}भाग-{{ i | bigint | string | rjust: 2, '0' }}{% else %}{{ part_label }}{% endif %}
+            </a>
         </div>
-        {% endfor %}
+      {% endfor %}
+    {% else %}
+      <div class="box disabled-box">
+          <span class="soon-badge-tag">Soon</span>
+          <a href="#" onclick="return false;">No Tests Available</a>
+      </div>
+    {% endif %}
 
-    </div>
+</div>
 
     <!-- 🥇 GOOGLE SHEET INTEGRATED DYNAMIC LEADERBOARD ZONE -->
     <section class="leaderboard-section">
