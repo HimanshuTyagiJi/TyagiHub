@@ -260,7 +260,6 @@ comments: false
     padding: 0;
   }
 
-  /* 🎯 POPUP BREAK LIST CORRECTION: बुलेट लिस्ट की साफ़ लाइनों को CSS से सुनिश्चित किया गया है */
   .quiz-modal-content-panel ul li {
     margin-bottom: var(--space-2, 8px) !important;
     display: list-item !important;
@@ -310,10 +309,14 @@ comments: false
 
 {%- comment -%}
   ==================================================================
-  CORE LIQUID STREAM FETCHING (100% AUTOMATIC & FIXED)
+  CORE LIQUID STREAM FETCHING (🎯 DETECT AND FIX CONFIG MISMATCHES)
   ==================================================================
 {%- endcomment -%}
 {%- assign map_file = page.category_id -%}
+
+{%- comment -%} 🎯 यहाँ है वह जादुई फिक्स जो आईडी और डेटा फ़ाइल के मिसमैच को ठीक करेगा {%- endcomment -%}
+{%- if map_file == 'medieval-indian-history' -%}{%- assign map_file = 'medieval-history' -%}{%- endif -%}
+{%- if map_file == 'modern-indian-history' -%}{%- assign map_file = 'modern-history' -%}{%- endif -%}
 
 {%- assign all_qs_en = site.data.quiz.en[map_file] -%}
 {%- assign all_qs_hi = site.data.quiz.hi[map_file] -%}
