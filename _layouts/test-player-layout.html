@@ -309,12 +309,10 @@ comments: false
 
 {%- comment -%}
   ==================================================================
-  CORE LIQUID STREAM FECHING
+  CORE LIQUID STREAM FETCHING (100% AUTOMATIC & FIXED)
   ==================================================================
 {%- endcomment -%}
 {%- assign map_file = page.category_id -%}
-{%- if page.category_id == 'medieval-history' -%}{%- assign map_file = 'medieval-history' -%}{%- endif -%}
-{%- if page.category_id == 'modern-history' -%}{%- assign map_file = 'modern-history' -%}{%- endif -%}
 
 {%- assign all_qs_en = site.data.quiz.en[map_file] -%}
 {%- assign all_qs_hi = site.data.quiz.hi[map_file] -%}
@@ -349,7 +347,6 @@ comments: false
 {%- else -%}
   {%- assign next_part_url = "" -%}
 {%- endif -%}
-
 <!-- SECURE RUNTIME RUNNING INTERFACE ATTRIBUTE ANCHOR -->
 <script>document.body.setAttribute('data-quiz-id', '{{ page.quiz_id }}');</script>
 
