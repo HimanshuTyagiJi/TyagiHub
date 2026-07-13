@@ -31,7 +31,7 @@ comments: false
   "itemListElement": [
     {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://tyagihub.in/"},
     {"@type": "ListItem", "position": 2, "name": "Test Center", "item": "https://tyagihub.in/test/"}
-  }
+  ]
 }
 </script>
 
@@ -105,6 +105,7 @@ comments: false
     flex-wrap: wrap;
     font-size: var(--fs-xs, 0.89rem);
     color: var(--text-muted);
+    margin-top: var(--space-4, 16px);
   }
 
   .tc-hero-meta .author-link {
@@ -132,6 +133,39 @@ comments: false
     border-color: var(--clr-accent);
     color: var(--clr-accent);
     background: var(--hover-bg-1);
+  }
+
+  /* 🌐 Custom Premium Language Switch Elements */
+  .tc-lang-toggle {
+    display: inline-flex;
+    gap: 8px;
+    background: var(--bg-body);
+    border: 1px solid var(--clr-border);
+    padding: 4px;
+    border-radius: var(--radius-full, 9999px);
+    margin-bottom: 20px;
+  }
+
+  .tc-lang-btn {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 16px;
+    border: none;
+    background: transparent;
+    color: var(--text-paragraph);
+    font-family: var(--font-body), sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    border-radius: var(--radius-full, 9999px);
+    transition: all var(--ease-fast);
+  }
+
+  .tc-lang-btn.active {
+    background: var(--clr-accent);
+    color: #000000;
+    box-shadow: var(--shadow-sm);
   }
 
   /* Premium Quiz Matrix Grid Layout */
@@ -189,6 +223,7 @@ comments: false
     color: var(--text-paragraph);
     margin: 0 0 var(--space-5, 20px) 0;
     line-height: var(--lh-normal, 1.6);
+    flex-grow: 1;
   }
 
   .tc-btn {
@@ -213,37 +248,11 @@ comments: false
     box-shadow: var(--shadow-accent);
   }
 
-  /* Disabled States Architecture */
-  .tc-card.disabled {
-    opacity: 0.5;
-    cursor: not-allowed;
-  }
-
-  .tc-card.disabled:hover {
-    transform: none;
-    border-color: var(--clr-border);
-    box-shadow: var(--shadow-sm);
-  }
-
-  .tc-card.disabled .tc-btn {
-    background: var(--bg-body) !important;
-    border-color: var(--clr-border) !important;
-    color: var(--text-muted) !important;
-    box-shadow: none !important;
-  }
-
-  .soon-badge {
-    position: absolute;
-    top: 12px;
-    right: -32px;
-    background: var(--clr-tools);
-    color: #000000;
-    font-size: 11px;
-    font-weight: var(--fw-black, 600);
-    padding: 2px 35px;
-    transform: rotate(45deg);
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
+  .js-test-count {
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--clr-accent);
+    margin-bottom: 12px;
   }
 
   /* Global Leaderboard Wrapper Architecture */
@@ -292,9 +301,7 @@ comments: false
     margin: 0 var(--space-3, 12px);
     overflow: hidden;
     border: 1px solid var(--clr-border-2);
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    display: flex; align-items: center; justify-content: center;
     background: var(--bg-body);
   }
 
@@ -414,15 +421,28 @@ comments: false
   }
 </style>
 
+<script>document.body.setAttribute('data-test-category', 'all');</script>
+
 <main class="tc-container">
 
   <!-- Hero Component -->
   <section class="tc-hero tc-section">
     <h1>🏆 Test Center &amp; Leaderboard</h1>
     <p>Challenge yourself with curated quizzes, track your performance, and see how you rank against learners across the country. Your journey to mastery starts here.</p>
+    
+    <!-- 🌐 In-House Language Switch Component -->
+    <div class="tc-lang-toggle">
+      <button class="tc-lang-btn active" id="btn-lang-en" onclick="toggleTcLang('en')">
+        🇺🇸 English
+      </button>
+      <button class="tc-lang-btn" id="btn-lang-hi" onclick="toggleTcLang('hi')">
+        🇮🇳 हिन्दी
+      </button>
+    </div>
+
     <div class="tc-hero-meta">
       <span>by <a href="/profile/?author=Owner" class="author-link" rel="author">TyagiHub</a></span>
-      <span>| Updated: <time datetime="2025-12-22">Dec 22, 2025</time></span>
+      <span>| Updated: <time datetime="2026-07-13">July 13, 2026</time></span>
       <button class="share-btn" id="shareBtn" title="Share this page">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" style="margin-right:2px;">
           <path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92 1.61 0 2.92-1.31 2.92-2.92s-1.31-2.92-2.92-2.92z"/>
@@ -432,81 +452,622 @@ comments: false
     </div>
   </section>
 
-  <!-- Subject Selection Grid Matrix -->
-  <section class="tc-section">
+  <!-- Live Search Field Bar -->
+  <div style="max-width:480px; margin:0 auto var(--space-8); position:relative;">
+    <span style="position:absolute;left:16px;top:50%;transform:translateY(-50%);color:var(--text-muted);">🔍</span>
+    <input type="search" id="tc-search-box"
+           style="width:100%;padding:12px 20px 12px 44px;background:var(--bg-surface);border:1.5px solid var(--clr-border);border-radius:var(--radius-full, 9999px);font-family:var(--font-body);font-size:15px;color:var(--text-heading);outline:none;"
+           placeholder="Search subjects...">
+  </div>
+
+  <!-- 🇬🇧 COMPLETE 33 ENGLISH CATEGORIES MATRIX CONTAINER -->
+  <section class="tc-section" id="tc-zone-en" data-lang-panel="en">
     <h2 class="tc-heading">Choose Your Subject</h2>
     <p class="tc-subheading">Select a category to begin your practice test. Each quiz is designed to sharpen your skills for competitive exams.</p>
     <div class="tc-grid">
 
-      <a href="hindi-test/" class="tc-card">
+      <!-- History -->
+      <a href="{{ '/history-test/' | relative_url }}" class="tc-card" data-file-id="ancient-indian-history">
+        <div class="card-icon">🏛️</div>
+        <h3>History</h3>
+        <div class="js-test-count">Loading...</div>
+        <p>Challenge your factual matrix across Ancient, Medieval, Modern and World History streams.</p>
+        <span class="tc-btn">View Tests</span>
+      </a>
+
+      <!-- Polity -->
+      <a href="{{ '/indian-constitution-test/' | relative_url }}" class="tc-card" data-file-id="indian-constitution">
+        <div class="card-icon">⚖️</div>
+        <h3>Polity &amp; Constitution</h3>
+        <div class="js-test-count">Loading...</div>
+        <p>Master Preamble, Fundamental Rights, Articles, and structural legal parameters.</p>
+        <span class="tc-btn">View Tests</span>
+      </a>
+
+      <!-- Computer -->
+      <a href="{{ '/computer-test/' | relative_url }}" class="tc-card" data-file-id="computer">
+        <div class="card-icon">💻</div>
+        <h3>Computer Awareness</h3>
+        <div class="js-test-count">Loading...</div>
+        <p>Practice networking models, database logic, hardware frameworks and cyber structures.</p>
+        <span class="tc-btn">View Tests</span>
+      </a>
+
+      <!-- Physics -->
+      <a href="{{ '/physics-test/' | relative_url }}" class="tc-card" data-file-id="physics">
+        <div class="card-icon">⚡</div>
+        <h3>Physics</h3>
+        <div class="js-test-count">Loading...</div>
+        <p>Solve core mechanics, thermodynamics, light wavefronts, and dynamic electrical equations.</p>
+        <span class="tc-btn">View Tests</span>
+      </a>
+
+      <!-- Mathematics -->
+      <a href="{{ '/mathematics-test/' | relative_url }}" class="tc-card" data-file-id="mathematics">
+        <div class="card-icon">🔢</div>
+        <h3>Mathematics</h3>
+        <div class="js-test-count">Loading...</div>
+        <p>Sharpen quantitative aptitude, arithmetic calculations, speed geometry and data metrics.</p>
+        <span class="tc-btn">View Tests</span>
+      </a>
+
+      <!-- Chemistry -->
+      <a href="{{ '/chemistry-test/' | relative_url }}" class="tc-card" data-file-id="chemistry">
+        <div class="card-icon">🧪</div>
+        <h3>Chemistry</h3>
+        <div class="js-test-count">Loading...</div>
+        <p>Periodic grids, chemical equations, balance mechanics, and atomic structures.</p>
+        <span class="tc-btn">View Tests</span>
+      </a>
+
+      <!-- Biology -->
+      <a href="{{ '/biology-test/' | relative_url }}" class="tc-card" data-file-id="biology">
+        <div class="card-icon">🧬</div>
+        <h3>Biology</h3>
+        <div class="js-test-count">Loading...</div>
+        <p>Human vital anatomy, plant taxonomy, structural cell biology and genetics pools.</p>
+        <span class="tc-btn">View Tests</span>
+      </a>
+
+      <!-- Economy -->
+      <a href="{{ '/indian-economy-test/' | relative_url }}" class="tc-card" data-file-id="indian-economy">
+        <div class="card-icon">💰</div>
+        <h3>Indian Economy</h3>
+        <div class="js-test-count">Loading...</div>
+        <p>Five-Year models, NITI data structures, inflation trends, and macro monetary parameters.</p>
+        <span class="tc-btn">View Tests</span>
+      </a>
+
+      <!-- Environment -->
+      <a href="{{ '/environment-test/' | relative_url }}" class="tc-card" data-file-id="environment">
+        <div class="card-icon">🌿</div>
+        <h3>Environment &amp; Biodiversity</h3>
+        <div class="js-test-count">Loading...</div>
+        <p>Ecology ecosystems, international climate protocols, threats and green grids.</p>
+        <span class="tc-btn">View Tests</span>
+      </a>
+
+      <!-- Art & Culture -->
+      <a href="{{ '/indian-art-culture-test/' | relative_url }}" class="tc-card" data-file-id="indian-art-culture">
+        <div class="card-icon">🎭</div>
+        <h3>Indian Art &amp; Culture</h3>
+        <div class="js-test-count">Loading...</div>
+        <p>Classical dances tracker, ancient architectural marvels, music systems and literature.</p>
+        <span class="tc-btn">View Tests</span>
+      </a>
+
+      <!-- Science & Tech -->
+      <a href="{{ '/science-technology-test/' | relative_url }}" class="tc-card" data-file-id="science-technology">
+        <div class="card-icon">🔬</div>
+        <h3>Science &amp; Technology</h3>
+        <div class="js-test-count">Loading...</div>
+        <p>Defense arrays, satellite modules, nuclear commands, and modern AI algorithms.</p>
+        <span class="tc-btn">View Tests</span>
+      </a>
+
+      <!-- Books & Authors -->
+      <a href="{{ '/books-authors-test/' | relative_url }}" class="tc-card" data-file-id="books-authors">
+        <div class="card-icon">📚</div>
+        <h3>Books &amp; Authors</h3>
+        <div class="js-test-count">Loading...</div>
+        <p>Classical historical manuscripts tracker, award autobiographies and recent bestsellers.</p>
+        <span class="tc-btn">View Tests</span>
+      </a>
+
+      <!-- Sports -->
+      <a href="{{ '/sports-test/' | relative_url }}" class="tc-card" data-file-id="sports">
+        <div class="card-icon">🏆</div>
+        <h3>Sports GK</h3>
+        <div class="js-test-count">Loading...</div>
+        <p>Olympic matrices, world cup dates, tournament venues and terminology indexes.</p>
+        <span class="tc-btn">View Tests</span>
+      </a>
+
+      <!-- Famous Personalities -->
+      <a href="{{ '/famous-personalities-test/' | relative_url }}" class="tc-card" data-file-id="famous-personalities">
+        <div class="card-icon">👤</div>
+        <h3>Famous Personalities</h3>
+        <div class="js-test-count">Loading...</div>
+        <p>Social reformers, global visionaries, pathfinders and strategic historical figures.</p>
+        <span class="tc-btn">View Tests</span>
+      </a>
+
+      <!-- Inventions -->
+      <a href="{{ '/technology-inventions-test/' | relative_url }}" class="tc-card" data-file-id="technology-inventions">
+        <div class="card-icon">💡</div>
+        <h3>Technology &amp; Inventions</h3>
+        <div class="js-test-count">Loading...</div>
+        <p>Engineering breakthrough timelines, laboratory components, and global invention logs.</p>
+        <span class="tc-btn">View Tests</span>
+      </a>
+
+      <!-- Space & Universe -->
+      <a href="{{ '/space-universe-test/' | relative_url }}" class="tc-card" data-file-id="space-universe">
+        <div class="card-icon">🚀</div>
+        <h3>Space &amp; Universe</h3>
+        <div class="js-test-count">Loading...</div>
+        <p>Cosmological planetary orbits, dark matter equations and space station telemetry.</p>
+        <span class="tc-btn">View Tests</span>
+      </a>
+
+      <!-- Indian Geography -->
+      <a href="{{ '/indian-geography-test/' | relative_url }}" class="tc-card" data-file-id="indian-geography">
+        <div class="card-icon">🗺️</div>
+        <h3>Indian Geography</h3>
+        <div class="js-test-count">Loading...</div>
+        <p>Himalayan topographic maps, river basins flow, and mineral distribution networks.</p>
+        <span class="tc-btn">View Tests</span>
+      </a>
+
+      <!-- World Geography -->
+      <a href="{{ '/world-geography-test/' | relative_url }}" class="tc-card" data-file-id="world-geography">
+        <div class="card-icon">🌐</div>
+        <h3>World Geography</h3>
+        <div class="js-test-count">Loading...</div>
+        <p>Atmospheric wind belts, global ocean currents, mountain ranges and straits tracker.</p>
+        <span class="tc-btn">View Tests</span>
+      </a>
+
+      <!-- Festivals -->
+      <a href="{{ '/indian-festivals-test/' | relative_url }}" class="tc-card" data-file-id="indian-festivals">
+        <div class="card-icon">🪔</div>
+        <h3>Festivals &amp; Traditions</h3>
+        <div class="js-test-count">Loading...</div>
+        <p>Regional crop harvest celebrations, tribal folk dance calendars and traditional fairs.</p>
+        <span class="tc-btn">View Tests</span>
+      </a>
+
+      <!-- World Organizations -->
+      <a href="{{ '/world-organizations-test/' | relative_url }}" class="tc-card" data-file-id="world-organizations">
+        <div class="card-icon">🤝</div>
+        <h3>World Organizations</h3>
+        <div class="js-test-count">Loading...</div>
+        <p>United Nations organs, IMF, World Bank headquarters locations and dynamic mandates.</p>
+        <span class="tc-btn">View Tests</span>
+      </a>
+
+      <!-- International Relations -->
+      <a href="{{ '/international-relations-test/' | relative_url }}" class="tc-card" data-file-id="international-relations">
+        <div class="card-icon">🌏</div>
+        <h3>International Relations</h3>
+        <div class="js-test-count">Loading...</div>
+        <p>Bilateral treaties, strategic maritime boundaries, and foreign policy parameters.</p>
+        <span class="tc-btn">View Tests</span>
+      </a>
+
+      <!-- Awards -->
+      <a href="{{ '/awards-honors-test/' | relative_url }}" class="tc-card" data-file-id="awards-honors">
+        <div class="card-icon">🏅</div>
+        <h3>Awards &amp; Honors</h3>
+        <div class="js-test-count">Loading...</div>
+        <p>Nobel prize history logs, Bharat Ratna winners list, and gallantry medals database.</p>
+        <span class="tc-btn">View Tests</span>
+      </a>
+
+      <!-- Defense -->
+      <a href="{{ '/indian-defense-test/' | relative_url }}" class="tc-card" data-file-id="indian-defense">
+        <div class="card-icon">🛡️</div>
+        <h3>Indian Defense</h3>
+        <div class="js-test-count">Loading...</div>
+        <p>Joint military combat actions, aircraft commands, and submarine fleet tracking grids.</p>
+        <span class="tc-btn">View Tests</span>
+      </a>
+
+      <!-- Important Dates -->
+      <a href="{{ '/important-dates-test/' | relative_url }}" class="tc-card" data-file-id="important-dates">
+        <div class="card-icon">📅</div>
+        <h3>Important Dates</h3>
+        <div class="js-test-count">Loading...</div>
+        <p>Factual national timelines, global observation schedules, and momentous days index.</p>
+        <span class="tc-btn">View Tests</span>
+      </a>
+
+      <!-- Transport -->
+      <a href="{{ '/transport-test/' | relative_url }}" class="tc-card" data-file-id="transport">
+        <div class="card-icon">🚆</div>
+        <h3>Transport Grid</h3>
+        <div class="js-test-count">Loading...</div>
+        <p>Railway zone division maps, national highway setups and seaport operations networks.</p>
+        <span class="tc-btn">View Tests</span>
+      </a>
+
+      <!-- Famous Monuments -->
+      <a href="{{ '/famous-monuments-test/' | relative_url }}" class="tc-card" data-file-id="famous-monuments">
+        <div class="card-icon">🏯</div>
+        <h3>Famous Monuments</h3>
+        <div class="js-test-count">Loading...</div>
+        <p>Heritage architectural archetypes, excavation timelines and fortress structural facts.</p>
+        <span class="tc-btn">View Tests</span>
+      </a>
+
+      <!-- Wildlife -->
+      <a href="{{ '/wildlife-test/' | relative_url }}" class="tc-card" data-file-id="wildlife">
+        <div class="card-icon">🐯</div>
+        <h3>Wildlife &amp; Parks</h3>
+        <div class="js-test-count">Loading...</div>
+        <p>Tiger reserve maps, biosphere zoning rules, and Ramsar wetlands coordinates.</p>
+        <span class="tc-btn">View Tests</span>
+      </a>
+
+      <!-- Rivers -->
+      <a href="{{ '/rivers-test/' | relative_url }}" class="tc-card" data-file-id="rivers">
+        <div class="card-icon">🏞️</div>
+        <h3>Rivers &amp; Lakes</h3>
+        <div class="js-test-count">Loading...</div>
+        <p>Hydro-geography catchments, river tributaries maps, and freshwater reservoir banks.</p>
+        <span class="tc-btn">View Tests</span>
+      </a>
+
+      <!-- Disasters -->
+      <a href="{{ '/disasters-test/' | relative_url }}" class="tc-card" data-file-id="disasters">
+        <div class="card-icon">⚠️</div>
+        <h3>Disaster Management</h3>
+        <div class="js-test-count">Loading...</div>
+        <p>Seismic zone tracking maps, cyclone relief setups and industrial risk operations.</p>
+        <span class="tc-btn">View Tests</span>
+      </a>
+
+      <!-- Sanskrit -->
+      <a href="{{ '/sanskrit-test/' | relative_url }}" class="tc-card" data-file-id="sanskrit">
+        <div class="card-icon">📜</div>
+        <h3>Sanskrit</h3>
+        <div class="js-test-count">Loading...</div>
+        <p>Vedic text semantics, grammar rules, sandhi formats and classical vocabulary.</p>
+        <span class="tc-btn">View Tests</span>
+      </a>
+
+      <!-- Hindi Vyakaran -->
+      <a href="{{ '/hindi-test/' | relative_url }}" class="tc-card" data-file-id="hindi-vyakaran">
         <div class="card-icon">🇮🇳</div>
         <h3>Hindi Vyakaran</h3>
-        <p>Test your knowledge of Hindi grammar, idioms, and literature with our comprehensive quizzes.</p>
+        <div class="js-test-count">Loading...</div>
+        <p>Master hindi layout parameters, complete grammar rules, and vocabulary matrix lists.</p>
         <span class="tc-btn">View Tests</span>
       </a>
 
-      <a href="/history-test/" class="tc-card">
-        <div class="card-icon">📜</div>
-        <h3>History</h3>
-        <p>From ancient civilizations to modern India, challenge your historical knowledge.</p>
-        <span class="tc-btn">View Tests</span>
-      </a>
-
-      <a href="computer-test/" class="tc-card">
-        <div class="tc-card-anchor-link"></div>
-        <div class="card-icon">💻</div>
-        <h3>Computer</h3>
-        <p>Quizzes on computer fundamentals, software, and the latest technology trends.</p>
-        <span class="tc-btn">View Tests</span>
-      </a>
-
-      <div class="tc-card disabled">
-        <span class="soon-badge">Soon</span>
-        <div class="card-icon">🧮</div>
-        <h3>Maths</h3>
-        <p>Sharpen your quantitative aptitude with tests on various mathematical concepts.</p>
-        <span class="tc-btn">Coming Soon</span>
-      </div>
-
-      <div class="tc-card disabled">
-        <span class="soon-badge">Soon</span>
-        <div class="card-icon">🌍</div>
-        <h3>Geography</h3>
-        <p>Quizzes on world and Indian geography — mountains, rivers, capitals, and climate.</p>
-        <span class="tc-btn">Coming Soon</span>
-      </div>
-
-      <div class="tc-card disabled">
-        <span class="soon-badge">Soon</span>
-        <div class="card-icon">🔬</div>
-        <h3>General Science</h3>
-        <p>Test your knowledge of Physics, Chemistry, and Biology with general science questions.</p>
-        <span class="tc-btn">Coming Soon</span>
-      </div>
-
-      <div class="tc-card disabled">
-        <span class="soon-badge">Soon</span>
+      <!-- Civics Test -->
+      <a href="{{ '/civics-test/' | relative_url }}" class="tc-card" data-file-id="civics">
         <div class="card-icon">🏛️</div>
-        <h3>Indian Polity</h3>
-        <p>Quizzes on the Constitution, government structure, fundamental rights, and political system.</p>
-        <span class="tc-btn">Coming Soon</span>
-      </div>
+        <h3>Civics</h3>
+        <div class="js-test-count">Loading...</div>
+        <p>Understand local self-governance, citizenship laws, rights, and administrative grids.</p>
+        <span class="tc-btn">View Tests</span>
+      </a>
 
-      <div class="tc-card disabled">
-        <span class="soon-badge">Soon</span>
-        <div class="card-icon">💹</div>
-        <h3>Economy</h3>
-        <p>Challenge yourself with questions on Indian and world economy, banking, and finance.</p>
-        <span class="tc-btn">Coming Soon</span>
-      </div>
+      <!-- General Awareness -->
+      <a href="{{ '/general-awareness-test/' | relative_url }}" class="tc-card" data-file-id="general-awareness">
+        <div class="card-icon">🧠</div>
+        <h3>General Awareness</h3>
+        <div class="js-test-count">Loading...</div>
+        <p>Comprehensive knowledge pool tracking latest updates, indicators, and factual points.</p>
+        <span class="tc-btn">View Tests</span>
+      </a>
 
-      <div class="tc-card disabled">
-        <span class="soon-badge">Soon</span>
-        <div class="card-icon">📰</div>
-        <h3>Current Affairs</h3>
-        <p>Stay updated and test your knowledge of the latest national and international events.</p>
-        <span class="tc-btn">Coming Soon</span>
-      </div>
+    </div>
+  </section>
+
+  <!-- 🇮🇳 COMPLETE 33 HINDI CATEGORIES MATRIX CONTAINER -->
+  <section class="tc-section" id="tc-zone-hi" data-lang-panel="hi" style="display:none;">
+    <h2 class="tc-heading">अपना विषय चुनें</h2>
+    <p class="tc-subheading">अभ्यास परीक्षण शुरू करने के लिए एक श्रेणी चुनें। प्रत्येक प्रश्नोत्तरी प्रतियोगी परीक्षाओं के लिए आपके कौशल को तेज करने के लिए डिज़ाइन की गई है।</p>
+    <div class="tc-grid">
+
+      <!-- इतिहास -->
+      <a href="{{ '/hi/history-test/' | relative_url }}" class="tc-card" data-file-id="ancient-indian-history">
+        <div class="card-icon">🏛️</div>
+        <h3>इतिहास</h3>
+        <div class="js-test-count">Loading...</div>
+        <p>प्राचीन, मध्यकालीन, आधुनिक और विश्व इतिहास के विभिन्न कालखंडों का लाइव मॉक टेस्ट।</p>
+        <span class="tc-btn">टेस्ट देखें</span>
+      </a>
+
+      <!-- संविधान -->
+      <a href="{{ '/hi/indian-constitution-test/' | relative_url }}" class="tc-card" data-file-id="indian-constitution">
+        <div class="card-icon">⚖️</div>
+        <h3>भारतीय संविधान और सरकार</h3>
+        <div class="js-test-count">Loading...</div>
+        <p>प्रस्तावना, मौलिक अधिकार, निर्देशक तत्व और संवैधानिक संशोधनों का संपूर्ण डेटाबेस।</p>
+        <span class="tc-btn">टेस्ट देखें</span>
+      </a>
+
+      <!-- कंप्यूटर -->
+      <a href="{{ '/hi/computer-test/' | relative_url }}" class="tc-card" data-file-id="computer">
+        <div class="card-icon">💻</div>
+        <h3>कंप्यूटर जागरूकता</h3>
+        <div class="js-test-count">Loading...</div>
+        <p>कंप्यूटर हार्डवेयर, नेटवर्किंग आर्किटेक्चर, इंटरनेट प्रोटोकॉल और शॉर्टकट कीज़ का परीक्षण।</p>
+        <span class="tc-btn">टेस्ट देखें</span>
+      </a>
+
+      <!-- भौतिकी -->
+      <a href="{{ '/hi/physics-test/' | relative_url }}" class="tc-card" data-file-id="physics">
+        <div class="card-icon">⚡</div>
+        <h3>भौतिकी</h3>
+        <div class="js-test-count">Loading...</div>
+        <p>यांत्रिकी, ऊष्मागतिकी, प्रकाशिकी और विद्युत न्यूमेरिकल प्रश्नों का लाइव रैंडमाइज्ड टेस्ट।</p>
+        <span class="tc-btn">टेस्ट देखें</span>
+      </a>
+
+      <!-- गणित -->
+      <a href="{{ '/hi/mathematics-test/' | relative_url }}" class="tc-card" data-file-id="mathematics">
+        <div class="card-icon">🔢</div>
+        <h3>गणित</h3>
+        <div class="js-test-count">Loading...</div>
+        <p>मात्रात्मक अभिरुचि, अंकगणित समीकरण, बीजगणित और ज्यामिति सूत्रों का अभ्यास पैनल।</p>
+        <span class="tc-btn">टेस्ट देखें</span>
+      </a>
+
+      <!-- रसायन -->
+      <a href="{{ '/hi/chemistry-test/' | relative_url }}" class="tc-card" data-file-id="chemistry">
+        <div class="card-icon">🧪</div>
+        <h3>रसायन विज्ञान</h3>
+        <div class="js-test-count">Loading...</div>
+        <p>आवर्त सारणी रासायनिक सूत्र, परमाणु संरचना और रोजमर्रा के रसायनों का विश्लेषणात्मक मॉक टेस्ट।</p>
+        <span class="tc-btn">टेस्ट देखें</span>
+      </a>
+
+      <!-- जीव विज्ञान -->
+      <a href="{{ '/hi/biology-test/' | relative_url }}" class="tc-card" data-file-id="biology">
+        <div class="card-icon">🧬</div>
+        <h3>जीव विज्ञान</h3>
+        <div class="js-test-count">Loading...</div>
+        <p>मानव शरीर विज्ञान, कोशिका विज्ञान, आनुवंशिकी और पादप संरचना के उच्च-उपयोगिता वाले प्रश्न।</p>
+        <span class="tc-btn">टेस्ट देखें</span>
+      </a>
+
+      <!-- अर्थव्यवस्था -->
+      <a href="{{ '/hi/indian-economy-test/' | relative_url }}" class="tc-card" data-file-id="indian-economy">
+        <div class="card-icon">💰</div>
+        <h3>भारतीय अर्थव्यवस्था</h3>
+        <div class="js-test-count">Loading...</div>
+        <p>पंचवर्षीय योजनाएं, नीति आयोग ढांचा, जीएसटी दरें और आरबीआई मौद्रिक नीतियों का लाइव सेट।</p>
+        <span class="tc-btn">टेस्ट देखें</span>
+      </a>
+
+      <!-- पर्यावरण -->
+      <a href="{{ '/hi/environment-test/' | relative_url }}" class="tc-card" data-file-id="environment">
+        <div class="card-icon">🌿</div>
+        <h3>पर्यावरण और जैव विविधता</h3>
+        <div class="js-test-count">Loading...</div>
+        <p>पारिस्थितिकी तंत्र, ग्लोबल वार्मिंग संधियां, लुप्तप्राय वन्यजीव और संरक्षण अधिनियम।</p>
+        <span class="tc-btn">टेस्ट देखें</span>
+      </a>
+
+      <!-- कला संस्कृति -->
+      <a href="{{ '/hi/indian-art-culture-test/' | relative_url }}" class="tc-card" data-file-id="indian-art-culture">
+        <div class="card-icon">🎭</div>
+        <h3>भारतीय कला और संस्कृति</h3>
+        <div class="js-test-count">Loading...</div>
+        <p>शास्त्रीय नृत्य शैलियां, ऐतिहासिक मंदिर स्थापत्य, पारंपरिक उत्सव और प्राचीन साहित्य।</p>
+        <span class="tc-btn">टेस्ट देखें</span>
+      </a>
+
+      <!-- विज्ञान तकनीक -->
+      <a href="{{ '/hi/science-technology-test/' | relative_url }}" class="tc-card" data-file-id="science-technology">
+        <div class="card-icon">🔬</div>
+        <h3>विज्ञान और प्रौद्योगिकी</h3>
+        <div class="js-test-count">Loading...</div>
+        <p>इसरो अंतरिक्ष मिशन, रक्षा मिसाइल कमांड, परमाणु नेटवर्क और आधुनिक एआई प्रगति।</p>
+        <span class="tc-btn">टेस्ट देखें</span>
+      </a>
+
+      <!-- पुस्तकें लेखक -->
+      <a href="{{ '/hi/books-authors-test/' | relative_url }}" class="tc-card" data-file-id="books-authors">
+        <div class="card-icon">📚</div>
+        <h3>पुस्तकें और लेखक</h3>
+        <div class="js-test-count">Loading...</div>
+        <p>प्राचीन ऐतिहासिक पांडुलिपियां, आधुनिक उपन्यासकार, प्रसिद्ध आत्मकथाएं और पुरस्कार विजेता।</p>
+        <span class="tc-btn">टेस्ट देखें</span>
+      </a>
+
+      <!-- खेल -->
+      <a href="{{ '/hi/sports-test/' | relative_url }}" class="tc-card" data-file-id="sports">
+        <div class="card-icon">🏆</div>
+        <h3>खेल सामान्य ज्ञान</h3>
+        <div class="js-test-count">Loading...</div>
+        <p>ओलंपिक खेल रिकॉर्ड, आईसीसी विश्व कप तिथियां, राष्ट्रीय ट्राफियां और खेल शब्दावली।</p>
+        <span class="tc-btn">टेस्ट देखें</span>
+      </a>
+
+      <!-- हस्तियां -->
+      <a href="{{ '/hi/famous-personalities-test/' | relative_url }}" class="tc-card" data-file-id="famous-personalities">
+        <div class="card-icon">👤</div>
+        <h3>प्रसिद्ध व्यक्तित्व</h3>
+        <div class="js-test-count">Loading...</div>
+        <p>महान समाज सुधारक, वैश्विक नेता, वैज्ञानिक और इतिहास में क्रांतिकारी भूमिका निभाने वाले महापुरुष।</p>
+        <span class="tc-btn">टेस्ट देखें</span>
+      </a>
+
+      <!-- आविष्कार -->
+      <a href="{{ '/hi/technology-inventions-test/' | relative_url }}" class="tc-card" data-file-id="technology-inventions">
+        <div class="card-icon">💡</div>
+        <h3>प्रौद्योगिकी और आविष्कार</h3>
+        <div class="js-test-count">Loading...</div>
+        <p>प्रमुख इंजीनियरिंग खोजों की समयसीमा, प्रयोगशाला उपकरण और वैश्विक वैज्ञानिक आविष्कार लॉग।</p>
+        <span class="tc-btn">टेस्ट देखें</span>
+      </a>
+
+      <!-- अंतरिक्ष ब्रह्मांड -->
+      <a href="{{ '/hi/space-universe-test/' | relative_url }}" class="tc-card" data-file-id="space-universe">
+        <div class="card-icon">🚀</div>
+        <h3>अंतरिक्ष और ब्रह्मांड</h3>
+        <div class="js-test-count">Loading...</div>
+        <p>सौरमंडल के ग्रह, खगोलीय कक्षाएं, डार्क मैटर सिद्धांत और चंद्र लैंडिंग मिशन इतिहास।</p>
+        <span class="tc-btn">टेस्ट देखें</span>
+      </a>
+
+      <!-- भारतीय भूगोल -->
+      <a href="{{ '/hi/bhartiya-bhugol-test/' | relative_url }}" class="tc-card" data-file-id="indian-geography">
+        <div class="card-icon">🗺️</div>
+        <h3>भारतीय भूगोल</h3>
+        <div class="js-test-count">Loading...</div>
+        <p>हिमालय पर्वतमाला मानचित्र, नदी अपवाह बेसिन, मिट्टी वर्गीकरण और खनिज उत्पादक क्षेत्र।</p>
+        <span class="tc-btn">टेस्ट देखें</span>
+      </a>
+
+      <!-- विश्व भूगोल -->
+      <a href="{{ '/hi/vishwa-bhugol-test/' | relative_url }}" class="tc-card" data-file-id="world-geography">
+        <div class="card-icon">🌐</div>
+        <h3>विश्व भूगोल</h3>
+        <div class="js-test-count">Loading...</div>
+        <p>वैश्विक समुद्री धाराएं, वायुमंडलीय पवन पेटियां, महाद्वीपीय पर्वत श्रृंखलाएं और जलडमरूमध्य।</p>
+        <span class="tc-btn">टेस्ट देखें</span>
+      </a>
+
+      <!-- त्यौहार -->
+      <a href="{{ '/hi/tyohar-test/' | relative_url }}" class="tc-card" data-file-id="indian-festivals">
+        <div class="card-icon">🪔</div>
+        <h3>त्यौहार और परंपराएँ</h3>
+        <div class="js-test-count">Loading...</div>
+        <p>क्षेत्रीय फसल कटाई उत्सव, पारंपरिक लोक नृत्य शैलियां और विभिन्न सांस्कृतिक मेले।</p>
+        <span class="tc-btn">टेस्ट देखें</span>
+      </a>
+
+      <!-- विश्व संगठन -->
+      <a href="{{ '/hi/world-organizations-test/' | relative_url }}" class="tc-card" data-file-id="world-organizations">
+        <div class="card-icon">🤝</div>
+        <h3>विश्व संगठन</h3>
+        <div class="js-test-count">Loading...</div>
+        <p>संयुक्त राष्ट्र के अंग, आईएमएफ, विश्व बैंक मुख्यालय स्थान और उनके वैश्विक परिचालन अधिकार।</p>
+        <span class="tc-btn">टेस्ट देखें</span>
+      </a>
+
+      <!-- अंतर्राष्ट्रीय संबंध -->
+      <a href="{{ '/hi/international-relations-test/' | relative_url }}" class="tc-card" data-file-id="international-relations">
+        <div class="card-icon">🌏</div>
+        <h3>अंतर्राष्ट्रीय संबंध</h3>
+        <div class="js-test-count">Loading...</div>
+        <p>द्विपक्षीय संधियाँ, समुद्री सीमा विवाद, आर्थिक गलियारे और भारत की विदेश नीतियां।</p>
+        <span class="tc-btn">टेस्ट देखें</span>
+      </a>
+
+      <!-- पुरस्कार -->
+      <a href="{{ '/hi/puraskaar-test/' | relative_url }}" class="tc-card" data-file-id="awards-honors">
+        <div class="card-icon">🏅</div>
+        <h3>पुरस्कार और सम्मान</h3>
+        <div class="js-test-count">Loading...</div>
+        <p>नोबेल पुरस्कार का इतिहास, भारत रत्न और पद्म विभूषण विजेताओं के रिकॉर्ड्स।</p>
+        <span class="tc-btn">टेस्ट देखें</span>
+      </a>
+
+      <!-- रक्षा -->
+      <a href="{{ '/hi/raksha-test/' | relative_url }}" class="tc-card" data-file-id="indian-defense">
+        <div class="card-icon">🛡️</div>
+        <h3>भारतीय रक्षा</h3>
+        <div class="js-test-count">Loading...</div>
+        <p>संयुक्त सैन्य अभ्यास, लड़ाकू विमान विंग्स, आंतरिक सुरक्षा और पनडुब्बी बेड़े की स्थिति।</p>
+        <span class="tc-btn">टेस्ट देखें</span>
+      </a>
+
+      <!-- महत्वपूर्ण तिथियां -->
+      <a href="{{ '/hi/important-dates-test/' | relative_url }}" class="tc-card" data-file-id="important-dates">
+        <div class="card-icon">📅</div>
+        <h3>महत्वपूर्ण तिथियां</h3>
+        <div class="js-test-count">Loading...</div>
+        <p>राष्ट्रीय युवा दिवस, पर्यावरण दिवस समयसीमा और परीक्षाओं में पूछे जाने वाले प्रमुख दिन।</p>
+        <span class="tc-btn">टेस्ट देखें</span>
+      </a>
+
+      <!-- परिवहन -->
+      <a href="{{ '/hi/transport-test/' | relative_url }}" class="tc-card" data-file-id="transport">
+        <div class="card-icon">🚆</div>
+        <h3>परिवहन और संचार</h3>
+        <div class="js-test-count">Loading...</div>
+        <p>भारतीय रेलवे जोन, एक्सप्रेसवे गलियारे, प्रमुख राष्ट्रीय बंदरगाह और जलमार्ग अवसंरचना।</p>
+        <span class="tc-btn">टेस्ट देखें</span>
+      </a>
+
+      <!-- प्रसिद्ध स्मारक -->
+      <a href="{{ '/hi/famous-monuments-test/' | relative_url }}" class="tc-card" data-file-id="famous-monuments">
+        <div class="card-icon">🏯</div>
+        <h3>प्रредиद्ध स्मारक</h3>
+        <div class="js-test-count">Loading...</div>
+        <p>ताजमहल, कुतुब मीनार और द्रविड़ शैली के ऐतिहासिक मंदिरों की वास्तुकला एवं खुदाई कालक्रम।</p>
+        <span class="tc-btn">टेस्ट देखें</span>
+      </a>
+
+      <!-- वन्यजीव -->
+      <a href="{{ '/hi/vanya-jeev-test/' | relative_url }}" class="tc-card" data-file-id="wildlife">
+        <div class="card-icon">🐯</div>
+        <h3>वन्यजीव और राष्ट्रीय उद्यान</h3>
+        <div class="js-test-count">Loading...</div>
+        <p>टाइगर रिज़र्व मानचित्र, बायोस्फीयर जोन्स नियम और रामसर कन्वेंशन आर्द्रभूमि स्थान।</p>
+        <span class="tc-btn">टेस्ट देखें</span>
+      </a>
+
+      <!-- नदियां -->
+      <a href="{{ '/hi/nadiyan-test/' | relative_url }}" class="tc-card" data-file-id="rivers">
+        <div class="card-icon">🏞️</div>
+        <h3>नदियाँ और झीलें</h3>
+        <div class="js-test-count">Loading...</div>
+        <p>हिमालयी और प्रायद्वीपीय नदी प्रणालियां, सहायक नदियां और मीठे पानी के प्रमुख जलाशय।</p>
+        <span class="tc-btn">टेस्ट देखें</span>
+      </a>
+
+      <!-- आपदाएं -->
+      <a href="{{ '/hi/aapda-test/' | relative_url }}" class="tc-card" data-file-id="disasters">
+        <div class="card-icon">⚠️</div>
+        <h3>आपदाएं और दुर्घटनाएं</h3>
+        <div class="js-test-count">Loading...</div>
+        <p>भूकंपीय ज़ोन मैपिंग, चक्रवात शमन योजनाएं और एनडीआरएफ प्रबंधन संरचना विश्लेषण।</p>
+        <span class="tc-btn">टेस्ट देखें</span>
+      </a>
+
+      <!-- संस्कृत -->
+      <a href="{{ '/hi/sanskrit-test/' | relative_url }}" class="tc-card" data-file-id="sanskrit">
+        <div class="card-icon">📜</div>
+        <h3>संस्कृत व्याकरण</h3>
+        <div class="js-test-count">Loading...</div>
+        <p>वैदिक सूक्त संरचना, संधि नियम, धातु रूप, शब्द रूप और प्राचीन व्याकरण सिद्धांत।</p>
+        <span class="tc-btn">टेस्ट देखें</span>
+      </a>
+
+      <!-- हिंदी व्याकरण -->
+      <a href="{{ '/hi/hindi-vyakaran-test/' | relative_url }}" class="tc-card" data-file-id="hindi-vyakaran">
+        <div class="card-icon">🇮🇳</div>
+        <h3>हिंदी व्याकरण</h3>
+        <div class="js-test-count">Loading...</div>
+        <p>संधि, समास, रस, अलंकार, मुहावरे और हिंदी साहित्य कालक्रम का संपूर्ण अभ्यास सेट।</p>
+        <span class="tc-btn">टेस्ट देखें</span>
+      </a>
+
+      <!-- नागरिक शास्त्र -->
+      <a href="{{ '/hi/civics-test/' | relative_url }}" class="tc-card" data-file-id="civics">
+        <div class="card-icon">🏛️</div>
+        <h3>नागरिक शास्त्र</h3>
+        <div class="js-test-count">Loading...</div>
+        <p>स्थानीय स्वशासन, पंचायती राज व्यवस्था, नागरिक कर्तव्य और प्रशासनिक संरचनाएं।</p>
+        <span class="tc-btn">टेस्ट देखें</span>
+      </a>
+
+      <!-- सामान्य जागरूकता -->
+      <a href="{{ '/hi/general-awareness-test/' | relative_url }}" class="tc-card" data-file-id="general-awareness">
+        <div class="card-icon">🧠</div>
+        <h3>सामान्य जागरूकता</h3>
+        <div class="js-test-count">Loading...</div>
+        <p>नवीनतम समसामयिक सूचकांक, राष्ट्रीय-अंतर्राष्ट्रीय घटनाक्रम और स्टेटिक अवेयरनेस पोल।</p>
+        <span class="tc-btn">टेस्ट देखें</span>
+      </a>
 
     </div>
   </section>
@@ -528,7 +1089,7 @@ comments: false
       <div class="tag">Quiz of the Week</div>
       <h3>🏆 The Ultimate Indian History Challenge</h3>
       <p>Think you know your history? This week's featured quiz covers everything from the Mauryan Empire to the Mughal era — a true test for serious aspirants!</p>
-      <a href="history-test/" class="tc-btn" style="background:var(--clr-accent); border-color:var(--clr-accent); color:#000000; padding:10px 30px;">Take the Challenge Now</a>
+      <a href="{{ '/history-test/' | relative_url }}" class="tc-btn" style="background:var(--clr-accent); border-color:var(--clr-accent); color:#000000; padding:10px 30px;">Take the Challenge Now</a>
     </div>
   </section>
 
@@ -564,19 +1125,19 @@ comments: false
         <div class="card-icon" style="color:var(--clr-accent);">📄</div>
         <h3>Formula Sheets</h3>
         <p>Important formulas for Maths, Physics, and Chemistry — all in one place for quick revision.</p>
-        <a href="/all-formulas/" class="tc-btn">View Formulas</a>
+        <a href="{{ '/all-formulas/' | relative_url }}" class="tc-btn">View Formulas</a>
       </div>
       <div class="tc-card">
         <div class="card-icon" style="color:var(--clr-accent);">⚖️</div>
         <h3>Unit Converter</h3>
         <p>Convert between units of length, mass, temperature, and more with our handy tool.</p>
-        <a href="/tools/unit-converter/" class="tc-btn">Use Converter</a>
+        <a href="{{ '/tools/unit-converter/' | relative_url }}" class="tc-btn">Use Converter</a>
       </div>
-      <div class="tc-card disabled">
+      <div class="tc-card">
         <div class="card-icon" style="color:var(--clr-accent);">🗓️</div>
         <h3>Study Planner</h3>
         <p>Set goals, build a schedule, and track your daily progress with our upcoming planner.</p>
-        <span class="tc-btn">Coming Soon</span>
+        <span class="tc-btn" style="color:var(--text-muted); background:var(--bg-body);">Coming Soon</span>
       </div>
     </div>
   </section>
@@ -622,7 +1183,143 @@ comments: false
 
 </main>
 
+<!-- 📦 Dynamic Injected Jekyl Liquid Database Stream Layer -->
+<script id="jekyll-test-counts-repo" type="application/json">
+{
+  "en": {
+    "ancient-indian-history": {% assign f = site.data.quiz.en.ancient-indian-history %}{% if f.size %}{{ f.size }}{% else %}0{% endif %},
+    "indian-constitution": {% assign f = site.data.quiz.en.indian-constitution %}{% if f.size %}{{ f.size }}{% else %}0{% endif %},
+    "computer": {% assign f = site.data.quiz.en.computer %}{% if f.size %}{{ f.size }}{% else %}0{% endif %},
+    "physics": {% assign f = site.data.quiz.en.physics %}{% if f.size %}{{ f.size }}{% else %}0{% endif %},
+    "mathematics": {% assign f = site.data.quiz.en.mathematics %}{% if f.size %}{{ f.size }}{% else %}0{% endif %},
+    "chemistry": {% assign f = site.data.quiz.en.chemistry %}{% if f.size %}{{ f.size }}{% else %}0{% endif %},
+    "biology": {% assign f = site.data.quiz.en.biology %}{% if f.size %}{{ f.size }}{% else %}0{% endif %},
+    "indian-economy": {% assign f = site.data.quiz.en.indian-economy %}{% if f.size %}{{ f.size }}{% else %}0{% endif %},
+    "environment": {% assign f = site.data.quiz.en.environment %}{% if f.size %}{{ f.size }}{% else %}0{% endif %},
+    "indian-art-culture": {% assign f = site.data.quiz.en.indian-art-culture %}{% if f.size %}{{ f.size }}{% else %}0{% endif %},
+    "science-technology": {% assign f = site.data.quiz.en.science-technology %}{% if f.size %}{{ f.size }}{% else %}0{% endif %},
+    "books-authors": {% assign f = site.data.quiz.en.books-authors %}{% if f.size %}{{ f.size }}{% else %}0{% endif %},
+    "sports": {% assign f = site.data.quiz.en.sports %}{% if f.size %}{{ f.size }}{% else %}0{% endif %},
+    "famous-personalities": {% assign f = site.data.quiz.en.famous-personalities %}{% if f.size %}{{ f.size }}{% else %}0{% endif %},
+    "technology-inventions": {% assign f = site.data.quiz.en.technology-inventions %}{% if f.size %}{{ f.size }}{% else %}0{% endif %},
+    "space-universe": {% assign f = site.data.quiz.en.space-universe %}{% if f.size %}{{ f.size }}{% else %}0{% endif %},
+    "indian-geography": {% assign f = site.data.quiz.en.indian-geography %}{% if f.size %}{{ f.size }}{% else %}0{% endif %},
+    "world-geography": {% assign f = site.data.quiz.en.world-geography %}{% if f.size %}{{ f.size }}{% else %}0{% endif %},
+    "indian-festivals": {% assign f = site.data.quiz.en.indian-festivals %}{% if f.size %}{{ f.size }}{% else %}0{% endif %},
+    "world-organizations": {% assign f = site.data.quiz.en.world-organizations %}{% if f.size %}{{ f.size }}{% else %}0{% endif %},
+    "international-relations": {% assign f = site.data.quiz.en.international-relations %}{% if f.size %}{{ f.size }}{% else %}0{% endif %},
+    "awards-honors": {% assign f = site.data.quiz.en.awards-honors %}{% if f.size %}{{ f.size }}{% else %}0{% endif %},
+    "indian-defense": {% assign f = site.data.quiz.en.indian-defense %}{% if f.size %}{{ f.size }}{% else %}0{% endif %},
+    "important-dates": {% assign f = site.data.quiz.en.important-dates %}{% if f.size %}{{ f.size }}{% else %}0{% endif %},
+    "transport": {% assign f = site.data.quiz.en.transport %}{% if f.size %}{{ f.size }}{% else %}0{% endif %},
+    "famous-monuments": {% assign f = site.data.quiz.en.famous-monuments %}{% if f.size %}{{ f.size }}{% else %}0{% endif %},
+    "wildlife": {% assign f = site.data.quiz.en.wildlife %}{% if f.size %}{{ f.size }}{% else %}0{% endif %},
+    "rivers": {% assign f = site.data.quiz.en.rivers %}{% if f.size %}{{ f.size }}{% else %}0{% endif %},
+    "disasters": {% assign f = site.data.quiz.en.disasters %}{% if f.size %}{{ f.size }}{% else %}0{% endif %},
+    "sanskrit": {% assign f = site.data.quiz.en.sanskrit %}{% if f.size %}{{ f.size }}{% else %}0{% endif %},
+    "hindi-vyakaran": {% assign f = site.data.quiz.en.hindi-vyakaran %}{% if f.size %}{{ f.size }}{% else %}0{% endif %},
+    "civics": {% assign f = site.data.quiz.en.civics %}{% if f.size %}{{ f.size }}{% else %}0{% endif %},
+    "general-awareness": {% assign f = site.data.quiz.en.general-awareness %}{% if f.size %}{{ f.size }}{% else %}0{% endif %}
+  },
+  "hi": {
+    "ancient-indian-history": {% assign f = site.data.quiz.hi.ancient-indian-history %}{% if f.size %}{{ f.size }}{% else %}0{% endif %},
+    "indian-constitution": {% assign f = site.data.quiz.hi.indian-constitution %}{% if f.size %}{{ f.size }}{% else %}0{% endif %},
+    "computer": {% assign f = site.data.quiz.hi.computer %}{% if f.size %}{{ f.size }}{% else %}0{% endif %},
+    "physics": {% assign f = site.data.quiz.hi.physics %}{% if f.size %}{{ f.size }}{% else %}0{% endif %},
+    "mathematics": {% assign f = site.data.quiz.hi.mathematics %}{% if f.size %}{{ f.size }}{% else %}0{% endif %},
+    "chemistry": {% assign f = site.data.quiz.hi.chemistry %}{% if f.size %}{{ f.size }}{% else %}0{% endif %},
+    "biology": {% assign f = site.data.quiz.hi.biology %}{% if f.size %}{{ f.size }}{% else %}0{% endif %},
+    "indian-economy": {% assign f = site.data.quiz.hi.indian-economy %}{% if f.size %}{{ f.size }}{% else %}0{% endif %},
+    "environment": {% assign f = site.data.quiz.hi.environment %}{% if f.size %}{{ f.size }}{% else %}0{% endif %},
+    "indian-art-culture": {% assign f = site.data.quiz.hi.indian-art-culture %}{% if f.size %}{{ f.size }}{% else %}0{% endif %},
+    "science-technology": {% assign f = site.data.quiz.hi.science-technology %}{% if f.size %}{{ f.size }}{% else %}0{% endif %},
+    "books-authors": {% assign f = site.data.quiz.hi.books-authors %}{% if f.size %}{{ f.size }}{% else %}0{% endif %},
+    "sports": {% assign f = site.data.quiz.hi.sports %}{% if f.size %}{{ f.size }}{% else %}0{% endif %},
+    "famous-personalities": {% assign f = site.data.quiz.hi.famous-personalities %}{% if f.size %}{{ f.size }}{% else %}0{% endif %},
+    "technology-inventions": {% assign f = site.data.quiz.hi.technology-inventions %}{% if f.size %}{{ f.size }}{% else %}0{% endif %},
+    "space-universe": {% assign f = site.data.quiz.hi.space-universe %}{% if f.size %}{{ f.size }}{% else %}0{% endif %},
+    "indian-geography": {% assign f = site.data.quiz.hi.indian-geography %}{% if f.size %}{{ f.size }}{% else %}0{% endif %},
+    "world-geography": {% assign f = site.data.quiz.hi.world-geography %}{% if f.size %}{{ f.size }}{% else %}0{% endif %},
+    "indian-festivals": {% assign f = site.data.quiz.hi.indian-festivals %}{% if f.size %}{{ f.size }}{% else %}0{% endif %},
+    "world-organizations": {% assign f = site.data.quiz.hi.world-organizations %}{% if f.size %}{{ f.size }}{% else %}0{% endif %},
+    "international-relations": {% assign f = site.data.quiz.hi.international-relations %}{% if f.size %}{{ f.size }}{% else %}0{% endif %},
+    "awards-honors": {% assign f = site.data.quiz.hi.awards-honors %}{% if f.size %}{{ f.size }}{% else %}0{% endif %},
+    "indian-defense": {% assign f = site.data.quiz.hi.indian-defense %}{% if f.size %}{{ f.size }}{% else %}0{% endif %},
+    "important-dates": {% assign f = site.data.quiz.hi.important-dates %}{% if f.size %}{{ f.size }}{% else %}0{% endif %},
+    "transport": {% assign f = site.data.quiz.hi.transport %}{% if f.size %}{{ f.size }}{% else %}0{% endif %},
+    "famous-monuments": {% assign f = site.data.quiz.hi.famous-monuments %}{% if f.size %}{{ f.size }}{% else %}0{% endif %},
+    "wildlife": {% assign f = site.data.quiz.hi.wildlife %}{% if f.size %}{{ f.size }}{% else %}0{% endif %},
+    "rivers": {% assign f = site.data.quiz.hi.rivers %}{% if f.size %}{{ f.size }}{% else %}0{% endif %},
+    "disasters": {% assign f = site.data.quiz.hi.disasters %}{% if f.size %}{{ f.size }}{% else %}0{% endif %},
+    "sanskrit": {% assign f = site.data.quiz.hi.sanskrit %}{% if f.size %}{{ f.size }}{% else %}0{% endif %},
+    "hindi-vyakaran": {% assign f = site.data.quiz.hi.hindi-vyakaran %}{% if f.size %}{{ f.size }}{% else %}0{% endif %},
+    "civics": {% assign f = site.data.quiz.hi.civics %}{% if f.size %}{{ f.size }}{% else %}0{% endif %},
+    "general-awareness": {% assign f = site.data.quiz.hi.general-awareness %}{% if f.size %}{{ f.size }}{% else %}0{% endif %}
+  }
+}
+</script>
+
 <script>
+  // 🌐 Dynamic Native Language Toggle Mechanism Logic
+  function toggleTcLang(lang) {
+      const zoneEn = document.getElementById('tc-zone-en');
+      const zoneHi = document.getElementById('tc-zone-hi');
+      const btnEn = document.getElementById('btn-lang-en');
+      const btnHi = document.getElementById('btn-lang-hi');
+      
+      if(lang === 'hi') {
+          if(zoneEn) zoneEn.style.display = 'none';
+          if(zoneHi) zoneHi.style.display = 'block';
+          if(btnHi) btnHi.classList.add('active');
+          if(btnEn) btnEn.classList.remove('active');
+      } else {
+          if(zoneHi) zoneHi.style.display = 'none';
+          if(zoneEn) zoneEn.style.display = 'block';
+          if(btnEn) btnEn.classList.add('active');
+          if(btnHi) btnHi.classList.remove('active');
+      }
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+      // Parse total questions dynamic object repository live into cards
+      try {
+          const rawData = document.getElementById('jekyll-test-counts-repo').textContent;
+          const countsRepo = JSON.parse(rawData);
+          
+          document.querySelectorAll('.tc-card').forEach(card => {
+              const fileKey = card.dataset.fileId;
+              const parentPanel = card.closest('[data-lang-panel]');
+              const currentLang = parentPanel ? parentPanel.dataset.langPanel : 'en';
+              
+              if(countsRepo[currentLang] && countsRepo[currentLang][fileKey] !== undefined) {
+                  const qSize = countsRepo[currentLang][fileKey];
+                  const targetLabel = card.querySelector('.js-test-count');
+                  if(targetLabel) {
+                      targetLabel.textContent = currentLang === 'hi' ? `${qSize} प्रश्न` : `${qSize} Questions`;
+                  }
+              }
+          });
+      } catch (e) {
+          console.error("Count engine execution fault:", e);
+      }
+
+      // Live Dynamic Client Real-time Filter Loop
+      const searchBox = document.getElementById('tc-search-box');
+      if (searchBox) {
+          searchBox.addEventListener('input', (e) => {
+              const query = e.target.value.toLowerCase().trim();
+              document.querySelectorAll('.tc-card').forEach(card => {
+                  const subjectName = card.querySelector('h3').textContent.toLowerCase();
+                  if (subjectName.includes(query)) {
+                      card.style.display = 'flex';
+                  } else {
+                      card.style.display = 'none';
+                  }
+              });
+          });
+      }
+  });
+
   // Dynamic Native Navigator Share API Bridge
   document.getElementById('shareBtn').addEventListener('click', function () {
     if (navigator.share) {
@@ -633,14 +1330,6 @@ comments: false
       });
     }
   });
-
-  // Service Workers Layer Init
-  if ('serviceWorker' in navigator) {
-    window.addEventListener('load', function () {
-      navigator.serviceWorker.register('/firebase-messaging-sw.js').catch(function () {});
-      navigator.serviceWorker.register('/sw.js').catch(function () {});
-    });
-  }
-</script>   
+</script>
 
 <script type="module" src="/assets/js/test-hub.js"></script>
