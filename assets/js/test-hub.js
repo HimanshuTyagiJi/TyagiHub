@@ -1,16 +1,15 @@
 // 🌐 TyagiHub Test Center & Leaderboard Synchronizer Engine
 // Path: /assets/js/test-hub.js
 
-// 🎯 Connected cleanly to your newly deployed auto-injecting Apps Script URL
+// Connected cleanly to your newly deployed auto-injecting Apps Script URL
 const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbw9Bz1KhUlIlKgy-lOpiI70oCMm28nbqhoBVUj1eg8uEH2iUcmaDP4Si9OXh0r37wiktg/exec";
 
-// 🎯 REPLACED FIREBASE AUTH WITH NATIVE LOCALSTORAGE LOGGED-IN USER MATRIX
+// REPLACED FIREBASE AUTH WITH NATIVE LOCALSTORAGE LOGGED-IN USER MATRIX
 function getLoggedUser() {
     try {
         const storedUser = localStorage.getItem("tc_user");
         if (storedUser) {
             const parsed = JSON.parse(storedUser);
-            // लेआउट स्ट्रक्चर मैपिंग: n = name, e = email, p = pic, uid = unique hash (या email को ही id मानेंगे)
             return {
                 uid: parsed.uid || parsed.e.replace(/[^a-zA-Z0-9]/g, ""), 
                 displayName: parsed.n || "Learner",
@@ -43,7 +42,7 @@ async function initializeTestHub() {
     const leaderboardContainer = document.getElementById('leaderboard-container');
     const testPartsContainer = document.getElementById('test-parts-container');
     const isCategoryPage = testCategory !== 'all';
-    const currentUser = getLoggedUser(); // Live fetch from localStorage
+    const currentUser = getLoggedUser();
 
     // --- Part 1: Handle Google Sheets Based Leaderboard ---
     if (leaderboardContainer) {
@@ -93,6 +92,12 @@ function renderLeaderboard(topScores, category, userLiveRank, currentUser) {
         const displayName = isCurrentUser ? "You" : scoreData.userName;
         const avatar = scoreData.userPhotoURL || 'data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="50" fill="%23ddd"/></svg>';
         
+        // 🎯 FIX: अगर बैकएंड से वैल्यू 1 से कम (जैसे 0.80) आ रही है तो 100 से गुणा करेंगे, वरना वैसे ही दिखाएंगे
+        let finalPct = scoreData.averagePercentage;
+        if (finalPct <= 1 && finalPct > 0) {
+            finalPct = finalPct * 100;
+        }
+
         leaderboardHTML += `
             <li class="${isCurrentUser ? 'active-user-row' : ''}">
                 <div class="rank">${index + 1}</div>
@@ -100,7 +105,7 @@ function renderLeaderboard(topScores, category, userLiveRank, currentUser) {
                     <img src="${avatar}" alt="${scoreData.userName}" style="width:100%; height:100%; object-fit:cover;" loading="lazy">
                 </div>
                 <div class="lb-name">${displayName}</div>
-                <div class="lb-score">${scoreData.averagePercentage.toFixed(2)}%</div>
+                <div class="lb-score">${finalPct.toFixed(2)}%</div>
             </li>
         `;
     });
@@ -110,7 +115,15 @@ function renderLeaderboard(topScores, category, userLiveRank, currentUser) {
     if (currentUser && category === 'all' && userLiveRank > topScores.length) {
         const userAvatar = currentUser.photoURL || 'data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="50" fill="%23ddd"/></svg>';
         const myActiveRecord = topScores[userLiveRank - 1];
-        const myPercentageStr = myActiveRecord ? myActiveRecord.averagePercentage.toFixed(2) + "%" : "0.00%";
+        
+        let myPercentageStr = "0.00%";
+        if (myActiveRecord) {
+            let myPct = myActiveRecord.averagePercentage;
+            if (myPct <= 1 && myPct > 0) {
+                myPct = myPct * 100;
+            }
+            myPercentageStr = myPct.toFixed(2) + "%";
+        }
 
         userRankHTML = `
             <div class="user-rank-display" style="margin-top:20px; border-top:2px dashed var(--clr-border); padding-top:15px;">
@@ -130,7 +143,6 @@ function renderLeaderboard(topScores, category, userLiveRank, currentUser) {
     leaderboardContainer.innerHTML = leaderboardHTML + userRankHTML;
 }
 
-// Fetches and displays the user's LATEST scores from Google Sheets database logs
 async function updateUserTestStatus(category, currentUser) {
     const testPartsContainer = document.getElementById('test-parts-container');
     if (!currentUser || !testPartsContainer) return;
@@ -174,14 +186,12 @@ async function updateUserTestStatus(category, currentUser) {
     }
 }
 
-// --- Entry Point & Event Listeners ---
 document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('#test-parts-container .box[data-quiz-id]').forEach(box => {
         if (!box.dataset.originalHtml) {
             box.dataset.originalHtml = box.innerHTML;
         }
     });
-    // Direct trigger using the existing layout session
     initializeTestHub();
 });
 
