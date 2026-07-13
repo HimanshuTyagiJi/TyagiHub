@@ -74,8 +74,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         <div class="rule-line-item-en" style="margin-bottom: 12px; display: block;">• This test contains <strong>${count}</strong> curated questions.</div>
                         <div class="rule-line-item-en" style="margin-bottom: 12px; display: block;">• The timer tracks cumulative active testing seconds.</div>
                         <div class="rule-line-item-en" style="margin-bottom: 12px; display: block;">• Once submitted, entries lock cleanly across state lists.</div>
-                        <div class="rule-line-item-en" style="margin-bottom: 12px; display: block;">• Authentication syncing stores metrics into Google Sheets ledger.</div>
-                    </div>
+                                      </div>
                 `;
             }
         }, 50); // 50 मिलीसेकंड का सूक्ष्म डिले ताकि यह सभी ओवरराइड्स के बाद अंतिम वार करे
