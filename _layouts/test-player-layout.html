@@ -4,6 +4,7 @@ lang_switch: false
 comments: false
 ---
 
+
 <!-- Premium Quiz Gameplay Matrix Layout Styles -->
 <style>
   .quiz-gameplay-wrapper {
@@ -258,6 +259,13 @@ comments: false
     line-height: 1.6;
   }
 
+  /* 🎯 FIXED Line break styling hook for modal rules */
+  .quiz-modal-content-panel ul li {
+    margin-bottom: var(--space-2, 8px);
+    display: list-item !important;
+    list-style-type: disc !important;
+  }
+
   @keyframes modalSlide {
     from { transform: translateY(15px); opacity: 0; }
     to { transform: translateY(0); opacity: 1; }
@@ -416,7 +424,7 @@ comments: false
         <h2 id="modal-result-title" data-en="Your Result Profile" data-hi="आपका परिणाम प्रोफ़ाइल">Your Result Profile</h2>
         <div id="resultContent" style="margin-bottom: 24px;"></div>
         <div class="modal-actions-track" style="gap:15px;" id="modal-result-actions-container">
-            <!-- Dynamic Buttons with white color code #FFFFFF injected cleanly from test.js -->
+            <!-- Dynamic Buttons with adaptive theme colors injected cleanly from test.js -->
         </div>
     </div>
 </div>
