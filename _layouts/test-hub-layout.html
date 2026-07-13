@@ -1,0 +1,160 @@
+---
+layout: default
+comments: false
+lang_switch: false
+---
+
+<!-- Premium Independent Category Layout Styling Layer -->
+<style>
+  .cat-test-wrapper {
+    max-width: var(--container-max, 1200px);
+    margin: var(--space-12, 48px) auto;
+    padding: 0 var(--space-4, 16px);
+    min-height: 75vh;
+    margin-top: 70px;
+  }
+
+  .cat-main-heading {
+    font-family: var(--font-display), sans-serif;
+    font-size: var(--fs-2xl, 2.25rem);
+    font-weight: var(--fw-black, 600);
+    color: var(--text-heading);
+    text-align: center;
+    margin: 0 0 var(--space-2, 8px);
+    letter-spacing: -0.02em;
+  }
+
+  .cat-subtitle {
+    font-family: var(--font-body), sans-serif;
+    font-size: var(--fs-sm, 0.95rem);
+    color: var(--text-paragraph);
+    text-align: center;
+    max-width: 680px;
+    margin: 0 auto var(--space-10, 40px);
+    line-height: var(--lh-normal, 1.6);
+    opacity: 0.9;
+  }
+
+  .box-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-5, 20px);
+    margin-bottom: var(--space-12, 48px);
+  }
+
+  @media(min-width: 768px) { .box-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media(min-width: 1024px) { .box-grid { grid-template-columns: repeat(3, 1fr); } }
+
+  .box-grid .box {
+    background: var(--bg-surface);
+    border: 1px solid var(--clr-border);
+    border-radius: var(--radius-lg, 18px);
+    padding: var(--space-6, 24px);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 120px;
+    position: relative;
+    overflow: hidden;
+    transition: transform var(--ease-normal, 250ms), border-color var(--ease-normal, 250ms), box-shadow var(--ease-normal, 250ms);
+    box-shadow: var(--shadow-sm);
+  }
+
+  .box-grid .box:not(.disabled-box):hover {
+    transform: translateY(-5px);
+    border-color: var(--clr-border-2);
+    box-shadow: var(--shadow-md);
+  }
+
+  .box-grid .box a {
+    font-family: var(--font-display), sans-serif;
+    font-size: var(--fs-md, 1.125rem);
+    font-weight: var(--fw-bold, 550);
+    text-decoration: none;
+    color: var(--clr-accent);
+    display: inline-block;
+    transition: color var(--ease-fast);
+  }
+
+  .box-grid .box:not(.disabled-box):hover a {
+    color: var(--clr-accent-2);
+  }
+
+  .leaderboard-section {
+    background: var(--bg-surface);
+    border: 1px solid var(--clr-border);
+    border-radius: var(--radius-lg, 18px);
+    padding: var(--space-6, 24px);
+    box-shadow: var(--shadow-sm);
+  }
+
+  .leaderboard-title {
+    font-family: var(--font-display), sans-serif;
+    font-size: var(--fs-lg, 1.375rem);
+    font-weight: var(--fw-black, 600);
+    color: var(--text-heading);
+    margin: 0 0 var(--space-5, 20px) 0;
+    letter-spacing: -0.01em;
+  }
+
+  .tc-leaderboard { list-style: none; padding: 0; margin: 0; }
+  .tc-leaderboard li { display: flex; align-items: center; padding: var(--space-3, 12px) var(--space-2, 8px); border-bottom: 1px solid var(--clr-border); font-family: var(--font-body), sans-serif; font-size: var(--fs-sm, 0.95rem); }
+  .tc-leaderboard li:last-child { border-bottom: none; }
+  .tc-leaderboard li.active-user-row { background: var(--hover-bg-1); border-left: 3px solid var(--clr-accent); padding-left: calc(var(--space-2, 8px) - 3px); }
+  .tc-leaderboard .rank { min-width: 40px; text-align: center; font-weight: var(--fw-black, 600); color: var(--clr-accent); }
+  .tc-leaderboard .lb-avatar-frame { width: 36px; height: 36px; border-radius: var(--radius-full, 9999px); margin: 0 var(--space-3, 12px); overflow: hidden; border: 1px solid var(--clr-border-2); display: flex; align-items: center; justify-content: center; background: var(--bg-body); }
+  .tc-leaderboard .lb-name { flex: 1; font-weight: var(--fw-bold, 550); color: var(--text-heading); }
+  .tc-leaderboard .lb-score { font-weight: var(--fw-black, 600); color: var(--text-heading); }
+  .luxury-spinner { text-align: center; padding: var(--space-8, 32px) 0; color: var(--clr-accent); }
+</style>
+
+<script>
+  // Dynamic identification token mapping lock for test-hub.js
+  document.body.setAttribute('data-test-category', '{{ page.category_id }}');
+</script>
+
+<main class="cat-test-wrapper">
+    
+    <div class="cat-header-zone">
+        <h1 class="cat-main-heading">{{ page.category_title }}</h1>
+        <p class="cat-subtitle">
+            {% if page.lang == 'hi' %}
+              {{ page.category_title }} प्रतियोगी परीक्षाओं की तैयारी के लिए यहाँ 25-25 प्रश्नों के लाइव मॉक टेस्ट सेट हल करें।
+            {% else %}
+              Challenge your competitive parameters across curated 25-question sets for {{ page.category_title }}.
+            {% endif %}
+        </p>
+    </div>
+
+    <!-- 🎛️ AUTO-GENERATED BOX MATRIX GRID FROM RUBY RUNTIME -->
+    <div id="test-parts-container" class="box-grid">
+        {% for i in (1..page.total_parts) %}
+            {% if i < 10 %}
+                {% assign part_str = "0" | append: i %}
+            {% else %}
+                {% assign part_str = i %}
+            {% endif %}
+            
+            <div class="box" data-quiz-id="{{ page.category_id }}-test-part-{{ part_str }}" data-part-name="{{ page.category_title }} - Part {{ part_str }}">
+                <a href="part-{{ part_str }}/">
+                   {% if page.lang == 'hi' %} भाग-{{ part_str }} {% else %} Part-{{ part_str }} {% endif %}
+                </a>
+            </div>
+        {% endfor %}
+    </div>
+
+    <!-- 🥇 LEADERBOARD LAYER -->
+    <section class="leaderboard-section">
+        <h2 class="leaderboard-title">
+            {% if page.lang == 'hi' %} शीर्ष प्रदर्शन करने वाले छात्र {% else %} Top Performers {% endif %}
+        </h2>
+        <div id="leaderboard-container">
+            <div class="luxury-spinner"><i class="fas fa-spinner fa-spin" style="font-size:26px;"></i></div>
+        </div>
+    </section>
+
+</main>
+
+<script type="module" src="{{ '/assets/js/test-hub.js' | relative_url }}"></script>
