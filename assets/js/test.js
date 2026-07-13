@@ -38,7 +38,7 @@ document.addEventListener('DOMContentLoaded', () => {
         return null;
     }
 
-    function syncLanguageUI() {
+   function syncLanguageUI() {
         const titleEl = document.getElementById('player-dynamic-title');
         const labelTime = document.getElementById('label-time');
         const labelReview = document.getElementById('label-review-title');
@@ -53,27 +53,33 @@ document.addEventListener('DOMContentLoaded', () => {
         if (resultTitle) resultTitle.textContent = resultTitle.getAttribute(`data-${currentLang}`);
         if (startBtnEl) startBtnEl.textContent = startBtnEl.getAttribute(`data-${currentLang}`);
 
-        // 🎯 FIXED POPUP LINE BREAK: जावास्क्रिप्ट अब लिक्विड के नियमों के HTML को हाथ नहीं लगाएगा, सिर्फ टेक्स्ट सिंक करेगा
+
         const rulesUl = document.getElementById('modal-start-rules');
         if (rulesUl) {
             const count = rulesUl.getAttribute('data-count') || "0";
+            let rulesArray = [];
+
             if (currentLang === 'hi') {
-                rulesUl.innerHTML = `
-                    <li>इस टेस्ट में कुल <strong>${count}</strong> महत्वपूर्ण बहुविकल्पीय प्रश्न शामिल हैं।</li>
-                    <li>टाइमर सक्रिय टेस्टिंग सेकंड की गणना निरंतर करता रहेगा।</li>
-                    <li>एक बार सबमिट करने के बाद, परिणाम लॉक हो जाएंगे।</li>
-                    <li>आपका स्कोर लाइव Google Sheets लीडरबोर्ड पर अपडेट किया जाएगा।</li>
-                `;
+                rulesArray = [
+                    '<li>इस टेस्ट में कुल <strong>' + count + '</strong> महत्वपूर्ण बहुविकल्पीय प्रश्न शामिल हैं।</li>',
+                    '<li>टाइमर सक्रिय टेस्टिंग सेकंड की गणना निरंतर करता रहेगा।</li>',
+                    '<li>एक बार सबमिट करने के बाद, परिणाम लॉक हो जाएंगे।</li>',
+                    '<li>आपका स्कोर लाइव Google Sheets लीडरबोर्ड पर अपडेट किया जाएगा।</li>'
+                ];
             } else {
-                rulesUl.innerHTML = `
-                    <li>This test contains <strong>${count}</strong> curated questions.</li>
-                    <li>The timer tracks cumulative active testing seconds.</li>
-                    <li>Once submitted, entries lock cleanly across state lists.</li>
-                    <li>Authentication syncing stores metrics into Google Sheets ledger.</li>
-                `;
+                rulesArray = [
+                    '<li>This test contains <strong>' + count + '</strong> curated questions.</li>',
+                    '<li>The timer tracks cumulative active testing seconds.</li>',
+                    '<li>Once submitted, entries lock cleanly across state lists.</li>',
+                    '<li>Authentication syncing stores metrics into Google Sheets ledger.</li>'
+                ];
             }
+            
+          
+            rulesUl.innerHTML = rulesArray.join('\n');
         }
 
+        // switcher button active state alignment
         ['player-language-switcher-bar', 'review-language-switcher-bar'].forEach(barId => {
             const bar = document.getElementById(barId);
             if (bar) {
@@ -86,7 +92,6 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }
-
     function initLanguageSwitcher() {
         ['player-language-switcher-bar', 'review-language-switcher-bar'].forEach(barId => {
             const bar = document.getElementById(barId);
