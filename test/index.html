@@ -229,8 +229,8 @@ comments: false
   .tc-btn {
     margin-top: auto;
     display: inline-block;
-    background: var(--clr-border);
-    border: 1px solid var(--clr-border-2);
+    background: var(--bg-body);
+    border: 1px solid var(--clr-border);
     color: var(--text-heading);
     padding: var(--space-2, 8px) var(--space-5, 20px);
     border-radius: var(--radius-full, 9999px);
@@ -241,10 +241,11 @@ comments: false
     transition: all var(--ease-fast);
   }
 
+  /* 🎯 HOVER ACCENT FIX: Background turns Blue, Text turns 100% White STRICTLY */
   .tc-card:hover .tc-btn {
-    background: var(--clr-accent);
-    border-color: var(--clr-accent);
-    color: #000000;
+    background: var(--clr-accent) !important;
+    border-color: var(--clr-accent) !important;
+    color: #ffffff !important;
     box-shadow: var(--shadow-accent);
   }
 
@@ -460,25 +461,52 @@ comments: false
            placeholder="Search subjects...">
   </div>
 
-  <!-- 🇬🇧 COMPLETE 33 ENGLISH CATEGORIES MATRIX CONTAINER -->
+  <!-- 🇬🇧 COMPLETE 36 ENGLISH CATEGORIES MATRIX CONTAINER -->
   <section class="tc-section" id="tc-zone-en" data-lang-panel="en">
     <h2 class="tc-heading">Choose Your Subject</h2>
     <p class="tc-subheading">Select a category to begin your practice test. Each quiz is designed to sharpen your skills for competitive exams.</p>
     <div class="tc-grid">
 
-      <!-- History -->
-      <a href="{{ '/history-test/' | relative_url }}" class="tc-card" data-file-id="ancient-indian-history">
+      <!-- Ancient Indian History -->
+      <a href="{{ '/ancient-indian-history-test/' | relative_url }}" class="tc-card" data-file-id="ancient-indian-history">
         <div class="card-icon">🏛️</div>
-        <h3>History</h3>
+        <h3>Ancient Indian History</h3>
         <div class="js-test-count">Loading...</div>
-        <p>Challenge your factual matrix across Ancient, Medieval, Modern and World History streams.</p>
+        <p>Test parameters on Indus Valley, Vedic Age, Mauryan and Gupta Dynasties.</p>
+        <span class="tc-btn">View Tests</span>
+      </a>
+
+      <!-- Medieval Indian History -->
+      <a href="{{ '/medieval-indian-history-test/' | relative_url }}" class="tc-card" data-file-id="medieval-history">
+        <div class="card-icon">🕌</div>
+        <h3>Medieval Indian History</h3>
+        <div class="js-test-count">Loading...</div>
+        <p>Practice advanced questions details on Delhi Sultanate, Mughals and Marathas.</p>
+        <span class="tc-btn">View Tests</span>
+      </a>
+
+      <!-- Modern Indian History -->
+      <a href="{{ '/modern-indian-history-test/' | relative_url }}" class="tc-card" data-file-id="modern-history">
+        <div class="card-icon">🇮🇳</div>
+        <h3>Modern Indian History</h3>
+        <div class="js-test-count">Loading...</div>
+        <p>MCQs tracking Revolt of 1857, East India Rule, and National Movement events.</p>
+        <span class="tc-btn">View Tests</span>
+      </a>
+
+      <!-- World History -->
+      <a href="{{ '/world-history-test/' | relative_url }}" class="tc-card" data-file-id="world-history">
+        <div class="card-icon">🌍</div>
+        <h3>World History</h3>
+        <div class="js-test-count">Loading...</div>
+        <p>Global historical milestones, American &amp; French Revolutions and World Wars.</p>
         <span class="tc-btn">View Tests</span>
       </a>
 
       <!-- Polity -->
       <a href="{{ '/indian-constitution-test/' | relative_url }}" class="tc-card" data-file-id="indian-constitution">
         <div class="card-icon">⚖️</div>
-        <h3>Polity &amp; Constitution</h3>
+        <h3>Indian Government &amp; Constitution</h3>
         <div class="js-test-count">Loading...</div>
         <p>Master Preamble, Fundamental Rights, Articles, and structural legal parameters.</p>
         <span class="tc-btn">View Tests</span>
@@ -577,7 +605,7 @@ comments: false
       <!-- Sports -->
       <a href="{{ '/sports-test/' | relative_url }}" class="tc-card" data-file-id="sports">
         <div class="card-icon">🏆</div>
-        <h3>Sports GK</h3>
+        <h3>Sports General Knowledge</h3>
         <div class="js-test-count">Loading...</div>
         <p>Olympic matrices, world cup dates, tournament venues and terminology indexes.</p>
         <span class="tc-btn">View Tests</span>
@@ -631,7 +659,7 @@ comments: false
       <!-- Festivals -->
       <a href="{{ '/indian-festivals-test/' | relative_url }}" class="tc-card" data-file-id="indian-festivals">
         <div class="card-icon">🪔</div>
-        <h3>Festivals &amp; Traditions</h3>
+        <h3>Indian Festivals &amp; Traditions</h3>
         <div class="js-test-count">Loading...</div>
         <p>Regional crop harvest celebrations, tribal folk dance calendars and traditional fairs.</p>
         <span class="tc-btn">View Tests</span>
@@ -676,7 +704,7 @@ comments: false
       <!-- Important Dates -->
       <a href="{{ '/important-dates-test/' | relative_url }}" class="tc-card" data-file-id="important-dates">
         <div class="card-icon">📅</div>
-        <h3>Important Dates</h3>
+        <h3>Important Dates &amp; Events</h3>
         <div class="js-test-count">Loading...</div>
         <p>Factual national timelines, global observation schedules, and momentous days index.</p>
         <span class="tc-btn">View Tests</span>
@@ -685,7 +713,7 @@ comments: false
       <!-- Transport -->
       <a href="{{ '/transport-test/' | relative_url }}" class="tc-card" data-file-id="transport">
         <div class="card-icon">🚆</div>
-        <h3>Transport Grid</h3>
+        <h3>Transport &amp; Communication</h3>
         <div class="js-test-count">Loading...</div>
         <p>Railway zone division maps, national highway setups and seaport operations networks.</p>
         <span class="tc-btn">View Tests</span>
@@ -703,7 +731,7 @@ comments: false
       <!-- Wildlife -->
       <a href="{{ '/wildlife-test/' | relative_url }}" class="tc-card" data-file-id="wildlife">
         <div class="card-icon">🐯</div>
-        <h3>Wildlife &amp; Parks</h3>
+        <h3>Wildlife &amp; National Parks</h3>
         <div class="js-test-count">Loading...</div>
         <p>Tiger reserve maps, biosphere zoning rules, and Ramsar wetlands coordinates.</p>
         <span class="tc-btn">View Tests</span>
@@ -721,7 +749,7 @@ comments: false
       <!-- Disasters -->
       <a href="{{ '/disasters-test/' | relative_url }}" class="tc-card" data-file-id="disasters">
         <div class="card-icon">⚠️</div>
-        <h3>Disaster Management</h3>
+        <h3>Disasters &amp; Accidents</h3>
         <div class="js-test-count">Loading...</div>
         <p>Seismic zone tracking maps, cyclone relief setups and industrial risk operations.</p>
         <span class="tc-btn">View Tests</span>
@@ -737,11 +765,11 @@ comments: false
       </a>
 
       <!-- Hindi Vyakaran -->
-      <a href="{{ '/hindi-test/' | relative_url }}" class="tc-card" data-file-id="hindi-vyakaran">
+      <a href="{{ '/hindi-vyakaran-test/' | relative_url }}" class="tc-card" data-file-id="hindi-vyakaran">
         <div class="card-icon">🇮🇳</div>
         <h3>Hindi Vyakaran</h3>
         <div class="js-test-count">Loading...</div>
-        <p>Master hindi layout parameters, complete grammar rules, and vocabulary matrix lists.</p>
+        <p>Master hindi grammar parameters, idioms metrics, and descriptive literature pools.</p>
         <span class="tc-btn">View Tests</span>
       </a>
 
@@ -766,25 +794,52 @@ comments: false
     </div>
   </section>
 
-  <!-- 🇮🇳 COMPLETE 33 HINDI CATEGORIES MATRIX CONTAINER -->
+  <!-- 🇮🇳 COMPLETE 36 HINDI CATEGORIES MATRIX CONTAINER -->
   <section class="tc-section" id="tc-zone-hi" data-lang-panel="hi" style="display:none;">
     <h2 class="tc-heading">अपना विषय चुनें</h2>
     <p class="tc-subheading">अभ्यास परीक्षण शुरू करने के लिए एक श्रेणी चुनें। प्रत्येक प्रश्नोत्तरी प्रतियोगी परीक्षाओं के लिए आपके कौशल को तेज करने के लिए डिज़ाइन की गई है।</p>
     <div class="tc-grid">
 
-      <!-- इतिहास -->
-      <a href="{{ '/hi/history-test/' | relative_url }}" class="tc-card" data-file-id="ancient-indian-history">
+      <!-- प्राचीन इतिहास -->
+      <a href="{{ '/hi/ancient-indian-history-test/' | relative_url }}" class="tc-card" data-file-id="ancient-indian-history">
         <div class="card-icon">🏛️</div>
-        <h3>इतिहास</h3>
+        <h3>प्राचीन भारतीय इतिहास</h3>
         <div class="js-test-count">Loading...</div>
-        <p>प्राचीन, मध्यकालीन, आधुनिक और विश्व इतिहास के विभिन्न कालखंडों का लाइव मॉक टेस्ट।</p>
+        <p>सिंधु घाटी, वैदिक काल, बौद्ध, जैन धर्म और मौर्य-गुप्त राजवंश का पूर्ण मॉक परीक्षण।</p>
+        <span class="tc-btn">टेस्ट देखें</span>
+      </a>
+
+      <!-- मध्यकालीन इतिहास -->
+      <a href="{{ '/hi/medieval-indian-history-test/' | relative_url }}" class="tc-card" data-file-id="medieval-history">
+        <div class="card-icon">🕌</div>
+        <h3>मध्यकालीन भारतीय इतिहास</h3>
+        <div class="js-test-count">Loading...</div>
+        <p>दिल्ली सल्तनत, महान मुग़ल साम्राज्य और मराठा उत्कर्ष के उच्च-स्तरीय वस्तुनिष्ठ प्रश्न।</p>
+        <span class="tc-btn">टेस्ट देखें</span>
+      </a>
+
+      <!-- आधुनिक इतिहास -->
+      <a href="{{ '/hi/modern-indian-history-test/' | relative_url }}" class="tc-card" data-file-id="modern-history">
+        <div class="card-icon">🇮🇳</div>
+        <h3>आधुनिक भारतीय इतिहास</h3>
+        <div class="js-test-count">Loading...</div>
+        <p>1857 का महाविद्रोह, ब्रिटिश ईस्ट इंडिया कंपनी नियम और संपूर्ण राष्ट्रीय स्वतंत्रता आंदोलन।</p>
+        <span class="tc-btn">टेस्ट देखें</span>
+      </a>
+
+      <!-- विश्व इतिहास -->
+      <a href="{{ '/hi/world-history-test/' | relative_url }}" class="tc-card" data-file-id="world-history">
+        <div class="card-icon">🌍</div>
+        <h3>विश्व इतिहास</h3>
+        <div class="js-test-count">Loading...</div>
+        <p>अमेरिकी क्रांति, फ्रांस की राज्य क्रांति, औद्योगिक क्रांति और दोनों विश्व युद्धों का कालक्रम।</p>
         <span class="tc-btn">टेस्ट देखें</span>
       </a>
 
       <!-- संविधान -->
       <a href="{{ '/hi/indian-constitution-test/' | relative_url }}" class="tc-card" data-file-id="indian-constitution">
         <div class="card-icon">⚖️</div>
-        <h3>भारतीय संविधान और सरकार</h3>
+        <h3>भारतीय सरकार और संविधान</h3>
         <div class="js-test-count">Loading...</div>
         <p>प्रस्तावना, मौलिक अधिकार, निर्देशक तत्व और संवैधानिक संशोधनों का संपूर्ण डेटाबेस।</p>
         <span class="tc-btn">टेस्ट देखें</span>
@@ -858,7 +913,7 @@ comments: false
         <div class="card-icon">🎭</div>
         <h3>भारतीय कला और संस्कृति</h3>
         <div class="js-test-count">Loading...</div>
-        <p>शास्त्रीय नृत्य शैलियां, ऐतिहासिक मंदिर स्थापत्य, पारंपरिक उत्सव और प्राचीन साहित्य।</p>
+        <p>शास्त्रीय नृत्य शैली, ऐतिहासिक मंदिर स्थापत्य, पारंपरिक उत्सव और प्राचीन साहित्य।</p>
         <span class="tc-btn">टेस्ट देखें</span>
       </a>
 
@@ -903,7 +958,7 @@ comments: false
         <div class="card-icon">💡</div>
         <h3>प्रौद्योगिकी और आविष्कार</h3>
         <div class="js-test-count">Loading...</div>
-        <p>प्रमुख इंजीनियरिंग खोजों की समयसीमा, प्रयोगशाला उपकरण और वैश्विक वैज्ञानिक आविष्कार लॉग।</p>
+        <p>प्रमुख engineering खोजों की समयसीमा, प्रयोगशाला उपकरण और वैश्विक वैज्ञानिक आविष्कार लॉग।</p>
         <span class="tc-btn">टेस्ट देखें</span>
       </a>
 
@@ -937,7 +992,7 @@ comments: false
       <!-- त्यौहार -->
       <a href="{{ '/hi/tyohar-test/' | relative_url }}" class="tc-card" data-file-id="indian-festivals">
         <div class="card-icon">🪔</div>
-        <h3>त्यौहार और परंपराएँ</h3>
+        <h3>भारतीय त्यौहार और परंपराएँ</h3>
         <div class="js-test-count">Loading...</div>
         <p>क्षेत्रीय फसल कटाई उत्सव, पारंपरिक लोक नृत्य शैलियां और विभिन्न सांस्कृतिक मेले।</p>
         <span class="tc-btn">टेस्ट देखें</span>
@@ -1000,7 +1055,7 @@ comments: false
       <!-- प्रसिद्ध स्मारक -->
       <a href="{{ '/hi/famous-monuments-test/' | relative_url }}" class="tc-card" data-file-id="famous-monuments">
         <div class="card-icon">🏯</div>
-        <h3>प्रредиद्ध स्मारक</h3>
+        <h3>प्रसिद्ध स्मारक</h3>
         <div class="js-test-count">Loading...</div>
         <p>ताजमहल, कुतुब मीनार और द्रविड़ शैली के ऐतिहासिक मंदिरों की वास्तुकला एवं खुदाई कालक्रम।</p>
         <span class="tc-btn">टेस्ट देखें</span>
@@ -1015,7 +1070,7 @@ comments: false
         <span class="tc-btn">टेस्ट देखें</span>
       </a>
 
-      <!-- नदियां -->
+      <!-- नदियों -->
       <a href="{{ '/hi/nadiyan-test/' | relative_url }}" class="tc-card" data-file-id="rivers">
         <div class="card-icon">🏞️</div>
         <h3>नदियाँ और झीलें</h3>
@@ -1089,7 +1144,7 @@ comments: false
       <div class="tag">Quiz of the Week</div>
       <h3>🏆 The Ultimate Indian History Challenge</h3>
       <p>Think you know your history? This week's featured quiz covers everything from the Mauryan Empire to the Mughal era — a true test for serious aspirants!</p>
-      <a href="{{ '/history-test/' | relative_url }}" class="tc-btn" style="background:var(--clr-accent); border-color:var(--clr-accent); color:#000000; padding:10px 30px;">Take the Challenge Now</a>
+      <a href="{{ '/ancient-indian-history-test/' | relative_url }}" class="tc-btn">Take the Challenge Now</a>
     </div>
   </section>
 
@@ -1183,11 +1238,14 @@ comments: false
 
 </main>
 
-<!-- 📦 Dynamic Injected Jekyl Liquid Database Stream Layer -->
+<!-- 📦 Dynamic Injected Jekyll Liquid Database Stream Layer (Full 36x36 Sync Matrix) -->
 <script id="jekyll-test-counts-repo" type="application/json">
 {
   "en": {
     "ancient-indian-history": {% assign f = site.data.quiz.en.ancient-indian-history %}{% if f.size %}{{ f.size }}{% else %}0{% endif %},
+    "medieval-history": {% assign f = site.data.quiz.en.medieval-history %}{% if f.size %}{{ f.size }}{% else %}0{% endif %},
+    "modern-history": {% assign f = site.data.quiz.en.modern-history %}{% if f.size %}{{ f.size }}{% else %}0{% endif %},
+    "world-history": {% assign f = site.data.quiz.en.world-history %}{% if f.size %}{{ f.size }}{% else %}0{% endif %},
     "indian-constitution": {% assign f = site.data.quiz.en.indian-constitution %}{% if f.size %}{{ f.size }}{% else %}0{% endif %},
     "computer": {% assign f = site.data.quiz.en.computer %}{% if f.size %}{{ f.size }}{% else %}0{% endif %},
     "physics": {% assign f = site.data.quiz.en.physics %}{% if f.size %}{{ f.size }}{% else %}0{% endif %},
@@ -1223,6 +1281,9 @@ comments: false
   },
   "hi": {
     "ancient-indian-history": {% assign f = site.data.quiz.hi.ancient-indian-history %}{% if f.size %}{{ f.size }}{% else %}0{% endif %},
+    "medieval-history": {% assign f = site.data.quiz.hi.medieval-history %}{% if f.size %}{{ f.size }}{% else %}0{% endif %},
+    "modern-history": {% assign f = site.data.quiz.hi.modern-history %}{% if f.size %}{{ f.size }}{% else %}0{% endif %},
+    "world-history": {% assign f = site.data.quiz.hi.world-history %}{% if f.size %}{{ f.size }}{% else %}0{% endif %},
     "indian-constitution": {% assign f = site.data.quiz.hi.indian-constitution %}{% if f.size %}{{ f.size }}{% else %}0{% endif %},
     "computer": {% assign f = site.data.quiz.hi.computer %}{% if f.size %}{{ f.size }}{% else %}0{% endif %},
     "physics": {% assign f = site.data.quiz.hi.physics %}{% if f.size %}{{ f.size }}{% else %}0{% endif %},
