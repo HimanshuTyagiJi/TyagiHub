@@ -167,14 +167,14 @@ layout: default
     {% if page.total_parts > 0 %}
       {% for i in (1..page.total_parts) %}
         {% if i < 10 %}
-          {% assign part_str = "Test - 0" | append: i %}
-          {% assign part_label = "test-0" | append: i %}
+          {% assign part_str = "test-0" | append: i %}
+          {% assign part_label = "Test - 0" | append: i %}
         {% else %}
-          {% assign part_str = "Test - " | append: i %}
-          {% assign part_label = "test-" | append: i %}
+          {% assign part_str = "test-" | append: i %}
+          {% assign part_label = "Test - " | append: i %}
         {% endif %}
         
-        <div class="box" data-quiz-id="{{ page.category_id }}-test-{{ part_str }}" data-Test-name="{{ page.category_title }} - {{ part_label }}">
+        <div class="box" data-quiz-id="{{ page.category_id }}-Test - {{ part_str }}" data-Test-name="{{ page.category_title }} - {{ part_label }}">
             <a href="{{ page.permalink | append: part_str | append: '/' | relative_url }}">
               {% if page.lang == 'hi' %}Test - {{ i | bigint | string | rjust: 2, '0' }}{% else %}{{ part_label }}{% endif %}
             </a>
