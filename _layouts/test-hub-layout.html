@@ -167,18 +167,28 @@ layout: default
     {% if page.total_parts > 0 %}
       {% for i in (1..page.total_parts) %}
         {% if i < 10 %}
-          {% assign part_str = "test-0" | append: i %}
-          {% assign part_label = "Test - 0" | append: i %}
+          {% assign test_id_str = "test-0" | append: i %}
+          {% assign test_label_str = "Test - 0" | append: i %}
+          {% assign test_label_hi_str = "टेस्ट - 0" | append: i %}
         {% else %}
-          {% assign part_str = "test-" | append: i %}
-          {% assign part_label = "Test - " | append: i %}
+          {% assign test_id_str = "test-" | append: i %}
+          {% assign test_label_str = "Test - " | append: i %}
+          {% assign test_label_hi_str = "टेस्ट - " | append: i %}
         {% endif %}
         
-        <div class="box" data-quiz-id="{{ page.category_id }}-Test - {{ part_str }}" data-Test-name="{{ page.category_title }} - {{ part_label }}">
-            <a href="{{ page.permalink | append: part_str | append: '/' | relative_url }}">
-              {% if page.lang == 'hi' %}Test - {{ i | bigint | string | rjust: 2, '0' }}{% else %}{{ part_label }}{% endif %}
-            </a>
-        </div>
+        <!-- ⚡ LINK KE ANDAR CARD (PERFECT FULL CLICKABLE FIX) -->
+        <a href="{{ page.permalink | append: test_id_str | append: '/' | relative_url }}" style="text-decoration: none; color: inherit; display: block;">
+          
+          <!-- Poora Card Box ab is Link ke andar render hoga -->
+          <div class="box" data-quiz-id="{{ page.category_id }}-{{ test_id_str }}" data-test-name="{{ page.category_title }} - {{ test_label_str }}" style="cursor: pointer;">
+              {% if page.lang == 'hi' %}
+                {{ test_label_hi_str }}
+              {% else %}
+                {{ test_label_str }}
+              {% endif %}
+          </div>
+
+        </a>
       {% endfor %}
     {% else %}
       <div class="box disabled-box">
