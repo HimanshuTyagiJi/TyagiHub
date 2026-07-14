@@ -30,6 +30,13 @@ async function initializeTestHub() {
     const isCategoryPage = testCategory !== 'all';
     const currentUser = getLoggedUser();
 
+    // Set User Name UI Header
+    const isHindi = window.pageLangConfig === "hi";
+    const nameEl = document.getElementById('hub-user-name');
+    if (nameEl && currentUser) {
+        nameEl.textContent = (isHindi ? "यूजर: " : "Learner: ") + currentUser.displayName;
+    }
+
     // --- Part 1: Handle Google Sheets Based Leaderboard ---
     if (leaderboardContainer) {
         leaderboardContainer.innerHTML = '<div class="luxury-spinner"><i class="fas fa-spinner fa-spin" style="font-size:26px;"></i></div>';
@@ -49,7 +56,7 @@ async function initializeTestHub() {
         }
     }
 
-    // --- Part 2: Handle Score Updates via Safe Target Selectors ---
+    // --- Part 2: Handle Live Score Updates & Local Metric Sync Engine ---
     if (isCategoryPage && testPartsContainer && currentUser) {
         await updateUserTestStatus(testCategory, currentUser);
     }
@@ -119,21 +126,37 @@ function renderLeaderboard(topScores, category, userLiveRank, currentUser) {
     leaderboardContainer.innerHTML = leaderboardHTML + userRankHTML;
 }
 
-// 🎯 SAFE THEME UPDATER: यह सिर्फ आवश्यक हिस्से को ही बदलेगा, पूरे बॉक्स के लेआउट या एंकर टैग को क्रैश नहीं करेगा!
+// 🎯 SAFE THEME UPDATER WITH INTER-CATEGORY STATS AND METRICS CALCULATION
 async function updateUserTestStatus(category, currentUser) {
     const testPartsContainer = document.getElementById('test-parts-container');
+    const tbody = document.getElementById('hub-score-table-body');
+    const playedEl = document.getElementById('analytics-total-played');
+    const accuracyEl = document.getElementById('analytics-avg-accuracy');
+    const scoreEl = document.getElementById('analytics-total-score');
+
     if (!currentUser || !testPartsContainer) return;
 
     try {
         const response = await fetch(`${GOOGLE_SCRIPT_URL}?action=get_user_status&userId=${currentUser.uid}`);
         const latestScoresMap = await response.json();
 
-        testPartsContainer.querySelectorAll('.box[data-quiz-id]').forEach(box => {
+        let totalScore = 0;
+        let playedCount = 0;
+        let tableRowsHtml = "";
+        const isHindi = window.pageLangConfig === "hi";
+
+        testPartsContainer.querySelectorAll('.box[data-quiz-id]').forEach((box, i) => {
             const quizId = box.dataset.quizId;
             if (latestScoresMap && latestScoresMap[quizId]) {
+                playedCount++;
                 const scoreData = latestScoresMap[quizId];
-                
-                // अगर पहले से बॉक्स के अंदर स्कोर नोटिफ़ायर नहीं बना है, तो एंकर लिंक के ऊपर साफ़-साफ़ इन्जेक्ट करें
+                const numericScore = parseInt(scoreData.score, 10) || 0;
+                totalScore += numericScore;
+
+                const accuracyPercentage = ((numericScore / parseInt(scoreData.totalQuestions, 10)) * 100).toFixed(2);
+                const displayLabel = (isHindi ? "टेस्ट - " : "Test - ") + ((i + 1) < 10 ? "0" + (i + 1) : (i + 1));
+
+                // 1. Injected safely as clean info block element underneath anchor tags text node
                 let scoreBadge = box.querySelector('.js-live-score-badge');
                 if (!scoreBadge) {
                     scoreBadge = document.createElement('div');
@@ -144,9 +167,28 @@ async function updateUserTestStatus(category, currentUser) {
                     scoreBadge.style.opacity = '0.8';
                     box.appendChild(scoreBadge);
                 }
-                scoreBadge.innerHTML = `<strong>Latest Score:</strong> ${scoreData.score} / ${scoreData.totalQuestions}`;
+                scoreBadge.innerHTML = `<strong>Latest Score:</strong> ${numericScore} / ${scoreData.totalQuestions}`;
+
+                // 2. Add structural matrix record row to analytics profile panel list
+                tableRowsHtml += `
+                    <tr style="border-bottom: 1px solid var(--clr-border); color: var(--text-paragraph);">
+                        <td style="padding: 12px; font-weight: 600;">${displayLabel}</td>
+                        <td style="padding: 12px; font-weight: bold; color: var(--clr-accent);">${numericScore} / ${scoreData.totalQuestions}</td>
+                        <td style="padding: 12px; color: #28a745; font-weight: 600;">${accuracyPercentage}%</td>
+                    </tr>
+                `;
             }
         });
+
+        // Sync and render compiled dashboard data metrics arrays cleanly
+        if (playedCount > 0) {
+            if (tbody) tbody.innerHTML = tableRowsHtml;
+            if (playedEl) playedEl.textContent = playedCount;
+            if (scoreEl) scoreEl.textContent = totalScore;
+            if (accuracyEl) {
+                accuracyEl.textContent = ((totalScore / (playedCount * 25)) * 100).toFixed(2) + "%";
+            }
+        }
     } catch (error) {
         console.error("Error updating user test status:", error);
     }
