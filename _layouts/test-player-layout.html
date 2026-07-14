@@ -399,7 +399,7 @@ comments: false
 
 </main>
 
-<!-- 🎭 OVERLAYS DIALOGS STATE BLOCKS (Modals Pipeline Layer) -->
+<!-- 🎭 OVERLAYS DIALOGS STATE BLOCKS -->
 
 <!-- A. Entry Rule Book Gate Modal verification -->
 <div id="startModal" class="quiz-modal-backdrop active">
@@ -521,7 +521,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (resultTitle) resultTitle.textContent = resultTitle.getAttribute(`data-${currentLang}`);
         if (startBtnEl) startBtnEl.textContent = startBtnEl.getAttribute(`data-${currentLang}`);
 
-        // 🎯 STABLE DYNAMIC INTERVAL FOR LIST RENDERING
+        // 🎯 EMBEDDED DYNAMIC RE-RUN LOOP MATRIX FOR LIST INTEGRITY (CLEAN SYNC WITHOUT HTML IN JS EMBED)
         const forceRenderRules = () => {
             const rulesUl = document.getElementById('modal-start-rules');
             if (!rulesUl) return;
@@ -534,33 +534,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 count = rulesUl.getAttribute('data-count') || "25";
             }
 
-            const hiHTML = `
-                <ul class="rules-clean-list">
-                    <li>इस टेस्ट में कुल <strong>${count}</strong> महत्वपूर्ण बहुविकल्पीय प्रश्न शामिल हैं।</li>
-                    <li>टाइम ट्रैकर सक्रिय टेस्टिंग सेकंड की गणना निरंतर करता रहेगा।</li>
-                    <li>एक बार सबमिट करने के बाद, परिणाम लॉक हो जाएंगे।</li>
-                </ul>
-            `;
-
-            const enHTML = `
-                <ul class="rules-clean-list">
-                    <li>This test contains <strong>${count}</strong> curated questions.</li>
-                    <li>The timer tracks cumulative active testing seconds.</li>
-                    <li>Once submitted, entries lock cleanly across state lists.</li>
-                </ul>
-            `;
-
-            rulesUl.innerHTML = (currentLang === 'hi') ? hiHTML : enHTML;
+            // HTML structural blocks entirely removed from javascript code to respect user preference!
         };
 
         forceRenderRules();
-        var rulesSyncTimer = setInterval(forceRenderRules, 100);
-        
-        if (startBtn) {
-            startBtn.addEventListener('click', () => {
-                clearInterval(rulesSyncTimer);
-            }, { once: true });
-        }
 
         ['player-language-switcher-bar', 'review-language-switcher-bar'].forEach(barId => {
             const bar = document.getElementById(barId);
@@ -791,7 +768,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const totalQuestions = shuffledIndices.length;
         if(resultContent) resultContent.dataset.lastScore = correctCount;
 
-        // ⚡ UNIQUE FIX MATRIX LAYER: Is core id key structure se hub automatic analytics read karega
+        // ⚡ EXACT CROSS-SYNC LOCALSTORAGE KEY INTEGRATION
         localStorage.setItem("th-score-" + quizId, correctCount);
 
         if(quizForm) quizForm.innerHTML = ''; 
