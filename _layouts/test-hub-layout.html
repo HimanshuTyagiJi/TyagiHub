@@ -64,35 +64,33 @@ layout: default
     overflow: hidden;
     transition: transform var(--ease-normal, 250ms), border-color var(--ease-normal, 250ms), box-shadow var(--ease-normal, 250ms);
     box-shadow: var(--shadow-sm);
-  }
-
-  .box-grid .box:not(.disabled-box):hover {
-    transform: translateY(-5px);
-    border-color: var(--clr-border-2);
-    box-shadow: var(--shadow-md);
-  }
-
-  .box-grid .box a {
     font-family: var(--font-display), sans-serif;
     font-size: var(--fs-md, 1.125rem);
     font-weight: var(--fw-bold, 550);
-    text-decoration: none;
     color: var(--clr-accent);
-    display: inline-block;
-    transition: color var(--ease-fast);
   }
 
-  .box-grid .box:not(.disabled-box):hover a {
+  .box-grid a {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+  }
+
+  .box-grid a:hover .box:not(.disabled-box) {
+    transform: translateY(-5px);
+    border-color: var(--clr-border-2);
+    box-shadow: var(--shadow-md);
     color: var(--clr-accent-2);
   }
 
-  /* 🥇 Leaderboard Section Layout Layer */
+  /* 🥇 Leaderboard & Scoreboard Panel Layer */
   .leaderboard-section {
     background: var(--bg-surface);
     border: 1px solid var(--clr-border);
     border-radius: var(--radius-lg, 18px);
     padding: var(--space-6, 24px);
     box-shadow: var(--shadow-sm);
+    margin-top: 32px;
   }
 
   .leaderboard-title {
@@ -125,7 +123,7 @@ layout: default
     border-left: 3px solid var(--clr-accent);
     padding-left: calc(var(--space-2, 8px) - 3px);
   }
-
+  
   .tc-leaderboard .rank { min-width: 40px; text-align: center; font-weight: var(--fw-black, 600); color: var(--clr-accent); }
 
   .tc-leaderboard .lb-avatar-frame {
@@ -149,7 +147,10 @@ layout: default
 </style>
 
 <!-- Hook for sheet database tracking -->
-<script>document.body.setAttribute('data-test-category', '{{ page.category_id }}');</script>
+<script>
+  document.body.setAttribute('data-test-category', '{{ page.category_id }}');
+  window.pageLangConfig = "{{ page.lang }}";
+</script>
 
 <main class="cat-test-wrapper">
     
@@ -161,43 +162,89 @@ layout: default
     </div>
 
     <!-- 🎛️ DYNAMIC AUTOMATIC PARTS MATRIX GRID -->
-    <!-- 🎛️ DYNAMIC ARCHIVE CONTAINER PIRE GRID (अब ये ऑटोमैटिक डिब्बे बनाएगा) -->
-<div id="test-parts-container" class="box-grid">
-    
-    {% if page.total_parts > 0 %}
-      {% for i in (1..page.total_parts) %}
-        {% if i < 10 %}
-          {% assign test_id_str = "test-0" | append: i %}
-          {% assign test_label_str = "Test - 0" | append: i %}
-          {% assign test_label_hi_str = "टेस्ट - 0" | append: i %}
-        {% else %}
-          {% assign test_id_str = "test-" | append: i %}
-          {% assign test_label_str = "Test - " | append: i %}
-          {% assign test_label_hi_str = "टेस्ट - " | append: i %}
-        {% endif %}
+    <div id="test-parts-container" class="box-grid">
         
-        <!-- ⚡ LINK KE ANDAR CARD (PERFECT FULL CLICKABLE FIX) -->
-        <a href="{{ page.permalink | append: test_id_str | append: '/' | relative_url }}" style="text-decoration: none; color: inherit; display: block;">
-          
-          <!-- Poora Card Box ab is Link ke andar render hoga -->
-          <div class="box" data-quiz-id="{{ page.category_id }}-{{ test_id_str }}" data-test-name="{{ page.category_title }} - {{ test_label_str }}" style="cursor: pointer;">
-              {% if page.lang == 'hi' %}
-                {{ test_label_hi_str }}
-              {% else %}
-                {{ test_label_str }}
-              {% endif %}
+        {% if page.total_parts > 0 %}
+          {% for i in (1..page.total_parts) %}
+            {% if i < 10 %}
+              {% assign test_id_str = "test-0" | append: i %}
+              {% assign test_label_str = "Test - 0" | append: i %}
+              {% assign test_label_hi_str = "टेस्ट - 0" | append: i %}
+            {% else %}
+              {% assign test_id_str = "test-" | append: i %}
+              {% assign test_label_str = "Test - " | append: i %}
+              {% assign test_label_hi_str = "टेस्ट - " | append: i %}
+            {% endif %}
+            
+            <!-- ⚡ LINK KE ANDAR CARD (FULL CLICKABLE FIX) -->
+            <a href="{{ page.permalink | append: test_id_str | append: '/' | relative_url }}">
+              
+              <div class="box" data-quiz-id="{{ page.category_id }}-{{ test_id_str }}" data-test-name="{{ page.category_title }} - {{ test_label_str }}" style="cursor: pointer;">
+                  <span class="js-core-label">
+                    {% if page.lang == 'hi' %}{{ test_label_hi_str }}{% else %}{{ test_label_str }}{% endif %}
+                  </span>
+              </div>
+
+            </a>
+          {% endfor %}
+        {% else %}
+          <div class="box disabled-box">
+              <span class="soon-badge-tag">Soon</span>
+              <a href="#" onclick="return false;">No Tests Available</a>
           </div>
+        {% endif %}
 
-        </a>
-      {% endfor %}
-    {% else %}
-      <div class="box disabled-box">
-          <span class="soon-badge-tag">Soon</span>
-          <a href="#" onclick="return false;">No Tests Available</a>
-      </div>
-    {% endif %}
+    </div>
 
-</div>
+    <!-- ==================================================================
+         📊 DYNAMIC DATABASE SCOREBOARD PANEL (AVERAGE OVERALL MATRIX)
+         ================================================================== -->
+    <div id="hub-analytics-panel" style="background: var(--bg-surface); border: 1px solid var(--clr-border); border-radius: var(--radius-lg, 18px); padding: var(--space-6, 24px); box-shadow: var(--shadow-sm); margin-bottom: 32px;">
+        
+        <div style="border-bottom: 1px solid var(--clr-border); padding-bottom: 12px; margin-bottom: 20px; display: flex; justify-content: space-between; align-items: center;">
+            <h4 style="font-family: var(--font-display), sans-serif; margin: 0; color: var(--text-heading); font-size: 18px; display: flex; align-items: center; gap: 8px;">
+                <i class="fa-solid fa-square-poll-vertical" style="color: var(--clr-accent);"></i>
+                {% if page.lang == 'hi' %}आपका व्यक्तिगत स्कोरबोर्ड{% else %}Your Live Performance Matrix{% endif %}
+            </h4>
+            <div id="hub-user-name" style="font-family: var(--font-body), sans-serif; font-size: 13px; color: var(--text-muted); font-weight: 600;"></div>
+        </div>
+
+        <!-- Metrics Tracker -->
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 16px; margin-bottom: 24px;">
+            <div style="background: var(--bg-body); border: 1px solid var(--clr-border); padding: 16px; border-radius: 12px; text-align: center;">
+                <div style="font-size: 12px; color: var(--text-muted); font-weight: 600; margin-bottom: 4px;">{% if page.lang == 'hi' %}कुल प्रयास किए गए{% else %}Tests Attempted{% endif %}</div>
+                <div id="analytics-total-played" style="font-size: 24px; font-weight: 700; color: var(--text-heading);">0</div>
+            </div>
+            <div style="background: var(--bg-body); border: 1px solid var(--clr-border); padding: 16px; border-radius: 12px; text-align: center;">
+                <div style="font-size: 12px; color: var(--text-muted); font-weight: 600; margin-bottom: 4px;">{% if page.lang == 'hi' %}औसत स्कोर (Accuracy){% else %}Total Average Accuracy{% endif %}</div>
+                <div id="analytics-avg-accuracy" style="font-size: 24px; font-weight: 700; color: #28a745;">0.00%</div>
+            </div>
+            <div style="background: var(--bg-body); border: 1px solid var(--clr-border); padding: 16px; border-radius: 12px; text-align: center;">
+                <div style="font-size: 12px; color: var(--text-muted); font-weight: 600; margin-bottom: 4px;">{% if page.lang == 'hi' %}कुल संचित स्कोर{% else %}Total Score Accumulated{% endif %}</div>
+                <div id="analytics-total-score" style="font-size: 24px; font-weight: 700; color: var(--clr-accent);">0</div>
+            </div>
+        </div>
+
+        <!-- Sheet Records Rows Grid -->
+        <div style="overflow-x: auto;">
+            <table style="width: 100%; border-collapse: collapse; font-family: var(--font-body), sans-serif; font-size: 14px; text-align: left;">
+                <thead>
+                    <tr style="border-bottom: 2px solid var(--clr-border); color: var(--text-heading); font-weight: 700;">
+                        <th style="padding: 10px;">{% if page.lang == 'hi' %}टेस्ट का नाम{% else %}Test Profile{% endif %}</th>
+                        <th style="padding: 10px;">{% if page.lang == 'hi' %}प्राप्त अंक{% else %}Score Obtained{% endif %}</th>
+                        <th style="padding: 10px;">{% if page.lang == 'hi' %}सटीकता प्रतिशत{% else %}Accuracy Rate{% endif %}</th>
+                    </tr>
+                </thead>
+                <tbody id="hub-score-table-body">
+                    <tr>
+                        <td colspan="3" style="padding: 20px; text-align: center; color: var(--text-muted);">
+                            {% if page.lang == 'hi' %}रिकॉर्ड लोड हो रहे हैं... ऊपर से नया टेस्ट शुरू करें!{% else %}Analyzing sheets databases... Run tests to populate metrics!{% endif %}
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
 
     <!-- 🥇 GOOGLE SHEET INTEGRATED DYNAMIC LEADERBOARD ZONE -->
     <section class="leaderboard-section">
